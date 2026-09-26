@@ -57,6 +57,7 @@ import { usePoiExplore } from '../components/Map/usePoiExplore'
 import { useMergedMapPois } from '../components/Map/useMergedMapPois'
 import PoiCategoryPill from '../components/Map/PoiCategoryPill'
 import { useTouchDragBridge } from '../hooks/useTouchDragBridge'
+import { showReservationOnMap } from '../components/Planner/bookings/showOnMap'
 
 // The tab panels are the planner's dead weight: each one mounts only while its
 // own tab is active, so the page chunk carried code most sessions never run. They
@@ -1017,6 +1018,10 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                 addManualKey="transport.addManual"
                 contributionView="transports"
                 tripMembers={tripMembers}
+                contextReservations={reservations.filter(r => r.type === 'hotel')}
+                onEditExpense={(item) => openBookingExpense({ editItem: item })}
+                onShowOnMap={(r) => showReservationOnMap(r, { visibleConnections, toggleConnection, selectDay: (id) => handleSelectDay(id), selectPlace: setSelectedPlaceId, openPlan: () => handleTabChange('plan') })}
+                isOnMap={(r) => visibleConnections.includes(r.id)}
               />
             </LazyPanel>
           </div>
@@ -1038,6 +1043,10 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                 onDelete={handleDeleteReservation}
                 onNavigateToFiles={() => handleTabChange('dateien')}
                 tripMembers={tripMembers}
+                contextReservations={reservations.filter(r => TRANSPORT_TYPES.has(r.type))}
+                onEditExpense={(item) => openBookingExpense({ editItem: item })}
+                onShowOnMap={(r) => showReservationOnMap(r, { visibleConnections, toggleConnection, selectDay: (id) => handleSelectDay(id), selectPlace: setSelectedPlaceId, openPlan: () => handleTabChange('plan') })}
+                isOnMap={(r) => visibleConnections.includes(r.id)}
               />
             </LazyPanel>
           </div>
