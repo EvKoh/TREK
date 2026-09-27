@@ -74,7 +74,7 @@ describe('the Places and Amap switches in the templates', () => {
     for (const name of ['PLACES_API_KEY', 'AMAP_API_KEY', 'AMAP_API_SECRET']) {
       expect(helmValues).toContain(`  ${name}: ""`);
       expect(helmSecret).toContain(`${name}: {{ .Values.secretEnv.${name} | b64enc | quote }}`);
-      expect(helmSecret).toContain(`${name}: {{ .Values.secretEnv.${name} }}`);
+      expect(helmSecret).toContain(`${name}: {{ .Values.secretEnv.${name} | quote }}`);
       expect(helmDeployment).toContain(`- name: ${name}\n              valueFrom:\n                secretKeyRef:`);
       expect(helmDeployment).toContain(`key: ${name}\n                  optional: true`);
       expect(helmConfigMap).not.toContain(name);
@@ -134,7 +134,7 @@ describe('the Web Push keys in the templates', () => {
     const name = 'VAPID_PRIVATE_KEY';
     expect(helmValues).toContain(`  ${name}: ""`);
     expect(helmSecret).toContain(`${name}: {{ .Values.secretEnv.${name} | b64enc | quote }}`);
-    expect(helmSecret).toContain(`${name}: {{ .Values.secretEnv.${name} }}`);
+    expect(helmSecret).toContain(`${name}: {{ .Values.secretEnv.${name} | quote }}`);
     expect(helmDeployment).toContain(`- name: ${name}\n              valueFrom:\n                secretKeyRef:`);
     expect(helmDeployment).toContain(`key: ${name}\n                  optional: true`);
     expect(helmConfigMap).not.toContain(name);
