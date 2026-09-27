@@ -1,4 +1,4 @@
-// FE-BUDGET-SCAN-001 to FE-BUDGET-SCAN-010
+// FE-BUDGET-SCAN-001 to FE-BUDGET-SCAN-011
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { http, HttpResponse } from 'msw'
 import { render, screen, fireEvent, waitFor } from '../../../tests/helpers/render'
@@ -147,5 +147,21 @@ describe('MReceiptScanButton', () => {
     const { container } = render(<MReceiptScanButton tripId={7} canEdit={false} />)
     await new Promise(r => setTimeout(r, 20))
     expect(container).toBeEmptyDOMElement()
+  })
+
+  it('FE-BUDGET-SCAN-011: the drop zone lights up while a photo is dragged over it, and a click on it opens the picker', async () => {
+    render(<Harness />)
+    await openDialog()
+    const zone = screen.getByText('Drop the receipt photo here, or click to pick or take one').closest('button')!
+    fireEvent.dragEnter(zone)
+    expect(screen.getByText('Drop the photo to scan it')).toBeInTheDocument()
+    // Leaving for a child of the zone keeps it lit, leaving the zone itself does not.
+    fireEvent.dragLeave(zone.firstElementChild!)
+    expect(screen.getByText('Drop the photo to scan it')).toBeInTheDocument()
+    fireEvent.dragLeave(zone)
+    expect(screen.getByText('Drop the receipt photo here, or click to pick or take one')).toBeInTheDocument()
+    const pick = vi.spyOn(input(), 'click')
+    fireEvent.click(zone)
+    expect(pick).toHaveBeenCalledTimes(1)
   })
 })

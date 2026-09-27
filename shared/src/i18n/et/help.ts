@@ -1734,7 +1734,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.bullet.4':
     'Pealkirja, kuupäevi, kaanepilti ja valuutat muudetakse lehel Minu reisid reisikaardil oleva pliiatsiga.',
   'help.ctx.trip.bullet.5':
-    'Veeru siseservas olevad noolekesed ahendavad veeru ja kaart võtab ruumi enda alla; veeru kõrval olev õhuke eraldaja muudab selle laiust.',
+    'Veeru siseservas olev sakk ahendab veeru ja kaart võtab ruumi enda alla; veeru kõrval olev õhuke eraldaja muudab selle laiust.',
   'help.ctx.trip.bullet.6': 'Päevade tööriistaribal olev tagasivõtmise nool võtab tagasi viimase plaanimuudatuse.',
   // add-member
   'help.guide.add-member.title': 'Lisa liige',
@@ -1798,8 +1798,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Tee kaardile ruumi',
   'help.guide.collapse-columns.goal': 'Ahenda veerg või anna sellele rohkem laiust.',
   'help.guide.collapse-columns.step.1':
-    'Klõpsa päevade veeru siseservas olevat noolekest, et veerg ahendada; kaart võtab ruumi enda alla. Kohtade veerul on sama noolekene.',
-  'help.guide.collapse-columns.step.2': 'Veeru tagasitoomiseks klõpsa noolekest uuesti.',
+    'Klõpsa päevade veeru siseservas olevat sakki, seda paneeliikooniga, et veerg ahendada; kaart võtab ruumi enda alla. Kohtade veerul on sama sakk.',
+  'help.guide.collapse-columns.step.2':
+    'Ahendatud veerg jätab kaardi nurka plaadi, päevade jaoks Plaan ja kohtade jaoks Kohad. Veeru tagasitoomiseks klõpsa sellel.',
   'help.guide.collapse-columns.step.3':
     'Veeru laiuse muutmiseks lohista veeru ja kaardi vahel olevat õhukest eraldajat.',
   'help.guide.collapse-columns.result': 'Laiused jäetakse meelde; järgmisel külastusel on veerud taas avatud.',
@@ -1823,15 +1824,15 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Ülal olev Lisa koht või tegevus avab vormi kohale, mille sisestad või otsid. Kui päev on avatud, on nupul tekst Uus koht ja selle kõrval olev Päevale loob koha otse sellele päevale.',
   'help.ctx.trip-places.bullet.2':
-    'Impordi fail võtab vastu .gpx-, .kml- ja .kmz-faile; Nimekirja import võtab vastu jagatud Google Mapsi või Naver Mapsi nimekirja. Faili võib ka lihtsalt veergu lohistada.',
+    "Selle kõrval olev impordinupp pakub valikut Impordi fail .gpx-, .kml- ja .kmz-failide jaoks ning Google'i nimekiri (Nimekirja import, kui ka Naveri nimekirjad on sisse lülitatud) Google Mapsist või Naver Mapsist jagatud nimekirja jaoks. Faili võib ka lihtsalt veergu lohistada.",
   'help.ctx.trip-places.bullet.3':
-    'Rippmenüüs saab valida Kõik, Planeerimata, Plaanis ja pärast raja importimist Rajad; selle all on otsing, kategooriafilter ja täht minimaalse hinnangu jaoks.',
+    'Nende all on otsing, selle kõrval valikut alustav linnuke, ja filtrite rida: Näita vahetab valikute Kõik, Planeerimata, Plaanis ja pärast raja importimist Rajad vahel, igaühel oma arv; sildinupp filtreerib kategooria ja täht minimaalse hinnangu järgi.',
   'help.ctx.trip-places.bullet.4':
-    'Real on pilt, nimi ja kirjeldus või aadress. Klõpsa sellel koha üksikasjade nägemiseks, lohista see päevale või paremklõpsa, et näha valikuid Muuda, Lisa päevale, Ava veebisait, Google Maps, Salvesta kogumikku ja Kustuta.',
+    'Real on pilt, nimi ja kirjeldus või aadress. Klõpsa sellel koha üksikasjade nägemiseks, lohista see päevale või paremklõpsa sellel (või klõpsa selle kolmel punktil), et näha valikuid Muuda, + Päev, Ava veebisait, Google Maps, Salvesta kogumikku ja Kustuta.',
   'help.ctx.trip-places.bullet.5':
-    'Kui päev on avatud, lisab planeerimata rea lõpus olev + koha sellele päevale ja Plaanis näitab ainult seda päeva; Näita kogu reisi laiendab vaate taas.',
+    'Kui päev on avatud, lisab planeerimata rea lõpus olev + Päev koha sellele päevale ja Plaanis näitab ainult seda päeva; Näita kogu reisi laiendab vaate taas.',
   'help.ctx.trip-places.bullet.6':
-    'Filtririda paremas otsas olev linnuke alustab valikut: mitmele reale korraga saab määrata uue kategooria, lisada need kogumikku või need kustutada.',
+    'Otsingu kõrval olev linnuke alustab valikut: veeru allservas olevalt ribalt saab mitmele reale korraga määrata uue kategooria, lisada need kogumikku, märkida need külastatuks või need kustutada.',
   // create-place
   'help.guide.create-place.title': 'Loo koht',
   'help.guide.create-place.goal':
@@ -1839,11 +1840,11 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.1':
     'Klõpsa kohtade veeru ülaosas Lisa koht või tegevus (kui päev on avatud, siis Uus koht). Avaneb vorm.',
   'help.guide.create-place.step.2':
-    "Sisesta koht ülal olevale väljale Otsi kohti… ja vali tulemus. Nimi, Aadress, Laiuskraad, Pikkuskraad ja Veebisait täidetakse ning vasakul olev Koha üksikasjad näitab selle pilte, lahtiolekuaegu ja kirjeldust. Google'i võtmega TREKis on loendi all Pole õige koht? Otsi Google'ist, mis teeb sama otsingu Google'i kaudu.",
+    "Sisesta koht väljale Otsi kohti… ja vali tulemus. Akna päises olev nimi, Aadress, Laiuskraad, Pikkuskraad ja Veebisait täidetakse ning vasakul olev Koha üksikasjad näitab selle pilte, lahtiolekuaegu ja kirjeldust. Google'i võtmega TREKis on loendi all Pole õige koht? Otsi Google'ist, mis teeb sama otsingu Google'i kaudu. Paremal olev Salvestatud kohad pakub samamoodi sinu kogumike kohti.",
   'help.guide.create-place.step.3':
     'Jaotises Koha üksikasjad teeb klõps pildil jaotises Vali pilt sellest koha pildi; Kasuta seda teksti tõstab kirjelduse vormi.',
   'help.guide.create-place.step.4':
-    'Kontrolli välju: Nimi on kohustuslik; Kirjeldus ja Märkmed on sinu täita; Aadress, Laiuskraad ja Pikkuskraad tulevad otsingust või sisestatakse käsitsi; Kategooria valib ühe reisi kategooriatest ja selle kõrval olev + loob kohe uue; Veebisait on lingi jaoks.',
+    'Kontrolli, mis vormis on: nimi asub akna päises ja on ainus kohustuslik väli; selle all olev Kategooria kiip valib ühe reisi kategooriatest ja selle kõrval olev + loob kohe uue. Aadress, Laiuskraad ja Pikkuskraad tulevad otsingust või sisestatakse käsitsi; Kirjeldus ja Märkmed on sinu täita; Veebisait on lingi jaoks.',
   'help.guide.create-place.step.5':
     'Klõpsa Lisa. Kui sama nimega koht on reisil juba olemas, annab vorm sellest teada ja nupuks saab Lisa siiski.',
   'help.guide.create-place.result': 'Koht on loendis ja kaardil, jaotises Planeerimata, kuni see päevale lisatakse.',
@@ -1861,7 +1862,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Päevale avab sama vormi mis Uus koht, ainult et koht lisatakse avatud päevale kohe, kui klõpsad Lisa.',
   'help.guide.place-to-open-day.step.3':
-    'Juba olemasoleva koha saab avatud päevale lisada selle rea lõpus oleva + abil või paremklõpsuga, Lisa päevale.',
+    'Juba olemasoleva koha saab avatud päevale lisada selle rea lõpus oleva + Päev abil või paremklõpsuga, + Päev.',
   'help.guide.place-to-open-day.step.4':
     'Toimib ka teistpidi ja ilma päeva enne avamata: lohista koha rida veerust välja ja aseta see päeva kaardile. Kahe peatuse vahele asetatuna jõuab see täpselt sinna.',
   'help.guide.place-to-open-day.result': 'Koht on päeva all loendi lõpus; lohista see üles või alla õigesse kohta.',
@@ -1872,10 +1873,10 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Leia koht loendist',
   'help.guide.filter-places.goal': 'Kitsenda veergu kohtadeni, mida otsid.',
   'help.guide.filter-places.step.1':
-    'Ülal olevas rippmenüüs saab valida Kõik, Planeerimata (pole veel üheski päevas), Plaanis (on mõnel päeval) ja Rajad (imporditud GPX-rajad), igaühel oma arv.',
-  'help.guide.filter-places.step.2': 'Kirjuta väljale Otsi kohti…; loend kitseneb kirjutamise ajal.',
+    'Otsingu all olevas rippmenüüs Näita saab valida Kõik, Planeerimata (pole veel üheski päevas), Plaanis (on mõnel päeval) ja Rajad (imporditud GPX-rajad), igaühel oma arv.',
+  'help.guide.filter-places.step.2': 'Kirjuta ülal väljale Otsi; loend kitseneb kirjutamise ajal.',
   'help.guide.filter-places.step.3':
-    'Kõik kategooriad avab loendi, kus saab märkida ühe või mitu kategooriat, sealhulgas Kategooriata; selle allosas olev Tühjenda filter lähtestab valiku.',
+    'Näita kõrval olev sildinupp loetleb kategooriad: märgi üks või mitu, sealhulgas Kategooriata. Nupp näitab märgitute arvu ja loendi allosas olev Tühjenda filter tühistab need kõik.',
   'help.guide.filter-places.step.4':
     'Selle kõrval olev täht määrab minimaalse hinnangu: 5+, 4+ jne näitavad ainult kohti, mida oled hinnanud vähemalt nii kõrgelt.',
   'help.guide.filter-places.result': 'Ridade kohal olev arv näitab, mitu kohta sobib; filtrid toimivad koos.',
@@ -1887,7 +1888,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.goal': 'Paranda nime, liiguta nõela, lisa veebisait või muuda kategooriat.',
   'help.guide.edit-place.step.1': 'Paremklõpsa real ja vali Muuda või ava koht ja klõpsa selle üksikasjades Muuda.',
   'help.guide.edit-place.step.2':
-    'Muuda, mida vaja: Nimi, Kirjeldus, Märkmed, Aadress, Laiuskraad ja Pikkuskraad, Kategooria, Veebisait. Päevalt avatuna on vormis ka Selle päeva märkmed ning selle päeva Algus ja Lõpp.',
+    'Muuda, mida vaja: akna päises olev nimi ja Kategooria kiip, Aadress, Laiuskraad ja Pikkuskraad, Kirjeldus, Märkmed ja Veebisait. Päevalt avatuna on vormis ka Algus ja Lõpp ning Selle päeva märkmed.',
   'help.guide.edit-place.step.3': 'Klõpsa Uuenda.',
   'help.guide.edit-place.result':
     'Muudatus kehtib kõikjal, kus koht esineb: loendis, kaardil ja igal päeval, kus see on.',
@@ -1900,21 +1901,22 @@ const help: TranslationStrings = {
   'help.guide.delete-place.goal': 'Eemalda koht reisilt jäädavalt.',
   'help.guide.delete-place.step.1': 'Paremklõpsa real ja vali Kustuta või klõpsa koha üksikasjades Kustuta.',
   'help.guide.delete-place.step.2':
-    'Kinnita. Kui kohas on broneeritud öö või kohaga on seotud broneering, ütleb küsimus, mis sellega koos kaob.',
+    'Klõpsa küsimuses Kustuta. Kui kohas on broneeritud öö või kohaga on seotud broneering, ütleb küsimus, mis sellega koos kaob.',
   'help.guide.delete-place.result':
     'Koht on kadunud loendist, kaardilt ja kõigilt päevadelt; päevade kohal oleva tööriistariba nupp Võta tagasi toob selle tagasi.',
   'help.guide.delete-place.tip.1':
     'Koha eemaldamiseks ainult ühelt päevalt kasuta hoopis selle peatuse juures Eemalda päevast.',
-  'help.guide.delete-place.tip.2': 'Mitu kohta korraga: filtrite kõrval olev linnuke alustab valikut.',
+  'help.guide.delete-place.tip.2': 'Mitu kohta korraga: otsingu kõrval olev linnuke alustab valikut.',
   // select-places
   'help.guide.select-places.title': 'Muuda või kustuta mitu kohta korraga',
   'help.guide.select-places.goal': 'Korrasta loend ühe korraga, mitte koht-kohalt.',
   'help.guide.select-places.step.1':
-    'Klõpsa filtrirea paremas otsas olevat linnukest. Ridadele ilmuvad märkeruudud ja kuvatakse toimingute riba.',
-  'help.guide.select-places.step.2': 'Märgi read või klõpsa ribal Vali kõik; riba näitab valitute arvu.',
+    'Klõpsa otsinguvälja kõrval olevat linnukest. Ridadele ilmuvad ümmargused märkeruudud ja veeru allservas tõuseb esile toimingute riba.',
+  'help.guide.select-places.step.2':
+    'Klõpsa ridu, et need märkida. Vali kõik, ribal olev topeltlinnuke, võtab kõik read, mis filtritest alles jäävad.',
   'help.guide.select-places.step.3':
-    'Muuda kategooriat annab neile kõigile ühe kategooria; Salvesta kogumikku kopeerib need ühte sinu kogumikku; Kustuta valitud eemaldab need pärast kinnitust.',
-  'help.guide.select-places.step.4': 'Valikust väljumiseks klõpsa linnukest uuesti.',
+    'Riba näitab märgitud kohtade arvu. Muuda kategooriat annab neile kõigile ühe kategooria; Salvesta kogumikku kopeerib need ühte sinu kogumikku; Kustuta valitud eemaldab need pärast kinnitust.',
+  'help.guide.select-places.step.4': 'Valmis, riba lõpus olev X, lõpetab valiku.',
   'help.guide.select-places.result':
     'Muudatus kehtib igale valitud kohale; kustutamise saab tagasi võtta päevade kohal olevalt tööriistaribalt.',
   'help.guide.select-places.tip.1':
@@ -1924,7 +1926,8 @@ const help: TranslationStrings = {
   // import-places-file
   'help.guide.import-places-file.title': 'Impordi kohad GPX-, KML- või KMZ-failist',
   'help.guide.import-places-file.goal': 'Too sisse see, mida Google My Maps, Google Earth või GPS-seade eksportis.',
-  'help.guide.import-places-file.step.1': 'Klõpsa Impordi fail või lohista fail kuhu tahes kohtade veergu.',
+  'help.guide.import-places-file.step.1':
+    'Klõpsa lisamisnupu kõrval olevat impordinuppu ja vali Impordi fail või lohista fail kuhu tahes kohtade veergu.',
   'help.guide.import-places-file.step.2':
     'Vali fail või lohista see kasti. GPX-i puhul märgi, mida importida: Teekonnapunktid, Marsruudid, Rajad (koos teekonna geomeetriaga); KML-i ja KMZ-i puhul Punktid (Placemarks) ja Teekonnad (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -1940,7 +1943,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Impordi jagatud Google Mapsi või Naver Mapsi nimekiri',
   'help.guide.import-places-list.goal': 'Muuda jagatud nimekirja link kohtadeks.',
-  'help.guide.import-places-list.step.1': "Klõpsa Nimekirja import ja vali Google'i nimekiri või Naveri nimekiri.",
+  'help.guide.import-places-list.step.1':
+    "Klõpsa lisamisnupu kõrval olevat impordinuppu ja vali Google'i nimekiri. Kui ka Naveri nimekirjad on sisse lülitatud, on kirje nimi Nimekirja import ja aken küsib, kumba neist soovid.",
   'help.guide.import-places-list.step.2':
     'Kleebi nimekirja jagatud link. Sobib ka Google Mapsi teejuhiste link: selle peatustest saavad kohad sõidujärjekorras.',
   'help.guide.import-places-list.step.3': 'Klõpsa Impordi.',
@@ -1958,24 +1962,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'Ülal olev tööriistariba: Ekspordi (PDF, kalender, GPX), Laienda kõik päevad / Ahenda kõik päevad, tagasivõtmise nool, Muuda päevade järjekorda ja Näita kõiki broneeringute marsruute.',
   'help.ctx.trip-days.bullet.2':
-    'Päeva kaart: päises on number, ilm, pealkiri, kuupäev ja päeva kulu; klõpsa päisel päeva avamiseks, noolekene ahendab päeva kaardi. Päises on ka Ühistransport, Lisa transport ja Lisa märge.',
+    'Päeva kaart: plaat päeva numbri ja ilmaprognoosiga, pealkiri ja kuupäev ning kiibid broneeritud öö, rendiauto ja päeva kulu jaoks. Klõpsa päisel päeva avamiseks, noolekene ahendab selle ja + avab menüü: Lisa koht sellele päevale, Lisa majutus, Lisa transport, Ühistransport ja Lisa märge.',
   'help.ctx.trip-days.bullet.3':
-    'Päeva sees: peatused järjekorras, igaühel pilt, nimi, aeg ja pildil lukk; märkmed; päevale kuuluvad broneeringud; ning peatuste vahel iga teelõigu sõiduaeg.',
+    'Päeva sees: peatused järjekorras, igaühel pilt, nimi, aeg, pildil lukk ja sellega seotud broneeringud; märkmed; päeva broneeringud ja transport, toonitud tüübi järgi; ning peatuste vahel iga teelõigu sõiduaeg. Igal real on kolme punktiga menüü, sama, mis avaneb paremklõpsuga.',
   'help.ctx.trip-days.bullet.4':
     'Peatuste all on marsruudiriba: Marsruut joonistab päeva kaardile, Optimeeri järjestab peatused, Autoga / Jalgsi määrab päeva liikumisviisi, Ava Google Mapsis ja Ava CoMapsis annavad päeva neile rakendustele üle.',
   'help.ctx.trip-days.bullet.5':
-    'Kohad jõuavad päevale, kui lohistad rea kohtade veerust, kasutad selle rea +-i, tühjal päeval nuppu Lisa koht sellele päevale või koha üksikasju.',
+    'Kohad jõuavad päevale, kui lohistad rea kohtade veerust, kasutad selle rea nuppu + Päev, päeva + menüüs või tühjal päeval nuppu Lisa koht sellele päevale või koha üksikasju.',
   'help.ctx.trip-days.bullet.6':
     'Allosas olev Kogukulu liidab kokku kõik hinnaga peatused ja broneeringud reisi valuutas.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Loe päeva kaarti',
   'help.guide.read-day-plan.goal': 'Tea enne muutmist, mida päeva kaardi iga osa sulle ütleb.',
   'help.guide.read-day-plan.step.1':
-    'Päis: päeva number, päeva ilmaprognoos, Päev 1 või sinu antud pealkiri, kuupäev ja päeva kulu. Klõpsa päisel päeva avamiseks (selle üksikasjade paneel avaneb kaardi kohal); paremal olev noolekene ahendab ja laiendab päeva kaarti.',
+    'Päis: plaat päeva numbri ja ilmaprognoosiga, seejärel Päev 1 või sinu antud pealkiri, kuupäev ning kiibid broneeritud öö (sisse- või väljaregistreerimine), rendiauto ja päeva kulu jaoks. Klõpsa päisel päeva avamiseks (selle üksikasjade paneel avaneb kaardi kohal); paremal olev + lisab koha, majutuse, transpordi, ühistranspordiühenduse või märke ning noolekene ahendab kaardi.',
   'help.guide.read-day-plan.step.2':
-    'Peatus: vasakul olevast pidemest saab seda lohistada, pildil on lukk marsruudi optimeerimise jaoks, seejärel nimi, kirjeldus ja kui on määratud, selle päeva märkmed. Ajamärk näitab Algust ja Lõppu, kui peatusel need on; selle paremas otsas ilmuvad nooled liigutavad peatust üles või alla.',
+    'Peatus: vasakul olevast pidemest saab seda lohistada, pildil on lukk marsruudi optimeerimise jaoks, seejärel nimi, ajamärk, kui peatusel on Algus ja Lõpp, kirjeldus ja kui on määratud, selle päeva märkmed. Selle paremas otsas olevad nooled liigutavad peatust üles või alla ja kolm punkti avavad selle menüü.',
   'help.guide.read-day-plan.step.3':
-    'Päeva broneering: peatuse broneering märgib peatuse kui Broneering kinnitatud või Broneering ootel ning transport kuvatakse kui Väljumine või Saabumine koos aja ja marsruudiga ning väikese lülitiga, mis joonistab selle marsruudi kaardile.',
+    'Peatuse broneering asub sellel märgina Broneering, roheline, kui see on kinnitatud, ja merevaigukollane, kui see on ootel, koos aja ja teenusepakkujaga; klõpsa märgil broneeringu avamiseks ja selle kõrval olev marsruudinupp joonistab selle marsruudi. Transport on eraldi rida, toonitud tüübi järgi, tekstiga Väljumine või Saabumine ja ajaga. Klõpsa broneeringul ja selle üksikasjad avanevad; seal olev Muuda muudab seda.',
   'help.guide.read-day-plan.step.4':
     'Kahe peatuse vahel näitab ühendaja päeva liikumisviisi järgi, kui kaua teelõik aega võtab ja kui pikk see on; klõpsa sellel, et muuta ainult selle teelõigu liikumisviisi.',
   'help.guide.read-day-plan.step.5':
@@ -1983,7 +1987,7 @@ const help: TranslationStrings = {
   'help.guide.read-day-plan.result':
     'Igal päeva kaardi sümbolil on tähendus; allolevad juhendid näitavad, kuidas igaüht neist muuta.',
   'help.guide.read-day-plan.tip.1':
-    'Paremklõpsa peatusel, et avada selle menüü: Muuda, Eemalda päevast, Ava veebisait, navigeerimisrakendused (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Salvesta kogumikku, Kustuta.',
+    'Paremklõpsa peatusel või klõpsa selle kolmel punktil, et avada selle menüü: Muuda, Eemalda päevast, Ava veebisait, navigeerimisrakendused (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Salvesta kogumikku, Kustuta.',
   'help.guide.read-day-plan.tip.2':
     'Vii hiirekursor peatuse kohale ja selle lõppu ilmub Lisa broneering: seal loodud broneering on seotud selle peatusega sellel päeval.',
   // place-onto-day
@@ -1992,9 +1996,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Lohista rida kohtade veerust päeva kaardile. Aseta see kahe peatuse vahele, et see täpselt sinna panna, või ükskõik kuhu päeva kaardil, et lisada see lõppu.',
   'help.guide.place-onto-day.step.2':
-    'Lohistamata: ava päev selle päisel klõpsates, seejärel klõpsa koha rea lõpus olevat + või paremklõpsa real ja vali Lisa päevale.',
+    'Lohistamata: ava päev selle päisel klõpsates, seejärel klõpsa koha rea lõpus olevat + Päev või paremklõpsa real ja vali + Päev.',
   'help.guide.place-onto-day.step.3':
-    'Tühjal päeval avab Lisa koht sellele päevale kohavormi ja uus koht lisatakse kohe päevale.',
+    'Lisa koht sellele päevale, päeva + menüüs või tühjal päeval, avab kohavormi ja uus koht lisatakse kohe päevale.',
   'help.guide.place-onto-day.step.4':
     'Koha üksikasjades küsib Lisa päevale, milline päev; kui päev on päisest avatud, loob kohtade veerus olev Päevale uue koha avatud päevale.',
   'help.guide.place-onto-day.result':
@@ -2023,7 +2027,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.title': 'Määra peatusele kellaaeg',
   'help.guide.set-stop-times.goal': 'Määra, millal peatus algab ja lõpeb, et päev oleks loetav nagu ajakava.',
   'help.guide.set-stop-times.step.1':
-    'Paremklõpsa peatusel ja vali Muuda. Päevalt avatuna on vormi allosas Algus ja Lõpp.',
+    'Paremklõpsa peatusel või klõpsa selle kolmel punktil ja vali Muuda. Päevalt avatuna on vormis selle päeva Algus ja Lõpp, kohe asukoha all.',
   'help.guide.set-stop-times.step.2':
     'Sisesta Algus ja soovi korral Lõpp. Ajaline kattuvus: hoiatab, et päeva mõni teine kellaajaga peatus kattub; kui Lõpp on enne Algust, ei saa Uuenda klõpsata.',
   'help.guide.set-stop-times.step.3':
@@ -2060,12 +2064,12 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Lisa päevale märge',
   'help.guide.day-note.goal': 'Hoia meeldetuletust, piletinumbrit või plaani B otse päevas.',
-  'help.guide.day-note.step.1': 'Klõpsa päeva päises Lisa märge.',
+  'help.guide.day-note.step.1': 'Klõpsa päeva päises olevat + ja vali Lisa märge.',
   'help.guide.day-note.step.2':
-    'Anna sellele nimi väljal Märkus (see kuvatakse päeva kaardil) ja kirjuta ülejäänu väljale Päevamärge. Selle kohal olev tööriistariba vormindab teksti (paks kiri, loendid, lingid, tsitaadid) ja vasakul olev Eelvaade näitab, milline kaart sellest saab.',
+    'Kirjuta märke nimi akna päisesse, kus on kirjas Märge; see kuvatakse päeva kaardil. Ülejäänu kirjuta väljale Päevamärge: selle kohal olev tööriistariba vormindab teksti (paks kiri, loendid, lingid, tsitaadid) ja vasakul olev Eelvaade näitab, milline rida sellest saab.',
   'help.guide.day-note.step.3': 'Vali Ikoon ja Värv, et märge peatuste seast silma paistaks, seejärel klõpsa Lisa.',
   'help.guide.day-note.step.4':
-    'Märge asub päevas nagu peatus: lohista see õigesse kohta, paremklõpsa sellel, et valida Muuda või Kustuta.',
+    'Märge asub päevas nagu peatus: lohista see õigesse kohta ning paremklõpsa sellel või kasuta selle kolme punkti, et valida Muuda või Kustuta.',
   'help.guide.day-note.result': 'Märge on päeva osa, ka PDF-is; kellaajaga märge järjestub koos kellaajaga peatustega.',
   'help.guide.day-note.tip.1':
     'Kellaajaga märge võib asendada transporti, mille kohta sul broneeringut pole: „08:15 S3 keskjaamast“.',
@@ -2110,15 +2114,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.title': 'Loe plaanis broneeringuid ja transporti',
   'help.guide.bookings-in-plan.goal': 'Tea, kus broneering pärast loomist kuvatakse ja millisel ekraanil seda luuakse.',
   'help.guide.bookings-in-plan.step.1':
-    'Transport (lend, rong, praam, buss, auto) kuvatakse väljumise päeval kui Väljumine ja saabumise päeval kui Saabumine koos aja ja marsruudiga; mitmepäevane transport ulatub üle vahepealsete päevade.',
+    'Transport (lend, rong, praam, buss, auto) on tüübi järgi toonitud rida: väljumise päeval Väljumine, saabumise päeval Saabumine, koos aja ja marsruudiga; mitmepäevane transport ulatub üle vahepealsete päevade. Klõpsa real ja broneering avaneb.',
   'help.guide.bookings-in-plan.step.2':
-    'Peatusega seotud broneering (restoran, ekskursioon) märgib selle peatuse kui Broneering kinnitatud või Broneering ootel; päevaga, kuid peatuseta broneering on päevas eraldi real.',
+    'Peatusega seotud broneering (restoran, ekskursioon) on sellel peatusel märk Broneering, roheline, kui see on kinnitatud, ja merevaigukollane, kui see on ootel, koos ajaga; päevaga, kuid peatuseta broneering on päevas eraldi real.',
   'help.guide.bookings-in-plan.step.3':
     'Öö hotellis on majutus: see on päeva üksikasjade paneelil jaotises Majutus sisseregistreerimisest väljaregistreerimiseni ja kõigi nende päevade marsruut algab sealt.',
   'help.guide.bookings-in-plan.step.4':
     'Transpordi real olev lüliti joonistab selle marsruudi kaardile; tööriistariba nupp Näita kõiki broneeringute marsruute joonistab need kõik.',
   'help.guide.bookings-in-plan.step.5':
-    'Loomine: Lisa broneering peatusel, mille kohal on hiirekursor, Lisa transport ja Ühistransport päeva päises ning vahekaardid Broneeringud ja Transport täieliku loendi, importimise ja failide jaoks.',
+    'Loomine: Lisa broneering peatusel, mille kohal on hiirekursor, Lisa transport ja Ühistransport päeva + menüüs ning vahekaardid Broneeringud ja Transport täieliku loendi, importimise ja failide jaoks.',
   'help.guide.bookings-in-plan.result':
     'Üks broneering, üks koht plaanis; vahekaardid näitavad samu broneeringuid loendina.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2149,24 +2153,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Klõpsa kohtade veerus real, päeva sees peatusel või kaardil markeril ja paneel avaneb kaardi kohal. Kui valid koha päeva seest, teab paneel, millist peatust mõtled, ning just see toob kaasa peatuse osalejad ja broneeringu.',
   'help.ctx.trip-place.bullet.2':
-    'Päises on ümmargune pilt, nimi, kategooria, aadress ja koordinaadid. Klõpsa pildil, et kasutada oma pilti, topeltklõpsa nimel, et koht kohe ümber nimetada, ning paremal olev X sulgeb paneeli.',
+    'Päises on ümmargune pilt, nimi, aadress ühel real ja kiibid selle kohta, mis on teada: avatud või suletud, kategooria, hind, telefoninumber ja koordinaadid. Klõpsa pildil, et kasutada oma pilti, topeltklõpsa nimel, et koht kohe ümber nimetada, ning paremal olev X sulgeb paneeli.',
   'help.ctx.trip-place.bullet.3':
-    'Selle all: hind, kui see on olemas, iga reisija antud tärnid, kirjeldus ja märkmed ning Selle päeva märkmed, kui peatusel need on.',
+    'Selle all: iga reisija antud tärnid, kirjeldus ja märkmed ning Selle päeva märkmed, kui peatusel need on.',
   'help.ctx.trip-place.bullet.4':
     'Edasi tulevad Lahtiolekuajad, Raja värv, Raja statistika ja Failid, kui need on asjakohased. Failid võtab vastu mis tahes faili sinu kaustadest ja näitab ka seda, mis on selle peatuse broneeringu küljes.',
   'help.ctx.trip-place.bullet.5':
     'Allosas olev rida: kui päev on avatud, Lisa päevale või Eemalda päevast, seejärel Salvesta kogumikku, Navigeerimine, Ava veebisait, Muuda ja Kustuta.',
   'help.ctx.trip-place.bullet.6':
-    "Otsingust valitud kohal on see, mida TREKi indeks või OpenStreetMap selle kohta teab: pildi ümber roheline rõngas tekstiga Avatud või punane tekstiga Suletud, koha enda kellaaja järgi, telefoninumber tärnide all, allpool Lahtiolekuajad, mille real on päeva lahtiolekuaeg ja klõpsuga kogu nädal, ning veebisait nupu Ava veebisait taga. Google'i hinnang kuvatakse ainult Google'i kaudu leitud kohal Google'i võtmega TREKis.",
+    "Otsingust valitud kohal on see, mida TREKi indeks või OpenStreetMap selle kohta teab: päise kiipide seas Avatud või Suletud, koos rohelise või punase rõngaga pildi ümber, koha enda kellaaja järgi, ka telefoninumber kiibina, allpool Lahtiolekuajad, mille real on päeva lahtiolekuaeg ja klõpsuga kogu nädal, ning veebisait nupu Ava veebisait taga. Google'i hinnang kuvatakse ainult Google'i kaudu leitud kohal Google'i võtmega TREKis.",
   // read-place
   'help.guide.read-place.title': 'Mida paneel kohast ütleb',
   'help.guide.read-place.goal': 'Loe ühest paneelist kõike, mida reis ühe koha kohta teab.',
   'help.guide.read-place.step.1':
     'Klõpsa päevade veerus peatusel, mille kohta soovid lugeda. Paneel avaneb kaardi kohal ja peatus jääb oma päevas märgituks.',
   'help.guide.read-place.step.2':
-    'Päis: ümmargune pilt, nimi, aadress ja täpsed koordinaadid. Roheline rõngas tekstiga Avatud või punane tekstiga Suletud pildi ümber näitab koha enda kellaaja järgi, kas koht on praegu avatud, kui TREK teab selle lahtiolekuaegu. Paremal olev X sulgeb paneeli.',
+    'Päis: ümmargune pilt, nimi ja aadress ühel real; selle kohtspikker näitab kogu aadressi. Nende all olevad kiibid ütlevad koha enda kellaaja järgi, kas see on praegu Avatud või Suletud, koos sobiva rohelise või punase rõngaga pildi ümber, ning kannavad telefoninumbrit, mille klõps annab su telefonirakendusele, ja täpseid koordinaate. Paremal olev X sulgeb paneeli.',
   'help.guide.read-place.step.3':
-    'Selle all on iga reisija antud tärnid koos keskmise ja hääletanute arvuga. Veel hindamata, kui keegi pole hinnanud. Kohe allpool telefoninumber, kui kohal see on: klõps sellel annab numbri su telefonirakendusele.',
+    'Päise all on esimesena Hinnang: iga reisija antud tärnid koos keskmise ja hääletanute arvuga. Veel hindamata, kui keegi pole hinnanud.',
   'help.guide.read-place.step.4':
     'Seejärel kirjeldus ja selle all märkmed. Mõlemad on koha vormist pärit vormindatud tekst: loendid, lingid ja paks kiri töötavad.',
   'help.guide.read-place.step.5':
@@ -2258,17 +2262,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'Peatuse broneering',
   'help.guide.place-booking.goal': 'Vaata peatusega seotud broneeringut, ava see ja seo peatusega uus broneering.',
   'help.guide.place-booking.step.1':
-    'Ava peatus, millega broneering on seotud. Kaardil on riba, kus on kirjas Kinnitatud või Ootel ja broneeringu nimi.',
-  'help.guide.place-booking.step.2': 'Ribal on Kuupäev, Aeg ja Broneerimiskood ning broneeringu märkmed, kui neid on.',
-  'help.guide.place-booking.step.3': 'Klõpsa ribal. Broneering avaneb kaardi kohal.',
+    'Ava peatus, millega broneering on seotud. Paneel näitab seda jaotises Broneeringud eraldi väikese kaardina, broneeringu nime ja olekuga Kinnitatud või Ootel.',
+  'help.guide.place-booking.step.2':
+    'Broneeringu kaardil on Kuupäev, Kellaaeg ja Broneerimiskood ning broneeringu märkmed, kui neid on.',
+  'help.guide.place-booking.step.3': 'Klõpsa broneeringu kaardil. Broneering avaneb kaardi kohal.',
   'help.guide.place-booking.step.4':
     'Broneeringu allosas olev Muuda avab selle oma vormi. Seal seob väli Seo päevaplaani kirjega broneeringu peatusega ja siin on selleks juba see peatus valitud. Sulge vorm uuesti.',
   'help.guide.place-booking.step.5':
-    'Peatuse uus broneering algab päevade veerust: vii kursor peatusele ja klõpsa rea lõpus nuppu +. Vorm avaneb pealkirjaga Uus broneering ja on juba peatusega seotud.',
+    'Peatuse uus broneering algab päevade veerust: vii kursor peatusele ja klõpsa selle lõpus olevat piletiikooni Lisa broneering. Vorm avaneb pealkirjaga Uus broneering ja on juba peatusega seotud.',
   'help.guide.place-booking.result':
     'Broneering on peatusega seotud: see on kaardil, see on päevas ja selle failid on siin ka jaotises Failid.',
   'help.guide.place-booking.tip.1':
-    'Riba on näha ainult selle peatuse juures, millega broneering on seotud. Peatuseta broneering asub vahekaardil Broneer.',
+    'Broneeringu kaart on näha ainult selle peatuse juures, millega broneering on seotud. Peatuseta broneering asub vahekaardil Broneer.',
   'help.guide.place-booking.tip.2':
     'Ühel peatusel võib olla mitu broneeringut: lõuna ja ekskursioon, mis algab samast uksest.',
   'help.guide.place-booking.tip.3':
@@ -2352,7 +2357,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Üleval on päeva ilm. Prognoosi juures on nimetatud koht, mille kohta see käib: päeva esimene peatus või hotell, kus sa ärkad.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Broneeringud loetleb selle päeva broneeringud, igaühe juures tüüp, peatus, millega see on seotud, ja kellaajad. Roheline tähendab kinnitatud, merevaigukollane veel ootel; see on ainult ülevaade, broneeringuid muudetakse vahekaardil Broneeringud.',
+    'Broneeringud loetleb selle päeva broneeringud, igaühe juures tüüp, peatus, millega see on seotud, ja kellaajad. Roheline tähendab kinnitatud, merevaigukollane veel ootel, ja klõps real avab broneeringu.',
   'help.ctx.trip-day-detail.bullet.5':
     'Majutus näitab kõiki sellele päevale broneeritud öid: vastavatel päevadel sildid Sisseregistreerimine ja Väljaregistreerimine, sisseregistreerimise ajavahemik, väljaregistreerimise aeg ja kinnitusnumber.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2386,7 +2391,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'Suur number on päeva temperatuur, selle kõrval madalaim ja kõrgeim ning ilm sõnadega.',
   'help.guide.day-weather.step.3':
-    'Selle all olevad kiibid: vihmatõenäosus, sademete hulk, tugevaim tuul ning päikesetõus ja -loojang.',
+    'Sellest paremal olevad kiibid: vihmatõenäosus, sademete hulk, tugevaim tuul ning päikesetõus ja -loojang.',
   'help.guide.day-weather.step.4':
     'All on päev tunni kaupa, iga teine tund: kellaaeg, ikoon, temperatuur ja vihmatõenäosus. Tund, mille vihmatõenäosus on üle 50 protsendi, on sinisega varjutatud.',
   'help.guide.day-weather.result':
@@ -2420,18 +2425,18 @@ const help: TranslationStrings = {
     'Majutuskoht peab kõigepealt olema reisi koht. Loo see kohtade veerus nagu iga teine koht: valija pakub ainult seda, mis seal juba on.',
   'help.guide.add-accommodation.step.2': 'Ava saabumispäev ja klõpsa jaotises Majutus nuppu Lisa majutus.',
   'help.guide.add-accommodation.step.3':
-    'Rakenda päevadele määrab, milliseid öid peatumine hõlmab: vasakul sisseregistreerimise päev, paremal väljaregistreerimise päev. Kõik hõlmab kogu reisi.',
+    'Rakenda päevadele määrab, milliseid öid peatumine hõlmab: Algus on sisseregistreerimise päev, Lõpp väljaregistreerimise päev ja Kõik hõlmab kogu reisi. Akna päis näitab ajavahemikku ja ööde arvu.',
   'help.guide.add-accommodation.step.4':
     'Täida väljad Sisseregistreerimine, Kuni ja Väljaregistreerimine ning sisesta broneeringu number välja Kinnitus. Kõik neli võivad jääda tühjaks.',
   'help.guide.add-accommodation.step.5':
-    'Vali majutuskoht reisi kohtade hulgast. Loendi kohal olevad kiibid kitsendavad selle ühele kategooriale.',
+    'Vali majutuskoht reisi kohtade hulgast. Loendi kohal olev Kategooria kitsendab selle ühele kategooriale.',
   'help.guide.add-accommodation.step.6': 'Klõpsa Salvesta.',
   'help.guide.add-accommodation.result':
     'Peatumine on näha igal päeval, mida see hõlmab, esimesel päeval Sisseregistreerimine ja viimasel Väljaregistreerimine. Majutuskohast saab sisseregistreerimise päeval peatus, nii et kaart joonistab tee sinna, ja vahekaardile Broneeringud ilmub hotellibroneering.',
   'help.guide.add-accommodation.tip.1':
     'Valija avaneb päevaga, kust sa tulid, ja väljaregistreerimine on järgmisel päeval; mõlemat saab enne salvestamist muuta.',
   'help.guide.add-accommodation.tip.2':
-    'Anna hotellile loomisel kategooria Hotell ja loendi kohal olevad kiibid kitsendavad selle ühe klõpsuga sinu hotellideni.',
+    'Anna hotellile loomisel kategooria Hotell ja loendi kohal olev Kategooria kitsendab selle ühe klõpsuga sinu hotellideni.',
   'help.guide.add-accommodation.tip.3':
     'Kõik kellaajad on valikulised: ilma sisseregistreerimisaja ja koodita peatumine hõlmab ikkagi oma öid ja joonistab ikkagi oma marsruudi.',
   // edit-accommodation
@@ -2442,7 +2447,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'Paremal olev pliiats avab peatumise uuesti. Hüpikaknas on nüüd kirjas Muuda majutust.',
   'help.guide.edit-accommodation.step.3':
-    'Paranda väljade rida: Sisseregistreerimine, Kuni, Väljaregistreerimine ja Kinnitus. Siin saab muuta ka selle kohal olevaid päevi ja all olevat majutuskohta.',
+    'Paranda välju Sisseregistreerimine, Kuni, Väljaregistreerimine ja Kinnitus. Siin saab muuta ka nende kohal olevaid päevi ja all olevat majutuskohta.',
   'help.guide.edit-accommodation.step.4': 'Klõpsa Salvesta.',
   'help.guide.edit-accommodation.step.5':
     'Pliiatsi kõrval olev X lõpetab peatumise. See ei küsi midagi ja kaob ka sellega seotud hotellibroneering.',
@@ -2459,7 +2464,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Broneeringud loetleb päeva broneeringud: need, mille kuupäev on sellel päeval, ja need, mis on seotud mõne selle päeva peatusega.',
   'help.guide.day-bookings.step.2':
-    'Real on broneeringu tüüp, nimi ja, kui see on seotud peatusega, pärast punkti see peatus. Kellaajad on rea paremas otsas.',
+    'Real on broneeringu tüüp, nimi ja, kui see on seotud peatusega, selle järel hallis kirjas see peatus. Kellaajad on rea paremas otsas, enne olekupunkti.',
   'help.guide.day-bookings.step.3':
     'Värv näitab broneeringu olekut: roheline rida on kinnitatud, merevaigukollane veel ootel. Hotelle selles loendis pole, neil on all oma plokk.',
   'help.guide.day-bookings.step.4':

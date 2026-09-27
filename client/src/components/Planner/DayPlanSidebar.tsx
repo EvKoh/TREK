@@ -401,6 +401,27 @@ function useDayPlanSidebar(props: DayPlanSidebarProps) {
     return () => document.removeEventListener('dragend', cleanup)
   }, [])
 
+  // A drag whose source row re-rendered away never sends its dragend to the
+  // document, and the drop line then stayed on a row until the next reload. The
+  // browser sends no mousemove during a drag, so the first plain mouse move or
+  // press after one means it is over.
+  useEffect(() => {
+    if (!draggingId && !dropTargetKey && !dragOverDayId) return
+    const settle = () => {
+      setDraggingId(null)
+      setDropTargetKey(null)
+      setDragOverDayId(null)
+      dragDataRef.current = null
+      window.__dragData = null
+    }
+    document.addEventListener('mousemove', settle)
+    document.addEventListener('pointerdown', settle, true)
+    return () => {
+      document.removeEventListener('mousemove', settle)
+      document.removeEventListener('pointerdown', settle, true)
+    }
+  }, [draggingId, dropTargetKey, dragOverDayId])
+
   // Initialize missing transport positions outside of render to avoid setState-during-render
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { days.forEach(day => initTransportPositions(day.id)) }, [days, reservations])
@@ -2278,13 +2299,31 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
                                         ? (meta.airline && meta.flight_number ? `${meta.airline} ${meta.flight_number}` : meta.flight_number || meta.train_number || '')
                                         : ''
                                       const editHandler = canEditDays ? (TRANSPORT_TYPES.has(res.type) ? onEditTransport : onEditReservation) : undefined
+                                      const openPinned = onOpenBooking ?? editHandler
                                       return (
                                         // No wrapping: the time belongs to the status it qualifies, so the
                                         // pills stay on one line even when the row gets narrow.
                                         <div key={res.id} className="flex max-w-full flex-nowrap items-center gap-1">
-                                          <SoftPill tone={tone} icon={<RI size={10} strokeWidth={2.2} />}>
-                                            <span className="hidden sm:inline">{confirmed ? t('planner.resConfirmed') : t('planner.resPending')}</span>
-                                          </SoftPill>
+                                          {/* The colour carries the status; the word is in the tooltip and read out after the label.
+                                              The pill opens the booking: its popup where there is one, else its editor. */}
+                                          <Tooltip label={confirmed ? t('reservations.confirmed') : t('reservations.pending')} placement="top">
+                                            {openPinned ? (
+                                              <button type="button" data-dp="res-pill" onClick={e => { e.stopPropagation(); openPinned(res) }}
+                                                className="inline-flex flex-none rounded-full hover:opacity-80">
+                                                <SoftPill tone={tone} icon={<RI size={10} strokeWidth={2.2} />}>
+                                                  <span className="hidden sm:inline">{t('places.formReservation')}</span>
+                                                  <span className="sr-only">{confirmed ? t('reservations.confirmed') : t('reservations.pending')}</span>
+                                                </SoftPill>
+                                              </button>
+                                            ) : (
+                                              <span className="inline-flex flex-none">
+                                                <SoftPill tone={tone} icon={<RI size={10} strokeWidth={2.2} />}>
+                                                  <span className="hidden sm:inline">{t('places.formReservation')}</span>
+                                                  <span className="sr-only">{confirmed ? t('reservations.confirmed') : t('reservations.pending')}</span>
+                                                </SoftPill>
+                                              </span>
+                                            )}
+                                          </Tooltip>
                                           {timeLabel && <SoftPill tone={tone}>{timeLabel}</SoftPill>}
                                           {carrierLabel && <SoftPill tone={tone}>{carrierLabel}</SoftPill>}
                                           {hasEndpoints && (
@@ -2296,17 +2335,6 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
                                                 className={`${ROW_ROUND} h-5 w-5 ${active ? 'text-info' : 'text-content-muted hover:text-content'}`}
                                               >
                                                 <RouteIcon size={11} strokeWidth={2.2} />
-                                              </button>
-                                            </Tooltip>
-                                          )}
-                                          {editHandler && (
-                                            <Tooltip label={t('common.edit')} placement="top">
-                                              <button aria-label={t('common.edit')}
-                                                type="button"
-                                                onClick={e => { e.stopPropagation(); editHandler(res) }}
-                                                className={`${ROW_ROUND} h-5 w-5 text-content-muted hover:text-content`}
-                                              >
-                                                <Pencil size={11} strokeWidth={2.2} />
                                               </button>
                                             </Tooltip>
                                           )}
@@ -2330,6 +2358,8 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
                                 </div>
                               )}
                             </div>
+                            {/* The row's own controls, with room between them so each is its own target. */}
+                            <div className="flex flex-none items-center gap-2.5 pl-1">
                             {canEditDays && <div className="reorder-buttons" style={{ flexShrink: 0, display: 'flex', gap: 1, transition: 'opacity 0.15s' }}>
                               <button type="button" onClick={moveUp} disabled={idx === 0} aria-label={t('dayplan.moveUp')} className="flex text-content-faint hover:text-content disabled:cursor-default disabled:text-edge">
                                 <ChevronUp size={12} strokeWidth={2} />
@@ -2352,6 +2382,7 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
                               </Tooltip>
                             )}
                             <MoreButton label={t('files.menu')} items={placeMenu()} size={24} />
+                            </div>
                           </div>
                           {daySchedule.byAssignment[day.id]?.[assignment.id]?.map(si => <PluginDayScheduleRow key={`${si.pluginId}:${si.id}`} item={si} />)}
                           {routeLegs[day.id]?.[assignment.id] && (canEditDays ? (

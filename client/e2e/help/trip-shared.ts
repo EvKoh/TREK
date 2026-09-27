@@ -36,6 +36,7 @@ export async function openTrip(page: Page, opts: { tab?: string; day?: number | 
   // Exact: the Lists tab carries a Shared button, which the loose name also matches.
   await expect(page.getByRole('button', { name: 'Share', exact: true })).toBeVisible({ timeout: 30_000 })
   await settle(page)
+  await untilTranslated(page)
   if (!tab && day) {
     // The trip is running, so the plan opens on today, an empty day at the
     // bottom. Day 1 has the places; its details panel would cover the map.
@@ -44,6 +45,27 @@ export async function openTrip(page: Page, opts: { tab?: string; day?: number | 
   }
   // The map tiles land after the page says it is idle.
   await page.waitForTimeout(1200)
+}
+
+/**
+ * A text that is still its key: `dayplan.dayN` where "Day 1" belongs. The
+ * locale bundles come from `shared/dist`, and while a watcher rebuilds it a
+ * page can load with a part of them missing. Reloading after the rebuild has
+ * landed brings the strings back; a page that stays untranslated fails here
+ * rather than in a picture.
+ */
+const rawKey = (page: Page) => page.getByText(/^(common|dayplan|planner|places|reservations|trip|day|budget|files|collab|packing|todo)\.[A-Za-z0-9.]+$/)
+
+async function untilTranslated(page: Page): Promise<void> {
+  for (let attempt = 0; attempt < 4 && (await rawKey(page).count()) > 0; attempt++) {
+    await page.waitForTimeout(4000)
+    await page.reload()
+    await clearNotices(page)
+    await dismissReleaseNotice(page)
+    await expect(page.getByRole('button', { name: 'Share', exact: true })).toBeVisible({ timeout: 30_000 })
+    await settle(page)
+  }
+  await expect(rawKey(page), 'the page shows i18n keys instead of text').toHaveCount(0)
 }
 
 /** Click the day's header: selects it and opens its details panel. */
@@ -63,9 +85,12 @@ export async function selectDay(page: Page, n: number): Promise<void> {
 /** The day details panel: the one fixed, floating card over the map. */
 export const dayDetails = (page: Page) => page.locator('div.fixed.z-50').first()
 
-/** The details panel's close is the one unlabelled X button over the map. */
+/**
+ * The details panel's own Close, in its head band. Found inside the panel: the
+ * last X of the page is not always this one once the day carries bookings.
+ */
 export async function closeDayDetails(page: Page): Promise<void> {
-  const close = page.locator('button:has(svg.lucide-x)').last()
+  const close = dayDetails(page).getByRole('button', { name: 'Close', exact: true })
   if (await close.isVisible().catch(() => false)) {
     await close.click()
     await settle(page)
@@ -114,9 +139,10 @@ export const importTask = (page: Page, file: string) =>
 export function importSteps(fixture: () => string, file: string): StepAction[] {
   return [
     {
-      target: p => p.getByRole('button', { name: 'Import from file' }),
+      // An icon in the toolbar, named like the dialog it opens.
+      target: p => p.getByRole('button', { name: 'Import booking confirmations', exact: true }),
       act: async p => {
-        await p.getByRole('button', { name: 'Import from file' }).click()
+        await p.getByRole('button', { name: 'Import booking confirmations', exact: true }).click()
         await expect(importDialog(p)).toBeVisible()
         await settle(p)
       },

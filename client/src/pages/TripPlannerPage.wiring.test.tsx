@@ -1,4 +1,4 @@
-// FE-PAGE-TPW-001 to FE-PAGE-TPW-072
+// FE-PAGE-TPW-001 to FE-PAGE-TPW-074
 //
 // The planner page is a wiring container: everything stateful lives in
 // useTripPlanner (covered in src/pages/tripPlanner/useTripPlanner.test.tsx).
@@ -1472,5 +1472,31 @@ describe('TripPlannerPage — modals', () => {
 
     act(() => { release.onConfirm() })
     expect(hookState.confirmStayRelease).toHaveBeenCalled()
+  })
+
+  it('FE-PAGE-TPW-073: adding a stay from a day opens its panel with the stay picker, which reports back once open', () => {
+    const setStayPickerDayId = vi.fn()
+    renderPage({ stayPickerDayId: null, setStayPickerDayId })
+    act(() => { props('dayPlan').onAddAccommodation(day) })
+    expect(hookState.handleSelectDay).toHaveBeenCalledWith(7)
+    expect(hookState.setShowDayDetail).toHaveBeenCalledWith(day)
+    expect(hookState.selectAssignment).toHaveBeenCalledWith(null)
+    expect(setStayPickerDayId).toHaveBeenCalledWith(7)
+    cleanup()
+
+    renderPage({ showDayDetail: day, stayPickerDayId: 7, setStayPickerDayId })
+    expect(props('dayDetail').openStayPicker).toBe(true)
+    act(() => { props('dayDetail').onStayPickerOpened() })
+    expect(setStayPickerDayId).toHaveBeenLastCalledWith(null)
+  })
+
+  it('FE-PAGE-TPW-074: a linked expense in either booking tab opens the expense editor on that item', async () => {
+    for (const activeTab of ['transports', 'buchungen']) {
+      renderPage({ activeTab })
+      await screen.findByTestId('reservations-panel')
+      act(() => { props('reservationsPanel').onEditExpense({ id: 12 }) })
+      await waitFor(() => expect(props('expenseModal').editing).toEqual({ id: 12 }))
+      cleanup()
+    }
   })
 })

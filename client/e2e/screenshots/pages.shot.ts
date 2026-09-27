@@ -1,6 +1,4 @@
-import { test, clearNotices } from './shot'
-import { readFileSync } from 'node:fs'
-import path from 'node:path'
+import { test, clearNotices, seed } from './shot'
 
 /**
  * Top-level navigable surfaces. One capture per route; anything that needs a
@@ -11,9 +9,6 @@ import path from 'node:path'
  * for which wiki page consumes which file.
  */
 
-const seed = JSON.parse(
-  readFileSync(path.join(process.cwd(), 'e2e', '.tmp', 'seed.json'), 'utf8'),
-) as { tripId: number; collectionId?: number; journeyId?: number }
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/dashboard')
@@ -28,6 +23,13 @@ test('dashboard', async ({ page, shot }) => {
 
 test('trip planner', async ({ page, shot }) => {
   await page.goto(`/trips/${seed.tripId}`)
+  await clearNotices(page)
+  // The seeded trip is running, so the plan opens on today, which is empty; the
+  // picture shows the first days, where the plan has places, a note and a flight.
+  await page.locator('.dp-day-header').first().click()
+  await page.waitForTimeout(1500)
+  await page.locator('.dp-day-header').first().evaluate(el => el.closest('.overflow-y-auto')?.scrollTo({ top: 0 }))
+  await page.waitForTimeout(600)
   await shot.page_('TripPlanner')
 })
 

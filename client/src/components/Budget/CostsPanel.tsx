@@ -34,7 +34,8 @@ import { Tooltip } from '../shared/Tooltip'
 import { DialogButton, DialogFooter, DialogHeader, DialogSection, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT, fs } from '../shared/DialogShell'
 import { AddRowButton, EditorField, GRID_2, INPUT, PillSelect, Segmented, TEXTAREA } from '../shared/dialogParts'
 import { CountPill, EYEBROW } from '../Planner/bookings/bookingParts'
-import CostsToolbar from './CostsToolbar'
+import CostsToolbar, { type CostsView } from './CostsToolbar'
+import CostsTable, { CostsTableSummary } from './CostsTable'
 
 interface CostsPanelProps {
   tripId: number
@@ -82,9 +83,10 @@ type LedgerEntry =
 
 const round2 = (n: number) => Math.round(n * 100) / 100
 const FIELD_H = 40 // shared height for the amount / currency / day row in the modal
+const COSTS_VIEW_KEY = 'trek:costs-view'
 
 export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps) {
-  const { trip, budgetItems, deleteBudgetItem, loadBudgetItems } = useTripStore()
+  const { trip, budgetItems, deleteBudgetItem, loadBudgetItems, addBudgetItem, updateBudgetItem } = useTripStore()
   const me = useAuthStore(s => s.user?.id ?? -1)
   const can = useCanDo()
   const canEdit = can('budget_edit', trip)
@@ -121,6 +123,15 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
   const [expandedFinalId, setExpandedFinalId] = useState<number | null>(null)
   const [editingSettlement, setEditingSettlement] = useState<Settlement | null>(null)
   const [addingPayment, setAddingPayment] = useState(false)
+  // The list stays what Costs opens with; the table is the planning view beside it,
+  // remembered in this browser like the Bookings view.
+  const [view, setViewState] = useState<CostsView>(() => {
+    try { return localStorage.getItem(COSTS_VIEW_KEY) === 'table' ? 'table' : 'list' } catch { return 'list' }
+  })
+  const setView = (next: CostsView) => {
+    setViewState(next)
+    try { localStorage.setItem(COSTS_VIEW_KEY, next) } catch { /* storage unavailable: the choice lasts until reload */ }
+  }
 
   const people = tripMembers
   const personById = useCallback((id: number) => people.find(p => p.id === id), [people])
@@ -304,6 +315,18 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
   const handleDelete = async (id: number) => {
     try { await deleteBudgetItem(tripId, id); loadSettlement() } catch { toast.error(t('common.unknownError')) }
   }
+  // The table's own writes: one cell at a time, and an empty row to type into.
+  const updateFromTable = async (id: number, patch: Partial<BudgetItem>) => {
+    try { await updateBudgetItem(tripId, id, patch); loadSettlement() } catch { toast.error(t('common.unknownError')) }
+  }
+  const addFromTable = async (category: string, expenseDate: string | null) => {
+    try {
+      return await addBudgetItem(tripId, { name: t('budget.newEntry'), category, total_price: 0, expense_date: expenseDate })
+    } catch {
+      toast.error(t('common.unknownError'))
+      return null
+    }
+  }
 
   // CSV export of all expenses — the wiki-documented export that got lost in the
   // Costs rework (#1500). One row per expense, oldest first.
@@ -399,6 +422,7 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
         canEdit={canEdit} canSettle={(settlement?.flows || []).length > 0}
         onSettleAll={settleAll} onAddExpense={() => { setEditing(null); setModalOpen(true) }}
         onScanReceipt={receiptScan.offered ? receiptScan.open : undefined}
+        view={view} onView={setView}
         filters={{
           query: search, onQuery: setSearch,
           owner: filter, onOwner: setFilter,
@@ -441,7 +465,16 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
         <div className="costs-main" style={{ gridColumn: 'span 3', minWidth: 0 }}>
 
           {dayBanner}
-          {dayGroups.length === 0 ? (
+          {view === 'table' ? (
+            filtered.length === 0 && budgetItems.length > 0 ? (
+              <div className="text-content-faint" style={{ textAlign: 'center', padding: '60px 20px' }}>{t('costs.noMatch')}</div>
+            ) : (
+              <CostsTable items={filtered} base={base} canEdit={canEdit}
+                baseTotal={baseTotal} toBase={booked} currencyOf={curOf} fmt={v => fmt(v)} personName={personName}
+                onUpdate={updateFromTable} onAdd={addFromTable}
+                onOpen={e => { setEditing(e); setModalOpen(true) }} onDelete={id => void handleDelete(id)} />
+            )
+          ) : dayGroups.length === 0 ? (
             search ? (
               <div className="text-content-faint" style={{ textAlign: 'center', padding: '60px 20px' }}>
                 {t('costs.noMatch')}
@@ -495,11 +528,15 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
             <div className="px-4 py-4">{FinalBudgetList()}</div>
           </section>
 
-          {/* by category */}
-          <section aria-label={t('costs.byCategory')} className={SIDE_CARD}>
-            {sideHead(t('costs.byCategory'))}
-            <div className="px-4 py-4">{CategoryBreakdown()}</div>
-          </section>
+          {/* by category; the table view sums up four ways instead */}
+          {view === 'table' ? (
+            <CostsTableSummary items={filtered} baseTotal={baseTotal} toBase={booked} fmt={v => fmt(v)} personName={personName} />
+          ) : (
+            <section aria-label={t('costs.byCategory')} className={SIDE_CARD}>
+              {sideHead(t('costs.byCategory'))}
+              <div className="px-4 py-4">{CategoryBreakdown()}</div>
+            </section>
+          )}
         </div>
       </div>
       </div>)}

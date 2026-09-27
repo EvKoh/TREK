@@ -1675,7 +1675,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.bullet.4':
     'The title, dates, cover and currency are edited from My Trips, with the pencil on the trip card.',
   'help.ctx.trip.bullet.5':
-    'The chevrons at the inner edge of a column fold it away and the map takes the room; the thin divider next to a column changes its width.',
+    'The tab at the inner edge of a column folds it away and the map takes the room; the thin divider next to a column changes its width.',
   'help.ctx.trip.bullet.6': 'The undo arrow in the toolbar of the days takes back the last change to the plan.',
   // add-member
   'help.guide.add-member.title': 'Add a member',
@@ -1741,8 +1741,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Make room for the map',
   'help.guide.collapse-columns.goal': 'Fold a column away or give it more width.',
   'help.guide.collapse-columns.step.1':
-    'Click the chevron at the inner edge of the days column to collapse it; the map takes the space. The places column has the same chevron.',
-  'help.guide.collapse-columns.step.2': 'Click the chevron again to bring the column back.',
+    'Click the tab at the inner edge of the days column, the one with the panel icon, to fold the column away; the map takes the space. The places column has the same tab.',
+  'help.guide.collapse-columns.step.2':
+    'A folded column leaves a tile in the corner of the map, Plan for the days and Places for the places. Click it to bring the column back.',
   'help.guide.collapse-columns.step.3':
     'Drag the thin divider between a column and the map to change the column’s width.',
   'help.guide.collapse-columns.result': 'The widths are remembered; the columns come back open on the next visit.',
@@ -1767,26 +1768,26 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Add Place/Activity at the top opens the form for a place you type or search. While a day is open the button reads New place, and To day next to it creates the place straight on that day.',
   'help.ctx.trip-places.bullet.2':
-    'Import file takes .gpx, .kml and .kmz files; List Import takes a shared Google Maps or Naver Maps list. A file can also just be dropped onto the column.',
+    'The import button beside it offers Import file, for .gpx, .kml and .kmz files, and Google List (List Import where Naver lists are on too) for a list shared from Google Maps or Naver Maps. A file can also just be dropped onto the column.',
   'help.ctx.trip-places.bullet.3':
-    'The dropdown switches between All, Unplanned, Planned and, once a track was imported, Tracks; below it sit the search, the category filter and the star for a minimum rating.',
+    'Below them the search, with the tick that starts a selection next to it, and a row of filters: Show switches between All, Unplanned, Planned and, once a track was imported, Tracks, each with its count; the tag button filters by category and the star by a minimum rating.',
   'help.ctx.trip-places.bullet.4':
-    'A row shows picture, name and description or address. Click it for the place’s details, drag it onto a day, or right-click it for Edit, Add to day, Open Website, Google Maps, Save to Collection and Delete.',
+    'A row shows picture, name and description or address. Click it for the place’s details, drag it onto a day, or right-click it (or click its three dots) for Edit, + Day, Open Website, Google Maps, Save to Collection and Delete.',
   'help.ctx.trip-places.bullet.5':
-    'With a day open, a + at the end of an unplanned row puts the place on that day, and Planned lists only that day, with Show the whole trip to widen again.',
+    'With a day open, + Day at the end of an unplanned row puts the place on that day, and Planned lists only that day, with Show the whole trip to widen again.',
   'help.ctx.trip-places.bullet.6':
-    'The tick at the right end of the filter row starts a selection: several rows at once get a new category, go into a collection or are deleted.',
+    'The tick next to the search starts a selection: from the bar at the foot of the column, several rows at once get a new category, go into a collection, are marked visited or are deleted.',
   // create-place
   'help.guide.create-place.title': 'Create a place',
   'help.guide.create-place.goal': 'Add a place or activity by hand, with everything the plan needs to know about it.',
   'help.guide.create-place.step.1':
     'Click Add Place/Activity at the top of the places column (New place while a day is open). The form opens.',
   'help.guide.create-place.step.2':
-    'Type the place into Search places… at the top and pick a result. Name, Address, Latitude, Longitude and Website fill in, and Place details on the left shows pictures, opening hours and a description for it. On a TREK with a Google key, Not the right place? Search Google instead sits under the list and runs the same search through Google.',
+    'Type the place into Search places… and pick a result. The name in the head of the dialog, Address, Latitude, Longitude and Website fill in, and Place details on the left shows pictures, opening hours and a description for it. On a TREK with a Google key, Not the right place? Search Google instead sits under the list and runs the same search through Google. Saved places on the right offers the places of your collections the same way.',
   'help.guide.create-place.step.3':
     'In Place details, a click on a picture under Pick a picture makes it the place’s image; Use this text takes the description over into the form.',
   'help.guide.create-place.step.4':
-    'Check the fields: Name is required; Description and Notes are yours; Address, Latitude and Longitude come from the search or are typed; Category picks one of the trip’s categories, and the + next to it creates a new one on the spot; Website takes the link.',
+    'Check what the form holds: the name sits in the head of the dialog and is the one required field; the Category pill under it picks one of the trip’s categories, and the + beside it creates a new one on the spot. Address, Latitude and Longitude come from the search or are typed; Description and Notes are yours; Website takes the link.',
   'help.guide.create-place.step.5':
     'Click Add. If a place of the same name is already in the trip, the form says so and the button turns into Add anyway.',
   'help.guide.create-place.result':
@@ -1805,7 +1806,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'To day opens the same form as New place, only the place lands on the open day the moment you click Add.',
   'help.guide.place-to-open-day.step.3':
-    'A place that already exists goes onto the open day with the + at the end of its row, or by right-click, Add to day.',
+    'A place that already exists goes onto the open day with + Day at the end of its row, or by right-click, + Day.',
   'help.guide.place-to-open-day.step.4':
     'The other way round works too, and without opening a day first: drag the place’s row out of the column and drop it on a day card. Dropped between two stops it lands exactly there.',
   'help.guide.place-to-open-day.result':
@@ -1817,12 +1818,12 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Find a place in the list',
   'help.guide.filter-places.goal': 'Narrow the column to the places you are after.',
   'help.guide.filter-places.step.1':
-    'The dropdown at the top switches between All, Unplanned (not on any day yet), Planned (on a day) and Tracks (imported GPX tracks), each with its count.',
-  'help.guide.filter-places.step.2': 'Type into Search places…; the list narrows as you type.',
+    'Show, the dropdown under the search, switches between All, Unplanned (not on any day yet), Planned (on a day) and Tracks (imported GPX tracks), each with its count.',
+  'help.guide.filter-places.step.2': 'Type into Search at the top; the list narrows as you type.',
   'help.guide.filter-places.step.3':
-    'All Categories opens a list to tick one or more categories, No Category among them; Clear filter at its bottom resets it.',
+    'The tag button next to Show lists the categories: tick one or more, No Category among them. The button counts what is ticked, and Clear filter at the foot of the list lifts them all.',
   'help.guide.filter-places.step.4':
-    'The star next to it sets a minimum rating: 5+, 4+ and so on show only places you rated at least that high.',
+    'The star beside it sets a minimum rating: 5+, 4+ and so on show only places you rated at least that high.',
   'help.guide.filter-places.result': 'The count above the rows says how many places match; the filters combine.',
   'help.guide.filter-places.tip.1':
     'With a day open, Planned lists that day only and says so: Showing the open day only, with Show the whole trip next to it.',
@@ -1834,7 +1835,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Right-click the row and choose Edit, or open the place and click Edit in its details.',
   'help.guide.edit-place.step.2':
-    'Change what you need: Name, Description, Notes, Address, Latitude and Longitude, Category, Website. Opened from a day, the form also has Notes for this day and Start and End for that day.',
+    'Change what you need: the name and the Category pill in the head of the dialog, Address, Latitude and Longitude, Description, Notes and Website. Opened from a day, the form also has Start and End and Notes for this day.',
   'help.guide.edit-place.step.3': 'Click Update.',
   'help.guide.edit-place.result':
     'The change applies everywhere the place appears: the list, the map and every day it is on.',
@@ -1847,20 +1848,21 @@ const help: TranslationStrings = {
   'help.guide.delete-place.goal': 'Take a place out of the trip for good.',
   'help.guide.delete-place.step.1': 'Right-click the row and choose Delete, or click Delete in the place’s details.',
   'help.guide.delete-place.step.2':
-    'Confirm. If a night was booked at the place, or a booking is linked to it, the question says what goes with it.',
+    'Click Delete in the question. If a night was booked at the place, or a booking is linked to it, the question says what goes with it.',
   'help.guide.delete-place.result':
     'The place is gone from the list, the map and every day; Undo in the toolbar above the days brings it back.',
   'help.guide.delete-place.tip.1': 'To take a place off one day only, use Remove from Day on that stop instead.',
-  'help.guide.delete-place.tip.2': 'Several places at once: the tick next to the filters starts a selection.',
+  'help.guide.delete-place.tip.2': 'Several places at once: the tick next to the search starts a selection.',
   // select-places
   'help.guide.select-places.title': 'Change or delete several places at once',
   'help.guide.select-places.goal': 'Tidy the list in one go instead of place by place.',
   'help.guide.select-places.step.1':
-    'Click the tick at the right end of the filter row. The rows get checkboxes and a bar with the actions appears.',
-  'help.guide.select-places.step.2': 'Tick the rows, or Select all in the bar; the bar counts what is selected.',
+    'Click the tick next to the search field. The rows get round checkboxes, and a bar with the actions rises at the foot of the column.',
+  'help.guide.select-places.step.2':
+    'Click the rows to tick them. Select all, the double tick in the bar, takes every row the filters leave.',
   'help.guide.select-places.step.3':
-    'Change category gives all of them one category; Save to Collection copies them into one of your collections; Delete selected removes them after a confirmation.',
-  'help.guide.select-places.step.4': 'Click the tick again to leave the selection.',
+    'The bar counts the ticked places. Change category gives all of them one category; Save to Collection copies them into one of your collections; Delete selected removes them after a confirmation.',
+  'help.guide.select-places.step.4': 'Done, the X at the end of the bar, leaves the selection.',
   'help.guide.select-places.result':
     'The change applies to every selected place; a deletion can be undone from the toolbar above the days.',
   'help.guide.select-places.tip.1':
@@ -1870,7 +1872,8 @@ const help: TranslationStrings = {
   // import-places-file
   'help.guide.import-places-file.title': 'Import places from a GPX, KML or KMZ file',
   'help.guide.import-places-file.goal': 'Bring in what Google My Maps, Google Earth or a GPS tracker exported.',
-  'help.guide.import-places-file.step.1': 'Click Import file, or drop the file anywhere on the places column.',
+  'help.guide.import-places-file.step.1':
+    'Click the import button next to the add button and choose Import file, or drop the file anywhere on the places column.',
   'help.guide.import-places-file.step.2':
     'Pick the file or drag it into the box. For a GPX, tick what to import: Waypoints, Routes, Tracks (with path geometry); for KML and KMZ, Points (Placemarks) and Paths (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -1885,7 +1888,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Import a shared Google Maps or Naver Maps list',
   'help.guide.import-places-list.goal': 'Turn a shared list link into places.',
-  'help.guide.import-places-list.step.1': 'Click List Import and choose Google List or Naver List.',
+  'help.guide.import-places-list.step.1':
+    'Click the import button next to the add button and choose Google List. Where Naver lists are on too, the entry reads List Import and the dialog asks which of the two.',
   'help.guide.import-places-list.step.2':
     'Paste the shared link of the list. A Google Maps directions link works too: its stops become places, in driving order.',
   'help.guide.import-places-list.step.3': 'Click Import.',
@@ -1903,31 +1907,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'The toolbar at the top: Export (PDF, calendar, GPX), Expand all days / Collapse all days, the undo arrow, Reorder days and Show all booking routes.',
   'help.ctx.trip-days.bullet.2':
-    'A day card: number, weather, title, date and the day’s cost in the header; click the header to open the day, its chevron folds it. Public transit, Add transport and Add Note sit in the header as well.',
+    'A day card: a tile with the day number and the forecast, the title and the date, and pills for the night booked, a rental car and the day’s cost. Click the head to open the day, the chevron folds it, and the + opens a menu: Add place to this day, Add accommodation, Add transport, Public transit and Add Note.',
   'help.ctx.trip-days.bullet.3':
-    'Inside a day: the stops in order, each with picture, name, time and a lock on the picture; notes; bookings that belong to the day; and between the stops the travel time of each leg.',
+    'Inside a day: the stops in order, each with picture, name, time, a lock on the picture and the bookings pinned to it; notes; the bookings and transports of the day, tinted by their type; and between the stops the travel time of each leg. Every row has a three-dot menu, the same one a right-click opens.',
   'help.ctx.trip-days.bullet.4':
     'Under the stops the route bar: Route draws the day on the map, Optimize sorts the stops, Driving / Walking sets the day’s travel mode, Open in Google Maps and Open in CoMaps hand the day over.',
   'help.ctx.trip-days.bullet.5':
-    'Places come onto a day by dragging a row from the places column, with the + on that row, with Add place to this day on an empty day, or from the place’s details.',
+    'Places come onto a day by dragging a row from the places column, with + Day on that row, with Add place to this day from the day’s + or on an empty day, or from the place’s details.',
   'help.ctx.trip-days.bullet.6':
     'Total Cost at the bottom adds up every stop and booking with a price, in the trip’s currency.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Read a day',
   'help.guide.read-day-plan.goal': 'Know what every part of a day card tells you before you change anything.',
   'help.guide.read-day-plan.step.1':
-    'The header: the day number, the forecast for the day, Day 1 or the title you gave it, the date and the cost of the day. Click the header to open the day (its details panel opens over the map); the chevron at the right folds and unfolds the card.',
+    'The head: a tile with the day number and the forecast, then Day 1 or the title you gave it, the date, and pills for the night booked (check-in or check-out), a rental car and the day’s cost. Click the head to open the day (its details panel opens over the map); the + on the right adds a place, a stay, a transport, a transit connection or a note, and the chevron folds the card.',
   'help.guide.read-day-plan.step.2':
-    'A stop: the grip on the left drags it, the picture carries a lock for route optimization, then the name, the description and, if set, the notes for this day. A time badge shows Start and End when the stop has them; the arrows that appear at its right end move it up or down.',
+    'A stop: the grip on the left drags it, the picture carries a lock for route optimization, then the name, a time badge when the stop has Start and End, the description and, if set, the notes for this day. The arrows at its right end move it up or down, and the three dots open its menu.',
   'help.guide.read-day-plan.step.3':
-    'A booking on the day: a reservation at a stop marks the stop Reservation confirmed or Reservation pending, and a transport shows as Departure or Arrival with its time and its route, with a small toggle that draws that route on the map.',
+    'A booking at a stop sits on it as a Reservation badge, green when it is confirmed and amber while it is pending, with its time and its carrier; click the badge to open the booking, and the route button beside it draws its route. A transport is a row of its own, tinted by its type, with Departure or Arrival and its time. Click a booking and its details open; Edit there changes it.',
   'help.guide.read-day-plan.step.4':
     'Between two stops the connector says how long the leg takes and how far it is, in the day’s travel mode; click it to change the mode for that one leg.',
   'help.guide.read-day-plan.step.5':
     'The route bar at the end: Route draws the day’s way on the map, Optimize reorders the stops, the mode buttons pick Driving or Walking, Open in Google Maps and Open in CoMaps open the day there.',
   'help.guide.read-day-plan.result': 'Every symbol on the card has a meaning; the guides below change each of them.',
   'help.guide.read-day-plan.tip.1':
-    'Right-click a stop for its menu: Edit, Remove from day, Open Website, the navigation apps (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Save to Collection, Delete.',
+    'Right-click a stop, or click its three dots, for its menu: Edit, Remove from day, Open Website, the navigation apps (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Save to Collection, Delete.',
   'help.guide.read-day-plan.tip.2':
     'Hover a stop and Add booking appears at its end: a reservation created there is tied to this stop on this day.',
   // place-onto-day
@@ -1936,9 +1940,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Drag a row from the places column onto the day card. Drop it between two stops to put it exactly there, or anywhere on the card to append it.',
   'help.guide.place-onto-day.step.2':
-    'Without dragging: open the day by clicking its header, then click the + at the end of the place’s row, or right-click the row and choose Add to day.',
+    'Without dragging: open the day by clicking its head, then click + Day at the end of the place’s row, or right-click the row and choose + Day.',
   'help.guide.place-onto-day.step.3':
-    'On an empty day, Add place to this day opens the place form, and the new place lands on the day at once.',
+    'Add place to this day, in the day’s + menu or on an empty day, opens the place form, and the new place lands on the day at once.',
   'help.guide.place-onto-day.step.4':
     'From a place’s details, Add to Day asks which day; from the day’s header, To day in the places column creates a new place on the open day.',
   'help.guide.place-onto-day.result':
@@ -1965,7 +1969,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.title': 'Give a stop a time',
   'help.guide.set-stop-times.goal': 'Fix when a stop starts and ends, so the day reads like a schedule.',
   'help.guide.set-stop-times.step.1':
-    'Right-click the stop and choose Edit. Opened from the day, the form has Start and End at the bottom.',
+    'Right-click the stop, or click its three dots, and choose Edit. Opened from the day, the form has Start and End for that day, right under the location.',
   'help.guide.set-stop-times.step.2':
     'Enter Start and, if you like, End. Time overlap with: warns that another timed stop of the day overlaps; an End before the Start blocks Update.',
   'help.guide.set-stop-times.step.3':
@@ -2001,12 +2005,12 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Add a note to a day',
   'help.guide.day-note.goal': 'Keep a reminder, a ticket number or a plan B right in the day.',
-  'help.guide.day-note.step.1': 'Click Add Note in the day’s header.',
+  'help.guide.day-note.step.1': 'Click the + in the day’s head and choose Add Note.',
   'help.guide.day-note.step.2':
-    'Give it a name under Note, that is what the day card shows, and write the rest under Daily Note. The toolbar above it formats the text (bold, lists, links, quotes) and Preview on the left shows the card it becomes.',
+    'Type the note’s name into the head of the dialog, where it says Note; that is what the day card shows. Write the rest under Daily Note: the toolbar above it formats the text (bold, lists, links, quotes), and Preview on the left shows the row it becomes.',
   'help.guide.day-note.step.3': 'Pick an Icon and a Colour, so the note stands out from the stops, then Add.',
   'help.guide.day-note.step.4':
-    'The note sits in the day like a stop: drag it into place, right-click it for Edit and Delete.',
+    'The note sits in the day like a stop: drag it into place, and right-click it or use its three dots for Edit and Delete.',
   'help.guide.day-note.result': 'The note is part of the day, in the PDF too; a timed note sorts with the timed stops.',
   'help.guide.day-note.tip.1':
     'A note with a time can stand in for a transport you have no booking for: “08:15 S3 from central station”.',
@@ -2051,15 +2055,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.title': 'Read bookings and transports in the plan',
   'help.guide.bookings-in-plan.goal': 'Know where a booking shows up once it exists, and which screen creates it.',
   'help.guide.bookings-in-plan.step.1':
-    'A transport (flight, train, ferry, bus, car) shows in the day it departs as Departure and in the day it arrives as Arrival, with time and route; a multi-day one spans the days in between.',
+    'A transport (flight, train, ferry, bus, car) is a row tinted by its type: Departure on the day it leaves, Arrival on the day it lands, with time and route; a multi-day one spans the days in between. Click the row and the booking opens.',
   'help.guide.bookings-in-plan.step.2':
-    'A reservation tied to a stop (a restaurant, a tour) marks that stop Reservation confirmed or Reservation pending; a booking with a day but no stop is its own row in the day.',
+    'A reservation tied to a stop (a restaurant, a tour) is a Reservation badge on that stop, green when confirmed and amber while pending, with its time; a booking with a day but no stop is its own row in the day.',
   'help.guide.bookings-in-plan.step.3':
     'A night at a hotel is an accommodation: it sits in the day’s details panel under Accommodation, from check-in to check-out, and the route of each of those days starts there.',
   'help.guide.bookings-in-plan.step.4':
     'On the map, the toggle on a transport row draws its route; Show all booking routes in the toolbar draws them all.',
   'help.guide.bookings-in-plan.step.5':
-    'Creating: Add booking on a hovered stop, Add transport and Public transit in the day header, and the Bookings and Transports tabs for the full list with import and files.',
+    'Creating: Add booking on a hovered stop, Add transport and Public transit in the day’s + menu, and the Bookings and Transports tabs for the full list with import and files.',
   'help.guide.bookings-in-plan.result': 'One booking, one place in the plan; the tabs are the same bookings as a list.',
   'help.guide.bookings-in-plan.tip.1':
     'Confirmed and pending is a status you set on the booking; the plan shows it on the stop, the Bookings tab counts both.',
@@ -2089,24 +2093,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Click a row in the places column, a stop inside a day, or a marker on the map, and the card opens over the map. Picking it inside a day tells the card which stop you mean, and that is what brings the stop’s participants and its booking along.',
   'help.ctx.trip-place.bullet.2':
-    'The head carries the round picture, the name, the category, the address and the coordinates. Click the picture to use one of your own, double-click the name to rename the place on the spot, and the X on the right closes the card.',
+    'The head carries the round picture, the name, the address on one line and pills for what is known: open or closed, the category, the price, the phone number and the coordinates. Click the picture to use one of your own, double-click the name to rename the place on the spot, and the X on the right closes the card.',
   'help.ctx.trip-place.bullet.3':
-    'Under it: the price if it has one, the stars every traveller gave the place, the description and the notes, and Notes for this day when the stop carries one.',
+    'Under it: the stars every traveller gave the place, the description and the notes, and Notes for this day when the stop carries one.',
   'help.ctx.trip-place.bullet.4':
     'Opening Hours, Track color, Track Stats and Files follow, as far as they apply. Files takes anything out of your folders and also lists what hangs on the booking of this stop.',
   'help.ctx.trip-place.bullet.5':
     'The row at the bottom: Add to Day or Remove from Day while a day is open, then Save to Collection, Navigation, Open Website, Edit and Delete.',
   'help.ctx.trip-place.bullet.6':
-    'A place picked out of the search carries what the TREK index or OpenStreetMap know about it: a green Open or red Closed ring around the picture, judged by the place’s own clock, the phone number under the stars, Opening Hours further down with the day’s line on the row and the whole week behind a click, and its website behind Open Website. Google’s rating shows only on a place found through Google, on a TREK with a Google key.',
+    'A place picked out of the search carries what the TREK index or OpenStreetMap know about it: Open or Closed among the pills of the head, with a green or red ring around the picture, judged by the place’s own clock, its phone number as a pill too, Opening Hours further down with the day’s line on the row and the whole week behind a click, and its website behind Open Website. Google’s rating shows only on a place found through Google, on a TREK with a Google key.',
   // read-place
   'help.guide.read-place.title': 'What the card tells you about a place',
   'help.guide.read-place.goal': 'Read everything the trip knows about one place, in one card.',
   'help.guide.read-place.step.1':
     'In the days column, click the stop you want to read. The card opens over the map and the stop stays marked in its day.',
   'help.guide.read-place.step.2':
-    'The head: the round picture, the name, the address and the exact coordinates. A green ring with Open, or a red one with Closed, around the picture says whether the place is open right now, by its own clock, once TREK knows its hours. The X on the right closes the card again.',
+    'The head: the round picture, the name and the address on one line; its tooltip holds the whole address. The pills under them say Open or Closed right now, by the place’s own clock, with a green or red ring around the picture to match, and carry the phone number, which a click hands to your phone app, and the exact coordinates. The X on the right closes the card again.',
   'help.guide.read-place.step.3':
-    'Under it the stars every traveller gave the place, with the average and how many voted. Not rated yet while nobody has. Right below, the phone number where the place has one: a click on it hands the number to your phone app.',
+    'Rating comes first below the head: the stars every traveller gave the place, with the average and how many voted. Not rated yet while nobody has.',
   'help.guide.read-place.step.4':
     'Then the description and, below it, the notes. Both are the text from the place’s form, rendered: lists, links and bold all work.',
   'help.guide.read-place.step.5':
@@ -2201,18 +2205,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'The booking on a stop',
   'help.guide.place-booking.goal': 'Read the booking that belongs to a stop, open it, and pin a new one to it.',
   'help.guide.place-booking.step.1':
-    'Open the stop the booking belongs to. The card shows a strip with Confirmed or Pending and the booking’s name.',
+    'Open the stop the booking belongs to. The card lists it under Bookings as a small card of its own, with the booking’s name and Confirmed or Pending.',
   'help.guide.place-booking.step.2':
-    'The strip carries the Date, the Time and the Booking Code, and whatever notes the booking has.',
-  'help.guide.place-booking.step.3': 'Click the strip. The booking opens over the map.',
+    'The booking card carries the Date, the Time and the Booking Code, and whatever notes the booking has.',
+  'help.guide.place-booking.step.3': 'Click the booking card. The booking opens over the map.',
   'help.guide.place-booking.step.4':
     'Edit at the foot of the booking opens its own form. Link to day assignment there is what pins a booking to a stop, and here it already names this one. Close the form again.',
   'help.guide.place-booking.step.5':
-    'A new booking for a stop starts in the days column: hover the stop and click the + at its end. The form opens as New Reservation, already linked to it.',
+    'A new booking for a stop starts in the days column: hover the stop and click Add booking, the ticket at its end. The form opens as New Reservation, already linked to it.',
   'help.guide.place-booking.result':
     'The booking hangs on the stop: it is on the card, it is in the day, and its files are listed under Files here as well.',
   'help.guide.place-booking.tip.1':
-    'The strip only shows for the stop the booking is pinned to. A booking with no stop lives on the Book tab.',
+    'The booking card only shows for the stop the booking is pinned to. A booking with no stop lives on the Book tab.',
   'help.guide.place-booking.tip.2':
     'Several bookings can share one stop: the lunch and the tour that starts from the same door.',
   'help.guide.place-booking.tip.3':
@@ -2297,7 +2301,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'At the top, the weather of the day. Forecast for names the place it is for: the day’s first stop, or the hotel you wake up in.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Reservations lists the bookings of that day, each with its kind, the stop it belongs to and its times. Green means confirmed, amber still pending; it is a read-out, bookings are changed under Bookings.',
+    'Reservations lists the bookings of that day, each with its kind, the stop it belongs to and its times. Green means confirmed, amber still pending, and a click on a row opens the booking.',
   'help.ctx.trip-day-detail.bullet.5':
     'Accommodation shows every night booked over this day, with Check-in and Check-out on the days they happen, the check-in window, the check-out time and the confirmation number.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2330,7 +2334,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'The big number is the day’s temperature, next to it the low and the high, and the condition in words.',
   'help.guide.day-weather.step.3':
-    'The chips under it: the chance of rain, how much of it, the strongest wind, and sunrise and sunset.',
+    'The pills to the right of it: the chance of rain, how much of it, the strongest wind, and sunrise and sunset.',
   'help.guide.day-weather.step.4':
     'At the bottom, the day hour by hour, every second hour: the time, the icon, the temperature and the chance of rain. An hour over 50 percent is shaded blue.',
   'help.guide.day-weather.result':
@@ -2363,18 +2367,18 @@ const help: TranslationStrings = {
     'The property has to be a place of the trip first. Create it in the places column the way you would any other place: the picker only offers what is already there.',
   'help.guide.add-accommodation.step.2': 'Open the day you arrive on and click Add accommodation under Accommodation.',
   'help.guide.add-accommodation.step.3':
-    'Apply to days says which nights the stay covers: the check-in day on the left, the check-out day on the right. All covers the whole trip.',
+    'Apply to days says which nights the stay covers: Start is the check-in day, End the check-out day, and All covers the whole trip. The head of the dialog shows the range and the number of nights.',
   'help.guide.add-accommodation.step.4':
     'Fill in Check-in, Until and Check-out, and put the booking’s number under Confirmation. All four may stay empty.',
   'help.guide.add-accommodation.step.5':
-    'Pick the property from the trip’s places. The chips above the list narrow it to one category.',
+    'Pick the property from the trip’s places. Category above the list narrows it to one category.',
   'help.guide.add-accommodation.step.6': 'Click Save.',
   'help.guide.add-accommodation.result':
     'The stay shows on every day it covers, Check-in on the first and Check-out on the last. The property becomes a stop on the check-in day, so the map draws the way there, and a Hotel booking appears under Bookings.',
   'help.guide.add-accommodation.tip.1':
     'The picker opens on the day you came from, with check-out the day after; both can be moved before you save.',
   'help.guide.add-accommodation.tip.2':
-    'Give the hotel the Hotel category when you create it and the chips above the list narrow it to your hotels in one click.',
+    'Give the hotel the Hotel category when you create it, and Category above the list narrows it to your hotels in one click.',
   'help.guide.add-accommodation.tip.3':
     'The times are all optional: a stay with no check-in and no code still covers its nights and still draws its route.',
   // edit-accommodation
@@ -2385,7 +2389,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'The pencil at its right opens the stay again. The popup now reads Edit accommodation.',
   'help.guide.edit-accommodation.step.3':
-    'Correct the row of fields: Check-in, Until, Check-out and Confirmation. The days above it and the property below it can be changed here too.',
+    'Correct Check-in, Until, Check-out and Confirmation. The days above them and the property below can be changed here too.',
   'help.guide.edit-accommodation.step.4': 'Click Save.',
   'help.guide.edit-accommodation.step.5':
     'The X next to the pencil ends the stay. It asks nothing, and the Hotel booking that belongs to it goes with it.',
@@ -2401,7 +2405,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Reservations lists the bookings of the day: the ones dated on it, and the ones hanging off one of its stops.',
   'help.guide.day-bookings.step.2':
-    'A row shows what kind of booking it is, its name and, when it belongs to a stop, that stop after a dot. Its times sit at the right end.',
+    'A row shows what kind of booking it is, its name and, when it belongs to a stop, that stop in grey after it. Its times sit at the right end, before the status dot.',
   'help.guide.day-bookings.step.3':
     'The colour says where a booking stands: a green row is confirmed, an amber one is still pending. Hotels are not in this list, they have their own block below.',
   'help.guide.day-bookings.step.4':

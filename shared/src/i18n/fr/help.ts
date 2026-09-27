@@ -1807,7 +1807,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.bullet.4':
     'Le titre, les dates, la couverture et la devise se modifient depuis Mes voyages, avec le crayon sur la carte du voyage.',
   'help.ctx.trip.bullet.5':
-    'Les chevrons au bord intérieur d’une colonne la replient et la carte prend la place ; le fin séparateur à côté d’une colonne change sa largeur.',
+    'La languette au bord intérieur d’une colonne la replie et la carte prend la place ; le fin séparateur à côté d’une colonne change sa largeur.',
   'help.ctx.trip.bullet.6':
     'La flèche d’annulation dans la barre d’outils des jours reprend la dernière modification du plan.',
   // add-member
@@ -1880,8 +1880,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Faire de la place pour la carte',
   'help.guide.collapse-columns.goal': 'Repliez une colonne ou donnez-lui plus de largeur.',
   'help.guide.collapse-columns.step.1':
-    'Cliquez sur le chevron au bord intérieur de la colonne des jours pour la replier ; la carte prend l’espace. La colonne des lieux a le même chevron.',
-  'help.guide.collapse-columns.step.2': 'Cliquez de nouveau sur le chevron pour ramener la colonne.',
+    'Cliquez sur la languette au bord intérieur de la colonne des jours, celle avec l’icône de panneau, pour replier la colonne ; la carte prend l’espace. La colonne des lieux a la même languette.',
+  'help.guide.collapse-columns.step.2':
+    'Une colonne repliée laisse une tuile dans le coin de la carte, Plan pour les jours et Lieux pour les lieux. Cliquez dessus pour ramener la colonne.',
   'help.guide.collapse-columns.step.3':
     'Faites glisser le fin séparateur entre une colonne et la carte pour changer la largeur de la colonne.',
   'help.guide.collapse-columns.result':
@@ -1908,26 +1909,26 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Ajouter un lieu/activité en haut ouvre le formulaire pour un lieu que vous tapez ou cherchez. Tant qu’un jour est ouvert, le bouton affiche Nouveau lieu, et Au jour à côté crée le lieu directement sur ce jour.',
   'help.ctx.trip-places.bullet.2':
-    'Importer un fichier prend les fichiers .gpx, .kml et .kmz ; Import de liste prend une liste partagée de Google Maps ou de Naver Maps. Un fichier peut aussi être simplement déposé sur la colonne.',
+    'Le bouton d’import à côté propose Importer un fichier, pour les fichiers .gpx, .kml et .kmz, et Liste Google (Import de liste quand les listes Naver sont aussi activées) pour une liste partagée depuis Google Maps ou Naver Maps. Un fichier peut aussi être simplement déposé sur la colonne.',
   'help.ctx.trip-places.bullet.3':
-    'Le menu déroulant bascule entre Tous, Non planifiés, Planifiés et, dès qu’une trace a été importée, Traces ; en dessous se trouvent la recherche, le filtre de catégorie et l’étoile pour une note minimale.',
+    'En dessous, la recherche, avec à côté la coche qui démarre une sélection, et une rangée de filtres : Afficher bascule entre Tous, Non planifiés, Planifiés et, dès qu’une trace a été importée, Traces, chacun avec son compte ; le bouton étiquette filtre par catégorie et l’étoile par note minimale.',
   'help.ctx.trip-places.bullet.4':
-    'Une ligne montre l’image, le nom et la description ou l’adresse. Cliquez dessus pour les détails du lieu, glissez-la sur un jour, ou faites un clic droit pour Modifier, + Jour, Ouvrir le site web, Google Maps, Enregistrer dans une collection et Supprimer.',
+    'Une ligne montre l’image, le nom et la description ou l’adresse. Cliquez dessus pour les détails du lieu, glissez-la sur un jour, ou faites un clic droit dessus (ou cliquez sur ses trois points) pour Modifier, + Jour, Ouvrir le site web, Google Maps, Enregistrer dans une collection et Supprimer.',
   'help.ctx.trip-places.bullet.5':
-    'Avec un jour ouvert, un + au bout d’une ligne non planifiée pose le lieu sur ce jour, et Planifiés ne liste que ce jour, avec Afficher tout le voyage pour élargir de nouveau.',
+    'Avec un jour ouvert, + Jour au bout d’une ligne non planifiée pose le lieu sur ce jour, et Planifiés ne liste que ce jour, avec Afficher tout le voyage pour élargir de nouveau.',
   'help.ctx.trip-places.bullet.6':
-    'La coche au bout droit de la ligne de filtres démarre une sélection : plusieurs lignes à la fois reçoivent une nouvelle catégorie, partent dans une collection ou sont supprimées.',
+    'La coche à côté de la recherche démarre une sélection : depuis la barre au pied de la colonne, plusieurs lignes à la fois reçoivent une nouvelle catégorie, partent dans une collection, sont marquées comme visitées ou sont supprimées.',
   // create-place
   'help.guide.create-place.title': 'Créer un lieu',
   'help.guide.create-place.goal': 'Ajoutez un lieu ou une activité à la main, avec tout ce que le plan doit en savoir.',
   'help.guide.create-place.step.1':
     'Cliquez sur Ajouter un lieu/activité en haut de la colonne des lieux (Nouveau lieu tant qu’un jour est ouvert). Le formulaire s’ouvre.',
   'help.guide.create-place.step.2':
-    'Tapez le lieu dans Rechercher des lieux… en haut et choisissez un résultat. Nom, Adresse, Latitude, Longitude et Site web se remplissent, et Détails du lieu à gauche montre des images, les horaires d’ouverture et une description. Sur un TREK avec clé Google, Ce n’est pas le bon lieu ? Rechercher sur Google se trouve sous la liste et relance la même recherche via Google.',
+    'Tapez le lieu dans Rechercher des lieux… et choisissez un résultat. Le nom dans l’en-tête de la boîte de dialogue, Adresse, Latitude, Longitude et Site web se remplissent, et Détails du lieu à gauche montre des images, les horaires d’ouverture et une description. Sur un TREK avec clé Google, Ce n’est pas le bon lieu ? Rechercher sur Google se trouve sous la liste et relance la même recherche via Google. Lieux enregistrés, à droite, propose de la même façon les lieux de vos collections.',
   'help.guide.create-place.step.3':
     'Dans Détails du lieu, un clic sur une image sous Choisir une image en fait l’image du lieu ; Utiliser ce texte reprend la description dans le formulaire.',
   'help.guide.create-place.step.4':
-    'Vérifiez les champs : Nom est obligatoire ; Description et Notes sont à vous ; Adresse, Latitude et Longitude viennent de la recherche ou se tapent ; Catégorie choisit une des catégories du voyage, et le + à côté en crée une nouvelle sur place ; Site web prend le lien.',
+    'Vérifiez ce que contient le formulaire : le nom se trouve dans l’en-tête de la boîte de dialogue et c’est le seul champ obligatoire ; la pastille Catégorie en dessous choisit une des catégories du voyage, et le + à côté en crée une nouvelle sur place. Adresse, Latitude et Longitude viennent de la recherche ou se tapent ; Description et Notes sont à vous ; Site web prend le lien.',
   'help.guide.create-place.step.5':
     'Cliquez sur Ajouter. Si un lieu du même nom est déjà dans le voyage, le formulaire le signale et le bouton devient Ajouter quand même.',
   'help.guide.create-place.result':
@@ -1947,7 +1948,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Au jour ouvre le même formulaire que Nouveau lieu, sauf que le lieu se pose sur le jour ouvert au moment où vous cliquez sur Ajouter.',
   'help.guide.place-to-open-day.step.3':
-    'Un lieu qui existe déjà va sur le jour ouvert avec le + au bout de sa ligne, ou par un clic droit, + Jour.',
+    'Un lieu qui existe déjà va sur le jour ouvert avec + Jour au bout de sa ligne, ou par un clic droit, + Jour.',
   'help.guide.place-to-open-day.step.4':
     'L’inverse marche aussi, et sans ouvrir de jour au préalable : fais glisser la ligne du lieu hors de la colonne et lâche-la sur une carte de jour. Lâchée entre deux étapes, elle se pose exactement là.',
   'help.guide.place-to-open-day.result':
@@ -1959,10 +1960,10 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Trouver un lieu dans la liste',
   'help.guide.filter-places.goal': 'Resserrez la colonne sur les lieux que vous cherchez.',
   'help.guide.filter-places.step.1':
-    'Le menu déroulant en haut bascule entre Tous, Non planifiés (pas encore sur un jour), Planifiés (sur un jour) et Traces (traces GPX importées), chacun avec son compte.',
-  'help.guide.filter-places.step.2': 'Tapez dans Rechercher des lieux… ; la liste se resserre à mesure que vous tapez.',
+    'Afficher, le menu déroulant sous la recherche, bascule entre Tous, Non planifiés (pas encore sur un jour), Planifiés (sur un jour) et Traces (traces GPX importées), chacun avec son compte.',
+  'help.guide.filter-places.step.2': 'Tapez dans Rechercher, en haut ; la liste se resserre à mesure que vous tapez.',
   'help.guide.filter-places.step.3':
-    'Toutes les catégories ouvre une liste où cocher une ou plusieurs catégories, Sans catégorie comprise ; Effacer le filtre, en bas, la remet à zéro.',
+    'Le bouton étiquette à côté d’Afficher liste les catégories : cochez-en une ou plusieurs, Sans catégorie comprise. Le bouton compte ce qui est coché, et Effacer le filtre, au pied de la liste, les lève toutes.',
   'help.guide.filter-places.step.4':
     'L’étoile à côté fixe une note minimale : 5+, 4+ et ainsi de suite ne montrent que les lieux que vous avez notés au moins aussi haut.',
   'help.guide.filter-places.result':
@@ -1977,7 +1978,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Faites un clic droit sur la ligne et choisissez Modifier, ou ouvrez le lieu et cliquez sur Modifier dans ses détails.',
   'help.guide.edit-place.step.2':
-    'Changez ce qu’il faut : Nom, Description, Notes, Adresse, Latitude et Longitude, Catégorie, Site web. Ouvert depuis un jour, le formulaire a aussi Notes pour ce jour ainsi que Début et Fin pour ce jour.',
+    'Changez ce qu’il faut : le nom et la pastille Catégorie dans l’en-tête de la boîte de dialogue, Adresse, Latitude et Longitude, Description, Notes et Site web. Ouvert depuis un jour, le formulaire a aussi Début et Fin ainsi que Notes pour ce jour.',
   'help.guide.edit-place.step.3': 'Cliquez sur Mettre à jour.',
   'help.guide.edit-place.result':
     'La modification s’applique partout où le lieu apparaît : la liste, la carte et chaque jour où il se trouve.',
@@ -1991,22 +1992,22 @@ const help: TranslationStrings = {
   'help.guide.delete-place.step.1':
     'Faites un clic droit sur la ligne et choisissez Supprimer, ou cliquez sur Supprimer dans les détails du lieu.',
   'help.guide.delete-place.step.2':
-    'Confirmez. Si une nuit a été réservée au lieu, ou si une réservation y est liée, la question dit ce qui part avec.',
+    'Cliquez sur Supprimer dans la question. Si une nuit a été réservée au lieu, ou si une réservation y est liée, la question dit ce qui part avec.',
   'help.guide.delete-place.result':
     'Le lieu a disparu de la liste, de la carte et de chaque jour ; Annuler dans la barre d’outils au-dessus des jours le ramène.',
   'help.guide.delete-place.tip.1':
     'Pour retirer un lieu d’un seul jour, utilisez plutôt Retirer du jour sur cette étape.',
-  'help.guide.delete-place.tip.2': 'Plusieurs lieux à la fois : la coche à côté des filtres démarre une sélection.',
+  'help.guide.delete-place.tip.2': 'Plusieurs lieux à la fois : la coche à côté de la recherche démarre une sélection.',
   // select-places
   'help.guide.select-places.title': 'Modifier ou supprimer plusieurs lieux à la fois',
   'help.guide.select-places.goal': 'Rangez la liste en une seule fois au lieu d’y aller lieu par lieu.',
   'help.guide.select-places.step.1':
-    'Cliquez sur la coche au bout droit de la ligne de filtres. Les lignes reçoivent des cases et une barre avec les actions apparaît.',
+    'Cliquez sur la coche à côté du champ de recherche. Les lignes reçoivent des cases rondes, et une barre avec les actions monte au pied de la colonne.',
   'help.guide.select-places.step.2':
-    'Cochez les lignes, ou Tout sélectionner dans la barre ; la barre compte ce qui est sélectionné.',
+    'Cliquez sur les lignes pour les cocher. Tout sélectionner, la double coche dans la barre, prend toutes les lignes que les filtres laissent.',
   'help.guide.select-places.step.3':
-    'Change category donne à tous une seule catégorie ; Enregistrer dans une collection les copie dans une de vos collections ; Supprimer la sélection les retire après une confirmation.',
-  'help.guide.select-places.step.4': 'Cliquez de nouveau sur la coche pour quitter la sélection.',
+    'La barre compte les lieux cochés. Changer de catégorie donne à tous une seule catégorie ; Enregistrer dans une collection les copie dans une de vos collections ; Supprimer la sélection les retire après une confirmation.',
+  'help.guide.select-places.step.4': 'Terminé, le X au bout de la barre, quitte la sélection.',
   'help.guide.select-places.result':
     'La modification s’applique à chaque lieu sélectionné ; une suppression peut être annulée depuis la barre d’outils au-dessus des jours.',
   'help.guide.select-places.tip.1':
@@ -2018,7 +2019,7 @@ const help: TranslationStrings = {
   'help.guide.import-places-file.goal':
     'Faites entrer ce que Google My Maps, Google Earth ou un traceur GPS a exporté.',
   'help.guide.import-places-file.step.1':
-    'Cliquez sur Importer un fichier, ou déposez le fichier n’importe où sur la colonne des lieux.',
+    'Cliquez sur le bouton d’import à côté du bouton d’ajout et choisissez Importer un fichier, ou déposez le fichier n’importe où sur la colonne des lieux.',
   'help.guide.import-places-file.step.2':
     'Choisissez le fichier ou glissez-le dans le cadre. Pour un GPX, cochez ce qui doit être importé : Points de passage, Itinéraires, Traces (avec géométrie) ; pour KML et KMZ, Points (Placemarks) et Chemins (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -2034,7 +2035,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Importer une liste partagée de Google Maps ou de Naver Maps',
   'help.guide.import-places-list.goal': 'Transformez le lien d’une liste partagée en lieux.',
-  'help.guide.import-places-list.step.1': 'Cliquez sur Import de liste et choisissez Liste Google ou Liste Naver.',
+  'help.guide.import-places-list.step.1':
+    'Cliquez sur le bouton d’import à côté du bouton d’ajout et choisissez Liste Google. Quand les listes Naver sont aussi activées, l’entrée s’appelle Import de liste et la boîte de dialogue demande laquelle des deux.',
   'help.guide.import-places-list.step.2':
     'Collez le lien partagé de la liste. Un lien d’itinéraire Google Maps marche aussi : ses étapes deviennent des lieux, dans l’ordre du trajet.',
   'help.guide.import-places-list.step.3': 'Cliquez sur Importer.',
@@ -2052,13 +2054,13 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'La barre d’outils en haut : Exporter (PDF, agenda, GPX), Expand all days / Collapse all days, la flèche Annuler, Réorganiser les jours et Afficher tous les itinéraires.',
   'help.ctx.trip-days.bullet.2':
-    'Une carte de jour : numéro, météo, titre, date et coût du jour dans l’en-tête ; cliquez sur l’en-tête pour ouvrir le jour, son chevron la replie. Transports en commun, Ajouter un transport et Ajouter une note se trouvent aussi dans l’en-tête.',
+    'Une carte de jour : une tuile avec le numéro du jour et les prévisions, le titre et la date, et des pastilles pour la nuit réservée, une voiture de location et le coût du jour. Cliquez sur l’en-tête pour ouvrir le jour, le chevron le replie, et le + ouvre un menu : Ajouter un lieu à ce jour, Ajouter un hébergement, Ajouter un transport, Transports en commun et Ajouter une note.',
   'help.ctx.trip-days.bullet.3':
-    'Dans un jour : les étapes dans l’ordre, chacune avec image, nom, heure et un cadenas sur l’image ; les notes ; les réservations qui appartiennent au jour ; et entre les étapes le temps de trajet de chaque tronçon.',
+    'Dans un jour : les étapes dans l’ordre, chacune avec image, nom, heure, un cadenas sur l’image et les réservations qui y sont accrochées ; les notes ; les réservations et transports du jour, teintés selon leur type ; et entre les étapes le temps de trajet de chaque tronçon. Chaque ligne a un menu à trois points, le même que celui qu’ouvre un clic droit.',
   'help.ctx.trip-days.bullet.4':
     'Sous les étapes, la barre d’itinéraire : Itinéraire trace le jour sur la carte, Optimiser trie les étapes, Voiture / Marche règle le mode de transport du jour, Ouvrir dans Google Maps et Ouvrir dans CoMaps transmettent le jour.',
   'help.ctx.trip-days.bullet.5':
-    'Les lieux arrivent sur un jour en glissant une ligne de la colonne des lieux, avec le + de cette ligne, avec Ajouter un lieu à ce jour sur un jour vide, ou depuis les détails du lieu.',
+    'Les lieux arrivent sur un jour en glissant une ligne de la colonne des lieux, avec + Jour sur cette ligne, avec Ajouter un lieu à ce jour depuis le + du jour ou sur un jour vide, ou depuis les détails du lieu.',
   'help.ctx.trip-days.bullet.6':
     'Coût total, en bas, additionne chaque étape et chaque réservation qui porte un prix, dans la devise du voyage.',
   // read-day-plan
@@ -2066,11 +2068,11 @@ const help: TranslationStrings = {
   'help.guide.read-day-plan.goal':
     'Savoir ce que chaque partie d’une carte de jour vous dit, avant de changer quoi que ce soit.',
   'help.guide.read-day-plan.step.1':
-    'L’en-tête : le numéro du jour, les prévisions du jour, Jour 1 ou le titre que vous lui avez donné, la date et le coût du jour. Cliquez sur l’en-tête pour ouvrir le jour (ses Détails du jour s’ouvrent au-dessus de la carte) ; le chevron à droite replie et déplie la carte.',
+    'L’en-tête : une tuile avec le numéro du jour et les prévisions, puis Jour 1 ou le titre que vous lui avez donné, la date, et des pastilles pour la nuit réservée (arrivée ou départ), une voiture de location et le coût du jour. Cliquez sur l’en-tête pour ouvrir le jour (ses Détails du jour s’ouvrent au-dessus de la carte) ; le + à droite ajoute un lieu, un hébergement, un transport, une liaison en transports en commun ou une note, et le chevron replie la carte.',
   'help.guide.read-day-plan.step.2':
-    'Une étape : la poignée à gauche la fait glisser, l’image porte un cadenas pour l’optimisation de l’itinéraire, puis le nom, la description et, si elles sont remplies, les Notes pour ce jour. Un badge horaire affiche Début et Fin quand l’étape en a ; les flèches qui apparaissent à son extrémité droite la montent ou la descendent.',
+    'Une étape : la poignée à gauche la fait glisser, l’image porte un cadenas pour l’optimisation de l’itinéraire, puis le nom, un badge horaire quand l’étape a Début et Fin, la description et, si elles sont remplies, les Notes pour ce jour. Les flèches à son extrémité droite la montent ou la descendent, et les trois points ouvrent son menu.',
   'help.guide.read-day-plan.step.3':
-    'Une réservation du jour : une réservation liée à une étape marque celle-ci Réservation confirmée ou Réservation en attente, et un transport s’affiche comme Départ ou Arrivée avec son heure et son trajet, avec un petit interrupteur qui trace cet itinéraire sur la carte.',
+    'Une réservation sur une étape s’y affiche comme un badge Réservation, vert quand elle est confirmée et ambre tant qu’elle est en attente, avec son heure et son prestataire ; cliquez sur le badge pour ouvrir la réservation, et le bouton d’itinéraire à côté trace son trajet. Un transport forme sa propre ligne, teintée selon son type, avec Départ ou Arrivée et son heure. Cliquez sur une réservation et ses détails s’ouvrent ; Modifier, là, la change.',
   'help.guide.read-day-plan.step.4':
     'Entre deux étapes, le connecteur indique combien de temps dure le tronçon et quelle distance il fait, dans le mode de transport du jour ; cliquez dessus pour changer le mode de ce seul tronçon.',
   'help.guide.read-day-plan.step.5':
@@ -2078,7 +2080,7 @@ const help: TranslationStrings = {
   'help.guide.read-day-plan.result':
     'Chaque symbole de la carte a un sens ; les guides ci-dessous changent chacun d’eux.',
   'help.guide.read-day-plan.tip.1':
-    'Faites un clic droit sur une étape pour son menu : Modifier, Retirer du jour, Ouvrir le site web, les applications de navigation (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Enregistrer dans une collection, Supprimer.',
+    'Faites un clic droit sur une étape, ou cliquez sur ses trois points, pour son menu : Modifier, Retirer du jour, Ouvrir le site web, les applications de navigation (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Enregistrer dans une collection, Supprimer.',
   'help.guide.read-day-plan.tip.2':
     'Survolez une étape et Ajouter une réservation apparaît à son extrémité : une réservation créée là est liée à cette étape, ce jour-là.',
   // place-onto-day
@@ -2087,9 +2089,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Glissez une ligne de la colonne des lieux sur la carte du jour. Déposez-la entre deux étapes pour la mettre exactement là, ou n’importe où sur la carte pour l’ajouter à la fin.',
   'help.guide.place-onto-day.step.2':
-    'Sans glisser : ouvrez le jour en cliquant sur son en-tête, puis cliquez sur le + au bout de la ligne du lieu, ou faites un clic droit sur la ligne et choisissez + Jour.',
+    'Sans glisser : ouvrez le jour en cliquant sur son en-tête, puis cliquez sur + Jour au bout de la ligne du lieu, ou faites un clic droit sur la ligne et choisissez + Jour.',
   'help.guide.place-onto-day.step.3':
-    'Sur un jour vide, Ajouter un lieu à ce jour ouvre le formulaire de lieu, et le nouveau lieu se pose aussitôt sur le jour.',
+    'Ajouter un lieu à ce jour, dans le menu + du jour ou sur un jour vide, ouvre le formulaire de lieu, et le nouveau lieu se pose aussitôt sur le jour.',
   'help.guide.place-onto-day.step.4':
     'Depuis les détails d’un lieu, Ajouter au jour demande quel jour ; depuis l’en-tête du jour, Au jour dans la colonne des lieux crée un nouveau lieu sur le jour ouvert.',
   'help.guide.place-onto-day.result':
@@ -2119,7 +2121,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.goal':
     'Fixer quand une étape commence et finit, pour que le jour se lise comme un horaire.',
   'help.guide.set-stop-times.step.1':
-    'Faites un clic droit sur l’étape et choisissez Modifier. Ouvert depuis le jour, le formulaire a Début et Fin en bas.',
+    'Faites un clic droit sur l’étape, ou cliquez sur ses trois points, et choisissez Modifier. Ouvert depuis le jour, le formulaire a Début et Fin pour ce jour, juste sous l’emplacement.',
   'help.guide.set-stop-times.step.2':
     'Saisissez Début et, si vous voulez, Fin. Chevauchement horaire avec : prévient qu’une autre étape du jour avec une heure se chevauche ; une Fin avant le Début bloque Mettre à jour.',
   'help.guide.set-stop-times.step.3':
@@ -2160,13 +2162,13 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Ajouter une note à un jour',
   'help.guide.day-note.goal': 'Garder un rappel, un numéro de billet ou un plan B directement dans le jour.',
-  'help.guide.day-note.step.1': 'Cliquez sur Ajouter une note dans l’en-tête du jour.',
+  'help.guide.day-note.step.1': 'Cliquez sur le + dans l’en-tête du jour et choisissez Ajouter une note.',
   'help.guide.day-note.step.2':
-    'Donnez-lui un nom sous Note, c’est ce qui s’affiche dans le jour, et écrivez le reste sous Note du jour. La barre d’outils au-dessus met le texte en forme (Gras, Liste à puces, Lien, Citation), et Aperçu, à gauche, montre ce que la note donnera dans le jour.',
+    'Tapez le nom de la note dans l’en-tête de la boîte de dialogue, là où il est écrit Note ; c’est ce qui s’affiche dans le jour. Écrivez le reste sous Note du jour : la barre d’outils au-dessus met le texte en forme (gras, listes, liens, citations), et Aperçu, à gauche, montre la ligne que la note donnera.',
   'help.guide.day-note.step.3':
     'Choisissez une Icône et une Couleur, pour que la note se distingue des étapes, puis Ajouter.',
   'help.guide.day-note.step.4':
-    'La note tient dans le jour comme une étape : glissez-la à sa place, faites un clic droit dessus pour Modifier et Supprimer.',
+    'La note tient dans le jour comme une étape : glissez-la à sa place, et faites un clic droit dessus ou utilisez ses trois points pour Modifier et Supprimer.',
   'help.guide.day-note.result':
     'La note fait partie du jour, dans le PDF aussi ; une note avec une heure se range avec les étapes qui en ont une.',
   'help.guide.day-note.tip.1':
@@ -2218,15 +2220,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.goal':
     'Savoir où une réservation apparaît une fois qu’elle existe, et quel écran la crée.',
   'help.guide.bookings-in-plan.step.1':
-    'Un transport (Vol, Train, Ferry, Bus, Voiture) s’affiche le jour de son départ comme Départ et le jour de son arrivée comme Arrivée, avec heure et trajet ; un transport sur plusieurs jours couvre les jours intermédiaires.',
+    'Un transport (vol, train, ferry, bus, voiture) est une ligne teintée selon son type : Départ le jour où il part, Arrivée le jour où il arrive, avec heure et trajet ; un transport sur plusieurs jours couvre les jours intermédiaires. Cliquez sur la ligne et la réservation s’ouvre.',
   'help.guide.bookings-in-plan.step.2':
-    'Une réservation liée à une étape (un Restaurant, une Visite) marque cette étape Réservation confirmée ou Réservation en attente ; une réservation avec un jour mais sans étape forme sa propre ligne dans le jour.',
+    'Une réservation liée à une étape (un restaurant, une visite) est un badge Réservation sur cette étape, vert quand elle est confirmée et ambre tant qu’elle est en attente, avec son heure ; une réservation avec un jour mais sans étape forme sa propre ligne dans le jour.',
   'help.guide.bookings-in-plan.step.3':
     'Une nuit à l’hôtel est un hébergement : elle se trouve dans les Détails du jour sous Hébergement, de l’Arrivée au Départ, et l’itinéraire de chacun de ces jours part de là.',
   'help.guide.bookings-in-plan.step.4':
     'Sur la carte, l’interrupteur d’une ligne de transport trace son itinéraire ; Afficher tous les itinéraires dans la barre d’outils les trace tous.',
   'help.guide.bookings-in-plan.step.5':
-    'Pour créer : Ajouter une réservation sur une étape survolée, Ajouter un transport et Transports en commun dans l’en-tête du jour, et les onglets Réservations et Transports pour la liste complète avec import et fichiers.',
+    'Pour créer : Ajouter une réservation sur une étape survolée, Ajouter un transport et Transports en commun dans le menu + du jour, et les onglets Réservations et Transports pour la liste complète avec import et fichiers.',
   'help.guide.bookings-in-plan.result':
     'Une réservation, une place dans le plan ; les onglets montrent les mêmes réservations sous forme de liste.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2257,24 +2259,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Cliquez sur une ligne dans la colonne des lieux, sur une étape dans un jour ou sur un marqueur sur la carte, et la fiche s’ouvre par-dessus la carte. La choisir dans un jour dit à la fiche de quelle étape il s’agit, et c’est ce qui amène les participants de l’étape et sa réservation.',
   'help.ctx.trip-place.bullet.2':
-    'L’en-tête porte l’image ronde, le nom, la catégorie, l’adresse et les coordonnées. Cliquez sur l’image pour en mettre une à vous, double-cliquez sur le nom pour renommer le lieu sur place, et le X à droite ferme la fiche.',
+    'L’en-tête porte l’image ronde, le nom, l’adresse sur une ligne et des pastilles pour ce qui est connu : ouvert ou fermé, la catégorie, le prix, le numéro de téléphone et les coordonnées. Cliquez sur l’image pour en mettre une à vous, double-cliquez sur le nom pour renommer le lieu sur place, et le X à droite ferme la fiche.',
   'help.ctx.trip-place.bullet.3':
-    'En dessous : le prix s’il en a un, les étoiles que chaque voyageur a données au lieu, la description et les notes, et Notes pour ce jour quand l’étape en porte.',
+    'En dessous : les étoiles que chaque voyageur a données au lieu, la description et les notes, et Notes pour ce jour quand l’étape en porte.',
   'help.ctx.trip-place.bullet.4':
     'Horaires d’ouverture, Couleur du parcours, Données du parcours et Fichiers suivent, dans la mesure où ils s’appliquent. Fichiers prend n’importe quoi dans vos dossiers et liste aussi ce qui est accroché à la réservation de cette étape.',
   'help.ctx.trip-place.bullet.5':
     'La ligne du bas : Ajouter au jour ou Retirer du jour tant qu’un jour est ouvert, puis Enregistrer dans une collection, Navigation, Ouvrir le site web, Modifier et Supprimer.',
   'help.ctx.trip-place.bullet.6':
-    'Un lieu choisi dans la recherche porte ce que l’index TREK ou OpenStreetMap savent de lui : un anneau vert Ouvert ou rouge Fermé autour de l’image, jugé à l’heure du lieu lui-même, le numéro de téléphone sous les étoiles, Horaires d’ouverture plus bas avec la ligne du jour sur la ligne et toute la semaine derrière un clic, et son site web derrière Ouvrir le site web. La note de Google ne s’affiche que sur un lieu trouvé par Google, sur un TREK avec une clé Google.',
+    'Un lieu choisi dans la recherche porte ce que l’index TREK ou OpenStreetMap savent de lui : Ouvert ou Fermé parmi les pastilles de l’en-tête, avec un anneau vert ou rouge autour de l’image, jugé à l’heure du lieu lui-même, son numéro de téléphone aussi en pastille, Horaires d’ouverture plus bas avec la ligne du jour sur la ligne et toute la semaine derrière un clic, et son site web derrière Ouvrir le site web. La note de Google ne s’affiche que sur un lieu trouvé par Google, sur un TREK avec une clé Google.',
   // read-place
   'help.guide.read-place.title': 'Ce que la fiche vous dit d’un lieu',
   'help.guide.read-place.goal': 'Lisez tout ce que le voyage sait d’un lieu, dans une seule fiche.',
   'help.guide.read-place.step.1':
     'Dans la colonne des jours, cliquez sur l’étape que vous voulez lire. La fiche s’ouvre par-dessus la carte et l’étape reste marquée dans son jour.',
   'help.guide.read-place.step.2':
-    'L’en-tête : l’image ronde, le nom, l’adresse et les coordonnées exactes. Un anneau vert avec Ouvert, ou rouge avec Fermé, autour de l’image dit si le lieu est ouvert en ce moment, à sa propre heure, dès que TREK connaît ses horaires. Le X à droite referme la fiche.',
+    'L’en-tête : l’image ronde, le nom et l’adresse sur une ligne ; son info-bulle contient l’adresse complète. Les pastilles en dessous disent Ouvert ou Fermé en ce moment, à l’heure du lieu lui-même, avec un anneau vert ou rouge assorti autour de l’image, et portent le numéro de téléphone, qu’un clic passe à votre application de téléphone, et les coordonnées exactes. Le X à droite referme la fiche.',
   'help.guide.read-place.step.3':
-    'En dessous, les étoiles que chaque voyageur a données au lieu, avec la moyenne et le nombre de votants. Pas encore noté tant que personne n’a voté. Juste en dessous, le numéro de téléphone quand le lieu en a un : un clic dessus passe le numéro à votre application de téléphone.',
+    'Note vient en premier sous l’en-tête : les étoiles que chaque voyageur a données au lieu, avec la moyenne et le nombre de votants. Pas encore noté tant que personne n’a voté.',
   'help.guide.read-place.step.4':
     'Puis la description et, en dessous, les notes. Les deux sont le texte du formulaire du lieu, rendu : listes, liens et gras fonctionnent.',
   'help.guide.read-place.step.5':
@@ -2370,18 +2372,19 @@ const help: TranslationStrings = {
   'help.guide.place-booking.goal':
     'Lisez la réservation qui appartient à une étape, ouvrez-la, et accrochez-en une nouvelle à cette étape.',
   'help.guide.place-booking.step.1':
-    'Ouvrez l’étape à laquelle appartient la réservation. La fiche montre un bandeau avec Confirmée ou En attente et le nom de la réservation.',
+    'Ouvrez l’étape à laquelle appartient la réservation. La fiche la liste sous Réservations comme une petite vignette à part, avec le nom de la réservation et Confirmée ou En attente.',
   'help.guide.place-booking.step.2':
-    'Le bandeau porte la Date, l’Heure et le Code de réservation, ainsi que les notes de la réservation.',
-  'help.guide.place-booking.step.3': 'Cliquez sur le bandeau. La réservation s’ouvre par-dessus la carte.',
+    'La vignette de réservation porte la Date, l’Heure et le Code de réservation, ainsi que les notes de la réservation.',
+  'help.guide.place-booking.step.3':
+    'Cliquez sur la vignette de réservation. La réservation s’ouvre par-dessus la carte.',
   'help.guide.place-booking.step.4':
     'Modifier, au pied de la réservation, ouvre son propre formulaire. Lier à l’affectation du jour y est ce qui accroche une réservation à une étape, et ici il nomme déjà celle-ci. Refermez le formulaire.',
   'help.guide.place-booking.step.5':
-    'Une nouvelle réservation pour une étape commence dans la colonne des jours : survolez l’étape et cliquez sur le + à son bout. Le formulaire s’ouvre en Nouvelle réservation, déjà liée à elle.',
+    'Une nouvelle réservation pour une étape commence dans la colonne des jours : survolez l’étape et cliquez sur Ajouter une réservation, le ticket à son bout. Le formulaire s’ouvre en Nouvelle réservation, déjà liée à elle.',
   'help.guide.place-booking.result':
     'La réservation est accrochée à l’étape : elle est sur la fiche, elle est dans le jour, et ses fichiers sont listés sous Fichiers ici aussi.',
   'help.guide.place-booking.tip.1':
-    'Le bandeau ne s’affiche que pour l’étape à laquelle la réservation est accrochée. Une réservation sans étape vit dans l’onglet Résa.',
+    'La vignette de réservation ne s’affiche que pour l’étape à laquelle la réservation est accrochée. Une réservation sans étape vit dans l’onglet Résa.',
   'help.guide.place-booking.tip.2':
     'Plusieurs réservations peuvent partager une étape : le déjeuner et la visite qui part de la même porte.',
   'help.guide.place-booking.tip.3':
@@ -2629,7 +2632,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Tout en haut, la météo du jour. Prévisions pour nomme le lieu concerné : la première étape du jour, ou l’hébergement où vous vous réveillez.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Réservations liste les réservations de ce jour, chacune avec son type, l’étape à laquelle elle appartient et ses horaires. Vert veut dire confirmée, ambre encore en attente ; c’est un simple relevé, les réservations se modifient dans l’onglet Réservations.',
+    'Réservations liste les réservations de ce jour, chacune avec son type, l’étape à laquelle elle appartient et ses horaires. Vert veut dire confirmée, ambre encore en attente, et un clic sur une ligne ouvre la réservation.',
   'help.ctx.trip-day-detail.bullet.5':
     'Hébergement montre chaque nuit réservée sur ce jour, avec Arrivée et Départ aux jours où ils ont lieu, la plage horaire d’arrivée, l’heure de départ et le numéro de confirmation.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2664,7 +2667,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'Le grand chiffre est la température du jour, à côté le minimum et le maximum, et la condition en toutes lettres.',
   'help.guide.day-weather.step.3':
-    'Les pastilles en dessous : la probabilité de pluie, la quantité de précipitations, le vent le plus fort, et le lever et le coucher du soleil.',
+    'Les pastilles à sa droite : la probabilité de pluie, la quantité de précipitations, le vent le plus fort, et le lever et le coucher du soleil.',
   'help.guide.day-weather.step.4':
     'Tout en bas, le jour heure par heure, une heure sur deux : l’heure, l’icône, la température et la probabilité de pluie. Une heure au-dessus de 50 pour cent est teintée de bleu.',
   'help.guide.day-weather.result':
@@ -2699,18 +2702,18 @@ const help: TranslationStrings = {
   'help.guide.add-accommodation.step.2':
     'Ouvrez le jour de votre arrivée et cliquez sur Ajouter un hébergement sous Hébergement.',
   'help.guide.add-accommodation.step.3':
-    'Appliquer aux jours dit quelles nuits le séjour couvre : le jour d’arrivée à gauche, le jour de départ à droite. Tous prend le voyage entier.',
+    'Appliquer aux jours dit quelles nuits le séjour couvre : Début est le jour d’arrivée, Fin le jour de départ, et Tous prend le voyage entier. L’en-tête de la boîte de dialogue montre la période et le nombre de nuits.',
   'help.guide.add-accommodation.step.4':
     'Remplissez Arrivée, Jusqu’à et Départ, et mettez le numéro de la réservation sous Confirmation. Les quatre peuvent rester vides.',
   'help.guide.add-accommodation.step.5':
-    'Choisissez l’établissement parmi les lieux du voyage. Les pastilles au-dessus de la liste la réduisent à une seule catégorie.',
+    'Choisissez l’établissement parmi les lieux du voyage. Catégorie, au-dessus de la liste, la réduit à une seule catégorie.',
   'help.guide.add-accommodation.step.6': 'Cliquez sur Enregistrer.',
   'help.guide.add-accommodation.result':
     'Le séjour s’affiche sur chaque jour qu’il couvre, Arrivée sur le premier et Départ sur le dernier. L’établissement devient une étape du jour d’arrivée, si bien que la carte trace le chemin jusque-là, et une réservation de type Hébergement apparaît dans l’onglet Réservations.',
   'help.guide.add-accommodation.tip.1':
     'Le sélecteur s’ouvre sur le jour d’où vous venez, avec le départ le lendemain ; les deux peuvent être déplacés avant d’enregistrer.',
   'help.guide.add-accommodation.tip.2':
-    'Donnez à l’hôtel la catégorie Hotel du voyage à sa création et les pastilles au-dessus de la liste la réduisent à vos hôtels en un clic.',
+    'Donnez à l’hôtel la catégorie Hotel à sa création, et Catégorie, au-dessus de la liste, la réduit à vos hôtels en un clic.',
   'help.guide.add-accommodation.tip.3':
     'Les horaires sont tous facultatifs : un séjour sans arrivée et sans code couvre quand même ses nuits et trace quand même son itinéraire.',
   // edit-accommodation
@@ -2721,7 +2724,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'Le crayon à sa droite rouvre le séjour. La fenêtre s’intitule maintenant Modifier l’hébergement.',
   'help.guide.edit-accommodation.step.3':
-    'Corrigez la rangée de champs : Arrivée, Jusqu’à, Départ et Confirmation. Les jours au-dessus et l’établissement en dessous se changent aussi ici.',
+    'Corrigez Arrivée, Jusqu’à, Départ et Confirmation. Les jours au-dessus et l’établissement en dessous se changent aussi ici.',
   'help.guide.edit-accommodation.step.4': 'Cliquez sur Enregistrer.',
   'help.guide.edit-accommodation.step.5':
     'La croix à côté du crayon met fin au séjour. Elle ne demande rien, et la réservation de type Hébergement qui lui appartient part avec lui.',
@@ -2737,7 +2740,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Réservations liste les réservations du jour : celles qui y sont datées, et celles qui sont rattachées à l’une de ses étapes.',
   'help.guide.day-bookings.step.2':
-    'Une ligne montre le type de réservation, son nom et, quand elle appartient à une étape, cette étape après un point. Ses horaires se trouvent tout à droite.',
+    'Une ligne montre le type de réservation, son nom et, quand elle appartient à une étape, cette étape en gris derrière. Ses horaires se trouvent tout à droite, avant le point d’état.',
   'help.guide.day-bookings.step.3':
     'La couleur dit où en est une réservation : une ligne verte est confirmée, une ligne ambre est encore en attente. Les hébergements ne sont pas dans cette liste, ils ont leur propre bloc en dessous.',
   'help.guide.day-bookings.step.4':

@@ -65,9 +65,12 @@ export function placeReservation(r: Reservation, axis: AxisDay[], days: Day[]): 
   const endDate = hotel ? span.end?.date ?? e.date : e.date ?? to?.local_date ?? span.end?.date ?? startDate
   const endDayId = hotel ? span.end?.id ?? r.end_day_id : r.end_day_id ?? span.end?.id ?? startDayId
   let ei = index(endDate, endDayId)
+  const openEnded = ei === null
   if (ei === null) ei = hotel ? Math.min(si + 1, axis.length - 1) : si
   const endHourRaw = hotel ? toHour(meta.check_out_time, 11) : toHour(e.time || to?.local_time, startHour + 1)
-  const end: Moment = ei === 'after' ? { day: axis.length - 1, hour: 24 } : ei === 'before' ? { day: si, hour: startHour + 1 } : { day: ei, hour: endHourRaw }
+  let end: Moment = ei === 'after' ? { day: axis.length - 1, hour: 24 } : ei === 'before' ? { day: si, hour: startHour + 1 } : { day: ei, hour: endHourRaw }
+  // A stay checked into on the last day with no end runs to the end of the axis, not back before its check-in.
+  if (hotel && openEnded && end.day === si && end.hour <= startHour) end = { day: si, hour: 24 }
   // An arrival that reads earlier than the departure in local time (a date line, a typo) keeps a small bar.
   if (end.day < si || (end.day === si && end.hour <= startHour)) return { kind: 'on', start: { day: si, hour: startHour }, end: { day: si, hour: startHour + 1 } }
   return { kind: 'on', start: { day: si, hour: startHour }, end }

@@ -1785,7 +1785,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.bullet.4':
     'Başlıq, tarixlər, üzlük və valyuta Səyahətlərim səhifəsində, səyahət kartındakı qələmlə redaktə olunur.',
   'help.ctx.trip.bullet.5':
-    'Sütunun daxili kənarındakı ox işarələri onu yığır və yerini xəritə tutur; sütunun yanındakı nazik ayırıcı onun enini dəyişir.',
+    'Sütunun daxili kənarındakı kiçik düymə onu yığır və yerini xəritə tutur; sütunun yanındakı nazik ayırıcı onun enini dəyişir.',
   'help.ctx.trip.bullet.6': 'Günlərin alətlər panelindəki geri qaytarma oxu plana edilən son dəyişikliyi geri alır.',
   // add-member
   'help.guide.add-member.title': 'Üzv əlavə edin',
@@ -1854,8 +1854,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Xəritəyə yer açın',
   'help.guide.collapse-columns.goal': 'Sütunu yığın və ya ona daha çox en verin.',
   'help.guide.collapse-columns.step.1':
-    'Günlər sütununu yığmaq üçün onun daxili kənarındakı ox işarəsinə klikləyin; yerini xəritə tutur. Məkanlar sütununda da eyni ox var.',
-  'help.guide.collapse-columns.step.2': 'Sütunu geri qaytarmaq üçün oxa yenidən klikləyin.',
+    'Sütunu yığmaq üçün günlər sütununun daxili kənarındakı panel işarəli kiçik düyməyə klikləyin; yerini xəritə tutur. Məkanlar sütununda da eyni düymə var.',
+  'help.guide.collapse-columns.step.2':
+    'Yığılmış sütun xəritənin küncündə kiçik bir kart qoyur: günlər üçün Plan, məkanlar üçün Məkanlar. Sütunu geri qaytarmaq üçün ona klikləyin.',
   'help.guide.collapse-columns.step.3':
     'Sütunun enini dəyişmək üçün sütunla xəritə arasındakı nazik ayırıcını sürüşdürün.',
   'help.guide.collapse-columns.result': 'Enlər yadda saxlanılır; növbəti girişdə sütunlar açıq vəziyyətdə qayıdır.',
@@ -1879,26 +1880,26 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Yuxarıdakı Məkan/Fəaliyyət əlavə et yazdığınız və ya axtardığınız məkan üçün formanı açır. Gün açıq olduqda düymədə Yeni məkan yazılır, yanındakı Günə əlavə et isə məkanı birbaşa həmin gündə yaradır.',
   'help.ctx.trip-places.bullet.2':
-    'Faylı idxal et .gpx, .kml və .kmz fayllarını qəbul edir; Siyahı idxalı paylaşılmış Google Maps və ya Naver Maps siyahısını qəbul edir. Faylı sadəcə sütunun üzərinə də ata bilərsiniz.',
+    'Yanındakı idxal düyməsi .gpx, .kml və .kmz faylları üçün Faylı idxal et, Google Maps və ya Naver Maps-dan paylaşılmış siyahı üçün isə Google siyahısı (Naver siyahıları da aktiv olduqda Siyahı idxalı) təklif edir. Faylı sadəcə sütunun üzərinə də ata bilərsiniz.',
   'help.ctx.trip-places.bullet.3':
-    'Açılan siyahı Hamısı, Planlaşdırılmayıb, Planlaşdırılıb və iz idxal edildikdən sonra İzlər arasında keçid edir; onun altında axtarış, kateqoriya filtri və minimum reytinq üçün ulduz yerləşir.',
+    'Onların altında axtarış, yanında seçimi başladan işarə, sonra filtrlər sırası: Göstər Hamısı, Planlaşdırılmayıb, Planlaşdırılıb və iz idxal edildikdən sonra İzlər arasında keçid edir, hər birinin yanında sayı ilə; etiket düyməsi kateqoriyaya, ulduz isə minimum reytinqə görə filtrləyir.',
   'help.ctx.trip-places.bullet.4':
-    'Sətirdə şəkil, ad və təsvir və ya ünvan göstərilir. Məkanın təfərrüatları üçün ona klikləyin, günün üzərinə sürüşdürün və ya Redaktə et, Günə əlavə et, Veb-saytı aç, Google Maps, Kolleksiyada yadda saxla və Sil üçün sağ klikləyin.',
+    'Sətirdə şəkil, ad və təsvir və ya ünvan göstərilir. Məkanın təfərrüatları üçün ona klikləyin, günün üzərinə sürüşdürün və ya Redaktə et, + Gün, Veb-saytı aç, Google Maps, Kolleksiyada yadda saxla və Sil üçün ona sağ klikləyin (və ya üç nöqtəsinə klikləyin).',
   'help.ctx.trip-places.bullet.5':
-    'Gün açıq olduqda planlaşdırılmamış sətrin sonundakı + məkanı həmin günə əlavə edir, Planlaşdırılıb isə yalnız həmin günü göstərir; yenidən genişləndirmək üçün Bütün səyahəti göstər var.',
+    'Gün açıq olduqda planlaşdırılmamış sətrin sonundakı + Gün məkanı həmin günə əlavə edir, Planlaşdırılıb isə yalnız həmin günü göstərir; yenidən genişləndirmək üçün Bütün səyahəti göstər var.',
   'help.ctx.trip-places.bullet.6':
-    'Filtr sətrinin sağ ucundakı işarə seçim rejimini başladır: bir neçə sətrə birdən yeni kateqoriya verilir, onlar kolleksiyaya əlavə edilir və ya silinir.',
+    'Axtarışın yanındakı işarə seçim rejimini başladır: sütunun aşağısındakı paneldən bir neçə sətrə birdən yeni kateqoriya verilir, onlar kolleksiyaya əlavə edilir, ziyarət edilib kimi işarələnir və ya silinir.',
   // create-place
   'help.guide.create-place.title': 'Məkan yaradın',
   'help.guide.create-place.goal': 'Məkanı və ya fəaliyyəti planın bilməli olduğu hər şeylə birlikdə əl ilə əlavə edin.',
   'help.guide.create-place.step.1':
     'Məkanlar sütununun yuxarısındakı Məkan/Fəaliyyət əlavə et düyməsinə klikləyin (gün açıq olduqda Yeni məkan). Forma açılır.',
   'help.guide.create-place.step.2':
-    'Yuxarıdakı Məkanları axtarın… sahəsinə məkanı yazın və nəticəni seçin. Ad, Ünvan, Enlik, Uzunluq və Veb-sayt doldurulur, soldakı Məkan təfərrüatları isə onun üçün şəkilləri, iş saatlarını və təsviri göstərir. Google açarı olan TREK-də siyahının altında Axtardığınız məkan deyil? Əvəzində Google-da axtarın yer alır və eyni axtarışı Google vasitəsilə aparır.',
+    'Məkanları axtarın… sahəsinə məkanı yazın və nəticəni seçin. Dialoqun başlığındakı ad, Ünvan, Enlik, Uzunluq və Veb-sayt doldurulur, soldakı Məkan təfərrüatları isə onun üçün şəkilləri, iş saatlarını və təsviri göstərir. Google açarı olan TREK-də siyahının altında Axtardığınız məkan deyil? Əvəzində Google-da axtarın yer alır və eyni axtarışı Google vasitəsilə aparır. Sağdakı Saxlanılan məkanlar kolleksiyalarınızın məkanlarını eyni şəkildə təklif edir.',
   'help.guide.create-place.step.3':
     'Məkan təfərrüatlarında Şəkil seç altındakı şəkilə klikləmək onu məkanın şəkli edir; Bu mətndən istifadə et təsviri formaya köçürür.',
   'help.guide.create-place.step.4':
-    'Sahələri yoxlayın: Ad məcburidir; Təsvir və Qeydlər sizin ixtiyarınızdadır; Ünvan, Enlik və Uzunluq axtarışdan gəlir və ya əl ilə yazılır; Kateqoriya səyahətin kateqoriyalarından birini seçir, yanındakı + isə elə orada yenisini yaradır; Veb-sayt linki qəbul edir.',
+    'Formada nə olduğunu yoxlayın: ad dialoqun başlığında yerləşir və yeganə məcburi sahədir; onun altındakı Kateqoriya nişanı səyahətin kateqoriyalarından birini seçir, yanındakı + isə elə orada yenisini yaradır. Ünvan, Enlik və Uzunluq axtarışdan gəlir və ya əl ilə yazılır; Təsvir və Qeydlər sizin ixtiyarınızdadır; Veb-sayt linki qəbul edir.',
   'help.guide.create-place.step.5':
     'Əlavə et düyməsinə klikləyin. Səyahətdə eyni adlı məkan artıq varsa, forma bunu bildirir və düymə Yenə də əlavə et olur.',
   'help.guide.create-place.result':
@@ -1917,7 +1918,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Günə əlavə et Yeni məkan ilə eyni formanı açır, sadəcə Əlavə et düyməsinə kliklədiyiniz an məkan açıq günə düşür.',
   'help.guide.place-to-open-day.step.3':
-    'Artıq mövcud olan məkan sətrinin sonundakı + ilə və ya sağ klik, Günə əlavə et ilə açıq günə əlavə edilir.',
+    'Artıq mövcud olan məkan sətrinin sonundakı + Gün ilə və ya sağ klik, + Gün ilə açıq günə əlavə edilir.',
   'help.guide.place-to-open-day.step.4':
     'Əksinə də işləyir, həm də əvvəlcə günü açmadan: məkanın sətrini sütundan çəkib gün kartının üzərinə buraxın. İki dayanacaq arasına buraxılsa, məhz oraya düşür.',
   'help.guide.place-to-open-day.result':
@@ -1929,12 +1930,12 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Siyahıda məkan tapın',
   'help.guide.filter-places.goal': 'Sütunu axtardığınız məkanlara qədər daraldın.',
   'help.guide.filter-places.step.1':
-    'Yuxarıdakı açılan siyahı Hamısı, Planlaşdırılmayıb (hələ heç bir gündə deyil), Planlaşdırılıb (gündədir) və İzlər (idxal edilmiş GPX izləri) arasında keçid edir, hər birinin yanında sayı göstərilir.',
-  'help.guide.filter-places.step.2': 'Məkanları axtarın… sahəsinə yazın; siz yazdıqca siyahı daralır.',
+    'Axtarışın altındakı Göstər açılan siyahısı Hamısı, Planlaşdırılmayıb (hələ heç bir gündə deyil), Planlaşdırılıb (gündədir) və İzlər (idxal edilmiş GPX izləri) arasında keçid edir, hər birinin yanında sayı göstərilir.',
+  'help.guide.filter-places.step.2': 'Yuxarıdakı Axtar sahəsinə yazın; siz yazdıqca siyahı daralır.',
   'help.guide.filter-places.step.3':
-    'Bütün kateqoriyalar bir və ya bir neçə kateqoriyanı, o cümlədən Kateqoriya yoxdur seçimini işarələmək üçün siyahı açır; onun aşağısındakı Filtri təmizlə onu sıfırlayır.',
+    'Göstər siyahısının yanındakı etiket düyməsi kateqoriyaları sıralayır: bir və ya bir neçəsini işarələyin, o cümlədən Kateqoriya yoxdur. Düymə işarələnənləri sayır, siyahının aşağısındakı Filtri təmizlə isə hamısını ləğv edir.',
   'help.guide.filter-places.step.4':
-    'Yanındakı ulduz minimum reytinq təyin edir: 5+, 4+ və s. yalnız ən azı o qədər qiymətləndirdiyiniz məkanları göstərir.',
+    'Onun yanındakı ulduz minimum reytinq təyin edir: 5+, 4+ və s. yalnız ən azı o qədər qiymətləndirdiyiniz məkanları göstərir.',
   'help.guide.filter-places.result':
     'Sətirlərin üstündəki say neçə məkanın uyğun gəldiyini göstərir; filtrlər birlikdə tətbiq olunur.',
   'help.guide.filter-places.tip.1':
@@ -1947,7 +1948,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Sətrə sağ klikləyib Redaktə et seçin və ya məkanı açıb təfərrüatlarında Redaktə et düyməsinə klikləyin.',
   'help.guide.edit-place.step.2':
-    'Lazım olanı dəyişin: Ad, Təsvir, Qeydlər, Ünvan, Enlik və Uzunluq, Kateqoriya, Veb-sayt. Gündən açıldıqda formada həmin gün üçün Bu gün üçün qeydlər, Başlanğıc və Son sahələri də olur.',
+    'Lazım olanı dəyişin: dialoqun başlığındakı ad və Kateqoriya nişanı, Ünvan, Enlik və Uzunluq, Təsvir, Qeydlər və Veb-sayt. Gündən açıldıqda formada Başlanğıc və Son, həmçinin Bu gün üçün qeydlər də olur.',
   'help.guide.edit-place.step.3': 'Yenilə düyməsinə klikləyin.',
   'help.guide.edit-place.result':
     'Dəyişiklik məkanın göründüyü hər yerdə tətbiq olunur: siyahıda, xəritədə və onun olduğu hər gündə.',
@@ -1961,22 +1962,22 @@ const help: TranslationStrings = {
   'help.guide.delete-place.step.1':
     'Sətrə sağ klikləyib Sil seçin və ya məkanın təfərrüatlarında Sil düyməsinə klikləyin.',
   'help.guide.delete-place.step.2':
-    'Təsdiqləyin. Məkanda gecələmə rezerv edilibsə və ya ona rezervasiya bağlıdırsa, sual onunla birlikdə nəyin silinəcəyini bildirir.',
+    'Sualda Sil düyməsinə klikləyin. Məkanda gecələmə rezerv edilibsə və ya ona rezervasiya bağlıdırsa, sual onunla birlikdə nəyin silinəcəyini bildirir.',
   'help.guide.delete-place.result':
     'Məkan siyahıdan, xəritədən və bütün günlərdən yox olur; günlərin üstündəki alətlər panelində Geri qaytar onu geri gətirir.',
   'help.guide.delete-place.tip.1':
     'Məkanı yalnız bir gündən çıxarmaq üçün isə həmin dayanacaqda Gündən çıxar istifadə edin.',
-  'help.guide.delete-place.tip.2': 'Bir neçə məkan birdən: filtrlərin yanındakı işarə seçim rejimini başladır.',
+  'help.guide.delete-place.tip.2': 'Bir neçə məkan birdən: axtarışın yanındakı işarə seçim rejimini başladır.',
   // select-places
   'help.guide.select-places.title': 'Bir neçə məkanı birdən dəyişin və ya silin',
   'help.guide.select-places.goal': 'Siyahını məkan-məkan deyil, bir dəfəyə səliqəyə salın.',
   'help.guide.select-places.step.1':
-    'Filtr sətrinin sağ ucundakı işarəyə klikləyin. Sətirlərdə qeyd qutuları yaranır və əməliyyatlar paneli görünür.',
+    'Axtarış sahəsinin yanındakı işarəyə klikləyin. Sətirlərdə dairəvi qeyd qutuları yaranır, sütunun aşağısında isə əməliyyatlar paneli qalxır.',
   'help.guide.select-places.step.2':
-    'Sətirləri işarələyin və ya paneldə Hamısını seç düyməsinə klikləyin; panel seçilənləri sayır.',
+    'İşarələmək üçün sətirlərə klikləyin. Paneldəki ikiqat işarə olan Hamısını seç filtrlərin saxladığı bütün sətirləri götürür.',
   'help.guide.select-places.step.3':
-    'Kateqoriyanı dəyiş hamısına bir kateqoriya verir; Kolleksiyada yadda saxla onları kolleksiyalarınızdan birinə kopyalayır; Seçilənləri sil təsdiqdən sonra onları silir.',
-  'help.guide.select-places.step.4': 'Seçim rejimindən çıxmaq üçün işarəyə yenidən klikləyin.',
+    'Panel işarələnmiş məkanları sayır. Kateqoriyanı dəyiş hamısına bir kateqoriya verir; Kolleksiyada yadda saxla onları kolleksiyalarınızdan birinə kopyalayır; Seçilənləri sil təsdiqdən sonra onları silir.',
+  'help.guide.select-places.step.4': 'Panelin sonundakı X, yəni Hazır, seçim rejimindən çıxır.',
   'help.guide.select-places.result':
     'Dəyişiklik hər seçilmiş məkana tətbiq olunur; silməni günlərin üstündəki alətlər panelindən geri qaytarmaq olar.',
   'help.guide.select-places.tip.1':
@@ -1987,7 +1988,7 @@ const help: TranslationStrings = {
   'help.guide.import-places-file.title': 'GPX, KML və ya KMZ faylından məkanları idxal edin',
   'help.guide.import-places-file.goal': 'Google My Maps, Google Earth və ya GPS izləyicisinin ixrac etdiyini gətirin.',
   'help.guide.import-places-file.step.1':
-    'Faylı idxal et düyməsinə klikləyin və ya faylı məkanlar sütununun istənilən yerinə atın.',
+    'Əlavə et düyməsinin yanındakı idxal düyməsinə klikləyin və Faylı idxal et seçin və ya faylı məkanlar sütununun istənilən yerinə atın.',
   'help.guide.import-places-file.step.2':
     'Faylı seçin və ya qutuya sürüşdürün. GPX üçün nəyi idxal edəcəyinizi işarələyin: Yol nöqtələri, Marşrutlar, İzlər (marşrut xətti ilə); KML və KMZ üçün isə Nöqtələr (Placemarks) və Yollar (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -2003,7 +2004,7 @@ const help: TranslationStrings = {
   'help.guide.import-places-list.title': 'Paylaşılmış Google Maps və ya Naver Maps siyahısını idxal edin',
   'help.guide.import-places-list.goal': 'Paylaşılmış siyahı linkini məkanlara çevirin.',
   'help.guide.import-places-list.step.1':
-    'Siyahı idxalı düyməsinə klikləyin və Google siyahısı və ya Naver siyahısı seçin.',
+    'Əlavə et düyməsinin yanındakı idxal düyməsinə klikləyin və Google siyahısı seçin. Naver siyahıları da aktiv olduqda bu bənd Siyahı idxalı adlanır və dialoq ikisindən hansını istədiyinizi soruşur.',
   'help.guide.import-places-list.step.2':
     'Siyahının paylaşılmış linkini yapışdırın. Google Maps istiqamət linki də işləyir: onun dayanacaqları sürüş ardıcıllığı ilə məkanlara çevrilir.',
   'help.guide.import-places-list.step.3': 'İdxal et düyməsinə klikləyin.',
@@ -2020,24 +2021,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'Yuxarıdakı alətlər paneli: İxrac et (PDF, təqvim, GPX), Bütün günləri genişləndir / Bütün günləri yığ, geri qaytarma oxu, Günlərin sırasını dəyiş və Bütün rezervasiya marşrutlarını göstər.',
   'help.ctx.trip-days.bullet.2':
-    'Gün kartı: başlıqda nömrə, hava, ad, tarix və günün xərci; günü açmaq üçün başlığa klikləyin, ox işarəsi onu yığır. İctimai nəqliyyat, Nəqliyyat əlavə et və Qeyd əlavə et də başlıqda yerləşir.',
+    'Gün kartı: gün nömrəsi və hava proqnozu olan kiçik blok, ad və tarix, həmçinin rezerv edilmiş gecə, icarə avtomobili və günün xərci üçün nişanlar. Günü açmaq üçün başlığa klikləyin, ox işarəsi onu yığır, + isə menyu açır: Bu günə məkan əlavə et, Yaşayış yeri əlavə et, Nəqliyyat əlavə et, İctimai nəqliyyat və Qeyd əlavə et.',
   'help.ctx.trip-days.bullet.3':
-    'Günün içində: ardıcıl dayanacaqlar, hər biri şəkil, ad, vaxt və şəkil üzərində kilidlə; qeydlər; günə aid rezervasiyalar; dayanacaqlar arasında isə hər hissənin yol vaxtı.',
+    'Günün içində: ardıcıl dayanacaqlar, hər biri şəkil, ad, vaxt, şəkil üzərində kilid və ona bağlanmış rezervasiyalarla; qeydlər; növünə görə rənglənmiş günün rezervasiyaları və nəqliyyatı; dayanacaqlar arasında isə hər hissənin yol vaxtı. Hər sətrin üç nöqtəli menyusu var, sağ klikin açdığı menyunun eynisi.',
   'help.ctx.trip-days.bullet.4':
     'Dayanacaqların altında marşrut paneli: Marşrut günü xəritədə çəkir, Optimallaşdır dayanacaqları sıralayır, Avtomobillə / Piyada günün hərəkət rejimini təyin edir, Google Maps-də aç və CoMaps-də aç isə günü ora ötürür.',
   'help.ctx.trip-days.bullet.5':
-    'Məkanlar günə məkanlar sütunundan sətri sürüşdürməklə, həmin sətirdəki + ilə, boş gündə Bu günə məkan əlavə et ilə və ya məkanın təfərrüatlarından əlavə edilir.',
+    'Məkanlar günə məkanlar sütunundan sətri sürüşdürməklə, həmin sətirdəki + Gün ilə, günün + menyusunda və ya boş gündə Bu günə məkan əlavə et ilə, yaxud məkanın təfərrüatlarından əlavə edilir.',
   'help.ctx.trip-days.bullet.6':
     'Aşağıdakı Ümumi xərc qiyməti olan hər dayanacağı və rezervasiyanı səyahətin valyutasında toplayır.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Günü oxuyun',
   'help.guide.read-day-plan.goal': 'Nəyisə dəyişməzdən əvvəl gün kartının hər hissəsinin nə bildirdiyini öyrənin.',
   'help.guide.read-day-plan.step.1':
-    'Başlıq: günün nömrəsi, gün üçün hava proqnozu, Gün 1 və ya ona verdiyiniz ad, tarix və günün xərci. Günü açmaq üçün başlığa klikləyin (onun təfərrüatlar paneli xəritənin üzərində açılır); sağdakı ox işarəsi kartı yığır və açır.',
+    'Başlıq: gün nömrəsi və hava proqnozu olan kiçik blok, sonra 1-ci gün və ya ona verdiyiniz ad, tarix, həmçinin rezerv edilmiş gecə (giriş və ya çıxış), icarə avtomobili və günün xərci üçün nişanlar. Günü açmaq üçün başlığa klikləyin (onun təfərrüatlar paneli xəritənin üzərində açılır); sağdakı + məkan, yaşayış yeri, nəqliyyat, ictimai nəqliyyat əlaqəsi və ya qeyd əlavə edir, ox işarəsi isə kartı yığır.',
   'help.guide.read-day-plan.step.2':
-    'Dayanacaq: soldakı tutacaq onu sürüşdürür, şəkildə marşrut optimallaşdırması üçün kilid var, sonra ad, təsvir və təyin edilibsə, bu gün üçün qeydlər. Dayanacağın Başlanğıc və Son vaxtı olduqda vaxt nişanı onları göstərir; sağ ucunda görünən oxlar onu yuxarı və ya aşağı daşıyır.',
+    'Dayanacaq: soldakı tutacaq onu sürüşdürür, şəkildə marşrut optimallaşdırması üçün kilid var, sonra ad, dayanacağın Başlanğıc və Son vaxtı olduqda vaxt nişanı, təsvir və təyin edilibsə, bu gün üçün qeydlər. Sağ ucundakı oxlar onu yuxarı və ya aşağı daşıyır, üç nöqtə isə menyusunu açır.',
   'help.guide.read-day-plan.step.3':
-    'Gündəki rezervasiya: dayanacaqdakı rezervasiya dayanacağı Rezervasiya təsdiqlənib və ya Rezervasiya gözləyir kimi işarələyir, nəqliyyat isə vaxtı və marşrutu ilə Yola düşmə və ya Çatma kimi göstərilir, yanında həmin marşrutu xəritədə çəkən kiçik keçirici olur.',
+    'Dayanacaqdakı rezervasiya onun üzərində Rezervasiya nişanı kimi durur: təsdiqlənibsə yaşıl, gözləyirsə kəhrəba rəngində, vaxtı və daşıyıcısı ilə; rezervasiyanı açmaq üçün nişana klikləyin, yanındakı marşrut düyməsi isə onun marşrutunu çəkir. Nəqliyyat növünə görə rənglənmiş ayrıca sətirdir, Yola düşmə və ya Çatma və vaxtı ilə. Rezervasiyaya klikləyin, təfərrüatları açılır; oradakı Redaktə et onu dəyişir.',
   'help.guide.read-day-plan.step.4':
     'İki dayanacaq arasındakı birləşdirici günün hərəkət rejimində həmin hissənin nə qədər vaxt apardığını və məsafəsini göstərir; yalnız həmin hissənin rejimini dəyişmək üçün ona klikləyin.',
   'help.guide.read-day-plan.step.5':
@@ -2045,7 +2046,7 @@ const help: TranslationStrings = {
   'help.guide.read-day-plan.result':
     'Kartdakı hər simvolun mənası var; aşağıdakı bələdçilər onların hər birini necə dəyişməyi göstərir.',
   'help.guide.read-day-plan.tip.1':
-    'Menyusunu açmaq üçün dayanacağa sağ klikləyin: Redaktə et, Gündən çıxar, Veb-saytı aç, naviqasiya tətbiqləri (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Kolleksiyada yadda saxla, Sil.',
+    'Menyusunu açmaq üçün dayanacağa sağ klikləyin və ya üç nöqtəsinə klikləyin: Redaktə et, Gündən çıxar, Veb-saytı aç, naviqasiya tətbiqləri (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Kolleksiyada yadda saxla, Sil.',
   'help.guide.read-day-plan.tip.2':
     'Dayanacağın üzərinə gəldikdə onun sonunda Rezervasiya əlavə et görünür: orada yaradılan rezervasiya bu gündəki bu dayanacağa bağlanır.',
   // place-onto-day
@@ -2054,9 +2055,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Məkanlar sütunundan sətri gün kartının üzərinə sürüşdürün. Məhz oraya qoymaq üçün iki dayanacaq arasına, sona əlavə etmək üçün isə kartın istənilən yerinə buraxın.',
   'help.guide.place-onto-day.step.2':
-    'Sürüşdürmədən: başlığına klikləyərək günü açın, sonra məkanın sətrinin sonundakı + düyməsinə klikləyin və ya sətrə sağ klikləyib Günə əlavə et seçin.',
+    'Sürüşdürmədən: başlığına klikləyərək günü açın, sonra məkanın sətrinin sonundakı + Gün düyməsinə klikləyin və ya sətrə sağ klikləyib + Gün seçin.',
   'help.guide.place-onto-day.step.3':
-    'Boş gündə Bu günə məkan əlavə et məkan formasını açır və yeni məkan dərhal günə düşür.',
+    'Günün + menyusunda və ya boş gündə olan Bu günə məkan əlavə et məkan formasını açır və yeni məkan dərhal günə düşür.',
   'help.guide.place-onto-day.step.4':
     'Məkanın təfərrüatlarında Günə əlavə et hansı gün olduğunu soruşur; günü başlığından açdıqda isə məkanlar sütunundakı Günə əlavə et açıq gündə yeni məkan yaradır.',
   'help.guide.place-onto-day.result':
@@ -2085,7 +2086,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.title': 'Dayanacağa vaxt təyin edin',
   'help.guide.set-stop-times.goal': 'Dayanacağın nə vaxt başlayıb bitdiyini təyin edin ki, gün cədvəl kimi oxunsun.',
   'help.guide.set-stop-times.step.1':
-    'Dayanacağa sağ klikləyib Redaktə et seçin. Gündən açıldıqda formanın aşağısında Başlanğıc və Son olur.',
+    'Dayanacağa sağ klikləyin və ya üç nöqtəsinə klikləyin, sonra Redaktə et seçin. Gündən açıldıqda formada həmin gün üçün Başlanğıc və Son olur, məkan sahəsinin düz altında.',
   'help.guide.set-stop-times.step.2':
     'Başlanğıc və istəsəniz Son daxil edin. Vaxt üst-üstə düşür: günün başqa vaxtlı dayanacağı ilə üst-üstə düşmə barədə xəbərdarlıq edir; Başlanğıcdan əvvəl olan Son Yenilə düyməsini bloklayır.',
   'help.guide.set-stop-times.step.3':
@@ -2124,13 +2125,13 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Günə qeyd əlavə edin',
   'help.guide.day-note.goal': 'Xatırlatmanı, bilet nömrəsini və ya B planını birbaşa gündə saxlayın.',
-  'help.guide.day-note.step.1': 'Günün başlığında Qeyd əlavə et düyməsinə klikləyin.',
+  'help.guide.day-note.step.1': 'Günün başlığındakı + düyməsinə klikləyin və Qeyd əlavə et seçin.',
   'help.guide.day-note.step.2':
-    'Qeyd altında ona ad verin (gün kartında məhz o göstərilir), qalanını isə Günlük qeyd altında yazın. Üstündəki alətlər paneli mətni formatlayır (qalın, siyahılar, linklər, sitatlar), soldakı Önizləmə isə alınacaq kartı göstərir.',
+    'Qeydin adını dialoqun başlığında, Qeyd yazılan yerə yazın; gün kartında məhz o göstərilir. Qalanını Günlük qeyd altında yazın: üstündəki alətlər paneli mətni formatlayır (qalın, siyahılar, linklər, sitatlar), soldakı Önizləmə isə alınacaq sətri göstərir.',
   'help.guide.day-note.step.3':
     'Qeyd dayanacaqlardan seçilsin deyə İkon və Rəng seçin, sonra Əlavə et düyməsinə klikləyin.',
   'help.guide.day-note.step.4':
-    'Qeyd gündə dayanacaq kimi yerləşir: onu yerinə sürüşdürün, Redaktə et və Sil üçün ona sağ klikləyin.',
+    'Qeyd gündə dayanacaq kimi yerləşir: onu yerinə sürüşdürün, Redaktə et və Sil üçün isə ona sağ klikləyin və ya üç nöqtəsindən istifadə edin.',
   'help.guide.day-note.result':
     'Qeyd günün bir hissəsidir, PDF-də də; vaxtlı qeyd vaxtlı dayanacaqlarla birlikdə sıralanır.',
   'help.guide.day-note.tip.1':
@@ -2181,15 +2182,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.goal':
     'Rezervasiya yarandıqdan sonra harada göründüyünü və hansı ekranda yaradıldığını bilin.',
   'help.guide.bookings-in-plan.step.1':
-    'Nəqliyyat (uçuş, qatar, bərə, avtobus, avtomobil) yola düşdüyü gündə Yola düşmə, çatdığı gündə isə Çatma kimi, vaxtı və marşrutu ilə göstərilir; bir neçə günlük nəqliyyat aradakı günləri də əhatə edir.',
+    'Nəqliyyat (uçuş, qatar, bərə, avtobus, avtomobil) növünə görə rənglənmiş sətirdir: yola düşdüyü gündə Yola düşmə, çatdığı gündə Çatma, vaxtı və marşrutu ilə; bir neçə günlük nəqliyyat aradakı günləri də əhatə edir. Sətrə klikləyin, rezervasiya açılır.',
   'help.guide.bookings-in-plan.step.2':
-    'Dayanacağa bağlı rezervasiya (restoran, tur) həmin dayanacağı Rezervasiya təsdiqlənib və ya Rezervasiya gözləyir kimi işarələyir; günü olan, lakin dayanacağı olmayan rezervasiya gündə ayrıca sətirdir.',
+    'Dayanacağa bağlı rezervasiya (restoran, tur) həmin dayanacaqda Rezervasiya nişanıdır: təsdiqlənibsə yaşıl, gözləyirsə kəhrəba rəngində, vaxtı ilə; günü olan, lakin dayanacağı olmayan rezervasiya gündə ayrıca sətirdir.',
   'help.guide.bookings-in-plan.step.3':
     'Oteldə gecələmə yaşayış yeridir: o, girişdən çıxışa qədər günün təfərrüatlar panelində Yaşayış yeri altında yer alır və həmin günlərin hər birinin marşrutu oradan başlayır.',
   'help.guide.bookings-in-plan.step.4':
     'Xəritədə nəqliyyat sətrindəki keçirici onun marşrutunu çəkir; alətlər panelindəki Bütün rezervasiya marşrutlarını göstər isə hamısını çəkir.',
   'help.guide.bookings-in-plan.step.5':
-    'Yaratmaq: üzərinə gəlinmiş dayanacaqda Rezervasiya əlavə et, gün başlığında Nəqliyyat əlavə et və İctimai nəqliyyat, idxal və fayllarla tam siyahı üçün isə Rezervasiyalar və Nəqliyyat tabları.',
+    'Yaratmaq: üzərinə gəlinmiş dayanacaqda Rezervasiya əlavə et, günün + menyusunda Nəqliyyat əlavə et və İctimai nəqliyyat, idxal və fayllarla tam siyahı üçün isə Rezervasiyalar və Nəqliyyat tabları.',
   'help.guide.bookings-in-plan.result':
     'Bir rezervasiya, plandakı bir yer; tablar eyni rezervasiyaları siyahı kimi göstərir.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2220,24 +2221,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Məkanlar sütununda sətrə, gündəki dayanacağa və ya xəritədəki markerə klikləyin, kart xəritənin üzərində açılır. Onu gün daxilində seçmək karta hansı dayanacağı nəzərdə tutduğunuzu bildirir və dayanacağın iştirakçılarını və rezervasiyasını da məhz bu gətirir.',
   'help.ctx.trip-place.bullet.2':
-    'Başlıq hissəsində dairəvi şəkil, ad, kateqoriya, ünvan və koordinatlar var. Öz şəklinizdən istifadə etmək üçün şəklə klikləyin, məkanın adını yerindəcə dəyişmək üçün ada iki dəfə klikləyin, sağdakı X isə kartı bağlayır.',
+    'Başlıq hissəsində dairəvi şəkil, ad, bir sətirdə ünvan və məlum olanlar üçün nişanlar var: açıq və ya bağlı, kateqoriya, qiymət, telefon nömrəsi və koordinatlar. Öz şəklinizdən istifadə etmək üçün şəklə klikləyin, məkanın adını yerindəcə dəyişmək üçün ada iki dəfə klikləyin, sağdakı X isə kartı bağlayır.',
   'help.ctx.trip-place.bullet.3':
-    'Onun altında: varsa qiymət, hər səyahətçinin məkana verdiyi ulduzlar, təsvir və qeydlər, dayanacaqda varsa isə Bu gün üçün qeydlər.',
+    'Onun altında: hər səyahətçinin məkana verdiyi ulduzlar, təsvir və qeydlər, dayanacaqda varsa isə Bu gün üçün qeydlər.',
   'help.ctx.trip-place.bullet.4':
     'Sonra aid olduğu qədər İş saatları, Trekin rəngi, Trek statistikası və Fayllar gəlir. Fayllar qovluqlarınızdan istənilən faylı götürür və bu dayanacağın rezervasiyasına bağlı olanları da sadalayır.',
   'help.ctx.trip-place.bullet.5':
     'Aşağıdakı sətir: gün açıq olduqda Günə əlavə et və ya Gündən çıxar, sonra Kolleksiyada yadda saxla, Naviqasiya, Veb-saytı aç, Redaktə et və Sil.',
   'help.ctx.trip-place.bullet.6':
-    'Axtarışdan seçilmiş məkan TREK indeksinin və ya OpenStreetMap-in onun haqqında bildiklərini daşıyır: şəklin ətrafında məkanın öz yerli vaxtına görə yaşıl Açıq və ya qırmızı Bağlanıb halqası, ulduzların altında telefon nömrəsi, daha aşağıda İş saatları (sətirdə günün saatları, bir klikdə isə bütün həftə) və Veb-saytı aç arxasında onun veb-saytı. Google reytinqi yalnız Google açarı olan TREK-də Google vasitəsilə tapılmış məkanda göstərilir.',
+    'Axtarışdan seçilmiş məkan TREK indeksinin və ya OpenStreetMap-in onun haqqında bildiklərini daşıyır: başlığın nişanları arasında Açıqdır və ya Bağlıdır, şəklin ətrafında məkanın öz yerli vaxtına görə yaşıl və ya qırmızı halqa ilə, telefon nömrəsi də nişan kimi, daha aşağıda İş saatları (sətirdə günün saatları, bir klikdə isə bütün həftə) və Veb-saytı aç arxasında onun veb-saytı. Google reytinqi yalnız Google açarı olan TREK-də Google vasitəsilə tapılmış məkanda göstərilir.',
   // read-place
   'help.guide.read-place.title': 'Kart məkan haqqında nə deyir',
   'help.guide.read-place.goal': 'Səyahətin bir məkan haqqında bildiyi hər şeyi bir kartda oxuyun.',
   'help.guide.read-place.step.1':
     'Günlər sütununda oxumaq istədiyiniz dayanacağa klikləyin. Kart xəritənin üzərində açılır və dayanacaq öz günündə işarələnmiş qalır.',
   'help.guide.read-place.step.2':
-    'Başlıq: dairəvi şəkil, ad, ünvan və dəqiq koordinatlar. TREK məkanın iş saatlarını bildikdə şəklin ətrafındakı Açıq yazılı yaşıl və ya Bağlanıb yazılı qırmızı halqa məkanın öz yerli vaxtına görə hazırda açıq olub-olmadığını göstərir. Sağdakı X kartı yenidən bağlayır.',
+    'Başlıq: dairəvi şəkil, ad və bir sətirdə ünvan; onun ipucunda tam ünvan var. Altındakı nişanlar məkanın öz yerli vaxtına görə hazırda Açıqdır və ya Bağlıdır deyir, şəklin ətrafında uyğun yaşıl və ya qırmızı halqa ilə, həmçinin telefon nömrəsini (klik onu telefon tətbiqinizə ötürür) və dəqiq koordinatları daşıyır. Sağdakı X kartı yenidən bağlayır.',
   'help.guide.read-place.step.3':
-    'Onun altında hər səyahətçinin məkana verdiyi ulduzlar, orta qiymət və neçə nəfərin səs verdiyi. Hələ heç kim səs verməyibsə, Hələ qiymətləndirilməyib yazılır. Dərhal aşağıda, məkanın telefon nömrəsi varsa, o göstərilir: ona klikləmək nömrəni telefon tətbiqinizə ötürür.',
+    'Başlığın altında ilk olaraq Reytinq gəlir: hər səyahətçinin məkana verdiyi ulduzlar, orta qiymət və neçə nəfərin səs verdiyi. Hələ heç kim səs verməyibsə, Hələ qiymətləndirilməyib yazılır.',
   'help.guide.read-place.step.4':
     'Sonra təsvir, onun altında isə qeydlər. Hər ikisi məkanın formasındakı mətndir, formatlanmış şəkildə: siyahılar, linklər və qalın mətn işləyir.',
   'help.guide.read-place.step.5':
@@ -2332,18 +2333,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'Dayanacaqdakı rezervasiya',
   'help.guide.place-booking.goal': 'Dayanacağa aid rezervasiyanı oxuyun, onu açın və ona yenisini bağlayın.',
   'help.guide.place-booking.step.1':
-    'Rezervasiyanın aid olduğu dayanacağı açın. Kartda Təsdiqlənib və ya Gözləyir yazısı və rezervasiyanın adı olan zolaq görünür.',
+    'Rezervasiyanın aid olduğu dayanacağı açın. Kart onu Rezervasiyalar altında rezervasiyanın adı və Təsdiqlənib və ya Gözləyir yazısı ilə ayrıca kiçik kart kimi göstərir.',
   'help.guide.place-booking.step.2':
-    'Zolaqda Tarix, Vaxt və Rezervasiya kodu, həmçinin rezervasiyanın bütün qeydləri yer alır.',
-  'help.guide.place-booking.step.3': 'Zolağa klikləyin. Rezervasiya xəritənin üzərində açılır.',
+    'Rezervasiya kartında Tarix, Vaxt və Rezervasiya kodu, həmçinin rezervasiyanın bütün qeydləri yer alır.',
+  'help.guide.place-booking.step.3': 'Rezervasiya kartına klikləyin. Rezervasiya xəritənin üzərində açılır.',
   'help.guide.place-booking.step.4':
     'Rezervasiyanın aşağısındakı Redaktə et onun öz formasını açır. Rezervasiyanı dayanacağa bağlayan oradakı Günlük planla əlaqələndir sahəsidir və burada artıq bu dayanacaq göstərilir. Formanı yenidən bağlayın.',
   'help.guide.place-booking.step.5':
-    'Dayanacaq üçün yeni rezervasiya günlər sütunundan başlayır: kursoru dayanacağın üzərinə gətirin və sonundakı + düyməsinə klikləyin. Forma artıq ona bağlanmış Yeni rezervasiya kimi açılır.',
+    'Dayanacaq üçün yeni rezervasiya günlər sütunundan başlayır: kursoru dayanacağın üzərinə gətirin və sonundakı bilet işarəsinə, yəni Rezervasiya əlavə et düyməsinə klikləyin. Forma artıq ona bağlanmış Yeni rezervasiya kimi açılır.',
   'help.guide.place-booking.result':
     'Rezervasiya dayanacağa bağlıdır: kartda görünür, gündə yer alır, faylları isə burada da Fayllar altında sıralanır.',
   'help.guide.place-booking.tip.1':
-    'Zolaq yalnız rezervasiyanın bağlandığı dayanacaqda görünür. Dayanacağı olmayan rezervasiya Rezervasiya bölməsində qalır.',
+    'Rezervasiya kartı yalnız rezervasiyanın bağlandığı dayanacaqda görünür. Dayanacağı olmayan rezervasiya Rezervasiya bölməsində qalır.',
   'help.guide.place-booking.tip.2':
     'Bir neçə rezervasiya eyni dayanacağa aid ola bilər: nahar və eyni qapıdan başlayan tur.',
   'help.guide.place-booking.tip.3':
@@ -2428,7 +2429,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Yuxarıda günün havası göstərilir. Proqnoz sətri onun hansı yer üçün olduğunu bildirir: günün ilk dayanacağı və ya oyandığınız otel.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Rezervasiyalar həmin günün rezervasiyalarını göstərir, hər birinin növü, aid olduğu dayanacaq və vaxtları ilə. Yaşıl təsdiqlənib, kəhrəba rəngi isə hələ gözləyir deməkdir; bu yalnız göstəricidir, rezervasiyalar Rezervasiyalar bölməsində dəyişdirilir.',
+    'Rezervasiyalar həmin günün rezervasiyalarını göstərir, hər birinin növü, aid olduğu dayanacaq və vaxtları ilə. Yaşıl təsdiqlənib, kəhrəba rəngi isə hələ gözləyir deməkdir; sətrə klikləmək rezervasiyanı açır.',
   'help.ctx.trip-day-detail.bullet.5':
     'Yaşayış yeri bu günə düşən bütün rezerv edilmiş gecələri göstərir: müvafiq günlərdə Giriş və Çıxış, giriş vaxt aralığı, çıxış vaxtı və təsdiq nömrəsi ilə.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2461,7 +2462,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'Böyük rəqəm günün temperaturudur, yanında ən aşağı və ən yüksək temperatur, həmçinin havanın sözlə təsviri.',
   'help.guide.day-weather.step.3':
-    'Altındakı kiçik bloklar: yağış ehtimalı, yağıntının miqdarı, ən güclü külək, gündoğumu və günbatımı.',
+    'Sağındakı nişanlar: yağış ehtimalı, yağıntının miqdarı, ən güclü külək, gündoğumu və günbatımı.',
   'help.guide.day-weather.step.4':
     'Aşağıda gün saatbasaat, hər iki saatdan bir göstərilir: vaxt, ikon, temperatur və yağış ehtimalı. 50 faizdən yuxarı olan saat mavi rənglə vurğulanır.',
   'help.guide.day-weather.result':
@@ -2495,18 +2496,18 @@ const help: TranslationStrings = {
   'help.guide.add-accommodation.step.2':
     'Gəldiyiniz günü açın və Yaşayış yeri altında Yaşayış yeri əlavə et düyməsinə klikləyin.',
   'help.guide.add-accommodation.step.3':
-    'Günlərə tətbiq et qalmanın hansı gecələri əhatə etdiyini göstərir: solda giriş günü, sağda çıxış günü. Hamısı bütün səyahəti əhatə edir.',
+    'Günlərə tətbiq et qalmanın hansı gecələri əhatə etdiyini göstərir: Başlanğıc giriş günü, Son çıxış günüdür, Hamısı isə bütün səyahəti əhatə edir. Dialoqun başlığı müddəti və gecələrin sayını göstərir.',
   'help.guide.add-accommodation.step.4':
     'Giriş, Qədər və Çıxış sahələrini doldurun, rezervasiya nömrəsini Təsdiq sahəsinə yazın. Dördü də boş qala bilər.',
   'help.guide.add-accommodation.step.5':
-    'Obyekti səyahətin məkanlarından seçin. Siyahının üstündəki filtr düymələri onu bir kateqoriya ilə məhdudlaşdırır.',
+    'Obyekti səyahətin məkanlarından seçin. Siyahının üstündəki Kateqoriya onu bir kateqoriya ilə məhdudlaşdırır.',
   'help.guide.add-accommodation.step.6': 'Yadda saxla düyməsinə klikləyin.',
   'help.guide.add-accommodation.result':
     'Qalma əhatə etdiyi hər gündə görünür: ilk gündə Giriş, sonuncuda Çıxış. Obyekt giriş günündə dayanacağa çevrilir, beləliklə xəritə ora gedən yolu çəkir və Rezervasiyalar altında Otel rezervasiyası yaranır.',
   'help.guide.add-accommodation.tip.1':
     'Seçici gəldiyiniz gündə, çıxış isə növbəti gündə açılır; yadda saxlamazdan əvvəl hər ikisini dəyişmək olar.',
   'help.guide.add-accommodation.tip.2':
-    'Oteli yaradarkən ona Otel kateqoriyasını verin, siyahının üstündəki filtr düymələri bir kliklə onu otellərinizlə məhdudlaşdıracaq.',
+    'Oteli yaradarkən ona Otel kateqoriyasını verin, siyahının üstündəki Kateqoriya bir kliklə onu otellərinizlə məhdudlaşdıracaq.',
   'help.guide.add-accommodation.tip.3':
     'Vaxtların heç biri məcburi deyil: girişi və kodu olmayan qalma da öz gecələrini əhatə edir və marşrutunu çəkir.',
   // edit-accommodation
@@ -2518,7 +2519,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'Sağdakı karandaş qalmanı yenidən açır. Pəncərədə indi Yaşayış yerini redaktə et yazılır.',
   'help.guide.edit-accommodation.step.3':
-    'Sahələr sırasını düzəldin: Giriş, Qədər, Çıxış və Təsdiq. Yuxarıdakı günləri və aşağıdakı obyekti də burada dəyişmək olar.',
+    'Giriş, Qədər, Çıxış və Təsdiq sahələrini düzəldin. Onların üstündəki günləri və aşağıdakı obyekti də burada dəyişmək olar.',
   'help.guide.edit-accommodation.step.4': 'Yadda saxla düyməsinə klikləyin.',
   'help.guide.edit-accommodation.step.5':
     'Karandaşın yanındakı X qalmanı bitirir. Heç nə soruşmur və ona aid Otel rezervasiyası da onunla birlikdə silinir.',
@@ -2535,7 +2536,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Rezervasiyalar günün rezervasiyalarını göstərir: həmin tarixə düşənləri və dayanacaqlarından birinə bağlı olanları.',
   'help.guide.day-bookings.step.2':
-    'Sətir rezervasiyanın növünü, adını və dayanacağa aiddirsə, nöqtədən sonra həmin dayanacağı göstərir. Vaxtları sağ kənarda yerləşir.',
+    'Sətir rezervasiyanın növünü, adını və dayanacağa aiddirsə, ondan sonra boz rəngdə həmin dayanacağı göstərir. Vaxtları sağ kənarda, status nöqtəsindən əvvəl yerləşir.',
   'help.guide.day-bookings.step.3':
     'Rəng rezervasiyanın vəziyyətini bildirir: yaşıl sətir təsdiqlənib, kəhrəba rəngli sətir hələ gözləyir. Otellər bu siyahıda deyil, onların aşağıda öz bloku var.',
   'help.guide.day-bookings.step.4':

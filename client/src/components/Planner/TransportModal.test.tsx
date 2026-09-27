@@ -1,4 +1,4 @@
-// FE-PLANNER-TRANSMODAL-001 to FE-PLANNER-TRANSMODAL-080
+// FE-PLANNER-TRANSMODAL-001 to FE-PLANNER-TRANSMODAL-082
 import { render, screen, waitFor, fireEvent, within, act } from '../../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
@@ -1618,5 +1618,46 @@ describe('TransportModal', () => {
     const hint = screen.getByText(/Search real connections and add them straight to the day/);
     expect(hint).not.toHaveClass('truncate');
     expect(screen.queryByText('Title *')).not.toBeInTheDocument();
+  });
+
+  it('FE-PLANNER-TRANSMODAL-081: a car stop moves up and keeps the time given to it', async () => {
+    const onSave = vi.fn().mockResolvedValue(undefined);
+    render(<TransportModal {...defaultProps} days={routeDays} selectedDayId={10} onSave={onSave} />);
+
+    await pickType(/^Car$/i);
+    await userEvent.type(screen.getByPlaceholderText(/e.g. Lufthansa/i), 'Mietwagen');
+    await userEvent.click(screen.getByRole('button', { name: /Add stop/i }));
+    await userEvent.click(screen.getByRole('button', { name: /Add stop/i }));
+
+    const fields = screen.getAllByTestId('location-select');
+    fireEvent.change(fields[0], { target: { value: 'Berlin' } });
+    fireEvent.change(fields[1], { target: { value: 'Prag' } });
+    fireEvent.change(fields[2], { target: { value: 'Dresden' } });
+    fireEvent.change(fields[3], { target: { value: 'Bastei' } });
+    // The stops' own time fields come first, before the pick-up and return times.
+    fireEvent.change(screen.getAllByTestId('time-picker')[1], { target: { value: '14:30' } });
+
+    await userEvent.click(screen.getAllByRole('button', { name: /Move up/i })[1]);
+
+    await userEvent.click(screen.getByRole('button', { name: /^Add$/i }));
+    await waitFor(() => expect(onSave).toHaveBeenCalled());
+    const payload = onSave.mock.calls[0][0];
+    expect(payload.endpoints.map((e: { name: string }) => e.name)).toEqual(['Berlin', 'Bastei', 'Dresden', 'Prag']);
+    expect(payload.endpoints.find((e: { name: string }) => e.name === 'Bastei').local_time).toBe('14:30');
+  });
+
+  it('FE-PLANNER-TRANSMODAL-082: a multi-leg train saves the code typed for one of its segments', async () => {
+    const onSave = vi.fn().mockResolvedValue(undefined);
+    render(<TransportModal {...defaultProps} days={routeDays} reservation={multiLegTrain()} onSave={onSave} />);
+
+    const codes = screen.getAllByPlaceholderText('e.g. ABC12345') as HTMLInputElement[];
+    // One code per segment, then the booking's own.
+    expect(codes).toHaveLength(3);
+    fireEvent.change(codes[1], { target: { value: 'SEG-TWO' } });
+
+    await userEvent.click(screen.getByRole('button', { name: /^Update$/i }));
+    await waitFor(() => expect(onSave).toHaveBeenCalled());
+    const legs = onSave.mock.calls[0][0].metadata.legs as { confirmation_number?: string }[];
+    expect(legs.map(l => l.confirmation_number ?? null)).toEqual([null, 'SEG-TWO']);
   });
 });

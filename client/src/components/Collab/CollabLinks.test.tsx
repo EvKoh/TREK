@@ -1,4 +1,4 @@
-// FE-COMP-LINKS-001 to FE-COMP-LINKS-013
+// FE-COMP-LINKS-001 to FE-COMP-LINKS-015
 
 vi.mock('../../api/websocket', () => ({
   connect: vi.fn(),
@@ -230,5 +230,38 @@ describe('CollabLinks', () => {
     render(<CollabLinks tripId={1} />);
     expect(await screen.findByText(/no shared links yet|collab\.links\.empty/i)).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /add link|collab\.links\.add/i })).not.toBeInTheDocument();
+  });
+
+  it('FE-COMP-LINKS-014: pinning a link saves it and turns the pin into an unpin', async () => {
+    const user = userEvent.setup();
+    let put: Record<string, unknown> | null = null;
+    server.use(
+      http.get('/api/trips/1/collab/links', () => HttpResponse.json({ links: [buildLink()] })),
+      http.put('/api/trips/1/collab/links/1', async ({ request }) => {
+        put = await request.json() as Record<string, unknown>;
+        return HttpResponse.json({ link: buildLink({ pinned: 1 }) });
+      }),
+    );
+    render(<CollabLinks tripId={1} />);
+    await user.click(await screen.findByRole('button', { name: /^pin link$|^collab\.links\.pin$/i }));
+    expect(await screen.findByRole('button', { name: /^unpin link$|^collab\.links\.unpin$/i })).toBeInTheDocument();
+    expect(put).toEqual({ pinned: true });
+  });
+
+  it('FE-COMP-LINKS-015: a failed pin says so and leaves the link as it was', async () => {
+    const user = userEvent.setup();
+    const errors = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const toasts: string[] = [];
+    window.__addToast = ((message: string) => { toasts.push(message); return 1; }) as unknown as typeof window.__addToast;
+    server.use(
+      http.get('/api/trips/1/collab/links', () => HttpResponse.json({ links: [buildLink()] })),
+      http.put('/api/trips/1/collab/links/1', () => new HttpResponse(null, { status: 500 })),
+    );
+    render(<CollabLinks tripId={1} />);
+    await user.click(await screen.findByRole('button', { name: /^pin link$|^collab\.links\.pin$/i }));
+    await waitFor(() => expect(toasts.length).toBe(1));
+    expect(screen.getByRole('button', { name: /^pin link$|^collab\.links\.pin$/i })).toBeInTheDocument();
+    delete window.__addToast;
+    errors.mockRestore();
   });
 });

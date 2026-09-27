@@ -20,14 +20,13 @@ const guide = (id: string): HelpGuide => {
   return g
 }
 
-/** The flight the seed creates. Its row on day 1 carries the Departure span label. */
-const FLIGHT = { title: 'LH716', row: /^Departure LH716/ }
+/** The flight the seed creates. Its row on day 1 is its title, then the Departure span label. */
+const FLIGHT = { title: 'LH716 FRA → HND', row: /^LH716 FRA → HND Departure/ }
 /**
  * The connection the fixtures store on day 6, so no guide has to search for one
- * first. Its card writes the two ends either side of an arrow icon, with no
- * text between them, so `hasText` gets the first end rather than the title.
+ * first. Its card is named by its title, the two ends with an arrow between them.
  */
-const JOURNEY = { title: TRANSIT_JOURNEY, onCard: 'Arashiyama Bamboo Grove' }
+const JOURNEY = { title: TRANSIT_JOURNEY }
 /** What plan-transit plans on day 1; the title the panel builds from the two ends. */
 const PLANNED = 'Senso-ji Temple → teamLab Planets'
 /** What add-transport creates. Both ends are searched, so the map has something to draw. */
@@ -37,22 +36,35 @@ const TAXI = {
   to: { query: 'teamLab Planets', match: /^teamLab/ },
 }
 
-/** A day card's header: number, weather, "Day n", date, and the four action buttons. */
+/** A day card's head: number, weather, "Day n", date, its pills and the "+" with the chevron. */
 const dayHeader = (page: Page, n: number) => page.getByRole('button', { name: new RegExp(`^${n} .*Day ${n} `) })
-/** A booking card in the tab, told apart by what is written on it. */
-const card = (page: Page, text: string) => page.locator('.bg-surface-card').filter({ hasText: text }).first()
+/** The "+" in a day's head; Add transport and Public transit are in the menu it opens. */
+const addToDay = (page: Page, n: number) => dayHeader(page, n).getByRole('button', { name: 'Add to day' })
+/** That menu: a popover of plain buttons, told apart from a tooltip by its role. */
+const dayMenu = (page: Page) => page.locator('.trek-popover-enter:not([role="tooltip"])').last()
+async function openDayMenu(page: Page, n: number): Promise<void> {
+  await addToDay(page, n).click()
+  await expect(dayMenu(page).getByRole('button', { name: 'Add transport' })).toBeVisible()
+  await beat(page, 300)
+}
+/** A booking card in the tab: an <article> named by the booking's title. */
+const card = (page: Page, title: string) => page.getByRole('article', { name: title }).first()
+/** The two popovers of the tab's toolbar, each opened by its own button. */
+const toolbarButton = (page: Page, name: 'Filter' | 'View options') => page.getByRole('button', { name, exact: true })
+const toolbarMenu = (page: Page, name: 'Filter' | 'View options') => toolbarButton(page, name).locator('xpath=../..').getByRole('menu')
 /** A transport's row in the day plan; the whole row is the button that opens it. */
 const transportRow = (page: Page, name: RegExp) => page.getByRole('button', { name }).first()
 /** The booking a click on a row or a card opens, named by the booking's title. */
 const bookingDetail = (page: Page, title: string) => page.getByRole('dialog', { name: title })
 /** The Edit at the foot of that booking, which leads on to its form. */
 const detailEdit = (page: Page, title: string) => bookingDetail(page, title).getByRole('button', { name: 'Edit', exact: true })
-/** A toolbar type chip or a section heading — both are a label followed by their count. */
-const counted = (page: Page, label: string) => page.getByRole('button', { name: new RegExp(`^${label} \\d+$`) })
-/** A labelled field block inside the open dialog. */
-const block = (page: Page, label: string) => modal(page).getByText(label, { exact: true }).locator('xpath=..')
-/** CustomSelect portals its menu to the body: a fixed panel at z-index 99999. */
-const selectMenu = (page: Page) => page.locator('body > div[style*="99999"]').last()
+/** A block of the open dialog by its heading: every block is a <section> that opens with it. */
+const block = (page: Page, label: string) => modal(page).getByText(label, { exact: true }).first().locator('xpath=ancestor::section[1]')
+/** The head band of the open dialog, where a booking's title is typed and its pills sit. */
+const headBand = (page: Page) => modal(page).locator('header').first()
+/** The Booking Type pill in that band, and the list it opens (a portal named after it). */
+const typePill = (page: Page) => modal(page).getByRole('button', { name: /^Booking Type:/ })
+const typeMenu = (page: Page) => page.getByRole('group', { name: 'Booking Type' })
 /** The leg-mode popover, told apart from the connector's tooltip by what stands in it. */
 const legMenu = (page: Page) =>
   page.locator('.trek-popover-enter').filter({ has: page.getByRole('button', { name: 'Use day default' }) }).last()
@@ -69,8 +81,6 @@ const suggestions = (box: Locator) => box.locator('xpath=../..').locator('> div'
 /** A result of the transit search: the card's own toggle carries the times as its name. */
 const itinerary = (page: Page, n: number) =>
   modal(page).getByRole('button', { name: /^\d{1,2}:\d{2} – \d{1,2}:\d{2} / }).nth(n)
-/** The read-only sheet an endpoint marker on the map opens; its own portal, no shared class. */
-const transportSheet = (page: Page) => portalDialog(page, page.getByRole('button', { name: 'Close' }))
 
 async function searchLocation(page: Page, box: Locator, query: string, match: RegExp): Promise<void> {
   await box.click()
@@ -130,8 +140,8 @@ const airportBoxes = (page: Page) => modal(page).getByPlaceholder('Airport code 
 const [OUT_LEG, HOME_LEG, , OTHER] = AIRTRAIL_FLIGHTS
 const JOINED = { title: `${OUT_LEG.from} → ${OUT_LEG.to} → ${HOME_LEG.to}`, layover: OUT_LEG.to }
 
-/** The toolbar's AirTrail button; its label is visible at this viewport, the title is the picker's name. */
-const airtrailButton = (page: Page) => page.getByRole('button', { name: 'AirTrail', exact: true })
+/** The toolbar's AirTrail button: an icon named like the picker it opens. */
+const airtrailButton = (page: Page) => page.getByRole('button', { name: 'Import from AirTrail', exact: true })
 /** The flight picker is a bare portal like the booking import; its title tells it apart. */
 const airtrailPicker = (page: Page) => portalDialog(page, page.getByText('Import from AirTrail', { exact: true }))
 /** A flight's row in the picker: a button named by the airline and the flight number. */
@@ -178,20 +188,33 @@ const SCRIPTS: Record<string, GuideScript> = {
     steps: [
       only(p => p.getByRole('button', { name: 'Transports', exact: true })),
       {
-        target: p => counted(p, 'All').locator('xpath=..'),
-        act: async p => {
-          await counted(p, 'Train').click()
+        // The menu with Train ticked, so the picture shows a filter in force.
+        prepare: async p => {
+          await toolbarButton(p, 'Filter').click()
+          await expect(toolbarMenu(p, 'Filter')).toBeVisible()
+          await toolbarMenu(p, 'Filter').getByRole('button', { name: /^Train\b/ }).click()
           await expect(card(p, FLIGHT.title)).toHaveCount(0)
+          await settle(p)
+        },
+        target: p => toolbarMenu(p, 'Filter'),
+        act: async p => {
+          await toolbarMenu(p, 'Filter').getByRole('button', { name: 'Reset filters' }).click()
+          await expect(card(p, FLIGHT.title)).toBeVisible()
           await settle(p)
         },
       },
       {
         prepare: async p => {
-          await counted(p, 'All').click()
-          await expect(card(p, FLIGHT.title)).toBeVisible()
+          await toolbarButton(p, 'View options').click()
+          await expect(toolbarMenu(p, 'View options')).toBeVisible()
           await settle(p)
         },
-        target: p => counted(p, 'Automated public transit'),
+        target: p => toolbarMenu(p, 'View options'),
+        act: async p => {
+          await toolbarButton(p, 'View options').click()
+          await expect(toolbarMenu(p, 'View options')).toHaveCount(0)
+          await settle(p)
+        },
       },
       only(p => card(p, FLIGHT.title)),
       {
@@ -218,24 +241,24 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: p => openTrip(p),
     steps: [
       {
-        // captureGuide hovers the target before the shot, so the tooltip is in the picture.
-        target: p => dayHeader(p, 1).getByRole('button', { name: 'Add transport' }),
+        prepare: p => openDayMenu(p, 1),
+        target: p => dayMenu(p).getByRole('button', { name: 'Add transport' }),
         act: async p => {
-          await dayHeader(p, 1).getByRole('button', { name: 'Add transport' }).click()
+          await dayMenu(p).getByRole('button', { name: 'Add transport' }).click()
           await expect(modal(p).getByRole('heading', { name: 'Add transport' })).toBeVisible()
           await settle(p)
         },
       },
       {
         prepare: async p => {
-          await block(p, 'Booking Type').getByRole('button').first().click()
-          await expect(selectMenu(p)).toBeVisible()
+          await typePill(p).click()
+          await expect(typeMenu(p)).toBeVisible()
           await beat(p, 300)
         },
-        target: selectMenu,
+        target: typeMenu,
         act: async p => {
-          await selectMenu(p).getByRole('button', { name: /^Taxi$/ }).first().click()
-          await expect(selectMenu(p)).toHaveCount(0)
+          await typeMenu(p).getByRole('button', { name: /^Taxi$/ }).first().click()
+          await expect(typeMenu(p)).toHaveCount(0)
           await expect(modal(p).getByText('Start time', { exact: true })).toBeVisible()
           await settle(p)
         },
@@ -245,7 +268,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await typeInto(p, modal(p).getByPlaceholder('e.g. Lufthansa LH123, Hotel Adlon, ...'), TAXI.title)
           await settle(p)
         },
-        target: p => block(p, 'Title *'),
+        target: headBand,
       },
       {
         prepare: async p => {
@@ -332,9 +355,10 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: p => openTrip(p),
     steps: [
       {
-        target: p => dayHeader(p, 1).getByRole('button', { name: 'Public transit' }),
+        prepare: p => openDayMenu(p, 1),
+        target: p => dayMenu(p).getByRole('button', { name: 'Public transit' }),
         act: async p => {
-          await dayHeader(p, 1).getByRole('button', { name: 'Public transit' }).click()
+          await dayMenu(p).getByRole('button', { name: 'Public transit' }).click()
           await expect(modal(p).getByRole('heading', { name: 'Public transit' })).toBeVisible()
           await settle(p)
         },
@@ -394,14 +418,14 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: p => openTrip(p, { tab: 'transports' }),
     steps: [
       {
-        target: p => card(p, JOURNEY.onCard),
+        target: p => card(p, JOURNEY.title),
         act: async p => {
-          await card(p, JOURNEY.onCard).click()
+          await card(p, JOURNEY.title).click()
           await expect(bookingDetail(p, JOURNEY.title)).toBeVisible()
           await settle(p)
         },
       },
-      only(p => bookingDetail(p, JOURNEY.title).getByText('Itinerary', { exact: true }).locator('xpath=..')),
+      only(p => bookingDetail(p, JOURNEY.title).getByText('Itinerary', { exact: true }).locator('xpath=ancestor::section[1]')),
       {
         target: p => bookingDetail(p, JOURNEY.title).getByRole('button', { name: 'Change route' }),
         act: async p => {
@@ -519,13 +543,13 @@ const SCRIPTS: Record<string, GuideScript> = {
       {
         prepare: async p => {
           await p.locator('.trek-endpoint-marker').last().click()
-          await expect(transportSheet(p)).toBeVisible()
+          await expect(bookingDetail(p, FLIGHT.title)).toBeVisible()
           await settle(p)
         },
-        target: transportSheet,
+        target: p => bookingDetail(p, FLIGHT.title),
         act: async p => {
-          await transportSheet(p).getByRole('button', { name: 'Close' }).click()
-          await expect(transportSheet(p)).toHaveCount(0)
+          await p.keyboard.press('Escape')
+          await expect(bookingDetail(p, FLIGHT.title)).toHaveCount(0)
           await settle(p)
         },
       },

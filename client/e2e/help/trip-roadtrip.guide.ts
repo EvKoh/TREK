@@ -312,7 +312,8 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: dayPicker,
         act: async p => {
           await dayPicker(p).click()
-          await p.getByRole('button', { name: 'Day 2', exact: true }).last().click()
+          // The rows are options named by the day's number and its label, "2 Day 2".
+          await p.getByRole('option', { name: /\bDay 2$/ }).last().click()
           await expect(dayPicker(p)).toContainText('Day 2')
           await settle(p)
         },

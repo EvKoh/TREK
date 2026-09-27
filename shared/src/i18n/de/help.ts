@@ -1773,7 +1773,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.bullet.4':
     'Titel, Daten, Cover und Währung bearbeitest du unter Meine Trips, mit dem Stift auf der Reisekarte.',
   'help.ctx.trip.bullet.5':
-    'Die Chevrons an der Innenkante einer Spalte klappen sie weg, und die Karte nimmt den Platz; der schmale Trenner neben einer Spalte ändert ihre Breite.',
+    'Die Lasche an der Innenkante einer Spalte klappt sie weg, und die Karte nimmt den Platz; der schmale Trenner neben einer Spalte ändert ihre Breite.',
   'help.ctx.trip.bullet.6':
     'Der Rückgängig-Pfeil in der Werkzeugleiste der Tage nimmt die letzte Änderung am Plan zurück.',
   // add-member
@@ -1841,8 +1841,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Platz für die Karte schaffen',
   'help.guide.collapse-columns.goal': 'Klapp eine Spalte weg oder gib ihr mehr Breite.',
   'help.guide.collapse-columns.step.1':
-    'Klick auf den Chevron an der Innenkante der Tage-Spalte, um sie einzuklappen; die Karte nimmt den Platz. Die Orte-Spalte hat denselben Chevron.',
-  'help.guide.collapse-columns.step.2': 'Klick noch einmal auf den Chevron, um die Spalte zurückzuholen.',
+    'Klick auf die Lasche an der Innenkante der Tage-Spalte, die mit dem Seitenleisten-Symbol, um die Spalte wegzuklappen; die Karte nimmt den Platz. Die Orte-Spalte hat dieselbe Lasche.',
+  'help.guide.collapse-columns.step.2':
+    'Eine weggeklappte Spalte lässt eine Kachel in der Ecke der Karte zurück, Planung für die Tage und Orte für die Orte. Klick darauf, um die Spalte zurückzuholen.',
   'help.guide.collapse-columns.step.3':
     'Zieh den schmalen Trenner zwischen einer Spalte und der Karte, um die Breite der Spalte zu ändern.',
   'help.guide.collapse-columns.result':
@@ -1869,15 +1870,15 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Ort/Aktivität hinzufügen oben öffnet das Formular für einen Ort, den du eintippst oder suchst. Solange ein Tag geöffnet ist, heißt der Knopf Neuer Ort, und Zum Tag daneben legt den Ort direkt auf diesem Tag an.',
   'help.ctx.trip-places.bullet.2':
-    'Dateimport nimmt .gpx-, .kml- und .kmz-Dateien; Listenimport nimmt eine geteilte Liste aus Google Maps oder Naver Maps. Eine Datei lässt sich auch einfach auf die Spalte fallen lassen.',
+    'Der Import-Knopf daneben bietet Dateimport für .gpx-, .kml- und .kmz-Dateien und Google Liste (Listenimport, wenn auch Naver-Listen an sind) für eine geteilte Liste aus Google Maps oder Naver Maps. Eine Datei lässt sich auch einfach auf die Spalte fallen lassen.',
   'help.ctx.trip-places.bullet.3':
-    'Das Auswahlmenü wechselt zwischen Alle, Ungeplant, Geplant und, sobald ein Track importiert wurde, Tracks; darunter sitzen die Suche, der Kategoriefilter und der Stern für eine Mindestbewertung.',
+    'Darunter die Suche, mit dem Haken daneben, der eine Auswahl startet, und eine Reihe Filter: Anzeigen wechselt zwischen Alle, Ungeplant, Geplant und, sobald ein Track importiert wurde, Tracks, jeweils mit ihrer Anzahl; der Etiketten-Knopf filtert nach Kategorie und der Stern nach einer Mindestbewertung.',
   'help.ctx.trip-places.bullet.4':
-    'Eine Zeile zeigt Bild, Name und Beschreibung oder Adresse. Klick sie für die Ortsdetails an, zieh sie auf einen Tag, oder öffne mit Rechtsklick Bearbeiten, + Tag, Webseite öffnen, Google Maps, In Sammlung speichern und Löschen.',
+    'Eine Zeile zeigt Bild, Name und Beschreibung oder Adresse. Klick sie für die Ortsdetails an, zieh sie auf einen Tag, oder öffne mit Rechtsklick (oder über ihre drei Punkte) Bearbeiten, + Tag, Webseite öffnen, Google Maps, In Sammlung speichern und Löschen.',
   'help.ctx.trip-places.bullet.5':
-    'Bei geöffnetem Tag legt ein + am Ende einer ungeplanten Zeile den Ort auf diesen Tag, und Geplant listet nur diesen Tag, mit Ganze Reise anzeigen zum Aufweiten.',
+    'Bei geöffnetem Tag legt + Tag am Ende einer ungeplanten Zeile den Ort auf diesen Tag, und Geplant listet nur diesen Tag, mit Ganze Reise anzeigen zum Aufweiten.',
   'help.ctx.trip-places.bullet.6':
-    'Der Haken am rechten Ende der Filterzeile startet eine Auswahl: mehrere Zeilen auf einmal bekommen eine neue Kategorie, wandern in eine Sammlung oder werden gelöscht.',
+    'Der Haken neben der Suche startet eine Auswahl: über die Leiste am Fuß der Spalte bekommen mehrere Zeilen auf einmal eine neue Kategorie, wandern in eine Sammlung, werden als besucht markiert oder gelöscht.',
   // create-place
   'help.guide.create-place.title': 'Einen Ort anlegen',
   'help.guide.create-place.goal':
@@ -1885,11 +1886,11 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.1':
     'Klick oben in der Orte-Spalte auf Ort/Aktivität hinzufügen (Neuer Ort, solange ein Tag geöffnet ist). Das Formular öffnet sich.',
   'help.guide.create-place.step.2':
-    'Tipp den Ort oben in Ortssuche... ein und wähl ein Ergebnis. Name, Adresse, Breitengrad, Längengrad und Website füllen sich, und Ortsdetails links zeigt Bilder, Öffnungszeiten und eine Beschreibung dazu. Auf einem TREK mit Google-Schlüssel steht unter der Liste Nicht der richtige Ort? Stattdessen bei Google suchen und schickt dieselbe Suche noch einmal über Google.',
+    'Tipp den Ort in Ortssuche... ein und wähl ein Ergebnis. Der Name im Kopf des Dialogs, Adresse, Breitengrad, Längengrad und Website füllen sich, und Ortsdetails links zeigt Bilder, Öffnungszeiten und eine Beschreibung dazu. Auf einem TREK mit Google-Schlüssel steht unter der Liste Nicht der richtige Ort? Stattdessen bei Google suchen und schickt dieselbe Suche noch einmal über Google. Gespeicherte Orte rechts bietet die Orte deiner Sammlungen auf dieselbe Weise an.',
   'help.guide.create-place.step.3':
     'In den Ortsdetails macht ein Klick auf ein Bild unter Bild auswählen es zum Bild des Ortes; Text übernehmen trägt die Beschreibung ins Formular.',
   'help.guide.create-place.step.4':
-    'Prüf die Felder: Name ist Pflicht; Beschreibung und Notizen gehören dir; Adresse, Breitengrad und Längengrad kommen aus der Suche oder werden getippt; Kategorie wählt eine der Kategorien der Reise, und das + daneben legt auf der Stelle eine neue an; Website nimmt den Link.',
+    'Prüf, was im Formular steht: der Name sitzt im Kopf des Dialogs und ist das einzige Pflichtfeld; die Kategorie-Pille darunter wählt eine der Kategorien der Reise, und das + daneben legt auf der Stelle eine neue an. Adresse, Breitengrad und Längengrad kommen aus der Suche oder werden getippt; Beschreibung und Notizen gehören dir; Website nimmt den Link.',
   'help.guide.create-place.step.5':
     'Klick auf Hinzufügen. Liegt schon ein Ort gleichen Namens in der Reise, sagt das Formular es, und der Knopf wird zu Trotzdem hinzufügen.',
   'help.guide.create-place.result':
@@ -1909,7 +1910,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Zum Tag öffnet dasselbe Formular wie Neuer Ort, nur landet der Ort in dem Moment auf dem geöffneten Tag, in dem du auf Hinzufügen klickst.',
   'help.guide.place-to-open-day.step.3':
-    'Ein Ort, den es schon gibt, kommt mit dem + am Ende seiner Zeile auf den geöffneten Tag, oder per Rechtsklick über + Tag.',
+    'Ein Ort, den es schon gibt, kommt mit + Tag am Ende seiner Zeile auf den geöffneten Tag, oder per Rechtsklick über + Tag.',
   'help.guide.place-to-open-day.step.4':
     'Andersherum geht es auch, und ohne vorher einen Tag zu öffnen: Zieh die Zeile des Ortes aus der Spalte und lass sie auf einer Tageskarte los. Zwischen zwei Stopps abgelegt, landet er genau dort.',
   'help.guide.place-to-open-day.result':
@@ -1921,10 +1922,10 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Einen Ort in der Liste finden',
   'help.guide.filter-places.goal': 'Eng die Spalte auf die Orte ein, die du suchst.',
   'help.guide.filter-places.step.1':
-    'Das Auswahlmenü oben wechselt zwischen Alle, Ungeplant (noch auf keinem Tag), Geplant (auf einem Tag) und Tracks (importierte GPX-Tracks), jeweils mit seiner Anzahl.',
-  'help.guide.filter-places.step.2': 'Tipp in Orte suchen...; die Liste wird mit jedem Zeichen enger.',
+    'Anzeigen, das Auswahlmenü unter der Suche, wechselt zwischen Alle, Ungeplant (noch auf keinem Tag), Geplant (auf einem Tag) und Tracks (importierte GPX-Tracks), jeweils mit seiner Anzahl.',
+  'help.guide.filter-places.step.2': 'Tipp oben in Suchen; die Liste wird mit jedem Zeichen enger.',
   'help.guide.filter-places.step.3':
-    'Alle Kategorien öffnet eine Liste, in der du eine oder mehrere Kategorien ankreuzt, Keine Kategorie darunter; Filter zurücksetzen an ihrem Ende setzt sie zurück.',
+    'Der Etiketten-Knopf neben Anzeigen listet die Kategorien: hak eine oder mehrere an, Keine Kategorie darunter. Der Knopf zählt, was angehakt ist, und Filter zurücksetzen am Ende der Liste hebt alle wieder auf.',
   'help.guide.filter-places.step.4':
     'Der Stern daneben setzt eine Mindestbewertung: 5+, 4+ und so weiter zeigen nur Orte, die du mindestens so hoch bewertet hast.',
   'help.guide.filter-places.result':
@@ -1940,7 +1941,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Rechtsklick auf die Zeile und Bearbeiten wählen, oder den Ort öffnen und in seinen Details auf Bearbeiten klicken.',
   'help.guide.edit-place.step.2':
-    'Ändere, was du brauchst: Name, Beschreibung, Notizen, Adresse, Breitengrad und Längengrad, Kategorie, Website. Von einem Tag aus geöffnet, hat das Formular zusätzlich Notizen für diesen Tag sowie Startzeit und Ende für diesen Tag.',
+    'Ändere, was du brauchst: den Namen und die Kategorie-Pille im Kopf des Dialogs, Adresse, Breitengrad und Längengrad, Beschreibung, Notizen und Website. Von einem Tag aus geöffnet, hat das Formular zusätzlich Startzeit und Ende sowie Notizen für diesen Tag.',
   'help.guide.edit-place.step.3': 'Klick auf Aktualisieren.',
   'help.guide.edit-place.result':
     'Die Änderung gilt überall, wo der Ort auftaucht: in der Liste, auf der Karte und an jedem Tag, an dem er hängt.',
@@ -1954,22 +1955,22 @@ const help: TranslationStrings = {
   'help.guide.delete-place.step.1':
     'Rechtsklick auf die Zeile und Löschen wählen, oder in den Ortsdetails auf Löschen klicken.',
   'help.guide.delete-place.step.2':
-    'Bestätige. Wurde an dem Ort eine Nacht gebucht oder hängt eine Buchung daran, sagt die Frage, was mitgeht.',
+    'Klick in der Frage auf Löschen. Wurde an dem Ort eine Nacht gebucht oder hängt eine Buchung daran, sagt die Frage, was mitgeht.',
   'help.guide.delete-place.result':
     'Der Ort ist aus der Liste, von der Karte und von jedem Tag verschwunden; Rückgängig in der Werkzeugleiste über den Tagen holt ihn zurück.',
   'help.guide.delete-place.tip.1':
     'Um einen Ort nur von einem Tag zu nehmen, nutz stattdessen Vom Tag entfernen an diesem Stopp.',
-  'help.guide.delete-place.tip.2': 'Mehrere Orte auf einmal: Der Haken neben den Filtern startet eine Auswahl.',
+  'help.guide.delete-place.tip.2': 'Mehrere Orte auf einmal: Der Haken neben der Suche startet eine Auswahl.',
   // select-places
   'help.guide.select-places.title': 'Mehrere Orte auf einmal ändern oder löschen',
   'help.guide.select-places.goal': 'Räum die Liste in einem Zug auf, statt Ort für Ort.',
   'help.guide.select-places.step.1':
-    'Klick auf den Haken am rechten Ende der Filterzeile. Die Zeilen bekommen Kästchen, und eine Leiste mit den Aktionen erscheint.',
+    'Klick auf den Haken neben dem Suchfeld. Die Zeilen bekommen runde Kästchen, und am Fuß der Spalte erscheint eine Leiste mit den Aktionen.',
   'help.guide.select-places.step.2':
-    'Hak die Zeilen an, oder nutz Alle auswählen in der Leiste; die Leiste zählt, was ausgewählt ist.',
+    'Klick die Zeilen an, um sie anzuhaken. Alle auswählen, der doppelte Haken in der Leiste, nimmt jede Zeile, die die Filter übrig lassen.',
   'help.guide.select-places.step.3':
-    'Kategorie ändern gibt allen eine Kategorie; In Sammlung speichern kopiert sie in eine deiner Sammlungen; Auswahl löschen entfernt sie nach einer Bestätigung.',
-  'help.guide.select-places.step.4': 'Klick noch einmal auf den Haken, um die Auswahl zu verlassen.',
+    'Die Leiste zählt die angehakten Orte. Kategorie ändern gibt allen eine Kategorie; In Sammlung speichern kopiert sie in eine deiner Sammlungen; Auswahl löschen entfernt sie nach einer Bestätigung.',
+  'help.guide.select-places.step.4': 'Fertig, das X am Ende der Leiste, beendet die Auswahl.',
   'help.guide.select-places.result':
     'Die Änderung gilt für jeden ausgewählten Ort; ein Löschen lässt sich über die Werkzeugleiste über den Tagen rückgängig machen.',
   'help.guide.select-places.tip.1':
@@ -1981,7 +1982,7 @@ const help: TranslationStrings = {
   'help.guide.import-places-file.goal':
     'Hol herein, was Google My Maps, Google Earth oder ein GPS-Tracker exportiert hat.',
   'help.guide.import-places-file.step.1':
-    'Klick auf Dateimport, oder lass die Datei irgendwo auf der Orte-Spalte fallen.',
+    'Klick auf den Import-Knopf neben dem Hinzufügen-Knopf und wähl Dateimport, oder lass die Datei irgendwo auf der Orte-Spalte fallen.',
   'help.guide.import-places-file.step.2':
     'Wähl die Datei oder zieh sie in das Feld. Bei einer GPX hakst du an, was importiert wird: Wegpunkte, Routen, Tracks (mit Streckenverlauf); bei KML und KMZ Punkte (Placemarks) und Pfade (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -1997,7 +1998,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Eine geteilte Liste aus Google Maps oder Naver Maps importieren',
   'help.guide.import-places-list.goal': 'Mach aus dem Link einer geteilten Liste Orte.',
-  'help.guide.import-places-list.step.1': 'Klick auf Listenimport und wähl Google Liste oder Naver Liste.',
+  'help.guide.import-places-list.step.1':
+    'Klick auf den Import-Knopf neben dem Hinzufügen-Knopf und wähl Google Liste. Wenn auch Naver-Listen an sind, heißt der Eintrag Listenimport, und der Dialog fragt, welche der beiden.',
   'help.guide.import-places-list.step.2':
     'Füg den geteilten Link der Liste ein. Ein Routenlink von Google Maps geht auch: Seine Stopps werden zu Orten, in der Reihenfolge der Fahrt.',
   'help.guide.import-places-list.step.3': 'Klick auf Importieren.',
@@ -2015,24 +2017,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'Die Leiste oben: Exportieren (PDF, Kalender, GPX), Alle Tage ausklappen / Alle Tage einklappen, der Rückgängig-Pfeil, Tage neu anordnen und Alle Buchungsrouten anzeigen.',
   'help.ctx.trip-days.bullet.2':
-    'Eine Tageskarte: Nummer, Wetter, Titel, Datum und die Kosten des Tages im Kopf; ein Klick auf den Kopf öffnet den Tag, der Pfeil daneben klappt sie zu. Öffentliche Verkehrsmittel, Transport hinzufügen und Notiz hinzufügen sitzen ebenfalls im Kopf.',
+    'Eine Tageskarte: eine Kachel mit der Tagesnummer und der Vorhersage, Titel und Datum, dazu Pillen für die gebuchte Nacht, einen Mietwagen und die Kosten des Tages. Ein Klick auf den Kopf öffnet den Tag, der Pfeil klappt ihn zu, und das + öffnet ein Menü: Ort zu diesem Tag, Unterkunft hinzufügen, Transport hinzufügen, Öffentliche Verkehrsmittel und Notiz hinzufügen.',
   'help.ctx.trip-days.bullet.3':
-    'Im Tag: die Stopps in ihrer Reihenfolge, jeder mit Bild, Name, Uhrzeit und einem Schloss auf dem Bild; Notizen; Buchungen, die zum Tag gehören; und zwischen den Stopps die Fahrzeit jeder Etappe.',
+    'Im Tag: die Stopps in ihrer Reihenfolge, jeder mit Bild, Name, Uhrzeit, einem Schloss auf dem Bild und den Buchungen, die an ihm hängen; Notizen; die Buchungen und Transporte des Tages, getönt nach ihrer Art; und zwischen den Stopps die Fahrzeit jeder Etappe. Jede Zeile hat ein Drei-Punkte-Menü, dasselbe wie beim Rechtsklick.',
   'help.ctx.trip-days.bullet.4':
     'Unter den Stopps die Routenleiste: Route zeichnet den Tag auf die Karte, Optimieren sortiert die Stopps, Auto / Fußweg setzt das Verkehrsmittel des Tages, In Google Maps öffnen und In CoMaps öffnen geben den Tag weiter.',
   'help.ctx.trip-days.bullet.5':
-    'Orte kommen auf einen Tag, indem du eine Zeile aus der Orte-Spalte ziehst, über das + in dieser Zeile, über Ort zu diesem Tag auf einem leeren Tag oder aus den Ortsdetails.',
+    'Orte kommen auf einen Tag, indem du eine Zeile aus der Orte-Spalte ziehst, über + Tag in dieser Zeile, über Ort zu diesem Tag im + des Tages oder auf einem leeren Tag, oder aus den Ortsdetails.',
   'help.ctx.trip-days.bullet.6':
     'Gesamtkosten unten zählt jeden Stopp und jede Buchung mit einem Preis zusammen, in der Währung der Reise.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Einen Tag lesen',
   'help.guide.read-day-plan.goal': 'Wisse, was jeder Teil einer Tageskarte sagt, bevor du etwas änderst.',
   'help.guide.read-day-plan.step.1':
-    'Der Kopf: die Tagesnummer, die Vorhersage für den Tag, Tag 1 oder der Titel, den du vergeben hast, das Datum und die Kosten des Tages. Klick auf den Kopf, um den Tag zu öffnen (seine Tagesdetails öffnen sich über der Karte); der Pfeil rechts klappt die Karte zu und wieder auf.',
+    'Der Kopf: eine Kachel mit der Tagesnummer und der Vorhersage, dann Tag 1 oder der Titel, den du vergeben hast, das Datum und Pillen für die gebuchte Nacht (Check-in oder Check-out), einen Mietwagen und die Kosten des Tages. Klick auf den Kopf, um den Tag zu öffnen (seine Tagesdetails öffnen sich über der Karte); das + rechts legt einen Ort, eine Unterkunft, einen Transport, eine Verbindung oder eine Notiz an, und der Pfeil klappt die Karte zu.',
   'help.guide.read-day-plan.step.2':
-    'Ein Stopp: der Griff links zieht ihn, das Bild trägt ein Schloss für die Routenoptimierung, dann der Name, die Beschreibung und, wenn gesetzt, die Notizen für diesen Tag. Ein Zeit-Abzeichen zeigt Startzeit und Ende, wenn der Stopp sie hat; die Pfeile, die an seinem rechten Ende erscheinen, schieben ihn nach oben oder nach unten.',
+    'Ein Stopp: der Griff links zieht ihn, das Bild trägt ein Schloss für die Routenoptimierung, dann der Name, ein Zeit-Abzeichen, wenn der Stopp Startzeit und Ende hat, die Beschreibung und, wenn gesetzt, die Notizen für diesen Tag. Die Pfeile an seinem rechten Ende schieben ihn nach oben oder unten, die drei Punkte öffnen sein Menü.',
   'help.guide.read-day-plan.step.3':
-    'Eine Buchung am Tag: eine Reservierung an einem Stopp markiert den Stopp als Reservierung bestätigt oder Reservierung ausstehend, und ein Transport erscheint als Abflug oder Ankunft mit seiner Zeit und seiner Strecke, mit einem kleinen Schalter, der diese Route auf der Karte zeichnet.',
+    'Eine Buchung an einem Stopp sitzt als Abzeichen Reservierung darauf, grün, wenn sie bestätigt ist, und gelb, solange sie aussteht, mit ihrer Zeit und ihrem Anbieter; ein Klick auf das Abzeichen öffnet die Buchung, der Routenknopf daneben zeichnet ihre Route. Ein Transport ist eine eigene Zeile, getönt nach seiner Art, mit Abflug oder Ankunft und seiner Zeit. Klick auf eine Buchung, und ihre Details öffnen sich; Bearbeiten dort ändert sie.',
   'help.guide.read-day-plan.step.4':
     'Zwischen zwei Stopps sagt das Verbindungsstück, wie lange die Etappe dauert und wie weit sie ist, im Verkehrsmittel des Tages; klick es an, um das Verkehrsmittel für diese eine Etappe zu ändern.',
   'help.guide.read-day-plan.step.5':
@@ -2040,7 +2042,7 @@ const help: TranslationStrings = {
   'help.guide.read-day-plan.result':
     'Jedes Symbol auf der Karte hat eine Bedeutung; die Anleitungen unten ändern jedes davon.',
   'help.guide.read-day-plan.tip.1':
-    'Rechtsklick auf einen Stopp öffnet sein Menü: Bearbeiten, Aus Tag entfernen, Webseite öffnen, die Navigations-Apps (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), In Sammlung speichern, Löschen.',
+    'Rechtsklick auf einen Stopp oder ein Klick auf seine drei Punkte öffnet sein Menü: Bearbeiten, Aus Tag entfernen, Webseite öffnen, die Navigations-Apps (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), In Sammlung speichern, Löschen.',
   'help.guide.read-day-plan.tip.2':
     'Fahr über einen Stopp, und an seinem Ende erscheint Buchung hinzufügen: eine dort angelegte Reservierung hängt an diesem Stopp an diesem Tag.',
   // place-onto-day
@@ -2050,9 +2052,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Zieh eine Zeile aus der Orte-Spalte auf die Tageskarte. Lass sie zwischen zwei Stopps fallen, um sie genau dorthin zu setzen, oder irgendwo auf der Karte, um sie anzuhängen.',
   'help.guide.place-onto-day.step.2':
-    'Ohne Ziehen: öffne den Tag mit einem Klick auf seinen Kopf, dann klick auf das + am Ende der Zeile des Ortes, oder klick mit der rechten Maustaste auf die Zeile und wähl + Tag.',
+    'Ohne Ziehen: öffne den Tag mit einem Klick auf seinen Kopf, dann klick auf + Tag am Ende der Zeile des Ortes, oder klick mit der rechten Maustaste auf die Zeile und wähl + Tag.',
   'help.guide.place-onto-day.step.3':
-    'Auf einem leeren Tag öffnet Ort zu diesem Tag das Ortsformular, und der neue Ort landet sofort auf dem Tag.',
+    'Ort zu diesem Tag, im +-Menü des Tages oder auf einem leeren Tag, öffnet das Ortsformular, und der neue Ort landet sofort auf dem Tag.',
   'help.guide.place-onto-day.step.4':
     'Aus den Ortsdetails fragt Zum Tag hinzufügen, welcher Tag es sein soll; bei einem über seinen Kopf geöffneten Tag legt Zum Tag in der Orte-Spalte einen neuen Ort auf dem geöffneten Tag an.',
   'help.guide.place-onto-day.result':
@@ -2082,7 +2084,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.goal':
     'Leg fest, wann ein Stopp beginnt und endet, damit der Tag sich wie ein Zeitplan liest.',
   'help.guide.set-stop-times.step.1':
-    'Rechtsklick auf den Stopp und Bearbeiten wählen. Vom Tag aus geöffnet, hat das Formular unten Startzeit und Ende.',
+    'Rechtsklick auf den Stopp oder ein Klick auf seine drei Punkte, dann Bearbeiten wählen. Vom Tag aus geöffnet, hat das Formular Startzeit und Ende für diesen Tag, gleich unter dem Ort.',
   'help.guide.set-stop-times.step.2':
     'Trag Startzeit und, wenn du magst, Ende ein. Zeitliche Überschneidung mit: warnt, dass ein anderer Stopp des Tages mit Uhrzeit überlappt; ein Ende vor der Startzeit blockiert Aktualisieren.',
   'help.guide.set-stop-times.step.3':
@@ -2121,13 +2123,13 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Eine Notiz zu einem Tag schreiben',
   'help.guide.day-note.goal': 'Halt eine Erinnerung, eine Ticketnummer oder einen Plan B direkt im Tag fest.',
-  'help.guide.day-note.step.1': 'Klick auf Notiz hinzufügen im Kopf des Tages.',
+  'help.guide.day-note.step.1': 'Klick auf das + im Kopf des Tages und wähl Notiz hinzufügen.',
   'help.guide.day-note.step.2':
-    'Gib ihr unter Notiz einen Namen, das ist, was im Tag zu sehen ist, und schreib den Rest unter Tagesnotiz. Die Werkzeugleiste darüber formatiert den Text (Fett, Aufzählung, Link, Zitat), und Vorschau links zeigt, wie die Notiz im Tag aussehen wird.',
+    'Tipp den Namen der Notiz oben in den Kopf des Dialogs, wo Notiz steht; das ist, was im Tag zu sehen ist. Den Rest schreibst du unter Tagesnotiz: die Werkzeugleiste darüber formatiert den Text (Fett, Aufzählung, Link, Zitat), und Vorschau links zeigt die Zeile, die daraus wird.',
   'help.guide.day-note.step.3':
     'Wähl ein Symbol und eine Farbe, damit sich die Notiz von den Stopps abhebt, und dann Hinzufügen.',
   'help.guide.day-note.step.4':
-    'Die Notiz sitzt im Tag wie ein Stopp: zieh sie an ihre Stelle, öffne mit Rechtsklick Bearbeiten und Löschen.',
+    'Die Notiz sitzt im Tag wie ein Stopp: zieh sie an ihre Stelle, und öffne mit Rechtsklick oder über ihre drei Punkte Bearbeiten und Löschen.',
   'help.guide.day-note.result':
     'Die Notiz ist Teil des Tages, auch im PDF; eine Notiz mit Uhrzeit sortiert sich zu den Stopps mit Uhrzeit.',
   'help.guide.day-note.tip.1':
@@ -2178,15 +2180,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.goal':
     'Wisse, wo eine Buchung auftaucht, sobald es sie gibt, und welcher Bildschirm sie anlegt.',
   'help.guide.bookings-in-plan.step.1':
-    'Ein Transport (Flug, Zug, Fähre, Bus, Auto) erscheint am Tag der Abreise als Abflug und am Tag der Ankunft als Ankunft, mit Zeit und Strecke; ein mehrtägiger spannt sich über die Tage dazwischen.',
+    'Ein Transport (Flug, Zug, Fähre, Bus, Auto) ist eine Zeile, getönt nach seiner Art: Abflug am Tag der Abreise, Ankunft am Tag der Landung, mit Zeit und Strecke; ein mehrtägiger spannt sich über die Tage dazwischen. Klick auf die Zeile, und die Buchung öffnet sich.',
   'help.guide.bookings-in-plan.step.2':
-    'Eine Reservierung an einem Stopp (ein Restaurant, eine Tour) markiert diesen Stopp als Reservierung bestätigt oder Reservierung ausstehend; eine Buchung mit einem Tag, aber ohne Stopp, ist eine eigene Zeile im Tag.',
+    'Eine Reservierung an einem Stopp (ein Restaurant, eine Tour) ist ein Abzeichen Reservierung an diesem Stopp, grün, wenn sie bestätigt ist, und gelb, solange sie aussteht, mit ihrer Zeit; eine Buchung mit einem Tag, aber ohne Stopp, ist eine eigene Zeile im Tag.',
   'help.guide.bookings-in-plan.step.3':
     'Eine Nacht im Hotel ist eine Unterkunft: sie sitzt in den Tagesdetails unter Unterkunft, von Check-in bis Check-out, und die Route jedes dieser Tage beginnt dort.',
   'help.guide.bookings-in-plan.step.4':
     'Auf der Karte zeichnet der Schalter in einer Transportzeile dessen Route; Alle Buchungsrouten anzeigen in der Leiste zeichnet sie alle.',
   'help.guide.bookings-in-plan.step.5':
-    'Anlegen: Buchung hinzufügen an einem Stopp, über den du fährst, Transport hinzufügen und Öffentliche Verkehrsmittel im Kopf des Tages, und die Reiter Buchungen und Transport für die ganze Liste mit Import und Dateien.',
+    'Anlegen: Buchung hinzufügen an einem Stopp, über den du fährst, Transport hinzufügen und Öffentliche Verkehrsmittel im +-Menü des Tages, und die Reiter Buchungen und Transport für die ganze Liste mit Import und Dateien.',
   'help.guide.bookings-in-plan.result':
     'Eine Buchung, ein Platz im Plan; die Reiter sind dieselben Buchungen als Liste.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2217,24 +2219,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Klick auf eine Zeile in der Orte-Spalte, auf einen Stopp in einem Tag oder auf einen Marker auf der Karte, und die Ortsdetails öffnen sich über der Karte. Wählst du den Ort in einem Tag, wissen die Details, welchen Stopp du meinst, und genau das bringt die Teilnehmer des Stopps und seine Buchung mit.',
   'help.ctx.trip-place.bullet.2':
-    'Der Kopf trägt das runde Bild, den Namen, die Kategorie, die Adresse und die Koordinaten. Klick auf das Bild, um ein eigenes zu nehmen, doppelklick auf den Namen, um den Ort auf der Stelle umzubenennen, und das X rechts schließt die Ansicht.',
+    'Der Kopf trägt das runde Bild, den Namen, die Adresse in einer Zeile und Pillen für das, was bekannt ist: geöffnet oder geschlossen, die Kategorie, den Preis, die Telefonnummer und die Koordinaten. Klick auf das Bild, um ein eigenes zu nehmen, doppelklick auf den Namen, um den Ort auf der Stelle umzubenennen, und das X rechts schließt die Ansicht.',
   'help.ctx.trip-place.bullet.3':
-    'Darunter: der Preis, falls er einen hat, die Sterne, die jeder Mitreisende dem Ort gegeben hat, die Beschreibung und die Notizen, und Notizen für diesen Tag, wenn der Stopp welche trägt.',
+    'Darunter: die Sterne, die jeder Mitreisende dem Ort gegeben hat, die Beschreibung und die Notizen, und Notizen für diesen Tag, wenn der Stopp welche trägt.',
   'help.ctx.trip-place.bullet.4':
     'Öffnungszeiten, Streckenfarbe, Streckendaten und Dateien folgen, soweit sie zutreffen. Dateien nimmt alles aus deinen Ordnern und listet außerdem, was an der Buchung dieses Stopps hängt.',
   'help.ctx.trip-place.bullet.5':
     'Die Zeile ganz unten: Zum Tag hinzufügen oder Vom Tag entfernen, solange ein Tag geöffnet ist, dann In Sammlung speichern, Navigation, Webseite öffnen, Bearbeiten und Löschen.',
   'help.ctx.trip-place.bullet.6':
-    'Ein Ort, der aus der Suche gewählt wurde, trägt, was der TREK-Index oder OpenStreetMap über ihn wissen: einen grünen Ring mit Geöffnet oder einen roten mit Geschlossen um das Bild, nach der Uhr des Ortes beurteilt, die Telefonnummer unter den Sternen, Öffnungszeiten weiter unten mit der Zeile des Tages auf der Zeile und der ganzen Woche hinter einem Klick, und seine Webseite hinter Webseite öffnen. Googles Bewertung zeigt sich nur bei einem Ort, der über Google gefunden wurde, auf einem TREK mit Google-Schlüssel.',
+    'Ein Ort, der aus der Suche gewählt wurde, trägt, was der TREK-Index oder OpenStreetMap über ihn wissen: Geöffnet oder Geschlossen unter den Pillen des Kopfes, mit einem grünen oder roten Ring um das Bild, nach der Uhr des Ortes beurteilt, seine Telefonnummer ebenfalls als Pille, Öffnungszeiten weiter unten mit der Zeile des Tages auf der Zeile und der ganzen Woche hinter einem Klick, und seine Webseite hinter Webseite öffnen. Googles Bewertung zeigt sich nur bei einem Ort, der über Google gefunden wurde, auf einem TREK mit Google-Schlüssel.',
   // read-place
   'help.guide.read-place.title': 'Was die Ortsdetails über einen Ort sagen',
   'help.guide.read-place.goal': 'Lies alles, was die Reise über einen Ort weiß, in einer Ansicht.',
   'help.guide.read-place.step.1':
     'Klick in der Tage-Spalte den Stopp an, den du lesen willst. Die Ortsdetails öffnen sich über der Karte, und der Stopp bleibt in seinem Tag markiert.',
   'help.guide.read-place.step.2':
-    'Der Kopf: das runde Bild, der Name, die Adresse und die genauen Koordinaten. Ein grüner Ring mit Geöffnet oder ein roter mit Geschlossen um das Bild sagt, ob der Ort gerade offen hat, nach seiner eigenen Uhr, sobald TREK seine Zeiten kennt. Das X rechts schließt die Ansicht wieder.',
+    'Der Kopf: das runde Bild, der Name und die Adresse in einer Zeile; ihr Tooltip hält die ganze Adresse. Die Pillen darunter sagen, ob der Ort gerade geöffnet oder geschlossen hat, nach seiner eigenen Uhr, mit einem grünen oder roten Ring um das Bild dazu, und tragen die Telefonnummer, die ein Klick an deine Telefon-App weiterreicht, und die genauen Koordinaten. Das X rechts schließt die Ansicht wieder.',
   'help.guide.read-place.step.3':
-    'Darunter die Sterne, die jeder Mitreisende dem Ort gegeben hat, mit dem Durchschnitt und der Zahl der Stimmen. Noch nicht bewertet, solange niemand gestimmt hat. Gleich darunter die Telefonnummer, wo der Ort eine hat: Ein Klick darauf reicht die Nummer an deine Telefon-App weiter.',
+    'Bewertung kommt als Erstes unter dem Kopf: die Sterne, die jeder Mitreisende dem Ort gegeben hat, mit dem Durchschnitt und der Zahl der Stimmen. Noch nicht bewertet, solange niemand gestimmt hat.',
   'help.guide.read-place.step.4':
     'Dann die Beschreibung und darunter die Notizen. Beides ist der Text aus dem Formular des Ortes, gerendert: Listen, Links und Fettes funktionieren.',
   'help.guide.read-place.step.5':
@@ -2328,18 +2330,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'Die Buchung an einem Stopp',
   'help.guide.place-booking.goal': 'Lies die Buchung, die zu einem Stopp gehört, öffne sie, und häng eine neue an ihn.',
   'help.guide.place-booking.step.1':
-    'Öffne den Stopp, zu dem die Buchung gehört. Die Ortsdetails zeigen einen Streifen mit Bestätigt oder Ausstehend und dem Namen der Buchung.',
+    'Öffne den Stopp, zu dem die Buchung gehört. Die Ortsdetails listen sie unter Buchungen als eigene kleine Karte, mit dem Namen der Buchung und Bestätigt oder Ausstehend.',
   'help.guide.place-booking.step.2':
-    'Der Streifen trägt Datum, Uhrzeit und Buchungscode, dazu alle Notizen, die die Buchung hat.',
-  'help.guide.place-booking.step.3': 'Klick auf den Streifen. Die Buchung öffnet sich über der Karte.',
+    'Die Buchungskarte trägt Datum, Uhrzeit und Buchungscode, dazu alle Notizen, die die Buchung hat.',
+  'help.guide.place-booking.step.3': 'Klick auf die Buchungskarte. Die Buchung öffnet sich über der Karte.',
   'help.guide.place-booking.step.4':
     'Bearbeiten am Fuß der Buchung öffnet ihr eigenes Formular. Mit Tagesplanung verknüpfen ist dort das, was eine Buchung an einen Stopp hängt, und hier nennt es schon diesen. Schließ das Formular wieder.',
   'help.guide.place-booking.step.5':
-    'Eine neue Buchung für einen Stopp beginnt in der Tage-Spalte: Fahr über den Stopp und klick auf das + an seinem Ende. Das Formular öffnet sich als Neue Buchung, schon mit ihm verknüpft.',
+    'Eine neue Buchung für einen Stopp beginnt in der Tage-Spalte: Fahr über den Stopp und klick auf Buchung hinzufügen, das Ticket an seinem Ende. Das Formular öffnet sich als Neue Buchung, schon mit ihm verknüpft.',
   'help.guide.place-booking.result':
     'Die Buchung hängt am Stopp: Sie steht in den Ortsdetails, sie steht im Tag, und ihre Dateien sind hier ebenfalls unter Dateien gelistet.',
   'help.guide.place-booking.tip.1':
-    'Der Streifen erscheint nur bei dem Stopp, an dem die Buchung hängt. Eine Buchung ohne Stopp lebt im Tab Buchung.',
+    'Die Buchungskarte erscheint nur bei dem Stopp, an dem die Buchung hängt. Eine Buchung ohne Stopp lebt im Tab Buchung.',
   'help.guide.place-booking.tip.2':
     'Mehrere Buchungen können sich einen Stopp teilen: das Mittagessen und die Tour, die an derselben Tür startet.',
   'help.guide.place-booking.tip.3':
@@ -2588,7 +2590,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Ganz oben das Wetter des Tages. Vorhersage für nennt den Ort, für den es gilt: der erste Stopp des Tages oder das Hotel, in dem du aufwachst.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Reservierungen listet die Buchungen dieses Tages, jede mit ihrer Art, dem Stopp, zu dem sie gehört, und ihren Zeiten. Grün heißt bestätigt, bernsteinfarben noch ausstehend; es ist nur eine Anzeige, geändert werden Buchungen unter Buchungen.',
+    'Reservierungen listet die Buchungen dieses Tages, jede mit ihrer Art, dem Stopp, zu dem sie gehört, und ihren Zeiten. Grün heißt bestätigt, gelb noch ausstehend, und ein Klick auf eine Zeile öffnet die Buchung.',
   'help.ctx.trip-day-detail.bullet.5':
     'Unterkunft zeigt jede Nacht, die über diesem Tag gebucht ist, mit Check-in und Check-out an den Tagen, an denen sie stattfinden, dem Check-in-Fenster, der Check-out-Zeit und der Bestätigungsnummer.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2623,7 +2625,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'Die große Zahl ist die Temperatur des Tages, daneben der Tiefst- und der Höchstwert und die Wetterlage in Worten.',
   'help.guide.day-weather.step.3':
-    'Die Chips darunter: die Regenwahrscheinlichkeit, wie viel Niederschlag fällt, der stärkste Wind sowie Sonnenaufgang und Sonnenuntergang.',
+    'Die Pillen rechts daneben: die Regenwahrscheinlichkeit, wie viel Niederschlag fällt, der stärkste Wind sowie Sonnenaufgang und Sonnenuntergang.',
   'help.guide.day-weather.step.4':
     'Ganz unten der Tag Stunde für Stunde, jede zweite Stunde: die Zeit, das Symbol, die Temperatur und die Regenwahrscheinlichkeit. Eine Stunde über 50 Prozent ist blau hinterlegt.',
   'help.guide.day-weather.result':
@@ -2657,18 +2659,18 @@ const help: TranslationStrings = {
   'help.guide.add-accommodation.step.2':
     'Öffne den Tag deiner Ankunft und klick unter Unterkunft auf Unterkunft hinzufügen.',
   'help.guide.add-accommodation.step.3':
-    'Auf Tage anwenden sagt, welche Nächte der Aufenthalt abdeckt: links der Check-in-Tag, rechts der Check-out-Tag. Alle nimmt die ganze Reise.',
+    'Auf Tage anwenden sagt, welche Nächte der Aufenthalt abdeckt: Beginn ist der Check-in-Tag, Ende der Check-out-Tag, und Alle nimmt die ganze Reise. Der Kopf des Dialogs zeigt den Zeitraum und die Zahl der Nächte.',
   'help.guide.add-accommodation.step.4':
     'Füll Check-in, Bis und Check-out aus und trag die Nummer der Buchung unter Bestätigung ein. Alle vier dürfen leer bleiben.',
   'help.guide.add-accommodation.step.5':
-    'Wähl das Haus aus den Orten der Reise. Die Chips über der Liste engen sie auf eine Kategorie ein.',
+    'Wähl das Haus aus den Orten der Reise. Kategorie über der Liste engt sie auf eine Kategorie ein.',
   'help.guide.add-accommodation.step.6': 'Klick auf Speichern.',
   'help.guide.add-accommodation.result':
     'Der Aufenthalt erscheint an jedem Tag, den er abdeckt, Check-in am ersten und Check-out am letzten. Das Haus wird zum Stopp am Check-in-Tag, sodass die Karte den Weg dorthin zeichnet, und unter Buchungen taucht eine Buchung vom Typ Unterkunft auf.',
   'help.guide.add-accommodation.tip.1':
     'Die Auswahl öffnet auf dem Tag, von dem du kamst, mit Check-out am Tag darauf; beide lassen sich vor dem Speichern verschieben.',
   'help.guide.add-accommodation.tip.2':
-    'Gib dem Hotel beim Anlegen die Kategorie Hotel der Reise, dann engen die Chips über der Liste sie mit einem Klick auf deine Hotels ein.',
+    'Gib dem Hotel beim Anlegen die Kategorie Hotel, dann engt Kategorie über der Liste sie mit einem Klick auf deine Hotels ein.',
   'help.guide.add-accommodation.tip.3':
     'Die Zeiten sind alle optional: ein Aufenthalt ohne Check-in und ohne Code deckt seine Nächte trotzdem ab und zeichnet trotzdem seine Route.',
   // edit-accommodation
@@ -2680,7 +2682,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'Der Stift an ihrem rechten Rand öffnet den Aufenthalt wieder. Das Fenster heißt jetzt Unterkunft bearbeiten.',
   'help.guide.edit-accommodation.step.3':
-    'Korrigier die Reihe der Felder: Check-in, Bis, Check-out und Bestätigung. Die Tage darüber und das Haus darunter lassen sich hier ebenfalls ändern.',
+    'Korrigier Check-in, Bis, Check-out und Bestätigung. Die Tage darüber und das Haus darunter lassen sich hier ebenfalls ändern.',
   'help.guide.edit-accommodation.step.4': 'Klick auf Speichern.',
   'help.guide.edit-accommodation.step.5':
     'Das X neben dem Stift beendet den Aufenthalt. Es fragt nichts, und die Buchung vom Typ Unterkunft, die zu ihm gehört, geht mit.',
@@ -2697,7 +2699,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Reservierungen listet die Buchungen des Tages: die, die auf ihn datiert sind, und die, die an einem seiner Stopps hängen.',
   'help.guide.day-bookings.step.2':
-    'Eine Zeile zeigt, welche Art von Buchung es ist, ihren Namen und, wenn sie zu einem Stopp gehört, diesen Stopp nach einem Punkt. Ihre Zeiten stehen am rechten Ende.',
+    'Eine Zeile zeigt, welche Art von Buchung es ist, ihren Namen und, wenn sie zu einem Stopp gehört, diesen Stopp in Grau dahinter. Ihre Zeiten stehen am rechten Ende, vor dem Statuspunkt.',
   'help.guide.day-bookings.step.3':
     'Die Farbe sagt, wo eine Buchung steht: eine grüne Zeile ist bestätigt, eine bernsteinfarbene noch ausstehend. Unterkünfte stehen nicht in dieser Liste, sie haben ihren eigenen Block darunter.',
   'help.guide.day-bookings.step.4':

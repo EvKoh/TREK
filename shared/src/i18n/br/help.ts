@@ -1726,7 +1726,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.bullet.4':
     'Título, datas, capa e moeda são editados em Minhas viagens, com o lápis no cartão da viagem.',
   'help.ctx.trip.bullet.5':
-    'Os chevrons na borda interna de uma coluna a recolhem e o mapa ocupa o espaço; o divisor fino ao lado de uma coluna muda a largura dela.',
+    'A lingueta na borda interna de uma coluna a recolhe e o mapa ocupa o espaço; o divisor fino ao lado de uma coluna muda a largura dela.',
   'help.ctx.trip.bullet.6': 'A seta de desfazer na barra de ferramentas dos dias reverte a última alteração no plano.',
   // add-member
   'help.guide.add-member.title': 'Adicionar um membro',
@@ -1794,8 +1794,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Abrir espaço para o mapa',
   'help.guide.collapse-columns.goal': 'Recolha uma coluna ou dê mais largura a ela.',
   'help.guide.collapse-columns.step.1':
-    'Clique no chevron na borda interna da coluna dos dias para recolhê-la; o mapa ocupa o espaço. A coluna dos lugares tem o mesmo chevron.',
-  'help.guide.collapse-columns.step.2': 'Clique no chevron de novo para trazer a coluna de volta.',
+    'Clique na lingueta na borda interna da coluna dos dias, a que tem o ícone de painel, para recolher a coluna; o mapa ocupa o espaço. A coluna dos lugares tem a mesma lingueta.',
+  'help.guide.collapse-columns.step.2':
+    'Uma coluna recolhida deixa um bloco no canto do mapa, Plano para os dias e Lugares para os lugares. Clique nele para trazer a coluna de volta.',
   'help.guide.collapse-columns.step.3':
     'Arraste o divisor fino entre uma coluna e o mapa para mudar a largura da coluna.',
   'help.guide.collapse-columns.result': 'As larguras são lembradas; as colunas voltam abertas na próxima visita.',
@@ -1820,15 +1821,15 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Adicionar lugar/atividade no topo abre o formulário de um lugar que você digita ou busca. Enquanto um dia está aberto o botão diz Novo local, e Para o dia, ao lado, cria o lugar direto nesse dia.',
   'help.ctx.trip-places.bullet.2':
-    'Importar arquivo aceita arquivos .gpx, .kml e .kmz; Importar lista aceita uma lista compartilhada do Google Maps ou do Naver Maps. Um arquivo também pode simplesmente ser solto sobre a coluna.',
+    'O botão de importação ao lado oferece Importar arquivo, para arquivos .gpx, .kml e .kmz, e Lista Google (Importar lista quando as listas Naver também estão ativas) para uma lista compartilhada do Google Maps ou do Naver Maps. Um arquivo também pode simplesmente ser solto sobre a coluna.',
   'help.ctx.trip-places.bullet.3':
-    'O menu suspenso alterna entre Todos, Não planejados, Planejados e, assim que uma trilha é importada, Trilhas; abaixo dele ficam a busca, o filtro de categoria e a estrela para uma avaliação mínima.',
+    'Abaixo deles, a busca, com o tique que inicia uma seleção ao lado, e uma fileira de filtros: Mostrar alterna entre Todos, Não planejados, Planejados e, assim que uma trilha é importada, Trilhas, cada um com sua contagem; o botão de etiqueta filtra por categoria e a estrela por uma avaliação mínima.',
   'help.ctx.trip-places.bullet.4':
-    'Uma linha mostra imagem, nome e descrição ou endereço. Clique nela para ver os detalhes do lugar, arraste-a para um dia, ou clique com o botão direito para Editar, + Dia, Abrir site, Google Maps, Salvar na Coleção e Excluir.',
+    'Uma linha mostra imagem, nome e descrição ou endereço. Clique nela para ver os detalhes do lugar, arraste-a para um dia, ou clique nela com o botão direito (ou nos três pontinhos dela) para Editar, + Dia, Abrir site, Google Maps, Salvar na Coleção e Excluir.',
   'help.ctx.trip-places.bullet.5':
-    'Com um dia aberto, um + no fim de uma linha não planejada põe o lugar nesse dia, e Planejados lista só esse dia, com Mostrar a viagem inteira para alargar de novo.',
+    'Com um dia aberto, + Dia no fim de uma linha não planejada põe o lugar nesse dia, e Planejados lista só esse dia, com Mostrar a viagem inteira para alargar de novo.',
   'help.ctx.trip-places.bullet.6':
-    'O tique na ponta direita da linha de filtros inicia uma seleção: várias linhas de uma vez recebem uma nova categoria, vão para uma coleção ou são excluídas.',
+    'O tique ao lado da busca inicia uma seleção: pela barra no pé da coluna, várias linhas de uma vez recebem uma nova categoria, vão para uma coleção, são marcadas como visitadas ou são excluídas.',
   // create-place
   'help.guide.create-place.title': 'Criar um lugar',
   'help.guide.create-place.goal':
@@ -1836,11 +1837,11 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.1':
     'Clique em Adicionar lugar/atividade no topo da coluna de lugares (Novo local enquanto um dia está aberto). O formulário abre.',
   'help.guide.create-place.step.2':
-    'Digite o lugar em Buscar lugares... no topo e escolha um resultado. Nome, Endereço, Latitude, Longitude e Site se preenchem, e Detalhes do lugar, à esquerda, mostra imagens, o horário de funcionamento e uma descrição sobre ele. Num TREK com chave do Google, Não é o lugar certo? Pesquisar no Google fica embaixo da lista e refaz a mesma busca pelo Google.',
+    'Digite o lugar em Buscar lugares... e escolha um resultado. O nome no cabeçalho da janela, Endereço, Latitude, Longitude e Site se preenchem, e Detalhes do lugar, à esquerda, mostra imagens, o horário de funcionamento e uma descrição sobre ele. Num TREK com chave do Google, Não é o lugar certo? Pesquisar no Google fica embaixo da lista e refaz a mesma busca pelo Google. Lugares salvos, à direita, oferece os lugares das suas coleções do mesmo jeito.',
   'help.guide.create-place.step.3':
     'Em Detalhes do lugar, um clique numa imagem sob Escolher uma imagem a torna a imagem do lugar; Usar este texto leva a descrição para o formulário.',
   'help.guide.create-place.step.4':
-    'Confira os campos: Nome é obrigatório; Descrição e Notas são suas; Endereço, Latitude e Longitude vêm da busca ou são digitados; Categoria escolhe uma das categorias da viagem, e o + ao lado cria uma nova na hora; Site recebe o link.',
+    'Confira o que o formulário traz: o nome fica no cabeçalho da janela e é o único campo obrigatório; o chip Categoria logo abaixo escolhe uma das categorias da viagem, e o + ao lado cria uma nova na hora. Endereço, Latitude e Longitude vêm da busca ou são digitados; Descrição e Notas são suas; Site recebe o link.',
   'help.guide.create-place.step.5':
     'Clique em Adicionar. Se já houver um lugar com o mesmo nome na viagem, o formulário avisa e o botão vira Adicionar mesmo assim.',
   'help.guide.create-place.result': 'O lugar está na lista e no mapa, em Não planejados até ser posto em um dia.',
@@ -1858,7 +1859,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Para o dia abre o mesmo formulário que Novo local, só que o lugar cai no dia aberto no momento em que você clica em Adicionar.',
   'help.guide.place-to-open-day.step.3':
-    'Um lugar que já existe vai para o dia aberto com o + no fim da linha dele, ou com o botão direito, + Dia.',
+    'Um lugar que já existe vai para o dia aberto com + Dia no fim da linha dele, ou com o botão direito, + Dia.',
   'help.guide.place-to-open-day.step.4':
     'O caminho inverso também funciona, e sem abrir um dia antes: arraste a linha do lugar para fora da coluna e solte-a em um cartão de dia. Solto entre duas paradas, ele fica exatamente ali.',
   'help.guide.place-to-open-day.result':
@@ -1870,12 +1871,12 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Achar um lugar na lista',
   'help.guide.filter-places.goal': 'Estreite a coluna até os lugares que você procura.',
   'help.guide.filter-places.step.1':
-    'O menu suspenso do topo alterna entre Todos, Não planejados (ainda em nenhum dia), Planejados (em um dia) e Trilhas (trilhas GPX importadas), cada um com sua contagem.',
-  'help.guide.filter-places.step.2': 'Digite em Buscar lugares...; a lista estreita enquanto você digita.',
+    'Mostrar, o menu suspenso abaixo da busca, alterna entre Todos, Não planejados (ainda em nenhum dia), Planejados (em um dia) e Trilhas (trilhas GPX importadas), cada um com sua contagem.',
+  'help.guide.filter-places.step.2': 'Digite em Buscar, no topo; a lista estreita enquanto você digita.',
   'help.guide.filter-places.step.3':
-    'Todas as categorias abre uma lista para marcar uma ou mais categorias, Sem categoria entre elas; Limpar filtro, no fim dela, a reinicia.',
+    'O botão de etiqueta ao lado de Mostrar lista as categorias: marque uma ou mais, Sem categoria entre elas. O botão conta o que está marcado, e Limpar filtro, no pé da lista, desmarca todas.',
   'help.guide.filter-places.step.4':
-    'A estrela ao lado define uma avaliação mínima: 5+, 4+ e assim por diante mostram só lugares que você avaliou pelo menos tão alto.',
+    'A estrela ao lado dele define uma avaliação mínima: 5+, 4+ e assim por diante mostram só lugares que você avaliou pelo menos tão alto.',
   'help.guide.filter-places.result': 'A contagem acima das linhas diz quantos lugares batem; os filtros se combinam.',
   'help.guide.filter-places.tip.1':
     'Com um dia aberto, Planejados lista só esse dia e avisa: Mostrando apenas o dia aberto, com Mostrar a viagem inteira ao lado.',
@@ -1887,7 +1888,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Clique com o botão direito na linha e escolha Editar, ou abra o lugar e clique em Editar nos detalhes dele.',
   'help.guide.edit-place.step.2':
-    'Mude o que precisar: Nome, Descrição, Notas, Endereço, Latitude e Longitude, Categoria, Site. Aberto a partir de um dia, o formulário tem também Notas para este dia e Início e Fim para aquele dia.',
+    'Mude o que precisar: o nome e o chip Categoria no cabeçalho da janela, Endereço, Latitude e Longitude, Descrição, Notas e Site. Aberto a partir de um dia, o formulário tem também Início e Fim e Notas para este dia.',
   'help.guide.edit-place.step.3': 'Clique em Atualizar.',
   'help.guide.edit-place.result':
     'A alteração vale em todo lugar em que ele aparece: a lista, o mapa e cada dia em que ele está.',
@@ -1901,21 +1902,21 @@ const help: TranslationStrings = {
   'help.guide.delete-place.step.1':
     'Clique com o botão direito na linha e escolha Excluir, ou clique em Excluir nos detalhes do lugar.',
   'help.guide.delete-place.step.2':
-    'Confirme. Se uma noite foi reservada no lugar, ou se uma reserva está ligada a ele, a pergunta diz o que vai junto.',
+    'Clique em Excluir na pergunta. Se uma noite foi reservada no lugar, ou se uma reserva está ligada a ele, a pergunta diz o que vai junto.',
   'help.guide.delete-place.result':
     'O lugar some da lista, do mapa e de cada dia; Desfazer na barra de ferramentas acima dos dias o traz de volta.',
   'help.guide.delete-place.tip.1': 'Para tirar um lugar de um dia só, use em vez disso Remover do dia naquela parada.',
-  'help.guide.delete-place.tip.2': 'Vários lugares de uma vez: o tique ao lado dos filtros inicia uma seleção.',
+  'help.guide.delete-place.tip.2': 'Vários lugares de uma vez: o tique ao lado da busca inicia uma seleção.',
   // select-places
   'help.guide.select-places.title': 'Alterar ou excluir vários lugares de uma vez',
   'help.guide.select-places.goal': 'Arrume a lista de uma só vez em vez de lugar por lugar.',
   'help.guide.select-places.step.1':
-    'Clique no tique na ponta direita da linha de filtros. As linhas ganham caixas de seleção e aparece uma barra com as ações.',
+    'Clique no tique ao lado do campo de busca. As linhas ganham caixas de seleção redondas, e uma barra com as ações sobe no pé da coluna.',
   'help.guide.select-places.step.2':
-    'Marque as linhas, ou use Selecionar tudo na barra; a barra conta o que está selecionado.',
+    'Clique nas linhas para marcá-las. Selecionar tudo, o tique duplo na barra, pega todas as linhas que os filtros deixam.',
   'help.guide.select-places.step.3':
-    'Change category dá a todos uma mesma categoria; Salvar na Coleção os copia para uma das suas coleções; Excluir seleção os remove depois de uma confirmação.',
-  'help.guide.select-places.step.4': 'Clique no tique de novo para sair da seleção.',
+    'A barra conta os lugares marcados. Alterar categoria dá a todos uma mesma categoria; Salvar na Coleção os copia para uma das suas coleções; Excluir seleção os remove depois de uma confirmação.',
+  'help.guide.select-places.step.4': 'Concluído, o X no fim da barra, sai da seleção.',
   'help.guide.select-places.result':
     'A alteração vale para cada lugar selecionado; uma exclusão pode ser desfeita na barra de ferramentas acima dos dias.',
   'help.guide.select-places.tip.1':
@@ -1926,7 +1927,7 @@ const help: TranslationStrings = {
   'help.guide.import-places-file.title': 'Importar lugares de um arquivo GPX, KML ou KMZ',
   'help.guide.import-places-file.goal': 'Traga o que o Google My Maps, o Google Earth ou um rastreador GPS exportou.',
   'help.guide.import-places-file.step.1':
-    'Clique em Importar arquivo, ou solte o arquivo em qualquer ponto da coluna de lugares.',
+    'Clique no botão de importação ao lado do botão de adicionar e escolha Importar arquivo, ou solte o arquivo em qualquer ponto da coluna de lugares.',
   'help.guide.import-places-file.step.2':
     'Escolha o arquivo ou arraste-o para a caixa. Para um GPX, marque o que importar: Pontos de caminho, Rotas, Trilhas (com geometria de percurso); para KML e KMZ, Pontos (Placemarks) e Caminhos (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -1942,7 +1943,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Importar uma lista compartilhada do Google Maps ou do Naver Maps',
   'help.guide.import-places-list.goal': 'Transforme o link de uma lista compartilhada em lugares.',
-  'help.guide.import-places-list.step.1': 'Clique em Importar lista e escolha Lista Google ou Lista Naver.',
+  'help.guide.import-places-list.step.1':
+    'Clique no botão de importação ao lado do botão de adicionar e escolha Lista Google. Quando as listas Naver também estão ativas, a opção se chama Importar lista e a janela pergunta qual das duas.',
   'help.guide.import-places-list.step.2':
     'Cole o link compartilhado da lista. Um link de rotas do Google Maps também serve: as paradas dele viram lugares, na ordem do trajeto.',
   'help.guide.import-places-list.step.3': 'Clique em Importar.',
@@ -1960,30 +1962,30 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'A barra de ferramentas no topo: Exportar (PDF, calendário, GPX), Expand all days / Collapse all days, a seta Desfazer, Reordenar dias e Mostrar todas as rotas de reservas.',
   'help.ctx.trip-days.bullet.2':
-    'Um cartão de dia: número, clima, título, data e o custo do dia no cabeçalho; clique no cabeçalho para abrir o dia, a setinha o dobra. Transporte público, Adicionar transporte e Adicionar nota também ficam no cabeçalho.',
+    'Um cartão de dia: um bloco com o número do dia e a previsão, o título e a data, e chips para a noite reservada, um carro alugado e o custo do dia. Clique no cabeçalho para abrir o dia, a setinha o dobra, e o + abre um menu: Adicionar local a este dia, Adicionar hospedagem, Adicionar transporte, Transporte público e Adicionar nota.',
   'help.ctx.trip-days.bullet.3':
-    'Dentro de um dia: as paradas em ordem, cada uma com imagem, nome, horário e um cadeado sobre a imagem; as notas; as reservas que pertencem ao dia; e entre as paradas o tempo de viagem de cada trecho.',
+    'Dentro de um dia: as paradas em ordem, cada uma com imagem, nome, horário, um cadeado sobre a imagem e as reservas presas a ela; as notas; as reservas e os transportes do dia, tingidos conforme o tipo; e entre as paradas o tempo de viagem de cada trecho. Toda linha tem um menu de três pontinhos, o mesmo que o botão direito abre.',
   'help.ctx.trip-days.bullet.4':
     'Sob as paradas, a barra de rota: Rota desenha o dia no mapa, Otimizar ordena as paradas, De carro / A pé define o meio de transporte do dia, Abrir no Google Maps e Abrir no CoMaps entregam o dia.',
   'help.ctx.trip-days.bullet.5':
-    'Os lugares chegam a um dia arrastando uma linha da coluna de lugares, com o + dessa linha, com Adicionar local a este dia num dia vazio, ou a partir dos detalhes do lugar.',
+    'Os lugares chegam a um dia arrastando uma linha da coluna de lugares, com + Dia nessa linha, com Adicionar local a este dia no + do dia ou num dia vazio, ou a partir dos detalhes do lugar.',
   'help.ctx.trip-days.bullet.6': 'Custo total, embaixo, soma cada parada e cada reserva com preço, na moeda da viagem.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Ler um dia',
   'help.guide.read-day-plan.goal': 'Saber o que cada parte de um cartão de dia diz antes de mudar qualquer coisa.',
   'help.guide.read-day-plan.step.1':
-    'O cabeçalho: o número do dia, a previsão para o dia, Dia 1 ou o título que você deu, a data e o custo do dia. Clique no cabeçalho para abrir o dia (os Detalhes do dia se abrem sobre o mapa); a setinha à direita dobra e desdobra o cartão.',
+    'O cabeçalho: um bloco com o número do dia e a previsão, depois Dia 1 ou o título que você deu, a data, e chips para a noite reservada (check-in ou check-out), um carro alugado e o custo do dia. Clique no cabeçalho para abrir o dia (os Detalhes do dia se abrem sobre o mapa); o + à direita adiciona um lugar, uma hospedagem, um transporte, uma conexão de transporte público ou uma nota, e a setinha dobra o cartão.',
   'help.guide.read-day-plan.step.2':
-    'Uma parada: a alça à esquerda a arrasta, a imagem carrega um cadeado para a otimização da rota, depois o nome, a descrição e, se houver, as Notas para este dia. Um selo de horário mostra Início e Fim quando a parada os tem; as setas que aparecem na ponta direita a sobem ou a descem.',
+    'Uma parada: a alça à esquerda a arrasta, a imagem carrega um cadeado para a otimização da rota, depois o nome, um selo de horário quando a parada tem Início e Fim, a descrição e, se houver, as Notas para este dia. As setas na ponta direita a sobem ou a descem, e os três pontinhos abrem o menu dela.',
   'help.guide.read-day-plan.step.3':
-    'Uma reserva no dia: uma reserva numa parada marca a parada como Reserva confirmada ou Reserva pendente, e um transporte aparece como Partida ou Chegada com seu horário e seu trajeto, com um pequeno botão que desenha essa rota no mapa.',
+    'Uma reserva numa parada fica sobre ela como um selo Reserva, verde quando está confirmada e âmbar enquanto está pendente, com o horário e a empresa; clique no selo para abrir a reserva, e o botão de rota ao lado desenha o trajeto dela. Um transporte é uma linha própria, tingida conforme o tipo, com Partida ou Chegada e o horário. Clique numa reserva e os detalhes dela se abrem; Editar ali a altera.',
   'help.guide.read-day-plan.step.4':
     'Entre duas paradas, o conector diz quanto tempo o trecho leva e qual é a distância, no meio de transporte do dia; clique nele para mudar o meio só daquele trecho.',
   'help.guide.read-day-plan.step.5':
     'A barra de rota no fim: Rota desenha o caminho do dia no mapa, Otimizar reordena as paradas, os botões de modo escolhem De carro ou A pé, Abrir no Google Maps e Abrir no CoMaps abrem o dia lá.',
   'help.guide.read-day-plan.result': 'Cada símbolo do cartão tem um significado; os guias abaixo mudam cada um deles.',
   'help.guide.read-day-plan.tip.1':
-    'Clique com o botão direito numa parada para ver o menu dela: Editar, Remover do dia, Abrir site, os apps de navegação (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Salvar na Coleção, Excluir.',
+    'Clique com o botão direito numa parada, ou nos três pontinhos dela, para ver o menu: Editar, Remover do dia, Abrir site, os apps de navegação (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Salvar na Coleção, Excluir.',
   'help.guide.read-day-plan.tip.2':
     'Passe o mouse sobre uma parada e Adicionar reserva aparece na ponta dela: uma reserva criada ali fica presa a esta parada neste dia.',
   // place-onto-day
@@ -1992,9 +1994,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Arraste uma linha da coluna de lugares até o cartão do dia. Solte-a entre duas paradas para pô-la exatamente ali, ou em qualquer ponto do cartão para acrescentá-la no fim.',
   'help.guide.place-onto-day.step.2':
-    'Sem arrastar: abra o dia clicando no cabeçalho, depois clique no + no fim da linha do lugar, ou clique com o botão direito na linha e escolha + Dia.',
+    'Sem arrastar: abra o dia clicando no cabeçalho, depois clique em + Dia no fim da linha do lugar, ou clique com o botão direito na linha e escolha + Dia.',
   'help.guide.place-onto-day.step.3':
-    'Num dia vazio, Adicionar local a este dia abre o formulário de lugar, e o novo lugar cai no dia na hora.',
+    'Adicionar local a este dia, no menu + do dia ou num dia vazio, abre o formulário de lugar, e o novo lugar cai no dia na hora.',
   'help.guide.place-onto-day.step.4':
     'A partir dos detalhes de um lugar, Adicionar ao dia pergunta qual dia; a partir do cabeçalho do dia, Para o dia na coluna de lugares cria um lugar novo no dia aberto.',
   'help.guide.place-onto-day.result':
@@ -2023,7 +2025,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.title': 'Dar um horário a uma parada',
   'help.guide.set-stop-times.goal': 'Fixar quando uma parada começa e termina, para o dia se ler como uma programação.',
   'help.guide.set-stop-times.step.1':
-    'Clique com o botão direito na parada e escolha Editar. Aberto a partir do dia, o formulário tem Início e Fim embaixo.',
+    'Clique com o botão direito na parada, ou nos três pontinhos dela, e escolha Editar. Aberto a partir do dia, o formulário tem Início e Fim para aquele dia, logo abaixo da localização.',
   'help.guide.set-stop-times.step.2':
     'Preencha Início e, se quiser, Fim. Sobreposição de horário com: avisa que outra parada do dia com horário se sobrepõe; um Fim antes do Início bloqueia Atualizar.',
   'help.guide.set-stop-times.step.3':
@@ -2062,12 +2064,12 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Adicionar uma nota a um dia',
   'help.guide.day-note.goal': 'Guardar um lembrete, um número de ingresso ou um plano B dentro do dia.',
-  'help.guide.day-note.step.1': 'Clique em Adicionar nota no cabeçalho do dia.',
+  'help.guide.day-note.step.1': 'Clique no + no cabeçalho do dia e escolha Adicionar nota.',
   'help.guide.day-note.step.2':
-    'Dê um nome em Nota, é isso que aparece no dia, e escreva o resto em Nota do dia. A barra de ferramentas acima formata o texto (Negrito, Lista com marcadores, Link, Citação), e Pré-visualização, à esquerda, mostra como a nota vai ficar no dia.',
+    'Digite o nome da nota no cabeçalho da janela, onde está escrito Nota; é isso que aparece no dia. Escreva o resto em Nota do dia: a barra de ferramentas acima formata o texto (negrito, listas, links, citações), e Pré-visualização, à esquerda, mostra a linha que a nota vai virar.',
   'help.guide.day-note.step.3': 'Escolha um Ícone e uma Cor, para a nota se destacar das paradas, e então Adicionar.',
   'help.guide.day-note.step.4':
-    'A nota fica no dia como uma parada: arraste-a para o lugar certo, clique com o botão direito para Editar e Excluir.',
+    'A nota fica no dia como uma parada: arraste-a para o lugar certo, e clique nela com o botão direito ou use os três pontinhos dela para Editar e Excluir.',
   'help.guide.day-note.result':
     'A nota faz parte do dia, no PDF também; uma nota com horário se ordena junto com as paradas com horário.',
   'help.guide.day-note.tip.1':
@@ -2116,15 +2118,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.title': 'Ler reservas e transportes no plano',
   'help.guide.bookings-in-plan.goal': 'Saber onde uma reserva aparece depois que existe, e qual tela a cria.',
   'help.guide.bookings-in-plan.step.1':
-    'Um transporte (Voo, Trem, Balsa, Ônibus, Carro) aparece no dia em que parte como Partida e no dia em que chega como Chegada, com horário e trajeto; um de vários dias se estende pelos dias no meio.',
+    'Um transporte (voo, trem, balsa, ônibus, carro) é uma linha tingida conforme o tipo: Partida no dia em que sai, Chegada no dia em que chega, com horário e trajeto; um de vários dias se estende pelos dias no meio. Clique na linha e a reserva se abre.',
   'help.guide.bookings-in-plan.step.2':
-    'Uma reserva presa a uma parada (um Restaurante, um Passeio) marca aquela parada como Reserva confirmada ou Reserva pendente; uma reserva com dia mas sem parada vira uma linha própria no dia.',
+    'Uma reserva presa a uma parada (um restaurante, um passeio) é um selo Reserva nessa parada, verde quando confirmada e âmbar enquanto pendente, com o horário; uma reserva com dia mas sem parada vira uma linha própria no dia.',
   'help.guide.bookings-in-plan.step.3':
     'Uma noite de hotel é uma hospedagem: fica nos Detalhes do dia em Hospedagem, do Check-in ao Check-out, e a rota de cada um desses dias começa ali.',
   'help.guide.bookings-in-plan.step.4':
     'No mapa, o botão numa linha de transporte desenha a rota dele; Mostrar todas as rotas de reservas, na barra de ferramentas, desenha todas.',
   'help.guide.bookings-in-plan.step.5':
-    'Para criar: Adicionar reserva numa parada sob o mouse, Adicionar transporte e Transporte público no cabeçalho do dia, e as abas Reservas e Transportes para a lista completa com importação e arquivos.',
+    'Para criar: Adicionar reserva numa parada sob o mouse, Adicionar transporte e Transporte público no menu + do dia, e as abas Reservas e Transportes para a lista completa com importação e arquivos.',
   'help.guide.bookings-in-plan.result':
     'Uma reserva, um lugar no plano; as abas são as mesmas reservas em forma de lista.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2155,24 +2157,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Clique numa linha da coluna de lugares, numa parada dentro de um dia ou num marcador do mapa, e o painel abre sobre o mapa. Escolhê-lo dentro de um dia diz ao painel de qual parada você fala, e é isso que traz junto os participantes da parada e a reserva dela.',
   'help.ctx.trip-place.bullet.2':
-    'O cabeçalho traz a imagem redonda, o nome, a categoria, o endereço e as coordenadas. Clique na imagem para usar uma sua, dê um duplo clique no nome para renomear o lugar na hora, e o X à direita fecha o painel.',
+    'O cabeçalho traz a imagem redonda, o nome, o endereço numa linha só e chips para o que se sabe: aberto ou fechado, a categoria, o preço, o telefone e as coordenadas. Clique na imagem para usar uma sua, dê um duplo clique no nome para renomear o lugar na hora, e o X à direita fecha o painel.',
   'help.ctx.trip-place.bullet.3':
-    'Abaixo dele: o preço se houver, as estrelas que cada viajante deu ao lugar, a descrição e as notas, e Notas para este dia quando a parada tem alguma.',
+    'Abaixo dele: as estrelas que cada viajante deu ao lugar, a descrição e as notas, e Notas para este dia quando a parada tem alguma.',
   'help.ctx.trip-place.bullet.4':
     'Horário de funcionamento, Cor da trilha, Dados da trilha e Arquivos vêm em seguida, conforme se apliquem. Arquivos aceita qualquer coisa das suas pastas e também lista o que está preso à reserva desta parada.',
   'help.ctx.trip-place.bullet.5':
     'A linha de baixo: Adicionar ao dia ou Remover do dia enquanto um dia está aberto, depois Salvar na Coleção, Navegação, Abrir site, Editar e Excluir.',
   'help.ctx.trip-place.bullet.6':
-    'Um lugar escolhido na busca carrega o que o índice do TREK ou o OpenStreetMap sabem dele: um anel verde Aberto ou vermelho Fechado em volta da imagem, julgado pelo relógio do próprio lugar, o telefone abaixo das estrelas, Horário de funcionamento mais abaixo com a linha do dia na fileira e a semana inteira atrás de um clique, e o site dele atrás de Abrir site. A avaliação do Google só aparece num lugar encontrado pelo Google, num TREK com uma chave do Google.',
+    'Um lugar escolhido na busca carrega o que o índice do TREK ou o OpenStreetMap sabem dele: Aberto ou Fechado entre os chips do cabeçalho, com um anel verde ou vermelho em volta da imagem, julgado pelo relógio do próprio lugar, o telefone também como chip, Horário de funcionamento mais abaixo com a linha do dia na fileira e a semana inteira atrás de um clique, e o site dele atrás de Abrir site. A avaliação do Google só aparece num lugar encontrado pelo Google, num TREK com uma chave do Google.',
   // read-place
   'help.guide.read-place.title': 'O que o painel conta sobre um lugar',
   'help.guide.read-place.goal': 'Leia tudo o que a viagem sabe de um lugar, num painel só.',
   'help.guide.read-place.step.1':
     'Na coluna dos dias, clique na parada que você quer ler. O painel abre sobre o mapa e a parada continua marcada no dia dela.',
   'help.guide.read-place.step.2':
-    'O cabeçalho: a imagem redonda, o nome, o endereço e as coordenadas exatas. Um anel verde com Aberto, ou vermelho com Fechado, em volta da imagem diz se o lugar está aberto agora, pelo relógio dele, assim que o TREK conhece o horário. O X à direita fecha o painel de novo.',
+    'O cabeçalho: a imagem redonda, o nome e o endereço numa linha só; a dica dele mostra o endereço completo. Os chips abaixo dizem Aberto ou Fechado agora, pelo relógio do próprio lugar, com um anel verde ou vermelho combinando em volta da imagem, e trazem o telefone, que um clique entrega ao seu aplicativo de telefone, e as coordenadas exatas. O X à direita fecha o painel de novo.',
   'help.guide.read-place.step.3':
-    'Abaixo, as estrelas que cada viajante deu ao lugar, com a média e quantos votaram. Ainda sem avaliações enquanto ninguém votou. Logo abaixo, o telefone, onde o lugar tem um: um clique nele entrega o número ao seu aplicativo de telefone.',
+    'Avaliação vem primeiro abaixo do cabeçalho: as estrelas que cada viajante deu ao lugar, com a média e quantos votaram. Ainda sem avaliações enquanto ninguém votou.',
   'help.guide.read-place.step.4':
     'Depois a descrição e, abaixo dela, as notas. As duas são o texto do formulário do lugar, renderizado: listas, links e negrito funcionam.',
   'help.guide.read-place.step.5': 'Participantes diz quem vai a esta parada. Estão todos dentro até você tirar alguém.',
@@ -2265,18 +2267,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'A reserva de uma parada',
   'help.guide.place-booking.goal': 'Leia a reserva que pertence a uma parada, abra-a, e prenda uma nova a ela.',
   'help.guide.place-booking.step.1':
-    'Abra a parada a que a reserva pertence. O painel mostra uma faixa com Confirmada ou Pendente e o nome da reserva.',
+    'Abra a parada a que a reserva pertence. O painel a lista em Reservas como um cartãozinho próprio, com o nome da reserva e Confirmada ou Pendente.',
   'help.guide.place-booking.step.2':
-    'A faixa traz a Data, a Hora e o Código da reserva, e as notas que a reserva tiver.',
-  'help.guide.place-booking.step.3': 'Clique na faixa. A reserva abre sobre o mapa.',
+    'O cartão da reserva traz a Data, a Hora e o Código da reserva, e as notas que a reserva tiver.',
+  'help.guide.place-booking.step.3': 'Clique no cartão da reserva. A reserva abre sobre o mapa.',
   'help.guide.place-booking.step.4':
     'Editar, no pé da reserva, abre o formulário dela. Vincular à atribuição do dia, ali, é o que prende uma reserva a uma parada, e aqui já nomeia esta. Feche o formulário de novo.',
   'help.guide.place-booking.step.5':
-    'Uma reserva nova para uma parada começa na coluna dos dias: passe o ponteiro pela parada e clique no + no fim dela. O formulário abre como Nova reserva, já vinculada a ela.',
+    'Uma reserva nova para uma parada começa na coluna dos dias: passe o ponteiro pela parada e clique em Adicionar reserva, o bilhete no fim dela. O formulário abre como Nova reserva, já vinculada a ela.',
   'help.guide.place-booking.result':
     'A reserva fica presa à parada: está no painel, está no dia, e os arquivos dela também aparecem aqui sob Arquivos.',
   'help.guide.place-booking.tip.1':
-    'A faixa só aparece na parada a que a reserva está presa. Uma reserva sem parada mora na aba Reservas.',
+    'O cartão da reserva só aparece na parada a que a reserva está presa. Uma reserva sem parada mora na aba Reservas.',
   'help.guide.place-booking.tip.2':
     'Várias reservas podem dividir uma parada: o almoço e o passeio que sai da mesma porta.',
   'help.guide.place-booking.tip.3':
@@ -2517,7 +2519,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'No topo, o tempo do dia. Previsão para nomeia o lugar a que ela se refere: a primeira parada do dia, ou a hospedagem em que você acorda.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Reservas lista as reservas daquele dia, cada uma com seu tipo, a parada a que pertence e seus horários. Verde quer dizer confirmada, âmbar ainda pendente; é só uma leitura, as reservas se mudam na aba Reservas.',
+    'Reservas lista as reservas daquele dia, cada uma com seu tipo, a parada a que pertence e seus horários. Verde quer dizer confirmada, âmbar ainda pendente, e um clique numa linha abre a reserva.',
   'help.ctx.trip-day-detail.bullet.5':
     'Hospedagem mostra cada noite reservada sobre este dia, com Check-in e Check-out nos dias em que acontecem, a janela de check-in, o horário de check-out e o número de confirmação.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2550,7 +2552,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'O número grande é a temperatura do dia, ao lado dele a mínima e a máxima, e a condição por extenso.',
   'help.guide.day-weather.step.3':
-    'Os chips abaixo: a probabilidade de chuva, quanta chuva cai, o vento mais forte, e o nascer e o pôr do sol.',
+    'Os chips à direita: a probabilidade de chuva, quanta chuva cai, o vento mais forte, e o nascer e o pôr do sol.',
   'help.guide.day-weather.step.4':
     'Embaixo, o dia hora a hora, de duas em duas horas: o horário, o ícone, a temperatura e a probabilidade de chuva. Uma hora acima de 50 por cento fica sombreada de azul.',
   'help.guide.day-weather.result':
@@ -2583,18 +2585,18 @@ const help: TranslationStrings = {
     'O estabelecimento precisa ser primeiro um lugar da viagem. Crie-o na coluna dos lugares como faria com qualquer outro lugar: o seletor só oferece o que já está lá.',
   'help.guide.add-accommodation.step.2': 'Abra o dia da sua chegada e clique em Adicionar hospedagem, sob Hospedagem.',
   'help.guide.add-accommodation.step.3':
-    'Aplicar aos dias diz que noites a estadia cobre: o dia de check-in à esquerda, o dia de check-out à direita. Todos pega a viagem inteira.',
+    'Aplicar aos dias diz que noites a estadia cobre: Início é o dia de check-in, Fim o dia de check-out, e Todos pega a viagem inteira. O cabeçalho da janela mostra o período e o número de noites.',
   'help.guide.add-accommodation.step.4':
     'Preencha Check-in, Até e Check-out, e ponha o número da reserva em Confirmação. Os quatro podem ficar vazios.',
   'help.guide.add-accommodation.step.5':
-    'Escolha o estabelecimento entre os lugares da viagem. Os chips acima da lista a estreitam a uma categoria.',
+    'Escolha o estabelecimento entre os lugares da viagem. Categoria, acima da lista, a estreita a uma categoria.',
   'help.guide.add-accommodation.step.6': 'Clique em Salvar.',
   'help.guide.add-accommodation.result':
     'A estadia aparece em cada dia que cobre, Check-in no primeiro e Check-out no último. O estabelecimento vira uma parada no dia de check-in, então o mapa desenha o caminho até lá, e na aba Reservas surge uma reserva do tipo Hospedagem.',
   'help.guide.add-accommodation.tip.1':
     'O seletor abre no dia de onde você veio, com o check-out no dia seguinte; os dois podem ser movidos antes de salvar.',
   'help.guide.add-accommodation.tip.2':
-    'Dê ao hotel a categoria Hotel da viagem ao criá-lo e os chips acima da lista a estreitam aos seus hotéis num clique.',
+    'Dê ao hotel a categoria Hotel ao criá-lo, e Categoria, acima da lista, a estreita aos seus hotéis num clique.',
   'help.guide.add-accommodation.tip.3':
     'Os horários são todos opcionais: uma estadia sem check-in e sem código cobre as noites dela do mesmo jeito e desenha a rota dela do mesmo jeito.',
   // edit-accommodation
@@ -2605,7 +2607,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'O lápis à direita dele reabre a estadia. A janela agora diz Editar hospedagem.',
   'help.guide.edit-accommodation.step.3':
-    'Corrija a fileira de campos: Check-in, Até, Check-out e Confirmação. Os dias acima dela e o estabelecimento abaixo também se mudam aqui.',
+    'Corrija Check-in, Até, Check-out e Confirmação. Os dias acima deles e o estabelecimento abaixo também se mudam aqui.',
   'help.guide.edit-accommodation.step.4': 'Clique em Salvar.',
   'help.guide.edit-accommodation.step.5':
     'O xis ao lado do lápis encerra a estadia. Ele não pergunta nada, e a reserva do tipo Hospedagem que pertence a ela vai junto.',
@@ -2621,7 +2623,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Reservas lista as reservas do dia: as datadas nele, e as que estão penduradas numa das paradas dele.',
   'help.guide.day-bookings.step.2':
-    'Uma linha mostra que tipo de reserva é, o nome dela e, quando pertence a uma parada, essa parada depois de um ponto. Os horários dela ficam na ponta direita.',
+    'Uma linha mostra que tipo de reserva é, o nome dela e, quando pertence a uma parada, essa parada em cinza depois dele. Os horários ficam na ponta direita, antes do ponto de status.',
   'help.guide.day-bookings.step.3':
     'A cor diz como está uma reserva: uma linha verde está confirmada, uma âmbar ainda está pendente. As hospedagens não estão nesta lista, elas têm o bloco próprio logo abaixo.',
   'help.guide.day-bookings.step.4':

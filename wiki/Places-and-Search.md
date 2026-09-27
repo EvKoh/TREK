@@ -1,14 +1,89 @@
 # Places and Search
 
-Places are the building blocks of your trip. You can add them by searching, pasting a map link, entering coordinates, or importing a file.
+Places are the building blocks of a trip: sights, restaurants, hotels, stations, trailheads. You add them by searching, by pasting a map link, by typing coordinates, from your saved places, by right-clicking the map or by importing a file or a list.
 
-![Places sidebar](assets/PlaceAutocomplete.png)
+![The places column: the head band with Add Place/Activity and the import button, the search field with the select button, the Show, category and rating filters, and the list of places](assets/PlacesColumn.png)
+
+## The places column
+
+The right column of the Plan tab lists every place of the trip. Its head band has three rows:
+
+1. **Add Place/Activity** and the import button (*Import Places*). While a day is open, the add button splits in two: **New place** adds a place to the trip, **To day** (*Add to the open day*) puts it straight onto that day. In a narrow column both buttons drop to their icons. The import button opens a menu with **Import file** and **List Import** (it reads **Google List** when Google is the only list source); see [Importing multiple places](#importing-multiple-places).
+2. **Search**, which narrows the list to places whose name or address contains what you type, and the **Select** button, see [Selecting several places](#selecting-several-places).
+3. Three filters:
+   - **Show**: **All**, **Unplanned**, **Planned**, and **Tracks** once the trip has one, each with its count.
+   - **Categories** (the tag icon): tick one or several categories, or **No Category**. A badge on the icon counts the categories in force, and **Clear filter** lifts them.
+   - **Filter by rating** (the star): **All**, or a floor from **5+** down to **1+**.
+
+With a day open and **Planned** chosen, the list shows only that day's places, and a chip says **Showing the open day only**. Its **X** (*Show the whole trip*) closes the day. See [Trip Planner Overview](Trip-Planner-Overview#layout).
+
+Each row shows the place's photo or category tile, a short stroke in the track's colour for an imported track, the category icon, the name, the average member rating, and a line with the description or the address. Click a row to open the [place inspector](#the-place-inspector), or drag it onto a day. While a day is open, a place that is not on it yet shows a **+** (*+ Day*) that puts it on that day.
+
+The **…** at the end of a row (*More options*) offers what a right-click offers: **Edit**, **+ Day** while a day is open, **Open Website**, **Google Maps**, **Save to Collection** with the [Collections](Collections) addon, and **Delete**.
+
+### Selecting several places
+
+Click **Select** (the tick next to the search field) to switch the list into select mode. Click places to tick them; a bar rises at the foot of the column with the number of ticked places and these actions:
+
+| Action | What it does |
+|---|---|
+| **Select all** / **Deselect all** | Ticks every place the list currently shows, or none. |
+| **Change category** | Gives every ticked place the same category. |
+| **Save to Collection** | Saves the ticked places to a list in [Collections](Collections). With the Collections addon. |
+| **Mark visited in your lists** | Marks the ticked places as visited in the lists they are saved in. With the Collections addon. |
+| **Delete selected** | Deletes the ticked places from the trip. |
+| **Done** | Leaves select mode. |
 
 ## Adding a place
 
-Click **Add Place/Activity** at the top of the Places sidebar to open the place form. While a day is open the button splits in two: **New place** adds the place to the trip, and **To day** (*Add to the open day*) puts it straight onto that day. In a narrow sidebar both drop to their icons.
+- **Add Place/Activity** at the top of the places column opens the place form. While a day is open, **New place** adds the place to the trip and **To day** puts it straight onto that day.
+- **Add place to this day** in a day's **+** menu does the same for any day. See [Day Plans and Notes](Day-Plans-and-Notes#adding-to-a-day).
+- **Right-click anywhere on the map** to create a place at that spot. The address is filled in by reverse geocoding through OpenStreetMap, or through Amap inside mainland China when Amap holds the keyed slot (see [Which provider answers](#which-provider-answers)).
+- A place from a **map category** or a **saved place** fills the form for you, see [Exploring the map by category](#exploring-the-map-by-category) and [Saved places](#saved-places).
 
-You can also **right-click anywhere on the map** to create a place at that exact spot. The address is filled in by reverse geocoding through OpenStreetMap, or through Amap inside mainland China when Amap holds the keyed slot (see [Which provider answers](#which-provider-answers)).
+## The place form
+
+**Add Place/Activity** and **Edit Place** are the same dialog.
+
+![The Edit Place dialog: the name and category in the head band, Place details with picture choices on the left, the form in the middle and Saved places on the right](assets/PlaceForm.png)
+
+- **The head band** holds the name, which you type straight into the band, and the category as a pill. The **+** next to the pill (*New category*) turns it into a field for a new category's name; **OK** or Enter creates it, **Cancel** or Escape closes the field. After a search pick, a pill names where the place came from.
+- **Search** finds the place and fills in the rest, see [Searching for a place](#searching-for-a-place).
+- **Address**, **Latitude** and **Longitude** say where it is.
+- **Start**, **End** and **Notes for this day** appear when you edit a place from a day, since they belong to that one visit.
+- **Description** and **Notes** take Markdown and each have a formatting bar.
+- **Website** and **Files** sit side by side; **Attach** picks files.
+- **Costs** links the place to expenses, see [Costs for a place](#costs-for-a-place).
+- On a desktop, **Place details** sits on the left (see [Place details while searching](#place-details-while-searching)) and **Saved places** on the right (see [Saved places](#saved-places)).
+
+**Add** saves a new place, **Update** an edited one. Enter in a field never saves, so a half-typed search cannot save the form by accident.
+
+### Place fields
+
+| Field | Notes |
+|---|---|
+| Name | Required. Typed into the head band. |
+| Category | Pick one, **No Category**, or create a new one with the **+** (a new category starts with the colour `#6366f1` and the `MapPin` icon). |
+| Address | Free text. |
+| Latitude / Longitude | Decimal degrees. See [Entering coordinates manually](#entering-coordinates-manually). |
+| Start / End | Only when you edit the place from a day: the time of this visit. |
+| Notes for this day | Only when you edit the place from a day: a note for this visit alone. It shows under the place in the day plan. |
+| Description | Markdown. |
+| Notes | Markdown, up to 2,000 characters. |
+| Website | A URL. |
+| Files | **Attach** a file, or paste an image or a PDF anywhere in the dialog. The files are uploaded when the place is saved. The instance's **Allowed File Types** list applies (by default jpg, jpeg, png, gif, webp, heic, pdf, doc, docx, xls, xlsx, txt, csv, pkpass, pkpasses, md and markdown), plus video, which is exempt from that list. See [Documents-and-Files](Documents-and-Files). |
+
+Two warnings appear under the times: one if the end lies before the start, and one (*Time overlap with:*) naming the places on the same day whose times overlap.
+
+A new place that looks like one already on the trip (the same name, the same Google place, or practically the same coordinates) is not saved at once. A message says *'Louvre' is already in this trip.* and the save button turns into **Add anyway**.
+
+### Costs for a place
+
+With the [Costs](Budget-Tracking) addon enabled, the place form carries the same **Costs** block that bookings and transports have. **Create expense** saves the place and then opens the Costs editor for a new expense linked to it: the museum ticket, the guided tour, the entry fee. On a saved place, **Link existing expense** ties one that is already in Costs. Every linked expense is listed with edit, **Unlink, keep the expense** and **Remove expense**, and a place can carry several.
+
+The expense belongs to the **place**, not to a day. Putting the same place on several days does not multiply it: you bought the ticket once. If you really pay each time, add a second expense from the Costs tab.
+
+Deleting the place deletes its linked expenses too, the same way deleting a booking does.
 
 ## Searching for a place
 
@@ -16,7 +91,7 @@ Place search needs no API key. Two sources answer it together: the **TREK API**,
 
 ### Suggestions while you type
 
-After 2 or more characters, and a 300 ms pause, suggestions appear in a dropdown under the search box.
+After two or more characters and a 300 ms pause, suggestions appear under the search field of the place form.
 
 - Use **↑ / ↓** to move through them, **Enter** to pick one, **Esc** to close the list.
 - Suggestions come from the TREK API, from its index and from an OpenStreetMap layer it keeps. A suggestion from that layer shows the name that matched what you typed, with the name used on the spot underneath when the two differ.
@@ -25,7 +100,7 @@ After 2 or more characters, and a 300 ms pause, suggestions appear in a dropdown
 
 ### The full search
 
-Press **Enter** without picking a suggestion, or click the search button, to run a full search. It asks the TREK API and OpenStreetMap at the same time and interleaves their answers, TREK first, up to ten results. A place both of them know (within 60 metres, with a matching name) is listed once.
+Press **Enter** without picking a suggestion, or click the search button beside the field, to run a full search. It asks the TREK API and OpenStreetMap at the same time and interleaves their answers, TREK first, up to ten results. A place both of them know (within 60 metres, with a matching name) is listed once.
 
 A Google or Amap key does not change this. The keyed provider is asked only when the TREK API and OpenStreetMap both come back empty; see [Google and Amap](#google-and-amap).
 
@@ -85,7 +160,7 @@ Amap does not supply place photos here. Its images come with no licence statemen
 
 A place remembers where it came from. One picked from Amap keeps its Amap id, one picked from Google keeps its Google id, and each keeps opening against the provider that knows it, whichever provider the admin selects later.
 
-Amap links can be pasted into the search box too; see [Pasting a map URL](#pasting-a-map-url). A place in China also offers **高德地图** in its **Navigation** menu, whichever provider answers searches; see [Opening a place in a map app](#opening-a-place-in-a-map-app).
+Amap links can be pasted into the search field too; see [Pasting a map URL](#pasting-a-map-url). A place in China also offers **高德地图** in its **Navigation** menu, whichever provider answers searches; see [Opening a place in a map app](#opening-a-place-in-a-map-app).
 
 ### Which provider answers
 
@@ -104,17 +179,17 @@ To keep searches from reaching the TREK API at all, set `TREK_PLACES_ENABLED=fal
 
 ## Place details while searching
 
-On desktop the place form carries a **Place details** column to the left of the form. Pick a search result and it fills in on its own, with no extra click, and nothing changes about the usual flow of searching, picking and saving. If you already know the place, ignore the column and save as before.
+On desktop the place form carries a **Place details** column on its left. Pick a search result and it fills in on its own, with no extra click; until then it reads *Pick a result to see more*. Nothing changes about the usual flow of searching, picking and saving, and if you already know the place you can ignore the column.
 
 The column shows what it can find:
 
-- **Pictures** near or of the place. Click one to make it that place's thumbnail; click it again to clear the choice. The picture then appears everywhere the place does (list, map marker, itinerary, PDF export and shared trips), exactly like a [custom place image](#custom-place-image).
+- **Pick a picture**: pictures near or of the place. Click one to make it that place's thumbnail; click it again to clear the choice. The picture then appears everywhere the place does (list, map marker, itinerary, PDF export and shared trips), exactly like a [custom place image](#custom-place-image).
 - **A rating**, for a place that came from Google or Amap.
 - **Opening Hours**: today's hours up front and the whole week a click away, with an open or closed badge worked out in the place's own time zone. When the hours cannot be read reliably there is no badge rather than a wrong one.
 - **Good to know**: facts such as cuisine, outdoor seating, takeaway, step-free access, Wi-Fi or a menu link, where OpenStreetMap carries them.
-- **A description**, when one is available. It is *not* written into the place automatically. Use **Use this text** to copy it into the description field; the button is disabled with *Clear the description field first* while you have a description of your own, so nothing you wrote gets overwritten.
+- **Description**, when one is available. It is *not* written into the place automatically. Use **Use this text** to copy it into the description field; the button is disabled with *Clear the description field first* while you have a description of your own, so nothing you wrote gets overwritten.
 
-One credit line sits under the picture grid, and it belongs to the picture in play: the tile you are hovering, or failing that the one you picked, or the first picture before you have done either. It names the author, links that name to the source page, and adds the licence with a link to its terms. The other tiles carry author and licence as a tooltip only, without the links. Google's pictures get an author line and nothing else, because Google grants no reusable licence for them. Most Wikimedia Commons pictures are CC BY or CC BY-SA, which means the credit has to travel with the picture, so once you pick one, the credit stays visible under the thumbnail in the place's detail panel too.
+One credit line sits under the picture grid, and it belongs to the picture in play: the tile you are hovering, or failing that the one you picked, or the first picture before you have done either. It names the author, links that name to the source page, and adds the licence with a link to its terms. The other tiles carry author and licence as a tooltip only, without the links. Google's pictures get an author line and nothing else, because Google grants no reusable licence for them. Most Wikimedia Commons pictures are CC BY or CC BY-SA, which means the credit has to travel with the picture, so once you pick one, the credit stays visible under the thumbnail in the place inspector too.
 
 ### Where the information comes from
 
@@ -136,9 +211,76 @@ Pictures are copied to your own server and served from there. Nothing is loaded 
 
 The column is desktop-only.
 
+## Saved places
+
+With the [Collections](Collections) addon on, the place form on a desktop carries a **Saved places** column on its right: the places you saved in your lists, nearest to the trip first. **Search your saved places** narrows it by name, and two filters narrow it by list (**All lists** or one of them) and by **Status**. Click a saved place to fill the form with it, as a search result would.
+
+## Pasting a map URL
+
+Paste a `maps.app.goo.gl/…`, `goo.gl/maps/…` or `maps.google.*/…` URL into the search field and press the search button. TREK resolves it on the server and fills in the name, address and coordinates.
+
+Amap links work the same way, as long as the link carries a coordinate: `uri.amap.com/marker?position=…` share links, map URLs with the coordinate in the address, and `surl.amap.com` short links that resolve to one of those. A bare `amap.com/place/…` POI page is an id and nothing else, and TREK answers it with an error rather than guessing where it is. Coordinates are converted from GCJ-02 to WGS-84 on the way in, so the place lands where it belongs on every other map.
+
+## Entering coordinates manually
+
+**Paste** a `lat, lng` pair (for example `48.8566, 2.3522`) into the **Latitude** field, separated by a comma, a semicolon or a space. TREK detects the pair and fills both coordinate fields at once. This works on paste only: the coordinate fields accept digits, a decimal point and a leading minus, so typing a pair by hand drops the separator and leaves a single invalid number (`48.85662.3522`) behind. Type the two values into their own fields instead.
+
+## The place inspector
+
+Click a place in the places column, in a day, or on the map, and its inspector opens over the map.
+
+![The place inspector: the photo and name in the head band with the address and the open, category and rating pills, then the rating, a booking card, opening hours and files](assets/PlaceInspector.png)
+
+- **The head band** shows the photo, with a green ring while the place is open and a red one while it is closed, the name (double-click it to rename the place), the address on one line with the full address in a tooltip, and pills: **Open** or **Closed**, the category, the time of the visit, the Google rating, the phone number to call, and the coordinates. **X** closes the inspector.
+- **Rating**: every member's vote, see [Rating a place](#rating-a-place).
+- **Description**, **Notes** and **Notes for this day**, rendered as Markdown.
+- **Bookings** pinned to this stop, as small cards with the status, date, time and booking code. Click a card (*Open booking*) to open the booking's detail. Next to them, **Participants** says who joins this stop.
+- **Opening Hours**: today's line, and the whole week a click away.
+- **Files**: the place's files and the files of its bookings, with **Upload**.
+- For an imported track: its statistics and **Track color**, see [GPX tracks](Map-Features#gpx-tracks).
+
+The footer holds **Add to Day** or **Remove from Day** for the selected day, **Navigation**, **Open Website**, **Save to Collection**, and on the right **Delete** and **Edit**.
+
+## Rating a place
+
+Every trip member can rate a place from 1 to 5 stars, even when place editing is restricted to certain members. Open the place inspector: the **Rating** row shows the stars, the average with the number of votes in brackets, and the avatars of who voted; rest the pointer on it to see everyone's stars. Click a star to cast your vote, and click the same star again to clear it. A place nobody has rated reads **Not rated yet**.
+
+The average also sits beside the place's name in the places column and on a marker's hover card on the map; a marker that carries no order badge shows it as a small disc in its corner instead. To narrow the list, **Filter by rating** (the star in the places column) picks a floor from 1 to 5 stars and keeps only the places whose average reaches it.
+
+Saved places in [Collections](Collections) are rated the same way. Saving a trip place to a list or copying a list place into a trip carries the votes along, but only those of people who are members on both sides.
+
+> **AI / MCP:** `rate_place` sets or clears your own vote; see [MCP-Tools-and-Resources](MCP-Tools-and-Resources).
+
+## Custom place image
+
+By default a place's thumbnail is fetched automatically (from Google or Wikimedia when the place was imported or matched, otherwise it shows a category icon). To use your own photo instead, click the round photo in the head band of the place inspector. Pick an image and it becomes that place's thumbnail everywhere (list, map marker, itinerary, PDF export and shared trips). A small remove button on the photo clears the custom image and restores the automatic default. Accepted formats are JPG, PNG, GIF and WebP (HEIC is converted automatically), up to 20 MB.
+
+A picture picked under **Pick a picture** in the place form works the same way, see [Place details while searching](#place-details-while-searching). The same control is available on saved places in [Collections](Collections#place-detail).
+
+## Opening a place in a map app
+
+**Navigation** in the footer of the place inspector, on the phone's place sheet and on a saved place in Collections opens a short menu of map apps, in this order: **Google Maps**, **Waze**, **Apple Maps**, **OpenStreetMap**, **CoMaps** and, for a place in China, **高德地图** (Amap). Waze starts navigating straight away; the others open the place, and starting navigation from there is one tap. When only one app is available the button opens it directly. The **…** menu of a place in a day lists the same apps.
+
+Which entries appear depends on the place and on where you are, not on the search provider the admin picked. Apple Maps is left out on Android. Amap is offered by where the place is, because it only has a map of China: a stop in Shanghai gets it whoever is planning the trip, a stop in Lisbon never does. Waze, Apple Maps, CoMaps and Amap need the place's coordinates; Google Maps and OpenStreetMap can still open a place that has none, Google from its name and address, OpenStreetMap from its name. Coordinates handed to Amap are converted to its own datum on the way out, so the pin lands on the right street.
+
+In the installed app the map app takes over the current window rather than a new tab, so coming back lands you where you were.
+
+## Importing multiple places
+
+The import button in the places column (*Import Places*) offers two ways:
+
+- **Import file** takes a `.gpx`, `.kml` or `.kmz` file, from tools like Google My Maps, Google Earth or a GPS tracker. Pick the file or drop it on the dialog, then choose what to import: **Waypoints**, **Routes** and **Tracks (with path geometry)** for GPX, **Points (Placemarks)** and **Paths (LineStrings)** for KML and KMZ. Dropping a file straight onto the places column opens the same dialog with it.
+- **List Import** reads a shared list. Both Google Maps and Naver Maps list URLs are supported, with a **Provider** switch when both are available, and a shared Google Maps directions link works too: its stops become places, in driving order. Stops a route gives only by name are looked up through the TREK API first.
+
+Imported tracks each get their own line colour so multiple routes stay apart on the map; you can override it per track in the place inspector. See [Map Features](Map-Features#gpx-tracks) for the details. An import can be undone with **Undo** in the days column.
+
+Importing the same list again does not duplicate what is already in the trip. A place is recognised by the provider id it was imported with (Google place id, Google feature id, or OSM id) before its name or its coordinates are considered, so renaming a place in TREK, or moving its pin, does not make it come back as a second copy on the next import.
+
+> **Admin:** with a Google Maps API key in **Admin → Settings → API Keys**, the list import offers **Enrich places via Google**, which looks up each imported place to fill in photos, address and contact details, one Google lookup per place. Without a key the import works the same, just without that option.
+
 ## Exploring the map by category
 
-With **Explore places on the map** switched on in [Display Settings](Display-Settings#explore-places-on-the-map), the trip map carries a row of category buttons: **Restaurants**, **Cafés**, **Bars & nightlife**, **Accommodation**, **Sights**, **Museums & culture**, **Nature & parks** and **Activities**. Tap one to show that kind of place around the part of the map you are looking at. After you move the map, **Search this area** runs it again for the new view.
+With **Explore places on the map** switched on in [Display Settings](Display-Settings#explore-places-on-the-map), the trip map carries a row of category buttons: **Restaurants**, **Cafés**, **Bars & nightlife**, **Accommodation**, **Sights**, **Museums & culture**, **Nature & parks** and **Activities**. Click one to show that kind of place around the part of the map you are looking at. After you move the map, **Search this area** runs it again for the new view.
 
 The TREK API answers these first, from the map centre out to a radius that covers the view, at most 20 km. When it has nothing for the area, or cannot be reached, the public Overpass mirrors of OpenStreetMap answer instead, narrowed to a window of half a degree around the centre; `OVERPASS_URL` and `OVERPASS_TIMEOUT_MS` on [Environment Variables](Environment-Variables) steer those. Results from the TREK API come with address, website, phone and opening hours where the index has them, under the names used on the spot rather than translations. The [Road trip](Road-Trip#search-along-the-route) search along the drive asks the same two sources.
 
@@ -185,74 +327,4 @@ It exists so a different place index can be measured against real searches later
 - **Reading and wiping:** there is no screen for it. Signed in as an admin, `GET /api/place-shadow/summary` returns the row count, the counts per source and how often the pick was the first result or among the first five. `GET /api/place-shadow/export` returns the rows oldest first, 2000 per page; pass the `nextAfter` value back as `?after=` for the next page. `DELETE /api/place-shadow` deletes every row.
 - Switching the log on or off is recorded in the [Audit Log](Audit-Log) as `admin.place_shadow`.
 
-## Pasting a map URL
-
-Paste a `maps.app.goo.gl/…`, `goo.gl/maps/…`, or `maps.google.*/…` URL directly into the search box and press the search button. TREK resolves it server-side and fills in the name, address, and coordinates.
-
-Amap links work the same way, as long as the link carries a coordinate: `uri.amap.com/marker?position=…` share links, map URLs with the coordinate in the address, and `surl.amap.com` short links that resolve to one of those. A bare `amap.com/place/…` POI page is an id and nothing else, and TREK answers it with an error rather than guessing where it is. Coordinates are converted from GCJ-02 to WGS-84 on the way in, so the place lands where it belongs on every other map.
-
-## Entering coordinates manually
-
-**Paste** a `lat, lng` pair (e.g. `48.8566, 2.3522`) into the **Latitude** field, comma, semicolon or space separated. TREK detects the pair and fills both coordinate fields at once. This works on paste only: the coordinate fields accept digits, a decimal point and a leading minus, so typing a pair by hand drops the separator and leaves a single invalid number (`48.85662.3522`) behind. Type the two values into their own fields instead.
-
-## Place fields
-
-<!-- TODO: screenshot: Place form with all fields visible -->
-
-| Field | Notes |
-|---|---|
-| Name | Required |
-| Description | Free text |
-| Notes | Free text, max 2 000 characters |
-| Address | Free text |
-| Latitude / Longitude | Decimal degrees |
-| Category | Pick an existing category or type a new name to create one inline (default color `#6366f1`, icon `MapPin`) |
-| Start time / End time | Shown only when editing an existing place |
-| Website | URL |
-| File attachments | Click the Paperclip icon to attach a file, or paste an image or PDF from the clipboard. The Paperclip takes anything on the instance's **Allowed File Types** list (by default jpg, jpeg, png, gif, webp, heic, pdf, doc, docx, xls, xlsx, txt, csv, pkpass, pkpasses, md and markdown), plus video, which is exempt from that list. See [Documents-and-Files](Documents-and-Files) |
-
-Two inline warnings are shown when editing times: one if the end time is set to a value before or equal to the start time, and one if the times overlap with another place already assigned to the same day.
-
-## Costs for a place
-
-With the [Costs/Budget addon](Budget-Tracking) enabled, the place form carries the same **Costs** block that bookings and transports have. **Create expense** saves the place and then opens the Costs editor for a new expense linked to it: the museum ticket, the guided tour, the entry fee. On a saved place, **Link existing expense** ties one that is already in Costs. Every linked expense is listed with edit, unlink and remove actions, and a place can carry several.
-
-The expense belongs to the **place**, not to a day. Putting the same place on several days does not multiply it: you bought the ticket once. If you really pay each time, add a second expense from the Costs tab.
-
-Deleting the place deletes its linked expenses too, the same way deleting a booking does.
-
-## Rating a place
-
-Every trip member can rate a place from 1 to 5 stars, even when place editing is restricted to certain members. Open the place's detail panel: the rating row shows the stars, the average with the number of votes in brackets, and the avatars of who voted; rest the pointer on it to see everyone's stars. Click a star to cast your vote, and click the same star again to clear it. A place nobody has rated reads **Not rated yet**.
-
-The average also sits beside the place's name in the places list and on a marker's hover card on the map; a marker that carries no order badge shows it as a small disc in its corner instead. To narrow the list, the star button in the sidebar header (**Filter by rating**) picks a floor from 1 to 5 stars and keeps only the places whose average reaches it.
-
-Saved places in [Collections](Collections) are rated the same way. Saving a trip place to a list or copying a list place into a trip carries the votes along, but only those of people who are members on both sides.
-
-> **AI / MCP:** `rate_place` sets or clears your own vote; see [MCP-Tools-and-Resources](MCP-Tools-and-Resources).
-
-## Custom place image
-
-By default a place's thumbnail is fetched automatically (from Google or Wikimedia when the place was imported or matched, otherwise a category icon). To use your own photo instead, open the place's detail panel and click its round thumbnail. Pick an image and it becomes that place's thumbnail everywhere (list, map marker, itinerary, PDF export and shared trips). A small remove button on the thumbnail clears the custom image and restores the automatic default. Accepted formats are JPG, PNG, GIF and WebP (HEIC is converted automatically), up to 20 MB.
-
-The same control is available on saved places in [Collections](Collections#place-detail).
-
-## Opening a place in a map app
-
-The **Navigation** button in a place's detail panel, on the phone's place sheet and on a saved place in Collections opens a short menu of map apps, in this order: **Google Maps**, **Waze**, **Apple Maps**, **OpenStreetMap**, **CoMaps** and, for a place in China, **高德地图** (Amap). Waze starts navigating straight away; the others open the place, and starting navigation from there is one tap. When only one app is available the button opens it directly.
-
-Which entries appear depends on the place and on where you are, not on the search provider the admin picked. Apple Maps is left out on Android. Amap is offered by where the place is, because it only has a map of China: a stop in Shanghai gets it whoever is planning the trip, a stop in Lisbon never does. Waze, Apple Maps, CoMaps and Amap need the place's coordinates; Google Maps and OpenStreetMap can still open a place that has none, Google from its name and address, OpenStreetMap from its name. Coordinates handed to Amap are converted to its own datum on the way out, so the pin lands on the right street.
-
-In the installed app the map app takes over the current window rather than a new tab, so coming back lands you where you were.
-
-## Importing multiple places
-
-Drag a `.gpx`, `.kml`, or `.kmz` file onto the Places sidebar to import all waypoints or features at once. You can also import a shared list with the **List Import** button in the sidebar header (it reads **Google List** when Google is the only list source): both Google Maps and Naver Maps list URLs are supported, and a shared Google Maps route works too, its stops becoming places in driving order. Stops a route gives only by name are looked up through the TREK API first.
-
-Imported tracks each get their own line colour so multiple routes stay apart on the map; you can override it per track from the place details. See [Map Features](Map-Features) for the details.
-
-Importing the same list again does not duplicate what is already in the trip. A place is recognised by the provider id it was imported with (Google place id, Google feature id, or OSM id) before its name or its coordinates are considered, so renaming a place in TREK, or moving its pin, does not make it come back as a second copy on the next import.
-
-> **Admin:** with a Google Maps API key in **Admin → Settings → API Keys**, the list import offers **Enrich places via Google**, which looks up each imported place to fill in photos, address and contact details, one Google lookup per place. Without a key the import works the same, just without that option.
-
-**See also:** [TREK Places API](TREK-Places-API) · [Day-Plans-and-Notes](Day-Plans-and-Notes) · [Map-Features](Map-Features) · [Offline-Mode-and-PWA](Offline-Mode-and-PWA) · [Tags-and-Categories](Tags-and-Categories)
+**See also:** [TREK Places API](TREK-Places-API) · [Day-Plans-and-Notes](Day-Plans-and-Notes) · [Map-Features](Map-Features) · [Collections](Collections) · [Offline-Mode-and-PWA](Offline-Mode-and-PWA) · [Tags-and-Categories](Tags-and-Categories)

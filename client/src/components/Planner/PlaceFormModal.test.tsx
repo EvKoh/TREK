@@ -1,4 +1,4 @@
-// FE-COMP-PLACEFORM-001 to FE-COMP-PLACEFORM-036, FE-PLANNER-PLACEFORM-016 to FE-PLANNER-PLACEFORM-067, plus FE-PLANNER-PLACEFORM-068 to -121
+// FE-COMP-PLACEFORM-001 to FE-COMP-PLACEFORM-036, FE-PLANNER-PLACEFORM-016 to FE-PLANNER-PLACEFORM-067, plus FE-PLANNER-PLACEFORM-068 to -124
 import { render, screen, waitFor, fireEvent, within, act } from '../../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
@@ -2683,5 +2683,67 @@ describe('PlaceFormModal in the look of the booking editors', () => {
     render(<PlaceFormModal {...defaultProps} />);
     const beside = screen.getByText('Place details', { exact: true }).closest('aside') as HTMLElement;
     expect(beside).toHaveClass('sm:w-80');
+  });
+});
+
+describe('PlaceFormModal and the columns beside it', () => {
+  it('FE-PLANNER-PLACEFORM-122: a picture picked and a description adopted in the details column are saved with the place', async () => {
+    seedStore(useAuthStore, { placesEnrichEnabled: true });
+    const photoUrl = '/api/maps/place-photo/way%3A122~p0/bytes';
+    server.use(
+      http.post('/api/maps/enrichment', () => HttpResponse.json({
+        photos: [{ key: 'way:122~p0', url: photoUrl, attribution: 'Alice', license: 'CC BY 4.0', licenseUrl: null, sourceUrl: null, source: 'wikimedia' }],
+        facts: [],
+        description: { text: 'A museum by the river.', source: 'wikipedia', sourceUrl: null, license: 'CC BY-SA 4.0' },
+        rating: null,
+        hours: null,
+      })),
+    );
+    const user = userEvent.setup();
+    const onSave = vi.fn().mockResolvedValue(undefined);
+    render(<PlaceFormModal {...defaultProps} onSave={onSave} prefillCoords={{ lat: 50.9, lng: 6.96, name: 'Museum 122', osm_id: 'way:122' }} />);
+
+    await user.click(await screen.findByRole('button', { name: 'Use this text' }));
+    expect(screen.getByLabelText('Description')).toHaveValue('A museum by the river.');
+    // With a description in place, the column asks for it to be cleared first.
+    expect(screen.getByRole('button', { name: 'Use this text' })).toBeDisabled();
+
+    const tile = screen.getByRole('button', { name: /^Pick a picture/ });
+    await user.click(tile);
+    expect(tile).toHaveAttribute('aria-pressed', 'true');
+    await user.click(tile);
+    expect(tile).toHaveAttribute('aria-pressed', 'false');
+    await user.click(tile);
+
+    await user.click(screen.getByRole('button', { name: /^Add$/i }));
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(onSave).toHaveBeenCalledWith(expect.objectContaining({ image_url: photoUrl, description: 'A museum by the river.' }));
+  });
+
+  it('FE-PLANNER-PLACEFORM-123: the notes for this day are saved when they changed', async () => {
+    const user = userEvent.setup();
+    const onSave = vi.fn().mockResolvedValue(undefined);
+    const place = buildPlace({ name: 'Cafe 123' });
+    const assignment = buildAssignment({ id: 123, day_id: 5, place, notes: 'Old note' });
+    render(<PlaceFormModal {...defaultProps} onSave={onSave} place={place} assignmentId={123} dayAssignments={[assignment]} />);
+
+    const notes = screen.getByRole('textbox', { name: 'Notes for this day' });
+    expect(notes).toHaveValue('Old note');
+    await user.clear(notes);
+    await user.type(notes, 'Book a table by the window');
+    await user.click(screen.getByRole('button', { name: /^Update$/i }));
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(onSave).toHaveBeenCalledWith(expect.objectContaining({ assignment_notes: 'Book a table by the window' }));
+  });
+
+  it('FE-PLANNER-PLACEFORM-124: unchanged notes for the day are left out of the save', async () => {
+    const user = userEvent.setup();
+    const onSave = vi.fn().mockResolvedValue(undefined);
+    const place = buildPlace({ name: 'Cafe 124' });
+    const assignment = buildAssignment({ id: 124, day_id: 5, place, notes: 'Keep me' });
+    render(<PlaceFormModal {...defaultProps} onSave={onSave} place={place} assignmentId={124} dayAssignments={[assignment]} />);
+    await user.click(screen.getByRole('button', { name: /^Update$/i }));
+    await waitFor(() => expect(onSave).toHaveBeenCalledTimes(1));
+    expect(onSave.mock.calls[0][0]).not.toHaveProperty('assignment_notes');
   });
 });

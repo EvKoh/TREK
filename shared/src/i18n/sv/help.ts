@@ -1697,7 +1697,7 @@ const help: TranslationStrings = {
     'Dela uppe till höger öppnar resans människor: medlemmar, gäster, inbjudningslänken och den skrivskyddade allmänna länken.',
   'help.ctx.trip.bullet.4': 'Titel, datum, omslag och valuta redigeras från Mina resor, med pennan på resekortet.',
   'help.ctx.trip.bullet.5':
-    'Vinkelpilarna vid en kolumns inre kant fäller ihop den och kartan tar utrymmet; den tunna avdelaren bredvid en kolumn ändrar dess bredd.',
+    'Fliken vid en kolumns inre kant fäller undan den och kartan tar utrymmet; den tunna avdelaren bredvid en kolumn ändrar dess bredd.',
   'help.ctx.trip.bullet.6': 'Ångra-pilen i dagarnas verktygsrad tar tillbaka den senaste ändringen i planen.',
   // add-member
   'help.guide.add-member.title': 'Lägg till en medlem',
@@ -1762,8 +1762,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Ge kartan mer plats',
   'help.guide.collapse-columns.goal': 'Fäll ihop en kolumn eller ge den mer bredd.',
   'help.guide.collapse-columns.step.1':
-    'Klicka på vinkelpilen vid dagkolumnens inre kant för att fälla ihop den; kartan tar utrymmet. Platskolumnen har samma vinkelpil.',
-  'help.guide.collapse-columns.step.2': 'Klicka på vinkelpilen igen för att ta tillbaka kolumnen.',
+    'Klicka på fliken vid dagkolumnens inre kant, den med panelsymbolen, för att fälla undan kolumnen; kartan tar utrymmet. Platskolumnen har samma flik.',
+  'help.guide.collapse-columns.step.2':
+    'En undanfälld kolumn lämnar en ruta i kartans hörn, Plan för dagarna och Platser för platserna. Klicka på den för att ta tillbaka kolumnen.',
   'help.guide.collapse-columns.step.3':
     'Dra den tunna avdelaren mellan en kolumn och kartan för att ändra kolumnens bredd.',
   'help.guide.collapse-columns.result': 'Bredderna sparas; kolumnerna kommer tillbaka öppna vid nästa besök.',
@@ -1788,26 +1789,26 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Lägg till plats/aktivitet högst upp öppnar formuläret för en plats du skriver in eller söker fram. Medan en dag är öppen står det Ny plats på knappen, och Till dagen bredvid den skapar platsen direkt på den dagen.',
   'help.ctx.trip-places.bullet.2':
-    'Importera fil tar .gpx-, .kml- och .kmz-filer; Importera lista tar en delad lista från Google Maps eller Naver Maps. En fil kan också bara släppas på kolumnen.',
+    'Importknappen bredvid den erbjuder Importera fil, för .gpx-, .kml- och .kmz-filer, och Google-lista (Importera lista där även Naver-listor är på) för en lista delad från Google Maps eller Naver Maps. En fil kan också bara släppas på kolumnen.',
   'help.ctx.trip-places.bullet.3':
-    'Rullgardinsmenyn växlar mellan Alla, Oplanerat, Planerat och, när ett spår har importerats, Spår; under den sitter sökningen, kategorifiltret och stjärnan för ett minsta betyg.',
+    'Under dem sökningen, med bocken som startar en markering bredvid sig, och en rad filter: Visa växlar mellan Alla, Oplanerat, Planerat och, när ett spår har importerats, Spår, var och en med sitt antal; etikettknappen filtrerar efter kategori och stjärnan efter ett minsta betyg.',
   'help.ctx.trip-places.bullet.4':
-    'En rad visar bild, namn och beskrivning eller adress. Klicka på den för platsens detaljer, dra den till en dag, eller högerklicka den för Redigera, + Dag, Öppna hemsida, Google Maps, Spara i samling och Ta bort.',
+    'En rad visar bild, namn och beskrivning eller adress. Klicka på den för platsens detaljer, dra den till en dag, eller högerklicka den (eller klicka på dess tre prickar) för Redigera, + Dag, Öppna hemsida, Google Maps, Spara i samling och Ta bort.',
   'help.ctx.trip-places.bullet.5':
-    'Med en dag öppen lägger ett + i slutet av en oplanerad rad platsen på den dagen, och Planerat listar bara den dagen, med Visa hela resan för att vidga igen.',
+    'Med en dag öppen lägger + Dag i slutet av en oplanerad rad platsen på den dagen, och Planerat listar bara den dagen, med Visa hela resan för att vidga igen.',
   'help.ctx.trip-places.bullet.6':
-    'Bocken längst till höger i filterraden startar en markering: flera rader på en gång får en ny kategori, hamnar i en samling eller tas bort.',
+    'Bocken bredvid sökningen startar en markering: från raden längst ner i kolumnen får flera rader på en gång en ny kategori, hamnar i en samling, markeras som besökta eller tas bort.',
   // create-place
   'help.guide.create-place.title': 'Skapa en plats',
   'help.guide.create-place.goal': 'Lägg till en plats eller aktivitet för hand, med allt planen behöver veta om den.',
   'help.guide.create-place.step.1':
     'Klicka på Lägg till plats/aktivitet högst upp i platskolumnen (Ny plats medan en dag är öppen). Formuläret öppnas.',
   'help.guide.create-place.step.2':
-    'Skriv in platsen i Sök efter platser... högst upp och välj ett resultat. Namn, Adress, Latitud, Longitud och Hemsida fylls i, och Platsdetaljer till vänster visar bilder, öppettider och en beskrivning av den. På en TREK med en Google-nyckel sitter Inte rätt plats? Sök på Google i stället under listan och kör samma sökning via Google.',
+    'Skriv in platsen i Sök efter platser... och välj ett resultat. Namnet i dialogens huvud, Adress, Latitud, Longitud och Hemsida fylls i, och Platsdetaljer till vänster visar bilder, öppettider och en beskrivning av den. På en TREK med en Google-nyckel sitter Inte rätt plats? Sök på Google i stället under listan och kör samma sökning via Google. Sparade platser till höger erbjuder platserna i dina samlingar på samma sätt.',
   'help.guide.create-place.step.3':
     'I Platsdetaljer blir en bild platsens bild när du klickar på den under Välj en bild; Använd den här texten tar över beskrivningen till formuläret.',
   'help.guide.create-place.step.4':
-    'Kontrollera fälten: Namn krävs; Beskrivning och Noteringar är dina; Adress, Latitud och Longitud kommer från sökningen eller skrivs in; Kategori väljer en av resans kategorier, och + bredvid skapar en ny på stället; Hemsida tar länken.',
+    'Kontrollera vad formuläret innehåller: namnet sitter i dialogens huvud och är det enda obligatoriska fältet; brickan Kategori under det väljer en av resans kategorier, och + bredvid skapar en ny på stället. Adress, Latitud och Longitud kommer från sökningen eller skrivs in; Beskrivning och Noteringar är dina; Hemsida tar länken.',
   'help.guide.create-place.step.5':
     'Klicka på Lägg till. Om en plats med samma namn redan finns i resan säger formuläret det och knappen blir Lägg till ändå.',
   'help.guide.create-place.result': 'Platsen finns i listan och på kartan, under Oplanerat tills den läggs på en dag.',
@@ -1826,7 +1827,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Till dagen öppnar samma formulär som Ny plats, bara att platsen hamnar på den öppna dagen i samma stund som du klickar på Lägg till.',
   'help.guide.place-to-open-day.step.3':
-    'En plats som redan finns hamnar på den öppna dagen med + i slutet av sin rad, eller via högerklick, + Dag.',
+    'En plats som redan finns hamnar på den öppna dagen med + Dag i slutet av sin rad, eller via högerklick, + Dag.',
   'help.guide.place-to-open-day.step.4':
     'Det går lika bra åt andra hållet, och utan att först öppna en dag: dra platsens rad ut ur kolumnen och släpp den på ett dagskort. Släpper du den mellan två stopp hamnar den precis där.',
   'help.guide.place-to-open-day.result':
@@ -1838,12 +1839,12 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Hitta en plats i listan',
   'help.guide.filter-places.goal': 'Smalna av kolumnen till de platser du är ute efter.',
   'help.guide.filter-places.step.1':
-    'Rullgardinsmenyn högst upp växlar mellan Alla, Oplanerat (inte på någon dag ännu), Planerat (på en dag) och Spår (importerade GPX-spår), var och en med sitt antal.',
-  'help.guide.filter-places.step.2': 'Skriv i Sök efter platser...; listan smalnar av medan du skriver.',
+    'Visa, rullgardinsmenyn under sökningen, växlar mellan Alla, Oplanerat (inte på någon dag ännu), Planerat (på en dag) och Spår (importerade GPX-spår), var och en med sitt antal.',
+  'help.guide.filter-places.step.2': 'Skriv i Sök högst upp; listan smalnar av medan du skriver.',
   'help.guide.filter-places.step.3':
-    'Alla kategorier öppnar en lista där du bockar för en eller flera kategorier, Ingen kategori bland dem; Rensa filter längst ner nollställer den.',
+    'Etikettknappen bredvid Visa listar kategorierna: bocka för en eller flera, Ingen kategori bland dem. Knappen räknar det som är förbockat, och Rensa filter längst ner i listan tar bort alla.',
   'help.guide.filter-places.step.4':
-    'Stjärnan bredvid sätter ett minsta betyg: 5+, 4+ och så vidare visar bara platser du satt minst så högt betyg på.',
+    'Stjärnan bredvid den sätter ett minsta betyg: 5+, 4+ och så vidare visar bara platser du satt minst så högt betyg på.',
   'help.guide.filter-places.result': 'Antalet ovanför raderna säger hur många platser som stämmer; filtren kombineras.',
   'help.guide.filter-places.tip.1':
     'Med en dag öppen listar Planerat bara den dagen och säger det: Visar bara den öppna dagen, med Visa hela resan bredvid.',
@@ -1855,7 +1856,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Högerklicka raden och välj Redigera, eller öppna platsen och klicka på Redigera i dess detaljer.',
   'help.guide.edit-place.step.2':
-    'Ändra det du behöver: Namn, Beskrivning, Noteringar, Adress, Latitud och Longitud, Kategori, Hemsida. Öppnat från en dag har formuläret också Anteckningar för denna dag och Börjar och Slutar för den dagen.',
+    'Ändra det du behöver: namnet och brickan Kategori i dialogens huvud, Adress, Latitud och Longitud, Beskrivning, Noteringar och Hemsida. Öppnat från en dag har formuläret också Börjar och Slutar samt Anteckningar för denna dag.',
   'help.guide.edit-place.step.3': 'Klicka på Uppdatera.',
   'help.guide.edit-place.result':
     'Ändringen slår igenom överallt där platsen syns: i listan, på kartan och på varje dag den ligger på.',
@@ -1868,21 +1869,22 @@ const help: TranslationStrings = {
   'help.guide.delete-place.goal': 'Ta ut en plats ur resan för gott.',
   'help.guide.delete-place.step.1': 'Högerklicka raden och välj Ta bort, eller klicka på Ta bort i platsens detaljer.',
   'help.guide.delete-place.step.2':
-    'Bekräfta. Om en natt var bokad på platsen, eller en bokning är knuten till den, säger frågan vad som följer med.',
+    'Klicka på Ta bort i frågan. Om en natt var bokad på platsen, eller en bokning är knuten till den, säger frågan vad som följer med.',
   'help.guide.delete-place.result':
     'Platsen är borta från listan, kartan och varje dag; Ångra i verktygsraden ovanför dagarna tar tillbaka den.',
   'help.guide.delete-place.tip.1':
     'För att ta bort en plats från bara en dag, använd Ta bort från dag på det stoppet i stället.',
-  'help.guide.delete-place.tip.2': 'Flera platser på en gång: bocken bredvid filtren startar en markering.',
+  'help.guide.delete-place.tip.2': 'Flera platser på en gång: bocken bredvid sökningen startar en markering.',
   // select-places
   'help.guide.select-places.title': 'Ändra eller ta bort flera platser på en gång',
   'help.guide.select-places.goal': 'Städa listan i ett svep i stället för plats för plats.',
   'help.guide.select-places.step.1':
-    'Klicka på bocken längst till höger i filterraden. Raderna får kryssrutor och en rad med åtgärderna dyker upp.',
-  'help.guide.select-places.step.2': 'Bocka för raderna, eller Välj alla i raden; raden räknar det som är markerat.',
+    'Klicka på bocken bredvid sökfältet. Raderna får runda kryssrutor, och en rad med åtgärderna glider upp längst ner i kolumnen.',
+  'help.guide.select-places.step.2':
+    'Klicka på raderna för att bocka för dem. Välj alla, den dubbla bocken i raden, tar varje rad som filtren lämnar kvar.',
   'help.guide.select-places.step.3':
-    'Change category ger dem alla en kategori; Spara i samling kopierar dem till en av dina samlingar; Ta bort det markerade tar bort dem efter en bekräftelse.',
-  'help.guide.select-places.step.4': 'Klicka på bocken igen för att lämna markeringen.',
+    'Raden räknar de förbockade platserna. Ändra kategori ger dem alla en kategori; Spara i samling kopierar dem till en av dina samlingar; Ta bort det markerade tar bort dem efter en bekräftelse.',
+  'help.guide.select-places.step.4': 'Klar, X:et i slutet av raden, lämnar markeringen.',
   'help.guide.select-places.result':
     'Ändringen gäller varje markerad plats; en borttagning kan ångras från verktygsraden ovanför dagarna.',
   'help.guide.select-places.tip.1':
@@ -1892,7 +1894,8 @@ const help: TranslationStrings = {
   // import-places-file
   'help.guide.import-places-file.title': 'Importera platser från en GPX-, KML- eller KMZ-fil',
   'help.guide.import-places-file.goal': 'Ta in det som Google My Maps, Google Earth eller en GPS-tracker exporterade.',
-  'help.guide.import-places-file.step.1': 'Klicka på Importera fil, eller släpp filen var som helst på platskolumnen.',
+  'help.guide.import-places-file.step.1':
+    'Klicka på importknappen bredvid lägg till-knappen och välj Importera fil, eller släpp filen var som helst på platskolumnen.',
   'help.guide.import-places-file.step.2':
     'Välj filen eller dra in den i rutan. För en GPX, bocka för vad som ska importeras: Vägpunkter, Rutter, Spår (med spårgeometri); för KML och KMZ, Punkter (platsmarkeringar) och Stigar (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -1907,7 +1910,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Importera en delad lista från Google Maps eller Naver Maps',
   'help.guide.import-places-list.goal': 'Gör om en delad listlänk till platser.',
-  'help.guide.import-places-list.step.1': 'Klicka på Importera lista och välj Google-lista eller Naver-lista.',
+  'help.guide.import-places-list.step.1':
+    'Klicka på importknappen bredvid lägg till-knappen och välj Google-lista. Där även Naver-listor är på heter posten Importera lista och dialogen frågar vilken av de två.',
   'help.guide.import-places-list.step.2':
     'Klistra in listans delade länk. En vägbeskrivningslänk från Google Maps fungerar också: dess stopp blir platser, i körordning.',
   'help.guide.import-places-list.step.3': 'Klicka på Importera.',
@@ -1925,31 +1929,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'Verktygsfältet högst upp: Exportera (PDF, kalender, GPX), Expandera alla dagar / Dölj alla dagar, ångra-pilen, Sortera om dagar och Visa alla bokningsvägar.',
   'help.ctx.trip-days.bullet.2':
-    'Ett dagkort: nummer, väder, titel, datum och dagens kostnad i rubriken; klicka på rubriken för att öppna dagen, pilen till höger fäller ihop kortet. Kollektivtrafik, Lägg till transport och Lägg till notering sitter också i rubriken.',
+    'Ett dagkort: en ruta med dagnumret och prognosen, titeln och datumet, och brickor för den bokade natten, en hyrbil och dagens kostnad. Klicka på huvudet för att öppna dagen, vinkelpilen fäller ihop den, och + öppnar en meny: Lägg till plats den här dagen, Lägg till boende, Lägg till transport, Kollektivtrafik och Lägg till notering.',
   'help.ctx.trip-days.bullet.3':
-    'Inne i en dag: stoppen i ordning, vart och ett med bild, namn, tid och ett lås på bilden; noteringar; bokningar som hör till dagen; och mellan stoppen restiden för varje etapp.',
+    'Inne i en dag: stoppen i ordning, vart och ett med bild, namn, tid, ett lås på bilden och bokningarna som hör till det; noteringar; dagens bokningar och transporter, färgade efter sin typ; och mellan stoppen restiden för varje etapp. Varje rad har en meny med tre prickar, samma som ett högerklick öppnar.',
   'help.ctx.trip-days.bullet.4':
     'Under stoppen ruttraden: Rutt ritar dagen på kartan, Optimera sorterar stoppen, Bil / Gång sätter dagens färdsätt, och Öppna i Google Maps och Öppna i CoMaps lämnar över dagen.',
   'help.ctx.trip-days.bullet.5':
-    'Platser hamnar på en dag genom att du drar en rad från platskolumnen, med + på den raden, med Lägg till plats den här dagen på en tom dag, eller från platsens detaljer.',
+    'Platser hamnar på en dag genom att du drar en rad från platskolumnen, med + Dag på den raden, med Lägg till plats den här dagen från dagens + eller på en tom dag, eller från platsens detaljer.',
   'help.ctx.trip-days.bullet.6':
     'Totala kostnaden längst ner summerar varje stopp och varje bokning med ett pris, i resans valuta.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Läs en dag',
   'help.guide.read-day-plan.goal': 'Vet vad varje del av ett dagkort säger dig innan du ändrar något.',
   'help.guide.read-day-plan.step.1':
-    'Rubriken: dagnumret, prognosen för dagen, Dag 1 eller titeln du gav den, datumet och dagens kostnad. Klicka på rubriken för att öppna dagen (dess detaljpanel öppnas över kartan); pilen till höger fäller ihop och ut kortet.',
+    'Huvudet: en ruta med dagnumret och prognosen, sedan Dag 1 eller titeln du gav den, datumet och brickor för den bokade natten (incheckning eller utcheckning), en hyrbil och dagens kostnad. Klicka på huvudet för att öppna dagen (dess detaljpanel öppnas över kartan); + till höger lägger till en plats, ett boende, en transport, en kollektivtrafikresa eller en notering, och vinkelpilen fäller ihop kortet.',
   'help.guide.read-day-plan.step.2':
-    'Ett stopp: greppet till vänster drar det, bilden bär ett lås för ruttoptimeringen, sedan kommer namnet, beskrivningen och, om de är satta, Anteckningar för denna dag. En tidsbricka visar Börjar och Slutar när stoppet har dem; pilarna som dyker upp i dess högra kant flyttar det upp eller ner.',
+    'Ett stopp: greppet till vänster drar det, bilden bär ett lås för ruttoptimeringen, sedan kommer namnet, en tidsbricka när stoppet har Börjar och Slutar, beskrivningen och, om de är satta, Anteckningar för denna dag. Pilarna i dess högra kant flyttar det upp eller ner, och de tre prickarna öppnar dess meny.',
   'help.guide.read-day-plan.step.3':
-    'En bokning på dagen: en bokning vid ett stopp märker stoppet Bokningen bekräftad eller Bokningen väntar på bekräftelse, och en transport visas som Avgång eller Ankomst med sin tid och sin väg, med en liten knapp som ritar den vägen på kartan.',
+    'En bokning vid ett stopp sitter på det som brickan Bokning, grön när den är bekräftad och bärnstensgul så länge den väntar, med sin tid och sin leverantör; klicka på brickan för att öppna bokningen, och ruttknappen bredvid ritar dess väg. En transport är en egen rad, färgad efter sin typ, med Avgång eller Ankomst och sin tid. Klicka på en bokning så öppnas dess detaljer; Redigera där ändrar den.',
   'help.guide.read-day-plan.step.4':
     'Mellan två stopp säger länken hur lång tid etappen tar och hur långt det är, i dagens färdsätt; klicka på den för att byta färdsätt för just den etappen.',
   'help.guide.read-day-plan.step.5':
     'Ruttraden i slutet: Rutt ritar dagens väg på kartan, Optimera sorterar om stoppen, färdsättsknapparna väljer Bil eller Gång, och Öppna i Google Maps och Öppna i CoMaps öppnar dagen där.',
   'help.guide.read-day-plan.result': 'Varje symbol på kortet betyder något; guiderna nedan ändrar var och en av dem.',
   'help.guide.read-day-plan.tip.1':
-    'Högerklicka ett stopp för dess meny: Redigera, Ta bort från dagen, Öppna hemsida, navigationsapparna (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Spara i samling, Ta bort.',
+    'Högerklicka ett stopp, eller klicka på dess tre prickar, för dess meny: Redigera, Ta bort från dagen, Öppna hemsida, navigationsapparna (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Spara i samling, Ta bort.',
   'help.guide.read-day-plan.tip.2':
     'Håll muspekaren över ett stopp så dyker Lägg till bokning upp i dess slut: en bokning som skapas där hör till det här stoppet på den här dagen.',
   // place-onto-day
@@ -1958,9 +1962,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Dra en rad från platskolumnen till dagkortet. Släpp den mellan två stopp för att lägga den exakt där, eller var som helst på kortet för att lägga den sist.',
   'help.guide.place-onto-day.step.2':
-    'Utan att dra: öppna dagen genom att klicka på dess rubrik, klicka sedan på + i slutet av platsens rad, eller högerklicka raden och välj + Dag.',
+    'Utan att dra: öppna dagen genom att klicka på dess huvud, klicka sedan på + Dag i slutet av platsens rad, eller högerklicka raden och välj + Dag.',
   'help.guide.place-onto-day.step.3':
-    'På en tom dag öppnar Lägg till plats den här dagen platsformuläret, och den nya platsen hamnar på dagen med en gång.',
+    'Lägg till plats den här dagen, i dagens +-meny eller på en tom dag, öppnar platsformuläret, och den nya platsen hamnar på dagen med en gång.',
   'help.guide.place-onto-day.step.4':
     'Från en plats detaljer frågar Lägg till i dagen vilken dag; med dagen öppnad från sin rubrik skapar Till dagen i platskolumnen en ny plats direkt på den öppna dagen.',
   'help.guide.place-onto-day.result':
@@ -1987,7 +1991,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.title': 'Ge ett stopp en tid',
   'help.guide.set-stop-times.goal': 'Bestäm när ett stopp börjar och slutar, så att dagen läses som ett schema.',
   'help.guide.set-stop-times.step.1':
-    'Högerklicka stoppet och välj Redigera. Öppnat från dagen har formuläret Börjar och Slutar längst ner.',
+    'Högerklicka stoppet, eller klicka på dess tre prickar, och välj Redigera. Öppnat från dagen har formuläret Börjar och Slutar för den dagen, direkt under platsen.',
   'help.guide.set-stop-times.step.2':
     'Fyll i Börjar och, om du vill, Slutar. Tidsöverlappning med: varnar för att ett annat tidsatt stopp på dagen överlappar; ett Slutar före Börjar blockerar Uppdatera.',
   'help.guide.set-stop-times.step.3':
@@ -2025,13 +2029,13 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Lägg till en notering på en dag',
   'help.guide.day-note.goal': 'Håll en påminnelse, ett biljettnummer eller en plan B direkt i dagen.',
-  'help.guide.day-note.step.1': 'Klicka på Lägg till notering i dagens rubrik.',
+  'help.guide.day-note.step.1': 'Klicka på + i dagens huvud och välj Lägg till notering.',
   'help.guide.day-note.step.2':
-    'Ge den ett namn under Notering, det är vad dagkortet visar, och skriv resten under Daglig notering. Raden ovanför texten formaterar den (Fet, listor, länkar, citat) och Förhandsvisning till vänster visar kortet det blir.',
+    'Skriv noteringens namn i dialogens huvud, där det står Notering; det är vad dagkortet visar. Skriv resten under Daglig notering: verktygsraden ovanför formaterar texten (fet, listor, länkar, citat), och Förhandsvisning till vänster visar raden det blir.',
   'help.guide.day-note.step.3':
     'Välj en Ikon och en Färg, så att noteringen sticker ut från stoppen, och klicka sedan på Lägg till.',
   'help.guide.day-note.step.4':
-    'Noteringen sitter i dagen som ett stopp: dra den på plats, högerklicka den för Redigera och Ta bort.',
+    'Noteringen sitter i dagen som ett stopp: dra den på plats, och högerklicka den eller använd dess tre prickar för Redigera och Ta bort.',
   'help.guide.day-note.result':
     'Noteringen är en del av dagen, i PDF:en också; en tidsatt notering sorteras med de tidsatta stoppen.',
   'help.guide.day-note.tip.1':
@@ -2080,15 +2084,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.goal':
     'Vet var en bokning dyker upp när den väl finns, och vilken skärm som skapar den.',
   'help.guide.bookings-in-plan.step.1':
-    'En transport (Flygning, Tåg, Färja, Buss, Bil) visas i dagen den avgår som Avgång och i dagen den kommer fram som Ankomst, med tid och väg; en som går över flera dagar spänner över dagarna däremellan.',
+    'En transport (Flygning, Tåg, Färja, Buss, Bil) är en rad färgad efter sin typ: Avgång den dag den avgår, Ankomst den dag den kommer fram, med tid och väg; en som går över flera dagar spänner över dagarna däremellan. Klicka på raden så öppnas bokningen.',
   'help.guide.bookings-in-plan.step.2':
-    'En bokning knuten till ett stopp (en Restaurang, en Rundtur) märker det stoppet Bokningen bekräftad eller Bokningen väntar på bekräftelse; en bokning med en dag men utan stopp är en egen rad i dagen.',
+    'En bokning knuten till ett stopp (en Restaurang, en Rundtur) visas som brickan Bokning på det stoppet, grön när den är bekräftad och bärnstensgul så länge den väntar, med sin tid; en bokning med en dag men utan stopp är en egen rad i dagen.',
   'help.guide.bookings-in-plan.step.3':
     'En natt på hotell är ett boende: det sitter i dagens detaljpanel under Boende, från Incheckning till Utcheckning, och rutten för var och en av de dagarna startar där.',
   'help.guide.bookings-in-plan.step.4':
     'På kartan ritar knappen på en transportrad dess väg; Visa alla bokningsvägar i verktygsfältet ritar dem alla.',
   'help.guide.bookings-in-plan.step.5':
-    'Att skapa: Lägg till bokning på ett stopp du håller muspekaren över, Lägg till transport och Kollektivtrafik i dagens rubrik, och flikarna Bokningar och Transporter för hela listan med import och filer.',
+    'Att skapa: Lägg till bokning på ett stopp du håller muspekaren över, Lägg till transport och Kollektivtrafik i dagens +-meny, och flikarna Bokningar och Transporter för hela listan med import och filer.',
   'help.guide.bookings-in-plan.result': 'En bokning, en plats i planen; flikarna är samma bokningar som en lista.',
   'help.guide.bookings-in-plan.tip.1':
     'Bekräftat och Väntar på beslut är en status du sätter på bokningen; planen visar den på stoppet, fliken Bokningar räknar båda.',
@@ -2118,24 +2122,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Klicka på en rad i platskolumnen, ett stopp inne i en dag eller en markör på kartan, så öppnas kortet över kartan. Att plocka den inne i en dag talar om för kortet vilket stopp du menar, och det är det som tar med sig stoppets deltagare och dess bokning.',
   'help.ctx.trip-place.bullet.2':
-    'Huvudet bär den runda bilden, namnet, kategorin, adressen och koordinaterna. Klicka på bilden för att använda en egen, dubbelklicka på namnet för att byta namn på platsen på stället, och X till höger stänger kortet.',
+    'Huvudet bär den runda bilden, namnet, adressen på en rad och brickor för det som är känt: öppet eller stängt, kategorin, priset, telefonnumret och koordinaterna. Klicka på bilden för att använda en egen, dubbelklicka på namnet för att byta namn på platsen på stället, och X till höger stänger kortet.',
   'help.ctx.trip-place.bullet.3':
-    'Under det: priset om den har ett, stjärnorna varje resenär gav platsen, beskrivningen och noteringarna, och Anteckningar för denna dag när stoppet bär sådana.',
+    'Under det: stjärnorna varje resenär gav platsen, beskrivningen och noteringarna, och Anteckningar för denna dag när stoppet bär sådana.',
   'help.ctx.trip-place.bullet.4':
     'Öppettider, Spårfärg, Spåra statistik och Filer följer, så långt de gäller. Filer tar vad som helst ur dina mappar och listar också det som hänger på det här stoppets bokning.',
   'help.ctx.trip-place.bullet.5':
     'Raden längst ner: Lägg till i dagen eller Ta bort från dag medan en dag är öppen, sedan Spara i samling, Navigation, Öppna hemsida, Redigera och Ta bort.',
   'help.ctx.trip-place.bullet.6':
-    'En plats plockad ur sökningen bär det TREK-indexet eller OpenStreetMap vet om den: en grön ring med Öppen eller en röd med Stängd runt bilden, bedömd efter platsens egen klocka, telefonnumret under stjärnorna, Öppettider längre ner med dagens tider på raden och hela veckan bakom ett klick, och dess webbplats bakom Öppna hemsida. Googles betyg visas bara på en plats hittad via Google, på en TREK med en Google-nyckel.',
+    'En plats plockad ur sökningen bär det TREK-indexet eller OpenStreetMap vet om den: Öppen eller Stängd bland huvudets brickor, med en grön eller röd ring runt bilden, bedömd efter platsens egen klocka, telefonnumret också som bricka, Öppettider längre ner med dagens tider på raden och hela veckan bakom ett klick, och dess webbplats bakom Öppna hemsida. Googles betyg visas bara på en plats hittad via Google, på en TREK med en Google-nyckel.',
   // read-place
   'help.guide.read-place.title': 'Vad kortet berättar om en plats',
   'help.guide.read-place.goal': 'Läs allt resan vet om en plats, i ett enda kort.',
   'help.guide.read-place.step.1':
     'Klicka i dagkolumnen på stoppet du vill läsa. Kortet öppnas över kartan och stoppet förblir markerat i sin dag.',
   'help.guide.read-place.step.2':
-    'Huvudet: den runda bilden, namnet, adressen och de exakta koordinaterna. En grön ring med Öppen, eller en röd med Stängd, runt bilden säger om platsen är öppen just nu, efter sin egen klocka, så snart TREK känner till dess tider. X till höger stänger kortet igen.',
+    'Huvudet: den runda bilden, namnet och adressen på en rad; dess verktygstips visar hela adressen. Brickorna under dem säger Öppen eller Stängd just nu, efter platsens egen klocka, med en grön eller röd ring runt bilden som matchar, och bär telefonnumret, som ett klick lämnar till din telefonapp, och de exakta koordinaterna. X till höger stänger kortet igen.',
   'help.guide.read-place.step.3':
-    'Under det stjärnorna varje resenär gav platsen, med snittet och hur många som röstat. Inte betygsatt ännu så länge ingen gjort det. Strax under, telefonnumret där platsen har ett: ett klick på det lämnar numret till din telefonapp.',
+    'Betyg kommer först under huvudet: stjärnorna varje resenär gav platsen, med snittet och hur många som röstat. Inte betygsatt ännu så länge ingen gjort det.',
   'help.guide.read-place.step.4':
     'Sedan beskrivningen och, under den, noteringarna. Båda är texten från platsens formulär, renderad: listor, länkar och fetstil fungerar alla.',
   'help.guide.read-place.step.5':
@@ -2227,17 +2231,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'Bokningen på ett stopp',
   'help.guide.place-booking.goal': 'Läs bokningen som hör till ett stopp, öppna den, och fäst en ny på det.',
   'help.guide.place-booking.step.1':
-    'Öppna stoppet som bokningen hör till. Kortet visar en remsa med Bekräftat eller Väntar på beslut och bokningens namn.',
-  'help.guide.place-booking.step.2': 'Remsan bär Datum, Tid och Bokningskod, och vilka noteringar bokningen än har.',
-  'help.guide.place-booking.step.3': 'Klicka på remsan. Bokningen öppnas ovanpå kartan.',
+    'Öppna stoppet som bokningen hör till. Kortet listar den under Bokningar som ett eget litet kort, med bokningens namn och Bekräftat eller Väntar på beslut.',
+  'help.guide.place-booking.step.2':
+    'Bokningskortet bär Datum, Tid och Bokningskod, och vilka noteringar bokningen än har.',
+  'help.guide.place-booking.step.3': 'Klicka på bokningskortet. Bokningen öppnas ovanpå kartan.',
   'help.guide.place-booking.step.4':
     'Redigera längst ner i bokningen öppnar dess eget formulär. Länk till dagsuppgift där är det som fäster en bokning vid ett stopp, och här namnger den redan det här. Stäng formuläret igen.',
   'help.guide.place-booking.step.5':
-    'En ny bokning för ett stopp börjar i dagkolumnen: håll pekaren på stoppet och klicka på + i dess slut. Formuläret öppnas som Ny bokning, redan länkat till det.',
+    'En ny bokning för ett stopp börjar i dagkolumnen: håll pekaren på stoppet och klicka på Lägg till bokning, biljetten i dess slut. Formuläret öppnas som Ny bokning, redan länkat till det.',
   'help.guide.place-booking.result':
     'Bokningen hänger på stoppet: den finns i kortet, den finns i dagen, och dess filer listas under Filer här också.',
   'help.guide.place-booking.tip.1':
-    'Remsan visas bara för det stopp bokningen är fäst vid. En bokning utan stopp bor på fliken Bokningar.',
+    'Bokningskortet visas bara för det stopp bokningen är fäst vid. En bokning utan stopp bor på fliken Bokningar.',
   'help.guide.place-booking.tip.2':
     'Flera bokningar kan dela ett stopp: lunchen och turen som startar från samma dörr.',
   'help.guide.place-booking.tip.3':
@@ -2475,7 +2480,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Överst dagens väder. Prognos för namnger platsen den gäller: dagens första stopp, eller hotellet du vaknar på.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Bokningar listar dagens bokningar, var och en med sin sort, stoppet den hör till och sina tider. Grönt betyder bekräftat, bärnstensgult väntar fortfarande; det är en avläsning, bokningar ändras under Bokningar.',
+    'Bokningar listar dagens bokningar, var och en med sin sort, stoppet den hör till och sina tider. Grönt betyder bekräftat, bärnstensgult väntar fortfarande, och ett klick på en rad öppnar bokningen.',
   'help.ctx.trip-day-detail.bullet.5':
     'Boende visar varje natt som är bokad över den här dagen, med Incheckning och Utcheckning på de dagar de händer, incheckningsfönstret, utcheckningstiden och bekräftelsenumret.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2508,7 +2513,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'Den stora siffran är dagens temperatur, bredvid den lägsta och högsta, och vädret i ord.',
   'help.guide.day-weather.step.3':
-    'Chippen under den: sannolikheten för regn, hur mycket av det, den starkaste vinden, och soluppgång och solnedgång.',
+    'Brickorna till höger om den: sannolikheten för regn, hur mycket av det, den starkaste vinden, och soluppgång och solnedgång.',
   'help.guide.day-weather.step.4':
     'Längst ner dagen timme för timme, varannan timme: tiden, ikonen, temperaturen och sannolikheten för regn. En timme över 50 procent är skuggad blå.',
   'help.guide.day-weather.result':
@@ -2541,18 +2546,18 @@ const help: TranslationStrings = {
     'Anläggningen måste först vara en plats på resan. Skapa den i platskolumnen som vilken annan plats som helst: väljaren erbjuder bara det som redan finns där.',
   'help.guide.add-accommodation.step.2': 'Öppna dagen du anländer och klicka på Lägg till boende under Boende.',
   'help.guide.add-accommodation.step.3':
-    'Tillämpa på dagar säger vilka nätter vistelsen täcker: incheckningsdagen till vänster, utcheckningsdagen till höger. Alla täcker hela resan.',
+    'Tillämpa på dagar säger vilka nätter vistelsen täcker: Start är incheckningsdagen, Slut utcheckningsdagen, och Alla täcker hela resan. Dialogens huvud visar perioden och antalet nätter.',
   'help.guide.add-accommodation.step.4':
     'Fyll i Incheckning, Tills och Utcheckning, och sätt bokningens nummer under Bekräftelse. Alla fyra får stå tomma.',
   'help.guide.add-accommodation.step.5':
-    'Välj anläggningen bland resans platser. Chippen ovanför listan smalnar av den till en kategori.',
+    'Välj anläggningen bland resans platser. Kategori ovanför listan smalnar av den till en kategori.',
   'help.guide.add-accommodation.step.6': 'Klicka på Spara.',
   'help.guide.add-accommodation.result':
     'Vistelsen syns på varje dag den täcker, Incheckning på den första och Utcheckning på den sista. Anläggningen blir ett stopp på incheckningsdagen, så kartan ritar vägen dit, och en bokning av sorten Boende dyker upp under Bokningar.',
   'help.guide.add-accommodation.tip.1':
     'Väljaren öppnar på dagen du kom från, med utcheckning dagen efter; båda kan flyttas innan du sparar.',
   'help.guide.add-accommodation.tip.2':
-    'Ge hotellet resans kategori Hotel när du skapar det, så smalnar chippen ovanför listan av den till dina hotell med ett klick.',
+    'Ge hotellet resans kategori Hotel när du skapar det, så smalnar Kategori ovanför listan av den till dina hotell med ett klick.',
   'help.guide.add-accommodation.tip.3':
     'Tiderna är alla valfria: en vistelse utan incheckning och utan kod täcker ändå sina nätter och ritar ändå sin rutt.',
   // edit-accommodation
@@ -2563,7 +2568,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'Pennan till höger om det öppnar vistelsen igen. Rutan läser nu Redigera boende.',
   'help.guide.edit-accommodation.step.3':
-    'Rätta raden av fält: Incheckning, Tills, Utcheckning och Bekräftelse. Dagarna ovanför den och anläggningen under den går att ändra här också.',
+    'Rätta Incheckning, Tills, Utcheckning och Bekräftelse. Dagarna ovanför dem och anläggningen nedanför går att ändra här också.',
   'help.guide.edit-accommodation.step.4': 'Klicka på Spara.',
   'help.guide.edit-accommodation.step.5':
     'X bredvid pennan avslutar vistelsen. Den frågar inget, och bokningen av sorten Boende som hör till den följer med.',
@@ -2579,7 +2584,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Bokningar listar dagens bokningar: de som är daterade på den, och de som hänger på ett av dess stopp.',
   'help.guide.day-bookings.step.2':
-    'En rad visar vilken sorts bokning det är, dess namn och, när den hör till ett stopp, det stoppet efter en punkt. Dess tider sitter längst till höger.',
+    'En rad visar vilken sorts bokning det är, dess namn och, när den hör till ett stopp, det stoppet i grått efter det. Dess tider sitter längst till höger, före statuspricken.',
   'help.guide.day-bookings.step.3':
     'Färgen säger var en bokning står: en grön rad är bekräftad, en bärnstensgul väntar fortfarande. Hotell finns inte i den här listan, de har sitt eget block nedanför.',
   'help.guide.day-bookings.step.4':

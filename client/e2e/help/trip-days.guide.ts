@@ -50,6 +50,10 @@ const bookingRow = (page: Page, name: RegExp) => page.getByRole('button', { name
 const noteRow = (page: Page) => page.getByRole('button', { name: new RegExp(`^${NOTE.title}`) })
 /** A row of the places column. */
 const placeRow = (page: Page, name: string) => page.getByRole('option', { name: new RegExp(`^${name}`) }).first()
+/** The "+ Day" at the end of a places row: it puts the place on the open day. */
+const toOpenDay = (page: Page, name: string) => placeRow(page, name).getByRole('button', { name: '+ Day' })
+/** The "+" in a day's head band; the note, the transports and the stay are in the menu it opens. */
+const addToDay = (page: Page, n: number) => dayHeader(page, n).getByRole('button', { name: 'Add to day' })
 /**
  * The context menu of a stop, a note or a leg. Tooltip renders into the same
  * `.trek-popover-enter` class and a click on a connector leaves its tooltip
@@ -70,9 +74,9 @@ const toolbar = (page: Page) => page.getByRole('button', { name: 'Export' }).loc
  * leg of their own, and the day fixtures put a hotel on the first four nights.
  */
 const connector = (page: Page) => page.getByRole('button', { name: 'Change travel mode' }).first()
-/** The note dialog: its own portal with no backdrop class, known by its body field. */
+/** The note dialog, known by its body field. */
 const noteBody = (page: Page) => page.getByPlaceholder('Details, links, reminders…')
-const noteDialog = (page: Page) => portalDialog(page, noteBody(page))
+const noteDialog = (page: Page) => page.getByRole('dialog').filter({ has: noteBody(page) })
 /** The question a timed stop asks before it moves; also a portal of its own. */
 const timeConfirm = (page: Page) => portalDialog(page, page.getByText('Remove time?'))
 /** The reorder popup's panel, the list and its footer, or the question a bin asks in its place. */
@@ -149,7 +153,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         // The "+" offers the OPEN day, so it is still there with the place on
         // day 2 — and the place stays on a day, which is what the result says.
         prepare: async p => { await placeRow(p, SPARE.name).hover() },
-        target: p => placeRow(p, SPARE.name).getByRole('button'),
+        target: p => toOpenDay(p, SPARE.name),
       },
       only(p => p.getByRole('button', { name: 'Add place to this day' }).first()),
       only(p => p.getByRole('button', { name: 'Add to the open day' })),
@@ -250,7 +254,7 @@ const SCRIPTS: Record<string, GuideScript> = {
       // The "+" puts the place on the OPEN day, so day 1 stays selected.
       await openTripOnDay(p, 1)
       await placeRow(p, SPARE.name).hover()
-      await placeRow(p, SPARE.name).getByRole('button').click()
+      await toOpenDay(p, SPARE.name).click()
       await expect(stop(p, SPARE.name)).toBeVisible({ timeout: 15_000 })
       await settle(p)
     },
@@ -298,22 +302,28 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: p => openTrip(p),
     steps: [
       {
-        target: p => dayHeader(p, 2).getByRole('button', { name: 'Add Note' }),
+        // The "+" of the day's head band opens the menu; Add Note is its last entry.
+        prepare: async p => {
+          await addToDay(p, 2).click()
+          await expect(menu(p).getByRole('button', { name: 'Add Note' })).toBeVisible()
+          await beat(p, 300)
+        },
+        target: p => menu(p).getByRole('button', { name: 'Add Note' }),
         act: async p => {
-          await dayHeader(p, 2).getByRole('button', { name: 'Add Note' }).click()
+          await menu(p).getByRole('button', { name: 'Add Note' }).click()
           await expect(noteBody(p)).toBeVisible()
           await settle(p)
         },
       },
       {
         prepare: async p => {
-          // Note is the name the day card shows and the only required field;
-          // Daily Note below it is the markdown the toolbar formats.
+          // The name is typed into the head band and is what the day card shows,
+          // the only required field; Daily Note is the markdown the toolbar formats.
           await typeInto(p, noteDialog(p).getByPlaceholder('Note', { exact: true }), NOTE.title)
           await typeInto(p, noteBody(p), NOTE.body)
           await beat(p, 300)
         },
-        target: p => noteBody(p).locator('xpath=ancestor::div[2]'),
+        target: noteDialog,
       },
       {
         target: p => noteDialog(p).getByText('Icon', { exact: true }).locator('xpath=../..'),
@@ -416,8 +426,11 @@ const SCRIPTS: Record<string, GuideScript> = {
           await settle(p)
         },
         // Scoped to the panel: a stop row carries an Edit of its own, so the
-        // bare name matches two buttons as soon as any day is unfolded.
-        target: p => renameDay(p).locator('xpath=..'),
+        // bare name matches two buttons as soon as any day is unfolded. The
+        // ring goes round the panel's head band, title and pencil together: a
+        // ring round the pencil alone sits on the day's name beside it.
+        target: p => renameDay(p).locator('xpath=ancestor::div[@role="presentation"][1]'),
+        hover: p => renameDay(p).hover(),
         act: closeDayDetails,
       },
       only(p => p.getByRole('button', { name: /Expand all days|Collapse all days/ })),
@@ -431,7 +444,7 @@ const SCRIPTS: Record<string, GuideScript> = {
     steps: [
       // The flight, not the train: Departure and Arrival are what a booking
       // gets when it crosses days, and the train starts and ends on one.
-      only(p => bookingRow(p, /^Departure LH716/)),
+      only(p => bookingRow(p, /^LH716 FRA → HND Departure/)),
       {
         prepare: async p => { await selectDay(p, 6); await closeDayDetails(p) },
         target: p => stop(p, 'Nishiki Market'),
@@ -442,7 +455,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await expect(p.getByText('Accommodation', { exact: true }).first()).toBeVisible()
           await settle(p)
         },
-        target: p => p.getByText('Accommodation', { exact: true }).first().locator('xpath=..'),
+        target: p => p.getByText('Accommodation', { exact: true }).first().locator('xpath=ancestor::section[1]'),
         act: closeDayDetails,
       },
       only(p => toolbar(p).getByRole('button', { name: /Show all booking routes|Hide all booking routes/ })),
@@ -464,9 +477,9 @@ const SCRIPTS: Record<string, GuideScript> = {
           await settle(p)
         },
       },
-      only(p => modal(p).getByText('Document', { exact: true }).locator('xpath=..')),
-      only(p => modal(p).getByText('Calendar', { exact: true }).locator('xpath=..')),
-      only(p => modal(p).getByText(/^Maps & GPS/).locator('xpath=..')),
+      only(p => modal(p).getByText('Document', { exact: true }).locator('xpath=ancestor::section[1]')),
+      only(p => modal(p).getByText('Calendar', { exact: true }).locator('xpath=ancestor::section[1]')),
+      only(p => modal(p).getByText(/^Maps & GPS/).locator('xpath=ancestor::section[1]')),
     ],
     cleanup: closeModal,
   },

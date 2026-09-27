@@ -1708,7 +1708,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.bullet.4':
     'Tiêu đề, ngày, ảnh bìa và tiền tệ được sửa từ “Chuyến đi”, bằng cây bút chì trên thẻ chuyến đi.',
   'help.ctx.trip.bullet.5':
-    'Mũi tên nhỏ ở mép trong của một cột sẽ gập cột lại và bản đồ chiếm chỗ đó; vạch chia mỏng cạnh cột thay đổi độ rộng của nó.',
+    'Tab nhỏ ở mép trong của một cột sẽ gập cột đó đi và bản đồ chiếm chỗ; vạch chia mỏng cạnh cột thay đổi độ rộng của nó.',
   'help.ctx.trip.bullet.6': 'Mũi tên hoàn tác trên thanh công cụ của các ngày lấy lại thay đổi gần nhất trên kế hoạch.',
   // add-member
   'help.guide.add-member.title': 'Thêm thành viên',
@@ -1777,8 +1777,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Nhường chỗ cho bản đồ',
   'help.guide.collapse-columns.goal': 'Gập một cột lại hoặc cho nó rộng hơn.',
   'help.guide.collapse-columns.step.1':
-    'Nhấp mũi tên nhỏ ở mép trong của cột các ngày để thu gọn nó; bản đồ chiếm chỗ đó. Cột địa điểm có mũi tên nhỏ giống vậy.',
-  'help.guide.collapse-columns.step.2': 'Nhấp mũi tên nhỏ lần nữa để đưa cột trở lại.',
+    'Nhấp tab nhỏ ở mép trong của cột các ngày, cái có biểu tượng bảng điều khiển, để gập cột đi; bản đồ chiếm chỗ đó. Cột địa điểm có tab nhỏ giống vậy.',
+  'help.guide.collapse-columns.step.2':
+    'Một cột đã gập để lại một ô ở góc bản đồ, “Kế hoạch” cho các ngày và “Địa điểm” cho các địa điểm. Nhấp vào ô đó để đưa cột trở lại.',
   'help.guide.collapse-columns.step.3': 'Kéo vạch chia mỏng giữa cột và bản đồ để thay đổi độ rộng của cột.',
   'help.guide.collapse-columns.result': 'Độ rộng được ghi nhớ; các cột trở lại ở trạng thái mở trong lần truy cập sau.',
   'help.guide.collapse-columns.tip.1': 'Có thể gập cả hai cột cùng lúc để chỉ xem bản đồ.',
@@ -1802,26 +1803,26 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     '“Thêm địa điểm/Hoạt động” ở trên cùng mở biểu mẫu cho một địa điểm bạn gõ vào hoặc tìm kiếm. Khi một ngày đang mở, nút đó ghi “Địa điểm mới”, và “Vào ngày” bên cạnh tạo địa điểm thẳng vào ngày đó.',
   'help.ctx.trip-places.bullet.2':
-    '“Nhập tập tin” nhận các tập tin .gpx, .kml và .kmz; “Nhập danh sách” nhận một danh sách Google Maps hoặc Naver Maps được chia sẻ. Bạn cũng có thể chỉ cần thả tập tin lên cột này.',
+    'Nút nhập bên cạnh nó có “Nhập tập tin” cho các tập tin .gpx, .kml và .kmz, và “Danh sách Google” (“Nhập danh sách” khi danh sách Naver cũng được bật) cho một danh sách được chia sẻ từ Google Maps hoặc Naver Maps. Bạn cũng có thể chỉ cần thả tập tin lên cột này.',
   'help.ctx.trip-places.bullet.3':
-    'Danh sách thả xuống chuyển giữa “Tất cả”, “Không có kế hoạch”, “Có kế hoạch” và, khi đã nhập một đường đi, “Bài hát”; bên dưới nó là ô tìm kiếm, bộ lọc danh mục và ngôi sao cho mức đánh giá tối thiểu.',
+    'Bên dưới là ô tìm kiếm, cạnh đó là dấu tích để bắt đầu một lượt chọn, và một hàng bộ lọc: “Hiển thị” chuyển giữa “Tất cả”, “Không có kế hoạch”, “Có kế hoạch” và, khi đã nhập một đường đi, “Bài hát”, mỗi mục kèm số lượng; nút nhãn lọc theo danh mục và ngôi sao lọc theo mức đánh giá tối thiểu.',
   'help.ctx.trip-places.bullet.4':
-    'Một hàng hiển thị hình ảnh, tên và mô tả hoặc địa chỉ. Nhấp vào đó để xem chi tiết địa điểm, kéo nó lên một ngày, hoặc nhấp chuột phải để có “Chỉnh sửa”, “+ Ngày”, “Mở trang web”, “Google Maps”, “Lưu vào Bộ sưu tập” và “Xóa bỏ”.',
+    'Một hàng hiển thị hình ảnh, tên và mô tả hoặc địa chỉ. Nhấp vào đó để xem chi tiết địa điểm, kéo nó lên một ngày, hoặc nhấp chuột phải (hay nhấp ba chấm của nó) để có “Chỉnh sửa”, “+ Ngày”, “Mở trang web”, “Google Maps”, “Lưu vào Bộ sưu tập” và “Xóa bỏ”.',
   'help.ctx.trip-places.bullet.5':
-    'Khi một ngày đang mở, dấu + ở cuối một hàng chưa có kế hoạch sẽ đặt địa điểm vào ngày đó, và “Có kế hoạch” chỉ liệt kê ngày đó, với “Hiện toàn bộ chuyến đi” để mở rộng trở lại.',
+    'Khi một ngày đang mở, “+ Ngày” ở cuối một hàng chưa có kế hoạch sẽ đặt địa điểm vào ngày đó, và “Có kế hoạch” chỉ liệt kê ngày đó, với “Hiện toàn bộ chuyến đi” để mở rộng trở lại.',
   'help.ctx.trip-places.bullet.6':
-    'Dấu tích ở đầu bên phải của hàng bộ lọc bắt đầu một lượt chọn: nhiều hàng cùng lúc nhận một danh mục mới, vào một bộ sưu tập hoặc bị xóa.',
+    'Dấu tích cạnh ô tìm kiếm bắt đầu một lượt chọn: từ thanh ở chân cột, nhiều hàng cùng lúc nhận một danh mục mới, vào một bộ sưu tập, được đánh dấu đã đến hoặc bị xóa.',
   // create-place
   'help.guide.create-place.title': 'Tạo một địa điểm',
   'help.guide.create-place.goal': 'Thêm một địa điểm hoặc hoạt động bằng tay, với mọi thứ mà kế hoạch cần biết về nó.',
   'help.guide.create-place.step.1':
     'Nhấp “Thêm địa điểm/Hoạt động” ở đầu cột địa điểm (“Địa điểm mới” khi một ngày đang mở). Biểu mẫu mở ra.',
   'help.guide.create-place.step.2':
-    'Gõ địa điểm vào “Tìm kiếm địa điểm...” ở trên cùng và chọn một kết quả. “Tên”, “Địa chỉ”, “Vĩ độ”, “Kinh độ” và “Trang web” được điền, và “Chi tiết địa điểm” ở bên trái hiển thị hình ảnh, giờ mở cửa và một mô tả về nó. Trên một TREK có khóa Google, “Không đúng địa điểm? Tìm trên Google” nằm dưới danh sách và chạy đúng tìm kiếm đó qua Google.',
+    'Gõ địa điểm vào “Tìm kiếm địa điểm...” và chọn một kết quả. Tên ở phần đầu hộp thoại, “Địa chỉ”, “Vĩ độ”, “Kinh độ” và “Trang web” được điền, và “Chi tiết địa điểm” ở bên trái hiển thị hình ảnh, giờ mở cửa và một mô tả về nó. Trên một TREK có khóa Google, “Không đúng địa điểm? Tìm trên Google” nằm dưới danh sách và chạy đúng tìm kiếm đó qua Google. “Địa điểm đã lưu” ở bên phải đưa ra các địa điểm trong bộ sưu tập của bạn theo cùng cách đó.',
   'help.guide.create-place.step.3':
     'Trong “Chi tiết địa điểm”, một cú nhấp vào hình ảnh dưới “Chọn một hình ảnh” biến nó thành ảnh của địa điểm; “Dùng văn bản này” đưa phần mô tả sang biểu mẫu.',
   'help.guide.create-place.step.4':
-    'Kiểm tra các ô: “Tên” là bắt buộc; “Miêu tả” và “Ghi chú” là của bạn; “Địa chỉ”, “Vĩ độ” và “Kinh độ” đến từ tìm kiếm hoặc do bạn gõ; “Loại” chọn một trong các danh mục của chuyến đi, và dấu + bên cạnh tạo ngay một danh mục mới; “Trang web” nhận liên kết.',
+    'Kiểm tra những gì biểu mẫu chứa: tên nằm ở phần đầu hộp thoại và là ô bắt buộc duy nhất; chip “Loại” bên dưới nó chọn một trong các danh mục của chuyến đi, và dấu + bên cạnh tạo ngay một danh mục mới. “Địa chỉ”, “Vĩ độ” và “Kinh độ” đến từ tìm kiếm hoặc do bạn gõ; “Miêu tả” và “Ghi chú” là của bạn; “Trang web” nhận liên kết.',
   'help.guide.create-place.step.5':
     'Nhấp “Thêm”. Nếu một địa điểm cùng tên đã có trong chuyến đi, biểu mẫu sẽ báo và nút đổi thành “Vẫn thêm”.',
   'help.guide.create-place.result':
@@ -1841,7 +1842,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     '“Vào ngày” mở đúng biểu mẫu như “Địa điểm mới”, chỉ khác là địa điểm rơi vào ngày đang mở ngay khi bạn nhấp “Thêm”.',
   'help.guide.place-to-open-day.step.3':
-    'Một địa điểm đã có sẵn sẽ vào ngày đang mở bằng dấu + ở cuối hàng của nó, hoặc bằng nhấp chuột phải rồi “+ Ngày”.',
+    'Một địa điểm đã có sẵn sẽ vào ngày đang mở bằng “+ Ngày” ở cuối hàng của nó, hoặc bằng nhấp chuột phải rồi “+ Ngày”.',
   'help.guide.place-to-open-day.step.4':
     'Chiều ngược lại cũng được, mà không cần mở ngày trước: kéo hàng của địa điểm ra khỏi cột rồi thả lên thẻ của một ngày. Thả vào giữa hai điểm dừng thì nó nằm đúng chỗ đó.',
   'help.guide.place-to-open-day.result':
@@ -1853,12 +1854,12 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Tìm một địa điểm trong danh sách',
   'help.guide.filter-places.goal': 'Thu hẹp cột lại còn những địa điểm bạn đang tìm.',
   'help.guide.filter-places.step.1':
-    'Danh sách thả xuống ở trên cùng chuyển giữa “Tất cả”, “Không có kế hoạch” (chưa ở ngày nào), “Có kế hoạch” (đã ở một ngày) và “Bài hát” (các đường GPX đã nhập), mỗi mục kèm số lượng.',
-  'help.guide.filter-places.step.2': 'Gõ vào “Tìm kiếm địa điểm...”; danh sách thu hẹp lại khi bạn gõ.',
+    '“Hiển thị”, danh sách thả xuống dưới ô tìm kiếm, chuyển giữa “Tất cả”, “Không có kế hoạch” (chưa ở ngày nào), “Có kế hoạch” (đã ở một ngày) và “Bài hát” (các đường GPX đã nhập), mỗi mục kèm số lượng.',
+  'help.guide.filter-places.step.2': 'Gõ vào “Tìm kiếm” ở trên cùng; danh sách thu hẹp lại khi bạn gõ.',
   'help.guide.filter-places.step.3':
-    '“Tất cả danh mục” mở một danh sách để tích một hoặc nhiều danh mục, trong đó có “Không có danh mục”; “Xóa bộ lọc” ở dưới cùng đặt lại nó.',
+    'Nút nhãn cạnh “Hiển thị” liệt kê các danh mục: tích một hoặc nhiều, trong đó có “Không có danh mục”. Nút này đếm những gì đã tích, và “Xóa bộ lọc” ở chân danh sách bỏ tất cả.',
   'help.guide.filter-places.step.4':
-    'Ngôi sao bên cạnh đặt mức đánh giá tối thiểu: 5+, 4+ và cứ thế, chỉ hiện những địa điểm bạn chấm ít nhất từng đó.',
+    'Ngôi sao bên cạnh nút đó đặt mức đánh giá tối thiểu: 5+, 4+ và cứ thế, chỉ hiện những địa điểm bạn chấm ít nhất từng đó.',
   'help.guide.filter-places.result':
     'Con số phía trên các hàng cho biết có bao nhiêu địa điểm khớp; các bộ lọc kết hợp với nhau.',
   'help.guide.filter-places.tip.1':
@@ -1871,7 +1872,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Nhấp chuột phải vào hàng và chọn “Chỉnh sửa”, hoặc mở địa điểm và nhấp “Chỉnh sửa” trong phần chi tiết của nó.',
   'help.guide.edit-place.step.2':
-    'Đổi những gì bạn cần: “Tên”, “Miêu tả”, “Ghi chú”, “Địa chỉ”, “Vĩ độ” và “Kinh độ”, “Loại”, “Trang web”. Khi mở từ một ngày, biểu mẫu còn có “Ghi chú cho ngày này” cùng “Bắt đầu” và “Kết thúc” cho ngày đó.',
+    'Đổi những gì bạn cần: tên và chip “Loại” ở phần đầu hộp thoại, “Địa chỉ”, “Vĩ độ” và “Kinh độ”, “Miêu tả”, “Ghi chú” và “Trang web”. Khi mở từ một ngày, biểu mẫu còn có “Bắt đầu” và “Kết thúc” cùng “Ghi chú cho ngày này”.',
   'help.guide.edit-place.step.3': 'Nhấp “Cập nhật”.',
   'help.guide.edit-place.result': 'Thay đổi áp dụng ở mọi nơi địa điểm xuất hiện: danh sách, bản đồ và mọi ngày có nó.',
   'help.guide.edit-place.tip.1':
@@ -1884,22 +1885,22 @@ const help: TranslationStrings = {
   'help.guide.delete-place.step.1':
     'Nhấp chuột phải vào hàng và chọn “Xóa bỏ”, hoặc nhấp “Xóa bỏ” trong phần chi tiết của địa điểm.',
   'help.guide.delete-place.step.2':
-    'Xác nhận. Nếu có một đêm đã đặt tại địa điểm đó, hoặc có một đặt chỗ liên kết với nó, câu hỏi sẽ nói rõ những gì mất theo.',
+    'Nhấp “Xóa bỏ” trong câu hỏi. Nếu có một đêm đã đặt tại địa điểm đó, hoặc có một đặt chỗ liên kết với nó, câu hỏi sẽ nói rõ những gì mất theo.',
   'help.guide.delete-place.result':
     'Địa điểm biến mất khỏi danh sách, bản đồ và mọi ngày; “Hoàn tác” trên thanh công cụ phía trên các ngày mang nó trở lại.',
   'help.guide.delete-place.tip.1':
     'Để bỏ một địa điểm chỉ khỏi một ngày, thay vào đó hãy dùng “Xóa khỏi ngày” trên điểm dừng đó.',
-  'help.guide.delete-place.tip.2': 'Nhiều địa điểm cùng lúc: dấu tích cạnh các bộ lọc bắt đầu một lượt chọn.',
+  'help.guide.delete-place.tip.2': 'Nhiều địa điểm cùng lúc: dấu tích cạnh ô tìm kiếm bắt đầu một lượt chọn.',
   // select-places
   'help.guide.select-places.title': 'Thay đổi hoặc xóa nhiều địa điểm cùng lúc',
   'help.guide.select-places.goal': 'Dọn danh sách trong một lần thay vì từng địa điểm một.',
   'help.guide.select-places.step.1':
-    'Nhấp dấu tích ở đầu bên phải của hàng bộ lọc. Các hàng có thêm ô đánh dấu và một thanh với các thao tác hiện ra.',
+    'Nhấp dấu tích cạnh ô tìm kiếm. Các hàng có thêm ô đánh dấu tròn, và một thanh với các thao tác trồi lên ở chân cột.',
   'help.guide.select-places.step.2':
-    'Tích các hàng, hoặc “Chọn tất cả” trên thanh đó; thanh đó đếm những gì đang được chọn.',
+    'Nhấp vào các hàng để tích chúng. “Chọn tất cả”, dấu tích đôi trên thanh, lấy mọi hàng mà bộ lọc còn giữ lại.',
   'help.guide.select-places.step.3':
-    '“Change category” cho tất cả chúng một danh mục; “Lưu vào Bộ sưu tập” sao chép chúng vào một bộ sưu tập của bạn; “Xóa đã chọn” gỡ chúng sau một lần xác nhận.',
-  'help.guide.select-places.step.4': 'Nhấp lại dấu tích để rời khỏi lượt chọn.',
+    'Thanh đó đếm các địa điểm đã tích. “Đổi danh mục” cho tất cả chúng một danh mục; “Lưu vào Bộ sưu tập” sao chép chúng vào một bộ sưu tập của bạn; “Xóa đã chọn” gỡ chúng sau một lần xác nhận.',
+  'help.guide.select-places.step.4': '“Xong”, dấu X ở cuối thanh, rời khỏi lượt chọn.',
   'help.guide.select-places.result':
     'Thay đổi áp dụng cho mọi địa điểm được chọn; một lần xóa có thể hoàn tác từ thanh công cụ phía trên các ngày.',
   'help.guide.select-places.tip.1':
@@ -1910,7 +1911,8 @@ const help: TranslationStrings = {
   'help.guide.import-places-file.title': 'Nhập địa điểm từ tập tin GPX, KML hoặc KMZ',
   'help.guide.import-places-file.goal':
     'Đưa vào những gì Google My Maps, Google Earth hoặc một thiết bị theo dõi GPS đã xuất ra.',
-  'help.guide.import-places-file.step.1': 'Nhấp “Nhập tập tin”, hoặc thả tập tin vào bất cứ chỗ nào trên cột địa điểm.',
+  'help.guide.import-places-file.step.1':
+    'Nhấp nút nhập cạnh nút thêm và chọn “Nhập tập tin”, hoặc thả tập tin vào bất cứ chỗ nào trên cột địa điểm.',
   'help.guide.import-places-file.step.2':
     'Chọn tập tin hoặc kéo nó vào ô. Với GPX, tích những gì cần nhập: “Điểm tham chiếu”, “Tuyến đường”, “Đường đi (có hình dạng đường dẫn)”; với KML và KMZ, “Điểm (Dấu vị trí)” và “Đường dẫn (LineStrings)”.',
   'help.guide.import-places-file.step.3':
@@ -1925,7 +1927,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Nhập một danh sách Google Maps hoặc Naver Maps được chia sẻ',
   'help.guide.import-places-list.goal': 'Biến liên kết của một danh sách được chia sẻ thành các địa điểm.',
-  'help.guide.import-places-list.step.1': 'Nhấp “Nhập danh sách” và chọn “Danh sách Google” hoặc “Danh sách Naver”.',
+  'help.guide.import-places-list.step.1':
+    'Nhấp nút nhập cạnh nút thêm và chọn “Danh sách Google”. Khi danh sách Naver cũng được bật, mục đó ghi “Nhập danh sách” và hộp thoại hỏi bạn chọn loại nào trong hai.',
   'help.guide.import-places-list.step.2':
     'Dán liên kết chia sẻ của danh sách. Liên kết chỉ đường của Google Maps cũng được: các điểm dừng của nó trở thành địa điểm, theo thứ tự lái xe.',
   'help.guide.import-places-list.step.3': 'Nhấp “Nhập”.',
@@ -1943,24 +1946,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'Thanh công cụ ở trên cùng: “Xuất” (PDF, lịch, GPX), “Mở rộng tất cả các ngày” / “Thu gọn tất cả các ngày”, mũi tên hoàn tác, “Sắp xếp lại ngày” và “Hiển thị tất cả lộ trình đặt chỗ”.',
   'help.ctx.trip-days.bullet.2':
-    'Một thẻ ngày: số thứ tự, thời tiết, tiêu đề, ngày tháng và chi phí của ngày ở phần đầu thẻ; nhấp vào phần đầu để mở ngày đó, mũi nhọn của nó gập thẻ lại. “Giao thông công cộng”, “Thêm phương tiện di chuyển” và “Thêm ghi chú” cũng nằm ở phần đầu thẻ.',
+    'Một thẻ ngày: một ô với số thứ tự ngày và dự báo thời tiết, tiêu đề và ngày tháng, cùng các chip cho đêm đã đặt, xe thuê và chi phí của ngày. Nhấp vào phần đầu để mở ngày đó, mũi nhọn gập thẻ lại, và dấu + mở một menu: “Thêm địa điểm vào ngày này”, “Thêm chỗ ở”, “Thêm phương tiện di chuyển”, “Giao thông công cộng” và “Thêm ghi chú”.',
   'help.ctx.trip-days.bullet.3':
-    'Bên trong một ngày: các điểm dừng theo thứ tự, mỗi điểm có hình ảnh, tên, thời gian và một ổ khóa trên hình; các ghi chú; các đặt chỗ thuộc về ngày đó; và giữa các điểm dừng là thời gian đi của từng chặng.',
+    'Bên trong một ngày: các điểm dừng theo thứ tự, mỗi điểm có hình ảnh, tên, thời gian, một ổ khóa trên hình và các đặt chỗ được ghim vào nó; các ghi chú; các đặt chỗ và phương tiện di chuyển của ngày, được tô màu theo loại; và giữa các điểm dừng là thời gian đi của từng chặng. Mỗi hàng có một menu ba chấm, giống với menu mở ra khi nhấp chuột phải.',
   'help.ctx.trip-days.bullet.4':
     'Dưới các điểm dừng là thanh lộ trình: “Chỉ đường” vẽ ngày đó lên bản đồ, “Tối ưu hóa” sắp xếp các điểm dừng, “Lái xe” / “Đi bộ” đặt phương thức di chuyển của ngày, “Mở trong Google Maps” và “Mở trong CoMaps” giao ngày đó sang ứng dụng khác.',
   'help.ctx.trip-days.bullet.5':
-    'Địa điểm vào một ngày bằng cách kéo một hàng từ cột địa điểm, bằng dấu + trên hàng đó, bằng “Thêm địa điểm vào ngày này” trên một ngày trống, hoặc từ chi tiết của địa điểm.',
+    'Địa điểm vào một ngày bằng cách kéo một hàng từ cột địa điểm, bằng “+ Ngày” trên hàng đó, bằng “Thêm địa điểm vào ngày này” từ dấu + của ngày hoặc trên một ngày trống, hoặc từ chi tiết của địa điểm.',
   'help.ctx.trip-days.bullet.6':
     '“Tổng chi phí” ở dưới cùng cộng mọi điểm dừng và đặt chỗ có giá, theo tiền tệ của chuyến đi.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Đọc một ngày',
   'help.guide.read-day-plan.goal': 'Biết từng phần của thẻ ngày nói gì trước khi bạn thay đổi bất cứ thứ gì.',
   'help.guide.read-day-plan.step.1':
-    'Phần đầu thẻ: số thứ tự ngày, dự báo thời tiết cho ngày đó, “Ngày 1” hoặc tiêu đề bạn đặt, ngày tháng và chi phí của ngày. Nhấp vào phần đầu để mở ngày đó (bảng “Chi tiết ngày” mở ra trên bản đồ); mũi nhọn ở bên phải gập và mở thẻ.',
+    'Phần đầu thẻ: một ô với số thứ tự ngày và dự báo thời tiết, rồi “Ngày 1” hoặc tiêu đề bạn đặt, ngày tháng, và các chip cho đêm đã đặt (nhận phòng hoặc trả phòng), xe thuê và chi phí của ngày. Nhấp vào phần đầu để mở ngày đó (bảng “Chi tiết ngày” mở ra trên bản đồ); dấu + bên phải thêm một địa điểm, một chỗ ở, một phương tiện di chuyển, một chuyến giao thông công cộng hoặc một ghi chú, và mũi nhọn gập thẻ lại.',
   'help.guide.read-day-plan.step.2':
-    'Một điểm dừng: tay nắm ở bên trái để kéo nó, hình ảnh mang một ổ khóa dành cho việc tối ưu hóa lộ trình, rồi đến tên, mô tả và, nếu có, “Ghi chú cho ngày này”. Một huy hiệu thời gian hiển thị “Bắt đầu” và “Kết thúc” khi điểm dừng có chúng; các mũi tên hiện ra ở đầu bên phải sẽ đưa nó lên hoặc xuống.',
+    'Một điểm dừng: tay nắm ở bên trái để kéo nó, hình ảnh mang một ổ khóa dành cho việc tối ưu hóa lộ trình, rồi đến tên, một huy hiệu thời gian khi điểm dừng có “Bắt đầu” và “Kết thúc”, mô tả và, nếu có, “Ghi chú cho ngày này”. Các mũi tên ở đầu bên phải đưa nó lên hoặc xuống, và ba chấm mở menu của nó.',
   'help.guide.read-day-plan.step.3':
-    'Một đặt chỗ trong ngày: một đặt chỗ gắn với điểm dừng sẽ đánh dấu điểm dừng đó là “Đã xác nhận đặt chỗ” hoặc “Đang chờ đặt chỗ”, còn phương tiện di chuyển hiện ra là “Khởi hành” hoặc “Đến” cùng giờ và lộ trình của nó, với một công tắc nhỏ vẽ lộ trình đó lên bản đồ.',
+    'Một đặt chỗ tại một điểm dừng nằm trên điểm dừng đó dưới dạng huy hiệu “Sự đặt chỗ”, màu xanh lá khi đã xác nhận và màu hổ phách khi còn chờ, kèm giờ và nhà cung cấp; nhấp vào huy hiệu để mở đặt chỗ, và nút lộ trình bên cạnh vẽ lộ trình của nó. Một phương tiện di chuyển là một hàng riêng, được tô màu theo loại, với “Khởi hành” hoặc “Đến” và giờ của nó. Nhấp vào một đặt chỗ thì chi tiết của nó mở ra; “Chỉnh sửa” ở đó thay đổi nó.',
   'help.guide.read-day-plan.step.4':
     'Giữa hai điểm dừng, đường nối cho biết chặng đó mất bao lâu và xa bao nhiêu, theo phương thức di chuyển của ngày; nhấp vào đó để đổi phương thức cho riêng chặng ấy.',
   'help.guide.read-day-plan.step.5':
@@ -1968,7 +1971,7 @@ const help: TranslationStrings = {
   'help.guide.read-day-plan.result':
     'Mọi ký hiệu trên thẻ đều có nghĩa; các hướng dẫn bên dưới thay đổi từng ký hiệu một.',
   'help.guide.read-day-plan.tip.1':
-    'Nhấp chuột phải vào một điểm dừng để có menu của nó: “Chỉnh sửa”, “Xóa khỏi ngày”, “Mở trang web”, các ứng dụng dẫn đường (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), “Lưu vào Bộ sưu tập”, “Xóa bỏ”.',
+    'Nhấp chuột phải vào một điểm dừng, hoặc nhấp ba chấm của nó, để có menu của nó: “Chỉnh sửa”, “Xóa khỏi ngày”, “Mở trang web”, các ứng dụng dẫn đường (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), “Lưu vào Bộ sưu tập”, “Xóa bỏ”.',
   'help.guide.read-day-plan.tip.2':
     'Đưa chuột lên một điểm dừng và “Thêm đặt chỗ” hiện ra ở cuối: một đặt chỗ tạo ở đó gắn với điểm dừng này trong ngày này.',
   // place-onto-day
@@ -1978,9 +1981,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Kéo một hàng từ cột địa điểm lên thẻ ngày. Thả giữa hai điểm dừng để đặt nó đúng ở đó, hoặc thả bất kỳ chỗ nào trên thẻ để thêm vào cuối.',
   'help.guide.place-onto-day.step.2':
-    'Không cần kéo: mở ngày bằng cách nhấp vào phần đầu thẻ, rồi nhấp dấu + ở cuối hàng của địa điểm, hoặc nhấp chuột phải vào hàng đó và chọn “+ Ngày”.',
+    'Không cần kéo: mở ngày bằng cách nhấp vào phần đầu thẻ, rồi nhấp “+ Ngày” ở cuối hàng của địa điểm, hoặc nhấp chuột phải vào hàng đó và chọn “+ Ngày”.',
   'help.guide.place-onto-day.step.3':
-    'Trên một ngày trống, “Thêm địa điểm vào ngày này” mở biểu mẫu địa điểm, và địa điểm mới nằm ngay vào ngày đó.',
+    '“Thêm địa điểm vào ngày này”, trong menu + của ngày hoặc trên một ngày trống, mở biểu mẫu địa điểm, và địa điểm mới nằm ngay vào ngày đó.',
   'help.guide.place-onto-day.step.4':
     'Từ chi tiết của một địa điểm, “Thêm vào ngày” hỏi bạn ngày nào; khi một ngày đang mở, “Vào ngày” ở cột địa điểm tạo một địa điểm mới ngay trong ngày đang mở.',
   'help.guide.place-onto-day.result':
@@ -2009,7 +2012,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.goal':
     'Ấn định khi nào một điểm dừng bắt đầu và kết thúc, để ngày đó đọc như một lịch trình.',
   'help.guide.set-stop-times.step.1':
-    'Nhấp chuột phải vào điểm dừng và chọn “Chỉnh sửa”. Khi mở từ ngày, biểu mẫu có “Bắt đầu” và “Kết thúc” ở dưới cùng.',
+    'Nhấp chuột phải vào điểm dừng, hoặc nhấp ba chấm của nó, và chọn “Chỉnh sửa”. Khi mở từ ngày, biểu mẫu có “Bắt đầu” và “Kết thúc” cho ngày đó, ngay dưới vị trí.',
   'help.guide.set-stop-times.step.2':
     'Nhập “Bắt đầu” và, nếu muốn, “Kết thúc”. “Thời gian trùng lặp với:” cảnh báo rằng một điểm dừng có giờ khác trong ngày bị trùng; một “Kết thúc” trước “Bắt đầu” sẽ chặn “Cập nhật”.',
   'help.guide.set-stop-times.step.3':
@@ -2048,13 +2051,13 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Thêm một ghi chú vào một ngày',
   'help.guide.day-note.goal': 'Giữ một lời nhắc, một số vé hay một phương án dự phòng ngay trong ngày.',
-  'help.guide.day-note.step.1': 'Nhấp “Thêm ghi chú” ở phần đầu thẻ ngày.',
+  'help.guide.day-note.step.1': 'Nhấp dấu + ở phần đầu thẻ ngày và chọn “Thêm ghi chú”.',
   'help.guide.day-note.step.2':
-    'Đặt tên cho nó ở mục “Ghi chú”, đó là phần mà thẻ ngày hiển thị, rồi viết phần còn lại ở mục “Ghi chú hàng ngày”. Thanh “Định dạng” phía trên định dạng văn bản (“Đậm”, “Danh sách dấu đầu dòng”, “Danh sách đánh số”, “Liên kết”, “Trích dẫn”) và “Xem trước” ở bên trái cho thấy tấm thẻ mà nó sẽ trở thành.',
+    'Gõ tên ghi chú vào phần đầu hộp thoại, chỗ ghi “Ghi chú”; đó là phần mà thẻ ngày hiển thị. Viết phần còn lại ở mục “Ghi chú hàng ngày”: thanh công cụ phía trên định dạng văn bản (đậm, danh sách, liên kết, trích dẫn), và “Xem trước” ở bên trái cho thấy hàng mà nó sẽ trở thành.',
   'help.guide.day-note.step.3':
     'Chọn một “Biểu tượng” và một “Màu”, để ghi chú nổi lên giữa các điểm dừng, rồi “Thêm”.',
   'help.guide.day-note.step.4':
-    'Ghi chú nằm trong ngày như một điểm dừng: kéo nó vào chỗ, nhấp chuột phải để có “Chỉnh sửa” và “Xóa bỏ”.',
+    'Ghi chú nằm trong ngày như một điểm dừng: kéo nó vào chỗ, và nhấp chuột phải hoặc dùng ba chấm của nó để có “Chỉnh sửa” và “Xóa bỏ”.',
   'help.guide.day-note.result':
     'Ghi chú là một phần của ngày, có cả trong PDF; một ghi chú có giờ sẽ sắp cùng với các điểm dừng có giờ.',
   'help.guide.day-note.tip.1':
@@ -2102,15 +2105,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.title': 'Đọc đặt chỗ và phương tiện di chuyển trong kế hoạch',
   'help.guide.bookings-in-plan.goal': 'Biết một đặt chỗ hiện ra ở đâu khi nó đã tồn tại, và màn hình nào tạo ra nó.',
   'help.guide.bookings-in-plan.step.1':
-    'Một phương tiện di chuyển (chuyến bay, xe lửa, phà, xe buýt, xe hơi) hiện trong ngày khởi hành là “Khởi hành” và trong ngày tới nơi là “Đến”, kèm giờ và lộ trình; loại kéo dài nhiều ngày thì trải qua những ngày ở giữa.',
+    'Một phương tiện di chuyển (chuyến bay, xe lửa, phà, xe buýt, xe hơi) là một hàng được tô màu theo loại: “Khởi hành” vào ngày đi, “Đến” vào ngày tới nơi, kèm giờ và lộ trình; loại kéo dài nhiều ngày thì trải qua những ngày ở giữa. Nhấp vào hàng thì đặt chỗ mở ra.',
   'help.guide.bookings-in-plan.step.2':
-    'Một đặt chỗ gắn với một điểm dừng (một nhà hàng, một chuyến du lịch) đánh dấu điểm dừng đó là “Đã xác nhận đặt chỗ” hoặc “Đang chờ đặt chỗ”; một đặt chỗ có ngày nhưng không có điểm dừng thì thành một hàng riêng trong ngày.',
+    'Một đặt chỗ gắn với một điểm dừng (một nhà hàng, một chuyến du lịch) là một huy hiệu “Sự đặt chỗ” trên điểm dừng đó, màu xanh lá khi đã xác nhận và màu hổ phách khi còn chờ, kèm giờ của nó; một đặt chỗ có ngày nhưng không có điểm dừng thì thành một hàng riêng trong ngày.',
   'help.guide.bookings-in-plan.step.3':
     'Một đêm ở khách sạn là chỗ ở: nó nằm trong bảng chi tiết của ngày, dưới mục “Chỗ ở”, từ “Nhận phòng” đến “Trả phòng”, và lộ trình của từng ngày trong số đó bắt đầu từ đấy.',
   'help.guide.bookings-in-plan.step.4':
     'Trên bản đồ, công tắc ở hàng phương tiện di chuyển vẽ lộ trình của nó; “Hiển thị tất cả lộ trình đặt chỗ” trên thanh công cụ vẽ tất cả.',
   'help.guide.bookings-in-plan.step.5':
-    'Tạo mới: “Thêm đặt chỗ” trên một điểm dừng đang được trỏ chuột, “Thêm phương tiện di chuyển” và “Giao thông công cộng” ở phần đầu thẻ ngày, và các tab “Đặt chỗ” và “Di chuyển” cho danh sách đầy đủ kèm nhập dữ liệu và tệp.',
+    'Tạo mới: “Thêm đặt chỗ” trên một điểm dừng đang được trỏ chuột, “Thêm phương tiện di chuyển” và “Giao thông công cộng” trong menu + của ngày, và các tab “Đặt chỗ” và “Di chuyển” cho danh sách đầy đủ kèm nhập dữ liệu và tệp.',
   'help.guide.bookings-in-plan.result':
     'Một đặt chỗ, một chỗ trong kế hoạch; các tab chính là những đặt chỗ ấy dưới dạng danh sách.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2141,24 +2144,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Nhấp một hàng trong cột địa điểm, một điểm dừng bên trong một ngày, hoặc một điểm đánh dấu trên bản đồ, và thẻ mở ra trên bản đồ. Chọn nó bên trong một ngày sẽ cho thẻ biết bạn muốn nói đến điểm dừng nào, và chính điều đó mang theo người tham gia của điểm dừng cùng đặt chỗ của nó.',
   'help.ctx.trip-place.bullet.2':
-    'Phần đầu mang hình tròn, tên, danh mục, địa chỉ và tọa độ. Nhấp vào hình để dùng ảnh của riêng bạn, nhấp đúp vào tên để đổi tên địa điểm ngay tại chỗ, và dấu X bên phải đóng thẻ.',
+    'Phần đầu mang hình tròn, tên, địa chỉ trên một dòng và các chip cho những gì đã biết: mở hay đóng cửa, danh mục, giá, số điện thoại và tọa độ. Nhấp vào hình để dùng ảnh của riêng bạn, nhấp đúp vào tên để đổi tên địa điểm ngay tại chỗ, và dấu X bên phải đóng thẻ.',
   'help.ctx.trip-place.bullet.3':
-    'Bên dưới: giá nếu có, những ngôi sao mà mỗi người đi đã cho địa điểm, phần mô tả và ghi chú, cùng “Ghi chú cho ngày này” khi điểm dừng có mang nó.',
+    'Bên dưới: những ngôi sao mà mỗi người đi đã cho địa điểm, phần mô tả và ghi chú, cùng “Ghi chú cho ngày này” khi điểm dừng có mang nó.',
   'help.ctx.trip-place.bullet.4':
     '“Giờ mở cửa”, “Màu đường đi”, “Theo dõi số liệu thống kê” và “Tập tin” theo sau, trong chừng mực chúng áp dụng. “Tập tin” nhận bất cứ thứ gì từ các thư mục của bạn và cũng liệt kê những gì treo trên đặt chỗ của điểm dừng này.',
   'help.ctx.trip-place.bullet.5':
     'Hàng ở dưới cùng: “Thêm vào ngày” hoặc “Xóa khỏi ngày” khi một ngày đang mở, rồi “Lưu vào Bộ sưu tập”, “Điều hướng”, “Mở trang web”, “Chỉnh sửa” và “Xóa bỏ”.',
   'help.ctx.trip-place.bullet.6':
-    'Một địa điểm được chọn ra từ tìm kiếm mang theo những gì chỉ mục của TREK hoặc OpenStreetMap biết về nó: một vòng “Mở” màu xanh lá hoặc “Đã đóng” màu đỏ quanh hình ảnh, xét theo giờ của chính địa điểm, số điện thoại dưới các ngôi sao, “Giờ mở cửa” xa hơn bên dưới với dòng của ngày hôm đó trên hàng và cả tuần phía sau một cú nhấp, cùng trang web của nó phía sau “Mở trang web”. Đánh giá của Google chỉ hiện ở địa điểm tìm được qua Google, trên một TREK có khóa Google.',
+    'Một địa điểm được chọn ra từ tìm kiếm mang theo những gì chỉ mục của TREK hoặc OpenStreetMap biết về nó: “Mở” hoặc “Đã đóng” trong các chip của phần đầu, với một vòng xanh lá hoặc đỏ quanh hình ảnh, xét theo giờ của chính địa điểm, số điện thoại cũng là một chip, “Giờ mở cửa” xa hơn bên dưới với dòng của ngày hôm đó trên hàng và cả tuần phía sau một cú nhấp, cùng trang web của nó phía sau “Mở trang web”. Đánh giá của Google chỉ hiện ở địa điểm tìm được qua Google, trên một TREK có khóa Google.',
   // read-place
   'help.guide.read-place.title': 'Thẻ cho bạn biết gì về một địa điểm',
   'help.guide.read-place.goal': 'Đọc mọi thứ chuyến đi biết về một địa điểm, trong một thẻ.',
   'help.guide.read-place.step.1':
     'Ở cột các ngày, nhấp vào điểm dừng bạn muốn đọc. Thẻ mở ra trên bản đồ và điểm dừng vẫn được đánh dấu trong ngày của nó.',
   'help.guide.read-place.step.2':
-    'Phần đầu: hình tròn, tên, địa chỉ và tọa độ chính xác. Một vòng xanh lá với “Mở”, hoặc một vòng đỏ với “Đã đóng”, quanh hình ảnh cho biết địa điểm có đang mở cửa lúc này không, theo giờ của chính nó, một khi TREK biết giờ mở cửa của nó. Dấu X bên phải đóng thẻ lại.',
+    'Phần đầu: hình tròn, tên và địa chỉ trên một dòng; chú thích khi di chuột của nó chứa toàn bộ địa chỉ. Các chip bên dưới cho biết lúc này là “Mở” hay “Đã đóng”, theo giờ của chính địa điểm, với một vòng xanh lá hoặc đỏ quanh hình ảnh tương ứng, và mang số điện thoại, mà một cú nhấp sẽ chuyển cho ứng dụng điện thoại của bạn, cùng tọa độ chính xác. Dấu X bên phải đóng thẻ lại.',
   'help.guide.read-place.step.3':
-    'Bên dưới là những ngôi sao mà mỗi người đi đã cho địa điểm, kèm mức trung bình và số người đã bình chọn. “Chưa có đánh giá” khi chưa ai cho. Ngay bên dưới là số điện thoại nếu địa điểm có: một cú nhấp vào nó chuyển số cho ứng dụng điện thoại của bạn.',
+    '“Đánh giá” đứng đầu tiên dưới phần đầu: những ngôi sao mà mỗi người đi đã cho địa điểm, kèm mức trung bình và số người đã bình chọn. “Chưa có đánh giá” khi chưa ai cho.',
   'help.guide.read-place.step.4':
     'Rồi đến phần mô tả và, bên dưới nó, ghi chú. Cả hai là văn bản từ biểu mẫu của địa điểm, đã được kết xuất: danh sách, liên kết và chữ đậm đều hoạt động.',
   'help.guide.read-place.step.5':
@@ -2252,18 +2255,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'Đặt chỗ trên một điểm dừng',
   'help.guide.place-booking.goal': 'Đọc đặt chỗ thuộc về một điểm dừng, mở nó ra, và ghim một đặt chỗ mới vào đó.',
   'help.guide.place-booking.step.1':
-    'Mở điểm dừng mà đặt chỗ thuộc về. Thẻ hiện một dải có “Đã xác nhận” hoặc “Chưa giải quyết” và tên của đặt chỗ.',
+    'Mở điểm dừng mà đặt chỗ thuộc về. Thẻ liệt kê nó dưới “Đặt chỗ” như một thẻ nhỏ riêng, với tên của đặt chỗ và “Đã xác nhận” hoặc “Chưa giải quyết”.',
   'help.guide.place-booking.step.2':
-    'Dải đó mang “Ngày”, “Thời gian” và “Mã đặt chỗ”, cùng bất kỳ ghi chú nào mà đặt chỗ có.',
-  'help.guide.place-booking.step.3': 'Nhấp vào dải đó. Đặt chỗ mở ra phía trên bản đồ.',
+    'Thẻ đặt chỗ mang “Ngày”, “Thời gian” và “Mã đặt chỗ”, cùng bất kỳ ghi chú nào mà đặt chỗ có.',
+  'help.guide.place-booking.step.3': 'Nhấp vào thẻ đặt chỗ. Đặt chỗ mở ra phía trên bản đồ.',
   'help.guide.place-booking.step.4':
     '“Chỉnh sửa” ở chân đặt chỗ mở biểu mẫu riêng của nó. Trong đó, “Liên kết đến bài tập trong ngày” là thứ ghim một đặt chỗ vào một điểm dừng, và ở đây nó đã gọi tên điểm dừng này. Đóng biểu mẫu lại.',
   'help.guide.place-booking.step.5':
-    'Một đặt chỗ mới cho một điểm dừng bắt đầu ở cột các ngày: di chuột lên điểm dừng và nhấp dấu + ở cuối nó. Biểu mẫu mở ra dưới tên “Đặt chỗ mới”, đã được liên kết sẵn với nó.',
+    'Một đặt chỗ mới cho một điểm dừng bắt đầu ở cột các ngày: di chuột lên điểm dừng và nhấp “Thêm đặt chỗ”, biểu tượng vé ở cuối nó. Biểu mẫu mở ra dưới tên “Đặt chỗ mới”, đã được liên kết sẵn với nó.',
   'help.guide.place-booking.result':
     'Đặt chỗ treo trên điểm dừng: nó ở trên thẻ, nó ở trong ngày, và các tập tin của nó cũng được liệt kê dưới “Tập tin” ở đây.',
   'help.guide.place-booking.tip.1':
-    'Dải đó chỉ hiện với điểm dừng mà đặt chỗ được ghim vào. Một đặt chỗ không có điểm dừng thì nằm ở tab “Đặt”.',
+    'Thẻ đặt chỗ chỉ hiện với điểm dừng mà đặt chỗ được ghim vào. Một đặt chỗ không có điểm dừng thì nằm ở tab “Đặt”.',
   'help.guide.place-booking.tip.2':
     'Nhiều đặt chỗ có thể dùng chung một điểm dừng: bữa trưa và chuyến tham quan khởi hành từ cùng một cửa.',
   'help.guide.place-booking.tip.3':
@@ -2501,7 +2504,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Trên cùng là thời tiết của ngày. “Dự báo cho” nêu tên nơi mà nó nói tới: điểm dừng đầu tiên của ngày, hoặc khách sạn nơi bạn thức dậy.',
   'help.ctx.trip-day-detail.bullet.4':
-    '“Đặt chỗ” liệt kê các đặt chỗ của ngày đó, mỗi mục với loại của nó, điểm dừng mà nó thuộc về và giờ giấc. Màu xanh lá nghĩa là đã xác nhận, màu hổ phách là chưa giải quyết; đây chỉ là chỗ đọc, còn đặt chỗ được thay đổi trong tab “Đặt chỗ”.',
+    '“Đặt chỗ” liệt kê các đặt chỗ của ngày đó, mỗi mục với loại của nó, điểm dừng mà nó thuộc về và giờ giấc. Màu xanh lá nghĩa là đã xác nhận, màu hổ phách là chưa giải quyết, và nhấp vào một hàng sẽ mở đặt chỗ đó.',
   'help.ctx.trip-day-detail.bullet.5':
     '“Chỗ ở” hiển thị mọi đêm đã đặt trên ngày này, với “Nhận phòng” và “Trả phòng” đúng vào ngày diễn ra, khung giờ nhận phòng, giờ trả phòng và số xác nhận.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2534,7 +2537,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'Con số lớn là nhiệt độ của ngày, cạnh nó là mức thấp và mức cao, và tình trạng thời tiết bằng chữ.',
   'help.guide.day-weather.step.3':
-    'Các chip bên dưới: xác suất mưa, lượng mưa, cơn gió mạnh nhất, cùng bình minh và hoàng hôn.',
+    'Các chip ở bên phải nó: xác suất mưa, lượng mưa, cơn gió mạnh nhất, cùng bình minh và hoàng hôn.',
   'help.guide.day-weather.step.4':
     'Dưới cùng là ngày theo từng giờ, cách hai giờ một: giờ, biểu tượng, nhiệt độ và xác suất mưa. Giờ nào trên 50% thì được tô xanh.',
   'help.guide.day-weather.result':
@@ -2567,18 +2570,18 @@ const help: TranslationStrings = {
     'Chỗ nghỉ trước hết phải là một địa điểm của chuyến đi. Hãy tạo nó trong cột địa điểm như bạn tạo bất kỳ địa điểm nào khác: bộ chọn chỉ đưa ra những gì đã có sẵn.',
   'help.guide.add-accommodation.step.2': 'Mở ngày bạn đến và nhấp “Thêm chỗ ở” dưới “Chỗ ở”.',
   'help.guide.add-accommodation.step.3':
-    '“Áp dụng cho ngày” cho biết kỳ nghỉ phủ những đêm nào: ngày nhận phòng ở bên trái, ngày trả phòng ở bên phải. “Tất cả” phủ cả chuyến đi.',
+    '“Áp dụng cho ngày” cho biết kỳ nghỉ phủ những đêm nào: “Bắt đầu” là ngày nhận phòng, “Kết thúc” là ngày trả phòng, và “Tất cả” phủ cả chuyến đi. Phần đầu hộp thoại hiển thị khoảng ngày và số đêm.',
   'help.guide.add-accommodation.step.4':
     'Điền “Nhận phòng”, “Cho đến khi” và “Trả phòng”, và đặt số đặt chỗ dưới “Xác nhận”. Cả bốn đều có thể để trống.',
   'help.guide.add-accommodation.step.5':
-    'Chọn chỗ nghỉ từ các địa điểm của chuyến đi. Các chip phía trên danh sách thu hẹp nó về một danh mục.',
+    'Chọn chỗ nghỉ từ các địa điểm của chuyến đi. “Loại” phía trên danh sách thu hẹp nó về một danh mục.',
   'help.guide.add-accommodation.step.6': 'Nhấp “Lưu”.',
   'help.guide.add-accommodation.result':
     'Kỳ nghỉ hiện trên mọi ngày nó phủ, “Nhận phòng” ở ngày đầu và “Trả phòng” ở ngày cuối. Chỗ nghỉ trở thành một điểm dừng trên ngày nhận phòng, nên bản đồ vẽ đường tới đó, và một đặt chỗ “Chỗ ở” xuất hiện trong tab “Đặt chỗ”.',
   'help.guide.add-accommodation.tip.1':
     'Bộ chọn mở ở ngày bạn vừa rời, với trả phòng vào ngày kế tiếp; cả hai đều có thể dời trước khi bạn lưu.',
   'help.guide.add-accommodation.tip.2':
-    'Hãy cho khách sạn danh mục Hotel của chuyến đi khi bạn tạo nó, và các chip phía trên danh sách sẽ thu về đúng các khách sạn của bạn chỉ bằng một cú nhấp.',
+    'Hãy cho khách sạn danh mục Hotel của chuyến đi khi bạn tạo nó, và “Loại” phía trên danh sách sẽ thu về đúng các khách sạn của bạn chỉ bằng một cú nhấp.',
   'help.guide.add-accommodation.tip.3':
     'Giờ giấc đều là tùy chọn: một kỳ nghỉ không có giờ nhận phòng và không có mã vẫn phủ các đêm của nó và vẫn vẽ tuyến đường của nó.',
   // edit-accommodation
@@ -2589,7 +2592,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'Cây bút chì ở bên phải nó mở lại kỳ nghỉ. Cửa sổ bật lên giờ ghi “Chỉnh sửa chỗ ở”.',
   'help.guide.edit-accommodation.step.3':
-    'Sửa hàng các ô: “Nhận phòng”, “Cho đến khi”, “Trả phòng” và “Xác nhận”. Các ngày ở trên nó và chỗ nghỉ ở dưới nó cũng đổi được tại đây.',
+    'Sửa “Nhận phòng”, “Cho đến khi”, “Trả phòng” và “Xác nhận”. Các ngày ở trên chúng và chỗ nghỉ ở dưới cũng đổi được tại đây.',
   'help.guide.edit-accommodation.step.4': 'Nhấp “Lưu”.',
   'help.guide.edit-accommodation.step.5':
     'Dấu X cạnh cây bút chì kết thúc kỳ nghỉ. Nó không hỏi gì, và đặt chỗ “Chỗ ở” thuộc về nó cũng đi theo.',
@@ -2605,7 +2608,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     '“Đặt chỗ” liệt kê các đặt chỗ của ngày: những cái ghi ngày đúng vào đó, và những cái treo trên một trong các điểm dừng của nó.',
   'help.guide.day-bookings.step.2':
-    'Một hàng hiển thị đó là loại đặt chỗ nào, tên của nó và, khi nó thuộc về một điểm dừng, điểm dừng đó sau một dấu chấm. Giờ giấc nằm ở đầu bên phải.',
+    'Một hàng hiển thị đó là loại đặt chỗ nào, tên của nó và, khi nó thuộc về một điểm dừng, điểm dừng đó màu xám theo sau. Giờ giấc nằm ở đầu bên phải, trước chấm trạng thái.',
   'help.guide.day-bookings.step.3':
     'Màu sắc cho biết một đặt chỗ đang ở đâu: hàng màu xanh lá là đã xác nhận, hàng màu hổ phách là chưa giải quyết. Khách sạn không nằm trong danh sách này, chúng có khối riêng ở bên dưới.',
   'help.guide.day-bookings.step.4':

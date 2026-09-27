@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState, type ReactNode } from 'react'
-import { Check, Download, Filter, Plus, RotateCcw, ScanLine, Search, X } from 'lucide-react'
+import { Check, Download, Filter, Plus, RotateCcw, Rows3, ScanLine, Search, Table2, X } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import type { TripMember } from './BudgetPanelMemberChips'
 import { Tooltip } from '../shared/Tooltip'
@@ -7,6 +7,8 @@ import { POPOVER, POPOVER_CAPTION, POPOVER_DIVIDER, useDismissOnOutside } from '
 import { PopoverItem } from '../Packing/PackingPopover'
 
 export type OwnerFilter = 'all' | 'mine' | 'owed'
+/** The day-by-day list, or the categorized table the old budget had. */
+export type CostsView = 'list' | 'table'
 
 export interface CostsFilterProps {
   query: string
@@ -41,6 +43,9 @@ interface CostsToolbarProps {
   onScanReceipt?: () => void
   /** Search, filters and export, the way the Transports and Bookings bars carry them. */
   filters?: CostsFilterProps
+  /** The switch between the list and the table; left out, the bar has none. */
+  view?: CostsView
+  onView?: (view: CostsView) => void
 }
 
 const BODY_SIZE = 'calc(13px * var(--fs-scale-body, 1))'
@@ -52,7 +57,7 @@ const BAR_BTN = 'relative grid h-9 w-9 flex-none place-items-center rounded-[10p
  * Bookings, Lists and Files open with: the tab's name and what the numbers
  * cover, then how to narrow the ledger and the actions on the right.
  */
-export default function CostsToolbar({ dateMeta, people, me, colorFor, canEdit, canSettle, onSettleAll, onAddExpense, onScanReceipt, filters }: CostsToolbarProps) {
+export default function CostsToolbar({ dateMeta, people, me, colorFor, canEdit, canSettle, onSettleAll, onAddExpense, onScanReceipt, filters, view, onView }: CostsToolbarProps) {
   const { t } = useTranslation()
   const searchRef = useRef<HTMLInputElement>(null)
   const chip = 'inline-flex items-center whitespace-nowrap rounded-full bg-surface-card px-3 py-1.5 font-medium text-content-muted shadow-sm'
@@ -116,6 +121,20 @@ export default function CostsToolbar({ dateMeta, people, me, colorFor, canEdit, 
             </button>
           </Tooltip>
         </>
+      )}
+
+      {view && onView && (
+        // The same switch the Bookings bar has for its views.
+        <div role="group" aria-label={t('costs.view.label')} className="inline-flex flex-none rounded-[10px] bg-surface-card p-[3px]">
+          {([['list', Rows3, t('costs.view.list')], ['table', Table2, t('costs.view.table')]] as const).map(([v, Icon, label]) => (
+            <Tooltip key={v} label={label}>
+              <button type="button" onClick={() => onView(v)} aria-pressed={view === v} aria-label={label}
+                className={`grid h-[30px] w-[34px] place-items-center rounded-[8px] transition-colors ${view === v ? 'bg-accent text-accent-text' : 'text-content-muted hover:text-content'}`}>
+                <Icon size={15} strokeWidth={2} />
+              </button>
+            </Tooltip>
+          ))}
+        </div>
       )}
 
       {canEdit && (

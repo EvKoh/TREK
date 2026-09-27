@@ -1,4 +1,4 @@
-// FE-PLANNER-DAYPLAN-001 to FE-PLANNER-DAYPLAN-231
+// FE-PLANNER-DAYPLAN-001 to FE-PLANNER-DAYPLAN-232
 import { render, screen, waitFor, fireEvent, within } from '../../../tests/helpers/render'
 import userEvent from '@testing-library/user-event'
 import { http, HttpResponse } from 'msw'
@@ -2202,7 +2202,7 @@ describe('DayPlanSidebar', () => {
 
   // ── Edit reservation pencil button ───────────────────────────────────────
 
-  it('FE-PLANNER-DAYPLAN-097: pencil button on non-transport reservation calls onEditReservation', async () => {
+  it('FE-PLANNER-DAYPLAN-097: the reservation pill of a non-transport booking opens its editor', async () => {
     const user = userEvent.setup()
     const place = buildPlace({ id: 1, name: 'Hotel du Lac' })
     const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
@@ -2214,13 +2214,18 @@ describe('DayPlanSidebar', () => {
       days: [day], places: [place], assignments: { '10': [assignment] }, reservations: [res],
       onEditReservation, onEditTransport,
     })} />)
-    const pencil = screen.getByLabelText(/edit/i)
-    await user.click(pencil)
+    // The pill says "Reservation"; its colour and tooltip carry the status.
+    const pill = screen.getByRole('button', { name: /^Reservation\s*Pending$/ })
+    fireEvent.mouseEnter(pill)
+    expect(await screen.findByRole('tooltip')).toHaveTextContent('Pending')
+    await user.click(pill)
     expect(onEditReservation).toHaveBeenCalledWith(res)
     expect(onEditTransport).not.toHaveBeenCalled()
+    // No separate pencil beside it any more.
+    expect(screen.queryByRole('button', { name: 'Edit' })).not.toBeInTheDocument()
   })
 
-  it('FE-PLANNER-DAYPLAN-098: pencil button on transport reservation calls onEditTransport', async () => {
+  it('FE-PLANNER-DAYPLAN-098: the reservation pill of a transport opens the transport editor', async () => {
     const user = userEvent.setup()
     const place = buildPlace({ id: 1, name: 'Geneva Airport' })
     const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
@@ -2232,8 +2237,7 @@ describe('DayPlanSidebar', () => {
       days: [day], places: [place], assignments: { '10': [assignment] }, reservations: [res],
       onEditReservation, onEditTransport,
     })} />)
-    const pencil = screen.getByLabelText(/edit/i)
-    await user.click(pencil)
+    await user.click(screen.getByRole('button', { name: /^Reservation\s*Pending$/ }))
     expect(onEditTransport).toHaveBeenCalledWith(res)
     expect(onEditReservation).not.toHaveBeenCalled()
   })
@@ -3680,6 +3684,24 @@ describe('DayPlanSidebar', () => {
     expect(row.style.borderTop).toBe('')
   })
 
+  it('FE-PLANNER-DAYPLAN-232: a drop line left behind by a drag that never reported its end goes on the next mouse move', () => {
+    const { day, placeA, placeB, bus, assignments } = dayWithBusAndPlaces()
+    render(<DayPlanSidebar {...makeDefaultProps({ days: [day], places: [placeA, placeB], assignments, reservations: [bus] })} />)
+    const row = cardRow(screen.getByText('City bus'))
+    fireEvent.dragStart(row, { dataTransfer: emptyDataTransfer })
+    fireEvent.dragOver(row, { dataTransfer: emptyDataTransfer, clientY: 0 })
+    expect(row.style.borderTop).toContain('2px')
+    // No dragend reaches the document (its source re-rendered away); the pointer moves on.
+    fireEvent.mouseMove(document)
+    expect(row.style.borderTop).toBe('')
+
+    // A press clears it just the same.
+    fireEvent.dragOver(row, { dataTransfer: emptyDataTransfer, clientY: 0 })
+    expect(row.style.borderTop).toContain('2px')
+    fireEvent.pointerDown(document.body)
+    expect(row.style.borderTop).toBe('')
+  })
+
   it('FE-PLANNER-DAYPLAN-160: cross-day payloads dropped on a booking row move onto its day', () => {
     const moveAssignment = vi.fn(async () => undefined)
     const moveDayNote = vi.fn(async () => undefined)
@@ -3757,10 +3779,7 @@ describe('DayPlanSidebar', () => {
     expect(screen.getByText('Air France AF1235')).toBeInTheDocument()
     await user.click(screen.getByLabelText('Show booking routes'))
     expect(onToggleConnection).toHaveBeenCalledWith(520)
-    const edit = screen.getByLabelText('Edit')
-    fireEvent.mouseEnter(edit)
-    fireEvent.mouseLeave(edit)
-    await user.click(edit)
+    await user.click(screen.getByRole('button', { name: /^Reservation\s*Confirmed$/ }))
     expect(onEditTransport).toHaveBeenCalledWith(linked)
   })
 
@@ -3776,7 +3795,8 @@ describe('DayPlanSidebar', () => {
       days: [day], places: [place], assignments: { '10': [a] }, reservations: [linked],
     })} />)
     expect(screen.getAllByText('ICE 599').length).toBeGreaterThan(0)
-    expect(screen.getByText(/Reservation pending/)).toBeInTheDocument()
+    // The pill names the booking; the status travels with it for a screen reader.
+    expect(screen.getByText('Reservation').parentElement).toHaveTextContent(/Reservation\s*Pending/)
   })
 
   it('FE-PLANNER-DAYPLAN-163b: every booking on the stop gets its own chip line (#2201)', async () => {
@@ -3800,10 +3820,11 @@ describe('DayPlanSidebar', () => {
     })} />)
     expect(screen.getByText('09:00 – 09:30')).toBeInTheDocument()
     expect(screen.getByText('10:15')).toBeInTheDocument()
-    expect(screen.getByText(/Reservation confirmed/)).toBeInTheDocument()
-    expect(screen.getByText(/Reservation pending/)).toBeInTheDocument()
-    // Earliest first, so the first pencil belongs to the parking pass.
-    await user.click(screen.getAllByLabelText('Edit')[0])
+    const pills = screen.getAllByRole('button', { name: /^Reservation/ })
+    expect(pills[0]).toHaveAccessibleName(/Confirmed/)
+    expect(pills[1]).toHaveAccessibleName(/Pending/)
+    // Earliest first, so the first pill belongs to the parking pass.
+    await user.click(pills[0])
     expect(onEditReservation).toHaveBeenCalledWith(parking)
   })
 
@@ -4374,7 +4395,7 @@ describe('DayPlanSidebar', () => {
     expect(screen.queryByText('Gare du Nord')).not.toBeInTheDocument()
   })
 
-  it('FE-PLANNER-DAYPLAN-231: the pencil on a booking pinned to a stop still goes straight to the editor', async () => {
+  it('FE-PLANNER-DAYPLAN-231: with the booking popup, a booking pinned to a stop opens there first', async () => {
     const user = userEvent.setup()
     const place = buildPlace({ id: 1, name: 'Geneva Airport' })
     const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
@@ -4387,10 +4408,10 @@ describe('DayPlanSidebar', () => {
       onEditTransport, onOpenBooking,
     })} />)
 
-    await user.click(screen.getByRole('button', { name: 'Edit' }))
+    await user.click(screen.getByRole('button', { name: /^Reservation\s*Pending$/ }))
 
-    expect(onEditTransport).toHaveBeenCalledWith(res)
-    expect(onOpenBooking).not.toHaveBeenCalled()
+    expect(onOpenBooking).toHaveBeenCalledWith(res)
+    expect(onEditTransport).not.toHaveBeenCalled()
   })
 
   it('FE-PLANNER-DAYPLAN-178: the add-transport shortcut targets the day it sits on', async () => {

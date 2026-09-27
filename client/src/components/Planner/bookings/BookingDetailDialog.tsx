@@ -85,8 +85,9 @@ export default function BookingDetailDialog(p: BookingDetailDialogProps) {
   } else {
     const from = facts.endpoints[0]
     const to = facts.endpoints[facts.endpoints.length - 1]
-    if (facts.startTime) stats.push({ value: facts.time?.split(' → ')[0] || facts.startTime, label: from?.name || t('reservations.start') })
-    if (facts.endTime) stats.push({ value: facts.time?.split(' → ')[1] || facts.endTime, label: to?.name || t('reservations.end') })
+    // Each tile formats its own time: a booking with only an end has no "start → end" line to cut up.
+    if (facts.startTime) stats.push({ value: formatTime(facts.startTime, locale, timeFormat), label: from?.name || t('reservations.start') })
+    if (facts.endTime) stats.push({ value: formatTime(facts.endTime, locale, timeFormat), label: to?.name || t('reservations.end') })
     if (transit?.duration) stats.push({ value: fmtTransitDuration(transit.duration, t), label: t('transit.durationLabel') })
     if (transit && transit.legs.length > 0) stats.push({ value: String(transit.transfers), label: t('transit.transfersLabel') })
     // Under a minute of walking is not worth a tile.

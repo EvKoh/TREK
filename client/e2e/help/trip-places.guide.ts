@@ -1,7 +1,7 @@
 import { test, expect, type Page, type Locator } from '@playwright/test'
 import { captureGuide, captureHero, beat, typeInto, settle, VIEWPORT, type GuideScript } from './guide'
 import { seededTrip, gpxFixture, ensureTrack } from './fixtures'
-import { openTrip, modal, dialog, confirmDialog, portalDialog } from './trip-shared'
+import { openTrip, modal, dialog, confirmDialog } from './trip-shared'
 import { tripPlacesContext, tripPlacesGuides } from '../../src/help/contexts/tripPlaces'
 import type { HelpGuide } from '../../src/help/types'
 
@@ -22,22 +22,41 @@ const SPARE = { name: 'Tsukiji Outer Market', lat: 35.6654, lng: 139.7707, addre
 /** What create-place looks up. See the note in its second step for why this one. */
 const SEARCHED = { query: 'Osaka Castle', match: /^Osaka Castle/ }
 
+/** The search result create-place picks. */
+const suggestion = (page: Page) =>
+  modal(page).locator('.shadow-dropdown button').filter({ hasText: SEARCHED.match }).first()
 /** A row of the places column by the place's name (the rows are options of a list). */
 const row = (page: Page, name: string) => page.getByRole('option', { name: new RegExp(`^${name}`) }).first()
 /** The context menu is a fixed popover of plain buttons; the item texts tell it apart. */
 const menu = (page: Page) => page.locator('.trek-popover-enter').filter({ has: page.getByRole('button', { name: 'Delete' }) }).last()
 /** The add button: "Add Place/Activity" with no day open, "New place" with one. */
 const addButton = (page: Page) => page.getByRole('button', { name: /^(Add Place\/Activity|New place)$/ })
-/** The filter row's controls. */
-const filterSelect = (page: Page) => page.getByTestId('places-filter').getByRole('button').first()
-const searchBox = (page: Page) => page.getByPlaceholder('Search places...').last()
-/** FileImportModal: its own portal, recognised by the hidden file input and its heading. */
+/**
+ * The head band of the column: the add row, the search with the select switch,
+ * and the row of filters. Found from its import button, the one control only
+ * this band has, so the plain "Search" of the field is read inside it.
+ */
+const head = (page: Page) =>
+  page.getByRole('button', { name: 'Import Places' }).locator('xpath=ancestor::div[contains(@class,"flex-col")][1]')
+/** The import button's menu: Import file and the list import. */
+const importMenu = (page: Page) =>
+  page.locator('.trek-popover-enter').filter({ has: page.getByRole('button', { name: 'Import file' }) }).last()
+/** The Show dropdown (All, Unplanned, Planned, Tracks) and the list it opens. */
+const showTrigger = (page: Page) => head(page).getByRole('button', { name: 'Show', exact: true })
+const showList = (page: Page) => page.getByTestId('places-filter').locator('xpath=..')
+/** The category filter: a tag button whose list sits right after it. */
+const categoryTrigger = (page: Page) => head(page).getByRole('button', { name: 'Categories', exact: true })
+const categoryList = (page: Page) => categoryTrigger(page).locator('xpath=following-sibling::div[1]')
+const searchBox = (page: Page) => head(page).getByPlaceholder('Search', { exact: true })
+/** The selection bar at the foot of the column, found by its delete action. */
+const selectionBar = (page: Page) => page.getByRole('button', { name: 'Delete selected' }).locator('xpath=..')
+/** FileImportModal, recognised by its hidden file input. */
 const importFileDialog = (page: Page) =>
-  portalDialog(page, page.locator('input[type="file"][accept*=".gpx"]'))
-/** ListImportModal: its own portal, recognised by the link box. */
-const listImportDialog = (page: Page) => portalDialog(page, page.getByPlaceholder(/goo\.gl|naver/))
+  page.getByRole('dialog').filter({ has: page.locator('input[type="file"][accept*=".gpx"]') })
+/** ListImportModal, recognised by the link box. */
+const listImportDialog = (page: Page) => page.getByRole('dialog').filter({ has: page.getByPlaceholder(/goo\.gl|naver/) })
 /** The drop box of the file dialog: the dashed button that opens the file picker. */
-const dropBox = (page: Page) => importFileDialog(page).getByRole('button').first()
+const dropBox = (page: Page) => importFileDialog(page).locator('button.border-dashed').first()
 /** The column itself: the header block around the search box. */
 const column = (page: Page) => searchBox(page).locator('xpath=ancestor::div[contains(@class,"scroll") or @data-places-sidebar][1]')
 
@@ -81,6 +100,9 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
+        // The results are pictured before the pick: once one is taken the
+        // search box empties again, and a ring round an empty box shows the
+        // reader nothing of what the step says.
         prepare: async p => {
           const box = modal(p).getByPlaceholder('Search places...')
           // Osaka Castle on purpose: its entry in the index carries a picture,
@@ -88,16 +110,19 @@ const SCRIPTS: Record<string, GuideScript> = {
           // text says it shows. Most results have none of that and the column
           // would be an empty state in the picture.
           await typeInto(p, box, SEARCHED.query)
-          const suggestion = modal(p).locator('.shadow-dropdown button').filter({ hasText: SEARCHED.match }).first()
-          await expect(suggestion).toBeVisible({ timeout: 20_000 })
-          await suggestion.click()
+          await expect(suggestion(p)).toBeVisible({ timeout: 20_000 })
+          await settle(p)
+        },
+        target: p => modal(p).locator('.shadow-dropdown').first(),
+        hover: p => suggestion(p).hover(),
+        act: async p => {
+          await suggestion(p).click()
           await expect(modal(p).getByPlaceholder('e.g. Eiffel Tower')).toHaveValue(SEARCHED.match, { timeout: 20_000 })
           // The details column answers after the form; wait for it or the
           // picture catches the spinner.
           await expect(modal(p).getByText('Pick a picture', { exact: false }).first()).toBeVisible({ timeout: 30_000 })
           await settle(p)
         },
-        target: p => modal(p).getByPlaceholder('Search places...').locator('xpath=../..'),
       },
       // The details column is an <aside> beside the form; both used to resolve to
       // the whole dialog, which gave two steps the same picture.
@@ -143,9 +168,9 @@ const SCRIPTS: Record<string, GuideScript> = {
       },
       {
         prepare: async p => { await row(p, SPARE.name).hover() },
-        target: p => row(p, SPARE.name).locator('button').last(),
+        target: p => row(p, SPARE.name).getByRole('button', { name: '+ Day' }),
         act: async p => {
-          await row(p, SPARE.name).locator('button').last().click()
+          await row(p, SPARE.name).getByRole('button', { name: '+ Day' }).click()
           await expect(p.getByRole('button', { name: 'Undo' })).toBeEnabled({ timeout: 15_000 })
           await settle(p)
         },
@@ -179,10 +204,14 @@ const SCRIPTS: Record<string, GuideScript> = {
     },
     steps: [
       {
-        prepare: async p => { await filterSelect(p).click(); await beat(p, 300) },
-        target: filterSelect,
-        // The lists close on a second click of their trigger, not on Escape.
-        act: async p => { await filterSelect(p).click(); await settle(p) },
+        prepare: async p => {
+          await showTrigger(p).click()
+          await expect(showList(p)).toBeVisible()
+          await beat(p, 300)
+        },
+        target: showList,
+        // The lists close on a second click of their trigger.
+        act: async p => { await showTrigger(p).click(); await settle(p) },
       },
       {
         prepare: async p => { await typeInto(p, searchBox(p), 'temple'); await settle(p) },
@@ -190,9 +219,26 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => { await searchBox(p).fill(''); await settle(p) },
       },
       {
-        prepare: async p => { await p.getByRole('button', { name: 'All Categories' }).click(); await beat(p, 300) },
-        target: p => p.getByRole('button', { name: 'All Categories' }),
-        act: async p => { await p.getByRole('button', { name: 'All Categories' }).click(); await settle(p) },
+        // One category ticked, so the list shows the tick, the button its count
+        // and the foot of the list its Clear filter.
+        prepare: async p => {
+          await categoryTrigger(p).click()
+          await expect(categoryList(p)).toBeVisible()
+          // No Category: the seed's places carry none, so it is the choice that
+          // leaves rows in the list rather than an empty column.
+          await categoryList(p).getByRole('button', { name: /No Category/ }).click()
+          await expect(categoryList(p).getByRole('button', { name: 'Clear filter' })).toBeVisible()
+          // The list scrolls inside itself; its foot is where the tick and Clear filter are.
+          await categoryList(p).evaluate(el => { el.scrollTop = el.scrollHeight })
+          await beat(p, 300)
+        },
+        target: categoryList,
+        act: async p => {
+          await categoryList(p).getByRole('button', { name: 'Clear filter' }).click()
+          await categoryTrigger(p).click()
+          await expect(categoryList(p)).toHaveCount(0)
+          await settle(p)
+        },
       },
       {
         prepare: async p => { await p.getByRole('button', { name: 'Filter by rating' }).click(); await beat(p, 300) },
@@ -270,19 +316,20 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
+        // Two rows next to each other, so one picture shows both ticks.
         prepare: async p => {
           await row(p, 'Shibuya Crossing').click()
           await row(p, 'Meiji Jingu').click()
-          await expect(p.getByText('2 selected')).toBeVisible()
+          await expect(p.getByRole('status', { name: '2 selected' })).toBeVisible()
           await beat(p, 300)
         },
-        target: p => p.getByText('2 selected').locator('xpath=..'),
+        target: p => row(p, 'Meiji Jingu'),
       },
-      only(p => p.getByRole('button', { name: 'Delete selected' }).locator('xpath=..')),
+      only(selectionBar),
       {
-        target: p => p.getByRole('button', { name: 'Select', exact: true }),
+        target: p => selectionBar(p).getByRole('button', { name: 'Done' }),
         act: async p => {
-          await p.getByRole('button', { name: 'Select', exact: true }).click()
+          await selectionBar(p).getByRole('button', { name: 'Done' }).click()
           await expect(p.getByRole('button', { name: 'Select all' })).toHaveCount(0)
         },
       },
@@ -293,9 +340,14 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: p => openTrip(p),
     steps: [
       {
-        target: p => p.getByRole('button', { name: 'Import file' }),
+        prepare: async p => {
+          await p.getByRole('button', { name: 'Import Places' }).click()
+          await expect(importMenu(p)).toBeVisible()
+          await beat(p, 300)
+        },
+        target: p => importMenu(p).getByRole('button', { name: 'Import file' }),
         act: async p => {
-          await p.getByRole('button', { name: 'Import file' }).click()
+          await importMenu(p).getByRole('button', { name: 'Import file' }).click()
           await expect(importFileDialog(p)).toBeVisible()
           await settle(p)
         },
@@ -326,9 +378,15 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: p => openTrip(p),
     steps: [
       {
-        target: p => p.getByRole('button', { name: 'List Import' }),
+        prepare: async p => {
+          await p.getByRole('button', { name: 'Import Places' }).click()
+          await expect(importMenu(p)).toBeVisible()
+          await beat(p, 300)
+        },
+        // Google List while Google is the only list provider, List Import once Naver is on too.
+        target: p => importMenu(p).getByRole('button', { name: /^(Google List|List Import)$/ }),
         act: async p => {
-          await p.getByRole('button', { name: 'List Import' }).click()
+          await importMenu(p).getByRole('button', { name: /^(Google List|List Import)$/ }).click()
           await expect(listImportDialog(p)).toBeVisible()
           await settle(p)
         },

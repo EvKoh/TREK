@@ -1722,7 +1722,7 @@ const help: TranslationStrings = {
     'Udostępnij u góry po prawej otwiera ludzi podróży: członków, gości, link zaproszenia i publiczny link tylko do odczytu.',
   'help.ctx.trip.bullet.4': 'Tytuł, daty, okładkę i walutę edytujesz z Moje podróże, ołówkiem na karcie podróży.',
   'help.ctx.trip.bullet.5':
-    'Strzałki przy wewnętrznej krawędzi kolumny zwijają ją, a mapa zajmuje miejsce; cienki separator obok kolumny zmienia jej szerokość.',
+    'Języczek przy wewnętrznej krawędzi kolumny zwija ją, a mapa zajmuje miejsce; cienki separator obok kolumny zmienia jej szerokość.',
   'help.ctx.trip.bullet.6': 'Strzałka cofania na pasku narzędzi dni cofa ostatnią zmianę w planie.',
   // add-member
   'help.guide.add-member.title': 'Dodać członka',
@@ -1787,8 +1787,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Zrobić miejsce dla mapy',
   'help.guide.collapse-columns.goal': 'Zwiń kolumnę albo daj jej więcej szerokości.',
   'help.guide.collapse-columns.step.1':
-    'Kliknij strzałkę przy wewnętrznej krawędzi kolumny dni, żeby ją zwinąć; mapa zajmuje miejsce. Kolumna miejsc ma taką samą strzałkę.',
-  'help.guide.collapse-columns.step.2': 'Kliknij strzałkę ponownie, żeby przywrócić kolumnę.',
+    'Kliknij języczek przy wewnętrznej krawędzi kolumny dni, ten z ikoną panelu, żeby zwinąć kolumnę; mapa zajmuje miejsce. Kolumna miejsc ma taki sam języczek.',
+  'help.guide.collapse-columns.step.2':
+    'Zwinięta kolumna zostawia kafelek w rogu mapy, Plan dla dni i Miejsca dla miejsc. Kliknij go, żeby przywrócić kolumnę.',
   'help.guide.collapse-columns.step.3':
     'Przeciągnij cienki separator między kolumną a mapą, żeby zmienić szerokość kolumny.',
   'help.guide.collapse-columns.result': 'Szerokości są zapamiętywane; kolumny wracają otwarte przy następnej wizycie.',
@@ -1812,26 +1813,26 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Dodaj miejsce/atrakcję u góry otwiera formularz miejsca, które wpiszesz lub wyszukasz. Gdy dzień jest otwarty, przycisk brzmi Nowe miejsce, a Do dnia obok niego tworzy miejsce od razu w tym dniu.',
   'help.ctx.trip-places.bullet.2':
-    'Importuj plik przyjmuje pliki .gpx, .kml i .kmz; Import listy przyjmuje udostępnioną listę z Google Maps lub Naver Maps. Plik można też po prostu upuścić na kolumnę.',
+    'Przycisk importu obok niego oferuje Importuj plik, dla plików .gpx, .kml i .kmz, oraz Lista Google (Import listy, gdy włączone są też listy Naver) dla listy udostępnionej z Google Maps lub Naver Maps. Plik można też po prostu upuścić na kolumnę.',
   'help.ctx.trip-places.bullet.3':
-    'Lista rozwijana przełącza między Wszystkie, Niezaplanowane, Zaplanowane i, gdy trasa została zaimportowana, Trasy; poniżej siedzą wyszukiwanie, filtr kategorii i gwiazdka dla minimalnej oceny.',
+    'Pod nimi wyszukiwanie, obok niego ptaszek, który uruchamia zaznaczanie, i rząd filtrów: Pokaż przełącza między Wszystkie, Niezaplanowane, Zaplanowane i, gdy trasa została zaimportowana, Trasy, każde ze swoją liczbą; przycisk z etykietą filtruje według kategorii, a gwiazdka według minimalnej oceny.',
   'help.ctx.trip-places.bullet.4':
-    'Wiersz pokazuje zdjęcie, nazwę i opis albo adres. Kliknij go, by zobaczyć szczegóły miejsca, przeciągnij go na dzień albo kliknij prawym przyciskiem po Edytuj, + Dzień, Otwórz stronę internetową, Google Maps, Zapisz w kolekcji i Usuń.',
+    'Wiersz pokazuje zdjęcie, nazwę i opis albo adres. Kliknij go, by zobaczyć szczegóły miejsca, przeciągnij go na dzień albo kliknij prawym przyciskiem (lub kliknij jego trzy kropki) po Edytuj, + Dzień, Otwórz stronę internetową, Google Maps, Zapisz w kolekcji i Usuń.',
   'help.ctx.trip-places.bullet.5':
-    'Gdy dzień jest otwarty, + na końcu niezaplanowanego wiersza umieszcza miejsce w tym dniu, a Zaplanowane wypisują tylko ten dzień, z Pokaż całą podróż, by znów poszerzyć.',
+    'Gdy dzień jest otwarty, + Dzień na końcu niezaplanowanego wiersza umieszcza miejsce w tym dniu, a Zaplanowane wypisują tylko ten dzień, z Pokaż całą podróż, by znów poszerzyć.',
   'help.ctx.trip-places.bullet.6':
-    'Ptaszek na prawym końcu wiersza filtrów uruchamia zaznaczanie: kilka wierszy naraz dostaje nową kategorię, trafia do kolekcji albo zostaje usuniętych.',
+    'Ptaszek obok wyszukiwania uruchamia zaznaczanie: z paska u dołu kolumny kilka wierszy naraz dostaje nową kategorię, trafia do kolekcji, zostaje oznaczonych jako odwiedzone albo usuniętych.',
   // create-place
   'help.guide.create-place.title': 'Utworzyć miejsce',
   'help.guide.create-place.goal': 'Dodaj miejsce lub atrakcję ręcznie, ze wszystkim, co plan musi o nim wiedzieć.',
   'help.guide.create-place.step.1':
     'Kliknij Dodaj miejsce/atrakcję u góry kolumny miejsc (Nowe miejsce, gdy dzień jest otwarty). Otwiera się formularz.',
   'help.guide.create-place.step.2':
-    'Wpisz miejsce u góry w Szukaj miejsc... i wybierz wynik. Nazwa, Adres, Szerokość, Długość i Strona internetowa wypełniają się, a Szczegóły miejsca po lewej pokazują zdjęcia, godziny otwarcia i opis. W TREK-u z kluczem Google pod listą siedzi To nie to miejsce? Poszukaj w Google i uruchamia to samo wyszukiwanie przez Google.',
+    'Wpisz miejsce w Szukaj miejsc... i wybierz wynik. Nazwa w nagłówku okna, Adres, Szerokość, Długość i Strona internetowa wypełniają się, a Szczegóły miejsca po lewej pokazują zdjęcia, godziny otwarcia i opis. W TREK-u z kluczem Google pod listą siedzi To nie to miejsce? Poszukaj w Google i uruchamia to samo wyszukiwanie przez Google. Zapisane miejsca po prawej w ten sam sposób podsuwają miejsca z Twoich kolekcji.',
   'help.guide.create-place.step.3':
     'W Szczegółach miejsca kliknięcie zdjęcia pod Wybierz zdjęcie ustawia obrazek miejsca; Użyj tego tekstu przenosi opis do formularza.',
   'help.guide.create-place.step.4':
-    'Sprawdź pola: Nazwa jest wymagana; Opis i Notatki są Twoje; Adres, Szerokość i Długość pochodzą z wyszukiwania albo są wpisane; Kategoria wybiera jedną z kategorii podróży, a + obok niej tworzy nową na miejscu; Strona internetowa przyjmuje link.',
+    'Sprawdź, co zawiera formularz: nazwa siedzi w nagłówku okna i jest jedynym wymaganym polem; plakietka Kategoria pod nią wybiera jedną z kategorii podróży, a + obok niej tworzy nową na miejscu. Adres, Szerokość i Długość pochodzą z wyszukiwania albo są wpisane; Opis i Notatki są Twoje; Strona internetowa przyjmuje link.',
   'help.guide.create-place.step.5':
     'Kliknij Dodaj. Jeśli miejsce o tej samej nazwie już jest w podróży, formularz to mówi, a przycisk zmienia się w Dodaj mimo to.',
   'help.guide.create-place.result': 'Miejsce jest na liście i na mapie, pod Niezaplanowane, dopóki nie trafi do dnia.',
@@ -1850,7 +1851,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Do dnia otwiera ten sam formularz co Nowe miejsce, tylko miejsce ląduje w otwartym dniu w chwili, gdy klikniesz Dodaj.',
   'help.guide.place-to-open-day.step.3':
-    'Miejsce, które już istnieje, trafia do otwartego dnia przez + na końcu swojego wiersza albo prawym przyciskiem, + Dzień.',
+    'Miejsce, które już istnieje, trafia do otwartego dnia przez + Dzień na końcu swojego wiersza albo prawym przyciskiem, + Dzień.',
   'help.guide.place-to-open-day.step.4':
     'Odwrotnie też działa, i to bez otwierania dnia: przeciągnij wiersz miejsca poza kolumnę i upuść go na kartę dnia. Upuszczone między dwa przystanki trafia dokładnie tam.',
   'help.guide.place-to-open-day.result':
@@ -1862,10 +1863,10 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Znaleźć miejsce na liście',
   'help.guide.filter-places.goal': 'Zawęź kolumnę do miejsc, których szukasz.',
   'help.guide.filter-places.step.1':
-    'Lista rozwijana u góry przełącza między Wszystkie, Niezaplanowane (jeszcze w żadnym dniu), Zaplanowane (w dniu) i Trasy (zaimportowane trasy GPX), każde ze swoją liczbą.',
-  'help.guide.filter-places.step.2': 'Pisz w Szukaj miejsc...; lista zawęża się, gdy piszesz.',
+    'Pokaż, lista rozwijana pod wyszukiwaniem, przełącza między Wszystkie, Niezaplanowane (jeszcze w żadnym dniu), Zaplanowane (w dniu) i Trasy (zaimportowane trasy GPX), każde ze swoją liczbą.',
+  'help.guide.filter-places.step.2': 'Pisz w Szukaj u góry; lista zawęża się, gdy piszesz.',
   'help.guide.filter-places.step.3':
-    'Wszystkie kategorie otwierają listę, na której zaznaczasz jedną lub więcej kategorii, wśród nich Brak kategorii; Wyczyść filtr na jej dole resetuje to.',
+    'Przycisk z etykietą obok Pokaż wypisuje kategorie: zaznacz jedną lub więcej, wśród nich Brak kategorii. Przycisk liczy, co jest zaznaczone, a Wyczyść filtr u dołu listy znosi wszystkie.',
   'help.guide.filter-places.step.4':
     'Gwiazdka obok ustawia minimalną ocenę: 5+, 4+ i tak dalej pokazują tylko miejsca, które oceniłeś co najmniej tak wysoko.',
   'help.guide.filter-places.result': 'Liczba nad wierszami mówi, ile miejsc pasuje; filtry się łączą.',
@@ -1879,7 +1880,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Kliknij wiersz prawym przyciskiem i wybierz Edytuj, albo otwórz miejsce i kliknij Edytuj w jego szczegółach.',
   'help.guide.edit-place.step.2':
-    'Zmień, co trzeba: Nazwa, Opis, Notatki, Adres, Szerokość i Długość, Kategoria, Strona internetowa. Otwarty z dnia formularz ma dodatkowo Notatki na ten dzień oraz Początek i Koniec dla tego dnia.',
+    'Zmień, co trzeba: nazwa i plakietka Kategoria w nagłówku okna, Adres, Szerokość i Długość, Opis, Notatki i Strona internetowa. Otwarty z dnia formularz ma dodatkowo Początek i Koniec oraz Notatki na ten dzień.',
   'help.guide.edit-place.step.3': 'Kliknij Aktualizuj.',
   'help.guide.edit-place.result':
     'Zmiana obowiązuje wszędzie, gdzie miejsce się pojawia: na liście, na mapie i w każdym dniu, w którym jest.',
@@ -1893,20 +1894,21 @@ const help: TranslationStrings = {
   'help.guide.delete-place.step.1':
     'Kliknij wiersz prawym przyciskiem i wybierz Usuń, albo kliknij Usuń w szczegółach miejsca.',
   'help.guide.delete-place.step.2':
-    'Potwierdź. Jeśli w tym miejscu zarezerwowano nocleg albo powiązana jest z nim rezerwacja, pytanie mówi, co idzie razem z nim.',
+    'Kliknij Usuń w pytaniu. Jeśli w tym miejscu zarezerwowano nocleg albo powiązana jest z nim rezerwacja, pytanie mówi, co idzie razem z nim.',
   'help.guide.delete-place.result':
     'Miejsce znika z listy, z mapy i z każdego dnia; Cofnij na pasku narzędzi nad dniami przywraca je.',
   'help.guide.delete-place.tip.1': 'Aby zdjąć miejsce tylko z jednego dnia, użyj na tym przystanku Usuń z dnia.',
-  'help.guide.delete-place.tip.2': 'Kilka miejsc naraz: ptaszek obok filtrów uruchamia zaznaczanie.',
+  'help.guide.delete-place.tip.2': 'Kilka miejsc naraz: ptaszek obok wyszukiwania uruchamia zaznaczanie.',
   // select-places
   'help.guide.select-places.title': 'Zmienić lub usunąć kilka miejsc naraz',
   'help.guide.select-places.goal': 'Uporządkuj listę za jednym razem, zamiast miejsce po miejscu.',
   'help.guide.select-places.step.1':
-    'Kliknij ptaszek na prawym końcu wiersza filtrów. Wiersze dostają pola wyboru i pojawia się pasek z akcjami.',
-  'help.guide.select-places.step.2': 'Zaznacz wiersze albo Zaznacz wszystko na pasku; pasek liczy, co jest zaznaczone.',
+    'Kliknij ptaszek obok pola wyszukiwania. Wiersze dostają okrągłe pola wyboru, a u dołu kolumny wysuwa się pasek z akcjami.',
+  'help.guide.select-places.step.2':
+    'Klikaj wiersze, by je zaznaczyć. Zaznacz wszystko, podwójny ptaszek na pasku, bierze każdy wiersz, który zostawiają filtry.',
   'help.guide.select-places.step.3':
-    'Change category nadaje im wszystkim jedną kategorię; Zapisz w kolekcji kopiuje je do jednej z Twoich kolekcji; Usuń wybrane usuwa je po potwierdzeniu.',
-  'help.guide.select-places.step.4': 'Kliknij ptaszek jeszcze raz, by wyjść z zaznaczania.',
+    'Pasek liczy zaznaczone miejsca. Zmień kategorię nadaje im wszystkim jedną kategorię; Zapisz w kolekcji kopiuje je do jednej z Twoich kolekcji; Usuń wybrane usuwa je po potwierdzeniu.',
+  'help.guide.select-places.step.4': 'Gotowe, X na końcu paska, kończy zaznaczanie.',
   'help.guide.select-places.result':
     'Zmiana obowiązuje dla każdego zaznaczonego miejsca; usunięcie można cofnąć z paska narzędzi nad dniami.',
   'help.guide.select-places.tip.1':
@@ -1916,7 +1918,8 @@ const help: TranslationStrings = {
   // import-places-file
   'help.guide.import-places-file.title': 'Zaimportować miejsca z pliku GPX, KML lub KMZ',
   'help.guide.import-places-file.goal': 'Wprowadź to, co wyeksportowały Google My Maps, Google Earth albo tracker GPS.',
-  'help.guide.import-places-file.step.1': 'Kliknij Importuj plik albo upuść plik gdziekolwiek na kolumnie miejsc.',
+  'help.guide.import-places-file.step.1':
+    'Kliknij przycisk importu obok przycisku dodawania i wybierz Importuj plik albo upuść plik gdziekolwiek na kolumnie miejsc.',
   'help.guide.import-places-file.step.2':
     'Wybierz plik albo przeciągnij go do ramki. Przy GPX zaznacz, co zaimportować: Punkty trasy, Trasy, Trasy GPS (ze śladem); przy KML i KMZ Punkty (Placemarks) i Ścieżki (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -1931,7 +1934,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Zaimportować udostępnioną listę Google Maps lub Naver Maps',
   'help.guide.import-places-list.goal': 'Zamień link udostępnionej listy w miejsca.',
-  'help.guide.import-places-list.step.1': 'Kliknij Import listy i wybierz Lista Google albo Lista Naver.',
+  'help.guide.import-places-list.step.1':
+    'Kliknij przycisk importu obok przycisku dodawania i wybierz Lista Google. Gdy włączone są też listy Naver, pozycja nazywa się Import listy, a okno pyta, którą z dwóch wybrać.',
   'help.guide.import-places-list.step.2':
     'Wklej udostępniony link listy. Działa też link do trasy w Google Maps: jego przystanki stają się miejscami, w kolejności jazdy.',
   'help.guide.import-places-list.step.3': 'Kliknij Importuj.',
@@ -1949,31 +1953,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'Pasek narzędzi u góry: Eksportuj (PDF, kalendarz, GPX), Expand all days / Collapse all days, strzałka cofania, Zmień kolejność dni i Pokaż wszystkie trasy rezerwacji.',
   'help.ctx.trip-days.bullet.2':
-    'Karta dnia: numer, pogoda, tytuł, data i koszt dnia w nagłówku; kliknij nagłówek, by otworzyć dzień, strzałka po prawej zwija kartę. Transport publiczny, Dodaj transport i Dodaj notatkę też siedzą w nagłówku.',
+    'Karta dnia: kafelek z numerem dnia i prognozą, tytuł i data oraz plakietki dla zarezerwowanego noclegu, wynajętego auta i kosztu dnia. Kliknij nagłówek, by otworzyć dzień, strzałka zwija kartę, a + otwiera menu: Dodaj miejsce do tego dnia, Dodaj zakwaterowanie, Dodaj transport, Transport publiczny i Dodaj notatkę.',
   'help.ctx.trip-days.bullet.3':
-    'Wewnątrz dnia: przystanki w kolejności, każdy ze zdjęciem, nazwą, godziną i kłódką na zdjęciu; notatki; rezerwacje, które należą do dnia; a między przystankami czas przejazdu każdego odcinka.',
+    'Wewnątrz dnia: przystanki w kolejności, każdy ze zdjęciem, nazwą, godziną, kłódką na zdjęciu i przypiętymi do niego rezerwacjami; notatki; rezerwacje i transporty dnia, zabarwione według rodzaju; a między przystankami czas przejazdu każdego odcinka. Każdy wiersz ma menu pod trzema kropkami, to samo, które otwiera prawy przycisk.',
   'help.ctx.trip-days.bullet.4':
     'Pod przystankami pasek trasy: Trasa rysuje dzień na mapie, Optymalizuj porządkuje przystanki, Samochodem / Pieszo ustawia środek transportu dnia, a Otwórz w Google Maps i Otwórz w CoMaps przekazują dzień dalej.',
   'help.ctx.trip-days.bullet.5':
-    'Miejsca trafiają do dnia przez przeciągnięcie wiersza z kolumny miejsc, przez + na tym wierszu, przez Dodaj miejsce do tego dnia w pustym dniu albo ze szczegółów miejsca.',
+    'Miejsca trafiają do dnia przez przeciągnięcie wiersza z kolumny miejsc, przez + Dzień na tym wierszu, przez Dodaj miejsce do tego dnia z + dnia albo w pustym dniu, albo ze szczegółów miejsca.',
   'help.ctx.trip-days.bullet.6':
     'Łączny koszt na dole sumuje każdy przystanek i każdą rezerwację z ceną, w walucie podróży.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Przeczytać dzień',
   'help.guide.read-day-plan.goal': 'Poznaj, co mówi ci każda część karty dnia, zanim cokolwiek zmienisz.',
   'help.guide.read-day-plan.step.1':
-    'Nagłówek: numer dnia, prognoza na ten dzień, Dzień 1 albo tytuł, który mu nadałeś, data i koszt dnia. Kliknij nagłówek, by otworzyć dzień (nad mapą otwierają się jego szczegóły); strzałka po prawej zwija i rozwija kartę.',
+    'Nagłówek: kafelek z numerem dnia i prognozą, potem Dzień 1 albo tytuł, który mu nadałeś, data oraz plakietki dla zarezerwowanego noclegu (zameldowanie albo wymeldowanie), wynajętego auta i kosztu dnia. Kliknij nagłówek, by otworzyć dzień (nad mapą otwierają się jego szczegóły); + po prawej dodaje miejsce, pobyt, transport, połączenie komunikacją publiczną albo notatkę, a strzałka zwija kartę.',
   'help.guide.read-day-plan.step.2':
-    'Przystanek: uchwyt po lewej go przeciąga, zdjęcie nosi kłódkę dla optymalizacji trasy, dalej idą nazwa, opis i, jeśli są ustawione, Notatki na ten dzień. Plakietka godziny pokazuje Początek i Koniec, gdy przystanek je ma; strzałki, które pojawiają się na jego prawym końcu, przesuwają go w górę lub w dół.',
+    'Przystanek: uchwyt po lewej go przeciąga, zdjęcie nosi kłódkę dla optymalizacji trasy, dalej idą nazwa, plakietka godziny, gdy przystanek ma Początek i Koniec, opis i, jeśli są ustawione, Notatki na ten dzień. Strzałki na jego prawym końcu przesuwają go w górę lub w dół, a trzy kropki otwierają jego menu.',
   'help.guide.read-day-plan.step.3':
-    'Rezerwacja w dniu: rezerwacja przy przystanku oznacza przystanek jako Rezerwacja potwierdzona albo Rezerwacja oczekująca, a transport pokazuje się jako Wylot albo Przylot ze swoją godziną i trasą, z małym przełącznikiem, który rysuje tę trasę na mapie.',
+    'Rezerwacja przy przystanku siedzi na nim jako plakietka Rezerwacja, zielona, gdy jest potwierdzona, i bursztynowa, dopóki oczekuje, z godziną i usługodawcą; kliknij plakietkę, by otworzyć rezerwację, a przycisk trasy obok rysuje jej trasę. Transport to osobny wiersz, zabarwiony według rodzaju, z Wylot albo Przylot i godziną. Kliknij rezerwację, a otworzą się jej szczegóły; Edytuj tam ją zmienia.',
   'help.guide.read-day-plan.step.4':
     'Między dwoma przystankami łącznik mówi, ile odcinek trwa i jak jest długi, w środku transportu dnia; kliknij go, by zmienić środek dla tego jednego odcinka.',
   'help.guide.read-day-plan.step.5':
     'Pasek trasy na końcu: Trasa rysuje drogę dnia na mapie, Optymalizuj zmienia kolejność przystanków, przyciski środka transportu wybierają Samochodem albo Pieszo, a Otwórz w Google Maps i Otwórz w CoMaps otwierają tam dzień.',
   'help.guide.read-day-plan.result': 'Każdy symbol na karcie coś znaczy; poradniki poniżej zmieniają każdy z nich.',
   'help.guide.read-day-plan.tip.1':
-    'Kliknij przystanek prawym przyciskiem po jego menu: Edytuj, Usuń z dnia, Otwórz stronę internetową, aplikacje nawigacyjne (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Zapisz w kolekcji, Usuń.',
+    'Kliknij przystanek prawym przyciskiem albo kliknij jego trzy kropki, by otworzyć menu: Edytuj, Usuń z dnia, Otwórz stronę internetową, aplikacje nawigacyjne (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Zapisz w kolekcji, Usuń.',
   'help.guide.read-day-plan.tip.2':
     'Najedź na przystanek, a na jego końcu pojawi się Dodaj rezerwację: rezerwacja utworzona tam jest przypisana do tego przystanku w tym dniu.',
   // place-onto-day
@@ -1982,9 +1986,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Przeciągnij wiersz z kolumny miejsc na kartę dnia. Upuść go między dwa przystanki, by trafił dokładnie tam, albo gdziekolwiek na karcie, by dopisał się na końcu.',
   'help.guide.place-onto-day.step.2':
-    'Bez przeciągania: otwórz dzień, klikając jego nagłówek, potem kliknij + na końcu wiersza miejsca albo kliknij wiersz prawym przyciskiem i wybierz + Dzień.',
+    'Bez przeciągania: otwórz dzień, klikając jego nagłówek, potem kliknij + Dzień na końcu wiersza miejsca albo kliknij wiersz prawym przyciskiem i wybierz + Dzień.',
   'help.guide.place-onto-day.step.3':
-    'W pustym dniu Dodaj miejsce do tego dnia otwiera formularz miejsca, a nowe miejsce ląduje w dniu od razu.',
+    'Dodaj miejsce do tego dnia, w menu + dnia albo w pustym dniu, otwiera formularz miejsca, a nowe miejsce ląduje w dniu od razu.',
   'help.guide.place-onto-day.step.4':
     'Ze szczegółów miejsca Dodaj do dnia pyta, do którego dnia; gdy dzień jest otwarty z nagłówka, Do dnia w kolumnie miejsc tworzy nowe miejsce prosto w otwartym dniu.',
   'help.guide.place-onto-day.result':
@@ -2013,7 +2017,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.title': 'Nadać przystankowi godzinę',
   'help.guide.set-stop-times.goal': 'Ustal, kiedy przystanek się zaczyna i kończy, żeby dzień czytało się jak rozkład.',
   'help.guide.set-stop-times.step.1':
-    'Kliknij przystanek prawym przyciskiem i wybierz Edytuj. Otwarty z dnia formularz ma na dole Początek i Koniec.',
+    'Kliknij przystanek prawym przyciskiem albo kliknij jego trzy kropki i wybierz Edytuj. Otwarty z dnia formularz ma Początek i Koniec dla tego dnia, zaraz pod lokalizacją.',
   'help.guide.set-stop-times.step.2':
     'Wpisz Początek i, jeśli chcesz, Koniec. Nakładanie się godzin z: ostrzega, że inny przystanek dnia z godziną się nakłada; Koniec przed Początkiem blokuje Aktualizuj.',
   'help.guide.set-stop-times.step.3':
@@ -2052,13 +2056,13 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Dodać notatkę do dnia',
   'help.guide.day-note.goal': 'Trzymaj przypomnienie, numer biletu albo plan B prosto w dniu.',
-  'help.guide.day-note.step.1': 'Kliknij Dodaj notatkę w nagłówku dnia.',
+  'help.guide.day-note.step.1': 'Kliknij + w nagłówku dnia i wybierz Dodaj notatkę.',
   'help.guide.day-note.step.2':
-    'Nadaj jej nazwę w polu Notatka, to właśnie pokazuje karta dnia, a resztę napisz pod Notatka dnia. Pasek nad tekstem go formatuje (Pogrubienie, listy, linki, cytaty), a Podgląd po lewej pokazuje kartę, która z niego powstanie.',
+    'Wpisz nazwę notatki w nagłówku okna, tam gdzie stoi Notatka; to właśnie pokazuje karta dnia. Resztę napisz pod Notatka dnia: pasek narzędzi nad nią formatuje tekst (pogrubienie, listy, linki, cytaty), a Podgląd po lewej pokazuje wiersz, który z niej powstanie.',
   'help.guide.day-note.step.3':
     'Wybierz Ikonę i Kolor, żeby notatka odcinała się od przystanków, a potem kliknij Dodaj.',
   'help.guide.day-note.step.4':
-    'Notatka siedzi w dniu jak przystanek: przeciągnij ją na miejsce, kliknij ją prawym przyciskiem po Edytuj i Usuń.',
+    'Notatka siedzi w dniu jak przystanek: przeciągnij ją na miejsce, a prawym przyciskiem albo jej trzema kropkami otworzysz Edytuj i Usuń.',
   'help.guide.day-note.result':
     'Notatka jest częścią dnia, także w PDF; notatka z godziną układa się razem z przystankami z godziną.',
   'help.guide.day-note.tip.1':
@@ -2108,15 +2112,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.goal':
     'Poznaj, gdzie rezerwacja się pokazuje, gdy już istnieje, i który ekran ją tworzy.',
   'help.guide.bookings-in-plan.step.1':
-    'Transport (Lot, Pociąg, Prom, Autobus, Samochód) pokazuje się w dniu odjazdu jako Wylot, a w dniu przyjazdu jako Przylot, z godziną i trasą; wielodniowy rozciąga się na dni pomiędzy.',
+    'Transport (Lot, Pociąg, Prom, Autobus, Samochód) to wiersz zabarwiony według rodzaju: Wylot w dniu odjazdu, Przylot w dniu przyjazdu, z godziną i trasą; wielodniowy rozciąga się na dni pomiędzy. Kliknij wiersz, a rezerwacja się otworzy.',
   'help.guide.bookings-in-plan.step.2':
-    'Rezerwacja przypisana do przystanku (Restauracja, Wycieczka) oznacza ten przystanek jako Rezerwacja potwierdzona albo Rezerwacja oczekująca; rezerwacja, która ma dzień, ale nie ma przystanku, jest własnym wierszem w dniu.',
+    'Rezerwacja przypisana do przystanku (Restauracja, Wycieczka) to plakietka Rezerwacja na tym przystanku, zielona, gdy jest potwierdzona, i bursztynowa, dopóki oczekuje, z godziną; rezerwacja, która ma dzień, ale nie ma przystanku, jest własnym wierszem w dniu.',
   'help.guide.bookings-in-plan.step.3':
     'Noc w hotelu to zakwaterowanie: siedzi w panelu szczegółów dnia pod Zakwaterowanie, od Zameldowania do Wymeldowania, a trasa każdego z tych dni zaczyna się tam.',
   'help.guide.bookings-in-plan.step.4':
     'Na mapie przełącznik na wierszu transportu rysuje jego trasę; Pokaż wszystkie trasy rezerwacji na pasku narzędzi rysuje je wszystkie.',
   'help.guide.bookings-in-plan.step.5':
-    'Tworzenie: Dodaj rezerwację na przystanku pod kursorem, Dodaj transport i Transport publiczny w nagłówku dnia oraz zakładki Rezerwacje i Transport po pełną listę z importem i plikami.',
+    'Tworzenie: Dodaj rezerwację na przystanku pod kursorem, Dodaj transport i Transport publiczny w menu + dnia oraz zakładki Rezerwacje i Transport po pełną listę z importem i plikami.',
   'help.guide.bookings-in-plan.result':
     'Jedna rezerwacja, jedno miejsce w planie; zakładki to te same rezerwacje jako lista.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2147,24 +2151,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Kliknij wiersz w kolumnie miejsc, przystanek w dniu albo znacznik na mapie, a karta otworzy się nad mapą. Wybór wewnątrz dnia mówi karcie, który przystanek masz na myśli, i właśnie to przynosi ze sobą uczestników przystanku i jego rezerwację.',
   'help.ctx.trip-place.bullet.2':
-    'Nagłówek niesie okrągłe zdjęcie, nazwę, kategorię, adres i współrzędne. Kliknij zdjęcie, by użyć własnego, kliknij dwukrotnie nazwę, by zmienić nazwę miejsca od razu, a X po prawej zamyka kartę.',
+    'Nagłówek niesie okrągłe zdjęcie, nazwę, adres w jednej linii i plakietki z tym, co wiadomo: otwarte czy zamknięte, kategoria, cena, numer telefonu i współrzędne. Kliknij zdjęcie, by użyć własnego, kliknij dwukrotnie nazwę, by zmienić nazwę miejsca od razu, a X po prawej zamyka kartę.',
   'help.ctx.trip-place.bullet.3':
-    'Pod tym: cena, jeśli ją ma, gwiazdki, które miejscu dał każdy podróżnik, opis i notatki, oraz Notatki na ten dzień, gdy przystanek je niesie.',
+    'Pod tym: gwiazdki, które miejscu dał każdy podróżnik, opis i notatki, oraz Notatki na ten dzień, gdy przystanek je niesie.',
   'help.ctx.trip-place.bullet.4':
     'Dalej idą Godziny otwarcia, Kolor trasy, Statystyki trasy i Pliki, o ile mają zastosowanie. Pliki przyjmują cokolwiek z Twoich folderów i wypisują też to, co wisi na rezerwacji tego przystanku.',
   'help.ctx.trip-place.bullet.5':
     'Wiersz na dole: Dodaj do dnia albo Usuń z dnia, gdy dzień jest otwarty, potem Zapisz w kolekcji, Nawigacja, Otwórz stronę internetową, Edytuj i Usuń.',
   'help.ctx.trip-place.bullet.6':
-    'Miejsce wybrane z wyszukiwania niesie to, co wie o nim indeks TREK-a albo OpenStreetMap: zielony pierścień Otwarte albo czerwony Zamknięte wokół zdjęcia, oceniony według zegara samego miejsca, numer telefonu pod gwiazdkami, Godziny otwarcia niżej z godzinami tego dnia w wierszu i całym tygodniem za kliknięciem, oraz jego stronę za Otwórz stronę internetową. Ocena Google pokazuje się tylko przy miejscu znalezionym przez Google, na TREK-u z kluczem Google.',
+    'Miejsce wybrane z wyszukiwania niesie to, co wie o nim indeks TREK-a albo OpenStreetMap: Otwarte albo Zamknięte wśród plakietek nagłówka, z zielonym albo czerwonym pierścieniem wokół zdjęcia, ocenione według zegara samego miejsca, także numer telefonu jako plakietkę, Godziny otwarcia niżej z godzinami tego dnia w wierszu i całym tygodniem za kliknięciem, oraz jego stronę za Otwórz stronę internetową. Ocena Google pokazuje się tylko przy miejscu znalezionym przez Google, na TREK-u z kluczem Google.',
   // read-place
   'help.guide.read-place.title': 'Co karta mówi Ci o miejscu',
   'help.guide.read-place.goal': 'Przeczytaj wszystko, co podróż wie o jednym miejscu, w jednej karcie.',
   'help.guide.read-place.step.1':
     'W kolumnie dni kliknij przystanek, który chcesz przeczytać. Karta otwiera się nad mapą, a przystanek zostaje zaznaczony w swoim dniu.',
   'help.guide.read-place.step.2':
-    'Nagłówek: okrągłe zdjęcie, nazwa, adres i dokładne współrzędne. Zielony pierścień z Otwarte albo czerwony z Zamknięte wokół zdjęcia mówi, czy miejsce jest właśnie teraz otwarte, według jego własnego zegara, gdy tylko TREK zna jego godziny. X po prawej znów zamyka kartę.',
+    'Nagłówek: okrągłe zdjęcie, nazwa i adres w jednej linii; dymek adresu pokazuje go w całości. Plakietki pod nimi mówią, czy miejsce jest teraz Otwarte czy Zamknięte, według jego własnego zegara, z pasującym zielonym albo czerwonym pierścieniem wokół zdjęcia, i niosą numer telefonu, który kliknięcie przekazuje Twojej aplikacji telefonu, oraz dokładne współrzędne. X po prawej znów zamyka kartę.',
   'help.guide.read-place.step.3':
-    'Pod tym gwiazdki, które miejscu dał każdy podróżnik, ze średnią i liczbą głosów. Jeszcze nie oceniono, dopóki nikt nie zagłosował. Zaraz poniżej numer telefonu tam, gdzie miejsce go ma: kliknięcie w niego przekazuje numer Twojej aplikacji telefonu.',
+    'Ocena jest pierwsza pod nagłówkiem: gwiazdki, które miejscu dał każdy podróżnik, ze średnią i liczbą głosów. Jeszcze nie oceniono, dopóki nikt nie zagłosował.',
   'help.guide.read-place.step.4':
     'Potem opis, a poniżej notatki. Oba to tekst z formularza miejsca, wyrenderowany: listy, linki i pogrubienie działają.',
   'help.guide.read-place.step.5':
@@ -2259,18 +2263,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.goal':
     'Przeczytaj rezerwację, która należy do przystanku, otwórz ją i przypnij do niego nową.',
   'help.guide.place-booking.step.1':
-    'Otwórz przystanek, do którego należy rezerwacja. Karta pokazuje pasek z Potwierdzona albo Oczekująca i z nazwą rezerwacji.',
+    'Otwórz przystanek, do którego należy rezerwacja. Karta wypisuje ją pod Rezerwacje jako osobną małą kartę, z nazwą rezerwacji i Potwierdzona albo Oczekująca.',
   'help.guide.place-booking.step.2':
-    'Na pasku są Data, Godzina i Kod rezerwacji oraz wszelkie notatki, które rezerwacja ma.',
-  'help.guide.place-booking.step.3': 'Kliknij pasek. Rezerwacja otwiera się nad mapą.',
+    'Na karcie rezerwacji są Data, Godzina i Kod rezerwacji oraz wszelkie notatki, które rezerwacja ma.',
+  'help.guide.place-booking.step.3': 'Kliknij kartę rezerwacji. Rezerwacja otwiera się nad mapą.',
   'help.guide.place-booking.step.4':
     'Edytuj u dołu rezerwacji otwiera jej własny formularz. To tam Przypisz do miejsca przypina rezerwację do przystanku, a tutaj już wskazuje ten jeden. Zamknij formularz z powrotem.',
   'help.guide.place-booking.step.5':
-    'Nowa rezerwacja dla przystanku zaczyna się w kolumnie dni: najedź na przystanek i kliknij + na jego końcu. Formularz otwiera się jako Nowa rezerwacja, już z nim powiązany.',
+    'Nowa rezerwacja dla przystanku zaczyna się w kolumnie dni: najedź na przystanek i kliknij Dodaj rezerwację, bilet na jego końcu. Formularz otwiera się jako Nowa rezerwacja, już z nim powiązany.',
   'help.guide.place-booking.result':
     'Rezerwacja wisi na przystanku: jest na karcie, jest w dniu, a jej pliki są wypisane także tutaj pod Pliki.',
   'help.guide.place-booking.tip.1':
-    'Pasek pokazuje się tylko przy przystanku, do którego rezerwacja jest przypięta. Rezerwacja bez przystanku żyje w zakładce Rezerwacje.',
+    'Karta rezerwacji pokazuje się tylko przy przystanku, do którego rezerwacja jest przypięta. Rezerwacja bez przystanku żyje w zakładce Rezerwacje.',
   'help.guide.place-booking.tip.2':
     'Jeden przystanek może dzielić kilka rezerwacji: obiad i wycieczka, która rusza spod tych samych drzwi.',
   'help.guide.place-booking.tip.3':
@@ -2509,7 +2513,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Na górze pogoda dnia. Prognoza dla nazywa miejsce, którego dotyczy: pierwszy przystanek dnia albo hotel, w którym się budzisz.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Rezerwacje wypisują rezerwacje tego dnia, każdą z jej rodzajem, przystankiem, do którego należy, i godzinami. Zielony znaczy potwierdzona, bursztynowy jeszcze oczekująca; to tylko odczyt, rezerwacje zmienia się w zakładce Rezerwacje.',
+    'Rezerwacje wypisują rezerwacje tego dnia, każdą z jej rodzajem, przystankiem, do którego należy, i godzinami. Zielony znaczy potwierdzona, bursztynowy jeszcze oczekująca, a kliknięcie wiersza otwiera rezerwację.',
   'help.ctx.trip-day-detail.bullet.5':
     'Zakwaterowanie pokazuje każdą noc zarezerwowaną na ten dzień, z Zameldowanie i Wymeldowanie w dniach, w których wypadają, z oknem zameldowania, godziną wymeldowania i numerem potwierdzenia.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2543,7 +2547,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.2':
     'Duża liczba to temperatura dnia, obok niej minimum i maksimum, i stan pogody słowami.',
   'help.guide.day-weather.step.3':
-    'Kafelki pod nią: prawdopodobieństwo opadów, ile ich będzie, najsilniejszy wiatr oraz wschód i zachód słońca.',
+    'Plakietki na prawo od niej: prawdopodobieństwo opadów, ile ich będzie, najsilniejszy wiatr oraz wschód i zachód słońca.',
   'help.guide.day-weather.step.4':
     'Na dole dzień godzina po godzinie, co drugą godzinę: godzina, ikona, temperatura i prawdopodobieństwo opadów. Godzina powyżej 50 procent jest podświetlona na niebiesko.',
   'help.guide.day-weather.result':
@@ -2577,18 +2581,18 @@ const help: TranslationStrings = {
     'Obiekt musi najpierw być miejscem podróży. Utwórz go w kolumnie miejsc tak jak każde inne miejsce: wybór oferuje tylko to, co już tam jest.',
   'help.guide.add-accommodation.step.2': 'Otwórz dzień przyjazdu i kliknij Dodaj zakwaterowanie pod Zakwaterowanie.',
   'help.guide.add-accommodation.step.3':
-    'Zastosuj do dni mówi, które noce obejmuje pobyt: dzień zameldowania po lewej, dzień wymeldowania po prawej. Wszystkie obejmuje całą podróż.',
+    'Zastosuj do dni mówi, które noce obejmuje pobyt: Początek to dzień zameldowania, Koniec dzień wymeldowania, a Wszystkie obejmuje całą podróż. Nagłówek okna pokazuje zakres i liczbę nocy.',
   'help.guide.add-accommodation.step.4':
     'Wypełnij Zameldowanie, Do i Wymeldowanie, a numer rezerwacji wpisz pod Potwierdzenie. Wszystkie cztery mogą zostać puste.',
   'help.guide.add-accommodation.step.5':
-    'Wybierz obiekt z miejsc podróży. Kafelki nad listą zawężają ją do jednej kategorii.',
+    'Wybierz obiekt z miejsc podróży. Kategoria nad listą zawęża ją do jednej kategorii.',
   'help.guide.add-accommodation.step.6': 'Kliknij Zapisz.',
   'help.guide.add-accommodation.result':
     'Pobyt pokazuje się w każdym dniu, który obejmuje, Zameldowanie w pierwszym i Wymeldowanie w ostatnim. Obiekt staje się przystankiem w dniu zameldowania, więc mapa rysuje drogę tam, a w zakładce Rezerwacje pojawia się rezerwacja typu Zakwaterowanie.',
   'help.guide.add-accommodation.tip.1':
     'Wybór otwiera się na dniu, z którego przyszedłeś, z wymeldowaniem dzień później; oba da się przesunąć przed zapisaniem.',
   'help.guide.add-accommodation.tip.2':
-    'Nadaj hotelowi przy tworzeniu kategorię podróży Hotel, a kafelki nad listą zawężą ją do Twoich hoteli jednym kliknięciem.',
+    'Nadaj hotelowi przy tworzeniu kategorię Hotel, a Kategoria nad listą zawęzi ją do Twoich hoteli jednym kliknięciem.',
   'help.guide.add-accommodation.tip.3':
     'Godziny są wszystkie opcjonalne: pobyt bez zameldowania i bez kodu dalej obejmuje swoje noce i dalej rysuje swoją trasę.',
   // edit-accommodation
@@ -2599,7 +2603,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.2':
     'Ołówek po jej prawej otwiera pobyt z powrotem. Okno brzmi teraz Edytuj zakwaterowanie.',
   'help.guide.edit-accommodation.step.3':
-    'Popraw wiersz pól: Zameldowanie, Do, Wymeldowanie i Potwierdzenie. Dni nad nim i obiekt pod nim też można tu zmienić.',
+    'Popraw Zameldowanie, Do, Wymeldowanie i Potwierdzenie. Dni nad nimi i obiekt pod nimi też można tu zmienić.',
   'help.guide.edit-accommodation.step.4': 'Kliknij Zapisz.',
   'help.guide.edit-accommodation.step.5':
     'X obok ołówka kończy pobyt. O nic nie pyta, a rezerwacja typu Zakwaterowanie, która do niego należy, idzie z nim.',
@@ -2616,7 +2620,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Rezerwacje wypisują rezerwacje dnia: te datowane na niego i te wiszące na którymś z jego przystanków.',
   'help.guide.day-bookings.step.2':
-    'Wiersz pokazuje, jaki to rodzaj rezerwacji, jej nazwę i, gdy należy do przystanku, ten przystanek po kropce. Jej godziny siedzą na prawym końcu.',
+    'Wiersz pokazuje, jaki to rodzaj rezerwacji, jej nazwę i, gdy należy do przystanku, ten przystanek na szaro za nią. Jej godziny siedzą na prawym końcu, przed kropką statusu.',
   'help.guide.day-bookings.step.3':
     'Kolor mówi, jak stoi rezerwacja: zielony wiersz jest potwierdzony, bursztynowy wciąż oczekuje. Hoteli nie ma na tej liście, mają własny blok niżej.',
   'help.guide.day-bookings.step.4':

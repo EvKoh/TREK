@@ -1740,7 +1740,7 @@ const help: TranslationStrings = {
     'Zdieľať vpravo hore otvorí ľudí cesty: členov, hostí, odkaz na pozvanie a verejný odkaz iba na čítanie.',
   'help.ctx.trip.bullet.4': 'Názov, dátumy, obal a mena sa upravujú v časti Moje cesty ceruzkou na karte cesty.',
   'help.ctx.trip.bullet.5':
-    'Šípky na vnútornom okraji stĺpca ho zbalia a mapa zaberie uvoľnené miesto; tenký oddeľovač vedľa stĺpca mení jeho šírku.',
+    'Jazýček na vnútornom okraji stĺpca ho zbalí a mapa zaberie uvoľnené miesto; tenký oddeľovač vedľa stĺpca mení jeho šírku.',
   'help.ctx.trip.bullet.6': 'Šípka späť na paneli nástrojov dní vráti poslednú zmenu plánu.',
   // add-member
   'help.guide.add-member.title': 'Pridajte člena',
@@ -1805,8 +1805,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': 'Uvoľnite miesto pre mapu',
   'help.guide.collapse-columns.goal': 'Zbaľte stĺpec alebo mu dajte viac šírky.',
   'help.guide.collapse-columns.step.1':
-    'Kliknutím na šípku na vnútornom okraji stĺpca dní ho zbalíte; mapa zaberie uvoľnené miesto. Stĺpec miest má rovnakú šípku.',
-  'help.guide.collapse-columns.step.2': 'Opätovným kliknutím na šípku stĺpec vrátite.',
+    'Kliknite na jazýček na vnútornom okraji stĺpca dní, ten s ikonou panela, a stĺpec sa zbalí; mapa zaberie uvoľnené miesto. Stĺpec miest má rovnaký jazýček.',
+  'help.guide.collapse-columns.step.2':
+    'Zbalený stĺpec nechá v rohu mapy dlaždicu: Plán pre dni a Miesta pre miesta. Kliknutím na ňu stĺpec vrátite.',
   'help.guide.collapse-columns.step.3': 'Potiahnutím tenkého oddeľovača medzi stĺpcom a mapou zmeníte šírku stĺpca.',
   'help.guide.collapse-columns.result': 'Šírky sa zapamätajú; pri ďalšej návšteve budú stĺpce opäť otvorené.',
   'help.guide.collapse-columns.tip.1': 'Oba stĺpce môžete zbaliť naraz a zobraziť iba mapu.',
@@ -1828,26 +1829,26 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     'Pridať miesto/aktivitu hore otvorí formulár pre miesto, ktoré zadáte alebo vyhľadáte. Keď je otvorený deň, tlačidlo má názov Nové miesto a Ku dňu vedľa neho vytvorí miesto priamo v tomto dni.',
   'help.ctx.trip-places.bullet.2':
-    'Importovať súbor prijíma súbory .gpx, .kml a .kmz; Import zoznamu prijíma zdieľaný zoznam z Google Maps alebo Naver Maps. Súbor môžete aj jednoducho pustiť na stĺpec.',
+    'Tlačidlo importu vedľa neho ponúka Importovať súbor pre súbory .gpx, .kml a .kmz a Zoznam Google (Import zoznamu, ak sú zapnuté aj zoznamy Naver) pre zoznam zdieľaný z Google Maps alebo Naver Maps. Súbor môžete aj jednoducho pustiť na stĺpec.',
   'help.ctx.trip-places.bullet.3':
-    'Rozbaľovací zoznam prepína medzi Všetky, Nezaradené, Plánované a po importe stopy aj Trasy; pod ním je vyhľadávanie, filter kategórií a hviezdička pre minimálne hodnotenie.',
+    'Pod nimi je vyhľadávanie so symbolom zaškrtnutia vedľa neho, ktorý spustí výber, a rad filtrov: Zobraziť prepína medzi Všetko, Nezaradené, Naplánované a po importe stopy aj Trasy, každé s počtom; tlačidlo so štítkom filtruje podľa kategórie a hviezdička podľa minimálneho hodnotenia.',
   'help.ctx.trip-places.bullet.4':
-    'Riadok zobrazuje obrázok, názov a popis alebo adresu. Kliknutím naň zobrazíte podrobnosti miesta, môžete ho potiahnuť na deň alebo kliknutím pravým tlačidlom otvoriť Upraviť, Pridať k dňu, Otvoriť webovú stránku, Google Maps, Uložiť do zbierky a Vymazať.',
+    'Riadok zobrazuje obrázok, názov a popis alebo adresu. Kliknutím naň zobrazíte podrobnosti miesta, môžete ho potiahnuť na deň alebo kliknutím pravým tlačidlom (či na jeho tri bodky) otvoriť Upraviť, + Deň, Otvoriť webovú stránku, Google Maps, Uložiť do zbierky a Odstrániť.',
   'help.ctx.trip-places.bullet.5':
-    'Keď je otvorený deň, tlačidlo + na konci nezaradeného riadka pridá miesto k tomuto dňu a Plánované zobrazí iba tento deň; tlačidlom Zobraziť celú cestu zobrazenie znova rozšírite.',
+    'Keď je otvorený deň, tlačidlo + Deň na konci nezaradeného riadka pridá miesto k tomuto dňu a Naplánované zobrazí iba tento deň; tlačidlom Zobraziť celú cestu zobrazenie znova rozšírite.',
   'help.ctx.trip-places.bullet.6':
-    'Symbol zaškrtnutia na pravom konci riadka filtrov spustí výber: viacerým riadkom naraz môžete priradiť novú kategóriu, pridať ich do zbierky alebo ich vymazať.',
+    'Symbol zaškrtnutia vedľa vyhľadávania spustí výber: cez lištu v dolnej časti stĺpca môžete viacerým riadkom naraz priradiť novú kategóriu, pridať ich do zbierky, označiť ich ako navštívené alebo ich odstrániť.',
   // create-place
   'help.guide.create-place.title': 'Vytvorte miesto',
   'help.guide.create-place.goal': 'Pridajte miesto alebo aktivitu ručne so všetkým, čo o nich plán potrebuje vedieť.',
   'help.guide.create-place.step.1':
     'Kliknite na Pridať miesto/aktivitu v hornej časti stĺpca miest (Nové miesto, keď je otvorený deň). Otvorí sa formulár.',
   'help.guide.create-place.step.2':
-    'Zadajte miesto do poľa Hľadať miesta… hore a vyberte výsledok. Vyplní sa Názov, Adresa, Zemepisná šírka, Zemepisná dĺžka a Webová stránka a Podrobnosti miesta vľavo zobrazia jeho obrázky, otváracie hodiny a popis. V TREK s kľúčom Google je pod zoznamom možnosť Nie je to správne miesto? Hľadať radšej cez Google, ktorá spustí rovnaké vyhľadávanie cez Google.',
+    'Zadajte miesto do poľa Hľadať miesta... a vyberte výsledok. Vyplní sa názov v hlavičke dialógu, Adresa, Zemepisná šírka, Zemepisná dĺžka a Webová stránka a Podrobnosti miesta vľavo zobrazia jeho obrázky, otváracie hodiny a popis. V TREK s kľúčom Google je pod zoznamom možnosť Nie je to správne miesto? Hľadať radšej v Google, ktorá spustí rovnaké vyhľadávanie cez Google. Uložené miesta vpravo rovnakým spôsobom ponúkajú miesta z vašich zbierok.',
   'help.guide.create-place.step.3':
     'V Podrobnostiach miesta kliknutím na obrázok v časti Vybrať obrázok z neho urobíte obrázok miesta; Použiť tento text prevezme popis do formulára.',
   'help.guide.create-place.step.4':
-    'Skontrolujte polia: Názov je povinný; Popis a Poznámky sú na vás; Adresa, Zemepisná šírka a Zemepisná dĺžka pochádzajú z vyhľadávania alebo sa zadajú ručne; Kategória vyberá jednu z kategórií cesty a tlačidlo + vedľa nej hneď vytvorí novú; do poľa Webová stránka patrí odkaz.',
+    'Skontrolujte, čo formulár obsahuje: názov je v hlavičke dialógu a je to jediné povinné pole; štítok Kategória pod ním vyberá jednu z kategórií cesty a tlačidlo + vedľa neho hneď vytvorí novú. Adresa, Zemepisná šírka a Zemepisná dĺžka pochádzajú z vyhľadávania alebo sa zadajú ručne; Popis a Poznámky sú na vás; do poľa Webová stránka patrí odkaz.',
   'help.guide.create-place.step.5':
     'Kliknite na Pridať. Ak už v ceste je miesto s rovnakým názvom, formulár vás na to upozorní a tlačidlo sa zmení na Aj tak pridať.',
   'help.guide.create-place.result': 'Miesto je v zozname aj na mape, v časti Nezaradené, kým ho nepridáte k dňu.',
@@ -1865,7 +1866,7 @@ const help: TranslationStrings = {
   'help.guide.place-to-open-day.step.2':
     'Ku dňu otvorí rovnaký formulár ako Nové miesto, len miesto sa pridá k otvorenému dňu v okamihu, keď kliknete na Pridať.',
   'help.guide.place-to-open-day.step.3':
-    'Existujúce miesto pridáte k otvorenému dňu tlačidlom + na konci jeho riadka alebo kliknutím pravým tlačidlom a voľbou Pridať k dňu.',
+    'Existujúce miesto pridáte k otvorenému dňu tlačidlom + Deň na konci jeho riadka alebo kliknutím pravým tlačidlom a voľbou + Deň.',
   'help.guide.place-to-open-day.step.4':
     'Funguje to aj opačne, a to bez predchádzajúceho otvorenia dňa: potiahnite riadok miesta zo stĺpca a pustite ho na kartu dňa. Ak ho pustíte medzi dve zastávky, umiestni sa presne tam.',
   'help.guide.place-to-open-day.result':
@@ -1877,10 +1878,10 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Nájdite miesto v zozname',
   'help.guide.filter-places.goal': 'Zúžte stĺpec na miesta, ktoré hľadáte.',
   'help.guide.filter-places.step.1':
-    'Rozbaľovací zoznam hore prepína medzi Všetky, Nezaradené (zatiaľ v žiadnom dni), Plánované (v niektorom dni) a Trasy (importované stopy GPX), každé s počtom.',
-  'help.guide.filter-places.step.2': 'Píšte do poľa Hľadať miesta…; zoznam sa počas písania zužuje.',
+    'Zobraziť, rozbaľovací zoznam pod vyhľadávaním, prepína medzi Všetko, Nezaradené (zatiaľ v žiadnom dni), Naplánované (v niektorom dni) a Trasy (importované stopy GPX), každé s počtom.',
+  'help.guide.filter-places.step.2': 'Píšte do poľa Hľadať hore; zoznam sa počas písania zužuje.',
   'help.guide.filter-places.step.3':
-    'Všetky kategórie otvorí zoznam, v ktorom zaškrtnete jednu alebo viac kategórií vrátane možnosti Bez kategórie; Vymazať filter v jeho dolnej časti výber zruší.',
+    'Tlačidlo so štítkom vedľa Zobraziť zobrazí kategórie: zaškrtnite jednu alebo viac vrátane možnosti Bez kategórie. Tlačidlo ukazuje počet zaškrtnutých a Vymazať filter v dolnej časti zoznamu ich všetky zruší.',
   'help.guide.filter-places.step.4':
     'Hviezdička vedľa neho nastaví minimálne hodnotenie: 5+, 4+ atď. zobrazia iba miesta, ktoré ste hodnotili aspoň takto vysoko.',
   'help.guide.filter-places.result': 'Počet nad riadkami udáva, koľko miest zodpovedá filtrom; filtre sa kombinujú.',
@@ -1894,7 +1895,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.step.1':
     'Kliknite pravým tlačidlom na riadok a zvoľte Upraviť, alebo otvorte miesto a v jeho podrobnostiach kliknite na Upraviť.',
   'help.guide.edit-place.step.2':
-    'Zmeňte, čo potrebujete: Názov, Popis, Poznámky, Adresa, Zemepisná šírka a Zemepisná dĺžka, Kategória, Webová stránka. Ak formulár otvoríte z dňa, obsahuje aj Poznámky pre tento deň a Začiatok a Do pre tento deň.',
+    'Zmeňte, čo potrebujete: názov a štítok Kategória v hlavičke dialógu, Adresa, Zemepisná šírka a Zemepisná dĺžka, Popis, Poznámky a Webová stránka. Ak formulár otvoríte z dňa, obsahuje aj Od a Do a Poznámky pre tento deň.',
   'help.guide.edit-place.step.3': 'Kliknite na Aktualizovať.',
   'help.guide.edit-place.result':
     'Zmena sa prejaví všade, kde sa miesto zobrazuje: v zozname, na mape a v každom dni, v ktorom je.',
@@ -1908,22 +1909,22 @@ const help: TranslationStrings = {
   'help.guide.delete-place.step.1':
     'Kliknite pravým tlačidlom na riadok a zvoľte Vymazať, alebo kliknite na Vymazať v podrobnostiach miesta.',
   'help.guide.delete-place.step.2':
-    'Potvrďte. Ak bola v mieste rezervovaná noc alebo je s ním prepojená rezervácia, otázka uvedie, čo sa odstráni spolu s ním.',
+    'V otázke kliknite na Odstrániť. Ak bola v mieste rezervovaná noc alebo je s ním prepojená rezervácia, otázka uvedie, čo sa odstráni spolu s ním.',
   'help.guide.delete-place.result':
     'Miesto zmizne zo zoznamu, z mapy aj zo všetkých dní; Vrátiť späť na paneli nástrojov nad dňami ho obnoví.',
   'help.guide.delete-place.tip.1':
     'Ak chcete miesto odobrať iba z jedného dňa, použite radšej Odobrať z dňa pri danej zastávke.',
-  'help.guide.delete-place.tip.2': 'Viac miest naraz: symbol zaškrtnutia vedľa filtrov spustí výber.',
+  'help.guide.delete-place.tip.2': 'Viac miest naraz: symbol zaškrtnutia vedľa vyhľadávania spustí výber.',
   // select-places
   'help.guide.select-places.title': 'Zmeňte alebo vymažte viac miest naraz',
   'help.guide.select-places.goal': 'Upracte zoznam naraz namiesto po jednom mieste.',
   'help.guide.select-places.step.1':
-    'Kliknite na symbol zaškrtnutia na pravom konci riadka filtrov. Riadky dostanú zaškrtávacie políčka a zobrazí sa lišta s akciami.',
+    'Kliknite na symbol zaškrtnutia vedľa poľa vyhľadávania. Riadky dostanú okrúhle zaškrtávacie políčka a v dolnej časti stĺpca sa vysunie lišta s akciami.',
   'help.guide.select-places.step.2':
-    'Zaškrtnite riadky alebo použite Vybrať všetko na lište; lišta ukazuje počet vybraných.',
+    'Kliknutím na riadky ich zaškrtnete. Vybrať všetko, dvojité zaškrtnutie na lište, vyberie každý riadok, ktorý filtre ponechajú.',
   'help.guide.select-places.step.3':
-    'Zmeniť kategóriu im všetkým priradí jednu kategóriu; Uložiť do zbierky ich skopíruje do jednej z vašich zbierok; Vymazať vybrané ich po potvrdení odstráni.',
-  'help.guide.select-places.step.4': 'Opätovným kliknutím na symbol zaškrtnutia výber ukončíte.',
+    'Lišta ukazuje počet zaškrtnutých miest. Zmeniť kategóriu im všetkým priradí jednu kategóriu; Uložiť do zbierky ich skopíruje do jednej z vašich zbierok; Vymazať vybrané ich po potvrdení odstráni.',
+  'help.guide.select-places.step.4': 'Hotovo, X na konci lišty, výber ukončí.',
   'help.guide.select-places.result':
     'Zmena sa použije na každé vybrané miesto; vymazanie možno vrátiť späť z panela nástrojov nad dňami.',
   'help.guide.select-places.tip.1':
@@ -1933,7 +1934,8 @@ const help: TranslationStrings = {
   // import-places-file
   'help.guide.import-places-file.title': 'Importujte miesta zo súboru GPX, KML alebo KMZ',
   'help.guide.import-places-file.goal': 'Načítajte to, čo exportovali Google My Maps, Google Earth alebo GPS tracker.',
-  'help.guide.import-places-file.step.1': 'Kliknite na Importovať súbor alebo pustite súbor kamkoľvek na stĺpec miest.',
+  'help.guide.import-places-file.step.1':
+    'Kliknite na tlačidlo importu vedľa tlačidla pridania a zvoľte Importovať súbor, alebo pustite súbor kamkoľvek na stĺpec miest.',
   'help.guide.import-places-file.step.2':
     'Vyberte súbor alebo ho potiahnite do poľa. Pri GPX zaškrtnite, čo sa má importovať: Trasové body, Trasy, Trasy GPS (s geometriou cesty); pri KML a KMZ Body (Placemarks) a Cesty (LineStrings).',
   'help.guide.import-places-file.step.3':
@@ -1948,7 +1950,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': 'Importujte zdieľaný zoznam z Google Maps alebo Naver Maps',
   'help.guide.import-places-list.goal': 'Premeňte odkaz na zdieľaný zoznam na miesta.',
-  'help.guide.import-places-list.step.1': 'Kliknite na Import zoznamu a zvoľte Zoznam Google alebo Zoznam Naver.',
+  'help.guide.import-places-list.step.1':
+    'Kliknite na tlačidlo importu vedľa tlačidla pridania a zvoľte Zoznam Google. Ak sú zapnuté aj zoznamy Naver, položka sa volá Import zoznamu a dialóg sa opýta, ktorý z nich.',
   'help.guide.import-places-list.step.2':
     'Vložte zdieľaný odkaz na zoznam. Funguje aj odkaz na trasu v Google Maps: jej zastávky sa stanú miestami v poradí jazdy.',
   'help.guide.import-places-list.step.3': 'Kliknite na Importovať.',
@@ -1966,24 +1969,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     'Panel nástrojov hore: Exportovať (PDF, kalendár, GPX), Rozbaliť všetky dni / Zbaliť všetky dni, šípka späť, Zmeniť poradie dní a Zobraziť všetky trasy rezervácií.',
   'help.ctx.trip-days.bullet.2':
-    'Karta dňa: v hlavičke číslo, počasie, názov, dátum a náklady dňa; kliknutím na hlavičku deň otvoríte, jej šípkou ho zbalíte. V hlavičke sú aj Verejná doprava, Pridať dopravu a Pridať poznámku.',
+    'Karta dňa: dlaždica s číslom dňa a predpoveďou, názov a dátum a štítky pre rezervovanú noc, požičané auto a náklady dňa. Kliknutím na hlavičku deň otvoríte, šípkou ho zbalíte a + otvorí ponuku: Pridať miesto k tomuto dňu, Pridať ubytovanie, Pridať dopravu, Verejná doprava a Pridať poznámku.',
   'help.ctx.trip-days.bullet.3':
-    'V rámci dňa: zastávky v poradí, každá s obrázkom, názvom, časom a zámkom na obrázku; poznámky; rezervácie patriace k dňu; a medzi zastávkami čas cesty každého úseku.',
+    'V rámci dňa: zastávky v poradí, každá s obrázkom, názvom, časom, zámkom na obrázku a rezerváciami, ktoré sú k nej pripnuté; poznámky; rezervácie a doprava dňa, farebne odlíšené podľa druhu; a medzi zastávkami čas cesty každého úseku. Každý riadok má ponuku s tromi bodkami, rovnakú, akú otvorí pravé tlačidlo.',
   'help.ctx.trip-days.bullet.4':
     'Pod zastávkami je lišta trasy: Trasa vykreslí deň na mape, Optimalizovať zoradí zastávky, Autom / Pešo nastaví spôsob presunu pre deň, Otvoriť v Mapách Google a Otvoriť v CoMaps odovzdajú deň do týchto aplikácií.',
   'help.ctx.trip-days.bullet.5':
-    'Miesta sa do dňa dostanú potiahnutím riadka zo stĺpca miest, tlačidlom + v tomto riadku, tlačidlom Pridať miesto k tomuto dňu v prázdnom dni alebo z podrobností miesta.',
+    'Miesta sa do dňa dostanú potiahnutím riadka zo stĺpca miest, tlačidlom + Deň v tomto riadku, voľbou Pridať miesto k tomuto dňu v ponuke + dňa alebo v prázdnom dni, alebo z podrobností miesta.',
   'help.ctx.trip-days.bullet.6':
     'Celkové náklady v dolnej časti sčítajú každú zastávku a rezerváciu s cenou, v mene cesty.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Porozumejte karte dňa',
   'help.guide.read-day-plan.goal': 'Zistite, čo vám hovorí každá časť karty dňa, skôr než niečo zmeníte.',
   'help.guide.read-day-plan.step.1':
-    'Hlavička: číslo dňa, predpoveď počasia na deň, Deň 1 alebo názov, ktorý ste mu dali, dátum a náklady dňa. Kliknutím na hlavičku deň otvoríte (nad mapou sa otvorí panel s jeho podrobnosťami); šípka vpravo kartu zbalí a rozbalí.',
+    'Hlavička: dlaždica s číslom dňa a predpoveďou, potom Deň 1 alebo názov, ktorý ste mu dali, dátum a štítky pre rezervovanú noc (check-in alebo check-out), požičané auto a náklady dňa. Kliknutím na hlavičku deň otvoríte (nad mapou sa otvorí panel s jeho podrobnosťami); + vpravo pridá miesto, ubytovanie, dopravu, spoj verejnej dopravy alebo poznámku a šípka kartu zbalí.',
   'help.guide.read-day-plan.step.2':
-    'Zastávka: úchytom vľavo ju potiahnete, obrázok nesie zámok pre optimalizáciu trasy, potom nasleduje názov, popis a prípadne poznámky pre tento deň. Časový štítok zobrazuje Začiatok a Do, ak ich zastávka má; šípky, ktoré sa zobrazia na jej pravom konci, ju posúvajú nahor alebo nadol.',
+    'Zastávka: úchytom vľavo ju potiahnete, obrázok nesie zámok pre optimalizáciu trasy, potom nasleduje názov, časový štítok, ak má zastávka Od a Do, popis a prípadne poznámky pre tento deň. Šípky na jej pravom konci ju posúvajú nahor alebo nadol a tri bodky otvoria jej ponuku.',
   'help.guide.read-day-plan.step.3':
-    'Rezervácia v dni: rezervácia pri zastávke ju označí ako Rezervácia potvrdená alebo Rezervácia čaká a doprava sa zobrazí ako Odlet alebo Prílet s časom a trasou, s malým prepínačom, ktorý túto trasu vykreslí na mape.',
+    'Rezervácia pri zastávke je na nej ako štítok Rezervácia, zelený, keď je potvrdená, a jantárový, kým čaká, s časom a poskytovateľom; kliknutím na štítok rezerváciu otvoríte a tlačidlo trasy vedľa neho vykreslí jej trasu. Doprava má vlastný riadok, farebne odlíšený podľa druhu, s Odlet alebo Prílet a časom. Kliknite na rezerváciu a otvoria sa jej podrobnosti; tlačidlom Upraviť ju tam zmeníte.',
   'help.guide.read-day-plan.step.4':
     'Spojnica medzi dvoma zastávkami uvádza, ako dlho úsek trvá a aký je dlhý, v spôsobe presunu daného dňa; kliknutím na ňu zmeníte spôsob presunu iba pre tento úsek.',
   'help.guide.read-day-plan.step.5':
@@ -1991,7 +1994,7 @@ const help: TranslationStrings = {
   'help.guide.read-day-plan.result':
     'Každý symbol na karte má svoj význam; návody nižšie ukazujú, ako každý z nich zmeniť.',
   'help.guide.read-day-plan.tip.1':
-    'Kliknutím pravým tlačidlom na zastávku otvoríte jej ponuku: Upraviť, Odobrať z dňa, Otvoriť webovú stránku, navigačné aplikácie (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Uložiť do zbierky, Vymazať.',
+    'Kliknutím pravým tlačidlom na zastávku alebo na jej tri bodky otvoríte jej ponuku: Upraviť, Odobrať z dňa, Otvoriť webovú stránku, navigačné aplikácie (Google Maps, Waze, Apple Maps, OpenStreetMap, CoMaps), Uložiť do zbierky, Odstrániť.',
   'help.guide.read-day-plan.tip.2':
     'Keď podržíte kurzor nad zastávkou, na jej konci sa zobrazí Pridať rezerváciu: rezervácia vytvorená tam je viazaná na túto zastávku v tento deň.',
   // place-onto-day
@@ -2000,9 +2003,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     'Potiahnite riadok zo stĺpca miest na kartu dňa. Pustite ho medzi dve zastávky, ak ho chcete umiestniť presne tam, alebo kamkoľvek na kartu, ak ho chcete pridať na koniec.',
   'help.guide.place-onto-day.step.2':
-    'Bez ťahania: otvorte deň kliknutím na jeho hlavičku a potom kliknite na + na konci riadka miesta, alebo kliknite na riadok pravým tlačidlom a zvoľte Pridať k dňu.',
+    'Bez ťahania: otvorte deň kliknutím na jeho hlavičku a potom kliknite na + Deň na konci riadka miesta, alebo kliknite na riadok pravým tlačidlom a zvoľte + Deň.',
   'help.guide.place-onto-day.step.3':
-    'V prázdnom dni otvorí Pridať miesto k tomuto dňu formulár miesta a nové miesto sa hneď pridá k dňu.',
+    'Pridať miesto k tomuto dňu, v ponuke + dňa alebo v prázdnom dni, otvorí formulár miesta a nové miesto sa hneď pridá k dňu.',
   'help.guide.place-onto-day.step.4':
     'Z podrobností miesta sa Pridať k dňu opýta, ku ktorému dňu; po otvorení dňa cez jeho hlavičku vytvorí Ku dňu v stĺpci miest nové miesto v otvorenom dni.',
   'help.guide.place-onto-day.result':
@@ -2031,7 +2034,7 @@ const help: TranslationStrings = {
   'help.guide.set-stop-times.title': 'Nastavte zastávke čas',
   'help.guide.set-stop-times.goal': 'Určte, kedy zastávka začína a končí, aby sa deň čítal ako harmonogram.',
   'help.guide.set-stop-times.step.1':
-    'Kliknite pravým tlačidlom na zastávku a zvoľte Upraviť. Ak formulár otvoríte z dňa, v dolnej časti má polia Začiatok a Do.',
+    'Kliknite pravým tlačidlom na zastávku alebo na jej tri bodky a zvoľte Upraviť. Ak formulár otvoríte z dňa, má polia Od a Do pre tento deň hneď pod polohou.',
   'help.guide.set-stop-times.step.2':
     'Zadajte Začiatok a podľa potreby aj Do. Časový prekryv s: upozorňuje, že sa prekrýva iná zastávka dňa s časom; ak je Do pred Začiatkom, Aktualizovať nebude možné.',
   'help.guide.set-stop-times.step.3':
@@ -2066,13 +2069,13 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': 'Pridajte k dňu poznámku',
   'help.guide.day-note.goal': 'Majte pripomienku, číslo lístka alebo plán B priamo v dni.',
-  'help.guide.day-note.step.1': 'Kliknite na Pridať poznámku v hlavičke dňa.',
+  'help.guide.day-note.step.1': 'Kliknite na + v hlavičke dňa a zvoľte Pridať poznámku.',
   'help.guide.day-note.step.2':
-    'Do poľa Poznámka zadajte názov (ten sa zobrazí na karte dňa) a zvyšok napíšte do poľa Poznámka ku dňu. Panel nástrojov nad ním formátuje text (tučné písmo, zoznamy, odkazy, citáty) a Náhľad vľavo ukazuje, ako bude karta vyzerať.',
+    'Názov poznámky zadajte do hlavičky dialógu, kde je napísané Poznámka; ten sa zobrazí v dni. Zvyšok napíšte do poľa Poznámka ku dňu: panel nástrojov nad ním formátuje text (tučné písmo, zoznamy, odkazy, citáty) a Náhľad vľavo ukazuje riadok, ktorý z toho vznikne.',
   'help.guide.day-note.step.3':
     'Vyberte Ikonu a Farbu, aby sa poznámka odlíšila od zastávok, a potom kliknite na Pridať.',
   'help.guide.day-note.step.4':
-    'Poznámka je v dni ako zastávka: potiahnite ju na správne miesto, kliknutím pravým tlačidlom otvoríte Upraviť a Vymazať.',
+    'Poznámka je v dni ako zastávka: potiahnite ju na správne miesto a kliknutím pravým tlačidlom alebo na jej tri bodky otvoríte Upraviť a Odstrániť.',
   'help.guide.day-note.result':
     'Poznámka je súčasťou dňa, aj v PDF; poznámka s časom sa zoradí spolu so zastávkami s časom.',
   'help.guide.day-note.tip.1':
@@ -2120,15 +2123,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.goal':
     'Zistite, kde sa rezervácia zobrazí, keď už existuje, a na ktorej obrazovke sa vytvára.',
   'help.guide.bookings-in-plan.step.1':
-    'Doprava (let, vlak, trajekt, autobus, auto) sa zobrazí v deň odchodu ako Odlet a v deň príchodu ako Prílet, s časom a trasou; viacdenná doprava sa tiahne cez dni medzi nimi.',
+    'Doprava (let, vlak, trajekt, autobus, auto) je riadok farebne odlíšený podľa druhu: Odlet v deň odchodu, Prílet v deň príchodu, s časom a trasou; viacdenná doprava sa tiahne cez dni medzi nimi. Kliknite na riadok a otvorí sa rezervácia.',
   'help.guide.bookings-in-plan.step.2':
-    'Rezervácia viazaná na zastávku (reštaurácia, prehliadka) označí túto zastávku ako Rezervácia potvrdená alebo Rezervácia čaká; rezervácia s dňom, ale bez zastávky, má v dni vlastný riadok.',
+    'Rezervácia viazaná na zastávku (reštaurácia, prehliadka) je na tejto zastávke štítok Rezervácia, zelený, keď je potvrdená, a jantárový, kým čaká, s časom; rezervácia s dňom, ale bez zastávky, má v dni vlastný riadok.',
   'help.guide.bookings-in-plan.step.3':
     'Noc v hoteli je ubytovanie: nájdete ho v paneli podrobností dňa v časti Ubytovanie, od príchodu po odchod, a trasa každého z týchto dní začína tam.',
   'help.guide.bookings-in-plan.step.4':
     'Prepínač v riadku dopravy vykreslí jej trasu na mape; Zobraziť všetky trasy rezervácií na paneli nástrojov vykreslí všetky.',
   'help.guide.bookings-in-plan.step.5':
-    'Vytváranie: Pridať rezerváciu pri zastávke pod kurzorom, Pridať dopravu a Verejná doprava v hlavičke dňa a karty Rezervácie a Doprava pre úplný zoznam s importom a súbormi.',
+    'Vytváranie: Pridať rezerváciu pri zastávke pod kurzorom, Pridať dopravu a Verejná doprava v ponuke + dňa a karty Rezervácie a Doprava pre úplný zoznam s importom a súbormi.',
   'help.guide.bookings-in-plan.result':
     'Jedna rezervácia, jedno miesto v pláne; karty zobrazujú tie isté rezervácie ako zoznam.',
   'help.guide.bookings-in-plan.tip.1':
@@ -2159,24 +2162,24 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     'Kliknite na riadok v stĺpci miest, na zastávku v dni alebo na značku na mape a karta sa otvorí nad mapou. Keď miesto vyberiete v dni, karta vie, ktorú zastávku myslíte, a preto zobrazí aj účastníkov zastávky a jej rezerváciu.',
   'help.ctx.trip-place.bullet.2':
-    'Hlavička obsahuje okrúhly obrázok, názov, kategóriu, adresu a súradnice. Kliknutím na obrázok použijete vlastný, dvojitým kliknutím na názov miesto hneď premenujete a X vpravo kartu zatvorí.',
+    'Hlavička obsahuje okrúhly obrázok, názov, adresu v jednom riadku a štítky pre to, čo je známe: otvorené alebo zatvorené, kategóriu, cenu, telefónne číslo a súradnice. Kliknutím na obrázok použijete vlastný, dvojitým kliknutím na názov miesto hneď premenujete a X vpravo kartu zatvorí.',
   'help.ctx.trip-place.bullet.3':
-    'Pod ňou: cena, ak ju miesto má, hviezdičky, ktoré mu dal každý cestovateľ, popis a poznámky a Poznámky pre tento deň, ak ich zastávka má.',
+    'Pod ňou: hviezdičky, ktoré mu dal každý cestovateľ, popis a poznámky a Poznámky pre tento deň, ak ich zastávka má.',
   'help.ctx.trip-place.bullet.4':
     'Nasledujú Otváracie hodiny, Farba trasy, Dáta trasy a Súbory, ak sa uplatňujú. Súbory prijmú čokoľvek z vašich priečinkov a zobrazia aj to, čo je pripojené k rezervácii tejto zastávky.',
   'help.ctx.trip-place.bullet.5':
     'Riadok v dolnej časti: Pridať k dňu alebo Odobrať z dňa, keď je otvorený deň, potom Uložiť do zbierky, Navigácia, Otvoriť webovú stránku, Upraviť a Vymazať.',
   'help.ctx.trip-place.bullet.6':
-    'Miesto vybrané z vyhľadávania nesie to, čo o ňom vie index TREK alebo OpenStreetMap: zelený krúžok Otvorené alebo červený Uzavreté okolo obrázka podľa miestneho času miesta, telefónne číslo pod hviezdičkami, nižšie Otváracie hodiny s riadkom pre daný deň a celým týždňom po kliknutí a jeho webovú stránku pod tlačidlom Otvoriť webovú stránku. Hodnotenie Google sa zobrazuje iba pri mieste nájdenom cez Google, v TREK s kľúčom Google.',
+    'Miesto vybrané z vyhľadávania nesie to, čo o ňom vie index TREK alebo OpenStreetMap: Otvorené alebo Zatvorené medzi štítkami hlavičky so zeleným alebo červeným krúžkom okolo obrázka podľa miestneho času miesta, telefónne číslo tiež ako štítok, nižšie Otváracie hodiny s riadkom pre daný deň a celým týždňom po kliknutí a jeho webovú stránku pod tlačidlom Otvoriť webovú stránku. Hodnotenie Google sa zobrazuje iba pri mieste nájdenom cez Google, v TREK s kľúčom Google.',
   // read-place
   'help.guide.read-place.title': 'Čo vám karta povie o mieste',
   'help.guide.read-place.goal': 'Prečítajte si všetko, čo cesta vie o jednom mieste, na jednej karte.',
   'help.guide.read-place.step.1':
     'V stĺpci dní kliknite na zastávku, ktorú si chcete pozrieť. Karta sa otvorí nad mapou a zastávka zostane vo svojom dni označená.',
   'help.guide.read-place.step.2':
-    'Hlavička: okrúhly obrázok, názov, adresa a presné súradnice. Zelený krúžok s nápisom Otvorené alebo červený s nápisom Uzavreté okolo obrázka ukazuje, či je miesto práve otvorené podľa jeho miestneho času, keď TREK pozná jeho otváracie hodiny. X vpravo kartu znova zatvorí.',
+    'Hlavička: okrúhly obrázok, názov a adresa v jednom riadku; jej popis pri podržaní myši obsahuje celú adresu. Štítky pod nimi ukazujú, či je miesto práve Otvorené alebo Zatvorené podľa jeho miestneho času, k tomu zodpovedajúci zelený alebo červený krúžok okolo obrázka, a nesú telefónne číslo, ktoré kliknutím odovzdáte aplikácii na telefonovanie, a presné súradnice. X vpravo kartu znova zatvorí.',
   'help.guide.read-place.step.3':
-    'Pod ňou sú hviezdičky, ktoré miestu dal každý cestovateľ, s priemerom a počtom hlasov. Kým nikto nehodnotil, zobrazuje sa Zatiaľ bez hodnotenia. Hneď pod tým je telefónne číslo, ak ho miesto má: kliknutím naň ho odovzdáte aplikácii na telefonovanie.',
+    'Hodnotenie je prvé pod hlavičkou: hviezdičky, ktoré miestu dal každý cestovateľ, s priemerom a počtom hlasov. Kým nikto nehodnotil, zobrazuje sa Zatiaľ bez hodnotenia.',
   'help.guide.read-place.step.4':
     'Potom popis a pod ním poznámky. Oboje je vykreslený text z formulára miesta: zoznamy, odkazy aj tučné písmo fungujú.',
   'help.guide.read-place.step.5': 'Účastníci ukazujú, kto ide na túto zastávku. Idú všetci, kým niekoho neodoberiete.',
@@ -2269,17 +2272,18 @@ const help: TranslationStrings = {
   'help.guide.place-booking.goal':
     'Prečítajte si rezerváciu, ktorá patrí k zastávke, otvorte ju a pripnite k nej novú.',
   'help.guide.place-booking.step.1':
-    'Otvorte zastávku, ku ktorej rezervácia patrí. Karta zobrazuje pás so stavom Potvrdené alebo Čaká na potvrdenie a názvom rezervácie.',
-  'help.guide.place-booking.step.2': 'Pás obsahuje Dátum, Čas a Rezervačný kód, ako aj poznámky, ktoré rezervácia má.',
-  'help.guide.place-booking.step.3': 'Kliknite na pás. Rezervácia sa otvorí nad mapou.',
+    'Otvorte zastávku, ku ktorej rezervácia patrí. Karta ju uvádza v časti Rezervácie ako vlastnú malú kartu s názvom rezervácie a stavom Potvrdené alebo Čaká na potvrdenie.',
+  'help.guide.place-booking.step.2':
+    'Karta rezervácie obsahuje Dátum, Čas a Rezervačný kód, ako aj poznámky, ktoré rezervácia má.',
+  'help.guide.place-booking.step.3': 'Kliknite na kartu rezervácie. Rezervácia sa otvorí nad mapou.',
   'help.guide.place-booking.step.4':
     'Upraviť v spodnej časti rezervácie otvorí jej vlastný formulár. Rezerváciu k zastávke tam pripína pole Prepojiť s priradením dňa a tu už uvádza práve túto zastávku. Formulár opäť zatvorte.',
   'help.guide.place-booking.step.5':
-    'Nová rezervácia pre zastávku sa začína v stĺpci dní: prejdite myšou na zastávku a kliknite na + na jej konci. Formulár sa otvorí ako Nová rezervácia, už prepojený so zastávkou.',
+    'Nová rezervácia pre zastávku sa začína v stĺpci dní: prejdite myšou na zastávku a kliknite na Pridať rezerváciu, lístok na jej konci. Formulár sa otvorí ako Nová rezervácia, už prepojený so zastávkou.',
   'help.guide.place-booking.result':
     'Rezervácia visí na zastávke: je na karte, je v dni a jej súbory sú uvedené aj tu v časti Súbory.',
   'help.guide.place-booking.tip.1':
-    'Pás sa zobrazuje len pri zastávke, ku ktorej je rezervácia pripnutá. Rezervácia bez zastávky je na záložke Rez.',
+    'Karta rezervácie sa zobrazuje len pri zastávke, ku ktorej je rezervácia pripnutá. Rezervácia bez zastávky je na záložke Rez.',
   'help.guide.place-booking.tip.2':
     'Jednu zastávku môže zdieľať viacero rezervácií: obed aj prehliadka, ktorá začína pred tými istými dverami.',
   'help.guide.place-booking.tip.3':
@@ -2364,7 +2368,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     'Hore je počasie dňa. Predpoveď pre uvádza miesto, pre ktoré platí: prvú zastávku dňa alebo hotel, v ktorom sa zobudíte.',
   'help.ctx.trip-day-detail.bullet.4':
-    'Rezervácie uvádzajú rezervácie daného dňa, každú s jej druhom, zastávkou, ku ktorej patrí, a časmi. Zelená znamená potvrdené, jantárová ešte čaká na potvrdenie; je to len prehľad, rezervácie sa menia v časti Rezervácie.',
+    'Rezervácie uvádzajú rezervácie daného dňa, každú s jej druhom, zastávkou, ku ktorej patrí, a časmi. Zelená znamená potvrdené, jantárová ešte čaká na potvrdenie a kliknutím na riadok rezerváciu otvoríte.',
   'help.ctx.trip-day-detail.bullet.5':
     'Ubytovanie ukazuje každú noc rezervovanú v tento deň, s Check-in a Check-out v dňoch, keď nastanú, s časovým oknom check-inu, časom check-outu a číslom potvrdenia.',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2396,7 +2400,7 @@ const help: TranslationStrings = {
     'Predpoveď pre uvádza miesto, pre ktoré čísla platia: prvú zastávku dňa, alebo v deň bez zastávky hotel, v ktorom sa zobudíte.',
   'help.guide.day-weather.step.2': 'Veľké číslo je teplota dňa, vedľa neho minimum a maximum a slovný popis počasia.',
   'help.guide.day-weather.step.3':
-    'Údaje pod ním: pravdepodobnosť dažďa, jeho množstvo, najsilnejší vietor a východ a západ slnka.',
+    'Štítky vpravo od neho: pravdepodobnosť dažďa, jeho množstvo, najsilnejší vietor a východ a západ slnka.',
   'help.guide.day-weather.step.4':
     'Dole je deň po hodinách, každé dve hodiny: čas, ikona, teplota a pravdepodobnosť dažďa. Hodina nad 50 percent je podfarbená modrou.',
   'help.guide.day-weather.result':
@@ -2428,18 +2432,18 @@ const help: TranslationStrings = {
     'Ubytovacie zariadenie musí byť najprv miestom cesty. Vytvorte ho v stĺpci miest ako každé iné miesto: výber ponúka len to, čo už existuje.',
   'help.guide.add-accommodation.step.2': 'Otvorte deň príchodu a v časti Ubytovanie kliknite na Pridať ubytovanie.',
   'help.guide.add-accommodation.step.3':
-    'Použiť na dni určuje, ktoré noci pobyt pokrýva: deň check-inu vľavo, deň check-outu vpravo. Všetky pokrýva celú cestu.',
+    'Použiť na dni určuje, ktoré noci pobyt pokrýva: Začiatok je deň check-inu, Koniec deň check-outu a Všetko pokrýva celú cestu. Hlavička dialógu ukazuje rozsah a počet nocí.',
   'help.guide.add-accommodation.step.4':
     'Vyplňte Check-in, Do a Check-out a číslo rezervácie zadajte do poľa Potvrdenie. Všetky štyri môžu zostať prázdne.',
   'help.guide.add-accommodation.step.5':
-    'Vyberte ubytovacie zariadenie z miest cesty. Štítky nad zoznamom ho zúžia na jednu kategóriu.',
+    'Vyberte ubytovacie zariadenie z miest cesty. Kategória nad zoznamom ho zúži na jednu kategóriu.',
   'help.guide.add-accommodation.step.6': 'Kliknite na Uložiť.',
   'help.guide.add-accommodation.result':
     'Pobyt sa zobrazí v každom dni, ktorý pokrýva, Check-in v prvom a Check-out v poslednom. Ubytovacie zariadenie sa stane zastávkou v deň check-inu, takže mapa nakreslí cestu k nemu, a v časti Rezervácie sa objaví rezervácia typu Hotel.',
   'help.guide.add-accommodation.tip.1':
     'Výber sa otvorí na dni, z ktorého ste prišli, s check-outom v nasledujúci deň; oba sa dajú pred uložením posunúť.',
   'help.guide.add-accommodation.tip.2':
-    'Pri vytváraní dajte hotelu kategóriu Hotel a štítky nad zoznamom ho jedným kliknutím zúžia na vaše hotely.',
+    'Pri vytváraní dajte hotelu kategóriu Hotel a Kategória nad zoznamom ho jedným kliknutím zúži na vaše hotely.',
   'help.guide.add-accommodation.tip.3':
     'Všetky časy sú voliteľné: pobyt bez check-inu a bez kódu stále pokrýva svoje noci a stále kreslí svoju trasu.',
   // edit-accommodation
@@ -2449,7 +2453,7 @@ const help: TranslationStrings = {
     'V každom dni pobytu karta ukazuje ubytovacie zariadenie, časové okno check-inu, čas check-outu a číslo potvrdenia.',
   'help.guide.edit-accommodation.step.2': 'Ceruzka vpravo pobyt znova otvorí. Okno má teraz názov Upraviť ubytovanie.',
   'help.guide.edit-accommodation.step.3':
-    'Opravte rad polí: Check-in, Do, Check-out a Potvrdenie. Dni nad nimi a ubytovacie zariadenie pod nimi sa tu dajú tiež zmeniť.',
+    'Opravte Check-in, Do, Check-out a Potvrdenie. Dni nad nimi a ubytovacie zariadenie pod nimi sa tu dajú tiež zmeniť.',
   'help.guide.edit-accommodation.step.4': 'Kliknite na Uložiť.',
   'help.guide.edit-accommodation.step.5':
     'X vedľa ceruzky pobyt ukončí. Na nič sa nepýta a rezervácia typu Hotel, ktorá k nemu patrí, zmizne spolu s ním.',
@@ -2466,7 +2470,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.1':
     'Rezervácie uvádzajú rezervácie dňa: tie, ktoré majú jeho dátum, a tie, ktoré visia na niektorej z jeho zastávok.',
   'help.guide.day-bookings.step.2':
-    'Riadok ukazuje druh rezervácie, jej názov a, ak patrí k zastávke, túto zastávku za bodkou. Jej časy sú na pravom konci.',
+    'Riadok ukazuje druh rezervácie, jej názov a, ak patrí k zastávke, túto zastávku sivou farbou za ním. Jej časy sú na pravom konci, pred bodkou stavu.',
   'help.guide.day-bookings.step.3':
     'Farba ukazuje stav rezervácie: zelený riadok je potvrdený, jantárový ešte čaká na potvrdenie. Hotely v tomto zozname nie sú, majú vlastný blok nižšie.',
   'help.guide.day-bookings.step.4':

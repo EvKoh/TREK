@@ -1,4 +1,4 @@
-// FE-COMP-PLACES-001 to FE-COMP-PLACES-015 + FE-PLANNER-SIDEBAR-016 to 043
+// FE-COMP-PLACES-001 to FE-COMP-PLACES-015 + FE-PLANNER-SIDEBAR-016 to 067
 import { render, screen, fireEvent, waitFor, act, within } from '../../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
@@ -1112,5 +1112,25 @@ describe('select mode and import menu', () => {
 
     await user.click(inDialog(/^Cancel$/));
     expect(screen.queryByPlaceholderText(/naver\.me/)).not.toBeInTheDocument();
+  });
+});
+
+describe('Category filter: places without a category', () => {
+  it('FE-PLANNER-SIDEBAR-067: "No Category" keeps only the places without one, and is offered only while there are some', async () => {
+    const user = userEvent.setup();
+    const cat = buildCategory({ name: 'Cafe', color: '#f97316' });
+    const withCat = buildPlace({ name: 'Blue Bottle', category_id: cat.id, address: 'Kyoto' });
+    const noCat = buildPlace({ name: 'Loose Stop', category_id: null, address: 'Osaka' });
+    const { unmount } = render(<PlacesSidebar {...defaultProps} places={[withCat, noCat]} categories={[cat]} />);
+    await openCategories(user);
+    await user.click(screen.getByRole('button', { name: 'No Category' }));
+    expect(screen.getByRole('button', { name: 'No Category' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByText('Loose Stop')).toBeInTheDocument();
+    expect(screen.queryByText('Blue Bottle')).not.toBeInTheDocument();
+    unmount();
+
+    render(<PlacesSidebar {...defaultProps} places={[withCat]} categories={[cat]} />);
+    await openCategories(user);
+    expect(screen.queryByRole('button', { name: 'No Category' })).not.toBeInTheDocument();
   });
 });

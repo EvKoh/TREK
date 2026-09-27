@@ -31,17 +31,29 @@ const dayHeader = (page: Page, n: number) => page.getByRole('button', { name: ne
  * nor `trek-backdrop-enter`, so `modal()` and `confirmDialog()` never see it;
  * the card is the second `role="presentation"` and holds the day range.
  */
-const picker = (page: Page) => page.locator('div[role="presentation"]').filter({ hasText: 'Apply to days' }).last()
-/** The accommodation block: the heading's parent holds the stays and the add button. */
-const stays = (page: Page) => panel(page).getByText('Accommodation', { exact: true }).locator('xpath=..')
-/** One booked stay: a card of the list inside that block. */
-const stayCard = (page: Page, name: string) => stays(page).locator('> div > div').filter({ hasText: name }).first()
+const picker = (page: Page) => page.getByRole('dialog').filter({ hasText: 'Apply to days' })
+/** The row of the stay's three times, with Confirmation right under it. */
+const times = (page: Page) => picker(page).getByPlaceholder('14:00').locator('xpath=ancestor::div[contains(@class,"grid-cols-3")][1]')
+/**
+ * A block of the panel by its heading. Every block is a <section> whose first
+ * row carries the heading, so the section is the block with everything in it.
+ */
+const block = (page: Page, heading: string) =>
+  panel(page).getByText(heading, { exact: true }).locator('xpath=ancestor::section[1]')
+/** The accommodation block: the stays and the add button. */
+const stays = (page: Page) => block(page, 'Accommodation')
+/** One booked stay: an <article> card inside that block. */
+const stayCard = (page: Page, name: string) => stays(page).locator('article').filter({ hasText: name }).first()
 /** The caption that opens the weather block. */
 const forecast = (page: Page) => panel(page).getByText(/^Forecast for /)
-/** The chips row; the summary above it and the hourly strip below are its siblings. */
-const chips = (page: Page) => panel(page).locator('svg.lucide-sunrise').locator('xpath=ancestor::div[2]')
+/** The weather's pills (rain, wind, sunrise, sunset), at the right end of the summary row. */
+const chips = (page: Page) => panel(page).locator('svg.lucide-sunrise').locator('xpath=ancestor::div[1]')
+/** The summary row's numbers: the temperature, the low and high, the condition. */
+const summary = (page: Page) => forecast(page).locator('xpath=following-sibling::div[1]/div[1]')
+/** The hourly strip under its own heading. */
+const hourly = (page: Page) => panel(page).getByText('Hourly Forecast', { exact: true }).locator('xpath=..')
 /** The day's reservations block. */
-const bookings = (page: Page) => panel(page).getByText('Reservations', { exact: true }).locator('xpath=..')
+const bookings = (page: Page) => block(page, 'Reservations')
 /** One booking row: on the desktop a button that opens the booking, named with its title. */
 const bookingRow = (page: Page, title: string) => panel(page).getByRole('button', { name: title })
 /** The booking a row opens, named by its title. */
@@ -158,9 +170,9 @@ const SCRIPTS: Record<string, GuideScript> = {
     },
     steps: [
       only(forecast),
-      only(p => chips(p).locator('xpath=preceding-sibling::div[1]')),
+      only(summary),
       only(chips),
-      only(p => chips(p).locator('xpath=following-sibling::div[1]')),
+      only(hourly),
     ],
   },
   'rename-day': {
@@ -216,7 +228,8 @@ const SCRIPTS: Record<string, GuideScript> = {
           await expect(picker(p).getByRole('button', { name: /^Day 7/ })).toBeVisible()
           await settle(p)
         },
-        target: p => picker(p).getByText('Apply to days').locator('xpath=..'),
+        // The row of Start, End and All: the All button's parent.
+        target: p => picker(p).getByRole('button', { name: 'All', exact: true }).locator('xpath=..'),
       },
       {
         // The three time fields normalise what is typed; the labels carry no
@@ -228,13 +241,14 @@ const SCRIPTS: Record<string, GuideScript> = {
           await typeInto(p, picker(p).getByPlaceholder('ABC-12345'), 'KNR-8842')
           await settle(p)
         },
-        target: p => picker(p).getByPlaceholder('ABC-12345').locator('xpath=ancestor::div[2]'),
+        target: times,
       },
       {
-        // "All" is both the whole-trip shortcut and the no-filter chip, so the
-        // category is clicked by its own name.
+        // The category is a pill over the list; its choices open in a list of their own.
         prepare: async p => {
-          await picker(p).getByRole('button', { name: 'Hotel', exact: true }).click()
+          await picker(p).getByRole('button', { name: /^Category:/ }).click()
+          await p.getByRole('group', { name: 'Category' }).getByRole('button', { name: 'Hotel', exact: true }).click()
+          await expect(p.getByRole('group', { name: 'Category' })).toHaveCount(0)
           await settle(p)
         },
         target: p => picker(p).getByRole('button', { name: new RegExp(`^${KYOTO_HOTEL.name}`) }),
@@ -280,7 +294,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await picker(p).getByPlaceholder('ABC-12345').click()
           await settle(p)
         },
-        target: p => picker(p).getByPlaceholder('ABC-12345').locator('xpath=ancestor::div[2]'),
+        target: times,
       },
       {
         target: p => picker(p).getByRole('button', { name: 'Save' }),

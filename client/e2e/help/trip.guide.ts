@@ -22,8 +22,13 @@ const guide = (id: string): HelpGuide => {
 const block = (page: Page, heading: string | RegExp) => modal(page).getByText(heading, { exact: typeof heading === 'string' }).first().locator('xpath=../..')
 /** The Invite User block: its heading is the label, right inside the block. */
 const inviteBlock = (page: Page) => modal(page).locator('label').filter({ hasText: 'Invite User' }).locator('xpath=..')
-/** The days column's fold toggle comes first in the page; the day cards' own Collapse buttons follow it. */
-const leftToggle = (page: Page) => page.locator('button[title="Collapse"], button[title="Plan"]').first()
+/**
+ * The days column's fold tab: the one button straight inside the column's
+ * frame, which sits 10px in from the left. Its name is Collapse while the
+ * column is open and Plan once it is folded, and both names are taken
+ * elsewhere (the day cards fold with Collapse, the first tab is Plan).
+ */
+const leftToggle = (page: Page) => page.locator('div[style*="left: 10px"][style*="top: 10px"] > button').first()
 
 async function openShare(page: Page): Promise<void> {
   await openTrip(page)
@@ -158,7 +163,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: leftToggle,
         act: async p => {
           await leftToggle(p).click()
-          await expect(p.locator('button[title="Plan"]')).toBeVisible()
+          await expect(leftToggle(p)).toHaveAttribute('aria-label', 'Plan')
           await settle(p)
         },
       },
@@ -190,7 +195,7 @@ const SCRIPTS: Record<string, GuideScript> = {
       await openTripOnDay(p, 1)
       const row = p.getByRole('option', { name: /^Tsukiji Outer Market/ })
       await row.hover()
-      const add = row.locator('button').last()
+      const add = row.getByRole('button', { name: '+ Day' })
       await expect(add, 'the + that puts a place on the open day').toBeVisible({ timeout: 15_000 })
       await add.click()
       await expect(p.getByRole('button', { name: 'Undo' })).toBeEnabled({ timeout: 15_000 })

@@ -1431,7 +1431,7 @@ const help: TranslationStrings = {
     '「計劃」是三欄：左邊是天數，中間是地圖，右邊是地點。預訂和交通就住在計劃裡，位於停靠點上和停靠點之間；分頁把它們列出來。',
   'help.ctx.trip.bullet.3': '右上角的「分享」開啟旅行裡的人：成員、訪客、邀請連結和唯讀的公開連結。',
   'help.ctx.trip.bullet.4': '標題、日期、封面和貨幣在「我的旅行」裡編輯，用旅行卡片上的鉛筆。',
-  'help.ctx.trip.bullet.5': '欄內側邊緣的折疊箭頭把這一欄收起來，地圖佔據空間；欄旁邊的細分隔線改變它的寬度。',
+  'help.ctx.trip.bullet.5': '欄內側邊緣的小把手把這一欄收起來，地圖佔據空間；欄旁邊的細分隔線改變它的寬度。',
   'help.ctx.trip.bullet.6': '天數工具列裡的撤銷箭頭收回對計劃的上一次變更。',
   // add-member
   'help.guide.add-member.title': '新增成員',
@@ -1483,8 +1483,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': '給地圖騰出空間',
   'help.guide.collapse-columns.goal': '收起一欄，或者給它更多寬度。',
   'help.guide.collapse-columns.step.1':
-    '點選天數欄內側邊緣的折疊箭頭把它收起來；地圖佔據這塊空間。地點欄有同樣的箭頭。',
-  'help.guide.collapse-columns.step.2': '再次點選折疊箭頭，把這一欄找回來。',
+    '點選天數欄內側邊緣帶面板圖示的小把手，把這一欄收起來；地圖佔據這塊空間。地點欄有同樣的小把手。',
+  'help.guide.collapse-columns.step.2':
+    '收起的欄會在地圖角落留下一個小方塊，天數欄是「計劃」，地點欄是「地點」。點選它，把這一欄找回來。',
   'help.guide.collapse-columns.step.3': '拖曳欄與地圖之間的細分隔線來改變欄的寬度。',
   'help.guide.collapse-columns.result': '寬度會被記住；下次造訪時各欄會恢復展開。',
   'help.guide.collapse-columns.tip.1': '兩欄可以同時收起，得到只有地圖的檢視。',
@@ -1505,24 +1506,25 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     '頂部的「新增地點/活動」開啟一個表單，用來輸入或搜尋地點。當某一天開啟時，按鈕變成「新地點」，旁邊的「加入當天」直接把地點建立到那一天。',
   'help.ctx.trip-places.bullet.2':
-    '「匯入檔案」接受 .gpx、.kml 和 .kmz 檔案；「列表匯入」接受共享的 Google Maps 或 Naver Maps 清單。檔案也可以直接拖放到這一欄上。',
+    '它旁邊的匯入按鈕提供「匯入檔案」，用於 .gpx、.kml 和 .kmz 檔案，以及「Google 列表」（同時開啟 Naver 清單時為「列表匯入」），用於從 Google Maps 或 Naver Maps 分享的清單。檔案也可以直接拖放到這一欄上。',
   'help.ctx.trip-places.bullet.3':
-    '下拉選單在「全部」「未規劃」「已規劃」之間切換，匯入軌跡之後還會有「路線」；它下方是搜尋框、分類篩選和用於最低評分的星號。',
+    '它們下方是搜尋框，旁邊是開始選取的勾選，再下面是一排篩選：「顯示」在「全部」「未規劃」「已規劃」之間切換，匯入軌跡之後還會有「路線」，每一項都帶數量；標籤按鈕依分類篩選，星號依最低評分篩選。',
   'help.ctx.trip-places.bullet.4':
-    '一列顯示圖片、名稱以及描述或地址。點選它檢視地點詳細資料，把它拖曳到某一天，或者按右鍵，得到「編輯」「+ 天」「開啟網站」「Google Maps」「儲存到收藏」和「刪除」。',
+    '一列顯示圖片、名稱以及描述或地址。點選它檢視地點詳細資料，把它拖曳到某一天，或者按右鍵（或點選它的三個點），得到「編輯」「+ 天」「開啟網站」「Google Maps」「儲存到收藏」和「刪除」。',
   'help.ctx.trip-places.bullet.5':
-    '在某一天開啟時，未規劃列末尾的 + 會把地點放到那一天，而「已規劃」只列出那一天，旁邊的「顯示整趟行程」可以再次放寬。',
-  'help.ctx.trip-places.bullet.6': '篩選列右端的勾選開始一次選取：多列一次獲得新分類、進入某個收藏或被刪除。',
+    '在某一天開啟時，未規劃列末尾的「+ 天」會把地點放到那一天，而「已規劃」只列出那一天，旁邊的「顯示整趟行程」可以再次放寬。',
+  'help.ctx.trip-places.bullet.6':
+    '搜尋框旁邊的勾選開始一次選取：透過欄底部的操作列，多列一次獲得新分類、進入某個收藏、標記為已造訪或被刪除。',
   // create-place
   'help.guide.create-place.title': '建立地點',
   'help.guide.create-place.goal': '手動新增一個地點或活動，連同計劃需要知道的一切。',
   'help.guide.create-place.step.1': '點選地點欄頂部的「新增地點/活動」（某一天開啟時是「新地點」）。表單開啟。',
   'help.guide.create-place.step.2':
-    '在頂部的「搜尋地點...」裡輸入地點並選一個結果。「名稱」「地址」「緯度」「經度」和「網站」會自動填好，左側的「地點詳細資料」顯示圖片、營業時間和一段描述。在配了 Google 金鑰的 TREK 上，「不是想找的地點？改用 Google 搜尋」就在結果清單下方，它用 Google 跑同一個搜尋。',
+    '在「搜尋地點...」裡輸入地點並選一個結果。對話框頭部的名稱、「地址」「緯度」「經度」和「網站」會自動填好，左側的「地點詳細資料」顯示圖片、營業時間和一段描述。在配了 Google 金鑰的 TREK 上，「不是想找的地點？改用 Google 搜尋」就在結果清單下方，它用 Google 跑同一個搜尋。右側的「已儲存的地點」以同樣的方式提供你收藏裡的地點。',
   'help.guide.create-place.step.3':
     '在「地點詳細資料」裡，點選「選擇圖片」下方的一張圖片就把它設為地點的配圖；「使用此文字」把描述接過來填入表單。',
   'help.guide.create-place.step.4':
-    '檢查各個欄位：「名稱」必填；「描述」和「備註」由你自己寫；「地址」「緯度」和「經度」來自搜尋或手動輸入；「分類」從旅行的分類裡選一個，旁邊的 + 可以當場新建一個；「網站」放連結。',
+    '檢查表單裡的內容：名稱在對話框頭部，是唯一的必填欄位；它下面的「分類」小標籤從旅行的分類裡選一個，旁邊的 + 可以當場新建一個。「地址」「緯度」和「經度」來自搜尋或手動輸入；「描述」和「備註」由你自己寫；「網站」放連結。',
   'help.guide.create-place.step.5': '點選「新增」。如果旅行裡已經有同名的地點，表單會說明，按鈕變成「仍要新增」。',
   'help.guide.create-place.result': '地點已經在清單裡和地圖上，在被放到某一天之前位於「未規劃」下。',
   'help.guide.create-place.tip.1':
@@ -1537,7 +1539,8 @@ const help: TranslationStrings = {
     '在天數欄裡點選某一天的標題。這一天就開啟了：它的卡片醒目顯示，地點欄多出「加入當天」按鈕。',
   'help.guide.place-to-open-day.step.2':
     '「加入當天」開啟的表單和「新地點」一樣，只是你點選「新增」的那一刻地點就落在開啟的那一天上。',
-  'help.guide.place-to-open-day.step.3': '已經存在的地點，用它那一列末尾的 + 或者按右鍵後的「+ 天」放到開啟的那一天。',
+  'help.guide.place-to-open-day.step.3':
+    '已經存在的地點，用它那一列末尾的「+ 天」或者按右鍵後的「+ 天」放到開啟的那一天。',
   'help.guide.place-to-open-day.step.4':
     '反過來也行，而且不用先打開某一天：把地點的那一列拖出清單，放到某天的卡片上。放在兩個停靠點之間，它就正好落在那裡。',
   'help.guide.place-to-open-day.result': '地點列在那一天下面，排在最後；上下拖曳把它放到該在的位置。',
@@ -1548,11 +1551,11 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': '在清單裡找到地點',
   'help.guide.filter-places.goal': '把這一欄收窄到你要找的地點。',
   'help.guide.filter-places.step.1':
-    '頂部的下拉選單在「全部」、「未規劃」（還不在任何一天上）、「已規劃」（在某一天上）和「路線」（匯入的 GPX 軌跡）之間切換，每一項都帶數量。',
-  'help.guide.filter-places.step.2': '在「搜尋地點...」裡輸入；清單隨著輸入不斷收窄。',
+    '搜尋框下方的下拉選單「顯示」在「全部」、「未規劃」（還不在任何一天上）、「已規劃」（在某一天上）和「路線」（匯入的 GPX 軌跡）之間切換，每一項都帶數量。',
+  'help.guide.filter-places.step.2': '在頂部的「搜尋」裡輸入；清單隨著輸入不斷收窄。',
   'help.guide.filter-places.step.3':
-    '「所有分類」開啟一個清單，可以勾選一個或多個分類，「無分類」也在其中；底部的「清除篩選」把它重設。',
-  'help.guide.filter-places.step.4': '旁邊的星號設定最低評分：5+、4+ 等等，只顯示你評分不低於該值的地點。',
+    '「顯示」旁邊的標籤按鈕列出各個分類：勾選一個或多個，「無分類」也在其中。按鈕會顯示勾選的數量，清單底部的「清除篩選」把它們全部取消。',
+  'help.guide.filter-places.step.4': '它旁邊的星號設定最低評分：5+、4+ 等等，只顯示你評分不低於該值的地點。',
   'help.guide.filter-places.result': '列上方的數字說明有多少地點符合；各個篩選條件會疊加。',
   'help.guide.filter-places.tip.1':
     '某一天開啟時，「已規劃」只列出那一天並會說明：「僅顯示目前開啟的日期」，旁邊是「顯示整趟行程」。',
@@ -1562,7 +1565,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.goal': '改個名字、挪一下圖釘、加上網站或者換個分類。',
   'help.guide.edit-place.step.1': '在該列按右鍵並選擇「編輯」，或者開啟地點並在它的詳細資料裡點選「編輯」。',
   'help.guide.edit-place.step.2':
-    '改你需要的：「名稱」「描述」「備註」「地址」「緯度」和「經度」「分類」「網站」。從某一天開啟時，表單裡還有「當天備註」以及那一天的「開始」和「結束」。',
+    '改你需要的：對話框頭部的名稱和「分類」小標籤、「地址」「緯度」和「經度」「描述」「備註」和「網站」。從某一天開啟時，表單裡還有「開始」和「結束」以及「當天備註」。',
   'help.guide.edit-place.step.3': '點選「更新」。',
   'help.guide.edit-place.result': '變更在地點出現的所有地方生效：清單、地圖和它所在的每一天。',
   'help.guide.edit-place.tip.1': '「當天備註」屬於這個地點在那一天上的項目；「備註」屬於地點本身。',
@@ -1573,18 +1576,18 @@ const help: TranslationStrings = {
   'help.guide.delete-place.goal': '把一個地點徹底移出旅行。',
   'help.guide.delete-place.step.1': '在該列按右鍵並選擇「刪除」，或者在地點詳細資料裡點選「刪除」。',
   'help.guide.delete-place.step.2':
-    '確認。如果這個地點上訂了一晚住宿，或者有預訂與它相關，提示會說明會一併消失的內容。',
+    '在提示裡點選「刪除」。如果這個地點上訂了一晚住宿，或者有預訂與它相關，提示會說明會一併消失的內容。',
   'help.guide.delete-place.result': '地點從清單、地圖和每一天都消失了；天數上方工具列裡的「撤銷」能把它找回來。',
   'help.guide.delete-place.tip.1': '只想把地點從某一天上拿掉，就改在那個停靠點上用「從當天移除」。',
-  'help.guide.delete-place.tip.2': '一次處理多個地點：篩選旁邊的勾選開始一次選取。',
+  'help.guide.delete-place.tip.2': '一次處理多個地點：搜尋框旁邊的勾選開始一次選取。',
   // select-places
   'help.guide.select-places.title': '一次修改或刪除多個地點',
   'help.guide.select-places.goal': '一次整理清單，而不是一個一個來。',
-  'help.guide.select-places.step.1': '點選篩選列右端的勾選。各列出現核取方塊，並出現一條帶有各項操作的操作列。',
-  'help.guide.select-places.step.2': '勾選各列，或者用操作列上的「全選」；操作列會統計選取的數量。',
+  'help.guide.select-places.step.1': '點選搜尋框旁邊的勾選。各列出現圓形核取方塊，欄底部升起一條帶有各項操作的操作列。',
+  'help.guide.select-places.step.2': '點選各列來勾選它們。操作列上的雙勾選「全選」會選取篩選後留下的每一列。',
   'help.guide.select-places.step.3':
-    '「Change category」給它們全部同一個分類；「儲存到收藏」把它們複製到你的某個收藏裡；「刪除所選」在確認之後把它們移除。',
-  'help.guide.select-places.step.4': '再次點選勾選即可退出選取。',
+    '操作列會統計勾選的地點數量。「變更類別」給它們全部同一個分類；「儲存到收藏」把它們複製到你的某個收藏裡；「刪除所選」在確認之後把它們移除。',
+  'help.guide.select-places.step.4': '「完成」，也就是操作列末尾的 X，會退出選取。',
   'help.guide.select-places.result': '變更作用於每一個選取的地點；刪除可以從天數上方的工具列撤銷。',
   'help.guide.select-places.tip.1': '選取期間篩選仍然有效：先篩到「未規劃」，再用「全選」就正好抓到那些。',
   'help.guide.select-places.tip.2':
@@ -1592,7 +1595,8 @@ const help: TranslationStrings = {
   // import-places-file
   'help.guide.import-places-file.title': '從 GPX、KML 或 KMZ 檔案匯入地點',
   'help.guide.import-places-file.goal': '把 Google My Maps、Google Earth 或 GPS 記錄器匯出的內容帶進來。',
-  'help.guide.import-places-file.step.1': '點選「匯入檔案」，或者把檔案拖放到地點欄的任意位置。',
+  'help.guide.import-places-file.step.1':
+    '點選新增按鈕旁邊的匯入按鈕並選擇「匯入檔案」，或者把檔案拖放到地點欄的任意位置。',
   'help.guide.import-places-file.step.2':
     '選擇檔案或把它拖進方框。對於 GPX，勾選要匯入的內容：「路點」「路線」「軌跡（含路徑幾何）」；對於 KML 和 KMZ，是「點（Placemarks）」和「路徑（LineStrings）」。',
   'help.guide.import-places-file.step.3':
@@ -1606,7 +1610,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': '匯入共享的 Google Maps 或 Naver Maps 清單',
   'help.guide.import-places-list.goal': '把共享清單的連結變成地點。',
-  'help.guide.import-places-list.step.1': '點選「列表匯入」並選擇「Google 列表」或「Naver 列表」。',
+  'help.guide.import-places-list.step.1':
+    '點選新增按鈕旁邊的匯入按鈕並選擇「Google 列表」。同時開啟 Naver 清單時，這一項顯示為「列表匯入」，對話框會問你選兩者中的哪一個。',
   'help.guide.import-places-list.step.2':
     '貼上該清單的共享連結。Google Maps 的路線規劃連結也可以：它的各個停靠點會按駕車順序變成地點。',
   'help.guide.import-places-list.step.3': '點選「匯入」。',
@@ -1622,30 +1627,30 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     '頂部的工具列：「匯出」（PDF、行事曆、GPX）、「Expand all days」/「Collapse all days」、撤銷箭頭、「重新排序日期」和「顯示所有預訂路線」。',
   'help.ctx.trip-days.bullet.2':
-    '一張日期卡片：標題列裡有天數、天氣、標題、日期和當天的費用；點選標題列開啟這一天，它的摺疊箭頭把卡片收起來。「大眾運輸」「新增交通」和「新增備註」也在標題列裡。',
+    '一張日期卡片：一個帶天數和天氣預報的小方塊、標題和日期，以及已訂住宿、租車和當天費用的小標籤。點選頭部開啟這一天，摺疊箭頭把它收起來，+ 開啟一個選單：「新增地點到這一天」「新增住宿」「新增交通」「大眾運輸」和「新增備註」。',
   'help.ctx.trip-days.bullet.3':
-    '一天內部：按順序排列的停留點，每個都有圖片、名稱、時間和圖片上的鎖；備註；屬於這一天的預訂；以及停留點之間每一段的行程時間。',
+    '一天內部：按順序排列的停留點，每個都有圖片、名稱、時間、圖片上的鎖以及掛在它上面的預訂；備註；這一天的預訂和交通，依類型著色；以及停留點之間每一段的行程時間。每一列都有一個三點選單，和按右鍵開啟的選單相同。',
   'help.ctx.trip-days.bullet.4':
     '停留點下方是路線列：「路線」把這一天畫在地圖上，「最佳化」給停留點排序，「開車」/「步行」設定當天的交通方式，「在 Google Maps 中開啟」和「在 CoMaps 中開啟」把這一天交出去。',
   'help.ctx.trip-days.bullet.5':
-    '地點進入某一天的方式：從地點欄拖一列過來、用該列上的 +、在空的一天用「新增地點到這一天」，或者從地點詳細資料裡。',
+    '地點進入某一天的方式：從地點欄拖一列過來、用該列上的「+ 天」、透過這一天的 + 或在空的一天用「新增地點到這一天」，或者從地點詳細資料裡。',
   'help.ctx.trip-days.bullet.6': '底部的「總費用」把每一個帶價格的停留點和預訂按行程的貨幣加起來。',
   // read-day-plan
   'help.guide.read-day-plan.title': '讀懂一天',
   'help.guide.read-day-plan.goal': '在動手改動之前，先知道日期卡片的每一部分在告訴你什麼。',
   'help.guide.read-day-plan.step.1':
-    '標題列：天數、當天的天氣預報、「第 1 天」或你給它起的標題、日期和當天的費用。點選標題列開啟這一天（它的「日程詳情」面板在地圖上方開啟）；右側的摺疊箭頭把卡片收起或展開。',
+    '頭部：一個帶天數和天氣預報的小方塊，然後是「第 1 天」或你給它起的標題、日期，以及已訂住宿（入住或退房）、租車和當天費用的小標籤。點選頭部開啟這一天（它的「日程詳情」面板在地圖上方開啟）；右側的 + 新增地點、住宿、交通、大眾運輸路線或備註，摺疊箭頭把卡片收起來。',
   'help.guide.read-day-plan.step.2':
-    '一個停留點：左邊的握把用來拖曳，圖片上帶著用於路線最佳化的鎖，接著是名稱、描述，以及設定過的話，「當天備註」。停留點有時間時會顯示一個標出「開始」和「結束」的時間標籤；它右端出現的箭頭把它上移或下移。',
+    '一個停留點：左邊的握把用來拖曳，圖片上帶著用於路線最佳化的鎖，接著是名稱、停留點有「開始」和「結束」時顯示的時間標籤、描述，以及設定過的話，「當天備註」。它右端的箭頭把它上移或下移，三個點開啟它的選單。',
   'help.guide.read-day-plan.step.3':
-    '當天的預訂：綁在某個停留點上的預訂會把這個停留點標為「預訂已確認」或「預訂待確認」；交通顯示為「出發」或「到達」，帶時間和路線，旁邊一個小開關把那條路線畫在地圖上。',
+    '停留點上的預訂以「預訂」標籤的形式顯示在它上面，已確認時為綠色，待確認時為琥珀色，並帶有時間和服務商；點選標籤開啟預訂，旁邊的路線按鈕畫出它的路線。交通單獨佔一列，依類型著色，帶「出發」或「到達」和時間。點選一筆預訂會開啟它的詳細資料；在那裡點「編輯」即可修改。',
   'help.guide.read-day-plan.step.4':
     '兩個停留點之間的連接線按當天的交通方式說明這一段要多久、有多遠；點選它就能只改這一段的方式。',
   'help.guide.read-day-plan.step.5':
     '末尾的路線列：「路線」把這一天的路畫在地圖上，「最佳化」重排停留點，方式按鈕選擇「開車」或「步行」，「在 Google Maps 中開啟」和「在 CoMaps 中開啟」把這一天在那裡開啟。',
   'help.guide.read-day-plan.result': '卡片上的每個符號都有含義；下面的指南會逐個改動它們。',
   'help.guide.read-day-plan.tip.1':
-    '按右鍵點一個停留點開啟它的選單：「編輯」「從當天移除」「開啟網站」、導航應用程式（Google Maps、Waze、Apple Maps、OpenStreetMap、CoMaps）、「儲存到收藏」「刪除」。',
+    '按右鍵點一個停留點，或點選它的三個點，開啟它的選單：「編輯」「從當天移除」「開啟網站」、導航應用程式（Google Maps、Waze、Apple Maps、OpenStreetMap、CoMaps）、「儲存到收藏」「刪除」。',
   'help.guide.read-day-plan.tip.2':
     '把滑鼠停在一個停留點上，末尾會出現「新增預訂」：在那裡建立的預訂就綁在這一天的這個停留點上。',
   // place-onto-day
@@ -1654,8 +1659,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     '從地點欄把一列拖到日期卡片上。放在兩個停留點之間就正好插在那裡，放在卡片的任意位置則追加到末尾。',
   'help.guide.place-onto-day.step.2':
-    '不用拖曳：點選標題列開啟這一天，然後點選地點列末尾的 +，或者按右鍵點該列並選擇「+ 天」。',
-  'help.guide.place-onto-day.step.3': '在空的一天，「新增地點到這一天」開啟地點表單，新地點立刻落在這一天上。',
+    '不用拖曳：點選頭部開啟這一天，然後點選地點列末尾的「+ 天」，或者按右鍵點該列並選擇「+ 天」。',
+  'help.guide.place-onto-day.step.3':
+    '這一天 + 選單裡或空的一天上的「新增地點到這一天」會開啟地點表單，新地點立刻落在這一天上。',
   'help.guide.place-onto-day.step.4':
     '在地點詳細資料裡，「新增到當天」會問放到哪一天；某一天開啟時，地點欄裡的「加入當天」直接在開啟的那一天建立一個新地點。',
   'help.guide.place-onto-day.result':
@@ -1679,7 +1685,8 @@ const help: TranslationStrings = {
   // set-stop-times
   'help.guide.set-stop-times.title': '給停留點一個時間',
   'help.guide.set-stop-times.goal': '定下停留點什麼時候開始、什麼時候結束，讓這一天讀起來像一份時間表。',
-  'help.guide.set-stop-times.step.1': '按右鍵點停留點並選擇「編輯」。從這一天開啟時，表單底部有「開始」和「結束」。',
+  'help.guide.set-stop-times.step.1':
+    '按右鍵點停留點，或點選它的三個點，然後選擇「編輯」。從這一天開啟時，表單在位置下方就有這一天的「開始」和「結束」。',
   'help.guide.set-stop-times.step.2':
     '填寫「開始」，需要的話再填「結束」。「時間衝突：」會提示當天另一個有時間的停留點與它重疊；早於「開始」的「結束」會擋住「更新」。',
   'help.guide.set-stop-times.step.3': '點選「更新」。停留點得到一個時間標籤，並移到這一天裡它的時間所屬的位置。',
@@ -1710,11 +1717,12 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': '給一天加一則備註',
   'help.guide.day-note.goal': '把一個提醒、一個票號或者一個備用方案直接放在這一天裡。',
-  'help.guide.day-note.step.1': '在這一天的標題列點選「新增備註」。',
+  'help.guide.day-note.step.1': '點選這一天頭部的 +，然後選擇「新增備註」。',
   'help.guide.day-note.step.2':
-    '在「備註」裡給它起個名字，日期卡片上顯示的就是它，其餘的寫在「每日備註」裡。上方的「格式」工具列負責排版（「粗體」「項目符號清單」「編號清單」「連結」「引用」），左邊的「預覽」顯示它將變成的卡片。',
+    '在對話框頭部寫著「備註」的地方輸入備註的名字；日期卡片上顯示的就是它。其餘的寫在「每日備註」裡：上方的工具列負責排版（粗體、清單、連結、引用），左邊的「預覽」顯示它將變成的那一列。',
   'help.guide.day-note.step.3': '挑一個「圖示」和一種「顏色」，讓備註從停留點中間顯出來，然後「新增」。',
-  'help.guide.day-note.step.4': '備註像停留點一樣待在這一天裡：拖曳它到合適的位置，按右鍵點它得到「編輯」和「刪除」。',
+  'help.guide.day-note.step.4':
+    '備註像停留點一樣待在這一天裡：拖曳它到合適的位置，按右鍵點它或用它的三個點得到「編輯」和「刪除」。',
   'help.guide.day-note.result': '備註是這一天的一部分，PDF 裡也有；帶時間的備註會和有時間的停留點一起排序。',
   'help.guide.day-note.tip.1': '帶時間的備註可以頂替一趟你沒有預訂的交通：「08:15 從中央車站搭 S3」。',
   'help.guide.day-note.tip.2': '備註是按天的；面向整趟行程的備註屬於 Collab。',
@@ -1754,15 +1762,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.title': '讀懂計劃裡的預訂和交通',
   'help.guide.bookings-in-plan.goal': '知道一份預訂存在之後會出現在哪裡，以及哪個畫面建立它。',
   'help.guide.bookings-in-plan.step.1':
-    '一趟交通（航班、火車、渡輪、公車、汽車）在出發那天顯示為「出發」，在到達那天顯示為「到達」，帶時間和路線；跨多天的會橫跨中間的日子。',
+    '一趟交通（航班、火車、渡輪、公車、汽車）是依類型著色的一列：出發那天顯示「出發」，到達那天顯示「到達」，帶時間和路線；跨多天的會橫跨中間的日子。點選這一列即可開啟預訂。',
   'help.guide.bookings-in-plan.step.2':
-    '綁在某個停留點上的預訂（餐廳、旅遊團）會把那個停留點標為「預訂已確認」或「預訂待確認」；有日期但沒有停留點的預訂在這一天裡自成一列。',
+    '綁在某個停留點上的預訂（餐廳、旅遊團）是該停留點上的「預訂」標籤，已確認時為綠色，待確認時為琥珀色，並帶有時間；有日期但沒有停留點的預訂在這一天裡自成一列。',
   'help.guide.bookings-in-plan.step.3':
     '在飯店過的一夜是住宿：它在當天的「日程詳情」面板裡「住宿」下面，從「入住」到「退房」，而這幾天裡每一天的路線都從那裡開始。',
   'help.guide.bookings-in-plan.step.4':
     '在地圖上，交通那一列上的開關會畫出它的路線；工具列裡的「顯示所有預訂路線」把它們全都畫出來。',
   'help.guide.bookings-in-plan.step.5':
-    '建立的地方：停留點停留滑鼠時出現的「新增預訂」、日期標題列裡的「新增交通」和「大眾運輸」，以及帶匯入和檔案的完整清單「預訂」和「交通」分頁。',
+    '建立的地方：停留點停留滑鼠時出現的「新增預訂」、這一天 + 選單裡的「新增交通」和「大眾運輸」，以及帶匯入和檔案的完整清單「預訂」和「交通」分頁。',
   'help.guide.bookings-in-plan.result': '一份預訂，在計劃裡只有一個位置；分頁裡是同樣這些預訂，只是列成了表。',
   'help.guide.bookings-in-plan.tip.1':
     '「已確認」和「待確認」是你在預訂上設定的狀態；計劃把它顯示在停留點上，「預訂」分頁兩者都計入。',
@@ -1790,23 +1798,22 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     '點選地點欄裡的一列、某一天裡的一個停靠點，或者地圖上的一個標記，卡片就在地圖上開啟。在某一天裡選取它，卡片就知道你指的是哪個停靠點，這也正是把該停靠點的參與者和它的預訂一起帶出來的原因。',
   'help.ctx.trip-place.bullet.2':
-    '頭部帶著圓形圖片、名稱、分類、地址和座標。點選圖片可以換成你自己的，按兩下名稱可以當場重新命名地點，右邊的 X 關閉卡片。',
-  'help.ctx.trip-place.bullet.3':
-    '下面是：有價格時的價格、每位旅行者給這個地點的星、描述和備註，以及停靠點帶有備註時的「當天備註」。',
+    '頭部帶著圓形圖片、名稱、一行地址，以及已知資訊的小標籤：營業或關閉、分類、價格、電話號碼和座標。點選圖片可以換成你自己的，按兩下名稱可以當場重新命名地點，右邊的 X 關閉卡片。',
+  'help.ctx.trip-place.bullet.3': '下面是：每位旅行者給這個地點的星、描述和備註，以及停靠點帶有備註時的「當天備註」。',
   'help.ctx.trip-place.bullet.4':
     '接著按適用情況顯示「營業時間」「軌跡顏色」「軌跡資料」和「檔案」。「檔案」接收你資料夾裡的任何東西，也會列出掛在這個停靠點預訂上的檔案。',
   'help.ctx.trip-place.bullet.5':
     '底部那一列：某一天開啟時是「新增到當天」或「從當天移除」，然後是「儲存到收藏」「導航」「開啟網站」「編輯」和「刪除」。',
   'help.ctx.trip-place.bullet.6':
-    '從搜尋裡挑出來的地點帶著 TREK 索引或 OpenStreetMap 對它的了解：圖片周圍綠色的「營業中」或紅色的「已關閉」圓環，按地點自己的時鐘判斷；星星下方的電話號碼；再往下的「營業時間」，那一列寫著當天的時段，點一下展開整週；以及「開啟網站」背後的網站。Google 的評分只在透過 Google 找到的地點上顯示，且這台 TREK 要有 Google 金鑰。',
+    '從搜尋裡挑出來的地點帶著 TREK 索引或 OpenStreetMap 對它的了解：頭部小標籤裡的「營業中」或「已關閉」，圖片周圍配有綠色或紅色圓環，按地點自己的時鐘判斷；電話號碼同樣是一個小標籤；再往下的「營業時間」，那一列寫著當天的時段，點一下展開整週；以及「開啟網站」背後的網站。Google 的評分只在透過 Google 找到的地點上顯示，且這台 TREK 要有 Google 金鑰。',
   // read-place
   'help.guide.read-place.title': '卡片告訴你關於一個地點的什麼',
   'help.guide.read-place.goal': '在一張卡片裡讀到旅行關於一個地點知道的一切。',
   'help.guide.read-place.step.1': '在天數欄裡點選你想讀的停靠點。卡片在地圖上開啟，該停靠點在它那一天裡保持醒目。',
   'help.guide.read-place.step.2':
-    '頭部：圓形圖片、名稱、地址和精確座標。圖片周圍帶「營業中」的綠色圓環或帶「已關閉」的紅色圓環，說明這個地點此刻是否營業，按它自己的時鐘判斷，前提是 TREK 知道它的營業時間。右邊的 X 再次關閉卡片。',
+    '頭部：圓形圖片、名稱和一行地址；滑鼠停留提示裡有完整地址。下面的小標籤按地點自己的時鐘顯示此刻是「營業中」還是「已關閉」，圖片周圍配有相應的綠色或紅色圓環；小標籤裡還有電話號碼，點一下就交給你的電話應用程式，以及精確座標。右邊的 X 再次關閉卡片。',
   'help.guide.read-place.step.3':
-    '下面是每位旅行者給這個地點的星，帶平均分和投票人數。還沒有人評分時顯示「尚未評分」。緊接著是電話號碼，如果地點有的話：點一下就把號碼交給你的電話應用程式。',
+    '頭部下方首先是「評分」：每位旅行者給這個地點的星，帶平均分和投票人數。還沒有人評分時顯示「尚未評分」。',
   'help.guide.read-place.step.4':
     '然後是描述，下面是備註。兩者都是地點表單裡的文字算繪後的樣子：清單、連結和粗體都有效。',
   'help.guide.read-place.step.5': '「參與者」說明誰會去這個停靠點。在你把某人移出去之前，所有人都在。',
@@ -1877,15 +1884,15 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': '停靠點上的預訂',
   'help.guide.place-booking.goal': '讀取屬於某個停靠點的預訂、開啟它，並把新的預訂掛上去。',
   'help.guide.place-booking.step.1':
-    '開啟該預訂所屬的停靠點。卡片顯示一條橫條，上面是「已確認」或「待確認」以及預訂的名稱。',
-  'help.guide.place-booking.step.2': '這條橫條帶著「日期」「時間」和「預訂碼」，以及這筆預訂的任何備註。',
-  'help.guide.place-booking.step.3': '點選這條橫條。預訂會在地圖上方開啟。',
+    '開啟該預訂所屬的停靠點。卡片在「預訂」下把它列為一張單獨的小卡片，上面是預訂的名稱以及「已確認」或「待確認」。',
+  'help.guide.place-booking.step.2': '預訂卡片帶著「日期」「時間」和「預訂碼」，以及這筆預訂的任何備註。',
+  'help.guide.place-booking.step.3': '點選預訂卡片。預訂會在地圖上方開啟。',
   'help.guide.place-booking.step.4':
     '預訂底部的「編輯」會開啟它自己的表單。那裡的「關聯日程分配」就是把預訂掛到停靠點上的欄位，這裡它已經寫著這個停靠點。再把表單關掉。',
   'help.guide.place-booking.step.5':
-    '為某個停靠點新建預訂要從天數欄開始：滑鼠移到停靠點上，點選它末尾的 +。表單以「新建預訂」開啟，並已經關聯到它。',
+    '為某個停靠點新建預訂要從天數欄開始：滑鼠移到停靠點上，點選它末尾的票券圖示「新增預訂」。表單以「新建預訂」開啟，並已經關聯到它。',
   'help.guide.place-booking.result': '預訂掛在停靠點上：它在卡片裡、在當天裡，它的檔案也列在這裡的「檔案」下面。',
-  'help.guide.place-booking.tip.1': '這條橫條只對預訂所掛的那個停靠點顯示。沒有停靠點的預訂待在「預訂」分頁裡。',
+  'help.guide.place-booking.tip.1': '預訂卡片只對預訂所掛的那個停靠點顯示。沒有停靠點的預訂待在「預訂」分頁裡。',
   'help.guide.place-booking.tip.2': '多筆預訂可以共用一個停靠點：午餐，以及從同一個門口出發的那趟行程。',
   'help.guide.place-booking.tip.3': '火車、航班或渡輪開啟的是交通表單，也就是「交通」分頁用的那個。',
   // place-files
@@ -2083,7 +2090,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     '最上面是這一天的天氣。「…的天氣預報」指明它對應哪個地點：這一天的第一個停靠點，或者你醒來時所在的飯店。',
   'help.ctx.trip-day-detail.bullet.4':
-    '「預訂」列出那一天的預訂，每筆都帶類型、所屬停靠點和時間。綠色表示已確認，琥珀色還是待確認；這裡只是讀數，預訂要在「預訂」分頁裡變更。',
+    '「預訂」列出那一天的預訂，每筆都帶類型、所屬停靠點和時間。綠色表示已確認，琥珀色還是待確認，點選一列即可開啟這筆預訂。',
   'help.ctx.trip-day-detail.bullet.5':
     '「住宿」顯示壓在這一天上的每一晚，「入住」和「退房」出現在各自發生的那一天，還有入住時間區間、退房時間和確認號。',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2108,7 +2115,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.1':
     '「…的天氣預報」指明這些數字屬於哪個地點：這一天的第一個停靠點，或者在沒有停靠點的一天裡，你醒來時所在的飯店。',
   'help.guide.day-weather.step.2': '大數字是這一天的氣溫，旁邊是最低和最高，以及用文字說明的天氣狀況。',
-  'help.guide.day-weather.step.3': '下面的小標籤：降水機率、降水量、最強的風，還有日出和日落。',
+  'help.guide.day-weather.step.3': '它右邊的小標籤：降水機率、降水量、最強的風，還有日出和日落。',
   'help.guide.day-weather.step.4':
     '最下面是這一天的逐小時情況，每隔兩小時一格：時間、圖示、氣溫和降水機率。超過 50% 的小時會染成藍色。',
   'help.guide.day-weather.result': '天數欄裡這一天的卡片，也在它的編號下面用小字帶著同樣的天氣，整趟行程一眼就能讀完。',
@@ -2136,14 +2143,14 @@ const help: TranslationStrings = {
     '住處必須先是旅行裡的一個地點。像建立其他地點一樣在地點欄裡建立它：選擇器只提供已經存在的東西。',
   'help.guide.add-accommodation.step.2': '開啟你抵達的那一天，點選「住宿」下面的「新增住宿」。',
   'help.guide.add-accommodation.step.3':
-    '「應用到天數」說明這次住宿涵蓋哪幾晚：左邊是入住日，右邊是退房日。「全部」涵蓋整趟旅行。',
+    '「應用到天數」說明這次住宿涵蓋哪幾晚：「開始」是入住日，「結束」是退房日，「全部」涵蓋整趟旅行。對話框頭部顯示日期範圍和晚數。',
   'help.guide.add-accommodation.step.4': '填寫「入住」「截止」和「退房」，把預訂號填在「確認號」裡。這四項都可以留空。',
-  'help.guide.add-accommodation.step.5': '從旅行的地點裡挑出住處。清單上方的小標籤把它收窄到一個分類。',
+  'help.guide.add-accommodation.step.5': '從旅行的地點裡挑出住處。清單上方的「分類」把它收窄到一個分類。',
   'help.guide.add-accommodation.step.6': '點選「儲存」。',
   'help.guide.add-accommodation.result':
     '這次住宿出現在它涵蓋的每一天上，第一天是「入住」，最後一天是「退房」。住處成為入住日的一個停靠點，地圖因此畫出去那裡的路線，而「預訂」分頁裡出現一筆「住宿」預訂。',
   'help.guide.add-accommodation.tip.1': '選擇器以你開啟的那一天開始，退房是它的後一天；儲存之前兩者都可以移動。',
-  'help.guide.add-accommodation.tip.2': '建立飯店時給它旅行裡的 Hotel 分類，清單上方的小標籤一點就只剩下你的飯店。',
+  'help.guide.add-accommodation.tip.2': '建立飯店時給它旅行裡的 Hotel 分類，清單上方的「分類」一點就只剩下你的飯店。',
   'help.guide.add-accommodation.tip.3':
     '時間全是選填的：沒有入住時間、也沒有確認號的住宿，照樣涵蓋它的夜晚，照樣畫出它的路線。',
   // edit-accommodation
@@ -2152,7 +2159,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.1': '在住宿的每一天裡，卡片都顯示住處、入住時間區間、退房時間和確認號。',
   'help.guide.edit-accommodation.step.2': '它右邊的鉛筆重新開啟這次住宿。彈出視窗此時寫著「編輯住宿」。',
   'help.guide.edit-accommodation.step.3':
-    '改這一排欄位：「入住」「截止」「退房」和「確認號」。它上面的天數和它下面的住處，在這裡也能改。',
+    '修改「入住」「截止」「退房」和「確認號」。它們上面的天數和下面的住處，在這裡也能改。',
   'help.guide.edit-accommodation.step.4': '點選「儲存」。',
   'help.guide.edit-accommodation.step.5':
     '鉛筆旁邊的 X 結束這次住宿。它什麼都不問，屬於它的那筆「住宿」預訂也一併消失。',
@@ -2167,7 +2174,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.goal': '在一個地方看到這一天已經訂好了什麼，以及是否已確認。',
   'help.guide.day-bookings.step.1': '「預訂」列出這一天的預訂：日期落在這一天的，以及掛在它某個停靠點上的。',
   'help.guide.day-bookings.step.2':
-    '一列顯示這是哪種預訂、它的名稱，如果它屬於某個停靠點，就在一個圓點之後寫出那個停靠點。它的時間在右端。',
+    '一列顯示這是哪種預訂、它的名稱，如果它屬於某個停靠點，就在後面用灰色寫出那個停靠點。它的時間在右端，狀態圓點之前。',
   'help.guide.day-bookings.step.3':
     '顏色說明一筆預訂處在什麼狀態：綠色的列已確認，琥珀色的還在待確認。飯店不在這個清單裡，它們在下面有自己的區塊。',
   'help.guide.day-bookings.step.4':

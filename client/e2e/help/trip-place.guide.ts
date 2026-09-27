@@ -38,19 +38,22 @@ const UPLOADED = 'cover-fixture.jpg'
 
 /** The card itself: the scroll body's parent holds head, body and footer. */
 const card = (page: Page) => page.getByTestId('inspector-scroll').locator('xpath=..')
-const head = (page: Page) => card(page).locator('> div').first()
-const footer = (page: Page) => card(page).locator('div.border-t')
+const head = (page: Page) => card(page).locator('> header')
+const footer = (page: Page) => card(page).locator('> footer')
+/** A block of the card by its heading: every block is a <section> that opens with it. */
+const section = (page: Page, heading: string) =>
+  card(page).getByText(heading, { exact: true }).locator('xpath=ancestor::section[1]')
 /** A row of the places column (the rows are options of a list). */
 const row = (page: Page, name: string) => page.getByRole('option', { name: new RegExp(`^${name}`) }).first()
 /** A stop inside a day card. Day notes and to-dos share the class, so filter by the name. */
 const stop = (page: Page, name: string) => page.locator('.dp-row[role="button"]').filter({ hasText: name }).first()
 /** PlaceRating's root: the stars, the average and the voter faces on one line. */
 const ratingRow = (page: Page) => card(page).getByRole('radiogroup', { name: 'Your rating' }).locator('xpath=..')
-/** ParticipantsBox: found by its eyebrow, which is the box's first child. */
-const participants = (page: Page) => card(page).getByText('Participants', { exact: true }).locator('xpath=..')
+/** ParticipantsBox: the block under its heading. */
+const participants = (page: Page) => section(page, 'Participants')
 /** A member's chip, or, once the chip is gone, that member's line in the add list. */
 const member = (page: Page, name: string) => participants(page).getByRole('button', { name: new RegExp(name) })
-const addMember = (page: Page) => participants(page).getByRole('button', { name: '+', exact: true })
+const addMember = (page: Page) => participants(page).getByRole('button', { name: 'Add', exact: true })
 /** "Files" while the place has none, "<n> files" once it has. */
 const filesToggle = (page: Page) => card(page).getByRole('button', { name: /^(Files|\d+ files)$/ })
 /** The booking strip opens the booking; it is a button named after it. */
@@ -71,8 +74,8 @@ const weekday = (offset: number) => long(offset).split(',')[0]
  * ("Saturday: 06:00-17:00") and the day moves with the run.
  */
 const hoursRow = (page: Page) => card(page).locator('button:has(svg.lucide-clock)')
-/** The hours box: the row and, once unfolded, the week under it. */
-const hoursBox = (page: Page) => hoursRow(page).locator('xpath=..')
+/** The hours block: the row and, once unfolded, the week in its place. */
+const hoursBox = (page: Page) => section(page, 'Opening Hours')
 
 /** The card's own X, the one in its head; the day panel over the map has another. */
 async function closeCard(page: Page): Promise<void> {
@@ -237,7 +240,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         // around the collapsed row would show the reader one line of it.
         prepare: async p => {
           await hoursRow(p).click()
-          await expect(hoursRow(p)).toHaveText('Opening Hours')
+          await expect(hoursBox(p).getByRole('button', { name: 'Collapse' })).toBeVisible()
           await expect(hoursBox(p).getByText(/^Sunday: /)).toBeVisible()
           await settle(p)
         },
@@ -551,7 +554,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await expect(card(p).getByText('Track Stats', { exact: true })).toBeVisible()
         },
       },
-      only(p => card(p).getByText('Track Stats', { exact: true }).locator('xpath=ancestor::div[2]')),
+      only(p => section(p, 'Track Stats')),
       {
         target: p => card(p).getByRole('button', { name: 'Track color' }),
         act: async p => {

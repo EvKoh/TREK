@@ -1399,7 +1399,7 @@ const help: TranslationStrings = {
     '“计划”是三栏：左边是天数，中间是地图，右边是地点。预订和交通就住在计划里，位于停靠点上和停靠点之间；标签页把它们列出来。',
   'help.ctx.trip.bullet.3': '右上角的“分享”打开旅行里的人：成员、访客、邀请链接和只读的公开链接。',
   'help.ctx.trip.bullet.4': '标题、日期、封面和货币在“我的旅行”里编辑，用旅行卡片上的铅笔。',
-  'help.ctx.trip.bullet.5': '栏内侧边缘的折叠箭头把这一栏收起来，地图占据空间；栏旁边的细分隔线改变它的宽度。',
+  'help.ctx.trip.bullet.5': '栏内侧边缘的小把手把这一栏收起来，地图占据空间；栏旁边的细分隔线改变它的宽度。',
   'help.ctx.trip.bullet.6': '天数工具栏里的撤销箭头收回对计划的上一次更改。',
   // add-member
   'help.guide.add-member.title': '添加成员',
@@ -1450,8 +1450,9 @@ const help: TranslationStrings = {
   'help.guide.collapse-columns.title': '给地图腾出空间',
   'help.guide.collapse-columns.goal': '收起一栏，或者给它更多宽度。',
   'help.guide.collapse-columns.step.1':
-    '点击天数栏内侧边缘的折叠箭头把它收起来；地图占据这块空间。地点栏有同样的箭头。',
-  'help.guide.collapse-columns.step.2': '再次点击折叠箭头，把这一栏找回来。',
+    '点击天数栏内侧边缘带面板图标的小把手，把这一栏收起来；地图占据这块空间。地点栏有同样的小把手。',
+  'help.guide.collapse-columns.step.2':
+    '收起的栏会在地图角落留下一个小方块，天数栏是“计划”，地点栏是“地点”。点击它，把这一栏找回来。',
   'help.guide.collapse-columns.step.3': '拖动栏与地图之间的细分隔线来改变栏的宽度。',
   'help.guide.collapse-columns.result': '宽度会被记住；下次访问时各栏会恢复展开。',
   'help.guide.collapse-columns.tip.1': '两栏可以同时收起，得到只有地图的视图。',
@@ -1471,24 +1472,25 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.1':
     '顶部的“添加地点/活动”打开一个表单，用来输入或搜索地点。当某一天打开时，按钮变成“新地点”，旁边的“加入当天”直接把地点创建到那一天。',
   'help.ctx.trip-places.bullet.2':
-    '“导入文件”接受 .gpx、.kml 和 .kmz 文件；“列表导入”接受共享的 Google Maps 或 Naver Maps 列表。文件也可以直接拖放到这一栏上。',
+    '它旁边的导入按钮提供“导入文件”，用于 .gpx、.kml 和 .kmz 文件，以及“Google 列表”（同时开启 Naver 列表时为“列表导入”），用于从 Google Maps 或 Naver Maps 分享的列表。文件也可以直接拖放到这一栏上。',
   'help.ctx.trip-places.bullet.3':
-    '下拉菜单在“全部”“未规划”“已规划”之间切换，导入轨迹之后还会有“路线”；它下方是搜索框、分类筛选和用于最低评分的星标。',
+    '它们下方是搜索框，旁边是开始选择的对勾，再下面是一排筛选：“显示”在“全部”“未规划”“已规划”之间切换，导入轨迹之后还会有“路线”，每一项都带数量；标签按钮按分类筛选，星标按最低评分筛选。',
   'help.ctx.trip-places.bullet.4':
-    '一行显示图片、名称以及描述或地址。点击它查看地点详情，把它拖到某一天，或者右键点击它，得到“编辑”“+ 天”“打开网站”“Google 地图”“保存到收藏”和“删除”。',
+    '一行显示图片、名称以及描述或地址。点击它查看地点详情，把它拖到某一天，或者右键点击它（或点击它的三个点），得到“编辑”“+ 天”“打开网站”“Google 地图”“保存到收藏”和“删除”。',
   'help.ctx.trip-places.bullet.5':
-    '在某一天打开时，未规划行末尾的 + 会把地点放到那一天，而“已规划”只列出那一天，旁边的“显示整个行程”可以再次放宽。',
-  'help.ctx.trip-places.bullet.6': '筛选行右端的对勾开始一次选择：多行一次性获得新分类、进入某个收藏或被删除。',
+    '在某一天打开时，未规划行末尾的“+ 天”会把地点放到那一天，而“已规划”只列出那一天，旁边的“显示整个行程”可以再次放宽。',
+  'help.ctx.trip-places.bullet.6':
+    '搜索框旁边的对勾开始一次选择：通过栏底部的操作栏，多行一次性获得新分类、进入某个收藏、标记为已去过或被删除。',
   // create-place
   'help.guide.create-place.title': '创建地点',
   'help.guide.create-place.goal': '手动添加一个地点或活动，连同计划需要知道的一切。',
   'help.guide.create-place.step.1': '点击地点栏顶部的“添加地点/活动”（某一天打开时是“新地点”）。表单打开。',
   'help.guide.create-place.step.2':
-    '在顶部的“搜索地点...”里输入地点并选一个结果。“名称”“地址”“纬度”“经度”和“网站”会自动填好，左侧的“地点详情”显示图片、营业时间和一段描述。在配了 Google 密钥的 TREK 上，“不是想找的地点？改用 Google 搜索”就在结果列表下方，它用 Google 跑同一个搜索。',
+    '在“搜索地点...”里输入地点并选一个结果。对话框头部的名称、“地址”“纬度”“经度”和“网站”会自动填好，左侧的“地点详情”显示图片、营业时间和一段描述。在配了 Google 密钥的 TREK 上，“不是想找的地点？改用 Google 搜索”就在结果列表下方，它用 Google 跑同一个搜索。右侧的“已保存的地点”以同样的方式提供你收藏里的地点。',
   'help.guide.create-place.step.3':
     '在“地点详情”里，点击“选择图片”下方的一张图片就把它设为地点的配图；“使用此文本”把描述接过来填入表单。',
   'help.guide.create-place.step.4':
-    '检查各个字段：“名称”必填；“描述”和“备注”由你自己写；“地址”“纬度”和“经度”来自搜索或手动输入；“分类”从旅行的分类里选一个，旁边的 + 可以当场新建一个；“网站”放链接。',
+    '检查表单里的内容：名称在对话框头部，是唯一的必填项；它下面的“分类”小标签从旅行的分类里选一个，旁边的 + 可以当场新建一个。“地址”“纬度”和“经度”来自搜索或手动输入；“描述”和“备注”由你自己写；“网站”放链接。',
   'help.guide.create-place.step.5': '点击“添加”。如果旅行里已经有同名的地点，表单会说明，按钮变成“仍然添加”。',
   'help.guide.create-place.result': '地点已经在列表里和地图上，在被放到某一天之前位于“未规划”下。',
   'help.guide.create-place.tip.1':
@@ -1503,7 +1505,8 @@ const help: TranslationStrings = {
     '在天数栏里点击某一天的标题。这一天就打开了：它的卡片高亮，地点栏多出“加入当天”按钮。',
   'help.guide.place-to-open-day.step.2':
     '“加入当天”打开的表单和“新地点”一样，只是你点击“添加”的那一刻地点就落在打开的那一天上。',
-  'help.guide.place-to-open-day.step.3': '已经存在的地点，用它那一行末尾的 + 或者右键点击后的“+ 天”放到打开的那一天。',
+  'help.guide.place-to-open-day.step.3':
+    '已经存在的地点，用它那一行末尾的“+ 天”或者右键点击后的“+ 天”放到打开的那一天。',
   'help.guide.place-to-open-day.step.4':
     '反过来也行，而且不用先打开某一天：把地点的那一行拖出列表，放到某天的卡片上。放在两个停靠点之间，它就正好落在那里。',
   'help.guide.place-to-open-day.result': '地点列在那一天下面，排在最后；上下拖动把它放到该在的位置。',
@@ -1514,11 +1517,11 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': '在列表里找到地点',
   'help.guide.filter-places.goal': '把这一栏收窄到你要找的地点。',
   'help.guide.filter-places.step.1':
-    '顶部的下拉菜单在“全部”、“未规划”（还不在任何一天上）、“已规划”（在某一天上）和“路线”（导入的 GPX 轨迹）之间切换，每一项都带数量。',
-  'help.guide.filter-places.step.2': '在“搜索地点...”里输入；列表随着输入不断收窄。',
+    '搜索框下方的下拉菜单“显示”在“全部”、“未规划”（还不在任何一天上）、“已规划”（在某一天上）和“路线”（导入的 GPX 轨迹）之间切换，每一项都带数量。',
+  'help.guide.filter-places.step.2': '在顶部的“搜索”里输入；列表随着输入不断收窄。',
   'help.guide.filter-places.step.3':
-    '“所有分类”打开一个列表，可以勾选一个或多个分类，“无分类”也在其中；底部的“清除筛选”把它重置。',
-  'help.guide.filter-places.step.4': '旁边的星标设定最低评分：5+、4+ 等等，只显示你打分不低于该值的地点。',
+    '“显示”旁边的标签按钮列出各个分类：勾选一个或多个，“无分类”也在其中。按钮会显示勾选的数量，列表底部的“清除筛选”把它们全部取消。',
+  'help.guide.filter-places.step.4': '它旁边的星标设定最低评分：5+、4+ 等等，只显示你打分不低于该值的地点。',
   'help.guide.filter-places.result': '行上方的数字说明有多少地点符合；各个筛选条件会叠加。',
   'help.guide.filter-places.tip.1':
     '某一天打开时，“已规划”只列出那一天并会说明：“仅显示当前打开的日期”，旁边是“显示整个行程”。',
@@ -1528,7 +1531,7 @@ const help: TranslationStrings = {
   'help.guide.edit-place.goal': '改个名字、挪一下图钉、加上网站或者换个分类。',
   'help.guide.edit-place.step.1': '右键点击该行并选择“编辑”，或者打开地点并在它的详情里点击“编辑”。',
   'help.guide.edit-place.step.2':
-    '改你需要的：“名称”“描述”“备注”“地址”“纬度”和“经度”“分类”“网站”。从某一天打开时，表单里还有“当天备注”以及那一天的“开始”和“结束”。',
+    '改你需要的：对话框头部的名称和“分类”小标签、“地址”“纬度”和“经度”“描述”“备注”和“网站”。从某一天打开时，表单里还有“开始”和“结束”以及“当天备注”。',
   'help.guide.edit-place.step.3': '点击“更新”。',
   'help.guide.edit-place.result': '改动在地点出现的所有地方生效：列表、地图和它所在的每一天。',
   'help.guide.edit-place.tip.1': '“当天备注”属于这个地点在那一天上的条目；“备注”属于地点本身。',
@@ -1538,18 +1541,18 @@ const help: TranslationStrings = {
   'help.guide.delete-place.goal': '把一个地点彻底移出旅行。',
   'help.guide.delete-place.step.1': '右键点击该行并选择“删除”，或者在地点详情里点击“删除”。',
   'help.guide.delete-place.step.2':
-    '确认。如果这个地点上订了一晚住宿，或者有预订与它相关，提示会说明会一并消失的内容。',
+    '在提示里点击“删除”。如果这个地点上订了一晚住宿，或者有预订与它相关，提示会说明会一并消失的内容。',
   'help.guide.delete-place.result': '地点从列表、地图和每一天都消失了；天数上方工具栏里的“撤销”能把它找回来。',
   'help.guide.delete-place.tip.1': '只想把地点从某一天上拿掉，就改在那个停靠点上用“从当天移除”。',
-  'help.guide.delete-place.tip.2': '一次处理多个地点：筛选旁边的对勾开始一次选择。',
+  'help.guide.delete-place.tip.2': '一次处理多个地点：搜索框旁边的对勾开始一次选择。',
   // select-places
   'help.guide.select-places.title': '一次修改或删除多个地点',
   'help.guide.select-places.goal': '一次性整理列表，而不是一个一个来。',
-  'help.guide.select-places.step.1': '点击筛选行右端的对勾。各行出现复选框，并出现一条带有各项操作的操作栏。',
-  'help.guide.select-places.step.2': '勾选各行，或者用操作栏上的“全选”；操作栏会统计选中的数量。',
+  'help.guide.select-places.step.1': '点击搜索框旁边的对勾。各行出现圆形复选框，栏底部升起一条带有各项操作的操作栏。',
+  'help.guide.select-places.step.2': '点击各行来勾选它们。操作栏上的双对勾“全选”会选中筛选后留下的每一行。',
   'help.guide.select-places.step.3':
-    '“更改分类”给它们全部同一个分类；“保存到收藏”把它们复制到你的某个收藏里；“删除所选”在确认之后把它们移除。',
-  'help.guide.select-places.step.4': '再次点击对勾即可退出选择。',
+    '操作栏会统计勾选的地点数量。“更改分类”给它们全部同一个分类；“保存到收藏”把它们复制到你的某个收藏里；“删除所选”在确认之后把它们移除。',
+  'help.guide.select-places.step.4': '“完成”，也就是操作栏末尾的 X，会退出选择。',
   'help.guide.select-places.result': '改动作用于每一个选中的地点；删除可以从天数上方的工具栏撤销。',
   'help.guide.select-places.tip.1': '选择期间筛选仍然有效：先筛到“未规划”，再用“全选”就正好抓到那些。',
   'help.guide.select-places.tip.2':
@@ -1557,7 +1560,8 @@ const help: TranslationStrings = {
   // import-places-file
   'help.guide.import-places-file.title': '从 GPX、KML 或 KMZ 文件导入地点',
   'help.guide.import-places-file.goal': '把 Google My Maps、Google Earth 或 GPS 记录器导出的内容带进来。',
-  'help.guide.import-places-file.step.1': '点击“导入文件”，或者把文件拖放到地点栏的任意位置。',
+  'help.guide.import-places-file.step.1':
+    '点击添加按钮旁边的导入按钮并选择“导入文件”，或者把文件拖放到地点栏的任意位置。',
   'help.guide.import-places-file.step.2':
     '选择文件或把它拖进方框。对于 GPX，勾选要导入的内容：“路点”“路线”“轨迹（含路径几何）”；对于 KML 和 KMZ，是“点（Placemarks）”和“路径（LineStrings）”。',
   'help.guide.import-places-file.step.3':
@@ -1571,7 +1575,8 @@ const help: TranslationStrings = {
   // import-places-list
   'help.guide.import-places-list.title': '导入共享的 Google Maps 或 Naver Maps 列表',
   'help.guide.import-places-list.goal': '把共享列表的链接变成地点。',
-  'help.guide.import-places-list.step.1': '点击“列表导入”并选择“Google 列表”或“Naver 列表”。',
+  'help.guide.import-places-list.step.1':
+    '点击添加按钮旁边的导入按钮并选择“Google 列表”。同时开启 Naver 列表时，这一项显示为“列表导入”，对话框会问你选两者中的哪一个。',
   'help.guide.import-places-list.step.2':
     '粘贴该列表的共享链接。Google Maps 的路线规划链接也可以：它的各个停靠点会按驾车顺序变成地点。',
   'help.guide.import-places-list.step.3': '点击“导入”。',
@@ -1587,30 +1592,30 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.1':
     '顶部的工具栏：“导出”（PDF、日历、GPX）、“展开所有日期”/“折叠所有日期”、撤销箭头、“调整日期顺序”和“显示所有预订路线”。',
   'help.ctx.trip-days.bullet.2':
-    '一张日期卡片：标题栏里有天数、天气、标题、日期和当天的费用；点击标题栏打开这一天，它的折叠箭头把卡片收起来。“公共交通”“添加交通”和“添加备注”也在标题栏里。',
+    '一张日期卡片：一个带天数和天气预报的小方块、标题和日期，以及已订住宿、租车和当天费用的小标签。点击头部打开这一天，折叠箭头把它收起来，+ 打开一个菜单：“添加地点到这一天”“添加住宿”“添加交通”“公共交通”和“添加备注”。',
   'help.ctx.trip-days.bullet.3':
-    '一天内部：按顺序排列的停留点，每个都有图片、名称、时间和图片上的锁；备注；属于这一天的预订；以及停留点之间每一段的行程时间。',
+    '一天内部：按顺序排列的停留点，每个都有图片、名称、时间、图片上的锁以及挂在它上面的预订；备注；这一天的预订和交通，按类型着色；以及停留点之间每一段的行程时间。每一行都有一个三点菜单，和右键点击打开的菜单相同。',
   'help.ctx.trip-days.bullet.4':
     '停留点下方是路线栏：“路线”把这一天画在地图上，“优化”给停留点排序，“驾车”/“步行”设定当天的出行方式，“在 Google Maps 中打开”和“在 CoMaps 中打开”把这一天交出去。',
   'help.ctx.trip-days.bullet.5':
-    '地点进入某一天的方式：从地点栏拖一行过来、用该行上的 +、在空的一天用“添加地点到这一天”，或者从地点详情里。',
+    '地点进入某一天的方式：从地点栏拖一行过来、用该行上的“+ 天”、通过这一天的 + 或在空的一天用“添加地点到这一天”，或者从地点详情里。',
   'help.ctx.trip-days.bullet.6': '底部的“总费用”把每一个带价格的停留点和预订按行程的货币加起来。',
   // read-day-plan
   'help.guide.read-day-plan.title': '读懂一天',
   'help.guide.read-day-plan.goal': '在动手改动之前，先知道日期卡片的每一部分在告诉你什么。',
   'help.guide.read-day-plan.step.1':
-    '标题栏：天数、当天的天气预报、“第 1 天”或你给它起的标题、日期和当天的费用。点击标题栏打开这一天（它的“日程详情”面板在地图上方打开）；右侧的折叠箭头把卡片收起或展开。',
+    '头部：一个带天数和天气预报的小方块，然后是“第 1 天”或你给它起的标题、日期，以及已订住宿（入住或退房）、租车和当天费用的小标签。点击头部打开这一天（它的“日程详情”面板在地图上方打开）；右侧的 + 添加地点、住宿、交通、公共交通路线或备注，折叠箭头把卡片收起来。',
   'help.guide.read-day-plan.step.2':
-    '一个停留点：左边的握柄用来拖动，图片上带着用于路线优化的锁，接着是名称、描述，以及设置过的话，“当天备注”。停留点有时间时会显示一个标出“开始”和“结束”的时间标签；它右端出现的箭头把它上移或下移。',
+    '一个停留点：左边的握柄用来拖动，图片上带着用于路线优化的锁，接着是名称、停留点有“开始”和“结束”时显示的时间标签、描述，以及设置过的话，“当天备注”。它右端的箭头把它上移或下移，三个点打开它的菜单。',
   'help.guide.read-day-plan.step.3':
-    '当天的预订：绑在某个停留点上的预订会把这个停留点标为“预订已确认”或“预订待确认”；交通显示为“出发”或“到达”，带时间和路线，旁边一个小开关把那条路线画在地图上。',
+    '停留点上的预订以“预订”标签的形式显示在它上面，已确认时为绿色，待确认时为琥珀色，并带有时间和服务商；点击标签打开预订，旁边的路线按钮画出它的路线。交通单独占一行，按类型着色，带“出发”或“到达”和时间。点击一条预订会打开它的详情；在那里点“编辑”即可修改。',
   'help.guide.read-day-plan.step.4':
     '两个停留点之间的连接线按当天的出行方式说明这一段要多久、有多远；点击它就能只改这一段的方式。',
   'help.guide.read-day-plan.step.5':
     '末尾的路线栏：“路线”把这一天的路画在地图上，“优化”重排停留点，方式按钮选择“驾车”或“步行”，“在 Google Maps 中打开”和“在 CoMaps 中打开”把这一天在那里打开。',
   'help.guide.read-day-plan.result': '卡片上的每个符号都有含义；下面的指南会逐个改动它们。',
   'help.guide.read-day-plan.tip.1':
-    '右键点击一个停留点打开它的菜单：“编辑”“从当天移除”“打开网站”、导航应用（Google Maps、Waze、Apple Maps、OpenStreetMap、CoMaps）、“保存到收藏”“删除”。',
+    '右键点击一个停留点，或点击它的三个点，打开它的菜单：“编辑”“从当天移除”“打开网站”、导航应用（Google Maps、Waze、Apple Maps、OpenStreetMap、CoMaps）、“保存到收藏”“删除”。',
   'help.guide.read-day-plan.tip.2':
     '把鼠标停在一个停留点上，末尾会出现“添加预订”：在那里创建的预订就绑在这一天的这个停留点上。',
   // place-onto-day
@@ -1619,8 +1624,9 @@ const help: TranslationStrings = {
   'help.guide.place-onto-day.step.1':
     '从地点栏把一行拖到日期卡片上。放在两个停留点之间就正好插在那里，放在卡片的任意位置则追加到末尾。',
   'help.guide.place-onto-day.step.2':
-    '不用拖动：点击标题栏打开这一天，然后点击地点行末尾的 +，或者右键点击该行并选择“+ 天”。',
-  'help.guide.place-onto-day.step.3': '在空的一天，“添加地点到这一天”打开地点表单，新地点立刻落在这一天上。',
+    '不用拖动：点击头部打开这一天，然后点击地点行末尾的“+ 天”，或者右键点击该行并选择“+ 天”。',
+  'help.guide.place-onto-day.step.3':
+    '这一天 + 菜单里或空的一天上的“添加地点到这一天”会打开地点表单，新地点立刻落在这一天上。',
   'help.guide.place-onto-day.step.4':
     '在地点详情里，“添加到当天”会问放到哪一天；某一天打开时，地点栏里的“加入当天”直接在打开的那一天创建一个新地点。',
   'help.guide.place-onto-day.result': '这个地点成了当天的停留点，在地图上带着这一天的编号，地点栏把它算在“已规划”下。',
@@ -1643,7 +1649,8 @@ const help: TranslationStrings = {
   // set-stop-times
   'help.guide.set-stop-times.title': '给停留点一个时间',
   'help.guide.set-stop-times.goal': '定下停留点什么时候开始、什么时候结束，让这一天读起来像一份时间表。',
-  'help.guide.set-stop-times.step.1': '右键点击停留点并选择“编辑”。从这一天打开时，表单底部有“开始”和“结束”。',
+  'help.guide.set-stop-times.step.1':
+    '右键点击停留点，或点击它的三个点，然后选择“编辑”。从这一天打开时，表单在位置下方就有这一天的“开始”和“结束”。',
   'help.guide.set-stop-times.step.2':
     '填写“开始”，需要的话再填“结束”。“时间冲突：”会提示当天另一个有时间的停留点与它重叠；早于“开始”的“结束”会挡住“更新”。',
   'help.guide.set-stop-times.step.3': '点击“更新”。停留点得到一个时间标签，并移到这一天里它的时间所属的位置。',
@@ -1674,11 +1681,12 @@ const help: TranslationStrings = {
   // day-note
   'help.guide.day-note.title': '给一天加一条备注',
   'help.guide.day-note.goal': '把一个提醒、一个票号或者一个备用方案直接放在这一天里。',
-  'help.guide.day-note.step.1': '在这一天的标题栏点击“添加备注”。',
+  'help.guide.day-note.step.1': '点击这一天头部的 +，然后选择“添加备注”。',
   'help.guide.day-note.step.2':
-    '在“备注”里给它起个名字，日期卡片上显示的就是它，其余的写在“每日备注”里。上方的“格式”工具栏负责排版（“加粗”“项目符号列表”“编号列表”“链接”“引用”），左边的“预览”显示它将变成的卡片。',
+    '在对话框头部写着“备注”的地方输入备注的名字；日期卡片上显示的就是它。其余的写在“每日备注”里：上方的工具栏负责排版（加粗、列表、链接、引用），左边的“预览”显示它将变成的那一行。',
   'help.guide.day-note.step.3': '挑一个“图标”和一种“颜色”，让备注从停留点中间显出来，然后“添加”。',
-  'help.guide.day-note.step.4': '备注像停留点一样待在这一天里：拖动它到合适的位置，右键点击它得到“编辑”和“删除”。',
+  'help.guide.day-note.step.4':
+    '备注像停留点一样待在这一天里：拖动它到合适的位置，右键点击它或用它的三个点得到“编辑”和“删除”。',
   'help.guide.day-note.result': '备注是这一天的一部分，PDF 里也有；带时间的备注会和有时间的停留点一起排序。',
   'help.guide.day-note.tip.1': '带时间的备注可以顶替一趟你没有预订的交通：“08:15 从中央车站坐 S3”。',
   'help.guide.day-note.tip.2': '备注是按天的；面向整趟行程的备注属于“协作”。',
@@ -1717,15 +1725,15 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.title': '读懂计划里的预订和交通',
   'help.guide.bookings-in-plan.goal': '知道一份预订存在之后会出现在哪里，以及哪个界面创建它。',
   'help.guide.bookings-in-plan.step.1':
-    '一趟交通（航班、火车、渡轮、公交车、汽车）在出发那天显示为“出发”，在到达那天显示为“到达”，带时间和路线；跨多天的会横跨中间的日子。',
+    '一趟交通（航班、火车、渡轮、公交车、汽车）是按类型着色的一行：出发那天显示“出发”，到达那天显示“到达”，带时间和路线；跨多天的会横跨中间的日子。点击这一行即可打开预订。',
   'help.guide.bookings-in-plan.step.2':
-    '绑在某个停留点上的预订（餐厅、旅游团）会把那个停留点标为“预订已确认”或“预订待确认”；有日期但没有停留点的预订在这一天里自成一行。',
+    '绑在某个停留点上的预订（餐厅、旅游团）是该停留点上的“预订”标签，已确认时为绿色，待确认时为琥珀色，并带有时间；有日期但没有停留点的预订在这一天里自成一行。',
   'help.guide.bookings-in-plan.step.3':
     '在酒店过的一夜是住宿：它在当天的“日程详情”面板里“住宿”下面，从“入住”到“退房”，而这几天里每一天的路线都从那里开始。',
   'help.guide.bookings-in-plan.step.4':
     '在地图上，交通那一行上的开关会画出它的路线；工具栏里的“显示所有预订路线”把它们全都画出来。',
   'help.guide.bookings-in-plan.step.5':
-    '创建的地方：停留点悬停时出现的“添加预订”、日期标题栏里的“添加交通”和“公共交通”，以及带导入和文件的完整列表“预订”和“交通”标签页。',
+    '创建的地方：停留点悬停时出现的“添加预订”、这一天 + 菜单里的“添加交通”和“公共交通”，以及带导入和文件的完整列表“预订”和“交通”标签页。',
   'help.guide.bookings-in-plan.result': '一份预订，在计划里只有一个位置；标签页里是同样这些预订，只是列成了表。',
   'help.guide.bookings-in-plan.tip.1':
     '“已确认”和“待确认”是你在预订上设定的状态；计划把它显示在停留点上，“预订”标签页两者都计入。',
@@ -1752,23 +1760,22 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.1':
     '点击地点栏里的一行、某一天里的一个停靠点，或者地图上的一个标记，卡片就在地图上打开。在某一天里选中它，卡片就知道你指的是哪个停靠点，这也正是把该停靠点的参与者和它的预订一起带出来的原因。',
   'help.ctx.trip-place.bullet.2':
-    '头部带着圆形图片、名称、分类、地址和坐标。点击图片可以换成你自己的，双击名称可以当场重命名地点，右边的 X 关闭卡片。',
-  'help.ctx.trip-place.bullet.3':
-    '下面是：有价格时的价格、每位旅行者给这个地点的星、描述和备注，以及停靠点带有备注时的“当天备注”。',
+    '头部带着圆形图片、名称、一行地址，以及已知信息的小标签：营业或关闭、分类、价格、电话号码和坐标。点击图片可以换成你自己的，双击名称可以当场重命名地点，右边的 X 关闭卡片。',
+  'help.ctx.trip-place.bullet.3': '下面是：每位旅行者给这个地点的星、描述和备注，以及停靠点带有备注时的“当天备注”。',
   'help.ctx.trip-place.bullet.4':
     '接着按适用情况显示“营业时间”“轨迹颜色”“轨迹数据”和“文件”。“文件”接收你文件夹里的任何东西，也会列出挂在这个停靠点预订上的文件。',
   'help.ctx.trip-place.bullet.5':
     '底部那一行：某一天打开时是“添加到当天”或“从当天移除”，然后是“保存到收藏”“导航”“打开网站”“编辑”和“删除”。',
   'help.ctx.trip-place.bullet.6':
-    '从搜索里挑出来的地点带着 TREK 索引或 OpenStreetMap 对它的了解：图片周围绿色的“营业中”或红色的“已关闭”圆环，按地点自己的时钟判断；星星下方的电话号码；再往下的“营业时间”，那一行写着当天的时段，点一下展开整周；以及“打开网站”背后的网站。Google 的评分只在通过 Google 找到的地点上显示，且这台 TREK 要有 Google 密钥。',
+    '从搜索里挑出来的地点带着 TREK 索引或 OpenStreetMap 对它的了解：头部小标签里的“营业中”或“已关闭”，图片周围配有绿色或红色圆环，按地点自己的时钟判断；电话号码同样是一个小标签；再往下的“营业时间”，那一行写着当天的时段，点一下展开整周；以及“打开网站”背后的网站。Google 的评分只在通过 Google 找到的地点上显示，且这台 TREK 要有 Google 密钥。',
   // read-place
   'help.guide.read-place.title': '卡片告诉你关于一个地点的什么',
   'help.guide.read-place.goal': '在一张卡片里读到旅行关于一个地点知道的一切。',
   'help.guide.read-place.step.1': '在天数栏里点击你想读的停靠点。卡片在地图上打开，该停靠点在它那一天里保持高亮。',
   'help.guide.read-place.step.2':
-    '头部：圆形图片、名称、地址和精确坐标。图片周围带“营业中”的绿色圆环或带“已关闭”的红色圆环，说明这个地点此刻是否营业，按它自己的时钟判断，前提是 TREK 知道它的营业时间。右边的 X 再次关闭卡片。',
+    '头部：圆形图片、名称和一行地址；鼠标悬停提示里有完整地址。下面的小标签按地点自己的时钟显示此刻是“营业中”还是“已关闭”，图片周围配有相应的绿色或红色圆环；小标签里还有电话号码，点一下就交给你的电话应用，以及精确坐标。右边的 X 再次关闭卡片。',
   'help.guide.read-place.step.3':
-    '下面是每位旅行者给这个地点的星，带平均分和投票人数。还没有人评分时显示“暂无评分”。紧接着是电话号码，如果地点有的话：点一下就把号码交给你的电话应用。',
+    '头部下方首先是“评分”：每位旅行者给这个地点的星，带平均分和投票人数。还没有人评分时显示“暂无评分”。',
   'help.guide.read-place.step.4':
     '然后是描述，下面是备注。两者都是地点表单里的文本渲染后的样子：列表、链接和粗体都有效。',
   'help.guide.read-place.step.5': '“参与者”说明谁会去这个停靠点。在你把某人移出去之前，所有人都在。',
@@ -1839,15 +1846,15 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': '停靠点上的预订',
   'help.guide.place-booking.goal': '读取属于某个停靠点的预订、打开它，并把新的预订挂上去。',
   'help.guide.place-booking.step.1':
-    '打开该预订所属的停靠点。卡片显示一条横条，上面是“已确认”或“待确认”以及预订的名称。',
-  'help.guide.place-booking.step.2': '这条横条带着“日期”“时间”和“预订码”，以及这笔预订的任何备注。',
-  'help.guide.place-booking.step.3': '点击这条横条。预订会在地图上方打开。',
+    '打开该预订所属的停靠点。卡片在“预订”下把它列为一张单独的小卡片，上面是预订的名称以及“已确认”或“待确认”。',
+  'help.guide.place-booking.step.2': '预订卡片带着“日期”“时间”和“预订码”，以及这笔预订的任何备注。',
+  'help.guide.place-booking.step.3': '点击预订卡片。预订会在地图上方打开。',
   'help.guide.place-booking.step.4':
     '预订底部的“编辑”会打开它自己的表单。那里的“关联日程分配”就是把预订挂到停靠点上的字段，这里它已经写着这个停靠点。再把表单关掉。',
   'help.guide.place-booking.step.5':
-    '为某个停靠点新建预订要从天数栏开始：鼠标悬停在停靠点上，点击它末尾的 +。表单以“新建预订”打开，并已经关联到它。',
+    '为某个停靠点新建预订要从天数栏开始：鼠标悬停在停靠点上，点击它末尾的票据图标“添加预订”。表单以“新建预订”打开，并已经关联到它。',
   'help.guide.place-booking.result': '预订挂在停靠点上：它在卡片里、在当天里，它的文件也列在这里的“文件”下面。',
-  'help.guide.place-booking.tip.1': '这条横条只对预订所挂的那个停靠点显示。没有停靠点的预订待在“预订”标签页里。',
+  'help.guide.place-booking.tip.1': '预订卡片只对预订所挂的那个停靠点显示。没有停靠点的预订待在“预订”标签页里。',
   'help.guide.place-booking.tip.2': '多条预订可以共用一个停靠点：午餐，以及从同一个门口出发的那趟行程。',
   'help.guide.place-booking.tip.3': '火车、航班或渡轮打开的是交通表单，也就是“交通”标签页用的那个。',
   // place-files
@@ -2040,7 +2047,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-day-detail.bullet.3':
     '最上面是这一天的天气。“…的天气预报”指明它对应哪个地点：这一天的第一个停靠点，或者你醒来时所在的酒店。',
   'help.ctx.trip-day-detail.bullet.4':
-    '“预订”列出那一天的预订，每条都带类型、所属停靠点和时间。绿色表示已确认，琥珀色还是待确认；这里只是读数，预订要在“预订”标签页里更改。',
+    '“预订”列出那一天的预订，每条都带类型、所属停靠点和时间。绿色表示已确认，琥珀色还是待确认，点击一行即可打开这条预订。',
   'help.ctx.trip-day-detail.bullet.5':
     '“住宿”显示压在这一天上的每一晚，“入住”和“退房”出现在各自发生的那一天，还有入住时间段、退房时间和确认号。',
   'help.ctx.trip-day-detail.bullet.6':
@@ -2065,7 +2072,7 @@ const help: TranslationStrings = {
   'help.guide.day-weather.step.1':
     '“…的天气预报”指明这些数字属于哪个地点：这一天的第一个停靠点，或者在没有停靠点的一天里，你醒来时所在的酒店。',
   'help.guide.day-weather.step.2': '大数字是这一天的气温，旁边是最低和最高，以及用文字说明的天气状况。',
-  'help.guide.day-weather.step.3': '下面的小标签：降水概率、降水量、最强的风，还有日出和日落。',
+  'help.guide.day-weather.step.3': '它右边的小标签：降水概率、降水量、最强的风，还有日出和日落。',
   'help.guide.day-weather.step.4':
     '最下面是这一天的逐小时情况，每隔两小时一格：时间、图标、气温和降水概率。超过 50% 的小时会染成蓝色。',
   'help.guide.day-weather.result': '天数栏里这一天的卡片，也在它的编号下面用小字带着同样的天气，整趟行程一眼就能读完。',
@@ -2093,14 +2100,14 @@ const help: TranslationStrings = {
     '住处必须先是旅行里的一个地点。像创建其他地点一样在地点栏里创建它：选择器只提供已经存在的东西。',
   'help.guide.add-accommodation.step.2': '打开你抵达的那一天，点击“住宿”下面的“添加住宿”。',
   'help.guide.add-accommodation.step.3':
-    '“应用到天数”说明这次住宿覆盖哪几晚：左边是入住日，右边是退房日。“全部”覆盖整趟旅行。',
+    '“应用到天数”说明这次住宿覆盖哪几晚：“开始”是入住日，“结束”是退房日，“全部”覆盖整趟旅行。对话框头部显示日期范围和晚数。',
   'help.guide.add-accommodation.step.4': '填写“入住”“截止”和“退房”，把预订号填在“确认号”里。这四项都可以留空。',
-  'help.guide.add-accommodation.step.5': '从旅行的地点里挑出住处。列表上方的小标签把它收窄到一个分类。',
+  'help.guide.add-accommodation.step.5': '从旅行的地点里挑出住处。列表上方的“分类”把它收窄到一个分类。',
   'help.guide.add-accommodation.step.6': '点击“保存”。',
   'help.guide.add-accommodation.result':
     '这次住宿出现在它覆盖的每一天上，第一天是“入住”，最后一天是“退房”。住处成为入住日的一个停靠点，地图因此画出去那里的路线，而“预订”标签页里出现一条“住宿”预订。',
   'help.guide.add-accommodation.tip.1': '选择器以你打开的那一天开始，退房是它的后一天；保存之前两者都可以移动。',
-  'help.guide.add-accommodation.tip.2': '创建酒店时给它旅行里的 Hotel 分类，列表上方的小标签一点就只剩下你的酒店。',
+  'help.guide.add-accommodation.tip.2': '创建酒店时给它旅行里的 Hotel 分类，列表上方的“分类”一点就只剩下你的酒店。',
   'help.guide.add-accommodation.tip.3':
     '时间全是可选的：没有入住时间、也没有确认号的住宿，照样覆盖它的夜晚，照样画出它的路线。',
   // edit-accommodation
@@ -2109,7 +2116,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.1': '在住宿的每一天里，卡片都显示住处、入住时间段、退房时间和确认号。',
   'help.guide.edit-accommodation.step.2': '它右边的铅笔重新打开这次住宿。弹窗此时写着“编辑住宿”。',
   'help.guide.edit-accommodation.step.3':
-    '改这一排字段：“入住”“截止”“退房”和“确认号”。它上面的天数和它下面的住处，在这里也能改。',
+    '修改“入住”“截止”“退房”和“确认号”。它们上面的天数和下面的住处，在这里也能改。',
   'help.guide.edit-accommodation.step.4': '点击“保存”。',
   'help.guide.edit-accommodation.step.5': '铅笔旁边的 X 结束这次住宿。它什么都不问，属于它的那条“住宿”预订也一并消失。',
   'help.guide.edit-accommodation.result': '这次更改一次就到达住宿覆盖的每一天，“预订”标签页里那条“住宿”预订也跟着变。',
@@ -2122,7 +2129,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.goal': '在一个地方看到这一天已经订好了什么，以及是否已确认。',
   'help.guide.day-bookings.step.1': '“预订”列出这一天的预订：日期落在这一天的，以及挂在它某个停靠点上的。',
   'help.guide.day-bookings.step.2':
-    '一行显示这是哪种预订、它的名称，如果它属于某个停靠点，就在一个圆点之后写出那个停靠点。它的时间在右端。',
+    '一行显示这是哪种预订、它的名称，如果它属于某个停靠点，就在后面用灰色写出那个停靠点。它的时间在右端，状态圆点之前。',
   'help.guide.day-bookings.step.3':
     '颜色说明一条预订处在什么状态：绿色的行已确认，琥珀色的还在待确认。酒店不在这个列表里，它们在下面有自己的板块。',
   'help.guide.day-bookings.step.4': '点击一行，预订就会打开。它底部的“编辑”用来修改；新的预订要在“预订”标签页里创建。',
