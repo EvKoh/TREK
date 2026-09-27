@@ -34,7 +34,10 @@ const defaultProps = {
 };
 
 /** The question a delete asks sits in its own portal; its Delete is the last one on the page. */
-const confirmDeleteButton = () => screen.getAllByRole('button', { name: 'Delete' }).at(-1)!;
+const confirmDeleteButton = () => {
+  const buttons = screen.getAllByRole('button', { name: 'Delete' });
+  return buttons[buttons.length - 1];
+};
 
 /** A card's head band carries its own Edit and Delete, named by their tooltips. */
 const cardAction = (title: string, name: 'Edit' | 'Delete') =>
