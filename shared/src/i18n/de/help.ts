@@ -2331,9 +2331,9 @@ const help: TranslationStrings = {
     'Öffne den Stopp, zu dem die Buchung gehört. Die Ortsdetails zeigen einen Streifen mit Bestätigt oder Ausstehend und dem Namen der Buchung.',
   'help.guide.place-booking.step.2':
     'Der Streifen trägt Datum, Uhrzeit und Buchungscode, dazu alle Notizen, die die Buchung hat.',
-  'help.guide.place-booking.step.3': 'Klick auf den Streifen. Das Formular der Buchung öffnet sich darauf.',
+  'help.guide.place-booking.step.3': 'Klick auf den Streifen. Die Buchung öffnet sich über der Karte.',
   'help.guide.place-booking.step.4':
-    'Mit Tagesplanung verknüpfen ist das, was eine Buchung an einen Stopp hängt, und hier nennt es schon diesen. Schließ das Formular wieder.',
+    'Bearbeiten am Fuß der Buchung öffnet ihr eigenes Formular. Mit Tagesplanung verknüpfen ist dort das, was eine Buchung an einen Stopp hängt, und hier nennt es schon diesen. Schließ das Formular wieder.',
   'help.guide.place-booking.step.5':
     'Eine neue Buchung für einen Stopp beginnt in der Tage-Spalte: Fahr über den Stopp und klick auf das + an seinem Ende. Das Formular öffnet sich als Neue Buchung, schon mit ihm verknüpft.',
   'help.guide.place-booking.result':
@@ -2701,7 +2701,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Die Farbe sagt, wo eine Buchung steht: eine grüne Zeile ist bestätigt, eine bernsteinfarbene noch ausstehend. Unterkünfte stehen nicht in dieser Liste, sie haben ihren eigenen Block darunter.',
   'help.guide.day-bookings.step.4':
-    'Die Liste gibt die Buchungen nur wieder. Angelegt und geändert wird eine Buchung unter Buchungen.',
+    'Klick eine Zeile an, und die Buchung öffnet sich. Bearbeiten an ihrem Fuß ändert sie; neue Buchungen legst du unter Buchungen an.',
   'help.guide.day-bookings.result':
     'Alles, was auf den Tag datiert ist, und alles, was an einem seiner Stopps hängt, steht in dieser einen Liste.',
   'help.guide.day-bookings.tip.1':
@@ -3254,13 +3254,13 @@ const help: TranslationStrings = {
     'Trag ein Restaurant, eine Veranstaltung, eine Tour, einen Parkplatz oder sonst etwas von Hand in die Reise ein.',
   'help.guide.create-booking.step.1': 'Klick oben rechts im Tab auf Manuelle Buchung. Neue Buchung öffnet sich.',
   'help.guide.create-booking.step.2':
-    'Wähl die Art der Buchung aus der Liste oben im Formular, neben Reisende. Unterkunft, Restaurant, Veranstaltung, Tour, Parkplatz und Sonstiges sind die sechs, die dieser Tab anlegt, und das Formular ändert sich mit der Wahl: nur Unterkunft tauscht ihre Daten gegen eine Spanne von Tagen.',
+    'Klick auf die Pille für die Art unter dem Titel, im Kopf des Formulars, und wähl die Art der Buchung. Unterkunft, Restaurant, Veranstaltung, Tour, Parkplatz und Sonstiges sind die sechs, die dieser Tab anlegt, und das Formular ändert sich mit der Wahl: nur Unterkunft tauscht ihre Daten gegen eine Spanne von Tagen.',
   'help.guide.create-booking.step.3':
     'Tipp den Titel ein. Es ist das eine Feld, auf dem das Formular besteht, und Hinzufügen bleibt tot, bis dort etwas steht.',
   'help.guide.create-booking.step.4':
     'Setz Datum und Startzeit, und Enddatum und Endzeit, wenn die Buchung ein Ende hat. Die Kalender bieten nur Tage innerhalb der Reise an, und ein Ende, das nicht nach dem Start liegt, sagt das in Rot und sperrt Hinzufügen.',
   'help.guide.create-booking.step.5':
-    'Trag den Buchungscode aus der Bestätigung ein und setz Status. Ausstehend oder Bestätigt entscheidet, in welchem der beiden Abschnitte die Karte landet.',
+    'Trag den Buchungscode aus der Bestätigung ein. Die Status-Pille neben der Art zeigt Ausstehend; ein Klick stellt sie auf Bestätigt und wieder zurück, und das entscheidet, in welchem der beiden Abschnitte die Karte landet.',
   'help.guide.create-booking.step.6': 'Klick auf Hinzufügen.',
   'help.guide.create-booking.result':
     'Die Buchung ist eine Karte in ihrem Abschnitt, mit ihrem Chip für die Art, ihren Daten und ihrem Code, und alle anderen in der Reise sehen sie auftauchen.',
@@ -3311,7 +3311,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Sagen, für wen eine Buchung ist',
   'help.guide.booking-travelers.goal': 'Markier die Reisenden, die eine Buchung abdeckt, und sieh dann nur ihre.',
   'help.guide.booking-travelers.step.1':
-    'Öffne die Buchung mit dem Stift. Reisende steht oben im Formular, neben Art der Buchung, und zeigt Reisende zuweisen, solange niemand auf der Buchung ist.',
+    'Öffne die Buchung mit dem Stift. Reisende steht neben dem Buchungscode und zeigt Reisende zuweisen, solange niemand auf der Buchung ist.',
   'help.guide.booking-travelers.step.2':
     'Klick darauf und wähl die Personen, für die diese Buchung ist; benannte Gäste stehen auch in der Liste. Eine gewählte bekommt einen Haken und ihren Avatar im Feld. Klick den Namen noch einmal an, um sie wieder wegzunehmen.',
   'help.guide.booking-travelers.step.3': 'Klick auf Aktualisieren.',
@@ -3409,7 +3409,7 @@ const help: TranslationStrings = {
     'Klick auf den Stift im Kopf der Karte. Reservierung bearbeiten öffnet sich mit allem, was die Buchung weiß.',
   'help.guide.edit-booking.step.2':
     'Änder, was zu ändern ist, hier den Buchungscode, den der Anbieter endlich geschickt hat.',
-  'help.guide.edit-booking.step.3': 'Setz Status auf Bestätigt.',
+  'help.guide.edit-booking.step.3': 'Klick im Kopf des Formulars auf die Pille Ausstehend. Sie wechselt auf Bestätigt.',
   'help.guide.edit-booking.step.4': 'Klick auf Aktualisieren.',
   'help.guide.edit-booking.result':
     'Die Karte wandert: eine bestätigte Buchung steht im Abschnitt Bestätigt hinter einem grünen Punkt, und alle in der Reise sehen sie wandern.',
@@ -3704,19 +3704,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Die Verbindung Halt für Halt lesen, sie umbenennen, oder die Route neu heraussuchen lassen.',
   'help.guide.change-transit-route.step.1':
-    'Im Tab Transport sitzen die geplanten Verbindungen unter Automatische ÖPNV-Verbindungen. Klick die Karte an.',
+    'Im Tab Transport sitzen die geplanten Verbindungen unter Automatische ÖPNV-Verbindungen. Klick die Karte an; die Verbindung öffnet sich als Buchung.',
   'help.guide.change-transit-route.step.2':
     'Dauer, Umstiege und Fußweg stehen oben. Verbindung darunter geht die Fahrt Halt für Halt durch, mit den Gleisen und den Fußwegen zwischen den Linien.',
   'help.guide.change-transit-route.step.3':
-    'Route ändern startet die Suche noch einmal, schon gefüllt mit den beiden Enden dieser Verbindung und ihrem Tag.',
+    'Route ändern am Fuß der Buchung startet die Suche noch einmal, schon gefüllt mit den beiden Enden dieser Verbindung und ihrem Tag.',
   'help.guide.change-transit-route.step.4':
-    'Wähl eine andere Verbindung und klick auf Zum Tag hinzufügen; sie tritt an die Stelle der alten. Details bearbeiten, neben Route ändern, öffnet stattdessen das gewöhnliche Transport-Formular, in dem der Buchungscode, der Status, die Reisenden und die Dateien liegen.',
+    'Wähl eine andere Verbindung und klick auf Zum Tag hinzufügen; sie tritt an die Stelle der alten. Bearbeiten, am anderen Ende derselben Leiste, öffnet stattdessen das gewöhnliche Transport-Formular, in dem der Buchungscode, der Status, die Reisenden, die Notizen und die Dateien liegen.',
   'help.guide.change-transit-route.result':
     'Die Fahrt trägt die neue Verbindung, und ihre Karte im Tab Transport zeigt die neuen Linien und Zeiten.',
   'help.guide.change-transit-route.tip.1':
-    'Der Titel der Fahrt ist nur Text: der Stift daneben benennt sie um, ohne die Route anzurühren. Notizen darunter nehmen Markdown und haben einen Tab Bearbeiten und einen Tab Vorschau.',
+    'Der Titel im Kopf der Buchung benennt die Verbindung um, ohne die Route anzurühren. Ihre Notizen schreibst du im Transport-Formular hinter Bearbeiten.',
   'help.guide.change-transit-route.tip.2':
-    'Löschen am Fuß der Fahrt nimmt die Verbindung aus der Reise; der Tag behält seine Stopps.',
+    'Löschen am Fuß der Buchung nimmt die Verbindung aus der Reise; der Tag behält seine Stopps.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Ändern, wie eine Etappe zurückgelegt wird',
   'help.guide.leg-travel-mode.goal':
@@ -3742,17 +3742,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Eine Zeit, ein Gleis oder einen Buchungscode richten, oder die Fahrt aus der Reise nehmen.',
   'help.guide.edit-transport.step.1':
-    'Im Tagesplan ist ein Transport eine farbige Zeile zwischen den Stopps. Klick sie an.',
+    'Im Tagesplan ist ein Transport eine farbige Zeile zwischen den Stopps. Klick sie an; seine Buchung öffnet sich mit den Zeiten, der Route und dem Buchungscode.',
   'help.guide.edit-transport.step.2':
-    'Das Formular ist dasselbe, das ihn angelegt hat, mit Transport bearbeiten in der Titelzeile. Alles lässt sich ändern: der Typ, die Route, die Tage und Zeiten, der Buchungscode, der Status.',
+    'Bearbeiten am Fuß der Buchung öffnet das Formular, das ihn angelegt hat, mit Transport bearbeiten in der Titelzeile. Alles lässt sich ändern: der Typ, die Route, die Tage und Zeiten, der Buchungscode, der Status.',
   'help.guide.edit-transport.step.3':
     'Die Route eines Fluges ist eine Kette von Flughäfen, die eines Zuges eine Kette von Bahnhöfen. Zwischenstopp hinzufügen setzt einen weiteren dazwischen, und jede Etappe behält ihre eigenen Zeiten und ihre eigene Flug- oder Zugnummer.',
   'help.guide.edit-transport.step.4':
-    'Klick auf Aktualisieren. Um den Transport ganz zu entfernen, nimm den Papierkorb auf seiner Karte im Tab Transport und bestätige.',
+    'Klick auf Aktualisieren. Um den Transport ganz zu entfernen, nimm Löschen am Fuß seiner Buchung oder den Papierkorb auf seiner Karte im Tab Transport und bestätige.',
   'help.guide.edit-transport.result':
     'Die Änderung zeigt sich überall, wo der Transport auftaucht: im Tab Transport, an dem Tag, an dem er läuft, und in seiner Linie auf der Karte.',
   'help.guide.edit-transport.tip.1':
-    'Dasselbe Formular öffnet sich von beiden Seiten, über den Stift auf der Karte im Tab Transport und über die eigene Zeile des Transports im Tagesplan. Eine geplante ÖPNV-Verbindung ist die Ausnahme: ihre Zeile öffnet die Fahrtansicht, und Details bearbeiten führt von dort zu diesem Formular.',
+    'Dasselbe Formular öffnet sich von beiden Seiten: über Bearbeiten in der Buchung, die eine Zeile im Tagesplan öffnet, und über den Stift auf der Karte im Tab Transport. Eine geplante ÖPNV-Verbindung öffnet sich ebenfalls als Buchung; Route ändern sucht dort neu, und Bearbeiten führt zu diesem Formular.',
   'help.guide.edit-transport.tip.2':
     'Einen Transport auf einen anderen Tag zu verschieben braucht das Formular gar nicht: zieh seine Zeile von einer Tageskarte auf die nächste.',
   // transport-on-map

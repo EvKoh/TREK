@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'hu' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Súgó és dokumentáció',
+  'help.search': 'Keresés a dokumentációban…',
+  'help.contents': 'Tartalom',
+  'help.noResults': 'Nincs találat.',
+  'help.errorTitle': 'Az oldal nem tölthető be',
+  'help.errorBody': 'A súgó tartalma a TREK wikiből érkezik. Ellenőrizd a kapcsolatot, és próbáld újra.',
 
   // center
   'help.center.button': 'Súgó ehhez a képernyőhöz',
@@ -1045,7 +1045,7 @@ const help: TranslationStrings = {
     'Travel & map: foglalási útvonalak mindig a térképen, a Helyek felfedezése pirula, útvonal-optimalizálás a szállástól, elrejtett foglalási kódok és címkézett foglalási útvonalak.',
   'help.ctx.settings-display.bullet.3':
     'Indítás: a TREK az irányítópulton vagy az aktív utazáson nyíljon-e meg, és egy utazás melyik füle jöjjön fel először.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Megjelenés',
   'help.ctx.settings-appearance.summary':
     'Hogyan néz ki a TREK ezen a fiókon: világos vagy sötét, a kiemelőszín, üveg és mozgás, szövegméret, és mely widgeteket mutatja az irányítópult. Minden élőben érvényes, minden eszközön, ahol bejelentkezel.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2320,9 +2320,9 @@ const help: TranslationStrings = {
     'Nyisd meg a megállót, amelyikhez a foglalás tartozik. A kártya egy sávot mutat a Megerősítve vagy Függőben szóval és a foglalás nevével.',
   'help.guide.place-booking.step.2':
     'A sáv viszi a Dátumot, az Időpontot és a Foglalási kódot, meg bármilyen jegyzetet, ami a foglaláson van.',
-  'help.guide.place-booking.step.3': 'Kattints a sávra. Megnyílik rajta a foglalás saját űrlapja.',
+  'help.guide.place-booking.step.3': 'Kattints a sávra. A foglalás a térkép fölött nyílik meg.',
   'help.guide.place-booking.step.4':
-    'Az Összekapcsolás napi tervvel az, ami egy foglalást egy megállóhoz tűz, és itt már ezt nevezi meg. Zárd be újra az űrlapot.',
+    'A foglalás alján lévő Szerkesztés megnyitja a saját űrlapját. Ott az Összekapcsolás napi tervvel az, ami egy foglalást egy megállóhoz tűz, és itt már ezt nevezi meg. Zárd be újra az űrlapot.',
   'help.guide.place-booking.step.5':
     'Egy megállóhoz tartozó új foglalás a napok oszlopában kezdődik: vidd a mutatót a megálló fölé, és kattints a végén lévő + jelre. Az űrlap Új foglalás néven nyílik meg, már hozzákapcsolva.',
   'help.guide.place-booking.result':
@@ -2681,7 +2681,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'A szín megmondja, hol tart egy foglalás: a zöld sor meg van erősítve, a borostyánsárga még függőben van. A szállodák nincsenek ebben a listában, nekik lent saját blokkjuk van.',
   'help.guide.day-bookings.step.4':
-    'A lista csak kiolvassa a foglalásokat. Foglalást a Foglalások fülön hozol létre és módosítasz.',
+    'Kattints egy sorra, és megnyílik a foglalás. Az alján lévő Szerkesztés módosítja; új foglalást a Foglalások fülön hozol létre.',
   'help.guide.day-bookings.result':
     'Minden, aminek a dátuma a napra esik, és minden, ami a megállói valamelyikén lóg, ebben az egy listában van.',
   'help.guide.day-bookings.tip.1':
@@ -3231,13 +3231,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Kattints a fül jobb felső sarkában a Kézi foglalás gombra. Megnyílik az Új foglalás.',
   'help.guide.create-booking.step.2':
-    'Válaszd ki a Foglalás típusa értéket az űrlap tetején lévő listából, az Utasok mellett. A Szálloda, az Étterem, az Esemény, a Túra, a Parkolás és az Egyéb az a hat, amit ez a fül készít, és az űrlap a választással együtt változik: csak a Szálloda cseréli a dátumait egy napokból álló tartományra.',
+    'Kattints az űrlap fejlécében a cím alatti típuscímkére, és válaszd ki a Foglalás típusa értéket. A Szálloda, az Étterem, az Esemény, a Túra, a Parkolás és az Egyéb az a hat, amit ez a fül készít, és az űrlap a választással együtt változik: csak a Szálloda cseréli a dátumait egy napokból álló tartományra.',
   'help.guide.create-booking.step.3':
     'Írd be a Cím mezőt. Ez az egyetlen mező, amihez az űrlap ragaszkodik, és a Hozzáadás halott marad, amíg nincs benne valami.',
   'help.guide.create-booking.step.4':
     'Állítsd be a Dátum és a Kezdési idő mezőt, és a Befejezés dátuma meg a Befejezési idő mezőt is, ha a foglalásnak van vége. A naptárak csak az utazáson belüli napokat kínálják, és egy olyan vég, ami nincs a kezdés után, ezt pirossal megmondja, és letiltja a Hozzáadás gombot.',
   'help.guide.create-booking.step.5':
-    'Vidd be a visszaigazolásból a Foglalási kódot, és állítsd be az Állapot mezőt. A Függőben vagy a Megerősítve dönti el, a két szakasz közül melyikbe kerül a kártya.',
+    'Vidd be a visszaigazolásból a Foglalási kódot. A típus melletti állapotcímkén Függőben áll; egy kattintás Megerősítve értékre állítja és vissza, és ez dönti el, a két szakasz közül melyikbe kerül a kártya.',
   'help.guide.create-booking.step.6': 'Kattints a Hozzáadás gombra.',
   'help.guide.create-booking.result':
     'A foglalás egy kártya a saját szakaszában, a típuscímkéjével, a dátumaival és a kódjával, és az utazásban mindenki más látja megjelenni.',
@@ -3289,7 +3289,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Jelöld meg az utasokat, akikre a foglalás vonatkozik, és utána csak az övéiket nézd.',
   'help.guide.booking-travelers.step.1':
-    'Nyisd meg a foglalást a ceruzával. Az Utasok az űrlap tetején áll, a Foglalás típusa mellett, és amíg senki sincs a foglaláson, az Utasok hozzárendelése felirat látszik rajta.',
+    'Nyisd meg a foglalást a ceruzával. Az Utasok a Foglalási kód mellett áll, és amíg senki sincs a foglaláson, az Utasok hozzárendelése felirat látszik rajta.',
   'help.guide.booking-travelers.step.2':
     'Kattints rá, és válaszd ki azokat, akiknek ez a foglalás szól; a megnevezett vendégek is ott vannak a listában. A kiválasztott pipát kap, és az avatarja megjelenik a mezőben. Kattints újra a névre, és leveszed.',
   'help.guide.booking-travelers.step.3': 'Kattints a Frissítés gombra.',
@@ -3388,7 +3388,7 @@ const help: TranslationStrings = {
     'Kattints a kártya fejlécében a ceruzára. Megnyílik a Foglalás szerkesztése mindennel, amit a foglalás tud.',
   'help.guide.edit-booking.step.2':
     'Változtasd meg, amit meg kell változtatni, itt a Foglalási kódot, amit a szolgáltató végre elküldött.',
-  'help.guide.edit-booking.step.3': 'Tedd az Állapot mezőt Megerősítve értékre.',
+  'help.guide.edit-booking.step.3': 'Kattints az űrlap fejlécében a Függőben címkére. Megerősítve lesz belőle.',
   'help.guide.edit-booking.step.4': 'Kattints a Frissítés gombra.',
   'help.guide.edit-booking.result':
     'A kártya átköltözik: egy megerősített foglalás a Megerősítve szakaszban áll egy zöld pont mögött, és az utazásban mindenki látja átköltözni.',
@@ -3683,19 +3683,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Olvasd a kapcsolatot megállóról megállóra, nevezd át, vagy keresd ki újra az útvonalat.',
   'help.guide.change-transit-route.step.1':
-    'A Közlekedés fülön a tervezett kapcsolatok az Automatikus tömegközlekedés alatt ülnek. Kattints a kártyára.',
+    'A Közlekedés fülön a tervezett kapcsolatok az Automatikus tömegközlekedés alatt ülnek. Kattints a kártyára; a kapcsolat foglalásként nyílik meg.',
   'help.guide.change-transit-route.step.2':
     'Az Időtartam, az Átszállások és a Gyaloglás felül ül. Alattuk az Útiterv megállóról megállóra végigjárja a kapcsolatot, a vágányokkal és a vonalak közötti sétákkal.',
   'help.guide.change-transit-route.step.3':
-    'Az Útvonal módosítása újra lefuttatja a keresést, már kitöltve ennek a kapcsolatnak a két végével és a napjával.',
+    'A foglalás alján lévő Útvonal módosítása újra lefuttatja a keresést, már kitöltve ennek a kapcsolatnak a két végével és a napjával.',
   'help.guide.change-transit-route.step.4':
-    'Válassz másik kapcsolatot, és kattints a Hozzáadás a naphoz gombra; átveszi a régi helyét. Az Útvonal módosítása melletti Részletek szerkesztése helyette a szokásos közlekedési űrlapot nyitja meg, ahol a Foglalási kód, az Állapot, az utasok és a fájlok élnek.',
+    'Válassz másik kapcsolatot, és kattints a Hozzáadás a naphoz gombra; átveszi a régi helyét. Ugyanennek a sávnak a másik végén a Szerkesztés helyette a szokásos közlekedési űrlapot nyitja meg, ahol a Foglalási kód, az Állapot, az utasok, a jegyzetek és a fájlok élnek.',
   'help.guide.change-transit-route.result':
     'A Tömegközlekedési útvonal nézet az új Útitervet viszi, a kártyája pedig a Közlekedés fülön az új vonalakat és időpontokat mutatja.',
   'help.guide.change-transit-route.tip.1':
-    'A Tömegközlekedési útvonal nézet címe csak szöveg: a mellette lévő ceruza átnevezi anélkül, hogy az útvonalhoz nyúlna. Az alatta lévő Jegyzetek markdownt fogad, és van egy Szerkesztés és egy Előnézet füle.',
+    'A foglalás fejlécében lévő cím átnevezi a kapcsolatot anélkül, hogy az útvonalhoz nyúlna. A jegyzeteit a Szerkesztés mögötti közlekedési űrlapon írod.',
   'help.guide.change-transit-route.tip.2':
-    'A Tömegközlekedési útvonal nézet alján lévő Törlés kiveszi a kapcsolatot az utazásból; a nap megtartja a megállóit.',
+    'A foglalás alján lévő Törlés kiveszi a kapcsolatot az utazásból; a nap megtartja a megállóit.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Módosítsd, hogyan teszel meg egy szakaszt',
   'help.guide.leg-travel-mode.goal':
@@ -3720,17 +3720,18 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.title': 'Módosíts vagy törölj egy közlekedést',
   'help.guide.edit-transport.goal':
     'Javíts egy időpontot, egy vágányt vagy egy foglalási kódot, vagy vedd ki az utat az utazásból.',
-  'help.guide.edit-transport.step.1': 'A napi tervben egy közlekedés színes sor a megállók között. Kattints rá.',
+  'help.guide.edit-transport.step.1':
+    'A napi tervben egy közlekedés színes sor a megállók között. Kattints rá; megnyílik a foglalása az időpontokkal, az útvonallal és a Foglalási kóddal.',
   'help.guide.edit-transport.step.2':
-    'Az űrlap ugyanaz, amelyik létrehozta, a címsorában a Közlekedés szerkesztése felirattal. Minden módosítható: a típus, az útvonal, a napok és időpontok, a Foglalási kód, az Állapot.',
+    'A foglalás alján lévő Szerkesztés azt az űrlapot nyitja meg, amelyik létrehozta, a címsorában a Közlekedés szerkesztése felirattal. Minden módosítható: a típus, az útvonal, a napok és időpontok, a Foglalási kód, az Állapot.',
   'help.guide.edit-transport.step.3':
     'Egy repülő útvonala repterek lánca, egy vonaté állomások lánca. A Megálló hozzáadása közéjük tesz még egyet, és minden szakasz megtartja a saját időpontjait és a saját járatszámát vagy vonatszámát.',
   'help.guide.edit-transport.step.4':
-    'Kattints a Frissítés gombra. Ha teljesen el akarod távolítani a közlekedést, használd a kukát a Közlekedés fülön lévő kártyáján, és erősítsd meg.',
+    'Kattints a Frissítés gombra. Ha teljesen el akarod távolítani a közlekedést, használd a foglalása alján lévő Törlés gombot vagy a kukát a Közlekedés fülön lévő kártyáján, és erősítsd meg.',
   'help.guide.edit-transport.result':
     'A változás mindenhol látszik, ahol a közlekedés megjelenik: a Közlekedés fülön, a napon, amelyiken megy, és a vonalán a térképen.',
   'help.guide.edit-transport.tip.1':
-    'Ugyanez az űrlap mindkét oldalról megnyílik, a Közlekedés fülön lévő kártya ceruzájáról és a közlekedés saját soráról a napi tervben. A tervezett tömegközlekedési kapcsolat a kivétel: a sora a Tömegközlekedési útvonal nézetet nyitja meg, és az ottani Részletek szerkesztése vezet ehhez az űrlaphoz.',
+    'Ugyanez az űrlap mindkét oldalról megnyílik: a Szerkesztés gombbal abban a foglalásban, amelyet a napi terv egy sora nyit meg, és a Közlekedés fülön lévő kártya ceruzájával. A tervezett tömegközlekedési kapcsolat is foglalásként nyílik meg; ott az Útvonal módosítása újra keres, a Szerkesztés pedig ehhez az űrlaphoz vezet.',
   'help.guide.edit-transport.tip.2':
     'Egy közlekedés másik napra mozgatásához egyáltalán nem kell az űrlap: húzd a sorát az egyik napkártyáról a másikra.',
   // transport-on-map

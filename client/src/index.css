@@ -1514,6 +1514,21 @@ img[alt="TREK"] {
   .collab-link-chip__action { width: 30px; height: 30px; margin: -4px 0; }
 }
 
+/* The desktop's links panel is tinted like the other Collab panels, so a chip sits on
+   the card colour as a card, the way notes and polls do; the phone keeps its pill. */
+.collab-link-grid--desk .collab-link-chip {
+  padding: 8px 8px 8px 8px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  box-shadow: none;
+}
+.collab-link-grid--desk .collab-link-chip:hover, .collab-link-grid--desk .collab-link-chip:focus-within {
+  transform: none;
+  box-shadow: var(--shadow-md);
+}
+.collab-link-grid--desk .collab-link-chip--pinned { background: var(--accent-subtle); }
+.collab-link-grid--desk .collab-link-chip__icon { width: 28px; height: 28px; flex-basis: 28px; border-radius: 9px; background: var(--bg-secondary); }
+
 /* Markdown in Collab Notes */
 .collab-note-md strong, .collab-note-md-full strong { font-weight: 700 !important; }
 .collab-note-md em, .collab-note-md-full em { font-style: italic !important; }
@@ -1534,22 +1549,13 @@ img[alt="TREK"] {
 .collab-note-md-full th, .collab-note-md-full td { border: 1px solid var(--border-primary); padding: 4px 8px; font-size: 0.9em; }
 .collab-note-md-full hr { border: none; border-top: 1px solid var(--border-primary); margin: 0.8em 0; }
 
-/* Day-plan header action grid (edit / +transport / note / collapse) */
-.dp-day-actions button {
-  color: var(--text-faint);
-  background: transparent;
-  transition: background-color 0.12s ease, color 0.12s ease;
-}
-.dp-day-actions button:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-}
-/* Reveal the action grid only when hovering the day row (pointer devices).
-   Touch devices (hover: none) keep it visible; the selected day stays visible too. */
+/* The day head's "+" (place, transport, transit, note): shown while the head is
+   hovered, focused or the day is open. Touch devices (hover: none) keep it visible. */
 @media (hover: hover) {
-  .dp-day-actions { opacity: 0; transition: opacity 0.12s ease; }
-  .dp-day-header:hover .dp-day-actions,
-  .dp-day-header[data-selected="true"] .dp-day-actions { opacity: 1; }
+  .dp-day-tools { opacity: 0; transition: opacity 0.12s ease; }
+  .dp-day-header:hover .dp-day-tools,
+  .dp-day-header:focus-within .dp-day-tools,
+  .dp-day-header[data-selected="true"] .dp-day-tools { opacity: 1; }
 }
 
 /* Planner rows a finger can pick up (#1616). A long press is what arms the drag,

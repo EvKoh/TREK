@@ -78,8 +78,8 @@ const dayplan: TranslationStrings = {
   'dayplan.mobile.allAssigned': 'Všechna místa přiřazena',
   'dayplan.mobile.noMatch': 'Žádná shoda',
   'dayplan.mobile.createNew': 'Vytvořit nové místo',
-  'dayplan.expandAll': 'Expand all days', // en-fallback
-  'dayplan.collapseAll': 'Collapse all days', // en-fallback
+  'dayplan.expandAll': 'Rozbalit všechny dny', // en-fallback
+  'dayplan.collapseAll': 'Sbalit všechny dny', // en-fallback
   'dayplan.reorderDays': 'Změnit pořadí dnů',
   'dayplan.reorderTitle': 'Změnit pořadí dnů',
   'dayplan.reorderHint': 'Místa, poznámky a rezervace daného dne se přesunou spolu s ním.',

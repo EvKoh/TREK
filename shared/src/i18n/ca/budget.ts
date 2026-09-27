@@ -107,6 +107,11 @@ const budget: TranslationStrings = {
   'costs.splitEqually': 'A parts iguals',
   'costs.splitCustom': 'Personalitzat',
   'costs.splitTicket': 'Tiquet',
+  'costs.perPerson': '{amount} per persona',
+  'costs.payersHint': 'Marca qui ha pagat i escriu quant hi ha posat cadascú.',
+  'costs.splitHint.equally': 'Totes les persones marcades paguen la mateixa part.',
+  'costs.splitHint.custom': 'Escriu la part de cada persona; entre totes han de sumar el total.',
+  'costs.splitHint.ticket': 'Llista el que hi havia al rebut i marca qui ha pres cada article.',
   'costs.pickSomeone': 'Tria almenys una persona amb qui dividir-ho.',
   'costs.splitSummary': 'Dividit de {count} maneres · {amount} cadascú',
   'costs.cat.accommodation': 'Allotjament',
@@ -154,13 +159,15 @@ const budget: TranslationStrings = {
   'costs.receipts': 'Rebuts',
   'costs.receiptsTitle': 'Rebuts i factures',
   'costs.attachReceipt': 'Adjuntar rebut / factura',
+  'costs.attach': 'Adjuntar',
   'costs.scan.button': 'Escanejar rebut',
   'costs.scan.reading': 'Llegint el rebut…',
   'costs.scan.review': 'Revisar la despesa',
   'costs.scan.nothingRead': "No s'ha pogut llegir cap rebut d'aquesta foto.",
   'costs.scan.failed': "No s'ha pogut començar a llegir el rebut.",
   'costs.scan.title': 'Escanejar rebut',
-  'costs.scan.accepted': "Una foto d'un sol rebut (JPG, PNG o WEBP, fins a 10 MB). El model d'IA la llegeix en segon pla i després revises la despesa abans de desar-la.",
+  'costs.scan.accepted':
+    "Una foto d'un sol rebut (JPG, PNG o WEBP, fins a 10 MB). El model d'IA la llegeix en segon pla i després revises la despesa abans de desar-la.",
   'costs.scan.dropHere': 'Deixa aquí la foto del rebut, o fes clic per triar-ne o fer-ne una',
   'costs.scan.dropActive': 'Deixa anar la foto per escanejar-la',
   'costs.scan.start': 'Escanejar',
@@ -168,7 +175,8 @@ const budget: TranslationStrings = {
   'costs.noReceipts': 'Cap rebut adjunt',
   'costs.deleteReceipt': 'Eliminar rebut',
   'costs.viewReceipt': 'Veure rebut',
-  'costs.receiptLeftBehind': 'No es pot desar i encara hi ha {count} rebuts pujats. Elimina aquests fitxers a la pestanya Fitxers.',
+  'costs.receiptLeftBehind':
+    'No es pot desar i encara hi ha {count} rebuts pujats. Elimina aquests fitxers a la pestanya Fitxers.',
 };
 
 export default budget;

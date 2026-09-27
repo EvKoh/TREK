@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'fr' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Aide et documentation',
+  'help.search': 'Rechercher dans la documentation…',
+  'help.contents': 'Sommaire',
+  'help.noResults': 'Aucune page correspondante.',
+  'help.errorTitle': 'Impossible de charger cette page',
+  'help.errorBody': 'Le contenu de l’aide provient du wiki TREK. Vérifiez votre connexion et réessayez.',
 
   // center
   'help.center.button': 'Aide pour cet écran',
@@ -1066,7 +1066,7 @@ const help: TranslationStrings = {
     'Travel & map : les itinéraires de réservation toujours sur la carte, la pastille Explorer les lieux, l’optimisation de l’itinéraire depuis votre hébergement, les codes de réservation masqués et les itinéraires de réservation étiquetés.',
   'help.ctx.settings-display.bullet.3':
     'Démarrage : si TREK s’ouvre sur le tableau de bord ou sur le voyage en cours, et quel onglet d’un voyage vient en premier.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Apparence',
   'help.ctx.settings-appearance.summary':
     'L’apparence de TREK sur ce compte : clair ou sombre, la couleur d’accent, le verre et le mouvement, la taille du texte, et les widgets que le tableau de bord affiche. Tout s’applique en direct, sur chaque appareil où vous vous connectez.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2373,9 +2373,9 @@ const help: TranslationStrings = {
     'Ouvrez l’étape à laquelle appartient la réservation. La fiche montre un bandeau avec Confirmée ou En attente et le nom de la réservation.',
   'help.guide.place-booking.step.2':
     'Le bandeau porte la Date, l’Heure et le Code de réservation, ainsi que les notes de la réservation.',
-  'help.guide.place-booking.step.3': 'Cliquez sur le bandeau. Le formulaire de la réservation s’ouvre dessus.',
+  'help.guide.place-booking.step.3': 'Cliquez sur le bandeau. La réservation s’ouvre par-dessus la carte.',
   'help.guide.place-booking.step.4':
-    'Lier à l’affectation du jour est ce qui accroche une réservation à une étape, et ici il nomme déjà celle-ci. Refermez le formulaire.',
+    'Modifier, au pied de la réservation, ouvre son propre formulaire. Lier à l’affectation du jour y est ce qui accroche une réservation à une étape, et ici il nomme déjà celle-ci. Refermez le formulaire.',
   'help.guide.place-booking.step.5':
     'Une nouvelle réservation pour une étape commence dans la colonne des jours : survolez l’étape et cliquez sur le + à son bout. Le formulaire s’ouvre en Nouvelle réservation, déjà liée à elle.',
   'help.guide.place-booking.result':
@@ -2741,7 +2741,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'La couleur dit où en est une réservation : une ligne verte est confirmée, une ligne ambre est encore en attente. Les hébergements ne sont pas dans cette liste, ils ont leur propre bloc en dessous.',
   'help.guide.day-bookings.step.4':
-    'La liste ne fait que relever les réservations. Une réservation se crée et se modifie dans l’onglet Réservations.',
+    'Cliquez sur une ligne et la réservation s’ouvre. Modifier, à son pied, la change ; les nouvelles réservations se créent dans l’onglet Réservations.',
   'help.guide.day-bookings.result':
     'Tout ce qui est daté du jour, et tout ce qui est rattaché à l’une de ses étapes, est dans cette seule liste.',
   'help.guide.day-bookings.tip.1':
@@ -3296,13 +3296,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Cliquez sur Réservation manuelle en haut à droite de l’onglet. Nouvelle réservation s’ouvre.',
   'help.guide.create-booking.step.2':
-    'Choisissez le Type de réservation dans la liste en haut du formulaire, à côté de Voyageurs. Hébergement, Restaurant, Événement, Visite, Parking et Autre sont les six que cet onglet crée, et le formulaire change avec le choix : seul Hébergement échange ses dates contre une plage de jours.',
+    'Cliquez sur la pastille de type sous le titre, dans l’en-tête du formulaire, et choisissez le Type de réservation. Hébergement, Restaurant, Événement, Visite, Parking et Autre sont les six que cet onglet crée, et le formulaire change avec le choix : seul Hébergement échange ses dates contre une plage de jours.',
   'help.guide.create-booking.step.3':
     'Tapez le Titre. C’est le seul champ sur lequel le formulaire insiste, et Ajouter reste mort tant qu’il est vide.',
   'help.guide.create-booking.step.4':
     'Réglez Date et Heure de début, puis Date de fin et Heure de fin si la réservation a une fin. Les calendriers ne proposent que les jours à l’intérieur du voyage, et une fin qui n’est pas après le début le dit en rouge et bloque Ajouter.',
   'help.guide.create-booking.step.5':
-    'Entrez le Code de réservation de la confirmation et réglez Statut. En attente ou Confirmée décide dans laquelle des deux sections la carte atterrit.',
+    'Entrez le Code de réservation de la confirmation. La pastille de statut à côté du type affiche En attente ; un clic la fait passer à Confirmée et inversement, et c’est ce qui décide dans laquelle des deux sections la carte atterrit.',
   'help.guide.create-booking.step.6': 'Cliquez sur Ajouter.',
   'help.guide.create-booking.result':
     'La réservation est une carte dans sa section, avec sa pastille de sorte, ses dates et son code, et tous les autres du voyage la voient apparaître.',
@@ -3353,7 +3353,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Dire pour qui est une réservation',
   'help.guide.booking-travelers.goal': 'Marquez les voyageurs que couvre une réservation, puis ne voyez que les leurs.',
   'help.guide.booking-travelers.step.1':
-    'Ouvrez la réservation avec le crayon. Voyageurs se trouve en haut du formulaire, à côté de Type de réservation, et affiche Assigner des voyageurs tant que personne n’est sur la réservation.',
+    'Ouvrez la réservation avec le crayon. Voyageurs se trouve à côté du Code de réservation, et affiche Assigner des voyageurs tant que personne n’est sur la réservation.',
   'help.guide.booking-travelers.step.2':
     'Cliquez dessus et choisissez les personnes pour qui est cette réservation ; les invités nommés sont aussi dans la liste. Une personne choisie reçoit une coche et son avatar dans le champ. Cliquez de nouveau sur le nom pour l’enlever.',
   'help.guide.booking-travelers.step.3': 'Cliquez sur Mettre à jour.',
@@ -3449,7 +3449,8 @@ const help: TranslationStrings = {
     'Cliquez sur le crayon dans l’en-tête de la carte. Modifier la réservation s’ouvre avec tout ce que la réservation sait.',
   'help.guide.edit-booking.step.2':
     'Changez ce qui doit changer, ici le Code de réservation que le prestataire a fini par envoyer.',
-  'help.guide.edit-booking.step.3': 'Mettez Statut sur Confirmée.',
+  'help.guide.edit-booking.step.3':
+    'Cliquez sur la pastille En attente dans l’en-tête du formulaire. Elle passe à Confirmée.',
   'help.guide.edit-booking.step.4': 'Cliquez sur Mettre à jour.',
   'help.guide.edit-booking.result':
     'La carte se déplace : une réservation confirmée se tient dans la section Confirmée derrière un point vert, et tout le monde dans le voyage la voit bouger.',
@@ -3744,19 +3745,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Lire la liaison arrêt par arrêt, la renommer, ou rechercher de nouveau l’itinéraire.',
   'help.guide.change-transit-route.step.1':
-    'Dans l’onglet Transports, les liaisons planifiées sont sous Transports en commun automatisés. Cliquez sur la carte.',
+    'Dans l’onglet Transports, les liaisons planifiées sont sous Transports en commun automatisés. Cliquez sur la carte ; la liaison s’ouvre comme une réservation.',
   'help.guide.change-transit-route.step.2':
     'Durée, Correspondances et Marche sont en haut. Itinéraire en dessous parcourt la liaison arrêt par arrêt, avec les voies et les marches entre les lignes.',
   'help.guide.change-transit-route.step.3':
-    "Modifier l'itinéraire relance la recherche, déjà remplie avec les deux extrémités de cette liaison et son jour.",
+    "Modifier l'itinéraire, au pied de la réservation, relance la recherche, déjà remplie avec les deux extrémités de cette liaison et son jour.",
   'help.guide.change-transit-route.step.4':
-    "Choisissez une autre liaison et cliquez sur Ajouter au jour ; elle prend la place de l’ancienne. Modifier les détails, à côté de Modifier l'itinéraire, ouvre au contraire le formulaire de transport ordinaire, où vivent le Code de réservation, le Statut, les voyageurs et les fichiers.",
+    'Choisissez une autre liaison et cliquez sur Ajouter au jour ; elle prend la place de l’ancienne. Modifier, à l’autre bout de la même barre, ouvre au contraire le formulaire de transport ordinaire, où vivent le Code de réservation, le Statut, les voyageurs, les notes et les fichiers.',
   'help.guide.change-transit-route.result':
     'Le trajet porte le nouvel itinéraire, et sa carte dans l’onglet Transports montre les nouvelles lignes et les nouvelles heures.',
   'help.guide.change-transit-route.tip.1':
-    'Le titre du trajet n’est que du texte : le crayon à côté le renomme sans toucher à l’itinéraire. Notes en dessous accepte le markdown et a un onglet Modifier et un onglet Aperçu.',
+    'Le titre dans l’en-tête de la réservation renomme la liaison sans toucher à l’itinéraire. Ses notes s’écrivent dans le formulaire de transport, derrière Modifier.',
   'help.guide.change-transit-route.tip.2':
-    'Supprimer au pied du trajet sort la liaison du voyage ; le jour garde ses étapes.',
+    'Supprimer au pied de la réservation sort la liaison du voyage ; le jour garde ses étapes.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Changer la façon de parcourir un tronçon',
   'help.guide.leg-travel-mode.goal':
@@ -3782,17 +3783,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Corriger une heure, un quai ou un code de réservation, ou sortir le trajet du voyage.',
   'help.guide.edit-transport.step.1':
-    'Dans le plan du jour, un transport est une ligne colorée entre les étapes. Cliquez dessus.',
+    'Dans le plan du jour, un transport est une ligne colorée entre les étapes. Cliquez dessus ; sa réservation s’ouvre avec les horaires, l’itinéraire et le Code de réservation.',
   'help.guide.edit-transport.step.2':
-    'Le formulaire est celui qui l’a créé, avec Modifier le transport dans sa barre de titre. Tout peut changer : le type, l’itinéraire, les jours et les heures, le Code de réservation, le Statut.',
+    'Modifier, au pied de la réservation, ouvre le formulaire qui l’a créé, avec Modifier le transport dans sa barre de titre. Tout peut changer : le type, l’itinéraire, les jours et les heures, le Code de réservation, le Statut.',
   'help.guide.edit-transport.step.3':
     'L’itinéraire d’un vol est une chaîne d’aéroports, celui d’un train une chaîne de gares. Ajouter une escale en met une autre au milieu, et chaque tronçon garde ses propres heures et son propre numéro de vol ou de train.',
   'help.guide.edit-transport.step.4':
-    'Cliquez sur Mettre à jour. Pour retirer complètement le transport, utilisez la corbeille sur sa carte dans l’onglet Transports et confirmez.',
+    'Cliquez sur Mettre à jour. Pour retirer complètement le transport, utilisez Supprimer au pied de sa réservation, ou la corbeille sur sa carte dans l’onglet Transports, et confirmez.',
   'help.guide.edit-transport.result':
     'Le changement se voit partout où le transport apparaît : l’onglet Transports, le jour où il roule, et sa ligne sur la carte.',
   'help.guide.edit-transport.tip.1':
-    'Le même formulaire s’ouvre des deux côtés, par le crayon sur la carte dans l’onglet Transports et par la ligne propre du transport dans le plan du jour. Une liaison en transports en commun planifiée fait exception : sa ligne ouvre la vue du trajet, et Modifier les détails y mène à ce formulaire.',
+    "Le même formulaire s’ouvre des deux côtés : par Modifier dans la réservation qu’ouvre une ligne du plan du jour, et par le crayon sur la carte dans l’onglet Transports. Une liaison en transports en commun planifiée s’ouvre elle aussi comme une réservation ; Modifier l'itinéraire y relance la recherche, et Modifier mène à ce formulaire.",
   'help.guide.edit-transport.tip.2':
     'Déplacer un transport vers un autre jour n’a pas besoin du formulaire du tout : glissez sa ligne d’une carte de jour à la suivante.',
   // transport-on-map

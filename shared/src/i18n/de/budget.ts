@@ -142,6 +142,11 @@ const budget: TranslationStrings = {
   'costs.splitEqually': 'Gleichmäßig',
   'costs.splitCustom': 'Individuell',
   'costs.splitTicket': 'Beleg',
+  'costs.perPerson': '{amount} pro Person',
+  'costs.payersHint': 'Hak an, wer bezahlt hat, und trag ein, wie viel jede Person gezahlt hat.',
+  'costs.splitHint.equally': 'Alle Angehakten zahlen den gleichen Anteil.',
+  'costs.splitHint.custom': 'Trag für jede Person ihren Anteil ein; zusammen ergeben sie den Betrag.',
+  'costs.splitHint.ticket': 'Liste auf, was auf dem Beleg steht, und hak ab, wer was hatte.',
   'costs.ticketItemName': 'Artikelname',
   'costs.ticketSplitting': 'Aufteilen auf:',
   'costs.ticketAddItem': 'Artikel hinzufügen',
@@ -154,13 +159,15 @@ const budget: TranslationStrings = {
   'costs.receipts': 'Belege',
   'costs.receiptsTitle': 'Belege & Rechnungen',
   'costs.attachReceipt': 'Beleg / Rechnung anhängen',
+  'costs.attach': 'Anhängen',
   'costs.scan.button': 'Beleg scannen',
   'costs.scan.reading': 'Beleg wird gelesen…',
   'costs.scan.review': 'Ausgabe prüfen',
   'costs.scan.nothingRead': 'Aus diesem Foto ließ sich kein Beleg lesen.',
   'costs.scan.failed': 'Der Beleg konnte nicht eingelesen werden.',
   'costs.scan.title': 'Beleg scannen',
-  'costs.scan.accepted': 'Ein Foto eines Belegs (JPG, PNG oder WEBP, bis 10 MB). Das KI-Modell liest es im Hintergrund, danach prüfst du die Ausgabe, bevor sie gespeichert wird.',
+  'costs.scan.accepted':
+    'Ein Foto eines Belegs (JPG, PNG oder WEBP, bis 10 MB). Das KI-Modell liest es im Hintergrund, danach prüfst du die Ausgabe, bevor sie gespeichert wird.',
   'costs.scan.dropHere': 'Belegfoto hier ablegen oder klicken, um eins auszuwählen oder aufzunehmen',
   'costs.scan.dropActive': 'Foto ablegen, um es zu scannen',
   'costs.scan.start': 'Scannen',
@@ -168,6 +175,7 @@ const budget: TranslationStrings = {
   'costs.noReceipts': 'Keine Belege angehängt',
   'costs.deleteReceipt': 'Beleg entfernen',
   'costs.viewReceipt': 'Beleg ansehen',
-  'costs.receiptLeftBehind': 'Speichern fehlgeschlagen, {count} hochgeladene Belege liegen noch da. Im Dateien-Tab entfernen.',
+  'costs.receiptLeftBehind':
+    'Speichern fehlgeschlagen, {count} hochgeladene Belege liegen noch da. Im Dateien-Tab entfernen.',
 };
 export default budget;

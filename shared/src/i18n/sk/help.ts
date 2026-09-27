@@ -2271,9 +2271,9 @@ const help: TranslationStrings = {
   'help.guide.place-booking.step.1':
     'Otvorte zastávku, ku ktorej rezervácia patrí. Karta zobrazuje pás so stavom Potvrdené alebo Čaká na potvrdenie a názvom rezervácie.',
   'help.guide.place-booking.step.2': 'Pás obsahuje Dátum, Čas a Rezervačný kód, ako aj poznámky, ktoré rezervácia má.',
-  'help.guide.place-booking.step.3': 'Kliknite na pás. Otvorí sa formulár samotnej rezervácie.',
+  'help.guide.place-booking.step.3': 'Kliknite na pás. Rezervácia sa otvorí nad mapou.',
   'help.guide.place-booking.step.4':
-    'Rezerváciu k zastávke pripína pole Prepojiť s priradením dňa a tu už uvádza práve túto zastávku. Formulár opäť zatvorte.',
+    'Upraviť v spodnej časti rezervácie otvorí jej vlastný formulár. Rezerváciu k zastávke tam pripína pole Prepojiť s priradením dňa a tu už uvádza práve túto zastávku. Formulár opäť zatvorte.',
   'help.guide.place-booking.step.5':
     'Nová rezervácia pre zastávku sa začína v stĺpci dní: prejdite myšou na zastávku a kliknite na + na jej konci. Formulár sa otvorí ako Nová rezervácia, už prepojený so zastávkou.',
   'help.guide.place-booking.result':
@@ -2469,7 +2469,8 @@ const help: TranslationStrings = {
     'Riadok ukazuje druh rezervácie, jej názov a, ak patrí k zastávke, túto zastávku za bodkou. Jej časy sú na pravom konci.',
   'help.guide.day-bookings.step.3':
     'Farba ukazuje stav rezervácie: zelený riadok je potvrdený, jantárový ešte čaká na potvrdenie. Hotely v tomto zozname nie sú, majú vlastný blok nižšie.',
-  'help.guide.day-bookings.step.4': 'Zoznam rezervácie len zobrazuje. Rezervácia sa vytvára a mení v časti Rezervácie.',
+  'help.guide.day-bookings.step.4':
+    'Kliknite na riadok a rezervácia sa otvorí. Upraviť v jej spodnej časti ju zmení; nové rezervácie sa vytvárajú v časti Rezervácie.',
   'help.guide.day-bookings.result':
     'Všetko s dátumom tohto dňa a všetko, čo visí na niektorej z jeho zastávok, je v tomto jednom zozname.',
   'help.guide.day-bookings.tip.1':
@@ -2751,19 +2752,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Prečítajte si spojenie zastávku po zastávke, premenujte ho alebo trasu vyhľadajte znova.',
   'help.guide.change-transit-route.step.1':
-    'Na záložke Doprava sú naplánované spojenia v časti Automatické spojenie MHD. Kliknite na kartu.',
+    'Na záložke Doprava sú naplánované spojenia v časti Automatické spojenie MHD. Kliknite na kartu; spojenie sa otvorí ako rezervácia.',
   'help.guide.change-transit-route.step.2':
     'Trvanie, Prestupy a Pešo sú hore. Itinerár pod nimi prechádza spojením zastávku po zastávke, s nástupišťami a presunmi pešo medzi linkami.',
   'help.guide.change-transit-route.step.3':
-    'Zmeniť trasu spustí hľadanie znova, už vyplnené oboma koncami tohto spojenia a jeho dňom.',
+    'Zmeniť trasu v spodnej časti rezervácie spustí hľadanie znova, už vyplnené oboma koncami tohto spojenia a jeho dňom.',
   'help.guide.change-transit-route.step.4':
-    'Vyberte iné spojenie a kliknite na Pridať k dňu; nahradí to staré. Upraviť podrobnosti vedľa Zmeniť trasu namiesto toho otvorí bežný formulár dopravy, kde sú Rezervačný kód, Stav, cestujúci a súbory.',
+    'Vyberte iné spojenie a kliknite na Pridať k dňu; nahradí to staré. Upraviť na druhom konci tej istej lišty namiesto toho otvorí bežný formulár dopravy, kde sú Rezervačný kód, Stav, cestujúci, poznámky a súbory.',
   'help.guide.change-transit-route.result':
     'Spojenie má nový itinerár a jeho karta na záložke Doprava ukazuje nové linky a časy.',
   'help.guide.change-transit-route.tip.1':
-    'Názov spojenia je len text: ceruzka vedľa neho ho premenuje bez zmeny trasy. Poznámky pod ním podporujú markdown a majú záložky Upraviť a Náhľad.',
+    'Názov v záhlaví rezervácie premenuje spojenie bez zmeny trasy. Jeho poznámky sa píšu vo formulári dopravy, ktorý otvorí Upraviť.',
   'help.guide.change-transit-route.tip.2':
-    'Vymazať v spodnej časti spojenia odstráni spojenie z cesty; deň si zastávky ponechá.',
+    'Odstrániť v spodnej časti rezervácie vyradí spojenie z cesty; deň si zastávky ponechá.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Zmeňte spôsob cestovania jedného úseku',
   'help.guide.leg-travel-mode.goal':
@@ -2786,17 +2787,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': 'Zmeňte alebo vymažte dopravu',
   'help.guide.edit-transport.goal': 'Opravte čas, nástupište alebo rezervačný kód, alebo jazdu odstráňte z cesty.',
-  'help.guide.edit-transport.step.1': 'V pláne dňa je doprava farebný riadok medzi zastávkami. Kliknite naň.',
+  'help.guide.edit-transport.step.1':
+    'V pláne dňa je doprava farebný riadok medzi zastávkami. Kliknite naň; otvorí sa jej rezervácia s časmi, trasou a Rezervačným kódom.',
   'help.guide.edit-transport.step.2':
-    'Formulár je ten istý, ktorým vznikla, s Upraviť dopravu v záhlaví. Zmeniť sa dá všetko: typ, trasa, dni a časy, Rezervačný kód, Stav.',
+    'Upraviť v spodnej časti rezervácie otvorí formulár, ktorým vznikla, s Upraviť dopravu v záhlaví. Zmeniť sa dá všetko: typ, trasa, dni a časy, Rezervačný kód, Stav.',
   'help.guide.edit-transport.step.3':
     'Trasa letu je reťaz letísk, trasa vlaku reťaz staníc. Pridať zastávku vloží medzi ne ďalšiu a každý úsek si ponechá vlastné časy a vlastné číslo letu alebo vlaku.',
   'help.guide.edit-transport.step.4':
-    'Kliknite na Aktualizovať. Ak chcete dopravu úplne odstrániť, použite kôš na jej karte na záložke Doprava a potvrďte.',
+    'Kliknite na Aktualizovať. Ak chcete dopravu úplne odstrániť, použite Odstrániť v spodnej časti jej rezervácie alebo kôš na jej karte na záložke Doprava a potvrďte.',
   'help.guide.edit-transport.result':
     'Zmena sa prejaví všade, kde sa doprava zobrazuje: na záložke Doprava, v dni, v ktorý jazda prebieha, a v jej čiare na mape.',
   'help.guide.edit-transport.tip.1':
-    'Ten istý formulár sa otvára z oboch strán, ceruzkou na karte na záložke Doprava aj vlastným riadkom dopravy v pláne dňa. Výnimkou je naplánované spojenie verejnou dopravou: jeho riadok otvorí zobrazenie spojenia a Upraviť podrobnosti tam vedie k tomuto formuláru.',
+    'Ten istý formulár sa otvára z oboch strán: cez Upraviť v rezervácii, ktorú otvorí riadok plánu dňa, aj ceruzkou na karte na záložke Doprava. Naplánované spojenie verejnou dopravou sa tiež otvorí ako rezervácia; Zmeniť trasu tam hľadá znova a Upraviť vedie k tomuto formuláru.',
   'help.guide.edit-transport.tip.2':
     'Na presun dopravy do iného dňa formulár vôbec nepotrebujete: presuňte jej riadok z jednej karty dňa na ďalšiu.',
   // transport-on-map
@@ -2867,13 +2869,13 @@ const help: TranslationStrings = {
     'Zadajte do cesty ručne reštauráciu, udalosť, prehliadku, parkovacie miesto alebo čokoľvek iné.',
   'help.guide.create-booking.step.1': 'Kliknite na Ručná rezervácia vpravo hore na záložke. Otvorí sa Nová rezervácia.',
   'help.guide.create-booking.step.2':
-    'Vyberte Typ rezervácie zo zoznamu v hornej časti formulára, vedľa poľa Cestujúci. Ubytovanie, Reštaurácia, Udalosť, Prehliadka, Parkovanie a Ostatné je šesť typov, ktoré táto záložka vytvára, a formulár sa mení podľa voľby: len Ubytovanie vymení dátumy za rozsah dní.',
+    'Kliknite na štítok typu pod názvom v záhlaví formulára a vyberte Typ rezervácie. Ubytovanie, Reštaurácia, Udalosť, Prehliadka, Parkovanie a Ostatné je šesť typov, ktoré táto záložka vytvára, a formulár sa mení podľa voľby: len Ubytovanie vymení dátumy za rozsah dní.',
   'help.guide.create-booking.step.3':
     'Zadajte Názov. Je to jediné pole, na ktorom formulár trvá, a Pridať zostane neaktívne, kým v ňom niečo nie je.',
   'help.guide.create-booking.step.4':
     'Nastavte Dátum a Čas začiatku a Dátum konca a Čas konca, ak má rezervácia koniec. Kalendáre ponúkajú len dni v rámci cesty a koniec, ktorý nie je po začiatku, sa ohlási červenou a zablokuje Pridať.',
   'help.guide.create-booking.step.5':
-    'Zadajte Rezervačný kód z potvrdenia a nastavte Stav. Čaká na potvrdenie alebo Potvrdené rozhoduje, do ktorej z dvoch sekcií karta patrí.',
+    'Zadajte Rezervačný kód z potvrdenia. Štítok stavu vedľa typu ukazuje Čaká na potvrdenie; kliknutím ho prepnete na Potvrdené a späť, a to rozhoduje, do ktorej z dvoch sekcií karta patrí.',
   'help.guide.create-booking.step.6': 'Kliknite na Pridať.',
   'help.guide.create-booking.result':
     'Rezervácia je karta vo svojej sekcii so štítkom typu, dátumami a kódom a všetci ostatní v ceste ju uvidia pribudnúť.',
@@ -2924,7 +2926,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Označte cestujúcich, na ktorých sa rezervácia vzťahuje, a potom zobrazte len ich rezervácie.',
   'help.guide.booking-travelers.step.1':
-    'Otvorte rezerváciu ceruzkou. Pole Cestujúci je v hornej časti formulára, vedľa poľa Typ rezervácie, a kým na rezervácii nikto nie je, ukazuje Priradiť cestujúcich.',
+    'Otvorte rezerváciu ceruzkou. Pole Cestujúci je vedľa Rezervačného kódu a kým na rezervácii nikto nie je, ukazuje Priradiť cestujúcich.',
   'help.guide.booking-travelers.step.2':
     'Kliknite naň a vyberte ľudí, pre ktorých je rezervácia; pomenovaní hostia sú v zozname tiež. Vybraný dostane fajku a svoj avatar v poli. Ďalším kliknutím na meno ho odstránite.',
   'help.guide.booking-travelers.step.3': 'Kliknite na Aktualizovať.',
@@ -3020,7 +3022,8 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.step.1':
     'Kliknite na ceruzku v záhlaví karty. Otvorí sa Upraviť rezerváciu so všetkým, čo rezervácia obsahuje.',
   'help.guide.edit-booking.step.2': 'Zmeňte, čo treba, tu Rezervačný kód, ktorý prevádzkovateľ konečne poslal.',
-  'help.guide.edit-booking.step.3': 'Nastavte Stav na Potvrdené.',
+  'help.guide.edit-booking.step.3':
+    'Kliknite na štítok Čaká na potvrdenie v záhlaví formulára. Prepne sa na Potvrdené.',
   'help.guide.edit-booking.step.4': 'Kliknite na Aktualizovať.',
   'help.guide.edit-booking.result':
     'Karta sa presunie: potvrdená rezervácia je v sekcii Potvrdené so zeleným bodom a všetci v ceste uvidia presun.',

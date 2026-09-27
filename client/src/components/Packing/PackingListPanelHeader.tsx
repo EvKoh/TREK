@@ -1,5 +1,5 @@
 import {
-  CheckCheck, Luggage, Package, FolderPlus, Download, Trash2,
+  CheckCheck, Luggage, Package, FolderPlus, Download, Trash2, ListPlus, BookmarkPlus,
 } from 'lucide-react'
 import type { PackingState } from './usePackingListPanel'
 import NameDialog from '../shared/NameDialog'
@@ -202,6 +202,7 @@ export function PackingHeader(S: PackingState) {
       <NameDialog
         open={canEdit && addingCategory}
         title={t('packing.addCategory')}
+        icon={ListPlus}
         placeholder={t('packing.newCategoryPlaceholder')}
         confirmLabel={t('common.add')}
         value={newCatName}
@@ -212,6 +213,7 @@ export function PackingHeader(S: PackingState) {
       <NameDialog
         open={canEdit && isAdmin && items.length > 0 && showSaveTemplate}
         title={t('packing.saveAsTemplate')}
+        icon={BookmarkPlus}
         placeholder={t('packing.templateName')}
         confirmLabel={t('common.save')}
         value={saveTemplateName}

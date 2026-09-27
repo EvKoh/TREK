@@ -78,8 +78,8 @@ const dayplan: TranslationStrings = {
   'dayplan.mobile.allAssigned': 'Semua tempat sudah ditugaskan',
   'dayplan.mobile.noMatch': 'Tidak ditemukan',
   'dayplan.mobile.createNew': 'Buat tempat baru',
-  'dayplan.expandAll': 'Expand all days', // en-fallback
-  'dayplan.collapseAll': 'Collapse all days', // en-fallback
+  'dayplan.expandAll': 'Buka semua hari', // en-fallback
+  'dayplan.collapseAll': 'Tutup semua hari', // en-fallback
   'dayplan.reorderDays': 'Atur ulang hari',
   'dayplan.reorderTitle': 'Atur ulang hari',
   'dayplan.reorderHint': 'Tempat, catatan, dan pesanan pada suatu hari ikut berpindah.',

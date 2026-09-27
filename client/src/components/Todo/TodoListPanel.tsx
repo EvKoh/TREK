@@ -1,10 +1,10 @@
-import { Fragment, useState, useEffect, type CSSProperties } from 'react'
+import { Fragment, useId, useState, useEffect, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { useTripStore } from '../../store/tripStore'
 import { useCanDo } from '../../store/permissionsStore'
 import { useToast } from '../shared/Toast'
 import { useTranslation } from '../../i18n'
-import { Check, Plus, Flag, X, Calendar, User, AlertCircle, Inbox, CheckCheck, Trash2 } from 'lucide-react'
+import { Check, Plus, Flag, X, Calendar, User, AlertCircle, Inbox, CheckCheck, Trash2, ListPlus, ListTodo } from 'lucide-react'
 import type { TodoItem } from '../../types'
 
 import { katColor, taskInputStyle, type FilterType, type Member, type TaskFieldValues } from './todoListModel'
@@ -14,6 +14,7 @@ import TodoTaskFields from './TodoTaskFields'
 import { usePluginViewContributions, PluginCardFooter } from '../Plugins/PluginContributions'
 import EmptyState from '../shared/EmptyState'
 import NameDialog from '../shared/NameDialog'
+import { DialogButton, DialogFooter, DialogHeader, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT } from '../shared/DialogShell'
 
 /** The card the list and the detail pane sit in, the packing list's category card. */
 const CARD: CSSProperties = {
@@ -265,17 +266,24 @@ export default function TodoListPanel({ tripId, items, addItemSignal = 0 }: { tr
           </div>
         </div>
       )}
-      {isAddingNew && !selectedItem && createPortal(
+      {isAddingNew && !selectedItem && !isMobile && (
+        <NewTaskPane
+          variant="dialog"
+          tripId={tripId}
+          categories={categories}
+          members={members}
+          defaultCategory={typeof filter === 'string' && categories.includes(filter) ? filter : null}
+          onCreated={(id) => { setIsAddingNew(false); setSelectedId(id) }}
+          onClose={() => setIsAddingNew(false)}
+        />
+      )}
+      {isAddingNew && !selectedItem && isMobile && createPortal(
         <div role="presentation" onClick={e => { if (e.target === e.currentTarget) setIsAddingNew(false) }}
           className="trek-modal-backdrop"
-          style={isMobile
-            ? { position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(0,0,0,0.4)', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', paddingBottom: 'var(--bottom-nav-h)' }
-            : { position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(15,23,42,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingTop: 'calc(var(--nav-h) + 60px)', paddingBottom: 40 }}>
-          <div style={isMobile
-            ? { width: '100%', maxHeight: '85vh', display: 'flex' }
-            : { width: 'min(520px, 92vw)', maxHeight: 'calc(100vh - var(--nav-h) - 120px)', display: 'flex', boxShadow: '0 20px 60px rgba(0,0,0,0.25)', borderRadius: 16 }}>
+          style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(0,0,0,0.4)', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', paddingBottom: 'var(--bottom-nav-h)' }}>
+          <div style={{ width: '100%', maxHeight: '85vh', display: 'flex' }}>
             <NewTaskPane
-              variant={isMobile ? 'sheet' : 'dialog'}
+              variant="sheet"
               tripId={tripId}
               categories={categories}
               members={members}
@@ -291,6 +299,7 @@ export default function TodoListPanel({ tripId, items, addItemSignal = 0 }: { tr
       <NameDialog
         open={canEdit && addingCategory}
         title={t('todo.addCategory')}
+        icon={ListPlus}
         placeholder={t('todo.newCategory')}
         confirmLabel={t('common.add')}
         value={newCategoryName}
@@ -465,6 +474,11 @@ function NewTaskPane({ tripId, categories, members, defaultCategory, onCreated, 
     setSaving(false)
   }
 
+  if (variant === 'dialog') return (
+    <NewTaskDialog name={name} onName={setName} fields={fields} onFields={patch => setFields(f => ({ ...f, ...patch }))}
+      categories={categories} members={members} saving={saving} onCreate={create} onClose={onClose} />
+  )
+
   return (
     <div role="region" aria-label={t('todo.newItem')} style={paneFrame(variant)}>
       <PaneHead title={t('todo.newItem')} onClose={onClose} />
@@ -483,5 +497,50 @@ function NewTaskPane({ tripId, categories, members, defaultCategory, onCreated, 
         </button>
       </div>
     </div>
+  )
+}
+
+/** The new task on the desktop: named in the head band, its fields below, created from the footer. */
+function NewTaskDialog({ name, onName, fields, onFields, categories, members, saving, onCreate, onClose }: {
+  name: string; onName: (name: string) => void
+  fields: TaskFieldValues; onFields: (patch: Partial<TaskFieldValues>) => void
+  categories: string[]; members: Member[]
+  saving: boolean; onCreate: () => void; onClose: () => void
+}) {
+  const { t } = useTranslation()
+  const labelId = useId()
+  return (
+    <DialogShell
+      onClose={onClose}
+      labelledBy={labelId}
+      header={(
+        <DialogHeader
+          tile={<DialogTile><ListTodo size={20} strokeWidth={1.9} className="text-content-muted" /></DialogTile>}
+          tint={NEUTRAL_TINT}
+          labelId={labelId}
+          onClose={onClose}
+          eyebrow={t('todo.newItem')}
+          titleInput={{
+            value: name,
+            onChange: onName,
+            label: t('todo.newItem'),
+            placeholder: t('todo.namePlaceholder'),
+            autoFocus: true,
+            onKeyDown: e => { if (e.key === 'Enter' && name.trim()) onCreate() },
+          }}
+        />
+      )}
+      footer={(
+        <DialogFooter>
+          <FooterSpacer />
+          <DialogButton onClick={onClose}>{t('common.cancel')}</DialogButton>
+          <DialogButton variant="primary" onClick={onCreate} disabled={!name.trim() || saving}>
+            {saving ? '...' : t('todo.detail.create')}
+          </DialogButton>
+        </DialogFooter>
+      )}
+    >
+      <TodoTaskFields values={fields} onChange={onFields} categories={categories} members={members} variant="dialog" />
+    </DialogShell>
   )
 }

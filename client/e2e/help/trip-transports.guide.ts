@@ -43,6 +43,10 @@ const dayHeader = (page: Page, n: number) => page.getByRole('button', { name: ne
 const card = (page: Page, text: string) => page.locator('.bg-surface-card').filter({ hasText: text }).first()
 /** A transport's row in the day plan; the whole row is the button that opens it. */
 const transportRow = (page: Page, name: RegExp) => page.getByRole('button', { name }).first()
+/** The booking a click on a row or a card opens, named by the booking's title. */
+const bookingDetail = (page: Page, title: string) => page.getByRole('dialog', { name: title })
+/** The Edit at the foot of that booking, which leads on to its form. */
+const detailEdit = (page: Page, title: string) => bookingDetail(page, title).getByRole('button', { name: 'Edit', exact: true })
 /** A toolbar type chip or a section heading — both are a label followed by their count. */
 const counted = (page: Page, label: string) => page.getByRole('button', { name: new RegExp(`^${label} \\d+$`) })
 /** A labelled field block inside the open dialog. */
@@ -393,15 +397,15 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: p => card(p, JOURNEY.onCard),
         act: async p => {
           await card(p, JOURNEY.onCard).click()
-          await expect(modal(p).getByRole('heading', { name: 'Public transit journey' })).toBeVisible()
+          await expect(bookingDetail(p, JOURNEY.title)).toBeVisible()
           await settle(p)
         },
       },
-      only(p => modal(p).getByText('Itinerary', { exact: true }).locator('xpath=..')),
+      only(p => bookingDetail(p, JOURNEY.title).getByText('Itinerary', { exact: true }).locator('xpath=..')),
       {
-        target: p => modal(p).getByRole('button', { name: 'Change route' }),
+        target: p => bookingDetail(p, JOURNEY.title).getByRole('button', { name: 'Change route' }),
         act: async p => {
-          await modal(p).getByRole('button', { name: 'Change route' }).click()
+          await bookingDetail(p, JOURNEY.title).getByRole('button', { name: 'Change route' }).click()
           await expect(modal(p).getByRole('button', { name: 'Search' })).toBeVisible()
           await settle(p)
         },
@@ -476,11 +480,18 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: p => transportRow(p, FLIGHT.row),
         act: async p => {
           await transportRow(p, FLIGHT.row).click()
+          await expect(bookingDetail(p, FLIGHT.title)).toBeVisible()
+          await settle(p)
+        },
+      },
+      {
+        target: p => detailEdit(p, FLIGHT.title),
+        act: async p => {
+          await detailEdit(p, FLIGHT.title).click()
           await expect(modal(p).getByRole('heading', { name: 'Edit transport' })).toBeVisible()
           await settle(p)
         },
       },
-      only(dialog),
       only(p => block(p, 'Route')),
       {
         // Escape rather than Update: nothing about the seeded flight may change.

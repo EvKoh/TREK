@@ -77,10 +77,10 @@ beforeEach(() => {
   vi.clearAllMocks();
 });
 
-// The booking type is one dropdown now (BookingTypeSelect): open it from the
-// field under the "Booking Type" label, then pick the option from its menu.
+// The booking type is a pill in the dialog's head band, named "Booking Type: <type>":
+// open it, then pick the option from its menu.
 function typeField(): HTMLButtonElement {
-  return screen.getByText('Booking Type').parentElement!.querySelector('button') as HTMLButtonElement;
+  return screen.getByRole('button', { name: /^Booking Type:/ }) as HTMLButtonElement;
 }
 async function pickType(name: RegExp) {
   await userEvent.click(typeField());
@@ -133,8 +133,8 @@ describe('ReservationModal', () => {
     expect(screen.getByRole('button', { name: /^Event$/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /^Tour$/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /^Parking$/i })).toBeInTheDocument();
-    // The field itself and its option both read "Other".
-    expect(screen.getAllByRole('button', { name: /^Other$/i })).toHaveLength(2);
+    // The pill reads "Booking Type: Other", so only its option is named plain "Other".
+    expect(screen.getAllByRole('button', { name: /^Other$/i })).toHaveLength(1);
     expect(screen.queryByRole('button', { name: /^Flight$/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /^Train$/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /^Car$/i })).not.toBeInTheDocument();
@@ -704,7 +704,7 @@ describe('ReservationModal', () => {
   it('FE-PLANNER-RESMODAL-046: other type renders and saves correctly', async () => {
     const onSave = vi.fn().mockResolvedValue(undefined);
     render(<ReservationModal {...defaultProps} onSave={onSave} />);
-    await userEvent.click(screen.getByRole('button', { name: /^Other$/i }));
+    await pickType(/^Other$/i);
     await userEvent.type(screen.getByPlaceholderText(/e\.g\. Lufthansa/i), 'Misc item');
     await userEvent.click(screen.getByRole('button', { name: /^Add$/i }));
     await waitFor(() => expect(onSave).toHaveBeenCalledWith(expect.objectContaining({ type: 'other' })));
@@ -1503,8 +1503,8 @@ describe('ReservationModal', () => {
     render(<ReservationModal {...defaultProps} onSave={onSave} />);
 
     await userEvent.type(screen.getByPlaceholderText(/e\.g\. Lufthansa/i), 'Boat trip');
-    await userEvent.click(screen.getByText('Pending'));
-    await userEvent.click(screen.getByRole('button', { name: 'Confirmed' }));
+    // The status pill in the head band flips pending to confirmed.
+    await userEvent.click(screen.getByRole('button', { name: 'Set to Confirmed' }));
     await userEvent.click(screen.getByRole('button', { name: /^Add$/i }));
 
     await waitFor(() => expect(onSave).toHaveBeenCalled());

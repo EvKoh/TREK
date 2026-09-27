@@ -1,8 +1,11 @@
+import type { ReactNode } from 'react'
 import { Plus, Pencil, Trash2, Link2Off } from 'lucide-react'
 import { useTripStore } from '../../store/tripStore'
 import { useSettingsStore } from '../../store/settingsStore'
 import { useTranslation } from '../../i18n'
 import CustomSelect from '../shared/CustomSelect'
+import { Tooltip } from '../shared/Tooltip'
+import { fs } from '../shared/DialogShell'
 import { formatMoney } from '../../utils/formatters'
 import { catMeta } from '../Budget/costsCategories'
 import { useExpenseLinks } from './useRecordLinks'
@@ -22,7 +25,7 @@ import type { BudgetItem } from '../../types'
  * Exactly one of reservationId / placeId is set — they are the two sides of the
  * same link, and the block behaves identically on both.
  */
-export function BookingCostsSection({ reservationId, placeId = null, hintKey = 'reservations.createExpenseHint', pendingExpense, onCreate, onEdit, onRemove }: {
+export function BookingCostsSection({ reservationId, placeId = null, hintKey = 'reservations.createExpenseHint', pendingExpense, onCreate, onEdit, onRemove, labelClassName, customTooltips = false, whiteButtons = false }: {
   reservationId: number | null
   /** Set instead of reservationId when the block sits in the place form (#1298). */
   placeId?: number | null
@@ -33,6 +36,15 @@ export function BookingCostsSection({ reservationId, placeId = null, hintKey = '
   onCreate: () => void
   onEdit: (item: BudgetItem) => void
   onRemove: (item: BudgetItem) => void
+  /** Replaces the block's own label style, so a host form can match its other fields. */
+  labelClassName?: string
+  /** Shows the row buttons' hints in the shared Tooltip instead of the native title. */
+  customTooltips?: boolean
+  /**
+   * Draws the create button and the expense rows white on a hairline, the look
+   * of the dialog frame's secondary buttons, instead of the grey fill.
+   */
+  whiteButtons?: boolean
 }) {
   const { t, locale } = useTranslation()
   const tripCurrency = useTripStore(s => s.trip?.currency)
@@ -44,12 +56,24 @@ export function BookingCostsSection({ reservationId, placeId = null, hintKey = '
   const ownCurrency = (currency: string | null | undefined) => currency || tripCurrency || base
   const { targetId, linked, unlinked, link, unlink } = useExpenseLinks(reservationId, placeId)
 
-  const labelCls = 'block text-[11px] font-semibold uppercase tracking-[0.08em] text-content-faint mb-[6px]'
-  const rowCls = 'bg-surface-secondary border border-edge'
+  const labelCls = labelClassName ?? 'block text-[11px] font-semibold uppercase tracking-[0.08em] text-content-faint mb-[6px]'
+  const rowCls = whiteButtons ? 'bg-surface-card border border-edge-faint' : 'bg-surface-secondary border border-edge'
   const rowStyle = { display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', borderRadius: 10 } as const
-  const iconButton = 'text-content-muted border border-edge bg-surface-card transition-colors hover:bg-surface-tertiary hover:text-content'
-  const deleteButton = 'text-content-muted border border-edge bg-surface-card transition-colors hover:bg-danger-soft hover:text-danger'
+  // White, the row's buttons trade the border for the hairline ring and shadow of
+  // the create button under them; the border stays, transparent, to keep their size.
+  const iconButton = whiteButtons
+    ? 'border border-transparent bg-surface-card text-content-muted shadow-sm ring-1 ring-edge-faint transition-colors hover:bg-surface-hover hover:text-content'
+    : 'text-content-muted border border-edge bg-surface-card transition-colors hover:bg-surface-tertiary hover:text-content'
+  const deleteButton = whiteButtons
+    ? 'border border-transparent bg-surface-card text-content-muted shadow-sm ring-1 ring-edge-faint transition-colors hover:bg-danger-soft hover:text-danger'
+    : 'text-content-muted border border-edge bg-surface-card transition-colors hover:bg-danger-soft hover:text-danger'
   const iconButtonStyle = { display: 'inline-flex', padding: 7, borderRadius: 8, cursor: 'pointer' } as const
+  const rowButton = (label: string, className: string, onClick: () => void, icon: ReactNode) => {
+    const button = (
+      <button type="button" onClick={onClick} title={customTooltips ? undefined : label} aria-label={label} className={className} style={iconButtonStyle}>{icon}</button>
+    )
+    return customTooltips ? <Tooltip label={label}>{button}</Tooltip> : button
+  }
 
   // Import review (booking not saved yet): preview the parsed cost that will be linked on save.
   if (linked.length === 0 && pendingExpense && pendingExpense.total_price > 0) {
@@ -61,10 +85,10 @@ export function BookingCostsSection({ reservationId, placeId = null, hintKey = '
         <div className={rowCls} style={rowStyle}>
           <span style={{ width: 26, height: 26, borderRadius: 7, display: 'grid', placeItems: 'center', background: meta.color + '22', color: meta.color, flexShrink: 0 }}><Icon size={14} /></span>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div className="text-content" style={{ fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 600 }}>{t(meta.labelKey)}</div>
-            <div className="text-content-faint" style={{ fontSize: 'calc(12px * var(--fs-scale-body, 1))' }}>{t(hintKey)}</div>
+            <div className="text-content" style={{ ...fs(14, 'body'), fontWeight: 600 }}>{t(meta.labelKey)}</div>
+            <div className="text-content-faint" style={fs(12, 'body')}>{t(hintKey)}</div>
           </div>
-          <span className="text-content" style={{ fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 700, flexShrink: 0 }}>{formatMoney(pendingExpense.total_price, ownCurrency(pendingExpense.currency), locale)}</span>
+          <span className="text-content" style={{ ...fs(14, 'body'), fontWeight: 700, flexShrink: 0 }}>{formatMoney(pendingExpense.total_price, ownCurrency(pendingExpense.currency), locale)}</span>
         </div>
       </div>
     )
@@ -83,13 +107,13 @@ export function BookingCostsSection({ reservationId, placeId = null, hintKey = '
               <div key={item.id} className={rowCls} style={rowStyle}>
                 <span style={{ width: 26, height: 26, borderRadius: 7, display: 'grid', placeItems: 'center', background: meta.color + '22', color: meta.color, flexShrink: 0 }}><Icon size={14} /></span>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div className="text-content" style={{ fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</div>
-                  <div className="text-content-faint" style={{ fontSize: 'calc(12px * var(--fs-scale-body, 1))' }}>{t(meta.labelKey)}</div>
+                  <div className="text-content" style={{ ...fs(14, 'body'), fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</div>
+                  <div className="text-content-faint" style={fs(12, 'body')}>{t(meta.labelKey)}</div>
                 </div>
-                <span className="text-content" style={{ fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 700, flexShrink: 0 }}>{formatMoney(item.total_price, ownCurrency(item.currency), locale)}</span>
-                <button type="button" onClick={() => onEdit(item)} title={t('common.edit')} aria-label={t('common.edit')} className={iconButton} style={iconButtonStyle}><Pencil size={13} /></button>
-                <button type="button" onClick={() => void unlink(item)} title={t('reservations.unlinkExpense')} aria-label={t('reservations.unlinkExpense')} className={iconButton} style={iconButtonStyle}><Link2Off size={13} /></button>
-                <button type="button" onClick={() => onRemove(item)} title={t('reservations.removeExpense')} aria-label={t('reservations.removeExpense')} className={deleteButton} style={iconButtonStyle}><Trash2 size={13} /></button>
+                <span className="text-content" style={{ ...fs(14, 'body'), fontWeight: 700, flexShrink: 0 }}>{formatMoney(item.total_price, ownCurrency(item.currency), locale)}</span>
+                {rowButton(t('common.edit'), iconButton, () => onEdit(item), <Pencil size={13} />)}
+                {rowButton(t('reservations.unlinkExpense'), iconButton, () => void unlink(item), <Link2Off size={13} />)}
+                {rowButton(t('reservations.removeExpense'), deleteButton, () => onRemove(item), <Trash2 size={13} />)}
               </div>
             )
           })}
@@ -98,9 +122,12 @@ export function BookingCostsSection({ reservationId, placeId = null, hintKey = '
 
       <div style={{ display: 'grid', gridTemplateColumns: targetId ? '1fr 1fr' : '1fr', gap: 8 }}>
         <button type="button" onClick={onCreate}
-          className="bg-surface-secondary border border-edge text-content transition-colors hover:bg-surface-tertiary"
+          className={whiteButtons
+            // The transparent border keeps it the height of the bordered select beside it.
+            ? 'border border-transparent bg-surface-card text-content shadow-sm ring-1 ring-edge-faint transition-colors hover:bg-surface-hover'
+            : 'bg-surface-secondary border border-edge text-content transition-colors hover:bg-surface-tertiary'}
           // Sized like the select beside it, so the two sit as one row.
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '8px 13px', borderRadius: 10, fontSize: 'calc(13px * var(--fs-scale-body, 1))', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '8px 13px', borderRadius: 10, ...fs(13, 'body'), fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
           <Plus size={14} /> {t('reservations.createExpense')}
         </button>
         {/* Linking needs the record to exist, so it waits for the first save. */}
@@ -128,7 +155,7 @@ export function BookingCostsSection({ reservationId, placeId = null, hintKey = '
         )}
       </div>
       {linked.length === 0 && (
-        <div className="text-content-faint" style={{ fontSize: 'calc(11px * var(--fs-scale-caption, 1))', marginTop: 6 }}>{t(hintKey)}</div>
+        <div className="text-content-faint" style={{ ...fs(11), marginTop: 6 }}>{t(hintKey)}</div>
       )}
     </div>
   )

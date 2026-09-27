@@ -58,11 +58,22 @@ const travellers = (page: Page) => page.locator('[aria-label="Travelers"]')
 /** The card's delete question is its own portal, with no backdrop class to find it by. */
 const deleteAsk = (page: Page) => portalDialog(page, page.getByText('Delete booking?', { exact: true }))
 
-/** The Booking Type field at the head of the form is a CustomSelect; this opens it. */
+/** The Booking Type is a pill in the head of the form; its name reads the type after the label. */
+const typePill = (page: Page) => modal(page).getByRole('button', { name: /^Booking Type:/ })
+/** The pill's list is its own portal, named after the pill's label. */
+const typeMenu = (page: Page) => page.getByRole('group', { name: 'Booking Type' })
+/** The status pill beside it says what a click turns it into. */
+const statusPill = (page: Page) => modal(page).getByRole('button', { name: /^Set to / })
+
 async function openTypeMenu(page: Page): Promise<void> {
-  await block(page, /^Booking Type$/).getByRole('button').first().click()
-  await expect(selectMenu(page)).toBeVisible()
+  await typePill(page).click()
+  await expect(typeMenu(page)).toBeVisible()
   await beat(page, 300)
+}
+
+async function pickType(page: Page, type: RegExp): Promise<void> {
+  await typeMenu(page).getByRole('button', { name: type }).first().click()
+  await expect(typeMenu(page)).toHaveCount(0)
 }
 
 /** The Travelers field opens its members as a list under it, inside the form. */
@@ -162,17 +173,16 @@ const SCRIPTS: Record<string, GuideScript> = {
         prepare: async p => {
           await openTypeMenu(p)
         },
-        target: selectMenu,
+        target: typeMenu,
         act: async p => {
-          await selectMenu(p).getByRole('button', { name: /^Event$/ }).first().click()
-          await expect(selectMenu(p)).toHaveCount(0)
-          await expect(block(p, /^Booking Type$/).getByRole('button', { name: /Event/ })).toBeVisible()
+          await pickType(p, /^Event$/)
+          await expect(typePill(p)).toHaveAccessibleName(/^Booking Type:\s*Event$/)
           await settle(p)
         },
       },
       {
         prepare: async p => { await typeInto(p, titleBox(p), 'Kabuki at the Minamiza') },
-        target: p => block(p, /^Title \*$/),
+        target: titleBox,
         act: async p => {
           await expect(saveButton(p, 'Add')).toBeEnabled()
           await settle(p)
@@ -195,7 +205,8 @@ const SCRIPTS: Record<string, GuideScript> = {
       {
         prepare: async p => {
           await typeInto(p, codeBox(p), 'MZ-5521')
-          await chooseIn(p, /^Status$/, /^Confirmed$/)
+          await statusPill(p).click()
+          await expect(statusPill(p)).toHaveAccessibleName('Set to Pending')
         },
         target: p => row(p, /^Booking Code$/),
         act: settle,
@@ -222,10 +233,9 @@ const SCRIPTS: Record<string, GuideScript> = {
           await expect(modal(p).getByRole('heading', { name: 'New Reservation' })).toBeVisible()
           await openTypeMenu(p)
         },
-        target: selectMenu,
+        target: typeMenu,
         act: async p => {
-          await selectMenu(p).getByRole('button', { name: /^Accommodation$/ }).first().click()
-          await expect(selectMenu(p)).toHaveCount(0)
+          await pickType(p, /^Accommodation$/)
           await expect(label(p, /^Check-in until$/)).toBeVisible()
           await settle(p)
         },
@@ -583,16 +593,12 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: settle,
       },
       {
-        prepare: async p => {
-          await block(p, /^Status$/).getByRole('button').first().click()
-          await expect(selectMenu(p)).toBeVisible()
-          await beat(p, 300)
-        },
-        target: p => block(p, /^Status$/),
+        target: statusPill,
         act: async p => {
-          await selectMenu(p).getByRole('button', { name: /^Confirmed$/ }).click()
-          await expect(selectMenu(p)).toHaveCount(0)
-          await expect(block(p, /^Status$/).getByRole('button', { name: 'Confirmed' })).toBeVisible()
+          await expect(statusPill(p)).toHaveAccessibleName('Set to Confirmed')
+          await statusPill(p).click()
+          await expect(statusPill(p)).toHaveAccessibleName('Set to Pending')
+          await expect(statusPill(p)).toHaveText('Confirmed')
           await settle(p)
         },
       },

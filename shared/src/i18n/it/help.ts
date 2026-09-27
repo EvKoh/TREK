@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'it' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Guida e documentazione',
+  'help.search': 'Cerca nella documentazione…',
+  'help.contents': 'Indice',
+  'help.noResults': 'Nessuna pagina trovata.',
+  'help.errorTitle': 'Impossibile caricare questa pagina',
+  'help.errorBody': 'I contenuti della guida arrivano dal wiki di TREK. Controlla la connessione e riprova.',
 
   // center
   'help.center.button': 'Aiuto per questa schermata',
@@ -1042,7 +1042,7 @@ const help: TranslationStrings = {
     'Travel & map: i percorsi delle prenotazioni sempre sulla mappa, la pillola Esplora luoghi, l’ottimizzazione del percorso dal tuo alloggio, i codici di prenotazione nascosti e i percorsi delle prenotazioni etichettati.',
   'help.ctx.settings-display.bullet.3':
     'Avvio: se TREK si apre sulla dashboard o sul viaggio attivo, e quale scheda di un viaggio compare per prima.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Aspetto',
   'help.ctx.settings-appearance.summary':
     'Come appare TREK su questo account: chiaro o scuro, il colore d’accento, vetro e movimento, dimensione del testo, e quali widget mostra la dashboard. Tutto si applica dal vivo, su ogni dispositivo in cui accedi.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2303,9 +2303,9 @@ const help: TranslationStrings = {
     'Apri la tappa a cui appartiene la prenotazione. Il riquadro mostra una striscia con Confermata o In attesa e il nome della prenotazione.',
   'help.guide.place-booking.step.2':
     'La striscia porta la Data, l’Ora e il Codice prenotazione, e tutte le note che la prenotazione ha.',
-  'help.guide.place-booking.step.3': 'Clicca la striscia. Il modulo della prenotazione si apre sopra.',
+  'help.guide.place-booking.step.3': 'Clicca la striscia. La prenotazione si apre sopra la mappa.',
   'help.guide.place-booking.step.4':
-    'Collega all’assegnazione del giorno è ciò che appende una prenotazione a una tappa, e qui nomina già questa. Richiudi il modulo.',
+    'Modifica ai piedi della prenotazione apre il suo modulo. Lì Collega all’assegnazione del giorno è ciò che appende una prenotazione a una tappa, e qui nomina già questa. Richiudi il modulo.',
   'help.guide.place-booking.step.5':
     'Una nuova prenotazione per una tappa parte dalla colonna dei giorni: passa sulla tappa e clicca il + alla sua estremità. Il modulo si apre come Nuova prenotazione, già collegata a quella tappa.',
   'help.guide.place-booking.result':
@@ -2667,7 +2667,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Il colore dice a che punto è una prenotazione: una riga verde è confermata, una ambra è ancora in attesa. Gli alloggi non sono in questa lista, hanno il loro blocco più sotto.',
   'help.guide.day-bookings.step.4':
-    'La lista si limita a leggere le prenotazioni. Una prenotazione si crea e si cambia nella scheda Prenotazioni.',
+    'Clicca una riga e la prenotazione si apre. Modifica ai suoi piedi la cambia; le nuove prenotazioni si creano nella scheda Prenotazioni.',
   'help.guide.day-bookings.result':
     'Tutto ciò che è datato sul giorno, e tutto ciò che è legato a una delle sue tappe, sta in questa sola lista.',
   'help.guide.day-bookings.tip.1':
@@ -3217,13 +3217,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Clicca Prenotazione manuale in alto a destra nella scheda. Si apre Nuova prenotazione.',
   'help.guide.create-booking.step.2':
-    'Scegli il Tipo di prenotazione dall’elenco in cima al modulo, accanto a Viaggiatori. Alloggio, Ristorante, Evento, Tour, Parcheggio e Altro sono i sei che questa scheda crea, e il modulo cambia con la scelta: solo Alloggio scambia le sue date con un intervallo di giorni.',
+    'Clicca la pillola del tipo sotto il titolo, nell’intestazione del modulo, e scegli il Tipo di prenotazione. Alloggio, Ristorante, Evento, Tour, Parcheggio e Altro sono i sei che questa scheda crea, e il modulo cambia con la scelta: solo Alloggio scambia le sue date con un intervallo di giorni.',
   'help.guide.create-booking.step.3':
     'Digita il Titolo. È l’unico campo su cui il modulo insiste, e Aggiungi resta morto finché non c’è qualcosa.',
   'help.guide.create-booking.step.4':
     'Imposta Data e Ora di inizio, e Data fine e Ora di fine se la prenotazione ha una fine. I calendari offrono solo i giorni dentro il viaggio, e una fine che non è successiva all’inizio lo dice in rosso e blocca Aggiungi.',
   'help.guide.create-booking.step.5':
-    'Inserisci il Codice prenotazione dalla conferma e imposta Stato. In attesa o Confermata decide in quale delle due sezioni finisce la scheda.',
+    'Inserisci il Codice prenotazione dalla conferma. La pillola di stato accanto al tipo dice In attesa; un clic la passa a Confermata e viceversa, e questo decide in quale delle due sezioni finisce la scheda.',
   'help.guide.create-booking.step.6': 'Clicca Aggiungi.',
   'help.guide.create-booking.result':
     'La prenotazione è una scheda nella sua sezione, con il suo chip di genere, le sue date e il suo codice, e tutti gli altri nel viaggio la vedono comparire.',
@@ -3273,7 +3273,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Dire per chi è una prenotazione',
   'help.guide.booking-travelers.goal': 'Segna i viaggiatori che una prenotazione copre, e poi vedi solo le loro.',
   'help.guide.booking-travelers.step.1':
-    'Apri la prenotazione con la matita. Viaggiatori sta in cima al modulo, accanto a Tipo di prenotazione, e dice Assegna viaggiatori finché nessuno è sulla prenotazione.',
+    'Apri la prenotazione con la matita. Viaggiatori sta accanto al Codice prenotazione, e dice Assegna viaggiatori finché nessuno è sulla prenotazione.',
   'help.guide.booking-travelers.step.2':
     'Cliccalo e scegli le persone per cui è questa prenotazione; anche gli ospiti con nome sono nell’elenco. Una scelta riceve una spunta e il suo avatar nel campo. Clicca di nuovo il nome per toglierla.',
   'help.guide.booking-travelers.step.3': 'Clicca Aggiorna.',
@@ -3368,7 +3368,7 @@ const help: TranslationStrings = {
     'Clicca la matita nell’intestazione della scheda. Modifica prenotazione si apre con tutto ciò che la prenotazione sa.',
   'help.guide.edit-booking.step.2':
     'Cambia ciò che va cambiato, qui il Codice prenotazione che l’operatore ha finalmente mandato.',
-  'help.guide.edit-booking.step.3': 'Metti Stato su Confermata.',
+  'help.guide.edit-booking.step.3': 'Clicca la pillola In attesa nell’intestazione del modulo. Diventa Confermata.',
   'help.guide.edit-booking.step.4': 'Clicca Aggiorna.',
   'help.guide.edit-booking.result':
     'La scheda si sposta: una prenotazione confermata sta nella sezione Confermata dietro un punto verde, e tutti nel viaggio la vedono spostarsi.',
@@ -3663,19 +3663,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Leggere il collegamento fermata per fermata, rinominarlo, oppure cercare di nuovo il percorso.',
   'help.guide.change-transit-route.step.1':
-    'Nella scheda Trasporti i collegamenti pianificati stanno sotto Trasporto pubblico automatico. Clicca la scheda.',
+    'Nella scheda Trasporti i collegamenti pianificati stanno sotto Trasporto pubblico automatico. Clicca la scheda; il collegamento si apre come prenotazione.',
   'help.guide.change-transit-route.step.2':
     'Durata, Cambi e A piedi stanno in alto. Itinerario sotto di essi percorre il collegamento fermata per fermata, con i binari e i tratti a piedi tra le linee.',
   'help.guide.change-transit-route.step.3':
-    'Cambia percorso rilancia la ricerca, già compilata con i due estremi di questo collegamento e con il suo giorno.',
+    'Cambia percorso ai piedi della prenotazione rilancia la ricerca, già compilata con i due estremi di questo collegamento e con il suo giorno.',
   'help.guide.change-transit-route.step.4':
-    'Scegli un altro collegamento e clicca Aggiungi al giorno; prende il posto del vecchio. Modifica dettagli, accanto a Cambia percorso, apre invece il normale modulo di trasporto, dove stanno il Codice prenotazione, lo Stato, i viaggiatori e i file.',
+    'Scegli un altro collegamento e clicca Aggiungi al giorno; prende il posto del vecchio. Modifica, all’altra estremità della stessa barra, apre invece il normale modulo di trasporto, dove stanno il Codice prenotazione, lo Stato, i viaggiatori, le note e i file.',
   'help.guide.change-transit-route.result':
     'Il viaggio in trasporto pubblico porta il nuovo itinerario, e la sua scheda nella scheda Trasporti mostra le nuove linee e i nuovi orari.',
   'help.guide.change-transit-route.tip.1':
-    'Il titolo del viaggio in trasporto pubblico è solo testo: la matita accanto lo rinomina senza toccare il percorso. Note sotto accettano il markdown e hanno una linguetta Modifica e una linguetta Anteprima.',
+    'Il titolo nell’intestazione della prenotazione rinomina il collegamento senza toccare il percorso. Le sue note si scrivono nel modulo di trasporto dietro Modifica.',
   'help.guide.change-transit-route.tip.2':
-    'Elimina ai piedi del viaggio in trasporto pubblico toglie il collegamento dal viaggio; il giorno mantiene le sue tappe.',
+    'Elimina ai piedi della prenotazione toglie il collegamento dal viaggio; il giorno mantiene le sue tappe.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Cambiare come si percorre una tratta',
   'help.guide.leg-travel-mode.goal':
@@ -3701,17 +3701,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Sistemare un orario, un binario o un codice di prenotazione, oppure togliere il tragitto dal viaggio.',
   'help.guide.edit-transport.step.1':
-    'Nel programma del giorno un trasporto è una riga colorata tra le tappe. Cliccala.',
+    'Nel programma del giorno un trasporto è una riga colorata tra le tappe. Cliccala; la sua prenotazione si apre con gli orari, l’itinerario e il Codice prenotazione.',
   'help.guide.edit-transport.step.2':
-    'Il modulo è quello che l’ha creato, con Modifica trasporto nella barra del titolo. Tutto si può cambiare: il tipo, l’itinerario, i giorni e gli orari, il Codice prenotazione, lo Stato.',
+    'Modifica ai piedi della prenotazione apre il modulo che l’ha creato, con Modifica trasporto nella barra del titolo. Tutto si può cambiare: il tipo, l’itinerario, i giorni e gli orari, il Codice prenotazione, lo Stato.',
   'help.guide.edit-transport.step.3':
     'L’itinerario di un volo è una catena di aeroporti, quello di un treno una catena di stazioni. Aggiungi scalo ne mette un altro in mezzo, e ogni tratta mantiene i propri orari e il proprio numero di volo o di treno.',
   'help.guide.edit-transport.step.4':
-    'Clicca Aggiorna. Per togliere del tutto il trasporto, usa il cestino sulla sua scheda nella scheda Trasporti e conferma.',
+    'Clicca Aggiorna. Per togliere del tutto il trasporto, usa Elimina ai piedi della sua prenotazione, oppure il cestino sulla sua scheda nella scheda Trasporti, e conferma.',
   'help.guide.edit-transport.result':
     'La modifica si vede ovunque compaia il trasporto: nella scheda Trasporti, nel giorno in cui avviene, e nella sua linea sulla mappa.',
   'help.guide.edit-transport.tip.1':
-    'Lo stesso modulo si apre da entrambi i lati, dalla matita sulla scheda nella scheda Trasporti e dalla riga propria del trasporto nel programma del giorno. Un collegamento di trasporto pubblico pianificato è l’eccezione: la sua riga apre il viaggio in trasporto pubblico, e Modifica dettagli porta da lì a questo modulo.',
+    'Lo stesso modulo si apre da entrambi i lati: tramite Modifica nella prenotazione che apre una riga del programma del giorno, e tramite la matita sulla scheda nella scheda Trasporti. Anche un collegamento di trasporto pubblico pianificato si apre come prenotazione; lì Cambia percorso cerca di nuovo, e Modifica porta a questo modulo.',
   'help.guide.edit-transport.tip.2':
     'Spostare un trasporto a un altro giorno non ha affatto bisogno del modulo: trascina la sua riga da una scheda del giorno a quella dopo.',
   // transport-on-map

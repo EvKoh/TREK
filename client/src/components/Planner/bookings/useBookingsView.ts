@@ -38,6 +38,8 @@ export function useBookingsView(kind: BookingsKind, tripId: number) {
     // Anything but 'day' (an older build stored three steps) opens on the whole trip.
     return { ...stored, zoom: stored.zoom === 'day' ? 'day' : 'trip' }
   })
+  // Cards only: whether transit journeys get their own section or sit among the confirmed entries.
+  const [transitApartCards, setTransitApartCards] = useState<boolean>(() => read(local(), k('transitApart'), false))
   const [filters, setFiltersState] = useState<Filters>(() => read(session(), filterKey, { types: [], status: 'all', travelers: [] }))
   const [collapsedMap, setCollapsed] = useState<Record<string, boolean>>(() => read(local(), `${k('collapsed')}:${tripId}`, {}))
   const [query, setQuery] = useState('')
@@ -54,6 +56,7 @@ export function useBookingsView(kind: BookingsKind, tripId: number) {
   const flipSort = () => { const next = { ...sort, dir: sort.dir === 'asc' ? 'desc' as const : 'asc' as const }; setSortState(next); write(local(), k('sort'), next) }
   const patchTimeline = (patch: Partial<typeof timeline>) => { const next = { ...timeline, ...patch }; setTimeline(next); write(local(), k('timeline'), next) }
   const setFilters = (patch: Partial<Filters>) => { const next = { ...filters, ...patch }; setFiltersState(next); write(session(), filterKey, next) }
+  const setTransitApart = (on: boolean) => { setTransitApartCards(on); write(local(), k('transitApart'), on) }
 
   const toggleType = (type: string) => setFilters({ types: filters.types.includes(type) ? filters.types.filter(x => x !== type) : [...filters.types, type] })
   const toggleTraveler = (id: number) => setFilters({ travelers: filters.travelers.includes(id) ? filters.travelers.filter(x => x !== id) : [...filters.travelers, id] })
@@ -61,9 +64,10 @@ export function useBookingsView(kind: BookingsKind, tripId: number) {
 
   const viewIsDefault = view === 'timeline'
     ? timeline.byType && timeline.context
-    : groups[view] === DEFAULT_GROUP[view] && sort.by === 'date' && sort.dir === 'asc'
+    : groups[view] === DEFAULT_GROUP[view] && sort.by === 'date' && sort.dir === 'asc' && (view !== 'cards' || !transitApartCards)
   const resetView = () => {
     if (view === 'timeline') { patchTimeline({ byType: true, context: true }); return }
+    if (view === 'cards') setTransitApart(false)
     setGroup(DEFAULT_GROUP[view])
     const next = { by: 'date' as const, dir: 'asc' as const }
     setSortState(next); write(local(), k('sort'), next)
@@ -83,6 +87,9 @@ export function useBookingsView(kind: BookingsKind, tripId: number) {
     timeline, setZoom: (zoom: TimelineZoom) => patchTimeline({ zoom }),
     toggleByType: () => patchTimeline({ byType: !timeline.byType }),
     toggleContext: () => patchTimeline({ context: !timeline.context }),
+    // The list and the timeline keep transit in its own section, as before.
+    transitApart: view !== 'cards' || transitApartCards,
+    toggleTransitApart: () => setTransitApart(!transitApartCards),
     types, status: filters.status, travelers,
     setStatus: (status: StatusFilter) => setFilters({ status }),
     toggleType, clearTypes: () => setFilters({ types: [] }),

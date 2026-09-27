@@ -53,6 +53,10 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Show the whole trip',
   'places.filterTracks': 'Tracks',
   'places.filterByRating': 'Filter by rating',
+  /** The button that opens the filter panel, and the panel's name. */
+  /** Label over the all/unplanned/planned/tracks choice in the filter panel. */
+  'places.filterShow': 'Show',
+  'places.clearSearch': 'Clear search',
   'places.yourRating': 'Your rating',
   'places.notRated': 'Not rated yet',
   'places.search': 'Search places...',
@@ -72,6 +76,9 @@ const places: TranslationStrings = {
   'places.formAddressPlaceholder': 'Street, City, Country',
   'places.formLat': 'Latitude (e.g. 48.8566)',
   'places.formLng': 'Longitude (e.g. 2.3522)',
+  /** The small labels over the two coordinate fields of the desktop place dialog. */
+  'places.formLatLabel': 'Latitude',
+  'places.formLngLabel': 'Longitude',
   'places.formCategory': 'Category',
   'places.noCategory': 'No Category',
   'places.newCategory': 'New category',

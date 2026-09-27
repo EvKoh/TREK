@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'ko' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': '도움말 및 문서',
+  'help.search': '문서 검색…',
+  'help.contents': '목차',
+  'help.noResults': '일치하는 페이지가 없습니다.',
+  'help.errorTitle': '이 페이지를 불러올 수 없습니다',
+  'help.errorBody': '도움말 내용은 TREK 위키에서 가져옵니다. 연결을 확인하고 다시 시도하세요.',
 
   // center
   'help.center.button': '이 화면의 도움말',
@@ -961,7 +961,7 @@ const help: TranslationStrings = {
     '“Travel & map”: 예약 경로를 항상 지도에 표시, 장소 탐색 알약 버튼, 숙소 기준 경로 최적화, 예약 코드 흐리게, 예약 경로에 이름 표시.',
   'help.ctx.settings-display.bullet.3':
     '“시작”: TREK이 대시보드에서 열릴지 진행 중인 여행에서 열릴지, 그리고 여행의 어느 탭이 먼저 나올지.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': '모양',
   'help.ctx.settings-appearance.summary':
     '이 계정에서 TREK이 보이는 방식: 라이트 또는 다크, 강조 색상, 유리 효과와 움직임, 글자 크기, 대시보드에 보일 위젯. 모두 즉시 적용되며 로그인한 모든 기기에 반영됩니다.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2122,9 +2122,9 @@ const help: TranslationStrings = {
   'help.guide.place-booking.step.1':
     '예약이 속한 정차지를 엽니다. 카드에 “확정됨” 또는 “대기 중”과 예약 이름이 담긴 띠가 보입니다.',
   'help.guide.place-booking.step.2': '그 띠에는 “날짜”, “시간”, “예약 코드”와 예약이 가진 메모가 담깁니다.',
-  'help.guide.place-booking.step.3': '띠를 클릭합니다. 그 예약 자체의 양식이 그 위에 열립니다.',
+  'help.guide.place-booking.step.3': '띠를 클릭합니다. 예약이 지도 위에 열립니다.',
   'help.guide.place-booking.step.4':
-    '“날 배정에 연결”이 예약을 정차지에 붙이는 항목이고, 여기서는 이미 이 정차지를 가리키고 있습니다. 양식을 다시 닫습니다.',
+    '예약 맨 아래의 “편집”이 그 예약 자체의 양식을 엽니다. 거기서 “날 배정에 연결”이 예약을 정차지에 붙이는 항목이고, 여기서는 이미 이 정차지를 가리키고 있습니다. 양식을 다시 닫습니다.',
   'help.guide.place-booking.step.5':
     '정차지의 새 예약은 일자 열에서 시작합니다. 정차지에 마우스를 올리고 그 끝의 +를 클릭하세요. 양식이 “새 예약”으로 열리고, 이미 그 정차지에 연결되어 있습니다.',
   'help.guide.place-booking.result':
@@ -2455,7 +2455,8 @@ const help: TranslationStrings = {
     '한 행에는 예약의 종류와 이름이 나오고, 경유지에 속하면 가운뎃점 뒤에 그 경유지가 붙습니다. 시간은 오른쪽 끝에 있습니다.',
   'help.guide.day-bookings.step.3':
     '색이 예약의 상태를 말해 줍니다. 초록 행은 확정됨, 호박색 행은 아직 대기 중입니다. 호텔은 이 목록에 없고 아래에 자기 블록을 가집니다.',
-  'help.guide.day-bookings.step.4': '이 목록은 예약을 읽어 주기만 합니다. 예약을 만들고 바꾸는 곳은 “예약” 탭입니다.',
+  'help.guide.day-bookings.step.4':
+    '행을 클릭하면 예약이 열립니다. 맨 아래의 “편집”으로 바꿀 수 있고, 새 예약은 “예약” 탭에서 만듭니다.',
   'help.guide.day-bookings.result':
     '그 날로 날짜가 잡힌 것도, 그 날의 경유지에 달린 것도 모두 이 하나의 목록에 있습니다.',
   'help.guide.day-bookings.tip.1':
@@ -2974,13 +2975,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.goal': '식당, 이벤트, 투어, 주차 자리, 그 밖의 무엇이든 손으로 여행에 넣습니다.',
   'help.guide.create-booking.step.1': '탭 오른쪽 위의 “직접 예약”을 클릭합니다. “새 예약”이 열립니다.',
   'help.guide.create-booking.step.2':
-    '양식 위쪽의 “동행자” 옆에 있는 목록에서 “예약 유형”을 고릅니다. 이 탭이 만드는 여섯 가지는 “숙박”, “레스토랑”, “이벤트”, “투어”, “주차”, “기타”이고, 고른 것에 따라 양식이 바뀝니다. 날짜를 날의 범위로 바꾸는 것은 “숙박”뿐입니다.',
+    '양식 머리에서 제목 아래의 유형 알약을 클릭하고 “예약 유형”을 고릅니다. 이 탭이 만드는 여섯 가지는 “숙박”, “레스토랑”, “이벤트”, “투어”, “주차”, “기타”이고, 고른 것에 따라 양식이 바뀝니다. 날짜를 날의 범위로 바꾸는 것은 “숙박”뿐입니다.',
   'help.guide.create-booking.step.3':
     '“제목”을 입력합니다. 양식이 꼭 요구하는 항목은 이 하나뿐이고, 무언가 들어가기 전까지 “추가”는 눌리지 않습니다.',
   'help.guide.create-booking.step.4':
     '“날짜”와 “시작 시간”을 정하고, 끝이 있는 예약이라면 “종료 날짜”와 “종료 시간”도 정합니다. 달력은 여행 안의 날만 내어 주고, 끝이 시작보다 뒤가 아니면 빨간색으로 그렇게 알리며 “추가”를 막습니다.',
   'help.guide.create-booking.step.5':
-    '확인서의 “예약 코드”를 넣고 “상태”를 정합니다. “대기 중”이냐 “확정됨”이냐가 카드가 두 구역 가운데 어디에 놓일지를 결정합니다.',
+    '확인서의 “예약 코드”를 넣습니다. 유형 옆의 상태 알약에는 “대기 중”이라고 적혀 있고, 클릭하면 “확정됨”으로 바뀌었다가 다시 돌아옵니다. 이것이 카드가 두 구역 가운데 어디에 놓일지를 결정합니다.',
   'help.guide.create-booking.step.6': '“추가”를 클릭합니다.',
   'help.guide.create-booking.result':
     '예약은 유형 칩과 날짜와 코드를 단 카드로 제 구역에 서고, 여행의 다른 모두에게도 나타납니다.',
@@ -3026,7 +3027,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': '예약이 누구를 위한 것인지 밝히기',
   'help.guide.booking-travelers.goal': '예약이 포함하는 동행자를 표시하고, 그런 다음 그 사람의 것만 봅니다.',
   'help.guide.booking-travelers.step.1':
-    '연필로 예약을 엽니다. “동행자”는 양식 위쪽, “예약 유형” 옆에 있고, 예약에 아무도 없는 동안에는 “동행자 지정”이라고 표시됩니다.',
+    '연필로 예약을 엽니다. “동행자”는 “예약 코드” 옆에 있고, 예약에 아무도 없는 동안에는 “동행자 지정”이라고 표시됩니다.',
   'help.guide.booking-travelers.step.2':
     '그곳을 클릭하고 이 예약이 해당하는 사람을 고릅니다. 이름이 있는 “게스트”도 목록에 있습니다. 고른 사람에게는 체크가 붙고 필드에 그 사람의 아바타가 나타납니다. 이름을 다시 클릭하면 풀립니다.',
   'help.guide.booking-travelers.step.3': '“업데이트”를 클릭합니다.',
@@ -3116,7 +3117,7 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.step.1':
     '카드 머리의 연필을 클릭합니다. “예약 편집”이 그 예약이 아는 모든 것과 함께 열립니다.',
   'help.guide.edit-booking.step.2': '바꿀 것을 바꿉니다. 여기서는 업체가 마침내 보내온 “예약 코드”입니다.',
-  'help.guide.edit-booking.step.3': '“상태”를 “확정됨”으로 둡니다.',
+  'help.guide.edit-booking.step.3': '양식 머리의 “대기 중” 알약을 클릭합니다. “확정됨”으로 바뀝니다.',
   'help.guide.edit-booking.step.4': '“업데이트”를 클릭합니다.',
   'help.guide.edit-booking.result':
     '카드가 옮겨 갑니다. 확정된 예약은 초록 점 뒤, “확정됨” 구역에 서고, 여행의 모두가 그 이동을 봅니다.',
@@ -3398,19 +3399,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.title': '계획된 연결편 열고 바꾸기',
   'help.guide.change-transit-route.goal': '연결편을 정류장 하나하나로 읽고, 이름을 바꾸거나, 경로를 다시 찾습니다.',
   'help.guide.change-transit-route.step.1':
-    '“교통” 탭에서 계획된 연결편은 “자동 대중교통” 아래에 있습니다. 카드를 클릭합니다.',
+    '“교통” 탭에서 계획된 연결편은 “자동 대중교통” 아래에 있습니다. 카드를 클릭하면 연결편이 예약으로 열립니다.',
   'help.guide.change-transit-route.step.2':
     '위에 “소요 시간”, “환승”, “도보”가 있습니다. 그 아래의 “여정”이 연결편을 정류장 하나하나로 훑고, 승강장과 노선 사이의 도보도 보여 줍니다.',
   'help.guide.change-transit-route.step.3':
-    '“경로 변경”은 검색을 다시 실행합니다. 이 연결편의 양쪽 끝과 날짜는 이미 채워져 있습니다.',
+    '예약 맨 아래의 “경로 변경”은 검색을 다시 실행합니다. 이 연결편의 양쪽 끝과 날짜는 이미 채워져 있습니다.',
   'help.guide.change-transit-route.step.4':
-    '다른 연결편을 골라 “일정에 추가”를 클릭하면 옛것의 자리를 대신합니다. “경로 변경” 옆의 “세부 정보 편집”은 대신 보통의 교통 양식을 열고, 거기에 “예약 코드”, “상태”, 동행자, 파일이 있습니다.',
+    '다른 연결편을 골라 “일정에 추가”를 클릭하면 옛것의 자리를 대신합니다. 같은 막대의 반대쪽 끝에 있는 “편집”은 대신 보통의 교통 양식을 열고, 거기에 “예약 코드”, “상태”, 동행자, 메모, 파일이 있습니다.',
   'help.guide.change-transit-route.result':
     '그 경로는 새 여정을 담고, “교통” 탭의 카드는 새 노선과 시간을 보여 줍니다.',
   'help.guide.change-transit-route.tip.1':
-    '경로의 제목은 글자일 뿐입니다. 옆의 연필은 경로를 건드리지 않고 이름만 바꿉니다. 아래의 “메모”는 markdown을 받고 “편집”과 “미리보기” 탭이 있습니다.',
+    '예약 머리의 제목은 경로를 건드리지 않고 연결편의 이름을 바꿉니다. 메모는 “편집” 뒤의 교통 양식에서 적습니다.',
   'help.guide.change-transit-route.tip.2':
-    '경로 맨 아래의 “삭제”는 그 연결편을 여행에서 빼냅니다. 날짜는 장소들을 그대로 지킵니다.',
+    '예약 맨 아래의 “삭제”는 그 연결편을 여행에서 빼냅니다. 날짜는 장소들을 그대로 지킵니다.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': '한 구간의 이동 방법 바꾸기',
   'help.guide.leg-travel-mode.goal':
@@ -3433,17 +3434,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': '교통 바꾸기 또는 삭제하기',
   'help.guide.edit-transport.goal': '시간, 플랫폼, 예약 코드를 고치거나, 그 이동을 여행에서 빼냅니다.',
-  'help.guide.edit-transport.step.1': '일정에서 교통은 장소들 사이의 색 있는 행입니다. 그 행을 클릭합니다.',
+  'help.guide.edit-transport.step.1':
+    '일정에서 교통은 장소들 사이의 색 있는 행입니다. 그 행을 클릭하면 시간, 경로, “예약 코드”와 함께 그 예약이 열립니다.',
   'help.guide.edit-transport.step.2':
-    '양식은 그것을 만든 바로 그 양식이며, 제목 표시줄에 “교통 편집”이 나옵니다. 모두 바꿀 수 있습니다. 유형, 경로, 날짜와 시간, “예약 코드”, “상태”입니다.',
+    '예약 맨 아래의 “편집”이 그것을 만든 양식을 열고, 제목 표시줄에 “교통 편집”이 나옵니다. 모두 바꿀 수 있습니다. 유형, 경로, 날짜와 시간, “예약 코드”, “상태”입니다.',
   'help.guide.edit-transport.step.3':
     '항공의 경로는 공항의 연쇄이고, 기차의 경로는 역의 연쇄입니다. “경유지 추가”가 그 사이에 하나를 더 넣고, 각 구간은 자기 시간과 자기 항공편 번호 또는 열차 번호를 지킵니다.',
   'help.guide.edit-transport.step.4':
-    '“업데이트”를 클릭합니다. 교통을 아주 없애려면 “교통” 탭의 그 카드에 있는 휴지통을 쓰고 확인합니다.',
+    '“업데이트”를 클릭합니다. 교통을 아주 없애려면 그 예약 맨 아래의 “삭제”나 “교통” 탭의 그 카드에 있는 휴지통을 쓰고 확인합니다.',
   'help.guide.edit-transport.result':
     '변경은 교통이 나타나는 모든 곳에 보입니다. “교통” 탭, 그것이 운행하는 날짜, 그리고 지도 위의 선입니다.',
   'help.guide.edit-transport.tip.1':
-    '같은 양식이 양쪽에서 열립니다. “교통” 탭 카드의 연필과, 일정에 있는 교통 자신의 행입니다. 계획된 대중교통 연결편만 예외로, 그 행은 경로 화면을 열고 거기의 “세부 정보 편집”이 이 양식으로 이어집니다.',
+    '같은 양식이 양쪽에서 열립니다. 일정의 행이 여는 예약의 “편집”을 통해서, 그리고 “교통” 탭 카드의 연필을 통해서입니다. 계획된 대중교통 연결편도 예약으로 열립니다. 거기서 “경로 변경”은 다시 검색하고, “편집”은 이 양식으로 이어집니다.',
   'help.guide.edit-transport.tip.2':
     '교통을 다른 날짜로 옮기는 데에는 양식이 전혀 필요 없습니다. 행을 한 날짜 카드에서 다음 카드로 끕니다.',
   // transport-on-map

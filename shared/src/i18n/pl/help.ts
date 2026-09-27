@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'pl' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Pomoc i dokumentacja',
+  'help.search': 'Szukaj w dokumentacji…',
+  'help.contents': 'Spis treści',
+  'help.noResults': 'Brak pasujących stron.',
+  'help.errorTitle': 'Nie udało się wczytać tej strony',
+  'help.errorBody': 'Treść pomocy pochodzi z wiki TREK. Sprawdź połączenie i spróbuj ponownie.',
 
   // center
   'help.center.button': 'Pomoc do tego ekranu',
@@ -1019,7 +1019,7 @@ const help: TranslationStrings = {
     'Travel & map: trasy rezerwacji zawsze na mapie, pigułka Odkrywaj miejsca, optymalizacja trasy od zakwaterowania, rozmyte kody rezerwacji i etykiety tras rezerwacji.',
   'help.ctx.settings-display.bullet.3':
     'Uruchamianie: czy TREK otwiera się na pulpicie, czy na aktywnej podróży, i która karta podróży pojawia się pierwsza.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Wygląd',
   'help.ctx.settings-appearance.summary':
     'Jak TREK wygląda na tym koncie: jasny lub ciemny, kolor akcentu, szkło i ruch, rozmiar tekstu oraz które widżety pokazuje pulpit. Wszystko działa na żywo, na każdym urządzeniu, na którym się logujesz.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2262,9 +2262,9 @@ const help: TranslationStrings = {
     'Otwórz przystanek, do którego należy rezerwacja. Karta pokazuje pasek z Potwierdzona albo Oczekująca i z nazwą rezerwacji.',
   'help.guide.place-booking.step.2':
     'Na pasku są Data, Godzina i Kod rezerwacji oraz wszelkie notatki, które rezerwacja ma.',
-  'help.guide.place-booking.step.3': 'Kliknij pasek. Otwiera się na nim własny formularz rezerwacji.',
+  'help.guide.place-booking.step.3': 'Kliknij pasek. Rezerwacja otwiera się nad mapą.',
   'help.guide.place-booking.step.4':
-    'To Przypisz do miejsca przypina rezerwację do przystanku, a tutaj już wskazuje ten jeden. Zamknij formularz z powrotem.',
+    'Edytuj u dołu rezerwacji otwiera jej własny formularz. To tam Przypisz do miejsca przypina rezerwację do przystanku, a tutaj już wskazuje ten jeden. Zamknij formularz z powrotem.',
   'help.guide.place-booking.step.5':
     'Nowa rezerwacja dla przystanku zaczyna się w kolumnie dni: najedź na przystanek i kliknij + na jego końcu. Formularz otwiera się jako Nowa rezerwacja, już z nim powiązany.',
   'help.guide.place-booking.result':
@@ -2620,7 +2620,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Kolor mówi, jak stoi rezerwacja: zielony wiersz jest potwierdzony, bursztynowy wciąż oczekuje. Hoteli nie ma na tej liście, mają własny blok niżej.',
   'help.guide.day-bookings.step.4':
-    'Lista tylko odczytuje rezerwacje. Rezerwację tworzy się i zmienia w zakładce Rezerwacje.',
+    'Kliknij wiersz, a rezerwacja się otworzy. Edytuj u jej dołu ją zmienia; nowe rezerwacje tworzy się w zakładce Rezerwacje.',
   'help.guide.day-bookings.result':
     'Wszystko datowane na ten dzień i wszystko wiszące na którymś z jego przystanków jest na tej jednej liście.',
   'help.guide.day-bookings.tip.1':
@@ -3159,13 +3159,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Kliknij Rezerwacja ręczna u góry po prawej stronie zakładki. Otwiera się Nowa rezerwacja.',
   'help.guide.create-booking.step.2':
-    'Wybierz Rodzaj rezerwacji z listy u góry formularza, obok pola Podróżni. Zakwaterowanie, Restauracja, Wydarzenie, Wycieczka, Parking i Inne to te sześć, które ta zakładka tworzy, a formularz zmienia się razem z wyborem: tylko Zakwaterowanie wymienia swoje daty na zakres dni.',
+    'Kliknij plakietkę rodzaju pod tytułem, w nagłówku formularza, i wybierz Rodzaj rezerwacji. Zakwaterowanie, Restauracja, Wydarzenie, Wycieczka, Parking i Inne to te sześć, które ta zakładka tworzy, a formularz zmienia się razem z wyborem: tylko Zakwaterowanie wymienia swoje daty na zakres dni.',
   'help.guide.create-booking.step.3':
     'Wpisz Tytuł. To jedyne pole, przy którym formularz się upiera, a Dodaj pozostaje martwy, dopóki nic w nim nie ma.',
   'help.guide.create-booking.step.4':
     'Ustaw Datę i Godzinę rozpoczęcia, a także Datę końca i Godzinę zakończenia, jeśli rezerwacja ma koniec. Kalendarze oferują tylko dni wewnątrz podróży, a koniec, który nie jest po początku, mówi to na czerwono i blokuje Dodaj.',
   'help.guide.create-booking.step.5':
-    'Wstaw Kod rezerwacji z potwierdzenia i ustaw Status. Oczekująca albo Potwierdzona decyduje, w której z dwóch sekcji wyląduje karta.',
+    'Wpisz Kod rezerwacji z potwierdzenia. Plakietka statusu obok rodzaju pokazuje Oczekująca; kliknięcie przełącza ją na Potwierdzona i z powrotem, a to decyduje, w której z dwóch sekcji wyląduje karta.',
   'help.guide.create-booking.step.6': 'Kliknij Dodaj.',
   'help.guide.create-booking.result':
     'Rezerwacja jest kartą w swojej sekcji, ze swoją plakietką rodzaju, swoimi datami i swoim kodem, a wszyscy pozostali w podróży widzą, jak się pojawia.',
@@ -3216,7 +3216,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Zaznacz podróżnych, których rezerwacja obejmuje, a potem oglądaj tylko ich rezerwacje.',
   'help.guide.booking-travelers.step.1':
-    'Otwórz rezerwację ołówkiem. Pole Podróżni jest u góry formularza, obok pola Rodzaj rezerwacji, i dopóki nikogo nie ma w rezerwacji, pokazuje Przypisz podróżnych.',
+    'Otwórz rezerwację ołówkiem. Pole Podróżni jest obok Kodu rezerwacji i dopóki nikogo nie ma w rezerwacji, pokazuje Przypisz podróżnych.',
   'help.guide.booking-travelers.step.2':
     'Kliknij je i wybierz ludzi, dla których ta rezerwacja jest; nazwani goście też są na liście. Wybrany dostaje ptaszka i swój awatar w polu. Kliknij imię jeszcze raz, żeby go zdjąć.',
   'help.guide.booking-travelers.step.3': 'Kliknij Aktualizuj.',
@@ -3310,7 +3310,7 @@ const help: TranslationStrings = {
     'Kliknij ołówek w nagłówku karty. Otwiera się Edytuj rezerwację ze wszystkim, co rezerwacja wie.',
   'help.guide.edit-booking.step.2':
     'Zmień to, co trzeba zmienić, tutaj Kod rezerwacji, który operator w końcu przysłał.',
-  'help.guide.edit-booking.step.3': 'Ustaw Status na Potwierdzona.',
+  'help.guide.edit-booking.step.3': 'Kliknij plakietkę Oczekująca w nagłówku formularza. Zmienia się na Potwierdzona.',
   'help.guide.edit-booking.step.4': 'Kliknij Aktualizuj.',
   'help.guide.edit-booking.result':
     'Karta się przenosi: potwierdzona rezerwacja stoi w sekcji Potwierdzona za zieloną kropką, a wszyscy w podróży widzą, jak się przenosi.',
@@ -3602,19 +3602,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Przeczytaj połączenie przystanek po przystanku, zmień jego nazwę albo wyszukaj trasę jeszcze raz.',
   'help.guide.change-transit-route.step.1':
-    'W zakładce Transport zaplanowane połączenia siedzą pod Automatyczny transport publiczny. Kliknij kartę.',
+    'W zakładce Transport zaplanowane połączenia siedzą pod Automatyczny transport publiczny. Kliknij kartę; połączenie otwiera się jako rezerwacja.',
   'help.guide.change-transit-route.step.2':
     'Czas trwania, Przesiadki i Pieszo siedzą u góry. Plan podróży pod nimi przechodzi połączenie przystanek po przystanku, z peronami i odcinkami pieszo między liniami.',
   'help.guide.change-transit-route.step.3':
-    'Zmień trasę uruchamia wyszukiwanie jeszcze raz, już wypełnione obydwoma końcami tego połączenia i jego dniem.',
+    'Zmień trasę u dołu rezerwacji uruchamia wyszukiwanie jeszcze raz, już wypełnione obydwoma końcami tego połączenia i jego dniem.',
   'help.guide.change-transit-route.step.4':
-    'Wybierz inne połączenie i kliknij Dodaj do dnia; zajmuje miejsce starego. Edytuj szczegóły, obok Zmień trasę, otwiera zamiast tego zwykły formularz transportu, gdzie mieszkają Kod rezerwacji, Status, podróżni i pliki.',
+    'Wybierz inne połączenie i kliknij Dodaj do dnia; zajmuje miejsce starego. Edytuj, na drugim końcu tego samego paska, otwiera zamiast tego zwykły formularz transportu, gdzie mieszkają Kod rezerwacji, Status, podróżni, notatki i pliki.',
   'help.guide.change-transit-route.result':
     'Widok Podróż transportem publicznym niesie nowy Plan podróży, a jego karta w zakładce Transport pokazuje nowe linie i godziny.',
   'help.guide.change-transit-route.tip.1':
-    'Tytuł w widoku Podróż transportem publicznym to tylko tekst: ołówek obok niego zmienia nazwę, nie ruszając trasy. Notatki pod spodem przyjmują markdown i mają zakładkę Edytuj i Podgląd.',
+    'Tytuł w nagłówku rezerwacji zmienia nazwę połączenia, nie ruszając trasy. Jego notatki pisze się w formularzu transportu, do którego prowadzi Edytuj.',
   'help.guide.change-transit-route.tip.2':
-    'Usuń u dołu widoku Podróż transportem publicznym wyjmuje połączenie z podróży; dzień zachowuje swoje przystanki.',
+    'Usuń u dołu rezerwacji wyjmuje połączenie z podróży; dzień zachowuje swoje przystanki.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Zmień, jak pokonujesz jeden odcinek',
   'help.guide.leg-travel-mode.goal':
@@ -3638,17 +3638,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': 'Zmień albo usuń transport',
   'help.guide.edit-transport.goal': 'Popraw godzinę, peron albo kod rezerwacji, albo wyjmij przejazd z podróży.',
-  'help.guide.edit-transport.step.1': 'W planie dnia transport to kolorowy wiersz między przystankami. Kliknij go.',
+  'help.guide.edit-transport.step.1':
+    'W planie dnia transport to kolorowy wiersz między przystankami. Kliknij go; otwiera się jego rezerwacja z godzinami, trasą i Kodem rezerwacji.',
   'help.guide.edit-transport.step.2':
-    'Formularz jest ten sam, który go utworzył, z Edytuj transport na pasku tytułu. Zmienić można wszystko: rodzaj, trasę, dni i godziny, Kod rezerwacji, Status.',
+    'Edytuj u dołu rezerwacji otwiera formularz, który go utworzył, z Edytuj transport na pasku tytułu. Zmienić można wszystko: rodzaj, trasę, dni i godziny, Kod rezerwacji, Status.',
   'help.guide.edit-transport.step.3':
     'Trasa lotu to łańcuch lotnisk, trasa pociągu łańcuch stacji. Dodaj przystanek wstawia kolejny pomiędzy, a każdy odcinek zachowuje własne godziny i własny numer lotu albo pociągu.',
   'help.guide.edit-transport.step.4':
-    'Kliknij Aktualizuj. Aby usunąć transport całkiem, użyj kosza na jego karcie w zakładce Transport i potwierdź.',
+    'Kliknij Aktualizuj. Aby usunąć transport całkiem, użyj Usuń u dołu jego rezerwacji albo kosza na jego karcie w zakładce Transport i potwierdź.',
   'help.guide.edit-transport.result':
     'Zmiana pokazuje się wszędzie, gdzie transport się pojawia: w zakładce Transport, w dniu, w którym jedzie, i na jego linii na mapie.',
   'help.guide.edit-transport.tip.1':
-    'Ten sam formularz otwiera się z obu stron, ołówkiem na karcie w zakładce Transport i własnym wierszem transportu w planie dnia. Wyjątkiem jest zaplanowane połączenie transportu publicznego: jego wiersz otwiera widok Podróż transportem publicznym, a Edytuj szczegóły prowadzi stamtąd do tego formularza.',
+    'Ten sam formularz otwiera się z obu stron: przez Edytuj w rezerwacji, którą otwiera wiersz planu dnia, i przez ołówek na karcie w zakładce Transport. Zaplanowane połączenie transportu publicznego też otwiera się jako rezerwacja; Zmień trasę szuka tam od nowa, a Edytuj prowadzi do tego formularza.',
   'help.guide.edit-transport.tip.2':
     'Przeniesienie transportu na inny dzień w ogóle nie potrzebuje formularza: przeciągnij jego wiersz z jednej karty dnia na następną.',
   // transport-on-map

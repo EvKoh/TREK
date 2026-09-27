@@ -111,7 +111,7 @@ export function TravelerPicker({ tripMembers, selectedIds, onToggle }: {
                 }}>
                 <Avatar userId={m.id} username={m.username} avatarUrl={m.avatar_url} dim={!on} />
                 <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{m.username}</span>
-                {m.is_guest && <GuestBadge size="xs" />}
+                {m.is_guest && <GuestBadge size="xs" customTooltip />}
                 <Check size={14} strokeWidth={2.5} style={{ flexShrink: 0, opacity: on ? 1 : 0 }} />
               </button>
             )

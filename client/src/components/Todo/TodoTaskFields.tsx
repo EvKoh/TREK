@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { Flag, Plus, User } from 'lucide-react'
+import { Flag, ListPlus, Plus, User } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import { avatarSrc } from '../../utils/avatarSrc'
 import CustomSelect from '../shared/CustomSelect'
 import { CustomDatePicker } from '../shared/CustomDateTimePicker'
 import NameDialog from '../shared/NameDialog'
+import { Tooltip } from '../shared/Tooltip'
+import { GRID_2, LABEL, TEXTAREA } from '../shared/dialogParts'
 import { PRIO_CONFIG, katColor, taskInputStyle, taskLabelClass, type Member, type TaskFieldValues } from './todoListModel'
 
 interface TodoTaskFieldsProps {
@@ -13,6 +15,8 @@ interface TodoTaskFieldsProps {
   categories: string[]
   members: Member[]
   canEdit?: boolean
+  /** 'dialog' draws the fields like the planner's dialogs: small caps labels, list and due date side by side. */
+  variant?: 'pane' | 'dialog'
 }
 
 /**
@@ -21,11 +25,13 @@ interface TodoTaskFieldsProps {
  * segmented track, the list (a new one is named in a dialog), the due date and
  * who does it.
  */
-export default function TodoTaskFields({ values, onChange, categories, members, canEdit = true }: TodoTaskFieldsProps) {
+export default function TodoTaskFields({ values, onChange, categories, members, canEdit = true, variant = 'pane' }: TodoTaskFieldsProps) {
   const { t } = useTranslation()
   const [namingList, setNamingList] = useState(false)
   const [listName, setListName] = useState('')
   const { desc, priority, category, dueDate, assignedUserId } = values
+  const dialog = variant === 'dialog'
+  const labelClass = dialog ? LABEL : taskLabelClass
 
   const confirmList = () => {
     const name = listName.trim()
@@ -35,17 +41,65 @@ export default function TodoTaskFields({ values, onChange, categories, members, 
     setListName('')
   }
 
+  const listField = (
+    <div>
+      <label className={labelClass}>{t('todo.detail.category')}</label>
+      <div style={{ display: 'flex', gap: 6 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <CustomSelect
+            value={category}
+            onChange={v => onChange({ category: String(v) })}
+            options={[
+              { value: '', label: t('todo.noCategory') },
+              ...categories.map(c => ({
+                value: c, label: c,
+                icon: <span style={{ width: 8, height: 8, borderRadius: '50%', background: katColor(c, categories), display: 'inline-block' }} />,
+              })),
+              ...(category && !categories.includes(category) ? [{
+                value: category, label: `${category} (${t('todo.newCategoryLabel')})`,
+                icon: <span style={{ width: 8, height: 8, borderRadius: '50%', background: katColor(category, categories), display: 'inline-block' }} />,
+              }] : []),
+            ]}
+            placeholder={t('todo.noCategory')}
+            size="sm"
+            disabled={!canEdit}
+          />
+        </div>
+        {canEdit && (
+          <Tooltip label={t('todo.addCategory')}>
+            <button type="button" onClick={() => setNamingList(true)} aria-label={t('todo.addCategory')}
+              style={{ width: 36, flexShrink: 0, background: 'var(--bg-tertiary)', border: 'none', borderRadius: 10, cursor: 'pointer', color: 'var(--text-muted)', display: 'grid', placeItems: 'center' }}>
+              <Plus size={14} />
+            </button>
+          </Tooltip>
+        )}
+      </div>
+    </div>
+  )
+
+  const dueField = (
+    <div>
+      <label className={labelClass}>{t('todo.detail.dueDate')}</label>
+      <CustomDatePicker value={dueDate} onChange={v => onChange({ dueDate: v })} />
+    </div>
+  )
+
   return (
     <>
       <div>
-        <label className={taskLabelClass}>{t('todo.detail.description')}</label>
-        <textarea value={desc} onChange={e => onChange({ desc: e.target.value })} disabled={!canEdit} rows={4}
-          placeholder={t('todo.descriptionPlaceholder')}
-          style={{ ...taskInputStyle, resize: 'vertical', minHeight: 84 }} />
+        <label className={labelClass}>{t('todo.detail.description')}</label>
+        {dialog ? (
+          <textarea value={desc} onChange={e => onChange({ desc: e.target.value })} disabled={!canEdit} rows={3}
+            placeholder={t('todo.descriptionPlaceholder')} className={TEXTAREA} />
+        ) : (
+          <textarea value={desc} onChange={e => onChange({ desc: e.target.value })} disabled={!canEdit} rows={4}
+            placeholder={t('todo.descriptionPlaceholder')}
+            style={{ ...taskInputStyle, resize: 'vertical', minHeight: 84 }} />
+        )}
       </div>
 
       <div>
-        <label className={taskLabelClass}>{t('todo.detail.priority')}</label>
+        <label className={labelClass}>{t('todo.detail.priority')}</label>
         <div style={{ display: 'flex', gap: 2, padding: 3, borderRadius: 11, background: 'var(--bg-tertiary)' }}>
           {[0, 1, 2, 3].map(p => {
             const cfg = PRIO_CONFIG[p]
@@ -68,45 +122,10 @@ export default function TodoTaskFields({ values, onChange, categories, members, 
         </div>
       </div>
 
-      <div>
-        <label className={taskLabelClass}>{t('todo.detail.category')}</label>
-        <div style={{ display: 'flex', gap: 6 }}>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <CustomSelect
-              value={category}
-              onChange={v => onChange({ category: String(v) })}
-              options={[
-                { value: '', label: t('todo.noCategory') },
-                ...categories.map(c => ({
-                  value: c, label: c,
-                  icon: <span style={{ width: 8, height: 8, borderRadius: '50%', background: katColor(c, categories), display: 'inline-block' }} />,
-                })),
-                ...(category && !categories.includes(category) ? [{
-                  value: category, label: `${category} (${t('todo.newCategoryLabel')})`,
-                  icon: <span style={{ width: 8, height: 8, borderRadius: '50%', background: katColor(category, categories), display: 'inline-block' }} />,
-                }] : []),
-              ]}
-              placeholder={t('todo.noCategory')}
-              size="sm"
-              disabled={!canEdit}
-            />
-          </div>
-          {canEdit && (
-            <button type="button" onClick={() => setNamingList(true)} title={t('todo.addCategory')} aria-label={t('todo.addCategory')}
-              style={{ width: 36, flexShrink: 0, background: 'var(--bg-tertiary)', border: 'none', borderRadius: 10, cursor: 'pointer', color: 'var(--text-muted)', display: 'grid', placeItems: 'center' }}>
-              <Plus size={14} />
-            </button>
-          )}
-        </div>
-      </div>
+      {dialog ? <div className={GRID_2}>{listField}{dueField}</div> : <>{listField}{dueField}</>}
 
       <div>
-        <label className={taskLabelClass}>{t('todo.detail.dueDate')}</label>
-        <CustomDatePicker value={dueDate} onChange={v => onChange({ dueDate: v })} />
-      </div>
-
-      <div>
-        <label className={taskLabelClass}>{t('todo.detail.assignedTo')}</label>
+        <label className={labelClass}>{t('todo.detail.assignedTo')}</label>
         <CustomSelect
           value={String(assignedUserId ?? '')}
           onChange={v => onChange({ assignedUserId: v ? Number(v) : null })}
@@ -133,6 +152,7 @@ export default function TodoTaskFields({ values, onChange, categories, members, 
       <NameDialog
         open={namingList}
         title={t('todo.addCategory')}
+        icon={ListPlus}
         placeholder={t('todo.newCategory')}
         confirmLabel={t('common.add')}
         value={listName}

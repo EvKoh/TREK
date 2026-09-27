@@ -74,7 +74,7 @@ export function Tooltip({ label, placement = 'bottom', delay = 250, disabled, ch
   return (
     <>
       {trigger}
-      {open && createPortal(
+      {open && !disabled && createPortal(
         <div
           ref={tooltipRef}
           role="tooltip"

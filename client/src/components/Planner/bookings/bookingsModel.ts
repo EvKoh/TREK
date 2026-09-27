@@ -18,15 +18,17 @@ export type SortBy = 'date' | 'title' | 'type' | 'status'
 export interface ReservationTypeInfo {
   Icon: LucideIcon
   labelKey: string
+  /** The name on a chip or pill, shorter where the full one would crowd a card's head. */
+  chipKey: string
   color: string
 }
 
 // Icons and label keys for every reservation type. The colours come from the phone's
 // models so the two shells can never drift apart on what a flight looks like.
-const TYPES: Record<string, { Icon: LucideIcon }> = {
+const TYPES: Record<string, { Icon: LucideIcon; chipKey?: string }> = {
   flight: { Icon: Plane }, train: { Icon: Train }, bus: { Icon: Bus }, car: { Icon: Car },
   taxi: { Icon: CarTaxiFront }, bicycle: { Icon: Bike }, cruise: { Icon: Ship }, ferry: { Icon: Sailboat },
-  transit: { Icon: TramFront }, transport_other: { Icon: Route },
+  transit: { Icon: TramFront, chipKey: 'reservations.typeShort.transit' }, transport_other: { Icon: Route },
   hotel: { Icon: Hotel }, restaurant: { Icon: Utensils }, event: { Icon: Ticket }, tour: { Icon: Users },
   parking: { Icon: ParkingSquare }, other: { Icon: FileText },
 }
@@ -36,6 +38,7 @@ export function typeInfo(type: string): ReservationTypeInfo {
   return {
     Icon: TYPES[known].Icon,
     labelKey: `reservations.type.${known}`,
+    chipKey: TYPES[known].chipKey ?? `reservations.type.${known}`,
     color: TRANSPORT_TYPE_COLOR[known] || BOOKING_TYPE_COLOR[known] || '#6b7280', // theme-lint-disable: fallback type colour, as on the phone
   }
 }
@@ -146,8 +149,11 @@ export function applyFilters(list: Reservation[], f: BookingFilters, labelOf: (t
   )
 }
 
-/** Chronological, undated last, creation order on a tie (#1507); other keys fall back to that order. */
-export function sortReservations(list: Reservation[], days: Day[], by: SortBy, dir: 'asc' | 'desc', labelOf: (type: string) => string): Reservation[] {
+/**
+ * Chronological, undated last, creation order on a tie (#1507); other keys fall back to that order.
+ * With `transitApart` off, a transit journey sorts by status as if confirmed, next to the bookings it sits among.
+ */
+export function sortReservations(list: Reservation[], days: Day[], by: SortBy, dir: 'asc' | 'desc', labelOf: (type: string) => string, transitApart = true): Reservation[] {
   const keyed = list.map(r => ({ r, key: startKey(r, days) }))
   const byDate = (a: typeof keyed[number], b: typeof keyed[number]) => {
     if (a.key !== b.key) {
@@ -160,7 +166,7 @@ export function sortReservations(list: Reservation[], days: Day[], by: SortBy, d
   const primary = (a: typeof keyed[number], b: typeof keyed[number]): number => {
     if (by === 'title') return a.r.title.localeCompare(b.r.title)
     if (by === 'type') return labelOf(a.r.type).localeCompare(labelOf(b.r.type))
-    if (by === 'status') return statusRank(a.r) - statusRank(b.r)
+    if (by === 'status') return statusRank(a.r, transitApart) - statusRank(b.r, transitApart)
     return 0
   }
   const sign = dir === 'desc' ? -1 : 1
@@ -176,8 +182,8 @@ export function sortReservations(list: Reservation[], days: Day[], by: SortBy, d
     .map(x => x.r)
 }
 
-function statusRank(r: Reservation): number {
-  if (r.type === 'transit') return 2
+function statusRank(r: Reservation, transitApart: boolean): number {
+  if (r.type === 'transit') return transitApart ? 2 : 0
   return r.status === 'confirmed' ? 0 : 1
 }
 
@@ -201,14 +207,19 @@ export interface GroupLabels {
   dayDate: (date: string) => string
 }
 
-/** Sections of a sorted list. Status follows the phone's order: confirmed, pending, transit. */
-export function groupReservations(sorted: Reservation[], by: GroupBy, days: Day[], tripStart: string | null | undefined, tripEnd: string | null | undefined, L: GroupLabels): BookingGroup[] {
+/**
+ * Sections of a sorted list. Status follows the phone's order: confirmed, pending, transit.
+ * With `transitApart` off, transit journeys have no section of their own: nothing is
+ * left to book on them, so they sit among the confirmed entries in time order.
+ */
+export function groupReservations(sorted: Reservation[], by: GroupBy, days: Day[], tripStart: string | null | undefined, tripEnd: string | null | undefined, L: GroupLabels, transitApart = true): BookingGroup[] {
   if (by === 'none') return [{ id: 'all', label: '', items: sorted }]
   if (by === 'status') {
+    const isTransit = (r: Reservation) => r.type === 'transit'
     const groups: BookingGroup[] = [
-      { id: 'confirmed', label: L.confirmed, items: sorted.filter(r => r.type !== 'transit' && r.status === 'confirmed') },
-      { id: 'pending', label: L.pending, items: sorted.filter(r => r.type !== 'transit' && r.status !== 'confirmed') },
-      { id: 'transit', label: L.transit, items: sorted.filter(r => r.type === 'transit') },
+      { id: 'confirmed', label: L.confirmed, items: sorted.filter(r => (isTransit(r) ? !transitApart : r.status === 'confirmed')) },
+      { id: 'pending', label: L.pending, items: sorted.filter(r => !isTransit(r) && r.status !== 'confirmed') },
+      { id: 'transit', label: L.transit, items: transitApart ? sorted.filter(isTransit) : [] },
     ]
     return groups.filter(g => g.items.length > 0)
   }

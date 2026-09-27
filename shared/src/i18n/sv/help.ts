@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'sv' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Hjälp och dokumentation',
+  'help.search': 'Sök i dokumentationen…',
+  'help.contents': 'Innehåll',
+  'help.noResults': 'Inga matchande sidor.',
+  'help.errorTitle': 'Sidan kunde inte laddas',
+  'help.errorBody': 'Hjälpinnehållet hämtas från TREK-wikin. Kontrollera anslutningen och försök igen.',
 
   // center
   'help.center.button': 'Hjälp för den här vyn',
@@ -1008,7 +1008,7 @@ const help: TranslationStrings = {
     'Travel & map: bokningsrutter alltid på kartan, Utforska platser-pillret, ruttoptimering från ditt boende, blurrade bokningskoder och etiketter på bokningsrutter.',
   'help.ctx.settings-display.bullet.3':
     'Start: om TREK öppnar på översikten eller på den aktiva resan, och vilken flik i en resa som kommer upp först.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Utseende',
   'help.ctx.settings-appearance.summary':
     'Hur TREK ser ut på det här kontot: ljust eller mörkt, accentfärgen, glas och rörelse, textstorlek och vilka widgetar översikten visar. Allt slår igenom live, på varje enhet du loggar in på.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2229,9 +2229,9 @@ const help: TranslationStrings = {
   'help.guide.place-booking.step.1':
     'Öppna stoppet som bokningen hör till. Kortet visar en remsa med Bekräftat eller Väntar på beslut och bokningens namn.',
   'help.guide.place-booking.step.2': 'Remsan bär Datum, Tid och Bokningskod, och vilka noteringar bokningen än har.',
-  'help.guide.place-booking.step.3': 'Klicka på remsan. Bokningens eget formulär öppnas på den.',
+  'help.guide.place-booking.step.3': 'Klicka på remsan. Bokningen öppnas ovanpå kartan.',
   'help.guide.place-booking.step.4':
-    'Länk till dagsuppgift är det som fäster en bokning vid ett stopp, och här namnger den redan det här. Stäng formuläret igen.',
+    'Redigera längst ner i bokningen öppnar dess eget formulär. Länk till dagsuppgift där är det som fäster en bokning vid ett stopp, och här namnger den redan det här. Stäng formuläret igen.',
   'help.guide.place-booking.step.5':
     'En ny bokning för ett stopp börjar i dagkolumnen: håll pekaren på stoppet och klicka på + i dess slut. Formuläret öppnas som Ny bokning, redan länkat till det.',
   'help.guide.place-booking.result':
@@ -2582,7 +2582,8 @@ const help: TranslationStrings = {
     'En rad visar vilken sorts bokning det är, dess namn och, när den hör till ett stopp, det stoppet efter en punkt. Dess tider sitter längst till höger.',
   'help.guide.day-bookings.step.3':
     'Färgen säger var en bokning står: en grön rad är bekräftad, en bärnstensgul väntar fortfarande. Hotell finns inte i den här listan, de har sitt eget block nedanför.',
-  'help.guide.day-bookings.step.4': 'Listan läser bara ut bokningarna. En bokning skapas och ändras under Bokningar.',
+  'help.guide.day-bookings.step.4':
+    'Klicka på en rad så öppnas bokningen. Redigera längst ner i den ändrar den; nya bokningar skapas under Bokningar.',
   'help.guide.day-bookings.result':
     'Allt som är daterat på dagen, och allt som hänger på ett av dess stopp, finns i den här enda listan.',
   'help.guide.day-bookings.tip.1':
@@ -3122,13 +3123,13 @@ const help: TranslationStrings = {
     'Lägg in en restaurang, ett evenemang, en rundtur, en parkeringsplats eller vad som helst annat i resan för hand.',
   'help.guide.create-booking.step.1': 'Klicka på Manuell bokning högst upp till höger på fliken. Ny bokning öppnas.',
   'help.guide.create-booking.step.2':
-    'Välj Bokningstyp i listan överst i formuläret, bredvid Resenärer. Boende, Restaurang, Evenemang, Rundtur, Parkering och Övrigt är de sex som den här fliken gör, och formuläret ändras med valet: bara Boende byter sina datum mot ett spann av dagar.',
+    'Klicka på typbrickan under titeln, i formulärets huvud, och välj Bokningstyp. Boende, Restaurang, Evenemang, Rundtur, Parkering och Övrigt är de sex som den här fliken gör, och formuläret ändras med valet: bara Boende byter sina datum mot ett spann av dagar.',
   'help.guide.create-booking.step.3':
     'Skriv in Titel. Det är det enda fältet formuläret kräver, och Lägg till är död tills det står något i det.',
   'help.guide.create-booking.step.4':
     'Ställ in Datum och Starttid, och Slutdatum och Sluttid om bokningen har ett slut. Kalendrarna erbjuder bara dagar inom resan, och ett slut som inte ligger efter starten säger det i rött och spärrar Lägg till.',
   'help.guide.create-booking.step.5':
-    'Skriv in Bokningskoden från bekräftelsen och sätt Status. Väntar på beslut eller Bekräftat avgör vilket av de två avsnitten kortet hamnar i.',
+    'Skriv in Bokningskoden från bekräftelsen. Statusbrickan bredvid typen visar Väntar på beslut; ett klick växlar den till Bekräftat och tillbaka, och det avgör vilket av de två avsnitten kortet hamnar i.',
   'help.guide.create-booking.step.6': 'Klicka på Lägg till.',
   'help.guide.create-booking.result':
     'Bokningen är ett kort i sitt avsnitt med sin typbricka, sina datum och sin kod, och alla andra på resan ser den dyka upp.',
@@ -3178,7 +3179,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Säg vem en bokning gäller',
   'help.guide.booking-travelers.goal': 'Märk ut resenärerna en bokning täcker, och se sedan bara deras.',
   'help.guide.booking-travelers.step.1':
-    'Öppna bokningen med pennan. Resenärer sitter överst i formuläret, bredvid Bokningstyp, och visar Tilldela resenärer så länge ingen är med på bokningen.',
+    'Öppna bokningen med pennan. Resenärer sitter bredvid Bokningskoden och visar Tilldela resenärer så länge ingen är med på bokningen.',
   'help.guide.booking-travelers.step.2':
     'Klicka på det och välj personerna den här bokningen gäller; namngivna gäster finns också i listan. En vald får en bock och sin avatar i fältet. Klicka på namnet igen för att ta bort den.',
   'help.guide.booking-travelers.step.3': 'Klicka på Uppdatera.',
@@ -3273,7 +3274,8 @@ const help: TranslationStrings = {
     'Klicka på pennan i kortets huvud. Redigera reservation öppnas med allt bokningen vet.',
   'help.guide.edit-booking.step.2':
     'Ändra det som behöver ändras, här Bokningskoden som operatören till slut skickade.',
-  'help.guide.edit-booking.step.3': 'Sätt Status på Bekräftat.',
+  'help.guide.edit-booking.step.3':
+    'Klicka på brickan Väntar på beslut i formulärets huvud. Den växlar till Bekräftat.',
   'help.guide.edit-booking.step.4': 'Klicka på Uppdatera.',
   'help.guide.edit-booking.result':
     'Kortet flyttar sig: en bekräftad bokning står i avsnittet Bekräftat bakom en grön prick, och alla på resan ser den flytta sig.',
@@ -3566,19 +3568,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Läs förbindelsen hållplats för hållplats, byt namn på den, eller slå upp resvägen igen.',
   'help.guide.change-transit-route.step.1':
-    'I fliken Transporter sitter de planerade förbindelserna under Automatisk kollektivtrafik. Klicka på kortet.',
+    'I fliken Transporter sitter de planerade förbindelserna under Automatisk kollektivtrafik. Klicka på kortet; förbindelsen öppnas som en bokning.',
   'help.guide.change-transit-route.step.2':
     'Restid, Byten och Gång sitter överst. Reseplan under dem går igenom förbindelsen hållplats för hållplats, med spåren och promenaderna mellan linjerna.',
   'help.guide.change-transit-route.step.3':
-    'Ändra resväg kör sökningen igen, redan ifylld med den här förbindelsens två ändar och dess dag.',
+    'Ändra resväg längst ner i bokningen kör sökningen igen, redan ifylld med den här förbindelsens två ändar och dess dag.',
   'help.guide.change-transit-route.step.4':
-    'Välj en annan förbindelse och klicka på Lägg till dag; den tar den gamlas plats. Redigera detaljer, bredvid Ändra resväg, öppnar i stället det vanliga transportformuläret, där Bokningskoden, Statusen, resenärerna och filerna bor.',
+    'Välj en annan förbindelse och klicka på Lägg till dag; den tar den gamlas plats. Redigera, i andra änden av samma rad, öppnar i stället det vanliga transportformuläret, där Bokningskoden, Statusen, resenärerna, noteringarna och filerna bor.',
   'help.guide.change-transit-route.result':
     'Vyn Kollektivtrafikresa bär den nya Reseplanen, och dess kort i fliken Transporter visar de nya linjerna och tiderna.',
   'help.guide.change-transit-route.tip.1':
-    'Titeln i vyn Kollektivtrafikresa är bara text: pennan bredvid den byter namn utan att röra resvägen. Noteringar under tar markdown och har en flik Redigera och en Förhandsvisning.',
+    'Titeln i bokningens huvud byter namn på förbindelsen utan att röra resvägen. Dess noteringar skrivs i transportformuläret bakom Redigera.',
   'help.guide.change-transit-route.tip.2':
-    'Ta bort längst ner i vyn Kollektivtrafikresa tar ut förbindelsen ur resan; dagen behåller sina stopp.',
+    'Ta bort längst ner i bokningen tar ut förbindelsen ur resan; dagen behåller sina stopp.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Ändra hur en sträcka färdas',
   'help.guide.leg-travel-mode.goal':
@@ -3602,17 +3604,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': 'Ändra eller ta bort en transport',
   'help.guide.edit-transport.goal': 'Fixa en tid, en plattform eller en bokningskod, eller ta bort färden ur resan.',
-  'help.guide.edit-transport.step.1': 'I dagsplanen är en transport en färgad rad mellan stoppen. Klicka på den.',
+  'help.guide.edit-transport.step.1':
+    'I dagsplanen är en transport en färgad rad mellan stoppen. Klicka på den; dess bokning öppnas med tiderna, resvägen och Bokningskoden.',
   'help.guide.edit-transport.step.2':
-    'Formuläret är det som skapade den, med Redigera transport i sin titelrad. Allt går att ändra: typen, resvägen, dagarna och tiderna, Bokningskoden, Statusen.',
+    'Redigera längst ner i bokningen öppnar formuläret som skapade den, med Redigera transport i sin titelrad. Allt går att ändra: typen, resvägen, dagarna och tiderna, Bokningskoden, Statusen.',
   'help.guide.edit-transport.step.3':
     'En flygnings resväg är en kedja av flygplatser, ett tågs en kedja av stationer. Lägg till stopp sätter in ytterligare ett däremellan, och varje sträcka behåller sina egna tider och sitt eget flygnummer eller tågnummer.',
   'help.guide.edit-transport.step.4':
-    'Klicka på Uppdatera. För att ta bort transporten helt, använd papperskorgen på dess kort i fliken Transporter och bekräfta.',
+    'Klicka på Uppdatera. För att ta bort transporten helt, använd Ta bort längst ner i dess bokning, eller papperskorgen på dess kort i fliken Transporter, och bekräfta.',
   'help.guide.edit-transport.result':
     'Ändringen syns överallt där transporten förekommer: fliken Transporter, dagen den går på, och dess linje på kartan.',
   'help.guide.edit-transport.tip.1':
-    'Samma formulär öppnas från båda håll, pennan på kortet i fliken Transporter och transportens egen rad i dagsplanen. En planerad kollektivtrafikförbindelse är undantaget: dess rad öppnar vyn Kollektivtrafikresa, och Redigera detaljer där leder till det här formuläret.',
+    'Samma formulär öppnas från båda håll: via Redigera i bokningen som en rad i dagsplanen öppnar, och via pennan på kortet i fliken Transporter. En planerad kollektivtrafikförbindelse öppnas också som en bokning; Ändra resväg söker där på nytt, och Redigera leder till det här formuläret.',
   'help.guide.edit-transport.tip.2':
     'Att flytta en transport till en annan dag behöver inte formuläret alls: dra dess rad från ett dagkort till nästa.',
   // transport-on-map

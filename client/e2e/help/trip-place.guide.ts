@@ -53,8 +53,10 @@ const member = (page: Page, name: string) => participants(page).getByRole('butto
 const addMember = (page: Page) => participants(page).getByRole('button', { name: '+', exact: true })
 /** "Files" while the place has none, "<n> files" once it has. */
 const filesToggle = (page: Page) => card(page).getByRole('button', { name: /^(Files|\d+ files)$/ })
-/** The booking strip is a button only for a viewer who may open the booking. */
-const bookingStrip = (page: Page) => card(page).getByRole('button', { name: 'Edit Reservation' })
+/** The booking strip opens the booking; it is a button named after it. */
+const bookingStrip = (page: Page) => card(page).getByRole('button', { name: `Open booking: ${BOOKING}` })
+/** The booking the strip opens, named by its title. Its form is one Edit further. */
+const bookingDetail = (page: Page) => page.getByRole('dialog', { name: BOOKING })
 /** The strip's lower row: Date, Time and Booking Code beside each other. */
 const bookingFields = (page: Page) => bookingStrip(page).locator('> div').nth(1)
 const dayHeader = (page: Page, n: number) => page.getByRole('button', { name: new RegExp(`^${n} .*Day ${n} `) })
@@ -407,11 +409,16 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: bookingStrip,
         act: async p => {
           await bookingStrip(p).click()
-          await expect(modal(p).getByRole('heading', { name: 'Edit Reservation' })).toBeVisible()
+          await expect(bookingDetail(p)).toBeVisible()
           await settle(p)
         },
       },
       {
+        prepare: async p => {
+          await bookingDetail(p).getByRole('button', { name: 'Edit', exact: true }).click()
+          await expect(modal(p).getByRole('heading', { name: 'Edit Reservation' })).toBeVisible()
+          await settle(p)
+        },
         target: p => modal(p).getByText('Link to day assignment', { exact: true }).locator('xpath=..'),
         act: closeModal,
       },

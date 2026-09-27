@@ -115,6 +115,11 @@ const budget: TranslationStrings = {
   'costs.splitEqually': 'Equally',
   'costs.splitCustom': 'Custom',
   'costs.splitTicket': 'Ticket',
+  'costs.perPerson': '{amount} per person',
+  'costs.payersHint': 'Tick who paid and type how much each of them put in.',
+  'costs.splitHint.equally': 'Everyone ticked pays the same share.',
+  'costs.splitHint.custom': "Type each person's share; together they have to make the total.",
+  'costs.splitHint.ticket': 'List what was on the receipt and tick who had each item.',
   'costs.pickSomeone': 'Pick at least one person to split with.',
   'costs.splitSummary': 'Split {count} ways · {amount} each',
   'costs.cat.accommodation': 'Accommodation',
@@ -154,13 +159,15 @@ const budget: TranslationStrings = {
   'costs.receipts': 'Receipts',
   'costs.receiptsTitle': 'Receipts & Invoices',
   'costs.attachReceipt': 'Attach receipt / invoice',
+  'costs.attach': 'Attach',
   'costs.scan.button': 'Scan receipt',
   'costs.scan.reading': 'Reading the receipt…',
   'costs.scan.review': 'Review expense',
   'costs.scan.nothingRead': 'No receipt could be read from this photo.',
   'costs.scan.failed': 'Could not start reading the receipt.',
   'costs.scan.title': 'Scan a receipt',
-  'costs.scan.accepted': 'A photo of one receipt (JPG, PNG or WEBP, up to 10 MB). The AI model reads it in the background, then you check the expense before it is saved.',
+  'costs.scan.accepted':
+    'A photo of one receipt (JPG, PNG or WEBP, up to 10 MB). The AI model reads it in the background, then you check the expense before it is saved.',
   'costs.scan.dropHere': 'Drop the receipt photo here, or click to pick or take one',
   'costs.scan.dropActive': 'Drop the photo to scan it',
   'costs.scan.start': 'Scan',
@@ -168,7 +175,8 @@ const budget: TranslationStrings = {
   'costs.noReceipts': 'No receipts attached',
   'costs.deleteReceipt': 'Remove receipt',
   'costs.viewReceipt': 'View receipt',
-  'costs.receiptLeftBehind': 'Save failed, and {count} uploaded receipts are still there. Remove them in the Files tab.',
+  'costs.receiptLeftBehind':
+    'Save failed, and {count} uploaded receipts are still there. Remove them in the Files tab.',
 };
 
 export default budget;

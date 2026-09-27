@@ -868,7 +868,7 @@ describe('TodoListPanel — new task pane', () => {
 
     await user.type(screen.getByPlaceholderText('Task name'), 'Pack bags');
     await user.type(screen.getByPlaceholderText('Description (optional)'), 'rain gear');
-    await user.click(within(screen.getByRole('region', { name: 'New task' })).getByRole('button', { name: 'Add list' }));
+    await user.click(within(screen.getByRole('dialog', { name: 'New task' })).getByRole('button', { name: 'Add list' }));
     await user.type(await screen.findByPlaceholderText('List name'), 'Prep ');
     await user.keyboard('{Enter}');
     await user.click(screen.getByRole('button', { name: 'P1' }));
@@ -890,7 +890,7 @@ describe('TodoListPanel — new task pane', () => {
     const user = userEvent.setup();
     await openNew();
 
-    await user.click(within(screen.getByRole('region', { name: 'New task' })).getByRole('button', { name: 'Add list' }));
+    await user.click(within(screen.getByRole('dialog', { name: 'New task' })).getByRole('button', { name: 'Add list' }));
     await user.type(await screen.findByPlaceholderText('List name'), 'Prep');
     await user.keyboard('{Escape}');
 
@@ -1122,7 +1122,7 @@ describe('TodoListPanel — remaining paths', () => {
 
     rerender(<TodoListPanel tripId={1} items={[buildTodoItem({ id: 40, name: 'Plan route', checked: 0 })]} addItemSignal={1} />);
     await screen.findByText('Create task');
-    await user.click(within(screen.getByRole('region', { name: 'New task' })).getByRole('button', { name: 'Add list' }));
+    await user.click(within(screen.getByRole('dialog', { name: 'New task' })).getByRole('button', { name: 'Add list' }));
     input = await screen.findByPlaceholderText('List name');
     await user.type(input, 'Prep');
     fireEvent.click(screen.getByRole('button', { name: 'Add' }));

@@ -1,15 +1,12 @@
-import { useCallback, useMemo, useState, type CSSProperties } from 'react'
+import { useCallback, useMemo, type CSSProperties } from 'react'
 import { Download, Plane, Plus, SearchX } from 'lucide-react'
 import { useTripStore } from '../../store/tripStore'
 import { useCanDo } from '../../store/permissionsStore'
 import { useSettingsStore } from '../../store/settingsStore'
-import { usePluginStore } from '../../store/pluginStore'
-import { useToast } from '../shared/Toast'
 import { useTranslation } from '../../i18n'
 import type { Reservation, Day, TripFile, AssignmentsMap, BudgetItem } from '../../types'
 import { usePluginViewContributions } from '../Plugins/PluginContributions'
 import EmptyState from '../shared/EmptyState'
-import ConfirmDialog from '../shared/ConfirmDialog'
 import type { TripMember } from '../Budget/BudgetPanelMemberChips'
 import {
   applyFilters, buildAssignmentLookup, costsFor, groupReservations, sortReservations, TYPE_ORDER, typeInfo,
@@ -22,8 +19,9 @@ import BookingsHeader from './bookings/BookingsHeader'
 import BookingCard from './bookings/BookingCard'
 import BookingsList from './bookings/BookingsList'
 import BookingsTimeline from './bookings/BookingsTimeline'
-import BookingDetailDialog from './bookings/BookingDetailDialog'
-import { canShowOnMap } from './bookings/showOnMap'
+import BookingDetailHost from './bookings/BookingDetailHost'
+import { useReservationDetailPlugins } from './bookings/useReservationDetailPlugins'
+import { useBookingActions } from './bookings/useBookingActions'
 
 interface ReservationsPanelProps {
   tripId: number
@@ -53,6 +51,9 @@ interface ReservationsPanelProps {
   isOnMap?: (reservation: Reservation) => boolean
   /** Opens the expense editor for an expense linked to a booking. */
   onEditExpense?: (item: BudgetItem) => void
+  /** Re-enters the transit search for a public-transit journey, seeded with its route.
+   *  Passed only to someone who may do that (day_edit, as on the plan); the tab adds no gate of its own. */
+  onChangeRoute?: (reservation: Reservation) => void
 }
 
 // Cards take a quarter of the row at most, so a wide screen shows four and a narrow one fewer.
@@ -69,21 +70,20 @@ const CTA_STYLE: CSSProperties = {
 export default function ReservationsPanel({
   tripId, reservations, days, assignments, files = [], onAdd, onImport, bookingImportAvailable, onAirTrailImport,
   airTrailAvailable, onEdit, onDelete, onNavigateToFiles, titleKey = 'reservations.title', addManualKey = 'reservations.addManual',
-  contributionView = 'reservations', tripMembers = [], contextReservations = [], onShowOnMap, isOnMap, onEditExpense,
+  contributionView = 'reservations', tripMembers = [], contextReservations = [], onShowOnMap, isOnMap, onEditExpense, onChangeRoute,
 }: ReservationsPanelProps) {
   const { t, locale } = useTranslation()
-  const toast = useToast()
   const can = useCanDo()
   const trip = useTripStore(s => s.trip)
   const budgetItems = useTripStore(s => s.budgetItems)
-  const toggleReservationStatus = useTripStore(s => s.toggleReservationStatus)
   const timeFormat = useSettingsStore(s => s.settings.time_format) || '24h'
   const canEdit = can('reservation_edit', trip)
   const kind: BookingsKind = contributionView === 'transports' ? 'transports' : 'bookings'
   const v = useBookingsView(kind, tripId)
   const contribFor = usePluginViewContributions(contributionView, tripId)
-  const detailPlugins = usePluginStore(s => s.plugins).filter(p => p.type === 'widget' && p.slot === 'reservation-detail')
-  const [pendingDelete, setPendingDelete] = useState<Reservation | null>(null)
+  const detailPlugins = useReservationDetailPlugins()
+  // The cards' and rows' own status switch and delete question; the detail brings its own.
+  const actions = useBookingActions(tripId, onDelete, r => { if (v.selectedId === r.id) v.setSelectedId(null) })
 
   const labelOf = useCallback((type: string) => t(typeInfo(type).labelKey), [t])
   const assignmentLookup = useMemo(() => buildAssignmentLookup(days, assignments), [days, assignments])
@@ -93,12 +93,12 @@ export default function ReservationsPanel({
     () => applyFilters(reservations, { types: v.types, status: v.status, travelers: v.travelers, query: v.query }, labelOf),
     [reservations, v.types, v.status, v.travelers, v.query, labelOf],
   )
-  const sorted = useMemo(() => sortReservations(filtered, days, v.sort.by, v.sort.dir, labelOf), [filtered, days, v.sort.by, v.sort.dir, labelOf])
+  const sorted = useMemo(() => sortReservations(filtered, days, v.sort.by, v.sort.dir, labelOf, v.transitApart), [filtered, days, v.sort.by, v.sort.dir, labelOf, v.transitApart])
   const groups = useMemo(() => groupReservations(sorted, v.group, days, trip?.start_date, trip?.end_date, {
     confirmed: t('reservations.confirmed'), pending: t('reservations.pending'), transit: t('transit.sectionTitle'),
     before: t('reservations.group.before'), after: t('reservations.group.after'), undated: t('reservations.group.undated'),
     dayN: n => t('dayplan.dayN', { n }), typeLabel: labelOf, dayDate: d => formatDay(d, locale),
-  }), [sorted, v.group, days, trip?.start_date, trip?.end_date, locale, t, labelOf])
+  }, v.transitApart), [sorted, v.group, days, trip?.start_date, trip?.end_date, locale, t, labelOf, v.transitApart])
 
   const costsOf = useCallback((r: Reservation) => costsFor(r.id, budgetItems, tripCurrency), [budgetItems, tripCurrency])
   // Formatted once per booking object and setting; a changed booking is a new object and formats again.
@@ -122,51 +122,35 @@ export default function ReservationsPanel({
   }, [reservations, v.types])
   const selected = v.selectedId != null ? reservations.find(r => r.id === v.selectedId) ?? null : null
 
-  const select = (r: Reservation) => {
-    // A transit journey has its own detail view, shared with the phone.
-    if (r.type === 'transit') { onEdit(r); return }
-    v.setSelectedId(v.selectedId === r.id ? null : r.id)
-  }
+  const select = (r: Reservation) => v.setSelectedId(v.selectedId === r.id ? null : r.id)
   // Whatever leaves the tab's own view closes the detail first: an editor, the map, an expense.
   const closeDetail = () => v.setSelectedId(null)
   const edit = (r: Reservation) => {
     closeDetail()
     onEdit(r)
   }
-  const toggleStatus = (r: Reservation) => {
-    toggleReservationStatus(tripId, r.id).catch(() => toast.error(t('reservations.toast.updateError')))
-  }
-  const confirmDelete = async () => {
-    const r = pendingDelete
-    setPendingDelete(null)
-    if (!r) return
-    if (v.selectedId === r.id) v.setSelectedId(null)
-    try { await onDelete(r.id) } catch { toast.error(t('reservations.toast.deleteError')) }
-  }
+  const { toggleStatus, requestDelete } = actions
 
   const importAction = onImport && bookingImportAvailable ? onImport : undefined
   const airTrailAction = onAirTrailImport && airTrailAvailable ? onAirTrailImport : undefined
-  const linkedCosts = (r: Reservation) => budgetItems.filter(b => b.reservation_id === r.id)
 
   const detail = selected && (
-    <BookingDetailDialog
+    <BookingDetailHost
       r={selected}
-      facts={factsOf(selected)}
-      files={filesFor(selected, files)}
-      linkedCosts={linkedCosts(selected)}
       tripId={tripId}
+      days={days}
+      assignments={assignments}
+      files={files}
       canEdit={canEdit}
-      covered={!!pendingDelete}
-      onClose={closeDetail}
-      onEdit={() => edit(selected)}
-      onDelete={() => setPendingDelete(selected)}
-      onToggleStatus={() => toggleStatus(selected)}
-      onShowOnMap={onShowOnMap && canShowOnMap(selected) ? () => { closeDetail(); onShowOnMap(selected) } : undefined}
-      onMap={isOnMap?.(selected)}
-      onEditExpense={onEditExpense ? item => { closeDetail(); onEditExpense(item) } : undefined}
-      onNavigateToFiles={onNavigateToFiles}
       contributions={contribFor(selected.id)}
-      detailPlugins={detailPlugins}
+      onClose={closeDetail}
+      onEdit={canEdit ? onEdit : undefined}
+      onDelete={onDelete}
+      onShowOnMap={onShowOnMap}
+      isOnMap={isOnMap}
+      onEditExpense={onEditExpense}
+      onChangeRoute={onChangeRoute}
+      onNavigateToFiles={onNavigateToFiles}
     />
   )
 
@@ -204,6 +188,7 @@ export default function ReservationsPanel({
         <BookingsTimeline
           items={sorted}
           context={contextReservations}
+          contextLabel={t(kind === 'transports' ? 'reservations.timeline.contextBookings' : 'reservations.timeline.contextTransports')}
           days={days}
           zoom={v.timeline.zoom}
           onZoom={v.setZoom}
@@ -228,7 +213,7 @@ export default function ReservationsPanel({
           onToggleGroup={v.toggleGroup}
           onSelect={select}
           onEdit={edit}
-          onDelete={setPendingDelete}
+          onDelete={requestDelete}
           onToggleStatus={toggleStatus}
         />
       )
@@ -254,7 +239,7 @@ export default function ReservationsPanel({
                       selected={v.selectedId === r.id}
                       onSelect={() => select(r)}
                       onEdit={() => edit(r)}
-                      onDelete={() => setPendingDelete(r)}
+                      onDelete={() => requestDelete(r)}
                       onToggleStatus={() => toggleStatus(r)}
                       contributions={contribFor(r.id)}
                       detailPlugins={detailPlugins}
@@ -309,6 +294,8 @@ export default function ReservationsPanel({
           onByType={v.toggleByType}
           showContext={v.timeline.context}
           onShowContext={v.toggleContext}
+          transitApart={v.transitApart}
+          onTransitApart={v.view === 'cards' && v.group === 'status' && reservations.some(r => r.type === 'transit') ? v.toggleTransitApart : undefined}
           viewIsDefault={v.viewIsDefault}
           onResetView={v.resetView}
         />
@@ -318,15 +305,7 @@ export default function ReservationsPanel({
 
       {detail}
 
-      <ConfirmDialog
-        isOpen={!!pendingDelete}
-        onClose={() => setPendingDelete(null)}
-        onConfirm={confirmDelete}
-        title={t('reservations.confirm.deleteTitle')}
-        message={t('reservations.confirm.deleteBody', { name: pendingDelete?.title ?? '' })}
-        confirmLabel={t('common.delete')}
-        cancelLabel={t('common.cancel')}
-      />
+      {actions.confirmDialog}
     </div>
   )
 }

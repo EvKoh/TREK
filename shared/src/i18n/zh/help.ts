@@ -1841,9 +1841,9 @@ const help: TranslationStrings = {
   'help.guide.place-booking.step.1':
     '打开该预订所属的停靠点。卡片显示一条横条，上面是“已确认”或“待确认”以及预订的名称。',
   'help.guide.place-booking.step.2': '这条横条带着“日期”“时间”和“预订码”，以及这笔预订的任何备注。',
-  'help.guide.place-booking.step.3': '点击这条横条。该预订自己的表单就在上面打开。',
+  'help.guide.place-booking.step.3': '点击这条横条。预订会在地图上方打开。',
   'help.guide.place-booking.step.4':
-    '“关联日程分配”就是把预订挂到停靠点上的字段，这里它已经写着这个停靠点。再把表单关掉。',
+    '预订底部的“编辑”会打开它自己的表单。那里的“关联日程分配”就是把预订挂到停靠点上的字段，这里它已经写着这个停靠点。再把表单关掉。',
   'help.guide.place-booking.step.5':
     '为某个停靠点新建预订要从天数栏开始：鼠标悬停在停靠点上，点击它末尾的 +。表单以“新建预订”打开，并已经关联到它。',
   'help.guide.place-booking.result': '预订挂在停靠点上：它在卡片里、在当天里，它的文件也列在这里的“文件”下面。',
@@ -2125,7 +2125,7 @@ const help: TranslationStrings = {
     '一行显示这是哪种预订、它的名称，如果它属于某个停靠点，就在一个圆点之后写出那个停靠点。它的时间在右端。',
   'help.guide.day-bookings.step.3':
     '颜色说明一条预订处在什么状态：绿色的行已确认，琥珀色的还在待确认。酒店不在这个列表里，它们在下面有自己的板块。',
-  'help.guide.day-bookings.step.4': '这个列表只把预订读出来。预订要在“预订”标签页里创建和更改。',
+  'help.guide.day-bookings.step.4': '点击一行，预订就会打开。它底部的“编辑”用来修改；新的预订要在“预订”标签页里创建。',
   'help.guide.day-bookings.result': '日期落在这一天的一切，以及挂在它某个停靠点上的一切，都在这一个列表里。',
   'help.guide.day-bookings.tip.1':
     '一条预订按它自己的日期落到某一天上。在“预订”标签页里改掉日期，它就自己挪到另一天去。',
@@ -2593,12 +2593,12 @@ const help: TranslationStrings = {
   'help.guide.create-booking.goal': '把一家餐厅、一场活动、一个旅游团、一个车位或别的什么，手动放进这次旅行。',
   'help.guide.create-booking.step.1': '点击这一栏右上角的“手动添加”。“新建预订”打开。',
   'help.guide.create-booking.step.2':
-    '从表单顶部“出行人”旁边的列表里选“预订类型”。这一栏做的六类是“住宿”“餐厅”“活动”“旅游团”“停车”和“其他”，表单随选择而变：只有“住宿”会把日期换成一段日子的范围。',
+    '点击表单头部标题下方的类型标签，选择“预订类型”。这一栏做的六类是“住宿”“餐厅”“活动”“旅游团”“停车”和“其他”，表单随选择而变：只有“住宿”会把日期换成一段日子的范围。',
   'help.guide.create-booking.step.3': '填“标题”。这是表单唯一坚持要的字段，在它有内容之前“添加”一直是灰的。',
   'help.guide.create-booking.step.4':
     '设置“日期”和“开始时间”，如果这条预订有结束，再设“结束日期”和“结束时间”。日历只给出旅行之内的日子；结束不晚于开始时，会用红色这样提示并挡住“添加”。',
   'help.guide.create-booking.step.5':
-    '填入确认单上的“预订码”，并设置“状态”。是“待确认”还是“已确认”，决定卡片落进两个区中的哪一个。',
+    '填入确认单上的“预订码”。类型旁边的状态标签显示“待确认”；点一下切换为“已确认”，再点一下切回来，这决定卡片落进两个区中的哪一个。',
   'help.guide.create-booking.step.6': '点击“添加”。',
   'help.guide.create-booking.result':
     '这条预订成了它那个区里的一张卡片，带着类型筛选片、日期和预订码，旅行中其他所有人也会看到它出现。',
@@ -2639,7 +2639,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': '说明一条预订是给谁的',
   'help.guide.booking-travelers.goal': '标出一条预订涵盖的出行人，然后只看他们的。',
   'help.guide.booking-travelers.step.1':
-    '用铅笔打开这条预订。“出行人”在表单顶部，“预订类型”旁边，只要这条预订上还没有人，它就显示“分配出行人”。',
+    '用铅笔打开这条预订。“出行人”在“预订码”旁边，只要这条预订上还没有人，它就显示“分配出行人”。',
   'help.guide.booking-travelers.step.2':
     '点它，选出这条预订是给谁的那些人；有名字的“访客”也在列表里。被选中的人会得到一个勾，头像也会出现在这个字段中。再点一次名字就取消。',
   'help.guide.booking-travelers.step.3': '点击“更新”。',
@@ -2714,7 +2714,7 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.goal': '改正一个时间、补上晚到的预订码，或者把一条预订从“待确认”挪到“已确认”。',
   'help.guide.edit-booking.step.1': '点击卡片头部的铅笔。“编辑预订”带着这条预订知道的一切打开。',
   'help.guide.edit-booking.step.2': '改该改的地方，这里是运营商终于发来的那个“预订码”。',
-  'help.guide.edit-booking.step.3': '把“状态”设为“已确认”。',
+  'help.guide.edit-booking.step.3': '点击表单头部的“待确认”标签。它会变成“已确认”。',
   'help.guide.edit-booking.step.4': '点击“更新”。',
   'help.guide.edit-booking.result':
     '卡片挪了位置：一条已确认的预订立在“已确认”区里，前面是一个绿点，旅行中的每个人都看得到它挪动。',
@@ -2966,16 +2966,17 @@ const help: TranslationStrings = {
   // change-transit-route
   'help.guide.change-transit-route.title': '打开并更改一条规划好的线路',
   'help.guide.change-transit-route.goal': '一站一站地读这条线路，给它改名，或者重新查一次路线。',
-  'help.guide.change-transit-route.step.1': '在“交通”标签页里，规划好的线路在“自动公共交通”下面。点击卡片。',
+  'help.guide.change-transit-route.step.1':
+    '在“交通”标签页里，规划好的线路在“自动公共交通”下面。点击卡片，这条线路会以预订的形式打开。',
   'help.guide.change-transit-route.step.2':
     '“时长”“换乘”和“步行”在最上面。它们下面的“行程”一站一站地走完这条线路，连站台和线路之间的步行都在。',
-  'help.guide.change-transit-route.step.3': '“更改路线”重新跑一次搜索，这条线路的两端和它的日期都已经填好。',
+  'help.guide.change-transit-route.step.3': '预订底部的“更改路线”重新跑一次搜索，这条线路的两端和它的日期都已经填好。',
   'help.guide.change-transit-route.step.4':
-    '选另一条线路并点击“添加到当天”，它就顶替旧的那条。而“更改路线”旁边的“编辑详情”打开的是普通的交通表单，“预订码”、“状态”、出行人和文件都在那里。',
+    '选另一条线路并点击“添加到当天”，它就顶替旧的那条。而同一操作栏另一端的“编辑”打开的是普通的交通表单，“预订码”、“状态”、出行人、备注和文件都在那里。',
   'help.guide.change-transit-route.result': '这段行程带上了新的行程安排，它在“交通”标签页里的卡片显示新的线路和时间。',
   'help.guide.change-transit-route.tip.1':
-    '行程的标题只是文字：旁边的铅笔给它改名，不会动到路线。下面的“备注”接受 markdown，并有“编辑”和“预览”两个标签。',
-  'help.guide.change-transit-route.tip.2': '行程底部的“删除”把这条线路从这趟旅行里拿走；那一天仍然保留它的地点。',
+    '预订头部的标题可以给这条线路改名，不会动到路线。它的备注在“编辑”后面的交通表单里填写。',
+  'help.guide.change-transit-route.tip.2': '预订底部的“删除”把这条线路从这趟旅行里拿走；那一天仍然保留它的地点。',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': '更改某一段的出行方式',
   'help.guide.leg-travel-mode.goal': '在其余路段都开车的一天里，把其中一段改成步行，或者把那一段交给公共交通搜索。',
@@ -2994,17 +2995,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': '更改或删除一段交通',
   'help.guide.edit-transport.goal': '改一个时间、一个站台或一个预订码，或者把这趟交通从旅行里去掉。',
-  'help.guide.edit-transport.step.1': '在日程里，一段交通是地点之间一条带颜色的行。点击它。',
+  'help.guide.edit-transport.step.1':
+    '在日程里，一段交通是地点之间一条带颜色的行。点击它，它的预订就会打开，显示时间、路线和“预订码”。',
   'help.guide.edit-transport.step.2':
-    '表单就是创建它的那一个，标题栏写着“编辑交通”。什么都能改：类型、路线、日期和时间、“预订码”、“状态”。',
+    '预订底部的“编辑”打开创建它的那个表单，标题栏写着“编辑交通”。什么都能改：类型、路线、日期和时间、“预订码”、“状态”。',
   'help.guide.edit-transport.step.3':
     '航班的路线是一串机场，火车的路线是一串车站。“添加经停”在中间再放一个，每一段都保留自己的时间和自己的航班号或车次。',
   'help.guide.edit-transport.step.4':
-    '点击“更新”。要把这段交通彻底移除，用它在“交通”标签页那张卡片上的垃圾桶，并确认。',
+    '点击“更新”。要把这段交通彻底移除，用它预订底部的“删除”，或者它在“交通”标签页那张卡片上的垃圾桶，并确认。',
   'help.guide.edit-transport.result':
     '改动在这段交通出现的每个地方都会显示：“交通”标签页、它所在的那一天，以及它在地图上的线。',
   'help.guide.edit-transport.tip.1':
-    '同一个表单从两边都能打开：“交通”标签页卡片上的铅笔，和日程里这段交通自己的行。规划好的公共交通线路是例外：它的行打开的是行程视图，那里的“编辑详情”才通向这个表单。',
+    '同一个表单从两边都能打开：通过日程中某一行打开的预订里的“编辑”，以及“交通”标签页卡片上的铅笔。规划好的公共交通线路同样以预订的形式打开；那里的“更改路线”会重新搜索，“编辑”则通向这个表单。',
   'help.guide.edit-transport.tip.2': '把一段交通挪到另一天根本不需要表单：把它的行从一张日期卡片拖到下一张。',
   // transport-on-map
   'help.guide.transport-on-map.title': '把一段交通画到地图上',

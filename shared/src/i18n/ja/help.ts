@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'ja' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'ヘルプとドキュメント',
+  'help.search': 'ドキュメントを検索…',
+  'help.contents': '目次',
+  'help.noResults': '一致するページはありません。',
+  'help.errorTitle': 'このページを読み込めませんでした',
+  'help.errorBody': 'ヘルプの内容は TREK wiki から取得しています。接続を確認して、もう一度お試しください。',
 
   // center
   'help.center.button': 'この画面のヘルプ',
@@ -981,7 +981,7 @@ const help: TranslationStrings = {
     '「Travel & map」：予約ルートを常に地図に表示、スポットを探すピル、宿泊先を起点にしたルート最適化、予約コードのぼかし、予約ルートのラベル表示。',
   'help.ctx.settings-display.bullet.3':
     '「起動」：TREKをダッシュボードで開くか進行中の旅行で開くか、そして旅行のどのタブを最初に表示するか。',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': '外観',
   'help.ctx.settings-appearance.summary':
     'このアカウントでのTREKの見た目：ライトかダークか、アクセントカラー、ガラス効果と動き、文字サイズ、ダッシュボードに表示するウィジェット。すべてその場で反映され、サインインしているどの端末にも及びます。',
   'help.ctx.settings-appearance.bullet.1':
@@ -2204,9 +2204,9 @@ const help: TranslationStrings = {
   'help.guide.place-booking.step.1':
     '予約が属する立ち寄り先を開きます。カードには「確定」または「保留」と予約の名前が入った帯が出ます。',
   'help.guide.place-booking.step.2': '帯には「日付」「時間」「予約コード」と、予約が持つメモが載ります。',
-  'help.guide.place-booking.step.3': '帯をクリックします。その予約自身のフォームが上に開きます。',
+  'help.guide.place-booking.step.3': '帯をクリックします。予約が地図の上に開きます。',
   'help.guide.place-booking.step.4':
-    '「日への割り当てにリンク」が予約を立ち寄り先に留めるもので、ここではすでにこの立ち寄り先の名前が入っています。フォームをまた閉じます。',
+    '予約の下部にある「編集」で、その予約自身のフォームが開きます。そこの「日への割り当てにリンク」が予約を立ち寄り先に留めるもので、ここではすでにこの立ち寄り先の名前が入っています。フォームをまた閉じます。',
   'help.guide.place-booking.step.5':
     '立ち寄り先の新しい予約は日程の列から始めます。立ち寄り先にマウスを乗せ、その末尾の + をクリックします。フォームは「新しい予約」として開き、すでにその立ち寄り先にリンクされています。',
   'help.guide.place-booking.result':
@@ -2549,7 +2549,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     '色が予約の状態を示します。緑の行は確定、琥珀色はまだ保留です。ホテルはこのリストには出ず、下に自分のブロックを持ちます。',
   'help.guide.day-bookings.step.4':
-    'このリストは予約を読み出すだけです。予約を作ったり変えたりするのは「予約」タブです。',
+    '行をクリックすると予約が開きます。その下部の「編集」で変更でき、新しい予約は「予約」タブで作ります。',
   'help.guide.day-bookings.result':
     'その日の日付が付いたものも、その日の立ち寄り先にぶら下がったものも、すべてこの1つのリストに入ります。',
   'help.guide.day-bookings.tip.1':
@@ -3077,13 +3077,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.goal': 'レストラン、イベント、ツアー、駐車場など、何でも手入力で旅行に入れます。',
   'help.guide.create-booking.step.1': 'タブの右上の「手動予約」をクリックします。「新しい予約」が開きます。',
   'help.guide.create-booking.step.2':
-    'フォーム上部の「同行者」の隣にあるリストから「予約タイプ」を選びます。このタブが作るのは「宿泊」「レストラン」「イベント」「ツアー」「駐車場」「その他」の6種類で、選択に応じてフォームが変わります。日付を日の範囲に取り替えるのは「宿泊」だけです。',
+    'フォームの見出しで、タイトルの下にある種類のピルをクリックし、「予約タイプ」を選びます。このタブが作るのは「宿泊」「レストラン」「イベント」「ツアー」「駐車場」「その他」の6種類で、選択に応じてフォームが変わります。日付を日の範囲に取り替えるのは「宿泊」だけです。',
   'help.guide.create-booking.step.3':
     '「タイトル」を入力します。フォームが必ず求めるのはこの項目だけで、何か入るまで「追加」は押せません。',
   'help.guide.create-booking.step.4':
     '「日付」と「開始時刻」を設定し、終わりのある予約なら「終了日」と「終了時刻」も設定します。カレンダーは旅行期間内の日しか示さず、終わりが始まりより後でなければ赤でそう伝えて「追加」を止めます。',
   'help.guide.create-booking.step.5':
-    '確認書の「予約コード」を入れて「ステータス」を設定します。「保留」か「確定」かで、カードが2つのセクションのどちらに入るかが決まります。',
+    '確認書の「予約コード」を入れます。種類の隣のステータスピルは「保留」と表示されています。クリックすると「確定」になり、もう一度クリックすると戻ります。これで、カードが2つのセクションのどちらに入るかが決まります。',
   'help.guide.create-booking.step.6': '「追加」をクリックします。',
   'help.guide.create-booking.result':
     '予約は種類のチップと日付と予約コードを持つカードとしてそのセクションに並び、旅行のほかの全員にも現れます。',
@@ -3132,7 +3132,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': '予約が誰のためかを示す',
   'help.guide.booking-travelers.goal': '予約が対象とする同行者を指定し、そのうえでその人の分だけを表示します。',
   'help.guide.booking-travelers.step.1':
-    '鉛筆で予約を開きます。「同行者」はフォームの上部、「予約タイプ」の隣にあり、予約に誰もいない間は「同行者を割り当て」と表示されます。',
+    '鉛筆で予約を開きます。「同行者」は「予約コード」の隣にあり、予約に誰もいない間は「同行者を割り当て」と表示されます。',
   'help.guide.booking-travelers.step.2':
     'そこをクリックして、この予約の対象となる人を選びます。名前の付いた「ゲスト」もリストに含まれます。選ばれた人にはチェックが付き、フィールドにアバターが表示されます。名前をもう一度クリックすると外れます。',
   'help.guide.booking-travelers.step.3': '「更新」をクリックします。',
@@ -3223,7 +3223,7 @@ const help: TranslationStrings = {
     'カードの見出しにある鉛筆をクリックします。「予約を編集」が、その予約の持つ情報すべてとともに開きます。',
   'help.guide.edit-booking.step.2':
     '変える必要のあるところを変えます。ここでは業者がようやく送ってきた「予約コード」です。',
-  'help.guide.edit-booking.step.3': '「ステータス」を「確定」にします。',
+  'help.guide.edit-booking.step.3': 'フォームの見出しにある「保留」のピルをクリックします。「確定」に変わります。',
   'help.guide.edit-booking.step.4': '「更新」をクリックします。',
   'help.guide.edit-booking.result':
     'カードが移ります。確定した予約は緑の点の後ろ、「確定」のセクションに並び、旅行の全員にその移動が見えます。',
@@ -3508,19 +3508,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.title': '計画された経路を開いて変える',
   'help.guide.change-transit-route.goal': '経路を駅ごとに読み、名前を変え、あるいは経路を調べ直します。',
   'help.guide.change-transit-route.step.1':
-    '「移動」タブでは、計画された経路は「公共交通機関の自動検索」の下にあります。カードをクリックします。',
+    '「移動」タブでは、計画された経路は「公共交通機関の自動検索」の下にあります。カードをクリックすると、その経路が予約として開きます。',
   'help.guide.change-transit-route.step.2':
     '上に「所要時間」「乗り換え」「徒歩」があります。その下の「行程」が経路を駅ごとにたどり、ホームと路線間の徒歩も示します。',
   'help.guide.change-transit-route.step.3':
-    '「経路を変更」は検索をもう一度実行します。この経路の両端とその日はすでに入っています。',
+    '予約の下部にある「経路を変更」は検索をもう一度実行します。この経路の両端とその日はすでに入っています。',
   'help.guide.change-transit-route.step.4':
-    '別の経路を選んで「日程に追加」をクリックすると、古いものに取って代わります。「経路を変更」の隣の「詳細を編集」は代わりに通常の移動手段フォームを開き、そこに「予約コード」「ステータス」、同行者、ファイルがあります。',
+    '別の経路を選んで「日程に追加」をクリックすると、古いものに取って代わります。同じバーの反対の端にある「編集」は代わりに通常の移動手段フォームを開き、そこに「予約コード」「ステータス」、同行者、メモ、ファイルがあります。',
   'help.guide.change-transit-route.result':
     '経路は新しい行程を持ち、「移動」タブのそのカードは新しい路線と時刻を示します。',
   'help.guide.change-transit-route.tip.1':
-    '経路のタイトルはただのテキストです。隣の鉛筆は経路に触れずに名前を変えます。下の「メモ」は markdown を受け取り、「編集」と「プレビュー」のタブがあります。',
+    '予約の見出しにあるタイトルで、経路に触れずに名前を変えられます。メモは「編集」の先にある移動手段フォームで書きます。',
   'help.guide.change-transit-route.tip.2':
-    '経路の下部の「削除」はその経路を旅行から外します。日は立ち寄り先をそのまま保ちます。',
+    '予約の下部の「削除」はその経路を旅行から外します。日は立ち寄り先をそのまま保ちます。',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': '一区間の移動方法を変える',
   'help.guide.leg-travel-mode.goal': 'ほかは車で進む日の一区間だけを歩くか、その区間を公共交通機関の検索に任せます。',
@@ -3542,17 +3542,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': '移動手段を変える、または削除する',
   'help.guide.edit-transport.goal': '時刻、ホーム、予約コードを直すか、その移動を旅行から外します。',
-  'help.guide.edit-transport.step.1': '日程では移動手段は立ち寄り先の間の色付きの行です。それをクリックします。',
+  'help.guide.edit-transport.step.1':
+    '日程では移動手段は立ち寄り先の間の色付きの行です。それをクリックすると、時刻、経路、「予約コード」とともにその予約が開きます。',
   'help.guide.edit-transport.step.2':
-    'フォームはそれを作ったものと同じで、タイトルバーに「移動手段を編集」と出ます。すべて変えられます。種類、経路、日と時刻、「予約コード」、「ステータス」です。',
+    '予約の下部にある「編集」で、それを作ったフォームが開き、タイトルバーに「移動手段を編集」と出ます。すべて変えられます。種類、経路、日と時刻、「予約コード」、「ステータス」です。',
   'help.guide.edit-transport.step.3':
     '航空便の経路は空港の連なり、列車の経路は駅の連なりです。「経由地を追加」は間にもう一つ置き、各区間は自分の時刻と自分の便名または列車番号を保ちます。',
   'help.guide.edit-transport.step.4':
-    '「更新」をクリックします。移動手段をすっかり取り除くには、「移動」タブのそのカードのごみ箱を使って確認します。',
+    '「更新」をクリックします。移動手段をすっかり取り除くには、その予約の下部にある「削除」か、「移動」タブのそのカードのごみ箱を使って確認します。',
   'help.guide.edit-transport.result':
     '変更は移動手段が現れるすべての場所に出ます。「移動」タブ、それが動く日、そして地図上のその線です。',
   'help.guide.edit-transport.tip.1':
-    '同じフォームは両側から開きます。「移動」タブのカードの鉛筆と、日程にある移動手段自身の行です。計画された公共交通機関の経路だけは例外で、その行は経路の画面を開き、そこの「詳細を編集」がこのフォームへ導きます。',
+    '同じフォームは両側から開きます。日程の行が開く予約の「編集」からと、「移動」タブのカードの鉛筆からです。計画された公共交通機関の経路も予約として開きます。そこでは「経路を変更」で検索し直し、「編集」でこのフォームへ進みます。',
   'help.guide.edit-transport.tip.2':
     '移動手段を別の日へ動かすのにフォームは要りません。行をある日のカードから次のカードへドラッグします。',
   // transport-on-map

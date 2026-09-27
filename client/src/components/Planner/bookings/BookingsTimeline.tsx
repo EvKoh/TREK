@@ -18,6 +18,8 @@ export interface BookingsTimelineProps {
   items: Reservation[]
   /** The other tab's bookings, drawn dimmed in a thin lane on top for orientation. */
   context: Reservation[]
+  /** What that lane is called: the other tab's name. */
+  contextLabel: string
   days: Day[]
   zoom: TimelineZoom
   onZoom: (z: TimelineZoom) => void
@@ -164,9 +166,11 @@ export default function BookingsTimeline(p: BookingsTimelineProps) {
         <div className="flex flex-wrap items-center gap-2.5 border-b border-edge-faint bg-surface-secondary px-3.5 py-2.5">
           {dayMode ? (
             <div className="flex items-center gap-1.5">
-              <button type="button" onClick={() => setDayIndex(Math.max(0, day - 1))} disabled={day === 0} aria-label={t('reservations.timeline.prevDay')} className={navBtn}>
-                <ChevronLeft size={15} strokeWidth={2.2} />
-              </button>
+              <Tooltip label={t('reservations.timeline.prevDay')}>
+                <button type="button" onClick={() => setDayIndex(Math.max(0, day - 1))} disabled={day === 0} aria-label={t('reservations.timeline.prevDay')} className={navBtn}>
+                  <ChevronLeft size={15} strokeWidth={2.2} />
+                </button>
+              </Tooltip>
               <span className="inline-flex items-stretch overflow-hidden rounded-full bg-surface-card font-semibold text-content shadow-sm" style={fs(12, 'body')}>
                 <span className="px-3 py-1">{dayName(day)}</span>
                 {axis[day]?.date && (
@@ -176,9 +180,11 @@ export default function BookingsTimeline(p: BookingsTimelineProps) {
                   </>
                 )}
               </span>
-              <button type="button" onClick={() => setDayIndex(Math.min(n - 1, day + 1))} disabled={day >= n - 1} aria-label={t('reservations.timeline.nextDay')} className={navBtn}>
-                <ChevronRight size={15} strokeWidth={2.2} />
-              </button>
+              <Tooltip label={t('reservations.timeline.nextDay')}>
+                <button type="button" onClick={() => setDayIndex(Math.min(n - 1, day + 1))} disabled={day >= n - 1} aria-label={t('reservations.timeline.nextDay')} className={navBtn}>
+                  <ChevronRight size={15} strokeWidth={2.2} />
+                </button>
+              </Tooltip>
             </div>
           ) : range && (
             <span className="inline-flex items-stretch overflow-hidden rounded-full bg-surface-card font-semibold text-content shadow-sm" style={fs(12, 'body')}>
@@ -229,7 +235,7 @@ export default function BookingsTimeline(p: BookingsTimelineProps) {
             {contextBars && contextBars.bars.length > 0 && (
               <div className="flex border-b border-edge-faint">
                 <div className="sticky left-0 z-20 flex flex-none items-center border-r border-edge-faint bg-surface-card px-3" style={{ width: LABEL_W }}>
-                  <span className={EYEBROW} style={fs(9.5)}>{t(p.items.some(r => r.type !== 'hotel') && p.context.some(r => r.type === 'hotel') ? 'reservations.timeline.contextStays' : 'reservations.timeline.contextTransports')}</span>
+                  <span className={EYEBROW} style={fs(9.5)}>{p.contextLabel}</span>
                 </div>
                 <div className="relative flex-none" style={{ width: gridW, height: 8 + contextBars.lanes * 18 }}>
                   <Cells />
@@ -252,7 +258,7 @@ export default function BookingsTimeline(p: BookingsTimelineProps) {
                 <div key={lane.key} className="flex border-b border-edge-faint last:border-b-0">
                   <div className="sticky left-0 z-20 flex flex-none items-center gap-2 border-r border-edge-faint bg-surface-card px-3" style={{ width: LABEL_W }}>
                     {lane.key !== 'all' && <info.Icon size={14} strokeWidth={2} style={{ color: info.color }} className="flex-none" />}
-                    <span className="min-w-0 flex-1 truncate font-semibold text-content" style={fs(12.5, 'body')}>{lane.key === 'all' ? t('common.all') : t(info.labelKey)}</span>
+                    <span className="min-w-0 flex-1 truncate font-semibold text-content" style={fs(12.5, 'body')}>{lane.key === 'all' ? t('common.all') : t(info.chipKey)}</span>
                     <CountPill>{lane.count}</CountPill>
                   </div>
                   <div className="relative flex-none" style={{ width: gridW, height: 12 + lane.lanes * laneH }}>

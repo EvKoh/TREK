@@ -2260,9 +2260,9 @@ const help: TranslationStrings = {
   'help.guide.place-booking.step.1':
     'Ava peatus, millega broneering on seotud. Kaardil on riba, kus on kirjas Kinnitatud või Ootel ja broneeringu nimi.',
   'help.guide.place-booking.step.2': 'Ribal on Kuupäev, Aeg ja Broneerimiskood ning broneeringu märkmed, kui neid on.',
-  'help.guide.place-booking.step.3': 'Klõpsa ribal. Avaneb selle broneeringu vorm.',
+  'help.guide.place-booking.step.3': 'Klõpsa ribal. Broneering avaneb kaardi kohal.',
   'help.guide.place-booking.step.4':
-    'Väli Seo päevaplaani kirjega seob broneeringu peatusega ja siin on selleks juba see peatus valitud. Sulge vorm uuesti.',
+    'Broneeringu allosas olev Muuda avab selle oma vormi. Seal seob väli Seo päevaplaani kirjega broneeringu peatusega ja siin on selleks juba see peatus valitud. Sulge vorm uuesti.',
   'help.guide.place-booking.step.5':
     'Peatuse uus broneering algab päevade veerust: vii kursor peatusele ja klõpsa rea lõpus nuppu +. Vorm avaneb pealkirjaga Uus broneering ja on juba peatusega seotud.',
   'help.guide.place-booking.result':
@@ -2463,7 +2463,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Värv näitab broneeringu olekut: roheline rida on kinnitatud, merevaigukollane veel ootel. Hotelle selles loendis pole, neil on all oma plokk.',
   'help.guide.day-bookings.step.4':
-    'Loend ainult näitab broneeringuid. Broneeringuid luuakse ja muudetakse vahekaardil Broneeringud.',
+    'Klõpsa real ja broneering avaneb. Selle allosas olev Muuda muudab seda; uued broneeringud luuakse vahekaardil Broneeringud.',
   'help.guide.day-bookings.result':
     'Kõik, mille kuupäev on sellel päeval, ja kõik, mis on seotud mõne selle päeva peatusega, on selles ühes loendis.',
   'help.guide.day-bookings.tip.1':
@@ -2741,19 +2741,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.title': 'Ava ja muuda planeeritud ühendust',
   'help.guide.change-transit-route.goal': 'Vaata ühendust peatuste kaupa, nimeta see ümber või otsi marsruut uuesti.',
   'help.guide.change-transit-route.step.1':
-    'Vahekaardil Transport on planeeritud ühendused grupis Automaatne ühistranspordiotsing. Klõpsa kaardil.',
+    'Vahekaardil Transport on planeeritud ühendused grupis Automaatne ühistranspordiotsing. Klõpsa kaardil; ühendus avaneb broneeringuna.',
   'help.guide.change-transit-route.step.2':
     'Üleval on Kestus, Ümberistumised ja Jalgsi. Nende all olev Teekond näitab ühendust peatuste kaupa koos platvormide ja liinide vaheliste jalgsikäikudega.',
   'help.guide.change-transit-route.step.3':
-    'Muuda marsruuti käivitab otsingu uuesti, juba täidetuna selle ühenduse otspunktide ja päevaga.',
+    'Broneeringu allosas olev Muuda marsruuti käivitab otsingu uuesti, juba täidetuna selle ühenduse otspunktide ja päevaga.',
   'help.guide.change-transit-route.step.4':
-    'Vali teine ühendus ja klõpsa Lisa päevale; see asendab vana. Nupu Muuda marsruuti kõrval olev Muuda üksikasju avab hoopis tavalise transpordivormi, kus on Broneerimiskood, Olek, reisijad ja failid.',
+    'Vali teine ühendus ja klõpsa Lisa päevale; see asendab vana. Sama riba teises otsas olev Muuda avab hoopis tavalise transpordivormi, kus on Broneerimiskood, Olek, reisijad, märkmed ja failid.',
   'help.guide.change-transit-route.result':
     'Sõidul on nüüd uus teekond ja selle kaart vahekaardil Transport näitab uusi liine ja kellaaegu.',
   'help.guide.change-transit-route.tip.1':
-    'Sõidu pealkiri on lihtsalt tekst: selle kõrval olev pliiats nimetab sõidu ümber marsruuti muutmata. All olevad Märkmed toetavad Markdowni ning neil on vahekaardid Muuda ja Eelvaade.',
+    'Broneeringu päises olev pealkiri nimetab ühenduse ümber marsruuti muutmata. Selle märkmed kirjutatakse transpordivormis, mis avaneb nupuga Muuda.',
   'help.guide.change-transit-route.tip.2':
-    'Sõidu allosas olev Kustuta eemaldab ühenduse reisist; päeva peatused jäävad alles.',
+    'Broneeringu allosas olev Kustuta eemaldab ühenduse reisist; päeva peatused jäävad alles.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Muuda ühe teelõigu liikumisviisi',
   'help.guide.leg-travel-mode.goal':
@@ -2777,17 +2777,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': 'Muuda või kustuta transport',
   'help.guide.edit-transport.goal': 'Paranda kellaaega, platvormi või broneerimiskoodi või eemalda sõit reisist.',
-  'help.guide.edit-transport.step.1': 'Päevaplaanis on transport värviline rida peatuste vahel. Klõpsa sellel.',
+  'help.guide.edit-transport.step.1':
+    'Päevaplaanis on transport värviline rida peatuste vahel. Klõpsa sellel; avaneb selle broneering koos kellaaegade, marsruudi ja Broneerimiskoodiga.',
   'help.guide.edit-transport.step.2':
-    'See on sama vorm, millega transport loodi, ja selle tiitliribal on Muuda transporti. Muuta saab kõike: tüüpi, marsruuti, päevi ja kellaaegu, Broneerimiskoodi, Olekut.',
+    'Broneeringu allosas olev Muuda avab sama vormi, millega transport loodi, ja selle tiitliribal on Muuda transporti. Muuta saab kõike: tüüpi, marsruuti, päevi ja kellaaegu, Broneerimiskoodi, Olekut.',
   'help.guide.edit-transport.step.3':
     'Lennu marsruut on lennujaamade ahel, rongi oma jaamade ahel. Lisa peatus lisab vahele veel ühe ja igal teelõigul on oma kellaajad ning oma lennu- või rongi number.',
   'help.guide.edit-transport.step.4':
-    'Klõpsa Uuenda. Transpordi täielikuks eemaldamiseks kasuta vahekaardil Transport selle kaardil olevat prügikasti ja kinnita.',
+    'Klõpsa Uuenda. Transpordi täielikuks eemaldamiseks kasuta selle broneeringu allosas olevat nuppu Kustuta või vahekaardil Transport selle kaardil olevat prügikasti ja kinnita.',
   'help.guide.edit-transport.result':
     'Muudatus on näha kõikjal, kus transport ilmub: vahekaardil Transport, päeval, mil see toimub, ja selle joonel kaardil.',
   'help.guide.edit-transport.tip.1':
-    'Sama vorm avaneb mõlemast kohast: pliiatsiga kaardil vahekaardil Transport ja transpordi enda realt päevaplaanis. Erandiks on planeeritud ühistranspordiühendus: selle rida avab sõiduvaate ja sealne Muuda üksikasju viib selle vormini.',
+    'Sama vorm avaneb mõlemast kohast: nupuga Muuda broneeringus, mille avab päevaplaani rida, ja pliiatsiga kaardil vahekaardil Transport. Ka planeeritud ühistranspordiühendus avaneb broneeringuna; seal otsib Muuda marsruuti uuesti ja Muuda viib selle vormini.',
   'help.guide.edit-transport.tip.2':
     'Transpordi teisele päevale viimiseks pole vormi üldse vaja: lohista selle rida ühelt päevakaardilt teisele.',
   // transport-on-map
@@ -2857,13 +2858,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Klõpsa vahekaardi paremas ülanurgas nuppu Käsitsi broneering. Avaneb Uus broneering.',
   'help.guide.create-booking.step.2':
-    'Vali Broneeringu tüüp vormi ülaosas olevast loendist, välja Reisijad kõrval. Majutus, Restoran, Üritus, Ekskursioon, Parkimine ja Muu on kuus tüüpi, mida see vahekaart loob, ja vorm muutub vastavalt valikule: ainult Majutus asendab kuupäevad päevade vahemikuga.',
+    'Klõpsa vormi päises pealkirja all oleval tüübinupul ja vali Broneeringu tüüp. Majutus, Restoran, Üritus, Ekskursioon, Parkimine ja Muu on kuus tüüpi, mida see vahekaart loob, ja vorm muutub vastavalt valikule: ainult Majutus asendab kuupäevad päevade vahemikuga.',
   'help.guide.create-booking.step.3':
     'Sisesta Pealkiri. See on ainus kohustuslik väli ja Lisa jääb passiivseks, kuni selles midagi on.',
   'help.guide.create-booking.step.4':
     'Määra Kuupäev ja Algusaeg ning, kui broneeringul on lõpp, Lõppkuupäev ja Lõpuaeg. Kalendrid pakuvad ainult reisi sisse jäävaid päevi ja kui lõpp pole pärast algust, näidatakse seda punasega ning Lisa on blokeeritud.',
   'help.guide.create-booking.step.5':
-    'Sisesta kinnituselt Broneerimiskood ja määra Olek. Ootel või Kinnitatud määrab, kummasse jaotisse kaart satub.',
+    'Sisesta kinnituselt Broneerimiskood. Tüübi kõrval olev olekunupp näitab Ootel; klõps muudab selle olekuks Kinnitatud ja tagasi ning see määrab, kummasse jaotisse kaart satub.',
   'help.guide.create-booking.step.6': 'Klõpsa Lisa.',
   'help.guide.create-booking.result':
     'Broneering on oma jaotises kaart koos tüübikiibi, kuupäevade ja koodiga ning kõik teised reisil osalejad näevad selle ilmumist.',
@@ -2914,7 +2915,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Märgi reisijad, keda broneering hõlmab, ja vaata seejärel ainult nende broneeringuid.',
   'help.guide.booking-travelers.step.1':
-    'Ava broneering pliiatsiga. Reisijad asub vormi ülaosas, välja Broneeringu tüüp kõrval, ja näitab teksti Määra reisijad, kuni broneeringul pole kedagi.',
+    'Ava broneering pliiatsiga. Reisijad asub Broneerimiskoodi kõrval ja näitab teksti Määra reisijad, kuni broneeringul pole kedagi.',
   'help.guide.booking-travelers.step.2':
     'Klõpsa sellel ja vali inimesed, kellele see broneering on; nimega külalised on samuti loendis. Valitud inimene saab linnukese ja tema avatar kuvatakse väljal. Klõpsa nimel uuesti, et see eemaldada.',
   'help.guide.booking-travelers.step.3': 'Klõpsa Uuenda.',
@@ -3008,7 +3009,7 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.step.1':
     'Klõpsa kaardi päises pliiatsit. Avaneb Muuda broneeringut kõigi broneeringu andmetega.',
   'help.guide.edit-booking.step.2': 'Muuda seda, mida vaja, siin Broneerimiskoodi, mille teenusepakkuja lõpuks saatis.',
-  'help.guide.edit-booking.step.3': 'Määra Olek väärtusele Kinnitatud.',
+  'help.guide.edit-booking.step.3': 'Klõpsa vormi päises nupul Ootel. See muutub olekuks Kinnitatud.',
   'help.guide.edit-booking.step.4': 'Klõpsa Uuenda.',
   'help.guide.edit-booking.result':
     'Kaart liigub: kinnitatud broneering on jaotises Kinnitatud rohelise täpiga ja kõik reisil osalejad näevad seda liikumas.',

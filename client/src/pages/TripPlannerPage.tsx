@@ -10,7 +10,6 @@ import { TripRouteOverviewPill, TripRouteOverviewPanel } from '../components/Map
 import { DawarichTrailPill } from '../components/Map/DawarichTrailPill'
 import { getCached, fetchPhoto } from '../services/photoService'
 import DayPlanSidebar from '../components/Planner/DayPlanSidebar'
-import { DayPlanSidebarTransportDetailModal } from '../components/Planner/DayPlanSidebarTransportDetailModal'
 import RoadtripModeSwitch from '../components/Roadtrip/RoadtripModeSwitch'
 import TripLoadingSplash from '../components/shared/TripLoadingSplash'
 import PlacesSidebar from '../components/Planner/PlacesSidebar'
@@ -22,6 +21,7 @@ import SlidingTabs from '../components/shared/SlidingTabs'
 import TripMembersModal from '../components/Trips/TripMembersModal'
 import { ReservationModal } from '../components/Planner/ReservationModal'
 import TransitJourneyModal from '../components/Planner/TransitJourneyModal'
+import { BookingDetailPopup } from '../components/Planner/bookings/BookingDetailHost'
 import BookingImportModal from '../components/Planner/BookingImportModal'
 import AirTrailImportModal from '../components/Planner/AirTrailImportModal'
 // MemoriesPanel moved to Journey addon
@@ -46,6 +46,7 @@ import { addonsApi, accommodationsApi, authApi, tripsApi, assignmentsApi, mapsAp
 import { accommodationRepo } from '../repo/accommodationRepo'
 import { useAuthStore } from '../store/authStore'
 import ConfirmDialog from '../components/shared/ConfirmDialog'
+import { Tooltip } from '../components/shared/Tooltip'
 import { useTripWebSocket } from '../hooks/useTripWebSocket'
 import { useRouteCalculation } from '../hooks/useRouteCalculation'
 import { usePlaceSelection } from '../hooks/usePlaceSelection'
@@ -57,7 +58,6 @@ import { usePoiExplore } from '../components/Map/usePoiExplore'
 import { useMergedMapPois } from '../components/Map/useMergedMapPois'
 import PoiCategoryPill from '../components/Map/PoiCategoryPill'
 import { useTouchDragBridge } from '../hooks/useTouchDragBridge'
-import { showReservationOnMap } from '../components/Planner/bookings/showOnMap'
 
 // The tab panels are the planner's dead weight: each one mounts only while its
 // own tab is active, so the page chunk carried code most sessions never run. They
@@ -273,7 +273,7 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
   // Page = wiring container: the entire planner state machine (store, tabs,
   // selection, CRUD handlers with undo, map filters, splash) lives in the hook.
   const {
-    tripId, navigate, toast, t, language, locale, settings, placesPhotosEnabled,
+    tripId, navigate, toast, t, language, placesPhotosEnabled,
     trip, days, places, assignments, packingItems, todoItems, categories, reservations, budgetItems, files,
     selectedDayId, isLoading, tripActions, can, canUploadFiles,
     pushUndo, undo, canUndo, lastActionLabel, handleUndo,
@@ -289,6 +289,7 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
     startResizeLeft, startResizeRight,
     selectedPlaceId, selectedAssignmentId, setSelectedPlaceId, selectAssignment,
     showDayDetail, setShowDayDetail, dayDetailCollapsed, setDayDetailCollapsed,
+    stayPickerDayId, setStayPickerDayId,
     showPlaceForm, setShowPlaceForm, editingPlace, setEditingPlace, setPlaceFormDayId,
     prefillCoords, setPrefillCoords, editingAssignmentId, setEditingAssignmentId,
     stopDraft, setStopDraft, saveStopDraft, saveStopDraftAsNight, stopDraftToForm, stopDraftDuplicate, reorderRoadtripStop,
@@ -310,6 +311,8 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
     showTransportModal, setShowTransportModal, editingTransport, setEditingTransport,
     transportModalDayId, setTransportModalDayId,
     transportModalAutomated, setTransportModalAutomated, transitPrefill, setTransitPrefill, transitJourney, setTransitJourney,
+    openTransportEditor, changeTransitRoute,
+    bookingDetail, openBookingDetail, openBookingFromDayList, closeBookingDetail, bookingDetailEditor, bookingDetailChangeRoute, showBookingOnMap, isBookingOnMap,
     reservationPrefill, transportPrefill, importReviewActive, advanceImportReview,
     receiptExpense, clearReceiptExpense,
     routeShown, setRouteShown, transitRoutesShown, routeProfile, setRouteProfile, routeVias, fitKey, setFitKey,
@@ -482,9 +485,13 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
               // In road trip mode the rides that seam the drive are drawn as their own arcs
               // beside the roads, on top of what the reader switched on under Days.
               visibleConnectionIds={roadtripActive ? roadtripConnections : visibleConnections}
+              // The desktop plan shows the booking's detail; the narrow layout keeps the day
+              // list's transport view.
               onReservationClick={(rid) => {
                 const r = reservations.find(x => x.id === rid)
-                if (r) setMapTransportDetail(r)
+                if (!r) return
+                if (isMobile) setMapTransportDetail(r)
+                else openBookingDetail(r)
               }}
               /* In road trip mode the corridor's `visible` (not `search.results`: the map is
                  the picture of that very list, and filtering the list while seventy pins stay
@@ -598,21 +605,22 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
             )}
 
             <div className="hidden md:block" style={{ position: 'absolute', left: 10, top: 10, bottom: 10, zIndex: 20 }}>
-              <button type="button" onClick={toggleLeft}
-                aria-label={leftHidden ? t('trip.mobilePlan') : t('common.collapse')}
-                title={leftHidden ? t('trip.mobilePlan') : t('common.collapse')}
-                style={{
-                  position: leftHidden ? 'fixed' : 'absolute', top: leftHidden ? 'calc(var(--nav-h) + 44px + 14px)' : 14, left: leftHidden ? 10 : undefined, right: leftHidden ? undefined : -28, zIndex: -1,
-                  width: 36, height: 36, borderRadius: leftHidden ? 10 : '0 10px 10px 0',
-                  background: leftHidden ? '#000' : 'var(--sidebar-bg)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: leftHidden ? '0 2px 12px rgba(0,0,0,0.2)' : 'none', border: 'none',
-                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: leftHidden ? '#fff' : 'var(--text-faint)', transition: 'color 0.15s',
-                }}
-                onMouseEnter={e => { if (!leftHidden) e.currentTarget.style.color = 'var(--text-primary)' }}
-                onMouseLeave={e => { if (!leftHidden) e.currentTarget.style.color = 'var(--text-faint)' }}>
-                {leftHidden ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
-              </button>
+              {/* The panel's tab: a flap on its edge while open, a raised accent tile once it is tucked away. */}
+              <Tooltip label={leftHidden ? t('trip.mobilePlan') : t('common.collapse')} placement="right">
+                <button type="button" onClick={toggleLeft}
+                  aria-label={leftHidden ? t('trip.mobilePlan') : t('common.collapse')}
+                  className={leftHidden ? 'bg-accent text-accent-text shadow-md hover:opacity-90' : 'text-content-faint hover:text-content'}
+                  style={{
+                    position: leftHidden ? 'fixed' : 'absolute', top: leftHidden ? 'calc(var(--nav-h) + 44px + 14px)' : 14, left: leftHidden ? 10 : undefined, right: leftHidden ? undefined : -28, zIndex: -1,
+                    width: 36, height: 36, borderRadius: leftHidden ? 10 : '0 10px 10px 0',
+                    background: leftHidden ? undefined : 'var(--sidebar-bg)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+                    border: 'none',
+                    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'color 0.15s',
+                  }}>
+                  {leftHidden ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={16} />}
+                </button>
+              </Tooltip>
 
               <div style={{
                 width: leftHidden ? 0 : leftWidth, height: '100%',
@@ -636,13 +644,11 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                       selectedAssignmentId={selectedAssignmentId}
                       onSelectStop={(placeId, assignmentId) => handlePlaceClick(placeId, assignmentId)}
                       reservations={reservations}
+                      // A terminal, a ride pill or a booking chip shows the booking's detail,
+                      // as the day plan does; its Edit opens the editor.
                       onOpenBooking={(rid) => {
                         const r = reservations.find(x => x.id === rid)
-                        if (!r) return
-                        // The day plan's own split: a transport has a detail view with
-                        // an edit button on it, a table or a ticket only has its editor.
-                        if (TRANSPORT_TYPES.has(r.type)) setMapTransportDetail(r)
-                        else openLinkedReservation?.(r)
+                        if (r) openBookingDetail(r)
                       }}
                       canEditBookings={can('reservation_edit', trip)}
                       onReorderStop={can('day_edit', trip) ? reorderRoadtripStop : undefined}
@@ -660,18 +666,6 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                       onAcceptRefuel={can('day_edit', trip) ? acceptRefuel : undefined}
                       collapsedDayIds={collapsedRoadtripDays}
                       onToggleDay={toggleRoadtripDay}
-                    />
-                    {/* The booking a terminal, a ride pill or a map endpoint opens. Under
-                        Days the day panel owns this dialog; here the day panel is not
-                        mounted, so the rail has to bring it along (#2428). */}
-                    <DayPlanSidebarTransportDetailModal
-                      transportDetail={mapTransportDetail}
-                      setTransportDetail={setMapTransportDetail}
-                      onNavigateToFiles={() => handleTabChange('dateien')}
-                      onEdit={can('day_edit', trip) ? (reservation) => { setMapTransportDetail(null); setEditingTransport(reservation); setTransportModalDayId(reservation.day_id ?? null); setShowTransportModal(true) } : undefined}
-                      t={t}
-                      locale={locale}
-                      timeFormat={settings.time_format || '24h'}
                     />
                   </LazyPanel>
                 ) : (
@@ -712,7 +706,10 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                   onPlanTransitLeg={can('day_edit', trip) && tripHasDates ? ({ dayId, from, to, time }) => { setTransportModalDayId(dayId); setEditingTransport(null); setTransitPrefill({ from, to, time }); setTransportModalAutomated(true); setShowTransportModal(true) } : undefined}
                   onEditTransport={can('day_edit', trip) ? (reservation) => { setEditingTransport(reservation); setTransportModalDayId(reservation.day_id ?? null); setShowTransportModal(true) } : undefined}
                   onEditReservation={can('reservation_edit', trip) ? (r) => { setEditingReservation(r); setShowReservationModal(true) } : undefined}
+                  // The narrow layout keeps what a booking row opened before.
+                  onOpenBooking={isMobile ? undefined : openBookingFromDayList}
                   onDayDetail={(day) => { setShowDayDetail(day); setSelectedPlaceId(null); selectAssignment(null) }}
+                  onAddAccommodation={can('day_edit', trip) ? (day) => { handleSelectDay(day.id); setShowDayDetail(day); setSelectedPlaceId(null); selectAssignment(null); setStayPickerDayId(day.id) } : undefined}
                   onRemoveAssignment={handleRemoveAssignment}
                   onEditPlace={(place, assignmentId) => {
                     // The day is cleared on the way in: the form assigns to whatever
@@ -742,30 +739,30 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                   <div
                     role="presentation"
                     onMouseDown={startResizeLeft}
-                    style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 4, cursor: 'col-resize', background: 'transparent' }}
-                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.08)'}
-                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                    className="transition-colors hover:bg-edge"
+                    style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 4, cursor: 'col-resize', zIndex: 2 }}
                   />
                 )}
               </div>
             </div>
 
             <div className="hidden md:block" style={{ position: 'absolute', right: 10, top: 10, bottom: 10, zIndex: 20 }}>
-              <button type="button" onClick={toggleRight}
-                aria-label={rightHidden ? t('trip.mobilePlaces') : t('common.collapse')}
-                title={rightHidden ? t('trip.mobilePlaces') : t('common.collapse')}
-                style={{
-                  position: rightHidden ? 'fixed' : 'absolute', top: rightHidden ? 'calc(var(--nav-h) + 44px + 14px)' : 14, right: rightHidden ? 10 : undefined, left: rightHidden ? undefined : -28, zIndex: -1,
-                  width: 36, height: 36, borderRadius: rightHidden ? 10 : '10px 0 0 10px',
-                  background: rightHidden ? '#000' : 'var(--sidebar-bg)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: rightHidden ? '0 2px 12px rgba(0,0,0,0.2)' : 'none', border: 'none',
-                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: rightHidden ? '#fff' : 'var(--text-faint)', transition: 'color 0.15s',
-                }}
-                onMouseEnter={e => { if (!rightHidden) e.currentTarget.style.color = 'var(--text-primary)' }}
-                onMouseLeave={e => { if (!rightHidden) e.currentTarget.style.color = 'var(--text-faint)' }}>
-                {rightHidden ? <PanelRightOpen size={16} /> : <PanelRightClose size={16} />}
-              </button>
+              {/* The panel's tab: a flap on its edge while open, a raised accent tile once it is tucked away. */}
+              <Tooltip label={rightHidden ? t('trip.mobilePlaces') : t('common.collapse')} placement="left">
+                <button type="button" onClick={toggleRight}
+                  aria-label={rightHidden ? t('trip.mobilePlaces') : t('common.collapse')}
+                  className={rightHidden ? 'bg-accent text-accent-text shadow-md hover:opacity-90' : 'text-content-faint hover:text-content'}
+                  style={{
+                    position: rightHidden ? 'fixed' : 'absolute', top: rightHidden ? 'calc(var(--nav-h) + 44px + 14px)' : 14, right: rightHidden ? 10 : undefined, left: rightHidden ? undefined : -28, zIndex: -1,
+                    width: 36, height: 36, borderRadius: rightHidden ? 10 : '10px 0 0 10px',
+                    background: rightHidden ? undefined : 'var(--sidebar-bg)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+                    border: 'none',
+                    cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'color 0.15s',
+                  }}>
+                  {rightHidden ? <PanelRightOpen size={16} /> : <PanelRightClose size={16} />}
+                </button>
+              </Tooltip>
 
               <div style={{
                 width: rightHidden ? 0 : rightWidth, height: '100%',
@@ -782,12 +779,11 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                   <div
                     role="presentation"
                     onMouseDown={startResizeRight}
-                    style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, cursor: 'col-resize', background: 'transparent' }}
-                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.08)'}
-                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                    className="transition-colors hover:bg-edge"
+                    style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, cursor: 'col-resize', zIndex: 2 }}
                   />
                 )}
-                <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', paddingLeft: 4 }}>
+                <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                   {roadtripActive ? (
                     <LazyPanel id="roadtrip-corridor">
                       {/* No Add button for someone who may not add: openAddPlaceFromPoi
@@ -882,6 +878,9 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                   onToggleCollapse={() => setDayDetailCollapsed(c => !c)}
                   mobile={isMobile}
                   onUpdateDayTitle={handleUpdateDayTitle}
+                  openStayPicker={stayPickerDayId === currentDay.id}
+                  onStayPickerOpened={() => setStayPickerDayId(null)}
+                  onOpenBooking={isMobile ? undefined : openBookingDetail}
                 />
               )
             })()}
@@ -892,6 +891,7 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                 roadtripStay={roadtripStay} roadtripActive={roadtripActive}
                 onEditTransport={openLinkedTransport}
                 onEditReservation={openLinkedReservation}
+                onOpenBooking={openBookingDetail}
                 place={selectedPlace}
                 categories={categories}
                 days={days}
@@ -1011,17 +1011,19 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                 bookingImportAvailable={bookingImportAvailable}
                 onAirTrailImport={() => setShowAirTrailImport(true)}
                 airTrailAvailable={airTrailAvailable}
-                onEdit={(r) => { if (r.type === 'transit') { setTransitJourney(r) } else { setEditingTransport(r); setTransportModalAutomated(false); setShowTransportModal(true) } }}
+                onEdit={openTransportEditor}
+                // The same right as on the plan: day_edit, as the journey view asked for.
+                onChangeRoute={bookingDetailChangeRoute}
                 onDelete={handleDeleteReservation}
                 onNavigateToFiles={() => handleTabChange('dateien')}
                 titleKey="transport.title"
                 addManualKey="transport.addManual"
                 contributionView="transports"
                 tripMembers={tripMembers}
-                contextReservations={reservations.filter(r => r.type === 'hotel')}
+                contextReservations={reservations.filter(r => !TRANSPORT_TYPES.has(r.type))}
                 onEditExpense={(item) => openBookingExpense({ editItem: item })}
-                onShowOnMap={(r) => showReservationOnMap(r, { visibleConnections, toggleConnection, selectDay: (id) => handleSelectDay(id), selectPlace: setSelectedPlaceId, openPlan: () => handleTabChange('plan') })}
-                isOnMap={(r) => visibleConnections.includes(r.id)}
+                onShowOnMap={showBookingOnMap}
+                isOnMap={isBookingOnMap}
               />
             </LazyPanel>
           </div>
@@ -1045,8 +1047,8 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                 tripMembers={tripMembers}
                 contextReservations={reservations.filter(r => TRANSPORT_TYPES.has(r.type))}
                 onEditExpense={(item) => openBookingExpense({ editItem: item })}
-                onShowOnMap={(r) => showReservationOnMap(r, { visibleConnections, toggleConnection, selectDay: (id) => handleSelectDay(id), selectPlace: setSelectedPlaceId, openPlan: () => handleTabChange('plan') })}
-                isOnMap={(r) => visibleConnections.includes(r.id)}
+                onShowOnMap={showBookingOnMap}
+                isOnMap={isBookingOnMap}
               />
             </LazyPanel>
           </div>
@@ -1157,35 +1159,28 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
           onClose={() => setTransitJourney(null)}
           onSave={async (fields) => { await tripActions.updateReservation(tripId, transitJourney.id, fields); setTransitJourney(null) }}
           onDelete={async () => { await handleDeleteReservation(transitJourney.id); setTransitJourney(null) }}
-          onChangeRoute={() => {
-            // Re-enter the transit search seeded with this journey's route; the
-            // existing reservation is REPLACED on save (editingTransport drives
-            // handleSaveTransport's update path).
-            const eps = transitJourney.endpoints || []
-            const from = eps.find(e => e.role === 'from')
-            const to = eps.find(e => e.role === 'to')
-            setTransitPrefill({
-              from: from ? { name: from.name, lat: from.lat, lng: from.lng } : null,
-              to: to ? { name: to.name, lat: to.lat, lng: to.lng } : null,
-            })
-            setEditingTransport(transitJourney)
-            setTransportModalDayId(transitJourney.day_id ?? null)
-            setTransportModalAutomated(true)
-            setTransitJourney(null)
-            setShowTransportModal(true)
-          }}
-          onEditDetails={() => {
-            // Hand off to the full transport editor (travelers, costs, files,
-            // booking code, status) — the same modal mobile opens; an
-            // unchanged-endpoints save keeps the stored itinerary (#2148).
-            const current = reservations.find(r => r.id === transitJourney.id) ?? transitJourney
-            setEditingTransport(current)
-            setTransportModalDayId(current.day_id ?? null)
-            setTransportModalAutomated(false)
-            setTransitPrefill(null)
-            setTransitJourney(null)
-            setShowTransportModal(true)
-          }}
+          onChangeRoute={() => changeTransitRoute(transitJourney)}
+          // The store copy may be newer than the journey held in state.
+          onEditDetails={() => openTransportEditor(reservations.find(r => r.id === transitJourney.id) ?? transitJourney)}
+        />
+      )}
+      {/* A booking clicked on the desktop plan: its detail first, the editor one Edit away. */}
+      {bookingDetail && (
+        <BookingDetailPopup
+          r={bookingDetail}
+          tripId={tripId}
+          days={days}
+          assignments={assignments}
+          files={files}
+          canEdit={can('reservation_edit', trip)}
+          onClose={closeBookingDetail}
+          onEdit={bookingDetailEditor}
+          onDelete={handleDeleteReservation}
+          onShowOnMap={showBookingOnMap}
+          isOnMap={isBookingOnMap}
+          onEditExpense={(item) => openBookingExpense({ editItem: item })}
+          onChangeRoute={bookingDetailChangeRoute}
+          onNavigateToFiles={() => handleTabChange('dateien')}
         />
       )}
       {expenseEditor && (

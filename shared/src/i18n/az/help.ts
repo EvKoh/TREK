@@ -2335,9 +2335,9 @@ const help: TranslationStrings = {
     'Rezervasiyanın aid olduğu dayanacağı açın. Kartda Təsdiqlənib və ya Gözləyir yazısı və rezervasiyanın adı olan zolaq görünür.',
   'help.guide.place-booking.step.2':
     'Zolaqda Tarix, Vaxt və Rezervasiya kodu, həmçinin rezervasiyanın bütün qeydləri yer alır.',
-  'help.guide.place-booking.step.3': 'Zolağa klikləyin. Rezervasiyanın öz forması onun üzərində açılır.',
+  'help.guide.place-booking.step.3': 'Zolağa klikləyin. Rezervasiya xəritənin üzərində açılır.',
   'help.guide.place-booking.step.4':
-    'Rezervasiyanı dayanacağa bağlayan Günlük planla əlaqələndir sahəsidir və burada artıq bu dayanacaq göstərilir. Formanı yenidən bağlayın.',
+    'Rezervasiyanın aşağısındakı Redaktə et onun öz formasını açır. Rezervasiyanı dayanacağa bağlayan oradakı Günlük planla əlaqələndir sahəsidir və burada artıq bu dayanacaq göstərilir. Formanı yenidən bağlayın.',
   'help.guide.place-booking.step.5':
     'Dayanacaq üçün yeni rezervasiya günlər sütunundan başlayır: kursoru dayanacağın üzərinə gətirin və sonundakı + düyməsinə klikləyin. Forma artıq ona bağlanmış Yeni rezervasiya kimi açılır.',
   'help.guide.place-booking.result':
@@ -2539,7 +2539,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Rəng rezervasiyanın vəziyyətini bildirir: yaşıl sətir təsdiqlənib, kəhrəba rəngli sətir hələ gözləyir. Otellər bu siyahıda deyil, onların aşağıda öz bloku var.',
   'help.guide.day-bookings.step.4':
-    'Siyahı rezervasiyaları yalnız göstərir. Rezervasiya Rezervasiyalar bölməsində yaradılır və dəyişdirilir.',
+    'Sətrə klikləyin və rezervasiya açılır. Onun aşağısındakı Redaktə et onu dəyişir; yeni rezervasiyalar Rezervasiyalar bölməsində yaradılır.',
   'help.guide.day-bookings.result':
     'Həmin tarixə düşən və dayanacaqlarından birinə bağlı olan hər şey bu bir siyahıdadır.',
   'help.guide.day-bookings.tip.1':
@@ -2821,19 +2821,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Əlaqəni dayanacaq-dayanacaq oxuyun, adını dəyişin və ya marşrutu yenidən axtarın.',
   'help.guide.change-transit-route.step.1':
-    'Nəqliyyat bölməsində planlaşdırılmış əlaqələr Avtomatik ictimai nəqliyyat altındadır. Karta klikləyin.',
+    'Nəqliyyat bölməsində planlaşdırılmış əlaqələr Avtomatik ictimai nəqliyyat altındadır. Karta klikləyin; əlaqə rezervasiya kimi açılır.',
   'help.guide.change-transit-route.step.2':
     'Müddət, Dəyişmələr və Piyada yuxarıdadır. Onların altındakı Marşrut planı əlaqəni platformalar və xətlər arasındakı piyada yollarla birlikdə dayanacaq-dayanacaq göstərir.',
   'help.guide.change-transit-route.step.3':
-    'Marşrutu dəyiş axtarışı bu əlaqənin iki ucu və günü ilə artıq doldurulmuş halda yenidən işə salır.',
+    'Rezervasiyanın aşağısındakı Marşrutu dəyiş axtarışı bu əlaqənin iki ucu və günü ilə artıq doldurulmuş halda yenidən işə salır.',
   'help.guide.change-transit-route.step.4':
-    'Başqa əlaqə seçin və Günə əlavə et düyməsinə klikləyin; o, köhnəsinin yerini tutur. Marşrutu dəyiş yanındakı Təfərrüatları redaktə et isə adi nəqliyyat formasını açır, burada Rezervasiya kodu, Vəziyyət, səyahətçilər və fayllar yerləşir.',
+    'Başqa əlaqə seçin və Günə əlavə et düyməsinə klikləyin; o, köhnəsinin yerini tutur. Eyni zolağın o biri ucundakı Redaktə et isə adi nəqliyyat formasını açır, burada Rezervasiya kodu, Vəziyyət, səyahətçilər, qeydlər və fayllar yerləşir.',
   'help.guide.change-transit-route.result':
     'Səfər yeni marşrut planını daşıyır, Nəqliyyat bölməsindəki kartı isə yeni xətləri və vaxtları göstərir.',
   'help.guide.change-transit-route.tip.1':
-    'Səfərin başlığı sadəcə mətndir: yanındakı karandaş marşruta toxunmadan onun adını dəyişir. Altındakı Qeydlər markdown qəbul edir və onun Redaktə et və Önizləmə tabları var.',
+    'Rezervasiyanın yuxarı hissəsindəki başlıq marşruta toxunmadan əlaqənin adını dəyişir. Onun qeydləri Redaktə et arxasındakı nəqliyyat formasında yazılır.',
   'help.guide.change-transit-route.tip.2':
-    'Səfərin aşağısındakı Sil əlaqəni səyahətdən çıxarır; gün öz dayanacaqlarını saxlayır.',
+    'Rezervasiyanın aşağısındakı Sil əlaqəni səyahətdən çıxarır; gün öz dayanacaqlarını saxlayır.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Bir mərhələnin necə keçildiyini dəyişin',
   'help.guide.leg-travel-mode.goal':
@@ -2858,17 +2858,18 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.title': 'Nəqliyyatı dəyişin və ya silin',
   'help.guide.edit-transport.goal':
     'Vaxtı, platformanı və ya rezervasiya kodunu düzəldin, yaxud gedişi səyahətdən çıxarın.',
-  'help.guide.edit-transport.step.1': 'Gün planında nəqliyyat dayanacaqlar arasında rəngli sətirdir. Ona klikləyin.',
+  'help.guide.edit-transport.step.1':
+    'Gün planında nəqliyyat dayanacaqlar arasında rəngli sətirdir. Ona klikləyin; onun rezervasiyası vaxtlar, marşrut və Rezervasiya kodu ilə açılır.',
   'help.guide.edit-transport.step.2':
-    'Bu, onu yaradan formadır, başlıq zolağında Nəqliyyatı redaktə et yazılıb. Hər şeyi dəyişmək olar: növü, marşrutu, günləri və vaxtları, Rezervasiya kodunu, Vəziyyəti.',
+    'Rezervasiyanın aşağısındakı Redaktə et onu yaradan formanı açır, başlıq zolağında Nəqliyyatı redaktə et yazılıb. Hər şeyi dəyişmək olar: növü, marşrutu, günləri və vaxtları, Rezervasiya kodunu, Vəziyyəti.',
   'help.guide.edit-transport.step.3':
     'Uçuşun marşrutu hava limanları zənciri, qatarınkı isə stansiyalar zənciridir. Ara dayanacaq əlavə et aralarına yenisini qoyur və hər mərhələ öz vaxtlarını və öz uçuş və ya qatar nömrəsini saxlayır.',
   'help.guide.edit-transport.step.4':
-    'Yenilə düyməsinə klikləyin. Nəqliyyatı tamamilə silmək üçün Nəqliyyat bölməsində onun kartındakı zibil qutusundan istifadə edin və təsdiqləyin.',
+    'Yenilə düyməsinə klikləyin. Nəqliyyatı tamamilə silmək üçün onun rezervasiyasının aşağısındakı Sil düyməsindən və ya Nəqliyyat bölməsində onun kartındakı zibil qutusundan istifadə edin və təsdiqləyin.',
   'help.guide.edit-transport.result':
     'Dəyişiklik nəqliyyatın göründüyü hər yerdə əks olunur: Nəqliyyat bölməsində, yola düşdüyü gündə və xəritədəki xəttində.',
   'help.guide.edit-transport.tip.1':
-    'Eyni forma hər iki tərəfdən açılır: Nəqliyyat bölməsindəki kartın karandaşından və gün planındakı nəqliyyatın öz sətrindən. Planlaşdırılmış ictimai nəqliyyat əlaqəsi istisnadır: onun sətri səfər görünüşünü açır, oradakı Təfərrüatları redaktə et isə bu formaya aparır.',
+    'Eyni forma hər iki tərəfdən açılır: gün planındakı sətrin açdığı rezervasiyada Redaktə et ilə və Nəqliyyat bölməsindəki kartın karandaşı ilə. Planlaşdırılmış ictimai nəqliyyat əlaqəsi də rezervasiya kimi açılır; oradakı Marşrutu dəyiş yenidən axtarır, Redaktə et isə bu formaya aparır.',
   'help.guide.edit-transport.tip.2':
     'Nəqliyyatı başqa günə köçürmək üçün formaya ümumiyyətlə ehtiyac yoxdur: onun sətrini bir günün kartından digərinə sürükləyin.',
   // transport-on-map
@@ -2939,13 +2940,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Bölmənin sağ yuxarısında Əl ilə rezervasiya et düyməsinə klikləyin. Yeni rezervasiya açılır.',
   'help.guide.create-booking.step.2':
-    'Rezervasiya növü formanın yuxarısındakı siyahıdan, Səyahətçilər yanında seçin. Bu bölmənin yaratdığı altı növ Yaşayış yeri, Restoran, Tədbir, Tur, Parkinq və Digərdir, forma isə seçimə uyğun dəyişir: yalnız Yaşayış yeri tarixlər əvəzinə günlər aralığı istifadə edir.',
+    'Formanın yuxarı hissəsində, başlığın altındakı növ nişanına klikləyin və Rezervasiya növünü seçin. Bu bölmənin yaratdığı altı növ Yaşayış yeri, Restoran, Tədbir, Tur, Parkinq və Digərdir, forma isə seçimə uyğun dəyişir: yalnız Yaşayış yeri tarixlər əvəzinə günlər aralığı istifadə edir.',
   'help.guide.create-booking.step.3':
     'Başlığı yazın. Bu, formanın tələb etdiyi yeganə sahədir və o doldurulmayana qədər Əlavə et işləmir.',
   'help.guide.create-booking.step.4':
     'Tarix və Başlanğıc vaxtı, rezervasiyanın sonu varsa, Bitmə tarixi və Bitmə vaxtı təyin edin. Təqvimlər yalnız səyahət daxilindəki günləri təklif edir, başlanğıcdan sonra olmayan son isə qırmızı ilə bildirilir və Əlavə et düyməsini bloklayır.',
   'help.guide.create-booking.step.5':
-    'Təsdiqdən Rezervasiya kodunu daxil edin və Vəziyyət təyin edin. Gözləyir və ya Təsdiqlənib kartın iki bölmədən hansına düşəcəyini müəyyən edir.',
+    'Təsdiqdən Rezervasiya kodunu daxil edin. Növün yanındakı vəziyyət nişanında Gözləyir yazılıb; bir klik onu Təsdiqlənib edir, növbəti klik geri qaytarır, bu da kartın iki bölmədən hansına düşəcəyini müəyyən edir.',
   'help.guide.create-booking.step.6': 'Əlavə et düyməsinə klikləyin.',
   'help.guide.create-booking.result':
     'Rezervasiya öz bölməsində növ nişanı, tarixləri və kodu ilə bir kartdır və səyahətdəki hər kəs onun görünməsini görür.',
@@ -2997,7 +2998,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Rezervasiyanın əhatə etdiyi səyahətçiləri qeyd edin və sonra yalnız onlarınkını görün.',
   'help.guide.booking-travelers.step.1':
-    'Rezervasiyanı karandaşla açın. Səyahətçilər formanın yuxarısında, Rezervasiya növü yanında yerləşir və rezervasiyada heç kim olmadıqca Səyahətçiləri təyin et yazısını göstərir.',
+    'Rezervasiyanı karandaşla açın. Səyahətçilər Rezervasiya kodunun yanında yerləşir və rezervasiyada heç kim olmadıqca Səyahətçiləri təyin et yazısını göstərir.',
   'help.guide.booking-travelers.step.2':
     'Ona klikləyin və bu rezervasiyanın aid olduğu insanları seçin; adlı qonaqlar da siyahıdadır. Seçilmiş şəxsdə işarə görünür, onun avatarı isə sahədə göstərilir. Onu götürmək üçün ada yenidən klikləyin.',
   'help.guide.booking-travelers.step.3': 'Yenilə düyməsinə klikləyin.',
@@ -3093,7 +3094,7 @@ const help: TranslationStrings = {
     'Kartın başlığındakı karandaşa klikləyin. Rezervasiyanı redaktə et rezervasiyanın bütün məlumatları ilə açılır.',
   'help.guide.edit-booking.step.2':
     'Dəyişməli olanı dəyişin, məsələn, operatorun nəhayət göndərdiyi Rezervasiya kodunu.',
-  'help.guide.edit-booking.step.3': 'Vəziyyəti Təsdiqlənib olaraq təyin edin.',
+  'help.guide.edit-booking.step.3': 'Formanın yuxarı hissəsindəki Gözləyir nişanına klikləyin. O, Təsdiqlənib olur.',
   'help.guide.edit-booking.step.4': 'Yenilə düyməsinə klikləyin.',
   'help.guide.edit-booking.result':
     'Kart yerini dəyişir: təsdiqlənmiş rezervasiya Təsdiqlənib bölməsində yaşıl nöqtə ilə yer alır və səyahətdəki hər kəs onun yerdəyişməsini görür.',

@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'nl' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Hulp en documentatie',
+  'help.search': 'Zoeken in documentatie…',
+  'help.contents': 'Inhoud',
+  'help.noResults': 'Geen overeenkomende pagina’s.',
+  'help.errorTitle': 'Deze pagina kan niet worden geladen',
+  'help.errorBody': 'De help-inhoud komt van de TREK-wiki. Controleer je verbinding en probeer het opnieuw.',
 
   // center
   'help.center.button': 'Hulp bij dit scherm',
@@ -1047,7 +1047,7 @@ const help: TranslationStrings = {
     'Travel & map: boekingsroutes altijd op de kaart, de pil Plaatsen ontdekken, routeoptimalisatie vanaf je accommodatie, vervaagde boekingscodes en boekingsroutes met label.',
   'help.ctx.settings-display.bullet.3':
     'Opstarten: of TREK opent op het dashboard of op de actieve reis, en welk tabblad van een reis als eerste verschijnt.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Weergave',
   'help.ctx.settings-appearance.summary':
     'Hoe TREK eruitziet op dit account: licht of donker, de accentkleur, glas en beweging, tekstgrootte, en welke widgets het dashboard toont. Alles geldt live, op elk apparaat waarop je inlogt.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2321,9 +2321,9 @@ const help: TranslationStrings = {
     'Open de stop waar de boeking bij hoort. De details tonen een strook met Bevestigd of In behandeling en de naam van de boeking.',
   'help.guide.place-booking.step.2':
     'De strook draagt de Datum, de Tijd en de Boekingscode, en de notities die de boeking heeft.',
-  'help.guide.place-booking.step.3': 'Klik op de strook. Het eigen formulier van de boeking gaat erop open.',
+  'help.guide.place-booking.step.3': 'Klik op de strook. De boeking gaat boven de kaart open.',
   'help.guide.place-booking.step.4':
-    'Koppelen aan dagtoewijzing is wat een boeking aan een stop hangt, en hier noemt het deze al. Sluit het formulier weer.',
+    'Bewerken onderaan de boeking opent zijn eigen formulier. Koppelen aan dagtoewijzing is daar wat een boeking aan een stop hangt, en hier noemt het deze al. Sluit het formulier weer.',
   'help.guide.place-booking.step.5':
     'Een nieuwe boeking voor een stop begint in de dagenkolom: zweef over de stop en klik op de + aan het eind. Het formulier gaat open als Nieuwe reservering, al eraan gekoppeld.',
   'help.guide.place-booking.result':
@@ -2687,7 +2687,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'De kleur zegt hoe een boeking ervoor staat: een groene rij is bevestigd, een amberkleurige is nog in behandeling. Accommodaties staan niet in deze lijst, die hebben hun eigen blok eronder.',
   'help.guide.day-bookings.step.4':
-    'De lijst leest de boekingen alleen uit. Een boeking maak en wijzig je onder Boekingen.',
+    'Klik op een rij en de boeking gaat open. Bewerken onderaan wijzigt hem; nieuwe boekingen maak je onder Boekingen.',
   'help.guide.day-bookings.result':
     'Alles wat op de dag gedateerd is, en alles wat aan een van zijn stops hangt, staat in deze ene lijst.',
   'help.guide.day-bookings.tip.1':
@@ -3235,13 +3235,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Klik rechtsboven op het tabblad op Handmatige boeking. Nieuwe reservering gaat open.',
   'help.guide.create-booking.step.2':
-    'Kies het Boekingstype uit de lijst bovenaan het formulier, naast Reizigers. Accommodatie, Restaurant, Evenement, Rondleiding, Parkeren en Overig zijn de zes die dit tabblad maakt, en het formulier verandert met de keuze: alleen Accommodatie ruilt haar data in voor een reeks dagen.',
+    'Klik op de typepil onder de titel, in de kop van het formulier, en kies het Boekingstype. Accommodatie, Restaurant, Evenement, Rondleiding, Parkeren en Overig zijn de zes die dit tabblad maakt, en het formulier verandert met de keuze: alleen Accommodatie ruilt haar data in voor een reeks dagen.',
   'help.guide.create-booking.step.3':
     'Typ de Titel. Het is het enige veld waar het formulier op staat, en Toevoegen blijft dood tot er iets in staat.',
   'help.guide.create-booking.step.4':
     'Zet Datum en Starttijd, en Einddatum en Eindtijd als de boeking een eind heeft. De kalenders bieden alleen dagen binnen de reis, en een eind dat niet na het begin ligt zegt dat in rood en blokkeert Toevoegen.',
   'help.guide.create-booking.step.5':
-    'Vul de Boekingscode uit de bevestiging in en zet Status. In behandeling of Bevestigd bepaalt in welke van de twee secties de kaart landt.',
+    'Vul de Boekingscode uit de bevestiging in. De statuspil naast het type toont In behandeling; een klik zet hem op Bevestigd en weer terug, en dat bepaalt in welke van de twee secties de kaart landt.',
   'help.guide.create-booking.step.6': 'Klik op Toevoegen.',
   'help.guide.create-booking.result':
     'De boeking is een kaart in haar sectie, met haar chip voor de soort, haar data en haar code, en alle anderen in de reis zien hem verschijnen.',
@@ -3292,7 +3292,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Zeggen voor wie een boeking is',
   'help.guide.booking-travelers.goal': 'Markeer de reizigers die een boeking dekt, en zie daarna alleen die van hen.',
   'help.guide.booking-travelers.step.1':
-    'Open de boeking met het potlood. Reizigers staat bovenaan het formulier, naast Boekingstype, en toont Reizigers toewijzen zolang er niemand op de boeking staat.',
+    'Open de boeking met het potlood. Reizigers staat naast de Boekingscode en toont Reizigers toewijzen zolang er niemand op de boeking staat.',
   'help.guide.booking-travelers.step.2':
     'Klik erop en kies de mensen voor wie deze boeking is; genoemde gasten staan ook in de lijst. Een gekozen persoon krijgt een vinkje en zijn avatar in het veld. Klik nog eens op de naam om hem eraf te halen.',
   'help.guide.booking-travelers.step.3': 'Klik op Bijwerken.',
@@ -3388,7 +3388,8 @@ const help: TranslationStrings = {
     'Klik op het potlood in de kop van de kaart. Reservering bewerken gaat open met alles wat de boeking weet.',
   'help.guide.edit-booking.step.2':
     'Wijzig wat gewijzigd moet worden, hier de Boekingscode die de aanbieder eindelijk stuurde.',
-  'help.guide.edit-booking.step.3': 'Zet Status op Bevestigd.',
+  'help.guide.edit-booking.step.3':
+    'Klik op de pil In behandeling in de kop van het formulier. Hij springt op Bevestigd.',
   'help.guide.edit-booking.step.4': 'Klik op Bijwerken.',
   'help.guide.edit-booking.result':
     'De kaart verhuist: een bevestigde boeking staat in de sectie Bevestigd achter een groene stip, en iedereen in de reis ziet haar verhuizen.',
@@ -3682,19 +3683,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'De verbinding halte voor halte lezen, hernoemen, of de route opnieuw laten opzoeken.',
   'help.guide.change-transit-route.step.1':
-    'In het tabblad Transport zitten de geplande verbindingen onder Automatisch openbaar vervoer. Klik op de kaart.',
+    'In het tabblad Transport zitten de geplande verbindingen onder Automatisch openbaar vervoer. Klik op de kaart; de verbinding gaat open als boeking.',
   'help.guide.change-transit-route.step.2':
     'Duur, Overstappen en Lopen staan bovenaan. Reisplan daaronder loopt de verbinding halte voor halte door, met de perrons en de stukken lopen tussen de lijnen.',
   'help.guide.change-transit-route.step.3':
-    'Route wijzigen draait het zoeken opnieuw, al gevuld met de twee uiteinden van deze verbinding en met haar dag.',
+    'Route wijzigen onderaan de boeking draait het zoeken opnieuw, al gevuld met de twee uiteinden van deze verbinding en met haar dag.',
   'help.guide.change-transit-route.step.4':
-    'Kies een andere verbinding en klik op Toevoegen aan dag; die neemt de plaats van de oude in. Details bewerken, naast Route wijzigen, opent in plaats daarvan het gewone vervoersformulier, waar de Boekingscode, de Status, de reizigers en de bestanden wonen.',
+    'Kies een andere verbinding en klik op Toevoegen aan dag; die neemt de plaats van de oude in. Bewerken, aan het andere eind van dezelfde balk, opent in plaats daarvan het gewone vervoersformulier, waar de Boekingscode, de Status, de reizigers, de notities en de bestanden wonen.',
   'help.guide.change-transit-route.result':
     'De ov-reis draagt het nieuwe reisplan, en haar kaart in het tabblad Transport toont de nieuwe lijnen en tijden.',
   'help.guide.change-transit-route.tip.1':
-    'De titel van de ov-reis is alleen tekst: het potlood ernaast hernoemt hem zonder de route aan te raken. Notities eronder nemen markdown en hebben een tabblad Bewerken en een tabblad Voorbeeld.',
+    'De titel in de kop van de boeking hernoemt de verbinding zonder de route aan te raken. Haar notities schrijf je in het vervoersformulier achter Bewerken.',
   'help.guide.change-transit-route.tip.2':
-    'Verwijderen onderaan de ov-reis haalt de verbinding uit de reis; de dag houdt zijn stops.',
+    'Verwijderen onderaan de boeking haalt de verbinding uit de reis; de dag houdt zijn stops.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Wijzigen hoe één traject wordt afgelegd',
   'help.guide.leg-travel-mode.goal':
@@ -3719,17 +3720,18 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.title': 'Vervoer wijzigen of verwijderen',
   'help.guide.edit-transport.goal':
     'Een tijd, een perron of een boekingscode rechtzetten, of de rit uit de reis halen.',
-  'help.guide.edit-transport.step.1': 'In het dagplan is een transport een gekleurde rij tussen de stops. Klik erop.',
+  'help.guide.edit-transport.step.1':
+    'In het dagplan is een transport een gekleurde rij tussen de stops. Klik erop; zijn boeking gaat open met de tijden, de route en de Boekingscode.',
   'help.guide.edit-transport.step.2':
-    'Het formulier is hetzelfde dat het aanmaakte, met Vervoer bewerken in de titelbalk. Alles kan veranderen: het type, de route, de dagen en tijden, de Boekingscode, de Status.',
+    'Bewerken onderaan de boeking opent het formulier dat hem aanmaakte, met Vervoer bewerken in de titelbalk. Alles kan veranderen: het type, de route, de dagen en tijden, de Boekingscode, de Status.',
   'help.guide.edit-transport.step.3':
     'De route van een vlucht is een keten van luchthavens, die van een trein een keten van stations. Tussenstop toevoegen zet er nog een tussenin, en elk traject houdt zijn eigen tijden en zijn eigen vlucht- of treinnummer.',
   'help.guide.edit-transport.step.4':
-    'Klik op Bijwerken. Om het transport helemaal weg te halen, gebruik je de prullenbak op zijn kaart in het tabblad Transport en bevestig je.',
+    'Klik op Bijwerken. Om het transport helemaal weg te halen, gebruik je Verwijderen onderaan zijn boeking, of de prullenbak op zijn kaart in het tabblad Transport, en bevestig je.',
   'help.guide.edit-transport.result':
     'De wijziging is overal te zien waar het transport voorkomt: het tabblad Transport, de dag waarop het rijdt, en zijn lijn op de kaart.',
   'help.guide.edit-transport.tip.1':
-    'Hetzelfde formulier gaat van twee kanten open, via het potlood op de kaart in het tabblad Transport en via de eigen rij van het transport in het dagplan. Een geplande ov-verbinding is de uitzondering: haar rij opent de ov-reis, en Details bewerken leidt daar naar dit formulier.',
+    'Hetzelfde formulier gaat van twee kanten open: via Bewerken in de boeking die een rij van het dagplan opent, en via het potlood op de kaart in het tabblad Transport. Een geplande ov-verbinding gaat ook als boeking open; Route wijzigen zoekt daar opnieuw, en Bewerken leidt naar dit formulier.',
   'help.guide.edit-transport.tip.2':
     'Een transport naar een andere dag verplaatsen heeft het formulier helemaal niet nodig: sleep zijn rij van de ene dagkaart naar de volgende.',
   // transport-on-map

@@ -901,8 +901,13 @@ describe('PackingListPanel', () => {
 
     // Picker is open - find "Trolley" button inside the dropdown. The bag
     // sidebar carries the same name on its own button, so scope the query to
-    // the picker (the dropdown is a sibling of the package button).
-    const trolleyBtn = await within(packageBtn!.parentElement!).findByRole('button', { name: /Trolley/ });
+    // the picker, which opens in a portal on the body.
+    const picker = await waitFor(() => {
+      const el = document.body.querySelector<HTMLElement>(':scope > .trek-menu-enter');
+      if (!el) throw new Error('bag picker not open yet');
+      return el;
+    });
+    const trolleyBtn = await within(picker).findByRole('button', { name: /Trolley/ });
     fireEvent.click(trolleyBtn);
 
     await waitFor(() => expect(putBody).toMatchObject({ bag_id: 7 }));
@@ -934,10 +939,10 @@ describe('PackingListPanel', () => {
     await user.click(importBtn!);
     await screen.findByText('Import Packing List');
 
-    // Click on the backdrop (the outer div that closes the modal)
-    // The backdrop div has no specific identifier so we use the document.body portal
-    const backdrop = document.querySelector('[style*="backdrop-filter"]') as HTMLElement;
+    // A press that starts and ends on the backdrop closes the dialog.
+    const backdrop = document.querySelector('.trek-modal-backdrop') as HTMLElement;
     expect(backdrop).toBeTruthy();
+    fireEvent.mouseDown(backdrop!);
     fireEvent.click(backdrop!);
 
     await waitFor(() => expect(screen.queryByText('Import Packing List')).not.toBeInTheDocument());

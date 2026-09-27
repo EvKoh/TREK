@@ -78,8 +78,8 @@ const dayplan: TranslationStrings = {
   'dayplan.mobile.allAssigned': 'Minden helyszín kiosztva',
   'dayplan.mobile.noMatch': 'Nincs találat',
   'dayplan.mobile.createNew': 'Új helyszín létrehozása',
-  'dayplan.expandAll': 'Expand all days', // en-fallback
-  'dayplan.collapseAll': 'Collapse all days', // en-fallback
+  'dayplan.expandAll': 'Minden nap kibontása', // en-fallback
+  'dayplan.collapseAll': 'Minden nap összecsukása', // en-fallback
   'dayplan.reorderDays': 'Napok átrendezése',
   'dayplan.reorderTitle': 'Napok átrendezése',
   'dayplan.reorderHint': 'A nap helyei, jegyzetei és foglalásai együtt mozognak vele.',

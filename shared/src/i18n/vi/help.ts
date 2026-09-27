@@ -2255,9 +2255,9 @@ const help: TranslationStrings = {
     'Mở điểm dừng mà đặt chỗ thuộc về. Thẻ hiện một dải có “Đã xác nhận” hoặc “Chưa giải quyết” và tên của đặt chỗ.',
   'help.guide.place-booking.step.2':
     'Dải đó mang “Ngày”, “Thời gian” và “Mã đặt chỗ”, cùng bất kỳ ghi chú nào mà đặt chỗ có.',
-  'help.guide.place-booking.step.3': 'Nhấp vào dải đó. Biểu mẫu của chính đặt chỗ mở ra trên nó.',
+  'help.guide.place-booking.step.3': 'Nhấp vào dải đó. Đặt chỗ mở ra phía trên bản đồ.',
   'help.guide.place-booking.step.4':
-    '“Liên kết đến bài tập trong ngày” là thứ ghim một đặt chỗ vào một điểm dừng, và ở đây nó đã gọi tên điểm dừng này. Đóng biểu mẫu lại.',
+    '“Chỉnh sửa” ở chân đặt chỗ mở biểu mẫu riêng của nó. Trong đó, “Liên kết đến bài tập trong ngày” là thứ ghim một đặt chỗ vào một điểm dừng, và ở đây nó đã gọi tên điểm dừng này. Đóng biểu mẫu lại.',
   'help.guide.place-booking.step.5':
     'Một đặt chỗ mới cho một điểm dừng bắt đầu ở cột các ngày: di chuột lên điểm dừng và nhấp dấu + ở cuối nó. Biểu mẫu mở ra dưới tên “Đặt chỗ mới”, đã được liên kết sẵn với nó.',
   'help.guide.place-booking.result':
@@ -2609,7 +2609,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Màu sắc cho biết một đặt chỗ đang ở đâu: hàng màu xanh lá là đã xác nhận, hàng màu hổ phách là chưa giải quyết. Khách sạn không nằm trong danh sách này, chúng có khối riêng ở bên dưới.',
   'help.guide.day-bookings.step.4':
-    'Danh sách này chỉ đọc các đặt chỗ ra. Một đặt chỗ được tạo và được thay đổi trong tab “Đặt chỗ”.',
+    'Nhấp vào một hàng và đặt chỗ mở ra. “Chỉnh sửa” ở chân nó dùng để thay đổi; đặt chỗ mới được tạo trong tab “Đặt chỗ”.',
   'help.guide.day-bookings.result':
     'Mọi thứ ghi ngày vào ngày đó, và mọi thứ treo trên một trong các điểm dừng của nó, đều nằm trong danh sách duy nhất này.',
   'help.guide.day-bookings.tip.1':
@@ -3147,13 +3147,13 @@ const help: TranslationStrings = {
     'Đưa một nhà hàng, một sự kiện, một chuyến du lịch, một chỗ đỗ xe hay bất cứ thứ gì khác vào chuyến đi bằng tay.',
   'help.guide.create-booking.step.1': 'Nhấp “Thêm đặt chỗ” ở trên cùng bên phải của thẻ. “Đặt chỗ mới” mở ra.',
   'help.guide.create-booking.step.2':
-    'Chọn “Loại đặt chỗ” từ danh sách ở đầu biểu mẫu, cạnh “Người đi”. “Chỗ ở”, “Nhà hàng”, “Sự kiện”, “Chuyến du lịch”, “Bãi đỗ xe” và “Khác” là sáu loại thẻ này tạo ra, và biểu mẫu thay đổi theo lựa chọn: chỉ “Chỗ ở” mới đổi ngày của nó lấy một khoảng các ngày.',
+    'Nhấp vào nhãn loại dưới tiêu đề, ở đầu biểu mẫu, và chọn “Loại đặt chỗ”. “Chỗ ở”, “Nhà hàng”, “Sự kiện”, “Chuyến du lịch”, “Bãi đỗ xe” và “Khác” là sáu loại thẻ này tạo ra, và biểu mẫu thay đổi theo lựa chọn: chỉ “Chỗ ở” mới đổi ngày của nó lấy một khoảng các ngày.',
   'help.guide.create-booking.step.3':
     'Gõ “Tiêu đề”. Đó là ô duy nhất biểu mẫu nhất định đòi, và “Thêm” vẫn nằm im cho tới khi nó có nội dung.',
   'help.guide.create-booking.step.4':
     'Đặt “Ngày” và “Thời gian bắt đầu”, cùng “Ngày kết thúc” và “Thời gian kết thúc” nếu đặt chỗ có điểm kết thúc. Lịch chỉ đưa ra những ngày nằm trong chuyến đi, và một điểm kết thúc không sau điểm bắt đầu sẽ báo bằng màu đỏ và chặn “Thêm”.',
   'help.guide.create-booking.step.5':
-    'Điền “Mã đặt chỗ” từ bản xác nhận và đặt “Trạng thái”. “Chưa giải quyết” hay “Đã xác nhận” quyết định thẻ rơi vào phần nào trong hai phần.',
+    'Điền “Mã đặt chỗ” từ bản xác nhận. Nhãn trạng thái cạnh loại hiện “Chưa giải quyết”; một cú nhấp chuyển nó sang “Đã xác nhận” và ngược lại, và điều đó quyết định thẻ rơi vào phần nào trong hai phần.',
   'help.guide.create-booking.step.6': 'Nhấp “Thêm”.',
   'help.guide.create-booking.result':
     'Đặt chỗ là một thẻ trong phần của nó với chip loại, ngày và mã của nó, và mọi người khác trong chuyến đi đều thấy nó xuất hiện.',
@@ -3203,7 +3203,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Nói một đặt chỗ là dành cho ai',
   'help.guide.booking-travelers.goal': 'Đánh dấu những người đi mà một đặt chỗ bao gồm, rồi chỉ xem phần của họ.',
   'help.guide.booking-travelers.step.1':
-    'Mở đặt chỗ bằng cây bút chì. “Người đi” nằm ở đầu biểu mẫu, cạnh “Loại đặt chỗ”, và hiện “Chỉ định người đi” khi chưa có ai trong đặt chỗ.',
+    'Mở đặt chỗ bằng cây bút chì. “Người đi” nằm cạnh “Mã đặt chỗ”, và hiện “Chỉ định người đi” khi chưa có ai trong đặt chỗ.',
   'help.guide.booking-travelers.step.2':
     'Nhấp vào đó và chọn những người mà đặt chỗ này dành cho; những “Khách” đã có tên cũng có trong danh sách. Người được chọn sẽ có một dấu tích và ảnh đại diện của họ trong ô. Nhấp lại vào tên để bỏ ra.',
   'help.guide.booking-travelers.step.3': 'Nhấp “Cập nhật”.',
@@ -3296,7 +3296,7 @@ const help: TranslationStrings = {
     'Nhấp cây bút chì ở đầu thẻ. “Chỉnh sửa đặt chỗ” mở ra với mọi thứ mà đặt chỗ biết.',
   'help.guide.edit-booking.step.2':
     'Thay đổi thứ cần thay đổi, ở đây là “Mã đặt chỗ” mà nhà cung cấp cuối cùng cũng gửi tới.',
-  'help.guide.edit-booking.step.3': 'Đặt “Trạng thái” thành “Đã xác nhận”.',
+  'help.guide.edit-booking.step.3': 'Nhấp vào nhãn “Chưa giải quyết” ở đầu biểu mẫu. Nó chuyển sang “Đã xác nhận”.',
   'help.guide.edit-booking.step.4': 'Nhấp “Cập nhật”.',
   'help.guide.edit-booking.result':
     'Thẻ chuyển chỗ: một đặt chỗ đã xác nhận đứng trong phần “Đã xác nhận” sau một chấm xanh lá, và mọi người trong chuyến đi đều thấy nó chuyển.',
@@ -3587,19 +3587,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.title': 'Mở và thay đổi một tuyến đã lên kế hoạch',
   'help.guide.change-transit-route.goal': 'Đọc tuyến từng điểm dừng một, đổi tên nó, hoặc tra cứu lại lộ trình.',
   'help.guide.change-transit-route.step.1':
-    'Trong tab “Di chuyển”, các tuyến đã lên kế hoạch nằm dưới “Giao thông công cộng tự động”. Nhấp vào thẻ.',
+    'Trong tab “Di chuyển”, các tuyến đã lên kế hoạch nằm dưới “Giao thông công cộng tự động”. Nhấp vào thẻ; tuyến mở ra dưới dạng một đặt chỗ.',
   'help.guide.change-transit-route.step.2':
     '“Thời lượng”, “Chuyển tuyến” và “Đi bộ” nằm ở trên cùng. “Lộ trình” bên dưới chúng đi qua tuyến từng điểm dừng một, kèm sân ga và các đoạn đi bộ giữa các tuyến.',
   'help.guide.change-transit-route.step.3':
-    '“Đổi tuyến” chạy lại tìm kiếm, đã điền sẵn hai đầu của tuyến này và ngày của nó.',
+    '“Đổi tuyến” ở chân đặt chỗ chạy lại tìm kiếm, đã điền sẵn hai đầu của tuyến này và ngày của nó.',
   'help.guide.change-transit-route.step.4':
-    'Chọn một tuyến khác và nhấp “Thêm vào ngày”; nó thế chỗ tuyến cũ. Còn “Chỉnh sửa chi tiết”, bên cạnh “Đổi tuyến”, mở biểu mẫu phương tiện thông thường, nơi có “Mã đặt chỗ”, “Trạng thái”, người đi và các tập tin.',
+    'Chọn một tuyến khác và nhấp “Thêm vào ngày”; nó thế chỗ tuyến cũ. Còn “Chỉnh sửa”, ở đầu kia của cùng thanh đó, mở biểu mẫu phương tiện thông thường, nơi có “Mã đặt chỗ”, “Trạng thái”, người đi, ghi chú và các tập tin.',
   'help.guide.change-transit-route.result':
     'Hành trình mang lộ trình mới, và thẻ của nó trong tab “Di chuyển” hiển thị các tuyến xe và giờ giấc mới.',
   'help.guide.change-transit-route.tip.1':
-    'Tiêu đề của hành trình chỉ là chữ: cây bút chì bên cạnh đổi tên nó mà không động tới lộ trình. “Ghi chú” bên dưới nhận markdown và có hai tab “Chỉnh sửa” và “Xem trước”.',
+    'Tiêu đề ở đầu đặt chỗ đổi tên tuyến mà không động tới lộ trình. Ghi chú của tuyến được viết trong biểu mẫu phương tiện, sau nút “Chỉnh sửa”.',
   'help.guide.change-transit-route.tip.2':
-    '“Xóa bỏ” ở chân hành trình đưa tuyến ra khỏi chuyến đi; ngày vẫn giữ các điểm dừng của nó.',
+    '“Xóa bỏ” ở chân đặt chỗ đưa tuyến ra khỏi chuyến đi; ngày vẫn giữ các điểm dừng của nó.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Đổi cách đi một chặng',
   'help.guide.leg-travel-mode.goal':
@@ -3625,17 +3625,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Sửa một giờ, một sân ga hay một mã đặt chỗ, hoặc bỏ chuyến đi lại ấy ra khỏi chuyến đi.',
   'help.guide.edit-transport.step.1':
-    'Trong kế hoạch ngày, một phương tiện là một hàng có màu nằm giữa các điểm dừng. Nhấp vào nó.',
+    'Trong kế hoạch ngày, một phương tiện là một hàng có màu nằm giữa các điểm dừng. Nhấp vào nó; đặt chỗ của nó mở ra với giờ giấc, tuyến đường và “Mã đặt chỗ”.',
   'help.guide.edit-transport.step.2':
-    'Biểu mẫu chính là biểu mẫu đã tạo ra nó, với “Chỉnh sửa phương tiện đi lại” trên thanh tiêu đề. Mọi thứ đều đổi được: loại, tuyến đường, ngày và giờ, “Mã đặt chỗ”, “Trạng thái”.',
+    '“Chỉnh sửa” ở chân đặt chỗ mở biểu mẫu đã tạo ra nó, với “Chỉnh sửa phương tiện đi lại” trên thanh tiêu đề. Mọi thứ đều đổi được: loại, tuyến đường, ngày và giờ, “Mã đặt chỗ”, “Trạng thái”.',
   'help.guide.edit-transport.step.3':
     'Tuyến đường của một chuyến bay là một chuỗi sân bay, của một chuyến tàu là một chuỗi nhà ga. “Thêm điểm dừng” đặt thêm một điểm ở giữa, và mỗi chặng giữ giờ giấc riêng cùng số hiệu chuyến bay hoặc số tàu riêng.',
   'help.guide.edit-transport.step.4':
-    'Nhấp “Cập nhật”. Để bỏ hẳn phương tiện, dùng thùng rác trên thẻ của nó trong tab “Di chuyển” và xác nhận.',
+    'Nhấp “Cập nhật”. Để bỏ hẳn phương tiện, dùng “Xóa bỏ” ở chân đặt chỗ của nó, hoặc thùng rác trên thẻ của nó trong tab “Di chuyển”, rồi xác nhận.',
   'help.guide.edit-transport.result':
     'Thay đổi hiện ra ở mọi nơi phương tiện xuất hiện: tab “Di chuyển”, ngày nó chạy, và đường của nó trên bản đồ.',
   'help.guide.edit-transport.tip.1':
-    'Cùng một biểu mẫu mở ra từ cả hai phía, cây bút chì trên thẻ trong tab “Di chuyển” và chính hàng của phương tiện trong kế hoạch ngày. Một tuyến giao thông công cộng đã lên kế hoạch là ngoại lệ: hàng của nó mở khung nhìn hành trình, và “Chỉnh sửa chi tiết” ở đó dẫn tới biểu mẫu này.',
+    'Cùng một biểu mẫu mở ra từ cả hai phía: qua “Chỉnh sửa” trong đặt chỗ mà một hàng của kế hoạch ngày mở ra, và qua cây bút chì trên thẻ trong tab “Di chuyển”. Một tuyến giao thông công cộng đã lên kế hoạch cũng mở ra dưới dạng đặt chỗ; “Đổi tuyến” ở đó tìm lại, còn “Chỉnh sửa” dẫn tới biểu mẫu này.',
   'help.guide.edit-transport.tip.2':
     'Chuyển một phương tiện sang ngày khác hoàn toàn không cần tới biểu mẫu: kéo hàng của nó từ thẻ ngày này sang thẻ ngày kế tiếp.',
   // transport-on-map

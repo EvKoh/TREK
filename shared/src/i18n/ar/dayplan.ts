@@ -66,8 +66,8 @@ const dayplan: TranslationStrings = {
   'dayplan.gpxEmpty': 'لا يوجد شيء للتصدير بعد',
   'dayplan.gpxFailed': 'فشل تصدير GPX',
   'dayplan.pdfError': 'فشل تصدير PDF',
-  'dayplan.expandAll': 'Expand all days', // en-fallback
-  'dayplan.collapseAll': 'Collapse all days', // en-fallback
+  'dayplan.expandAll': 'توسيع كل الأيام', // en-fallback
+  'dayplan.collapseAll': 'طي كل الأيام', // en-fallback
   'dayplan.export': 'تصدير',
   'dayplan.exportIntro': 'خذ خطتك معك: كمستند أو في تقويمك أو على جهاز GPS.',
   'dayplan.exportDocument': 'مستند',

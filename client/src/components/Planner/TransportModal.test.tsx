@@ -1,4 +1,4 @@
-// FE-PLANNER-TRANSMODAL-001 to FE-PLANNER-TRANSMODAL-076
+// FE-PLANNER-TRANSMODAL-001 to FE-PLANNER-TRANSMODAL-080
 import { render, screen, waitFor, fireEvent, within, act } from '../../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
@@ -70,10 +70,10 @@ beforeEach(() => {
   vi.clearAllMocks();
 });
 
-// The booking type is one dropdown now (BookingTypeSelect): open it from the
-// field under the "Booking Type" label, then pick the option from its menu.
+// The booking type is a pill in the dialog's head band (PillSelect), named
+// "Booking Type: <type>": open it, then pick the option from its menu.
 function typeField(): HTMLButtonElement {
-  return screen.getByText('Booking Type').parentElement!.querySelector('button') as HTMLButtonElement;
+  return screen.getByRole('button', { name: /^Booking Type:/ }) as HTMLButtonElement;
 }
 async function pickType(name: RegExp) {
   await userEvent.click(typeField());
@@ -159,7 +159,7 @@ describe('TransportModal', () => {
       expect(screen.getByRole('button', { name })).toBeInTheDocument();
     }
     // The field itself and its option both read "Flight".
-    expect(screen.getAllByRole('button', { name: /^Flight$/i })).toHaveLength(2);
+    expect(screen.getAllByRole('button', { name: /^(Booking Type: ?)?Flight$/i })).toHaveLength(2);
     // Booking types stay in the booking dialog.
     expect(screen.queryByRole('button', { name: /^Accommodation$/i })).not.toBeInTheDocument();
   });
@@ -999,8 +999,9 @@ describe('TransportModal', () => {
     render(<TransportModal {...defaultProps} onSave={onSave} />);
 
     await userEvent.type(screen.getByPlaceholderText(/e\.g\. Lufthansa/i), 'LH 400');
-    await userEvent.click(screen.getByText('Pending'));
-    await userEvent.click(screen.getByRole('button', { name: 'Confirmed' }));
+    // The status is a pill in the head band that flips between the two.
+    expect(screen.getByText('Pending')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Set to Confirmed' }));
     await userEvent.click(screen.getByRole('button', { name: /^Add$/i }));
 
     await waitFor(() => expect(onSave).toHaveBeenCalled());
@@ -1570,5 +1571,52 @@ describe('TransportModal', () => {
     await userEvent.click(screen.getByRole('button', { name: /^Update$/i }));
     await waitFor(() => expect(onSave).toHaveBeenCalled());
     expect(onSave.mock.calls[0][0]).toMatchObject({ url: 'https://ferry.example' });
+  });
+
+  // ── Dialog frame ─────────────────────────────────────────────────────────
+
+  it('FE-PLANNER-TRANSMODAL-077: Escape while the delete question is open takes back only the question', async () => {
+    const onClose = vi.fn();
+    const res = buildReservation({ title: 'Paris Flight', type: 'flight' });
+    render(<TransportModal {...defaultProps} reservation={res} onDelete={vi.fn()} onClose={onClose} />);
+    await userEvent.click(screen.getByRole('button', { name: /delete/i }));
+    expect(screen.getByText('Delete booking?')).toBeInTheDocument();
+
+    await userEvent.keyboard('{Escape}');
+    expect(screen.queryByText('Delete booking?')).not.toBeInTheDocument();
+    expect(onClose).not.toHaveBeenCalled();
+
+    await userEvent.keyboard('{Escape}');
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('FE-PLANNER-TRANSMODAL-078: a transit journey edited by hand reads "Transit" on the type pill and saves as transit', async () => {
+    const onSave = vi.fn().mockResolvedValue(undefined);
+    const res = buildReservation({ title: 'Tram 12', type: 'transit' });
+    render(<TransportModal {...defaultProps} reservation={res} onSave={onSave} />);
+    // The list does not offer transit, so the pill falls back to the type's own name.
+    expect(typeField()).toHaveAccessibleName(/^Booking Type: ?Transit$/);
+
+    await userEvent.click(screen.getByRole('button', { name: /^Update$/i }));
+    await waitFor(() => expect(onSave).toHaveBeenCalled());
+    expect(onSave.mock.calls[0][0]).toMatchObject({ type: 'transit' });
+  });
+
+  it('FE-PLANNER-TRANSMODAL-079: a blank title says it is required under the field', async () => {
+    render(<TransportModal {...defaultProps} />);
+    expect(screen.getByText('Title *')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^Add$/i })).toBeDisabled();
+
+    await userEvent.type(screen.getByPlaceholderText(/e\.g\. Lufthansa/i), 'LH 400');
+    expect(screen.queryByText('Title *')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /^Add$/i })).toBeEnabled();
+  });
+
+  it('FE-PLANNER-TRANSMODAL-080: Automated shows the whole search hint in the head band, free to wrap', async () => {
+    render(<TransportModal {...defaultProps} places={[]} accommodations={[]} />);
+    await userEvent.click(screen.getByRole('button', { name: 'Automated' }));
+    const hint = screen.getByText(/Search real connections and add them straight to the day/);
+    expect(hint).not.toHaveClass('truncate');
+    expect(screen.queryByText('Title *')).not.toBeInTheDocument();
   });
 });

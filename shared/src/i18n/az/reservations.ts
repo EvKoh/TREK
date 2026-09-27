@@ -3,8 +3,7 @@ import type { TranslationStrings } from '../types';
 const reservations: TranslationStrings = {
   'reservations.title': 'Rezervasiyalar',
   'reservations.empty': 'Hələ rezervasiya yoxdur',
-  'reservations.emptyHint':
-    'Uçuşlar, otellər və digər xidmətlər üçün rezervasiyalar əlavə edin',
+  'reservations.emptyHint': 'Uçuşlar, otellər və digər xidmətlər üçün rezervasiyalar əlavə edin',
   'reservations.add': 'Rezervasiya əlavə et',
   'reservations.addManual': 'Əl ilə rezervasiya et',
   'reservations.placeHint':
@@ -12,8 +11,7 @@ const reservations: TranslationStrings = {
 
   'reservations.confirmed': 'Təsdiqlənib',
   'reservations.pending': 'Gözləyir',
-  'reservations.summary':
-    '{confirmed} təsdiqlənib, {pending} gözləyir',
+  'reservations.summary': '{confirmed} təsdiqlənib, {pending} gözləyir',
   'reservations.showFiles': 'Faylları göstər',
 
   'reservations.editTitle': 'Rezervasiyanı redaktə et',
@@ -41,10 +39,8 @@ const reservations: TranslationStrings = {
   'reservations.layover.layover': 'Tranzit gözləmə',
 
   'reservations.needsReview': 'Yoxlayın',
-  'reservations.needsReviewHint':
-    'Hava limanını avtomatik uyğunlaşdırmaq mümkün olmadı — məkanı təsdiqləyin.',
-  'reservations.searchLocation':
-    'Stansiya, liman və ya ünvan axtarın…',
+  'reservations.needsReviewHint': 'Hava limanını avtomatik uyğunlaşdırmaq mümkün olmadı — məkanı təsdiqləyin.',
+  'reservations.searchLocation': 'Stansiya, liman və ya ünvan axtarın…',
 
   'reservations.meta.trainNumber': 'Qatar nömrəsi',
   'reservations.meta.platform': 'Platforma',
@@ -54,8 +50,7 @@ const reservations: TranslationStrings = {
   'reservations.meta.checkOut': 'Çıxış',
 
   'reservations.meta.linkAccommodation': 'Yaşayış yeri',
-  'reservations.meta.pickAccommodation':
-    'Yaşayış yeri ilə əlaqələndir',
+  'reservations.meta.pickAccommodation': 'Yaşayış yeri ilə əlaqələndir',
   'reservations.meta.noAccommodation': 'Heç biri',
   'reservations.meta.hotelPlace': 'Yaşayış yeri',
 
@@ -81,13 +76,12 @@ const reservations: TranslationStrings = {
   'reservations.type.bicycle': 'Velosiped',
   'reservations.type.taxi': 'Taksi',
   'reservations.type.transit': 'İctimai nəqliyyat',
+  'reservations.typeShort.transit': 'Tranzit',
   'reservations.type.transport_other': 'Digər',
 
-  'reservations.confirm.delete':
-    '“{name}” rezervasiyasını silmək istədiyinizə əminsiniz?',
+  'reservations.confirm.delete': '“{name}” rezervasiyasını silmək istədiyinizə əminsiniz?',
   'reservations.confirm.deleteTitle': 'Rezervasiya silinsin?',
-  'reservations.confirm.deleteBody':
-    '“{name}” həmişəlik silinəcək.',
+  'reservations.confirm.deleteBody': '“{name}” həmişəlik silinəcək.',
 
   'reservations.toast.updated': 'Rezervasiya yeniləndi',
   'reservations.toast.removed': 'Rezervasiya silindi',
@@ -97,12 +91,12 @@ const reservations: TranslationStrings = {
   'reservations.newTitle': 'Yeni rezervasiya',
   'reservations.bookingType': 'Rezervasiya növü',
   'reservations.titleLabel': 'Başlıq',
-  'reservations.titlePlaceholder':
-    'məs. Lufthansa LH123, Hotel Adlon...',
+  'reservations.titlePlaceholder': 'məs. Lufthansa LH123, Hotel Adlon...',
   'reservations.locationAddress': 'Məkan / Ünvan',
-  'reservations.locationPlaceholder':
-    'Ünvan, hava limanı, otel...',
+  'reservations.locationPlaceholder': 'Ünvan, hava limanı, otel...',
   'reservations.confirmationCode': 'Rezervasiya kodu',
+  'reservations.routeLabel': 'Marşrut',
+  'reservations.segmentCodes': 'Seqment kodları',
   'reservations.confirmationPlaceholder': 'məs. ABC12345',
   'reservations.day': 'Gün',
   'reservations.noDay': 'Gün seçilməyib',
@@ -118,22 +112,18 @@ const reservations: TranslationStrings = {
   'reservations.toast.updateError': 'Yeniləmək mümkün olmadı',
   'reservations.toast.deleteError': 'Silmək mümkün olmadı',
 
-  'reservations.confirm.remove':
-    '“{name}” üçün rezervasiya silinsin?',
+  'reservations.confirm.remove': '“{name}” üçün rezervasiya silinsin?',
 
   'reservations.linkAssignment': 'Günlük planla əlaqələndir',
-  'reservations.pickAssignment':
-    'Planınızdan bir təyinat seçin...',
+  'reservations.linkedTo': 'Əlaqələndirilib',
+  'reservations.pickAssignment': 'Planınızdan bir təyinat seçin...',
   'reservations.noAssignment': 'Əlaqə yoxdur (müstəqil)',
 
   'reservations.price': 'Qiymət',
   'reservations.budgetCategory': 'Büdcə kateqoriyası',
-  'reservations.budgetCategoryPlaceholder':
-    'məs. Nəqliyyat, Yaşayış yeri',
-  'reservations.budgetCategoryAuto':
-    'Avtomatik (rezervasiya növünə əsasən)',
-  'reservations.budgetHint':
-    'Yadda saxlanarkən avtomatik olaraq büdcə qeydi yaradılacaq.',
+  'reservations.budgetCategoryPlaceholder': 'məs. Nəqliyyat, Yaşayış yeri',
+  'reservations.budgetCategoryAuto': 'Avtomatik (rezervasiya növünə əsasən)',
+  'reservations.budgetHint': 'Yadda saxlanarkən avtomatik olaraq büdcə qeydi yaradılacaq.',
 
   'reservations.departureDate': 'Yola düşmə',
   'reservations.arrivalDate': 'Çatma',
@@ -145,10 +135,8 @@ const reservations: TranslationStrings = {
   'reservations.returnTime': 'Qaytarma vaxtı',
   'reservations.endDate': 'Bitmə tarixi',
 
-  'reservations.meta.departureTimezone':
-    'Yola düşmə saat qurşağı',
-  'reservations.meta.arrivalTimezone':
-    'Çatma saat qurşağı',
+  'reservations.meta.departureTimezone': 'Yola düşmə saat qurşağı',
+  'reservations.meta.arrivalTimezone': 'Çatma saat qurşağı',
 
   'reservations.span.departure': 'Yola düşmə',
   'reservations.span.arrival': 'Çatma',
@@ -165,45 +153,34 @@ const reservations: TranslationStrings = {
   'reservations.span.end': 'Son',
   'reservations.span.ongoing': 'Davam edir',
 
-  'reservations.validation.endBeforeStart':
-    'Bitmə tarixi və vaxtı başlanğıc tarixi və vaxtından sonra olmalıdır',
+  'reservations.validation.endBeforeStart': 'Bitmə tarixi və vaxtı başlanğıc tarixi və vaxtından sonra olmalıdır',
 
   'reservations.addBooking': 'Rezervasiya əlavə et',
 
-  'reservations.import.title':
-    'Rezervasiya təsdiqlərini idxal et',
+  'reservations.import.title': 'Rezervasiya təsdiqlərini idxal et',
   'reservations.import.cta': 'Fayldan idxal et',
   'reservations.import.dropHere':
     'Rezervasiya təsdiqi fayllarını buraya sürükləyib buraxın və ya seçmək üçün klikləyin',
-  'reservations.import.dropActive':
-    'İdxal etmək üçün faylları buraya buraxın',
+  'reservations.import.dropActive': 'İdxal etmək üçün faylları buraya buraxın',
   'reservations.import.acceptedFormats':
     'Qəbul edilən formatlar: EML, PDF, PKPass, HTML, TXT (hər biri maksimum 10 MB, 5 fayladək)',
   'reservations.import.acceptedPhotos': 'Fotoları (JPG, PNG, WEBP) süni intellekt modeli oxuyur.',
   'reservations.import.parsing': 'Fayllar təhlil edilir…',
-  'reservations.import.previewHeading':
-    '{count} rezervasiya tapıldı',
-  'reservations.import.previewEmpty':
-    'Yüklənən fayllardan heç bir rezervasiya çıxarmaq mümkün olmadı.',
+  'reservations.import.previewHeading': '{count} rezervasiya tapıldı',
+  'reservations.import.previewEmpty': 'Yüklənən fayllardan heç bir rezervasiya çıxarmaq mümkün olmadı.',
   'reservations.import.removeItem': 'Sil',
   'reservations.import.needsReview': 'Yoxlayın',
   'reservations.import.tryAi': 'AI ilə təhlil et',
   'reservations.import.aiParsing': 'AI ilə təhlil edilir…',
-  'reservations.import.confirm':
-    '{count} rezervasiyanı idxal et',
+  'reservations.import.confirm': '{count} rezervasiyanı idxal et',
   'reservations.import.back': 'Geri',
-  'reservations.import.success':
-    '{count} rezervasiya idxal edildi',
-  'reservations.import.partialFailure':
-    '{created} idxal edildi, {failed} uğursuz oldu',
-  'reservations.import.error':
-    'Təhlil uğursuz oldu. Faylın etibarlı rezervasiya təsdiqi olduğuna əmin olun.',
-  'reservations.import.unavailable':
-    'Rezervasiyaların idxalı bu serverdə əlçatan deyil.',
+  'reservations.import.success': '{count} rezervasiya idxal edildi',
+  'reservations.import.partialFailure': '{created} idxal edildi, {failed} uğursuz oldu',
+  'reservations.import.error': 'Təhlil uğursuz oldu. Faylın etibarlı rezervasiya təsdiqi olduğuna əmin olun.',
+  'reservations.import.unavailable': 'Rezervasiyaların idxalı bu serverdə əlçatan deyil.',
   'reservations.import.unsupportedFormat':
     'Dəstəklənməyən fayl formatıdır. EML, PDF, PKPass, HTML və ya TXT istifadə edin.',
-  'reservations.import.fileTooLarge':
-    '“{name}” faylı 10 MB limitini keçir.',
+  'reservations.import.fileTooLarge': '“{name}” faylı 10 MB limitini keçir.',
 
   'reservations.airtrail.title': 'AirTrail-dən idxal et',
   'reservations.airtrail.cta': 'AirTrail',
@@ -211,34 +188,25 @@ const reservations: TranslationStrings = {
   'reservations.airtrail.syncedHint':
     'AirTrail ilə sinxronlaşdırılıb — dəyişikliklər hər iki istiqamətdə sinxron qalır.',
   'reservations.airtrail.notSynced': 'Sinxronlaşdırılmayıb',
-  'reservations.airtrail.notSyncedHint':
-    'Bu uçuş AirTrail-dən silinib və artıq sinxronlaşdırılmır.',
+  'reservations.airtrail.notSyncedHint': 'Bu uçuş AirTrail-dən silinib və artıq sinxronlaşdırılmır.',
   'reservations.airtrail.layoverHint':
     'AirTrail-dən idxal edilib. Tranzit gözləməsi olan çoxseqmentli uçuşun AirTrail-də sinxronlaşdırıla biləcək vahid uçuş qeydi olmadığından, bu birdəfəlik idxal kimi qalır.',
-  'reservations.airtrail.loadError':
-    'AirTrail uçuşlarınızı yükləmək mümkün olmadı.',
-  'reservations.airtrail.imported':
-    '{count} uçuş idxal edildi',
-  'reservations.airtrail.skippedDuplicate':
-    '{count} uçuş artıq bu səyahətdədir və buraxıldı',
-  'reservations.airtrail.nothingImported':
-    'İdxal ediləcək heç nə yoxdur.',
-  'reservations.airtrail.importError':
-    'İdxal uğursuz oldu. Yenidən cəhd edin.',
+  'reservations.airtrail.loadError': 'AirTrail uçuşlarınızı yükləmək mümkün olmadı.',
+  'reservations.airtrail.imported': '{count} uçuş idxal edildi',
+  'reservations.airtrail.skippedDuplicate': '{count} uçuş artıq bu səyahətdədir və buraxıldı',
+  'reservations.airtrail.nothingImported': 'İdxal ediləcək heç nə yoxdur.',
+  'reservations.airtrail.importError': 'İdxal uğursuz oldu. Yenidən cəhd edin.',
   'reservations.airtrail.undo': 'AirTrail-dən idxal et',
   'reservations.airtrail.alreadyImported': 'İdxal edilib',
   'reservations.airtrail.duringTrip': 'Bu səyahət zamanı',
   'reservations.airtrail.otherFlights': 'Digər uçuşlar',
-  'reservations.airtrail.empty':
-    'AirTrail hesabınızda heç bir uçuş tapılmadı.',
+  'reservations.airtrail.empty': 'AirTrail hesabınızda heç bir uçuş tapılmadı.',
   'reservations.airtrail.importCta': '{count} uçuşu idxal et',
-  'reservations.airtrail.joinConnection':
-    '{stops} dayanacağında tranzit gözləmə ilə bir uçuş kimi idxal et',
+  'reservations.airtrail.joinConnection': '{stops} dayanacağında tranzit gözləmə ilə bir uçuş kimi idxal et',
 
   'reservations.costsLabel': 'Xərclər',
   'reservations.createExpense': 'Xərc yarat',
-  'reservations.createExpenseHint':
-    'Rezervasiyanı yadda saxlayır, sonra Xərclər redaktorunu açır.',
+  'reservations.createExpenseHint': 'Rezervasiyanı yadda saxlayır, sonra Xərclər redaktorunu açır.',
   'reservations.linkedExpense': 'Əlaqəli xərc',
   'reservations.removeExpense': 'Xərci sil',
   'reservations.linkedExpenses': 'Əlaqəli xərclər',
@@ -248,8 +216,60 @@ const reservations: TranslationStrings = {
 
   'reservations.travelers.label': 'Səyahətçilər',
   'reservations.travelers.assign': 'Səyahətçiləri təyin et',
-  'reservations.travelers.none':
-    'Hələ səyahət üzvü yoxdur.',
+  'reservations.travelers.none': 'Hələ səyahət üzvü yoxdur.',
+  'reservations.status.switchTo': '{status} olaraq təyin et',
+  'reservations.view.label': 'Görünüş',
+  'reservations.view.cards': 'Kartlar',
+  'reservations.view.list': 'Siyahı',
+  'reservations.view.timeline': 'Zaman xətti',
+  'reservations.filter': 'Filtrlə',
+  'reservations.searchPlaceholder': 'Axtar',
+  'reservations.results': '{shown} / {total}',
+  'reservations.resetFilters': 'Filtrləri sıfırla',
+  'reservations.noMatches': 'Bu filtrlərə uyğun heç nə yoxdur',
+  'reservations.viewOptions': 'Görünüş seçimləri',
+  'reservations.resetView': 'Görünüşü sıfırla',
+  'reservations.group.label': 'Qruplaşdır',
+  'reservations.group.status': 'Status',
+  'reservations.group.day': 'Gün',
+  'reservations.group.type': 'Növ',
+  'reservations.group.none': 'Qruplaşdırmadan',
+  'reservations.transitApart': 'İctimai nəqliyyat ayrıca bölmədə',
+  'reservations.group.before': 'Səyahətdən əvvəl',
+  'reservations.group.after': 'Səyahətdən sonra',
+  'reservations.group.undated': 'Tarixsiz',
+  'reservations.sort.label': 'Sırala',
+  'reservations.sort.date': 'Tarix',
+  'reservations.sort.title': 'Başlıq',
+  'reservations.sort.type': 'Növ',
+  'reservations.sort.status': 'Status',
+  'reservations.sort.earlyFirst': 'Əvvəlcə ən erkən',
+  'reservations.sort.lateFirst': 'Əvvəlcə ən gec',
+  'reservations.sort.aToZ': 'A-dan Z-yə',
+  'reservations.sort.zToA': 'Z-dən A-ya',
+  'reservations.timeline.dayCount': '{count} gün',
+  'reservations.timeline.zoom': 'Miqyas',
+  'reservations.timeline.trip': 'Səyahət',
+  'reservations.timeline.day': 'Gün',
+  'reservations.timeline.prevDay': 'Əvvəlki gün',
+  'reservations.timeline.nextDay': 'Növbəti gün',
+  'reservations.timeline.openDay': '{day} saatbasaat aç',
+  'reservations.timeline.nothingThisDay': 'Bu gündə heç nə yoxdur.',
+  'reservations.timeline.today': 'Bu gün',
+  'reservations.timeline.now': 'indi',
+  'reservations.timeline.byType': 'Hər növ üçün bir zolaq',
+  'reservations.timeline.context': 'Digər bölməni göstər',
+  'reservations.timeline.contextBookings': 'Rezervasiyalar',
+  'reservations.timeline.contextTransports': 'Nəqliyyat',
+  'reservations.timeline.noneDated': 'Bunların heç birinin hələ tarixi yoxdur.',
+  'reservations.undated': 'Tarixsiz',
+  'reservations.nights': 'Gecə',
+  'reservations.start': 'Başlanğıc',
+  'reservations.end': 'Son',
+  'reservations.rename': 'Adını dəyiş',
+  'reservations.copyCode': 'Rezervasiya kodunu kopyala',
+  'reservations.copyFailed': 'Kopyalamaq alınmadı',
+  'reservations.showInFiles': 'Fayllarda göstər',
 };
 
 export default reservations;

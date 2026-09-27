@@ -169,7 +169,8 @@ describe('ArtikelZeile — basics', () => {
     fireEvent.mouseLeave(row)
     expect(screen.getByRole('button', { name: 'Trolley' })).toBeInTheDocument()
 
-    fireEvent.click(container.querySelector('div[role="presentation"]')!)
+    // The picker and its click catcher open in a portal on the body.
+    fireEvent.click(Array.from(document.body.children).find(el => el.getAttribute('role') === 'presentation')!)
     expect(screen.queryByRole('button', { name: 'Trolley' })).toBeNull()
   })
 })

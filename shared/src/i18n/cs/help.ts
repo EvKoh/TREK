@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'cs' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Nápověda a dokumentace',
+  'help.search': 'Hledat v dokumentaci…',
+  'help.contents': 'Obsah',
+  'help.noResults': 'Žádné odpovídající stránky.',
+  'help.errorTitle': 'Tuto stránku nelze načíst',
+  'help.errorBody': 'Obsah nápovědy se načítá z wiki TREK. Zkontrolujte připojení a zkuste to znovu.',
 
   // center
   'help.center.button': 'Nápověda k této obrazovce',
@@ -1001,7 +1001,7 @@ const help: TranslationStrings = {
     'Travel & map: trasy rezervací vždy na mapě, pilulka Objevovat místa, optimalizace trasy od ubytování, skryté rezervační kódy a popisky tras rezervací.',
   'help.ctx.settings-display.bullet.3':
     'Spuštění: zda se TREK otevře na přehledu, nebo na aktivní cestě, a která karta cesty se ukáže první.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Vzhled',
   'help.ctx.settings-appearance.summary':
     'Jak TREK vypadá na tomto účtu: světlý nebo tmavý, barva zvýraznění, sklo a pohyb, velikost textu a které widgety přehled ukazuje. Všechno se projeví živě, na každém zařízení, kde se přihlásíte.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2204,9 +2204,9 @@ const help: TranslationStrings = {
     'Otevřete zastávku, ke které rezervace patří. Karta ukáže proužek s Potvrzeno nebo Čeká na potvrzení a s názvem rezervace.',
   'help.guide.place-booking.step.2':
     'Proužek nese Datum, Čas a Rezervační kód, a jakékoli poznámky, které rezervace má.',
-  'help.guide.place-booking.step.3': 'Klikněte na proužek. Otevře se na něm vlastní formulář rezervace.',
+  'help.guide.place-booking.step.3': 'Klikněte na proužek. Rezervace se otevře nad mapou.',
   'help.guide.place-booking.step.4':
-    'Rezervaci k zastávce připíná Propojit s přiřazením dne a tady už tuhle zastávku jmenuje. Formulář zase zavřete.',
+    'Upravit na patě rezervace otevře její vlastní formulář. Rezervaci k zastávce tam připíná Propojit s přiřazením dne a tady už tuhle zastávku jmenuje. Formulář zase zavřete.',
   'help.guide.place-booking.step.5':
     'Nová rezervace pro zastávku začíná ve sloupci dnů: najeďte na zastávku a klikněte na + na jejím konci. Formulář se otevře jako Nová rezervace, už s ní propojený.',
   'help.guide.place-booking.result':
@@ -2555,7 +2555,8 @@ const help: TranslationStrings = {
     'Řádek ukazuje, jaký druh rezervace to je, její název a, když patří k zastávce, tu zastávku za tečkou. Její časy sedí na pravém konci.',
   'help.guide.day-bookings.step.3':
     'Barva říká, jak rezervace stojí: zelený řádek je potvrzený, jantarový ještě čeká na potvrzení. Hotely v tomto seznamu nejsou, mají vlastní blok níže.',
-  'help.guide.day-bookings.step.4': 'Seznam rezervace jen vypisuje. Rezervace se vytváří a mění na kartě Rezervace.',
+  'help.guide.day-bookings.step.4':
+    'Klikněte na řádek a rezervace se otevře. Upravit na její patě ji změní; nové rezervace se vytvářejí na kartě Rezervace.',
   'help.guide.day-bookings.result':
     'Všechno datované na ten den a všechno, co visí na některé z jeho zastávek, je v tomto jednom seznamu.',
   'help.guide.day-bookings.tip.1':
@@ -3086,13 +3087,13 @@ const help: TranslationStrings = {
     'Vložte do cesty ručně restauraci, událost, prohlídku, parkovací místo nebo cokoli jiného.',
   'help.guide.create-booking.step.1': 'Klikněte vpravo nahoře na kartě na Ruční rezervace. Otevře se Nová rezervace.',
   'help.guide.create-booking.step.2':
-    'Vyberte Typ rezervace ze seznamu nahoře ve formuláři, vedle pole Cestující. Ubytování, Restaurace, Událost, Prohlídka, Parkování a Jiné je těch šest, které tato karta dělá, a formulář se s volbou mění: jen Ubytování vymění svá data za rozsah dnů.',
+    'Klikněte na odznak typu pod názvem v záhlaví formuláře a vyberte Typ rezervace. Ubytování, Restaurace, Událost, Prohlídka, Parkování a Jiné je těch šest, které tato karta dělá, a formulář se s volbou mění: jen Ubytování vymění svá data za rozsah dnů.',
   'help.guide.create-booking.step.3':
     'Napište Název. Je to jediné pole, na kterém formulář trvá, a Přidat zůstane mrtvé, dokud v něm něco není.',
   'help.guide.create-booking.step.4':
     'Nastavte Datum a Čas začátku, a Datum konce a Čas konce, pokud má rezervace konec. Kalendáře nabízejí jen dny uvnitř cesty, a konec, který není po začátku, to řekne červeně a zablokuje Přidat.',
   'help.guide.create-booking.step.5':
-    'Vložte Rezervační kód z potvrzení a nastavte Stav. Čeká na potvrzení nebo Potvrzeno rozhodne, do které ze dvou sekcí karta padne.',
+    'Vložte Rezervační kód z potvrzení. Odznak stavu vedle typu ukazuje Čeká na potvrzení; kliknutí ho přepne na Potvrzeno a další zase zpět, a to rozhodne, do které ze dvou sekcí karta padne.',
   'help.guide.create-booking.step.6': 'Klikněte na Přidat.',
   'help.guide.create-booking.result':
     'Rezervace je karta ve své sekci se svým štítkem typu, svými daty a svým kódem, a všichni ostatní v cestě ji vidí přibýt.',
@@ -3141,7 +3142,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Říct, pro koho rezervace je',
   'help.guide.booking-travelers.goal': 'Označte cestující, které rezervace pokrývá, a pak si nechte ukázat jen jejich.',
   'help.guide.booking-travelers.step.1':
-    'Otevřete rezervaci tužkou. Pole Cestující je nahoře ve formuláři, vedle pole Typ rezervace, a dokud na rezervaci nikdo není, ukazuje Přiřadit cestující.',
+    'Otevřete rezervaci tužkou. Pole Cestující je vedle Rezervačního kódu, a dokud na rezervaci nikdo není, ukazuje Přiřadit cestující.',
   'help.guide.booking-travelers.step.2':
     'Klikněte na něj a vyberte lidi, pro které tato rezervace je; jmenovaní hosté jsou v seznamu také. Vybraný dostane fajfku a jeho avatar se objeví v poli. Dalším kliknutím na jméno ho zase sundáte.',
   'help.guide.booking-travelers.step.3': 'Klikněte na Aktualizovat.',
@@ -3234,7 +3235,7 @@ const help: TranslationStrings = {
     'Klikněte v hlavičce karty na tužku. Otevře se Upravit rezervaci se vším, co rezervace ví.',
   'help.guide.edit-booking.step.2':
     'Změňte, co je potřeba změnit, tady Rezervační kód, který provozovatel konečně poslal.',
-  'help.guide.edit-booking.step.3': 'Dejte Stav na Potvrzeno.',
+  'help.guide.edit-booking.step.3': 'Klikněte v záhlaví formuláře na odznak Čeká na potvrzení. Přepne se na Potvrzeno.',
   'help.guide.edit-booking.step.4': 'Klikněte na Aktualizovat.',
   'help.guide.edit-booking.result':
     'Karta se přesune: potvrzená rezervace stojí v sekci Potvrzeno za zelenou tečkou, a všichni v cestě ji vidí se přesunout.',
@@ -3524,19 +3525,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Přečíst spojení zastávku po zastávce, přejmenovat je nebo trasu vyhledat znovu.',
   'help.guide.change-transit-route.step.1':
-    'Na kartě Doprava sedí naplánovaná spojení pod Automatické spojení MHD. Klikněte na kartu.',
+    'Na kartě Doprava sedí naplánovaná spojení pod Automatické spojení MHD. Klikněte na kartu; spojení se otevře jako rezervace.',
   'help.guide.change-transit-route.step.2':
     'Doba trvání, Přestupy a Chůze sedí nahoře. Itinerář pod nimi projde spojení zastávku po zastávce, s nástupišti a s úseky pěšky mezi linkami.',
   'help.guide.change-transit-route.step.3':
-    'Změnit trasu spustí vyhledávání znovu, již vyplněné oběma konci tohoto spojení a jeho dnem.',
+    'Změnit trasu na patě rezervace spustí vyhledávání znovu, již vyplněné oběma konci tohoto spojení a jeho dnem.',
   'help.guide.change-transit-route.step.4':
-    'Vyberte jiné spojení a klikněte na Přidat ke dni; zaujme místo toho starého. Upravit podrobnosti vedle Změnit trasu otevře místo toho běžný formulář dopravy, kde žijí Rezervační kód, Stav, cestující a soubory.',
+    'Vyberte jiné spojení a klikněte na Přidat ke dni; zaujme místo toho starého. Upravit, na druhém konci téže lišty, otevře místo toho běžný formulář dopravy, kde žijí Rezervační kód, Stav, cestující, poznámky a soubory.',
   'help.guide.change-transit-route.result':
     'Okno Cesta veřejnou dopravou nese nový Itinerář a jeho karta na kartě Doprava ukazuje nové linky a časy.',
   'help.guide.change-transit-route.tip.1':
-    'Název v okně Cesta veřejnou dopravou je jen text: tužka vedle něj jej přejmenuje, aniž by se dotkla trasy. Poznámky pod ním přijímají markdown a mají kartu Upravit a Náhled.',
+    'Název v záhlaví rezervace přejmenuje spojení, aniž by se dotkl trasy. Jeho poznámky se píšou ve formuláři dopravy za tlačítkem Upravit.',
   'help.guide.change-transit-route.tip.2':
-    'Smazat na patě okna Cesta veřejnou dopravou vyjme spojení z cesty; den si ponechá své zastávky.',
+    'Smazat na patě rezervace vyjme spojení z cesty; den si ponechá své zastávky.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Změnit způsob cesty na jednom úseku',
   'help.guide.leg-travel-mode.goal':
@@ -3560,17 +3561,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': 'Změnit nebo smazat dopravu',
   'help.guide.edit-transport.goal': 'Opravit čas, nástupiště nebo rezervační kód, nebo jízdu z cesty odebrat.',
-  'help.guide.edit-transport.step.1': 'V plánu dne je doprava barevným řádkem mezi zastávkami. Klikněte na něj.',
+  'help.guide.edit-transport.step.1':
+    'V plánu dne je doprava barevným řádkem mezi zastávkami. Klikněte na něj; otevře se její rezervace s časy, trasou a Rezervačním kódem.',
   'help.guide.edit-transport.step.2':
-    'Formulář je ten, který ji vytvořil, s nápisem Upravit dopravu v záhlaví. Změnit lze vše: typ, trasu, dny a časy, Rezervační kód, Stav.',
+    'Upravit na patě rezervace otevře formulář, který ji vytvořil, s nápisem Upravit dopravu v záhlaví. Změnit lze vše: typ, trasu, dny a časy, Rezervační kód, Stav.',
   'help.guide.edit-transport.step.3':
     'Trasa letu je řetězec letišť, trasa vlaku řetězec stanic. Přidat zastávku vloží mezi ně další a každý úsek si ponechá vlastní časy a vlastní číslo letu nebo vlaku.',
   'help.guide.edit-transport.step.4':
-    'Klikněte na Aktualizovat. Chcete-li dopravu odstranit úplně, použijte koš na její kartě na kartě Doprava a potvrďte.',
+    'Klikněte na Aktualizovat. Chcete-li dopravu odstranit úplně, použijte Smazat na patě její rezervace nebo koš na její kartě na kartě Doprava a potvrďte.',
   'help.guide.edit-transport.result':
     'Změna se projeví všude, kde se doprava objevuje: na kartě Doprava, ve dni, kdy jede, a na její čáře na mapě.',
   'help.guide.edit-transport.tip.1':
-    'Stejný formulář se otevře z obou stran, tužkou na kartě na kartě Doprava i vlastním řádkem dopravy v plánu dne. Výjimkou je naplánované spojení veřejnou dopravou: jeho řádek otevře okno Cesta veřejnou dopravou a Upravit podrobnosti tam vede k tomuto formuláři.',
+    'Stejný formulář se otevře z obou stran: přes Upravit v rezervaci, kterou otevře řádek v plánu dne, i tužkou na kartě na kartě Doprava. Naplánované spojení veřejnou dopravou se také otevře jako rezervace; Změnit trasu tam hledá znovu a Upravit vede k tomuto formuláři.',
   'help.guide.edit-transport.tip.2':
     'Přesun dopravy na jiný den formulář vůbec nepotřebuje: přetáhněte její řádek z jedné karty dne na druhou.',
   // transport-on-map

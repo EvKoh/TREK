@@ -42,8 +42,10 @@ const forecast = (page: Page) => panel(page).getByText(/^Forecast for /)
 const chips = (page: Page) => panel(page).locator('svg.lucide-sunrise').locator('xpath=ancestor::div[2]')
 /** The day's reservations block. */
 const bookings = (page: Page) => panel(page).getByText('Reservations', { exact: true }).locator('xpath=..')
-/** One booking row: the title sits in a wrapper, the row is its grandparent. */
-const bookingRow = (page: Page, title: string) => panel(page).getByText(title).locator('xpath=ancestor::div[2]')
+/** One booking row: on the desktop a button that opens the booking, named with its title. */
+const bookingRow = (page: Page, title: string) => panel(page).getByRole('button', { name: title })
+/** The booking a row opens, named by its title. */
+const bookingDetail = (page: Page, title: string) => page.getByRole('dialog', { name: title })
 
 /**
  * Select a day by its title rather than by the middle of its header: a day with
@@ -305,8 +307,15 @@ const SCRIPTS: Record<string, GuideScript> = {
       only(bookings),
       only(p => bookingRow(p, EVENING_WALK)),
       only(p => bookingRow(p, 'Nozomi 21')),
-      // Only pointed at: clicking it would leave the plan for the Bookings tab.
-      only(p => p.getByRole('button', { name: 'Bookings', exact: true })),
+      {
+        // A row opens its booking over the plan; Edit at its foot is where it changes.
+        prepare: async p => {
+          await bookingRow(p, 'Nozomi 21').click()
+          await expect(bookingDetail(p, 'Nozomi 21')).toBeVisible()
+          await settle(p)
+        },
+        target: p => bookingDetail(p, 'Nozomi 21').getByRole('button', { name: 'Edit', exact: true }),
+      },
     ],
   },
 }

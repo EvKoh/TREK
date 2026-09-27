@@ -1,7 +1,7 @@
 import { test, expect, type Locator, type Page } from '@playwright/test'
 import { captureGuide, captureHero, settle, typeInto, VIEWPORT, type GuideScript } from './guide'
 import { seededTrip, ensureMapFixtures } from './fixtures'
-import { openTrip, openTripOnDay, selectDay, modal } from './trip-shared'
+import { openTrip, openTripOnDay, selectDay, modal, dialog } from './trip-shared'
 import { ensureDawarichConnection, disconnectDawarich } from './external'
 import { tripMapContext, tripMapGuides } from '../../src/help/contexts/tripMap'
 import type { HelpGuide } from '../../src/help/types'
@@ -367,7 +367,8 @@ const SCRIPTS: Record<string, GuideScript> = {
           await settle(p)
         },
       },
-      { target: p => modal(p).getByPlaceholder('e.g. Eiffel Tower').locator('xpath=ancestor::form[1]') },
+      // The whole dialog: the name is typed in its head band, outside the form.
+      { target: p => dialog(p) },
       {
         target: p => modal(p).getByRole('button', { name: 'Add', exact: true }),
         act: async p => {
@@ -413,7 +414,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await typeInto(p, modal(p).getByPlaceholder('e.g. Eiffel Tower'), NEW_PLACE)
           await settle(p)
         },
-        target: p => modal(p).getByPlaceholder('e.g. Eiffel Tower').locator('xpath=ancestor::form[1]'),
+        target: p => dialog(p),
       },
       {
         target: p => modal(p).getByRole('button', { name: 'Add', exact: true }),

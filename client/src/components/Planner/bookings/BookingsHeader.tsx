@@ -48,6 +48,9 @@ export interface BookingsHeaderProps {
   onByType: () => void
   showContext: boolean
   onShowContext: () => void
+  transitApart: boolean
+  /** Set only where the choice changes something: cards grouped by status, with transit to place. */
+  onTransitApart?: () => void
   viewIsDefault: boolean
   onResetView: () => void
 }
@@ -89,13 +92,19 @@ export default function BookingsHeader(p: BookingsHeaderProps) {
               className="min-w-0 flex-1 border-0 bg-transparent text-content outline-none placeholder:text-content-faint"
               style={fs(13, 'body')}
             />
-            {p.query && <button type="button" onClick={() => p.onQuery('')} aria-label={t('common.clear')} className="flex-none text-content-faint hover:text-content"><X size={13} /></button>}
+            {p.query && (
+              <Tooltip label={t('common.clear')}>
+                <button type="button" onClick={() => p.onQuery('')} aria-label={t('common.clear')} className="flex-none text-content-faint hover:text-content"><X size={13} /></button>
+              </Tooltip>
+            )}
           </label>
           {p.filtering && (
-            <button type="button" onClick={p.onResetFilters} title={t('reservations.resetFilters')}
-              className="inline-flex h-9 flex-none items-center gap-1 rounded-[10px] bg-surface-card px-2.5 font-geist font-semibold tabular-nums text-content-muted hover:text-content" style={fs(12)}>
-              {t('reservations.results', { shown: p.shown, total: p.total })}<X size={12} />
-            </button>
+            <Tooltip label={t('reservations.resetFilters')}>
+              <button type="button" onClick={p.onResetFilters}
+                className="inline-flex h-9 flex-none items-center gap-1 rounded-[10px] bg-surface-card px-2.5 font-geist font-semibold tabular-nums text-content-muted hover:text-content" style={fs(12)}>
+                {t('reservations.results', { shown: p.shown, total: p.total })}<X size={12} />
+              </button>
+            </Tooltip>
           )}
           <FilterMenu {...p} />
           <div className="inline-flex flex-none rounded-[10px] bg-surface-card p-[3px]" role="group" aria-label={t('reservations.view.label')}>
@@ -203,7 +212,7 @@ function FilterMenu(p: BookingsHeaderProps) {
                 {p.members.map(m => {
                   const on = p.activeTravelers.has(m.id)
                   return (
-                    <button key={m.id} type="button" onClick={() => p.onToggleTraveler(m.id)} aria-pressed={on} title={m.username}
+                    <button key={m.id} type="button" onClick={() => p.onToggleTraveler(m.id)} aria-pressed={on}
                       className={`flex items-center gap-1.5 rounded-full border py-[3px] pl-[3px] pr-2.5 ${on ? 'border-[color:var(--text-primary)] text-content' : 'border-edge-faint text-content-muted hover:text-content'}`} style={fs(12, 'body')}>
                       <span className="grid h-5 w-5 flex-none place-items-center overflow-hidden rounded-full bg-surface-tertiary font-bold" style={fs(9)}>
                         {m.avatar_url ? <img src={m.avatar_url} alt="" className="h-full w-full object-cover" /> : m.username?.[0]?.toUpperCase()}
@@ -257,6 +266,12 @@ function ViewOptions(p: BookingsHeaderProps) {
               {groups.map(([g, label]) => (
                 <PopoverItem key={g} icon={g === 'day' ? <CalendarDays size={14} /> : g === 'type' ? <Tag size={14} /> : <Layers size={14} />} label={label} active={p.group === g} onClick={() => p.onGroup(g)} />
               ))}
+              {p.onTransitApart && (
+                <>
+                  <div style={POPOVER_DIVIDER} />
+                  <SwitchRow label={t('reservations.transitApart')} on={p.transitApart} onToggle={p.onTransitApart} />
+                </>
+              )}
               <div style={POPOVER_DIVIDER} />
               <div style={POPOVER_CAPTION}>{t('reservations.sort.label')}</div>
               {sorts.map(([s, label]) => (

@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'zh-TW' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': '說明與文件',
+  'help.search': '搜尋文件…',
+  'help.contents': '目錄',
+  'help.noResults': '沒有符合的頁面。',
+  'help.errorTitle': '無法載入此頁面',
+  'help.errorBody': '說明內容取自 TREK Wiki。請檢查網路連線後再試一次。',
 
   // center
   'help.center.button': '此頁面的說明',
@@ -858,7 +858,7 @@ const help: TranslationStrings = {
   'help.ctx.settings-display.bullet.2':
     '「Travel & map」：訂票路線一律顯示在地圖上、探索地點的小按鈕、從住宿地點最佳化路線、模糊預訂代碼，以及為預訂路線加上標籤。',
   'help.ctx.settings-display.bullet.3': '「啟動」：TREK 開啟時是進入儀表板還是進行中的旅行，以及旅行的哪個分頁先顯示。',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': '外觀',
   'help.ctx.settings-appearance.summary':
     'TREK 在這個帳戶上的樣子：淺色還是深色、強調色、玻璃效果和動態效果、文字大小，以及儀表板顯示哪些小工具。一切即時生效，在你登入的每台裝置上都一樣。',
   'help.ctx.settings-appearance.bullet.1':
@@ -1879,9 +1879,9 @@ const help: TranslationStrings = {
   'help.guide.place-booking.step.1':
     '開啟該預訂所屬的停靠點。卡片顯示一條橫條，上面是「已確認」或「待確認」以及預訂的名稱。',
   'help.guide.place-booking.step.2': '這條橫條帶著「日期」「時間」和「預訂碼」，以及這筆預訂的任何備註。',
-  'help.guide.place-booking.step.3': '點選這條橫條。該預訂自己的表單就在上面開啟。',
+  'help.guide.place-booking.step.3': '點選這條橫條。預訂會在地圖上方開啟。',
   'help.guide.place-booking.step.4':
-    '「關聯日程分配」就是把預訂掛到停靠點上的欄位，這裡它已經寫著這個停靠點。再把表單關掉。',
+    '預訂底部的「編輯」會開啟它自己的表單。那裡的「關聯日程分配」就是把預訂掛到停靠點上的欄位，這裡它已經寫著這個停靠點。再把表單關掉。',
   'help.guide.place-booking.step.5':
     '為某個停靠點新建預訂要從天數欄開始：滑鼠移到停靠點上，點選它末尾的 +。表單以「新建預訂」開啟，並已經關聯到它。',
   'help.guide.place-booking.result': '預訂掛在停靠點上：它在卡片裡、在當天裡，它的檔案也列在這裡的「檔案」下面。',
@@ -2170,7 +2170,8 @@ const help: TranslationStrings = {
     '一列顯示這是哪種預訂、它的名稱，如果它屬於某個停靠點，就在一個圓點之後寫出那個停靠點。它的時間在右端。',
   'help.guide.day-bookings.step.3':
     '顏色說明一筆預訂處在什麼狀態：綠色的列已確認，琥珀色的還在待確認。飯店不在這個清單裡，它們在下面有自己的區塊。',
-  'help.guide.day-bookings.step.4': '這個清單只把預訂讀出來。預訂要在「預訂」分頁裡建立和變更。',
+  'help.guide.day-bookings.step.4':
+    '點選一列，預訂就會開啟。它底部的「編輯」用來修改；新的預訂要在「預訂」分頁裡建立。',
   'help.guide.day-bookings.result': '日期落在這一天的一切，以及掛在它某個停靠點上的一切，都在這一個清單裡。',
   'help.guide.day-bookings.tip.1':
     '一筆預訂按它自己的日期落到某一天上。在「預訂」分頁裡改掉日期，它就自己挪到另一天去。',
@@ -2639,12 +2640,12 @@ const help: TranslationStrings = {
   'help.guide.create-booking.goal': '把一家餐廳、一場活動、一個旅遊團、一個車位或別的什麼，手動放進這次旅行。',
   'help.guide.create-booking.step.1': '點選這一欄右上角的「手動新增」。「新建預訂」開啟。',
   'help.guide.create-booking.step.2':
-    '從表單頂部「出行成員」旁邊的清單裡選「預訂型別」。這一欄做的六類是「住宿」「餐廳」「活動」「旅遊團」「停車」和「其他」，表單隨選擇而變：只有「住宿」會把日期換成一段日子的範圍。',
+    '點選表單頭部標題下方的類型標籤，選擇「預訂型別」。這一欄做的六類是「住宿」「餐廳」「活動」「旅遊團」「停車」和「其他」，表單隨選擇而變：只有「住宿」會把日期換成一段日子的範圍。',
   'help.guide.create-booking.step.3': '填「標題」。這是表單唯一堅持要的欄位，在它有內容之前「新增」一直是灰的。',
   'help.guide.create-booking.step.4':
     '設定「日期」和「開始時間」，如果這筆預訂有結束，再設「結束日期」和「結束時間」。日曆只給出旅行之內的日子；結束不晚於開始時，會用紅色這樣提示並擋住「新增」。',
   'help.guide.create-booking.step.5':
-    '填入確認單上的「預訂碼」，並設定「狀態」。是「待確認」還是「已確認」，決定卡片落進兩個區中的哪一個。',
+    '填入確認單上的「預訂碼」。類型旁邊的狀態標籤顯示「待確認」；點一下切換為「已確認」，再點一下切回來，這決定卡片落進兩個區中的哪一個。',
   'help.guide.create-booking.step.6': '點選「新增」。',
   'help.guide.create-booking.result':
     '這筆預訂成了它那個區裡的一張卡片，帶著型別篩選片、日期和預訂碼，旅行中其他所有人也會看到它出現。',
@@ -2685,7 +2686,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': '說明一筆預訂是給誰的',
   'help.guide.booking-travelers.goal': '標出一筆預訂涵蓋的出行成員，然後只看他們的。',
   'help.guide.booking-travelers.step.1':
-    '用鉛筆開啟這筆預訂。「出行成員」在表單頂部，「預訂型別」旁邊，只要這筆預訂上還沒有人，它就顯示「指派成員」。',
+    '用鉛筆開啟這筆預訂。「出行成員」在「預訂碼」旁邊，只要這筆預訂上還沒有人，它就顯示「指派成員」。',
   'help.guide.booking-travelers.step.2':
     '點它，選出這筆預訂是給誰的那些人；有名字的「訪客」也在清單裡。被選中的人會得到一個勾，頭像也會出現在這個欄位中。再點一次名字就取消。',
   'help.guide.booking-travelers.step.3': '點選「更新」。',
@@ -2762,7 +2763,7 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.goal': '改正一個時間、補上晚到的預訂碼，或者把一筆預訂從「待確認」挪到「已確認」。',
   'help.guide.edit-booking.step.1': '點選卡片頭部的鉛筆。「編輯預訂」帶著這筆預訂知道的一切開啟。',
   'help.guide.edit-booking.step.2': '改該改的地方，這裡是業者終於發來的那個「預訂碼」。',
-  'help.guide.edit-booking.step.3': '把「狀態」設為「已確認」。',
+  'help.guide.edit-booking.step.3': '點選表單頭部的「待確認」標籤。它會變成「已確認」。',
   'help.guide.edit-booking.step.4': '點選「更新」。',
   'help.guide.edit-booking.result':
     '卡片挪了位置：一筆已確認的預訂立在「已確認」區裡，前面是一個綠點，旅行中的每個人都看得到它挪動。',
@@ -3017,17 +3018,19 @@ const help: TranslationStrings = {
   // change-transit-route
   'help.guide.change-transit-route.title': '開啟並變更一條規劃好的路線',
   'help.guide.change-transit-route.goal': '一站一站地讀這條路線，給它改名，或者重新查一次路線。',
-  'help.guide.change-transit-route.step.1': '在「交通」標籤頁裡，規劃好的路線在「自動大眾運輸」下面。點選卡片。',
+  'help.guide.change-transit-route.step.1':
+    '在「交通」標籤頁裡，規劃好的路線在「自動大眾運輸」下面。點選卡片，這條路線會以預訂的形式開啟。',
   'help.guide.change-transit-route.step.2':
     '「行程時間」「轉乘次數」和「步行」在最上面。它們下面的「行程」一站一站地走完這條路線，連月臺和路線之間的步行都在。',
-  'help.guide.change-transit-route.step.3': '「變更路線」重新跑一次搜尋，這條路線的兩端和它的日期都已經填好。',
+  'help.guide.change-transit-route.step.3':
+    '預訂底部的「變更路線」重新跑一次搜尋，這條路線的兩端和它的日期都已經填好。',
   'help.guide.change-transit-route.step.4':
-    '選另一條路線並點選「加入當日行程」，它就頂替舊的那條。而「變更路線」旁邊的「編輯詳細資料」開啟的是普通的交通表單，「預訂碼」、「狀態」、出行成員和檔案都在那裡。',
+    '選另一條路線並點選「加入當日行程」，它就頂替舊的那條。而同一條操作列另一端的「編輯」開啟的是普通的交通表單，「預訂碼」、「狀態」、出行成員、備註和檔案都在那裡。',
   'help.guide.change-transit-route.result':
     '這趟行程帶上了新的行程內容，它在「交通」標籤頁裡的卡片顯示新的路線和時間。',
   'help.guide.change-transit-route.tip.1':
-    '行程的標題只是文字：旁邊的鉛筆給它改名，不會動到路線。下面的「備註」接受 markdown，並有「編輯」和「預覽」兩個標籤。',
-  'help.guide.change-transit-route.tip.2': '行程底部的「刪除」把這條路線從這趟旅行裡拿走；那一天仍然保留它的地點。',
+    '預訂頭部的標題可以替這條路線改名，不會動到路線本身。它的備註在「編輯」後面的交通表單裡填寫。',
+  'help.guide.change-transit-route.tip.2': '預訂底部的「刪除」把這條路線從這趟旅行裡拿走；那一天仍然保留它的地點。',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': '變更某一段的交通方式',
   'help.guide.leg-travel-mode.goal': '在其餘路段都開車的一天裡，把其中一段改成步行，或者把那一段交給大眾運輸搜尋。',
@@ -3046,17 +3049,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': '變更或刪除一段交通',
   'help.guide.edit-transport.goal': '改一個時間、一個月臺或一個預訂碼，或者把這趟交通從旅行裡去掉。',
-  'help.guide.edit-transport.step.1': '在日程裡，一段交通是地點之間一條有顏色的列。點選它。',
+  'help.guide.edit-transport.step.1':
+    '在日程裡，一段交通是地點之間一條有顏色的列。點選它，它的預訂就會開啟，顯示時間、路線和「預訂碼」。',
   'help.guide.edit-transport.step.2':
-    '表單就是建立它的那一個，標題列寫著「編輯交通」。什麼都能改：型別、路線、日期和時間、「預訂碼」、「狀態」。',
+    '預訂底部的「編輯」開啟建立它的那個表單，標題列寫著「編輯交通」。什麼都能改：型別、路線、日期和時間、「預訂碼」、「狀態」。',
   'help.guide.edit-transport.step.3':
     '航班的路線是一串機場，火車的路線是一串車站。「新增中轉站」在中間再放一個，每一段都保留自己的時間和自己的航班號或車次。',
   'help.guide.edit-transport.step.4':
-    '點選「更新」。要把這段交通徹底移除，用它在「交通」標籤頁那張卡片上的垃圾桶，並確認。',
+    '點選「更新」。要把這段交通徹底移除，用它預訂底部的「刪除」，或它在「交通」標籤頁那張卡片上的垃圾桶，並確認。',
   'help.guide.edit-transport.result':
     '改動在這段交通出現的每個地方都會顯示：「交通」標籤頁、它所在的那一天，以及它在地圖上的線。',
   'help.guide.edit-transport.tip.1':
-    '同一個表單從兩邊都能開啟：「交通」標籤頁卡片上的鉛筆，和日程裡這段交通自己的列。規劃好的大眾運輸路線是例外：它的列開啟的是行程檢視，那裡的「編輯詳細資料」才通向這個表單。',
+    '同一個表單從兩邊都能開啟：透過日程中某一列開啟的預訂裡的「編輯」，以及「交通」標籤頁卡片上的鉛筆。規劃好的大眾運輸路線同樣以預訂的形式開啟；那裡的「變更路線」會重新搜尋，「編輯」則通向這個表單。',
   'help.guide.edit-transport.tip.2': '把一段交通挪到另一天根本不需要表單：把它的列從一張日期卡片拖到下一張。',
   // transport-on-map
   'help.guide.transport-on-map.title': '把一段交通畫到地圖上',

@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'id' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Bantuan & Dokumentasi',
+  'help.search': 'Cari di dokumentasi…',
+  'help.contents': 'Daftar isi',
+  'help.noResults': 'Tidak ada halaman yang cocok.',
+  'help.errorTitle': 'Halaman ini tidak dapat dimuat',
+  'help.errorBody': 'Konten bantuan diambil dari wiki TREK. Periksa koneksi Anda lalu coba lagi.',
 
   // center
   'help.center.button': 'Bantuan untuk layar ini',
@@ -1042,7 +1042,7 @@ const help: TranslationStrings = {
     '“Travel & map”: rute pemesanan selalu di peta, pil Jelajahi tempat, optimalisasi rute dari akomodasi Anda, kode pemesanan yang disamarkan, dan rute pemesanan berlabel.',
   'help.ctx.settings-display.bullet.3':
     '“Mulai”: apakah TREK membuka dasbor atau perjalanan aktif, dan tab perjalanan mana yang muncul pertama.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Tampilan',
   'help.ctx.settings-appearance.summary':
     'Tampilan TREK di akun ini: terang atau gelap, warna aksen, kaca dan gerakan, ukuran teks, dan widget mana yang ditampilkan dasbor. Semuanya berlaku langsung, di setiap perangkat tempat Anda masuk.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2316,9 +2316,9 @@ const help: TranslationStrings = {
     'Buka perhentian yang memiliki pemesanan itu. Kartu menampilkan sebuah bilah dengan “Dikonfirmasi” atau “Tertunda” dan nama pemesanannya.',
   'help.guide.place-booking.step.2':
     'Bilah itu membawa “Tanggal”, “Waktu” dan “Kode Pemesanan”, serta catatan apa pun yang dimiliki pemesanan itu.',
-  'help.guide.place-booking.step.3': 'Klik bilahnya. Formulir pemesanan itu sendiri terbuka di atasnya.',
+  'help.guide.place-booking.step.3': 'Klik bilahnya. Pemesanan itu terbuka di atas peta.',
   'help.guide.place-booking.step.4':
-    '“Hubungkan ke jadwal harian” adalah yang menyematkan sebuah pemesanan ke sebuah perhentian, dan di sini sudah menyebut perhentian ini. Tutup formulirnya lagi.',
+    '“Sunting” di kaki pemesanan membuka formulirnya sendiri. “Hubungkan ke jadwal harian” di sana adalah yang menyematkan sebuah pemesanan ke sebuah perhentian, dan di sini sudah menyebut perhentian ini. Tutup formulirnya lagi.',
   'help.guide.place-booking.step.5':
     'Pemesanan baru untuk sebuah perhentian dimulai di kolom hari: arahkan kursor ke perhentian itu dan klik tanda + di ujungnya. Formulir terbuka sebagai “Reservasi Baru”, sudah terhubung dengannya.',
   'help.guide.place-booking.result':
@@ -2685,7 +2685,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Warnanya mengatakan posisi sebuah pemesanan: baris hijau sudah dikonfirmasi, baris amber masih tertunda. Hotel tidak ada dalam daftar ini, mereka punya blok sendiri di bawah.',
   'help.guide.day-bookings.step.4':
-    'Daftar ini hanya membacakan pemesanan. Sebuah pemesanan dibuat dan diubah di tab “Pemesanan”.',
+    'Klik sebuah baris dan pemesanan itu terbuka. “Sunting” di kakinya mengubahnya; pemesanan baru dibuat di tab “Pemesanan”.',
   'help.guide.day-bookings.result':
     'Semua yang bertanggal pada hari itu, dan semua yang menggantung pada salah satu perhentiannya, ada dalam satu daftar ini.',
   'help.guide.day-bookings.tip.1':
@@ -3237,13 +3237,13 @@ const help: TranslationStrings = {
     'Masukkan sebuah restoran, acara, tur, tempat parkir atau apa pun lainnya ke dalam perjalanan dengan tangan.',
   'help.guide.create-booking.step.1': 'Klik “Pemesanan Manual” di kanan atas tab. “Reservasi Baru” terbuka.',
   'help.guide.create-booking.step.2':
-    'Pilih “Jenis Pemesanan” dari daftar di bagian atas formulir, di samping “Peserta”. “Akomodasi”, “Restoran”, “Acara”, “Tur”, “Parkir” dan “Lainnya” adalah enam jenis yang dibuat tab ini, dan formulirnya berubah mengikuti pilihan: hanya “Akomodasi” yang menukar tanggalnya dengan rentang hari.',
+    'Klik pil jenis di bawah judul, di kepala formulir, lalu pilih “Jenis Pemesanan”. “Akomodasi”, “Restoran”, “Acara”, “Tur”, “Parkir” dan “Lainnya” adalah enam jenis yang dibuat tab ini, dan formulirnya berubah mengikuti pilihan: hanya “Akomodasi” yang menukar tanggalnya dengan rentang hari.',
   'help.guide.create-booking.step.3':
     'Ketik “Judul”. Inilah satu-satunya isian yang diharuskan oleh formulir, dan “Tambah” tetap mati sampai ia terisi.',
   'help.guide.create-booking.step.4':
     'Atur “Tanggal” dan “Waktu mulai”, serta “Tanggal selesai” dan “Waktu selesai” bila pemesanan itu punya akhir. Kalender hanya menawarkan hari di dalam perjalanan, dan akhir yang tidak sesudah awal dikatakan dengan warna merah lalu menghalangi “Tambah”.',
   'help.guide.create-booking.step.5':
-    'Masukkan “Kode Pemesanan” dari konfirmasi dan atur “Status”. “Tertunda” atau “Dikonfirmasi” menentukan di bagian mana dari keduanya kartu itu mendarat.',
+    'Masukkan “Kode Pemesanan” dari konfirmasi. Pil status di samping jenis bertuliskan “Tertunda”; satu klik mengubahnya menjadi “Dikonfirmasi” dan kembali lagi, dan itulah yang menentukan di bagian mana dari keduanya kartu itu mendarat.',
   'help.guide.create-booking.step.6': 'Klik “Tambah”.',
   'help.guide.create-booking.result':
     'Pemesanan itu menjadi sebuah kartu di bagiannya dengan chip jenisnya, tanggalnya dan kodenya, dan semua orang lain di perjalanan melihatnya muncul.',
@@ -3293,7 +3293,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Menyebut untuk siapa sebuah pemesanan dibuat',
   'help.guide.booking-travelers.goal': 'Tandai peserta yang dicakup sebuah pemesanan, lalu lihat hanya milik mereka.',
   'help.guide.booking-travelers.step.1':
-    'Buka pemesanan itu dengan pensil. “Peserta” ada di bagian atas formulir, di samping “Jenis Pemesanan”, dan bertuliskan “Tetapkan peserta” selama belum ada siapa pun di pemesanan itu.',
+    'Buka pemesanan itu dengan pensil. “Peserta” ada di samping “Kode Pemesanan”, dan bertuliskan “Tetapkan peserta” selama belum ada siapa pun di pemesanan itu.',
   'help.guide.booking-travelers.step.2':
     'Klik itu dan pilih orang-orang yang menjadi tujuan pemesanan ini; “Tamu” yang bernama juga ada di daftar. Yang terpilih mendapat centang dan avatarnya muncul di kolom itu. Klik namanya lagi untuk melepasnya.',
   'help.guide.booking-travelers.step.3': 'Klik “Perbarui”.',
@@ -3390,7 +3390,7 @@ const help: TranslationStrings = {
     'Klik pensil di kepala kartu. “Edit Reservasi” terbuka dengan segala yang diketahui pemesanan itu.',
   'help.guide.edit-booking.step.2':
     'Ubah apa yang perlu diubah, di sini “Kode Pemesanan” yang akhirnya dikirim operatornya.',
-  'help.guide.edit-booking.step.3': 'Letakkan “Status” pada “Dikonfirmasi”.',
+  'help.guide.edit-booking.step.3': 'Klik pil “Tertunda” di kepala formulir. Pil itu berubah menjadi “Dikonfirmasi”.',
   'help.guide.edit-booking.step.4': 'Klik “Perbarui”.',
   'help.guide.edit-booking.result':
     'Kartu itu berpindah: pemesanan yang dikonfirmasi berdiri di bagian “Dikonfirmasi” di belakang sebuah titik hijau, dan semua orang di perjalanan melihatnya berpindah.',
@@ -3684,19 +3684,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Baca koneksi perhentian demi perhentian, ganti namanya, atau cari rutenya lagi.',
   'help.guide.change-transit-route.step.1':
-    'Di tab “Transportasi”, koneksi yang direncanakan berada di bawah “Transportasi umum otomatis”. Klik kartunya.',
+    'Di tab “Transportasi”, koneksi yang direncanakan berada di bawah “Transportasi umum otomatis”. Klik kartunya; koneksi itu terbuka sebagai pemesanan.',
   'help.guide.change-transit-route.step.2':
     '“Durasi”, “Transit” dan “Jalan kaki” ada di bagian atas. “Itinerari” di bawahnya menelusuri koneksi perhentian demi perhentian, dengan peron dan jalan kaki di antara jalur.',
   'help.guide.change-transit-route.step.3':
-    '“Ubah rute” menjalankan pencarian lagi, sudah terisi dengan kedua ujung koneksi ini dan harinya.',
+    '“Ubah rute” di kaki pemesanan menjalankan pencarian lagi, sudah terisi dengan kedua ujung koneksi ini dan harinya.',
   'help.guide.change-transit-route.step.4':
-    'Pilih koneksi lain dan klik “Tambahkan ke hari”; koneksi itu mengambil tempat yang lama. “Sunting detail”, di samping “Ubah rute”, justru membuka formulir transportasi biasa, tempat “Kode Pemesanan”, “Status”, peserta dan file berada.',
+    'Pilih koneksi lain dan klik “Tambahkan ke hari”; koneksi itu mengambil tempat yang lama. “Sunting”, di ujung lain bilah yang sama, justru membuka formulir transportasi biasa, tempat “Kode Pemesanan”, “Status”, peserta, catatan dan file berada.',
   'help.guide.change-transit-route.result':
     'Perjalanan itu membawa itinerari baru, dan kartunya di tab “Transportasi” menampilkan jalur dan waktu yang baru.',
   'help.guide.change-transit-route.tip.1':
-    'Judul perjalanan hanyalah teks: pensil di sampingnya mengganti namanya tanpa menyentuh rutenya. “Catatan” di bawahnya menerima markdown dan punya tab “Sunting” dan “Pratinjau”.',
+    'Judul di kepala pemesanan mengganti nama koneksi tanpa menyentuh rutenya. Catatannya ditulis di formulir transportasi di balik “Sunting”.',
   'help.guide.change-transit-route.tip.2':
-    '“Hapus” di kaki tampilan perjalanan mengeluarkan koneksi itu dari perjalanan; hari itu tetap punya perhentiannya.',
+    '“Hapus” di kaki pemesanan mengeluarkan koneksi itu dari perjalanan; hari itu tetap punya perhentiannya.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Mengubah cara satu ruas ditempuh',
   'help.guide.leg-travel-mode.goal':
@@ -3722,17 +3722,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Perbaiki waktu, peron atau kode pemesanan, atau keluarkan perjalanan itu dari rencana perjalanan.',
   'help.guide.edit-transport.step.1':
-    'Di rencana hari, sebuah transportasi adalah baris berwarna di antara perhentian. Klik baris itu.',
+    'Di rencana hari, sebuah transportasi adalah baris berwarna di antara perhentian. Klik baris itu; pemesanannya terbuka dengan waktu, rute dan “Kode Pemesanan”.',
   'help.guide.edit-transport.step.2':
-    'Formulirnya adalah formulir yang membuatnya, dengan “Edit transportasi” di bilah judulnya. Semuanya bisa diubah: jenisnya, rutenya, hari dan waktunya, “Kode Pemesanan”, “Status”.',
+    '“Sunting” di kaki pemesanan membuka formulir yang membuatnya, dengan “Edit transportasi” di bilah judulnya. Semuanya bisa diubah: jenisnya, rutenya, hari dan waktunya, “Kode Pemesanan”, “Status”.',
   'help.guide.edit-transport.step.3':
     'Rute sebuah penerbangan adalah rantai bandara, rute kereta rantai stasiun. “Tambah persinggahan” menaruh satu lagi di antaranya, dan setiap ruas menyimpan waktunya sendiri dan nomor penerbangan atau nomor keretanya sendiri.',
   'help.guide.edit-transport.step.4':
-    'Klik “Perbarui”. Untuk menghapus transportasi sama sekali, pakai tempat sampah pada kartunya di tab “Transportasi” dan konfirmasikan.',
+    'Klik “Perbarui”. Untuk menghapus transportasi sama sekali, pakai “Hapus” di kaki pemesanannya, atau tempat sampah pada kartunya di tab “Transportasi”, lalu konfirmasikan.',
   'help.guide.edit-transport.result':
     'Perubahan tampak di semua tempat transportasi itu muncul: tab “Transportasi”, hari perjalanannya berlangsung, dan garisnya di peta.',
   'help.guide.edit-transport.tip.1':
-    'Formulir yang sama terbuka dari kedua sisi, pensil pada kartu di tab “Transportasi” dan baris transportasi itu sendiri di rencana hari. Koneksi transportasi umum yang direncanakan adalah pengecualian: barisnya membuka tampilan perjalanan, dan “Sunting detail” di sana menuju formulir ini.',
+    'Formulir yang sama terbuka dari kedua sisi: lewat “Sunting” di pemesanan yang dibuka oleh sebuah baris di rencana hari, dan lewat pensil pada kartu di tab “Transportasi”. Koneksi transportasi umum yang direncanakan juga terbuka sebagai pemesanan; “Ubah rute” di sana mencari lagi, dan “Sunting” menuju formulir ini.',
   'help.guide.edit-transport.tip.2':
     'Memindahkan transportasi ke hari lain sama sekali tidak memerlukan formulir: seret barisnya dari satu kartu hari ke kartu berikutnya.',
   // transport-on-map

@@ -6,5 +6,6 @@ const transport: TranslationStrings = {
   'transport.modalTitle.edit': 'Nəqliyyatı redaktə et',
   'transport.title': 'Nəqliyyat',
   'transport.addManual': 'Nəqliyyat',
+  'transport.empty': 'Hələ nəqliyyat yoxdur',
 };
 export default transport;

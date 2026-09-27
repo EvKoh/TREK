@@ -1,4 +1,4 @@
-// FE-PLANNER-DAYPLAN-001 to FE-PLANNER-DAYPLAN-155
+// FE-PLANNER-DAYPLAN-001 to FE-PLANNER-DAYPLAN-231
 import { render, screen, waitFor, fireEvent, within } from '../../../tests/helpers/render'
 import userEvent from '@testing-library/user-event'
 import { http, HttpResponse } from 'msw'
@@ -164,12 +164,23 @@ function dragRow(el: HTMLElement | null) {
 }
 
 /** Transport and note rows share the same card margin; legs are not draggable. */
+/** The day head's "+" opens a menu of what the day can be given; this picks one entry. */
+async function pickDayAdd(user: ReturnType<typeof userEvent.setup>, entry: string, dayTitle = 'Day 1') {
+  await user.click(within(dayHeader(dayTitle)).getByRole('button', { name: 'Add to day' }))
+  await user.click(await screen.findByRole('button', { name: entry }))
+}
+
+/** The day head's expand/collapse chevron. */
+function dayChevron(dayTitle = 'Day 1') {
+  return within(dayHeader(dayTitle)).getByRole('button', { name: /^(Collapse|Expand)$/ })
+}
+
 function cardRow(el: HTMLElement | null) {
-  return el!.closest('[style*="margin: 1px 8px"]') as HTMLElement
+  return el!.closest('[data-dp="transport-row"], [data-dp="note-row"]') as HTMLElement
 }
 
 function lockToggle(row: HTMLElement) {
-  return row.querySelector('[style*="cursor: pointer"][style*="position: relative"]') as HTMLElement
+  return row.querySelector('[data-dp="lock"]') as HTMLElement
 }
 
 /** The context menu is portalled to body and shares labels with the route tools. */
@@ -374,11 +385,7 @@ describe('DayPlanSidebar', () => {
     const assignment = buildAssignment({ id: 99, day_id: 10, order_index: 0, place })
     const assignments = { '10': [assignment] }
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], places: [place], assignments })} />)
-    // The chevron button immediately follows the "Add Note" button (which has a title attribute)
-    const addNoteBtn = screen.getByLabelText('Add Note')
-    const chevron = addNoteBtn.nextElementSibling as HTMLButtonElement
-    expect(chevron).toBeTruthy()
-    await user.click(chevron)
+    await user.click(dayChevron())
     expect(screen.queryByText('Eiffel Tower')).not.toBeInTheDocument()
   })
 
@@ -389,7 +396,7 @@ describe('DayPlanSidebar', () => {
     const assignment = buildAssignment({ id: 99, day_id: 10, order_index: 0, place })
     const assignments = { '10': [assignment] }
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], places: [place], assignments })} />)
-    const getChevron = () => screen.getByLabelText('Add Note').nextElementSibling as HTMLButtonElement
+    const getChevron = () => dayChevron()
     await user.click(getChevron()) // collapse
     expect(screen.queryByText('Eiffel Tower')).not.toBeInTheDocument()
     await user.click(getChevron()) // re-expand
@@ -477,7 +484,7 @@ describe('DayPlanSidebar', () => {
     const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
     const onPlanTransit = vi.fn()
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], onPlanTransit })} />)
-    await user.click(screen.getByLabelText('Public transit'))
+    await pickDayAdd(user, 'Public transit')
     expect(onPlanTransit).toHaveBeenCalledWith(10)
   })
 
@@ -555,7 +562,7 @@ describe('DayPlanSidebar', () => {
     expect(screen.getByText(/Platform 2/)).toBeInTheDocument()
     // The day's own chevron carries the same accessible name, so pick the one
     // that is not in the day's action block.
-    const rowCollapse = screen.getAllByLabelText('Collapse').find(el => !el.closest('.dp-day-actions'))!
+    const rowCollapse = screen.getAllByLabelText('Collapse').find(el => !el.closest('.dp-day-tools'))!
     await user.click(rowCollapse)
     expect(screen.queryByText('Alexanderplatz')).not.toBeInTheDocument()
   })
@@ -912,7 +919,7 @@ describe('DayPlanSidebar', () => {
       days: [day], places: [place1, place2], assignments: assigns, selectedDayId: 10,
     })} />)
     // The ExternalLink button is the Google Maps icon-only button (sibling of Optimize button)
-    const routeSection = document.querySelector('[style*="flex-direction: column"]')
+    const routeSection = document.querySelector('[data-dp="route-tools"]')
     const externalLinkBtn = screen.getAllByRole('button').find(btn => {
       const parent = btn.closest('[style*="flex"]')
       return btn.querySelector('svg') && !btn.textContent?.trim() && parent?.textContent?.includes('optimize')
@@ -1062,14 +1069,13 @@ describe('DayPlanSidebar', () => {
     // Click on the PlaceAvatar wrapper (the lock toggle div) — it's a div with cursor: pointer that wraps the avatar
     const placeEl = screen.getByText('Arc de Triomphe')
     // The lock div is the parent of PlaceAvatar, which is a sibling of the GripVertical div
-    const row = placeEl.closest('[style*="display: flex"][style*="gap: 8"]')
-    const lockDiv = row?.querySelector('[style*="cursor: pointer"][style*="position: relative"]')
+    const row = placeEl.closest('.dp-row')
+    const lockDiv = row?.querySelector('[data-dp="lock"]')
     if (lockDiv) {
       await user.click(lockDiv as HTMLElement)
-      // After lock: the row should have red border
+      // After lock: the row takes the danger tint
       await waitFor(() => {
-        const rowEl = placeEl.closest('[style*="border-left"]')
-        expect(rowEl).toBeTruthy()
+        expect((placeEl.closest('.dp-row') as HTMLElement).style.background).toContain('--danger')
       })
     }
   })
@@ -1286,8 +1292,7 @@ describe('DayPlanSidebar', () => {
     const user = userEvent.setup()
     const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day] })} />)
-    const addNoteBtn = screen.getByLabelText('Add Note')
-    await user.click(addNoteBtn)
+    await pickDayAdd(user, 'Add Note')
     expect(mockDayNotesState.openAddNote).toHaveBeenCalled()
   })
 
@@ -1461,8 +1466,10 @@ describe('DayPlanSidebar', () => {
     expect(document.querySelector('.note-edit-buttons')).toBeNull()
     expect(row.querySelectorAll('[style*="position: absolute"]')).toHaveLength(0)
     expect(row.querySelectorAll('.reorder-buttons button')).toHaveLength(2)
-    // Positional, not just by class: the reorder column owns the row's right edge.
-    expect(row.lastElementChild).toHaveClass('reorder-buttons')
+    // Positional, not just by class: the reorder column sits at the row's right edge,
+    // with only the row's "…" after it.
+    expect(row.lastElementChild).toHaveAccessibleName('More options')
+    expect(row.lastElementChild?.previousElementSibling).toHaveClass('reorder-buttons')
   })
 
   it('FE-PLANNER-DAYPLAN-064e: the keyboard reaches the note and opens it with Enter', () => {
@@ -1755,14 +1762,13 @@ describe('DayPlanSidebar', () => {
       days: [day], places: [place], assignments: { '10': [assignment] },
     })} />)
     const placeEl = screen.getByText('Hovered Place')
-    const row = placeEl.closest('[style*="display: flex"][style*="gap: 8"]')
-    const lockDiv = row?.querySelector('[style*="cursor: pointer"][style*="position: relative"]')
+    const row = placeEl.closest('.dp-row')
+    const lockDiv = row?.querySelector('[data-dp="lock"]')
     if (lockDiv) {
       fireEvent.mouseEnter(lockDiv as Element)
       // Lock overlay should appear
       await waitFor(() => {
-        const overlays = document.querySelectorAll('[style*="position: absolute"][style*="inset: 0"]')
-        expect(overlays.length).toBeGreaterThan(0)
+        expect((lockDiv as HTMLElement).querySelector('span.absolute')).toBeTruthy()
       })
     }
   })
@@ -1904,8 +1910,8 @@ describe('DayPlanSidebar', () => {
 
     // Lock the first assignment by clicking its lock area
     const placeEl = screen.getByText('Place Lock')
-    const row = placeEl.closest('[style*="display: flex"][style*="gap: 8"]')
-    const lockDiv = row?.querySelector('[style*="cursor: pointer"][style*="position: relative"]')
+    const row = placeEl.closest('.dp-row')
+    const lockDiv = row?.querySelector('[data-dp="lock"]')
     if (lockDiv) fireEvent.click(lockDiv as Element)
 
     const optimizeBtn = screen.getByRole('button', { name: /optimize/i })
@@ -1989,7 +1995,7 @@ describe('DayPlanSidebar', () => {
 
     // The first note should have a down arrow (not at bottom)
     const noteEl = screen.getByText('Note One')
-    const noteCard = noteEl.closest('[style*="display: flex"][style*="gap: 8"]')
+    const noteCard = noteEl.closest('.dp-row')
     const buttons = noteCard?.querySelectorAll('.reorder-buttons button')
     if (buttons && buttons.length >= 2) {
       await user.click(buttons[1] as HTMLButtonElement) // down arrow
@@ -2030,8 +2036,7 @@ describe('DayPlanSidebar', () => {
     })} />)
 
     // The expanded content wrapper is the div with background: var(--bg-hover) paddingTop:6
-    const expandedArea = document.querySelector('[style*="padding-top: 6"]') ||
-      document.querySelector('[style*="paddingTop: 6"]')
+    const expandedArea = document.querySelector('[data-dp="day-body"]')
 
     if (expandedArea) {
       ;(window as any).__dragData = { placeId: '99' }
@@ -2117,7 +2122,7 @@ describe('DayPlanSidebar', () => {
 
     // Click down arrow on 'Early Place' (a1) — would move it after a2, breaking order
     const earlyEl = screen.getByText('Early Place')
-    const row = earlyEl.closest('[style*="display: flex"][style*="gap: 8"]')
+    const row = earlyEl.closest('.dp-row')
     const reorderBtns = row?.querySelectorAll('.reorder-buttons button')
     if (reorderBtns && reorderBtns.length >= 2) {
       await user.click(reorderBtns[1] as HTMLButtonElement) // down button
@@ -2852,7 +2857,7 @@ describe('DayPlanSidebar', () => {
     localStorage.setItem('day-expanded-1', JSON.stringify([]))
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], places: [place], assignments: { '10': [a] } })} />)
     expect(screen.queryByText('Hidden Place')).not.toBeInTheDocument()
-    await user.click(screen.getByLabelText('Add Note'))
+    await pickDayAdd(user, 'Add Note')
     expect(await screen.findByText('Hidden Place')).toBeInTheDocument()
   })
 
@@ -3057,10 +3062,10 @@ describe('DayPlanSidebar', () => {
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], places: [place], assignments: { '10': [a] }, pushUndo })} />)
     const row = dragRow(screen.getByText('Locked Place'))
     await user.click(lockToggle(row))
-    await waitFor(() => expect(row.style.borderLeftColor).toBe('rgb(220, 38, 38)'))
+    await waitFor(() => expect(row.style.background).toContain('--danger'))
     const undo = pushUndo.mock.calls[0][1] as () => void
     undo()
-    await waitFor(() => expect(dragRow(screen.getByText('Locked Place')).style.borderLeftColor).toBe('transparent'))
+    await waitFor(() => expect(dragRow(screen.getByText('Locked Place')).style.background).not.toContain('--danger'))
   })
 
   it('FE-PLANNER-DAYPLAN-129: optimising a day with fewer than three stops does nothing', async () => {
@@ -3119,7 +3124,7 @@ describe('DayPlanSidebar', () => {
     render(<DayPlanSidebar {...makeDefaultProps({
       days: [day], places: [place], assignments: { '10': [a] }, onAddTransport: vi.fn(), onPlanTransit: vi.fn(),
     })} />)
-    expect(screen.queryByLabelText('Add Note')).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Add to day' })).not.toBeInTheDocument()
     expect(dragRow(screen.getByText('Read only place'))).toBeNull()
     expect(screen.getByText('A note')).toBeInTheDocument()
     // A viewer must not reach the edit modal they could never save (#2249).
@@ -3143,7 +3148,7 @@ describe('DayPlanSidebar', () => {
   // ── Drops onto the expanded day body ─────────────────────────────────────
 
   function expandedBody() {
-    return document.querySelector('[style*="padding-top: 6px"]') as HTMLElement
+    return document.querySelector('[data-dp="day-body"]') as HTMLElement
   }
 
   function dayWithBusAndPlaces() {
@@ -3214,7 +3219,7 @@ describe('DayPlanSidebar', () => {
     fireEvent.dragStart(cardRow(screen.getByText('Airport taxi')), { dataTransfer: emptyDataTransfer })
     fireEvent.dragOver(cardRow(screen.getByText('City bus')), { dataTransfer: emptyDataTransfer })
     // The second day's body is the one holding the bus row.
-    const bodies = document.querySelectorAll('[style*="padding-top: 6px"]')
+    const bodies = document.querySelectorAll('[data-dp="day-body"]')
     fireEvent.drop(bodies[1], { dataTransfer: { getData: vi.fn(() => '') } })
     expect(updateReservation).toHaveBeenCalledWith(1, 501, { day_id: 11, end_day_id: 11 })
   })
@@ -3233,7 +3238,7 @@ describe('DayPlanSidebar', () => {
     mockDayNotesState.dayNotes = { '10': [buildDayNote({ id: 70, day_id: 10, text: 'A note' })] }
     const taxi = buildReservation({ id: 501, type: 'taxi', title: 'Airport taxi', day_id: 10 })
     render(<DayPlanSidebar {...makeDefaultProps({ days, places: [place], assignments, reservations: [taxi] })} />)
-    const target = () => document.querySelectorAll('[style*="padding-top: 6px"]')[1]
+    const target = () => document.querySelectorAll('[data-dp="day-body"]')[1]
 
     fireEvent.dragStart(dragRow(screen.getByText('Place A')), { dataTransfer: emptyDataTransfer })
     fireEvent.drop(target(), { dataTransfer: { getData: vi.fn(() => '') } })
@@ -3295,7 +3300,7 @@ describe('DayPlanSidebar', () => {
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], onAssignToDay })} />)
     const placeholder = screen.getByText('No places planned for this day').parentElement as HTMLElement
     fireEvent.dragOver(placeholder, { dataTransfer: emptyDataTransfer })
-    expect(placeholder.className).toContain('bg-[rgba(17,24,39,0.05)]')
+    expect(placeholder.style.outline).toContain('dashed')
     fireEvent.drop(placeholder, { dataTransfer: { getData: (k: string) => (k === 'placeId' ? '88' : '') } })
     expect(onAssignToDay).toHaveBeenCalledWith(88, 10)
   })
@@ -3456,7 +3461,7 @@ describe('DayPlanSidebar', () => {
     it('FE-PLANNER-DAYPLAN-215: dropped on the day body, it lands between the stops its start falls between', () => {
       const moveAssignment = setup()
       fireEvent.dragStart(dragRow(screen.getByText('Travemuende Strand')), { dataTransfer: emptyDataTransfer })
-      fireEvent.drop(document.querySelectorAll('[style*="padding-top: 6px"]')[1], { dataTransfer: { getData: vi.fn(() => '') } })
+      fireEvent.drop(document.querySelectorAll('[data-dp="day-body"]')[1], { dataTransfer: { getData: vi.fn(() => '') } })
       // 10:00 sits between 09:00 (index 0) and 11:00, so index 1, not the end of the day.
       expect(moveAssignment).toHaveBeenCalledWith(1, 21, 10, 11, 1)
     })
@@ -3842,14 +3847,14 @@ describe('DayPlanSidebar', () => {
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], places: [place], assignments: { '10': [a] } })} />)
     const row = dragRow(screen.getByText('Pin me'))
     const toggle = lockToggle(row)
+    expect(toggle).toHaveAccessibleName('Keep position during route optimization')
     fireEvent.mouseEnter(toggle)
-    expect(screen.getByText('Keep position during route optimization')).toBeInTheDocument()
+    expect(await screen.findByRole('tooltip')).toHaveTextContent('Keep position during route optimization')
     await user.click(toggle)
-    expect(screen.getByText('Click to unlock')).toBeInTheDocument()
+    expect(toggle).toHaveAccessibleName('Click to unlock')
     await user.click(toggle)
-    await waitFor(() => expect(row.style.borderLeftColor).toBe('transparent'))
-    fireEvent.mouseLeave(toggle)
-    expect(screen.queryByText('Click to unlock')).not.toBeInTheDocument()
+    await waitFor(() => expect(row.style.background).not.toContain('--danger'))
+    expect(toggle).toHaveAccessibleName('Keep position during route optimization')
   })
 
   it('FE-PLANNER-DAYPLAN-167: the place context menu opens the website, maps and collection actions', async () => {
@@ -4259,7 +4264,7 @@ describe('DayPlanSidebar', () => {
     ]
     const onPlaceClick = vi.fn()
     render(<DayPlanSidebar {...makeDefaultProps({ days, accommodations, onPlaceClick })} />)
-    const badges = dayHeader('Day 2').querySelectorAll('.bg-surface-hover')
+    const badges = dayHeader('Day 2').querySelectorAll('[data-dp="day-pill"]')
     expect(badges[0].textContent).toBe('Check-out Hotel')
     expect(badges[1].textContent).toBe('Check-in Hotel')
     await user.click(badges[0])
@@ -4275,9 +4280,117 @@ describe('DayPlanSidebar', () => {
     ]
     const car = buildReservation({ id: 530, type: 'car', title: 'Renault Clio', day_id: 10, end_day_id: 12, location: 'Gare du Nord' })
     render(<DayPlanSidebar {...makeDefaultProps({ days, reservations: [car] })} />)
-    const badge = dayHeader('Day 2').querySelector('.bg-surface-hover') as HTMLElement
+    const badge = dayHeader('Day 2').querySelector('[data-dp="day-pill"]') as HTMLElement
     await user.click(badge)
     expect(await screen.findByText('Gare du Nord')).toBeInTheDocument()
+  })
+
+  // ── The desktop plan's booking detail ──────────────────────────────────
+  // Given onOpenBooking (only the desktop plan passes it), a booking opens its detail
+  // first; the editor is behind that detail's Edit. Without it the tests above pin the
+  // old paths.
+
+  it('FE-PLANNER-DAYPLAN-226: with a detail to show, a transport row opens it instead of the editor', async () => {
+    const user = userEvent.setup()
+    const onEditTransport = vi.fn()
+    const onOpenBooking = vi.fn()
+    const day = buildDay({ id: 10, date: '2025-06-01', title: 'Travel Day' })
+    const flight = buildReservation({ id: 200, type: 'flight', title: 'Air France 123', reservation_time: '2025-06-01T08:00:00', day_id: 10 })
+    render(<DayPlanSidebar {...makeDefaultProps({ days: [day], reservations: [flight], onEditTransport, onOpenBooking })} />)
+
+    await user.click(screen.getByRole('button', { name: /Air France 123/ }))
+
+    expect(onOpenBooking).toHaveBeenCalledWith(flight)
+    expect(onEditTransport).not.toHaveBeenCalled()
+  })
+
+  it('FE-PLANNER-DAYPLAN-227: a transit journey opens the same detail, not its journey view', async () => {
+    const user = userEvent.setup()
+    const onOpenTransit = vi.fn()
+    const onOpenBooking = vi.fn()
+    const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
+    const journey = {
+      ...buildReservation({ id: 300, type: 'transit', title: 'Fernsehturm → Zoo', reservation_time: '2025-06-01T08:30:00', day_id: 10 }),
+      metadata: { transit: { provider: 'transitous', duration: 1800, transfers: 0, legs: [{ mode: 'SUBWAY', line: 'U2', duration: 1440, from: { name: 'Alexanderplatz' }, to: { name: 'Zoo' } }] } },
+    }
+    render(<DayPlanSidebar {...makeDefaultProps({ days: [day], reservations: [journey as unknown as Reservation], onOpenTransit, onOpenBooking })} />)
+
+    await user.click(screen.getByRole('button', { name: /Fernsehturm/ }))
+
+    expect(onOpenBooking).toHaveBeenCalledWith(expect.objectContaining({ id: 300 }))
+    expect(onOpenTransit).not.toHaveBeenCalled()
+  })
+
+  it('FE-PLANNER-DAYPLAN-228: a viewer without day rights can still open a booking row, by click or by keyboard', async () => {
+    const user = userEvent.setup()
+    mockPermissions.canEdit = false
+    const onOpenBooking = vi.fn()
+    const onEditReservation = vi.fn()
+    const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
+    const dinner = buildReservation({ id: 210, type: 'restaurant', title: 'Dinner at Kikunoi', reservation_time: '2025-06-01T19:00:00', day_id: 10 })
+    render(<DayPlanSidebar {...makeDefaultProps({ days: [day], reservations: [dinner], onEditReservation, onOpenBooking })} />)
+
+    const row = cardRow(screen.getByText('Dinner at Kikunoi'))
+    expect(row).toHaveAttribute('role', 'button')
+    expect(row.style.cursor).toBe('pointer')
+    await user.click(row)
+    expect(onOpenBooking).toHaveBeenCalledTimes(1)
+
+    row.focus()
+    await user.keyboard('{Enter}')
+    expect(onOpenBooking).toHaveBeenCalledTimes(2)
+    expect(onOpenBooking).toHaveBeenLastCalledWith(dinner)
+    expect(onEditReservation).not.toHaveBeenCalled()
+  })
+
+  it('FE-PLANNER-DAYPLAN-229: without a detail to show, a viewer without day rights still gets nothing from a booking row', async () => {
+    const user = userEvent.setup()
+    mockPermissions.canEdit = false
+    const onEditReservation = vi.fn()
+    const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
+    const dinner = buildReservation({ id: 211, type: 'restaurant', title: 'Dinner', reservation_time: '2025-06-01T19:00:00', day_id: 10 })
+    render(<DayPlanSidebar {...makeDefaultProps({ days: [day], reservations: [dinner], onEditReservation })} />)
+
+    const row = cardRow(screen.getByText('Dinner'))
+    expect(row.style.cursor).toBe('default')
+    await user.click(row)
+    expect(onEditReservation).not.toHaveBeenCalled()
+  })
+
+  it('FE-PLANNER-DAYPLAN-230: with a detail to show, an active rental badge opens it instead of the old transport view', async () => {
+    const user = userEvent.setup()
+    const days = [
+      buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' }),
+      buildDay({ id: 11, date: '2025-06-02', title: 'Day 2' }),
+      buildDay({ id: 12, date: '2025-06-03', title: 'Day 3' }),
+    ]
+    const car = buildReservation({ id: 530, type: 'car', title: 'Renault Clio', day_id: 10, end_day_id: 12, location: 'Gare du Nord' })
+    const onOpenBooking = vi.fn()
+    render(<DayPlanSidebar {...makeDefaultProps({ days, reservations: [car], onOpenBooking })} />)
+
+    await user.click(within(dayHeader('Day 2')).getByRole('button', { name: 'Renault Clio' }))
+
+    expect(onOpenBooking).toHaveBeenCalledWith(car)
+    expect(screen.queryByText('Gare du Nord')).not.toBeInTheDocument()
+  })
+
+  it('FE-PLANNER-DAYPLAN-231: the pencil on a booking pinned to a stop still goes straight to the editor', async () => {
+    const user = userEvent.setup()
+    const place = buildPlace({ id: 1, name: 'Geneva Airport' })
+    const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
+    const assignment = buildAssignment({ id: 99, day_id: 10, order_index: 0, place })
+    const res = buildReservation({ id: 88, trip_id: 1, type: 'flight', status: 'pending', assignment_id: 99 } as Partial<Reservation>)
+    const onEditTransport = vi.fn()
+    const onOpenBooking = vi.fn()
+    render(<DayPlanSidebar {...makeDefaultProps({
+      days: [day], places: [place], assignments: { '10': [assignment] }, reservations: [res],
+      onEditTransport, onOpenBooking,
+    })} />)
+
+    await user.click(screen.getByRole('button', { name: 'Edit' }))
+
+    expect(onEditTransport).toHaveBeenCalledWith(res)
+    expect(onOpenBooking).not.toHaveBeenCalled()
   })
 
   it('FE-PLANNER-DAYPLAN-178: the add-transport shortcut targets the day it sits on', async () => {
@@ -4285,18 +4398,33 @@ describe('DayPlanSidebar', () => {
     const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
     const onAddTransport = vi.fn()
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day], onAddTransport })} />)
-    await user.click(screen.getByLabelText('Add transport'))
+    await pickDayAdd(user, 'Add transport')
     expect(onAddTransport).toHaveBeenCalledWith(10)
+  })
+
+  it('FE-PLANNER-DAYPLAN-225: the day\'s "+" offers a stay, and only with the handler for it', async () => {
+    const user = userEvent.setup()
+    const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
+    const onAddAccommodation = vi.fn()
+    const { unmount } = render(<DayPlanSidebar {...makeDefaultProps({ days: [day], onAddAccommodation })} />)
+    await pickDayAdd(user, 'Add accommodation')
+    expect(onAddAccommodation).toHaveBeenCalledWith(expect.objectContaining({ id: 10 }))
+    unmount()
+
+    render(<DayPlanSidebar {...makeDefaultProps({ days: [day] })} />)
+    await user.click(within(dayHeader('Day 1')).getByRole('button', { name: 'Add to day' }))
+    expect(screen.queryByRole('button', { name: 'Add accommodation' })).not.toBeInTheDocument()
   })
 
   it('FE-PLANNER-DAYPLAN-179: hovering a day header tints it and clears the tint again', () => {
     const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
     render(<DayPlanSidebar {...makeDefaultProps({ days: [day] })} />)
     const header = dayHeader('Day 1')
+    const rest = header.style.background
     fireEvent.mouseEnter(header)
-    expect(header.style.background).toBe('var(--bg-tertiary)')
+    expect(header.style.background).toBe('color-mix(in srgb, var(--accent) 10%, transparent)')
     fireEvent.mouseLeave(header)
-    expect(header.style.background).toBe('transparent')
+    expect(header.style.background).toBe(rest)
   })
 
   // ── Chronology guards ────────────────────────────────────────────────────
@@ -4467,7 +4595,7 @@ describe('DayPlanSidebar', () => {
       () => cardRow(screen.getByText('Source taxi')),
     ]
     const targets = [
-      () => document.querySelectorAll('[style*="padding-top: 6px"]')[1] as HTMLElement,
+      () => document.querySelectorAll('[data-dp="day-body"]')[1] as HTMLElement,
       () => endZones()[1] as HTMLElement,
       () => cardRow(screen.getByText('Target note')),
       () => dragRow(screen.getByText('Target place')),
@@ -4505,7 +4633,7 @@ describe('DayPlanSidebar', () => {
     fireEvent.mouseEnter(expand)
     fireEvent.mouseLeave(expand)
     await user.click(expand)
-    expect(screen.getAllByLabelText('Collapse').some(el => !el.closest('.dp-day-actions'))).toBe(true)
+    expect(screen.getAllByLabelText('Collapse').some(el => !el.closest('.dp-day-tools'))).toBe(true)
     await user.click(cardRow(screen.getByText('U2 to Zoo')))
     expect(await screen.findByText('Alexanderplatz')).toBeInTheDocument()
   })

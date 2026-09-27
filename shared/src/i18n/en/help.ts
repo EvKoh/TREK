@@ -2204,9 +2204,9 @@ const help: TranslationStrings = {
     'Open the stop the booking belongs to. The card shows a strip with Confirmed or Pending and the booking’s name.',
   'help.guide.place-booking.step.2':
     'The strip carries the Date, the Time and the Booking Code, and whatever notes the booking has.',
-  'help.guide.place-booking.step.3': 'Click the strip. The booking’s own form opens on it.',
+  'help.guide.place-booking.step.3': 'Click the strip. The booking opens over the map.',
   'help.guide.place-booking.step.4':
-    'Link to day assignment is what pins a booking to a stop, and here it already names this one. Close the form again.',
+    'Edit at the foot of the booking opens its own form. Link to day assignment there is what pins a booking to a stop, and here it already names this one. Close the form again.',
   'help.guide.place-booking.step.5':
     'A new booking for a stop starts in the days column: hover the stop and click the + at its end. The form opens as New Reservation, already linked to it.',
   'help.guide.place-booking.result':
@@ -2405,7 +2405,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'The colour says where a booking stands: a green row is confirmed, an amber one is still pending. Hotels are not in this list, they have their own block below.',
   'help.guide.day-bookings.step.4':
-    'The list only reads the bookings out. A booking is created and changed under Bookings.',
+    'Click a row and the booking opens. Edit at its foot changes it; new bookings are created under Bookings.',
   'help.guide.day-bookings.result':
     'Everything dated on the day, and everything hanging off one of its stops, is in this one list.',
   'help.guide.day-bookings.tip.1':
@@ -2686,19 +2686,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.title': 'Open and change a planned connection',
   'help.guide.change-transit-route.goal': 'Read the connection stop by stop, rename it, or look the route up again.',
   'help.guide.change-transit-route.step.1':
-    'In the Transports tab the planned connections sit under Automated public transit. Click the card.',
+    'In the Transports tab the planned connections sit under Automated public transit. Click the card; the connection opens as a booking.',
   'help.guide.change-transit-route.step.2':
     'Duration, Transfers and Walking sit at the top. Itinerary below them walks the connection stop by stop, with the platforms and the walks between the lines.',
   'help.guide.change-transit-route.step.3':
-    'Change route runs the search again, already filled with this connection’s two ends and its day.',
+    'Change route at the foot of the booking runs the search again, already filled with this connection’s two ends and its day.',
   'help.guide.change-transit-route.step.4':
-    'Pick another connection and click Add to day; it takes the old one’s place. Edit details, next to Change route, opens the ordinary transport form instead, where the Booking Code, the Status, the travelers and the files live.',
+    'Pick another connection and click Add to day; it takes the old one’s place. Edit, at the other end of the same bar, opens the ordinary transport form instead, where the Booking Code, the Status, the travelers, the notes and the files live.',
   'help.guide.change-transit-route.result':
     'The journey carries the new itinerary, and its card in the Transports tab shows the new lines and times.',
   'help.guide.change-transit-route.tip.1':
-    'The journey’s title is only text: the pencil next to it renames it without touching the route. Notes underneath take markdown and have an Edit and a Preview tab.',
+    'The title in the head of the booking renames the connection without touching the route. Its notes are written in the transport form behind Edit.',
   'help.guide.change-transit-route.tip.2':
-    'Delete at the foot of the journey takes the connection out of the trip; the day keeps its stops.',
+    'Delete at the foot of the booking takes the connection out of the trip; the day keeps its stops.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Change how one leg is travelled',
   'help.guide.leg-travel-mode.goal':
@@ -2721,17 +2721,18 @@ const help: TranslationStrings = {
   // edit-transport
   'help.guide.edit-transport.title': 'Change or delete a transport',
   'help.guide.edit-transport.goal': 'Fix a time, a platform or a booking code, or take the ride out of the trip.',
-  'help.guide.edit-transport.step.1': 'In the day plan a transport is a coloured row between the stops. Click it.',
+  'help.guide.edit-transport.step.1':
+    'In the day plan a transport is a coloured row between the stops. Click it; its booking opens with the times, the route and the Booking Code.',
   'help.guide.edit-transport.step.2':
-    'The form is the one that created it, with Edit transport in its title bar. Everything can be changed: the type, the route, the days and times, the Booking Code, the Status.',
+    'Edit at the foot of the booking opens the form that created it, with Edit transport in its title bar. Everything can be changed: the type, the route, the days and times, the Booking Code, the Status.',
   'help.guide.edit-transport.step.3':
     'A flight’s route is a chain of airports, a train’s a chain of stations. Add stop puts another one in between, and every leg keeps its own times and its own flight or train number.',
   'help.guide.edit-transport.step.4':
-    'Click Update. To remove the transport altogether, use the bin on its card in the Transports tab and confirm.',
+    'Click Update. To remove the transport altogether, use Delete at the foot of its booking, or the bin on its card in the Transports tab, and confirm.',
   'help.guide.edit-transport.result':
     'The change shows everywhere the transport appears: the Transports tab, the day it runs on, and its line on the map.',
   'help.guide.edit-transport.tip.1':
-    'The same form opens from both sides, the pencil on the card in the Transports tab and the transport’s own row in the day plan. A planned public-transit connection is the exception: its row opens the journey view, and Edit details there leads to this form.',
+    'The same form opens from both sides: through Edit in the booking a row of the day plan opens, and through the pencil on the card in the Transports tab. A planned public-transit connection opens as a booking too; Change route there searches again, and Edit leads to this form.',
   'help.guide.edit-transport.tip.2':
     'Moving a transport to another day does not need the form at all: drag its row from one day card to the next.',
   // transport-on-map
@@ -2802,13 +2803,13 @@ const help: TranslationStrings = {
     'Put a restaurant, an event, a tour, a parking space or anything else into the trip by hand.',
   'help.guide.create-booking.step.1': 'Click Manual Booking at the top right of the tab. New Reservation opens.',
   'help.guide.create-booking.step.2':
-    'Pick the Booking Type from the list at the top of the form, next to Travelers. Accommodation, Restaurant, Event, Tour, Parking and Other are the six this tab makes, and the form changes with the choice: only Accommodation trades its dates for a range of days.',
+    'Click the type pill under the title, in the head of the form, and pick the Booking Type. Accommodation, Restaurant, Event, Tour, Parking and Other are the six this tab makes, and the form changes with the choice: only Accommodation trades its dates for a range of days.',
   'help.guide.create-booking.step.3':
     'Type the Title. It is the one field the form insists on, and Add stays dead until it has something.',
   'help.guide.create-booking.step.4':
     'Set Date and Start time, and End date and End time if the booking has an end. The calendars only offer days inside the trip, and an end that is not after the start says so in red and blocks Add.',
   'help.guide.create-booking.step.5':
-    'Put in the Booking Code from the confirmation and set Status. Pending or Confirmed decides which of the two sections the card lands in.',
+    'Put in the Booking Code from the confirmation. The status pill beside the type reads Pending; a click turns it to Confirmed and back, and that decides which of the two sections the card lands in.',
   'help.guide.create-booking.step.6': 'Click Add.',
   'help.guide.create-booking.result':
     'The booking is a card in its section with its type chip, its dates and its code, and everyone else in the trip sees it appear.',
@@ -2857,7 +2858,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Say who a booking is for',
   'help.guide.booking-travelers.goal': 'Mark the travellers a booking covers, and then see only theirs.',
   'help.guide.booking-travelers.step.1':
-    'Open the booking with the pencil. Travelers sits at the top of the form, next to Booking Type, and reads Assign travelers while nobody is on the booking.',
+    'Open the booking with the pencil. Travelers sits next to the Booking Code, and reads Assign travelers while nobody is on the booking.',
   'help.guide.booking-travelers.step.2':
     'Click it and pick the people this booking is for; named guests are in the list too. A chosen one gets a tick and their avatar in the field. Click the name again to take it off.',
   'help.guide.booking-travelers.step.3': 'Click Update.',
@@ -2950,7 +2951,7 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.step.1':
     'Click the pencil in the card’s header. Edit Reservation opens with everything the booking knows.',
   'help.guide.edit-booking.step.2': 'Change what needs changing, here the Booking Code the operator finally sent.',
-  'help.guide.edit-booking.step.3': 'Put Status on Confirmed.',
+  'help.guide.edit-booking.step.3': 'Click the Pending pill in the head of the form. It turns to Confirmed.',
   'help.guide.edit-booking.step.4': 'Click Update.',
   'help.guide.edit-booking.result':
     'The card moves: a confirmed booking stands in the Confirmed section behind a green dot, and everyone in the trip sees it move.',

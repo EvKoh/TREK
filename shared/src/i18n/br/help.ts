@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'br' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Ajuda e documentação',
+  'help.search': 'Pesquisar na documentação…',
+  'help.contents': 'Conteúdo',
+  'help.noResults': 'Nenhuma página encontrada.',
+  'help.errorTitle': 'Não foi possível carregar esta página',
+  'help.errorBody': 'O conteúdo da ajuda vem da wiki do TREK. Verifique sua conexão e tente novamente.',
 
   // center
   'help.center.button': 'Ajuda para esta tela',
@@ -1030,7 +1030,7 @@ const help: TranslationStrings = {
     'Travel & map: rotas de reserva sempre no mapa, a pílula Explorar lugares, otimização de rota a partir da sua hospedagem, códigos de reserva ocultos e rotas de reserva com rótulo.',
   'help.ctx.settings-display.bullet.3':
     'Inicialização: se o TREK abre no painel ou na viagem ativa, e qual aba de uma viagem aparece primeiro.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Aparência',
   'help.ctx.settings-appearance.summary':
     'Como o TREK aparece nesta conta: claro ou escuro, a cor de destaque, vidro e movimento, tamanho do texto, e quais widgets o painel mostra. Tudo vale ao vivo, em cada dispositivo em que você entra.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2268,9 +2268,9 @@ const help: TranslationStrings = {
     'Abra a parada a que a reserva pertence. O painel mostra uma faixa com Confirmada ou Pendente e o nome da reserva.',
   'help.guide.place-booking.step.2':
     'A faixa traz a Data, a Hora e o Código da reserva, e as notas que a reserva tiver.',
-  'help.guide.place-booking.step.3': 'Clique na faixa. O formulário da própria reserva abre sobre ela.',
+  'help.guide.place-booking.step.3': 'Clique na faixa. A reserva abre sobre o mapa.',
   'help.guide.place-booking.step.4':
-    'Vincular à atribuição do dia é o que prende uma reserva a uma parada, e aqui já nomeia esta. Feche o formulário de novo.',
+    'Editar, no pé da reserva, abre o formulário dela. Vincular à atribuição do dia, ali, é o que prende uma reserva a uma parada, e aqui já nomeia esta. Feche o formulário de novo.',
   'help.guide.place-booking.step.5':
     'Uma reserva nova para uma parada começa na coluna dos dias: passe o ponteiro pela parada e clique no + no fim dela. O formulário abre como Nova reserva, já vinculada a ela.',
   'help.guide.place-booking.result':
@@ -2624,7 +2624,8 @@ const help: TranslationStrings = {
     'Uma linha mostra que tipo de reserva é, o nome dela e, quando pertence a uma parada, essa parada depois de um ponto. Os horários dela ficam na ponta direita.',
   'help.guide.day-bookings.step.3':
     'A cor diz como está uma reserva: uma linha verde está confirmada, uma âmbar ainda está pendente. As hospedagens não estão nesta lista, elas têm o bloco próprio logo abaixo.',
-  'help.guide.day-bookings.step.4': 'A lista só lê as reservas. Uma reserva é criada e alterada na aba Reservas.',
+  'help.guide.day-bookings.step.4':
+    'Clique em uma linha e a reserva abre. Editar, no pé dela, a altera; reservas novas são criadas na aba Reservas.',
   'help.guide.day-bookings.result':
     'Tudo o que está datado no dia, e tudo o que está pendurado numa das paradas dele, está nesta única lista.',
   'help.guide.day-bookings.tip.1':
@@ -3164,13 +3165,13 @@ const help: TranslationStrings = {
     'Coloque à mão na viagem um restaurante, um evento, um passeio, uma vaga de estacionamento ou qualquer outra coisa.',
   'help.guide.create-booking.step.1': 'Clique em Reserva manual no canto superior direito da aba. Nova reserva abre.',
   'help.guide.create-booking.step.2':
-    'Escolha o Tipo de reserva na lista no topo do formulário, ao lado de Viajantes. Hospedagem, Restaurante, Evento, Passeio, Estacionamento e Outro são os seis que esta aba cria, e o formulário muda com a escolha: só Hospedagem troca suas datas por um intervalo de dias.',
+    'Clique na pílula do tipo, abaixo do título, no cabeçalho do formulário, e escolha o Tipo de reserva. Hospedagem, Restaurante, Evento, Passeio, Estacionamento e Outro são os seis que esta aba cria, e o formulário muda com a escolha: só Hospedagem troca suas datas por um intervalo de dias.',
   'help.guide.create-booking.step.3':
     'Digite o Título. É o único campo em que o formulário insiste, e Adicionar fica morto até ter algo.',
   'help.guide.create-booking.step.4':
     'Defina Data e Horário de início, e Data final e Horário de término se a reserva tiver um fim. Os calendários só oferecem dias dentro da viagem, e um fim que não é posterior ao início diz isso em vermelho e bloqueia Adicionar.',
   'help.guide.create-booking.step.5':
-    'Coloque o Código da reserva da confirmação e defina o Status. Pendente ou Confirmada decide em qual das duas seções o cartão aterrissa.',
+    'Coloque o Código da reserva da confirmação. A pílula de status ao lado do tipo mostra Pendente; um clique a muda para Confirmada e outro a traz de volta, e isso decide em qual das duas seções o cartão aterrissa.',
   'help.guide.create-booking.step.6': 'Clique em Adicionar.',
   'help.guide.create-booking.result':
     'A reserva é um cartão na sua seção, com seu chip de tipo, suas datas e seu código, e todos os outros na viagem a veem aparecer.',
@@ -3220,7 +3221,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Dizer para quem é uma reserva',
   'help.guide.booking-travelers.goal': 'Marque os viajantes que uma reserva cobre e depois veja só as deles.',
   'help.guide.booking-travelers.step.1':
-    'Abra a reserva com o lápis. Viajantes fica no topo do formulário, ao lado de Tipo de reserva, e mostra Atribuir viajantes enquanto ninguém estiver na reserva.',
+    'Abra a reserva com o lápis. Viajantes fica ao lado do Código da reserva e mostra Atribuir viajantes enquanto ninguém estiver na reserva.',
   'help.guide.booking-travelers.step.2':
     'Clique nele e escolha as pessoas para quem esta reserva é; convidados com nome também estão na lista. Quem é escolhido ganha um tique e seu avatar no campo. Clique no nome de novo para tirar.',
   'help.guide.booking-travelers.step.3': 'Clique em Atualizar.',
@@ -3314,7 +3315,7 @@ const help: TranslationStrings = {
     'Clique no lápis no cabeçalho do cartão. Editar reserva abre com tudo o que a reserva sabe.',
   'help.guide.edit-booking.step.2':
     'Mude o que precisa mudar, aqui o Código da reserva que o operador finalmente mandou.',
-  'help.guide.edit-booking.step.3': 'Ponha Status em Confirmada.',
+  'help.guide.edit-booking.step.3': 'Clique na pílula Pendente no cabeçalho do formulário. Ela muda para Confirmada.',
   'help.guide.edit-booking.step.4': 'Clique em Atualizar.',
   'help.guide.edit-booking.result':
     'O cartão se muda: uma reserva confirmada fica na seção Confirmada atrás de um ponto verde, e todos na viagem a veem mudar de lugar.',
@@ -3605,19 +3606,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.title': 'Abrir e mudar uma conexão planejada',
   'help.guide.change-transit-route.goal': 'Ler a conexão parada por parada, renomeá-la, ou buscar o trajeto de novo.',
   'help.guide.change-transit-route.step.1':
-    'Na aba Transportes, as conexões planejadas ficam sob Transporte público automático. Clique no cartão.',
+    'Na aba Transportes, as conexões planejadas ficam sob Transporte público automático. Clique no cartão; a conexão abre como uma reserva.',
   'help.guide.change-transit-route.step.2':
     'Duração, Baldeações e A pé ficam no topo. Itinerário, abaixo, percorre a conexão parada por parada, com as plataformas e as caminhadas entre as linhas.',
   'help.guide.change-transit-route.step.3':
-    'Alterar trajeto roda a busca de novo, já preenchida com as duas pontas desta conexão e com o dia dela.',
+    'Alterar trajeto, no pé da reserva, roda a busca de novo, já preenchida com as duas pontas desta conexão e com o dia dela.',
   'help.guide.change-transit-route.step.4':
-    'Escolha outra conexão e clique em Adicionar ao dia; ela toma o lugar da antiga. Editar detalhes, ao lado de Alterar trajeto, abre em vez disso o formulário de transporte comum, onde ficam o Código da reserva, o Status, os viajantes e os arquivos.',
+    'Escolha outra conexão e clique em Adicionar ao dia; ela toma o lugar da antiga. Editar, na outra ponta da mesma barra, abre em vez disso o formulário de transporte comum, onde ficam o Código da reserva, o Status, os viajantes, as notas e os arquivos.',
   'help.guide.change-transit-route.result':
     'A viagem de transporte público carrega o novo itinerário, e o cartão dela na aba Transportes mostra as novas linhas e horários.',
   'help.guide.change-transit-route.tip.1':
-    'O título da viagem de transporte público é só texto: o lápis ao lado o renomeia sem tocar no trajeto. Notas, abaixo, aceitam markdown e têm uma aba Editar e uma aba Prévia.',
+    'O título no cabeçalho da reserva renomeia a conexão sem tocar no trajeto. As notas dela são escritas no formulário de transporte, atrás de Editar.',
   'help.guide.change-transit-route.tip.2':
-    'Excluir, no pé da viagem de transporte público, remove a conexão da viagem; o dia mantém as paradas.',
+    'Excluir, no pé da reserva, remove a conexão da viagem; o dia mantém as paradas.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Mudar como um trecho é percorrido',
   'help.guide.leg-travel-mode.goal':
@@ -3642,17 +3643,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Corrigir um horário, uma plataforma ou um código de reserva, ou tirar o trajeto da viagem.',
   'help.guide.edit-transport.step.1':
-    'No plano do dia, um transporte é uma linha colorida entre as paradas. Clique nela.',
+    'No plano do dia, um transporte é uma linha colorida entre as paradas. Clique nela; a reserva dele abre com os horários, a rota e o Código da reserva.',
   'help.guide.edit-transport.step.2':
-    'O formulário é o mesmo que o criou, com Editar transporte na barra de título. Tudo pode mudar: o tipo, a rota, os dias e horários, o Código da reserva, o Status.',
+    'Editar, no pé da reserva, abre o formulário que o criou, com Editar transporte na barra de título. Tudo pode mudar: o tipo, a rota, os dias e horários, o Código da reserva, o Status.',
   'help.guide.edit-transport.step.3':
     'A rota de um voo é uma cadeia de aeroportos, a de um trem uma cadeia de estações. Adicionar parada põe mais uma no meio, e cada trecho mantém os próprios horários e o próprio número de voo ou de trem.',
   'help.guide.edit-transport.step.4':
-    'Clique em Atualizar. Para remover o transporte de vez, use a lixeira no cartão dele na aba Transportes e confirme.',
+    'Clique em Atualizar. Para remover o transporte de vez, use Excluir no pé da reserva dele, ou a lixeira no cartão dele na aba Transportes, e confirme.',
   'help.guide.edit-transport.result':
     'A mudança aparece em todo lugar onde o transporte está: na aba Transportes, no dia em que ele corre, e na linha dele no mapa.',
   'help.guide.edit-transport.tip.1':
-    'O mesmo formulário abre dos dois lados, pelo lápis no cartão da aba Transportes e pela linha do próprio transporte no plano do dia. Uma conexão de transporte público planejada é a exceção: a linha dela abre a viagem de transporte público, e Editar detalhes leva de lá a este formulário.',
+    'O mesmo formulário abre dos dois lados: por Editar na reserva que uma linha do plano do dia abre, e pelo lápis no cartão da aba Transportes. Uma conexão de transporte público planejada também abre como reserva; Alterar trajeto ali busca de novo, e Editar leva a este formulário.',
   'help.guide.edit-transport.tip.2':
     'Mover um transporte para outro dia não precisa do formulário: arraste a linha dele de um cartão de dia para o seguinte.',
   // transport-on-map

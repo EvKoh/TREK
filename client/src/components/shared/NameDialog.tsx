@@ -1,5 +1,7 @@
-import Modal from './Modal'
+import { useEffect, useId } from 'react'
+import { PencilLine, type LucideIcon } from 'lucide-react'
 import { useTranslation } from '../../i18n'
+import { DialogButton, DialogFooter, DialogHeader, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT } from './DialogShell'
 
 interface NameDialogProps {
   open: boolean
@@ -10,44 +12,62 @@ interface NameDialogProps {
   onChange: (value: string) => void
   onConfirm: () => void
   onClose: () => void
+  /** The icon on the head band's tile; a pencil unless the caller has a better one. */
+  icon?: LucideIcon
 }
 
 /**
- * The small dialog that asks for one name: a new list, a template to save.
- * It takes the name in the middle of the screen instead of pushing a field
- * into the page; Enter confirms and Esc (from the modal) cancels.
+ * The small dialog that asks for one name: a new list, a template to save, a
+ * booking's title. The name is typed into the head band itself; Enter confirms
+ * and Escape cancels this dialog alone, never one it was opened from.
  */
-export default function NameDialog({ open, title, placeholder, confirmLabel, value, onChange, onConfirm, onClose }: NameDialogProps) {
+export default function NameDialog({ open, title, placeholder, confirmLabel, value, onChange, onConfirm, onClose, icon: Icon = PencilLine }: NameDialogProps) {
   const { t } = useTranslation()
+  const labelId = useId()
   const ready = value.trim().length > 0
+
+  // Caught before any dialog underneath hears it, so only this one closes.
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape' || e.defaultPrevented) return
+      e.preventDefault()
+      onClose()
+    }
+    document.addEventListener('keydown', onKey, true)
+    return () => document.removeEventListener('keydown', onKey, true)
+  }, [open, onClose])
+
   return (
-    <Modal
-      isOpen={open}
+    <DialogShell
+      open={open}
       onClose={onClose}
-      title={title}
-      size="sm"
-      footer={(
-        <div className="flex justify-end gap-2">
-          <button type="button" onClick={onClose} className="rounded-lg border border-edge px-4 py-2 text-body text-content-muted hover:bg-surface-hover">
-            {t('common.cancel')}
-          </button>
-          <button type="button" onClick={onConfirm} disabled={!ready}
-            className="rounded-lg bg-accent px-4 py-2 text-body font-medium text-accent-text hover:bg-accent-hover disabled:cursor-default disabled:opacity-40">
-            {confirmLabel}
-          </button>
-        </div>
+      labelledBy={labelId}
+      width="narrow"
+      header={(
+        <DialogHeader
+          tile={<DialogTile><Icon size={20} strokeWidth={1.9} className="text-content-muted" /></DialogTile>}
+          tint={NEUTRAL_TINT}
+          labelId={labelId}
+          onClose={onClose}
+          eyebrow={title}
+          titleInput={{
+            value,
+            onChange,
+            label: title,
+            placeholder,
+            autoFocus: true,
+            onKeyDown: e => { if (e.key === 'Enter' && ready) onConfirm() },
+          }}
+        />
       )}
-    >
-      <input
-        autoFocus
-        type="text"
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        onKeyDown={e => { if (e.key === 'Enter' && ready) onConfirm() }}
-        placeholder={placeholder}
-        aria-label={title}
-        className="w-full rounded-lg border border-edge bg-surface-input px-3 py-2.5 text-body text-content outline-none focus:border-content-muted"
-      />
-    </Modal>
+      footer={(
+        <DialogFooter>
+          <FooterSpacer />
+          <DialogButton onClick={onClose}>{t('common.cancel')}</DialogButton>
+          <DialogButton variant="primary" onClick={onConfirm} disabled={!ready}>{confirmLabel}</DialogButton>
+        </DialogFooter>
+      )}
+    />
   )
 }

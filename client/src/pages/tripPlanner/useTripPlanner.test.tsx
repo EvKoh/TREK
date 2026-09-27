@@ -1,4 +1,4 @@
-// FE-TP-HOOK-001 to FE-TP-HOOK-163
+// FE-TP-HOOK-001 to FE-TP-HOOK-175
 import React from 'react'
 import { renderHook, act, waitFor } from '@testing-library/react'
 import { TranslationProvider } from '../../i18n/TranslationContext'
@@ -1940,6 +1940,202 @@ describe('useTripPlanner — bookings and transports', () => {
     await act(async () => { await result.current.handleDeleteReservation(5) })
 
     expect(toasts.some(t => t.message === 'referenced')).toBe(true)
+  })
+
+  it('FE-TP-HOOK-164: a transit journey opens in the full transport editor and leaves the journey view', async () => {
+    seedTrip()
+    const journey = buildReservation({ id: 9, type: 'transit', day_id: 7 })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.setTransitJourney(journey) })
+    act(() => { result.current.openTransportEditor(journey) })
+
+    expect(result.current.editingTransport).toBe(journey)
+    expect(result.current.transportModalDayId).toBe(7)
+    expect(result.current.transportModalAutomated).toBe(false)
+    expect(result.current.transitPrefill).toBeNull()
+    expect(result.current.transitJourney).toBeNull()
+    expect(result.current.showTransportModal).toBe(true)
+  })
+
+  it('FE-TP-HOOK-165: changing a journey\'s route seeds the transit search with its stops', async () => {
+    seedTrip()
+    const journey = buildReservation({
+      id: 9, type: 'transit', day_id: 7,
+      endpoints: [
+        { role: 'from', name: 'Kyoto', lat: 34.9, lng: 135.7 },
+        { role: 'to', name: 'Osaka', lat: 34.7, lng: 135.5 },
+      ] as never,
+    })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.changeTransitRoute(journey) })
+
+    expect(result.current.transitPrefill).toEqual({
+      from: { name: 'Kyoto', lat: 34.9, lng: 135.7 },
+      to: { name: 'Osaka', lat: 34.7, lng: 135.5 },
+    })
+    expect(result.current.editingTransport).toBe(journey)
+    expect(result.current.transportModalDayId).toBe(7)
+    expect(result.current.transportModalAutomated).toBe(true)
+    expect(result.current.showTransportModal).toBe(true)
+  })
+
+  it('FE-TP-HOOK-166: a journey without stops or day seeds an empty search', async () => {
+    seedTrip()
+    const journey = buildReservation({ id: 9, type: 'transit', day_id: null })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.changeTransitRoute(journey) })
+
+    expect(result.current.transitPrefill).toEqual({ from: null, to: null })
+    expect(result.current.transportModalDayId).toBeNull()
+  })
+})
+
+describe("useTripPlanner — the plan's booking detail", () => {
+  const routedTrain = (over: Partial<Reservation> = {}) => buildReservation({
+    id: 20, type: 'train', title: 'Shinkansen', day_id: 7,
+    endpoints: [
+      { role: 'from', name: 'Tokyo', lat: 35.68, lng: 139.76, sequence: 0 },
+      { role: 'to', name: 'Kyoto', lat: 34.98, lng: 135.75, sequence: 1 },
+    ] as never,
+    ...over,
+  })
+
+  it("FE-TP-HOOK-167: a booking opens by id, shows the store's copy and closes by itself once it is gone", async () => {
+    const dinner = buildReservation({ id: 5, type: 'restaurant', title: 'Dinner' })
+    seedTrip({ reservations: [dinner] })
+
+    const { result } = await renderPlanner()
+    expect(result.current.bookingDetail).toBeNull()
+
+    act(() => { result.current.openBookingDetail(dinner) })
+    expect(result.current.bookingDetail).toBe(dinner)
+
+    const renamed = { ...dinner, title: 'Dinner at Kikunoi' }
+    act(() => { useTripStore.setState({ reservations: [renamed] }) })
+    expect(result.current.bookingDetail).toBe(renamed)
+
+    act(() => { useTripStore.setState({ reservations: [] }) })
+    expect(result.current.bookingDetail).toBeNull()
+
+    act(() => { useTripStore.setState({ reservations: [renamed] }) })
+    act(() => { result.current.closeBookingDetail() })
+    expect(result.current.bookingDetail).toBeNull()
+  })
+
+  it('FE-TP-HOOK-168: Edit opens the transport editor for a transport and the booking editor for anything else', async () => {
+    const train = routedTrain()
+    const dinner = buildReservation({ id: 5, type: 'restaurant', title: 'Dinner' })
+    seedTrip({ reservations: [train, dinner] })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.openBookingDetail(train) })
+    expect(result.current.bookingDetailEditor).toBe(result.current.openTransportEditor)
+    act(() => { result.current.bookingDetailEditor!(train) })
+    expect(result.current.editingTransport).toBe(train)
+    expect(result.current.showTransportModal).toBe(true)
+    expect(result.current.showReservationModal).toBe(false)
+
+    act(() => { result.current.openBookingDetail(dinner) })
+    act(() => { result.current.bookingDetailEditor!(dinner) })
+    expect(result.current.editingReservation).toBe(dinner)
+    expect(result.current.showReservationModal).toBe(true)
+  })
+
+  it('FE-TP-HOOK-169: without day_edit a transport has no editor and a journey no route change', async () => {
+    seedStore(useAuthStore, { user: buildUser({ id: 2, role: 'user' }) })
+    usePermissionsStore.setState({ permissions: { day_edit: 'admin' } })
+    const train = routedTrain()
+    const dinner = buildReservation({ id: 5, type: 'restaurant', title: 'Dinner' })
+    seedTrip({ reservations: [train, dinner] })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.openBookingDetail(train) })
+    expect(result.current.bookingDetailEditor).toBeUndefined()
+    expect(result.current.bookingDetailChangeRoute).toBeUndefined()
+
+    // The booking editor asks for reservation_edit only, as on the Bookings tab.
+    act(() => { result.current.openBookingDetail(dinner) })
+    expect(typeof result.current.bookingDetailEditor).toBe('function')
+  })
+
+  it('FE-TP-HOOK-170: without reservation_edit a booking has no editor, while a journey keeps its route change', async () => {
+    seedStore(useAuthStore, { user: buildUser({ id: 2, role: 'user' }) })
+    usePermissionsStore.setState({ permissions: { reservation_edit: 'admin' } })
+    const dinner = buildReservation({ id: 5, type: 'restaurant', title: 'Dinner' })
+    seedTrip({ reservations: [dinner] })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.openBookingDetail(dinner) })
+
+    expect(result.current.bookingDetailEditor).toBeUndefined()
+    expect(result.current.bookingDetailChangeRoute).toBe(result.current.changeTransitRoute)
+  })
+
+  it('FE-TP-HOOK-171: On map switches a route on and opens its day, and a second press switches it off', async () => {
+    const train = routedTrain()
+    seedTrip({ reservations: [train] })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.showBookingOnMap(train) })
+
+    expect(result.current.visibleConnections).toEqual([20])
+    expect(actions.setSelectedDay).toHaveBeenCalledWith(7)
+    expect(result.current.activeTab).toBe('plan')
+
+    act(() => { result.current.showBookingOnMap(train) })
+    expect(result.current.visibleConnections).toEqual([])
+  })
+
+  it('FE-TP-HOOK-172: On map for a booking at a place selects that place on its day', async () => {
+    const dinner = buildReservation({ id: 5, type: 'restaurant', title: 'Dinner', place_id: 33, day_id: 7 })
+    seedTrip({ reservations: [dinner] })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.showBookingOnMap(dinner) })
+
+    expect(actions.setSelectedDay).toHaveBeenCalledWith(7)
+    expect(result.current.selectedPlaceId).toBe(33)
+  })
+  it('FE-TP-HOOK-173: a booking opened from the day list asks for day_edit before its editor, as that row did', async () => {
+    seedStore(useAuthStore, { user: buildUser({ id: 2, role: 'user' }) })
+    usePermissionsStore.setState({ permissions: { day_edit: 'admin' } })
+    const dinner = buildReservation({ id: 5, type: 'restaurant', title: 'Dinner' })
+    seedTrip({ reservations: [dinner] })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.openBookingFromDayList(dinner) })
+    expect(result.current.bookingDetail).toBe(dinner)
+    expect(result.current.bookingDetailEditor).toBeUndefined()
+
+    // The same booking from anywhere else keeps the booking editor's own right.
+    act(() => { result.current.openBookingDetail(dinner) })
+    expect(typeof result.current.bookingDetailEditor).toBe('function')
+  })
+
+  it('FE-TP-HOOK-174: with day_edit the day list hands a booking to its editor like any other place', async () => {
+    const dinner = buildReservation({ id: 5, type: 'restaurant', title: 'Dinner' })
+    seedTrip({ reservations: [dinner] })
+
+    const { result } = await renderPlanner()
+    act(() => { result.current.openBookingFromDayList(dinner) })
+    act(() => { result.current.bookingDetailEditor!(dinner) })
+
+    expect(result.current.editingReservation).toBe(dinner)
+    expect(result.current.showReservationModal).toBe(true)
+  })
+
+  it('FE-TP-HOOK-175: a booking is on the map while its route is switched on', async () => {
+    const train = routedTrain()
+    seedTrip({ reservations: [train] })
+
+    const { result } = await renderPlanner()
+    expect(result.current.isBookingOnMap(train)).toBe(false)
+
+    act(() => { result.current.showBookingOnMap(train) })
+    expect(result.current.isBookingOnMap(train)).toBe(true)
   })
 })
 

@@ -72,6 +72,7 @@ import { applyStayStops } from '../../store/stayStops'
 import { placesForDays, resolvePoolAssignmentId } from './tripPlannerModel'
 import { isDeepLinkableTripTab, TRIP_TAB_LABEL_KEYS } from '../../constants/tripTabs'
 import { isRoutableReservation } from '../../utils/reservationRoutes'
+import { showReservationOnMap } from '../../components/Planner/bookings/showOnMap'
 import {
   parseStoredConnections, resolveEffectiveConnections, resolveVisibleConnectionIds,
   toggleConnectionId, toggleAllConnections as flipAllConnectionsMode,
@@ -313,6 +314,9 @@ export function useTripPlanner() {
   // the panel along instead of leaving it on a day that is gone.
   const showDayDetail = dayDetail && days.some(d => d.id === dayDetail.id) ? dayDetail : null
   const [dayDetailCollapsed, setDayDetailCollapsed] = useState(false)
+  // The day's "+" can ask for a new stay: the details panel opens on that day and
+  // takes the request once, then hands it back so a later opening stays plain.
+  const [stayPickerDayId, setStayPickerDayId] = useState<number | null>(null)
   const [showPlaceForm, setShowPlaceForm] = useState<boolean>(false)
   const [editingPlace, setEditingPlace] = useState<Place | null>(null)
   const [prefillCoords, setPrefillCoords] = useState<{ lat: number; lng: number; name?: string; address?: string; website?: string; phone?: string; osm_id?: string; stop_type?: RoadtripStopType | null; duration_minutes?: number } | null>(null)
@@ -418,6 +422,40 @@ export function useTripPlanner() {
   const [transportModalAutomated, setTransportModalAutomated] = useState<boolean>(false)
   const [transitPrefill, setTransitPrefill] = useState<{ from?: { name: string; lat: number; lng: number } | null; to?: { name: string; lat: number; lng: number } | null; time?: string | null } | null>(null)
   const [transitJourney, setTransitJourney] = useState<Reservation | null>(null)
+  // The booking whose detail is open over the desktop plan: a day row, a rental pill,
+  // the inspector's booking card, a map endpoint or the road-trip rail opened it.
+  // Held by id, so the dialog shows the store's copy and goes away by itself once the
+  // booking is deleted. `fromDayList` remembers that a row of the day list opened it,
+  // whose editor also asks for day_edit.
+  const [bookingDetailOpen, setBookingDetailOpen] = useState<{ id: number; fromDayList: boolean } | null>(null)
+
+  // The full transport editor on a saved entry. For a transit journey that is where
+  // travellers, costs, files, code and status live; an unchanged-endpoints save keeps
+  // the stored itinerary (#2148).
+  const openTransportEditor = useCallback((r: Reservation) => {
+    setEditingTransport(r)
+    setTransportModalDayId(r.day_id ?? null)
+    setTransportModalAutomated(false)
+    setTransitPrefill(null)
+    setTransitJourney(null)
+    setShowTransportModal(true)
+  }, [])
+  // Re-enters the transit search seeded with a journey's route; the journey is
+  // REPLACED on save (editingTransport drives handleSaveTransport's update path).
+  const changeTransitRoute = useCallback((r: Reservation) => {
+    const eps = r.endpoints || []
+    const from = eps.find(e => e.role === 'from')
+    const to = eps.find(e => e.role === 'to')
+    setTransitPrefill({
+      from: from ? { name: from.name, lat: from.lat, lng: from.lng } : null,
+      to: to ? { name: to.name, lat: to.lat, lng: to.lng } : null,
+    })
+    setEditingTransport(r)
+    setTransportModalDayId(r.day_id ?? null)
+    setTransportModalAutomated(true)
+    setTransitJourney(null)
+    setShowTransportModal(true)
+  }, [])
 
   // The bottom-nav "+" is context-aware per tab: on the Bookings / Transports tabs
   // it opens the booking / transport modal via ?create=reservation|transport
@@ -2638,6 +2676,34 @@ export function useTripPlanner() {
     catch (err: unknown) { toast.error(err instanceof Error ? err.message : t('common.unknownError')) }
   }
 
+  // ── The plan's booking detail ───────────────────────────────────────────────
+  // A click on a booking in the plan shows it first; the editor is one Edit away.
+  const bookingDetail = bookingDetailOpen == null ? null : reservations.find(r => r.id === bookingDetailOpen.id) ?? null
+  const openBookingDetail = (r: Reservation) => setBookingDetailOpen({ id: r.id, fromDayList: false })
+  const openBookingFromDayList = (r: Reservation) => setBookingDetailOpen({ id: r.id, fromDayList: true })
+  const closeBookingDetail = () => setBookingDetailOpen(null)
+  // Edit opens the editor the click used to open straight away, under the same right:
+  // day_edit for the transport editor, reservation_edit for the booking editor, and
+  // from a row of the day list day_edit on top, as that row asked for it. Without
+  // the right the detail has no Edit.
+  const editReservation = (r: Reservation) => { setEditingReservation(r); setShowReservationModal(true) }
+  const editorFor = (r: Reservation | null, fromDayList: boolean) => {
+    if (!r) return undefined
+    if (TRANSPORT_TYPES.has(r.type)) return can('day_edit', trip) ? openTransportEditor : undefined
+    if (fromDayList && !can('day_edit', trip)) return undefined
+    return can('reservation_edit', trip) ? editReservation : undefined
+  }
+  const bookingDetailEditor = editorFor(bookingDetail, !!bookingDetailOpen?.fromDayList)
+  // A transit journey is searched again under the right its journey view asked for,
+  // on the plan and on the Transports tab alike.
+  const bookingDetailChangeRoute = can('day_edit', trip) ? changeTransitRoute : undefined
+  // "On map", from the plan and from both booking tabs: the route switches on and its
+  // day opens, or the place is selected.
+  const showBookingOnMap = (r: Reservation) => showReservationOnMap(r, {
+    visibleConnections, toggleConnection, selectDay: id => handleSelectDay(id), selectPlace: setSelectedPlaceId, openPlan: () => handleTabChange('plan'),
+  })
+  const isBookingOnMap = (r: Reservation) => visibleConnections.includes(r.id)
+
   // ── Review-before-save booking import ───────────────────────────────────────
   // Match an existing trip place by name, else geocode the reviewed address and
   // create one. Returns the place id (or null if even creation failed).
@@ -2858,6 +2924,7 @@ export function useTripPlanner() {
     startResizeLeft, startResizeRight,
     selectedPlaceId, selectedAssignmentId, setSelectedPlaceId, selectAssignment,
     showDayDetail, setShowDayDetail, dayDetailCollapsed, setDayDetailCollapsed,
+    stayPickerDayId, setStayPickerDayId,
     showPlaceForm, setShowPlaceForm, editingPlace, setEditingPlace,
     prefillCoords, setPrefillCoords, editingAssignmentId, setEditingAssignmentId,
     placeFormDayId, setPlaceFormDayId, reservationModalDayId, setReservationModalDayId,
@@ -2888,6 +2955,8 @@ export function useTripPlanner() {
     showTransportModal, setShowTransportModal, editingTransport, setEditingTransport,
     transportModalDayId, setTransportModalDayId,
     transportModalAutomated, setTransportModalAutomated, transitPrefill, setTransitPrefill, transitJourney, setTransitJourney,
+    openTransportEditor, changeTransitRoute,
+    bookingDetail, openBookingDetail, openBookingFromDayList, closeBookingDetail, bookingDetailEditor, bookingDetailChangeRoute, showBookingOnMap, isBookingOnMap,
     reservationPrefill, transportPrefill, importReviewActive, startImportReview, advanceImportReview,
     receiptExpense, clearReceiptExpense: () => setReceiptExpense(null),
     routeShown, setRouteShown, autoShowRoute, transitRoutesShown, routeProfile, setRouteProfile, routeVias, fitKey, setFitKey,

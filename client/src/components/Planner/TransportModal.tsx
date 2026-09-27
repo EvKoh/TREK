@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, type ReactNode } from 'react'
 import { useParams } from 'react-router'
-import { Plane, Train, Car, Ship, Bus, Sailboat, Bike, CarTaxiFront, Route, TramFront, X, Plus, Trash2, ChevronUp, ChevronDown } from 'lucide-react'
-import Modal from '../shared/Modal'
+import { Plane, Train, Car, Ship, Bus, Sailboat, Bike, CarTaxiFront, Route, X, Trash2, ChevronUp, ChevronDown, CalendarDays, type LucideIcon } from 'lucide-react'
 import ConfirmDialog from '../shared/ConfirmDialog'
 import CustomSelect from '../shared/CustomSelect'
 import { BookingCodeInput } from '../shared/BookingCode'
 import CustomTimePicker from '../shared/CustomTimePicker'
+import { Tooltip } from '../shared/Tooltip'
 import AirportSelect, { type Airport } from './AirportSelect'
 import LocationSelect, { type LocationPoint } from './LocationSelect'
 import { toLocationPicks } from './locationPicks'
@@ -18,13 +18,17 @@ import type { Day, Place, Accommodation, Reservation, ReservationEndpoint, TripF
 import { parseReservationMetadata, orderedEndpoints, stripAirportCode } from '../../utils/flightLegs'
 import { BookingCostsSection } from './BookingCostsSection'
 import { BookingLinkAndFiles } from './BookingLinkAndFiles'
-import { BookingTypeSelect } from './BookingTypeSelect'
 import { importedPriceEntry } from './importedPrice'
 import { TravelerPicker } from './TravelerPicker'
 import type { TripMember } from '../Budget/BudgetPanelMemberChips'
 import type { BookingExpenseRequest } from './BookingCostsSection.types'
 import type { BookingReviewDraft } from './parsedItemToDraft'
 import TransitSearchPanel, { type PickedPlace } from './TransitSearchPanel'
+import { BookingDialogHeader, StatusPill } from './bookings/BookingDialogShell'
+import { DialogShell, DialogSection, DialogFooter, FooterSpacer, DialogButton, DeleteButton } from '../shared/DialogShell'
+import { INPUT, TEXTAREA, READONLY_BOX, LABEL, GRID_2, GRID_3, PANEL, SEARCH_ON_PANEL, EditorField, Segmented, PillSelect, AddRowButton } from '../shared/dialogParts'
+import { fs, Eyebrow, type StatusTone } from './bookings/bookingParts'
+import { typeInfo } from './bookings/bookingsModel'
 import { typeToCostCategory } from '@trek/shared'
 
 const TRANSPORT_TYPES = ['flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'transit', 'transport_other'] as const
@@ -129,7 +133,7 @@ function emptyStationWaypoint(dayId: string | number = ''): StationWaypointForm 
   return { location: null, arrDayId: dayId, arrTime: '', depDayId: dayId, depTime: '', train_number: '', platform: '', seat: '', confirmation_number: '' }
 }
 
-const TYPE_OPTIONS = [
+const TYPE_OPTIONS: { value: TransportType; labelKey: string; Icon: LucideIcon }[] = [
   { value: 'flight',          labelKey: 'reservations.type.flight',          Icon: Plane },
   { value: 'train',           labelKey: 'reservations.type.train',           Icon: Train },
   { value: 'bus',             labelKey: 'reservations.type.bus',             Icon: Bus },
@@ -686,9 +690,6 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
       )
     : []
 
-  const inputClass = 'w-full border border-edge rounded-[10px] px-[12px] py-[8px] text-[13px] font-[inherit] outline-none box-border text-content bg-surface-input'
-  const labelClass = 'block text-[11px] font-semibold text-content-faint mb-[5px] uppercase tracking-[0.03em]'
-
   const dayOptions = [
     { value: '', label: '—' },
     ...days.map(d => {
@@ -708,462 +709,408 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
   const writesFlightLegs = waypoints.filter(w => w.airport).length > 2
   const writesTrainLegs = trainWaypoints.filter(w => w.location).length > 2
 
-  return (
-    <Modal
-      isOpen={isOpen}
+  const titleId = 'transport-editor-title'
+  // The head band takes the colour of the card the booking will sit on.
+  const tone: StatusTone = automated || form.type === 'transit' ? 'transit' : form.status
+  const isCar = form.type === 'car'
+  const routeNames = (form.type === 'flight'
+    ? waypoints.map(w => w.airport?.iata)
+    : form.type === 'train'
+      ? trainWaypoints.map(w => w.location?.name)
+      : [fromPick.location?.name, ...(isCar ? carStops.map(s => s.location?.name) : []), toPick.location?.name]
+  ).filter(Boolean)
+  const shownType = typeInfo(form.type)
+
+  const dayField = (label: string, value: string | number, onChange: (value: string | number) => void) => (
+    <EditorField label={label}>
+      <CustomSelect value={value} onChange={onChange} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
+    </EditorField>
+  )
+  const timeField = (label: string, value: string, onChange: (value: string) => void) => (
+    <EditorField label={label}>
+      <CustomTimePicker value={value} onChange={onChange} />
+    </EditorField>
+  )
+  const zoneField = (label: string, tz: string) => (
+    <EditorField label={label}>
+      <Tooltip label={tz}>
+        <div className={READONLY_BOX}>{tz || ' '}</div>
+      </Tooltip>
+    </EditorField>
+  )
+
+  // Manual vs Automated creation (#1065), only while creating: a journey is
+  // edited again through "change route" with the switch hidden. A trip without
+  // dates has no day to depart on, so it gets the manual form alone. The switch
+  // sits in the head band, which stays put while the body swaps modes.
+  const modeSwitch = !reservation && tripHasDates && (
+    <span className="ml-auto">
+      <Segmented
+        label={`${t('transport.modeManual')} / ${t('transport.modeAutomated')}`}
+        value={automated ? 'automated' : 'manual'}
+        onChange={mode => setAutomated(mode === 'automated')}
+        options={[
+          { value: 'manual', label: t('transport.modeManual') },
+          { value: 'automated', label: t('transport.modeAutomated') },
+        ]}
+      />
+    </span>
+  )
+
+  // Until there is a title, the line under it says the field is required:
+  // Add stays greyed out without one, and a disabled button cannot say why.
+  let headerSub: string | undefined
+  if (automated) headerSub = t('transit.searchHint')
+  else if (!form.title.trim()) headerSub = `${t('reservations.titleLabel')} *`
+  else if (routeNames.length >= 2) headerSub = routeNames.join(' → ')
+
+  const header = (
+    <BookingDialogHeader
+      tone={tone}
+      type={automated ? 'transit' : form.type}
+      labelId={titleId}
       onClose={onClose}
-      title={automated ? t('transit.title') : reservation ? t('transport.modalTitle.edit') : t('transport.modalTitle.create')}
-      size="2xl"
-      footer={
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, width: '100%' }}>
-          <div>
-            {!automated && reservation?.id && onDelete && (
-              <button type="button" onClick={() => setShowDeleteConfirm(true)} className="text-danger" style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '8px 14px', borderRadius: 10, border: '1px solid var(--border-primary)', background: 'none', fontSize: 'calc(12px * var(--fs-scale-body, 1))', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
-                <Trash2 size={13} /> {t('common.delete')}
-              </button>
-            )}
-          </div>
-          <div style={{ display: 'flex', gap: 8 }}>
-            <button type="button" onClick={onClose} className="text-content-muted" style={{ padding: '8px 16px', borderRadius: 10, border: '1px solid var(--border-primary)', background: 'none', fontSize: 'calc(12px * var(--fs-scale-body, 1))', cursor: 'pointer', fontFamily: 'inherit' }}>
-              {t('common.cancel')}
-            </button>
-            {!automated && (
-            <button type="button" onClick={handleSubmit} disabled={isSaving || !form.title.trim()} className="bg-[var(--text-primary)] text-[var(--bg-primary)]" style={{ padding: '8px 20px', borderRadius: 10, border: 'none', fontSize: 'calc(12px * var(--fs-scale-body, 1))', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', opacity: isSaving || !form.title.trim() ? 0.5 : 1 }}>
-              {isSaving ? t('common.saving') : reservation ? t('common.update') : t('common.add')}
-            </button>
-            )}
-          </div>
-        </div>
-      }
-    >
-      {/* Manual vs Automated creation switch (#1065) — creating only; editing a
-          journey re-enters via "change route" with the switch hidden. Without
-          trip dates there is nothing to plan a departure against, so Automated
-          is not offered and only the manual form shows. */}
-      {!reservation && tripHasDates && (
-        <div className="bg-surface-secondary" style={{ display: 'flex', borderRadius: 11, padding: 3, gap: 2, marginBottom: 14 }}>
-          {([['manual', t('transport.modeManual')], ['automated', t('transport.modeAutomated')]] as const).map(([m, label]) => {
-            const active = (m === 'automated') === automated
-            return (
-              <button key={m} type="button" onClick={() => setAutomated(m === 'automated')}
-                className={active ? 'bg-surface-card text-content' : 'text-content-muted'}
-                style={{ flex: 1, padding: '8px 6px', fontSize: 'calc(12.5px * var(--fs-scale-body, 1))', fontWeight: 500, borderRadius: 8, border: 0, cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', background: active ? undefined : 'transparent', boxShadow: active ? '0 1px 4px rgba(0,0,0,0.08)' : 'none' }}>
-                {label}
-              </button>
-            )
-          })}
-        </div>
-      )}
-
-      {automated ? (
-        /* ── Automated: public transit search (#1065) ── */
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-          {/* search header: what this is + the day it plans for */}
-          <div className="bg-surface-tertiary" style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 16px', borderRadius: 14, flexWrap: 'wrap' }}>
-            <div style={{ width: 42, height: 42, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 12, background: '#7c3aed18' }}>
-              <TramFront size={20} strokeWidth={1.8} color="#7c3aed" />
-            </div>
-            <div style={{ flex: 1, minWidth: 180 }}>
-              <div className="text-content" style={{ fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 700, letterSpacing: '-0.01em' }}>{t('transit.title')}</div>
-              <div className="text-content-faint" style={{ fontSize: 'calc(11.5px * var(--fs-scale-caption, 1))', marginTop: 1 }}>{t('transit.searchHint')}</div>
-            </div>
-            <div style={{ width: typeof window !== 'undefined' && window.innerWidth < 768 ? '100%' : 210, flexShrink: 0 }}>
-              <CustomSelect value={form.start_day_id} onChange={v => set('start_day_id', v)} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
-            </div>
-          </div>
-          {(() => {
-            const transitDay = days.find(d => d.id === Number(form.start_day_id))
-            if (!transitDay) return <div className="text-content-faint" style={{ fontSize: 'calc(13px * var(--fs-scale-body, 1))', padding: '4px 2px 12px' }}>{t('transit.pickDay')}</div>
-            // Quick picks offer the chosen day's itinerary, not the whole trip (#1460).
-            const dayPlaces = (assignments[String(transitDay.id)] || [])
-              .slice().sort((a, b) => a.order_index - b.order_index)
-              .map(a => places.find(p => p.id === a.place_id))
-              .filter((p): p is Place => p != null)
-            return (
-              <TransitSearchPanel
-                day={transitDay}
-                days={days}
-                places={dayPlaces}
-                accommodations={accommodations}
-                onAdd={(payload) => onSave(payload as Record<string, any> & { title: string })}
-                initialFrom={transitPrefill?.from ?? null}
-                initialTo={transitPrefill?.to ?? null}
-                initialTime={transitPrefill?.time ?? null}
-              />
-            )
-          })()}
-        </div>
-      ) : (
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-
-        {/* Type and travelers side by side at the head of the dialog */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-start">
-          <div>
-            <label className={labelClass}>{t('reservations.bookingType')}</label>
-            <BookingTypeSelect options={TYPE_OPTIONS} value={form.type} onChange={value => set('type', value as TransportType)} />
-          </div>
-          {/* Travelers: trip members and guests on this booking (#1517) */}
-          <div>
-            <label className={labelClass}>{t('reservations.travelers.label')}</label>
-            <TravelerPicker tripMembers={tripMembers} selectedIds={travelerIds} onToggle={toggleTraveler} />
-          </div>
-        </div>
-
-        {/* Title */}
-        <div>
-          <label className={labelClass}>{t('reservations.titleLabel')} *</label>
-          <input type="text" value={form.title} onChange={e => set('title', e.target.value)} required
-            placeholder={t('reservations.titlePlaceholder')} className={inputClass} />
-        </div>
-
-        {form.type === 'flight' ? (
-          /* ── Flight route: ordered airports (origin · stops · destination) ── */
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <label className={labelClass}>{t('reservations.layover.route')}</label>
-            {waypoints.map((wp, i) => {
-              const isFirst = i === 0
-              const isLast = i === waypoints.length - 1
-              const updateWp = (patch: Partial<WaypointForm>) => setWaypoints(prev => prev.map((w, j) => (j === i ? { ...w, ...patch } : w)))
-              const roleLabel = isFirst ? t('reservations.meta.from') : isLast ? t('reservations.meta.to') : t('reservations.layover.stop')
-              return (
-                <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  <div className="bg-surface-card" style={{ border: '1px solid var(--border-primary)', borderRadius: 10, padding: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span className="text-content-faint" style={{ fontSize: 'calc(10px * var(--fs-scale-caption, 1))', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.03em', flexShrink: 0 }}>{roleLabel}</span>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <AirportSelect value={wp.airport} onChange={a => updateWp({ airport: a || null })} />
-                      </div>
-                      {!isFirst && !isLast && (
-                        <button type="button" onClick={() => setWaypoints(prev => prev.filter((_, j) => j !== i))} aria-label={t('common.delete')} className="text-content-faint" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 4, flexShrink: 0 }}>
-                          <Trash2 size={14} />
-                        </button>
-                      )}
-                    </div>
-                    {!isFirst && (
-                      <div style={{ display: 'flex', gap: 8 }}>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <label className={labelClass}>{t('reservations.arrivalDate')}</label>
-                          <CustomSelect value={wp.arrDayId} onChange={v => updateWp({ arrDayId: v })} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <label className={labelClass}>{t('reservations.arrivalTime')}</label>
-                          <CustomTimePicker value={wp.arrTime} onChange={v => updateWp({ arrTime: v })} />
-                        </div>
-                        {wp.airport && (
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <label className={labelClass}>{t('reservations.meta.arrivalTimezone')}</label>
-                            <div className={inputClass} style={{ padding: '8px 12px', color: 'var(--text-muted)', fontSize: 'calc(12px * var(--fs-scale-body, 1))', background: 'var(--bg-tertiary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={wp.airport.tz}>{wp.airport.tz}</div>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                    {!isLast && (
-                      <>
-                        <div style={{ display: 'flex', gap: 8 }}>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <label className={labelClass}>{t('reservations.departureDate')}</label>
-                            <CustomSelect value={wp.depDayId} onChange={v => updateWp({ depDayId: v })} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
-                          </div>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <label className={labelClass}>{t('reservations.departureTime')}</label>
-                            <CustomTimePicker value={wp.depTime} onChange={v => updateWp({ depTime: v })} />
-                          </div>
-                          {wp.airport && (
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <label className={labelClass}>{t('reservations.meta.departureTimezone')}</label>
-                              <div className={inputClass} style={{ padding: '8px 12px', color: 'var(--text-muted)', fontSize: 'calc(12px * var(--fs-scale-body, 1))', background: 'var(--bg-tertiary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={wp.airport.tz}>{wp.airport.tz}</div>
-                            </div>
-                          )}
-                        </div>
-                        <div className={`grid grid-cols-1 ${writesFlightLegs ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-3`}>
-                          <div>
-                            <label className={labelClass}>{t('reservations.meta.airline')}</label>
-                            <input type="text" value={wp.airline} onChange={e => updateWp({ airline: e.target.value })} placeholder="Lufthansa" className={inputClass} />
-                          </div>
-                          <div>
-                            <label className={labelClass}>{t('reservations.meta.flightNumber')}</label>
-                            <input type="text" value={wp.flight_number} onChange={e => updateWp({ flight_number: e.target.value })} placeholder="LH 123" className={inputClass} />
-                          </div>
-                          <div>
-                            <label className={labelClass}>{t('reservations.meta.seat')}</label>
-                            <input type="text" value={wp.seat} onChange={e => updateWp({ seat: e.target.value })} placeholder="12A" className={inputClass} />
-                          </div>
-                          {writesFlightLegs && (
-                            <div>
-                              <label className={labelClass}>{t('reservations.confirmationCode')}</label>
-                              <BookingCodeInput value={wp.confirmation_number} onChange={e => updateWp({ confirmation_number: e.target.value })}
-                                placeholder={t('reservations.confirmationPlaceholder')} className={inputClass} />
-                            </div>
-                          )}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                  {!isLast && (
-                    <button type="button" onClick={() => setWaypoints(prev => [...prev.slice(0, i + 1), emptyWaypoint(prev[i]?.depDayId || ''), ...prev.slice(i + 1)])}
-                      className="text-content-faint hover:text-content-secondary" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5, padding: '6px 10px', border: '1px dashed var(--border-primary)', borderRadius: 8, background: 'none', fontSize: 'calc(11px * var(--fs-scale-caption, 1))', cursor: 'pointer', fontFamily: 'inherit' }}>
-                      <Plus size={12} /> {t('reservations.layover.addStop')}
-                    </button>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        ) : form.type === 'train' ? (
-          /* ── Train route: ordered stations (origin · stops · destination) ── */
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <label className={labelClass}>{t('reservations.layover.route')}</label>
-            {trainWaypoints.map((wp, i) => {
-              const isFirst = i === 0
-              const isLast = i === trainWaypoints.length - 1
-              const updateWp = (patch: Partial<StationWaypointForm>) => setTrainWaypoints(prev => prev.map((w, j) => (j === i ? { ...w, ...patch } : w)))
-              const roleLabel = isFirst ? t('reservations.meta.from') : isLast ? t('reservations.meta.to') : t('reservations.layover.stop')
-              return (
-                <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  <div className="bg-surface-card" style={{ border: '1px solid var(--border-primary)', borderRadius: 10, padding: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span className="text-content-faint" style={{ fontSize: 'calc(10px * var(--fs-scale-caption, 1))', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.03em', flexShrink: 0 }}>{roleLabel}</span>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <LocationSelect value={wp.location} onChange={l => updateWp({ location: l || null })} places={locationPicks} />
-                      </div>
-                      {!isFirst && !isLast && (
-                        <button type="button" onClick={() => setTrainWaypoints(prev => prev.filter((_, j) => j !== i))} aria-label={t('common.delete')} className="text-content-faint" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 4, flexShrink: 0 }}>
-                          <Trash2 size={14} />
-                        </button>
-                      )}
-                    </div>
-                    {!isFirst && (
-                      <div style={{ display: 'flex', gap: 8 }}>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <label className={labelClass}>{t('reservations.arrivalDate')}</label>
-                          <CustomSelect value={wp.arrDayId} onChange={v => updateWp({ arrDayId: v })} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <label className={labelClass}>{t('reservations.arrivalTime')}</label>
-                          <CustomTimePicker value={wp.arrTime} onChange={v => updateWp({ arrTime: v })} />
-                        </div>
-                      </div>
-                    )}
-                    {!isLast && (
-                      <>
-                        <div style={{ display: 'flex', gap: 8 }}>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <label className={labelClass}>{t('reservations.departureDate')}</label>
-                            <CustomSelect value={wp.depDayId} onChange={v => updateWp({ depDayId: v })} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
-                          </div>
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <label className={labelClass}>{t('reservations.departureTime')}</label>
-                            <CustomTimePicker value={wp.depTime} onChange={v => updateWp({ depTime: v })} />
-                          </div>
-                        </div>
-                        <div className={`grid grid-cols-1 ${writesTrainLegs ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-3`}>
-                          <div>
-                            <label className={labelClass}>{t('reservations.meta.trainNumber')}</label>
-                            <input type="text" value={wp.train_number} onChange={e => updateWp({ train_number: e.target.value })} placeholder="ICE 123" className={inputClass} />
-                          </div>
-                          <div>
-                            <label className={labelClass}>{t('reservations.meta.platform')}</label>
-                            <input type="text" value={wp.platform} onChange={e => updateWp({ platform: e.target.value })} placeholder="12" className={inputClass} />
-                          </div>
-                          <div>
-                            <label className={labelClass}>{t('reservations.meta.seat')}</label>
-                            <input type="text" value={wp.seat} onChange={e => updateWp({ seat: e.target.value })} placeholder="42A" className={inputClass} />
-                          </div>
-                          {writesTrainLegs && (
-                            <div>
-                              <label className={labelClass}>{t('reservations.confirmationCode')}</label>
-                              <BookingCodeInput value={wp.confirmation_number} onChange={e => updateWp({ confirmation_number: e.target.value })}
-                                placeholder={t('reservations.confirmationPlaceholder')} className={inputClass} />
-                            </div>
-                          )}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                  {!isLast && (
-                    <button type="button" onClick={() => setTrainWaypoints(prev => [...prev.slice(0, i + 1), emptyStationWaypoint(prev[i]?.depDayId || ''), ...prev.slice(i + 1)])}
-                      className="text-content-faint hover:text-content-secondary" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5, padding: '6px 10px', border: '1px dashed var(--border-primary)', borderRadius: 8, background: 'none', fontSize: 'calc(11px * var(--fs-scale-caption, 1))', cursor: 'pointer', fontFamily: 'inherit' }}>
-                      <Plus size={12} /> {t('reservations.layover.addStop')}
-                    </button>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        ) : (
-          <>
-            {/* From / To endpoints (non-flight) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label className={labelClass}>{t('reservations.meta.from')}</label>
-                <LocationSelect value={fromPick.location || null} onChange={l => setFromPick({ location: l || undefined })} places={locationPicks} />
-              </div>
-              <div>
-                <label className={labelClass}>{t('reservations.meta.to')}</label>
-                <LocationSelect value={toPick.location || null} onChange={l => setToPick({ location: l || undefined })} places={locationPicks} />
-              </div>
-            </div>
-
-            {/* Stops along the drive — cars only (#1797). The rental frame above stays the
-                pick-up and return; these are the places in between, in order. */}
-            {form.type === 'car' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <label className={labelClass}>{t('roadtrip.stops.label')}</label>
-                {carStops.map((stop, i) => (
-                  <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-end' }}>
-                    {/* The order of these stops IS the route: `sequence` is the array index
-                        at save time, so the only way to change which one is driven first
-                        was to delete both and re-enter them. Buttons rather than dragging,
-                        because the row already carries a location picker and a time picker
-                        and there is nothing left to grab. */}
-                    {carStops.length > 1 && (
-                      <div style={{ display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
-                        <button
-                          type="button"
-                          onClick={() => moveCarStop(i, -1)}
-                          disabled={i === 0}
-                          aria-label={t('dayplan.moveUp')}
-                          className="text-content-faint enabled:hover:text-content disabled:opacity-30"
-                          style={{ background: 'none', border: 'none', cursor: i === 0 ? 'default' : 'pointer', padding: '2px 4px', display: 'flex', alignItems: 'center' }}
-                        >
-                          <ChevronUp size={13} />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => moveCarStop(i, 1)}
-                          disabled={i === carStops.length - 1}
-                          aria-label={t('dayplan.moveDown')}
-                          className="text-content-faint enabled:hover:text-content disabled:opacity-30"
-                          style={{ background: 'none', border: 'none', cursor: i === carStops.length - 1 ? 'default' : 'pointer', padding: '2px 4px', display: 'flex', alignItems: 'center' }}
-                        >
-                          <ChevronDown size={13} />
-                        </button>
-                      </div>
-                    )}
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <LocationSelect
-                        value={stop.location}
-                        onChange={l => setCarStops(prev => prev.map((s, j) => (j === i ? { ...s, location: l || null } : s)))}
-                        places={locationPicks}
-                      />
-                    </div>
-                    <div style={{ width: 110, flexShrink: 0 }}>
-                      <CustomTimePicker
-                        value={stop.time}
-                        onChange={v => setCarStops(prev => prev.map((s, j) => (j === i ? { ...s, time: v } : s)))}
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => setCarStops(prev => prev.filter((_, j) => j !== i))}
-                      aria-label={t('roadtrip.stops.remove')}
-                      className="text-content-faint hover:text-danger"
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, display: 'flex', alignItems: 'center' }}
-                    >
-                      <X size={14} />
-                    </button>
-                  </div>
-                ))}
-                <button
-                  type="button"
-                  onClick={() => setCarStops(prev => [...prev, emptyCarStop()])}
-                  className="text-content-faint hover:text-content-secondary"
-                  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5, padding: '6px 10px', border: '1px dashed var(--border-primary)', borderRadius: 8, background: 'none', fontSize: 'calc(11px * var(--fs-scale-caption, 1))', cursor: 'pointer', fontFamily: 'inherit' }}
-                >
-                  <Plus size={12} /> {t('reservations.layover.addStop')}
-                </button>
-              </div>
-            )}
-
-            {/* Departure row */}
-            <div style={{ display: 'flex', gap: 8 }}>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <label className={labelClass}>{form.type === 'car' ? t('reservations.pickupDate') : t('reservations.date')}</label>
-                <CustomSelect value={form.start_day_id} onChange={value => set('start_day_id', value)} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <label className={labelClass}>{form.type === 'car' ? t('reservations.pickupTime') : t('reservations.startTime')}</label>
-                <CustomTimePicker value={form.departure_time} onChange={v => set('departure_time', v)} />
-              </div>
-            </div>
-
-            {/* Arrival row */}
-            <div style={{ display: 'flex', gap: 8 }}>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <label className={labelClass}>{form.type === 'car' ? t('reservations.returnDate') : t('reservations.endDate')}</label>
-                <CustomSelect value={form.end_day_id} onChange={value => set('end_day_id', value)} placeholder={t('dayplan.dayN', { n: '?' })} options={dayOptions} size="sm" />
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <label className={labelClass}>{form.type === 'car' ? t('reservations.returnTime') : t('reservations.endTime')}</label>
-                <CustomTimePicker value={form.arrival_time} onChange={v => set('arrival_time', v)} />
-              </div>
-            </div>
-          </>
-        )}
-
-        {/* Train-specific fields */}
-        {/* Train number / platform / seat are per-leg now (in the route above). */}
-
-        {/* Booking Code + Status */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label className={labelClass}>{t('reservations.confirmationCode')}</label>
-            <BookingCodeInput value={form.confirmation_number} onChange={e => set('confirmation_number', e.target.value)}
-              placeholder={t('reservations.confirmationPlaceholder')} className={inputClass} />
-          </div>
-          <div>
-            <label className={labelClass}>{t('reservations.status')}</label>
-            <CustomSelect
-              value={form.status}
-              onChange={value => set('status', value)}
-              options={[
-                { value: 'pending', label: t('reservations.pending') },
-                { value: 'confirmed', label: t('reservations.confirmed') },
-              ]}
-              size="sm"
+      eyebrow={automated ? undefined : reservation ? t('transport.modalTitle.edit') : t('transport.modalTitle.create')}
+      title={automated ? t('transit.title') : undefined}
+      titleInput={automated ? undefined : {
+        value: form.title,
+        onChange: value => set('title', value),
+        label: t('reservations.titleLabel'),
+        placeholder: t('reservations.titlePlaceholder'),
+        required: true,
+      }}
+      sub={headerSub}
+      subWraps={automated}
+      pills={(
+        <>
+          {/* The search runs against one day; it heads the band next to the mode switch. */}
+          {automated && (
+            <PillSelect
+              label={t('reservations.date')}
+              value={String(form.start_day_id)}
+              onChange={value => set('start_day_id', value === '' ? '' : Number(value))}
+              options={dayOptions.map(o => ({ value: String(o.value), label: o.label, hint: 'badge' in o ? o.badge : undefined, icon: <CalendarDays size={13} strokeWidth={2.2} className="text-content-faint" /> }))}
             />
+          )}
+          {!automated && (
+            <StatusPill status={form.status} onToggle={() => set('status', form.status === 'confirmed' ? 'pending' : 'confirmed')} />
+          )}
+          {!automated && (
+            <PillSelect
+              label={t('reservations.bookingType')}
+              value={form.type}
+              onChange={value => set('type', value)}
+              options={TYPE_OPTIONS.map(o => ({ value: o.value, label: t(o.labelKey), icon: <o.Icon size={14} style={{ color: typeInfo(o.value).color }} /> }))}
+              fallback={{ label: t(shownType.chipKey), icon: <shownType.Icon size={14} style={{ color: shownType.color }} /> }}
+            />
+          )}
+          {modeSwitch}
+        </>
+      )}
+    />
+  )
+
+  const footer = (
+    <DialogFooter>
+      {!automated && reservation?.id && onDelete && <DeleteButton onClick={() => setShowDeleteConfirm(true)} />}
+      <FooterSpacer />
+      <DialogButton onClick={onClose}>{t('common.cancel')}</DialogButton>
+      {!automated && (
+        <DialogButton variant="primary" onClick={() => handleSubmit()} disabled={isSaving || !form.title.trim()}>
+          {isSaving ? t('common.saving') : reservation ? t('common.update') : t('common.add')}
+        </DialogButton>
+      )}
+    </DialogFooter>
+  )
+
+  const transitSearch = () => {
+    const transitDay = days.find(d => d.id === Number(form.start_day_id))
+    if (!transitDay) return <p className="m-0 text-content-faint" style={fs(13, 'body')}>{t('transit.pickDay')}</p>
+    // Quick picks offer the chosen day's itinerary, not the whole trip (#1460).
+    const dayPlaces = (assignments[String(transitDay.id)] || [])
+      .slice().sort((a, b) => a.order_index - b.order_index)
+      .map(a => places.find(p => p.id === a.place_id))
+      .filter((p): p is Place => p != null)
+    return (
+      <TransitSearchPanel
+        day={transitDay}
+        days={days}
+        places={dayPlaces}
+        accommodations={accommodations}
+        onAdd={(payload) => onSave(payload as Record<string, any> & { title: string })}
+        initialFrom={transitPrefill?.from ?? null}
+        initialTo={transitPrefill?.to ?? null}
+        initialTime={transitPrefill?.time ?? null}
+      />
+    )
+  }
+
+  const roleLabel = (i: number, count: number) =>
+    i === 0 ? t('reservations.meta.from') : i === count - 1 ? t('reservations.meta.to') : t('reservations.layover.stop')
+
+  // Flight route: ordered airports (origin, stops, destination) on one rail.
+  const flightRoute = () => (
+    <DialogSection key="flight" label={t('reservations.layover.route')}>
+      <ol>
+        {waypoints.map((wp, i) => {
+          const isFirst = i === 0
+          const isLast = i === waypoints.length - 1
+          const updateWp = (patch: Partial<WaypointForm>) => setWaypoints(prev => prev.map((w, j) => (j === i ? { ...w, ...patch } : w)))
+          return (
+            <RailStop key={i} first={isFirst} last={isLast}>
+              <div className={PANEL}>
+                <StopHead label={roleLabel(i, waypoints.length)} onRemove={!isFirst && !isLast ? () => setWaypoints(prev => prev.filter((_, j) => j !== i)) : undefined}>
+                  <div className={SEARCH_ON_PANEL}>
+                    <AirportSelect value={wp.airport} onChange={a => updateWp({ airport: a || null })} />
+                  </div>
+                </StopHead>
+                {!isFirst && (
+                  <div className={wp.airport ? GRID_3 : GRID_2}>
+                    {dayField(t('reservations.arrivalDate'), wp.arrDayId, v => updateWp({ arrDayId: v }))}
+                    {timeField(t('reservations.arrivalTime'), wp.arrTime, v => updateWp({ arrTime: v }))}
+                    {wp.airport && zoneField(t('reservations.meta.arrivalTimezone'), wp.airport.tz)}
+                  </div>
+                )}
+                {!isLast && (
+                  <>
+                    <div className={wp.airport ? GRID_3 : GRID_2}>
+                      {dayField(t('reservations.departureDate'), wp.depDayId, v => updateWp({ depDayId: v }))}
+                      {timeField(t('reservations.departureTime'), wp.depTime, v => updateWp({ depTime: v }))}
+                      {wp.airport && zoneField(t('reservations.meta.departureTimezone'), wp.airport.tz)}
+                    </div>
+                    <div className={writesFlightLegs ? GRID_4 : GRID_3}>
+                      <EditorField label={t('reservations.meta.airline')}>
+                        <input type="text" value={wp.airline} onChange={e => updateWp({ airline: e.target.value })} placeholder="Lufthansa" className={INPUT} />
+                      </EditorField>
+                      <EditorField label={t('reservations.meta.flightNumber')}>
+                        <input type="text" value={wp.flight_number} onChange={e => updateWp({ flight_number: e.target.value })} placeholder="LH 123" className={INPUT} />
+                      </EditorField>
+                      <EditorField label={t('reservations.meta.seat')}>
+                        <input type="text" value={wp.seat} onChange={e => updateWp({ seat: e.target.value })} placeholder="12A" className={INPUT} />
+                      </EditorField>
+                      {writesFlightLegs && (
+                        <EditorField label={t('reservations.confirmationCode')}>
+                          <BookingCodeInput value={wp.confirmation_number} onChange={e => updateWp({ confirmation_number: e.target.value })}
+                            placeholder={t('reservations.confirmationPlaceholder')} className={INPUT} />
+                        </EditorField>
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+              {!isLast && (
+                <div className="py-2.5">
+                  <AddRowButton onClick={() => setWaypoints(prev => [...prev.slice(0, i + 1), emptyWaypoint(prev[i]?.depDayId || ''), ...prev.slice(i + 1)])}>
+                    {t('reservations.layover.addStop')}
+                  </AddRowButton>
+                </div>
+              )}
+            </RailStop>
+          )
+        })}
+      </ol>
+    </DialogSection>
+  )
+
+  // Train route: ordered stations on the same rail, per-leg train fields.
+  const trainRoute = () => (
+    <DialogSection key="train" label={t('reservations.layover.route')}>
+      <ol>
+        {trainWaypoints.map((wp, i) => {
+          const isFirst = i === 0
+          const isLast = i === trainWaypoints.length - 1
+          const updateWp = (patch: Partial<StationWaypointForm>) => setTrainWaypoints(prev => prev.map((w, j) => (j === i ? { ...w, ...patch } : w)))
+          return (
+            <RailStop key={i} first={isFirst} last={isLast}>
+              <div className={PANEL}>
+                <StopHead label={roleLabel(i, trainWaypoints.length)} onRemove={!isFirst && !isLast ? () => setTrainWaypoints(prev => prev.filter((_, j) => j !== i)) : undefined}>
+                  <div className={SEARCH_ON_PANEL}>
+                    <LocationSelect value={wp.location} onChange={l => updateWp({ location: l || null })} places={locationPicks} />
+                  </div>
+                </StopHead>
+                {!isFirst && (
+                  <div className={GRID_2}>
+                    {dayField(t('reservations.arrivalDate'), wp.arrDayId, v => updateWp({ arrDayId: v }))}
+                    {timeField(t('reservations.arrivalTime'), wp.arrTime, v => updateWp({ arrTime: v }))}
+                  </div>
+                )}
+                {!isLast && (
+                  <>
+                    <div className={GRID_2}>
+                      {dayField(t('reservations.departureDate'), wp.depDayId, v => updateWp({ depDayId: v }))}
+                      {timeField(t('reservations.departureTime'), wp.depTime, v => updateWp({ depTime: v }))}
+                    </div>
+                    <div className={writesTrainLegs ? GRID_4 : GRID_3}>
+                      <EditorField label={t('reservations.meta.trainNumber')}>
+                        <input type="text" value={wp.train_number} onChange={e => updateWp({ train_number: e.target.value })} placeholder="ICE 123" className={INPUT} />
+                      </EditorField>
+                      <EditorField label={t('reservations.meta.platform')}>
+                        <input type="text" value={wp.platform} onChange={e => updateWp({ platform: e.target.value })} placeholder="12" className={INPUT} />
+                      </EditorField>
+                      <EditorField label={t('reservations.meta.seat')}>
+                        <input type="text" value={wp.seat} onChange={e => updateWp({ seat: e.target.value })} placeholder="42A" className={INPUT} />
+                      </EditorField>
+                      {writesTrainLegs && (
+                        <EditorField label={t('reservations.confirmationCode')}>
+                          <BookingCodeInput value={wp.confirmation_number} onChange={e => updateWp({ confirmation_number: e.target.value })}
+                            placeholder={t('reservations.confirmationPlaceholder')} className={INPUT} />
+                        </EditorField>
+                      )}
+                    </div>
+                  </>
+                )}
+              </div>
+              {!isLast && (
+                <div className="py-2.5">
+                  <AddRowButton onClick={() => setTrainWaypoints(prev => [...prev.slice(0, i + 1), emptyStationWaypoint(prev[i]?.depDayId || ''), ...prev.slice(i + 1)])}>
+                    {t('reservations.layover.addStop')}
+                  </AddRowButton>
+                </div>
+              )}
+            </RailStop>
+          )
+        })}
+      </ol>
+    </DialogSection>
+  )
+
+  // Every other type: one From and one To, the day and time rows under them.
+  const plainRoute = () => (
+    <DialogSection key="plain" label={t('reservations.layover.route')}>
+      <div className={PANEL}>
+        <div className={GRID_2}>
+          <EditorField label={t('reservations.meta.from')}>
+            <div className={SEARCH_ON_PANEL}>
+              <LocationSelect value={fromPick.location || null} onChange={l => setFromPick({ location: l || undefined })} places={locationPicks} />
+            </div>
+          </EditorField>
+          <EditorField label={t('reservations.meta.to')}>
+            <div className={SEARCH_ON_PANEL}>
+              <LocationSelect value={toPick.location || null} onChange={l => setToPick({ location: l || undefined })} places={locationPicks} />
+            </div>
+          </EditorField>
+        </div>
+
+        {/* Stops along the drive, cars only (#1797). The rental frame above stays the
+            pick-up and return; these are the places in between, in order. */}
+        {isCar && (
+          <div>
+            <Eyebrow className="mb-[5px]">{t('roadtrip.stops.label')}</Eyebrow>
+            <div className="flex flex-col gap-2">
+              {carStops.map((stop, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  {/* The order of the stops IS the route (sequence is the index at save
+                      time), and the row has no room left to drag by, hence buttons. */}
+                  {carStops.length > 1 && (
+                    <div className="flex flex-none flex-col">
+                      <IconAction label={t('dayplan.moveUp')} onClick={() => moveCarStop(i, -1)} disabled={i === 0} shape="h-[18px] w-6 rounded-md">
+                        <ChevronUp size={13} />
+                      </IconAction>
+                      <IconAction label={t('dayplan.moveDown')} onClick={() => moveCarStop(i, 1)} disabled={i === carStops.length - 1} shape="h-[18px] w-6 rounded-md">
+                        <ChevronDown size={13} />
+                      </IconAction>
+                    </div>
+                  )}
+                  <div className={`${SEARCH_ON_PANEL} flex-1`}>
+                    <LocationSelect
+                      value={stop.location}
+                      onChange={l => setCarStops(prev => prev.map((s, j) => (j === i ? { ...s, location: l || null } : s)))}
+                      places={locationPicks}
+                    />
+                  </div>
+                  <div className="w-[110px] flex-none">
+                    <CustomTimePicker
+                      value={stop.time}
+                      onChange={v => setCarStops(prev => prev.map((s, j) => (j === i ? { ...s, time: v } : s)))}
+                    />
+                  </div>
+                  <IconAction label={t('roadtrip.stops.remove')} onClick={() => setCarStops(prev => prev.filter((_, j) => j !== i))} danger>
+                    <X size={14} />
+                  </IconAction>
+                </div>
+              ))}
+              <AddRowButton onClick={() => setCarStops(prev => [...prev, emptyCarStop()])}>{t('reservations.layover.addStop')}</AddRowButton>
+            </div>
           </div>
-        </div>
-
-        {/* Notes */}
-        <div>
-          <label className={labelClass}>{t('reservations.notes')}</label>
-          <textarea value={form.notes} onChange={e => set('notes', e.target.value)} rows={2}
-            placeholder={t('reservations.notesPlaceholder')}
-            className={inputClass} style={{ resize: 'none', lineHeight: 1.5 }} />
-        </div>
-
-        {/* Link and files side by side */}
-        <BookingLinkAndFiles
-          url={form.url}
-          onUrlChange={value => set('url', value)}
-          labelClass={labelClass}
-          inputClass={inputClass}
-          reservationId={reservation?.id}
-          tripFiles={files}
-          attachedFiles={attachedFiles}
-          pendingFiles={pendingFiles}
-          onRemovePending={index => setPendingFiles(prev => prev.filter((_, j) => j !== index))}
-          fileInputRef={fileInputRef}
-          onFileChange={handleFileChange}
-          canAttach={!!onFileUpload}
-          uploading={uploadingFile}
-          onLinked={fileId => setLinkedFileIds(prev => [...prev, fileId])}
-          onDetached={fileId => setLinkedFileIds(prev => prev.filter(id => id !== fileId))}
-        />
-
-        {/* Costs — create / view the expense linked to this booking */}
-        {isBudgetEnabled && (
-          <BookingCostsSection
-            reservationId={reservation?.id ?? null}
-            pendingExpense={pendingExpense}
-            onCreate={handleCreateExpense}
-            onEdit={handleEditExpense}
-            onRemove={handleRemoveExpense}
-          />
         )}
 
-      </form>
+        <div className={GRID_2}>
+          {dayField(isCar ? t('reservations.pickupDate') : t('reservations.date'), form.start_day_id, value => set('start_day_id', value))}
+          {timeField(isCar ? t('reservations.pickupTime') : t('reservations.startTime'), form.departure_time, v => set('departure_time', v))}
+        </div>
+        <div className={GRID_2}>
+          {dayField(isCar ? t('reservations.returnDate') : t('reservations.endDate'), form.end_day_id, value => set('end_day_id', value))}
+          {timeField(isCar ? t('reservations.returnTime') : t('reservations.endTime'), form.arrival_time, v => set('arrival_time', v))}
+        </div>
+      </div>
+    </DialogSection>
+  )
+
+  return (
+    <DialogShell
+      open={isOpen}
+      onClose={onClose}
+      labelledBy={titleId}
+      width="editor"
+      align="top"
+      blocked={showDeleteConfirm}
+      onSubmit={automated ? undefined : handleSubmit}
+      header={header}
+      footer={footer}
+    >
+      {automated ? (
+        /* Automated: public transit search (#1065) for the day picked in the head band. */
+        transitSearch()
+      ) : (
+        <>
+          {/* Travelers: trip members and guests on this booking (#1517) */}
+          <DialogSection label={t('reservations.travelers.label')}>
+            <TravelerPicker tripMembers={tripMembers} selectedIds={travelerIds} onToggle={toggleTraveler} />
+          </DialogSection>
+
+          {form.type === 'flight' ? flightRoute() : form.type === 'train' ? trainRoute() : plainRoute()}
+
+          <EditorField label={t('reservations.confirmationCode')}>
+            <BookingCodeInput value={form.confirmation_number} onChange={e => set('confirmation_number', e.target.value)}
+              placeholder={t('reservations.confirmationPlaceholder')} className={INPUT} />
+          </EditorField>
+
+          <EditorField label={t('reservations.notes')}>
+            <textarea value={form.notes} onChange={e => set('notes', e.target.value)} rows={2}
+              placeholder={t('reservations.notesPlaceholder')} className={TEXTAREA} />
+          </EditorField>
+
+          <BookingLinkAndFiles
+            url={form.url}
+            onUrlChange={value => set('url', value)}
+            labelClass={LABEL}
+            inputClass={INPUT}
+            reservationId={reservation?.id}
+            tripFiles={files}
+            attachedFiles={attachedFiles}
+            pendingFiles={pendingFiles}
+            onRemovePending={index => setPendingFiles(prev => prev.filter((_, j) => j !== index))}
+            fileInputRef={fileInputRef}
+            onFileChange={handleFileChange}
+            canAttach={!!onFileUpload}
+            uploading={uploadingFile}
+            onLinked={fileId => setLinkedFileIds(prev => [...prev, fileId])}
+            onDetached={fileId => setLinkedFileIds(prev => prev.filter(id => id !== fileId))}
+          />
+
+          {/* Costs: create or view the expenses linked to this booking */}
+          {isBudgetEnabled && (
+            <BookingCostsSection
+              reservationId={reservation?.id ?? null}
+              pendingExpense={pendingExpense}
+              onCreate={handleCreateExpense}
+              onEdit={handleEditExpense}
+              onRemove={handleRemoveExpense}
+              labelClassName={LABEL}
+              customTooltips
+            />
+          )}
+        </>
       )}
 
       <ConfirmDialog
@@ -1179,6 +1126,65 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
           onClose()
         }}
       />
-    </Modal>
+    </DialogShell>
+  )
+}
+
+const GRID_4 = 'grid grid-cols-4 items-start gap-3 max-sm:grid-cols-1'
+
+/** One stop on the route: a dot on the line from origin to destination, its fields beside it. */
+function RailStop({ first, last, children }: { first: boolean; last: boolean; children: ReactNode }) {
+  return (
+    <li className="relative pl-7">
+      {!first && <span aria-hidden="true" className="absolute left-[7px] top-0 h-6 w-0.5 bg-edge" />}
+      {!last && <span aria-hidden="true" className="absolute bottom-0 left-[7px] top-6 w-0.5 bg-edge" />}
+      <span
+        aria-hidden="true"
+        className={`absolute left-[3px] top-[19px] h-2.5 w-2.5 rounded-full border-2 bg-surface-card ${first || last ? 'border-content-muted' : 'border-content-faint'}`}
+      />
+      {children}
+    </li>
+  )
+}
+
+/** The role of a stop over its place field, and the remove action an intermediate stop has. */
+function StopHead({ label, onRemove, children }: { label: string; onRemove?: () => void; children: ReactNode }) {
+  const { t } = useTranslation()
+  return (
+    <div className="flex flex-col gap-1.5">
+      <div className="flex min-h-[24px] items-center gap-2">
+        <Eyebrow className="min-w-0 flex-1 truncate">{label}</Eyebrow>
+        {onRemove && (
+          <IconAction label={t('common.delete')} onClick={onRemove} danger>
+            <Trash2 size={13} />
+          </IconAction>
+        )}
+      </div>
+      {children}
+    </div>
+  )
+}
+
+/** A small icon button inside a route, named by its tooltip. */
+function IconAction({ label, onClick, disabled, danger = false, shape = 'h-6 w-6 rounded-full', children }: {
+  label: string
+  onClick: () => void
+  disabled?: boolean
+  danger?: boolean
+  shape?: string
+  children: ReactNode
+}) {
+  return (
+    <Tooltip label={label}>
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={disabled}
+        aria-label={label}
+        className={`grid flex-none place-items-center text-content-faint enabled:hover:bg-surface-hover disabled:cursor-default disabled:opacity-30 ${danger ? 'enabled:hover:text-danger' : 'enabled:hover:text-content'} ${shape}`}
+      >
+        {children}
+      </button>
+    </Tooltip>
   )
 }

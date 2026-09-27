@@ -1,4 +1,4 @@
-// FE-PLANNER-COSTSEC-001 to FE-PLANNER-COSTSEC-019
+// FE-PLANNER-COSTSEC-001 to FE-PLANNER-COSTSEC-022
 import { render, screen, waitFor, within } from '../../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
@@ -252,5 +252,39 @@ describe('BookingCostsSection', () => {
     expect(screen.queryByText(money(120, 'USD'))).not.toBeInTheDocument();
     await user.click(linkSelect());
     expect(screen.getByRole('button', { name: /Tram pass/ })).toHaveTextContent(money(9, 'EUR'));
+  });
+});
+
+describe('BookingCostsSection with white buttons', () => {
+  it('FE-PLANNER-COSTSEC-020: whiteButtons draws the create button and the expense rows white', () => {
+    renderSection({ whiteButtons: true });
+    const create = screen.getByRole('button', { name: /Create expense/i });
+    expect(create).toHaveClass('bg-surface-card');
+    expect(create).not.toHaveClass('bg-surface-secondary');
+    expect(rowOf('Flight LH 400')).toHaveClass('bg-surface-card');
+  });
+
+  it('FE-PLANNER-COSTSEC-021: without it the block keeps its grey fill', () => {
+    renderSection();
+    expect(screen.getByRole('button', { name: /Create expense/i })).toHaveClass('bg-surface-secondary');
+    expect(rowOf('Flight LH 400')).toHaveClass('bg-surface-secondary');
+  });
+
+  it('FE-PLANNER-COSTSEC-022: the row buttons turn white on a hairline too, and only with it', () => {
+    const handlers = { onCreate: vi.fn(), onEdit: vi.fn(), onRemove: vi.fn() };
+    const white = render(<BookingCostsSection reservationId={9} {...handlers} whiteButtons />);
+    const buttons = within(rowOf('Flight LH 400')).getAllByRole('button');
+    expect(buttons).toHaveLength(3);
+    for (const button of buttons) {
+      expect(button).toHaveClass('bg-surface-card', 'shadow-sm', 'ring-edge-faint');
+      expect(button).not.toHaveClass('border-edge');
+    }
+    white.unmount();
+
+    renderSection();
+    for (const button of within(rowOf('Flight LH 400')).getAllByRole('button')) {
+      expect(button).toHaveClass('border-edge');
+      expect(button).not.toHaveClass('shadow-sm');
+    }
   });
 });

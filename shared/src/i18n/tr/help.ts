@@ -2,12 +2,12 @@ import type { TranslationStrings } from '../types';
 
 // English fallback until 'tr' is translated.
 const help: TranslationStrings = {
-  'help.title': 'Help & Docs',
-  'help.search': 'Search docs…',
-  'help.contents': 'Contents',
-  'help.noResults': 'No matching pages.',
-  'help.errorTitle': "Couldn't load this page",
-  'help.errorBody': 'The help content is fetched from the TREK wiki. Check your connection and try again.',
+  'help.title': 'Yardım ve belgeler',
+  'help.search': 'Belgelerde ara…',
+  'help.contents': 'İçindekiler',
+  'help.noResults': 'Eşleşen sayfa yok.',
+  'help.errorTitle': 'Bu sayfa yüklenemedi',
+  'help.errorBody': 'Yardım içeriği TREK wiki’sinden alınır. Bağlantınızı kontrol edip tekrar deneyin.',
 
   // center
   'help.center.button': 'Bu ekran için yardım',
@@ -1026,7 +1026,7 @@ const help: TranslationStrings = {
     'Travel & map: rezervasyon rotaları her zaman haritada, Yerleri keşfet hapı, konaklamadan rota optimizasyonu, bulanık rezervasyon kodları ve etiketli rezervasyon rotaları.',
   'help.ctx.settings-display.bullet.3':
     'Başlangıç: TREK’in panoda mı yoksa aktif gezide mi açılacağı ve bir gezinin hangi sekmesinin önce geleceği.',
-  'help.ctx.settings-appearance.title': 'Appearance',
+  'help.ctx.settings-appearance.title': 'Görünüm',
   'help.ctx.settings-appearance.summary':
     'TREK’in bu hesapta nasıl göründüğü: açık ya da koyu, vurgu rengi, cam ve hareket, metin boyutu ve panonun hangi bileşenleri gösterdiği. Her şey canlı olarak, oturum açtığınız her cihazda uygulanır.',
   'help.ctx.settings-appearance.bullet.1':
@@ -2269,9 +2269,9 @@ const help: TranslationStrings = {
     'Rezervasyonun ait olduğu durağı açın. Kart, Onaylandı ya da Askıda olması ile rezervasyonun adını taşıyan bir şerit gösterir.',
   'help.guide.place-booking.step.2':
     'Şerit Tarih, Zaman ve Rezervasyon Kodu ile rezervasyonun sahip olduğu notları taşır.',
-  'help.guide.place-booking.step.3': 'Şeride tıklayın. Rezervasyonun kendi formu onun üzerinde açılır.',
+  'help.guide.place-booking.step.3': 'Şeride tıklayın. Rezervasyon haritanın üzerinde açılır.',
   'help.guide.place-booking.step.4':
-    'Bir rezervasyonu bir durağa iliştiren şey Gün atamasına bağla alanıdır ve burada zaten bu durağın adını verir. Formu yeniden kapatın.',
+    'Rezervasyonun altındaki Düzenle, onun kendi formunu açar. Bir rezervasyonu bir durağa iliştiren şey oradaki Gün atamasına bağla alanıdır ve burada zaten bu durağın adını verir. Formu yeniden kapatın.',
   'help.guide.place-booking.step.5':
     'Bir durak için yeni bir rezervasyon günler sütununda başlar: imleci durağın üzerine getirin ve sonundaki + işaretine tıklayın. Form Yeni Rezervasyon olarak, ona bağlı hâlde açılır.',
   'help.guide.place-booking.result':
@@ -2622,7 +2622,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Renk bir rezervasyonun nerede olduğunu söyler: yeşil satır onaylandı, kehribar rengi olan hâlâ askıda. Oteller bu listede değildir, aşağıda kendi blokları vardır.',
   'help.guide.day-bookings.step.4':
-    'Liste rezervasyonları yalnızca okur. Bir rezervasyon Rezervasyonlar sekmesinde oluşturulur ve değiştirilir.',
+    'Bir satıra tıklayın, rezervasyon açılır. Altındaki Düzenle onu değiştirir; yeni rezervasyonlar Rezervasyonlar sekmesinde oluşturulur.',
   'help.guide.day-bookings.result':
     'Tarihi o güne düşen her şey ve duraklarından birine bağlı olan her şey bu tek listededir.',
   'help.guide.day-bookings.tip.1':
@@ -3164,13 +3164,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Sekmenin sağ üstündeki Manuel Rezervasyon düğmesine tıklayın. Yeni Rezervasyon açılır.',
   'help.guide.create-booking.step.2':
-    'Formun üstündeki listeden, Yolcular alanının yanında Rezervasyon Türü seçin. Konaklama, Restoran, Etkinlik, Tur, Otopark ve Diğer bu sekmenin yaptığı altı türdür ve form seçimle birlikte değişir: yalnızca Konaklama tarihlerini bir gün aralığıyla değiştirir.',
+    'Formun üst kısmında, başlığın altındaki tür rozetine tıklayın ve Rezervasyon Türünü seçin. Konaklama, Restoran, Etkinlik, Tur, Otopark ve Diğer bu sekmenin yaptığı altı türdür ve form seçimle birlikte değişir: yalnızca Konaklama tarihlerini bir gün aralığıyla değiştirir.',
   'help.guide.create-booking.step.3':
     'Başlık yazın. Formun ısrar ettiği tek alan budur ve içinde bir şey olana kadar Ekle ölü kalır.',
   'help.guide.create-booking.step.4':
     'Tarih ve Başlangıç zamanını, rezervasyonun bir sonu varsa Bitiş tarihi ile Bitiş zamanını da ayarlayın. Takvimler yalnızca gezinin içindeki günleri sunar ve başlangıçtan sonra olmayan bir bitiş bunu kırmızıyla söyler ve Ekle düğmesini engeller.',
   'help.guide.create-booking.step.5':
-    'Onaydan gelen Rezervasyon Kodunu girin ve Durum ayarlayın. Askıda olması ya da Onaylandı kartın iki bölümden hangisine düşeceğine karar verir.',
+    'Onaydan gelen Rezervasyon Kodunu girin. Türün yanındaki durum rozetinde Askıda olması yazar; bir tıklama onu Onaylandı yapar ve geri alır, bu da kartın iki bölümden hangisine düşeceğine karar verir.',
   'help.guide.create-booking.step.6': 'Ekle düğmesine tıklayın.',
   'help.guide.create-booking.result':
     'Rezervasyon kendi bölümünde tür rozetiyle, tarihleriyle ve koduyla bir karttır ve gezideki herkes onun belirdiğini görür.',
@@ -3221,7 +3221,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Bir rezervasyonun kapsadığı yolcuları işaretleyin ve sonra yalnızca onlarınkini görün.',
   'help.guide.booking-travelers.step.1':
-    'Rezervasyonu kalemle açın. Yolcular formun üstünde, Rezervasyon Türü alanının yanında durur ve rezervasyonda kimse yokken Yolcu ata yazar.',
+    'Rezervasyonu kalemle açın. Yolcular, Rezervasyon Kodunun yanında durur ve rezervasyonda kimse yokken Yolcu ata yazar.',
   'help.guide.booking-travelers.step.2':
     'Ona tıklayın ve bu rezervasyonun kimler için olduğunu seçin; adı verilmiş misafirler de listededir. Seçilen bir onay işareti alır ve avatarı alanda görünür. Kaldırmak için ada yeniden tıklayın.',
   'help.guide.booking-travelers.step.3': 'Güncelle düğmesine tıklayın.',
@@ -3316,7 +3316,7 @@ const help: TranslationStrings = {
     'Kartın başlığındaki kaleme tıklayın. Rezervasyonu Düzenle, rezervasyonun bildiği her şeyle açılır.',
   'help.guide.edit-booking.step.2':
     'Değişmesi gerekeni değiştirin, burada işletmecinin sonunda gönderdiği Rezervasyon Kodunu.',
-  'help.guide.edit-booking.step.3': 'Durum alanını Onaylandı yapın.',
+  'help.guide.edit-booking.step.3': 'Formun üst kısmındaki Askıda olması rozetine tıklayın. Onaylandı olarak değişir.',
   'help.guide.edit-booking.step.4': 'Güncelle düğmesine tıklayın.',
   'help.guide.edit-booking.result':
     'Kart taşınır: onaylanmış bir rezervasyon yeşil bir noktanın arkasında Onaylandı bölümünde durur ve gezideki herkes onun taşındığını görür.',
@@ -3609,19 +3609,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Bağlantıyı durak durak okuyun, adını değiştirin ya da rotayı yeniden arayın.',
   'help.guide.change-transit-route.step.1':
-    'Ulaşım sekmesinde planlanmış bağlantılar Otomatik toplu taşıma altında durur. Karta tıklayın.',
+    'Ulaşım sekmesinde planlanmış bağlantılar Otomatik toplu taşıma altında durur. Karta tıklayın; bağlantı bir rezervasyon olarak açılır.',
   'help.guide.change-transit-route.step.2':
     'Süre, Aktarma ve Yürüyüş en üstte durur. Altlarındaki Güzergah bağlantıyı durak durak yürür, peronlarla ve hatlar arasındaki yürüyüşlerle birlikte.',
   'help.guide.change-transit-route.step.3':
-    'Rotayı değiştir aramayı yeniden çalıştırır, bu bağlantının iki ucu ve günü zaten doldurulmuş olarak.',
+    'Rezervasyonun altındaki Rotayı değiştir aramayı yeniden çalıştırır, bu bağlantının iki ucu ve günü zaten doldurulmuş olarak.',
   'help.guide.change-transit-route.step.4':
-    'Başka bir bağlantı seçin ve Güne ekle düğmesine tıklayın; eskisinin yerini alır. Rotayı değiştir yanındaki Ayrıntıları düzenle ise onun yerine sıradan ulaşım formunu açar, Rezervasyon Kodu, Durum, yolcular ve dosyalar orada yaşar.',
+    'Başka bir bağlantı seçin ve Güne ekle düğmesine tıklayın; eskisinin yerini alır. Aynı çubuğun öbür ucundaki Düzenle ise onun yerine sıradan ulaşım formunu açar; Rezervasyon Kodu, Durum, yolcular, notlar ve dosyalar orada yaşar.',
   'help.guide.change-transit-route.result':
     'Toplu taşıma yolculuğu görünümü yeni Güzergahı taşır ve Ulaşım sekmesindeki kartı yeni hatları ve saatleri gösterir.',
   'help.guide.change-transit-route.tip.1':
-    'Toplu taşıma yolculuğu görünümündeki başlık yalnızca metindir: yanındaki kalem rotaya dokunmadan adını değiştirir. Altındaki Notlar markdown alır ve bir Düzenle ile bir Önizleme sekmesine sahiptir.',
+    'Rezervasyonun üst kısmındaki başlık, rotaya dokunmadan bağlantının adını değiştirir. Notları ise Düzenle’nin arkasındaki ulaşım formunda yazılır.',
   'help.guide.change-transit-route.tip.2':
-    'Toplu taşıma yolculuğu görünümünün altındaki Sil bağlantıyı seyahatten çıkarır; gün duraklarını korur.',
+    'Rezervasyonun altındaki Sil bağlantıyı seyahatten çıkarır; gün duraklarını korur.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Bir etabın nasıl gidildiğini değiştirin',
   'help.guide.leg-travel-mode.goal':
@@ -3645,17 +3645,18 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.title': 'Bir ulaşımı değiştirin ya da silin',
   'help.guide.edit-transport.goal':
     'Bir saati, bir peronu ya da bir rezervasyon kodunu düzeltin ya da yolculuğu seyahatten çıkarın.',
-  'help.guide.edit-transport.step.1': 'Gün planında bir ulaşım, duraklar arasındaki renkli bir satırdır. Ona tıklayın.',
+  'help.guide.edit-transport.step.1':
+    'Gün planında bir ulaşım, duraklar arasındaki renkli bir satırdır. Ona tıklayın; rezervasyonu saatler, rota ve Rezervasyon Kodu ile açılır.',
   'help.guide.edit-transport.step.2':
-    'Form onu oluşturan formdur, başlık çubuğunda Ulaşımı düzenle yazar. Her şey değiştirilebilir: tür, rota, günler ve saatler, Rezervasyon Kodu, Durum.',
+    'Rezervasyonun altındaki Düzenle, onu oluşturan formu açar; başlık çubuğunda Ulaşımı düzenle yazar. Her şey değiştirilebilir: tür, rota, günler ve saatler, Rezervasyon Kodu, Durum.',
   'help.guide.edit-transport.step.3':
     'Bir uçuşun rotası havaalanları zinciri, bir trenin rotası istasyonlar zinciridir. Durak ekle araya bir tane daha koyar ve her etap kendi saatlerini ve kendi uçuş ya da tren numarasını korur.',
   'help.guide.edit-transport.step.4':
-    'Güncelle düğmesine tıklayın. Ulaşımı tamamen kaldırmak için Ulaşım sekmesindeki kartında bulunan çöp kutusunu kullanın ve onaylayın.',
+    'Güncelle düğmesine tıklayın. Ulaşımı tamamen kaldırmak için rezervasyonunun altındaki Sil düğmesini ya da Ulaşım sekmesindeki kartında bulunan çöp kutusunu kullanın ve onaylayın.',
   'help.guide.edit-transport.result':
     'Değişiklik ulaşımın göründüğü her yerde görünür: Ulaşım sekmesinde, gittiği günde ve haritadaki çizgisinde.',
   'help.guide.edit-transport.tip.1':
-    'Aynı form iki taraftan da açılır, Ulaşım sekmesindeki karttaki kalemden ve gün planındaki ulaşımın kendi satırından. Planlanmış bir toplu taşıma bağlantısı istisnadır: satırı Toplu taşıma yolculuğu görünümünü açar ve oradaki Ayrıntıları düzenle bu forma götürür.',
+    'Aynı form iki taraftan da açılır: gün planındaki bir satırın açtığı rezervasyondaki Düzenle üzerinden ve Ulaşım sekmesindeki karttaki kalemden. Planlanmış bir toplu taşıma bağlantısı da bir rezervasyon olarak açılır; oradaki Rotayı değiştir yeniden arar, Düzenle ise bu forma götürür.',
   'help.guide.edit-transport.tip.2':
     'Bir ulaşımı başka bir güne taşımak forma hiç ihtiyaç duymaz: satırını bir gün kartından diğerine sürükleyin.',
   // transport-on-map

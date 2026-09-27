@@ -12,7 +12,7 @@ import { useTranslation } from '../../i18n/TranslationContext'
 import { MapLayerSwitcher, MAP_LAYER_SWITCHER_INSET, type BaseLayer } from './MapLayerSwitcher'
 import { useAuthStore } from '../../store/authStore'
 import { getCached, isLoading, fetchPhoto, onThumbReady, getAllThumbs } from '../../services/photoService'
-import { isCustomPlaceImage, markerPhotoHtml, photoCacheKey, photoSourcesKey } from './placePhoto'
+import { isCustomPlaceImage, markerPhotoHtml, photoCacheKey, photoSourcesKey, placePhotoFull, placePhotoUrl } from './placePhoto'
 import { CATEGORY_ICON_MAP } from '../shared/categoryIcons'
 import { isStandardFamily, supportsCustom3d, wantsTerrain, addCustom3dBuildings, addTerrainAndSky } from './mapboxSetup'
 import { attachLocationMarker, type LocationMarkerHandle } from './locationMarkerMapbox'
@@ -1849,9 +1849,7 @@ export function MapViewGL({
 
       visiblePlaces.forEach(place => {
         const orderNumbers = dayOrderMap[place.id] ?? null
-        const pck = photoCacheKey(place)
-        // A custom image wins over the auto-fetched thumb; otherwise fall back to it.
-        const photoUrl = isCustomPlaceImage(place.image_url) ? place.image_url! : ((pck && photoUrls[pck]) || place.image_url || null)
+        const photoUrl = placePhotoUrl(place, photoUrls)
         const selected = place.id === selectedPlaceId
         const el = createMarkerElement(place as Place & { category_color?: string; category_icon?: string }, photoUrl, orderNumbers, selected)
         // Drag onto a day in the plan (#891). Markers are rebuilt from scratch
@@ -1870,7 +1868,7 @@ export function MapViewGL({
         el.addEventListener('mouseenter', (ev) => {
           if (hoverDisabledRef.current || camMovingRef.current) return
           hoverIdRef.current = place.id
-          setHoverPlace(place as Place & { category_color?: string; category_icon?: string; category_name?: string })
+          setHoverPlace({ ...(place as Place & { category_color?: string; category_icon?: string; category_name?: string }), photo: placePhotoFull(place) })
           setHoverPos({ x: (ev as MouseEvent).clientX, y: (ev as MouseEvent).clientY })
         })
         el.addEventListener('mousemove', (ev) => {
@@ -2447,7 +2445,8 @@ export function MapViewGL({
           categoryIcon={hoverPlace.category_icon}
           categoryColor={hoverPlace.category_color}
           address={hoverPlace.address}
-        rating={hoverPlace.rating_avg}
+          rating={hoverPlace.rating_avg}
+          photo={hoverPlace.photo}
         />
       )}
     </div>

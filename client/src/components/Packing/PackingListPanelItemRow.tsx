@@ -1,4 +1,6 @@
 import { useRef, useState, type CSSProperties } from 'react'
+import { createPortal } from 'react-dom'
+import { useAnchoredPosition } from '../../hooks/useAnchoredPosition'
 import { useTripStore } from '../../store/tripStore'
 import { useToast } from '../shared/Toast'
 import { useTranslation } from '../../i18n'
@@ -55,6 +57,9 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
   // that only shows on hover is also there for someone tabbing through.
   const [focused, setFocused] = useState(false)
   const [showBagPicker, setShowBagPicker] = useState(false)
+  // The picker opens in a portal: inside the category card it was cut off by the card's edge.
+  const bagBtnRef = useRef<HTMLButtonElement>(null)
+  const bagBox = useAnchoredPosition(bagBtnRef, showBagPicker, { estimatedHeight: 260, offset: 6 })
   const [showItemMenu, setShowItemMenu] = useState(false)
   const [showMenuCategories, setShowMenuCategories] = useState(false)
   const [bagInlineCreate, setBagInlineCreate] = useState(false)
@@ -248,6 +253,7 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
           </div>
           <div style={{ position: 'relative' }}>
             <button type="button"
+              ref={bagBtnRef}
               onClick={() => canEdit && setShowBagPicker(p => !p)}
               style={{
                 width: 22, height: 22, borderRadius: '50%', cursor: canEdit ? 'pointer' : 'default', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -258,10 +264,14 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
             >
               {!item.bag_id && <Package size={9} className="text-content-faint" />}
             </button>
-            {showBagPicker && (
+            {showBagPicker && bagBox && createPortal(
               <>
-              <div role="presentation" style={{ position: 'fixed', inset: 0, zIndex: 49 }} onClick={() => { setShowBagPicker(false); setBagInlineCreate(false); setBagInlineName('') }} />
-              <div className="trek-menu-enter" style={{ ...POPOVER, position: 'absolute', right: 0, top: '100%', marginTop: 6, zIndex: 50, width: 210 }}>
+              <div role="presentation" style={{ position: 'fixed', inset: 0, zIndex: 'var(--z-toast)' }} onClick={() => { setShowBagPicker(false); setBagInlineCreate(false); setBagInlineName('') }} />
+              <div className="trek-menu-enter" style={{
+                ...POPOVER, position: 'fixed', zIndex: 'var(--z-toast)', width: 210, overflowY: 'auto',
+                top: bagBox.top, bottom: bagBox.bottom, maxHeight: bagBox.maxHeight,
+                left: Math.max(8, bagBox.left + bagBox.width - 210),
+              }}>
                 <div style={POPOVER_CAPTION}>{t('packing.bags')}</div>
                 {item.bag_id && (
                   <PopoverItem icon={<span style={{ width: 10, height: 10, borderRadius: '50%', border: '1.5px dashed var(--text-faint)', display: 'inline-block' }} />} label={t('packing.noBag')}
@@ -300,7 +310,8 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
                   <PopoverItem icon={<Plus size={13} />} label={t('packing.addBag')} muted onClick={() => setBagInlineCreate(true)} />
                 )}
               </div>
-              </>
+              </>,
+              document.body,
             )}
           </div>
           </>

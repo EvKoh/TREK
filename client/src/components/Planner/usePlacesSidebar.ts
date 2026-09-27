@@ -16,9 +16,13 @@ import type { Place, Category, Day, AssignmentsMap } from '../../types'
 import { getGoogleMapsUrlForPlace } from './placeGoogleMaps'
 import { safeHttpUrl } from '../../utils/safeUrl'
 import { plannedPlaceIds, plannedPlaceIdsForDay, type PlannedAccommodation } from '../../utils/plannedPlaces'
+import type { MenuEntry } from './planParts'
 
 /** Stable identity — a fresh [] default would invalidate the planned memo on every render. */
 const NO_ACCOMMODATIONS: PlannedAccommodation[] = []
+
+/** What the pool shows: everything, what is not on a day yet, what is, or the tracks. */
+export type PlacesFilter = 'all' | 'unplanned' | 'planned' | 'tracks'
 
 export interface PlacesSidebarProps {
   tripId: number
@@ -67,7 +71,7 @@ export interface PlacesSidebarProps {
 export function usePlacesSidebar(props: PlacesSidebarProps) {
   const {
     tripId, places, assignments, selectedDayId, days, accommodations = NO_ACCOMMODATIONS,
-    pushUndo, initialScrollTop, onScrollTopChange,
+    pushUndo, initialScrollTop, onScrollTopChange, onEditPlace, onAssignToDay, onDeletePlace,
   } = props
   const { t } = useTranslation()
   const toast = useToast()
@@ -234,9 +238,11 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
     setCategoryFilters(next)
   }
   const [dayPickerPlace, setDayPickerPlace] = useState<Place | null>(null)
-  const [catDropOpen, setCatDropOpen] = useState(false)
-  const [starDropOpen, setStarDropOpen] = useState(false)
+  // One panel holds what used to be three dropdowns (show, categories, rating).
   const [mobileShowDays, setMobileShowDays] = useState(false)
+
+  /** A new "show" choice starts a fresh selection, as picking it from the old select did. */
+  const pickFilter = (next: PlacesFilter) => { setFilter(next); setSelectedIds(new Set()) }
 
   // Alle geplanten Ort-IDs abrufen (einem Tag zugewiesen)
   const hasTracks = useMemo(() => places.some(p => p.route_geometry), [places])
@@ -285,6 +291,35 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
     return list
   }, [places, filter, categoryFilters, search, plannedIds, plannedFilterIds, ratingFilter])
 
+  /**
+   * How many places each "show" choice would leave, under the category and search
+   * filters but not the rating floor. While a day is open "planned" counts that day's
+   * plan, the same set the list and the map show: counting the whole trip is what made
+   * the choice read 55 beside five pins, with nothing to say the two answered
+   * different questions.
+   */
+  const filterCounts = useMemo(() => {
+    const needle = search.toLowerCase()
+    const base = places.filter(p => {
+      if (categoryFilters.size > 0) {
+        if (p.category_id == null) {
+          if (!categoryFilters.has('uncategorized')) return false
+        } else if (!categoryFilters.has(String(p.category_id))) return false
+      }
+      if (search && !p.name.toLowerCase().includes(needle) &&
+          !(p.address || '').toLowerCase().includes(needle)) return false
+      return true
+    })
+    return {
+      all: base.length,
+      unplanned: base.filter(p => !plannedIds.has(p.id)).length,
+      planned: base.filter(p => plannedFilterIds.has(p.id)).length,
+      tracks: base.filter(p => p.route_geometry).length,
+    } satisfies Record<PlacesFilter, number>
+  }, [places, categoryFilters, search, plannedIds, plannedFilterIds])
+
+  /** The filters narrowing the list besides the search box, for the badge on the filter button. */
+
   const registerPlaceRow = useCallback((placeId: number, element: HTMLDivElement | null) => {
     if (element) {
       placeRowRefs.current.set(placeId, element)
@@ -326,19 +361,30 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
 
   const isAssignedToSelectedDay = (placeId) => inDaySet.has(placeId)
 
-  const openContextMenu = useCallback((e: React.MouseEvent, place: Place) => {
-    const selDayId = selectedDayIdRef.current
+  /**
+   * A row's actions, one list for both ways in: the right-click menu and the row's
+   * "…" button. `dayId` is the day "+ Day" puts the place on.
+   */
+  const placeMenuItems = useCallback((place: Place, dayId: number | null): MenuEntry[] => {
     const googleMapsUrl = getGoogleMapsUrlForPlace(place)
-    ctxMenu.open(e, [
-      canEditPlaces && { label: t('common.edit'), icon: Pencil, onClick: () => props.onEditPlace(place) },
-      selDayId && { label: t('planner.addToDay'), icon: CalendarDays, onClick: () => props.onAssignToDay(place.id, selDayId) },
-      safeHttpUrl(place.website) && { label: t('inspector.website'), icon: ExternalLink, onClick: () => window.open(safeHttpUrl(place.website)!, '_blank', 'noopener,noreferrer') },
-      googleMapsUrl && { label: t('inspector.google'), icon: Navigation, onClick: () => window.open(googleMapsUrl, '_blank') },
+    const website = safeHttpUrl(place.website)
+    const entries: Array<MenuEntry | false> = [
+      canEditPlaces && { label: t('common.edit'), icon: Pencil, onClick: () => onEditPlace(place) },
+      !!dayId && { label: t('planner.addToDay'), icon: CalendarDays, onClick: () => onAssignToDay(place.id, dayId) },
+      !!website && { label: t('inspector.website'), icon: ExternalLink, onClick: () => window.open(website, '_blank', 'noopener,noreferrer') },
+      !!googleMapsUrl && { label: t('inspector.google'), icon: Navigation, onClick: () => window.open(googleMapsUrl, '_blank') },
       collectionsEnabled && { label: t('inspector.saveToCollection'), icon: Bookmark, onClick: () => useSaveToCollectionStore.getState().open(placeToSaveTarget(place)) },
       { divider: true },
-      canEditPlaces && { label: t('common.delete'), icon: Trash2, danger: true, onClick: () => props.onDeletePlace(place.id) },
-    ])
-  }, [ctxMenu.open, canEditPlaces, collectionsEnabled, t, props.onEditPlace, props.onAssignToDay, props.onDeletePlace])
+      canEditPlaces && { label: t('common.delete'), icon: Trash2, danger: true, onClick: () => onDeletePlace(place.id) },
+    ]
+    return entries.filter((entry): entry is MenuEntry => entry !== false)
+  }, [canEditPlaces, collectionsEnabled, t, onEditPlace, onAssignToDay, onDeletePlace])
+
+  // The day is read when the menu opens, so it stays stable across day switches.
+  const openCtxMenu = ctxMenu.open
+  const openContextMenu = useCallback((e: React.MouseEvent, place: Place) => {
+    openCtxMenu(e, placeMenuItems(place, selectedDayIdRef.current))
+  }, [openCtxMenu, placeMenuItems])
 
   return {
     ...props,
@@ -350,16 +396,17 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
     listImportLoading, listImportProvider, setListImportProvider,
     listImportEnrich, setListImportEnrich, canEnrichImport,
     availableListImportProviders, hasMultipleListImportProviders, handleListImport,
-    search, setSearch, filter, setFilter, categoryFilters, setCategoryFilters,
+    search, setSearch, filter, setFilter, pickFilter, filterCounts,
+    categoryFilters, setCategoryFilters,
     ratingFilter, setRatingFilter,
-    starDropOpen, setStarDropOpen,
     selectMode, setSelectMode, selectedIds, setSelectedIds, pendingDeleteIds, setPendingDeleteIds,
     categoryPickerOpen, setCategoryPickerOpen,
     saveToListOpen, setSaveToListOpen, collectionsEnabled, tripId,
     markSelectionVisited, markVisitedBusy,
     exitSelectMode, toggleSelected, toggleCategoryFilter, dayPickerPlace, setDayPickerPlace,
-    catDropOpen, setCatDropOpen, mobileShowDays, setMobileShowDays,
-    hasTracks, plannedIds, plannedFilterIds, dayScoped, filtered, registerPlaceRow, isAssignedToSelectedDay, inDaySet, openContextMenu,
+    mobileShowDays, setMobileShowDays,
+    hasTracks, plannedIds, plannedFilterIds, dayScoped, filtered, registerPlaceRow, isAssignedToSelectedDay, inDaySet,
+    openContextMenu, placeMenuItems,
   }
 }
 

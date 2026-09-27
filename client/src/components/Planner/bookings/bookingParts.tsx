@@ -6,6 +6,8 @@ import { useTranslation } from '../../../i18n'
 import { avatarSrc } from '../../../utils/avatarSrc'
 import { openFile } from '../../../utils/fileDownload'
 import GuestBadge from '../../shared/GuestBadge'
+import { Tooltip } from '../../shared/Tooltip'
+import { PILL } from '../../shared/DialogShell'
 import { useToast } from '../../shared/Toast'
 import { parseMeta, typeInfo } from './bookingsModel'
 
@@ -77,16 +79,18 @@ export function StatusDot({ r, canToggle, onToggle, size = 8 }: { r: Reservation
   const dot = <span className="block flex-none rounded-full" style={{ width: size, height: size, background: toneColor(tone) }} />
   if (!canToggle || tone === 'transit') return <span className="grid h-[22px] w-[22px] flex-none place-items-center">{dot}</span>
   const next = tone === 'confirmed' ? t('reservations.pending') : t('reservations.confirmed')
+  const label = t('reservations.status.switchTo', { status: next })
   return (
-    <button
-      type="button"
-      onClick={e => { e.stopPropagation(); onToggle() }}
-      title={t('reservations.status.switchTo', { status: next })}
-      aria-label={t('reservations.status.switchTo', { status: next })}
-      className="grid h-[22px] w-[22px] flex-none place-items-center rounded-full hover:bg-surface-hover"
-    >
-      {dot}
-    </button>
+    <Tooltip label={label}>
+      <button
+        type="button"
+        onClick={e => { e.stopPropagation(); onToggle() }}
+        aria-label={label}
+        className="grid h-[22px] w-[22px] flex-none place-items-center rounded-full hover:bg-surface-hover"
+      >
+        {dot}
+      </button>
+    </Tooltip>
   )
 }
 
@@ -96,7 +100,7 @@ export function TypeChip({ type }: { type: string }) {
   return (
     <span className="inline-flex flex-none items-center gap-1 rounded-full border border-edge-faint bg-surface-card px-2 py-[2px] font-geist font-bold uppercase tracking-[.06em] text-content-muted" style={fs(9.5)}>
       <info.Icon size={11} strokeWidth={2.2} style={{ color: info.color }} />
-      {t(info.labelKey)}
+      {t(info.chipKey)}
     </span>
   )
 }
@@ -111,13 +115,22 @@ export function TypeTile({ type, size = 32, raised = false }: { type: string; si
   )
 }
 
-export function ReviewPill() {
+/** The warning icon beside a booking's name on a card or row, or with `pill` a header pill in the detail dialog. */
+export function ReviewPill({ pill = false }: { pill?: boolean }) {
   const { t } = useTranslation()
   return (
-    <span className="inline-flex flex-none items-center gap-1 rounded-full bg-warning-soft px-2 py-[2px] font-geist font-bold uppercase tracking-[.03em] text-warning" style={fs(9)} title={t('reservations.needsReviewHint')}>
-      <AlertCircle size={10} />
-      {t('reservations.needsReview')}
-    </span>
+    <Tooltip label={t('reservations.needsReviewHint')}>
+      {pill ? (
+        <span className={PILL} style={fs(12, 'body')}>
+          <AlertCircle size={13} strokeWidth={2.2} className="text-warning" />
+          {t('reservations.needsReview')}
+        </span>
+      ) : (
+        <span role="img" aria-label={t('reservations.needsReview')} className="grid flex-none place-items-center text-warning">
+          <AlertCircle size={14} strokeWidth={2.2} />
+        </span>
+      )}
+    </Tooltip>
   )
 }
 
@@ -125,36 +138,45 @@ export function ReviewPill() {
  * The AirTrail link of a booking. A multi-leg import is detached from sync by
  * design (#1535), which is not the same as a flight removed upstream (#1646).
  */
-export function AirTrailPill({ r }: { r: Reservation }) {
+export function AirTrailPill({ r, pill = false }: { r: Reservation; pill?: boolean }) {
   const { t } = useTranslation()
   if (r.external_source !== 'airtrail') return null
   const meta = parseMeta(r)
   const multiLeg = !r.sync_enabled && ((Array.isArray(meta.legs) && meta.legs.length > 1) || (r.endpoints || []).length > 2)
   const live = !!r.sync_enabled || multiLeg
   return (
-    <span
-      className={`inline-flex flex-none items-center gap-1 rounded-full px-2 py-[2px] font-geist font-bold uppercase tracking-[.03em] ${live ? 'bg-info-soft text-info' : 'bg-surface-tertiary text-content-faint'}`}
-      style={fs(9)}
-      title={r.sync_enabled ? t('reservations.airtrail.syncedHint') : multiLeg ? t('reservations.airtrail.layoverHint') : t('reservations.airtrail.notSyncedHint')}
-    >
-      <Plane size={10} />
-      {live ? t('reservations.airtrail.synced') : t('reservations.airtrail.notSynced')}
-    </span>
+    <Tooltip label={r.sync_enabled ? t('reservations.airtrail.syncedHint') : multiLeg ? t('reservations.airtrail.layoverHint') : t('reservations.airtrail.notSyncedHint')}>
+      {pill ? (
+        <span className={PILL} style={fs(12, 'body')}>
+          <Plane size={13} strokeWidth={2.2} className={live ? 'text-info' : 'text-content-faint'} />
+          {live ? t('reservations.airtrail.synced') : t('reservations.airtrail.notSynced')}
+        </span>
+      ) : (
+        <span
+          className={`inline-flex flex-none items-center gap-1 rounded-full px-2 py-[2px] font-geist font-bold uppercase tracking-[.03em] ${live ? 'bg-info-soft text-info' : 'bg-surface-tertiary text-content-faint'}`}
+          style={fs(9)}
+        >
+          <Plane size={10} />
+          {live ? t('reservations.airtrail.synced') : t('reservations.airtrail.notSynced')}
+        </span>
+      )}
+    </Tooltip>
   )
 }
 
 /** A round 26 px action on a card head, quiet until the card is hovered or focused. */
 export function RoundAction({ label, onClick, children, danger = false }: { label: string; onClick: () => void; children: ReactNode; danger?: boolean }) {
   return (
-    <button
-      type="button"
-      onClick={e => { e.stopPropagation(); onClick() }}
-      title={label}
-      aria-label={label}
-      className={`grid h-[26px] w-[26px] flex-none place-items-center rounded-full bg-surface-card text-content-muted opacity-60 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:opacity-100 ${danger ? 'hover:text-danger' : 'hover:text-content'}`}
-    >
-      {children}
-    </button>
+    <Tooltip label={label}>
+      <button
+        type="button"
+        onClick={e => { e.stopPropagation(); onClick() }}
+        aria-label={label}
+        className={`grid h-[26px] w-[26px] flex-none place-items-center rounded-full bg-surface-card text-content-muted opacity-60 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:opacity-100 ${danger ? 'hover:text-danger' : 'hover:text-content'}`}
+      >
+        {children}
+      </button>
+    </Tooltip>
   )
 }
 
@@ -171,7 +193,7 @@ export function TravelerChips({ travelers }: { travelers: ReservationTraveler[] 
               {src ? <img src={src} alt="" className="h-full w-full object-cover" /> : tv.username?.[0]?.toUpperCase()}
             </span>
             <span className="truncate font-semibold text-content" style={fs(12, 'body')}>{tv.username}</span>
-            {!!tv.is_guest && <GuestBadge size="xs" />}
+            {!!tv.is_guest && <GuestBadge size="xs" customTooltip />}
           </span>
         )
       })}
@@ -184,17 +206,19 @@ export function TravelerStack({ travelers, max = 3 }: { travelers: ReservationTr
   if (travelers.length === 0) return null
   const names = travelers.map(tv => tv.username).join(', ')
   return (
-    <span className="flex items-center" title={names} aria-label={names}>
-      {travelers.slice(0, max).map((tv, i) => {
-        const src = tv.avatar_url || avatarSrc(tv.avatar)
-        return (
-          <span key={tv.user_id} className="grid h-[22px] w-[22px] flex-none place-items-center overflow-hidden rounded-full border-2 border-surface-card bg-accent font-bold text-accent-text" style={{ ...fs(9), marginLeft: i ? -7 : 0 }}>
-            {src ? <img src={src} alt="" className="h-full w-full object-cover" /> : tv.username?.[0]?.toUpperCase()}
-          </span>
-        )
-      })}
-      {travelers.length > max && <span className="ml-1 font-geist font-semibold text-content-faint" style={fs(10.5)}>+{travelers.length - max}</span>}
-    </span>
+    <Tooltip label={names}>
+      <span className="flex items-center" aria-label={names}>
+        {travelers.slice(0, max).map((tv, i) => {
+          const src = tv.avatar_url || avatarSrc(tv.avatar)
+          return (
+            <span key={tv.user_id} className="grid h-[22px] w-[22px] flex-none place-items-center overflow-hidden rounded-full border-2 border-surface-card bg-accent font-bold text-accent-text" style={{ ...fs(9), marginLeft: i ? -7 : 0 }}>
+              {src ? <img src={src} alt="" className="h-full w-full object-cover" /> : tv.username?.[0]?.toUpperCase()}
+            </span>
+          )
+        })}
+        {travelers.length > max && <span className="ml-1 font-geist font-semibold text-content-faint" style={fs(10.5)}>+{travelers.length - max}</span>}
+      </span>
+    </Tooltip>
   )
 }
 

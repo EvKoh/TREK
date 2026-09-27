@@ -7,8 +7,7 @@ const budget: TranslationStrings = {
   'budget.title': 'Büdcə',
   'budget.exportCsv': 'CSV ixrac et',
   'budget.emptyTitle': 'Hələ büdcə yaradılmayıb',
-  'budget.emptyText':
-    'Səyahət büdcənizi planlaşdırmaq üçün kateqoriyalar və qeydlər yaradın',
+  'budget.emptyText': 'Səyahət büdcənizi planlaşdırmaq üçün kateqoriyalar və qeydlər yaradın',
   'budget.emptyPlaceholder': 'Kateqoriyanın adını daxil edin...',
   'budget.createCategory': 'Kateqoriya yarat',
   'budget.category': 'Kateqoriya',
@@ -31,8 +30,7 @@ const budget: TranslationStrings = {
   'budget.totalBudget': 'Ümumi büdcə',
   'budget.byCategory': 'Kateqoriya üzrə',
   'budget.editTooltip': 'Redaktə etmək üçün klikləyin',
-  'budget.linkedToReservation':
-    'Rezervasiya ilə əlaqələndirilib — adı orada redaktə edin',
+  'budget.linkedToReservation': 'Rezervasiya ilə əlaqələndirilib — adı orada redaktə edin',
   'budget.confirm.deleteCategory':
     '“{name}” kateqoriyasını daxilindəki {count} qeydlə birlikdə silmək istədiyinizə əminsiniz?',
   'budget.deleteCategory': 'Kateqoriyanı sil',
@@ -89,8 +87,7 @@ const budget: TranslationStrings = {
   'costs.settleUp': 'Hesablaş',
   'costs.history': 'Tarixçə',
   'costs.everyoneSquare': 'Hamının hesabı bağlanıb',
-  'costs.nothingOutstanding':
-    'Hazırda gözləyən heç bir ödəniş yoxdur.',
+  'costs.nothingOutstanding': 'Hazırda gözləyən heç bir ödəniş yoxdur.',
   'costs.pay': 'ödə',
   'costs.pays': 'ödəyir',
   'costs.settle': 'Hesablaş',
@@ -110,11 +107,9 @@ const budget: TranslationStrings = {
   'costs.undo': 'Geri qaytar',
 
   'costs.whatFor': 'Bu xərc nə üçün idi?',
-  'costs.namePlaceholder':
-    'məs. Şam yeməyi, suvenirlər, yanacaq…',
+  'costs.namePlaceholder': 'məs. Şam yeməyi, suvenirlər, yanacaq…',
   'costs.note': 'Qeyd',
-  'costs.notePlaceholder':
-    'Nələri əhatə etdiyi, kimin nə qədər qaytarmalı olduğu…',
+  'costs.notePlaceholder': 'Nələri əhatə etdiyi, kimin nə qədər qaytarmalı olduğu…',
   'costs.addNote': 'Qeyd əlavə et',
   'costs.showNote': 'Qeydi göstər',
   'costs.hideNote': 'Qeydi gizlət',
@@ -128,18 +123,20 @@ const budget: TranslationStrings = {
   'costs.whoPaid': 'Kim ödədi?',
   'costs.multiplePayers': 'Bir neçə nəfər ödədi',
   'costs.singlePayer': 'Bir nəfər ödədi',
-  'costs.payersUnbalanced':
-    'Ödəyicilərin məbləğlərinin cəmi {amount} olmalıdır',
+  'costs.payersUnbalanced': 'Ödəyicilərin məbləğlərinin cəmi {amount} olmalıdır',
 
   'costs.splitBetween': 'Bərabər bölüşdürüləcək şəxslər',
   'costs.split': 'Bölüşdür',
   'costs.splitEqually': 'Bərabər',
   'costs.splitCustom': 'Fərdi',
   'costs.splitTicket': 'Qəbz üzrə',
-  'costs.pickSomeone':
-    'Bölüşdürmək üçün ən azı bir nəfər seçin.',
-  'costs.splitSummary':
-    '{count} nəfər arasında bölünüb · hərəsinə {amount}',
+  'costs.perPerson': '{amount} nəfər başına',
+  'costs.payersHint': 'Kimin ödədiyini işarələyin və hər birinin nə qədər ödədiyini yazın.',
+  'costs.splitHint.equally': 'İşarələnən hər kəs bərabər pay ödəyir.',
+  'costs.splitHint.custom': 'Hər şəxsin payını yazın; paylar birlikdə ümumi məbləği təşkil etməlidir.',
+  'costs.splitHint.ticket': 'Qəbzdə olanları sadalayın və hər elementi kimin götürdüyünü işarələyin.',
+  'costs.pickSomeone': 'Bölüşdürmək üçün ən azı bir nəfər seçin.',
+  'costs.splitSummary': '{count} nəfər arasında bölünüb · hərəsinə {amount}',
 
   'costs.cat.accommodation': 'Yaşayış yeri',
   'costs.cat.food': 'Yemək və içki',
@@ -176,23 +173,22 @@ const budget: TranslationStrings = {
   'costs.ticketShares': 'Fərdi paylar',
   'costs.excluded': 'Daxil edilməyib',
   'costs.splitBalanced': 'Bölüşdürmə ümumi məbləğə uyğundur',
-  'costs.splitSumUnder':
-    'Payların cəmi: {total} məbləğindən {sum} ({diff} azdır)',
-  'costs.splitSumOver':
-    'Payların cəmi: {total} məbləğindən {sum} ({diff} çoxdur)',
-  'costs.toggleSign':
-    'Xərc və geri ödəniş arasında keçid et',
+  'costs.splitSumUnder': 'Payların cəmi: {total} məbləğindən {sum} ({diff} azdır)',
+  'costs.splitSumOver': 'Payların cəmi: {total} məbləğindən {sum} ({diff} çoxdur)',
+  'costs.toggleSign': 'Xərc və geri ödəniş arasında keçid et',
 
   'costs.receipts': 'Qəbzlər',
   'costs.receiptsTitle': 'Qəbzlər və fakturalar',
   'costs.attachReceipt': 'Qəbz / faktura əlavə et',
+  'costs.attach': 'Əlavə et',
   'costs.scan.button': 'Qəbzi skan et',
   'costs.scan.reading': 'Qəbz oxunur…',
   'costs.scan.review': 'Xərci yoxla',
   'costs.scan.nothingRead': 'Bu fotodan qəbz oxunmadı.',
   'costs.scan.failed': 'Qəbzin oxunmasına başlamaq mümkün olmadı.',
   'costs.scan.title': 'Qəbzi skan et',
-  'costs.scan.accepted': 'Bir qəbzin fotosu (JPG, PNG və ya WEBP, 10 MB-a qədər). Süni intellekt modeli onu arxa planda oxuyur, sonra xərci saxlamazdan əvvəl yoxlayırsan.',
+  'costs.scan.accepted':
+    'Bir qəbzin fotosu (JPG, PNG və ya WEBP, 10 MB-a qədər). Süni intellekt modeli onu arxa planda oxuyur, sonra xərci saxlamazdan əvvəl yoxlayırsan.',
   'costs.scan.dropHere': 'Qəbzin fotosunu bura burax və ya seçmək ya çəkmək üçün kliklə',
   'costs.scan.dropActive': 'Skan etmək üçün fotonu burax',
   'costs.scan.start': 'Skan et',

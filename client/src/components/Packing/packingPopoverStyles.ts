@@ -34,15 +34,17 @@ export const composerConfirm = (enabled: boolean): CSSProperties => ({
  * is mounted but not displayed (the bag sidebar below its breakpoint) has no
  * layout box, and must not close the visible copy's twin.
  */
-export function useDismissOnOutside(ref: RefObject<HTMLElement | null>, open: boolean, onClose: () => void) {
+export function useDismissOnOutside(ref: RefObject<HTMLElement | null>, open: boolean, onClose: () => void, panelRef?: RefObject<HTMLElement | null>) {
   useEffect(() => {
     if (!open) return
     const onDown = (e: MouseEvent) => {
       const el = ref.current
       if (!el || el.getClientRects().length === 0 || el.contains(e.target as Node)) return
+      // A panel portalled to the body counts as inside too.
+      if (panelRef?.current?.contains(e.target as Node)) return
       onClose()
     }
     document.addEventListener('mousedown', onDown)
     return () => document.removeEventListener('mousedown', onDown)
-  }, [ref, open, onClose])
+  }, [ref, open, onClose, panelRef])
 }

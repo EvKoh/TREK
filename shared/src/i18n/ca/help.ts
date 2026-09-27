@@ -2314,9 +2314,9 @@ const help: TranslationStrings = {
     'Obre la parada a la qual pertany la reserva. La fitxa mostra una franja amb Confirmada o Pendent i el nom de la reserva.',
   'help.guide.place-booking.step.2':
     'La franja duu la Data, l’Hora i el Codi de reserva, i les notes que tingui la reserva.',
-  'help.guide.place-booking.step.3': 'Fes clic a la franja. El formulari de la reserva s’hi obre al damunt.',
+  'help.guide.place-booking.step.3': 'Fes clic a la franja. La reserva s’obre damunt del mapa.',
   'help.guide.place-booking.step.4':
-    'Vincula a una assignació del dia és el que penja una reserva d’una parada, i aquí ja n’anomena aquesta. Torna a tancar el formulari.',
+    'Editar, al peu de la reserva, n’obre el formulari. Vincula a una assignació del dia, allà, és el que penja una reserva d’una parada, i aquí ja n’anomena aquesta. Torna a tancar el formulari.',
   'help.guide.place-booking.step.5':
     'Una reserva nova per a una parada comença a la columna dels dies: passa per sobre de la parada i fes clic al + del seu extrem. El formulari s’obre com a Reserva nova, ja vinculada a ella.',
   'help.guide.place-booking.result':
@@ -2676,7 +2676,7 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'El color diu com està una reserva: una fila verda està confirmada, una d’ambre encara està pendent. Els allotjaments no surten en aquesta llista, tenen el seu propi bloc a sota.',
   'help.guide.day-bookings.step.4':
-    'La llista només llegeix les reserves. Una reserva es crea i es canvia a la pestanya Reserves.',
+    'Fes clic a una fila i s’obre la reserva. Editar, al seu peu, la canvia; les reserves noves es creen a la pestanya Reserves.',
   'help.guide.day-bookings.result':
     'Tot el que està datat al dia, i tot el que penja d’alguna de les seves parades, és en aquesta única llista.',
   'help.guide.day-bookings.tip.1':
@@ -3222,13 +3222,13 @@ const help: TranslationStrings = {
   'help.guide.create-booking.step.1':
     'Fes clic a Reserva manual, a dalt a la dreta de la pestanya. S’obre Reserva nova.',
   'help.guide.create-booking.step.2':
-    'Tria el Tipus de reserva a la llista de dalt del formulari, al costat de Viatgers. Allotjament, Restaurant, Esdeveniment, Excursió, Aparcament i Altres són els sis que fa aquesta pestanya, i el formulari canvia amb la tria: només Allotjament bescanvia les dates per un interval de dies.',
+    'Fes clic a la píndola del tipus, sota el títol, a la capçalera del formulari, i tria el Tipus de reserva. Allotjament, Restaurant, Esdeveniment, Excursió, Aparcament i Altres són els sis que fa aquesta pestanya, i el formulari canvia amb la tria: només Allotjament bescanvia les dates per un interval de dies.',
   'help.guide.create-booking.step.3':
     'Escriu el Títol. És l’únic camp en què el formulari insisteix, i Afegir es queda mort fins que hi hagi alguna cosa.',
   'help.guide.create-booking.step.4':
     'Posa Data i Hora d’inici, i Data de fi i Hora de fi si la reserva té un final. Els calendaris només ofereixen dies de dins del viatge, i un final que no és posterior a l’inici ho diu en vermell i bloqueja Afegir.',
   'help.guide.create-booking.step.5':
-    'Posa el Codi de reserva de la confirmació i posa l’Estat. Pendent o Confirmada decideix a quina de les dues seccions aterra la targeta.',
+    'Posa el Codi de reserva de la confirmació. La píndola d’estat al costat del tipus diu Pendent; un clic la passa a Confirmada i un altre la torna enrere, i això decideix a quina de les dues seccions aterra la targeta.',
   'help.guide.create-booking.step.6': 'Fes clic a Afegir.',
   'help.guide.create-booking.result':
     'La reserva és una targeta a la seva secció, amb el seu xip de tipus, les seves dates i el seu codi, i tothom més del viatge la veu aparèixer.',
@@ -3278,7 +3278,7 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Dir per a qui és una reserva',
   'help.guide.booking-travelers.goal': 'Marca els viatgers que cobreix una reserva i després mira només les seves.',
   'help.guide.booking-travelers.step.1':
-    'Obre la reserva amb el llapis. Viatgers és a dalt del formulari, al costat de Tipus de reserva, i diu Assigna viatgers mentre no hi ha ningú a la reserva.',
+    'Obre la reserva amb el llapis. Viatgers és al costat del Codi de reserva, i diu Assigna viatgers mentre no hi ha ningú a la reserva.',
   'help.guide.booking-travelers.step.2':
     'Fes-hi clic i tria les persones per a qui és aquesta reserva; els convidats amb nom també són a la llista. La que tries rep una marca i el seu avatar al camp. Torna a fer clic al nom per treure-la.',
   'help.guide.booking-travelers.step.3': 'Fes clic a Actualitzar.',
@@ -3373,7 +3373,7 @@ const help: TranslationStrings = {
     'Fes clic al llapis de la capçalera de la targeta. Edita la reserva s’obre amb tot el que la reserva sap.',
   'help.guide.edit-booking.step.2':
     'Canvia el que calgui canviar, aquí el Codi de reserva que l’operador ha acabat enviant.',
-  'help.guide.edit-booking.step.3': 'Posa Estat a Confirmada.',
+  'help.guide.edit-booking.step.3': 'Fes clic a la píndola Pendent a la capçalera del formulari. Passa a Confirmada.',
   'help.guide.edit-booking.step.4': 'Fes clic a Actualitzar.',
   'help.guide.edit-booking.result':
     'La targeta es mou: una reserva confirmada és a la secció Confirmada darrere d’un punt verd, i tothom del viatge la veu moure’s.',
@@ -3668,19 +3668,19 @@ const help: TranslationStrings = {
   'help.guide.change-transit-route.goal':
     'Llegir la connexió parada a parada, canviar-li el nom, o tornar a cercar la ruta.',
   'help.guide.change-transit-route.step.1':
-    'A la pestanya Transports, les connexions planificades són sota Transport públic automatitzat. Fes clic a la targeta.',
+    'A la pestanya Transports, les connexions planificades són sota Transport públic automatitzat. Fes clic a la targeta; la connexió s’obre com una reserva.',
   'help.guide.change-transit-route.step.2':
     'Durada, Transbords i A peu són a dalt. Itinerari, a sota, recorre la connexió parada a parada, amb les andanes i els trams a peu entre les línies.',
   'help.guide.change-transit-route.step.3':
-    'Canviar de ruta torna a executar la cerca, ja plena amb els dos extrems d’aquesta connexió i amb el seu dia.',
+    'Canviar de ruta, al peu de la reserva, torna a executar la cerca, ja plena amb els dos extrems d’aquesta connexió i amb el seu dia.',
   'help.guide.change-transit-route.step.4':
-    'Tria una altra connexió i fes clic a Afegir al dia; ocupa el lloc de l’anterior. Editar detalls, al costat de Canviar de ruta, obre en canvi el formulari de transport corrent, on viuen el Codi de reserva, l’Estat, els viatgers i els fitxers.',
+    'Tria una altra connexió i fes clic a Afegir al dia; ocupa el lloc de l’anterior. Editar, a l’altre extrem de la mateixa barra, obre en canvi el formulari de transport corrent, on viuen el Codi de reserva, l’Estat, els viatgers, les notes i els fitxers.',
   'help.guide.change-transit-route.result':
     'El trajecte porta el nou itinerari, i la seva targeta a la pestanya Transports mostra les línies i les hores noves.',
   'help.guide.change-transit-route.tip.1':
-    'El títol del trajecte només és text: el llapis del costat el canvia de nom sense tocar la ruta. Notes, a sota, accepten markdown i tenen una pestanya Editar i una de Vista prèvia.',
+    'El títol a la capçalera de la reserva canvia el nom de la connexió sense tocar la ruta. Les seves notes s’escriuen al formulari de transport, darrere d’Editar.',
   'help.guide.change-transit-route.tip.2':
-    'Eliminar, al peu del trajecte, treu la connexió del viatge; el dia manté les seves parades.',
+    'Eliminar, al peu de la reserva, treu la connexió del viatge; el dia manté les seves parades.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Canviar com es fa un tram',
   'help.guide.leg-travel-mode.goal':
@@ -3705,17 +3705,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Corregir una hora, una andana o un codi de reserva, o treure el trajecte del viatge.',
   'help.guide.edit-transport.step.1':
-    'Al pla del dia un transport és una fila de color entre les parades. Fes-hi clic.',
+    'Al pla del dia un transport és una fila de color entre les parades. Fes-hi clic; s’obre la seva reserva amb les hores, la ruta i el Codi de reserva.',
   'help.guide.edit-transport.step.2':
-    'El formulari és el mateix que el va crear, amb Edita el transport a la barra de títol. Tot es pot canviar: el tipus, la ruta, els dies i les hores, el Codi de reserva, l’Estat.',
+    'Editar, al peu de la reserva, obre el formulari que el va crear, amb Edita el transport a la barra de títol. Tot es pot canviar: el tipus, la ruta, els dies i les hores, el Codi de reserva, l’Estat.',
   'help.guide.edit-transport.step.3':
     'La ruta d’un vol és una cadena d’aeroports, la d’un tren una cadena d’estacions. Afegeix una escala en posa una altra al mig, i cada tram manté les seves hores i el seu número de vol o de tren.',
   'help.guide.edit-transport.step.4':
-    'Fes clic a Actualitzar. Per treure el transport del tot, fes servir la paperera de la seva targeta a la pestanya Transports i confirma.',
+    'Fes clic a Actualitzar. Per treure el transport del tot, fes servir Eliminar al peu de la seva reserva, o la paperera de la seva targeta a la pestanya Transports, i confirma.',
   'help.guide.edit-transport.result':
     'El canvi es veu a tot arreu on surt el transport: la pestanya Transports, el dia en què va, i la seva línia al mapa.',
   'help.guide.edit-transport.tip.1':
-    'El mateix formulari s’obre pels dos costats, amb el llapis de la targeta a la pestanya Transports i amb la fila pròpia del transport al pla del dia. Una connexió de transport públic planificada és l’excepció: la seva fila obre la vista del trajecte, i Editar detalls hi porta a aquest formulari.',
+    'El mateix formulari s’obre pels dos costats: amb Editar a la reserva que obre una fila del pla del dia, i amb el llapis de la targeta a la pestanya Transports. Una connexió de transport públic planificada també s’obre com una reserva; Canviar de ruta hi torna a cercar, i Editar porta a aquest formulari.',
   'help.guide.edit-transport.tip.2':
     'Moure un transport a un altre dia no necessita gens el formulari: arrossega la seva fila d’una targeta de dia a la següent.',
   // transport-on-map

@@ -143,10 +143,10 @@ describe('ImageLightbox', () => {
     const onClose = vi.fn()
     render(<ImageLightbox files={IMAGES} initialIndex={0} onClose={onClose} />)
 
-    fireEvent.click(screen.getByTitle(/open/i))
+    fireEvent.click(screen.getByRole('button', { name: /open/i }))
     expect(openFile).toHaveBeenCalledWith('/f/a.jpg', 'a.jpg')
 
-    fireEvent.click(screen.getByTitle(/download/i))
+    fireEvent.click(screen.getByRole('button', { name: /download/i }))
     expect(downloadFile).toHaveBeenCalledWith('/f/a.jpg', 'a.jpg')
 
     fireEvent.click(screen.getAllByRole('button')[2])

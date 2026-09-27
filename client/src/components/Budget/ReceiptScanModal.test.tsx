@@ -127,7 +127,10 @@ describe('Scan receipt', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     await openDialog()
-    fireEvent.click(screen.getByRole('dialog').parentElement!)
+    // Only a press that starts and ends on the backdrop closes it.
+    const backdrop = screen.getByRole('dialog').parentElement!
+    fireEvent.mouseDown(backdrop)
+    fireEvent.click(backdrop)
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     expect(dialog).not.toBeInTheDocument()
   })

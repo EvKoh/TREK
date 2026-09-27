@@ -102,7 +102,9 @@ const SCRIPTS: Record<string, GuideScript> = {
       // The details column is an <aside> beside the form; both used to resolve to
       // the whole dialog, which gave two steps the same picture.
       only(p => modal(p).getByText('Place details', { exact: true }).locator('xpath=ancestor::aside[1]')),
-      only(p => modal(p).getByPlaceholder('e.g. Eiffel Tower').locator('xpath=ancestor::form[1]')),
+      // The name and the category sit in the head band, above the form, so the
+      // step about the fields shows the dialog rather than the form alone.
+      only(p => dialog(p)),
       {
         target: p => modal(p).getByRole('button', { name: 'Add', exact: true }),
         act: async p => {

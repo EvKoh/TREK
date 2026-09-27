@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Hotel, Link2, MapPin, ExternalLink, Pencil, Trash2, Wallet } from 'lucide-react'
+import { Pencil, Trash2, Wallet } from 'lucide-react'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkBreaks from 'remark-breaks'
@@ -11,7 +11,7 @@ import { markdownLinkComponents } from '../../shared/markdownLink'
 import { BlurredCode } from '../../shared/BookingCode'
 import PluginFrame from '../../Plugins/PluginFrame'
 import { PluginCardFooter } from '../../Plugins/PluginContributions'
-import { TransitLegChips, fmtTransitDuration } from '../transitDisplay'
+import { fmtTransitDuration } from '../transitDisplay'
 import { formatMoney } from '../../../utils/formatters'
 import { parseMeta, typeInfo, displayTitle, type CostTotal } from './bookingsModel'
 import type { BookingFacts } from './bookingFacts'
@@ -19,6 +19,7 @@ import {
   AirTrailPill, BOX, Eyebrow, Field, FileRows, ReviewPill, RoundAction, StatusDot, TravelerChips, TypeChip,
   fs, toneOf, toneTint,
 } from './bookingParts'
+import { TransitLegs, transitSummary } from './transitParts'
 
 export interface BookingCardProps {
   r: Reservation
@@ -61,16 +62,19 @@ export default function BookingCard(p: BookingCardProps) {
       <div className="flex items-center gap-2 border-b border-edge-faint px-3 py-2.5" style={{ background: toneTint(tone) }}>
         <StatusDot r={r} canToggle={p.canEdit} onToggle={p.onToggleStatus} />
         <TypeChip type={r.type} />
-        <span className="min-w-0 flex-1 truncate font-bold text-content" style={fs(13.5, 'body')}>{displayTitle(r)}</span>
-        {!!r.needs_review && <ReviewPill />}
+        <span className="flex min-w-0 flex-1 items-center gap-1.5">
+          <span className="min-w-0 truncate font-bold text-content" style={fs(13.5, 'body')}>{displayTitle(r)}</span>
+          {!!r.needs_review && <ReviewPill />}
+        </span>
         <AirTrailPill r={r} />
-        {p.canEdit && !transit && <RoundAction label={t('common.edit')} onClick={p.onEdit}><Pencil size={12} strokeWidth={2} /></RoundAction>}
+        {p.canEdit && <RoundAction label={t('common.edit')} onClick={p.onEdit}><Pencil size={12} strokeWidth={2} /></RoundAction>}
         {p.canEdit && <RoundAction label={t('common.delete')} onClick={p.onDelete} danger><Trash2 size={12} strokeWidth={2} /></RoundAction>}
       </div>
 
       <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-2.5">
         {(facts.day || facts.time) && (
-          <div className="flex gap-2">
+          // A day range needs the whole width; the time then goes below it.
+          <div className={`flex gap-2 ${facts.day?.range ? 'flex-col' : ''}`}>
             {facts.day && (
               <Field label={t('reservations.date')} className="flex-[1.4]">
                 {facts.day.label}
@@ -89,24 +93,28 @@ export default function BookingCard(p: BookingCardProps) {
               </Field>
             )}
             {facts.endpoints.length >= 2 && (
-              <div className={`${BOX} flex flex-wrap items-center justify-center gap-2 px-[10px] py-2 font-semibold text-content`} style={fs(12.5, 'body')}>
-                {facts.endpoints.map((ep, i) => (
-                  <span key={ep.id ?? i} className="inline-flex min-w-0 items-center gap-2">
-                    {i > 0 && <info.Icon size={13} strokeWidth={2.2} className="flex-none" style={{ color: info.color }} />}
-                    <span className="truncate">{ep.name}</span>
-                  </span>
-                ))}
-              </div>
+              <Block label={t('reservations.routeLabel')}>
+                <div className={`${BOX} flex flex-wrap items-center justify-center gap-2 px-[10px] py-2 font-semibold text-content`} style={fs(12.5, 'body')}>
+                  {facts.endpoints.map((ep, i) => (
+                    <span key={ep.id ?? i} className="inline-flex min-w-0 items-center gap-2">
+                      {i > 0 && <info.Icon size={13} strokeWidth={2.2} className="flex-none" style={{ color: info.color }} />}
+                      <span className="truncate">{ep.name}</span>
+                    </span>
+                  ))}
+                </div>
+              </Block>
             )}
             {facts.legCodes.length > 0 && (
-              <div className={`${BOX} flex flex-col gap-1 px-[10px] py-2`}>
-                {facts.legCodes.map((l, i) => (
-                  <div key={i} className="flex items-center gap-2" style={fs(12, 'body')}>
-                    <span className="min-w-0 flex-1 truncate font-medium text-content-secondary">{l.route || t('reservations.confirmationCode')}</span>
-                    <BlurredCode className="font-geist tabular-nums text-content-muted">{l.code}</BlurredCode>
-                  </div>
-                ))}
-              </div>
+              <Block label={t('reservations.segmentCodes')}>
+                <div className={`${BOX} flex flex-col gap-1 px-[10px] py-2`}>
+                  {facts.legCodes.map((l, i) => (
+                    <div key={i} className="flex items-center gap-2" style={fs(12, 'body')}>
+                      <span className="min-w-0 flex-1 truncate font-medium text-content-secondary">{l.route || t('reservations.confirmationCode')}</span>
+                      <BlurredCode className="font-geist tabular-nums text-content-muted">{l.code}</BlurredCode>
+                    </div>
+                  ))}
+                </div>
+              </Block>
             )}
             {facts.cells.length > 0 && (
               <div className="grid grid-cols-3 gap-2">
@@ -116,39 +124,35 @@ export default function BookingCard(p: BookingCardProps) {
           </>
         )}
 
-        {(facts.place || facts.accommodation || facts.linked || facts.url) && (
-          <div className="flex flex-col gap-1">
-            {facts.place && <IconRow icon={<MapPin size={12} strokeWidth={2} />}>{facts.place}</IconRow>}
-            {facts.accommodation && <IconRow icon={<Hotel size={12} strokeWidth={2} />}>{facts.accommodation}</IconRow>}
-            {facts.linked && <IconRow icon={<Link2 size={12} strokeWidth={2} />}>{facts.linked}</IconRow>}
-            {facts.url && (
-              <IconRow icon={<ExternalLink size={12} strokeWidth={2} />}>
-                {facts.url.href
-                  ? <a href={facts.url.href} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="text-content hover:underline">{facts.url.href}</a>
-                  : facts.url.text}
-              </IconRow>
-            )}
-          </div>
+        {facts.place && <Field label={t('reservations.locationAddress')}>{facts.place}</Field>}
+        {facts.accommodation && <Field label={t('reservations.meta.linkAccommodation')}>{facts.accommodation}</Field>}
+        {facts.linked && <Field label={t('reservations.linkedTo')}>{facts.linked}</Field>}
+        {facts.url && (
+          <Field label={t('reservations.urlLabel')}>
+            {facts.url.href
+              ? <a href={facts.url.href} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="text-content hover:underline">{facts.url.href}</a>
+              : facts.url.text}
+          </Field>
         )}
 
-        {r.notes && !transit && (
-          <div className={`${BOX} collab-note-md line-clamp-4 px-[10px] py-2 text-content-muted`} style={fs(12, 'body')}>
-            <Markdown remarkPlugins={[remarkGfm, remarkBreaks]} components={markdownLinkComponents}>{r.notes}</Markdown>
-          </div>
+        {r.notes && (
+          <Block label={t('reservations.notes')}>
+            <div className={`${BOX} collab-note-md line-clamp-4 px-[10px] py-2 text-content-muted`} style={fs(12, 'body')}>
+              <Markdown remarkPlugins={[remarkGfm, remarkBreaks]} components={markdownLinkComponents}>{r.notes}</Markdown>
+            </div>
+          </Block>
         )}
 
         {(r.travelers || []).length > 0 && (
-          <div>
-            <Eyebrow className="mb-[3px]">{t('reservations.travelers.label')}</Eyebrow>
+          <Block label={t('reservations.travelers.label')}>
             <TravelerChips travelers={r.travelers || []} />
-          </div>
+          </Block>
         )}
 
         {p.files.length > 0 && (
-          <div>
-            <Eyebrow className="mb-[3px]">{t('files.title')}</Eyebrow>
+          <Block label={t('files.title')}>
             <FileRows files={p.files} />
-          </div>
+          </Block>
         )}
 
         {p.costs.length > 0 && (
@@ -177,32 +181,36 @@ export default function BookingCard(p: BookingCardProps) {
   )
 }
 
-function IconRow({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+/** Content longer than a field (a route, notes, people, files) under its own label, like every field. */
+function Block({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className={`${BOX} flex min-w-0 items-center gap-1.5 px-[10px] py-[7px] font-semibold text-content`} style={fs(12, 'body')}>
-      <span className="flex-none text-content-muted">{icon}</span>
-      <span className="min-w-0 truncate">{children}</span>
+    <div className="min-w-0">
+      <Eyebrow className="mb-[3px]">{label}</Eyebrow>
+      {children}
     </div>
   )
 }
 
-/** A transit journey's legs in their line colours, its duration and the first line of its notes. */
+/** A transit journey as the dialog shows it, compacted: its totals as fields, then leg by leg. */
 function TransitBody({ r }: { r: Reservation }) {
   const { t } = useTranslation()
-  const meta = parseMeta(r)
-  const transit = meta.transit && Array.isArray(meta.transit.legs) ? meta.transit : null
+  const journey = transitSummary(parseMeta(r))
+  if (!journey) return null
+  const cells: { label: string; value: string }[] = []
+  if (journey.duration) cells.push({ label: t('transit.durationLabel'), value: fmtTransitDuration(journey.duration, t) })
+  if (journey.legs.length > 0) cells.push({ label: t('transit.transfersLabel'), value: String(journey.transfers) })
+  if (journey.walk > 59) cells.push({ label: t('transit.walkLabel'), value: t('transit.min', { count: Math.round(journey.walk / 60) }) })
   return (
     <>
-      {transit && (
-        <div className={`${BOX} flex flex-col gap-1.5 px-[10px] py-2`}>
-          <TransitLegChips legs={transit.legs} size="md" t={t} />
-          {transit.duration ? <span className="font-geist text-content-faint" style={fs(11)}>{fmtTransitDuration(transit.duration, t)}</span> : null}
+      {cells.length > 0 && (
+        <div className="grid grid-cols-3 gap-2">
+          {cells.map((c, i) => <Field key={i} label={c.label}>{c.value}</Field>)}
         </div>
       )}
-      {r.notes && (
-        <div className="truncate px-0.5 font-geist text-content-faint" style={fs(11.5)}>
-          <Markdown remarkPlugins={[remarkGfm]} allowedElements={['strong', 'em', 'del', 'code', 'a']} unwrapDisallowed>{r.notes.split('\n')[0]}</Markdown>
-        </div>
+      {journey.legs.length > 0 && (
+        <Block label={t('transit.itinerary')}>
+          <TransitLegs legs={journey.legs} compact />
+        </Block>
       )}
     </>
   )

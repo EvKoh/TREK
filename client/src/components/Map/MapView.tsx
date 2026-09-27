@@ -572,7 +572,7 @@ function MapContextMenuHandler({ onContextMenu }: { onContextMenu: ((e: L.Leafle
 
 // Module-level photo cache shared with PlaceAvatar
 import { getCached, isLoading, fetchPhoto, onThumbReady, getAllThumbs } from '../../services/photoService'
-import { isCustomPlaceImage, markerPhotoHtml, photoCacheKey, photoSourcesKey } from './placePhoto'
+import { isCustomPlaceImage, markerPhotoHtml, photoCacheKey, photoSourcesKey, placePhotoFull, placePhotoUrl } from './placePhoto'
 import { useAuthStore } from '../../store/authStore'
 import { useGeolocation } from '../../hooks/useGeolocation'
 import LocationButton from './LocationButton'
@@ -717,8 +717,8 @@ const MemoMarker = memo(function MemoMarker({
         },
         remove: () => { cleanupRef.current?.(); cleanupRef.current = null },
         click: () => onClickPlace(place.id),
-        mouseover: (e: any) => onHover(place, e.originalEvent.clientX, e.originalEvent.clientY),
-        mousemove: (e: any) => onHover(place, e.originalEvent.clientX, e.originalEvent.clientY),
+        mouseover: (e: any) => onHover({ ...place, photo: placePhotoFull(place) }, e.originalEvent.clientX, e.originalEvent.clientY),
+        mousemove: (e: any) => onHover({ ...place, photo: placePhotoFull(place) }, e.originalEvent.clientX, e.originalEvent.clientY),
         mouseout: onHoverOut,
       }}
       zIndexOffset={isSelected ? 1000 : 0}
@@ -1009,9 +1009,7 @@ export const MapView = memo(function MapView({
 
   const markers = useMemo(() => places.map((place) => {
     const isSelected = place.id === selectedPlaceId
-    const pck = photoCacheKey(place)
-    // A custom uploaded image wins over the auto-fetched thumb; otherwise fall back.
-    const photoUrl = isCustomPlaceImage(place.image_url) ? place.image_url! : ((pck && photoUrls[pck]) || place.image_url || null)
+    const photoUrl = placePhotoUrl(place, photoUrls)
     const orderNumbers = dayOrderMap[place.id] ?? null
     return (
       <MemoMarker
@@ -1369,6 +1367,7 @@ export const MapView = memo(function MapView({
         categoryColor={hoveredPlace.category_color}
         address={hoveredPlace.address}
         rating={hoveredPlace.rating_avg}
+        photo={hoveredPlace.photo}
       />
     )}
     </>

@@ -17,7 +17,7 @@ export interface FactsContext {
 
 export interface BookingFacts {
   /** The day or day range, e.g. "Day 2 → Day 7", with the calendar date beside it. */
-  day: { label: string; date: string | null } | null
+  day: { label: string; date: string | null; range: boolean } | null
   /** Start and end time, or null without either. */
   time: string | null
   startTime: string | null
@@ -53,12 +53,14 @@ export function bookingFacts(r: Reservation, c: FactsContext): BookingFacts {
 
   let day: BookingFacts['day'] = null
   if (span.start) {
-    const label = span.end && span.end.id !== span.start.id ? `${dayName(span.start)} → ${dayName(span.end)}` : dayName(span.start)
-    const dates = [span.start.date, span.end && span.end.id !== span.start.id ? span.end.date : null].filter(Boolean) as string[]
-    day = { label, date: dates.length ? dates.map(d => fmtDate(d, locale, dates.length === 1)).join(' → ') : null }
+    const range = !!span.end && span.end.id !== span.start.id
+    const label = range ? `${dayName(span.start)} → ${dayName(span.end!)}` : dayName(span.start)
+    const dates = [span.start.date, range ? span.end!.date : null].filter(Boolean) as string[]
+    day = { label, date: dates.length ? dates.map(d => fmtDate(d, locale, dates.length === 1)).join(' → ') : null, range }
   } else if (startDt.date) {
-    const label = endDt.date && endDt.date !== startDt.date ? `${fmtDate(startDt.date, locale)} → ${fmtDate(endDt.date, locale)}` : fmtDate(startDt.date, locale)
-    day = { label, date: null }
+    const range = !!endDt.date && endDt.date !== startDt.date
+    const label = range ? `${fmtDate(startDt.date, locale)} → ${fmtDate(endDt.date!, locale)}` : fmtDate(startDt.date, locale)
+    day = { label, date: null, range }
   }
 
   const eps = (r.endpoints || []).slice().sort((a, b) => (a.sequence ?? 0) - (b.sequence ?? 0))
@@ -66,7 +68,10 @@ export function bookingFacts(r: Reservation, c: FactsContext): BookingFacts {
   const to = eps.find(e => e.role === 'to')
   const startTime = startDt.time || from?.local_time || null
   const endTime = endDt.time || to?.local_time || null
-  const time = startTime || endTime
+  // A stay backed by an accommodation says its times as check-in and check-out;
+  // the time stamped on the booking itself is not what the traveller goes by.
+  const stayBacked = isHotel && !!(r.accommodation_start_day_id || r.accommodation_end_day_id)
+  const time = !stayBacked && (startTime || endTime)
     ? `${startTime ? formatTime(startTime, locale, timeFormat) : ''}${endTime ? ` → ${formatTime(endTime, locale, timeFormat)}` : ''}`.trim()
     : null
 

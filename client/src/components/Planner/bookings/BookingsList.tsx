@@ -129,7 +129,7 @@ function Row({ r, p, facts, files, costs, t, locale }: {
       </div>
       <div className="flex items-center justify-end gap-1.5">
         <TravelerStack travelers={r.travelers || []} />
-        {p.canEdit && !transit && <RoundAction label={t('common.edit')} onClick={() => p.onEdit(r)}><Pencil size={12} strokeWidth={2} /></RoundAction>}
+        {p.canEdit && <RoundAction label={t('common.edit')} onClick={() => p.onEdit(r)}><Pencil size={12} strokeWidth={2} /></RoundAction>}
         {p.canEdit && <RoundAction label={t('common.delete')} onClick={() => p.onDelete(r)} danger><Trash2 size={12} strokeWidth={2} /></RoundAction>}
       </div>
     </div>

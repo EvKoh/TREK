@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { X, Plus } from 'lucide-react'
 import type { PackingItem, PackingBag } from '../../types'
 import type { TripMember } from './usePackingListPanel'
 import { PopoverItem } from './PackingPopover'
 import { POPOVER, POPOVER_CAPTION, useDismissOnOutside } from './packingPopoverStyles'
+import { useAnchoredPosition } from '../../hooks/useAnchoredPosition'
 
 interface BagCardProps {
   bag: PackingBag; bagItems: PackingItem[]; totalWeight: number; pct: number; tripId: number
@@ -17,8 +19,11 @@ export function BagCard({ bag, bagItems, totalWeight, pct, tripId, tripMembers, 
   const [nameVal, setNameVal] = useState(bag.name)
   const [showUserPicker, setShowUserPicker] = useState(false)
   const membersRef = useRef<HTMLDivElement>(null)
+  const pickerRef = useRef<HTMLDivElement>(null)
   const closePicker = useCallback(() => setShowUserPicker(false), [])
-  useDismissOnOutside(membersRef, showUserPicker, closePicker)
+  useDismissOnOutside(membersRef, showUserPicker, closePicker, pickerRef)
+  // The bag sidebar scrolls and would clip the list, so it hangs off the body under the faces.
+  const pickerBox = useAnchoredPosition(membersRef, showUserPicker, { estimatedHeight: 260, offset: 6 })
   useEffect(() => setNameVal(bag.name), [bag.name])
 
   const saveName = () => {
@@ -92,8 +97,12 @@ export function BagCard({ bag, bagItems, totalWeight, pct, tripId, tripMembers, 
             <Plus size={sz.avatar * 0.5} />
           </button>
         )}
-        {showUserPicker && (
-          <div className="trek-menu-enter" style={{ ...POPOVER, position: 'absolute', right: 0, top: '100%', marginTop: 6, zIndex: 50, width: 200 }}>
+        {showUserPicker && pickerBox && createPortal(
+          <div ref={pickerRef} className="trek-menu-enter" style={{
+            ...POPOVER, position: 'fixed', zIndex: 'var(--z-toast)', width: 200, overflowY: 'auto',
+            top: pickerBox.top, bottom: pickerBox.bottom, maxHeight: pickerBox.maxHeight,
+            left: Math.max(8, pickerBox.left + pickerBox.width - 200),
+          }}>
             <div style={POPOVER_CAPTION}>{t('packing.assignMembers')}</div>
             {tripMembers.map(m => (
               <PopoverItem key={m.id} label={m.username} active={memberIds.includes(m.id)} onClick={() => toggleMember(m.id)}
@@ -106,7 +115,8 @@ export function BagCard({ bag, bagItems, totalWeight, pct, tripId, tripMembers, 
                 )} />
             ))}
             {tripMembers.length === 0 && <div style={{ padding: '8px 10px', fontSize: 'calc(11.5px * var(--fs-scale-caption, 1))', color: 'var(--text-faint)' }}>{t('packing.noMembers')}</div>}
-          </div>
+          </div>,
+          document.body,
         )}
         </div>
         {canEdit && <button type="button" onClick={onDelete} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 2, color: 'var(--text-faint)', display: 'flex' }}><X size={sz.icon} /></button>}

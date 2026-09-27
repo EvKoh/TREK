@@ -55,7 +55,7 @@ describe('CollabLinks', () => {
     render(<CollabLinks tripId={1} />);
     const heading = await screen.findByRole('heading', { level: 3 });
     expect(heading).toHaveTextContent(/links/i);
-    expect(heading).toHaveStyle({ textTransform: 'uppercase' });
+    expect(heading).toHaveClass('uppercase');
     expect(screen.getByRole('button', { name: /add link|collab\.links\.add/i })).toBeInTheDocument();
   });
 
@@ -75,7 +75,7 @@ describe('CollabLinks', () => {
     render(<CollabLinks tripId={1} />);
     await user.click(await screen.findByRole('button', { name: /add link|collab\.links\.add/i }));
     expect(await screen.findByLabelText(/link title|collab\.links\.titlePlaceholder/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/https|collab\.links\.urlPlaceholder/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^link$|^reservations\.urlLabel$|https|collab\.links\.urlPlaceholder/i)).toBeInTheDocument();
   });
 
   it('FE-COMP-LINKS-005: saving posts the link and closes the form', async () => {
@@ -90,7 +90,7 @@ describe('CollabLinks', () => {
     render(<CollabLinks tripId={1} />);
     await user.click(await screen.findByRole('button', { name: /add link|collab\.links\.add/i }));
     await user.type(await screen.findByLabelText(/link title|collab\.links\.titlePlaceholder/i), 'Ferry timetable');
-    await user.type(screen.getByLabelText(/https|collab\.links\.urlPlaceholder/i), 'https://ferries.example/timetable');
+    await user.type(screen.getByLabelText(/^link$|^reservations\.urlLabel$|https|collab\.links\.urlPlaceholder/i), 'https://ferries.example/timetable');
     await user.click(screen.getByRole('button', { name: /save link|collab\.links\.save/i }));
 
     await waitFor(() => expect(posted).toEqual({ title: 'Ferry timetable', url: 'https://ferries.example/timetable' }));
@@ -106,7 +106,7 @@ describe('CollabLinks', () => {
     render(<CollabLinks tripId={1} />);
     await user.click(await screen.findByRole('button', { name: /add link|collab\.links\.add/i }));
     await user.type(await screen.findByLabelText(/link title|collab\.links\.titlePlaceholder/i), 'Ferry timetable');
-    await user.type(screen.getByLabelText(/https|collab\.links\.urlPlaceholder/i), 'https://ferries.example/timetable');
+    await user.type(screen.getByLabelText(/^link$|^reservations\.urlLabel$|https|collab\.links\.urlPlaceholder/i), 'https://ferries.example/timetable');
     await user.click(screen.getByRole('button', { name: /save link|collab\.links\.save/i }));
 
     expect(await screen.findByLabelText(/link title|collab\.links\.titlePlaceholder/i)).toHaveValue('Ferry timetable');
@@ -138,7 +138,7 @@ describe('CollabLinks', () => {
     expect(title).toHaveValue('Ferry timetable');
     await user.clear(title);
     await user.type(title, 'Ferry timetable 2026');
-    const url = screen.getByLabelText(/https|collab\.links\.urlPlaceholder/i);
+    const url = screen.getByLabelText(/^link$|^reservations\.urlLabel$|https|collab\.links\.urlPlaceholder/i);
     expect(url).toHaveValue('https://ferries.example/timetable');
     await user.clear(url);
     await user.type(url, 'https://ferries.example/2026');
@@ -198,7 +198,7 @@ describe('CollabLinks', () => {
     await waitFor(() => expect(chip.querySelector('img')).toBeNull());
 
     await user.click(screen.getByRole('button', { name: /edit link|collab\.links\.edit/i }));
-    const url = await screen.findByLabelText(/https|collab\.links\.urlPlaceholder/i);
+    const url = await screen.findByLabelText(/^link$|^reservations\.urlLabel$|https|collab\.links\.urlPlaceholder/i);
     await user.clear(url);
     await user.type(url, 'https://new.example/page');
     await user.click(screen.getByRole('button', { name: /save link|collab\.links\.save/i }));
