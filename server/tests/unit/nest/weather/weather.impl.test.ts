@@ -934,6 +934,101 @@ describe('getDetailedWeather', () => {
       expect(result.main).toBe('Rain');
     });
   });
+
+  // The forecast API answers nulls for a day a couple of months back, which the
+  // day details showed as 0°; the archive holds the real day.
+  describe('past day', () => {
+    const nullDay = (date: string) => ({
+      daily: { time: [date], temperature_2m_max: [null], temperature_2m_min: [null], weathercode: [null] },
+      hourly: { time: [`${date}T00:00`], temperature_2m: [null] },
+    });
+
+    it('WEATHER-DETAIL-PAST-001: reads the archive for the day itself', async () => {
+      const date = dateOffset(-60);
+      const body = {
+        daily: {
+          time: [date],
+          temperature_2m_max: [24],
+          temperature_2m_min: [14],
+          weathercode: [3],
+          precipitation_sum: [0.4],
+          windspeed_10m_max: [12],
+          sunrise: [`${date}T04:50`],
+          sunset: [`${date}T21:30`],
+        },
+        hourly: {
+          time: [`${date}T14:00`, `${date}T15:00`],
+          temperature_2m: [23, 24],
+          precipitation: [0, 0.2],
+          weathercode: [3, 61],
+          windspeed_10m: [10, 11],
+          relativehumidity_2m: [55, 60],
+        },
+      };
+      vi.mocked(fetch).mockResolvedValueOnce(mockResponse(body));
+
+      const result = await getDetailedWeather('33.00', '43.00', date, 'en');
+
+      expect(fetch).toHaveBeenCalledTimes(1);
+      const url = String(vi.mocked(fetch).mock.calls[0][0]);
+      expect(url).toContain('archive-api.open-meteo.com');
+      expect(url).toContain(`start_date=${date}&end_date=${date}`);
+      expect(result).toMatchObject({ type: 'forecast', temp: 19, temp_max: 24, temp_min: 14, main: 'Clouds', sunrise: '04:50', sunset: '21:30' });
+      expect(result.hourly).toHaveLength(2);
+      expect(result.hourly![1]).toMatchObject({ temp: 24, main: 'Rain', precipitation_probability: 0 });
+    });
+
+    it('WEATHER-DETAIL-PAST-002: a recent day the archive has no figures for yet goes on to the forecast API', async () => {
+      const date = dateOffset(-3);
+      const forecast = {
+        daily: {
+          time: [date],
+          temperature_2m_max: [22],
+          temperature_2m_min: [12],
+          weathercode: [0],
+          sunrise: [`${date}T06:00`],
+          sunset: [`${date}T20:00`],
+          precipitation_sum: [0],
+          precipitation_probability_max: [0],
+          windspeed_10m_max: [8],
+        },
+        hourly: { time: [], temperature_2m: [] },
+      };
+      vi.mocked(fetch)
+        .mockResolvedValueOnce(mockResponse(nullDay(date)))
+        .mockResolvedValueOnce(mockResponse(forecast));
+
+      const result = await getDetailedWeather('33.01', '43.01', date, 'en');
+
+      expect(fetch).toHaveBeenCalledTimes(2);
+      expect(String(vi.mocked(fetch).mock.calls[1][0])).toContain('api.open-meteo.com/v1/forecast');
+      expect(result).toMatchObject({ type: 'forecast', temp: 17, temp_max: 22, temp_min: 12 });
+    });
+
+    it('WEATHER-DETAIL-PAST-003: nulls from both sources give no_forecast, never 0°', async () => {
+      const date = dateOffset(-3);
+      vi.mocked(fetch)
+        .mockResolvedValueOnce(mockResponse(nullDay(date)))
+        .mockResolvedValueOnce(mockResponse(nullDay(date)));
+
+      const result = await getDetailedWeather('33.02', '43.02', date, 'en');
+
+      expect(result.error).toBe('no_forecast');
+    });
+
+    it('WEATHER-DETAIL-PAST-004: leaves out the hours the archive has no temperature for', async () => {
+      const date = dateOffset(-60);
+      const body = {
+        daily: { time: [date], temperature_2m_max: [20], temperature_2m_min: [10], weathercode: [0] },
+        hourly: { time: [`${date}T00:00`, `${date}T01:00`], temperature_2m: [null, 11], weathercode: [0, 0] },
+      };
+      vi.mocked(fetch).mockResolvedValueOnce(mockResponse(body));
+
+      const result = await getDetailedWeather('33.03', '43.03', date, 'en');
+
+      expect(result.hourly).toEqual([expect.objectContaining({ temp: 11 })]);
+    });
+  });
 });
 
 // ── error paths ──────────────────────────────────────────────────────────────
