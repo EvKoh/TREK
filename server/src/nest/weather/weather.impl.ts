@@ -124,13 +124,13 @@ const WMO_MAP: Record<number, string> = {
 };
 
 const WMO_DESCRIPTION_DE: Record<number, string> = {
-  0: 'Klar', 1: 'Uberwiegend klar', 2: 'Teilweise bewolkt', 3: 'Bewolkt',
+  0: 'Klar', 1: 'Überwiegend klar', 2: 'Teilweise bewölkt', 3: 'Bewölkt',
   45: 'Nebel', 48: 'Nebel mit Reif',
   51: 'Leichter Nieselregen', 53: 'Nieselregen', 55: 'Starker Nieselregen',
   56: 'Gefrierender Nieselregen', 57: 'Starker gefr. Nieselregen',
   61: 'Leichter Regen', 63: 'Regen', 65: 'Starker Regen',
   66: 'Gefrierender Regen', 67: 'Starker gefr. Regen',
-  71: 'Leichter Schneefall', 73: 'Schneefall', 75: 'Starker Schneefall', 77: 'Schneekorner',
+  71: 'Leichter Schneefall', 73: 'Schneefall', 75: 'Starker Schneefall', 77: 'Schneekörner',
   80: 'Leichte Regenschauer', 81: 'Regenschauer', 82: 'Starke Regenschauer',
   85: 'Leichte Schneeschauer', 86: 'Starke Schneeschauer',
   95: 'Gewitter', 96: 'Gewitter mit Hagel', 99: 'Starkes Gewitter mit Hagel',

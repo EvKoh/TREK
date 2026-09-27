@@ -212,7 +212,7 @@ describe('getWeather', () => {
 
       const result = await getWeather('11.01', '21.01', date, 'de');
 
-      expect(result.description).toBe('Bewolkt'); // German for code 3
+      expect(result.description).toBe('Bewölkt'); // German for code 3
     });
 
     it('falls back to "Clouds" for an unknown WMO code', async () => {
@@ -308,7 +308,7 @@ describe('getWeather', () => {
 
       expect(fetch).toHaveBeenCalledTimes(2);
       expect(en.description).toBe('Overcast');
-      expect(de.description).toBe('Bewolkt');
+      expect(de.description).toBe('Bewölkt');
     });
 
     it('falls through to climate path when date is not found in forecast data', async () => {
