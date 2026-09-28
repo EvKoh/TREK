@@ -2,7 +2,7 @@
 
 The What's Next card lists the next stops planned on the trip, across all days, so the group can see at a glance where it is heading and who is going.
 
-![The What's Next card: the next stops as cards grouped under Today, Tomorrow and the following dates, each with its time, address and the members going](assets/WhatsNext.png)
+![The What's Next card: the next stops as cards under Today, each with its time (or TBD), its address and the members going](assets/WhatsNext.png)
 
 ## Where to find it
 

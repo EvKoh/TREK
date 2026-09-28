@@ -24,7 +24,7 @@ Each place is a round marker:
 - **Photo marker:** the place's photo fills the circle, your own uploaded picture first, otherwise the photo TREK found for it.
 - **Icon marker:** without a photo, the category's icon in the category's colour.
 - **Selected place:** the active place has a larger marker.
-- **Order badge:** a small badge at the bottom right shows the place's position in the day's plan. A place on several days shows all its positions, separated by `·`.
+- **Order badge:** while a day is open, a small badge at the bottom right shows the stop's position in that day's plan, and a place that comes up twice in the day carries both numbers. Without an open day the badge shows the place's rating instead, where it has one.
 - **Rating:** a place that members rated and that carries no order badge shows its average as a small disc in its corner.
 
 Click a marker to open the [place inspector](Places-and-Search#the-place-inspector).
@@ -37,6 +37,8 @@ In the [Road trip](Road-Trip) view, results of the search along the route group 
 
 Rest the pointer on a place marker and a card follows the cursor with the place's photo (or its category tile), its name, the average member rating, the category and the address. It is the same card on every renderer and in [Collections](Collections), and it never gets in the way of a click.
 
+![The hover card beside a place marker: the place's photo, its name and its address](assets/MapHoverCard.png)
+
 Markers that [plugins](Places-and-Search#categories-from-plugins) put on the map show their own name and up to six rows of the plugin's facts instead.
 
 ## Route lines
@@ -47,7 +49,7 @@ A straight line is drawn immediately, then upgraded to real road geometry from a
 
 ### The whole trip at once
 
-The **Show whole trip** button in the bottom-right corner of the map swaps the single day for every travel day of the trip, each drawn in its own colour over a white casing so neighbouring days stay apart on any basemap. It is on desktop and on the phone, and your choice is remembered per trip for the rest of the session. **Hide whole trip** goes back to the single day.
+The **Show whole trip** button in the bottom-right corner of the map swaps the single day for every travel day of the trip, each drawn in its own colour over a darker casing of the same colour, so neighbouring days stay apart on any basemap. It is on desktop and on the phone, and your choice is remembered per trip for the rest of the session. **Hide whole trip** goes back to the single day.
 
 A card above the button lists the days: each one by its title, or by its number when it has none, with an icon per travel mode it is actually driven or walked in and the distance covered that day. The trip's **Total distance** sits at the top. Picking a day in the list selects it, the same as picking it anywhere else.
 

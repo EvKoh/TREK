@@ -62,7 +62,7 @@ A booking or transport opens its detail first, wherever you click it on the Plan
 
 The detail shows status, type and day, the booking code with a copy button, the times, travelers, notes, files and linked expenses. Its footer holds **On map**, **Change route** for a public transit journey, **Delete** and **Edit**. **Edit** opens the editor. See [Reservations and Bookings](Reservations-and-Bookings) for everything the detail shows.
 
-![The booking detail of a flight or train, with status, type and day pills, the booking code, stat tiles for the times and the fields below](assets/BookingDetail.png)
+![The booking detail of a hotel stay, with status, type and day pills, the booking code, tiles for check-in, check-out and the nights, and the fields below](assets/BookingDetail.png)
 
 ## Dialogs
 

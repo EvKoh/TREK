@@ -26,7 +26,8 @@ test('trip planner', async ({ page, shot }) => {
   await clearNotices(page)
   // The seeded trip is running, so the plan opens on today, which is empty; the
   // picture shows the first days, where the plan has places, a note and a flight.
-  await page.locator('.dp-day-header').first().click()
+  // On the day's number: the middle of the header is the booked night's pill.
+  await page.locator('.dp-day-header').first().click({ position: { x: 22, y: 20 } })
   await page.waitForTimeout(1500)
   await page.locator('.dp-day-header').first().evaluate(el => el.closest('.overflow-y-auto')?.scrollTo({ top: 0 }))
   await page.waitForTimeout(600)
@@ -64,6 +65,9 @@ test('in-app help', async ({ page, shot }) => {
 })
 
 test('files', async ({ page, shot }) => {
-  await page.goto(`/trips/${seed.tripId}/files`)
+  await page.goto(`/trips/${seed.tripId}`)
+  await clearNotices(page)
+  await page.getByRole('button', { name: /^Files/ }).first().click()
+  await page.waitForTimeout(1200)
   await shot.page_('Files')
 })

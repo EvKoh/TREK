@@ -83,6 +83,12 @@ export class Shot {
     await this.page.screenshot({ path: path.join(OUT_DIR, `${name}.png`) })
   }
 
+  /** Capture a region of the page, for a detail with no element of its own (a card over the map). */
+  async region(name: string, clip: { x: number; y: number; width: number; height: number }): Promise<void> {
+    await this.settle()
+    await this.page.screenshot({ path: path.join(OUT_DIR, `${name}.png`), clip })
+  }
+
   /** Capture one element — preferred for dialogs, panels and cards. */
   async element(name: string, target: Locator): Promise<void> {
     await this.settle()

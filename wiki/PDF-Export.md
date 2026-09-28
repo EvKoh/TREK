@@ -12,6 +12,8 @@ TREK turns a trip into a printable **Trip Plan PDF**: a cover, a map of the whol
 2. Under **Document**, click **PDF** (*Export day plan as PDF*). The row shows a spinner while the document is put together, then the dialog closes and a preview opens.
 3. In the preview, click **Save as PDF**. Your browser's print dialog opens; pick *Save as PDF* as the destination, or send it to a printer.
 
+![The PDF preview: the trip's name, Page break per day and Save as PDF in its head, and the cover page of the document below](assets/PDFPreview.png)
+
 ![Export dialog with the PDF under Document, Download .ics and Subscribe to calendar under Calendar, and the three GPX downloads under Maps & GPS](assets/ExportDialog.png)
 
 The other groups of the same dialog are covered elsewhere: **Calendar** in [Calendar-Feeds](Calendar-Feeds), and the GPX downloads under **Maps & GPS** (*Whole trip*, *Places only*, *Days as routes*) in [Map-Features](Map-Features#exporting-a-trip-as-gpx).

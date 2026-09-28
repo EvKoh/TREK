@@ -2,7 +2,7 @@
 
 Let the group decide together: where to eat, which hotel to book, what to do on the free afternoon.
 
-![The Polls card in the Collab tab: open polls as cards with the question in the head band, the options as bars, and a closed poll below](assets/CollabPolls.png)
+![The Polls card in the Collab tab: each poll as a card with the question and its votes in the head band, the lock and the bin beside them, and the options below](assets/CollabPolls.png)
 
 ## Where to find it
 

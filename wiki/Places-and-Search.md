@@ -2,7 +2,7 @@
 
 Places are the building blocks of a trip: sights, restaurants, hotels, stations, trailheads. You add them by searching, by pasting a map link, by typing coordinates, from your saved places, by right-clicking the map or by importing a file or a list.
 
-![The places column: the head band with Add Place/Activity and the import button, the search field with the select button, the Show, category and rating filters, and the list of places](assets/PlacesColumn.png)
+![The places column while a day is open: the head band with New place, To day and the import button, the search field with the select button, the Show, category and rating filters, and the list of places](assets/PlacesColumn.png)
 
 ## The places column
 
@@ -229,7 +229,7 @@ Amap links work the same way, as long as the link carries a coordinate: `uri.ama
 
 Click a place in the places column, in a day, or on the map, and its inspector opens over the map.
 
-![The place inspector: the photo and name in the head band with the address and the open, category and rating pills, then the rating, a booking card, opening hours and files](assets/PlaceInspector.png)
+![The place inspector over the map: the photo, name and address in its head, then the rating, the description, the notes and the files, with Add to Day, Navigation, Save to Collection and Edit at its foot](assets/PlaceInspector.png)
 
 - **The head band** shows the photo, with a green ring while the place is open and a red one while it is closed, the name (double-click it to rename the place), the address on one line with the full address in a tooltip, and pills: **Open** or **Closed**, the category, the time of the visit, the Google rating, the phone number to call, and the coordinates. **X** closes the inspector.
 - **Rating**: every member's vote, see [Rating a place](#rating-a-place).

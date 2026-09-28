@@ -30,6 +30,16 @@ test('lists — packing', async ({ page, shot }) => {
   await shot.page_('PackingList')
 })
 
+test('lists: to-do with a task open', async ({ page, shot }) => {
+  await openTab(page, 'Lists')
+  await page.getByRole('button', { name: /^To-Do/ }).first().click()
+  await page.waitForTimeout(600)
+  await page.getByText('Activate JR Pass', { exact: true }).first().click()
+  await page.waitForTimeout(700)
+  await shot.page_('Todos')
+  await page.getByRole('button', { name: /^Packing List/ }).first().click()
+})
+
 test('transports', async ({ page, shot }) => {
   await openTab(page, 'Transports')
   await shot.page_('Transports')

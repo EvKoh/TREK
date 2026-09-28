@@ -1,4 +1,5 @@
 import { test, clearNotices, expect, seed } from './shot'
+import { PICTURE_DAY } from '../help/guide'
 import type { Page, Locator } from '@playwright/test'
 
 /**
@@ -31,6 +32,9 @@ function card(page: Page, contains: string): Locator {
 }
 
 test.beforeEach(async ({ page }) => {
+  // What's Next lists only what is still ahead, and shots.setup.ts timed its stop
+  // against the picture day's morning, the instant the help pictures are taken at.
+  await page.clock.setFixedTime(PICTURE_DAY)
   await page.goto(`/trips/${seed.tripId}`)
   await clearNotices(page)
   await page.getByRole('button', { name: 'Collab', exact: true }).first().click()

@@ -28,7 +28,7 @@ The tab works exactly like the Bookings tab: the same bar with search, **Filter*
 - Public transit journeys have no status. They are tinted blue, and in the cards view they sit among the confirmed entries in time order. **View options → Public transit as its own section** gives them a section of their own, **Automated public transit**. The list always does that when it is grouped by status.
 - On the timeline, **Show the other tab** draws the Bookings tab's entries in a dimmed lane at the top.
 
-![Transports on the timeline: one lane per transport type across the trip's days](assets/BookingsTimeline.png)
+![Transports on the timeline: one lane per transport type across the trip's days](assets/TransportsTimeline.png)
 
 ## The transport editor
 
@@ -113,7 +113,7 @@ Self-hosters can point the `TRANSIT_API_URL` environment variable at their own M
 
 Click a transport anywhere, on its card, in the day plan, on the map or in the road trip rail, and its detail opens.
 
-![Booking detail of a flight: status, type and day pills, the booking code with copy, tiles for departure and arrival with their airports, platform and seat](assets/BookingDetail.png)
+![Booking detail of a flight: status, type and day pills, the booking code with copy, tiles for departure and arrival with their airports, platform and seat](assets/TransportDetail.png)
 
 For a transport, the tiles at the top show the departure and arrival times with their airports or stations, and the platform and seat when they are set. A route with stops lists every stop with its time. The foot of the detail has **On map**, which switches the route's line on and opens the plan on its day, **Delete** and **Edit**. See [The booking detail](Reservations-and-Bookings#the-booking-detail) for everything else it shows.
 

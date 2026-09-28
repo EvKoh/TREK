@@ -36,6 +36,8 @@ The all-trips feed merges every trip that qualifies into one calendar, sorted by
    - **Add to Apple Calendar / Outlook** is a `webcal://` link that your system passes to its default calendar app.
    - **Or copy a link manually** unfolds both addresses with a copy button each: the `https://` one for a *From URL* field, and the `webcal://` one.
 
+![The Subscribe to calendar dialog once the feed is on: Add to Google Calendar, Add to Apple Calendar / Outlook and the manual links, with Regenerate and Turn off at its foot](assets/IcsSubscribe.png)
+
 The address is built from `APP_URL` when it is set; otherwise TREK uses the host you are browsing from. Behind a reverse proxy, set `APP_URL` so the link is one your calendar app can reach. See [Environment-Variables](Environment-Variables) and [Reverse-Proxy](Reverse-Proxy).
 
 ## The token, and who can read the feed

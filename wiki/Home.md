@@ -10,13 +10,13 @@ TREK is a self-hosted, real-time collaborative travel planner licensed under AGP
 - **Drag & Drop Planner**: organize places into day plans with reordering and cross-day moves
 - **Interactive Map**: Leaflet map with photo markers, clustering, route visualization, and customizable tile sources
 - **Place Search**: TREK's own place index and OpenStreetMap, asked together, with no API key and no quota; Google or Amap answer only where both come up empty (see [TREK Places API](TREK-Places-API))
-- **Day Notes**: timestamped, icon-tagged notes per day
-- **Route Optimization**: auto-optimize place order and export to Google Maps
+- **Day Notes**: notes between a day's stops, each with a title, Markdown text, an icon and a colour
+- **Route Optimization**: auto-optimize place order and hand the day to Google Maps or CoMaps
 - **Weather Forecasts**: 16-day forecasts via Open-Meteo (no API key required), historical climate averages as fallback
 
 ### Travel Management
-- **Reservations & Bookings**: track flights, accommodations, restaurants with confirmation numbers and file attachments
-- **Budget Tracking**: category-based expenses with pie chart, per-person/per-day splitting, multi-currency support (see [Currencies](Currencies))
+- **Reservations & Bookings**: hotels, restaurants, tickets and every other booking with its confirmation code, travelers, costs and files, shown as cards, as a list or on a timeline; flights, trains and cars have their own Transports tab
+- **Budget Tracking**: an expense ledger with who paid and itemised splits, settle-up, receipts, a table view with per person and per day figures, multi-currency support (see [Currencies](Currencies))
 - **Packing Lists**: category-based checklists with user assignment, templates, and progress tracking
 - **Document Manager**: attach documents, tickets, and PDFs to trips, places, or reservations (up to 50 MB per file)
 - **Document Sync** _(admin-enabled)_: keep a trip's documents in step with a self-hosted Paperless-ngx, Papra, Nextcloud, OpenCloud or Synology NAS, in both directions, under one connection the trip owner sets up for every member (see [Document Sync](Document-Sync))

@@ -10,6 +10,8 @@ Open the **Lists** tab inside the trip planner and pick **To-Do** in its bar. Th
 
 ## Layout
 
+![The To-Do view of the Lists tab: the sidebar with progress, filters and lists, the task list, and a task open in the detail pane](assets/Todos.png)
+
 The to-do view has two columns, and a third while a task is open:
 
 - **Left sidebar**: a progress card (done of all, as a count, a percentage and a bar), the filters under **Tasks**, one row per list under **Lists**, and **Add list**, which asks for the name in a small dialog.

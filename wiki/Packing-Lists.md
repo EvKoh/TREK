@@ -2,7 +2,7 @@
 
 Build the trip's packing list together: items grouped into lists, ticked off as they go into the bag, shared with the group or kept to yourself, and, if you like, weighed per bag.
 
-![The Packing List in the Lists tab: the Lists bar, the progress card, the Shared and My list switch with the filters, the lists as cards and the Bags card on the right](assets/PackingList.png)
+![The Packing List in the Lists tab: the Lists bar, the progress card, the Shared and My list switch with the filters, and the lists as cards](assets/PackingList.png)
 
 ## Where to find it
 

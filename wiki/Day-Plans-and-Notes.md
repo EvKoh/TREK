@@ -2,7 +2,7 @@
 
 The days column on the left of the Plan tab holds the itinerary: one card per day, with the places, bookings, transports and notes of that day in order.
 
-![An expanded day card: the head band with the day number, the forecast, the date and the stay, cost and rental car pills, then the places, a transport row and a note](assets/PlanDayCard.png)
+![An expanded day card: the head band with the day number, the forecast, the date and the stay and cost pills, then a note, the places and the bookings of the day](assets/PlanDayCard.png)
 
 ## The Day Plan sidebar
 

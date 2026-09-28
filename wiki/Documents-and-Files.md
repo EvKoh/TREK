@@ -2,7 +2,7 @@
 
 Keep tickets, confirmations, vouchers and photos with the trip, and tie each one to the places and bookings it belongs to.
 
-![The Files tab: the bar with the type filters, Document sync and the trash, the upload area and the list of files with their links to places and bookings](assets/Files.png)
+![The Files tab: the bar with the type filters and the trash, the upload area and the list of files, each with its actions](assets/Files.png)
 
 ## Where to find it
 

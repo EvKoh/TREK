@@ -114,11 +114,11 @@ Clicking a booking opens its detail over the page. The same popup opens wherever
 - the **Reservations** list in a day's details, the **Bookings** cards in the place inspector,
 - a booking's endpoint on the map, and the rides on the [Road Trip](Road-Trip) rail.
 
-![Booking detail of a flight: status, type and day pills, the booking code with a copy button, tiles for departure, arrival, platform and seat, then fields, travelers, notes and files](assets/BookingDetail.png)
+![Booking detail of a hotel stay: the status, type and day pills and the booking code with a copy button in the head, tiles for check-in, check-out and the nights, the accommodation, and On map, the bin and Edit at the foot](assets/BookingDetail.png)
 
 The head band carries the type, the title and a row of pills: the status (click it to switch), the type, the day, and the booking code with a copy button. If you may edit bookings, click the title to rename it.
 
-Below it come tiles with the key figures: departure and arrival times with their places, or check-in, check-out and the number of nights for a stay, plus duration, transfers and walking time for a public transit journey, and platform and seat. After them: the itinerary of a transit journey, the route with its stop times when there are more than two stops, the segment codes, every other field, travelers, notes, the linked expenses (click one to edit it in Costs), the files with **Show in files**, and any plugin panels.
+Below it come tiles with the key figures: departure and arrival times with their places, or check-in, check-out and the number of nights for a stay, plus duration, transfers and walking time for a public transit journey, and platform and seat. After them: the itinerary of a transit journey, the route with its stop times when there are more than two stops, the segment codes, every other field, travelers, notes, the linked expenses under **Costs** (click one to open it in the expense dialog), the files with **Show in files**, and any plugin panels.
 
 The bar at the foot holds:
 
@@ -128,7 +128,7 @@ The bar at the foot holds:
 
 ## Creating a reservation
 
-![Edit Reservation dialog: the title typed in the head band with the status and type pills, then date and time, place, booking code and travelers, notes, link and files, and costs](assets/BookingEditor.png)
+![Edit Reservation dialog of a hotel: the title in the head band with the status and type pills, then the accommodation with its days and its check-in and check-out times, the address, booking code and travelers, notes, link and files, and costs](assets/BookingEditor.png)
 
 1. Click **Manual Booking**. The editor opens as **New Reservation**.
 2. Type the title into the head band. It is the one required field; **Add** stays disabled until it has one.

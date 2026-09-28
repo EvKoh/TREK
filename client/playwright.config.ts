@@ -74,6 +74,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], storageState: E2E_STATE_FILE },
       dependencies: ['setup'],
     },
+    // The wiki pictures show the demo trip filled in with the fixtures the help
+    // guides use (a booking of every kind, documents, links); help-media adds
+    // them guide by guide and so starts from the bare seed.
+    {
+      name: 'shot-fixtures',
+      testMatch: /shots\.setup\.ts/,
+      use: { ...devices['Desktop Chrome'], storageState: E2E_STATE_FILE },
+      dependencies: ['seed'],
+    },
     {
       name: 'screenshots',
       testMatch: /\.shot\.ts/,
@@ -83,7 +92,7 @@ export default defineConfig({
         viewport: { width: 1440, height: 900 },
         deviceScaleFactor: 2,
       },
-      dependencies: ['seed'],
+      dependencies: ['shot-fixtures'],
     },
     // Help-center media (`npm run help:media`): pictures and walkthroughs for
     // the in-app guides, generated from the guide definitions in src/help/.

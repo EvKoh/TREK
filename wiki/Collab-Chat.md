@@ -2,7 +2,7 @@
 
 Talk with everyone on the trip in real time, without leaving the planner.
 
-![The trip chat: your own messages in the accent colour on the right, the others as cards on the left, with reactions, a reply and a link preview](assets/CollabChat.png)
+![The trip chat: your own messages in the accent colour on the right, the others as cards on the left with their name and time, and the message field at the foot](assets/CollabChat.png)
 
 ## Where to find it
 

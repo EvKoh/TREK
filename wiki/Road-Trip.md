@@ -71,6 +71,7 @@ The stay is only a starting point. Change it on the stop, see [How long you stay
 - **Make it a stop on the way:** click the number of a numbered stop and pick a kind. The number turns into the kind's icon and the stops below it are renumbered.
 - **Change what kind of stop this is:** click the icon of a stop on the way. **Back to a destination** gives it its number again.
 - A fuel or charging stop that refills your vehicle carries a fill badge (see [Driving limits and range](#driving-limits-and-range)). Click it to set how full this particular stop fills, or **Use my default**.
+- **Edit it:** while the Road trip view is on, **Edit** on a stop on the way or on the place of a booked night, from its row, its place details or the map, opens the same compact dialog the search uses, with its kind and its stay. **More details** in that dialog opens the full place form.
 
 Stops on the way also show under **Days** and on the day's route there. To keep them in Road trip only, switch off **Show in Days too** under **Service stops** in the **Driving settings**. The switch is on by default, belongs to the trip, and applies to every stop on the way, including existing ones. A stop that a booked night put on the drive is always hidden under **Days**, whatever the switch says, because the day already shows that booking.
 
@@ -167,8 +168,8 @@ Where the range runs out, the rail draws a band across the leg: **Tank runs out 
 
 The **Along the route** panel searches the road actually driven, not the straight line between stops. That is the difference between one petrol station and forty.
 
-1. Pick the **Day** at the top of the panel.
-2. Under **Looking for**, pick one or more of **Fuel**, **Charging**, **Rest area**, **Campsite**, **Accommodation**, **Food** and **Sights**. It opens on **Charging** when the trip's vehicle is electric, and on **Fuel** otherwise.
+1. Under **Looking for**, open the list and tick one or more of **Fuel**, **Charging**, **Rest area**, **Campsite**, **Accommodation**, **Food** and **Sights**. It opens on **Charging** when the trip's vehicle is electric, and on **Fuel** otherwise.
+2. Pick the **Day** in the dropdown at the end of the same line. **Search** waits until that day has routed.
 3. Under **Within**, pick 2, 5 or 10 km either side of the road.
 4. Press **Search**.
 
@@ -211,7 +212,7 @@ The handles show once you zoom in far enough to aim at a road (zoom level 9). A 
 
 ## Other ways and avoidance
 
-Click a drive band in the rail to see **Ways to drive this leg**. TREK asks the router for alternatives and lists them: the **Fastest**, how much slower or quicker each other one is, and on a leg you already reshaped, the road you are on as **Current**. Hover an entry to light it up on the map, click it to drive that way. Choosing a different road places a via on the leg, replacing any the leg already had; choosing the router's own road removes them.
+Click a drive band in the rail to see **Ways to drive this leg**. TREK asks the router for alternatives and lists them: the **Fastest**, how much slower or quicker each other one is, and on a leg you already reshaped, the road you are on as **Current**. Hover an entry to light it up on the map, click it to drive that way. Choosing a different road first checks it with the road trip's router, then holds the leg on it with as few vias as it takes, replacing any the leg already had; a road the router will not follow is not saved. Choosing the router's own road removes them again.
 
 The list can also offer **No motorway**, **No tolls** and **No ferry**. These come from the second routing engine (see below), which prices roads with its own speed model, so they are marked *Timed by the avoidance router, not the main one* and are not compared with the others. When the router knows only one way, the list says *Only one sensible way to drive this one.*
 
@@ -268,7 +269,7 @@ The badge is then tinted, and its tooltip names the track the day follows. **Dro
 Switch on **Show hazard areas** under **Current warnings** in the Driving settings. It is off by default and shared by the trip.
 
 - **DWD** weather warnings cover Germany. **GDACS** reports disasters worldwide; up to twelve flood, wildfire or cyclone events are drawn with their affected area.
-- Click an area or an event for the source report and when it was last updated, and for GDACS its alert score. An event given only as a point says *Location only; affected area unknown.*
+- Click an area or an event for the source report and when it was last updated, and for GDACS its alert score: the score of the event's current episode, or the event's overall score where GDACS gives none for the episode. An event given only as a point says *Location only; affected area unknown.*
 - The feeds are refreshed every ten minutes, and a source that is incomplete or unreachable is labelled as such. Offline, live warnings are unavailable.
 - **Warnings are not road closures. Routes stay unchanged.** They are current notices, not forecasts for your travel dates, and the coverage is not exhaustive.
 
