@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Betaling bewerken',
   'costs.addPayment': 'Betaling toevoegen',
   'costs.unfinished': 'Onvoltooid',
-  'costs.unfinishedHint': 'Alleen in totaal — nog niet verrekend',
+  'costs.unfinishedHint': 'Alleen in totaal: nog niet verrekend',
   'costs.tapToInclude': 'Tik om toe te voegen',
   'costs.amount': 'Bedrag',
   'costs.split': 'Verdelen',

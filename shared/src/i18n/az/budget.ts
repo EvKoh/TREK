@@ -176,7 +176,7 @@ const budget: TranslationStrings = {
   'costs.addPayment': 'Ödəniş əlavə et',
 
   'costs.unfinished': 'Tamamlanmayıb',
-  'costs.unfinishedHint': 'Yalnız ümumi məbləğ — hələ hesablaşmayıb',
+  'costs.unfinishedHint': 'Yalnız ümumi məbləğ: hələ hesablaşmayıb',
   'costs.tapToInclude': 'Daxil etmək üçün toxunun',
   'costs.amount': 'Məbləğ',
 

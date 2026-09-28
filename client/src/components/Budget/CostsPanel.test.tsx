@@ -1275,7 +1275,7 @@ describe('CostsPanel — mobile layout', () => {
     expect(screen.getByText("You're owed")).toBeInTheDocument()
     expect(screen.getByText('Outstanding amount')).toBeInTheDocument()
     // The unfinished expense is flagged with a badge on its icon instead of a pill.
-    expect(screen.getByRole('img', { name: 'Total only — not settled yet' })).toHaveTextContent('!')
+    expect(screen.getByRole('img', { name: 'Total only: not settled yet' })).toHaveTextContent('!')
     expect(screen.queryByText('Unfinished')).not.toBeInTheDocument()
   })
 

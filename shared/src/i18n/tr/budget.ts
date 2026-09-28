@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Ödemeyi düzenle',
   'costs.addPayment': 'Ödeme ekle',
   'costs.unfinished': 'Tamamlanmadı',
-  'costs.unfinishedHint': 'Yalnızca toplamda — henüz ödenmedi',
+  'costs.unfinishedHint': 'Yalnızca toplamda: henüz ödenmedi',
   'costs.tapToInclude': 'Eklemek için dokun',
   'costs.amount': 'Tutar',
   'costs.split': 'Paylaşım',

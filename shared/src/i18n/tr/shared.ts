@@ -8,7 +8,7 @@ const shared: TranslationStrings = {
     'Bu, paylaşım bağlantısının süresinin dolduğu anlamına gelmez. İnternet bağlantınızı kontrol edip biraz sonra tekrar deneyin.',
   'shared.retry': 'Yeniden dene',
   'shared.readOnly': 'Salt okunur paylaşılan görünüm',
-  'shared.tabPlan': 'Planı',
+  'shared.tabPlan': 'Plan',
   'shared.tabBookings': 'Rezervasyonlar',
   'shared.tabPacking': 'Ambalaj',
   'shared.tabBudget': 'Maliyetler',
@@ -20,6 +20,6 @@ const shared: TranslationStrings = {
   'shared.messages': 'mesajlar',
   'shared.sharedVia': 'Şununla paylaşıldı:',
   'shared.confirmed': 'Onaylandı',
-  'shared.pending': 'Askıda olması',
+  'shared.pending': 'Beklemede',
 };
 export default shared;

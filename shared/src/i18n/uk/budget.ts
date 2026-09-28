@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Редагувати платіж',
   'costs.addPayment': 'Додати платіж',
   'costs.unfinished': 'Не завершено',
-  'costs.unfinishedHint': 'Лише в сумі — ще не врегульовано',
+  'costs.unfinishedHint': 'Лише в сумі: ще не врегульовано',
   'costs.tapToInclude': 'Натисніть, щоб додати',
   'costs.amount': 'Сума',
   'costs.split': 'Розподіл',

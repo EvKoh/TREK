@@ -157,7 +157,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Muuda makset',
   'costs.addPayment': 'Lisa makse',
   'costs.unfinished': 'Lõpetamata',
-  'costs.unfinishedHint': 'Ainult kogusumma — veel arveldamata',
+  'costs.unfinishedHint': 'Ainult kogusumma: veel arveldamata',
   'costs.tapToInclude': 'Kaasamiseks puuduta',
   'costs.amount': 'Summa',
   'costs.ticketItemName': 'Kirje nimi',

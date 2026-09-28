@@ -7,7 +7,7 @@ const day: TranslationStrings = {
   'day.sunrise': 'Východ slnka',
   'day.sunset': 'Západ slnka',
   'day.hourlyForecast': 'Hodinová predpoveď',
-  'day.climateHint': 'Historické priemery — reálna predpoveď je k dispozícii do 16 dní od tohto dátumu.',
+  'day.climateHint': 'Historické priemery: reálna predpoveď je k dispozícii do 16 dní od tohto dátumu.',
   'day.noWeather': 'Nie sú k dispozícii žiadne údaje o počasí. Pridajte miesto so súradnicami.',
   'day.weatherFor': 'Predpoveď pre {name}',
   'day.overview': 'Denný prehľad',

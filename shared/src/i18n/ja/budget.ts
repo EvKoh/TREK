@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': '支払いを編集',
   'costs.addPayment': '支払いを追加',
   'costs.unfinished': '未完了',
-  'costs.unfinishedHint': '合計のみ — 未精算',
+  'costs.unfinishedHint': '合計のみ：未精算',
   'costs.tapToInclude': 'タップして追加',
   'costs.amount': '金額',
   'costs.split': '分け方',

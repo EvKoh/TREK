@@ -156,7 +156,7 @@ const roadtrip: TranslationStrings = {
   'roadtrip.poi.anyPower': 'İstənilən güc',
   'roadtrip.poi.free': 'Pulsuz',
   'roadtrip.poi.wholeDay': 'Bütün gün',
-  'roadtrip.poi.midLeg': 'Yolun yarısında, {from}–{to}',
+  'roadtrip.poi.midLeg': 'Yolun yarısında, {from} ilə {to} arasında',
   'roadtrip.track.title': '{number}-ci gün izi izləyir',
   'roadtrip.track.hint': 'Bu günü idxal edilmiş iz üzrə planlaşdırın',
   'roadtrip.track.badge': 'İz',

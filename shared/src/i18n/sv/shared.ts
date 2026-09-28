@@ -20,6 +20,6 @@ const shared: TranslationStrings = {
   'shared.messages': 'meddelanden',
   'shared.sharedVia': 'Delad via',
   'shared.confirmed': 'Godkänt',
-  'shared.pending': 'Pendlande',
+  'shared.pending': 'Väntande',
 };
 export default shared;

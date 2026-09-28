@@ -50,7 +50,7 @@ const places: TranslationStrings = {
   'places.planned': 'Có kế hoạch',
   'places.dayScoped': 'Chỉ hiển thị ngày đang mở',
   'places.dayScopedClear': 'Hiện toàn bộ chuyến đi',
-  'places.filterTracks': 'Bài hát',
+  'places.filterTracks': 'Đường đi',
   'places.filterByRating': 'Lọc theo đánh giá',
   'places.filterShow': 'Hiển thị',
   'places.clearSearch': 'Xóa tìm kiếm',

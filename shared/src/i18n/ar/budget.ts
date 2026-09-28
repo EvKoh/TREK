@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'تعديل الدفعة',
   'costs.addPayment': 'إضافة دفعة',
   'costs.unfinished': 'غير مكتمل',
-  'costs.unfinishedHint': 'في الإجمالي فقط — لم تتم التسوية بعد',
+  'costs.unfinishedHint': 'في الإجمالي فقط: لم تتم التسوية بعد',
   'costs.tapToInclude': 'اضغط للتضمين',
   'costs.amount': 'المبلغ',
   'costs.split': 'التقسيم',

@@ -8,7 +8,7 @@ const day: TranslationStrings = {
   'day.sunset': 'Günəşin batması',
   'day.hourlyForecast': 'Saatlıq hava proqnozu',
   'day.climateHint':
-    'Tarixi orta göstəricilər — real hava proqnozu bu tarixə 16 gün qalmış əlçatan olacaq.',
+    'Tarixi orta göstəricilər: real hava proqnozu bu tarixə 16 gün qalmış əlçatan olacaq.',
   'day.noWeather':
     'Hava məlumatı mövcud deyil. Koordinatları olan bir məkan əlavə edin.',
   'day.weatherFor': '{name} üçün hava proqnozu',

@@ -9,7 +9,7 @@ const reservations: TranslationStrings = {
   'reservations.placeHint':
     'İpucu: Rezervasyonları doğrudan günlük planınıza bağlayacak bir yerden oluşturmak en iyisidir.',
   'reservations.confirmed': 'Onaylandı',
-  'reservations.pending': 'Askıda olması',
+  'reservations.pending': 'Beklemede',
   'reservations.summary': '{confirmed} onaylandı, {pending} beklemede',
   'reservations.showFiles': 'Dosyaları Göster',
   'reservations.editTitle': 'Rezervasyonu Düzenle',

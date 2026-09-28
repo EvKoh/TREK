@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Editar pago',
   'costs.addPayment': 'Añadir pago',
   'costs.unfinished': 'Pendiente',
-  'costs.unfinishedHint': 'Solo en el total — aún sin saldar',
+  'costs.unfinishedHint': 'Solo en el total: aún sin saldar',
   'costs.tapToInclude': 'Toca para incluir',
   'costs.amount': 'Importe',
   'costs.split': 'Dividir',

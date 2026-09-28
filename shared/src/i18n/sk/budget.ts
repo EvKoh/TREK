@@ -157,7 +157,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Upraviť platbu',
   'costs.addPayment': 'Pridať platbu',
   'costs.unfinished': 'Nedokončené',
-  'costs.unfinishedHint': 'Len v súčte — zatiaľ nevyrovnané',
+  'costs.unfinishedHint': 'Len v súčte: zatiaľ nevyrovnané',
   'costs.tapToInclude': 'Klepnutím zahrniete',
   'costs.amount': 'Suma',
   'costs.ticketItemName': 'Názov položky',

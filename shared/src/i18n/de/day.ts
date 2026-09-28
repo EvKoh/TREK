@@ -8,7 +8,7 @@ const day: TranslationStrings = {
   'day.sunset': 'Sonnenuntergang',
   'day.hourlyForecast': 'Stündliche Vorhersage',
   'day.climateHint':
-    'Historische Durchschnittswerte — echte Vorhersage verfügbar innerhalb von 16 Tagen vor diesem Datum.',
+    'Historische Durchschnittswerte: echte Vorhersage verfügbar innerhalb von 16 Tagen vor diesem Datum.',
   'day.noWeather': 'Keine Wetterdaten verfügbar. Füge einen Ort mit Koordinaten hinzu.',
   'day.weatherFor': 'Vorhersage für {name}',
   'day.overview': 'Tagesübersicht',

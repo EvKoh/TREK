@@ -157,7 +157,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Edit payment',
   'costs.addPayment': 'Add payment',
   'costs.unfinished': 'Unfinished',
-  'costs.unfinishedHint': 'Total only — not settled yet',
+  'costs.unfinishedHint': 'Total only: not settled yet',
   'costs.tapToInclude': 'Tap to include',
   'costs.amount': 'Amount',
   'costs.ticketItemName': 'Item name',

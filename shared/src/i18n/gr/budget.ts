@@ -146,7 +146,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Επεξεργασία πληρωμής',
   'costs.addPayment': 'Προσθήκη πληρωμής',
   'costs.unfinished': 'Εκκρεμές',
-  'costs.unfinishedHint': 'Μόνο στο σύνολο — δεν έχει διακανονιστεί',
+  'costs.unfinishedHint': 'Μόνο στο σύνολο: δεν έχει διακανονιστεί',
   'costs.tapToInclude': 'Πατήστε για προσθήκη',
   'costs.amount': 'Ποσό',
   'costs.split': 'Διαμοιρασμός',

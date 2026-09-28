@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': '결제 편집',
   'costs.addPayment': '결제 추가',
   'costs.unfinished': '미완료',
-  'costs.unfinishedHint': '합계에만 반영 — 아직 미정산',
+  'costs.unfinishedHint': '합계에만 반영: 아직 미정산',
   'costs.tapToInclude': '탭하여 포함',
   'costs.amount': '금액',
   'costs.split': '나누기',

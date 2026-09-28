@@ -7,7 +7,7 @@ const day: TranslationStrings = {
   'day.sunrise': 'Matahari terbit',
   'day.sunset': 'Matahari terbenam',
   'day.hourlyForecast': 'Prakiraan Per Jam',
-  'day.climateHint': 'Rata-rata historis — prakiraan nyata tersedia dalam 16 hari dari tanggal ini.',
+  'day.climateHint': 'Rata-rata historis: prakiraan nyata tersedia dalam 16 hari dari tanggal ini.',
   'day.noWeather': 'Data cuaca tidak tersedia. Tambahkan tempat dengan koordinat.',
   'day.weatherFor': 'Prakiraan untuk {name}',
   'day.overview': 'Ikhtisar Harian',

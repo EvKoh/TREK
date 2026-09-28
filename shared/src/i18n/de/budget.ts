@@ -148,7 +148,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Zahlung bearbeiten',
   'costs.addPayment': 'Zahlung hinzufügen',
   'costs.unfinished': 'Offen',
-  'costs.unfinishedHint': 'Nur Gesamtsumme — noch nicht abgerechnet',
+  'costs.unfinishedHint': 'Nur Gesamtsumme: noch nicht abgerechnet',
   'costs.tapToInclude': 'Zum Einbeziehen tippen',
   'costs.amount': 'Betrag',
   'costs.split': 'Aufteilen',

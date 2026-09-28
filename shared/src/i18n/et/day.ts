@@ -7,7 +7,7 @@ const day: TranslationStrings = {
   'day.sunrise': 'Päikesetõus',
   'day.sunset': 'Päikeseloojang',
   'day.hourlyForecast': 'Tunniprognoos',
-  'day.climateHint': 'Ajaloolised keskmised — ilmaprognoos on saadaval kuni 16 päeva ette.',
+  'day.climateHint': 'Ajaloolised keskmised: ilmaprognoos on saadaval kuni 16 päeva ette.',
   'day.noWeather': 'Ilmaandmed puuduvad. Lisa koordinaatidega koht.',
   'day.weatherFor': 'Ilmaprognoos: {name}',
   'day.overview': 'Päeva ülevaade',

@@ -144,7 +144,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': '編輯付款',
   'costs.addPayment': '新增付款',
   'costs.unfinished': '未完成',
-  'costs.unfinishedHint': '僅計入總額 — 尚未結算',
+  'costs.unfinishedHint': '僅計入總額：尚未結算',
   'costs.tapToInclude': '點按以加入',
   'costs.amount': '金額',
   'costs.split': '分攤',

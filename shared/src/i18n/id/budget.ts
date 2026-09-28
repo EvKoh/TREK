@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Edit pembayaran',
   'costs.addPayment': 'Tambah pembayaran',
   'costs.unfinished': 'Belum selesai',
-  'costs.unfinishedHint': 'Hanya total — belum diselesaikan',
+  'costs.unfinishedHint': 'Hanya total: belum diselesaikan',
   'costs.tapToInclude': 'Ketuk untuk menyertakan',
   'costs.amount': 'Jumlah',
   'costs.split': 'Pembagian',

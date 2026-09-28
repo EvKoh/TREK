@@ -149,7 +149,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Editar pagament',
   'costs.addPayment': 'Afegir pagament',
   'costs.unfinished': 'Sense finalitzar',
-  'costs.unfinishedHint': "Només el total — encara no s'ha liquidat",
+  'costs.unfinishedHint': "Només el total: encara no s'ha liquidat",
   'costs.tapToInclude': 'Toca per incloure',
   'costs.amount': 'Import',
   'costs.outstanding': 'Import pendent',

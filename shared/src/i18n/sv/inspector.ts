@@ -11,7 +11,7 @@ const inspector: TranslationStrings = {
   'inspector.removeFromDay': 'Ta bort från dag',
   'inspector.addToDay': 'Lägg till i dagen',
   'inspector.confirmedRes': 'Bekräftad bokning',
-  'inspector.pendingRes': 'Pendlande bokning',
+  'inspector.pendingRes': 'Väntande bokning',
   'inspector.google': 'Google Maps',
   'inspector.navigation': 'Navigation',
   'inspector.openWith': 'Öppna med',

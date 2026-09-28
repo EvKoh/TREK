@@ -145,7 +145,7 @@ const budget: TranslationStrings = {
   'costs.editPayment': 'Fizetés szerkesztése',
   'costs.addPayment': 'Fizetés hozzáadása',
   'costs.unfinished': 'Befejezetlen',
-  'costs.unfinishedHint': 'Csak az összegben — még nincs rendezve',
+  'costs.unfinishedHint': 'Csak az összegben: még nincs rendezve',
   'costs.tapToInclude': 'Koppintson a hozzáadáshoz',
   'costs.amount': 'Összeg',
   'costs.split': 'Felosztás',

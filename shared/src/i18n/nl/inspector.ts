@@ -1,7 +1,7 @@
 import type { TranslationStrings } from '../types';
 
 const inspector: TranslationStrings = {
-  'inspector.opened': 'Openingstijden',
+  'inspector.opened': 'Geopend',
   'inspector.closed': 'Gesloten',
   'inspector.openingHours': 'Openingstijden',
   'inspector.showHours': 'Openingstijden tonen',

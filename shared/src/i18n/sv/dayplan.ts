@@ -61,7 +61,7 @@ const dayplan: TranslationStrings = {
   'dayplan.toast.routeOptimizedFromHotel': 'Ruttoptimerad utifrån ditt boende',
   'dayplan.toast.noGeoPlaces': 'Inga platser med koordinater hittades för ruttberäkningen',
   'dayplan.confirmed': 'Bekräftat',
-  'dayplan.pendingRes': 'Pendlande',
+  'dayplan.pendingRes': 'Väntande',
   'dayplan.export': 'Exportera',
   'dayplan.exportIntro': 'Ta med dig planen: som dokument, i kalendern eller på GPS:en.',
   'dayplan.exportDocument': 'Dokument',
