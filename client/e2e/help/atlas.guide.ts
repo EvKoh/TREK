@@ -42,10 +42,17 @@ const searchBox = (page: Page) => searchInput(page).locator('xpath=ancestor::div
 const countryHit = (page: Page, name: string) => searchBox(page).getByRole('button', { name: new RegExp(`^[A-Z]{2} ${name}$`) })
 /** A geocoded place in the dropdown, under the Places heading. */
 const placeHit = (page: Page, text: string) => searchBox(page).getByRole('button', { name: new RegExp(text) }).first()
-/** The country / region popup card. */
-const popup = (page: Page) => page.locator('div[role="presentation"] > div[role="presentation"]')
+/**
+ * The country / region popup: the panel of the shared dialog frame, inside
+ * the backdrop `modal` finds. The Dawarich dialog uses the same frame, but the
+ * two are never open at once.
+ */
+const popup = (page: Page) => modal(page).getByRole('dialog')
 /** The glass panel at the bottom. */
 const panel = (page: Page) => page.getByRole('button', { name: 'Stats' }).locator('xpath=ancestor::div[2]')
+/** The continent counts in the Stats tab, and the streak with this year's trips right of them. */
+const continentStats = (page: Page) => panel(page).locator('div.flex.items-center.gap-4').filter({ hasText: 'Europe' }).first()
+const highlightStats = (page: Page) => panel(page).locator('div.flex.items-center.gap-5').first()
 /** The detail card the panel grows for a country picked in the search. */
 const detailCard = (page: Page, country: string) =>
   panel(page).locator('p.text-sm.font-bold').filter({ hasText: country }).locator('xpath=../..')
@@ -84,13 +91,21 @@ async function pickCountry(page: Page, name: string): Promise<void> {
   await settle(page)
 }
 
-/** Close the country popup by clicking beside it (there is no Escape). */
+/**
+ * Close the country popup with the button in its head band. Not with Escape:
+ * after a key press the browser draws its focus ring on the next popup, which
+ * takes the focus as it opens, and that ring would be in the picture.
+ */
 async function closePopup(page: Page): Promise<void> {
-  await page.mouse.click(40, VIEWPORT.height - 40)
+  await popup(page).getByRole('button', { name: 'Close', exact: true }).click()
   await expect(popup(page)).toHaveCount(0)
 }
 
-/** The next unset select in a scope: month and year both read “—” until picked. */
+/**
+ * The next unset select of the Add place form in the Bucket List tab: month
+ * and year both read a long dash until picked. The popup's bucket step labels
+ * its two selects instead, so there they are found by Month and Year.
+ */
 const unsetSelect = (scope: Locator) => scope.getByRole('button', { name: '—', exact: true }).first()
 
 /** Pick an option in one of the month / year selects. */
@@ -134,6 +149,63 @@ async function hoverMapCentre(page: Page): Promise<void> {
 async function clickMapCentre(page: Page): Promise<void> {
   const c = await mapCentre(page)
   await page.mouse.click(c.x, c.y)
+}
+
+type Box = { x: number; y: number; width: number; height: number }
+
+/**
+ * An invisible box laid over several elements, for a step whose text names
+ * things that have no parent of their own to ring. The runner rings whatever
+ * box the target has, so this gives it one. It takes no pointer events, so the
+ * hover and the click the step makes go to the app underneath, and a step
+ * that uses it needs its own `hover` for the same reason.
+ */
+async function spanOver(page: Page, boxes: Box[]): Promise<void> {
+  await page.evaluate(boxes => {
+    document.getElementById('trek-help-span')?.remove()
+    const left = Math.min(...boxes.map(b => b.x))
+    const top = Math.min(...boxes.map(b => b.y))
+    const right = Math.max(...boxes.map(b => b.x + b.width))
+    const bottom = Math.max(...boxes.map(b => b.y + b.height))
+    const el = document.createElement('div')
+    el.id = 'trek-help-span'
+    Object.assign(el.style, {
+      position: 'fixed',
+      left: `${left}px`,
+      top: `${top}px`,
+      width: `${right - left}px`,
+      height: `${bottom - top}px`,
+      pointerEvents: 'none',
+    })
+    document.body.appendChild(el)
+  }, boxes)
+}
+const span = (page: Page) => page.locator('#trek-help-span')
+async function clearSpan(page: Page): Promise<void> {
+  await page.evaluate(() => document.getElementById('trek-help-span')?.remove())
+}
+
+async function boxOf(locator: Locator): Promise<Box> {
+  const box = await locator.boundingBox()
+  if (!box) throw new Error(`no box for ${locator}`)
+  return box
+}
+
+/**
+ * The name the Atlas shows beside the pointer over a region. It is one fixed
+ * div the map moves after the pointer, with no role or name of its own; the
+ * country under the region name is how it is told apart.
+ */
+async function regionTooltipBox(page: Page, country: string): Promise<Box> {
+  const box = await page.evaluate(country => {
+    const tip = Array.from(document.querySelectorAll('div')).find(d =>
+      d.style.position === 'fixed' && d.style.pointerEvents === 'none' && d.style.display === 'block' && (d.textContent ?? '').includes(country))
+    if (!tip) return null
+    const r = tip.getBoundingClientRect()
+    return { x: r.x, y: r.y, width: r.width, height: r.height }
+  }, country)
+  if (!box) throw new Error(`no region tooltip naming ${country} on screen`)
+  return box
 }
 
 const SCRIPTS: Record<string, GuideScript> = {
@@ -199,6 +271,13 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await pickCountry(p, 'Japan')
           await expect(detailCard(p, 'Japan')).toBeVisible()
+          // The step promises the card's flag, which is a Twemoji image from a
+          // CDN. Waited for here so the result shows the flag rather than an
+          // empty square; should the CDN be out of reach, the card falls back to
+          // two letters and the image never loads, which fails this step.
+          const flag = detailCard(p, 'Japan').locator('img[alt="JP"]')
+          await expect(flag).toBeVisible({ timeout: 15_000 })
+          await expect.poll(() => flag.evaluate(img => (img as HTMLImageElement).complete && (img as HTMLImageElement).naturalWidth > 0), { timeout: 15_000 }).toBe(true)
         },
       },
     ],
@@ -243,9 +322,18 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: centreRegion,
+        // The text says hovering names the region. That name floats right of
+        // the pointer and reaches past the region's own box, so a ring round
+        // the region alone ran straight through it. The ring goes round both.
+        prepare: async p => {
+          await hoverMapCentre(p)
+          await settle(p)
+          await spanOver(p, [await boxOf(centreRegion(p)), await regionTooltipBox(p, 'Austria')])
+        },
+        target: span,
         hover: hoverMapCentre,
         act: async p => {
+          await clearSpan(p)
           await clickMapCentre(p)
           await expect(popup(p).getByRole('button', { name: /Mark as visited/ })).toBeVisible()
         },
@@ -314,9 +402,10 @@ const SCRIPTS: Record<string, GuideScript> = {
       },
       {
         prepare: async p => {
-          await choose(p, unsetSelect(popup(p)), 'June')
-          await choose(p, unsetSelect(popup(p)), String(year(1)))
+          await choose(p, popup(p).getByLabel('Month', { exact: true }), 'June')
+          await choose(p, popup(p).getByLabel('Year', { exact: true }), String(year(1)))
         },
+        // The whole popup: the step names both selects and the button under them.
         target: p => popup(p),
         act: async p => {
           await popup(p).getByRole('button', { name: 'Add to bucket list', exact: true }).click()
@@ -342,7 +431,9 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => { await p.getByRole('button', { name: 'Add place' }).click() },
       },
       {
-        target: p => p.getByPlaceholder('Name (country, city, place...)'),
+        // The row, not the field alone: the text has the reader press the
+        // search button beside it as well.
+        target: p => p.getByPlaceholder('Name (country, city, place...)').locator('xpath=..'),
         act: async p => {
           const input = p.getByPlaceholder('Name (country, city, place...)')
           await typeInto(p, input, 'Petra')
@@ -359,7 +450,10 @@ const SCRIPTS: Record<string, GuideScript> = {
           await choose(p, unsetSelect(panel(p)), 'Sep')
           await choose(p, unsetSelect(panel(p)), String(year(1)))
         },
-        target: p => p.getByRole('button', { name: 'Add', exact: true }),
+        // The whole form: framed on the small Add button alone, the picture lost
+        // the name and the month, and looked like Add on an empty form.
+        target: p => p.getByRole('button', { name: 'Add', exact: true }).locator('xpath=../..'),
+        hover: p => p.getByRole('button', { name: 'Add', exact: true }).hover(),
         act: async p => {
           await p.getByRole('button', { name: 'Add', exact: true }).click()
           await expect(panel(p).getByText('Petra').first()).toBeVisible()
@@ -374,7 +468,17 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openAtlas,
     steps: [
       { target: p => panel(p).locator('.rounded-xl').filter({ hasText: 'Countries' }).first() },
-      { target: p => panel(p).locator('.flex.items-center.gap-4').first() },
+      {
+        // The text covers the continents, the streak and this year's trips.
+        // Those are two groups side by side with no box of their own around
+        // both, so the ring gets one laid over them.
+        prepare: async p => {
+          await spanOver(p, [await boxOf(continentStats(p)), await boxOf(highlightStats(p))])
+        },
+        target: span,
+        hover: p => continentStats(p).hover(),
+        act: clearSpan,
+      },
     ],
   },
 
@@ -394,7 +498,11 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: p => modal(p).getByRole('button', { name: 'Look for countries' }),
+        // The pitch with its button rather than the button alone: a frame
+        // centred on the button cut off the dialog's head band, and with it the
+        // name of the service this dialog asks.
+        target: p => modal(p).getByRole('button', { name: 'Look for countries' }).locator('xpath=..'),
+        hover: p => modal(p).getByRole('button', { name: 'Look for countries' }).hover(),
         act: async p => {
           await modal(p).getByRole('button', { name: 'Look for countries' }).click()
           // A year in thirteen 30-day reads, one after another, each of which
@@ -408,11 +516,18 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: p => modal(p).getByRole('button', { name: /^Add \d+ countries$/ }),
+        // The whole dialog: the list step 2 describes (flag, cities, ticked
+        // rows) is only ever pictured here, and a frame centred on the button
+        // cut the rows in half. The button sits in the footer, in the ring too.
+        target: p => modal(p).getByRole('dialog'),
+        hover: p => modal(p).getByRole('button', { name: /^Add \d+ countries$/ }).hover(),
         act: async p => {
           await modal(p).getByRole('button', { name: /^Add \d+ countries$/ }).click()
           await expect(p.getByText(/\d+ countries added/)).toBeVisible({ timeout: 20_000 })
-          await p.keyboard.press('Escape')
+          // Closed with the button in its head band, not Escape: the focus goes
+          // back to the Countries tile, and after a key press the browser draws
+          // its focus ring there, into the result picture.
+          await modal(p).getByRole('button', { name: 'Close', exact: true }).click()
           await expect(modal(p)).toHaveCount(0)
           // The Atlas re-reads itself after a write; the colours land with the answer.
           await expect.poll(async () => (await visitedCodes(p)).size, { timeout: 20_000 }).toBeGreaterThan(visitedBefore.size)
@@ -445,7 +560,10 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: p => modal(p).getByRole('button', { name: 'Check wishlist' }),
+        // As in the countries guide: the pitch with its button, so the head band
+        // stays in the frame.
+        target: p => modal(p).getByRole('button', { name: 'Check wishlist' }).locator('xpath=..'),
+        hover: p => modal(p).getByRole('button', { name: 'Check wishlist' }).hover(),
         act: async p => {
           await modal(p).getByRole('button', { name: 'Check wishlist' }).click()
           // One read per wish with coordinates (Fushimi Inari, Wadi Rum, Petra),
@@ -456,7 +574,10 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: p => modal(p).getByRole('button', { name: /^Tick off \d+$/ }),
+        // The whole dialog, as in the countries guide: the rows with distance,
+        // stay and day and the note with the 250 m rule are what step 2 quotes.
+        target: p => modal(p).getByRole('dialog'),
+        hover: p => modal(p).getByRole('button', { name: /^Tick off \d+$/ }).hover(),
         act: async p => {
           await modal(p).getByRole('button', { name: /^Tick off \d+$/ }).click()
           await expect(p.getByText(/\d+ wishes ticked off/)).toBeVisible({ timeout: 20_000 })
