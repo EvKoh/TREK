@@ -11,6 +11,7 @@ import { Tooltip } from '../components/shared/Tooltip'
 import { DialogButton, DialogFooter, DialogHeader, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT, fs } from '../components/shared/DialogShell'
 import { EditorField, GRID_2 } from '../components/shared/dialogParts'
 import DawarichAtlasSidePanel from '../components/Dawarich/DawarichAtlasSidePanel'
+import CountryFlag from '../components/shared/CountryFlag'
 import { A2_TO_A3, countryCodeToFlag, findBucketDuplicate, isBucketDuplicateError, withCountryMarkedVisited, type AtlasCountry, type AtlasStats, type AtlasData, type CountryDetail } from './atlas/atlasModel'
 import { continentForCountry } from '@trek/shared'
 import { useAtlas } from './atlas/useAtlas'
@@ -787,7 +788,10 @@ function SidebarContent({ data, stats, countries, selectedCountry, countryDetail
         <>
           <div style={{ width: 2, background: bg(0.08), margin: '12px 0' }} />
           <div className="flex items-center gap-3 px-6 py-4">
-            <span className="text-3xl">{countryCodeToFlag(selectedCountry)}</span>
+            {/* Twemoji where the platform has no flag glyphs: Windows draws the emoji as two letters. */}
+            {/^[A-Za-z]{2}$/.test(selectedCountry)
+              ? <CountryFlag code={selectedCountry} size={30} />
+              : <span className="text-3xl">{countryCodeToFlag(selectedCountry)}</span>}
             <div>
               <p className="text-sm font-bold" style={{ color: tp }}>
                 {resolveName(selectedCountry)}
