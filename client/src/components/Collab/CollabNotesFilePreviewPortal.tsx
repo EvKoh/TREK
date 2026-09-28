@@ -92,7 +92,7 @@ export function FilePreviewPortal({ file, onClose }: FilePreviewPortalProps) {
       )}
     >
       {(isPdf || isTxt) ? (
-        <object data={authUrl ? `${authUrl}#view=FitH` : ''} type={file.mime_type} className="h-[74vh] w-full flex-1 border-0 bg-white" title={file.original_name}> {/* theme-lint-disable: a document page is white */}
+        <object data={authUrl ? `${authUrl}#view=FitH` : ''} type={file.mime_type} className="h-[74vh] w-full border-0 bg-white" title={file.original_name}> {/* theme-lint-disable: a document page is white */}
           <p className="p-6 text-center text-content-muted">
             <button type="button" onClick={openInNewTab} className="text-content underline" style={fs(14, 'body')}>Download</button>
           </p>

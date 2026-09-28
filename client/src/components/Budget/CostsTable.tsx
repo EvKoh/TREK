@@ -85,7 +85,7 @@ export default function CostsTable(p: CostsTableProps) {
 
   // A new row takes the latest date of its category, so back-filling a day goes quickly.
   const add = async (category: string) => {
-    const dates = p.items.filter(e => catMeta(e.category).key === category && e.expense_date).map(e => e.expense_date as string).sort()
+    const dates = p.items.filter(e => catMeta(e.category).key === category && e.expense_date).map(e => e.expense_date as string).sort((a, b) => a.localeCompare(b))
     const created = await p.onAdd(category, dates.length ? dates[dates.length - 1] : null)
     if (created) setEditing({ id: created.id, field: 'name' })
   }

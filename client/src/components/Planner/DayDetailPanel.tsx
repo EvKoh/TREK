@@ -17,7 +17,7 @@ import type { Day, Place, Category, Reservation, AssignmentsMap, Accommodation }
 import { formatClockTime, splitReservationDateTime } from '../../utils/formatters'
 import { useDayDetail, type HotelDayRange, type HotelForm, type HotelPickerMode } from './useDayDetail'
 import { stayPlaces } from '../../utils/stayPlaces'
-import { DialogShell, DialogHeader, DialogTile, DialogSection, DialogFooter, DialogButton, FooterSpacer, NEUTRAL_TINT, PILL, fs } from '../shared/DialogShell'
+import { DialogShell, DialogHeader, DialogSection, DialogFooter, DialogButton, FooterSpacer, NEUTRAL_TINT, PILL, fs } from '../shared/DialogShell'
 import { INPUT, PANEL, EditorField, AddRowButton, PillSelect } from '../shared/dialogParts'
 import { BOX, Eyebrow, Field, RoundAction, TypeTile, toneOf, toneColor, toneTint } from './bookings/bookingParts'
 import { SoftPill, TimePill, tintOf } from './planParts'
@@ -33,7 +33,7 @@ function WIcon({ main, size = 14 }: { main: string; size?: number }) {
   return <Icon size={size} strokeWidth={1.8} />
 }
 
-function cTemp(c: number | undefined, f: boolean) { return Math.round(f ? (c ?? NaN) * 9 / 5 + 32 : (c ?? NaN)) }
+function cTemp(c: number | undefined, f: boolean) { return Math.round(f ? (c ?? Number.NaN) * 9 / 5 + 32 : (c ?? Number.NaN)) }
 
 /** What the server said when it refused a write, or the generic line. */
 function apiErrorMessage(err: unknown): string | undefined {

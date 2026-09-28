@@ -37,7 +37,7 @@ export default function BookingsList(p: BookingsListProps) {
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return
     e.preventDefault()
-    const focused = document.activeElement instanceof HTMLElement ? Number(document.activeElement.dataset.row) : NaN
+    const focused = document.activeElement instanceof HTMLElement ? Number(document.activeElement.dataset.row) : Number.NaN
     const i = flat.findIndex(r => r.id === focused)
     const next = flat[e.key === 'ArrowDown' ? Math.min(flat.length - 1, i + 1) : Math.max(0, i - 1)]
     if (next) rootRef.current?.querySelector<HTMLElement>(`[data-row="${next.id}"]`)?.focus()

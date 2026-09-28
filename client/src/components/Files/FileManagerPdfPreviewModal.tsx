@@ -40,7 +40,7 @@ export function PdfPreviewModal(S: FileManagerState) {
       <object
         data={previewFileUrl ? `${previewFileUrl}#view=FitH` : undefined}
         type="application/pdf"
-        className="h-[74vh] w-full flex-1 border-0"
+        className="h-[74vh] w-full border-0"
         title={previewFile.original_name}
       >
         <p className="p-6 text-center text-content-muted">
