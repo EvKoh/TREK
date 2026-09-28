@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Şununla paylaşıldı:',
   'shared.confirmed': 'Onaylandı',
   'shared.pending': 'Beklemede',
+  'shared.footerTagline': 'Kendi sunucunda barındırdığın seyahat planlayıcısı. Açık kaynak.',
+  'shared.emptyBookings': 'Henüz paylaşılan rezervasyon yok',
+  'shared.emptyPacking': 'Bavul listesi henüz boş',
+  'shared.emptyCosts': 'Henüz harcama yok',
+  'shared.emptyChat': 'Henüz mesaj yok',
+  'shared.wholeTrip': 'Tüm seyahat',
 };
 export default shared;

@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Поділено через',
   'shared.confirmed': 'Підтверджено',
   'shared.pending': 'Очікує',
+  'shared.footerTagline': 'Планувальник подорожей, який ви розміщуєте самі. Відкритий код.',
+  'shared.emptyBookings': 'Бронювань поки немає',
+  'shared.emptyPacking': 'Список речей поки порожній',
+  'shared.emptyCosts': 'Витрат поки немає',
+  'shared.emptyChat': 'Повідомлень поки немає',
+  'shared.wholeTrip': 'Уся подорож',
 };
 export default shared;

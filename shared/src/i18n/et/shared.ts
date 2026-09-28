@@ -20,5 +20,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Jagatud rakendusega',
   'shared.confirmed': 'Kinnitatud',
   'shared.pending': 'Ootel',
+  'shared.footerTagline': 'Reisiplaneerija, mida majutad ise. Avatud lähtekoodiga.',
+  'shared.emptyBookings': 'Broneeringuid pole veel jagatud',
+  'shared.emptyPacking': 'Pakkimisnimekiri on veel tühi',
+  'shared.emptyCosts': 'Kulusid pole veel',
+  'shared.emptyChat': 'Sõnumeid pole veel',
+  'shared.wholeTrip': 'Kogu reis',
 };
 export default shared;

@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Delad via',
   'shared.confirmed': 'Godkänt',
   'shared.pending': 'Väntande',
+  'shared.footerTagline': 'Reseplaneraren du driver själv. Öppen källkod.',
+  'shared.emptyBookings': 'Inga bokningar delade ännu',
+  'shared.emptyPacking': 'Packlistan är fortfarande tom',
+  'shared.emptyCosts': 'Inga utgifter ännu',
+  'shared.emptyChat': 'Inga meddelanden ännu',
+  'shared.wholeTrip': 'Hela resan',
 };
 export default shared;

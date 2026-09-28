@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Κοινοποιήθηκε μέσω',
   'shared.confirmed': 'Επιβεβαιωμένο',
   'shared.pending': 'Σε εκκρεμότητα',
+  'shared.footerTagline': 'Ο σχεδιαστής ταξιδιών που φιλοξενείτε μόνοι σας. Ανοιχτού κώδικα.',
+  'shared.emptyBookings': 'Δεν έχουν κοινοποιηθεί κρατήσεις ακόμη',
+  'shared.emptyPacking': 'Η λίστα αποσκευών είναι ακόμη άδεια',
+  'shared.emptyCosts': 'Δεν υπάρχουν έξοδα ακόμη',
+  'shared.emptyChat': 'Δεν υπάρχουν μηνύματα ακόμη',
+  'shared.wholeTrip': 'Όλο το ταξίδι',
 };
 export default shared;

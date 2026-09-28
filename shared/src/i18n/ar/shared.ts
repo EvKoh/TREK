@@ -20,5 +20,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'تمت المشاركة عبر',
   'shared.confirmed': 'مؤكد',
   'shared.pending': 'قيد الانتظار',
+  'shared.footerTagline': 'مخطط الرحلات الذي تستضيفه بنفسك. مفتوح المصدر.',
+  'shared.emptyBookings': 'لا توجد حجوزات مشتركة بعد',
+  'shared.emptyPacking': 'قائمة الأمتعة لا تزال فارغة',
+  'shared.emptyCosts': 'لا توجد نفقات بعد',
+  'shared.emptyChat': 'لا توجد رسائل بعد',
+  'shared.wholeTrip': 'الرحلة كاملة',
 };
 export default shared;

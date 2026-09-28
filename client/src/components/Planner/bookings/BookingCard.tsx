@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { Pencil, Trash2, Wallet } from 'lucide-react'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -13,10 +12,10 @@ import PluginFrame from '../../Plugins/PluginFrame'
 import { PluginCardFooter } from '../../Plugins/PluginContributions'
 import { fmtTransitDuration } from '../transitDisplay'
 import { formatMoney } from '../../../utils/formatters'
-import { parseMeta, typeInfo, displayTitle, type CostTotal } from './bookingsModel'
+import { parseMeta, displayTitle, type CostTotal } from './bookingsModel'
 import type { BookingFacts } from './bookingFacts'
 import {
-  AirTrailPill, BOX, Eyebrow, Field, FileRows, ReviewPill, RoundAction, StatusDot, TravelerChips, TypeChip,
+  AirTrailPill, BOX, Block, Field, FileRows, ReviewPill, RoundAction, RouteBox, StatusDot, TravelerChips, TypeChip, WhenFields,
   fs, toneOf, toneTint,
 } from './bookingParts'
 import { TransitLegs, transitSummary } from './transitParts'
@@ -47,7 +46,6 @@ export interface BookingCardProps {
 export default function BookingCard(p: BookingCardProps) {
   const { r, facts } = p
   const { t, locale } = useTranslation()
-  const info = typeInfo(r.type)
   const tone = toneOf(r)
   const transit = r.type === 'transit'
 
@@ -72,18 +70,7 @@ export default function BookingCard(p: BookingCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col gap-2 px-3 pb-3 pt-2.5">
-        {(facts.day || facts.time) && (
-          // A day range needs the whole width; the time then goes below it.
-          <div className={`flex gap-2 ${facts.day?.range ? 'flex-col' : ''}`}>
-            {facts.day && (
-              <Field label={t('reservations.date')} className="flex-[1.4]">
-                {facts.day.label}
-                {facts.day.date && <span className="ml-1.5 font-medium text-content-faint">{facts.day.date}</span>}
-              </Field>
-            )}
-            {facts.time && <Field label={t('reservations.time')} className="flex-1" tabular>{facts.time}</Field>}
-          </div>
-        )}
+        <WhenFields facts={facts} />
 
         {transit ? <TransitBody r={r} /> : (
           <>
@@ -92,18 +79,7 @@ export default function BookingCard(p: BookingCardProps) {
                 <BlurredCode className="font-geist">{r.confirmation_number}</BlurredCode>
               </Field>
             )}
-            {facts.endpoints.length >= 2 && (
-              <Block label={t('reservations.routeLabel')}>
-                <div className={`${BOX} flex flex-wrap items-center justify-center gap-2 px-[10px] py-2 font-semibold text-content`} style={fs(12.5, 'body')}>
-                  {facts.endpoints.map((ep, i) => (
-                    <span key={ep.id ?? i} className="inline-flex min-w-0 items-center gap-2">
-                      {i > 0 && <info.Icon size={13} strokeWidth={2.2} className="flex-none" style={{ color: info.color }} />}
-                      <span className="truncate">{ep.name}</span>
-                    </span>
-                  ))}
-                </div>
-              </Block>
-            )}
+            <RouteBox type={r.type} facts={facts} />
             {facts.legCodes.length > 0 && (
               <Block label={t('reservations.segmentCodes')}>
                 <div className={`${BOX} flex flex-col gap-1 px-[10px] py-2`}>
@@ -178,16 +154,6 @@ export default function BookingCard(p: BookingCardProps) {
         </div>
       )}
     </article>
-  )
-}
-
-/** Content longer than a field (a route, notes, people, files) under its own label, like every field. */
-function Block({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="min-w-0">
-      <Eyebrow className="mb-[3px]">{label}</Eyebrow>
-      {children}
-    </div>
   )
 }
 

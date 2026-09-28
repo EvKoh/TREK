@@ -20,5 +20,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': "แชร์ผ่าน",
   'shared.confirmed': "ยืนยันแล้ว",
   'shared.pending': "รอดำเนินการ",
+  'shared.footerTagline': 'เครื่องมือวางแผนการเดินทางที่คุณโฮสต์เอง โอเพนซอร์ส',
+  'shared.emptyBookings': 'ยังไม่มีการจองที่แชร์',
+  'shared.emptyPacking': 'รายการของที่ต้องแพ็กยังว่างอยู่',
+  'shared.emptyCosts': 'ยังไม่มีค่าใช้จ่าย',
+  'shared.emptyChat': 'ยังไม่มีข้อความ',
+  'shared.wholeTrip': 'ทั้งทริป',
 };
 export default shared;

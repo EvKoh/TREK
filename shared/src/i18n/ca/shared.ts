@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Compartit via',
   'shared.confirmed': 'Confirmat',
   'shared.pending': 'Pendent',
+  'shared.footerTagline': 'El planificador de viatges que allotges tu mateix. Codi obert.',
+  'shared.emptyBookings': "Encara no s'ha compartit cap reserva",
+  'shared.emptyPacking': "La llista d'equipatge encara és buida",
+  'shared.emptyCosts': 'Encara no hi ha despeses',
+  'shared.emptyChat': 'Encara no hi ha missatges',
+  'shared.wholeTrip': 'Tot el viatge',
 };
 export default shared;

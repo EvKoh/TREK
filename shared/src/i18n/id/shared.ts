@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Dibagikan via',
   'shared.confirmed': 'Dikonfirmasi',
   'shared.pending': 'Menunggu',
+  'shared.footerTagline': 'Perencana perjalanan yang Anda hosting sendiri. Sumber terbuka.',
+  'shared.emptyBookings': 'Belum ada pemesanan yang dibagikan',
+  'shared.emptyPacking': 'Daftar barang bawaan masih kosong',
+  'shared.emptyCosts': 'Belum ada pengeluaran',
+  'shared.emptyChat': 'Belum ada pesan',
+  'shared.wholeTrip': 'Seluruh perjalanan',
 };
 export default shared;

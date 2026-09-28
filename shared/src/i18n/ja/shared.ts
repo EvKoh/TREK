@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': '共有元',
   'shared.confirmed': '確定',
   'shared.pending': '保留',
+  'shared.footerTagline': '自分でホストする旅行プランナー。オープンソース。',
+  'shared.emptyBookings': '共有された予約はまだありません',
+  'shared.emptyPacking': '持ち物リストはまだ空です',
+  'shared.emptyCosts': 'まだ支出はありません',
+  'shared.emptyChat': 'まだメッセージはありません',
+  'shared.wholeTrip': '旅行全体',
 };
 export default shared;

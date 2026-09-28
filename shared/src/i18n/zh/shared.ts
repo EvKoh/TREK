@@ -20,5 +20,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': '通过以下分享',
   'shared.confirmed': '已确认',
   'shared.pending': '待确认',
+  'shared.footerTagline': '由你自己托管的旅行规划工具。开源。',
+  'shared.emptyBookings': '尚未共享任何预订',
+  'shared.emptyPacking': '行李清单还是空的',
+  'shared.emptyCosts': '暂无支出',
+  'shared.emptyChat': '暂无消息',
+  'shared.wholeTrip': '整个行程',
 };
 export default shared;

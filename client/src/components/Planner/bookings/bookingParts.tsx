@@ -10,6 +10,7 @@ import { Tooltip } from '../../shared/Tooltip'
 import { PILL } from '../../shared/DialogShell'
 import { useToast } from '../../shared/Toast'
 import { parseMeta, typeInfo } from './bookingsModel'
+import type { BookingFacts } from './bookingFacts'
 
 // The phone's card language on the desktop: small Geist eyebrows, framed value
 // boxes, count pills. Sizes scale with the user's text size setting.
@@ -43,6 +44,52 @@ export function Field({ label, children, className = '', tabular = false }: { la
         {children}
       </div>
     </div>
+  )
+}
+
+/** Content longer than a field (a route, notes, people, files) under its own label, like every field. */
+export function Block({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div className="min-w-0">
+      <Eyebrow className="mb-[3px]">{label}</Eyebrow>
+      {children}
+    </div>
+  )
+}
+
+/** When a booking is: its day or day range beside its time, the time under a range that needs the width. */
+export function WhenFields({ facts }: { facts: BookingFacts }) {
+  const { t } = useTranslation()
+  if (!facts.day && !facts.time) return null
+  return (
+    <div className={`flex gap-2 ${facts.day?.range ? 'flex-col' : ''}`}>
+      {facts.day && (
+        <Field label={t('reservations.date')} className="flex-[1.4]">
+          {facts.day.label}
+          {facts.day.date && <span className="ml-1.5 font-medium text-content-faint">{facts.day.date}</span>}
+        </Field>
+      )}
+      {facts.time && <Field label={t('reservations.time')} className="flex-1" tabular>{facts.time}</Field>}
+    </div>
+  )
+}
+
+/** The stops of a journey in one framed line, the type's icon between them. */
+export function RouteBox({ type, facts }: { type: string; facts: BookingFacts }) {
+  const { t } = useTranslation()
+  if (facts.endpoints.length < 2) return null
+  const info = typeInfo(type)
+  return (
+    <Block label={t('reservations.routeLabel')}>
+      <div className={`${BOX} flex flex-wrap items-center justify-center gap-2 px-[10px] py-2 font-semibold text-content`} style={fs(12.5, 'body')}>
+        {facts.endpoints.map((ep, i) => (
+          <span key={ep.id ?? i} className="inline-flex min-w-0 items-center gap-2">
+            {i > 0 && <info.Icon size={13} strokeWidth={2.2} className="flex-none" style={{ color: info.color }} />}
+            <span className="truncate">{ep.name}</span>
+          </span>
+        ))}
+      </div>
+    </Block>
   )
 }
 

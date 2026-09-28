@@ -20,5 +20,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Udostępnione przez',
   'shared.confirmed': 'Potwierdzone',
   'shared.pending': 'Oczekujące',
+  'shared.footerTagline': 'Planer podróży, który hostujesz sam. Open source.',
+  'shared.emptyBookings': 'Nie udostępniono jeszcze żadnych rezerwacji',
+  'shared.emptyPacking': 'Lista pakowania jest jeszcze pusta',
+  'shared.emptyCosts': 'Brak wydatków',
+  'shared.emptyChat': 'Brak wiadomości',
+  'shared.wholeTrip': 'Cała podróż',
 };
 export default shared;

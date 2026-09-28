@@ -21,5 +21,11 @@ const shared: TranslationStrings = {
   'shared.sharedVia': 'Megosztva:',
   'shared.confirmed': 'Megerősítve',
   'shared.pending': 'Függőben',
+  'shared.footerTagline': 'Az utazástervező, amelyet te magad üzemeltetsz. Nyílt forráskódú.',
+  'shared.emptyBookings': 'Még nincs megosztott foglalás',
+  'shared.emptyPacking': 'A csomaglista még üres',
+  'shared.emptyCosts': 'Még nincsenek kiadások',
+  'shared.emptyChat': 'Még nincsenek üzenetek',
+  'shared.wholeTrip': 'Teljes utazás',
 };
 export default shared;
