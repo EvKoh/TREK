@@ -41,6 +41,8 @@ You usually find out you have been somewhere while looking at the trip, not whil
 - The **Save to list** dialog on a trip place shows every list that already holds it, each with its own status pill. Tap a pill to cycle that list's status, or use **Visited everywhere** to mark all of them at once.
 - The places panel has a **mark visited** action in its selection bar (and in the bulk toolbar on phones). Select the places — *Select all* covers the whole trip — and every saved copy of them is marked visited.
 
+![The Save to list dialog: the place's name in the head band, the lists below with a tick for the ones holding it, and View at its foot](assets/SaveToList.png)
+
 Matching is by the place's provider id, its coordinates, or the link a place saved out of that trip already carries, so a copy you renamed inside a list is still found. Lists shared with you read-only are left alone.
 
 ## Categories

@@ -18,10 +18,9 @@ const guide = (id: string): HelpGuide => {
   return g
 }
 
-/** The block of the Share dialog whose heading this is: the span sits in a row of its own inside the block. */
-const block = (page: Page, heading: string | RegExp) => modal(page).getByText(heading, { exact: typeof heading === 'string' }).first().locator('xpath=../..')
-/** The Invite User block: its heading is the label, right inside the block. */
-const inviteBlock = (page: Page) => modal(page).locator('label').filter({ hasText: 'Invite User' }).locator('xpath=..')
+/** A section of the Share dialog by the words it opens with (its label, or the title of a link card). */
+const block = (page: Page, opening: RegExp) => modal(page).locator('section').filter({ hasText: opening }).first()
+const inviteBlock = (page: Page) => block(page, /^Invite User/)
 /**
  * The days column's fold tab: the one button straight inside the column's
  * frame, which sits 10px in from the left. Its name is Collapse while the
@@ -68,11 +67,11 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: inviteBlock,
         act: async p => {
           await modal(p).getByRole('button', { name: 'Invite', exact: true }).click()
-          await expect(block(p, /^Access \(/).getByText('mara', { exact: true })).toBeVisible({ timeout: 15_000 })
+          await expect(block(p, /^Access\s*\d/).getByText('mara', { exact: true })).toBeVisible({ timeout: 15_000 })
           await settle(p)
         },
       },
-      only(p => block(p, /^Access \(/)),
+      only(p => block(p, /^Access\s*\d/)),
     ],
     cleanup: closeModal,
   },
@@ -88,7 +87,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await settle(p)
         },
       },
-      only(p => block(p, 'Trip invite link')),
+      only(p => block(p, /^Trip invite link/)),
       only(p => modal(p).getByRole('button', { name: 'Regenerate' }).locator('xpath=..')),
     ],
     cleanup: async p => {
@@ -101,7 +100,7 @@ const SCRIPTS: Record<string, GuideScript> = {
     guide: guide('add-guest'),
     start: openShare,
     steps: [
-      only(p => block(p, 'Guests')),
+      only(p => block(p, /^Guests/)),
       {
         prepare: async p => {
           await typeInto(p, modal(p).getByPlaceholder('Guest name'), 'Aunt Lise')
@@ -137,7 +136,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: p => block(p, 'Public Link'),
+        target: p => block(p, /^Public Link/),
         act: async p => {
           await modal(p).getByRole('button', { name: 'Delete link' }).click()
           await expect(modal(p).getByRole('button', { name: 'Create link', exact: true })).toBeVisible({ timeout: 15_000 })

@@ -3,7 +3,7 @@ import type { TranslationStrings } from '../types';
 const share: TranslationStrings = {
   'share.linkTitle': 'Genel Bağlantı',
   'share.linkHint':
-    'Herkesin giriş yapmadan bu geziyi görüntülemek için kullanabileceği bir bağlantı oluşturun. Salt okunur — düzenleme mümkün değildir.',
+    'Herkesin giriş yapmadan bu geziyi görüntülemek için kullanabileceği bir bağlantı oluşturun. Salt okunur: düzenleme mümkün değildir.',
   'share.createLink': 'Bağlantı oluştur',
   'share.deleteLink': 'Bağlantıyı sil',
   'share.createError': 'Bağlantı oluşturulamadı',

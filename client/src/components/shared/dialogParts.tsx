@@ -209,10 +209,10 @@ export function PillSelect<T extends string>({ value, options, onChange, label, 
 }
 
 /** The dashed full-width button that adds a row: a stop, a leg. */
-export function AddRowButton({ onClick, children }: { onClick: () => void; children: ReactNode }) {
+export function AddRowButton({ onClick, disabled, children }: { onClick: () => void; disabled?: boolean; children: ReactNode }) {
   return (
-    <button type="button" onClick={onClick}
-      className="flex w-full items-center justify-center gap-1.5 rounded-[10px] border border-dashed border-edge px-3 py-2 font-semibold text-content-muted hover:border-content-faint hover:text-content"
+    <button type="button" onClick={onClick} disabled={disabled}
+      className="flex w-full items-center justify-center gap-1.5 rounded-[10px] border border-dashed border-edge px-3 py-2 font-semibold text-content-muted hover:border-content-faint hover:text-content disabled:cursor-default disabled:opacity-50"
       style={fs(12, 'body')}>
       <Plus size={13} strokeWidth={2.2} />{children}
     </button>

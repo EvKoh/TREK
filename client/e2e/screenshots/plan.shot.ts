@@ -67,6 +67,16 @@ test('plan: the place inspector', async ({ page, shot }) => {
   await shot.page_('PlaceInspector')
 })
 
+test('plan: the save to list dialog', async ({ page, shot }) => {
+  await placeOption(page, 'Senso-ji Temple').click()
+  await page.waitForTimeout(1000)
+  await page.getByRole('button', { name: /^Save to Collection/ }).first().click()
+  await expect(dialog(page)).toBeVisible()
+  await expect(dialog(page).getByText('Kyoto shortlist')).toBeVisible()
+  await page.waitForTimeout(500)
+  await shot.element('SaveToList', dialog(page))
+})
+
 test('plan: the edit place dialog', async ({ page, shot }) => {
   await placeOption(page, 'Senso-ji Temple').click()
   await page.waitForTimeout(1000)

@@ -3,7 +3,7 @@ import type { TranslationStrings } from '../types';
 const share: TranslationStrings = {
   'share.linkTitle': 'Verejný odkaz',
   'share.linkHint':
-    'Vytvorte odkaz, ktorým si môže ktokoľvek prezrieť túto cestu bez prihlásenia. Iba na čítanie — úpravy nie sú možné.',
+    'Vytvorte odkaz, ktorým si môže ktokoľvek prezrieť túto cestu bez prihlásenia. Iba na čítanie: úpravy nie sú možné.',
   'share.createLink': 'Vytvoriť odkaz',
   'share.deleteLink': 'Zmazať odkaz',
   'share.createError': 'Nepodarilo sa vytvoriť odkaz',

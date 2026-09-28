@@ -2,7 +2,7 @@ import type { TranslationStrings } from '../types';
 const share: TranslationStrings = {
   'share.linkTitle': 'İctimai link',
   'share.linkHint':
-    'Hər kəsin daxil olmadan bu səyahətə baxa bilməsi üçün link yaradın. Yalnız oxuma rejimidir — redaktə etmək mümkün deyil.',
+    'Hər kəsin daxil olmadan bu səyahətə baxa bilməsi üçün link yaradın. Yalnız oxuma rejimidir: redaktə etmək mümkün deyil.',
   'share.createLink': 'Link yarat',
   'share.deleteLink': 'Linki sil',
   'share.createError': 'Link yaratmaq mümkün olmadı',
