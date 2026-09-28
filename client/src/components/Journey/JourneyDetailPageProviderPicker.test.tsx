@@ -1,6 +1,6 @@
-// FE-JRN-PICKER-001 to FE-JRN-PICKER-036
+// FE-JRN-PICKER-001 to FE-JRN-PICKER-039
 
-import { describe, it, expect, afterAll, beforeAll, beforeEach, vi } from 'vitest'
+import { describe, it, expect, afterAll, afterEach, beforeAll, beforeEach, vi } from 'vitest'
 import { http, HttpResponse, delay } from 'msw'
 import userEvent from '@testing-library/user-event'
 import { render, screen, waitFor, within, fireEvent } from '../../../tests/helpers/render'
@@ -37,6 +37,8 @@ function searchReturns(assets: Record<string, unknown>[], hasMore = false) {
   server.use(http.post('/api/integrations/memories/immich/search', () => HttpResponse.json({ assets, hasMore })))
 }
 
+// On a desktop viewport the picker draws in a dialog on the document body, outside
+// the render container, so DOM queries go through baseElement.
 function mountPicker(props: Partial<React.ComponentProps<typeof ProviderPicker>> = {}) {
   const onClose = vi.fn()
   const onAdd = vi.fn(async () => {})
@@ -266,9 +268,9 @@ describe('ProviderPicker', () => {
       await delay(30)
       return new HttpResponse(null, { status: 502 })
     }))
-    const { container } = mountPicker()
+    const { baseElement } = mountPicker()
 
-    expect(container.querySelector('.animate-spin')).toBeInTheDocument()
+    expect(baseElement.querySelector('.animate-spin')).toBeInTheDocument()
 
     expect(await screen.findByText('No photos yet')).toBeInTheDocument()
   })
@@ -364,7 +366,7 @@ describe('ProviderPicker', () => {
       return HttpResponse.json({ assets: [asset('a1')], hasMore: false })
     }))
     const user = userEvent.setup()
-    const { container } = mountPicker()
+    const { baseElement } = mountPicker()
     await screen.findByText('March 15, 2026')
     ranges.length = 0
 
@@ -373,7 +375,7 @@ describe('ProviderPicker', () => {
     await user.click(screen.getByRole('button', { name: 'Search' }))
     expect(ranges).toHaveLength(0)
 
-    const [fromPicker, toPicker] = Array.from(container.querySelectorAll('.flex-1 > .relative')) as HTMLElement[]
+    const [fromPicker, toPicker] = Array.from(baseElement.querySelectorAll('.flex-1 > .relative')) as HTMLElement[]
     await user.click(within(fromPicker).getByRole('button'))
     await user.click(within(fromPicker).getByRole('button', { name: '3' }))
     await user.click(within(toPicker).getByRole('button'))
@@ -404,10 +406,10 @@ describe('ProviderPicker', () => {
       onClose: vi.fn(),
       onAdd: vi.fn(async () => {}),
     } as React.ComponentProps<typeof ProviderPicker>
-    const { container, rerender } = render(<ProviderPicker {...props} />)
+    const { baseElement, rerender } = render(<ProviderPicker {...props} />)
     await screen.findByText('March 15, 2026')
 
-    const order = () => Array.from(container.querySelectorAll('img'))
+    const order = () => Array.from(baseElement.querySelectorAll('img'))
       .map(img => (img.getAttribute('src') || '').split('/assets/0/')[1]?.split('/')[0])
       .filter(Boolean)
 
@@ -503,10 +505,10 @@ describe('ProviderPicker', () => {
           : HttpResponse.json({ assets: [asset('lib1')], hasMore: false })
       }))
       const user = userEvent.setup()
-      const { container, onAdd } = mountPicker()
+      const { baseElement, onAdd } = mountPicker()
       await screen.findByRole('button', { name: /Select all \(2\)/ })
 
-      await user.click(tile(container, 't1'))
+      await user.click(tile(baseElement, 't1'))
       await user.click(screen.getByRole('button', { name: /All Photos/ }))
       await user.click(await screen.findByRole('button', { name: /Select all \(1\)/ }))
       expect(screen.getByRole('button', { name: 'Add (2)' })).toBeEnabled()
@@ -594,11 +596,11 @@ describe('ProviderPicker', () => {
         return HttpResponse.json({ assets: [asset(`p${body.page}`)], hasMore: body.page < 2 })
       }))
       const user = userEvent.setup()
-      const { container, onAdd } = mountPicker()
+      const { baseElement, onAdd } = mountPicker()
       await screen.findByRole('button', { name: /Select all \(1\+\)/ })
 
       // A pick from before the run makes Add live on its own.
-      await user.click(tile(container, 'p1'))
+      await user.click(tile(baseElement, 'p1'))
       const add = screen.getByRole('button', { name: 'Add (1)' })
       expect(add).toBeEnabled()
 
@@ -626,9 +628,9 @@ describe('ProviderPicker', () => {
         return HttpResponse.json({ assets: [asset(`p${body.page}`)], hasMore: body.page < 2 })
       }))
       const user = userEvent.setup()
-      const { container, onAdd } = mountPicker()
+      const { baseElement, onAdd } = mountPicker()
       await screen.findByRole('button', { name: /Select all \(1\+\)/ })
-      await user.click(tile(container, 'p1'))
+      await user.click(tile(baseElement, 'p1'))
 
       await user.click(screen.getByRole('button', { name: /Select all \(1\+\)/ }))
       await waitFor(() => expect(pages).toEqual([1, 2]))
@@ -675,9 +677,9 @@ describe('ProviderPicker', () => {
       const pages: number[] = []
       endlessTrip(pages)
       const user = userEvent.setup()
-      const { container } = mountPicker()
+      const { baseElement } = mountPicker()
       /** The scroll trigger at the foot of the grid, the spinner that loads the next page. */
-      const scrollTrigger = () => container.querySelector('.mt-2.py-4 .animate-spin')
+      const scrollTrigger = () => baseElement.querySelector('.mt-2.py-4 .animate-spin')
       const selectAll = await screen.findByRole('button', { name: /Select all \(1\+\)/ })
       expect(scrollTrigger()).toBeInTheDocument()
 
@@ -754,15 +756,74 @@ describe('ProviderPicker', () => {
 
   it('FE-JRN-PICKER-020: closes through the header button and the backdrop', async () => {
     const user = userEvent.setup()
-    const { container, onClose } = mountPicker()
+    const { onClose } = mountPicker()
     await screen.findByText('March 15, 2026')
 
-    const headerClose = screen.getByRole('heading', { name: 'Immich' })
-      .parentElement!.querySelectorAll('button')[0]
-    await user.click(headerClose)
+    await user.click(screen.getByRole('button', { name: 'Close' }))
     expect(onClose).toHaveBeenCalledTimes(1)
 
-    await user.click(container.firstElementChild as HTMLElement)
+    await user.click(screen.getByRole('dialog').parentElement!)
     expect(onClose).toHaveBeenCalledTimes(2)
+  })
+
+  it('FE-JRN-PICKER-037: with the add-to menu open, Escape closes the menu and leaves the picker open', async () => {
+    const user = userEvent.setup()
+    const { onClose } = mountPicker()
+    await screen.findAllByAltText('')
+
+    await user.click(screen.getByRole('button', { name: /New Gallery/ }))
+    expect(screen.getByRole('button', { name: 'Arrived in Rome' })).toBeInTheDocument()
+
+    await user.keyboard('{Escape}')
+    expect(screen.queryByRole('button', { name: 'Arrived in Rome' })).not.toBeInTheDocument()
+    expect(onClose).not.toHaveBeenCalled()
+
+    await user.keyboard('{Escape}')
+    expect(onClose).toHaveBeenCalledTimes(1)
+  })
+
+  describe('on a phone', () => {
+    let width: number
+    beforeEach(() => {
+      width = window.innerWidth
+      Object.defineProperty(window, 'innerWidth', { value: 375, configurable: true, writable: true })
+    })
+    afterEach(() => {
+      Object.defineProperty(window, 'innerWidth', { value: width, configurable: true, writable: true })
+    })
+
+    it('FE-JRN-PICKER-038: keeps its own sheet, closed through the header button, the backdrop and Cancel', async () => {
+      const user = userEvent.setup()
+      const { container, onClose } = mountPicker()
+      await screen.findByText('March 15, 2026')
+
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+      const headerClose = screen.getByRole('heading', { name: 'Immich' })
+        .parentElement!.querySelectorAll('button')[0]
+      await user.click(headerClose)
+      expect(onClose).toHaveBeenCalledTimes(1)
+
+      await user.click(container.firstElementChild as HTMLElement)
+      expect(onClose).toHaveBeenCalledTimes(2)
+
+      await user.click(screen.getByRole('button', { name: 'Cancel' }))
+      expect(onClose).toHaveBeenCalledTimes(3)
+    })
+
+    it('FE-JRN-PICKER-039: the sheet adds the picks through the same grouping as the dialog', async () => {
+      searchReturns([asset('a1'), asset('a2', { mediaType: 'video' })])
+      const user = userEvent.setup()
+      const { onAdd } = mountPicker()
+
+      const tiles = await screen.findAllByAltText('')
+      await user.click(tiles[0])
+      await user.click(tiles[1])
+      await user.click(screen.getByRole('button', { name: 'Add (2)' }))
+
+      expect(onAdd).toHaveBeenCalledWith(
+        [{ assetIds: ['a1', 'a2'], mediaTypes: ['image', 'video'], passphrase: undefined }],
+        null,
+      )
+    })
   })
 })

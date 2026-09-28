@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { http, HttpResponse, delay } from 'msw'
 import { localIsoDate } from '../../utils/localDate'
 import userEvent from '@testing-library/user-event'
-import { render, screen, waitFor, fireEvent } from '../../../tests/helpers/render'
+import { render, screen, waitFor, fireEvent, within } from '../../../tests/helpers/render'
 import { seedStore } from '../../../tests/helpers/store'
 import { buildSettings } from '../../../tests/helpers/factories'
 import { useSettingsStore } from '../../store/settingsStore'
@@ -75,8 +75,12 @@ function mountEditor(
       onDone={onDone}
     />,
   )
-  return { ...utils, onClose, onDone, onSave, onUploadPhotos, onAddProviderPhotos }
+  // The editor is a dialog in a portal on the body, so DOM queries go to the
+  // body; the render container itself stays empty.
+  return { ...utils, container: utils.baseElement, onClose, onDone, onSave, onUploadPhotos, onAddProviderPhotos }
 }
+
+const DISCARD_QUESTION = 'You have unsaved changes. Discard them?'
 
 function useConnectedImmich() {
   server.use(
@@ -134,7 +138,7 @@ describe('EntryEditor', () => {
     expect(screen.getByDisplayValue('Rome')).toBeInTheDocument()
     expect(screen.getByDisplayValue('Great food')).toBeInTheDocument()
     expect(screen.getByDisplayValue('Crowded')).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Amazing' }).className).not.toContain('border-zinc-200')
+    expect(screen.getByRole('button', { name: 'Amazing' }).className).not.toContain('border-edge-faint')
   })
 
   it('FE-JRN-EDITOR-003: saves the edited fields and finishes', async () => {
@@ -306,32 +310,32 @@ describe('EntryEditor', () => {
   })
 
   it('FE-JRN-EDITOR-013: asks before discarding a dirty editor', async () => {
-    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(false)
     const user = userEvent.setup()
     const { onClose } = mountEditor(buildEntry({ id: 10, title: 'Rome' }))
 
     await user.type(screen.getByDisplayValue('Rome'), '!')
     await user.click(screen.getByRole('button', { name: 'Cancel' }))
 
-    expect(confirmSpy).toHaveBeenCalledWith('You have unsaved changes. Discard them?')
+    // Answering no keeps the editor and what was typed in it.
+    const question = screen.getByText(DISCARD_QUESTION).closest('[role="presentation"]') as HTMLElement
+    await user.click(within(question).getByRole('button', { name: 'Cancel' }))
+    expect(screen.queryByText(DISCARD_QUESTION)).not.toBeInTheDocument()
     expect(onClose).not.toHaveBeenCalled()
+    expect(screen.getByDisplayValue('Rome!')).toBeInTheDocument()
 
-    confirmSpy.mockReturnValue(true)
     await user.click(screen.getByRole('button', { name: 'Cancel' }))
+    await user.click(screen.getByRole('button', { name: 'Discard' }))
     expect(onClose).toHaveBeenCalledTimes(1)
-    confirmSpy.mockRestore()
   })
 
   it('FE-JRN-EDITOR-014: closes an untouched editor without asking', async () => {
-    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true)
     const user = userEvent.setup()
     const { onClose } = mountEditor(buildEntry({ id: 10 }))
 
     await user.click(screen.getByRole('button', { name: 'Cancel' }))
 
-    expect(confirmSpy).not.toHaveBeenCalled()
+    expect(screen.queryByText(DISCARD_QUESTION)).not.toBeInTheDocument()
     expect(onClose).toHaveBeenCalledTimes(1)
-    confirmSpy.mockRestore()
   })
 
   it('FE-JRN-EDITOR-015: adds and removes pro and con rows', async () => {
@@ -363,10 +367,10 @@ describe('EntryEditor', () => {
 
     await user.click(screen.getByRole('button', { name: 'Neutral' }))
     await user.click(screen.getByRole('button', { name: 'Rainy' }))
-    expect(screen.getByRole('button', { name: 'Rainy' }).className).toContain('bg-zinc-900')
+    expect(screen.getByRole('button', { name: 'Rainy' }).className).toContain('bg-accent')
 
     await user.click(screen.getByRole('button', { name: 'Rainy' }))
-    expect(screen.getByRole('button', { name: 'Rainy' }).className).not.toContain('bg-zinc-900')
+    expect(screen.getByRole('button', { name: 'Rainy' }).className).not.toContain('bg-accent')
 
     await user.click(screen.getByRole('button', { name: 'Save' }))
     await waitFor(() => expect(onSave).toHaveBeenCalled())
@@ -466,13 +470,13 @@ describe('EntryEditor', () => {
 
     await user.click(screen.getByRole('button', { name: 'External photos' }))
     expect(await screen.findByTestId('journey-external-provider-immich')).toBeInTheDocument()
-    expect(screen.getByText('Nearby photos first · Rome')).toBeInTheDocument()
+    expect(screen.getByText('Nearby photos first: Rome')).toBeInTheDocument()
     expect(screen.getByText('Photos for Mar 15, 2026')).toBeInTheDocument()
 
     await user.click(await screen.findByAltText(''))
     await user.click(screen.getByRole('button', { name: 'Add (1)' }))
 
-    const clearBtn = await screen.findByRole('button', { name: /1 queued · Clear/ })
+    const clearBtn = await screen.findByRole('button', { name: /1 queued Clear/ })
     await user.click(clearBtn)
     expect(screen.queryByRole('button', { name: /queued/ })).not.toBeInTheDocument()
   })
@@ -486,7 +490,7 @@ describe('EntryEditor', () => {
     expect(await screen.findByText('All photos from this day')).toBeInTheDocument()
     await user.click(await screen.findByAltText(''))
     await user.click(screen.getByRole('button', { name: 'Add (1)' }))
-    await screen.findByRole('button', { name: /1 queued · Clear/ })
+    await screen.findByRole('button', { name: /1 queued Clear/ })
 
     onAddProviderPhotos.mockRejectedValueOnce(new Error('provider down'))
     await user.click(screen.getByRole('button', { name: 'Save' }))
@@ -704,15 +708,15 @@ describe('EntryEditor', () => {
     // Queue a photo from the first provider, then switch tabs.
     await user.click(await screen.findByAltText(''))
     await user.click(screen.getByRole('button', { name: 'Add (1)' }))
-    await screen.findByRole('button', { name: /1 queued · Clear/ })
+    await screen.findByRole('button', { name: /1 queued Clear/ })
 
     await user.click(screen.getByTestId('journey-external-provider-photoprism'))
-    expect(screen.getByTestId('journey-external-provider-photoprism').className).toContain('bg-zinc-900')
+    expect(screen.getByTestId('journey-external-provider-photoprism').className).toContain('bg-accent')
 
     // The picker's own cancel drops back to the first available provider.
     await user.click(screen.getAllByRole('button', { name: 'Cancel' })[0])
-    expect(screen.getByTestId('journey-external-provider-photoprism').className).not.toContain('bg-zinc-900')
-    expect(screen.getByRole('button', { name: /1 queued · Clear/ })).toBeInTheDocument()
+    expect(screen.getByTestId('journey-external-provider-photoprism').className).not.toContain('bg-accent')
+    expect(screen.getByRole('button', { name: /1 queued Clear/ })).toBeInTheDocument()
   })
 
   it('FE-JRN-EDITOR-033: merges a second pick into the already queued group', async () => {
@@ -739,7 +743,7 @@ describe('EntryEditor', () => {
 
     await user.click(tiles[0])
     await user.click(screen.getByRole('button', { name: 'Add (1)' }))
-    await screen.findByRole('button', { name: /1 queued · Clear/ })
+    await screen.findByRole('button', { name: /1 queued Clear/ })
 
     // The first asset stays selected but is now greyed out, so the second Add
     // re-sends it and the merge has to skip the duplicate.
@@ -747,7 +751,7 @@ describe('EntryEditor', () => {
     const secondId = assetIdOf(remaining)
     await user.click(remaining)
     await user.click(screen.getByRole('button', { name: 'Add (2)' }))
-    expect(await screen.findByRole('button', { name: /2 queued · Clear/ })).toBeInTheDocument()
+    expect(await screen.findByRole('button', { name: /2 queued Clear/ })).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Save' }))
     await waitFor(() => expect(onDone).toHaveBeenCalledTimes(1))
@@ -857,11 +861,11 @@ describe('EntryEditor', () => {
     expect(amazing.getAttribute('style')).toBeNull()
 
     await user.click(amazing)
-    expect(amazing.className).not.toContain('border-zinc-200')
+    expect(amazing.className).not.toContain('border-edge-faint')
     expect(amazing.getAttribute('style')).toBeTruthy()
 
     await user.click(amazing)
-    expect(amazing.className).toContain('border-zinc-200')
+    expect(amazing.className).toContain('border-edge-faint')
     expect(amazing.getAttribute('style')).toBe('')
   })
 
@@ -1017,16 +1021,14 @@ describe('EntryEditor', () => {
   })
 
   it('FE-JRN-EDITOR-055: flipping the switch is a change worth warning about', async () => {
-    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(false)
     const user = userEvent.setup()
     const { onClose } = mountEditor(buildEntry({ id: 10, location_lat: 63.98, location_lng: -22.6 }))
 
     await user.click(screen.getByRole('button', { name: 'Leave out of the route' }))
     await user.click(screen.getByRole('button', { name: 'Cancel' }))
 
-    expect(confirmSpy).toHaveBeenCalledWith('You have unsaved changes. Discard them?')
+    expect(screen.getByText(DISCARD_QUESTION)).toBeInTheDocument()
     expect(onClose).not.toHaveBeenCalled()
-    confirmSpy.mockRestore()
   })
   it('FE-JRN-EDITOR-056: a clip without a poster is a play badge, not a request for its thumbnail (#2341)', () => {
     // The thumbnail route answers 404 for such a clip on purpose, and the old

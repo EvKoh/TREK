@@ -1,7 +1,9 @@
-import { Calendar, Camera, Check, ChevronRight, Loader2, Play, X } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Calendar, Camera, Check, ChevronRight, Images, Loader2, Play, X } from 'lucide-react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { memoriesApi } from '../../api/client';
 import { useTranslation } from '../../i18n';
+import { useIsPhone } from '../../mobile/useIsPhone';
+import { DialogButton, DialogFooter, DialogHeader, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT } from '../shared/DialogShell';
 import {
   fetchRemainingProviderPages,
   groupPhotosByDate,
@@ -61,6 +63,8 @@ export function ProviderPicker({
   embedded?: boolean;
 }) {
   const { t } = useTranslation();
+  const phone = useIsPhone();
+  const labelId = useId();
   const [filter, setFilter] = useState<'day' | 'trip' | 'custom' | 'all' | 'album'>(initialDate ? 'day' : 'trip');
   const [photos, setPhotos] = useState<any[]>([]);
   const [albums, setAlbums] = useState<
@@ -315,46 +319,37 @@ export function ProviderPicker({
       t('journey.stats.entries')
     : t('journey.picker.newGallery');
 
-  return (
-    <div
-      data-testid={embedded ? 'journey-provider-picker-embedded' : undefined}
-      className={
-        embedded
-          ? 'flex h-full min-h-0 w-full flex-col overflow-hidden'
-          : 'fixed inset-0 z-[9999] flex items-end justify-center overscroll-none bg-[rgba(9,9,11,0.75)] md:items-center md:p-5'
-      }
-      role="presentation"
-      onClick={embedded ? undefined : onClose}
-      onTouchMove={(e) => {
-        if (!embedded && e.target === e.currentTarget) e.preventDefault();
-      }}
-    >
-      <div
-        className={
-          embedded
-            ? 'flex h-full w-full flex-col overflow-hidden bg-white dark:bg-zinc-900'
-            : 'flex max-h-[calc(100dvh-var(--bottom-nav-h)-20px)] w-full max-w-[720px] flex-col overflow-hidden rounded-t-2xl bg-white shadow-[0_20px_40px_rgba(0,0,0,0.2)] md:max-h-[85vh] md:max-w-[960px] md:rounded-2xl dark:bg-zinc-900'
-        }
-        style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
-        role="presentation"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
-        {!embedded && (
-          <div className="flex flex-shrink-0 items-center justify-between border-b border-zinc-200 px-6 py-4 dark:border-zinc-700">
-            <h2 className="text-[16px] font-bold text-zinc-900 dark:text-white">
-              {provider === 'immich' ? 'Immich' : provider === 'synologyphotos' ? 'Synology Photos' : provider}
-            </h2>
-            <button
-              type="button"
-              onClick={onClose}
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-            >
-              <X size={16} />
-            </button>
-          </div>
-        )}
+  const providerName = provider === 'immich' ? 'Immich' : provider === 'synologyphotos' ? 'Synology Photos' : provider;
 
+  const addSelection = async () => {
+    if (adding) return;
+    setAdding(true);
+    try {
+      const groupMap = new Map<string | undefined, Array<SelectedAsset & { assetId: string }>>();
+      for (const [assetId, pick] of selected.entries()) {
+        const g = groupMap.get(pick.passphrase) || [];
+        g.push({ ...pick, assetId });
+        groupMap.set(pick.passphrase, g);
+      }
+      // Oldest first, so an entry numbers its new photos in the order
+      // they were taken rather than the grid's newest-first (#1587).
+      const groups = [...groupMap.entries()].map(([passphrase, picks]) => {
+        const ordered = sortByCaptureTimeAsc(picks);
+        return {
+          assetIds: ordered.map((p) => p.assetId),
+          mediaTypes: ordered.map((p) => (p.mediaType === 'video' ? 'video' : 'image')),
+          passphrase,
+        };
+      });
+      await onAdd(groups, targetEntryId);
+    } finally {
+      setAdding(false);
+    }
+  };
+
+  // Everything between the head and the foot, the same in all three frames below.
+  const content = (
+      <>
         {/* Filter bar. Embedded in the entry editor this sits in a panel a few hundred
             pixels tall, so its padding is the difference between three rows of
             thumbnails and two. */}
@@ -696,6 +691,96 @@ export function ProviderPicker({
             </div>
           )}
         </div>
+      </>
+  );
+
+  // The desktop draws the standalone picker in the planner's dialog frame. The
+  // phone keeps its sheet below, and the embedded picker has no frame at all.
+  if (!embedded && !phone) {
+    return (
+      <DialogShell
+        // With the add-to menu open, Escape and a click beside the dialog close
+        // the menu, not the picker and the picks made in it.
+        onClose={() => {
+          if (addToOpen) setAddToOpen(false);
+          else onClose();
+        }}
+        labelledBy={labelId}
+        width="wide"
+        // The tabs change how much the grid holds, so the upper edge stays put.
+        align="top"
+        header={(
+          <DialogHeader
+            tile={<DialogTile><Images size={20} strokeWidth={1.9} className="text-content-muted" /></DialogTile>}
+            tint={NEUTRAL_TINT}
+            labelId={labelId}
+            onClose={onClose}
+            title={providerName}
+          />
+        )}
+        // The bars stay pinned above the grid, which scrolls on its own.
+        bodyClassName="flex min-h-0 flex-1 flex-col"
+        footer={(
+          <DialogFooter>
+            <FooterSpacer />
+            <DialogButton onClick={onClose}>{t('common.cancel')}</DialogButton>
+            <DialogButton
+              variant="primary"
+              onClick={() => void addSelection()}
+              disabled={addDisabled}
+              icon={adding ? <Loader2 size={14} className="animate-spin" /> : undefined}
+            >
+              {t('common.add')} {selected.size > 0 ? `(${selected.size})` : ''}
+            </DialogButton>
+          </DialogFooter>
+        )}
+      >
+        {content}
+      </DialogShell>
+    );
+  }
+
+  return (
+    <div
+      data-testid={embedded ? 'journey-provider-picker-embedded' : undefined}
+      className={
+        embedded
+          ? 'flex h-full min-h-0 w-full flex-col overflow-hidden'
+          : 'fixed inset-0 z-[9999] flex items-end justify-center overscroll-none bg-[rgba(9,9,11,0.75)] md:items-center md:p-5'
+      }
+      role="presentation"
+      onClick={embedded ? undefined : onClose}
+      onTouchMove={(e) => {
+        if (!embedded && e.target === e.currentTarget) e.preventDefault();
+      }}
+    >
+      <div
+        className={
+          embedded
+            ? 'flex h-full w-full flex-col overflow-hidden bg-white dark:bg-zinc-900'
+            : 'flex max-h-[calc(100dvh-var(--bottom-nav-h)-20px)] w-full max-w-[720px] flex-col overflow-hidden rounded-t-2xl bg-white shadow-[0_20px_40px_rgba(0,0,0,0.2)] md:max-h-[85vh] md:max-w-[960px] md:rounded-2xl dark:bg-zinc-900'
+        }
+        style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+        role="presentation"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        {!embedded && (
+          <div className="flex flex-shrink-0 items-center justify-between border-b border-zinc-200 px-6 py-4 dark:border-zinc-700">
+            <h2 className="text-[16px] font-bold text-zinc-900 dark:text-white">
+              {providerName}
+            </h2>
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        )}
+
+        {content}
 
         {/* Footer. The count used to sit here as its own pill as well as on the Add
             button; one of the two was always saying it twice, and inside the entry
@@ -712,31 +797,7 @@ export function ProviderPicker({
             </button>
             <button
               type="button"
-              onClick={async () => {
-                if (adding) return;
-                setAdding(true);
-                try {
-                  const groupMap = new Map<string | undefined, Array<SelectedAsset & { assetId: string }>>();
-                  for (const [assetId, pick] of selected.entries()) {
-                    const g = groupMap.get(pick.passphrase) || [];
-                    g.push({ ...pick, assetId });
-                    groupMap.set(pick.passphrase, g);
-                  }
-                  // Oldest first, so an entry numbers its new photos in the order
-                  // they were taken rather than the grid's newest-first (#1587).
-                  const groups = [...groupMap.entries()].map(([passphrase, picks]) => {
-                    const ordered = sortByCaptureTimeAsc(picks);
-                    return {
-                      assetIds: ordered.map((p) => p.assetId),
-                      mediaTypes: ordered.map((p) => (p.mediaType === 'video' ? 'video' : 'image')),
-                      passphrase,
-                    };
-                  });
-                  await onAdd(groups, targetEntryId);
-                } finally {
-                  setAdding(false);
-                }
-              }}
+              onClick={addSelection}
               disabled={addDisabled}
               className="rounded-lg bg-zinc-900 px-3.5 py-2 text-[13px] font-medium text-white hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-40 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100"
             >

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { localIsoDate } from '../utils/localDate';
-import { render, screen, waitFor, cleanup } from '../../tests/helpers/render';
+import { render, screen, waitFor, cleanup, within } from '../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
 import { server } from '../../tests/helpers/msw/server';
@@ -959,10 +959,11 @@ describe('JourneyDetailPage', () => {
       await renderAndWait();
       await openEntryEditor(user);
 
-      // Click Cancel to close
-      const cancelButtons = screen.getAllByText('Cancel');
-      // The Cancel button in the editor footer (not the ConfirmDialog mock)
-      await user.click(cancelButtons[0]);
+      // Click Cancel to close. The editor is a dialog in a portal on the body,
+      // after the page's own ConfirmDialog mocks, so its footer Cancel is picked
+      // from inside it rather than by position.
+      const editor = screen.getByText('New Entry').closest('[role="dialog"]') as HTMLElement;
+      await user.click(within(editor).getByRole('button', { name: 'Cancel' }));
 
       await waitFor(() => {
         expect(screen.queryByText('New Entry')).not.toBeInTheDocument();
@@ -1000,11 +1001,10 @@ describe('JourneyDetailPage', () => {
       await renderAndWait();
       await openSettingsDialog(user);
 
-      // "Name" label from i18n (displayed uppercase via CSS class)
-      expect(screen.getByText('Name')).toBeInTheDocument();
+      // The name is typed into the dialog's head band, labelled "Name" for screen readers
+      const nameInput = screen.getByRole('textbox', { name: 'Name' });
       // The input has the current journey title
-      const nameInput = screen.getByDisplayValue('Italy 2026');
-      expect(nameInput).toBeInTheDocument();
+      expect(nameInput).toHaveValue('Italy 2026');
     });
   });
 
@@ -1272,8 +1272,8 @@ describe('JourneyDetailPage', () => {
       const rainyBtn = screen.getByText('Rainy');
       await user.click(rainyBtn);
 
-      // Active weather button gets bg-zinc-900 class
-      expect(rainyBtn.closest('button')!.className).toContain('bg-zinc-900');
+      // Active weather button takes the accent fill
+      expect(rainyBtn.closest('button')!.className).toContain('bg-accent');
     });
   });
 
@@ -2502,7 +2502,7 @@ describe('JourneyDetailPage', () => {
         expect(screen.getByText('Paris Weekend')).toBeInTheDocument();
       });
 
-      // Destination and start date appear combined in a subtitle: "Paris · 2026-05-01"
+      // Destination and start date appear combined in a subtitle: "Paris, 2026-05-01"
       expect(screen.getByText(/Paris.*2026-05-01/)).toBeInTheDocument();
     });
   });
@@ -2573,8 +2573,8 @@ describe('JourneyDetailPage', () => {
       const editorBtn = screen.getByText('Editor');
       await user.click(editorBtn);
 
-      // Editor button should now be active (bg-zinc-900 class)
-      expect(editorBtn.closest('button')!.className).toContain('bg-zinc-900');
+      // Editor button should now be the pressed one
+      expect(editorBtn.closest('button')!).toHaveAttribute('aria-pressed', 'true');
     });
   });
 
@@ -3004,7 +3004,7 @@ describe('JourneyDetailPage', () => {
       // The settings dialog shows trips with unlink buttons (Trash2 icon buttons)
       const settingsDialog = screen.getByText('Journey Settings').closest('[class*="fixed"]')!;
       // Find the unlink button (it's a red trash button next to Italy Trip)
-      const trashBtns = settingsDialog.querySelectorAll('button[title="Unlink trip"]');
+      const trashBtns = settingsDialog.querySelectorAll('button[aria-label="Unlink Trip"]');
       expect(trashBtns.length).toBeGreaterThanOrEqual(1);
       await user.click(trashBtns[0] as HTMLElement);
 

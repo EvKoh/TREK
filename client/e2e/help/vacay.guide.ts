@@ -240,8 +240,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        // The dialog's close button has no label of its own: it is the button in the header next to the title.
-        target: p => settings(p).locator('h2').locator('xpath=..').getByRole('button').first(),
+        target: p => settings(p).getByRole('button', { name: 'Close' }),
         act: async p => { await closeSettings(p); await settle(p) },
       },
     ],
@@ -272,8 +271,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        // The dialog's close button has no label of its own: it is the button in the header next to the title.
-        target: p => settings(p).locator('h2').locator('xpath=..').getByRole('button').first(),
+        target: p => settings(p).getByRole('button', { name: 'Close' }),
         act: async p => { await closeSettings(p); await settle(p) },
       },
     ],
