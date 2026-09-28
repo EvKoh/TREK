@@ -123,7 +123,7 @@ export function SharedMap({ places, line, orderByPlace, cartoApiKey, days, selec
           <TileLayer url={basemap.url} attribution={attributionForTile(basemap.url)} referrerPolicy="strict-origin-when-cross-origin" />
         )}
         <FitBoundsToPlaces places={places} framedOnMount={framed !== null} />
-        {selectedDay && line.length > 1 && (
+        {selectedDay != null && line.length > 1 && (
           <Polyline
             positions={line.map(p => [p.lat, p.lng])}
             // Dashed and straight on purpose: it shows the order of the day's stops,
