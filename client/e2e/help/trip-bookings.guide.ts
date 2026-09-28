@@ -2,7 +2,7 @@ import { test, expect, type Locator, type Page } from '@playwright/test'
 import { captureGuide, captureHero, beat, typeInto, settle, VIEWPORT, type GuideScript } from './guide'
 import { dotted } from '../dates'
 import { seededTrip, ensureBookingsFixtures, bookingPdfFixture, bookingEmlFixture, BOOKING_EML, HOTEL_TO_BOOK, UNATTACHED_FILE } from './fixtures'
-import { openTrip, modal, dialog, portalDialog, importSteps, importTask, dismissImportTask, deleteTripFiles } from './trip-shared'
+import { openTrip, modal, portalDialog, importSteps, importTask, dismissImportTask, deleteTripFiles } from './trip-shared'
 import { requireExtractor, allowEmlUploads } from './external'
 import { tripBookingsContext, tripBookingsGuides } from '../../src/help/contexts/tripBookings'
 import type { HelpGuide } from '../../src/help/types'
@@ -26,39 +26,70 @@ const guide = (id: string): HelpGuide => {
 /** The tab id in the address is the legacy German one; its label is Bookings. */
 const openBookings = (page: Page) => openTrip(page, { tab: 'buchungen' })
 
-/**
- * A booking's card in the list, by its title.
- *
- * `.last()` because a card holds cards of its own (a traveller pill carries the
- * same class), and the filter keeps only the one that names the booking. The
- * delete question's card names it too, in its body text, and is portalled to the
- * end of the body, so this must not be used while that question stands.
- */
-const bookingCard = (page: Page, title: string) => page.locator('.bg-surface-card').filter({ hasText: title }).last()
+/** A booking's card in the Cards view: an article named after the booking. */
+const bookingCard = (page: Page, title: string) => page.getByRole('article', { name: title, exact: true })
+/** The pencil and the bin in a card's head band, named by their tooltips. */
+const cardAction = (page: Page, title: string, name: 'Edit' | 'Delete') =>
+  bookingCard(page, title).getByRole('button', { name, exact: true })
+
+/** Open a booking's editor from its card, the way the texts tell the reader to. */
+async function editFromCard(page: Page, title: string): Promise<void> {
+  await cardAction(page, title, 'Edit').click()
+  await expect(modal(page).getByRole('heading', { name: 'Edit Reservation' })).toBeVisible()
+  await settle(page)
+}
+
+// ── The bar ───────────────────────────────────────────────────────────────────
+
+/** The tab's one bar: its heading, then search, filter, the views and the add buttons. */
+const toolbar = (page: Page) => page.getByRole('heading', { name: 'Bookings', exact: true, level: 2 }).locator('xpath=..')
+const searchBox = (page: Page) => toolbar(page).getByRole('textbox', { name: 'Search', exact: true })
+/** The chip that says how many are left ("3 of 7") once anything filters; a click resets. */
+const resultsChip = (page: Page) => toolbar(page).getByRole('button', { name: /^\d+ of \d+$/ })
+const filterButton = (page: Page) => toolbar(page).getByRole('button', { name: 'Filter', exact: true })
+/** The filter panel under the funnel: Status, Type and Travelers. */
+const filterMenu = (page: Page) => page.getByRole('menu')
+const viewSwitch = (page: Page) => page.getByRole('group', { name: 'View', exact: true })
+const viewButton = (page: Page, name: 'Cards' | 'List' | 'Timeline') => viewSwitch(page).getByRole('button', { name, exact: true })
+
+// ── Timeline and detail ───────────────────────────────────────────────────────
+
+/** Trip | Day above the chart. */
+const zoom = (page: Page) => page.getByRole('group', { name: 'Zoom', exact: true })
+/** A day's heading on the Trip zoom; a click opens that day by the hour. */
+const dayHeading = (page: Page, n: number) => page.getByRole('button', { name: new RegExp(`Day ${n}$`) })
+/** A bar of the timeline, named after its booking. */
+const timelineBar = (page: Page, title: string) => page.getByRole('button', { name: title, exact: true })
+/** The booking's detail popup, labelled by its title. */
+const detail = (page: Page, title: string) => page.getByRole('dialog', { name: title })
+
+/** The booking the views guide opens: a tour on day 5, with a place and travellers. */
+const VIEWED = { title: 'Fushimi Inari night walk', day: 5 }
+
+// ── The editor ────────────────────────────────────────────────────────────────
 
 /** A field of the booking form, by its own label; the block around it is the label's parent. */
 const label = (page: Page, text: RegExp) => modal(page).locator('label').filter({ hasText: text }).first()
 const block = (page: Page, text: RegExp) => label(page, text).locator('xpath=..')
 /** The two-column or three-column row a field shares with its neighbours. */
 const row = (page: Page, text: RegExp) => block(page, text).locator('xpath=..')
+/** A labelled block of a dialog's body whose label is not a `<label>` (Who paid?). */
+const section = (page: Page, name: string) =>
+  modal(page).locator('section').filter({ has: page.getByText(name, { exact: true }) }).first()
 
 /** CustomSelect portals its menu to the body: a fixed panel at z-index 99999. */
 const selectMenu = (page: Page) => page.locator('body > div[style*="99999"]').last()
 
+/** The title is typed into the head band; the field keeps the old placeholder. */
 const titleBox = (page: Page) => modal(page).getByPlaceholder('e.g. Lufthansa LH123, Hotel Adlon, ...')
 const codeBox = (page: Page) => modal(page).getByPlaceholder('e.g. ABC12345')
 const timeBox = (page: Page) => modal(page).getByPlaceholder('00:00')
 const saveButton = (page: Page, name: 'Add' | 'Update') => modal(page).getByRole('button', { name, exact: true })
 
-/** Type chips and section headers both carry their count inside the accessible name. */
-const counted = (page: Page, name: string) => page.getByRole('button', { name: new RegExp(`^${name} \\d+$`) })
-/** The toolbar's traveller filter: a labelled row of round avatar buttons. */
-const travellers = (page: Page) => page.locator('[aria-label="Travelers"]')
-
 /** The card's delete question is its own portal, with no backdrop class to find it by. */
 const deleteAsk = (page: Page) => portalDialog(page, page.getByText('Delete booking?', { exact: true }))
 
-/** The Booking Type is a pill in the head of the form; its name reads the type after the label. */
+/** The Booking Type is a pill in the head band; its name reads the type after the label. */
 const typePill = (page: Page) => modal(page).getByRole('button', { name: /^Booking Type:/ })
 /** The pill's list is its own portal, named after the pill's label. */
 const typeMenu = (page: Page) => page.getByRole('group', { name: 'Booking Type' })
@@ -74,6 +105,12 @@ async function openTypeMenu(page: Page): Promise<void> {
 async function pickType(page: Page, type: RegExp): Promise<void> {
   await typeMenu(page).getByRole('button', { name: type }).first().click()
   await expect(typeMenu(page)).toHaveCount(0)
+}
+
+async function openManualBooking(page: Page): Promise<void> {
+  await page.getByRole('button', { name: 'Manual Booking' }).click()
+  await expect(modal(page).getByRole('heading', { name: 'New Reservation' })).toBeVisible()
+  await settle(page)
 }
 
 /** The Travelers field opens its members as a list under it, inside the form. */
@@ -131,15 +168,19 @@ async function restore(page: Page, ...titles: string[]): Promise<void> {
   await ensureBookingsFixtures(page.request)
 }
 
-/** The filters live for the browser session, the two sections for the trip. */
+/**
+ * What the tab remembers: the filters per trip for the browser tab, the view,
+ * its grouping, sorting and timeline zoom, and the folded sections in the
+ * browser. Every test has a context of its own, so this is only tidiness for a
+ * guide that runs another after it in the same page.
+ */
 async function clearPanelState(page: Page): Promise<void> {
   const { tripId } = seededTrip()
   await page.evaluate(id => {
     try {
-      sessionStorage.removeItem(`trek-reservation-filters-${id}`)
-      sessionStorage.removeItem(`trek-reservation-filters-${id}-travelers`)
-      localStorage.removeItem(`trek:bookings-pending-open:${id}`)
-      localStorage.removeItem(`trek:bookings-confirmed-open:${id}`)
+      sessionStorage.removeItem(`trek-bookings-filters-bookings-${id}`)
+      for (const name of ['view', 'group', 'sort', 'timeline', 'transitApart']) localStorage.removeItem(`trek:bookings-bookings-${name}`)
+      localStorage.removeItem(`trek:bookings-bookings-collapsed:${id}`)
       localStorage.removeItem('trek.bg-import-tasks')
     } catch {
       /* a browser that refuses storage has nothing to clear */
@@ -157,17 +198,63 @@ const closeModal = async (page: Page): Promise<void> => {
 const only = (target: (p: Page) => Locator) => ({ target })
 
 const SCRIPTS: Record<string, GuideScript> = {
+  'booking-views': {
+    guide: guide('booking-views'),
+    start: openBookings,
+    steps: [
+      {
+        // The three icons are the subject; the pointer rests on List so its name shows.
+        target: viewSwitch,
+        hover: async p => { await viewButton(p, 'List').hover() },
+        act: async p => {
+          await viewButton(p, 'List').click()
+          await expect(viewButton(p, 'List')).toHaveAttribute('aria-pressed', 'true')
+          await expect(p.getByRole('button', { name: VIEWED.title, exact: true })).toBeVisible()
+          await settle(p)
+        },
+      },
+      {
+        target: p => viewButton(p, 'Timeline'),
+        act: async p => {
+          await viewButton(p, 'Timeline').click()
+          await expect(zoom(p)).toBeVisible()
+          await expect(zoom(p).getByRole('button', { name: 'Trip', exact: true })).toHaveAttribute('aria-pressed', 'true')
+          await settle(p)
+        },
+      },
+      {
+        target: p => dayHeading(p, VIEWED.day),
+        act: async p => {
+          await dayHeading(p, VIEWED.day).click()
+          await expect(zoom(p).getByRole('button', { name: 'Day', exact: true })).toHaveAttribute('aria-pressed', 'true')
+          await expect(timelineBar(p, VIEWED.title)).toBeVisible()
+          await settle(p)
+        },
+      },
+      only(zoom),
+      {
+        // Hovered for the picture: the bar's card of facts stands beside it.
+        target: p => timelineBar(p, VIEWED.title),
+        act: async p => {
+          await timelineBar(p, VIEWED.title).click()
+          await expect(detail(p, VIEWED.title)).toBeVisible()
+          await settle(p)
+        },
+      },
+      only(p => detail(p, VIEWED.title)),
+    ],
+    cleanup: async p => {
+      await closeModal(p)
+      await clearPanelState(p)
+    },
+  },
   'create-booking': {
     guide: guide('create-booking'),
     start: openBookings,
     steps: [
       {
         target: p => p.getByRole('button', { name: 'Manual Booking' }),
-        act: async p => {
-          await p.getByRole('button', { name: 'Manual Booking' }).click()
-          await expect(modal(p).getByRole('heading', { name: 'New Reservation' })).toBeVisible()
-          await settle(p)
-        },
+        act: openManualBooking,
       },
       {
         prepare: async p => {
@@ -229,8 +316,7 @@ const SCRIPTS: Record<string, GuideScript> = {
     steps: [
       {
         prepare: async p => {
-          await p.getByRole('button', { name: 'Manual Booking' }).click()
-          await expect(modal(p).getByRole('heading', { name: 'New Reservation' })).toBeVisible()
+          await openManualBooking(p)
           await openTypeMenu(p)
         },
         target: typeMenu,
@@ -283,12 +369,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openBookings,
     steps: [
       {
-        target: p => bookingCard(p, 'teamLab Planets timed entry').getByRole('button', { name: 'Edit' }),
-        act: async p => {
-          await bookingCard(p, 'teamLab Planets timed entry').getByRole('button', { name: 'Edit' }).click()
-          await expect(modal(p).getByRole('heading', { name: 'Edit Reservation' })).toBeVisible()
-          await settle(p)
-        },
+        target: p => cardAction(p, 'teamLab Planets timed entry', 'Edit'),
+        act: p => editFromCard(p, 'teamLab Planets timed entry'),
       },
       {
         prepare: async p => {
@@ -314,7 +396,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await saveButton(p, 'Update').click()
           await expect(modal(p)).toHaveCount(0)
-          await expect(bookingCard(p, 'teamLab Planets timed entry').getByText('Link to day assignment')).toBeVisible({ timeout: 20_000 })
+          await expect(bookingCard(p, 'teamLab Planets timed entry').getByText('Linked to', { exact: true })).toBeVisible({ timeout: 20_000 })
           await settle(p)
         },
       },
@@ -327,9 +409,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     steps: [
       {
         prepare: async p => {
-          await bookingCard(p, 'Fushimi Inari night walk').getByRole('button', { name: 'Edit' }).click()
+          await editFromCard(p, 'Fushimi Inari night walk')
           await expect(label(p, /^Travelers$/)).toBeVisible()
-          await settle(p)
         },
         target: p => block(p, /^Travelers$/),
         act: settle,
@@ -342,9 +423,9 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
         target: travelerList,
         act: async p => {
-          const row = travelerList(p).getByRole('button', { name: /jonas/ })
-          await row.click()
-          await expect(row).toHaveAttribute('aria-pressed', 'true')
+          const person = travelerList(p).getByRole('button', { name: /jonas/ })
+          await person.click()
+          await expect(person).toHaveAttribute('aria-pressed', 'true')
           // A click beside the field folds the list away; Escape would close the whole form.
           await label(p, /^Travelers$/).click()
           await expect(travelerList(p)).toHaveCount(0)
@@ -356,15 +437,24 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await saveButton(p, 'Update').click()
           await expect(modal(p)).toHaveCount(0)
-          await expect(bookingCard(p, 'Fushimi Inari night walk').getByText('jonas')).toBeVisible({ timeout: 20_000 })
+          await expect(bookingCard(p, 'Fushimi Inari night walk').getByText('jonas', { exact: true })).toBeVisible({ timeout: 20_000 })
           await settle(p)
         },
       },
       {
-        target: p => travellers(p).getByTitle('jonas'),
+        prepare: async p => {
+          await filterButton(p).click()
+          await expect(filterMenu(p)).toBeVisible()
+          await settle(p)
+        },
+        // The people are a row of chips under the panel's Travelers caption.
+        target: p => filterMenu(p).getByRole('button', { name: /jonas$/ }).locator('xpath=..'),
         act: async p => {
-          await travellers(p).getByTitle('jonas').click()
-          await expect(travellers(p).getByTitle('jonas')).toHaveAttribute('aria-pressed', 'true')
+          const person = filterMenu(p).getByRole('button', { name: /jonas$/ })
+          await person.click()
+          await expect(person).toHaveAttribute('aria-pressed', 'true')
+          await expect(bookingCard(p, 'Kyoto Cycling Tour')).toHaveCount(0)
+          await expect(bookingCard(p, 'Fushimi Inari night walk')).toBeVisible()
           await settle(p)
         },
       },
@@ -380,9 +470,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     steps: [
       {
         prepare: async p => {
-          await bookingCard(p, 'teamLab Planets timed entry').getByRole('button', { name: 'Edit' }).click()
+          await editFromCard(p, 'teamLab Planets timed entry')
           await expect(modal(p).getByRole('button', { name: 'Attach file' })).toBeVisible()
-          await settle(p)
         },
         target: p => modal(p).getByRole('button', { name: 'Attach file' }),
         act: async p => {
@@ -436,9 +525,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     steps: [
       {
         prepare: async p => {
-          await bookingCard(p, 'Kyoto Cycling Tour').getByRole('button', { name: 'Edit' }).click()
+          await editFromCard(p, 'Kyoto Cycling Tour')
           await expect(modal(p).getByRole('button', { name: 'Create expense' })).toBeVisible()
-          await settle(p)
         },
         target: p => block(p, /^Costs$/),
         act: settle,
@@ -453,24 +541,24 @@ const SCRIPTS: Record<string, GuideScript> = {
       },
       {
         prepare: async p => {
-          await modal(p).getByPlaceholder('0.00').fill('12000')
+          await block(p, /^Total amount$/).locator('input').first().fill('12000')
           await settle(p)
         },
-        target: p => block(p, /^Total amount$/),
+        target: p => row(p, /^Total amount$/),
         act: settle,
       },
-      only(p => block(p, /^Who paid\?$/).locator('xpath=..')),
+      only(p => section(p, 'Who paid?')),
       {
         target: p => modal(p).getByRole('button', { name: 'Add expense', exact: true }),
         act: async p => {
           const save = modal(p).getByRole('button', { name: 'Add expense', exact: true })
-          // What was it for? comes prefilled from the booking; without it the button is dead.
+          // The name comes prefilled from the booking; without it the button is dead.
           await expect(save).toBeEnabled()
           await save.click()
           await expect(modal(p)).toHaveCount(0)
           await settle(p)
           // The block only reads Linked expenses once the booking is opened again.
-          await bookingCard(p, 'Kyoto Cycling Tour').getByRole('button', { name: 'Edit' }).click()
+          await editFromCard(p, 'Kyoto Cycling Tour')
           await expect(label(p, /^Linked expenses$/)).toBeVisible({ timeout: 20_000 })
           // The block sits at the foot of a long form: bring it into the picture.
           await label(p, /^Linked expenses$/).evaluate(el => el.scrollIntoView({ block: 'center' }))
@@ -487,35 +575,55 @@ const SCRIPTS: Record<string, GuideScript> = {
     guide: guide('filter-bookings'),
     start: openBookings,
     steps: [
-      only(p => counted(p, 'All').locator('xpath=..')),
       {
         prepare: async p => {
-          await counted(p, 'Tour').click()
-          await settle(p)
-        },
-        target: p => counted(p, 'Tour'),
-        act: async p => {
-          await counted(p, 'Event').click()
-          await expect(bookingCard(p, 'Lunch at Nishiki')).toHaveCount(0)
-          await settle(p)
-        },
-      },
-      {
-        target: p => counted(p, 'All'),
-        act: async p => {
-          await counted(p, 'All').click()
-          await expect(bookingCard(p, 'Lunch at Nishiki')).toBeVisible()
-          await settle(p)
-        },
-      },
-      // The gesture belongs to booking-travelers; here the row is only pointed at.
-      only(travellers),
-      {
-        target: p => counted(p, 'Pending'),
-        act: async p => {
-          await counted(p, 'Pending').click()
+          await typeInto(p, searchBox(p), 'Kyoto')
+          await expect(resultsChip(p)).toBeVisible()
           await expect(bookingCard(p, 'Haneda Airport P4')).toHaveCount(0)
-          await counted(p, 'Pending').click()
+          await settle(p)
+        },
+        // The box around the field, with its magnifier.
+        target: p => searchBox(p).locator('xpath=..'),
+        act: async p => {
+          await searchBox(p).press('Escape')
+          await expect(searchBox(p)).toHaveValue('')
+          await expect(bookingCard(p, 'Haneda Airport P4')).toBeVisible()
+          await settle(p)
+        },
+      },
+      {
+        target: filterButton,
+        act: async p => {
+          await filterButton(p).click()
+          await expect(filterMenu(p)).toBeVisible()
+          await settle(p)
+        },
+      },
+      {
+        // The three choices sit on one grey track under the Status caption.
+        target: p => filterMenu(p).getByRole('button', { name: 'Pending', exact: true }).locator('xpath=..'),
+        act: async p => {
+          await filterMenu(p).getByRole('button', { name: 'Pending', exact: true }).click()
+          await expect(bookingCard(p, 'Fushimi Inari night walk')).toHaveCount(0)
+          await expect(bookingCard(p, 'Kyoto Cycling Tour')).toBeVisible()
+          await settle(p)
+        },
+      },
+      {
+        target: p => filterMenu(p).getByRole('button', { name: /^Tour\b/ }),
+        act: async p => {
+          await filterMenu(p).getByRole('button', { name: /^Tour\b/ }).click()
+          await expect(bookingCard(p, 'Haneda Airport P4')).toHaveCount(0)
+          await expect(bookingCard(p, 'Kyoto Cycling Tour')).toBeVisible()
+          await settle(p)
+        },
+      },
+      {
+        target: resultsChip,
+        act: async p => {
+          await resultsChip(p).click()
+          await expect(resultsChip(p)).toHaveCount(0)
+          await expect(bookingCard(p, 'Fushimi Inari night walk')).toBeVisible()
           await expect(bookingCard(p, 'Haneda Airport P4')).toBeVisible()
           await settle(p)
         },
@@ -555,7 +663,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: dialog,
+        target: p => modal(p).getByRole('dialog'),
         act: async p => {
           await saveButton(p, 'Add').click()
           await expect(modal(p)).toHaveCount(0, { timeout: 20_000 })
@@ -580,12 +688,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openBookings,
     steps: [
       {
-        target: p => bookingCard(p, 'Kyoto Cycling Tour').getByRole('button', { name: 'Edit' }),
-        act: async p => {
-          await bookingCard(p, 'Kyoto Cycling Tour').getByRole('button', { name: 'Edit' }).click()
-          await expect(modal(p).getByRole('heading', { name: 'Edit Reservation' })).toBeVisible()
-          await settle(p)
-        },
+        target: p => cardAction(p, 'Kyoto Cycling Tour', 'Edit'),
+        act: p => editFromCard(p, 'Kyoto Cycling Tour'),
       },
       {
         prepare: async p => { await typeInto(p, codeBox(p), 'KCT-90412') },
@@ -607,7 +711,8 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await saveButton(p, 'Update').click()
           await expect(modal(p)).toHaveCount(0)
-          await expect(bookingCard(p, 'Kyoto Cycling Tour').getByText('Confirmed', { exact: true }).first()).toBeVisible({ timeout: 20_000 })
+          // A confirmed card's status dot offers the way back to Pending.
+          await expect(bookingCard(p, 'Kyoto Cycling Tour').getByRole('button', { name: 'Set to Pending' })).toBeVisible({ timeout: 20_000 })
           await settle(p)
         },
       },
@@ -619,18 +724,18 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openBookings,
     steps: [
       {
-        target: p => bookingCard(p, 'Haneda Airport P4').getByRole('button', { name: 'Delete' }),
+        target: p => cardAction(p, 'Haneda Airport P4', 'Delete'),
         act: async p => {
-          await bookingCard(p, 'Haneda Airport P4').getByRole('button', { name: 'Delete' }).click()
+          await cardAction(p, 'Haneda Airport P4', 'Delete').click()
           await expect(deleteAsk(p)).toBeVisible()
           await settle(p)
         },
       },
       only(deleteAsk),
       {
-        target: p => deleteAsk(p).getByRole('button', { name: 'Confirm' }),
+        target: p => deleteAsk(p).getByRole('button', { name: 'Delete', exact: true }),
         act: async p => {
-          await deleteAsk(p).getByRole('button', { name: 'Confirm' }).click()
+          await deleteAsk(p).getByRole('button', { name: 'Delete', exact: true }).click()
           await expect(bookingCard(p, 'Haneda Airport P4')).toHaveCount(0, { timeout: 20_000 })
           await settle(p)
         },

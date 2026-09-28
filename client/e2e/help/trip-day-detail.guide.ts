@@ -221,11 +221,12 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        // The options of a day select are portalled to the body, outside the picker.
+        // The two day selects are named Start and End; their options are
+        // portalled to the body, outside the picker.
         prepare: async p => {
-          await picker(p).getByRole('button', { name: /^Day 6/ }).click()
+          await picker(p).getByRole('button', { name: 'End', exact: true }).click()
           await p.getByRole('button', { name: /^Day 7/ }).last().click()
-          await expect(picker(p).getByRole('button', { name: /^Day 7/ })).toBeVisible()
+          await expect(picker(p).getByRole('button', { name: 'End', exact: true })).toContainText('Day 7')
           await settle(p)
         },
         // The row of Start, End and All: the All button's parent.

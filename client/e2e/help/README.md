@@ -112,6 +112,11 @@ so look at three or four pictures from a subset run before starting it.
   the dev server if it happened.
 - Each run boots a fresh server (~2 min); batch fixes, and dump the accessibility
   tree once (`page.locator('body').ariaSnapshot()`) instead of guessing locators.
+- Several runs at once, each on its own `E2E_WEB_PORT`/`E2E_API_PORT`, share
+  `server/dist`: build it once and set `E2E_SERVER_PREBUILT=1` on every run, or
+  each run rebuilds it under the servers of the others. Give each run its own
+  `TREK_PLUGINS_DIR` and `TREK_PLUGINS_DATA_DIR` as well (the seed installs a
+  plugin), and its own Vite `cacheDir` when it starts a Vite of its own.
 - A plugin installed by a run lives in `server/data/plugins/`; the dev server
   imports it on its next restart. Guides that install one uninstall it in `cleanup`.
 - The trip's last day is the run day by construction (`e2e/dates.ts`: every

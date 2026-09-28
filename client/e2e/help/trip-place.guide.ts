@@ -63,7 +63,8 @@ const bookingDetail = (page: Page) => page.getByRole('dialog', { name: BOOKING }
 /** The strip's lower row: Date, Time and Booking Code beside each other. */
 const bookingFields = (page: Page) => bookingStrip(page).locator('> div').nth(1)
 const dayHeader = (page: Page, n: number) => page.getByRole('button', { name: new RegExp(`^${n} .*Day ${n} `) })
-const swatch = (page: Page) => card(page).getByRole('button', { name: TRACK_PICKED_COLOR })
+// Exact: the picker's own button is named "Track color: #EA580C" once the colour is set.
+const swatch = (page: Page) => card(page).getByRole('button', { name: TRACK_PICKED_COLOR, exact: true })
 /** The seed's day 1: the trip starts nine days before the picture day (`start_date: day(-9)`). */
 const DAY_ONE = -9
 /** The weekday the English UI prints for a seeded day, `Saturday` on a run where day 1 is one. */

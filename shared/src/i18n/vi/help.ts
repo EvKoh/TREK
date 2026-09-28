@@ -1094,7 +1094,7 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.step.1':
     'Trong “Du lịch & bản đồ”, “Luôn hiển thị tuyến đường đặt chỗ” giữ chuyến bay và tàu trên bản đồ ngay cả khi ngày của chúng không được mở; “Khám phá các địa điểm trên bản đồ” hiện nút tìm địa điểm; “Tối ưu hóa tuyến đường từ chỗ ở” bắt đầu tuyến đường từ nơi bạn ngủ.',
   'help.guide.travel-map-prefs.step.2':
-    '“Mã đặt chỗ mờ” ẩn số xác nhận cho đến khi bạn di chuột lên; “Nhãn lộ trình đặt chỗ” ghi tên đặt chỗ dọc theo tuyến đường của nó.',
+    '“Mã đặt chỗ mờ” ẩn số xác nhận cho đến khi bạn di chuột lên; “Nhãn lộ trình đặt chỗ” đặt mã sân bay hoặc tên nhà ga lên nhãn ở mỗi đầu lộ trình của một đặt chỗ, nơi mà nếu không có tùy chọn này thì chỉ có biểu tượng hiện ra.',
   'help.guide.travel-map-prefs.result':
     'Bản đồ chuyến đi tuân theo các lựa chọn này trên mọi chuyến đi, cho đến khi bạn gạt lại.',
   'help.guide.travel-map-prefs.tip.1':
@@ -1700,7 +1700,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.summary':
     'Một chuyến đi, trọn vẹn: kế hoạch với các ngày, bản đồ và địa điểm, cùng các tab cho di chuyển, đặt chỗ, danh sách, chi phí, tập tin và cộng tác. Mỗi phần đó có màn hình trợ giúp riêng bên dưới màn hình này.',
   'help.ctx.trip.bullet.1':
-    'Thanh tab: “Kế hoạch”, “Di chuyển”, “Đặt chỗ”, “Danh sách”, “Chi phí”, “Tập tin” và “Cộng tác”. Tiện ích bổ sung và plugin quyết định tab nào có trên TREK của bạn.',
+    'Thanh tab: “Kế hoạch”, “Di chuyển”, “Đặt”, “Danh sách”, “Chi phí”, “Tập tin” và “Cộng tác”. Tiện ích bổ sung và plugin quyết định tab nào có trên TREK của bạn.',
   'help.ctx.trip.bullet.2':
     '“Kế hoạch” gồm ba cột: các ngày bên trái, bản đồ ở giữa, địa điểm bên phải. Đặt chỗ và di chuyển nằm trong kế hoạch, tại điểm dừng và giữa các điểm dừng; các tab liệt kê chúng.',
   'help.ctx.trip.bullet.3':
@@ -1805,7 +1805,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'Nút nhập bên cạnh nó có “Nhập tập tin” cho các tập tin .gpx, .kml và .kmz, và “Danh sách Google” (“Nhập danh sách” khi danh sách Naver cũng được bật) cho một danh sách được chia sẻ từ Google Maps hoặc Naver Maps. Bạn cũng có thể chỉ cần thả tập tin lên cột này.',
   'help.ctx.trip-places.bullet.3':
-    'Bên dưới là ô tìm kiếm, cạnh đó là dấu tích để bắt đầu một lượt chọn, và một hàng bộ lọc: “Hiển thị” chuyển giữa “Tất cả”, “Không có kế hoạch”, “Có kế hoạch” và, khi đã nhập một đường đi, “Bài hát”, mỗi mục kèm số lượng; nút nhãn lọc theo danh mục và ngôi sao lọc theo mức đánh giá tối thiểu.',
+    'Bên dưới là ô tìm kiếm, cạnh đó là dấu tích để bắt đầu một lượt chọn, và một hàng bộ lọc: “Hiển thị” chuyển giữa “Tất cả”, “Không có kế hoạch”, “Có kế hoạch” và, khi đã nhập một đường đi, “Đường đi”, mỗi mục kèm số lượng; nút nhãn lọc theo danh mục và ngôi sao lọc theo mức đánh giá tối thiểu.',
   'help.ctx.trip-places.bullet.4':
     'Một hàng hiển thị hình ảnh, tên và mô tả hoặc địa chỉ. Nhấp vào đó để xem chi tiết địa điểm, kéo nó lên một ngày, hoặc nhấp chuột phải (hay nhấp ba chấm của nó) để có “Chỉnh sửa”, “+ Ngày”, “Mở trang web”, “Google Maps”, “Lưu vào Bộ sưu tập” và “Xóa bỏ”.',
   'help.ctx.trip-places.bullet.5':
@@ -1824,7 +1824,7 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.4':
     'Kiểm tra những gì biểu mẫu chứa: tên nằm ở phần đầu hộp thoại và là ô bắt buộc duy nhất; chip “Loại” bên dưới nó chọn một trong các danh mục của chuyến đi, và dấu + bên cạnh tạo ngay một danh mục mới. “Địa chỉ”, “Vĩ độ” và “Kinh độ” đến từ tìm kiếm hoặc do bạn gõ; “Miêu tả” và “Ghi chú” là của bạn; “Trang web” nhận liên kết.',
   'help.guide.create-place.step.5':
-    'Nhấp “Thêm”. Nếu một địa điểm cùng tên đã có trong chuyến đi, biểu mẫu sẽ báo và nút đổi thành “Vẫn thêm”.',
+    'Nhấp “Thêm”. Nếu một địa điểm cùng tên hoặc ở cùng vị trí đã có trong chuyến đi, TREK sẽ báo và nút đổi thành “Vẫn thêm”.',
   'help.guide.create-place.result':
     'Địa điểm đã ở trong danh sách và trên bản đồ, dưới “Không có kế hoạch” cho đến khi được đặt vào một ngày.',
   'help.guide.create-place.tip.1':
@@ -1854,7 +1854,7 @@ const help: TranslationStrings = {
   'help.guide.filter-places.title': 'Tìm một địa điểm trong danh sách',
   'help.guide.filter-places.goal': 'Thu hẹp cột lại còn những địa điểm bạn đang tìm.',
   'help.guide.filter-places.step.1':
-    '“Hiển thị”, danh sách thả xuống dưới ô tìm kiếm, chuyển giữa “Tất cả”, “Không có kế hoạch” (chưa ở ngày nào), “Có kế hoạch” (đã ở một ngày) và “Bài hát” (các đường GPX đã nhập), mỗi mục kèm số lượng.',
+    '“Hiển thị”, danh sách thả xuống dưới ô tìm kiếm, chuyển giữa “Tất cả”, “Không có kế hoạch” (chưa ở ngày nào), “Có kế hoạch” (đã ở một ngày) và “Đường đi” (các đường GPX đã nhập), mỗi mục kèm số lượng.',
   'help.guide.filter-places.step.2': 'Gõ vào “Tìm kiếm” ở trên cùng; danh sách thu hẹp lại khi bạn gõ.',
   'help.guide.filter-places.step.3':
     'Nút nhãn cạnh “Hiển thị” liệt kê các danh mục: tích một hoặc nhiều, trong đó có “Không có danh mục”. Nút này đếm những gì đã tích, và “Xóa bộ lọc” ở chân danh sách bỏ tất cả.',
@@ -1920,7 +1920,7 @@ const help: TranslationStrings = {
   'help.guide.import-places-file.step.4':
     'Nhấp “Nhập”. Một thông báo cho biết có bao nhiêu địa điểm đã vào; với tập tin KML hoặc KMZ, hộp thoại vẫn mở kèm phần tóm tắt những gì đã được tạo và những gì bị bỏ qua.',
   'help.guide.import-places-file.result':
-    'Các địa điểm đã ở trong danh sách; một đường đi mang dấu tuyến trên hàng của nó, được vẽ trên bản đồ và có bộ lọc “Bài hát” riêng.',
+    'Các địa điểm đã ở trong danh sách; một đường đi mang dấu tuyến trên hàng của nó, được vẽ trên bản đồ và có bộ lọc “Đường đi” riêng.',
   'help.guide.import-places-file.tip.1':
     'Tập tin quá lớn sẽ bị từ chối kèm giới hạn dung lượng; hãy xuất lại mà không có ảnh, hoặc chia nhỏ nó.',
   'help.guide.import-places-file.tip.2': 'Toàn bộ lần nhập có thể hoàn tác từ thanh công cụ phía trên các ngày.',
@@ -2113,11 +2113,11 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.step.4':
     'Trên bản đồ, công tắc ở hàng phương tiện di chuyển vẽ lộ trình của nó; “Hiển thị tất cả lộ trình đặt chỗ” trên thanh công cụ vẽ tất cả.',
   'help.guide.bookings-in-plan.step.5':
-    'Tạo mới: “Thêm đặt chỗ” trên một điểm dừng đang được trỏ chuột, “Thêm phương tiện di chuyển” và “Giao thông công cộng” trong menu + của ngày, và các tab “Đặt chỗ” và “Di chuyển” cho danh sách đầy đủ kèm nhập dữ liệu và tệp.',
+    'Tạo mới: “Thêm đặt chỗ” trên một điểm dừng đang được trỏ chuột, “Thêm phương tiện di chuyển” và “Giao thông công cộng” trong menu + của ngày, và các tab “Đặt” và “Di chuyển” cho danh sách đầy đủ kèm nhập dữ liệu và tệp.',
   'help.guide.bookings-in-plan.result':
     'Một đặt chỗ, một chỗ trong kế hoạch; các tab chính là những đặt chỗ ấy dưới dạng danh sách.',
   'help.guide.bookings-in-plan.tip.1':
-    '“Đã xác nhận” và “Chưa giải quyết” là trạng thái bạn đặt trên đặt chỗ; kế hoạch hiện nó trên điểm dừng, còn tab “Đặt chỗ” đếm cả hai.',
+    '“Đã xác nhận” và “Chưa giải quyết” là trạng thái bạn đặt trên đặt chỗ; kế hoạch hiện nó trên điểm dừng, còn tab “Đặt” đếm cả hai.',
   'help.guide.bookings-in-plan.tip.2':
     'Một phương tiện di chuyển có giờ cố định thì không kéo được; hãy đổi giờ của nó trong đặt chỗ.',
   // export-plan
@@ -2348,17 +2348,17 @@ const help: TranslationStrings = {
   'help.ctx.trip-files.summary':
     'Mọi tài liệu của chuyến đi trong một danh sách: vé, xác nhận, thẻ và hình ảnh, mỗi thứ kèm một ghi chú, một liên kết tới địa điểm hoặc đặt chỗ mà nó thuộc về, và một thùng rác mà từ đó nó có thể trở lại.',
   'help.ctx.trip-files.bullet.1':
-    '“Thả tập tin ở đây” ở trên cùng nhận các tập tin; một cú nhấp vào ô đó mở hộp chọn tập tin. Dòng bên dưới liệt kê các loại tập tin mà TREK này chấp nhận và giới hạn 50 MB cho mỗi tập tin.',
+    '“Thả tập tin ở đây”, ô nét đứt dưới thanh, nhận các tập tin; một cú nhấp vào đó mở hộp chọn tập tin. Bên trong ô là các loại tập tin mà TREK này chấp nhận và “Max 50 MB”, giới hạn cho mỗi tập tin.',
   'help.ctx.trip-files.bullet.2':
-    'Các thẻ quyết định danh sách hiện gì: “Tất cả”, “PDF”, “Hình ảnh” và “Tài liệu”, mỗi thẻ kèm số đếm. Một thẻ ngôi sao góp mặt ngay khi có tập tin được đánh dấu sao, và “Ghi chú cộng tác” ngay khi một ghi chú mang tệp đính kèm.',
+    'Thanh ở trên cùng chứa “Tập tin” và các thẻ lọc “Tất cả”, “PDF”, “Hình ảnh” và “Tài liệu”, mỗi thẻ kèm số đếm. Một ngôi sao góp mặt sau “Tất cả” ngay khi có tập tin được đánh dấu sao, và “Ghi chú cộng tác” ở cuối ngay khi một ghi chú mang tệp đính kèm.',
   'help.ctx.trip-files.bullet.3':
-    'Một hàng mang theo người đã tải lên, tên, ghi chú bên dưới, kích thước và ngày, cùng một huy hiệu cho mỗi liên kết: “Kế hoạch ngày” và địa điểm, “Đặt chỗ” hoặc “Chuyên chở” và đặt chỗ đó, “Từ ghi chú cộng tác”.',
+    'Một hàng mang hình thu nhỏ hoặc loại tập tin, người đã tải lên, tên, ghi chú bên dưới, kích thước và ngày, cùng một huy hiệu cho mỗi liên kết: địa điểm, đặt chỗ hoặc phương tiện theo tên của nó (trỏ vào sẽ thấy “Kế hoạch ngày”, “Đặt chỗ” hoặc “Chuyên chở”), và “Từ ghi chú cộng tác”.',
   'help.ctx.trip-files.bullet.4':
-    'Ở cuối một hàng là “Ngôi sao”, “Giao phó”, “Mở”, “Tải xuống” và “Xóa bỏ”. “Xóa bỏ” không hỏi: tập tin đi vào thùng rác, nơi nó có thể được mang trở lại.',
+    'Ở cuối một hàng có tối đa năm biểu tượng, mỗi biểu tượng hiện tên khi bạn trỏ vào: “Ngôi sao”, “Giao phó” (cây bút chì), “Mở”, “Tải xuống” và “Xóa bỏ”. “Xóa bỏ” không hỏi: tập tin đi vào thùng rác, nơi nó có thể được mang trở lại.',
   'help.ctx.trip-files.bullet.5':
-    'Một hình ảnh hay video mở toàn màn hình, với các phím mũi tên và một dải hình thu nhỏ; mọi tài liệu khác mở trong một bản xem trước phủ lên trang, với “Mở trong tab mới” và “Tải xuống”. Một thẻ ví thì được tải xuống ngay.',
+    'Một hình ảnh hay video mở toàn màn hình, với các phím mũi tên và một dải hình thu nhỏ; mọi tài liệu khác mở trong một hộp thoại có tên của nó ở trên cùng, với “Mở trong tab mới” và “Tải xuống” bên dưới. Một thẻ ví thì được tải xuống ngay.',
   'help.ctx.trip-files.bullet.6':
-    '“Rác” ở đầu bên phải chuyển danh sách sang các tập tin đã xóa, nơi từng tập tin được khôi phục hoặc xóa vĩnh viễn và “Dọn sạch thùng rác” xóa hết. Ở nơi quản trị viên đã nối một kho tài liệu, “Đồng bộ tài liệu” nằm ngay bên cạnh.',
+    'Biểu tượng thùng rác ở đầu bên phải của thanh (“Rác”) chuyển danh sách sang các tập tin đã xóa, nơi từng tập tin được khôi phục hoặc xóa vĩnh viễn và “Dọn sạch thùng rác” trên thanh xóa hết. Khi chuyến đi đã được gắn với một kho tài liệu, hoặc với chủ chuyến đi hay quản trị viên ngay khi một kho được bật, “Đồng bộ tài liệu” nằm bên trái biểu tượng thùng rác.',
   // files-upload
   'help.guide.files-upload.title': 'Đưa một tài liệu vào chuyến đi',
   'help.guide.files-upload.goal':
@@ -2366,15 +2366,15 @@ const help: TranslationStrings = {
   'help.guide.files-upload.step.1':
     'Mở chuyến đi và nhấp “Tập tin” trên thanh thẻ. Tài liệu của chuyến đi nằm ở đó, với ô tải lên phía trên chúng.',
   'help.guide.files-upload.step.2':
-    'Nhấp “Thả tập tin ở đây” và chọn một hoặc nhiều tập tin. Chúng được tải lên lần lượt và ô đó ghi “Đang tải lên...” trong lúc chạy. Dòng dưới ô cho biết TREK này nhận những loại nào, và một tập tin nhiều nhất là 50 MB.',
+    'Nhấp “Thả tập tin ở đây” và chọn một hoặc nhiều tập tin. Chúng được tải lên lần lượt và ô đó ghi “Đang tải lên...” trong lúc chạy. Bên trong ô, dưới “hoặc bấm vào để duyệt”, là các loại mà TREK này nhận và “Max 50 MB”, dung lượng tối đa của một tập tin.',
   'help.guide.files-upload.step.3':
-    'Ngay khi tập tin cuối cùng lên xong, “Gán tập tin” tự mở cho nó. “Thêm ghi chú...” cho tập tin một dòng của riêng nó, và các danh sách bên dưới buộc nó vào một địa điểm hoặc một đặt chỗ. Đóng bằng dấu ×; đóng lại không làm mất gì cả.',
+    'Ngay khi tập tin cuối cùng lên xong, “Gán tập tin” tự mở cho nó (miễn là chuyến đi có địa điểm hoặc đặt chỗ nào đó), với tên tập tin ở phần đầu hộp thoại. “Thêm ghi chú...” dưới “Ghi chú” cho tập tin một dòng của riêng nó, và các danh sách bên dưới buộc nó vào một địa điểm hoặc một đặt chỗ. Đóng bằng dấu × ở góc trên bên phải; đóng lại không làm mất gì cả.',
   'help.guide.files-upload.step.4':
-    'Các tập tin mới đứng ở đầu danh sách. Một hàng cho thấy ai đã tải lên, tên, kích thước và ngày; một hình ảnh có hình thu nhỏ, mọi tập tin khác có loại của nó.',
+    'Các tập tin mới đứng ở đầu danh sách; chỉ các tập tin có dấu sao đứng trên chúng. Một hàng cho thấy ai đã tải lên, tên, kích thước và ngày; một hình ảnh có hình thu nhỏ, mọi tập tin khác có loại của nó.',
   'help.guide.files-upload.result':
     'Tài liệu đã ở trong chuyến đi, và mọi người thấy được chuyến đi đều có thể mở và tải chúng xuống.',
   'help.guide.files-upload.tip.1':
-    'Một tập tin cũng có thể được kéo từ màn hình nền thẳng lên ô đó, và ô sáng lên trong lúc tập tin ở trên nó.',
+    'Một tập tin cũng có thể được kéo từ màn hình nền thẳng lên ô đó, và ô được làm nổi bật trong lúc tập tin ở trên nó.',
   'help.guide.files-upload.tip.2':
     'Một hình ảnh trong bộ nhớ tạm vào danh sách bằng Ctrl+V, nên ảnh chụp màn hình một đặt chỗ không bao giờ phải lưu trước.',
   'help.guide.files-upload.tip.3':
@@ -2382,19 +2382,20 @@ const help: TranslationStrings = {
   // files-link
   'help.guide.files-link.title': 'Buộc một tài liệu vào một địa điểm hoặc một đặt chỗ',
   'help.guide.files-link.goal': 'Làm cho tấm vé tìm được từ chính ngày nó thuộc về, chứ không chỉ từ danh sách này.',
-  'help.guide.files-link.step.1': 'Nhấp “Giao phó”, cây bút chì ở cuối hàng. “Gán tập tin” mở ra, mang tên tập tin đó.',
+  'help.guide.files-link.step.1':
+    'Nhấp cây bút chì ở cuối hàng (“Giao phó”). “Gán tập tin” mở ra, với tên tập tin bên dưới trong phần đầu hộp thoại.',
   'help.guide.files-link.step.2':
-    'Dưới “Ghi chú”, “Thêm ghi chú...” nhận một dòng, và dòng đó sau đấy đứng dưới tên tập tin trong danh sách. Nó được lưu ngay khi bạn rời khỏi ô.',
+    'Dưới “Ghi chú”, “Thêm ghi chú...” nhận một dòng, và dòng đó sau đấy đứng dưới tên tập tin trong danh sách. Nó được lưu khi bạn nhấn Enter hoặc rời khỏi ô.',
   'help.guide.files-link.step.3':
-    'Dưới “Địa điểm” là các địa điểm của chuyến đi, gom theo ngày chúng nằm, với “Chưa được chỉ định” ở cuối cho những địa điểm không thuộc ngày nào. Nhấp vào một cái và nó có dấu tích.',
+    'Dưới “Địa điểm”, ở bên trái, là các địa điểm của chuyến đi, gom theo ngày chúng nằm kèm ngày tháng của ngày đó, và “Chưa được chỉ định” ở cuối cho những địa điểm không thuộc ngày nào. Nhấp vào một cái và nó có dấu tích.',
   'help.guide.files-link.step.4':
-    'Dưới “Đặt chỗ” và “Chuyên chở” là các đặt chỗ của chuyến đi. Nhấp cái mà tài liệu thuộc về; nó cũng có dấu tích của mình.',
+    'Dưới “Đặt chỗ” và “Chuyên chở”, ở bên phải, là các đặt chỗ của chuyến đi. Nhấp cái mà tài liệu thuộc về; nó cũng có dấu tích của mình.',
   'help.guide.files-link.step.5':
-    'Đóng bằng dấu ×. Ở đây không có nút lưu: mỗi cú nhấp đã được ghi ngay lúc bạn thực hiện.',
+    'Đóng bằng dấu × ở góc trên bên phải. Ở đây không có nút lưu: mỗi cú nhấp đã được ghi ngay lúc bạn thực hiện.',
   'help.guide.files-link.result':
-    'Hàng đó mang ghi chú và một huy hiệu cho mỗi liên kết, “Kế hoạch ngày” và tên địa điểm, “Chuyên chở” và tên chuyến bay, và tài liệu cũng treo trên địa điểm và trên chuyến bay.',
+    'Hàng đó mang ghi chú và một huy hiệu cho mỗi liên kết, một cái mang tên địa điểm và một cái mang tên chuyến bay (trỏ vào một huy hiệu sẽ thấy “Kế hoạch ngày” hoặc “Chuyên chở”), và tài liệu cũng treo trên địa điểm và trên chuyến bay.',
   'help.guide.files-link.tip.1':
-    'Một tập tin có thể giữ nhiều liên kết cùng lúc, nên cùng một xác nhận vừa thuộc về khách sạn vừa thuộc về đêm mà nó bao.',
+    'Một tập tin có thể giữ nhiều liên kết cùng lúc, nên cùng một xác nhận có thể đồng thời thuộc về đặt chỗ khách sạn và địa điểm khách sạn.',
   'help.guide.files-link.tip.2': 'Nhấp lại một mục đã có dấu tích sẽ gỡ liên kết đó; bản thân tập tin vẫn còn.',
   'help.guide.files-link.tip.3':
     'Chiều ngược lại cũng vậy: một tài liệu đính kèm vào một địa điểm hoặc vào một đặt chỗ cũng nằm trong danh sách này, với chính huy hiệu ấy trên hàng của nó.',
@@ -2403,22 +2404,22 @@ const help: TranslationStrings = {
   'help.guide.files-star.goal':
     'Rút hai ba tờ giấy bạn thật sự sẽ cần ra khỏi một danh sách cứ dài thêm suốt chuyến đi.',
   'help.guide.files-star.step.1':
-    'Nhấp “Ngôi sao” ở cuối một hàng. Ngôi sao được tô vàng, một ngôi sao thứ hai hiện ra trước tên tập tin, và nút giờ ghi “Bỏ dấu sao”.',
+    'Nhấp ngôi sao ở cuối một hàng (“Ngôi sao”). Ngôi sao được tô vàng kim, một ngôi sao thứ hai hiện ra trước tên tập tin, và trỏ vào nút giờ sẽ thấy “Bỏ dấu sao”.',
   'help.guide.files-star.step.2':
     'Danh sách tự sắp lại: các tập tin có dấu sao đứng trên tất cả những tập tin khác, mới nhất trước trong từng nhóm.',
   'help.guide.files-star.step.3':
-    'Một ngôi sao đã góp mặt cùng các thẻ ở trên, với số tập tin có dấu sao đứng sau nó. Nhấp vào đó để chỉ thấy những tập tin ấy.',
+    'Một ngôi sao đã góp mặt cùng các thẻ lọc trên thanh, ngay sau “Tất cả”, với số tập tin có dấu sao bên cạnh. Nhấp vào đó để chỉ thấy những tập tin ấy.',
   'help.guide.files-star.result':
     'Những tờ giấy bạn cần ở quầy đứng ở đầu danh sách, và một thẻ không hiện gì khác ngoài chúng.',
   'help.guide.files-star.tip.1':
     'Thẻ ngôi sao chỉ tồn tại khi còn có thứ gì đó được đánh dấu sao. Bỏ dấu sao ở tập tin cuối cùng thì thẻ cũng biến mất theo.',
   'help.guide.files-star.tip.2':
-    'Đánh dấu sao được tính là một chỉnh sửa: một thành viên không có quyền “Chỉnh sửa siêu dữ liệu tập tin”, chỉ được đọc tập tin của chuyến đi, thấy các ngôi sao nhưng không đặt được chúng.',
+    'Đánh dấu sao cần cùng quyền với “Giao phó”, là “Chỉnh sửa siêu dữ liệu tập tin”. Một thành viên không có quyền đó vẫn thấy các ngôi sao, nhưng một cú nhấp vào “Ngôi sao” không thay đổi gì với họ.',
   // files-filter
   'help.guide.files-filter.title': 'Tìm một tài liệu trong danh sách',
   'help.guide.files-filter.goal': 'Thu một danh sách có tất cả xuống còn đúng loại giấy tờ bạn đang cần.',
   'help.guide.files-filter.step.1':
-    'Các thẻ phía trên danh sách là “Tất cả”, “PDF”, “Hình ảnh” và “Tài liệu”, mỗi thẻ có số tập tin đứng sau.',
+    'Các thẻ lọc nằm trên thanh ở trên cùng, cạnh “Tập tin”: “Tất cả”, “PDF”, “Hình ảnh” và “Tài liệu”, mỗi thẻ có số tập tin bên cạnh.',
   'help.guide.files-filter.step.2': 'Nhấp “PDF”: danh sách giữ lại các tập tin PDF và không giữ gì khác.',
   'help.guide.files-filter.step.3':
     'Hai thẻ nữa đến rồi đi theo những gì có trong chuyến đi. Nhấp “Ghi chú cộng tác”, thẻ có mặt ngay khi một ghi chú trong thẻ “Cộng tác” mang tệp đính kèm: danh sách chỉ giữ lại những tập tin đó, không gì khác. Một ngôi sao cũng nhập vào hàng theo cách ấy, ngay khi có tập tin được đánh dấu sao.',
@@ -2426,7 +2427,7 @@ const help: TranslationStrings = {
   'help.guide.files-filter.result':
     'Danh sách chỉ hiện đúng thứ mà thẻ đã nêu, và con số trên mỗi thẻ cho biết đó là bao nhiêu.',
   'help.guide.files-filter.tip.1':
-    'Ở đây không có thư mục và không có việc đổi tên: ghi chú trong “Gán tập tin”, các liên kết tới địa điểm và đặt chỗ, cùng ngôi sao, là những thứ dùng để sắp xếp một tài liệu.',
+    'Ở đây không có thư mục và không có việc đổi tên: ghi chú trong “Gán tập tin”, các liên kết tới địa điểm và đặt chỗ, cùng ngôi sao, là cách để bạn phân biệt các tài liệu.',
   'help.guide.files-filter.tip.2':
     'Bản thân danh sách luôn xếp có dấu sao trước, rồi mới nhất trước, nên một tài liệu tải lên hôm nay đứng trên một tài liệu từ tháng trước.',
   // files-preview
@@ -2434,14 +2435,15 @@ const help: TranslationStrings = {
   'help.guide.files-preview.goal':
     'Xem một tấm vé hay một bức ảnh ngay tại chỗ, và đưa nó về máy của bạn khi bạn cần nó ở đó.',
   'help.guide.files-preview.step.1':
-    'Nhấp tên một hình ảnh hoặc hình thu nhỏ của nó. Nó mở toàn màn hình, với tên tập tin và vị trí của nó trong loạt ảnh ở phần đầu.',
+    'Nhấp tên một hình ảnh hoặc hình thu nhỏ của nó. Nó mở toàn màn hình, với tên tập tin và vị trí của nó trong loạt ảnh ở góc trên bên trái.',
   'help.guide.files-preview.step.2':
     'Các mũi tên tròn ở hai bên, phím mũi tên trái và phải cùng dải hình thu nhỏ ở dưới đưa bạn qua mọi hình ảnh mà danh sách đang hiện.',
   'help.guide.files-preview.step.3':
-    '“Mở trong tab mới” và “Tải xuống” nằm ở phần đầu; dấu × hoặc phím Escape đóng hình ảnh lại.',
+    '“Mở trong tab mới” và “Tải xuống” là các nút tròn ở góc trên bên phải, cạnh dấu ×. Dấu ×, phím Escape hoặc một cú nhấp vào nền tối sẽ đóng hình ảnh lại.',
   'help.guide.files-preview.step.4':
-    'Một tài liệu không phải hình ảnh thì thay vào đó mở trong một bản xem trước phủ lên trang, với đúng hai nút ấy ở phần đầu. Cái này đóng bằng dấu × hoặc một cú nhấp bên cạnh nó.',
-  'help.guide.files-preview.step.5': '“Tải xuống” ở cuối một hàng lưu tập tin thẳng về máy của bạn, không mở gì trước.',
+    'Một tài liệu không phải hình ảnh thì thay vào đó mở trong một hộp thoại: tên của nó ở trên cùng, với “Mở trong tab mới” và “Tải xuống” dưới dạng nhãn bên dưới, và với tệp PDF thì chính trang đó ở phía dưới. Dấu × ở góc trên bên phải, phím Escape hoặc một cú nhấp bên cạnh hộp thoại sẽ đóng nó.',
+  'help.guide.files-preview.step.5':
+    'Mũi tên ở cuối một hàng (“Tải xuống”) lưu tập tin thẳng về máy của bạn, không mở gì trước.',
   'help.guide.files-preview.result':
     'Tài liệu đã ở trên màn hình, và chính hai nút đó đưa nó vào một tab trình duyệt hoặc lên ổ đĩa của bạn.',
   'help.guide.files-preview.tip.1': 'Trên màn hình cảm ứng, bạn vuốt qua các hình ảnh thay vì nhấp vào các mũi tên.',
@@ -2453,15 +2455,15 @@ const help: TranslationStrings = {
   'help.guide.files-trash.title': 'Vứt một tài liệu đi, rồi lấy lại',
   'help.guide.files-trash.goal': 'Dọn đi những gì chuyến đi không còn cần, mà không mất thứ gì hóa ra bạn vẫn cần.',
   'help.guide.files-trash.step.1':
-    'Nhấp “Xóa bỏ” ở cuối một hàng. Tập tin rời danh sách ngay lập tức và thông báo ghi “Đã chuyển vào thùng rác”. Không có gì hỏi trước.',
+    'Nhấp thùng rác ở cuối một hàng (“Xóa bỏ”). Tập tin rời danh sách ngay lập tức và thông báo ghi “Đã chuyển vào thùng rác”. Không có gì hỏi trước.',
   'help.guide.files-trash.step.2':
-    '“Rác” ở đầu bên phải thanh công cụ chuyển danh sách sang những gì đã bị vứt đi. Tiêu đề ghi “Rác” và các thẻ lọc biến mất.',
+    'Biểu tượng thùng rác ở đầu bên phải của thanh (“Rác”) chuyển danh sách sang những gì đã bị vứt đi. Tiêu đề của thanh ghi “Rác”, và các thẻ lọc cùng ô tải lên biến mất.',
   'help.guide.files-trash.step.3':
-    'Một hàng đã bị vứt đi thì xám lại và chỉ còn hai nút: “Khôi phục”, đưa tập tin trở lại, và “Xóa bỏ”, gỡ nó đi vĩnh viễn sau một câu hỏi.',
+    'Một hàng đã bị vứt đi thì xám lại và chỉ còn hai biểu tượng: “Khôi phục”, đưa tập tin trở lại, và “Xóa bỏ”, gỡ nó đi vĩnh viễn sau một câu hỏi.',
   'help.guide.files-trash.step.4':
     'Nhấp “Khôi phục”. Thông báo ghi “Đã khôi phục tệp” và hàng đó rời thùng rác, vẫn còn nguyên ghi chú và các liên kết của nó.',
   'help.guide.files-trash.step.5':
-    '“Dọn sạch thùng rác” ở trên cùng xóa vĩnh viễn mọi thứ còn ở đây, và trình duyệt hỏi một lần trước khi làm. “Rác” chuyển trở lại các tập tin.',
+    '“Dọn sạch thùng rác”, trên thanh cạnh biểu tượng thùng rác, xóa vĩnh viễn mọi thứ còn ở đây, và trình duyệt hỏi một lần trước khi làm. Biểu tượng thùng rác chuyển trở lại các tập tin.',
   'help.guide.files-trash.result': 'Tập tin đã trở lại danh sách đúng chỗ cũ, như thể chưa có chuyện gì xảy ra.',
   'help.guide.files-trash.tip.1':
     '“Xóa bỏ” trên một hàng không hỏi trước, và thùng rác là để dành cho đúng việc đó: không gì rời khỏi TREK cho tới khi bạn nói vậy ở trong đây.',
@@ -2473,7 +2475,7 @@ const help: TranslationStrings = {
   'help.guide.files-sync.goal':
     'Gắn chuyến đi với kho tài liệu của riêng bạn, để những gì tải lên ở đây đến được đó và những gì lưu ở đó xuất hiện ở đây.',
   'help.guide.files-sync.step.1':
-    'Nhấp “Đồng bộ tài liệu”, cạnh “Rác” ở đầu bên phải của thanh công cụ. Hộp thoại mở ra với tên chuyến đi dưới tiêu đề. Bên trái, dưới “Kết nối nhà cung cấp”, là các kho mà quản trị viên đã bật, mỗi kho kèm một dòng về cách nó lưu trữ: Paperless-ngx và Papra theo thẻ, Nextcloud và Synology Drive theo thư mục, OpenCloud theo không gian. Bên phải ghi “Chưa kết nối gì”.',
+    'Nhấp “Đồng bộ tài liệu”, cạnh biểu tượng thùng rác ở đầu bên phải của thanh. Hộp thoại mở ra với tên chuyến đi dưới tiêu đề. Bên trái, dưới “Kết nối nhà cung cấp”, là các kho mà quản trị viên đã bật, mỗi kho kèm một dòng về cách nó lưu trữ: Paperless-ngx và Papra theo thẻ, Nextcloud và Synology Drive theo thư mục, OpenCloud theo không gian. Bên phải ghi “Chưa kết nối gì”.',
   'help.guide.files-sync.step.2':
     'Nhấp vào kho của bạn, ở đây là Nextcloud. Một hộp thoại nhỏ hơn mở ra cho kết nối, mang tên kho và hỏi những thông tin mà kho đó dùng để đăng nhập.',
   'help.guide.files-sync.step.3':
@@ -2483,15 +2485,15 @@ const help: TranslationStrings = {
   'help.guide.files-sync.step.5':
     'Nhấp “Kết nối”. Kết nối được lưu cùng chuyến đi và TREK hỏi chuyến đi nên nằm ở đâu trong kho: thẻ, thư mục hay không gian chứa tài liệu của nó. Chỉ những gì nằm trong đó được đồng bộ. “Tạo mục mới” tạo nó khi nhấn “Tạo”, với tên điền sẵn từ tiêu đề chuyến đi; dưới “Hoặc dùng mục bạn đã có” là các mục đã có sẵn. Nhấp một mục, ở đây là thư mục Autumn in Japan.',
   'help.guide.files-sync.step.6':
-    'Hộp thoại trở lại: kho của bạn đứng dưới “Chuyến đi này” ở bên trái, và thẻ của nó ở bên phải cho biết nơi nó đồng bộ tới, lần chạy gần nhất và “Đồng bộ ngay”. Lần chạy đầu tiên tự bắt đầu; “Đồng bộ ngay” chạy một lần bất cứ khi nào bạn muốn. Khi một lần chạy xong, huy hiệu “Chưa đồng bộ” cạnh tên nhường chỗ cho một chấm xanh lá, “Đã đồng bộ” khi bạn trỏ vào, và thanh luồng đếm số tài liệu mà TREK và kho mỗi bên đang giữ, với các làn “Gửi ra kho” và “Nhận từ kho” ở giữa. Đóng hộp thoại bằng dấu ×.',
+    'Hộp thoại trở lại: kho của bạn đứng dưới “Chuyến đi này” ở bên trái, và thẻ của nó ở bên phải cho biết nơi nó đồng bộ tới, lần chạy gần nhất và “Đồng bộ ngay”. Lần chạy đầu tiên tự bắt đầu; “Đồng bộ ngay” chạy một lần bất cứ khi nào bạn muốn. Khi một lần chạy xong, huy hiệu “Chưa đồng bộ” cạnh tên nhường chỗ cho một chấm xanh lá, “Đã đồng bộ” khi bạn trỏ vào, và thanh luồng đếm số tài liệu mà TREK và kho mỗi bên đang giữ, với các làn “Gửi ra kho” và “Nhận từ kho” ở giữa. Đóng hộp thoại bằng dấu × ở góc trên bên phải.',
   'help.guide.files-sync.result':
-    'Những tài liệu đã có sẵn ở đó đứng đầu danh sách, được tải lên dưới tên bạn, và mọi tài liệu của chuyến đi cũng đã ở trong kho. Từ giờ TREK kiểm tra kho ở nền và kho theo sát danh sách.',
+    'Những tài liệu đã có sẵn ở đó đứng đầu danh sách, được tải lên dưới tên bạn, và mọi tài liệu của chuyến đi cũng đã ở trong kho, trừ những tài liệu đến từ “Ghi chú cộng tác”. Từ giờ TREK kiểm tra kho ở nền và kho theo sát danh sách.',
   'help.guide.files-sync.tip.1':
-    'Chỉ chủ chuyến đi hoặc quản trị viên của máy chủ mới gắn được một chuyến đi, vì thông tin đăng nhập chạm tới toàn bộ tài khoản đó trong kho. Mọi thành viên đều có thể mở “Đồng bộ tài liệu”, đọc thẻ và nhấn “Đồng bộ ngay”.',
+    'Chỉ chủ chuyến đi hoặc quản trị viên của máy chủ mới gắn được một chuyến đi, vì thông tin đăng nhập chạm tới toàn bộ tài khoản đó trong kho. Mọi thành viên đều thấy “Đồng bộ tài liệu” khi chuyến đi đã được gắn, và có thể mở nó, đọc thẻ và nhấn “Đồng bộ ngay”.',
   'help.guide.files-sync.tip.2':
     'Một kho trên mạng riêng của bạn cần ALLOW_INTERNAL_NETWORK=true trên máy chủ TREK, và địa chỉ của nó phải là địa chỉ của máy trong mạng, không bao giờ là localhost. Không có vậy, “Kiểm tra kết nối” trả lời “Địa chỉ đó không được phép.”',
   'help.guide.files-sync.tip.3':
-    '“Ngắt kết nối” trên thẻ chấm dứt ghép nối và giữ mọi tài liệu ở cả hai bên. Một thẻ, thư mục hay không gian được gắn lần thứ hai được coi là mới, và mọi thứ trong đó lại đi vào lần nữa, nên sau một lần “Ngắt kết nối” hãy gắn một mục trống thay vì mục cũ.',
+    '“Ngắt kết nối”, biểu tượng cạnh “Đồng bộ ngay”, hỏi một lần, rồi chấm dứt ghép nối và giữ mọi tài liệu ở cả hai bên. Một thẻ, thư mục hay không gian được gắn lần thứ hai được coi là mới, và mọi thứ trong đó lại đi vào lần nữa, nên sau một lần “Ngắt kết nối” hãy gắn một mục trống thay vì mục cũ.',
 
   // ── Screen: trip-day-detail ───────────────────────────────────────────────────────────
   'help.ctx.trip-day-detail.title': 'Chi tiết ngày',
@@ -2577,7 +2579,7 @@ const help: TranslationStrings = {
     'Chọn chỗ nghỉ từ các địa điểm của chuyến đi. “Loại” phía trên danh sách thu hẹp nó về một danh mục.',
   'help.guide.add-accommodation.step.6': 'Nhấp “Lưu”.',
   'help.guide.add-accommodation.result':
-    'Kỳ nghỉ hiện trên mọi ngày nó phủ, “Nhận phòng” ở ngày đầu và “Trả phòng” ở ngày cuối. Chỗ nghỉ trở thành một điểm dừng trên ngày nhận phòng, nên bản đồ vẽ đường tới đó, và một đặt chỗ “Chỗ ở” xuất hiện trong tab “Đặt chỗ”.',
+    'Kỳ nghỉ hiện trên mọi ngày nó phủ, “Nhận phòng” ở ngày đầu và “Trả phòng” ở ngày cuối. Chỗ nghỉ trở thành một điểm dừng trên ngày nhận phòng, nên bản đồ vẽ đường tới đó, và một đặt chỗ “Chỗ ở” xuất hiện trên tab “Đặt”.',
   'help.guide.add-accommodation.tip.1':
     'Bộ chọn mở ở ngày bạn vừa rời, với trả phòng vào ngày kế tiếp; cả hai đều có thể dời trước khi bạn lưu.',
   'help.guide.add-accommodation.tip.2':
@@ -2597,7 +2599,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.5':
     'Dấu X cạnh cây bút chì kết thúc kỳ nghỉ. Nó không hỏi gì, và đặt chỗ “Chỗ ở” thuộc về nó cũng đi theo.',
   'help.guide.edit-accommodation.result':
-    'Thay đổi tới mọi ngày mà kỳ nghỉ phủ cùng một lúc, và tới cả đặt chỗ “Chỗ ở” trong tab “Đặt chỗ”.',
+    'Thay đổi tới mọi ngày mà kỳ nghỉ phủ cùng một lúc, và tới cả đặt chỗ “Chỗ ở” trên tab “Đặt”.',
   'help.guide.edit-accommodation.tip.1':
     'Một đêm ở giữa kỳ nghỉ không mang nhãn “Nhận phòng” lẫn “Trả phòng”: chỉ ngày đầu và ngày cuối của khoảng mới có.',
   'help.guide.edit-accommodation.tip.2':
@@ -2612,11 +2614,11 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Màu sắc cho biết một đặt chỗ đang ở đâu: hàng màu xanh lá là đã xác nhận, hàng màu hổ phách là chưa giải quyết. Khách sạn không nằm trong danh sách này, chúng có khối riêng ở bên dưới.',
   'help.guide.day-bookings.step.4':
-    'Nhấp vào một hàng và đặt chỗ mở ra. “Chỉnh sửa” ở chân nó dùng để thay đổi; đặt chỗ mới được tạo trong tab “Đặt chỗ”.',
+    'Nhấp vào một hàng và đặt chỗ mở ra. “Chỉnh sửa” ở chân nó dùng để thay đổi; đặt chỗ mới được tạo trên tab “Đặt”.',
   'help.guide.day-bookings.result':
     'Mọi thứ ghi ngày vào ngày đó, và mọi thứ treo trên một trong các điểm dừng của nó, đều nằm trong danh sách duy nhất này.',
   'help.guide.day-bookings.tip.1':
-    'Một đặt chỗ rơi vào một ngày theo ngày tháng của chính nó. Đổi ngày trong tab “Đặt chỗ” và nó tự chuyển sang ngày kia.',
+    'Một đặt chỗ rơi vào một ngày theo ngày tháng của chính nó. Đổi ngày trên tab “Đặt” và nó tự chuyển sang ngày kia.',
   'help.guide.day-bookings.tip.2':
     'Không có khối “Đặt chỗ” nghĩa là ngày đó không có đặt chỗ nào: nó bị ẩn đi thay vì hiện ra trống.',
 
@@ -2625,30 +2627,32 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.summary':
     'Phần giữa của kế hoạch: mọi địa điểm của chuyến đi dưới dạng ghim, các tuyến nối chúng lại, và các nút dọc theo mép bản đồ cho vệ tinh, cho toàn bộ chuyến đi cùng lúc và cho những địa điểm quanh khu phố bạn đang xem.',
   'help.ctx.trip-map.bullet.1':
-    'Một ghim là một địa điểm: ảnh riêng của nó nếu có, nếu không thì màu danh mục cùng biểu tượng danh mục. Đưa con trỏ lên một ghim để có một thẻ với tên và địa chỉ của nó, thêm danh mục và đánh giá ở những địa điểm có mang chúng. Kéo một ghim lên thẻ của một ngày để lên kế hoạch cho địa điểm vào ngày đó.',
+    'Một ghim là một địa điểm: ảnh riêng của nó nếu có, nếu không thì màu danh mục cùng biểu tượng danh mục. Đưa con trỏ lên một ghim để có một thẻ với hình ảnh, tên và địa chỉ của nó, thêm đánh giá và danh mục ở những địa điểm có mang chúng. Kéo một ghim lên thẻ của một ngày để lên kế hoạch cho địa điểm vào ngày đó.',
   'help.ctx.trip-map.bullet.2':
     'Những ghim quá gần nhau đến mức không phân biệt được sẽ gộp vào một bong bóng sẫm màu kèm một con số. Nhấp vào bong bóng và bản đồ phóng tới những gì bên trong.',
   'help.ctx.trip-map.bullet.3':
-    'Nhấp một ghim để mở địa điểm bên dưới bản đồ, với đánh giá, “Tập tin” và những gì có thể làm tiếp với nó; nhấp vào một chỗ trống của bản đồ để thả nó ra.',
+    'Nhấp một ghim để mở địa điểm trong một thẻ ở chân bản đồ, với đánh giá, “Tập tin” và những gì có thể làm tiếp với nó; nhấp vào một chỗ trống của bản đồ để thả nó ra.',
   'help.ctx.trip-map.bullet.4':
-    'Khi một ngày đang mở trong cột các ngày, các điểm dừng của nó mang một phù hiệu trắng nhỏ ghi số thứ tự trong ngày đó, và một địa điểm được lên kế hoạch cho hai ngày mang cả hai số, nối với nhau bằng ·.',
+    'Khi một ngày đang mở trong cột các ngày, các điểm dừng của nó mang một phù hiệu trắng nhỏ ghi số thứ tự trong ngày đó, và một địa điểm xuất hiện hai lần trong ngày mang cả hai số của nó.',
   'help.ctx.trip-map.bullet.5':
     'Hàng biểu tượng ở trên cùng tìm trong phần bản đồ bạn đang thấy: “Nhà hàng”, “Quán cà phê”, “Quán bar & cuộc sống về đêm”, “Chỗ ở”, “Điểm tham quan”, “Bảo tàng & văn hóa”, “Thiên nhiên & công viên” và “Các hoạt động”. “Tìm kiếm khu vực này” chạy lại sau khi bạn di chuyển bản đồ.',
   'help.ctx.trip-map.bullet.6':
     'Nhấp chuột phải ở bất cứ đâu trên bản đồ để mở biểu mẫu địa điểm tại điểm đó, với địa chỉ đã được tra sẵn. Nút tròn ở góc dưới bên trái đổi bản đồ vẽ lấy ảnh chụp từ trên không.',
   'help.ctx.trip-map.bullet.7':
-    '“Hiện toàn bộ chuyến đi” ở góc dưới bên phải vẽ mọi ngày di chuyển cùng lúc và liệt kê mỗi ngày đi qua những gì; biểu tượng tuyến trên hàng của một đặt chỗ vẽ đặt chỗ đó, còn biểu tượng trên thanh công cụ phía trên các ngày vẽ tất cả.',
+    '“Hiện toàn bộ chuyến đi” ở góc dưới bên phải vẽ mọi ngày di chuyển cùng lúc và liệt kê mỗi ngày đi qua những gì; biểu tượng tuyến trên hàng của một đặt chỗ vẽ đặt chỗ đó, còn biểu tượng trên thanh công cụ phía trên các ngày vẽ tất cả. Nhấp vào một đầu của đặt chỗ đã vẽ để mở chi tiết của nó.',
+  'help.ctx.trip-map.bullet.8':
+    'Khi tiện ích Dawarich đang bật, nút Dawarich tròn bên dưới “Hiện toàn bộ chuyến đi” vẽ lộ trình mà điện thoại của bạn thực sự đã ghi lại: “Hiện lộ trình đã ghi” đặt nó dưới dạng nét đứt bên dưới lộ trình đã lên kế hoạch, mỗi ngày một màu, và nhãn của nút cho biết vì sao không có đường nào khi không có.',
   // map-markers
   'help.guide.map-markers.title': 'Đọc bản đồ',
   'help.guide.map-markers.goal': 'Biết mỗi ghim, phù hiệu và bong bóng trên bản đồ đang nói gì với bạn.',
   'help.guide.map-markers.step.1':
     'Bản đồ chứa mọi địa điểm của chuyến đi. Ở nơi các ghim nằm quá gần nhau đến mức không phân biệt được, chúng gộp vào một bong bóng sẫm màu mang con số bên trong; nhấp vào bong bóng thì bản đồ phóng tới những gì đã ở trong đó, còn ở mức phóng sâu nhất thì xòe các ghim ra.',
   'help.guide.map-markers.step.2':
-    'Một ghim là ảnh riêng của địa điểm nếu có, nếu không thì màu danh mục cùng biểu tượng danh mục. Đưa con trỏ lên một ghim và một thẻ cho biết tên và địa chỉ của nó, cùng danh mục và đánh giá ở những địa điểm có mang chúng.',
+    'Một ghim là ảnh riêng của địa điểm nếu có, nếu không thì màu danh mục cùng biểu tượng danh mục. Đưa con trỏ lên một ghim và một thẻ mở ra bên cạnh nó: cùng tấm ảnh đó nhưng lớn hơn, tên và địa chỉ, cùng đánh giá và danh mục ở những địa điểm có mang chúng.',
   'help.guide.map-markers.step.3':
-    'Nhấp một ghim và địa điểm mở ra trong một thẻ bên dưới bản đồ: tọa độ, đánh giá, “Tập tin”, và dọc phía dưới là những việc làm tiếp với nó, trong đó có “Điều hướng”, “Chỉnh sửa” và “Xóa bỏ”, cùng “Thêm vào ngày” khi đang mở một ngày. Nhấp vào một chỗ trống của bản đồ để thả nó ra.',
+    'Nhấp một ghim và địa điểm mở ra trong một thẻ ở chân bản đồ: hình ảnh, tên và địa chỉ ở phần đầu thẻ, rồi đến các ngôi sao, phần mô tả và “Tập tin”, và dọc phía dưới là những việc làm tiếp với nó, trong đó có “Điều hướng”, “Lưu vào Bộ sưu tập” (“Đã lưu” khi địa điểm đã ở trong một bộ sưu tập), “Chỉnh sửa” và “Xóa bỏ”, và khi đang mở một ngày thì có “Thêm vào ngày”, hoặc “Xóa khỏi ngày” khi địa điểm đã có trong ngày đó. Dấu X ở phần đầu thẻ, hoặc một cú nhấp vào chỗ trống của bản đồ, sẽ đóng nó lại.',
   'help.guide.map-markers.step.4':
-    'Mở một ngày trong cột các ngày và các điểm dừng của nó được đánh số: phù hiệu trắng nhỏ ở góc ghim là vị trí của điểm dừng đó trong ngày. Một địa điểm được lên kế hoạch cho hai ngày mang cả hai số, nối với nhau bằng ·. Không có ngày nào đang mở thì không có số, và góc ghim mang đánh giá thay vào đó.',
+    'Mở một ngày trong cột các ngày và các điểm dừng của nó được đánh số: phù hiệu trắng nhỏ ở góc ghim là vị trí của điểm dừng đó trong ngày. Một địa điểm xuất hiện hai lần trong ngày mang cả hai số của nó. Không có ngày nào đang mở thì không có số, và góc ghim mang đánh giá của địa điểm thay vào đó, nếu địa điểm có đánh giá.',
   'help.guide.map-markers.step.5':
     'Kéo một ghim khỏi bản đồ lên thẻ của một ngày trong cột các ngày và địa điểm được lên kế hoạch cho ngày đó, y như khi kéo hàng của nó ra khỏi danh sách địa điểm.',
   'help.guide.map-markers.result':
@@ -2670,11 +2674,11 @@ const help: TranslationStrings = {
   'help.guide.map-nearby-places.step.3':
     'Di chuyển bản đồ và một nút thứ hai xuất hiện dưới hàng đó: “Tìm kiếm khu vực này” chạy đúng tìm kiếm ấy cho khung nhìn mới. Chỉ di chuyển thôi thì không bao giờ tìm lại, nhờ vậy số lượt yêu cầu được giữ thấp.',
   'help.guide.map-nearby-places.step.4':
-    'Các ghim mang tên của thứ chúng tìm thấy. Nhấp một ghim và biểu mẫu địa điểm mở ra, đã được điền sẵn từ đó: “Tên”, “Địa chỉ”, “Vĩ độ” và “Kinh độ”, cùng trang web và số điện thoại ở những nơi OpenStreetMap có chúng.',
+    'Đưa con trỏ lên một ghim để xem tên của thứ nó tìm thấy. Nhấp vào ghim và biểu mẫu địa điểm mở ra, đã được điền sẵn từ đó: tên ở phần đầu hộp thoại, “Địa chỉ”, “Vĩ độ” và “Kinh độ”, cùng “Trang web” ở những nơi tìm kiếm tìm được một trang.',
   'help.guide.map-nearby-places.step.5':
-    'Kiểm tra những gì đã được điền và bổ sung những gì tìm kiếm không thể biết: một “Miêu tả”, một “Loại”, những ghi chú của riêng bạn.',
+    'Kiểm tra những gì đã được điền và bổ sung những gì tìm kiếm không thể biết: một danh mục từ nhãn dưới tên, nhãn này ghi “Không có danh mục” cho đến khi bạn chọn, một “Miêu tả”, những ghi chú của riêng bạn.',
   'help.guide.map-nearby-places.step.6':
-    'Nhấp “Thêm”. Nếu một địa điểm cùng tên đã có trong chuyến đi, biểu mẫu sẽ nói vậy và nút đổi thành “Vẫn thêm”.',
+    'Nhấp “Thêm”. Nếu một địa điểm cùng tên hoặc ở cùng vị trí đã có trong chuyến đi, TREK sẽ nói vậy và nút đổi thành “Vẫn thêm”.',
   'help.guide.map-nearby-places.result':
     'Địa điểm nằm trong danh sách địa điểm và trên bản đồ như một trong những ghim của chính chuyến đi, dưới “Không có kế hoạch” cho đến khi bạn đặt nó vào một ngày. Các ghim tìm kiếm còn đó cho đến khi bạn tắt danh mục.',
   'help.guide.map-nearby-places.tip.1':
@@ -2687,11 +2691,11 @@ const help: TranslationStrings = {
   'help.guide.map-add-place.title': 'Tạo một địa điểm bằng cách nhấp chuột phải lên bản đồ',
   'help.guide.map-add-place.goal': 'Đặt một địa điểm đúng nơi bạn muốn, mà không cần tìm nó trước.',
   'help.guide.map-add-place.step.1':
-    'Nhấp chuột phải vào điểm bạn muốn trên bản đồ. Biểu mẫu địa điểm mở ra, với tiêu đề “Thêm địa điểm/Hoạt động”.',
+    'Nhấp chuột phải vào điểm bạn muốn trên bản đồ. Biểu mẫu địa điểm mở ra, với phần đầu ghi “Thêm địa điểm/Hoạt động”.',
   'help.guide.map-add-place.step.2':
-    '“Vĩ độ” và “Kinh độ” đã sẵn ở điểm đó, và TREK tra tọa độ rồi điền “Địa chỉ” từ những gì nó tìm thấy ở đó, và điền cả “Tên” khi việc tra cứu có tên để đưa ra. Chưa có gì được ghi lại, nên hãy ghi đè lên bất cứ chỗ nào sai.',
+    '“Vĩ độ” và “Kinh độ” đã sẵn ở điểm đó, và TREK tra tọa độ rồi điền “Địa chỉ” từ những gì nó tìm thấy ở đó, và điền cả tên ở phần đầu hộp thoại khi việc tra cứu có tên để đưa ra. Chưa có gì được lưu, nên hãy ghi đè lên bất cứ chỗ nào sai.',
   'help.guide.map-add-place.step.3':
-    'Đặt cho nó một “Tên” mà bạn sẽ nhận ra, và phần còn lại mà kế hoạch nên biết: “Miêu tả”, “Ghi chú”, “Loại”, “Trang web”.',
+    'Gõ một cái tên mà bạn sẽ nhận ra vào phần đầu hộp thoại, chọn một danh mục từ nhãn bên dưới nó, nhãn này ghi “Không có danh mục” cho đến khi bạn chọn, và thêm phần còn lại mà kế hoạch nên biết: “Miêu tả”, “Ghi chú”, “Trang web”.',
   'help.guide.map-add-place.step.4':
     'Nhấp “Thêm”. Địa điểm rơi vào danh sách ở trạng thái chưa có kế hoạch ngay cả khi một ngày đang mở: nhấp chuột phải trên bản đồ nói ở đâu, chứ không nói khi nào.',
   'help.guide.map-add-place.result':
@@ -2718,11 +2722,11 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.goal':
     'Đổi một ngày đang mở lấy mọi ngày di chuyển của chuyến đi, và đọc mỗi ngày đi xa đến đâu.',
   'help.guide.map-whole-trip.step.1':
-    'Nút tròn “Hiện toàn bộ chuyến đi” nằm ở góc dưới bên phải bản đồ. Nhấp vào nút và mọi ngày di chuyển của chuyến đi được vẽ cùng lúc, mỗi ngày một màu riêng trên nền viền trắng, nên các ngày kề nhau vẫn tách bạch.',
+    'Nút tròn “Hiện toàn bộ chuyến đi” nằm ở góc dưới bên phải bản đồ. Nhấp vào nút và mọi ngày di chuyển của chuyến đi được vẽ cùng lúc, mỗi ngày một màu riêng, nên các ngày kề nhau vẫn tách bạch.',
   'help.guide.map-whole-trip.step.2':
     'Thẻ phía trên nút liệt kê những ngày đó: một chấm màu, tên ngày, một biểu tượng cho mỗi cách bạn di chuyển trong ngày, và quãng đường ngày đó đi qua. “Tổng quãng đường” ở trên cùng.',
   'help.guide.map-whole-trip.step.3':
-    'Nhấp một ngày trong thẻ để chọn nó, giống như chọn nó trong cột các ngày: bản đồ đóng khung ngày đó, và các điểm dừng của nó có lại số thứ tự.',
+    'Nhấp một ngày trong thẻ để chọn nó: hàng của nó được tô nền và ngày đó mở ra trong cột các ngày. Lăn bánh xe chuột trên một thành phố để phóng to, và các ngày đi qua đó nằm cạnh nhau, mỗi ngày mang màu của nó.',
   'help.guide.map-whole-trip.step.4': 'Nút giờ ghi “Ẩn toàn bộ chuyến đi”. Nhấn nó để trở về một ngày đang mở.',
   'help.guide.map-whole-trip.result':
     'Mọi ngày di chuyển được vẽ bằng màu riêng, và thẻ cho biết mỗi ngày đi qua những gì và cả chuyến đi cộng lại là bao nhiêu.',
@@ -2731,17 +2735,17 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.tip.2':
     'Một chặng mà bộ định tuyến từ chối sẽ vẫn là một đường thẳng và không được tính, và thẻ nói rõ điều đó thay vì lặng lẽ hiển thị thấp hơn thực tế.',
   'help.guide.map-whole-trip.tip.3':
-    'Một ngày có ít hơn hai điểm dừng đã xác định vị trí thì không có tuyến nào để vẽ, nên nó bị bỏ hẳn khỏi thẻ.',
+    'Một ngày không có gì để nối, tức là có ít hơn hai điểm dừng đã xác định vị trí và không có chặng lái xe tới hay từ khách sạn của nó, thì không có tuyến nào để vẽ, nên nó bị bỏ hẳn khỏi thẻ.',
   // map-booking-routes
   'help.guide.map-booking-routes.title': 'Hiện lộ trình của một đặt chỗ trên bản đồ',
   'help.guide.map-booking-routes.goal':
     'Vẽ lên bản đồ các chuyến bay, chuyến tàu và chặng lái xe bạn đã đặt, rồi gỡ chúng đi.',
   'help.guide.map-booking-routes.step.1':
-    'Lộ trình đặt chỗ tắt cho đến khi bạn yêu cầu một cái. Trên hàng của một đặt chỗ trong cột các ngày có một biểu tượng tuyến nhỏ: “Hiển thị lộ trình đặt vé”.',
+    'Lộ trình đặt chỗ tắt cho đến khi bạn yêu cầu một cái. Ở đầu bên phải hàng của một phương tiện trong cột các ngày có một biểu tượng tuyến nhỏ: “Hiển thị lộ trình đặt vé”.',
   'help.guide.map-booking-routes.step.2':
     'Nhấp vào nó. Đặt chỗ hiện lên trên bản đồ: chuyến bay là một cung vòng tròn lớn, chặng lái xe bám theo đường thật, chuyến tàu là chuỗi các ga của nó. “Đã xác nhận” được vẽ liền nét, “Chưa giải quyết” vẽ nét đứt, và hai đầu của lộ trình là những viên thuốc màu xanh mang biểu tượng phương tiện.',
   'help.guide.map-booking-routes.step.3':
-    'Nhấp một viên thuốc ở đầu tuyến và đặt chỗ phía sau nó mở ra, với giờ giấc, “Mã đặt chỗ” và “Vị trí / Địa chỉ”. “Đóng” cất nó đi.',
+    'Nhấp một viên thuốc ở đầu tuyến và chi tiết của đặt chỗ mở ra: trạng thái, loại và các ngày dưới dạng nhãn ở phần đầu được tô màu, giờ ở cả hai đầu, phần còn lại bên dưới, và ở chân là “Trên bản đồ”, nút tắt lại lộ trình này, thùng rác xóa đặt chỗ, và “Chỉnh sửa”. Dấu X ở phần đầu đóng chi tiết lại.',
   'help.guide.map-booking-routes.step.4':
     'Biểu tượng tuyến trên thanh công cụ phía trên các ngày làm việc đó cho cả chuyến đi cùng lúc: “Hiển thị tất cả lộ trình đặt chỗ” vẽ mọi đặt chỗ có lộ trình.',
   'help.guide.map-booking-routes.step.5':
@@ -2754,8 +2758,6 @@ const help: TranslationStrings = {
     '“Luôn hiển thị tuyến đường đặt chỗ”, trong cùng phần cài đặt đó, vẽ chúng ngay từ đầu trên mọi chuyến đi bạn chưa quyết định.',
   'help.guide.map-booking-routes.tip.3':
     'Một đặt chỗ cần hai đầu có tọa độ trước khi có thể được vẽ, nên một khách sạn hay một nhà hàng không mang biểu tượng tuyến.',
-  'help.ctx.trip-map.bullet.8':
-    'Khi tiện ích Dawarich đang bật, nút Dawarich tròn bên dưới “Hiện toàn bộ chuyến đi” vẽ lộ trình mà điện thoại của bạn thực sự đã ghi lại: “Hiện lộ trình đã ghi” đặt nó dưới dạng nét đứt bên dưới lộ trình đã lên kế hoạch, mỗi ngày một màu, và nhãn của nút cho biết vì sao không có đường nào khi không có.',
   // map-dawarich-trail
   'help.guide.map-dawarich-trail.title': 'Hiện lộ trình bạn đã thực sự đi',
   'help.guide.map-dawarich-trail.goal':
@@ -2789,57 +2791,61 @@ const help: TranslationStrings = {
   // ── Screen: trip-collab ───────────────────────────────────────────────────────────────
   'help.ctx.trip-collab.title': 'Cộng tác',
   'help.ctx.trip-collab.summary':
-    'Tab nơi cả nhóm cùng lên kế hoạch: “Trò chuyện” ở bên trái, “Ghi chú” và “Liên kết” dùng chung bên cạnh, “Thăm dò ý kiến” ở dưới và “Tiếp theo là gì” ở cuối. Mọi thứ viết ở đây đều có mặt trên màn hình của mọi thành viên khác ngay lập tức, không cần tải lại.',
+    'Tab nơi cả nhóm cùng lên kế hoạch, trong năm thẻ: “Trò chuyện” ở bên trái, “Ghi chú” và “Liên kết” bên cạnh, “Thăm dò ý kiến” và “Tiếp theo là gì” ở dưới chúng. Mọi thứ viết ở đây đều có mặt trên màn hình của mọi thành viên khác ngay lập tức, không cần tải lại.',
   'help.ctx.trip-collab.bullet.1':
-    '“Trò chuyện” là cột bên trái. Viết vào “Nhập tin nhắn...” rồi nhấn Enter; Shift và Enter tạo một dòng mới. Mặt cười thêm một biểu tượng cảm xúc, “Đính kèm ảnh” treo tối đa bốn tấm ảnh lên tin nhắn.',
+    '“Trò chuyện” là thẻ bên trái. Viết vào “Nhập tin nhắn...” rồi nhấn Enter; Shift và Enter tạo một dòng mới. Mặt cười thêm một biểu tượng cảm xúc, “Đính kèm ảnh” treo tối đa bốn tấm ảnh lên tin nhắn.',
   'help.ctx.trip-collab.bullet.2':
-    'Rê chuột lên một tin nhắn để có “Hồi đáp” và, với tin nhắn của chính bạn, “Xóa bỏ”; nhấp chuột phải để có tám phản ứng nhanh. Một tin nhắn đã xóa để lại một dòng ghi “đã xóa một tin nhắn”.',
+    'Rê chuột lên một tin nhắn để có “Hồi đáp” và, với tin nhắn của chính bạn, “Xóa bỏ”; nhấp chuột phải để có tám phản ứng nhanh. Một tin nhắn đã xóa để lại một dòng cho biết ai đã xóa nó.',
   'help.ctx.trip-collab.bullet.3':
-    '“Ghi chú” là tập giấy dùng chung: “Ghi chú mới” viết một tờ, và bánh răng bên cạnh mở “Quản lý danh mục” để đặt tên và màu cho chúng. Một thẻ mang “Mở rộng”, “Ghim”, “Chỉnh sửa” và “Xóa bỏ”.',
+    '“Ghi chú” là tập giấy dùng chung: “Ghi chú mới” ở phần đầu thẻ viết một tờ, và bánh răng bên cạnh mở “Quản lý danh mục” để đặt tên và màu cho chúng. Một thẻ ghi chú hiện danh mục của nó dưới dạng một chấm màu và liên kết của nó dưới dạng một nút tròn, và ba chấm của nó (“Tùy chọn khác”) chứa “Mở rộng”, “Ghim”, “Chỉnh sửa” và “Xóa bỏ”.',
   'help.ctx.trip-collab.bullet.4':
     '“Liên kết” gom những địa chỉ mà chuyến đi dựa vào. “Thêm liên kết” nhận một tiêu đề và một địa chỉ http hoặc https; “Chỉnh sửa liên kết”, “Ghim liên kết” và “Xóa liên kết” nằm ở đuôi chip, và những liên kết đã ghim ở lại phía trước.',
   'help.ctx.trip-collab.bullet.5':
-    '“Thăm dò ý kiến” quyết định mọi chuyện. “Cuộc thăm dò mới” đặt một câu hỏi với ít nhất hai tùy chọn; một cú nhấp vào một tùy chọn là lá phiếu của bạn, “Đóng” kết thúc việc bỏ phiếu và “Xóa bỏ” gỡ cuộc thăm dò đi.',
+    '“Thăm dò ý kiến” quyết định mọi chuyện. “Cuộc thăm dò mới” đặt một câu hỏi với ít nhất hai tùy chọn; một cú nhấp vào một tùy chọn là lá phiếu của bạn, còn ổ khóa (“Đóng”) và thùng rác (“Xóa bỏ”) ở bên phải phần đầu một cuộc thăm dò kết thúc việc bỏ phiếu hoặc gỡ cuộc thăm dò đi.',
   'help.ctx.trip-collab.bullet.6':
     '“Tiếp theo là gì” liệt kê các điểm dừng của chuyến đi còn ở phía trước, nhiều nhất là tám, cùng giờ giấc và những người có mặt ở đó. Nó chỉ đọc kế hoạch ngày; giờ giấc được đặt ở đó.',
   // write-note
   'help.guide.write-note.title': 'Viết một ghi chú chung',
   'help.guide.write-note.goal':
     'Đặt những gì cả nhóm cần, một quy định, một địa chỉ, một lời nhắc, vào nơi ai cũng tìm lại được.',
-  'help.guide.write-note.step.1': 'Nhấp “Ghi chú mới” ở đầu bảng “Ghi chú”. Biểu mẫu mở ra.',
+  'help.guide.write-note.step.1':
+    'Nhấp “Ghi chú mới” ở phần đầu thẻ “Ghi chú”. Hộp thoại ghi chú mở ra, với con trỏ đã nằm sẵn ở phần đầu của nó.',
   'help.guide.write-note.step.2':
-    '“tiêu đề ghi chú” là cái tên mà thẻ mang. Đó là thứ duy nhất biểu mẫu bắt buộc: “Tạo nên” vẫn xám cho tới khi có gì đó trong đó.',
+    'Gõ tiêu đề vào chỗ ghi “tiêu đề ghi chú”, ở phần đầu hộp thoại. Đó là thứ duy nhất hộp thoại bắt buộc: “Tạo nên” vẫn bị làm xám cho tới khi có gì đó trong đó, và Enter trong ô tiêu đề tạo ghi chú ngay lập tức.',
   'help.guide.write-note.step.3':
-    'Ô lớn bên dưới chứa phần chữ và nhận Markdown: một từ in đậm, một danh sách, một tiêu đề. Thẻ hiện vài dòng đầu, và “Mở rộng” trên đó mở toàn bộ ghi chú.',
+    '“Nội dung” chứa phần chữ và nhận Markdown: một từ in đậm, một danh sách, một tiêu đề. Thẻ hiện ba dòng đầu, và “Mở rộng” trong menu của thẻ mở toàn bộ ghi chú.',
   'help.guide.write-note.step.4':
-    'Dưới “Loại”, chọn loại mà ghi chú thuộc về; màu của nó trở thành màu của thẻ. Những viên thuốc là các danh mục đã có, còn danh mục mới được tạo trong “Quản lý danh mục”.',
+    'Dưới “Loại”, chọn loại mà ghi chú thuộc về; màu của nó tô phần đầu hộp thoại ngay bây giờ và phần đầu thẻ về sau. Những viên thuốc là các danh mục đã có, còn danh mục mới được tạo trong “Quản lý danh mục”.',
   'help.guide.write-note.step.5':
-    '“Trang web” nhận một liên kết thuộc về ghi chú. Khi đó thẻ mang một ô Link để mở nó.',
-  'help.guide.write-note.step.6': 'Nhấp “Tạo nên”.',
+    '“Trang web” nhận một liên kết thuộc về ghi chú. Khi đó thẻ mang một nút liên kết tròn ở phần đầu để mở nó.',
+  'help.guide.write-note.step.6':
+    'Nhấp “Tạo nên”. Chỉ có “Hủy” và dấu nhân của hộp thoại mới đóng được nó, nên một cú nhấp lạc ra bên cạnh hay phím Esc không làm mất những gì bạn đã viết.',
   'help.guide.write-note.result':
-    'Ghi chú là một thẻ trong bảng “Ghi chú”, mang màu của danh mục, và đã có sẵn trên màn hình của mọi thành viên khác.',
+    'Ghi chú là một thẻ trong bảng “Ghi chú”, phần đầu được tô màu của danh mục, và đã có sẵn trên màn hình của mọi thành viên khác.',
   'help.guide.write-note.tip.1':
-    '“Ghim” trên một thẻ giữ nó ở đầu bảng; mọi thứ bên dưới được sắp theo lần thay đổi gần nhất.',
+    'Ba chấm trên một thẻ (“Tùy chọn khác”) chứa “Mở rộng”, “Ghim”, “Chỉnh sửa” và “Xóa bỏ”. “Ghim” giữ ghi chú ở đầu bảng trong một khung mang màu của nó; mọi thứ bên dưới được sắp theo lần thay đổi gần nhất.',
   'help.guide.write-note.tip.2':
-    'Bánh răng bên cạnh “Ghi chú mới” mở “Quản lý danh mục”: ở đó một danh mục nhận màu của nó, được đổi tên ở mọi nơi cùng lúc, hoặc được thêm vào trước khi có ghi chú nào dùng tới.',
+    'Bánh răng bên cạnh “Ghi chú mới” mở “Quản lý danh mục”: ở đó một danh mục nhận màu của nó, được đổi tên ở mọi nơi cùng lúc, hoặc được thêm vào trước khi có ghi chú nào dùng tới. Không có gì thay đổi cho tới khi bạn nhấp “Lưu”.',
   'help.guide.write-note.tip.3':
-    '“Đính kèm tập tin” treo một tài liệu lên ghi chú. “Gắn” mở trình chọn tập tin, và một hình ảnh hay một tệp PDF cũng có thể chỉ cần dán thẳng vào biểu mẫu.',
+    '“Đính kèm tập tin” treo một tài liệu lên ghi chú. “Gắn” mở trình chọn tập tin, và một hình ảnh hay một tệp PDF cũng có thể chỉ cần dán thẳng vào hộp thoại.',
   'help.guide.write-note.tip.4':
     '“Ghi chú” là một công tắc riêng dưới “Tiện ích bổ sung”, bên dưới “Cộng tác”: quản trị viên có thể tắt nó đi mà vẫn để “Trò chuyện”, “Liên kết”, “Thăm dò ý kiến” và “Tiếp theo là gì” chạy tiếp.',
   // shared-links
   'help.guide.shared-links.title': 'Gom các liên kết của chuyến đi',
   'help.guide.shared-links.goal':
     'Giữ cổng đặt chỗ, album chung và bảng giờ ở một chỗ thay vì cuộn phần trò chuyện để tìm chúng.',
-  'help.guide.shared-links.step.1': 'Nhấp “Thêm liên kết” ở đầu bảng “Liên kết”.',
+  'help.guide.shared-links.step.1':
+    'Nhấp “Thêm liên kết” ở phần đầu thẻ “Liên kết”. Hộp thoại mở ra với con trỏ ở phần đầu của nó.',
   'help.guide.shared-links.step.2':
-    'Đặt tên cho liên kết trong “Tiêu đề liên kết”, dán địa chỉ vào ô bên dưới, rồi nhấp “Lưu liên kết”.',
+    'Gõ tên vào chỗ ghi “Tiêu đề liên kết”, dán địa chỉ vào “Liên kết” bên dưới, rồi nhấp “Lưu liên kết”.',
   'help.guide.shared-links.step.3':
     'Chip hiện cái tên và trang mà nó trỏ tới. Một cú nhấp lên nó mở trang đó trong một tab mới.',
   'help.guide.shared-links.step.4':
-    'Ba nút nhỏ ở đuôi nó là “Chỉnh sửa liên kết”, “Ghim liên kết” và “Xóa liên kết”. “Ghim liên kết” đưa chip ra đầu bảng; “Xóa liên kết” không hỏi gì cả.',
+    'Ba nút tròn ở đuôi nó là “Chỉnh sửa liên kết”, “Ghim liên kết” và “Xóa liên kết”. “Ghim liên kết” đưa chip ra đầu bảng, với sắc màu nhấn; “Xóa liên kết” hỏi trước, vì liên kết sẽ mất với mọi thành viên.',
   'help.guide.shared-links.result':
     'Liên kết là một chip trong bảng “Liên kết”, được ghim ra phía trước, và có trên màn hình của mọi thành viên cùng lúc.',
-  'help.guide.shared-links.tip.1': 'Chỉ các địa chỉ http và https được nhận; ô đó từ chối mọi thứ khác trước khi lưu.',
+  'help.guide.shared-links.tip.1':
+    'Chỉ nhận một địa chỉ http hoặc https: mọi thứ khác bị từ chối, và hộp thoại vẫn mở với những gì bạn đã gõ.',
   'help.guide.shared-links.tip.2':
     'Liên kết đã ghim đứng trước, rồi tới cái mới nhất. Biểu tượng nhỏ bên cạnh một tiêu đề là favicon của chính trang đó, được lấy từ trang ấy, nên khi không có internet chip hiện một biểu tượng liên kết thường thay vào đó.',
   'help.guide.shared-links.tip.3':
@@ -2848,48 +2854,51 @@ const help: TranslationStrings = {
   'help.guide.create-poll.title': 'Hỏi cả nhóm',
   'help.guide.create-poll.goal':
     'Biến một câu hỏi không ai trả lời trong phần trò chuyện thành một cuộc thăm dò mà ai cũng đánh dấu được.',
-  'help.guide.create-poll.step.1': 'Nhấp “Cuộc thăm dò mới” ở đầu bảng “Thăm dò ý kiến”.',
+  'help.guide.create-poll.step.1': 'Nhấp “Cuộc thăm dò mới” ở phần đầu thẻ “Thăm dò ý kiến”. Hộp thoại mở ra.',
   'help.guide.create-poll.step.2':
-    'Viết câu hỏi. “Hỗ trợ Markdown” dưới ô đó nghĩa là một từ in đậm, một lần xuống dòng hay một danh sách ngắn đều dùng được ở đây.',
-  'help.guide.create-poll.step.3': 'Điền “Tùy chọn 1” và “Tùy chọn 2”. Hai tùy chọn có nội dung là mức tối thiểu.',
+    'Viết câu hỏi dưới “Câu hỏi”. “Hỗ trợ Markdown” dưới ô đó nghĩa là một từ in đậm, một lần xuống dòng hay một danh sách ngắn đều dùng được ở đây.',
+  'help.guide.create-poll.step.3':
+    'Điền “Tùy chọn 1” và “Tùy chọn 2” dưới “Tùy chọn”. Hai tùy chọn có nội dung là mức tối thiểu, và một tùy chọn có thể dài nhiều dòng.',
   'help.guide.create-poll.step.4':
-    '“+ Thêm tùy chọn” thêm cái thứ ba, cái thứ tư, bao nhiêu tùy bạn; dấu nhân nhỏ bên cạnh một hàng lại lấy đi một cái.',
+    '“Thêm tùy chọn” bên dưới chúng thêm cái thứ ba, cái thứ tư, bao nhiêu tùy bạn; dấu nhân nhỏ bên cạnh một hàng, có mặt khi bạn có hơn hai tùy chọn, lại lấy đi một cái.',
   'help.guide.create-poll.step.5':
     '“Nhiều lựa chọn” cho phép mọi người đánh dấu hơn một tùy chọn. Nếu để tắt, một lá phiếu sẽ chuyển sang khi ai đó chọn thứ khác.',
   'help.guide.create-poll.step.6': 'Nhấp “Tạo cuộc thăm dò ý kiến”.',
-  'help.guide.create-poll.result': 'Cuộc thăm dò đứng ở đầu bảng “Thăm dò ý kiến”, đang mở, và chưa ai bỏ phiếu.',
+  'help.guide.create-poll.result':
+    'Cuộc thăm dò đứng ở đầu bảng “Thăm dò ý kiến”, đang mở, với “0 phiếu bầu” ở phần đầu.',
   'help.guide.create-poll.tip.1': 'Câu hỏi được dựng theo Markdown; các tùy chọn vẫn là văn bản thuần.',
   'help.guide.create-poll.tip.2':
-    '“Tạo cuộc thăm dò ý kiến” vẫn xám cho tới khi có một câu hỏi và ít nhất hai tùy chọn có nội dung.',
+    '“Tạo cuộc thăm dò ý kiến” vẫn bị làm xám cho tới khi có một câu hỏi và ít nhất hai tùy chọn có nội dung.',
   'help.guide.create-poll.tip.3':
-    'Thời hạn chỉ đặt được trong ứng dụng điện thoại. Một cuộc thăm dò có thời hạn sẽ hiện thời gian còn lại ở đây trong một chip màu hổ phách và được tính là đã đóng khi hết giờ.',
+    'Thời hạn chỉ đặt được trong ứng dụng điện thoại. Một cuộc thăm dò có thời hạn sẽ hiện thời gian còn lại trong một chip màu hổ phách ở phần đầu của nó và được tính là đã đóng khi hết giờ.',
   'help.guide.create-poll.tip.4':
     '“Thăm dò ý kiến” là một công tắc riêng dưới “Tiện ích bổ sung”, bên dưới “Cộng tác”: quản trị viên có thể tắt nó đi mà vẫn để bốn bảng còn lại chạy tiếp.',
   // vote-poll
   'help.guide.vote-poll.title': 'Bỏ phiếu và đọc kết quả',
   'help.guide.vote-poll.goal': 'Bỏ lá phiếu của bạn, xem cả nhóm đang đứng ở đâu, và đổi ý.',
-  'help.guide.vote-poll.step.1': 'Nhấp tùy chọn bạn muốn. Vòng tròn của nó được tô đầy và thanh phía sau dài ra.',
+  'help.guide.vote-poll.step.1':
+    'Nhấp tùy chọn bạn muốn. Vòng tròn của nó được tô đầy kèm dấu tích, tùy chọn có một khung màu nhấn và thanh phía sau dài ra.',
   'help.guide.vote-poll.step.2':
-    'Giờ thì đọc được toàn bộ kết quả: thanh là tỉ lệ, phần trăm đứng bên phải, và những vòng tròn nhỏ là những người đã chọn tùy chọn đó.',
+    'Giờ thì đọc được toàn bộ kết quả: thanh là tỉ lệ, phần trăm đứng bên phải, và những vòng tròn nhỏ là những người đã chọn tùy chọn đó, tối đa ba người.',
   'help.guide.vote-poll.step.3':
     'Đổi ý rồi? Nhấp một tùy chọn khác. Trong một cuộc thăm dò không có “Nhiều lựa chọn”, lá phiếu của bạn chuyển sang chứ không thêm một lá thứ hai.',
   'help.guide.vote-poll.step.4':
-    'Dưới câu hỏi ghi cuộc thăm dò đã có bao nhiêu phiếu. Một cú nhấp vào tùy chọn bạn đã chọn sẽ rút lá phiếu của bạn ra, và con số lại giảm xuống.',
+    'Số phiếu của cuộc thăm dò nằm trong một chip dưới câu hỏi. Một cú nhấp vào tùy chọn bạn đã chọn sẽ rút lá phiếu của bạn ra, và con số lại giảm xuống.',
   'help.guide.vote-poll.result':
     'Dấu của bạn nằm trên một tùy chọn, các thanh cho thấy nhóm chia ra thế nào, và các vòng tròn nói ai chọn gì.',
   'help.guide.vote-poll.tip.1':
-    'Các thanh và phần trăm chỉ hiện ra khi chính bạn đã bỏ phiếu, hoặc khi cuộc thăm dò đã đóng, để không ai bị cục diện hiện tại tác động.',
+    'Phần trăm và ai đã bầu cho gì chỉ hiện ra khi chính bạn đã bỏ phiếu, hoặc khi cuộc thăm dò đã đóng. Số phiếu ở phần đầu thì ai cũng thấy.',
   'help.guide.vote-poll.tip.2':
     'Một lá phiếu không bao giờ ẩn danh: rê chuột lên một trong các vòng tròn của một tùy chọn để thấy cái tên đằng sau nó.',
   // close-poll
   'help.guide.close-poll.title': 'Đóng một cuộc thăm dò, hoặc gỡ nó đi',
   'help.guide.close-poll.goal': 'Dừng việc bỏ phiếu khi cả nhóm đã quyết, và dọn đi một cuộc thăm dò không ai còn cần.',
   'help.guide.close-poll.step.1':
-    '“Đóng”, cái ổ khóa ở góc một cuộc thăm dò, kết thúc việc bỏ phiếu. Các tùy chọn thôi nhận cú nhấp.',
+    '“Đóng”, cái ổ khóa ở bên phải phần đầu một cuộc thăm dò, kết thúc việc bỏ phiếu. Các tùy chọn thôi nhận cú nhấp.',
   'help.guide.close-poll.step.2':
-    'Một cuộc thăm dò đã đóng chìm xuống dưới tiêu đề “Đã đóng” ở đáy bảng, đeo huy hiệu “Đã đóng” và cho mọi người thấy kết quả, dù họ có bỏ phiếu hay không. Tùy chọn thắng được tô xanh lá.',
+    'Một cuộc thăm dò đã đóng chìm xuống dưới tiêu đề “Đã đóng” ở đáy bảng, mang chip “Đã đóng” và cho mọi người thấy kết quả, dù họ có bỏ phiếu hay không. Tùy chọn thắng được in đậm trên một thanh xanh lá; nếu đó là tùy chọn bạn đã chọn, thanh giữ màu nhấn của bạn thay vào đó.',
   'help.guide.close-poll.step.3':
-    '“Xóa bỏ”, thùng rác ở cùng góc đó, gỡ cuộc thăm dò đi. Không có gì hỏi lại lần nữa, và các lá phiếu đi theo.',
+    '“Xóa bỏ”, thùng rác ở bên phải phần đầu, gỡ cuộc thăm dò đi; ở một cuộc thăm dò đã đóng, nó đứng đó một mình, vì ổ khóa đã biến mất. Không có gì hỏi lại lần nữa, và các lá phiếu đi theo.',
   'help.guide.close-poll.result':
     'Cuộc thăm dò biến khỏi bảng của mọi thành viên. Cái mà bạn chỉ đóng thì vẫn đọc được ở dưới cùng, cùng với kết quả của nó.',
   'help.guide.close-poll.tip.1':
@@ -2900,11 +2909,11 @@ const help: TranslationStrings = {
   'help.guide.whats-next.title': 'Đọc “Tiếp theo là gì”',
   'help.guide.whats-next.goal': 'Xem cả nhóm sắp làm gì mà không cần mở kế hoạch.',
   'help.guide.whats-next.step.1':
-    'Bảng này liệt kê các điểm dừng của chuyến đi còn ở phía trước, nhiều nhất là tám, theo thứ tự thời gian, dưới một tiêu đề cho mỗi ngày: “Hôm nay”, “Ngày mai” hoặc ngày tháng.',
+    'Thẻ này liệt kê các điểm dừng của chuyến đi còn ở phía trước, nhiều nhất là tám, theo thứ tự thời gian, dưới một tiêu đề cho mỗi ngày: “Hôm nay”, “Ngày mai” hoặc ngày tháng, kèm tiêu đề của ngày bên cạnh khi ngày đó có tiêu đề. Phần đầu thẻ đếm số điểm dừng.',
   'help.guide.whats-next.step.2':
-    'Bên trái một hàng là giờ của nó: giờ bắt đầu, “ĐẾN”, và giờ kết thúc khi điểm dừng có, hoặc TBD khi chưa đặt giờ nào cho nó.',
+    'Bên trái mỗi điểm dừng là giờ của nó: giờ bắt đầu, “ĐẾN”, và giờ kết thúc khi điểm dừng có, hoặc TBD khi chưa đặt giờ nào cho nó.',
   'help.guide.whats-next.step.3':
-    'Các chip dưới cái tên là những người có mặt ở điểm dừng đó. Khi không chọn ai cho nó, tất cả mọi người trong chuyến đi được liệt kê.',
+    'Bên cạnh là tên, địa chỉ và, dưới dạng chip, những người có mặt ở điểm dừng đó. Khi không chọn ai cho nó, tất cả mọi người trong chuyến đi được liệt kê.',
   'help.guide.whats-next.result':
     'Một danh sách những gì sắp tới, chỉ để đọc: nó đi theo kế hoạch, và không gì ở đây thay đổi kế hoạch.',
   'help.guide.whats-next.tip.1':
@@ -2918,7 +2927,7 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.goal':
     'Nói một điều gì đó, trả lời đúng một tin nhắn, phản ứng với một tin khác, và rút lại tin của chính bạn.',
   'help.guide.trip-chat.step.1':
-    'Viết vào “Nhập tin nhắn...” rồi nhấn Enter. Mũi tên xanh bên cạnh ô đó làm y như vậy; còn Shift và Enter thì tạo một dòng mới.',
+    'Viết vào “Nhập tin nhắn...” rồi nhấn Enter. Mũi tên tròn bên cạnh ô đó làm y như vậy; còn Shift và Enter thì tạo một dòng mới.',
   'help.guide.trip-chat.step.2':
     'Mặt cười mở bảng chọn biểu tượng cảm xúc, trong đó có Smileys, Reactions và Travel. Cái bạn chọn được thêm vào những gì bạn đang viết, nó không tự gửi đi.',
   'help.guide.trip-chat.step.3':
@@ -2928,11 +2937,11 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.step.5':
     'Nhấp chuột phải một tin nhắn để có tám phản ứng nhanh. Phản ứng của bạn nằm dưới bong bóng, và một cú nhấp thứ hai lên đúng nó sẽ rút lại.',
   'help.guide.trip-chat.step.6':
-    'Tin nhắn của chính bạn mang “Xóa bỏ” bên cạnh “Hồi đáp”. Nó lấy tin nhắn đi và để lại một dòng ghi “đã xóa một tin nhắn”: không có đường quay lại.',
+    'Tin nhắn của chính bạn mang “Xóa bỏ”, thùng rác, bên cạnh “Hồi đáp”. Nó lấy tin nhắn đi ngay lập tức và để lại một dòng ghi “đã xóa một tin nhắn”: không có đường quay lại.',
   'help.guide.trip-chat.result':
-    'Câu trả lời của bạn nằm dưới tin nhắn mà nó trích, một phản ứng treo trên một tin thứ ba, và cái bạn rút lại để lại đúng một dòng nói vậy.',
+    'Câu trả lời của bạn là tin nhắn mới nhất, với tin nhắn mà nó trích ở trên cùng; một phản ứng treo trên một tin thứ ba, và cái bạn rút lại để lại đúng một dòng nói vậy.',
   'help.guide.trip-chat.tip.1':
-    'Enter gửi đi, Shift và Enter tạo một dòng mới. Một tin nhắn chỉ toàn biểu tượng cảm xúc được hiện to.',
+    'Enter gửi đi, Shift và Enter tạo một dòng mới. Một tin nhắn chỉ gồm một đến ba biểu tượng cảm xúc và không có gì khác được hiện to.',
   'help.guide.trip-chat.tip.2':
     '“Đính kèm ảnh” nhận tối đa bốn tấm ảnh cho một tin nhắn; ảnh cũng có thể chỉ cần dán hoặc thả lên ô nhập.',
   'help.guide.trip-chat.tip.3':
@@ -2945,31 +2954,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-lists.summary':
     'Hai danh sách cho một chuyến đi: danh sách đóng gói, với ai mang gì và nặng bao nhiêu, và danh sách việc cần làm gồm mọi thứ phải xảy ra trước và trong chuyến đi. Tab này có mặt khi tiện ích bổ sung “Danh sách” đang bật.',
   'help.ctx.trip-lists.bullet.1':
-    '“Danh sách đóng gói” và “Việc cần làm” ở trên cùng chuyển qua lại giữa hai bên và đếm những gì có ở mỗi bên; các nút bên phải thuộc về bên nào đang mở.',
+    '“Danh sách đóng gói” và “Việc cần làm” trên thanh ở trên cùng chuyển qua lại giữa hai bên và đếm những gì có ở mỗi bên; các nút ở đầu bên phải của thanh thuộc về bên nào đang mở.',
   'help.ctx.trip-lists.bullet.2':
-    'Danh sách đóng gói được gom thành các danh sách, Tài liệu, Quần áo, hay bất cứ tên nào bạn đặt, mỗi danh sách có một chấm màu, một huy hiệu đã đóng gói trên tổng số và ba chấm chứa “Đổi tên”, “Kiểm tra tất cả”, “Bỏ chọn tất cả” và “Xóa danh sách”. “Thêm danh sách” trên thanh phía trên tạo một danh sách mới.',
+    'Danh sách đóng gói được gom thành các danh sách, Tài liệu, Quần áo, hay bất cứ tên nào bạn đặt, mỗi danh sách là một thẻ có dải đầu chứa một chấm màu, một huy hiệu đã đóng gói trên tổng số, ba chấm với “Đổi tên”, “Kiểm tra tất cả”, “Bỏ chọn tất cả” và “Xóa danh sách”, và một mũi tên gập thẻ lại. “Thêm danh sách” trên thanh phía trên tạo một danh sách mới.',
   'help.ctx.trip-lists.bullet.3':
-    'Một hàng gồm ô đánh dấu và tên, rồi ai mang nó, số lượng và trọng lượng tính bằng gam dưới dạng các huy hiệu nhỏ cùng vòng tròn túi khi “Theo dõi túi” đang bật, rồi thùng rác và ba chấm chứa “Chuyển sang danh sách”, “Chia sẻ”, “Đổi tên” và “Xóa bỏ”. Những gì một hàng không dùng sẽ mờ đi cho đến khi bạn trỏ vào, và tay nắm bên trái kéo hàng lên hoặc xuống trong danh sách của nó.',
+    'Một hàng gồm ô đánh dấu và tên, rồi ai mang nó dưới dạng một ảnh đại diện nhỏ và số lượng dưới dạng một huy hiệu nhỏ, khi “Theo dõi túi” đang bật thì thêm trọng lượng tính bằng gam và một vòng tròn túi, rồi thùng rác và ba chấm chứa “Chuyển sang danh sách”, “Chia sẻ”, “Đổi tên” và “Xóa bỏ”. Những gì một hàng không dùng sẽ mờ đi cho đến khi bạn trỏ vào, và tay nắm bên trái kéo hàng lên hoặc xuống trong danh sách của nó.',
   'help.ctx.trip-lists.bullet.4':
-    '“Chung” và “Danh sách của tôi” chia danh sách đóng gói làm hai: kho chung mọi người đều thấy, và của riêng bạn. “Tất cả”, “Mở” và “Xong” thu hẹp bên nào đang mở, và thanh phía trên đếm những gì đã đóng gói.',
+    '“Chung” và “Danh sách của tôi” chia danh sách đóng gói làm hai: kho chung mọi người đều thấy, và của riêng bạn. “Tất cả”, “Mở” và “Xong” bên cạnh chúng thu hẹp bên nào đang mở, và thẻ tiến độ phía trên đếm những gì đã đóng gói.',
   'help.ctx.trip-lists.bullet.5':
-    '“Áp dụng mẫu” và “Lưu dưới dạng mẫu” lấp đầy hoặc giữ lại một danh sách mà không phải gõ ra, còn hai biểu tượng bên cạnh xuất danh sách, dưới dạng bản in, PDF hoặc tập tin, và nhập một danh sách. Nút đỏ bên cạnh thanh tiến độ nêu có bao nhiêu mục đã được đánh dấu rồi dọn chúng đi.',
+    '“Áp dụng mẫu” và “Lưu dưới dạng mẫu” lấp đầy hoặc giữ lại một danh sách mà không phải gõ ra, còn hai biểu tượng sau chúng, “Xuất” và “Nhập”, đưa danh sách ra dưới dạng bản in, PDF hoặc tập tin, và đưa một danh sách vào. Nút đỏ ở đầu bên phải thẻ tiến độ nêu có bao nhiêu mục đã được đánh dấu rồi dọn chúng đi.',
   'help.ctx.trip-lists.bullet.6':
-    '“Việc cần làm” có thanh bên riêng: thẻ tiến độ, các bộ lọc “Tất cả”, “Nhiệm vụ của tôi”, “Quá hạn” và “Xong”, một hàng cho mỗi danh sách và “Thêm danh sách” bên dưới. Các nhiệm vụ nằm trong một thẻ có phần đầu ghi tên bộ lọc và chứa cách sắp xếp, “Sự ưu tiên” hoặc “Ngày đến hạn”. Nhấp vào một nhiệm vụ sẽ mở nó ở khung bên phải, và “Thêm nhiệm vụ mới” mở biểu mẫu “Nhiệm vụ mới” ngay giữa màn hình.',
+    '“Việc cần làm” có thanh bên riêng: thẻ tiến độ, các bộ lọc “Tất cả”, “Nhiệm vụ của tôi”, “Quá hạn” và “Xong”, một hàng cho mỗi danh sách và “Thêm danh sách” bên dưới. Các nhiệm vụ nằm trong một thẻ có phần đầu ghi tên bộ lọc và chứa cách sắp xếp, “Sự ưu tiên” hoặc “Ngày đến hạn”. Nhấp vào một nhiệm vụ sẽ mở nó ở khung bên phải, và “Thêm nhiệm vụ mới” trên thanh mở hộp thoại “Nhiệm vụ mới”.',
   // packing-categories
   'help.guide.packing-categories.title': 'Dựng danh sách đóng gói',
   'help.guide.packing-categories.goal':
     'Gom những thứ bạn mang theo thành các danh sách, đổ mục vào đó và nói ai lo mỗi danh sách.',
   'help.guide.packing-categories.step.1':
-    'Nhấp “Thêm danh sách” trên thanh phía trên các danh sách, gõ tên vào “Tên danh sách (vd. Quần áo)” và nhấp “Thêm”.',
+    'Nhấp “Thêm danh sách” trên thanh phía trên các danh sách. Một hộp thoại nhỏ mở ra: gõ tên vào dải đầu của nó, chỗ có “Tên danh sách (vd. Quần áo)”, và nhấp “Thêm”.',
   'help.guide.packing-categories.step.2':
-    'Danh sách mới bắt đầu với một hàng trống. Nhấp “Thêm mục”, gõ tên mục vào “Tên mặt hàng...” rồi nhấn Enter; ô nhập vẫn mở cho mục kế tiếp.',
+    'Danh sách mới bắt đầu với một hàng giữ chỗ chỉ hiện ba chấm mờ. Nhấp “Thêm mục” ở chân danh sách, gõ tên mục vào “Tên mặt hàng...” rồi nhấn Enter: mục đầu tiên thế chỗ hàng giữ chỗ, và ô nhập vẫn mở cho mục kế tiếp.',
   'help.guide.packing-categories.step.3':
     'Đổi tên một hàng bằng cách nhấp vào tên của nó, hoặc bằng “Đổi tên” trong ba chấm ở đầu bên phải của nó.',
   'help.guide.packing-categories.step.4':
-    'Vòng tròn nét đứt trên đầu danh sách gán thành viên chuyến đi vào danh sách. Chọn một tên; chiếc thẻ hiện ra sẽ gỡ người đó ra lại khi bạn nhấp vào.',
+    'Vòng tròn nét đứt có hình người trên dải đầu của danh sách gán thành viên chuyến đi vào danh sách. Chọn một tên; chiếc thẻ hiện ra sẽ gỡ người đó ra lại khi bạn nhấp vào.',
   'help.guide.packing-categories.step.5':
-    'Ba chấm ở cuối đầu danh sách chứa phần còn lại: “Đổi tên”, “Kiểm tra tất cả”, “Bỏ chọn tất cả”, và “Xóa danh sách”, thứ lấy đi cả danh sách lẫn mọi thứ trong đó mà không hỏi lại.',
+    'Ba chấm cạnh số đếm chứa phần còn lại: “Đổi tên”, “Kiểm tra tất cả”, “Bỏ chọn tất cả”, và “Xóa danh sách”, thứ lấy đi cả danh sách lẫn mọi thứ trong đó mà không hỏi lại. Mũi tên ở tận cùng bên phải gập danh sách lại.',
   'help.guide.packing-categories.result':
     'Danh sách mới nằm trong lưới với các mục của nó ở dưới và chấm màu của nó, và huy hiệu đếm những gì đã đóng gói.',
   'help.guide.packing-categories.tip.1':
@@ -2984,13 +2993,13 @@ const help: TranslationStrings = {
     'Đánh dấu thứ đã nằm trong túi, theo dõi thanh tiến độ, và dọn đi các mục đã đóng gói.',
   'help.guide.check-off-packing.step.1': 'Nhấp vào ô ở bên trái một hàng. Tên bị gạch đi và thanh tiến độ nhích lên.',
   'help.guide.check-off-packing.step.2':
-    'Thanh phía trên đếm những gì đã đóng gói so với mọi thứ trong danh sách, bằng con số và bằng phần trăm.',
+    'Thẻ tiến độ phía trên các danh sách đếm những gì đã đóng gói so với mọi thứ trong danh sách, bằng con số, bằng phần trăm và bằng một thanh.',
   'help.guide.check-off-packing.step.3':
-    'Cả một danh sách cùng lúc: ba chấm trên đầu danh sách chứa “Kiểm tra tất cả” và “Bỏ chọn tất cả”.',
+    'Cả một danh sách cùng lúc: ba chấm trên dải đầu của danh sách chứa “Kiểm tra tất cả” và “Bỏ chọn tất cả”.',
   'help.guide.check-off-packing.step.4':
-    '“Tất cả”, “Mở” và “Xong” thu hẹp lưới. “Mở” chỉ để lại những gì còn thiếu, nên một danh sách đã đóng gói xong sẽ rơi ra khỏi đó.',
+    '“Tất cả”, “Mở” và “Xong” bên cạnh “Chung” và “Danh sách của tôi” thu hẹp lưới. “Mở” chỉ để lại những gì còn thiếu, nên một danh sách đã đóng gói xong sẽ rơi ra khỏi đó.',
   'help.guide.check-off-packing.step.5':
-    '“Xóa 3 đã chọn” bên cạnh thanh tiến độ xóa mọi mục đã đánh dấu cùng lúc, sau một lần xác nhận từ trình duyệt.',
+    '“Xóa 3 đã chọn” ở đầu bên phải thẻ tiến độ xóa mọi mục đã đánh dấu cùng lúc, sau một lần xác nhận từ trình duyệt.',
   'help.guide.check-off-packing.result':
     'Chỉ những gì còn dang dở được liệt kê, và thanh phía trên cho biết việc đóng gói đã đi được tới đâu.',
   'help.guide.check-off-packing.tip.1': 'Một mục đã đánh dấu vẫn đổi tên được: nhấp vào tên của nó.',
@@ -3008,7 +3017,7 @@ const help: TranslationStrings = {
   'help.guide.apply-packing-template.step.3':
     'Các mục rơi vào chế độ xem bạn đang ở: “Chung” đặt chúng vào kho chung mọi người đều thấy, “Danh sách của tôi” biến chúng thành của bạn.',
   'help.guide.apply-packing-template.step.4':
-    'Giữ danh sách của chuyến này cho chuyến sau: “Lưu dưới dạng mẫu” mở một hộp thoại, gõ một cái tên rồi nhấp “Lưu”.',
+    'Giữ danh sách của chuyến này cho chuyến sau: “Lưu dưới dạng mẫu” mở một hộp thoại nhỏ. Gõ một cái tên vào dải đầu của nó, chỗ có “Tên mẫu”, rồi nhấp “Lưu”.',
   'help.guide.apply-packing-template.result':
     'Các danh sách và mục của mẫu đã ở trong chuyến đi, bên cạnh những gì vốn có.',
   'help.guide.apply-packing-template.tip.1':
@@ -3021,12 +3030,14 @@ const help: TranslationStrings = {
   'help.guide.import-packing-list.title': 'Dán nguyên một danh sách đóng gói vào',
   'help.guide.import-packing-list.goal':
     'Biến một danh sách bạn đã có ở nơi khác thành các mục đóng gói trong một lần.',
-  'help.guide.import-packing-list.step.1': 'Nhấp nút nhập có mũi tên hướng xuống ở thanh phía trên danh sách.',
+  'help.guide.import-packing-list.step.1':
+    'Nhấp “Nhập”, biểu tượng có mũi tên hướng xuống ở đầu bên phải của thanh phía trên danh sách.',
   'help.guide.import-packing-list.step.2':
-    'Mỗi dòng một mục: Danh mục, Tên, Trọng lượng tính bằng g (tùy chọn), Túi (tùy chọn), checked/unchecked (tùy chọn). Mẫu màu xám trong ô cho thấy cả bốn dạng. Danh sách Markdown cũng dùng được: tiêu đề đặt tên cho danh sách, còn "- [ ]" và "- [x]" trở thành mục.',
+    'Mỗi dòng một mục: Danh mục, Tên, Trọng lượng tính bằng g (tùy chọn), Túi (tùy chọn), checked/unchecked (tùy chọn). Mẫu màu xám trong ô cho thấy cả bốn dạng, và các con số dọc mép trái của ô đếm số dòng bạn gõ. Danh sách Markdown cũng dùng được: tiêu đề đặt tên cho danh sách, còn "- [ ]" và "- [x]" trở thành mục.',
   'help.guide.import-packing-list.step.3':
-    'Hoặc nạp các dòng từ một tập tin bằng “Tải CSV/TXT/MD”. Nó nhận một tập tin .csv, .txt hoặc .md và thay thế mọi thứ đang có trong ô.',
-  'help.guide.import-packing-list.step.4': 'Nhấp “Nhập”. Nút đó đếm số dòng nó hiểu được.',
+    'Hoặc nạp các dòng từ một tập tin bằng “Tải CSV/TXT/MD”, ở góc dưới bên trái hộp thoại. Nó nhận một tập tin .csv, .txt hoặc .md và thay thế mọi thứ đang có trong ô.',
+  'help.guide.import-packing-list.step.4':
+    'Nhấp “Nhập 3” ở góc dưới bên phải; con số trên nút đếm số dòng mà TREK hiểu được.',
   'help.guide.import-packing-list.result':
     'Mỗi dòng thành một hàng, nằm trong danh sách mà trường đầu tiên của nó nêu tên, và không có gì vốn đã ở đó bị đụng tới.',
   'help.guide.import-packing-list.tip.1':
@@ -3037,11 +3048,12 @@ const help: TranslationStrings = {
   'help.guide.export-packing-list.title': 'In hoặc xuất danh sách đóng gói',
   'help.guide.export-packing-list.goal':
     'Mang danh sách theo trên giấy, dưới dạng PDF, hoặc dưới dạng tập tin cho ứng dụng khác hay cho chuyến đi sau.',
-  'help.guide.export-packing-list.step.1': 'Nhấp nút xuất có mũi tên hướng lên ở thanh phía trên danh sách.',
+  'help.guide.export-packing-list.step.1':
+    'Nhấp “Xuất”, biểu tượng có mũi tên hướng lên ở thanh phía trên danh sách, ngay trước “Nhập”.',
   'help.guide.export-packing-list.step.2':
     '“Danh sách kiểm tra Markdown (.md)” và “CSV để nhập (.csv)” lưu danh sách thành tập tin ngay lập tức.',
   'help.guide.export-packing-list.step.3':
-    'Nhấp “In hoặc lưu thành PDF”. Bản xem trước hiển thị danh sách như một trang: chuyến đi và ngày tháng ở trên cùng, rồi mỗi danh sách là một thẻ có ô để đánh dấu.',
+    'Nhấp “In hoặc lưu thành PDF”. Bản xem trước hiển thị danh sách như một trang: chuyến đi, ngày tháng và mức đã đóng gói ở trên cùng, rồi mỗi danh sách là một thẻ, mỗi mục có một ô để đánh dấu.',
   'help.guide.export-packing-list.step.4':
     'Nhấp “In hoặc lưu thành PDF” bên dưới bản xem trước. Trình duyệt mở hộp thoại in của nó: chọn một máy in, hoặc “Lưu dưới dạng PDF” để giữ một tập tin.',
   'help.guide.export-packing-list.result':
@@ -3064,9 +3076,9 @@ const help: TranslationStrings = {
     'Mở “Chia sẻ” lần nữa và đánh dấu một tên dưới “Chia sẻ với…”. Mục đó cũng hiện trên danh sách của người ấy, và hàng có thêm một huy hiệu nhỏ đếm số người được chia sẻ.',
   'help.guide.share-packing-item.result': 'Mục nằm ở mức bạn đã chọn, và hàng cho biết ai đang mang nó.',
   'help.guide.share-packing-item.tip.1':
-    'Chỉ người mang một mục mới đổi được cách chia sẻ của nó. Người bạn chia sẻ cùng sẽ thấy nó trên “Danh sách của tôi” của chính họ, có gắn tên bạn, và có thể đánh dấu nó.',
+    'Chỉ người mang một mục mới đổi được cách chia sẻ của nó. Người bạn chia sẻ cùng sẽ thấy nó trên “Danh sách của tôi” của chính họ với một huy hiệu bàn tay nhỏ nêu tên bạn khi họ trỏ vào, và có thể đánh dấu nó.',
   'help.guide.share-packing-item.tip.2':
-    'Trên một mục do người khác mang, bạn nhận được hai nút khác: “Tôi cũng có thể mang”, thêm bạn vào bên cạnh họ, và “Sao chép vào danh sách của tôi”, tạo một bản riêng tư của bạn.',
+    'Trên một mục được chia sẻ do người khác mang, ba chấm chứa hai mục khác thay cho “Chia sẻ”: “Tôi cũng có thể mang”, thêm bạn vào bên cạnh họ, và “Sao chép vào danh sách của tôi”, tạo một bản riêng tư của bạn.',
   'help.guide.share-packing-item.tip.3':
     'Mục mới thừa hưởng chế độ xem nơi bạn thêm chúng. Thêm ở “Danh sách của tôi” thì chúng là “Cá nhân”, thêm ở “Chung” thì chúng vào kho chung.',
   // packing-bags
@@ -3075,18 +3087,19 @@ const help: TranslationStrings = {
     'Đặt trọng lượng cho từng mục, xếp các mục vào túi và giữ mỗi túi dưới giới hạn của hãng bay.',
   'help.guide.packing-bags.step.1':
     'Nhấp huy hiệu trọng lượng trước vòng tròn và gõ trọng lượng của mục tính bằng gam.',
-  'help.guide.packing-bags.step.2': 'Vòng tròn ở cuối hàng là túi của mục đó. Nhấp vào nó.',
+  'help.guide.packing-bags.step.2': 'Vòng tròn sau trọng lượng là túi của mục đó. Nhấp vào nó.',
   'help.guide.packing-bags.step.3':
     'Chưa có túi nào: “Thêm túi”, một cái tên, Enter. Túi được tạo và mục đi thẳng vào đó.',
   'help.guide.packing-bags.step.4':
-    'Bảng “Túi xách” hiện ra bên phải ngay khi có một túi: tên, trọng lượng, một thanh mức đầy, ai mang nó và có bao nhiêu mặt hàng trong đó, rồi “Chưa được chỉ định” và “Tổng trọng lượng”.',
+    'Thẻ “Túi xách” hiện ra bên phải các danh sách ngay khi có một túi: tên, ai mang nó, một thanh mức đầy, có bao nhiêu mặt hàng trong đó và trọng lượng của nó, rồi “Chưa được chỉ định” và “Tổng trọng lượng”.',
   'help.guide.packing-bags.step.5':
-    'Nhấp “Đặt giới hạn” và gõ giới hạn tính bằng kilôgam, đúng cách các hãng bay nêu ra.',
-  'help.guide.packing-bags.step.6': 'Dấu cộng nét đứt bên cạnh tên một túi cho biết ai đang mang nó.',
+    'Nhấp “Đặt giới hạn” cạnh trọng lượng của túi và gõ giới hạn tính bằng kilôgam, đúng cách các hãng bay nêu ra.',
+  'help.guide.packing-bags.step.6':
+    'Dấu cộng nét đứt ở cuối dòng tên túi, ngay trước dấu nhân, mở “Gán thành viên”: tích những ai đang mang túi, và họ hiện ra bên cạnh dấu cộng.',
   'help.guide.packing-bags.result':
-    'Bảng “Túi xách” bên phải cho thấy trọng lượng từng túi so với giới hạn của nó, những gì không nằm trong túi nào, và tổng cộng.',
+    'Thẻ “Túi xách” bên phải cho thấy trọng lượng từng túi so với giới hạn của nó, những gì không nằm trong túi nào, và tổng cộng.',
   'help.guide.packing-bags.tip.1':
-    'Ô trọng lượng, vòng tròn túi và bảng “Túi xách” chỉ tồn tại khi một quản trị viên đã bật “Theo dõi túi” trong tiện ích bổ sung “Danh sách”.',
+    'Ô trọng lượng, vòng tròn túi và thẻ “Túi xách” chỉ tồn tại khi một quản trị viên đã bật “Theo dõi túi” trong tiện ích bổ sung “Danh sách”. Trên cửa sổ hẹp hơn, các túi được mở từ nút “Túi xách” phía trên thẻ tiến độ thay vào đó.',
   'help.guide.packing-bags.tip.2':
     'Trọng lượng của một túi được cộng trên máy chủ trên các mục của mọi thành viên, kể cả những mục bạn không thấy, nên con số đó đúng là trọng lượng thật của túi.',
   'help.guide.packing-bags.tip.3':
@@ -3095,15 +3108,17 @@ const help: TranslationStrings = {
   'help.guide.create-todo.title': 'Thêm một nhiệm vụ',
   'help.guide.create-todo.goal':
     'Ghi lại một việc phải làm, kèm một danh sách, một mức ưu tiên, một ngày và một cái tên.',
-  'help.guide.create-todo.step.1': 'Nhấp “Thêm nhiệm vụ mới” ở trên cùng bên phải.',
-  'help.guide.create-todo.step.2': 'Đặt tên ở “Tên nhiệm vụ”, và ghi mọi thứ đáng nhớ vào “Miêu tả”.',
+  'help.guide.create-todo.step.1': 'Nhấp “Thêm nhiệm vụ mới” ở đầu bên phải của thanh.',
+  'help.guide.create-todo.step.2':
+    'Hộp thoại “Nhiệm vụ mới” mở ra với con trỏ ở dải đầu của nó: gõ tên vào chỗ có “Tên nhiệm vụ”, và ghi mọi thứ đáng nhớ vào “Miêu tả”.',
   'help.guide.create-todo.step.3':
     '“Danh sách” gom nhóm nhiệm vụ. Chọn một, hoặc dùng dấu cộng bên cạnh để đặt tên cho một danh sách mới trong một hộp thoại nhỏ.',
   'help.guide.create-todo.step.4': '“Sự ưu tiên” là bốn nút: “Không có”, P1, P2 và P3, từ đỏ xuống xanh lam.',
-  'help.guide.create-todo.step.5': '“Ngày đến hạn” mở một lịch, và “Được giao cho” đặt một cái tên lên nhiệm vụ.',
+  'help.guide.create-todo.step.5':
+    '“Ngày đến hạn”, cạnh “Danh sách”, mở một lịch, và “Được giao cho” đặt một cái tên lên nhiệm vụ.',
   'help.guide.create-todo.step.6': 'Nhấp “Tạo nhiệm vụ”.',
   'help.guide.create-todo.result':
-    'Nhiệm vụ nằm trong danh sách cùng các huy hiệu của nó, mức ưu tiên, ngày đến hạn, danh sách và người được giao, và nó mở ra ở khung bên phải.',
+    'Nhiệm vụ nằm trong danh sách với mức ưu tiên, ngày đến hạn và danh sách dưới dạng huy hiệu cùng ảnh đại diện của người được giao ở cuối hàng, và nó mở ra ở khung bên phải.',
   'help.guide.create-todo.tip.1': 'Chỉ cái tên là bắt buộc. Mọi thứ khác có thể điền sau từ khung bên phải.',
   'help.guide.create-todo.tip.2':
     'Khi một danh sách đang được chọn ở thanh bên, nhiệm vụ mới bắt đầu trong danh sách đó.',
@@ -3120,7 +3135,7 @@ const help: TranslationStrings = {
     'Phần sắp xếp ở đầu danh sách xếp lại những gì đang trên màn hình: “Sự ưu tiên” đưa P1 lên trước, “Ngày đến hạn” đưa hạn gần nhất lên trước. Mỗi lần chỉ một trong hai, và nhấp lần thứ hai sẽ trở về thứ tự riêng của bạn.',
   'help.guide.todo-filters.step.4': 'Nhấp một nhiệm vụ để mở nó ở khung bên phải.',
   'help.guide.todo-filters.step.5':
-    'Đổi những gì bạn cần, “Miêu tả”, “Sự ưu tiên”, “Danh sách”, “Ngày đến hạn” hoặc “Được giao cho”, rồi “Lưu thay đổi”. Ô ở đầu khung đánh dấu nhiệm vụ là đã xong, và “Xóa bỏ” xóa nó đi ngay lập tức.',
+    'Đổi những gì bạn cần, tên, “Miêu tả”, “Sự ưu tiên”, “Danh sách”, “Ngày đến hạn” hoặc “Được giao cho”, rồi “Lưu thay đổi” ở chân khung. Ô ở đầu khung đánh dấu nhiệm vụ là đã xong, và “Xóa bỏ” cạnh “Lưu thay đổi” xóa nó đi ngay lập tức.',
   'help.guide.todo-filters.result':
     'Danh sách chỉ hiện những nhiệm vụ bạn đã yêu cầu, và khung bên phải sửa nhiệm vụ bạn đã chọn.',
   'help.guide.todo-filters.tip.1':
@@ -3131,56 +3146,81 @@ const help: TranslationStrings = {
   // ── Screen: trip-bookings ─────────────────────────────────────────────────────────────
   'help.ctx.trip-bookings.title': 'Đặt chỗ',
   'help.ctx.trip-bookings.summary':
-    'Thẻ chứa mọi thứ đã đặt cho chuyến đi mà không phải là cách di chuyển: chỗ ở, bàn ăn, vé, chuyến du lịch, bãi đỗ xe. Mỗi đặt chỗ là một thẻ trong “Chưa giải quyết” hoặc trong “Đã xác nhận”, mang theo mã, giấy tờ, người đi và chi phí của nó.',
+    'Tab chứa mọi thứ đã đặt cho chuyến đi mà không phải là cách di chuyển: chỗ ở, bàn ăn, vé, chuyến du lịch, bãi đỗ xe. Mỗi đặt chỗ là một thẻ, một hàng trong danh sách hoặc một thanh trên dòng thời gian, mang theo mã, giấy tờ, người đi và chi phí của nó, và một cú nhấp sẽ mở chi tiết của nó.',
   'help.ctx.trip-bookings.bullet.1':
-    '“Thêm đặt chỗ” ở trên cùng bên phải mở biểu mẫu. Sáu loại nó tạo ra là “Chỗ ở”, “Nhà hàng”, “Sự kiện”, “Chuyến du lịch”, “Bãi đỗ xe” và “Khác”; chuyến bay, tàu hỏa và phần còn lại nằm ở thẻ “Di chuyển” và không bao giờ xuất hiện ở đây.',
+    '“Thêm đặt chỗ” ở đầu bên phải của thanh mở “Đặt chỗ mới”. Sáu loại nó tạo ra là “Chỗ ở”, “Nhà hàng”, “Sự kiện”, “Chuyến du lịch”, “Bãi đỗ xe” và “Khác”; chuyến bay, tàu hỏa và phần còn lại nằm ở tab “Di chuyển” và không bao giờ xuất hiện ở đây.',
   'help.ctx.trip-bookings.bullet.2':
-    '“Nhập từ tập tin” giao một bản xác nhận cho bộ phân tích: EML, PDF, PKPass, HTML hoặc TXT, nhiều nhất năm tập tin 10 MB. Nút đó chỉ có mặt khi máy chủ đọc được chúng.',
+    'Biểu tượng tải xuống trước “Thêm đặt chỗ”, “Nhập xác nhận đặt chỗ”, giao các bản xác nhận cho bộ phân tích: EML, PDF, PKPass, HTML hoặc TXT, nhiều nhất năm tập tin 10 MB. Biểu tượng đó chỉ có mặt khi máy chủ đọc được chúng.',
   'help.ctx.trip-bookings.bullet.3':
-    'Các chip bên cạnh tiêu đề lọc theo loại, mỗi chip mang số đếm riêng, và “Tất cả” đưa mọi thứ trở lại. Khi một đặt chỗ đã nêu tên người, hàng ảnh đại diện cạnh các chip thu hẹp thẻ này về một trong số họ.',
+    '“Tìm kiếm” tìm trong tiêu đề, loại, địa điểm, ghi chú, mã đặt chỗ và người đi. “Lọc”, cái phễu bên cạnh, thu hẹp tab theo “Trạng thái”, theo “Loại” kèm số đếm cho từng loại, và theo “Người đi” khi một đặt chỗ đã nêu tên người; một con số trên cái phễu đếm những gì đang bật.',
   'help.ctx.trip-bookings.bullet.4':
-    'Các thẻ đứng trong hai phần, “Chưa giải quyết” và “Đã xác nhận”, mỗi phần có số đếm của nó. Một cú nhấp lên tiêu đề của một phần sẽ gấp nó lại, và việc nó đang mở hay không được nhớ cho chuyến đi này.',
+    'Ba biểu tượng sau “Lọc” chuyển chế độ xem: “Thẻ”, “Danh sách” và “Dòng thời gian”. “Tùy chọn hiển thị”, biểu tượng thanh trượt bên cạnh, nhóm và sắp xếp thẻ và danh sách, hoặc đặt các làn của dòng thời gian. Theo mặc định các thẻ đứng trong “Đã xác nhận” và “Chưa giải quyết”, và một cú nhấp lên tiêu đề của một phần sẽ gấp nó lại.',
   'help.ctx.trip-bookings.bullet.5':
-    'Một thẻ mang chấm trạng thái, loại, tiêu đề, ngày và giờ, “Mã đặt chỗ”, “Vị trí / Địa chỉ”, thứ mà đặt chỗ được liên kết tới, “Liên kết” của nó, “Ghi chú”, “Tập tin” và “Người đi”.',
+    'Một thẻ có dải đầu được tô màu theo trạng thái, với chấm trạng thái (một cú nhấp chuyển giữa “Chưa giải quyết” và “Đã xác nhận”), loại, tiêu đề, cây bút chì và thùng rác. Bên dưới là những gì đặt chỗ có: “Ngày”, “Thời gian”, “Mã đặt chỗ”, “Nhận phòng” và “Trả phòng”, “Vị trí / Địa chỉ”, “Chỗ ở”, “Liên kết với” (điểm dừng trong kế hoạch), “Liên kết”, “Ghi chú”, “Người đi”, “Tập tin” và các chi phí liên kết.',
   'help.ctx.trip-bookings.bullet.6':
-    'Cây bút chì trên một thẻ mở lại chính biểu mẫu đó; thùng rác hỏi một lần rồi đặt chỗ biến mất. Với một chỗ ở thì những đêm của nó trong “Kế hoạch ngày” và chi phí liên kết cũng đi theo.',
+    'Một cú nhấp lên một thẻ, một hàng hoặc một thanh mở chi tiết của đặt chỗ, với “Trên bản đồ”, thùng rác và “Chỉnh sửa” ở chân. Việc xóa hỏi một lần, rồi đặt chỗ biến mất cùng với các chi phí liên kết của nó, và một chỗ ở thì mang những đêm của nó ra khỏi “Kế hoạch ngày”.',
+  // booking-views
+  'help.guide.booking-views.title': 'Đổi chế độ xem và mở một đặt chỗ',
+  'help.guide.booking-views.goal':
+    'Xem các đặt chỗ dưới dạng thẻ, dưới dạng danh sách hoặc trên dòng thời gian, và mở một đặt chỗ để thấy mọi thứ nó chứa.',
+  'help.guide.booking-views.step.1':
+    'Ba biểu tượng sau “Lọc” trên thanh là các chế độ xem, và mỗi biểu tượng hiện tên khi bạn trỏ vào: “Thẻ”, “Danh sách” và “Dòng thời gian”. Tab mở ở chế độ “Thẻ”, mỗi đặt chỗ một thẻ trong các phần “Đã xác nhận” và “Chưa giải quyết”. Nhấp “Danh sách”, biểu tượng ở giữa.',
+  'help.guide.booking-views.step.2':
+    '“Danh sách” xếp mỗi đặt chỗ một hàng dưới một tiêu đề cho mỗi ngày, với ngày và giờ ở bên phải; các phím mũi tên di chuyển từ hàng này sang hàng khác. Nhấp “Dòng thời gian”, biểu tượng cuối cùng trong ba biểu tượng.',
+  'help.guide.booking-views.step.3':
+    '“Dòng thời gian” trải các đặt chỗ lên các ngày của chuyến đi, mỗi loại một làn và mỗi đặt chỗ một thanh từ lúc bắt đầu đến lúc kết thúc, đặt chỗ còn chờ có viền nét đứt. “Chuyến đi” đưa toàn bộ chuyến đi vừa khít chiều rộng; nhấp vào tiêu đề của một ngày để xem ngày đó theo từng giờ.',
+  'help.guide.booking-views.step.4':
+    '“Ngày” trải một ngày lên thang giờ, và các thanh dài ra để hiện giờ của chúng. Các mũi tên cạnh tên ngày chuyển sang ngày trước và ngày sau, và công tắc “Chuyến đi” và “Ngày” ở bên phải quay về toàn bộ chuyến đi.',
+  'help.guide.booking-views.step.5':
+    'Trỏ vào một thanh để xem ngày, giờ và địa điểm của nó, rồi nhấp vào để mở chi tiết của đặt chỗ. Một thẻ trong “Thẻ” và một hàng trong “Danh sách” mở cùng cửa sổ bật lên đó.',
+  'help.guide.booking-views.step.6':
+    'Dải đầu của phần chi tiết chứa tiêu đề và các nhãn cho trạng thái (một cú nhấp sẽ chuyển nó), loại, ngày và mã đặt chỗ, kèm một nút sao chép mã. Bên dưới là giờ giấc dưới dạng các ô, rồi địa điểm, người đi, ghi chú, chi phí và tập tin, những gì đặt chỗ có, và ở chân là “Trên bản đồ”, thùng rác và “Chỉnh sửa”.',
+  'help.guide.booking-views.result':
+    'Đặt chỗ đang mở trong phần chi tiết của nó: “Chỉnh sửa” mở biểu mẫu của nó, “Trên bản đồ” hiện nó trên kế hoạch, và “Đóng” hoặc Escape đưa bạn về chế độ xem bạn vừa ở.',
+  'help.guide.booking-views.tip.1':
+    '“Tùy chọn hiển thị”, biểu tượng thanh trượt sau các biểu tượng chế độ xem, nhóm và sắp xếp “Thẻ” và “Danh sách” bằng “Nhóm theo” và “Sắp xếp theo”. Trong “Dòng thời gian”, nó bật tắt “Mỗi loại một làn” và “Hiện cả tab còn lại”, tùy chọn đặt các mục của tab “Di chuyển” mờ đi trong một làn mỏng ở trên cùng. “Đặt lại chế độ xem” khôi phục mặc định, và mỗi tab nhớ chế độ xem của nó trong trình duyệt này.',
+  'help.guide.booking-views.tip.2':
+    'Một đặt chỗ trước hoặc sau chuyến đi, hoặc không có ngày, không thể nằm trên dòng thời gian: nó chờ bên dưới biểu đồ dưới dạng một thẻ nhỏ trong “Trước chuyến đi”, “Sau chuyến đi” hoặc “Chưa có ngày”.',
+  'help.guide.booking-views.tip.3':
+    'Cùng phần chi tiết đó mở ra ở bất cứ đâu một đặt chỗ xuất hiện: trên tab “Di chuyển”, trong kế hoạch ngày, trong chi tiết của một ngày và trong chi tiết của một địa điểm. Một cú nhấp vào tiêu đề của nó sẽ đổi tên đặt chỗ.',
   // create-booking
   'help.guide.create-booking.title': 'Tạo một đặt chỗ',
   'help.guide.create-booking.goal':
     'Đưa một nhà hàng, một sự kiện, một chuyến du lịch, một chỗ đỗ xe hay bất cứ thứ gì khác vào chuyến đi bằng tay.',
-  'help.guide.create-booking.step.1': 'Nhấp “Thêm đặt chỗ” ở trên cùng bên phải của thẻ. “Đặt chỗ mới” mở ra.',
+  'help.guide.create-booking.step.1':
+    'Nhấp “Thêm đặt chỗ” ở đầu bên phải của thanh. “Đặt chỗ mới” mở ra, với tiêu đề và hai nhãn trong một dải đầu ở trên cùng.',
   'help.guide.create-booking.step.2':
-    'Nhấp vào nhãn loại dưới tiêu đề, ở đầu biểu mẫu, và chọn “Loại đặt chỗ”. “Chỗ ở”, “Nhà hàng”, “Sự kiện”, “Chuyến du lịch”, “Bãi đỗ xe” và “Khác” là sáu loại thẻ này tạo ra, và biểu mẫu thay đổi theo lựa chọn: chỉ “Chỗ ở” mới đổi ngày của nó lấy một khoảng các ngày.',
+    'Nhấp vào nhãn loại trên dải đầu, nhãn này ghi “Khác” ở một đặt chỗ mới, và chọn “Loại đặt chỗ”. “Chỗ ở”, “Nhà hàng”, “Sự kiện”, “Chuyến du lịch”, “Bãi đỗ xe” và “Khác” là sáu loại tab này tạo ra, và biểu mẫu thay đổi theo lựa chọn: chỉ “Chỗ ở” mới đổi ngày của nó lấy một khoảng các ngày.',
   'help.guide.create-booking.step.3':
-    'Gõ “Tiêu đề”. Đó là ô duy nhất biểu mẫu nhất định đòi, và “Thêm” vẫn nằm im cho tới khi nó có nội dung.',
+    'Gõ tiêu đề vào dải đầu, ô nằm phía trên các nhãn. Đó là ô duy nhất biểu mẫu nhất định đòi, và “Thêm” vẫn bị làm xám cho tới khi nó có nội dung.',
   'help.guide.create-booking.step.4':
     'Đặt “Ngày” và “Thời gian bắt đầu”, cùng “Ngày kết thúc” và “Thời gian kết thúc” nếu đặt chỗ có điểm kết thúc. Lịch chỉ đưa ra những ngày nằm trong chuyến đi, và một điểm kết thúc không sau điểm bắt đầu sẽ báo bằng màu đỏ và chặn “Thêm”.',
   'help.guide.create-booking.step.5':
-    'Điền “Mã đặt chỗ” từ bản xác nhận. Nhãn trạng thái cạnh loại hiện “Chưa giải quyết”; một cú nhấp chuyển nó sang “Đã xác nhận” và ngược lại, và điều đó quyết định thẻ rơi vào phần nào trong hai phần.',
-  'help.guide.create-booking.step.6': 'Nhấp “Thêm”.',
+    'Điền “Mã đặt chỗ” từ bản xác nhận, rồi nhấp vào nhãn trạng thái trên dải đầu, cạnh loại. Ở một đặt chỗ mới, nó ghi “Chưa giải quyết” và chuyển sang “Đã xác nhận”, và điều đó quyết định thẻ rơi vào phần nào.',
+  'help.guide.create-booking.step.6': 'Nhấp “Thêm” ở chân biểu mẫu.',
   'help.guide.create-booking.result':
-    'Đặt chỗ là một thẻ trong phần của nó với chip loại, ngày và mã của nó, và mọi người khác trong chuyến đi đều thấy nó xuất hiện.',
+    'Đặt chỗ là một thẻ trong phần của nó, dải đầu được tô màu theo trạng thái, với loại, ngày và giờ cùng mã của nó, và mọi người khác trong chuyến đi đều thấy nó xuất hiện.',
   'help.guide.create-booking.tip.1':
     '“Vị trí / Địa chỉ” đưa ra các địa chỉ có thật trong lúc bạn gõ; chọn một cái sẽ thay thế thứ bạn đã viết, còn địa chỉ bạn tự gõ thì được giữ nguyên.',
   'help.guide.create-booking.tip.2':
-    '“Liên kết” nhận trang riêng của đặt chỗ ở phía nhà cung cấp. Thẻ biến nó thành một liên kết mở trong tab mới.',
+    '“Liên kết” nhận trang riêng của đặt chỗ ở phía nhà cung cấp. Thẻ và phần chi tiết biến nó thành một liên kết mở trong tab mới.',
   'help.guide.create-booking.tip.3':
-    '“Ghi chú” dùng Markdown, nên một danh sách hay một dòng in đậm cũng được hiển thị đúng như vậy trên thẻ.',
+    '“Ghi chú” dùng Markdown, nên một danh sách hay một dòng in đậm cũng được hiển thị đúng như vậy trên thẻ và trong phần chi tiết.',
   // booking-hotel
   'help.guide.booking-hotel.title': 'Đặt một chỗ ở',
   'help.guide.booking-hotel.goal':
     'Nhập một chỗ ở để nó vừa tính là một đặt chỗ vừa tính là những đêm trong “Kế hoạch ngày”.',
   'help.guide.booking-hotel.step.1':
-    'Nhấp “Thêm đặt chỗ” và chọn “Chỗ ở”. Các ô ngày biến mất và một khối ô dành cho khách sạn thế chỗ chúng.',
+    'Nhấp “Thêm đặt chỗ” và chọn “Chỗ ở” bằng nhãn loại trên dải đầu. Các ô ngày biến mất và một khối ô dành cho khách sạn thế chỗ chúng.',
   'help.guide.booking-hotel.step.2':
-    'Chọn khách sạn dưới “Chỗ ở”. Danh sách chính là các địa điểm của chuyến đi, và chọn một cái sẽ viết tên nó vào “Tiêu đề” và địa chỉ nó vào “Vị trí / Địa chỉ”.',
+    'Chọn khách sạn dưới “Chỗ ở”. Danh sách chính là các địa điểm của chuyến đi, và chọn một cái sẽ viết tên nó vào tiêu đề nếu tiêu đề còn trống và địa chỉ nó vào “Vị trí / Địa chỉ”.',
   'help.guide.booking-hotel.step.3':
     'Đặt “Từ” và “Đến”: đêm đầu tiên và buổi sáng bạn rời đi. Cả hai đều đưa ra các ngày của chuyến đi kèm ngày tháng, và hai ô giữ cho nhau đúng thứ tự.',
   'help.guide.booking-hotel.step.4':
     'Điền “Nhận phòng”, “Nhận phòng cho đến khi” và “Trả phòng”, cùng “Mã đặt chỗ” từ bản xác nhận.',
   'help.guide.booking-hotel.step.5': 'Nhấp “Thêm”.',
   'help.guide.booking-hotel.result':
-    'Thẻ mang một khoảng các ngày thay vì một ngày, với giờ nhận phòng và trả phòng cùng địa chỉ, và chính kỳ lưu trú đó giờ nằm trên những ngày ấy của kế hoạch.',
+    'Thẻ mang khoảng các ngày dưới “Ngày”, giờ nhận phòng và trả phòng cùng địa chỉ, và chính kỳ lưu trú đó giờ nằm trên những ngày ấy của kế hoạch.',
   'help.guide.booking-hotel.tip.1':
     '“Chỗ ở” là loại duy nhất không có “Ngày” và “Thời gian bắt đầu”. Ngày của nó là “Từ” và “Đến”, và đó là các ngày của chuyến đi chứ không phải một cuốn lịch.',
   'help.guide.booking-hotel.tip.2':
@@ -3190,14 +3230,15 @@ const help: TranslationStrings = {
   'help.guide.link-booking.title': 'Buộc một đặt chỗ vào kế hoạch',
   'help.guide.link-booking.goal':
     'Treo một đặt chỗ vào điểm dừng và địa điểm mà nó thuộc về, để nó hiện ra ở nơi bạn sẽ cần đến nó.',
-  'help.guide.link-booking.step.1': 'Nhấp cây bút chì trên thẻ bạn muốn liên kết. “Chỉnh sửa đặt chỗ” mở ra.',
+  'help.guide.link-booking.step.1':
+    'Trỏ vào thẻ bạn muốn liên kết và nhấp cây bút chì trên dải đầu của nó. “Chỉnh sửa đặt chỗ” mở ra.',
   'help.guide.link-booking.step.2':
     'Mở “Liên kết đến bài tập trong ngày”. Danh sách chính là kế hoạch của bạn: một tiêu đề cho mỗi ngày, rồi các điểm dừng của ngày đó, được đánh số và kèm giờ. Chọn điểm mà đặt chỗ thuộc về.',
   'help.guide.link-booking.step.3':
-    '“Địa điểm / Hoạt động” liên kết chính địa điểm đó. Chọn nó ở đấy, và “Tiêu đề” cùng “Vị trí / Địa chỉ” sẽ tự điền ở bất cứ chỗ nào bạn đã để trống.',
+    '“Địa điểm / Hoạt động” liên kết chính địa điểm đó. Chọn nó ở đấy, và tiêu đề cùng “Vị trí / Địa chỉ” sẽ tự điền ở bất cứ chỗ nào bạn đã để trống.',
   'help.guide.link-booking.step.4': 'Nhấp “Cập nhật”.',
   'help.guide.link-booking.result':
-    'Thẻ nêu ngày và điểm dừng dưới “Liên kết đến bài tập trong ngày”, và đặt chỗ đi cùng điểm dừng ấy trong “Kế hoạch ngày”.',
+    'Thẻ nêu ngày và điểm dừng dưới “Liên kết với”, và đặt chỗ đi cùng điểm dừng ấy trong “Kế hoạch ngày”.',
   'help.guide.link-booking.tip.1':
     '“Không có liên kết (độc lập)” ở đầu danh sách gỡ liên kết ra lần nữa. “Chỗ ở” hoàn toàn không có ô chọn điểm dừng: nó liên kết qua những đêm của mình.',
   'help.guide.link-booking.tip.2':
@@ -3206,49 +3247,49 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Nói một đặt chỗ là dành cho ai',
   'help.guide.booking-travelers.goal': 'Đánh dấu những người đi mà một đặt chỗ bao gồm, rồi chỉ xem phần của họ.',
   'help.guide.booking-travelers.step.1':
-    'Mở đặt chỗ bằng cây bút chì. “Người đi” nằm cạnh “Mã đặt chỗ”, và hiện “Chỉ định người đi” khi chưa có ai trong đặt chỗ.',
+    'Mở đặt chỗ bằng cây bút chì trên thẻ của nó. “Người đi” nằm cạnh “Mã đặt chỗ”, và hiện “Chỉ định người đi” khi chưa có ai trong đặt chỗ.',
   'help.guide.booking-travelers.step.2':
     'Nhấp vào đó và chọn những người mà đặt chỗ này dành cho; những “Khách” đã có tên cũng có trong danh sách. Người được chọn sẽ có một dấu tích và ảnh đại diện của họ trong ô. Nhấp lại vào tên để bỏ ra.',
   'help.guide.booking-travelers.step.3': 'Nhấp “Cập nhật”.',
   'help.guide.booking-travelers.step.4':
-    'Ở thanh công cụ phía trên, cạnh các chip loại, nhấp ảnh đại diện của một người đi để chỉ xem các đặt chỗ của họ.',
+    'Nhấp “Lọc” trên thanh: dưới “Người đi”, nhấp vào một người để chỉ xem các đặt chỗ của họ. Có thể bật nhiều người cùng lúc.',
   'help.guide.booking-travelers.result':
-    'Thẻ liệt kê những người mà nó dành cho, và hàng ảnh đại diện thu hẹp thẻ này về một trong số họ.',
+    'Thẻ liệt kê những người mà nó dành cho, và “Lọc” thu hẹp tab về các đặt chỗ của những người bạn chọn.',
   'help.guide.booking-travelers.tip.1':
-    'Trên thẻ, người đi chỉ được hiển thị chứ không bao giờ thay đổi được. Họ được đặt ở đây, trong biểu mẫu.',
+    'Trên thẻ và trong phần chi tiết, người đi chỉ được hiển thị chứ không bao giờ thay đổi được. Họ được đặt ở đây, trong biểu mẫu.',
   'help.guide.booking-travelers.tip.2':
-    'Hàng ảnh đại diện xuất hiện khi chuyến đi có nhiều hơn một thành viên và ít nhất một đặt chỗ nêu tên ai đó. Thứ bạn chọn còn lại trong suốt phiên trình duyệt này.',
+    '“Người đi” xuất hiện trong “Lọc” khi chuyến đi có nhiều hơn một thành viên và ít nhất một đặt chỗ nêu tên ai đó. Thứ bạn chọn còn lại cho tới khi bạn đóng tab trình duyệt.',
   // booking-files
   'help.guide.booking-files.title': 'Giữ phiếu cùng với đặt chỗ',
   'help.guide.booking-files.goal': 'Đính bản xác nhận, vé hoặc thẻ vào đúng đặt chỗ mà nó thuộc về.',
   'help.guide.booking-files.step.1':
-    'Mở đặt chỗ bằng cây bút chì, đi xuống “Tập tin” và nhấp “Đính kèm tập tin”. Trên một đặt chỗ đã tồn tại, giấy tờ được tải lên ngay và TREK báo “Tệp đã được tải lên”.',
+    'Mở đặt chỗ bằng cây bút chì trên thẻ của nó. “Tập tin” nằm cạnh “Liên kết”; nhấp “Đính kèm tập tin” ở đó. Trên một đặt chỗ đã tồn tại, giấy tờ được tải lên ngay và TREK báo “Tệp đã được tải lên”.',
   'help.guide.booking-files.step.2': 'Giấy tờ được liệt kê theo tên, kèm một nút để mở nó và một dấu X bên cạnh.',
   'help.guide.booking-files.step.3':
     '“Liên kết tập tin hiện có” đưa ra những giấy tờ của chuyến đi chưa nằm trên đặt chỗ này. Chọn một cái và nó được đính vào mà không phải tải lên lần nữa.',
   'help.guide.booking-files.step.4': 'Nhấp “Cập nhật”.',
   'help.guide.booking-files.result':
-    'Thẻ liệt kê các giấy tờ dưới “Tập tin”, và một cú nhấp lên một trong số chúng sẽ mở nó ra.',
+    'Thẻ và phần chi tiết liệt kê các giấy tờ dưới “Tập tin”, và một cú nhấp lên một trong số chúng sẽ mở nó ra.',
   'help.guide.booking-files.tip.1':
     'Trên một đặt chỗ bạn còn đang tạo, giấy tờ sẽ chờ và được tải lên đúng lúc bạn nhấp “Thêm”.',
   'help.guide.booking-files.tip.2':
     'Dấu X cạnh một giấy tờ chỉ gỡ liên kết, không gỡ giấy tờ. Nó vẫn nằm trong thẻ “Tập tin” của chuyến đi.',
   'help.guide.booking-files.tip.3':
-    'Những loại tập tin nào được phép đính kèm là danh sách “Các loại tệp được phép” của quản trị viên; tài liệu, văn bản và hình ảnh được cho phép ngay từ đầu.',
+    'Những loại tập tin nào được phép đính kèm là danh sách của quản trị viên dưới “Các loại tệp được phép”; tài liệu, văn bản và hình ảnh được cho phép ngay từ đầu.',
   // booking-cost
   'help.guide.booking-cost.title': 'Biến giá của một đặt chỗ thành chi phí',
   'help.guide.booking-cost.goal': 'Đưa số tiền một đặt chỗ tốn vào “Chi phí”, chia cho những người trả tiền cho nó.',
   'help.guide.booking-cost.step.1':
-    'Mở đặt chỗ và đi xuống chân biểu mẫu. Dưới “Chi phí” là “Tạo chi phí” và “Liên kết chi phí hiện có”, kèm ghi chú “Lưu đặt chỗ, sau đó mở trình chỉnh sửa Chi phí.”',
+    'Mở đặt chỗ bằng cây bút chì trên thẻ của nó và đi xuống chân biểu mẫu. Dưới “Chi phí” là “Tạo chi phí” và “Liên kết chi phí hiện có”, kèm ghi chú “Lưu đặt chỗ, sau đó mở trình chỉnh sửa Chi phí.”',
   'help.guide.booking-cost.step.2':
-    'Nhấp “Tạo chi phí”. Đặt chỗ được lưu, biểu mẫu của nó đóng lại và trình chỉnh sửa chi phí mở ra.',
+    'Nhấp “Tạo chi phí”. Đặt chỗ được lưu, biểu mẫu của nó đóng lại và trình chỉnh sửa chi phí mở ra dưới dạng “Thêm chi phí”.',
   'help.guide.booking-cost.step.3':
-    '“Nó dùng để làm gì?” đã sẵn là tiêu đề của đặt chỗ. Điền “Tổng số tiền” và kiểm tra “Tiền tệ” cùng “Ngày”.',
+    'Tên trên dải đầu đã sẵn là tiêu đề của đặt chỗ. Điền “Tổng số tiền” và kiểm tra “Tiền tệ” cùng “Ngày” bên cạnh.',
   'help.guide.booking-cost.step.4':
-    '“Loại” là loại mà kiểu đặt chỗ gợi ra. Đặt “Ai đã trả tiền?” và cách số tiền được “Chia tiền”.',
+    'Nhãn trên dải đầu là “Loại”, đã sẵn là loại mà kiểu đặt chỗ gợi ra. Dưới “Ai đã trả tiền?”, chọn người đã trả, và dưới “Chia tiền”, chọn cách chia số tiền.',
   'help.guide.booking-cost.step.5': 'Nhấp “Thêm chi phí”.',
   'help.guide.booking-cost.result':
-    'Biểu mẫu của đặt chỗ giờ liệt kê khoản chi dưới “Các chi phí liên kết” kèm số tiền của nó, và chính khoản chi ấy đứng trong thẻ “Chi phí”, buộc vào đặt chỗ này.',
+    'Thẻ mang số tiền ở chân, biểu mẫu của đặt chỗ liệt kê khoản chi dưới “Các chi phí liên kết”, và chính khoản chi ấy đứng trong tab “Chi phí”, buộc vào đặt chỗ này.',
   'help.guide.booking-cost.tip.1':
     'Loại đi theo kiểu: “Nhà hàng” thành “Thức ăn và đồ uống”, “Chỗ ở” thành “Chỗ ở”, “Bãi đỗ xe” thành “Bãi đỗ xe”, còn “Sự kiện” và “Chuyến du lịch” đều rơi vào “Khác”.',
   'help.guide.booking-cost.tip.2':
@@ -3257,38 +3298,42 @@ const help: TranslationStrings = {
     '“Chi phí” chỉ có trong biểu mẫu khi tiện ích “Chi phí” đang bật, thứ mà quản trị viên bật tắt dưới “Tiện ích bổ sung”.',
   // filter-bookings
   'help.guide.filter-bookings.title': 'Tìm một đặt chỗ',
-  'help.guide.filter-bookings.goal': 'Thu hẹp một thẻ dài về đúng loại, đúng người hoặc đúng trạng thái bạn đang tìm.',
+  'help.guide.filter-bookings.goal': 'Thu hẹp một tab dài về một từ, một trạng thái, một loại hoặc một người.',
   'help.guide.filter-bookings.step.1':
-    'Các chip bên cạnh tiêu đề là những loại mà chuyến đi này thật sự dùng, mỗi chip kèm số lượng nó chứa. “Tất cả” là toàn bộ thẻ.',
+    'Gõ vào “Tìm kiếm” trên thanh. Nó tìm trong tiêu đề, loại, địa điểm và địa chỉ, ghi chú, mã đặt chỗ và tên người đi, và tab thu hẹp lại khi bạn gõ; Escape làm trống ô.',
   'help.guide.filter-bookings.step.2':
-    'Nhấp một chip để chỉ giữ loại đó. Nhấp thêm một chip nữa thì cả hai đều được giữ.',
-  'help.guide.filter-bookings.step.3': '“Tất cả” đưa mọi thứ trở lại.',
+    'Nhấp “Lọc”, cái phễu cạnh ô tìm kiếm. Bảng của nó chứa “Trạng thái”, “Loại” và, khi một đặt chỗ đã nêu tên người, “Người đi”.',
+  'help.guide.filter-bookings.step.3':
+    'Dưới “Trạng thái”, chọn “Đã xác nhận” hoặc “Chưa giải quyết” để chỉ xem những đặt chỗ đó; “Tất cả” hiện cả hai.',
   'help.guide.filter-bookings.step.4':
-    'Các ảnh đại diện cạnh các chip lọc theo người đi, một người hoặc nhiều người cùng lúc.',
+    'Dưới “Loại”, nhấp một hoặc nhiều loại để chỉ giữ những loại đó. Mỗi loại cho biết nó chứa bao nhiêu đặt chỗ, và một dấu tích đánh dấu những loại đang bật.',
   'help.guide.filter-bookings.step.5':
-    '“Chưa giải quyết” và “Đã xác nhận” là hai phần, mỗi phần có số đếm của nó. Nhấp một tiêu đề để gấp một phần lại; nó vẫn còn gấp khi bạn quay lại.',
+    'Một con số trên “Lọc” đếm những gì đang bật, và một chip cạnh ô tìm kiếm cho biết còn lại bao nhiêu trên tổng số đặt chỗ. Nhấp vào chip đó, hoặc “Đặt lại bộ lọc” ở chân bảng, để xem lại mọi thứ.',
   'help.guide.filter-bookings.result':
-    'Thẻ chỉ hiện thứ bạn đã chọn, và nó vẫn được chọn như thế khi bạn quay lại trong phiên trình duyệt này.',
+    'Tab chỉ hiện thứ bạn đã chọn, trong “Thẻ”, “Danh sách” lẫn “Dòng thời gian”, và các bộ lọc được giữ cho chuyến đi này cho tới khi bạn đóng tab trình duyệt.',
   'help.guide.filter-bookings.tip.1':
-    'Các chip chỉ đưa ra những loại mà chuyến đi có, nên một chuyến đi không có lấy một chuyến du lịch nào thì không có chip “Chuyến du lịch”.',
+    '“Loại” chỉ có mặt khi tab chứa nhiều hơn một loại, và nó chỉ liệt kê những loại mà tab chứa, nên một tab không có lấy một chuyến du lịch nào thì không có “Chuyến du lịch” trong đó.',
   'help.guide.filter-bookings.tip.2':
-    'Một bộ lọc không khớp với gì cả sẽ để lại thẻ trống với dòng “Không tìm thấy địa điểm nào”. Cách diễn đạt là của danh sách địa điểm; ý nghĩa thì vẫn thế.',
+    'Một bộ lọc không khớp với gì cả sẽ để lại dòng “Không có mục nào khớp với các bộ lọc này” trong tab, với “Đặt lại bộ lọc” ngay bên dưới.',
   // import-booking-file
   'help.guide.import-booking-file.title': 'Đọc một đặt chỗ ra từ bản xác nhận của nó',
   'help.guide.import-booking-file.goal':
     'Để TREK rút đặt chỗ ra từ thư hay tập tin PDF mà nhà cung cấp đã gửi, thay vì gõ lại lần nữa.',
-  'help.guide.import-booking-file.step.1': 'Nhấp “Nhập từ tập tin” trên thanh công cụ. “Nhập xác nhận đặt chỗ” mở ra.',
+  'help.guide.import-booking-file.step.1':
+    'Nhấp biểu tượng tải xuống trên thanh, “Nhập xác nhận đặt chỗ”; tên này hiện ra khi bạn trỏ vào. Hộp thoại cùng tên mở ra.',
   'help.guide.import-booking-file.step.2':
     'Thả các bản xác nhận lên ô đó, hoặc nhấp vào ô rồi chọn chúng: EML, PDF, PKPass, HTML và TXT, tối đa năm tập tin, mỗi tập tin 10 MB. Những tập tin bạn chọn được nêu tên trên ô.',
   'help.guide.import-booking-file.step.3': 'Nhấp “Nhập”. Hộp thoại đóng lại ngay, vì việc đọc diễn ra ở nền.',
   'help.guide.import-booking-file.step.4':
     'Một thẻ ở dưới cùng bên phải báo cáo lượt chạy dưới tên tập tin, và nó theo bạn khắp ứng dụng và qua cả một lần tải lại. “Đang phân tích tệp…” đổi thành dấu tích khi việc đọc xong, và thẻ đưa ra “Nhập”. Nhấp vào đó.',
+  'help.guide.import-booking-file.step.5':
+    'Mỗi đặt chỗ được tìm thấy mở ra trong “Đặt chỗ mới”, lần lượt từng cái, đã điền sẵn. Với một khách sạn, đó là tên của nó làm tiêu đề và, khi chuyến đi có địa điểm đó, dưới “Chỗ ở”, “Vị trí / Địa chỉ” của nó, “Từ” và “ĐẾN” theo các đêm của nó, “Nhận phòng” và “Trả phòng”, “Mã đặt chỗ”, bản xác nhận dưới “Tập tin” và, khi “Chi phí” đang bật, giá dưới dạng “Chi phí liên kết”. Kiểm tra rồi nhấp “Thêm”.',
   'help.guide.import-booking-file.result':
     'Đặt chỗ là một thẻ trong “Chưa giải quyết” với các đêm, mã và bản xác nhận dưới “Tập tin”, lần lưu trú nằm trên những ngày đó của kế hoạch, và khi “Chi phí” đang bật, giá là một khoản chi gắn với nó.',
   'help.guide.import-booking-file.tip.1':
-    '“Nhập từ tập tin” chỉ có mặt khi máy chủ đọc được các bản xác nhận, việc này cần bộ trích xuất hoặc tiện ích “Phân tích bằng AI”. Quản trị viên bật tắt cái sau dưới “Tiện ích bổ sung”.',
+    'Biểu tượng nhập chỉ có mặt khi máy chủ đọc được các bản xác nhận, việc này cần bộ trích xuất hoặc tiện ích “Phân tích bằng AI”; quản trị viên bật tắt cái sau dưới “Tiện ích bổ sung”. Một tab chưa có đặt chỗ nào cũng đưa ra nó dưới dạng nút “Nhập từ tập tin”.',
   'help.guide.import-booking-file.tip.2':
-    'Nếu không đọc được gì, thẻ sẽ nói vậy và đưa ra “Thử phân tích bằng AI”, thứ gửi thẳng chính những tập tin ấy tới mô hình. Một lượt phân tích đã xong được giữ trong mười phút; hãy bắt đầu rà soát trong khoảng thời gian đó.',
+    'Nếu không đọc được gì, thẻ sẽ nói vậy và, khi “Phân tích bằng AI” đang bật, đưa ra “Thử phân tích bằng AI”, thứ gửi thẳng chính những tập tin ấy tới mô hình. Một lượt phân tích đã xong được giữ trong mười phút; hãy bắt đầu rà soát trong khoảng thời gian đó.',
   'help.guide.import-booking-file.tip.3':
     'Bản xác nhận chỉ được đính kèm khi loại của nó nằm trong “Các loại tệp được phép” của cài đặt quản trị. PDF có sẵn ngay từ đầu; một bức thư, EML, phải được thêm vào trước, nếu không đặt chỗ được lưu mà không có nó.',
   // edit-booking
@@ -3296,112 +3341,113 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.goal':
     'Sửa một giờ, thêm mã đến muộn, hoặc chuyển một đặt chỗ từ “Chưa giải quyết” sang “Đã xác nhận”.',
   'help.guide.edit-booking.step.1':
-    'Nhấp cây bút chì ở đầu thẻ. “Chỉnh sửa đặt chỗ” mở ra với mọi thứ mà đặt chỗ biết.',
+    'Trỏ vào thẻ và nhấp cây bút chì trên dải đầu của nó. “Chỉnh sửa đặt chỗ” mở ra với mọi thứ mà đặt chỗ biết.',
   'help.guide.edit-booking.step.2':
     'Thay đổi thứ cần thay đổi, ở đây là “Mã đặt chỗ” mà nhà cung cấp cuối cùng cũng gửi tới.',
-  'help.guide.edit-booking.step.3': 'Nhấp vào nhãn “Chưa giải quyết” ở đầu biểu mẫu. Nó chuyển sang “Đã xác nhận”.',
+  'help.guide.edit-booking.step.3':
+    'Nhấp vào nhãn “Chưa giải quyết” trên dải đầu. Nó chuyển sang “Đã xác nhận”, và dải đầu chuyển sang màu xanh lá.',
   'help.guide.edit-booking.step.4': 'Nhấp “Cập nhật”.',
   'help.guide.edit-booking.result':
-    'Thẻ chuyển chỗ: một đặt chỗ đã xác nhận đứng trong phần “Đã xác nhận” sau một chấm xanh lá, và mọi người trong chuyến đi đều thấy nó chuyển.',
+    'Thẻ chuyển chỗ: một đặt chỗ đã xác nhận đứng trong phần “Đã xác nhận” với một chấm xanh lá và dải đầu màu xanh lá, và mọi người trong chuyến đi đều thấy nó chuyển.',
   'help.guide.edit-booking.tip.1':
     'Một “Mã đặt chỗ” bạn không đọc được chính là “Mã đặt chỗ mờ” trong Cài đặt, dưới “Hiển thị”. Đưa chuột lên, hoặc nhấp vào, là nó đọc được.',
   'help.guide.edit-booking.tip.2':
     'Đổi kiểu thì loại của khoản chi liên kết cũng đổi theo, trừ khi bạn đã tự tay chọn một loại trong trình chỉnh sửa chi phí.',
   'help.guide.edit-booking.tip.3':
-    'Một chỗ ở cũng được sửa ở đây: các ngày “Từ” và “Đến” của nó nằm trong cùng biểu mẫu.',
+    '“Chỉnh sửa” ở chân phần chi tiết của một đặt chỗ mở cùng biểu mẫu đó. Trạng thái cũng chuyển được mà không cần biểu mẫu nào: nhấp vào chấm trên một thẻ hoặc một hàng, hoặc vào nhãn trạng thái trong phần chi tiết.',
   // delete-booking
   'help.guide.delete-booking.title': 'Xóa một đặt chỗ',
   'help.guide.delete-booking.goal': 'Đưa một đặt chỗ đã đổ bể ra khỏi chuyến đi.',
-  'help.guide.delete-booking.step.1': 'Nhấp thùng rác ở đầu thẻ.',
+  'help.guide.delete-booking.step.1':
+    'Trỏ vào thẻ và nhấp thùng rác trên dải đầu của nó. Thùng rác ở chân phần chi tiết của một đặt chỗ cũng hỏi y như vậy.',
   'help.guide.delete-booking.step.2': '“Xóa đặt chỗ?” nêu tên cái bạn đã chọn và nói rằng nó sẽ bị xóa vĩnh viễn.',
-  'help.guide.delete-booking.step.3': 'Nhấp “Xác nhận”.',
+  'help.guide.delete-booking.step.3': 'Nhấp “Xóa bỏ”.',
   'help.guide.delete-booking.result':
     'Thẻ biến mất, với mọi người trong chuyến đi. Một đặt chỗ không có hoàn tác, nên câu hỏi ấy là chặng cuối cùng.',
   'help.guide.delete-booking.tip.1':
-    'Xóa một đặt chỗ ở còn đưa những đêm của nó ra khỏi “Kế hoạch ngày” và gỡ khoản chi đã liên kết với nó.',
+    'Xóa một đặt chỗ cũng gỡ các chi phí liên kết với nó, và một chỗ ở thì mang những đêm của nó ra khỏi “Kế hoạch ngày”.',
   'help.guide.delete-booking.tip.2':
     'Những giấy tờ từng được đính kèm vẫn ở lại trong thẻ “Tập tin” của chuyến đi; chỉ liên kết của chúng với đặt chỗ là mất đi.',
-  // import-booking-file
-  'help.guide.import-booking-file.step.5':
-    'Mỗi đặt chỗ được tìm thấy mở ra trong “Đặt chỗ mới”, lần lượt từng cái, đã điền sẵn. Với một khách sạn, đó là tên trong “Tiêu đề” và, khi chuyến đi có địa điểm đó, dưới “Chỗ ở”, “Vị trí / Địa chỉ” của nó, “Từ” và “ĐẾN” theo các đêm của nó, “Nhận phòng” và “Trả phòng”, “Mã đặt chỗ”, bản xác nhận dưới “Tập tin” và, khi “Chi phí” đang bật, giá dưới dạng “Chi phí liên kết”. Kiểm tra rồi nhấp “Thêm”.',
 
   // ── Screen: trip-costs ────────────────────────────────────────────────────────────────
   'help.ctx.trip-costs.title': 'Chi phí',
   'help.ctx.trip-costs.summary':
-    'Tiền bạc của chuyến đi: mọi khoản chi thành một sổ cái có ngày tháng, ai đã bỏ tiền ra và ai phải gánh phần của mình, bằng đúng loại tiền ghi trên biên lai, và ở cột bên phải là ai phải trả cho ai để mọi thứ cân trở lại.',
+    'Tiền bạc của chuyến đi: mọi khoản chi trong một sổ cái có ngày tháng hoặc một bảng, ai đã bỏ tiền ra và ai phải gánh phần của mình, bằng đúng loại tiền ghi trên biên lai, và ở cột bên phải là ai phải trả cho ai để mọi thứ cân trở lại.',
   'help.ctx.trip-costs.bullet.1':
-    'Bốn thẻ ở trên cùng: “Bạn nợ” và “Bạn đang nợ” là phía của chính bạn trong việc thanh toán, “Số tiền chưa thanh toán” là những gì đã ghi nhận nhưng chưa có người trả, còn “Tổng chi tiêu chuyến đi” cộng tất cả lại, với “Chia sẻ của bạn” và “Bạn đã trả tiền” ở bên dưới.',
+    'Thanh ở trên cùng nêu ngày tháng của chuyến đi và những người đi cùng chia chi phí, rồi chứa “Tìm kiếm chi phí…”, “Lọc” (cái phễu), “Xuất CSV” (biểu tượng tải xuống) và công tắc “Danh sách” / “Bảng”.',
   'help.ctx.trip-costs.bullet.2':
-    '“Thêm chi phí” ở trên cùng bên phải mở trình chỉnh sửa; “Thanh toán” ngay cạnh đó ghi nhận mọi khoản chuyển còn mở cùng một lúc.',
+    'Ở đầu bên phải của thanh, “Thanh toán” ghi nhận mọi khoản chuyển còn mở cùng một lúc, “Quét hóa đơn” điền một khoản chi từ một tấm ảnh khi tiện ích “Phân tích bằng AI” đọc được hình ảnh, và “Thêm chi phí” mở trình chỉnh sửa.',
   'help.ctx.trip-costs.bullet.3':
-    'Sổ cái được nhóm theo ngày, mới nhất trước, với tổng của ngày đó ở bên phải. Mỗi dòng mang danh mục dưới dạng một tab màu, tên, các chip người trả, ghi chú và số tiền, cùng với “bạn đã cho mượn” hoặc “bạn đã mượn” khi cách chia khiến bạn dư ra hay thiếu đi ở khoản đó.',
+    'Bốn thẻ bên dưới thanh: “Bạn nợ” và “Người khác nợ bạn” là phía của chính bạn trong việc thanh toán, “Số tiền chưa thanh toán” là những gì đã ghi nhận nhưng chưa có người trả, còn “Tổng chi tiêu chuyến đi” cộng tất cả lại, với “Chia sẻ của bạn” và “Bạn đã trả tiền” ở bên dưới.',
   'help.ctx.trip-costs.bullet.4':
-    'Phía trên danh sách là “Tìm kiếm chi phí…”, một bộ lọc danh mục, một bộ lọc ngày, công tắc “Tất cả” / “Do tôi trả tiền” / “tôi nợ” và nút “Xuất CSV”.',
+    'Sổ cái được nhóm theo ngày, mới nhất trước, mỗi ngày có tiêu đề cho biết nó chứa bao nhiêu mục và đã chi bao nhiêu trong ngày đó. Mỗi dòng mang danh mục dưới dạng một tab màu, tên, các chip người trả, ghi chú và số tiền, cùng với “bạn đã cho mượn” hoặc “bạn đã mượn” khi cách chia khiến bạn dư ra hay thiếu đi ở khoản đó.',
   'help.ctx.trip-costs.bullet.5':
     'Cột bên phải chính là câu trả lời: “Thanh toán” liệt kê ai trả cho ai, “Số dư” cho thấy phần dư hay phần thiếu của từng người, “Ngân sách cuối cùng” cho biết chuyến đi tốn của mỗi người bao nhiêu, và “Theo danh mục” cho biết tiền đã đi đâu.',
   'help.ctx.trip-costs.bullet.6':
-    'Một khoản chi trả đã ghi nhận nằm trong cùng sổ cái như một dòng riêng, với “Chỉnh sửa” và “Hoàn tác” bên cạnh; một khoản chi có cây bút chì và một thùng rác, và thùng rác xóa nó mà không hỏi lại.',
+    'Một khoản chi trả đã ghi nhận nằm trong cùng sổ cái như một dòng riêng, với một cây bút chì và “Hoàn tác” bên cạnh; một khoản chi có cây bút chì và một thùng rác, và thùng rác xóa nó mà không hỏi lại.',
+  'help.ctx.trip-costs.bullet.7':
+    '“Bảng” trên thanh hiển thị cùng các khoản chi đó dưới dạng một trang tính, nhóm theo danh mục, với “Người” và “Ngày” cùng số tiền tương ứng cho mỗi người và mỗi ngày; khi đó “Tóm tắt” thế chỗ “Theo danh mục”. “Chi phí” nhớ chế độ xem bạn đã chọn.',
   // add-expense
   'help.guide.add-expense.title': 'Thêm một khoản chi',
   'help.guide.add-expense.goal': 'Ghi lại một thứ đã tốn bao nhiêu, ai trả và nó được chia với những ai.',
   'help.guide.add-expense.step.1':
-    'Nhấp “Thêm chi phí” ở trên cùng bên phải của tab Chi phí. Trình chỉnh sửa mở ra, mang ngày hôm nay, với tất cả mọi người đã có sẵn trong phần chia.',
+    'Nhấp “Thêm chi phí” ở đầu bên phải của thanh. Trình chỉnh sửa mở ra, mang ngày hôm nay, do bạn trả và với tất cả mọi người đã có sẵn trong phần chia.',
   'help.guide.add-expense.step.2':
-    'Gõ nó dùng để làm gì vào “Nó dùng để làm gì?”, ô duy nhất bắt buộc phải điền, và con số trên biên lai vào “Tổng số tiền”.',
+    'Gõ khoản chi dùng để làm gì vào phần đầu hộp thoại, ô ghi “ví dụ. Ăn tối, quà lưu niệm, xăng…” khi còn trống. Đó là tên của khoản chi, và không có tên thì khoản chi không lưu được.',
   'help.guide.add-expense.step.3':
-    '“Tiền tệ” và “Ngày” nằm dưới số tiền. “Tiền tệ” bắt đầu bằng tiền tệ của chính chuyến đi; đổi nó và trình chỉnh sửa cho thấy số tiền đó đáng bao nhiêu theo tiền tệ chuyến đi. “Ngày” bắt đầu từ hôm nay và đó là ngày mà sổ cái dùng để nhóm khoản chi.',
+    'Nhãn dưới tên là “Loại”, là “Thức ăn và đồ uống” cho đến khi bạn chọn loại khác. Có mười bốn loại và không thể thay đổi: phần đầu mang màu của loại bạn chọn, và tab màu trên dòng cùng thanh của nó trong “Theo danh mục” cũng vậy.',
   'help.guide.add-expense.step.4':
-    'Chọn một “Loại”. Có mười bốn loại và không thể thay đổi: loại bạn chọn chính là tab màu trên dòng và là thanh trong “Theo danh mục”.',
+    'Nhập con số trên biên lai vào “Tổng số tiền”. “Tiền tệ” bên cạnh bắt đầu bằng tiền tệ mà “Chi phí” đang hiển thị; đổi nó và trình chỉnh sửa cho thấy số tiền đó đáng bao nhiêu. “Ngày” bắt đầu từ hôm nay và đó là ngày mà sổ cái dùng để nhóm khoản chi.',
   'help.guide.add-expense.step.5':
-    'Dưới “Ai đã trả tiền?”, chọn người thực sự đã bỏ tiền ra. “Bạn” được chọn sẵn; “Chưa có ai trả tiền” ghi nhận số tiền mà không bắt ai phải gánh, còn “Nhiều người đã trả” chia hóa đơn cho nhiều người trả.',
+    'Dưới “Ai đã trả tiền?”, nhấp vào người thực sự đã bỏ tiền ra. “Bạn” được chọn sẵn; “Chưa có ai trả tiền” ghi nhận số tiền mà không bắt ai phải gánh, còn “Nhiều người đã trả” trong công tắc cạnh tiêu đề chia hóa đơn cho nhiều người trả.',
   'help.guide.add-expense.step.6':
-    '“Chia tiền” bắt đầu ở “Chia đều” với tất cả mọi người được tính, và mỗi tên hiển thị phần tương ứng của mình. Nhấp “Thêm chi phí” để lưu.',
+    '“Chia tiền” bên dưới bắt đầu ở “Chia đều”, với tất cả mọi người được tích và phần của mỗi người bên cạnh tên; để nguyên hoặc thay đổi. Nhấp “Thêm chi phí” ở chân hộp thoại để lưu.',
   'help.guide.add-expense.result':
     'Khoản chi nằm trong sổ cái dưới ngày của nó, được tính vào “Tổng chi tiêu chuyến đi”, và cột thanh toán đã tính lại ai nợ ai.',
   'help.guide.add-expense.tip.1':
-    'Để nguyên như khi mở ra, khoản chi dùng tiền tệ của chuyến đi, mang ngày hôm nay và chia đều cho mọi người: thật ra chỉ có tên và số tiền là bắt buộc.',
+    'Để nguyên như khi mở ra, khoản chi mang ngày hôm nay, do bạn trả và chia đều cho mọi người: thật ra chỉ có tên và số tiền là bắt buộc.',
   'help.guide.add-expense.tip.2':
     'Dấu ± bên cạnh số tiền biến khoản chi thành khoản hoàn. Tổng âm trả tiền lại thay vì lấy đi, và cách chia chạy theo hướng ngược lại.',
   'help.guide.add-expense.tip.3':
-    '“Đính kèm hóa đơn / biên lai” ở dưới cùng nhận ảnh và tệp PDF. Chúng được tải lên khi bạn lưu, nằm trong Tập tin của chuyến đi, và một chip “Hóa đơn” xuất hiện cạnh tên trong danh sách.',
+    '“Đính kèm”, cạnh “Hóa đơn & Biên lai” ở dưới cùng hộp thoại, nhận ảnh và tệp PDF. Chúng được tải lên khi bạn lưu, nằm trong Tập tin của chuyến đi, và một chip “Hóa đơn” xuất hiện cạnh tên trong danh sách.',
   // expense-payers
   'help.guide.expense-payers.title': 'Nói ai đã trả hóa đơn',
   'help.guide.expense-payers.goal':
     'Ghi lại ai đang phải bỏ tiền túi cho một khoản chi, nửa còn lại của phép tính thanh toán.',
   'help.guide.expense-payers.step.1':
-    'Mở một khoản chi bằng cây bút chì bên cạnh dòng của nó và xem “Ai đã trả tiền?”. “Một người đã trả” là mặc định: danh sách thả xuống nêu tên một người duy nhất đã bỏ tiền ra.',
+    'Mở một khoản chi bằng cây bút chì bên cạnh dòng của nó và xem “Ai đã trả tiền?”. “Một người đã trả” là mặc định trong công tắc cạnh tiêu đề: mỗi người đi là một chip, và chip có viền là người đã bỏ tiền ra. Nhấp một chip khác để thay đổi.',
   'help.guide.expense-payers.step.2':
-    '“Chưa có ai trả tiền”, mục đầu tiên của danh sách thả xuống đó, ghi nhận số tiền mà không bắt ai nợ gì cả. Khoản chi vẫn được tính vào “Tổng chi tiêu chuyến đi”.',
+    '“Chưa có ai trả tiền”, chip nét đứt sau những người đi, ghi nhận số tiền mà không bắt ai nợ gì cả. Khoản chi vẫn được tính vào “Tổng chi tiêu chuyến đi”.',
   'help.guide.expense-payers.step.3':
-    '“Nhiều người đã trả”, liên kết cạnh nhãn, mở ra một dòng cho mỗi người. Bao gồm những ai đã trả và gõ số tiền từng người bỏ ra; các số tiền phải cộng lại bằng tổng.',
+    '“Nhiều người đã trả”, phía bên kia của công tắc đó, liệt kê mọi người đi kèm một ô để tích, và mỗi người được tích có một ô số tiền. Tích những ai đã trả và gõ số tiền từng người bỏ ra; các số tiền phải cộng lại bằng tổng.',
   'help.guide.expense-payers.step.4':
-    'Một khoản chi chưa ai trả sẽ bị đánh dấu “Chưa xong” trên dòng của nó và được tính vào thẻ “Số tiền chưa thanh toán”, nơi gom những khoản đã ghi nhận nhưng chưa được thanh toán.',
+    'Một khoản chi chưa ai trả sẽ bị đánh dấu “Chưa xong” trên dòng của nó và được tính vào thẻ “Số tiền chưa thanh toán”, nơi gom những khoản chi tiêu chưa có người trả.',
   'help.guide.expense-payers.result':
     'Ai đã trả quyết định ai được trả lại, cách chia quyết định ai phải trả, và “Số dư” là chênh lệch giữa hai điều đó.',
   'help.guide.expense-payers.tip.1':
     '“Ai đã trả tiền?” và “Chia tiền” độc lập với nhau: bạn có thể trả cho một bữa tối bạn không dự, và bị chia vào một bữa tối bạn không trả.',
   'help.guide.expense-payers.tip.2':
-    'Với nhiều người trả, các số tiền phải cộng lại bằng tổng. Bao gồm thêm một người và những người khác tự sắp xếp lại quanh người đó; trong lúc chúng chưa khớp, trình chỉnh sửa nói rõ chúng phải cộng lại thành bao nhiêu và từ chối lưu.',
+    'Với nhiều người trả, các số tiền phải cộng lại bằng tổng. Tích thêm một người và những số tiền bạn chưa tự gõ sẽ chia lại phần còn lại; trong lúc chúng chưa khớp, trình chỉnh sửa nói rõ chúng phải cộng lại thành bao nhiêu và từ chối lưu.',
   'help.guide.expense-payers.tip.3':
-    'Bỏ một người trả không xóa khoản chi: số tiền vẫn nằm trong “Tổng chi tiêu chuyến đi” và dòng đó trở thành “Chưa xong”.',
+    'Đặt một khoản chi trở lại “Chưa có ai trả tiền” không xóa nó: số tiền vẫn nằm trong “Tổng chi tiêu chuyến đi” và dòng đó trở thành “Chưa xong”.',
   // split-expense
   'help.guide.split-expense.title': 'Chia một hóa đơn giữa những người đi cùng',
   'help.guide.split-expense.goal':
     'Quyết định ai gánh một khoản chi: tất cả chia đều, theo số tiền, hoặc từng dòng trên biên lai.',
   'help.guide.split-expense.step.1':
-    'Trong trình chỉnh sửa khoản chi, “Chia tiền” liệt kê mọi người. Nhấp vào một tên để để người đó ra ngoài khoản chi này; người bị loại hiện chữ “Không tính” và không gánh gì cho nó.',
+    'Trong trình chỉnh sửa khoản chi, “Chia tiền” liệt kê mọi người kèm một ô để tích. Bỏ tích một tên để để người đó ra ngoài khoản chi này: tên đó chuyển xám, mất phần của mình và không gánh gì cho nó.',
   'help.guide.split-expense.step.2':
-    '“Chia đều” là mặc định: mỗi người được tính đều nhận cùng một phần, và dòng dưới danh sách cho biết chia làm bao nhiêu phần và mỗi phần là bao nhiêu.',
+    '“Chia đều”, trong công tắc cạnh tiêu đề, là mặc định: mỗi người được tích nhận cùng một phần, hiện bên cạnh tên, và các huy hiệu dưới danh sách cho biết bao nhiêu người cùng chia và mỗi phần là bao nhiêu.',
   'help.guide.split-expense.step.3':
-    '“Tùy chỉnh” đổi các phần đó thành các ô số tiền. Gõ số tiền mỗi người phải gánh; dòng bên dưới đếm theo và chuyển xanh khi đạt “Phần chia khớp với tổng”. Nó sẽ không lưu khi còn lệch.',
+    '“Tùy chỉnh” đổi các phần đó thành các ô số tiền. Gõ số tiền mỗi người phải gánh; huy hiệu bên dưới đếm theo và chuyển xanh khi đạt “Phần chia khớp với tổng”. Nó sẽ không lưu khi còn lệch.',
   'help.guide.split-expense.step.4':
-    '“Hóa đơn” chia biên lai theo từng dòng: “Thêm món”, rồi một tên và một giá cho mỗi dòng, và dưới “Chia cho:” là những người cùng gánh dòng đó.',
+    '“Hóa đơn” chia biên lai theo từng dòng: “Thêm món”, rồi một tên và một giá cho mỗi dòng, và cạnh “Chia cho:” là những người cùng gánh dòng đó.',
   'help.guide.split-expense.step.5':
-    '“Phần của từng người” dưới các dòng cho thấy mỗi người rốt cuộc gánh bao nhiêu, còn “Tổng số tiền” ở trên được cộng từ các dòng. Nhấp “Lưu”.',
+    '“Phần của từng người” dưới các dòng cho thấy mỗi người rốt cuộc gánh bao nhiêu, còn “Tổng số tiền” ở trên được cộng từ các dòng. Nhấp “Lưu” ở chân hộp thoại.',
   'help.guide.split-expense.result':
     'Cách chia là nền của mọi số dư. Nó được lưu cùng khoản chi và có thể đổi sau mà không đụng tới thứ gì khác.',
   'help.guide.split-expense.tip.1':
-    'Người bạn để ra ngoài hiện chữ “Không tính” và không gánh gì cho riêng khoản chi này; những người còn lại nhận phần của họ.',
+    'Người bạn bỏ tích không gánh gì cho riêng khoản chi này; những người còn lại nhận phần của họ.',
   'help.guide.split-expense.tip.2':
     '“Chia đều” chính xác đến từng xu: đồng xu lẻ luân phiên từ khoản chi này sang khoản chi khác, nên không ai là người luôn phải trả nó.',
   'help.guide.split-expense.tip.3':
@@ -3410,48 +3456,50 @@ const help: TranslationStrings = {
   'help.guide.expense-currency.title': 'Nhập một khoản chi bằng loại tiền khác',
   'help.guide.expense-currency.goal': 'Nhập đúng những gì biên lai ghi và để TREK giữ tỷ giá.',
   'help.guide.expense-currency.step.1':
-    'Mở “Thêm chi phí” và điền tên cùng số tiền đúng như biên lai ghi, chính con số đó chứ không phải một bản quy đổi.',
+    'Mở “Thêm chi phí”, rồi gõ tên vào phần đầu hộp thoại và số tiền vào “Tổng số tiền” đúng như biên lai ghi, chính con số đó chứ không phải một bản quy đổi.',
   'help.guide.expense-currency.step.2':
-    'Mở “Tiền tệ” và chọn loại tiền của biên lai. Danh sách mang mọi mã tiền mà TREK biết và có thể tìm kiếm: gõ ba chữ cái.',
+    'Mở “Tiền tệ” cạnh số tiền và chọn loại tiền của biên lai. Danh sách mang mọi mã tiền mà TREK biết và có thể tìm kiếm: gõ ba chữ cái.',
   'help.guide.expense-currency.step.3':
-    'Một dòng hiện ra dưới các ô, cho biết số tiền đó đáng bao nhiêu ngay lúc này, được đánh dấu “tỷ lệ trực tiếp”. Đó là bản xem trước, không phải thứ được lưu lại.',
+    'Một hàng huy hiệu hiện ra dưới các ô: số bạn đã gõ và số tiền đó đáng bao nhiêu ngay lúc này, được đánh dấu “tỷ lệ trực tiếp”. Đó là bản xem trước, không phải thứ được lưu lại.',
   'help.guide.expense-currency.step.4':
-    'Nhấp “Thêm chi phí”. Tỷ giá được đóng băng ngay tại chỗ: từ đây trở đi khoản chi này đáng đúng bằng giá trị của nó vào ngày bạn nhập.',
+    'Nhấp “Thêm chi phí” ở chân hộp thoại. Tỷ giá được đóng băng ngay tại chỗ: từ đây trở đi khoản chi này đáng đúng bằng giá trị của nó vào ngày bạn nhập.',
   'help.guide.expense-currency.step.5':
-    'Trong sổ cái, dòng đó mang cả hai con số dưới tên: số bạn đã gõ, một mũi tên, và số tiền tương ứng theo tiền tệ của chuyến đi. Mọi tổng, số dư và thanh toán ở trên đều dùng con số thứ hai.',
+    'Trong sổ cái, dòng đó mang cả hai con số dưới tên: số bạn đã gõ, một mũi tên, và số tiền tương ứng theo tiền tệ của chuyến đi. Mọi tổng, số dư và thanh toán trên tab “Chi phí” đều được tính từ con số thứ hai.',
   'help.guide.expense-currency.result':
-    'Khoản chi giữ nguyên số tiền và loại tiền bạn đã gõ. Sổ cái hiển thị cả hai, còn các tổng và số dư của chuyến đi vẫn theo tiền tệ của chuyến đi.',
+    'Khoản chi giữ nguyên số tiền và loại tiền bạn đã gõ. Sổ cái hiển thị cả hai, còn các tổng và số dư của chuyến đi được tính theo tiền tệ của chuyến đi.',
   'help.guide.expense-currency.tip.1':
     'Tỷ giá được đóng băng ngay khi bạn lưu, nên một món nợ đã thanh toán không mở lại chỉ vì thị trường nhúc nhích tuần sau đó. Chỉ khi đổi loại tiền của khoản chi thì một tỷ giá mới mới được đóng băng.',
   'help.guide.expense-currency.tip.2':
     '“Tiền tệ hiển thị” trong Cài đặt chỉ đổi những gì bạn đọc; các số tiền đã lưu không bao giờ dịch chuyển. Để trống thì mỗi chuyến đi hiện theo tiền tệ của chính nó.',
   'help.guide.expense-currency.tip.3':
-    'Bản thân tiền tệ của chuyến đi nằm trên chuyến đi, dưới “Chỉnh sửa chuyến đi”, và cần quyền chỉnh sửa chuyến đi. Đổi nó sẽ neo lại mọi tỷ giá đã đóng băng chứ không đổi mệnh giá các số tiền.',
+    'Bản thân tiền tệ của chuyến đi nằm trên chuyến đi, dưới “Chỉnh sửa chuyến đi”, và cần quyền “Chỉnh sửa chi tiết chuyến đi”. Đổi nó sẽ neo lại mọi tỷ giá đã đóng băng chứ không đổi mệnh giá các số tiền.',
   // filter-costs
   'help.guide.filter-costs.title': 'Tìm một khoản chi, hoặc chi tiêu của một ngày',
   'help.guide.filter-costs.goal': 'Thu hẹp một sổ cái dài lại còn đúng thứ bạn đang tìm.',
   'help.guide.filter-costs.step.1':
-    'Gõ vào “Tìm kiếm chi phí…” phía trên danh sách. Nó khớp theo tên của khoản chi khi bạn gõ.',
+    'Gõ vào “Tìm kiếm chi phí…” trên thanh. Nó khớp theo tên của khoản chi khi bạn gõ, và Esc xóa nó đi.',
   'help.guide.filter-costs.step.2':
-    '“Tất cả danh mục” mở ra mười bốn loại. Chọn một và chỉ những khoản chi của loại đó ở lại.',
+    '“Lọc”, cái phễu cạnh ô tìm kiếm, mở các bộ lọc. Công tắc ở trên cùng là góc nhìn của riêng bạn về sổ cái: “Tất cả”, “Do tôi trả tiền” cho những gì bạn đã bỏ tiền ra, và “Người khác nợ tôi” cho những khoản chi mà bạn đã bỏ ra nhiều hơn phần của mình.',
   'help.guide.filter-costs.step.3':
-    '“Tất cả các ngày” liệt kê mọi ngày có chi tiêu. Chọn một và một dải băng thay cho các tiêu đề ngày, cho biết ngày đó, nó chứa bao nhiêu khoản chi và tổng của nó.',
+    'Dưới “Loại”, chọn một trong mười bốn loại và chỉ những khoản chi của loại đó ở lại. Cái phễu đếm có bao nhiêu bộ lọc đang bật.',
   'help.guide.filter-costs.step.4':
-    'Công tắc “Tất cả” / “Do tôi trả tiền” / “tôi nợ” là góc nhìn của riêng bạn về sổ cái: những gì bạn đã bỏ tiền ra, và những gì bạn vẫn chưa được hoàn lại.',
+    'Dưới “Ngày”, chọn một trong những ngày có chi tiêu. Một dải băng thay cho các tiêu đề ngày, cho biết đầy đủ ngày đó, nó chứa bao nhiêu khoản chi và tổng của nó.',
   'help.guide.filter-costs.step.5':
-    '“Xuất CSV” ở cuối hàng ghi mọi khoản chi ra một tệp, kèm số tiền gốc, loại tiền của nó và số tiền đã quy đổi.',
+    '“Xuất CSV”, biểu tượng tải xuống cạnh cái phễu, ghi mọi khoản chi ra một tệp, kèm số tiền gốc, loại tiền của nó và số tiền đã quy đổi.',
   'help.guide.filter-costs.result':
     'Các bộ lọc kết hợp với nhau, và các nhóm ngày được vẽ lại với tổng riêng cho những gì còn lại.',
   'help.guide.filter-costs.tip.1':
-    'Các khoản chi trả đã ghi nhận không mang tên và không mang danh mục, nên một lần tìm kiếm hay một bộ lọc danh mục sẽ giấu chúng đi. Bộ lọc ngày giữ chúng lại, dưới ngày khoản chi trả được ghi nhận.',
+    'Các khoản chi trả đã ghi nhận không mang tên và không mang danh mục, nên một lần tìm kiếm hay một bộ lọc danh mục sẽ giấu chúng đi. Bộ lọc ngày giữ chúng lại, dưới ngày khoản chi trả diễn ra.',
   'help.guide.filter-costs.tip.2':
     '“Xuất CSV” luôn xuất mọi khoản chi, dù màn hình đang lọc thế nào, mỗi khoản chi một dòng.',
+  'help.guide.filter-costs.tip.3':
+    '“Đặt lại bộ lọc”, ở chân menu lọc khi đã có một bộ lọc đang bật, tắt hết chúng cùng một lúc.',
   // settle-up
   'help.guide.settle-up.title': 'Tính ai nợ ai, rồi thanh toán',
   'help.guide.settle-up.goal':
     'Biến một đống chi phí chung thành số lần chuyển tiền ít nhất để mọi người cân bằng, và ghi nhận chúng khi chúng diễn ra.',
   'help.guide.settle-up.step.1':
-    'Thẻ “Thanh toán” ở cột bên phải liệt kê những khoản chuyển sẽ khiến mọi người cân bằng: ai trả cho ai, và bao nhiêu. Con số cạnh tiêu đề là số khoản vẫn còn mở.',
+    'Thẻ “Thanh toán” ở cột bên phải liệt kê những khoản chuyển sẽ khiến mọi người cân bằng: ai trả cho ai, dưới dạng hai ảnh đại diện có tên trong chú giải, và bao nhiêu. Con số ở phần đầu thẻ là số khoản vẫn còn mở.',
   'help.guide.settle-up.step.2':
     '“Thanh toán” bên cạnh một khoản chuyển ghi nhận nó là đã xong. Dòng chảy đó biến khỏi thẻ và các số dư được vẽ lại.',
   'help.guide.settle-up.step.3':
@@ -3459,9 +3507,9 @@ const help: TranslationStrings = {
   'help.guide.settle-up.step.4':
     'Cạnh dòng đó, cây bút chì sửa một khoản chi trả và “Hoàn tác” lấy lại nó, rồi khoản chuyển quay về thẻ “Thanh toán”.',
   'help.guide.settle-up.step.5':
-    '“Thêm thanh toán” ở đầu thẻ ghi nhận một khoản chuyển không theo gợi ý nào. Chọn “Từ” và “ĐẾN”, số tiền, loại tiền của nó và ngày nó diễn ra.',
+    '“Thêm thanh toán” ở phần đầu thẻ ghi nhận một khoản chuyển không theo gợi ý nào. Chọn “Từ” và “ĐẾN”, số tiền, loại tiền của nó và ngày nó diễn ra, rồi nhấp “Thêm thanh toán” ở chân hộp thoại.',
   'help.guide.settle-up.step.6':
-    '“Thanh toán” ở phần đầu trên cùng màn hình ghi nhận mọi khoản chuyển còn mở cùng một lúc, theo cách một nhóm tính sổ với nhau vào cuối chuyến đi.',
+    '“Thanh toán” trên thanh ở trên cùng ghi nhận mọi khoản chuyển còn mở cùng một lúc, không hỏi lại, theo cách một nhóm tính sổ với nhau vào cuối chuyến đi.',
   'help.guide.settle-up.result':
     'Mỗi khoản chuyển đã ghi nhận là một dòng trong sổ cái và một dòng bớt đi khỏi thẻ “Thanh toán”. Khi thẻ hiện chữ “Chia đều”, chuyến đi đã trả xong.',
   'help.guide.settle-up.tip.1':
@@ -3480,7 +3528,7 @@ const help: TranslationStrings = {
   'help.guide.final-budget.step.3':
     'Nhấp vào một tên để mở phép tính: “Chi phí đã trả”, rồi “Hoàn trả ròng” và “Khoản hoàn trả đang chờ” bên dưới.',
   'help.guide.final-budget.step.4':
-    'Dưới mỗi dòng là những mục làm nên nó: các khoản chi người đó đã trả, các khoản chuyển đã ghi nhận và các khoản còn mở. Chúng cộng lại đúng bằng dòng ở trên.',
+    'Bên dưới ba dòng đó, dưới tên của mỗi dòng là một danh sách chứa những mục làm nên dòng ấy: các khoản chi người đó đã trả, các khoản chuyển đã ghi nhận và các khoản còn mở. Mỗi danh sách cộng lại đúng bằng dòng cùng tên.',
   'help.guide.final-budget.result':
     '“Số dư” là ai đang dư hay thiếu hôm nay; “Ngân sách cuối cùng” là số tiền chuyến đi rốt cuộc tốn của từng người trong các bạn khi mọi thứ đã được trả lại.',
   'help.guide.final-budget.tip.1':
@@ -3491,84 +3539,128 @@ const help: TranslationStrings = {
   'help.guide.expense-from-booking.title': 'Biến một đặt chỗ thành khoản chi',
   'help.guide.expense-from-booking.goal':
     'Gắn chi phí thật của một chuyến bay, một khách sạn hay một địa điểm vào chính bản ghi của nó.',
-  'help.guide.expense-from-booking.step.1': 'Mở đặt chỗ ở tab Di chuyển hoặc Đặt chỗ và nhấp vào cây bút chì của nó.',
+  'help.guide.expense-from-booking.step.1':
+    'Tìm đặt chỗ ở tab “Di chuyển” hoặc tab “Đặt” và nhấp vào cây bút chì ở phần đầu thẻ của nó.',
   'help.guide.expense-from-booking.step.2':
-    'Cuộn tới khối “Chi phí” ở cuối biểu mẫu. Nó đưa ra “Tạo chi phí”, vốn lưu đặt chỗ trước, và “Liên kết chi phí hiện có” cho một khoản đã có trong “Chi phí”.',
+    'Cuộn tới “Chi phí” gần cuối biểu mẫu. Nó đưa ra “Tạo chi phí”, vốn lưu đặt chỗ trước, và “Liên kết chi phí hiện có” cho một khoản đã có trong “Chi phí”.',
   'help.guide.expense-from-booking.step.3':
     'Nhấp “Tạo chi phí”. Đặt chỗ được lưu, biểu mẫu đóng lại, và trình chỉnh sửa Chi phí mở ra với tiêu đề của đặt chỗ làm tên và loại của nó đã được khớp sẵn với một danh mục.',
   'help.guide.expense-from-booking.step.4':
-    'Điền số tiền và đơn vị tiền tệ của nó, ai đã trả và cách chia như với mọi khoản chi, rồi lưu. Mở lại đặt chỗ giờ sẽ thấy nó dưới “Các chi phí liên kết”, với một cây bút chì để sửa, “Hủy liên kết, giữ chi phí” để thả nó ra và một thùng rác để bỏ nó đi.',
+    'Điền số tiền và đơn vị tiền tệ của nó, ai đã trả và cách chia như với mọi khoản chi, rồi nhấp “Thêm chi phí”. Mở lại đặt chỗ giờ sẽ thấy nó dưới “Các chi phí liên kết”, với một cây bút chì để sửa, “Hủy liên kết, giữ chi phí” để thả nó ra và một thùng rác để bỏ nó đi.',
   'help.guide.expense-from-booking.result':
     'Đặt chỗ mang theo chi phí của nó, và khoản chi là một dòng bình thường trên tab Chi phí, có người trả, cách chia và loại tiền như mọi khoản khác.',
   'help.guide.expense-from-booking.tip.1':
     'Xóa đặt chỗ sẽ xóa luôn các khoản chi liên kết với nó. “Xóa chi phí” trong khối “Chi phí” của đặt chỗ làm điều ngược lại: khoản chi biến mất, đặt chỗ ở lại. “Hủy liên kết, giữ chi phí” giữ lại cả hai.',
   'help.guide.expense-from-booking.tip.2':
     'Một địa điểm cũng có khối như vậy trong biểu mẫu của nó, với “Tạo chi phí” lưu địa điểm trước.',
+  // costs-table
+  'help.guide.costs-table.title': 'Lên kế hoạch chi phí trong một bảng',
+  'help.guide.costs-table.goal':
+    'Đọc và thay đổi các khoản chi dưới dạng một trang tính, sắp theo danh mục và tính theo mỗi người và mỗi ngày.',
+  'help.guide.costs-table.step.1':
+    'Nhấp “Bảng”, biểu tượng thứ hai của công tắc “Danh sách” / “Bảng” trên thanh. Sổ cái nhường chỗ cho một bảng gồm cùng các khoản chi đó, và ô tìm kiếm cùng các bộ lọc cũng áp dụng cho bảng.',
+  'help.guide.costs-table.step.2':
+    'Bảng được nhóm theo danh mục, mỗi nhóm có phần đầu ghi tên, số khoản chi nó chứa và tổng phụ của nó; nhấp vào phần đầu để gập nhóm lại. Các cột là “Tên”, “Ngày”, “Tổng cộng”, “Người” và “Ngày”, rồi “Mỗi người”, “mỗi ngày” và “P.p/Ngày”, được tính từ các cột trước trên nền xám.',
+  'help.guide.costs-table.step.3':
+    'Nhấp vào một ô để sửa ngay tại chỗ: tên, tổng, “Người” hoặc “Ngày”. Gõ, rồi nhấn Enter hoặc nhấp ra chỗ khác để giữ, hoặc Esc để để nguyên như cũ; ô ngày tháng mở lịch. “Mỗi người” và các cột tính toán khác cập nhật theo ngay lập tức.',
+  'help.guide.costs-table.step.4':
+    'Một tổng có ổ khóa thì không sửa được ở đây: đã có người trả nó, hoặc nó được nhập bằng một loại tiền khác, và chú giải của nó cho biết là trường hợp nào. Nhấp vào nó sẽ mở khoản chi thay vào đó, để số dư và tỷ giá đã đóng băng luôn đúng.',
+  'help.guide.costs-table.step.5':
+    '“Thêm chi phí” ở cuối một danh mục thêm vào đó một dòng tên “Mục mới”, mang ngày giống mục mới nhất ở đó, với tên đã mở sẵn để sửa. Cho nó một tổng theo cùng cách.',
+  'help.guide.costs-table.step.6':
+    'Ở chế độ xem này, cột bên phải hiện “Tóm tắt” thay cho “Theo danh mục”. Nó cộng các khoản chi theo bốn cách: “Danh mục”, “Ngày”, “Người trả”, với “Chưa có người trả” cho các khoản chưa trả, và “Trạng thái”, “Đã trả” so với “Chưa trả”.',
+  'help.guide.costs-table.result':
+    'Mỗi khoản chi đứng trong danh mục của nó cùng số tiền tương ứng cho mỗi người và mỗi ngày, và một tổng được sửa trong ô được tính ngay vào các thẻ phía trên và vào “Tóm tắt”.',
+  'help.guide.costs-table.tip.1':
+    '“Chi phí” nhớ chế độ xem trong trình duyệt này: nó mở ở dạng bảng cho đến khi bạn nhấp “Danh sách” lần nữa.',
+  'help.guide.costs-table.tip.2':
+    'Một khoản chi chia theo “Tùy chỉnh” hoặc “Hóa đơn” không có một phần duy nhất cho mỗi người, nên “Mỗi người” và “P.p/Ngày” của nó để trống.',
+  'help.guide.costs-table.tip.3':
+    'Người trả, cách chia, ghi chú và hóa đơn được sửa trong chính khoản chi: “Tùy chọn khác” ở cuối một dòng đưa ra “Chỉnh sửa”, và “Xóa bỏ” để gỡ dòng đó.',
 
   // ── Screen: trip-transports ───────────────────────────────────────────────────────────
   'help.ctx.trip-transports.title': 'Di chuyển',
   'help.ctx.trip-transports.summary':
     'Mọi thứ đưa bạn đi giữa các điểm dừng: chuyến bay, xe lửa, xe buýt, xe hơi, taxi, xe đạp, du thuyền, phà và những tuyến giao thông công cộng mà TREK tra cứu giúp bạn. Tab này là danh sách của chúng; chúng cũng được tạo và đọc ngay trên kế hoạch, và được vẽ trên bản đồ.',
   'help.ctx.trip-transports.bullet.1':
-    'Tab chỉ chứa các chuyến đi lại. Chỗ ở, nhà hàng, sự kiện và vé nằm ở “Đặt chỗ”, nên cùng một mục không bao giờ xuất hiện hai lần.',
+    'Tab chỉ chứa các chuyến đi lại. Chỗ ở, nhà hàng, sự kiện và vé nằm ở tab “Đặt”, nên cùng một mục không bao giờ xuất hiện hai lần.',
   'help.ctx.trip-transports.bullet.2':
-    'Thanh công cụ đếm tất cả dưới “Tất cả” và cho mỗi loại đang dùng một chip riêng với số đếm riêng: “Chuyến bay”, “Xe lửa”, “Xe hơi”, “Giao thông công cộng”. “Phương tiện” ở bên phải thêm một mục bằng tay.',
+    'Thanh ở trên cùng có ô tìm kiếm, “Lọc” cho trạng thái, loại và người đi, ba chế độ xem “Thẻ”, “Danh sách” và “Dòng thời gian”, và “Tùy chọn hiển thị”. “Phương tiện” ở bên phải thêm một chuyến bằng tay, và các biểu tượng trước nó, “Nhập xác nhận đặt chỗ” và “Nhập từ AirTrail”, xuất hiện khi máy chủ đọc được các bản xác nhận hoặc khi có một AirTrail được kết nối.',
   'help.ctx.trip-transports.bullet.3':
-    'Các thẻ chia thành ba nhóm, mỗi nhóm gập lại được bằng tiêu đề của nó: “Giao thông công cộng tự động” cho những tuyến mà tìm kiếm đã lên kế hoạch, rồi “Chưa giải quyết”, rồi “Đã xác nhận”.',
+    '“Thẻ” là chế độ xem mà tab mở ra: “Đã xác nhận” trước, rồi “Chưa giải quyết”, mỗi phần gập lại được bằng tiêu đề của nó. Các tuyến giao thông công cộng đã lên kế hoạch không có trạng thái và nằm giữa các chuyến đã xác nhận theo thứ tự thời gian, trừ khi “Tùy chọn hiển thị” cho chúng một phần riêng, “Giao thông công cộng tự động”. “Danh sách” nhóm theo ngày, và “Dòng thời gian” trải mọi chuyến lên các ngày của chuyến đi.',
   'help.ctx.trip-transports.bullet.4':
-    'Một thẻ mang trạng thái, loại, những ngày nó kéo dài, giờ giấc, “Mã đặt chỗ”, tuyến đường và “Hãng hàng không” cùng “Chuyến bay số”, hoặc “Số tàu”, “Sân ga” và “Ghế”. Cây bút chì mở thẻ, thùng rác xóa thẻ sau một câu hỏi.',
+    'Dải đầu của một thẻ được tô màu theo trạng thái, xanh lá cho đã xác nhận, hổ phách cho còn chờ, xanh dương cho một tuyến đã lên kế hoạch, và chứa chấm trạng thái, loại, tiêu đề, cây bút chì và thùng rác. Bên dưới: “Ngày”, “Thời gian”, “Mã đặt chỗ”, “Tuyến đường” và “Hãng hàng không” cùng “Chuyến bay số”, hoặc “Số tàu”, “Sân ga” và “Ghế”. Một cú nhấp lên thẻ mở chi tiết của nó.',
   'help.ctx.trip-transports.bullet.5':
-    'Phương tiện cũng được tạo ngay trên kế hoạch: mỗi đầu ngày có dấu + cho “Thêm phương tiện di chuyển” và một nút tàu điện cho “Giao thông công cộng”, còn đoạn nối thời gian đi lại giữa hai điểm dừng mở đúng tìm kiếm đó cho riêng chặng ấy.',
+    'Phương tiện cũng được tạo ngay trên kế hoạch: dấu + ở phần đầu một ngày đưa ra “Thêm phương tiện di chuyển” và “Giao thông công cộng”, còn đoạn nối thời gian đi lại giữa hai điểm dừng mở đúng tìm kiếm đó cho riêng chặng ấy.',
   'help.ctx.trip-transports.bullet.6':
-    'Một phương tiện đã đặt cả hai đầu sẽ vẽ một đường trên bản đồ. Biểu tượng tuyến trên hàng của nó trong kế hoạch ngày bật đường đó lên, và “Hiển thị tất cả lộ trình đặt chỗ” ở thanh công cụ phía trên các ngày lật cả chuyến đi.',
+    'Một phương tiện đã đặt cả hai đầu sẽ vẽ một đường trên bản đồ. Biểu tượng tuyến trên hàng của nó trong kế hoạch ngày và “Trên bản đồ” trong chi tiết của nó bật đường đó lên, và “Hiển thị tất cả lộ trình đặt chỗ” ở thanh công cụ phía trên các ngày lật cả chuyến đi.',
   // transports-list
   'help.guide.transports-list.title': 'Đọc tab Di chuyển',
   'help.guide.transports-list.goal': 'Biết danh sách nói gì với bạn trước khi thay đổi bất cứ thứ gì trên đó.',
   'help.guide.transports-list.step.1':
-    '“Di chuyển” là tab thứ hai của chuyến đi. Nó chỉ chứa các chuyến đi lại: khách sạn, nhà hàng, sự kiện và vé nằm ở “Đặt chỗ”.',
+    '“Di chuyển” là tab thứ hai của chuyến đi. Nó chỉ chứa các chuyến đi lại: khách sạn, nhà hàng, sự kiện và vé nằm ở tab “Đặt”.',
   'help.guide.transports-list.step.2':
-    'Thanh công cụ đếm mọi phương tiện dưới “Tất cả” và cho mỗi loại đang dùng một chip riêng với số đếm riêng. Nhấp một chip để chỉ giữ loại đó, nhấp lần nữa để bỏ. Nhiều chip có thể bật cùng lúc, và “Tất cả” xóa hết.',
+    '“Lọc”, cái phễu trên thanh, mở các lựa chọn: “Trạng thái” với “Tất cả”, “Đã xác nhận” và “Chưa giải quyết”, rồi mọi loại đang dùng kèm số đếm. Tích một hoặc vài loại để chỉ giữ những loại đó; một con số trên cái phễu đếm những gì đang bật, và thanh cho biết đang hiện bao nhiêu chuyến, ví dụ “1 trên 4”. “Đặt lại bộ lọc” ở chân menu đưa mọi thứ trở lại.',
   'help.guide.transports-list.step.3':
-    '“Giao thông công cộng tự động” là một nhóm riêng, gồm những tuyến mà tìm kiếm giao thông công cộng đã lên kế hoạch. “Chưa giải quyết” và “Đã xác nhận” chứa mọi thứ nhập bằng tay. Mũi tên cạnh tiêu đề gập một nhóm lại.',
+    '“Thẻ”, “Danh sách” và “Dòng thời gian” bên cạnh sắp các chuyến thành thẻ, thành các hàng nhóm theo ngày, hoặc thành các thanh trải trên các ngày của chuyến đi. “Tùy chọn hiển thị”, biểu tượng thanh trượt, đặt “Nhóm theo” và “Sắp xếp theo” cho “Thẻ” và “Danh sách” và các làn cho “Dòng thời gian”, và “Đặt lại chế độ xem” quay về mặc định. Trong “Thẻ”, “Giao thông công cộng thành mục riêng” gom các tuyến đã lên kế hoạch dưới “Giao thông công cộng tự động”.',
   'help.guide.transports-list.step.4':
-    'Một thẻ nói đủ mọi thứ: chấm trạng thái với “Chưa giải quyết” hoặc “Đã xác nhận”, loại, những ngày nó kéo dài cùng ngày tháng, giờ giấc, “Mã đặt chỗ”, tuyến đường, và “Hãng hàng không” cùng “Chuyến bay số”, hoặc “Số tàu”, “Sân ga” và “Ghế”.',
+    'Một thẻ nói đủ mọi thứ. Dải đầu của nó màu xanh lá khi “Đã xác nhận” và màu hổ phách khi “Chưa giải quyết”, và mang chấm trạng thái, loại và tiêu đề. Bên dưới, “Ngày” cho biết những ngày nó kéo dài cùng ngày tháng, rồi đến “Thời gian”, “Mã đặt chỗ”, “Tuyến đường” với biểu tượng của loại giữa các điểm dừng, và “Hãng hàng không” cùng “Chuyến bay số”, hoặc “Số tàu”, “Sân ga” và “Ghế”. Nhấp vào thẻ và chi tiết của nó mở ra.',
   'help.guide.transports-list.step.5':
-    'Cây bút chì mở phương tiện ra để chỉnh sửa, thùng rác xóa nó, sau một câu hỏi nêu tên thứ sắp mất.',
+    'Một cú nhấp vào chấm trạng thái chuyển chuyến đó giữa “Chưa giải quyết” và “Đã xác nhận”. Cây bút chì trên dải đầu mở biểu mẫu của phương tiện, và thùng rác xóa nó sau câu hỏi “Xóa đặt chỗ?”, câu hỏi nêu tên thứ sắp mất.',
   'help.guide.transports-list.result':
-    'Danh sách thu hẹp lại đúng thứ bạn cần, và mỗi thẻ nói ngay trong một cái liếc rằng chuyến đi lại ấy đã được đặt hay chưa.',
+    'Mỗi thẻ nói ngay trong một cái liếc rằng chuyến đi lại ấy đã được đặt hay chưa, và thanh thu hẹp hoặc sắp xếp lại danh sách bất cứ khi nào bạn cần.',
   'help.guide.transports-list.tip.1':
-    'Các chip và những nhóm đã gập được nhớ theo từng chuyến đi, nên tab mở lại đúng như lúc bạn rời đi.',
+    'Tab nhớ bạn đã để nó ra sao: chế độ xem, cách nhóm và cách sắp xếp trong trình duyệt này, các phần đã gập theo từng chuyến đi, và các bộ lọc cho tới khi bạn đóng tab trình duyệt.',
   'help.guide.transports-list.tip.2':
-    '“Nhập từ tập tin” và AirTrail chỉ xuất hiện bên cạnh “Phương tiện” trên thanh công cụ khi máy chủ đọc được các xác nhận đặt chỗ và khi có một máy chủ AirTrail được kết nối. Không có chúng, danh sách được điền bằng tay và bằng tìm kiếm giao thông công cộng.',
+    '“Nhập xác nhận đặt chỗ” và “Nhập từ AirTrail”, hai biểu tượng trước “Phương tiện”, chỉ có mặt khi máy chủ đọc được các bản xác nhận và khi có một máy chủ AirTrail được kết nối. Không có chúng, danh sách được điền bằng tay và bằng tìm kiếm giao thông công cộng.',
   // add-transport
   'help.guide.add-transport.title': 'Thêm một phương tiện vào một ngày',
   'help.guide.add-transport.goal':
     'Đặt chuyến đi lại đưa bạn từ điểm dừng này sang điểm dừng kế tiếp vào đúng ngày nó diễn ra.',
   'help.guide.add-transport.step.1':
-    'Mỗi đầu ngày mang bốn nút nhỏ ở bên phải. Nhấp dấu +, có chú giải ghi “Thêm phương tiện di chuyển”. Biểu mẫu mở ra với “Ngày” đã được đặt sẵn vào ngày đó.',
+    'Ở phần đầu của ngày có chuyến đi, nhấp dấu +, có chú giải ghi “Thêm vào ngày”, và chọn “Thêm phương tiện di chuyển”. Biểu mẫu mở ra với ngày đó đã được điền sẵn.',
   'help.guide.add-transport.step.2':
-    '“Loại đặt chỗ” chọn thứ bạn sẽ đi: “Chuyến bay”, “Xe lửa”, “xe buýt”, “Xe hơi”, “Taxi”, “Xe đạp”, “Du thuyền”, “Phà” hoặc “Khác”. Biểu mẫu thay đổi theo. Chuyến bay nhận một sân bay ở mỗi chặng, tàu hỏa nhận một chuỗi nhà ga, xe hơi nhận cách gọi “Ngày đón” và “Ngày trở về” cùng “Điểm dừng dọc đường”.',
+    'Nhãn loại trên dải đầu cho biết bạn sẽ đi gì, ban đầu là “Chuyến bay”. Nhấp vào đó để chọn “Chuyến bay”, “Xe lửa”, “xe buýt”, “Xe hơi”, “Taxi”, “Xe đạp”, “Du thuyền”, “Phà” hoặc “Khác”, và biểu mẫu thay đổi theo: chuyến bay nhận một sân bay ở mỗi điểm dừng, tàu hỏa nhận một chuỗi nhà ga, xe hơi nhận “Ngày đón” và “Ngày trở về” cùng “Điểm dừng dọc đường”.',
   'help.guide.add-transport.step.3':
-    '“Tiêu đề” là ô duy nhất bắt buộc phải điền; thiếu nó thì “Thêm” vẫn xám. Hãy viết thứ bạn sẽ nhận ra trên bảng thông tin sân ga.',
+    'Gõ tiêu đề thẳng vào dải đầu, chỗ có ví dụ màu xám. Đó là ô duy nhất bắt buộc phải điền: cho tới khi điền, dòng bên dưới ghi “Tiêu đề *” và “Thêm” vẫn xám. Hãy viết thứ bạn sẽ nhận ra trên bảng thông tin sân ga.',
   'help.guide.add-transport.step.4':
-    '“Từ” và “ĐẾN” tìm một nhà ga, một bến cảng hoặc một địa chỉ. Gõ ít nhất ba chữ cái và chọn một kết quả trong danh sách. Một cái tên chỉ được gõ vào thì không mang tọa độ, nên nó không vẽ gì trên bản đồ.',
+    'Dưới “Tuyến đường”, “Từ” và “ĐẾN” nhận một nhà ga, một bến cảng hoặc một địa chỉ. Các địa điểm của chuyến đi được đưa ra trước khi bạn gõ; gõ ít nhất ba chữ cái để tìm kiếm, và chọn một kết quả. Một cái tên chỉ được gõ vào mà không bao giờ được chọn thì không được lưu, và không vẽ gì trên bản đồ.',
   'help.guide.add-transport.step.5':
-    '“Ngày” và “Thời gian bắt đầu” cho biết khi nào nó chạy, “Ngày kết thúc” và “Thời gian kết thúc” cho biết khi nào nó xong; một chuyến đến nơi vào hôm sau thì lấy ngày hôm sau ở đầu kia. “Mã đặt chỗ”, “Trạng thái” với “Chưa giải quyết” hoặc “Đã xác nhận”, và “Ghi chú” là tùy chọn.',
+    '“Ngày” và “Thời gian bắt đầu” cho biết khi nào nó chạy, “Ngày kết thúc” và “Thời gian kết thúc” cho biết khi nào nó xong; một chuyến đến nơi vào hôm sau thì lấy ngày hôm sau ở đầu kia. “Mã đặt chỗ” và “Ghi chú” ở phía dưới là tùy chọn, và một cú nhấp vào nhãn “Chưa giải quyết” trên dải đầu chuyển nó sang “Đã xác nhận”.',
   'help.guide.add-transport.step.6': 'Nhấp “Thêm”.',
   'help.guide.add-transport.result':
-    'Phương tiện trở thành một hàng trên ngày đó, đúng giờ của nó giữa các điểm dừng, và một thẻ trong tab “Di chuyển” dưới “Chưa giải quyết” hoặc “Đã xác nhận”.',
+    'Phương tiện trở thành một hàng trên ngày đó, đúng giờ của nó giữa các điểm dừng, và một thẻ trên tab “Di chuyển” dưới “Chưa giải quyết” hoặc “Đã xác nhận”.',
   'help.guide.add-transport.tip.1':
     'Hàng rơi vào chỗ mà giờ bắt đầu của nó quy định, sau điểm dừng cuối cùng bắt đầu sớm hơn. Tay nắm của nó kéo nó tới bất cứ đâu khác trong ngày, hoặc sang một ngày khác.',
   'help.guide.add-transport.tip.2':
     '“Đính kèm tập tin” dưới “Tập tin” nhận lấy vé, còn “Tạo chi phí” dưới “Chi phí” lưu đặt chỗ và mở trình biên tập “Chi phí” cho tiền vé.',
   'help.guide.add-transport.tip.3':
-    '“Người đi” đánh dấu ai có mặt trên chuyến này. Ngay khi một phương tiện có người đi, thanh công cụ của tab mọc thêm ảnh đại diện của họ và lọc danh sách theo họ.',
+    '“Người đi”, khối đầu tiên của biểu mẫu, đánh dấu ai có mặt trên chuyến này. Khi chuyến đi có nhiều hơn một thành viên và một phương tiện nêu tên ai đó, “Lọc” trên tab cũng đưa ra “Người đi”, thứ thu hẹp danh sách về các chuyến của một người.',
+  // import-transport-file
+  'help.guide.import-transport-file.title': 'Đọc một chuyến bay ra từ vé điện tử của nó',
+  'help.guide.import-transport-file.goal':
+    'Để TREK rút một chuyến bay, một chuyến tàu hay một chuyến phà ra từ vé mà hãng vận chuyển đã gửi, và kiểm tra trước khi nó được lưu.',
+  'help.guide.import-transport-file.step.1':
+    'Trên thanh của tab “Di chuyển”, nhấp biểu tượng tải xuống trước “Phương tiện”, có chú giải ghi “Nhập xác nhận đặt chỗ”. Hộp thoại mang tên đó mở ra, cùng hộp thoại mà tab “Đặt” có.',
+  'help.guide.import-transport-file.step.2':
+    'Thả vé lên ô đó, hoặc nhấp vào ô rồi chọn nó: EML, PDF, PKPass, HTML và TXT, tối đa năm tập tin, mỗi tập tin 10 MB. Những tập tin bạn chọn được nêu tên trên ô.',
+  'help.guide.import-transport-file.step.3': 'Nhấp “Nhập”. Hộp thoại đóng lại ngay; việc đọc diễn ra ở nền.',
+  'help.guide.import-transport-file.step.4':
+    'Một thẻ ở dưới cùng bên phải báo cáo lượt chạy dưới tên tập tin. “Đang phân tích tệp…” đổi thành dấu tích khi việc đọc xong, và thẻ đưa ra “Nhập”. Nhấp vào đó.',
+  'help.guide.import-transport-file.step.5':
+    'Một chuyến bay mở ra trong “Thêm phương tiện di chuyển”, đã điền sẵn: nhãn loại ở “Chuyến bay”, hãng hàng không và số hiệu chuyến bay làm tiêu đề trên dải đầu, cả hai sân bay dưới “Tuyến đường” với “Khởi hành” và “Đến”, giờ và múi giờ của chúng, “Hãng hàng không” và “Chuyến bay số”, “Mã đặt chỗ” và vé dưới “Tập tin”. Kiểm tra rồi nhấp “Thêm”.',
+  'help.guide.import-transport-file.result':
+    'Chuyến bay là một thẻ dưới “Chưa giải quyết” trên tab “Di chuyển” và một hàng trên ngày nó khởi hành, với vé dưới “Tập tin”, và khi cả hai sân bay đã biết, nó vẽ đường cong của mình trên bản đồ.',
+  'help.guide.import-transport-file.tip.1':
+    'Hai tab dùng chung một lần nhập: một tập tin chứa một chuyến bay và một khách sạn sẽ mở chuyến bay trong “Thêm phương tiện di chuyển” và khách sạn trong “Đặt chỗ mới”, lần lượt từng cái, bất kể bạn bắt đầu từ tab nào.',
+  'help.guide.import-transport-file.tip.2':
+    'Sân bay được đặt theo mã của chúng. Một nhà ga hay một cảng mà việc đọc không định vị được sẽ được nêu tên bằng màu hổ phách trên thẻ nhập ở góc dưới bên phải; hãy chọn bằng tay dưới “Tuyến đường” trước khi nhấp “Thêm”, nếu không phương tiện sẽ không vẽ gì trên bản đồ.',
   // plan-transit
   'help.guide.plan-transit.title': 'Lên kế hoạch một tuyến giao thông công cộng',
   'help.guide.plan-transit.goal':
     'Để TREK tra cứu những chuyến tàu và xe buýt có thật giữa hai điểm của một ngày và đưa chuyến bạn chọn vào kế hoạch.',
   'help.guide.plan-transit.step.1':
-    'Ở đầu ngày, nhấp nút tàu điện, “Giao thông công cộng”. Tìm kiếm mở ra cho ngày đó.',
+    'Nhấp dấu + ở phần đầu của ngày và chọn “Giao thông công cộng”. Tìm kiếm mở ra cho ngày đó: ngày là nhãn trên dải đầu, và “Thủ công” cùng “Tự động” bên cạnh chuyển giữa tìm kiếm này và biểu mẫu thông thường.',
   'help.guide.plan-transit.step.2':
     '“Điểm đi” và “Điểm đến” nhận một trạm dừng hoặc một nhà ga. Khi ô còn trống, chính các điểm dừng của ngày và các chỗ nghỉ của chuyến đi được gợi ý; gõ hai chữ cái thì thay vào đó nó tìm các nhà ga trong biểu đồ giờ chạy. “Đổi chiều” giữa hai ô đảo ngược tuyến.',
   'help.guide.plan-transit.step.3':
@@ -3576,10 +3668,10 @@ const help: TranslationStrings = {
   'help.guide.plan-transit.step.4':
     'Các chip bên dưới cho biết được dùng những phương thức nào: “Tàu hỏa”, “Tàu điện ngầm”, “Tàu điện”, “Xe buýt”, “Phà” và “Cáp treo”. Tắt một cái để loại nó ra, ít nhất một cái vẫn bật. Rồi nhấp “Tìm kiếm”.',
   'help.guide.plan-transit.step.5':
-    'Mỗi kết quả cho biết giờ đi và giờ đến, mất bao lâu, bao nhiêu lần chuyển tuyến và bao nhiêu phần đi bộ, cùng các tuyến với màu riêng của chúng. Nhấp vào một kết quả để mở nó ra từng điểm dừng một, kèm sân ga và các đoạn đi bộ giữa các tuyến.',
+    'Mỗi kết quả cho biết giờ đi và giờ đến, mất bao lâu, bao nhiêu lần chuyển tuyến và bao nhiêu phần đi bộ, cùng các tuyến dưới dạng huy hiệu, mang màu riêng của chúng khi lịch trình có cung cấp. Nhấp vào một kết quả để mở nó ra từng chặng một, với các điểm dừng nơi bạn lên xe và đổi tuyến, sân ga và các đoạn đi bộ giữa các tuyến.',
   'help.guide.plan-transit.step.6': 'Nhấp “Thêm vào ngày”.',
   'help.guide.plan-transit.result':
-    'Tuyến trở thành một hàng trên ngày đó với các tuyến xe, số lần chuyển tuyến và thời gian đi bộ của nó, và một thẻ trong tab “Di chuyển” dưới “Giao thông công cộng tự động”.',
+    'Tuyến trở thành một hàng trên ngày đó với các huy hiệu tuyến xe, mũi nhọn của hàng mở nó ra từng chặng một, và một thẻ trên tab “Di chuyển” nằm giữa các chuyến đã xác nhận, được tô màu xanh dương.',
   'help.guide.plan-transit.tip.1':
     'Các tuyến đến từ Transitous, một dịch vụ cộng đồng miễn phí dựa trên dữ liệu biểu đồ giờ chạy công khai: không khóa, không tài khoản. Quản trị viên có thể trỏ tìm kiếm sang Google thay vì vậy.',
   'help.guide.plan-transit.tip.2':
@@ -3588,27 +3680,27 @@ const help: TranslationStrings = {
     'Cùng tìm kiếm đó mở ra cho riêng một chặng: nhấp đoạn nối thời gian đi lại giữa hai điểm dừng và chọn “Giao thông công cộng”. “Điểm đi”, “Điểm đến” và giờ khởi hành đã được điền sẵn cho bạn.',
   // change-transit-route
   'help.guide.change-transit-route.title': 'Mở và thay đổi một tuyến đã lên kế hoạch',
-  'help.guide.change-transit-route.goal': 'Đọc tuyến từng điểm dừng một, đổi tên nó, hoặc tra cứu lại lộ trình.',
+  'help.guide.change-transit-route.goal': 'Đọc tuyến từng tuyến xe một, đổi tên nó, hoặc tra cứu lại lộ trình.',
   'help.guide.change-transit-route.step.1':
-    'Trong tab “Di chuyển”, các tuyến đã lên kế hoạch nằm dưới “Giao thông công cộng tự động”. Nhấp vào thẻ; tuyến mở ra dưới dạng một đặt chỗ.',
+    'Trên tab “Di chuyển”, một tuyến đã lên kế hoạch là một thẻ có dải đầu màu xanh dương, nằm giữa các chuyến đã xác nhận theo thứ tự thời gian; khi “Giao thông công cộng thành mục riêng” được bật trong “Tùy chọn hiển thị”, nó nằm dưới “Giao thông công cộng tự động” thay vào đó. Nhấp vào thẻ; tuyến mở ra dưới dạng một đặt chỗ.',
   'help.guide.change-transit-route.step.2':
-    '“Thời lượng”, “Chuyển tuyến” và “Đi bộ” nằm ở trên cùng. “Lộ trình” bên dưới chúng đi qua tuyến từng điểm dừng một, kèm sân ga và các đoạn đi bộ giữa các tuyến.',
+    'Các ô ở trên cùng cho biết giờ đi và giờ đến cùng các điểm dừng của chúng, “Thời lượng”, “Chuyển tuyến” và “Đi bộ”. “Lộ trình” bên dưới chúng đi qua tuyến từng tuyến xe một, kèm giờ giấc, sân ga và các đoạn đi bộ giữa các tuyến.',
   'help.guide.change-transit-route.step.3':
-    '“Đổi tuyến” ở chân đặt chỗ chạy lại tìm kiếm, đã điền sẵn hai đầu của tuyến này và ngày của nó.',
+    '“Đổi tuyến” ở chân đặt chỗ mở lại tìm kiếm, đã điền sẵn hai đầu của tuyến này và ngày của nó.',
   'help.guide.change-transit-route.step.4':
-    'Chọn một tuyến khác và nhấp “Thêm vào ngày”; nó thế chỗ tuyến cũ. Còn “Chỉnh sửa”, ở đầu kia của cùng thanh đó, mở biểu mẫu phương tiện thông thường, nơi có “Mã đặt chỗ”, “Trạng thái”, người đi, ghi chú và các tập tin.',
+    'Nhấp “Tìm kiếm”, mở ra một tuyến khác và nhấp “Thêm vào ngày”; nó thế chỗ tuyến cũ. Còn “Chỉnh sửa”, ở tận cùng bên phải chân đặt chỗ, mở biểu mẫu phương tiện thông thường, nơi có “Mã đặt chỗ”, người đi, ghi chú và các tập tin.',
   'help.guide.change-transit-route.result':
-    'Hành trình mang lộ trình mới, và thẻ của nó trong tab “Di chuyển” hiển thị các tuyến xe và giờ giấc mới.',
+    'Hành trình mang lộ trình mới, và thẻ của nó trên tab “Di chuyển” hiển thị các tuyến xe và giờ giấc mới.',
   'help.guide.change-transit-route.tip.1':
-    'Tiêu đề ở đầu đặt chỗ đổi tên tuyến mà không động tới lộ trình. Ghi chú của tuyến được viết trong biểu mẫu phương tiện, sau nút “Chỉnh sửa”.',
+    'Nhấp vào tiêu đề ở đầu đặt chỗ để đổi tên tuyến mà không động tới lộ trình. Ghi chú của tuyến được viết trong biểu mẫu phương tiện, sau nút “Chỉnh sửa”.',
   'help.guide.change-transit-route.tip.2':
-    '“Xóa bỏ” ở chân đặt chỗ đưa tuyến ra khỏi chuyến đi; ngày vẫn giữ các điểm dừng của nó.',
+    'Thùng rác ở chân đặt chỗ xóa tuyến sau một câu hỏi; ngày vẫn giữ các điểm dừng của nó.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Đổi cách đi một chặng',
   'help.guide.leg-travel-mode.goal':
     'Đi bộ một chặng của một ngày mà phần còn lại đi bằng xe, hoặc giao chặng đó cho tìm kiếm giao thông công cộng.',
   'help.guide.leg-travel-mode.step.1':
-    'Các đoạn nối giữa những điểm dừng chỉ hiện ra khi lộ trình của ngày được bật. Nhấp vào ngày để mở nó, rồi “Chỉ đường” dưới các điểm dừng của ngày.',
+    'Các đoạn nối giữa những điểm dừng chỉ hiện ra khi lộ trình của ngày được bật. Nhấp vào phần đầu của ngày để mở nó, rồi “Chỉ đường” trên thanh dưới các điểm dừng của ngày.',
   'help.guide.leg-travel-mode.step.2':
     'Mỗi đoạn nối nêu thời gian đi lại và khoảng cách của chặng đó, kèm biểu tượng của phương thức đã dùng để tính lộ trình: một chiếc xe cho lái xe, một bàn chân cho đi bộ.',
   'help.guide.leg-travel-mode.step.3':
@@ -3628,32 +3720,32 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Sửa một giờ, một sân ga hay một mã đặt chỗ, hoặc bỏ chuyến đi lại ấy ra khỏi chuyến đi.',
   'help.guide.edit-transport.step.1':
-    'Trong kế hoạch ngày, một phương tiện là một hàng có màu nằm giữa các điểm dừng. Nhấp vào nó; đặt chỗ của nó mở ra với giờ giấc, tuyến đường và “Mã đặt chỗ”.',
+    'Trong kế hoạch ngày, một phương tiện là một hàng nằm giữa các điểm dừng, được tô màu theo loại. Nhấp vào nó và đặt chỗ của nó mở ra: trạng thái, loại, các ngày và “Mã đặt chỗ” dưới dạng nhãn ở phần đầu, giờ khởi hành và giờ đến cùng sân bay hoặc nhà ga của chúng ở bên dưới.',
   'help.guide.edit-transport.step.2':
-    '“Chỉnh sửa” ở chân đặt chỗ mở biểu mẫu đã tạo ra nó, với “Chỉnh sửa phương tiện đi lại” trên thanh tiêu đề. Mọi thứ đều đổi được: loại, tuyến đường, ngày và giờ, “Mã đặt chỗ”, “Trạng thái”.',
+    '“Chỉnh sửa” ở chân đặt chỗ mở biểu mẫu đã tạo ra nó, với “Chỉnh sửa phương tiện đi lại” phía trên tiêu đề trên dải đầu. Mọi thứ đều đổi được ở đó: tiêu đề, nhãn trạng thái và nhãn loại, tuyến đường, ngày và giờ, “Mã đặt chỗ”.',
   'help.guide.edit-transport.step.3':
     'Tuyến đường của một chuyến bay là một chuỗi sân bay, của một chuyến tàu là một chuỗi nhà ga. “Thêm điểm dừng” đặt thêm một điểm ở giữa, và mỗi chặng giữ giờ giấc riêng cùng số hiệu chuyến bay hoặc số tàu riêng.',
   'help.guide.edit-transport.step.4':
-    'Nhấp “Cập nhật”. Để bỏ hẳn phương tiện, dùng “Xóa bỏ” ở chân đặt chỗ của nó, hoặc thùng rác trên thẻ của nó trong tab “Di chuyển”, rồi xác nhận.',
+    'Nhấp “Cập nhật”. Để bỏ hẳn phương tiện, dùng thùng rác ở bên trái của cùng thanh đó, thùng rác ở chân đặt chỗ của nó hoặc thùng rác trên thẻ của nó trong tab “Di chuyển”, rồi xác nhận.',
   'help.guide.edit-transport.result':
     'Thay đổi hiện ra ở mọi nơi phương tiện xuất hiện: tab “Di chuyển”, ngày nó chạy, và đường của nó trên bản đồ.',
   'help.guide.edit-transport.tip.1':
-    'Cùng một biểu mẫu mở ra từ cả hai phía: qua “Chỉnh sửa” trong đặt chỗ mà một hàng của kế hoạch ngày mở ra, và qua cây bút chì trên thẻ trong tab “Di chuyển”. Một tuyến giao thông công cộng đã lên kế hoạch cũng mở ra dưới dạng đặt chỗ; “Đổi tuyến” ở đó tìm lại, còn “Chỉnh sửa” dẫn tới biểu mẫu này.',
+    'Cùng một biểu mẫu mở ra từ cả hai phía: qua “Chỉnh sửa” trong đặt chỗ mà một hàng của kế hoạch ngày mở ra, và qua cây bút chì trên thẻ trong tab “Di chuyển”. Một tuyến giao thông công cộng đã lên kế hoạch cũng mở ra dưới dạng đặt chỗ; “Đổi tuyến” ở đó mở lại tìm kiếm, còn “Chỉnh sửa” dẫn tới biểu mẫu này.',
   'help.guide.edit-transport.tip.2':
     'Chuyển một phương tiện sang ngày khác hoàn toàn không cần tới biểu mẫu: kéo hàng của nó từ thẻ ngày này sang thẻ ngày kế tiếp.',
   // transport-on-map
   'help.guide.transport-on-map.title': 'Vẽ một phương tiện trên bản đồ',
   'help.guide.transport-on-map.goal': 'Xem một chuyến bay, một chặng lái xe hay một tuyến thực sự đi qua đâu.',
   'help.guide.transport-on-map.step.1':
-    'Một phương tiện đã đặt cả hai đầu mang một biểu tượng tuyến nhỏ trên hàng của nó trong kế hoạch ngày. Nhấp vào đó; nhãn của nó chuyển thành “Ẩn lộ trình đặt chỗ”.',
+    'Một phương tiện đã đặt cả hai đầu mang một biểu tượng tuyến nhỏ trên hàng của nó trong kế hoạch ngày. Nhấp vào đó; chú giải của nó chuyển thành “Ẩn lộ trình đặt chỗ”.',
   'help.guide.transport-on-map.step.2':
     'Tuyến được vẽ trên bản đồ, với một dấu hình viên thuốc ở mỗi đầu mang biểu tượng của phương tiện.',
   'help.guide.transport-on-map.step.3':
-    'Nhấp một dấu đầu tuyến để đọc đặt chỗ mà không rời bản đồ: giờ giấc, “Hãng hàng không” và “Chuyến bay số”, “Mã đặt chỗ” và địa chỉ. “Đóng” dẹp tấm thẻ đi.',
+    'Nhấp một dấu đầu tuyến và đặt chỗ mở ra ngay trên bản đồ: trạng thái, loại, các ngày và “Mã đặt chỗ” ở phần đầu, bên dưới là giờ giấc cùng sân bay hoặc nhà ga của chúng, hãng hàng không và số hiệu chuyến bay. “Đóng” trên dải đầu của nó cất nó đi.',
   'help.guide.transport-on-map.step.4':
     'Biểu tượng tuyến ở thanh công cụ phía trên các ngày làm việc đó cho cả chuyến đi một lượt: “Hiển thị tất cả lộ trình đặt chỗ”, và “Ẩn tất cả lộ trình đặt chỗ” để xóa chúng đi lần nữa.',
   'help.guide.transport-on-map.step.5':
-    'Một tuyến giao thông công cộng đã lên kế hoạch không có biểu tượng riêng. Nó được vẽ bằng nút “Chỉ đường” của ngày, và vì thế “Ẩn tất cả lộ trình đặt chỗ” không xóa nó khi lộ trình của ngày đó vẫn đang bật.',
+    'Một tuyến giao thông công cộng đã lên kế hoạch không có biểu tượng tuyến riêng. Nó được vẽ bằng nút “Chỉ đường” của ngày, và vì thế “Ẩn tất cả lộ trình đặt chỗ” không xóa nó khi lộ trình của ngày đó vẫn đang bật.',
   'help.guide.transport-on-map.result':
     'Các tuyến nằm trên bản đồ với một dấu ở mỗi đầu, và ở lại đó cho tới khi bạn tắt chúng đi lần nữa.',
   'help.guide.transport-on-map.tip.1':
@@ -3662,31 +3754,12 @@ const help: TranslationStrings = {
     'Một đặt chỗ “Đã xác nhận” là đường liền, một đặt chỗ “Chưa giải quyết” là đường đứt nét. Cài đặt “Nhãn lộ trình đặt chỗ” in mã sân bay hoặc tên nhà ga vào các dấu đầu tuyến.',
   'help.guide.transport-on-map.tip.3':
     '“Hiển thị tất cả lộ trình đặt chỗ” là một tờ giấy trắng, không phải một lớp phủ: nó bỏ đi những gì các biểu tượng riêng lẻ đã đặt, nên bấm hai lần sẽ để bạn lại với tất cả đang bật hoặc tất cả đang tắt.',
-  // import-transport-file
-  'help.guide.import-transport-file.title': 'Đọc một chuyến bay ra từ vé điện tử của nó',
-  'help.guide.import-transport-file.goal':
-    'Để TREK rút một chuyến bay, một chuyến tàu hay một chuyến phà ra từ vé mà hãng vận chuyển đã gửi, và kiểm tra trước khi nó được lưu.',
-  'help.guide.import-transport-file.step.1':
-    'Nhấp “Nhập từ tập tin” trên thanh công cụ của tab “Di chuyển”, cạnh “Phương tiện”. “Nhập xác nhận đặt chỗ” mở ra, cùng hộp thoại mà tab “Đặt chỗ” có.',
-  'help.guide.import-transport-file.step.2':
-    'Thả vé lên ô đó, hoặc nhấp vào ô rồi chọn nó: EML, PDF, PKPass, HTML và TXT, tối đa năm tập tin, mỗi tập tin 10 MB. Những tập tin bạn chọn được nêu tên trên ô.',
-  'help.guide.import-transport-file.step.3': 'Nhấp “Nhập”. Hộp thoại đóng lại ngay; việc đọc diễn ra ở nền.',
-  'help.guide.import-transport-file.step.4':
-    'Một thẻ ở dưới cùng bên phải báo cáo lượt chạy dưới tên tập tin. “Đang phân tích tệp…” đổi thành dấu tích khi việc đọc xong, và thẻ đưa ra “Nhập”. Nhấp vào đó.',
-  'help.guide.import-transport-file.step.5':
-    'Một chuyến bay mở ra trong “Thêm phương tiện di chuyển”, đã điền sẵn: “Loại đặt chỗ” ở “Chuyến bay”, hãng hàng không và số hiệu chuyến bay trong “Tiêu đề”, cả hai sân bay dưới “Tuyến đường” với “Khởi hành” và “Đến”, giờ và múi giờ của chúng, “Hãng hàng không” và “Chuyến bay số”, “Mã đặt chỗ” và vé dưới “Tập tin”. Kiểm tra rồi nhấp “Thêm”.',
-  'help.guide.import-transport-file.result':
-    'Chuyến bay là một thẻ trong “Chưa giải quyết” trên tab “Di chuyển” và một hàng trên ngày nó khởi hành, với vé dưới “Tập tin”, và khi cả hai sân bay đã biết, nó vẽ đường cong của mình trên bản đồ.',
-  'help.guide.import-transport-file.tip.1':
-    'Hai tab dùng chung một lần nhập: một tập tin chứa một chuyến bay và một khách sạn sẽ mở chuyến bay trong “Thêm phương tiện di chuyển” và khách sạn trong “Đặt chỗ mới”, lần lượt từng cái, bất kể bạn bắt đầu từ tab nào.',
-  'help.guide.import-transport-file.tip.2':
-    'Sân bay được đặt theo mã của chúng. Một nhà ga hay một cảng mà việc đọc không định vị được sẽ được nêu tên bằng màu hổ phách trên thẻ; hãy chọn bằng tay dưới “Tuyến đường” trước khi nhấp “Thêm”, nếu không phương tiện sẽ không vẽ gì trên bản đồ.',
   // airtrail-import
   'help.guide.airtrail-import.title': 'Nhập chuyến bay từ AirTrail',
   'help.guide.airtrail-import.goal':
     'Đưa các chuyến bay bạn đã giữ trong AirTrail vào chuyến đi trong một lần, và để chúng theo AirTrail từ đó về sau.',
   'help.guide.airtrail-import.step.1':
-    'Khi tiện ích AirTrail đang bật và máy chủ của bạn đã kết nối dưới “Tích hợp” trong “Cài đặt”, thanh công cụ của tab “Di chuyển” mang một nút “AirTrail” cạnh “Phương tiện”. Nhấp vào nó.',
+    'Khi tiện ích AirTrail đang bật và máy chủ của bạn đã kết nối dưới “Tích hợp” trong “Cài đặt”, thanh của tab “Di chuyển” mang một biểu tượng máy bay trước “Phương tiện”, “Nhập từ AirTrail”. Nhấp vào nó.',
   'help.guide.airtrail-import.step.2':
     '“Nhập từ AirTrail” liệt kê các chuyến bay của tài khoản bạn thành hai nhóm. “Trong chuyến đi này” chứa những chuyến có ngày nằm trong chuyến đi, đã được đánh dấu sẵn; “Các chuyến bay khác” chứa phần còn lại, chưa đánh dấu. Một chuyến bay đã có trong chuyến đi bị làm mờ và ghi “Đã nhập”.',
   'help.guide.airtrail-import.step.3':
@@ -3694,17 +3767,17 @@ const help: TranslationStrings = {
   'help.guide.airtrail-import.step.4':
     'Các chuyến bay nối tiếp nhau, mỗi chuyến cất cánh từ sân bay mà chuyến trước đó đã hạ cánh trong vòng một ngày, được đóng khung chung. Ô đánh dấu bên dưới, “Nhập thành một chuyến bay với điểm dừng tại” kèm tên sân bay đó, đã được bật sẵn: để nguyên để có một đặt chỗ với một điểm dừng, hoặc tắt đi để nhập các chặng thành những chuyến bay riêng.',
   'help.guide.airtrail-import.step.5':
-    'Nhấp “Nhập”. Nút đếm số chuyến bay đã đánh dấu, và thông báo sau đó cho biết bao nhiêu chuyến đã vào.',
+    'Nhấp nút ở góc dưới bên phải, nút đếm số chuyến bay đã đánh dấu, ví dụ “Nhập 2”. Thông báo sau đó cho biết bao nhiêu chuyến đã vào.',
   'help.guide.airtrail-import.step.6':
-    'Các chuyến bay là những thẻ dưới “Đã xác nhận”, mỗi thẻ có một huy hiệu AirTrail màu xanh dương cạnh trạng thái, và là những hàng trên các ngày chúng bay. Một chuyến nối đã ghép là một thẻ, với tuyến đường chạy qua điểm dừng.',
+    'Các chuyến bay là những thẻ dưới “Đã xác nhận”, mỗi thẻ có một nhãn AirTrail màu xanh dương cạnh tiêu đề, và là những hàng trên các ngày chúng bay. Một chuyến nối đã ghép là một thẻ, với tuyến đường chạy qua điểm dừng.',
   'help.guide.airtrail-import.result':
-    'Các chuyến bay từ AirTrail là những thẻ trong tab “Di chuyển” và những hàng trên các ngày của chúng, mỗi thẻ mang huy hiệu AirTrail cho biết nó đến từ đâu.',
+    'Các chuyến bay từ AirTrail là những thẻ trên tab “Di chuyển” và những hàng trên các ngày của chúng, mỗi thẻ mang nhãn AirTrail cho biết nó đến từ đâu.',
   'help.guide.airtrail-import.tip.1':
-    'Một chuyến bay đã có trong chuyến đi với cùng số hiệu và ngày sẽ bị bỏ qua, và một thông báo cho biết có bao nhiêu chuyến như vậy. “Hoàn tác” trên thanh công cụ phía trên các ngày rút lại toàn bộ lần nhập.',
+    'Một chuyến bay đã có trong chuyến đi với cùng số hiệu và ngày sẽ bị bỏ qua, và một thông báo cho biết có bao nhiêu chuyến như vậy. Mũi tên hoàn tác trên thanh công cụ phía trên các ngày rút lại toàn bộ lần nhập.',
   'help.guide.airtrail-import.tip.2':
-    'AirTrail vẫn là nguồn sự thật. TREK đọc các thay đổi của nó khi bạn mở chuyến đi và vài phút một lần ở nền; một chuyến bay bị xóa ở đó vẫn giữ thẻ, với huy hiệu chuyển thành “Chưa được đồng bộ hóa”. Các chỉnh sửa trong TREK chỉ đi ngược lại khi “Viết các thay đổi trở lại AirTrail” đang bật dưới “Tích hợp”.',
+    'AirTrail vẫn là nguồn sự thật. TREK đọc các thay đổi của nó khi bạn mở chuyến đi và vài phút một lần ở nền; một chuyến bay bị xóa ở đó vẫn giữ thẻ, với nhãn chuyển thành “Chưa được đồng bộ hóa”. Các chỉnh sửa trong TREK chỉ đi ngược lại khi “Viết các thay đổi trở lại AirTrail” đang bật dưới “Tích hợp”.',
   'help.guide.airtrail-import.tip.3':
-    'Một chuyến nối đã ghép không có chuyến bay AirTrail đơn lẻ nào để theo, nên nó là một lần nhập một chiều: nó giữ huy hiệu xanh dương, và đưa con trỏ lên huy hiệu sẽ nói vậy. Điều tương tự xảy ra với một chuyến bay đã đồng bộ mà bạn thêm điểm dừng bằng tay.',
+    'Một chuyến nối đã ghép không có chuyến bay AirTrail đơn lẻ nào để theo, nên nó là một lần nhập một chiều: nó giữ nhãn xanh dương, và trỏ vào nhãn sẽ thấy điều đó. Điều tương tự xảy ra với một chuyến bay đã đồng bộ mà bạn thêm điểm dừng bằng tay.',
 
   // ── Screen: trip-roadtrip ─────────────────────────────────────────────────────────────
   'help.ctx.trip-roadtrip.title': 'Chuyến đi đường bộ',
@@ -3713,13 +3786,13 @@ const help: TranslationStrings = {
   'help.ctx.trip-roadtrip.bullet.1':
     '“Ngày” và “Chuyến đi đường bộ” ở đầu cột bên trái chuyển qua lại giữa kế hoạch theo ngày và chuyến lái xe. Không có gì được sao chép và không có gì bị đổi: “Ngày” trả lại kế hoạch đúng như cũ.',
   'help.ctx.trip-roadtrip.bullet.2':
-    'Đầu dải hành trình cộng cả chuyến đi: “Quãng đường”, “Thời gian lái xe” và “Điểm dừng”. Bên dưới là mỗi ngày một thẻ, kèm quãng đường của riêng ngày đó, ngày đó dành cho mấy điểm dừng, nó vượt những gì, và huy hiệu “Tuyến”.',
+    'Đầu dải hành trình cộng cả chuyến đi: “Quãng đường”, “Thời gian lái xe” và “Điểm dừng”. Bên dưới là một thẻ cho mỗi ngày có lái xe, kèm quãng đường của riêng ngày đó, ngày đó dành cho mấy điểm dừng, nó vượt những gì, và huy hiệu “Tuyến”.',
   'help.ctx.trip-roadtrip.bullet.3':
     'Điểm dừng có số là một địa điểm mà ngày đó hướng tới. Một điểm dừng dọc đường, như xăng dầu, sạc điện hay trạm dừng nghỉ, mang biểu tượng loại của nó thay cho số và không được tính. Nhấp vào một con số để đổi loại, và nhấp huy hiệu “Dừng” để nói nó mất bao lâu.',
   'help.ctx.trip-roadtrip.bullet.4':
     'Giữa hai điểm dừng, dải lái xe cho biết chặng đó dài bao nhiêu và mất bao lâu. Nhấp vào đó để mở “Các lộ trình cho chặng này”, hoặc nhấp vào lộ trình vẽ trên bản đồ để bẻ chặng qua một điểm trung gian.',
   'help.ctx.trip-roadtrip.bullet.5':
-    'Cột bên phải trở thành “Dọc theo lộ trình”: chọn một ngày, chọn thứ cần tìm và bề rộng hành lang, rồi nhấn “Tìm kiếm”. “Thêm” đặt kết quả lên hành trình ngay tại điểm thực sự đi qua nó.',
+    'Cột bên phải trở thành “Dọc theo lộ trình”: chọn thứ cần tìm và ngày trên cùng một dòng, chọn bề rộng hành lang, rồi nhấn “Tìm kiếm”. Dấu cộng trên một kết quả, “Thêm”, mở một hộp thoại ngắn đặt kết quả lên hành trình ngay tại điểm thực sự đi qua nó.',
   'help.ctx.trip-roadtrip.bullet.6':
     '“Cài đặt lái xe” bên dưới chứa các giới hạn, chiếc xe và quãng đường của nó, giờ di chuyển hằng ngày, những gì cần tránh và cách vẽ đường tuyến. Chúng thuộc về chuyến đi, nên mọi người cùng lên kế hoạch với một chiếc xe.',
   // roadtrip-mode
@@ -3731,7 +3804,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-mode.step.2':
     'Đầu dải hành trình cộng cả chuyến đi: “Quãng đường”, “Thời gian lái xe” và “Điểm dừng”.',
   'help.guide.roadtrip-mode.step.3':
-    'Bên dưới là mỗi ngày một thẻ. Phần đầu thẻ mang số thứ tự và ngày tháng, quãng lái xe theo quãng đường và thời gian, và ngày đó dành cho mấy điểm dừng.',
+    'Bên dưới là một thẻ cho mỗi ngày có lái xe; ngày không có gì để lái thì bị bỏ ra. Phần đầu thẻ mang số thứ tự và ngày tháng, quãng lái xe theo quãng đường và thời gian, và ngày đó dành cho mấy điểm dừng.',
   'help.guide.roadtrip-mode.step.4':
     'Trong thẻ, một ngày là một chuỗi: mỗi địa điểm một điểm dừng có số, giữa mỗi cặp là một dải lái xe, và giờ đến ở mép phải.',
   'help.guide.roadtrip-mode.step.5':
@@ -3749,9 +3822,9 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.goal':
     'Biến một địa điểm trên hành trình thành điểm dừng dọc đường, và nói mỗi điểm dừng mất bao lâu.',
   'help.guide.roadtrip-stops.step.1':
-    'Nhấp vào con số phía trước một điểm dừng trên dải hành trình. Nhãn của nó là “Biến thành điểm dừng dọc đường”, và nó mở “Loại điểm dừng”.',
+    'Nhấp vào con số phía trước một điểm dừng trên dải hành trình. Nhãn của nó là “Biến thành điểm dừng dọc đường”, và nó mở các loại điểm dừng dưới dạng một hàng đĩa tròn nhiều màu bên dưới.',
   'help.guide.roadtrip-stops.step.2':
-    'Chọn một loại: “Chỗ ở”, “Xăng dầu”, “Sạc điện”, “Trạm dừng nghỉ”, “Khu cắm trại”, “Đồ ăn” hoặc “Điểm tham quan”. Con số biến thành biểu tượng của loại đó và các điểm dừng bên dưới được đánh số lại.',
+    'Chọn một loại; mỗi đĩa hiện tên khi bạn trỏ vào: “Chỗ ở”, “Xăng dầu”, “Sạc điện”, “Trạm dừng nghỉ”, “Khu cắm trại”, “Đồ ăn” hoặc “Điểm tham quan”. Con số biến thành biểu tượng của loại đó và các điểm dừng bên dưới được đánh số lại.',
   'help.guide.roadtrip-stops.step.3':
     'Điểm dừng dọc đường không phải điểm đến, nên phần đầu của ngày đếm ít đi một điểm dừng.',
   'help.guide.roadtrip-stops.step.4':
@@ -3759,35 +3832,37 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.step.5':
     'Mọi điểm dừng đều mang huy hiệu “Dừng”. Nhấp vào đó để mở “Thời gian tại điểm dừng”.',
   'help.guide.roadtrip-stops.step.6':
-    'Đặt độ dài bằng thanh trượt, bằng nút trừ và nút cộng, hoặc bằng một trong các mức có sẵn, xem “Den noi” và “Roi di” thay đổi ra sao, rồi nhấp “Lưu”.',
+    'Đặt độ dài bằng thanh trượt, bằng nút trừ và nút cộng, hoặc bằng một trong các mức có sẵn, xem “Rời đi” dịch chuyển trong khi “Đến nơi” giữ nguyên ở giờ hành trình tới nơi, rồi nhấp “Lưu”.',
   'help.guide.roadtrip-stops.result':
-    'Điểm dừng bạn vừa định giờ mang giờ đó trên phù hiệu “Dừng” của nó và mọi giờ đến sau nó đều đã xê dịch theo, còn điểm bạn đưa sang một loại rồi đưa về lại là một đích đến có số thứ tự.',
+    'Điểm dừng bạn vừa định giờ mang độ dài mới trên phù hiệu “Dừng” của nó và mọi giờ đến sau nó đều đã xê dịch theo, còn điểm bạn đưa sang một loại rồi đưa về lại là một đích đến có số thứ tự.',
   'help.guide.roadtrip-stops.tip.1':
     'Thời gian dừng thuộc về địa điểm chứ không thuộc về một lần ghé: một địa điểm được xếp vào hai ngày thì cả hai ngày đều dừng lại bấy nhiêu lâu.',
   'help.guide.roadtrip-stops.tip.2':
     'Điểm dừng dọc đường cũng hiện trong “Ngày”. Tắt “Hiển thị cả trong Ngày”, nằm dưới “Điểm dừng dịch vụ” trong “Cài đặt lái xe”, thì chúng chỉ còn trong “Chuyến đi đường bộ”.',
-  'help.guide.roadtrip-stops.tip.3': '“Khong dung lai”, trong cùng hộp thoại đó, lại bỏ khoảng thời gian ấy đi.',
+  'help.guide.roadtrip-stops.tip.3': '“Không dừng lại”, trong cùng hộp thoại đó, lại bỏ khoảng thời gian ấy đi.',
+  'help.guide.roadtrip-stops.tip.4':
+    'Nhấp một điểm dừng dọc đường hoặc một đêm đã đặt để mở thẻ của nó trên bản đồ. Khi “Chuyến đi đường bộ” đang bật, “Chỉnh sửa” ở đó mở hộp thoại gọn mà tìm kiếm dùng thay cho biểu mẫu địa điểm, và “Thêm chi tiết” trong hộp thoại đó mở biểu mẫu đầy đủ.',
   // roadtrip-corridor
   'help.guide.roadtrip-corridor.title': 'Tìm xăng, đồ ăn và chỗ ngủ dọc theo lộ trình',
   'help.guide.roadtrip-corridor.goal': 'Tìm trên con đường bạn thực sự chạy qua, và đặt thứ tìm được vào đúng chặng.',
   'help.guide.roadtrip-corridor.step.1':
-    'Chọn ngày ở đầu “Dọc theo lộ trình”. Chỉ những ngày đã có lộ trình mới được đưa ra.',
+    'Dưới “Đang tìm”, mở danh sách và tích thứ bạn cần. “Xăng dầu”, “Sạc điện”, “Trạm dừng nghỉ”, “Khu cắm trại”, “Chỗ ở”, “Đồ ăn” và “Điểm tham quan” có thể kết hợp: danh sách vẫn mở để chọn thêm, và dòng đó sau đó hiện mỗi loại bằng biểu tượng của nó.',
   'help.guide.roadtrip-corridor.step.2':
-    'Dưới “Đang tìm”, tích thứ bạn cần. “Xăng dầu”, “Sạc điện”, “Trạm dừng nghỉ”, “Khu cắm trại”, “Chỗ ở”, “Đồ ăn” và “Điểm tham quan” có thể kết hợp.',
+    'Chọn ngày trong danh sách thả xuống ở cuối cùng dòng đó. Nó đưa ra những ngày mà dải hành trình có thẻ, và “Tìm kiếm” chờ cho đến khi ngày bạn chọn đã có lộ trình.',
   'help.guide.roadtrip-corridor.step.3':
     'Dưới “Trong vòng”, chọn tìm xa bao nhiêu về mỗi bên đường, 2 km, 5 km hay 10 km, rồi nhấp “Tìm kiếm”.',
   'help.guide.roadtrip-corridor.step.4':
     'Kết quả trở về được nhóm theo loại, theo thứ tự bạn đi qua, mỗi kết quả kèm theo nó nằm ở đoạn nào của ngày và cách lộ trình bao xa.',
   'help.guide.roadtrip-corridor.step.5':
-    '“Thêm” trên một kết quả mở “Thêm làm điểm dừng”. Nó cho biết điểm dừng rơi vào ngày nào và vị trí thứ mấy, hỏi loại và thời gian tại điểm dừng, rồi “Thêm” đặt nó lên hành trình.',
+    'Dấu cộng trên một kết quả, “Thêm”, mở “Thêm làm điểm dừng”. Nó cho biết điểm dừng rơi vào ngày nào và vị trí thứ mấy, và hỏi “Loại điểm dừng” cùng “Thời gian tại điểm dừng”. “Thêm” đặt nó lên hành trình; “Thêm chi tiết” mở biểu mẫu địa điểm đầy đủ thay vào đó. Một kết quả chỗ ở mang một chiếc giường thay cho dấu cộng, “Thêm làm nơi nghỉ đêm”, và hộp thoại của nó đưa ra “Nghỉ” hoặc “Qua đêm”; một đêm chỉ hỏi “Nhận phòng” của nó.',
   'help.guide.roadtrip-corridor.result':
-    'Các kết quả được liệt kê theo thứ tự bạn đi qua và được vẽ trên bản đồ, còn cái bạn đã thêm nằm trên hành trình ngay tại điểm thực sự đi qua nó.',
+    'Điểm dừng bạn đã thêm nằm trên hành trình ngay tại điểm thực sự đi qua nó, với biểu tượng loại của nó. Ngày đó được định tuyến lại qua điểm dừng, việc này làm trống danh sách: hãy tìm lại cho điểm tiếp theo.',
   'help.guide.roadtrip-corridor.tip.1':
     'Không có gì được tìm cho tới khi bạn nhấn “Tìm kiếm”: một lượt chạy là rất nhiều yêu cầu gửi tới một dịch vụ dùng chung.',
   'help.guide.roadtrip-corridor.tip.2':
     '“Lọc theo tên” thu hẹp những gì đã trở về mà không hỏi lại, còn “Xóa kết quả” dọn sạch danh sách và các ghim của nó. Nhấp một kết quả để đưa nó vào khung nhìn trên bản đồ.',
   'help.guide.roadtrip-corridor.tip.3':
-    'Một kết quả cũng có thể được kéo từ bản đồ lên lộ trình đã vẽ, đó là cách bạn tự chọn chặng ở nơi cùng một con đường được chạy qua hai lần. “Thêm thủ công”, bên cạnh “Tìm kiếm”, thì tra một địa điểm theo tên.',
+    'Một kết quả cũng có thể được kéo từ bản đồ lên lộ trình đã vẽ, đó là cách bạn tự chọn chặng ở nơi cùng một con đường được chạy qua hai lần. “Thủ công”, bên cạnh “Tìm kiếm”, thêm một điểm mà tìm kiếm không tìm thấy bằng cách tra một địa điểm theo tên.',
   // roadtrip-via
   'help.guide.roadtrip-via.title': 'Bẻ một chặng qua điểm trung gian',
   'help.guide.roadtrip-via.goal':
@@ -3815,16 +3890,16 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.step.1':
     'Nhấp một dải lái xe trên dải hành trình, là hàng giữa hai điểm dừng cho biết chặng đó dài bao nhiêu và mất bao lâu. Nhãn của nó là “Lộ trình khác”.',
   'help.guide.roadtrip-alternatives.step.2':
-    '“Các lộ trình cho chặng này” mở ra trên bản đồ, mỗi con đường một mục, mỗi mục được vẽ trên bản đồ bằng màu riêng.',
+    '“Các lộ trình cho chặng này” mở ra trên bản đồ, mỗi con đường một mục kèm chiều dài của nó. Bản đồ vẽ mỗi con đường kèm thời gian lái xe: con đường bạn đang đi màu xanh dương đậm, những con đường khác màu xanh dương nhạt hơn.',
   'help.guide.roadtrip-alternatives.step.3':
     'Rê chuột lên một mục để làm sáng con đường đó. “Hiện tại” là con đường đang đi và “Nhanh nhất” là con đường nhanh nhất; các mục khác cho biết chúng chậm hơn bao nhiêu, hoặc chúng bỏ qua loại đường nào.',
   'help.guide.roadtrip-alternatives.step.4': 'Nhấp một mục để chạy đường đó, hoặc “Đóng” để giữ con đường đang đi.',
   'help.guide.roadtrip-alternatives.result':
     'Chặng chạy con đường bạn đã chọn, và quãng đường trên dải hành trình cùng các giờ đến sau đó cũng đổi theo.',
   'help.guide.roadtrip-alternatives.tip.1':
-    'Chọn một con đường khác sẽ đặt một điểm trung gian lên chặng và thay thế những điểm đã có; chọn chính con đường của bộ định tuyến thì chúng lại bị bỏ đi.',
+    'Chọn một con đường khác trước hết sẽ kiểm tra nó bằng bộ định tuyến của chuyến đi đường bộ, rồi giữ chặng trên con đường đó với càng ít điểm trung gian càng tốt, thay thế những điểm chặng đã có. Một con đường mà bộ định tuyến không chịu đi theo sẽ không được lưu. Chọn chính con đường của bộ định tuyến thì các điểm trung gian lại bị bỏ đi.',
   'help.guide.roadtrip-alternatives.tip.2':
-    '“Khong di cao toc”, “Khong thu phi” và “Không phà” đến từ một bộ máy thứ hai với mô hình tốc độ riêng, nên thời gian của chúng không so sánh được với những mục còn lại.',
+    '“Không đi cao tốc”, “Không thu phí” và “Không phà” đến từ một bộ máy thứ hai với mô hình tốc độ riêng, nên thời gian của chúng không so sánh được với những mục còn lại.',
   // roadtrip-limits
   'help.guide.roadtrip-limits.title': 'Đặt chiếc xe và các giới hạn lái xe',
   'help.guide.roadtrip-limits.goal': 'Cho TREK biết bạn lái xe gì và bạn sẵn lòng lái bao lâu trong một lần.',
@@ -3835,7 +3910,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.step.3':
     'Dưới “Phương tiện”, hãy nói bạn lái xe gì. “Xăng” chỉ tiếp nhiên liệu ở điểm dừng xăng dầu, “Điện” chỉ ở điểm dừng sạc, “Cả hai” thì ở cả hai.',
   'help.guide.roadtrip-limits.step.4':
-    'Tự gõ “Quãng đường mỗi bình”, hoặc “Quãng đường mỗi lần sạc”. “Tính từ thông số xe” bên dưới lấy “Dung tích bình” và “Mức tiêu thụ”, hoặc “Pin” và “Mức tiêu thụ”, rồi tính hộ bạn.',
+    'Tự gõ “Quãng đường mỗi bình”, hoặc “Quãng đường mỗi lần sạc”. “Tính từ thông số xe” ở phía dưới lấy “Dung tích bình” và “Mức tiêu thụ”, hoặc “Pin”, “Mức tiêu thụ” và “Chai pin”, rồi tính hộ bạn.',
   'help.guide.roadtrip-limits.step.5':
     '“Tránh nếu có thể” là một ưu tiên, không phải lệnh cấm: ngày nào không có đường vòng thì vẫn đi qua con đường đó, và nói vậy ngay ở phần đầu của ngày.',
   'help.guide.roadtrip-limits.step.6':
@@ -3847,7 +3922,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.tip.2':
     '“Đổ đến” cho biết một điểm dừng đổ đầy tới đâu, vì trên đường không ai sạc đến 100 %. Một điểm dừng xăng dầu hoặc sạc điện có thể tự đặt khác cho riêng nó.',
   'help.guide.roadtrip-limits.tip.3':
-    '“Đường tuyến” quyết định cách vẽ hành trình: “Nối các ngày” định tuyến cả đoạn đêm giữa hai ngày, còn “Mỗi ngày một màu” cho mỗi ngày một màu riêng.',
+    'Dưới “Đường tuyến”, “Nối các ngày” còn định tuyến cả đoạn lái từ điểm dừng cuối của một ngày tới điểm dừng đầu của ngày kế tiếp, “Bắt đầu và kết thúc mỗi ngày tại nơi lưu trú” cho một ngày bắt đầu và kết thúc tại những đêm đã đặt quanh nó, và “Mỗi ngày một màu” vẽ mỗi ngày bằng một màu riêng.',
   // roadtrip-day-window
   'help.guide.roadtrip-day-window.title': 'Cho ngày lái xe một giờ bắt đầu và một giờ kết thúc',
   'help.guide.roadtrip-day-window.goal': 'Dừng lái vào giờ bạn chọn, và nói ngày nên kết thúc ở đâu.',
@@ -3871,15 +3946,15 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-refuel.title': 'Đổ nhiên liệu trước khi hết bình',
   'help.guide.roadtrip-refuel.goal': 'Tìm chỗ tiếp nhiên liệu trên đoạn xe còn tới được, và đặt nó lên hành trình.',
   'help.guide.roadtrip-refuel.step.1':
-    'Khi đã đặt quãng đường, dải hành trình vẽ một dải ngang chặng ở chỗ hết nhiên liệu: “Hết xăng ở đây”, và bên dưới là chỗ đó nằm sâu bao nhiêu trong chặng.',
+    'Khi đã đặt quãng đường, dải hành trình vẽ một dải ngang chặng ở chỗ hết nhiên liệu: “Hết xăng ở đây”, hoặc “Pin hết ở đây” với xe điện, và bên dưới là chỗ đó nằm sâu bao nhiêu trong chặng.',
   'help.guide.roadtrip-refuel.step.2':
-    'Ngọn đèn trên dải đó chính là nút bấm. “Tìm trạm xăng” tìm dọc con đường bạn đã chạy qua, và hiện “Đang tìm dọc tuyến đường…” trong khi tìm.',
+    'Ngọn đèn trên dải đó chính là nút bấm: “Tìm trạm xăng”, hoặc “Tìm trạm sạc” với xe điện. Nó tìm dọc con đường trước điểm đó và hiện “Đang tìm dọc tuyến đường…” trong khi tìm.',
   'help.guide.roadtrip-refuel.step.3':
     'Tối đa ba trạm trở về, mỗi trạm kèm theo nó cách lộ trình bao xa và sẽ còn dư bao nhiêu quãng đường.',
   'help.guide.roadtrip-refuel.step.4':
     'Dấu cộng trên một đề xuất sẽ thêm nó làm điểm đổ xăng. “Thêm làm điểm dừng” mở ra với loại và thời gian đã điền sẵn, và “Thêm” đặt nó lên chặng ngay tại điểm thực sự đi qua.',
   'help.guide.roadtrip-refuel.result':
-    'Điểm dừng nằm trên đúng chặng với biểu tượng riêng, quãng đường được tính lại từ đó, và dải kia biến mất.',
+    'Điểm dừng nằm trên đúng chặng với biểu tượng riêng, và quãng đường được tính lại từ đó: dải kia dời tới chỗ giờ đây sẽ hết nhiên liệu, hoặc biến mất khi phần còn lại của hành trình đã nằm trong tầm với.',
   'help.guide.roadtrip-refuel.tip.1':
     'Quãng đường được tính từ điểm dừng xăng dầu hoặc sạc điện gần nhất, xuyên qua các ngày. Bạn lái xe gì sẽ quyết định điểm dừng nào được tính: “Xăng” chỉ tính xăng dầu, “Điện” chỉ tính sạc điện.',
   'help.guide.roadtrip-refuel.tip.2':
@@ -3896,11 +3971,11 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-track.step.3':
     'Nhấp “Đi theo tuyến này”. TREK thả các điểm trung gian ở nơi hành trình lệch xa tuyến nhất, rồi định tuyến lại, vòng này qua vòng khác.',
   'help.guide.roadtrip-track.step.4':
-    'Nó cho biết đã đặt bao nhiêu điểm trung gian và giờ hành trình bám tuyến sát đến đâu. Nút bên dưới sẽ bỏ lại những điểm trung gian đó và trả ngày về cho bộ định tuyến; đóng hộp thoại thì giữ nguyên tuyến.',
+    'Hộp thoại cho biết đã đặt bao nhiêu điểm trung gian và giờ hành trình bám tuyến sát đến đâu, hoặc rằng hành trình vốn đã đi theo tuyến. Khi có điểm trung gian được đặt, nút bên dưới sẽ bỏ chúng đi và trả ngày về cho bộ định tuyến; đóng hộp thoại thì giữ nguyên tuyến.',
   'help.guide.roadtrip-track.result':
-    'Hành trình của ngày đi theo tuyến thay vì con đường bộ định tuyến đã chọn, và huy hiệu “Tuyến” của nó sáng lên, khi bạn trỏ vào thì nó nêu tên tuyến đó.',
+    'Hành trình của ngày đi theo tuyến thay vì con đường mà bộ định tuyến lẽ ra đã chọn, và trỏ vào huy hiệu “Tuyến” của nó sẽ thấy tên tuyến. Khi có điểm trung gian giữ hành trình trên tuyến, huy hiệu cũng sáng lên.',
   'help.guide.roadtrip-track.tip.1':
-    'Nhập tệp trong “Ngày” bằng “Nhập tập tin”, có tích “Tuyến đường” hoặc “Đường đi (có hình dạng đường dẫn)”. Chừng nào chuyến đi chưa có tuyến nào thì không ngày nào mang huy hiệu này.',
+    'Nhập tệp trong “Ngày”: ở cột địa điểm, “Nhập tập tin” sau nút nhập, có tích “Tuyến đường” hoặc “Đường đi (có hình dạng đường dẫn)” với tệp GPX, hoặc “Đường dẫn (LineStrings)” với tệp KML. Chừng nào chuyến đi chưa có tuyến nào thì không ngày nào mang huy hiệu này.',
   'help.guide.roadtrip-track.tip.2':
     'Đi theo một tuyến sẽ thay thế các điểm trung gian mà các chặng của ngày đã có, nên hãy nắn một chặng bằng tay sau khi theo tuyến, đừng làm trước.',
 };

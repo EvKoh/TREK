@@ -1108,7 +1108,7 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.step.1':
     'Jaotises Reisimine ja kaart hoiab Näita alati broneeringute marsruute lennud ja rongid kaardil ka siis, kui nende päev pole avatud; Avasta kaardil kohti näitab kohtade leidmise nuppu; Optimeeri marsruut majutuskohast alustab marsruuti sealt, kus sa ööbid.',
   'help.guide.travel-map-prefs.step.2':
-    'Hägusta broneerimiskoodid peidab kinnitusnumbrid, kuni hõljutad kursorit nende kohal; Broneeringute marsruutide sildid kirjutab broneeringu nime selle marsruudi äärde.',
+    'Hägusta broneerimiskoodid peidab kinnitusnumbrid, kuni hõljutad kursorit nende kohal; Broneeringute marsruutide sildid paneb broneeringu marsruudi mõlemas otsas olevale sildile lennujaama koodi või jaama nime, kus muidu on näha ainult ikoon.',
   'help.guide.travel-map-prefs.result': 'Reisi kaart järgib neid seadeid igal reisil, kuni sa need tagasi muudad.',
   'help.guide.travel-map-prefs.tip.1':
     'Need kehtivad konto, mitte reisi kohta. Jagatud reisi liikmed näevad igaüks oma valikuid.',
@@ -1726,7 +1726,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.summary':
     'Üks reis tervikuna: plaan oma päevade, kaardi ja kohtadega ning vahekaardid transpordi, broneeringute, nimekirjade, kulude, failide ja koostöö jaoks. Igaühel neist on selle all oma abivaade.',
   'help.ctx.trip.bullet.1':
-    'Vahekaardiriba: Plaan, Transport, Broneeringud, Nimekirjad, Kulud, Failid ja Koostöö. Lisamoodulid ja pluginad määravad, millised vahekaardid su TREKis on.',
+    'Vahekaardiriba: Plaan, Transport, Broneer., Nimekirjad, Kulud, Failid ja Koostöö. Lisamoodulid ja pluginad määravad, millised vahekaardid su TREKis on.',
   'help.ctx.trip.bullet.2':
     'Plaan koosneb kolmest veerust: päevad vasakul, kaart keskel, kohad paremal. Broneeringud ja transport asuvad plaanis, peatuse juures ja peatuste vahel; vahekaardid loetlevad neid.',
   'help.ctx.trip.bullet.3':
@@ -1846,7 +1846,7 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.4':
     'Kontrolli, mis vormis on: nimi asub akna päises ja on ainus kohustuslik väli; selle all olev Kategooria kiip valib ühe reisi kategooriatest ja selle kõrval olev + loob kohe uue. Aadress, Laiuskraad ja Pikkuskraad tulevad otsingust või sisestatakse käsitsi; Kirjeldus ja Märkmed on sinu täita; Veebisait on lingi jaoks.',
   'help.guide.create-place.step.5':
-    'Klõpsa Lisa. Kui sama nimega koht on reisil juba olemas, annab vorm sellest teada ja nupuks saab Lisa siiski.',
+    'Klõpsa Lisa. Kui sama nimega või samas kohas asuv koht on reisil juba olemas, annab TREK sellest teada ja nupuks saab Lisa siiski.',
   'help.guide.create-place.result': 'Koht on loendis ja kaardil, jaotises Planeerimata, kuni see päevale lisatakse.',
   'help.guide.create-place.tip.1':
     'Vormi allosas olevad Failid ja Kulud lisavad kohale dokumendi või avavad kohe pärast salvestamist kulude redaktori selle kulu jaoks.',
@@ -2122,11 +2122,11 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.step.4':
     'Transpordi real olev lüliti joonistab selle marsruudi kaardile; tööriistariba nupp Näita kõiki broneeringute marsruute joonistab need kõik.',
   'help.guide.bookings-in-plan.step.5':
-    'Loomine: Lisa broneering peatusel, mille kohal on hiirekursor, Lisa transport ja Ühistransport päeva + menüüs ning vahekaardid Broneeringud ja Transport täieliku loendi, importimise ja failide jaoks.',
+    'Loomine: Lisa broneering peatusel, mille kohal on hiirekursor, Lisa transport ja Ühistransport päeva + menüüs ning vahekaardid Broneer. ja Transport täieliku loendi, importimise ja failide jaoks.',
   'help.guide.bookings-in-plan.result':
     'Üks broneering, üks koht plaanis; vahekaardid näitavad samu broneeringuid loendina.',
   'help.guide.bookings-in-plan.tip.1':
-    'Kinnitatud ja ootel on olek, mille määrad broneeringule; plaan näitab seda peatusel, vahekaart Broneeringud loeb mõlemad kokku.',
+    'Kinnitatud ja ootel on olek, mille määrad broneeringule; plaan näitab seda peatusel, vahekaart Broneer. loeb mõlemad kokku.',
   'help.guide.bookings-in-plan.tip.2':
     'Kindla kellaajaga transporti ei saa lohistada; muuda selle asemel kellaaega broneeringus.',
   // export-plan
@@ -2432,7 +2432,7 @@ const help: TranslationStrings = {
     'Vali majutuskoht reisi kohtade hulgast. Loendi kohal olev Kategooria kitsendab selle ühele kategooriale.',
   'help.guide.add-accommodation.step.6': 'Klõpsa Salvesta.',
   'help.guide.add-accommodation.result':
-    'Peatumine on näha igal päeval, mida see hõlmab, esimesel päeval Sisseregistreerimine ja viimasel Väljaregistreerimine. Majutuskohast saab sisseregistreerimise päeval peatus, nii et kaart joonistab tee sinna, ja vahekaardile Broneeringud ilmub hotellibroneering.',
+    'Peatumine on näha igal päeval, mida see hõlmab, esimesel päeval Sisseregistreerimine ja viimasel Väljaregistreerimine. Majutuskohast saab sisseregistreerimise päeval peatus, nii et kaart joonistab tee sinna, ja vahekaardile Broneer. ilmub hotellibroneering.',
   'help.guide.add-accommodation.tip.1':
     'Valija avaneb päevaga, kust sa tulid, ja väljaregistreerimine on järgmisel päeval; mõlemat saab enne salvestamist muuta.',
   'help.guide.add-accommodation.tip.2':
@@ -2452,7 +2452,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.5':
     'Pliiatsi kõrval olev X lõpetab peatumise. See ei küsi midagi ja kaob ka sellega seotud hotellibroneering.',
   'help.guide.edit-accommodation.result':
-    'Muudatus jõuab korraga igale päevale, mida peatumine hõlmab, ja koos sellega ka hotellibroneeringuni vahekaardil Broneeringud.',
+    'Muudatus jõuab korraga igale päevale, mida peatumine hõlmab, ja koos sellega ka hotellibroneeringuni vahekaardil Broneer.',
   'help.guide.edit-accommodation.tip.1':
     'Peatumise keskel oleval ööl pole silti Sisseregistreerimine ega Väljaregistreerimine: need on ainult vahemiku esimesel ja viimasel päeval.',
   'help.guide.edit-accommodation.tip.2':
@@ -2468,11 +2468,11 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Värv näitab broneeringu olekut: roheline rida on kinnitatud, merevaigukollane veel ootel. Hotelle selles loendis pole, neil on all oma plokk.',
   'help.guide.day-bookings.step.4':
-    'Klõpsa real ja broneering avaneb. Selle allosas olev Muuda muudab seda; uued broneeringud luuakse vahekaardil Broneeringud.',
+    'Klõpsa real ja broneering avaneb. Selle allosas olev Muuda muudab seda; uued broneeringud luuakse vahekaardil Broneer.',
   'help.guide.day-bookings.result':
     'Kõik, mille kuupäev on sellel päeval, ja kõik, mis on seotud mõne selle päeva peatusega, on selles ühes loendis.',
   'help.guide.day-bookings.tip.1':
-    'Broneering satub päevale oma kuupäeva järgi. Muuda kuupäeva vahekaardil Broneeringud ja see liigub ise teisele päevale.',
+    'Broneering satub päevale oma kuupäeva järgi. Muuda kuupäeva vahekaardil Broneer. ja see liigub ise teisele päevale.',
   'help.guide.day-bookings.tip.2':
     'Kui plokki Broneeringud pole, pole päeval broneeringuid: tühja plokki ei näidata, see peidetakse.',
 
@@ -2481,19 +2481,19 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.summary':
     'Plaani keskosa: iga reisi koht markerina, neid ühendavad marsruudid ja kaardi servades olevad lülitid satelliitvaate, kogu reisi korraga kuvamise ja vaadatava linnaosa ümbruse kohtade jaoks.',
   'help.ctx.trip-map.bullet.1':
-    'Marker on koht: selle enda foto, kui see on olemas, muidu kategooria värv koos kategooria ikooniga. Hoia kursorit markeril ja näed kaarti koha nime ja aadressiga ning kategooria ja hinnanguga, kui kohal need on. Lohista marker päevakaardile, et koht sellele päevale planeerida.',
+    'Marker on koht: selle enda foto, kui see on olemas, muidu kategooria värv koos kategooria ikooniga. Hoia kursorit markeril ja näed kaarti koha pildi, nime ja aadressiga ning hinnangu ja kategooriaga, kui kohal need on. Lohista marker päevakaardile, et koht sellele päevale planeerida.',
   'help.ctx.trip-map.bullet.2':
     'Markerid, mis on eristamiseks liiga lähestikku, koonduvad üheks tumedaks mulliks koos arvuga. Klõpsa mullil ja kaart suumib selle sisuni.',
   'help.ctx.trip-map.bullet.3':
-    'Klõpsa markeril, et avada koht kaardi all koos hinnangu, failide ja järgmiste tegevustega; klõpsa kaardi tühjal alal, et valik tühistada.',
+    'Klõpsa markeril, et avada koht kaardi allservas olevas paneelis koos hinnangu, failide ja järgmiste tegevustega; klõpsa kaardi tühjal alal, et valik tühistada.',
   'help.ctx.trip-map.bullet.4':
-    'Kui päevade veerus on päev avatud, on selle peatustel väike valge märk nende järjekorranumbriga selles päevas, ning kahele päevale planeeritud kohal on mõlemad numbrid, ühendatud märgiga ·.',
+    'Kui päevade veerus on päev avatud, on selle peatustel väike valge märk nende järjekorranumbriga selles päevas, ning kohal, mis esineb päevas kaks korda, on mõlemad selle numbrid.',
   'help.ctx.trip-map.bullet.5':
     'Üleval olev ikoonirida otsib kaardi nähtavast osast: Restoranid, Kohvikud, Baarid ja ööelu, Majutus, Vaatamisväärsused, Muuseumid ja kultuur, Loodus ja pargid ning Tegevused. Otsi sellest piirkonnast käivitab otsingu pärast kaardi liigutamist uuesti.',
   'help.ctx.trip-map.bullet.6':
     'Paremklõpsa kaardil ükskõik kus, et avada selles punktis kohavorm, mille aadress on juba otsitud. Vasakus alanurgas olev ümmargune nupp vahetab joonistatud kaardi aerofotode vastu.',
   'help.ctx.trip-map.bullet.7':
-    'Paremas alanurgas olev Näita kogu reisi joonistab kõik reisipäevad korraga ja näitab, mida iga päev hõlmab; broneeringu real olev marsruudiikoon joonistab selle broneeringu ja päevade kohal tööriistaribal olev ikoon joonistab need kõik.',
+    'Paremas alanurgas olev Näita kogu reisi joonistab kõik reisipäevad korraga ja näitab, mida iga päev hõlmab; broneeringu real olev marsruudiikoon joonistab selle broneeringu ja päevade kohal tööriistaribal olev ikoon joonistab need kõik. Klõpsa joonistatud broneeringu otsal, et avada selle üksikasjad.',
   'help.ctx.trip-map.bullet.8':
     'Kui lisamoodul Dawarich on sisse lülitatud, joonistab nupu Näita kogu reisi all olev ümmargune Dawarichi nupp teekonna, mille su telefon tegelikult salvestas: Näita salvestatud teekonda paneb selle katkendjoonena planeeritud marsruudi alla, iga päev oma värviga, ja kui joont pole, ütleb nupu silt, miks.',
   // map-markers
@@ -2502,11 +2502,11 @@ const help: TranslationStrings = {
   'help.guide.map-markers.step.1':
     'Kaardil on kõik reisi kohad. Kus markerid on eristamiseks liiga lähestikku, koonduvad need üheks tumedaks mulliks, millel on sees olevate markerite arv; klõpsa mullil ja kaart suumib selle sisuni või suurimal suumil laotab markerid lahku.',
   'help.guide.map-markers.step.2':
-    'Marker on koha enda foto, kui see on olemas, muidu kategooria värv koos kategooria ikooniga. Hoia kursorit markeril ja kaart näitab koha nime ja aadressi ning kategooriat ja hinnangut, kui kohal need on.',
+    'Marker on koha enda foto, kui see on olemas, muidu kategooria värv koos kategooria ikooniga. Hoia kursorit markeril ja selle kõrvale avaneb kaart: sama foto suuremana, nimi ja aadress ning hinnang ja kategooria, kui kohal need on.',
   'help.guide.map-markers.step.3':
-    'Klõpsa markeril ja koha andmed avanevad kaardi all: koordinaadid, hinnang, failid ja allservas järgmised tegevused, nende hulgas Navigeerimine, Muuda ja Kustuta ning avatud päeva korral ka Lisa päevale. Klõpsa kaardi tühjal alal, et valik tühistada.',
+    'Klõpsa markeril ja koht avaneb kaardi allservas olevas paneelis: päises pilt, nimi ja aadress, seejärel tärnid, kirjeldus ja failid ning paneeli allosas järgmised tegevused, nende hulgas Navigeerimine, Salvesta kogumikku (Salvestatud, kui koht on juba kogumikus), Muuda ja Kustuta ning avatud päeva korral Lisa päevale või Eemalda päevast, kui koht on juba sellel päeval. Päises olev X või klõps kaardi tühjal alal sulgeb selle uuesti.',
   'help.guide.map-markers.step.4':
-    'Ava päevade veerus päev ja selle peatused nummerdatakse: väike valge märk markeri nurgas on selle peatuse järjekoht päevas. Kahele päevale planeeritud kohal on mõlemad numbrid, ühendatud märgiga ·. Kui ükski päev pole avatud, numbreid pole ja nurgas on hoopis hinnang.',
+    'Ava päevade veerus päev ja selle peatused nummerdatakse: väike valge märk markeri nurgas on selle peatuse järjekoht päevas. Kohal, mis esineb päevas kaks korda, on mõlemad selle numbrid. Kui ükski päev pole avatud, numbreid pole ja nurgas on hoopis koha hinnang, kui see on olemas.',
   'help.guide.map-markers.step.5':
     'Lohista marker kaardilt päevade veerus päevakaardile ja koht planeeritakse sellele päevale, täpselt nagu siis, kui lohistad selle rea kohtade loendist.',
   'help.guide.map-markers.result':
@@ -2528,11 +2528,11 @@ const help: TranslationStrings = {
   'help.guide.map-nearby-places.step.3':
     'Liiguta kaarti ja rea alla ilmub teine nupp: Otsi sellest piirkonnast teeb sama otsingu uues vaates. Ainult liigutamine ei otsi kunagi uuesti, nii püsib päringute arv väike.',
   'help.guide.map-nearby-places.step.4':
-    'Markeritel on leitud koha nimi. Klõpsa ühel ja kohavorm avaneb juba selle põhjal täidetuna: Nimi, Aadress, Laiuskraad ja Pikkuskraad ning veebisait ja telefoninumber, kui OpenStreetMapis need on.',
+    'Hoia kursorit markeril, et näha leitud koha nime. Klõpsa sellel ja kohavorm avaneb juba selle põhjal täidetuna: nimi dialoogi päises, Aadress, Laiuskraad ja Pikkuskraad ning Veebisait, kui otsing selle leidis.',
   'help.guide.map-nearby-places.step.5':
-    'Kontrolli täidetud välju ja lisa see, mida otsing teada ei saanud: Kirjeldus, Kategooria, sinu enda märkmed.',
+    'Kontrolli täidetud välju ja lisa see, mida otsing teada ei saanud: kategooria nime all olevast kiibist (sellel on kirjas Kategooriata, kuni sa selle valid), Kirjeldus, sinu enda märkmed.',
   'help.guide.map-nearby-places.step.6':
-    'Klõpsa Lisa. Kui sama nimega koht on reisis juba olemas, ütleb vorm seda ja nupule tuleb kiri Lisa siiski.',
+    'Klõpsa Lisa. Kui sama nimega või samas kohas asuv koht on reisis juba olemas, annab TREK sellest teada ja nupule tuleb kiri Lisa siiski.',
   'help.guide.map-nearby-places.result':
     'Koht on kohtade loendis ja kaardil ühena reisi enda markeritest ning jääb jaotisse Planeerimata, kuni paned selle mõnele päevale. Otsingu markerid jäävad alles, kuni lülitad kategooria välja.',
   'help.guide.map-nearby-places.tip.1':
@@ -2545,11 +2545,11 @@ const help: TranslationStrings = {
   'help.guide.map-add-place.title': 'Loo koht kaardil paremklõpsuga',
   'help.guide.map-add-place.goal': 'Pane koht täpselt sinna, kuhu soovid, ilma seda enne otsimata.',
   'help.guide.map-add-place.step.1':
-    'Paremklõpsa kaardil soovitud kohal. Avaneb kohavorm pealkirjaga Lisa koht või tegevus.',
+    'Paremklõpsa kaardil soovitud kohal. Avaneb kohavorm päisega Lisa koht või tegevus.',
   'help.guide.map-add-place.step.2':
-    'Laiuskraad ja Pikkuskraad on juba selle punkti omad ning TREK otsib koordinaatide järgi ja täidab leitu põhjal välja Aadress ning ka Nimi, kui otsing selle annab. Midagi pole veel salvestatud, nii et kirjuta vale üle.',
+    'Laiuskraad ja Pikkuskraad on juba selle punkti omad ning TREK otsib koordinaatide järgi ja täidab leitu põhjal välja Aadress ning ka dialoogi päises oleva nime, kui otsing selle annab. Midagi pole veel salvestatud, nii et kirjuta vale üle.',
   'help.guide.map-add-place.step.3':
-    'Anna sellele Nimi, mille ära tunned, ja kõik muu, mida plaan peaks teadma: Kirjeldus, Märkmed, Kategooria, Veebisait.',
+    'Kirjuta dialoogi päisesse nimi, mille ära tunned, vali selle all olevast kiibist kategooria (sellel on kirjas Kategooriata, kuni valid) ja lisa kõik muu, mida plaan peaks teadma: Kirjeldus, Märkmed, Veebisait.',
   'help.guide.map-add-place.step.4':
     'Klõpsa Lisa. Koht lisatakse loendisse planeerimatana ka siis, kui mõni päev on avatud: paremklõps kaardil ütleb, kus, mitte millal.',
   'help.guide.map-add-place.result':
@@ -2577,11 +2577,11 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.goal':
     'Vaheta üks avatud päev reisi kõigi reisipäevade vastu ja vaata, kui pika maa iga päev läbib.',
   'help.guide.map-whole-trip.step.1':
-    'Ümmargune nupp Näita kogu reisi asub kaardi paremas alanurgas. Klõpsa sellel ja kõik reisi reisipäevad joonistatakse korraga, igaüks oma värviga valge ääristuse peal, nii et naaberpäevad jäävad eristatavaks.',
+    'Ümmargune nupp Näita kogu reisi asub kaardi paremas alanurgas. Klõpsa sellel ja kõik reisi reisipäevad joonistatakse korraga, igaüks oma värviga, nii et naaberpäevad jäävad eristatavaks.',
   'help.guide.map-whole-trip.step.2':
     'Nupu kohal olev kaart loetleb need päevad: värvitäpp, päeva nimi, ikoon iga liikumisviisi kohta ja läbitav vahemaa. Kogupikkus on üleval.',
   'help.guide.map-whole-trip.step.3':
-    'Klõpsa loendis päeval, et see valida, samamoodi nagu päevade veerus: kaart näitab seda päeva ja selle peatused saavad oma numbrid tagasi.',
+    'Klõpsa loendis päeval, et see valida: selle rida muutub toonituks ja päev avaneb päevade veerus. Keri hiirerattaga linna kohal, et sisse suumida, ja seda läbivad päevad asetsevad kõrvuti, igaüks oma värviga.',
   'help.guide.map-whole-trip.step.4':
     'Nupul on nüüd kirjas Peida kogu reis. Vajuta seda, et naasta ühe avatud päeva juurde.',
   'help.guide.map-whole-trip.result':
@@ -2591,17 +2591,17 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.tip.2':
     'Teelõik, mille marsruutija tagasi lükkab, jääb sirgjooneks ega lähe arvesse ning kaart ütleb seda, selle asemel et vaikselt liiga väikest arvu näidata.',
   'help.guide.map-whole-trip.tip.3':
-    'Päeval, millel on vähem kui kaks asukohaga peatust, pole marsruuti, mida joonistada, nii et see jäetakse loendist täielikult välja.',
+    'Päeval, millel pole midagi ühendada (vähem kui kaks asukohaga peatust ja ükski sõit ei vii selle hotelli ega sealt ära), pole marsruuti, mida joonistada, nii et see jäetakse loendist täielikult välja.',
   // map-booking-routes
   'help.guide.map-booking-routes.title': 'Näita broneeringu marsruuti kaardil',
   'help.guide.map-booking-routes.goal':
     'Joonista broneeritud lennud, rongisõidud ja autosõidud kaardile ning eemalda need sealt uuesti.',
   'help.guide.map-booking-routes.step.1':
-    'Broneeringute marsruudid on välja lülitatud, kuni sa mõnda neist ei küsi. Broneeringu real päevade veerus on väike marsruudiikoon: Näita broneeringute marsruute.',
+    'Broneeringute marsruudid on välja lülitatud, kuni sa mõnda neist ei küsi. Päevade veerus transpordi rea paremas otsas on väike marsruudiikoon: Näita broneeringute marsruute.',
   'help.guide.map-booking-routes.step.2':
-    'Klõpsa sellel ja broneering ilmub kaardile: lend suurringi kaarena, autosõit mööda tegelikke teid, rong oma jaamade ahelana. Kinnitatud joonistatakse pideva joonega, ootel katkendjoonega ning marsruudi otstes on sinised sildid transpordi ikooniga.',
+    'Klõpsa sellel ja broneering ilmub kaardile: lend suurringi kaarena, autosõit mööda tegelikke teid, rong oma jaamade ahelana. Kinnitatud joonistatakse pideva joonega, Ootel katkendjoonega ning marsruudi otstes on sinised sildid transpordi ikooniga.',
   'help.guide.map-booking-routes.step.3':
-    'Klõpsa otsas oleval sildil ja avaneb selle taga olev broneering koos kellaaegade, viitenumbri ja lähtekohaga. Sulge paneb selle jälle ära.',
+    'Klõpsa otsas oleval sildil ja avanevad broneeringu üksikasjad: toonitud päises olek, tüüp ja päevad kiipidena, kellaajad mõlemas otsas, ülejäänu allpool ning allservas Kaardil, mis lülitab selle marsruudi jälle välja, prügikast, mis kustutab broneeringu, ja Muuda. Päises olev X sulgeb need.',
   'help.guide.map-booking-routes.step.4':
     'Päevade kohal tööriistaribal olev marsruudiikoon teeb seda kogu reisi jaoks korraga: Näita kõiki broneeringute marsruute joonistab iga broneeringu, millel on marsruut.',
   'help.guide.map-booking-routes.step.5':
@@ -2614,7 +2614,6 @@ const help: TranslationStrings = {
     'Samades seadetes olev Näita alati broneeringute marsruute joonistab need kohe alguses igal reisil, mille kohta sa pole veel otsust teinud.',
   'help.guide.map-booking-routes.tip.3':
     'Joonistamiseks vajab broneering kaht koordinaatidega otspunkti, seega pole hotellil ega restoranil marsruudiikooni.',
-
   // map-dawarich-trail
   'help.guide.map-dawarich-trail.title': 'Näita tegelikult läbitud teekonda',
   'help.guide.map-dawarich-trail.goal':
@@ -2649,49 +2648,49 @@ const help: TranslationStrings = {
   'help.ctx.trip-transports.summary':
     'Kõik, mis viib sind peatuste vahel: lennud, rongid, bussid, autod, taksod, jalgrattad, kruiisid, praamid ja ühistranspordiühendused, mille TREK sinu jaoks otsib. Vahekaart on nende loend; neid saab luua ja vaadata ka plaanis ning need joonistatakse kaardile.',
   'help.ctx.trip-transports.bullet.1':
-    'Vahekaardil on ainult sõidud. Majutus, restoranid, üritused ja piletid asuvad vahekaardil Broneeringud, nii et sama kirje ei ilmu kunagi kaks korda.',
+    'Vahekaardil on ainult sõidud. Majutus, restoranid, üritused ja piletid asuvad vahekaardil Broneer., nii et sama kirje ei ilmu kunagi kaks korda.',
   'help.ctx.trip-transports.bullet.2':
-    'Tööriistaribal on kõigi arv kiibil Kõik ja igal kasutusel oleval tüübil on oma kiip koos arvuga: Lend, Rong, Auto, Ühistransport. Paremal olev Transport lisab ühe käsitsi.',
+    'Ülal ribal on otsing, Filtreeri oleku, tüüpide ja reisijate jaoks, kolm vaadet Kaardid, Loend ja Ajajoon ning Vaate valikud. Paremal olev Transport lisab sõidu käsitsi ning selle ees olevad ikoonid, Impordi broneeringukinnitused ja Impordi AirTrailist, ilmuvad, kui server oskab kinnitusi lugeda või AirTrail on ühendatud.',
   'help.ctx.trip-transports.bullet.3':
-    'Kaardid on kolmes grupis, mida saab pealkirjast kokku voltida: Automaatne ühistranspordiotsing otsingu planeeritud ühenduste jaoks, siis Ootel ja siis Kinnitatud.',
+    'Kaardid on vaade, milles vahekaart avaneb: kõigepealt Kinnitatud, siis Ootel, kumbki jaotis pealkirjast kokku volditav. Planeeritud ühistranspordiühendustel pole olekut ja need on kinnitatud sõitude seas ajalises järjekorras, kui Vaate valikud ei anna neile eraldi jaotist Automaatne ühistranspordiotsing. Loend rühmitab päevade kaupa ja Ajajoon laotab kõik sõidud reisi päevade peale.',
   'help.ctx.trip-transports.bullet.4':
-    'Kaardil on olek, tüüp, hõlmatud päevad, kellaajad, Broneerimiskood, marsruut ning lennufirma ja lennunumber või rongi number, platvorm ja istekoht. Pliiats avab selle, prügikast kustutab selle pärast kinnitusküsimust.',
+    'Kaardi päiseriba on toonitud oleku järgi, roheline kinnitatud, merevaigukollane ootel ja sinine planeeritud ühenduse puhul, ning sellel on olekutäpp, tüüp, pealkiri, pliiats ja prügikast. Selle all: Kuupäev, Kellaaeg, Broneerimiskood, Marsruut ning lennufirma ja lennunumber või rongi number, platvorm ja istekoht. Klõps kaardil avab selle üksikasjad.',
   'help.ctx.trip-transports.bullet.5':
-    'Transporti saab luua ka plaanis: igal päeva päisel on plussnupp Lisa transport ja trammi nupp Ühistransport ning kahe peatuse vahel olev sõiduaja ühendus avab sama otsingu selle ühe teelõigu jaoks.',
+    'Transporti saab luua ka plaanis: päeva päises olev + pakub valikuid Lisa transport ja Ühistransport ning kahe peatuse vahel olev sõiduaja ühendus avab sama otsingu selle ühe teelõigu jaoks.',
   'help.ctx.trip-transports.bullet.6':
-    'Mõlema otspunktiga transport joonistab kaardile joone. Päevaplaanis selle real olev marsruudiikoon lülitab joone sisse ja päevade kohal tööriistaribal olev Näita kõiki broneeringute marsruute lülitab kogu reisi korraga.',
+    'Mõlema otspunktiga transport joonistab kaardile joone. Päevaplaanis selle real olev marsruudiikoon ja selle üksikasjades olev Kaardil lülitavad joone sisse ning päevade kohal tööriistaribal olev Näita kõiki broneeringute marsruute lülitab kogu reisi korraga.',
   // transports-list
   'help.guide.transports-list.title': 'Tutvu vahekaardiga Transport',
   'help.guide.transports-list.goal': 'Saa aru, mida loend sulle ütleb, enne kui selles midagi muudad.',
   'help.guide.transports-list.step.1':
-    'Transport on reisi teine vahekaart. Sellel on ainult sõidud: hotellid, restoranid, üritused ja piletid on vahekaardil Broneeringud.',
+    'Transport on reisi teine vahekaart. Sellel on ainult sõidud: hotellid, restoranid, üritused ja piletid on vahekaardil Broneer.',
   'help.guide.transports-list.step.2':
-    'Tööriistaribal on kõigi transpordikirjete arv kiibil Kõik ja igal kasutusel oleval tüübil oma kiip koos arvuga. Klõpsa kiibil, et näidata ainult seda tüüpi, ja klõpsa uuesti, et filter eemaldada. Korraga võib olla sees mitu kiipi ja Kõik tühistab need.',
+    'Ribal olev lehter Filtreeri avab valikud: Olek valikutega Kõik, Kinnitatud ja Ootel, seejärel iga kasutusel olev tüüp koos arvuga. Märgi üks või mitu tüüpi, et näidata ainult neid; lehtril olev arv näitab, mitu filtrit on sees, ja riba ütleb, mitu sõitu on näidatud, näiteks 1 4-st. Menüü allservas olev Lähtesta filtrid toob kõik tagasi.',
   'help.guide.transports-list.step.3':
-    'Automaatne ühistranspordiotsing on omaette grupp ühistranspordi otsingu planeeritud ühendustega. Ootel ja Kinnitatud sisaldavad kõike käsitsi sisestatut. Pealkirja kõrval olev nool voldib grupi kokku.',
+    'Selle kõrval olevad Kaardid, Loend ja Ajajoon näitavad sõite kaartidena, päevade kaupa rühmitatud ridadena või ribadena üle reisi päevade. Vaate valikud, liugurid, määrab vaadetes Kaardid ja Loend valikud Rühmita ja Järjesta ning Ajajoonel read, ja Lähtesta vaade taastab vaikeväärtused. Vaates Kaardid koondab Ühistransport eraldi jaotisena planeeritud ühendused jaotisse Automaatne ühistranspordiotsing.',
   'help.guide.transports-list.step.4':
-    'Kaardil on kõik olemas: olekutäpp koos sõnaga Ootel või Kinnitatud, tüüp, hõlmatud päevad koos kuupäevadega, kellaajad, Broneerimiskood, marsruut ning lennufirma ja lennunumber või rongi number, platvorm ja istekoht.',
+    'Kaardil on kõik olemas. Selle päiseriba on Kinnitatud puhul roheline ja Ootel puhul merevaigukollane ning sellel on olekutäpp, tüüp ja pealkiri. Selle all näitab Kuupäev hõlmatud päevi koos kuupäevadega, seejärel tulevad Kellaaeg, Broneerimiskood, Marsruut, kus peatuste vahel on tüübi ikoon, ning lennufirma ja lennunumber või rongi number, platvorm ja istekoht. Klõpsa kaardil ja avanevad selle üksikasjad.',
   'help.guide.transports-list.step.5':
-    'Pliiats avab transpordi muutmiseks, prügikast kustutab selle pärast küsimust, mis nimetab kustutatava.',
+    'Klõps olekutäpil vahetab sõidu oleku Ootel ja Kinnitatud vahel. Päiseribal olev pliiats avab transpordi vormi ja prügikast kustutab selle pärast küsimust Kas kustutada broneering?, mis nimetab kustutatava.',
   'help.guide.transports-list.result':
-    'Loend on kitsendatud selleni, mida otsisid, ja iga kaart näitab ühe pilguga, kas sõit on broneeritud.',
+    'Iga kaart näitab ühe pilguga, kas sõit on broneeritud, ja riba kitsendab loendit või korraldab selle ümber alati, kui vaja.',
   'help.guide.transports-list.tip.1':
-    'Kiibid ja kokku volditud grupid jäetakse iga reisi jaoks meelde, nii et vahekaart avaneb uuesti samamoodi, nagu selle jätsid.',
+    'Vahekaart jätab meelde, kuidas selle jätsid: vaate, rühmituse ja järjestuse selles brauseris, kokku volditud jaotised iga reisi jaoks ja filtrid seni, kuni sulged brauseri vahelehe.',
   'help.guide.transports-list.tip.2':
-    'Impordi failist ja AirTrail ilmuvad tööriistaribale nupu Transport kõrvale ainult siis, kui server oskab lugeda broneeringukinnitusi ja kui AirTraili eksemplar on ühendatud. Ilma nendeta täidetakse loend käsitsi ja ühistranspordi otsinguga.',
+    'Impordi broneeringukinnitused ja Impordi AirTrailist, kaks ikooni nupu Transport ees, on olemas ainult siis, kui server oskab lugeda kinnitusi ja kui AirTraili eksemplar on ühendatud. Ilma nendeta täidetakse loend käsitsi ja ühistranspordi otsinguga.',
   // add-transport
   'help.guide.add-transport.title': 'Lisa päevale transport',
   'help.guide.add-transport.goal': 'Lisa sõit, mis viib sind ühest peatusest järgmisesse, päevale, mil see toimub.',
   'help.guide.add-transport.step.1':
-    'Igal päeva päisel on paremal neli väikest nuppu. Klõpsa plussnuppu, mille kohtspikris on kirjas Lisa transport. Vorm avaneb ja Kuupäev on juba selleks päevaks määratud.',
+    'Klõpsa selle päeva päises, millel sõit toimub, nuppu +, mille kohtspikris on kirjas Lisa päevale, ja vali Lisa transport. Vorm avaneb ja see päev on juba täidetud.',
   'help.guide.add-transport.step.2':
-    'Broneeringu tüüp määrab, millega sõidad: Lend, Rong, Buss, Auto, Takso, Jalgratas, Kruiis, Praam või Muu. Vorm kohandub vastavalt. Lennul on igal teelõigul lennujaam, rongil jaamade ahel, autol sõnastus Kättesaamine ja Tagastamine ning Peatused tee ääres.',
+    'Päiseribal olev tüübinupp näitab, millega sõidad, alguses Lend. Klõpsa sellel, et valida Lend, Rong, Buss, Auto, Takso, Jalgratas, Kruiis, Praam või Muu, ja vorm kohandub vastavalt: lennul on igas peatuses lennujaam, rongil jaamade ahel, autol Kättesaamine ja Tagastamine ning Peatused tee ääres.',
   'help.guide.add-transport.step.3':
-    'Pealkiri on ainus kohustuslik väli; ilma selleta jääb Lisa halliks. Kirjuta see, mille jaama infotablool ära tunneksid.',
+    'Kirjuta pealkiri otse päiseribale, kus on hall näide. See on ainus kohustuslik väli: kuni see on täitmata, on selle all oleval real kirjas Pealkiri * ja Lisa jääb halliks. Kirjuta see, mille jaama infotablool ära tunneksid.',
   'help.guide.add-transport.step.4':
-    'Väljad Kust ja Kuhu otsivad jaama, sadamat või aadressi. Sisesta vähemalt kolm tähte ja vali loendist tulemus. Ainult sisestatud nimel pole koordinaate, nii et see ei joonista kaardile midagi.',
+    'Jaotises Marsruut võtavad Lähtekoht ja Sihtkoht vastu jaama, sadama või aadressi. Reisi enda kohti pakutakse juba enne kirjutamist; otsimiseks sisesta vähemalt kolm tähte ja vali tulemus. Nime, mis on ainult sisestatud ja mida pole kunagi valitud, ei salvestata ning see ei joonista kaardile midagi.',
   'help.guide.add-transport.step.5':
-    'Kuupäev ja Algusaeg näitavad, millal sõit toimub, Lõppkuupäev ja Lõpuaeg, millal see lõpeb; järgmisel päeval saabuva sõidu puhul vali sinna järgmine päev. Broneerimiskood, Olek väärtusega Ootel või Kinnitatud ning Märkmed on valikulised.',
+    'Kuupäev ja Algusaeg näitavad, millal sõit toimub, Lõppkuupäev ja Lõpuaeg, millal see lõpeb; järgmisel päeval saabuva sõidu puhul vali sinna järgmine päev. Allpool olevad Broneerimiskood ja Märkmed on valikulised ning klõps päiseribal oleval nupul Ootel muudab selle olekuks Kinnitatud.',
   'help.guide.add-transport.step.6': 'Klõpsa Lisa.',
   'help.guide.add-transport.result':
     'Transport on päeval rida oma kellaaja kohal peatuste vahel ja vahekaardil Transport kaart grupis Ootel või Kinnitatud.',
@@ -2700,31 +2699,32 @@ const help: TranslationStrings = {
   'help.guide.add-transport.tip.2':
     'Jaotises Failid olev Lisa fail võtab vastu pileti ja jaotises Kulud olev Loo kulu salvestab broneeringu ning avab piletihinna jaoks kulude muutmise vaate.',
   'help.guide.add-transport.tip.3':
-    'Reisijad märgib, kes on sellel sõidul. Niipea kui ühel transpordil on reisijad, ilmuvad vahekaardi tööriistaribale nende avatarid, mille järgi saab loendit filtreerida.',
+    'Reisijad, vormi esimene plokk, märgib, kes on sellel sõidul. Kui reisil on rohkem kui üks liige ja mõnes transpordis on keegi määratud, pakub vahekaardi Filtreeri ka valikut Reisijad, mis kitsendab loendi ühe inimese sõitudele.',
   // import-transport-file
   'help.guide.import-transport-file.title': 'Loe lend e-piletist välja',
   'help.guide.import-transport-file.goal':
     'Lase TREKil võtta lend, rongisõit või praamisõit vedaja saadetud piletist ja kontrolli seda enne salvestamist.',
   'help.guide.import-transport-file.step.1':
-    'Klõpsa vahekaardi Transport tööriistaribal nupu Transport kõrval nuppu Impordi failist. Avaneb Impordi broneeringukinnitused, sama dialoog, mis on vahekaardil Broneeringud.',
+    'Klõpsa vahekaardi Transport ribal nupu Transport ees olevat allalaadimisikooni, mille kohtspikris on kirjas Impordi broneeringukinnitused. Avaneb samanimeline dialoog, sama, mis on vahekaardil Broneer.',
   'help.guide.import-transport-file.step.2':
     'Lohista pilet kasti või klõpsa kastil ja vali fail: EML, PDF, PKPass, HTML ja TXT, kuni viis faili, igaüks kuni 10 MB. Valitud failide nimed on kastis näha.',
   'help.guide.import-transport-file.step.3': 'Klõpsa Impordi. Dialoog sulgub kohe; lugemine toimub taustal.',
   'help.guide.import-transport-file.step.4':
     'Paremas alanurgas olev kaart näitab faili nime all töötluse käiku. Kui lugemine on valmis, asendub Failide töötlemine… linnukesega ja kaardil on nupp Impordi. Klõpsa sellel.',
   'help.guide.import-transport-file.step.5':
-    'Lend avaneb vormis Lisa transport juba täidetuna: Broneeringu tüüp on Lend, lennufirma ja lennunumber on väljal Pealkiri, mõlemad lennujaamad on jaotises Marsruut koos väljadega Väljumine ja Saabumine, nende kellaaegade ja ajavöönditega, Lennufirma ja Lennu nr, Broneerimiskood ning pilet jaotises Failid. Kontrolli ja klõpsa Lisa.',
+    'Lend avaneb vormis Lisa transport juba täidetuna: tüübinupp on Lend, lennufirma ja lennunumber on pealkirjana päiseribal, mõlemad lennujaamad on jaotises Marsruut koos väljadega Väljumine ja Saabumine, nende kellaaegade ja ajavöönditega, Lennufirma ja Lennu nr, Broneerimiskood ning pilet jaotises Failid. Kontrolli ja klõpsa Lisa.',
   'help.guide.import-transport-file.result':
     'Lend on vahekaardil Transport kaart grupis Ootel ja väljumispäeval rida, pilet on jaotises Failid ning kuna mõlemad lennujaamad on teada, joonistab see kaardile oma kaare.',
   'help.guide.import-transport-file.tip.1':
     'Mõlemal vahekaardil on ühine import: fail, milles on lend ja hotell, avab üksteise järel lennu vormis Lisa transport ja hotelli vormis Uus broneering, olenemata sellest, kummalt vahekaardilt alustasid.',
   'help.guide.import-transport-file.tip.2':
-    'Lennujaamad paigutatakse koodi järgi. Jaam või sadam, mida lugemisel ei õnnestunud leida, on kaardil merevaigukollase nimega; vali see enne nupu Lisa klõpsamist käsitsi jaotises Marsruut, muidu transport kaardile midagi ei joonista.',
+    'Lennujaamad paigutatakse koodi järgi. Jaam või sadam, mida lugemisel ei õnnestunud leida, on paremas allnurgas oleval impordikaardil merevaigukollase nimega; vali see enne nupu Lisa klõpsamist käsitsi jaotises Marsruut, muidu transport kaardile midagi ei joonista.',
   // plan-transit
   'help.guide.plan-transit.title': 'Planeeri ühistranspordiühendus',
   'help.guide.plan-transit.goal':
     'Lase TREKil otsida päeva kahe punkti vahel tegelikke ronge ja busse ning lisa valitud ühendus plaani.',
-  'help.guide.plan-transit.step.1': 'Klõpsa päeva päises trammi nuppu Ühistransport. Otsing avaneb selle päeva jaoks.',
+  'help.guide.plan-transit.step.1':
+    'Klõpsa päeva päises olevat + ja vali Ühistransport. Otsing avaneb selle päeva jaoks: päev on päiseribal kiibina ja selle kõrval olevad Käsitsi ja Automaatne lülitavad selle otsingu ja tavalise vormi vahel.',
   'help.guide.plan-transit.step.2':
     'Väljadele Kust ja Kuhu saab sisestada peatuse või jaama. Kui väli on veel tühi, pakutakse päeva enda peatusi ja reisi majutusi; kahe tähe sisestamisel otsitakse hoopis sõiduplaani jaamu. Kahe välja vahel olev Vaheta pöörab ühenduse ümber.',
   'help.guide.plan-transit.step.3':
@@ -2732,10 +2732,10 @@ const help: TranslationStrings = {
   'help.guide.plan-transit.step.4':
     'Allolevad kiibid määravad, milliseid transpordiliike võib kasutada: Rong, Metroo, Tramm, Buss, Praam ja Köisraudtee. Lülita üks välja, et see välja jätta; vähemalt üks jääb sisse. Seejärel klõpsa Otsi.',
   'help.guide.plan-transit.step.5':
-    'Iga tulemus näitab väljumist ja saabumist, sõidu kestust, ümberistumiste arvu ja kõnnimaad ning liine nende oma värvides. Klõpsa ühel, et see peatuste kaupa lahti voltida koos platvormide ja liinide vaheliste jalgsikäikudega.',
+    'Iga tulemus näitab väljumist ja saabumist, sõidu kestust, ümberistumiste arvu ja kõnnimaad ning liine märkidena, nende oma värvides, kui sõiduplaan need annab. Klõpsa ühel, et see lõikude kaupa lahti voltida koos peatustega, kus sisse istud ja ümber istud, platvormide ja liinide vaheliste jalgsikäikudega.',
   'help.guide.plan-transit.step.6': 'Klõpsa Lisa päevale.',
   'help.guide.plan-transit.result':
-    'Ühendus on päeval rida koos liinide, ümberistumiste ja kõndimisajaga ning vahekaardil Transport kaart grupis Automaatne ühistranspordiotsing.',
+    'Ühendus on päeval rida koos liinimärkidega, mille noolekene voldib selle lõikude kaupa lahti, ja vahekaardil Transport sinisega toonitud kaart kinnitatud sõitude seas.',
   'help.guide.plan-transit.tip.1':
     "Ühendused tulevad teenusest Transitous, mis on avalikel sõiduplaaniandmetel põhinev tasuta kogukonnateenus: võtit ega kontot pole vaja. Administraator saab otsinguks kasutada hoopis Google'it.",
   'help.guide.plan-transit.tip.2':
@@ -2744,27 +2744,27 @@ const help: TranslationStrings = {
     'Sama otsingu saab avada ühe teelõigu jaoks: klõpsa kahe peatuse vahel olevat sõiduaja ühendust ja vali Ühistransport. Kust, Kuhu ja väljumisaeg täidetakse sinu eest.',
   // change-transit-route
   'help.guide.change-transit-route.title': 'Ava ja muuda planeeritud ühendust',
-  'help.guide.change-transit-route.goal': 'Vaata ühendust peatuste kaupa, nimeta see ümber või otsi marsruut uuesti.',
+  'help.guide.change-transit-route.goal': 'Vaata ühendust liinide kaupa, nimeta see ümber või otsi marsruut uuesti.',
   'help.guide.change-transit-route.step.1':
-    'Vahekaardil Transport on planeeritud ühendused grupis Automaatne ühistranspordiotsing. Klõpsa kaardil; ühendus avaneb broneeringuna.',
+    'Vahekaardil Transport on planeeritud ühendus sinise päiseribaga kaart kinnitatud sõitude seas ajalises järjekorras; kui Vaate valikud all on sisse lülitatud Ühistransport eraldi jaotisena, on see hoopis jaotises Automaatne ühistranspordiotsing. Klõpsa kaardil; ühendus avaneb broneeringuna.',
   'help.guide.change-transit-route.step.2':
-    'Üleval on Kestus, Ümberistumised ja Jalgsi. Nende all olev Teekond näitab ühendust peatuste kaupa koos platvormide ja liinide vaheliste jalgsikäikudega.',
+    'Üleval olevad paanid näitavad väljumist ja saabumist koos peatustega, Kestus, Ümberistumised ja Kõndimine. Nende all olev Teekond näitab ühendust liinide kaupa koos kellaaegade, platvormide ja liinide vaheliste jalgsikäikudega.',
   'help.guide.change-transit-route.step.3':
-    'Broneeringu allosas olev Muuda marsruuti käivitab otsingu uuesti, juba täidetuna selle ühenduse otspunktide ja päevaga.',
+    'Broneeringu allosas olev Muuda marsruuti avab otsingu uuesti, juba täidetuna selle ühenduse otspunktide ja päevaga.',
   'help.guide.change-transit-route.step.4':
-    'Vali teine ühendus ja klõpsa Lisa päevale; see asendab vana. Sama riba teises otsas olev Muuda avab hoopis tavalise transpordivormi, kus on Broneerimiskood, Olek, reisijad, märkmed ja failid.',
+    'Klõpsa Otsi, voldi lahti teine ühendus ja klõpsa Lisa päevale; see asendab vana. Broneeringu allosas päris paremal olev Muuda avab hoopis tavalise transpordivormi, kus on Broneerimiskood, reisijad, märkmed ja failid.',
   'help.guide.change-transit-route.result':
     'Sõidul on nüüd uus teekond ja selle kaart vahekaardil Transport näitab uusi liine ja kellaaegu.',
   'help.guide.change-transit-route.tip.1':
-    'Broneeringu päises olev pealkiri nimetab ühenduse ümber marsruuti muutmata. Selle märkmed kirjutatakse transpordivormis, mis avaneb nupuga Muuda.',
+    'Klõpsa broneeringu päises oleval pealkirjal, et ühendus ümber nimetada marsruuti muutmata. Selle märkmed kirjutatakse transpordivormis, mis avaneb nupuga Muuda.',
   'help.guide.change-transit-route.tip.2':
-    'Broneeringu allosas olev Kustuta eemaldab ühenduse reisist; päeva peatused jäävad alles.',
+    'Broneeringu allosas olev prügikast kustutab ühenduse pärast küsimust; päeva peatused jäävad alles.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Muuda ühe teelõigu liikumisviisi',
   'help.guide.leg-travel-mode.goal':
     'Läbi üks teelõik jalgsi päeval, mil muidu sõidad autoga, või anna see teelõik ühistranspordi otsingule.',
   'help.guide.leg-travel-mode.step.1':
-    'Peatuste vahelised ühendused ilmuvad alles siis, kui päeva marsruut on sisse lülitatud. Klõpsa päeval, et see avada, ja seejärel selle peatuste all nuppu Marsruut.',
+    'Peatuste vahelised ühendused ilmuvad alles siis, kui päeva marsruut on sisse lülitatud. Klõpsa päeva päisel, et see avada, ja seejärel selle peatuste all oleval ribal nuppu Marsruut.',
   'help.guide.leg-travel-mode.step.2':
     'Iga ühendus näitab selle teelõigu sõiduaega ja vahemaad koos liikumisviisi ikooniga, mille järgi marsruut arvutati: auto autosõidu, jalg jalgsikäigu puhul.',
   'help.guide.leg-travel-mode.step.3':
@@ -2783,31 +2783,31 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.title': 'Muuda või kustuta transport',
   'help.guide.edit-transport.goal': 'Paranda kellaaega, platvormi või broneerimiskoodi või eemalda sõit reisist.',
   'help.guide.edit-transport.step.1':
-    'Päevaplaanis on transport värviline rida peatuste vahel. Klõpsa sellel; avaneb selle broneering koos kellaaegade, marsruudi ja Broneerimiskoodiga.',
+    'Päevaplaanis on transport rida peatuste vahel, toonitud selle tüübi järgi. Klõpsa sellel ja avaneb selle broneering: päises kiipidena olek, tüüp, päevad ja Broneerimiskood, allpool väljumis- ja saabumisajad koos lennujaamade või jaamadega.',
   'help.guide.edit-transport.step.2':
-    'Broneeringu allosas olev Muuda avab sama vormi, millega transport loodi, ja selle tiitliribal on Muuda transporti. Muuta saab kõike: tüüpi, marsruuti, päevi ja kellaaegu, Broneerimiskoodi, Olekut.',
+    'Broneeringu allosas olev Muuda avab sama vormi, millega transport loodi, ja selle päiseribal on pealkirja kohal Muuda transporti. Seal saab muuta kõike: pealkirja, oleku- ja tüübinuppe, marsruuti, päevi ja kellaaegu, Broneerimiskoodi.',
   'help.guide.edit-transport.step.3':
     'Lennu marsruut on lennujaamade ahel, rongi oma jaamade ahel. Lisa peatus lisab vahele veel ühe ja igal teelõigul on oma kellaajad ning oma lennu- või rongi number.',
   'help.guide.edit-transport.step.4':
-    'Klõpsa Uuenda. Transpordi täielikuks eemaldamiseks kasuta selle broneeringu allosas olevat nuppu Kustuta või vahekaardil Transport selle kaardil olevat prügikasti ja kinnita.',
+    'Klõpsa Uuenda. Transpordi täielikuks eemaldamiseks kasuta sama riba vasakus servas olevat prügikasti, selle broneeringu allosas olevat prügikasti või vahekaardil Transport selle kaardil olevat prügikasti ja kinnita.',
   'help.guide.edit-transport.result':
     'Muudatus on näha kõikjal, kus transport ilmub: vahekaardil Transport, päeval, mil see toimub, ja selle joonel kaardil.',
   'help.guide.edit-transport.tip.1':
-    'Sama vorm avaneb mõlemast kohast: nupuga Muuda broneeringus, mille avab päevaplaani rida, ja pliiatsiga kaardil vahekaardil Transport. Ka planeeritud ühistranspordiühendus avaneb broneeringuna; seal otsib Muuda marsruuti uuesti ja Muuda viib selle vormini.',
+    'Sama vorm avaneb mõlemast kohast: nupuga Muuda broneeringus, mille avab päevaplaani rida, ja pliiatsiga kaardil vahekaardil Transport. Ka planeeritud ühistranspordiühendus avaneb broneeringuna; seal avab Muuda marsruuti otsingu uuesti ja Muuda viib selle vormini.',
   'help.guide.edit-transport.tip.2':
     'Transpordi teisele päevale viimiseks pole vormi üldse vaja: lohista selle rida ühelt päevakaardilt teisele.',
   // transport-on-map
   'help.guide.transport-on-map.title': 'Joonista transport kaardile',
   'help.guide.transport-on-map.goal': 'Vaata, kuhu lend, autosõit või ühendus tegelikult läheb.',
   'help.guide.transport-on-map.step.1':
-    'Mõlema otspunktiga transpordi real päevaplaanis on väike marsruudiikoon. Klõpsa sellel; selle sildiks saab Peida broneeringute marsruudid.',
+    'Mõlema otspunktiga transpordi real päevaplaanis on väike marsruudiikoon. Klõpsa sellel; selle kohtspikriks saab Peida broneeringute marsruudid.',
   'help.guide.transport-on-map.step.2': 'Marsruut joonistatakse kaardile ja mõlemas otsas on transpordi ikooniga silt.',
   'help.guide.transport-on-map.step.3':
-    'Klõpsa otsamarkeril, et vaadata broneeringut kaardilt lahkumata: kellaajad, lennufirma ja lennunumber, Broneerimiskood ja aadress. Sulge paneb lehe ära.',
+    'Klõpsa otsamarkeril ja broneering avaneb otse kaardi kohal: päises olek, tüüp, päevad ja Broneerimiskood, nende all kellaajad koos lennujaamade või jaamadega, lennufirma ja lennunumber. Päiseribal olev Sulge paneb selle ära.',
   'help.guide.transport-on-map.step.4':
     'Päevade kohal tööriistaribal olev marsruudiikoon teeb seda kogu reisi jaoks korraga: Näita kõiki broneeringute marsruute ja nende uuesti eemaldamiseks Peida kõik broneeringute marsruudid.',
   'help.guide.transport-on-map.step.5':
-    'Planeeritud ühistranspordiühendusel pole oma ikooni. See joonistatakse päeva lülitiga Marsruut, mistõttu Peida kõik broneeringute marsruudid ei eemalda seda, kuni selle päeva marsruut on veel sees.',
+    'Planeeritud ühistranspordiühendusel pole oma marsruudiikooni. See joonistatakse päeva lülitiga Marsruut, mistõttu Peida kõik broneeringute marsruudid ei eemalda seda, kuni selle päeva marsruut on veel sees.',
   'help.guide.transport-on-map.result':
     'Marsruudid on kaardil, mõlemas otsas marker, ja jäävad sinna, kuni need uuesti välja lülitad.',
   'help.guide.transport-on-map.tip.1':
@@ -2816,13 +2816,12 @@ const help: TranslationStrings = {
     'Kinnitatud broneering on pidev joon, ootel broneering katkendjoon. Seade Broneeringute marsruutide sildid kirjutab otsamarkeritele lennujaama koodi või jaama nime.',
   'help.guide.transport-on-map.tip.3':
     'Näita kõiki broneeringute marsruute alustab puhtalt lehelt, mitte ei lisa kihti: see tühistab üksikute ikoonidega tehtud valikud, nii et kahe vajutuse järel on kõik sees või kõik väljas.',
-
   // airtrail-import
   'help.guide.airtrail-import.title': 'Impordi lennud AirTrailist',
   'help.guide.airtrail-import.goal':
     'Too AirTrailis juba olevad lennud ühe korraga reisi ja lase neil edaspidi AirTraili järgida.',
   'help.guide.airtrail-import.step.1':
-    'Kui lisamoodul AirTrail on sisse lülitatud ja sinu eksemplar on ühendatud menüü Seaded jaotises Integratsioonid, on vahekaardi Transport tööriistaribal nupu Transport kõrval nupp AirTrail. Klõpsa sellel.',
+    'Kui lisamoodul AirTrail on sisse lülitatud ja sinu eksemplar on ühendatud menüü Seaded jaotises Liidestused, on vahekaardi Transport ribal nupu Transport ees lennukiikoon Impordi AirTrailist. Klõpsa sellel.',
   'help.guide.airtrail-import.step.2':
     'Impordi AirTrailist loetleb sinu konto lennud kahes grupis. Selle reisi ajal sisaldab reisi kuupäevadele jäävaid lende, mis on juba märgitud; Teised lennud sisaldab ülejäänuid, märkimata. Lend, mis on juba reisis, on hall ja tähistatud sõnaga Imporditud.',
   'help.guide.airtrail-import.step.3':
@@ -2830,70 +2829,94 @@ const help: TranslationStrings = {
   'help.guide.airtrail-import.step.4':
     'Ühenduslennud, millest iga järgmine väljub ööpäeva jooksul lennujaamast, kuhu eelmine maandus, on koos raamitud. All olev märkeruut, Impordi ühe lennuna, vahemaandumisega selles lennujaamas, on juba märgitud: jäta see märgituks, et saada üks vahepeatusega broneering, või eemalda märge, et importida teelõigud eraldi lendudena.',
   'help.guide.airtrail-import.step.5':
-    'Klõpsa Impordi. Nupul on märgitud lendude arv ja hiljem ütleb teade, mitu imporditi.',
+    'Klõpsa paremas allnurgas olevat nuppu, mis näitab märgitud lendude arvu, näiteks Impordi 2. Hiljem ütleb teade, mitu imporditi.',
   'help.guide.airtrail-import.step.6':
-    'Lennud on kaardid grupis Kinnitatud, igaühel oleku kõrval sinine AirTraili märk, ja read nende toimumispäevadel. Ühendatud ühenduslend on üks kaart ja selle marsruut läbib vahemaandumise koha.',
+    'Lennud on kaardid grupis Kinnitatud, igaühel pealkirja kõrval sinine AirTraili kiip, ja read nende toimumispäevadel. Ühendatud ühenduslend on üks kaart ja selle marsruut läbib vahemaandumise koha.',
   'help.guide.airtrail-import.result':
-    'AirTraili lennud on kaardid vahekaardil Transport ja read oma päevadel ning igaühel on AirTraili märk, mis näitab, kust see pärit on.',
+    'AirTraili lennud on kaardid vahekaardil Transport ja read oma päevadel ning igaühel on AirTraili kiip, mis näitab, kust see pärit on.',
   'help.guide.airtrail-import.tip.1':
-    'Lend, mis on reisis juba sama numbri ja kuupäevaga, jäetakse vahele ja teade ütleb, mitu jäeti vahele. Päevade kohal tööriistaribal olev Võta tagasi tühistab kogu impordi.',
+    'Lend, mis on reisis juba sama numbri ja kuupäevaga, jäetakse vahele ja teade ütleb, mitu jäeti vahele. Päevade kohal tööriistaribal olev tagasivõtmise nool tühistab kogu impordi.',
   'help.guide.airtrail-import.tip.2':
-    'Tõeallikaks jääb AirTrail. TREK loeb selle muudatusi reisi avamisel ja taustal iga paari minuti järel; seal kustutatud lennu kaart jääb alles ja märgile tuleb Sünkroonimata. TREKis tehtud muudatused jõuavad tagasi ainult siis, kui jaotises Integratsioonid on sisse lülitatud Kirjuta muudatused AirTraili tagasi.',
+    'Tõeallikaks jääb AirTrail. TREK loeb selle muudatusi reisi avamisel ja taustal iga paari minuti järel; seal kustutatud lennu kaart jääb alles ja selle kiibile tuleb Sünkroonimata. TREKis tehtud muudatused jõuavad tagasi ainult siis, kui jaotises Liidestused on sisse lülitatud Kirjuta muudatused AirTraili tagasi.',
   'help.guide.airtrail-import.tip.3':
-    'Ühendatud ühenduslennul pole ühte AirTraili lendu, mida järgida, seega on see ühekordne import: sinine märk jääb alles ja kursori hoidmisel märgil on see ka öeldud. Sama juhtub sünkroonitud lennuga, millele lisad käsitsi peatuse.',
+    'Ühendatud ühenduslennul pole ühte AirTraili lendu, mida järgida, seega on see ühekordne import: sinine kiip jääb alles ja kiibile osutades on see ka öeldud. Sama juhtub sünkroonitud lennuga, millele lisad käsitsi peatuse.',
   // ── Screen: trip-bookings ─────────────────────────────────────────────────────────────
   'help.ctx.trip-bookings.title': 'Broneeringud',
   'help.ctx.trip-bookings.summary':
-    'Vahekaart, kus on kõik reisi jaoks broneeritu, mis pole liikumisviis: majutuskohad, lauad, piletid, ekskursioonid, parkimine. Iga broneering on kaart grupis Ootel või Kinnitatud koos koodi, dokumendi, reisijate ja kuluga.',
+    'Vahekaart, kus on kõik reisi jaoks broneeritu, mis pole liikumisviis: majutuskohad, lauad, piletid, ekskursioonid, parkimine. Iga broneering on kaart, loendi rida või riba ajajoonel koos koodi, dokumentide, reisijate ja kuluga ning klõps avab selle üksikasjad.',
   'help.ctx.trip-bookings.bullet.1':
-    'Paremal üleval olev Käsitsi broneering avab vormi. Sellega saab luua kuut tüüpi: Majutus, Restoran, Üritus, Ekskursioon, Parkimine ja Muu; lennud, rongid ja muu selline asuvad vahekaardil Transport ega ilmu kunagi siia.',
+    'Riba paremas otsas olev Käsitsi broneering avab vormi Uus broneering. Sellega saab luua kuut tüüpi: Majutus, Restoran, Üritus, Ekskursioon, Parkimine ja Muu; lennud, rongid ja muu selline asuvad vahekaardil Transport ega ilmu kunagi siia.',
   'help.ctx.trip-bookings.bullet.2':
-    'Impordi failist annab kinnituse töötlejale: EML, PDF, PKPass, HTML või TXT, kuni viis faili, igaüks kuni 10 MB. Nupp on olemas ainult siis, kui server oskab neid lugeda.',
+    'Nupu Käsitsi broneering ees olev allalaadimisikoon, Impordi broneeringukinnitused, annab kinnitused töötlejale: EML, PDF, PKPass, HTML või TXT, kuni viis faili, igaüks kuni 10 MB. Ikoon on olemas ainult siis, kui server oskab neid lugeda.',
   'help.ctx.trip-bookings.bullet.3':
-    'Pealkirja kõrval olevad kiibid filtreerivad tüübi järgi, igaüks oma arvuga, ja Kõik toob kõik tagasi. Kui mõnes broneeringus on inimesed määratud, saab kiipide kõrval oleva avatariderea abil vahekaardi ühele neist kitsendada.',
+    'Väli Otsi otsib pealkirjadest, tüüpidest, kohtadest, märkmetest, broneerimiskoodidest ja reisijatest. Selle kõrval olev lehter, Filtreeri, kitsendab vahekaarti valikutega Olek, Tüüp (igaühel oma arv) ja, kui mõnes broneeringus on inimesed määratud, Reisijad; lehtril olev arv näitab, mitu filtrit on sees.',
   'help.ctx.trip-bookings.bullet.4':
-    'Kaardid on kahes jaotises, Ootel ja Kinnitatud, igaühel oma arv. Klõps jaotise pealkirjal voldib selle kokku ja selle reisi jaoks jäetakse meelde, kas jaotis on avatud.',
+    'Nupu Filtreeri järel olevad kolm ikooni vahetavad vaadet: Kaardid, Loend ja Ajajoon. Nende kõrval olevad liugurid, Vaate valikud, rühmitavad ja järjestavad kaarte ja loendit või määravad ajajoone read. Vaikimisi on kaardid jaotistes Kinnitatud ja Ootel ning klõps jaotise pealkirjal voldib selle kokku.',
   'help.ctx.trip-bookings.bullet.5':
-    'Kaardil on olekutäpp, tüüp, pealkiri, kuupäevad ja kellaajad, Broneerimiskood, Asukoht / aadress, see, millega broneering on seotud, ning selle Link, Märkmed, Failid ja Reisijad.',
+    'Kaardil on oleku järgi toonitud päiseriba, kus on olekutäpp (klõps vahetab oleku Ootel ja Kinnitatud vahel), tüüp, pealkiri, pliiats ja prügikast. Selle all on kõik, mis broneeringul on: Kuupäev, Kellaaeg, Broneerimiskood, Sisseregistreerimine ja Väljaregistreerimine, Asukoht / aadress, Majutus, Seotud (peatus plaanis), Link, Märkmed, Reisijad, Failid ja seotud kulud.',
   'help.ctx.trip-bookings.bullet.6':
-    'Kaardil olev pliiats avab sama vormi uuesti; prügikast küsib ühe korra ja siis on broneering kadunud. Majutuse puhul kaovad koos sellega ka selle ööd päevaplaanis ja seotud kulu.',
+    'Klõps kaardil, real või ribal avab broneeringu üksikasjad, mille allservas on Kaardil, prügikast ja Muuda. Kustutamine küsib ühe korra ja siis on broneering kadunud koos seotud kuludega ning majutus võtab oma ööd päevaplaanist ära.',
+  // booking-views
+  'help.guide.booking-views.title': 'Vaheta vaadet ja ava broneering',
+  'help.guide.booking-views.goal':
+    'Vaata broneeringuid kaartidena, loendina või ajajoonel ning ava üks, et näha kõike, mis selles on.',
+  'help.guide.booking-views.step.1':
+    'Ribal nupu Filtreeri järel olevad kolm ikooni on vaated ja igaüks näitab oma nime, kui sellele osutad: Kaardid, Loend ja Ajajoon. Vahekaart avaneb vaates Kaardid, üks kaart broneeringu kohta jaotistes Kinnitatud ja Ootel. Klõpsa keskmisel, Loend.',
+  'help.guide.booking-views.step.2':
+    'Loend paneb iga broneeringu eraldi reana päeva pealkirja alla, päev ja kellaaeg paremal; nooleklahvid liiguvad reast reani. Klõpsa kolmest viimasel, Ajajoon.',
+  'help.guide.booking-views.step.3':
+    'Ajajoon laotab broneeringud reisi päevade peale, iga tüüp oma real ja iga broneering ribana algusest lõpuni, ootel broneering katkendliku äärisega. Reis mahutab kogu reisi laiusesse; klõpsa päeva pealkirjal, et näha seda päeva tundide kaupa.',
+  'help.guide.booking-views.step.4':
+    'Päev laotab ühe päeva tunniskaalale ja ribad pikenevad, et näidata oma kellaaegu. Päeva nime kõrval olevad nooled viivad eelmisele ja järgmisele päevale ning paremal olev lüliti Reis ja Päev viib tagasi kogu reisi juurde.',
+  'help.guide.booking-views.step.5':
+    'Osuta ribale, et näha selle päeva, kellaaegu ja kohta, seejärel klõpsa sellel, et avada broneeringu üksikasjad. Kaart vaates Kaardid ja rida vaates Loend avavad sama hüpikakna.',
+  'help.guide.booking-views.step.6':
+    'Üksikasjade päiseribal on pealkiri ja kiibid oleku (klõps vahetab selle), tüübi, päeva ja broneerimiskoodi jaoks ning nupp, mis koodi kopeerib. Allpool on kellaajad paanidena, seejärel koht, reisijad, märkmed, kulud ja failid, kõik, mis broneeringul on, ning allservas Kaardil, prügikast ja Muuda.',
+  'help.guide.booking-views.result':
+    'Broneering on avatud oma üksikasjades: Muuda avab selle vormi, Kaardil näitab seda plaanis ning Sulge või Escape viib sind tagasi vaatesse, kust tulid.',
+  'help.guide.booking-views.tip.1':
+    'Vaate valikud, vaateikoonide järel olevad liugurid, rühmitab ja järjestab vaateid Kaardid ja Loend valikutega Rühmita ja Järjesta. Ajajoonel lülitab see valikuid Iga tüüp eraldi real ja Näita teist vahekaarti, mis paneb vahekaardi Transport kirjed tuhmilt kitsale reale üles. Lähtesta vaade taastab vaikeväärtused ja iga vahekaart jätab oma vaate selles brauseris meelde.',
+  'help.guide.booking-views.tip.2':
+    'Broneering enne või pärast reisi või ilma kuupäevata ei mahu ajajoonele: see ootab diagrammi all väikese kaardina jaotises Enne reisi, Pärast reisi või Kuupäevata.',
+  'help.guide.booking-views.tip.3':
+    'Samad üksikasjad avanevad kõikjal, kus broneering ilmub: vahekaardil Transport, päevaplaanis, päeva üksikasjades ja koha üksikasjades. Klõps pealkirjal nimetab broneeringu ümber.',
   // create-booking
   'help.guide.create-booking.title': 'Loo broneering',
   'help.guide.create-booking.goal': 'Lisa reisile käsitsi restoran, üritus, ekskursioon, parkimiskoht või midagi muud.',
   'help.guide.create-booking.step.1':
-    'Klõpsa vahekaardi paremas ülanurgas nuppu Käsitsi broneering. Avaneb Uus broneering.',
+    'Klõpsa riba paremas otsas nuppu Käsitsi broneering. Avaneb Uus broneering, mille ülaosas on päiseriba pealkirja ja kahe nupuga.',
   'help.guide.create-booking.step.2':
-    'Klõpsa vormi päises pealkirja all oleval tüübinupul ja vali Broneeringu tüüp. Majutus, Restoran, Üritus, Ekskursioon, Parkimine ja Muu on kuus tüüpi, mida see vahekaart loob, ja vorm muutub vastavalt valikule: ainult Majutus asendab kuupäevad päevade vahemikuga.',
+    'Klõpsa päiseribal tüübinupul, millel on uue broneeringu puhul kirjas Muu, ja vali Broneeringu tüüp. Majutus, Restoran, Üritus, Ekskursioon, Parkimine ja Muu on kuus tüüpi, mida see vahekaart loob, ja vorm muutub vastavalt valikule: ainult Majutus asendab kuupäevad päevade vahemikuga.',
   'help.guide.create-booking.step.3':
-    'Sisesta Pealkiri. See on ainus kohustuslik väli ja Lisa jääb passiivseks, kuni selles midagi on.',
+    'Sisesta pealkiri päiseribale, nuppude kohal olevale väljale. See on ainus kohustuslik väli ja Lisa jääb halliks, kuni selles midagi on.',
   'help.guide.create-booking.step.4':
     'Määra Kuupäev ja Algusaeg ning, kui broneeringul on lõpp, Lõppkuupäev ja Lõpuaeg. Kalendrid pakuvad ainult reisi sisse jäävaid päevi ja kui lõpp pole pärast algust, näidatakse seda punasega ning Lisa on blokeeritud.',
   'help.guide.create-booking.step.5':
-    'Sisesta kinnituselt Broneerimiskood. Tüübi kõrval olev olekunupp näitab Ootel; klõps muudab selle olekuks Kinnitatud ja tagasi ning see määrab, kummasse jaotisse kaart satub.',
-  'help.guide.create-booking.step.6': 'Klõpsa Lisa.',
+    'Sisesta kinnituselt Broneerimiskood, seejärel klõpsa päiseribal tüübi kõrval olevat olekunuppu. Uue broneeringu puhul näitab see Ootel ja klõps muudab selle olekuks Kinnitatud; see määrab, millisesse jaotisse kaart satub.',
+  'help.guide.create-booking.step.6': 'Klõpsa vormi allservas Lisa.',
   'help.guide.create-booking.result':
-    'Broneering on oma jaotises kaart koos tüübikiibi, kuupäevade ja koodiga ning kõik teised reisil osalejad näevad selle ilmumist.',
+    'Broneering on oma jaotises kaart, mille päiseriba on toonitud oleku järgi, koos tüübi, kuupäeva ja kellaaegade ning koodiga, ja kõik teised reisil osalejad näevad selle ilmumist.',
   'help.guide.create-booking.tip.1':
     'Asukoht / aadress pakub trükkimise ajal tegelikke aadresse; ühe valimine asendab sinu kirjutatu ja ise sisestatud aadress jääb nii, nagu see on.',
   'help.guide.create-booking.tip.2':
-    'Väljale Link käib broneeringu enda leht teenusepakkuja juures. Kaardil muutub see lingiks, mis avaneb uuel vahelehel.',
+    'Väljale Link käib broneeringu enda leht teenusepakkuja juures. Kaardil ja üksikasjades muutub see lingiks, mis avaneb uuel vahelehel.',
   'help.guide.create-booking.tip.3':
-    'Märkmed toetavad Markdowni, nii et loend või paksus kirjas rida kuvatakse kaardil just nii.',
+    'Märkmed toetavad Markdowni, nii et loend või paksus kirjas rida kuvatakse kaardil ja üksikasjades just nii.',
   // booking-hotel
   'help.guide.booking-hotel.title': 'Broneeri majutus',
   'help.guide.booking-hotel.goal':
     'Sisesta majutus nii, et see läheb korraga arvesse nii broneeringu kui ka öödena päevaplaanis.',
   'help.guide.booking-hotel.step.1':
-    'Klõpsa Käsitsi broneering ja vali Majutus. Kuupäevaväljad kaovad ja nende asemele tuleb hotelliväljade plokk.',
+    'Klõpsa Käsitsi broneering ja vali päiseriba tüübinupust Majutus. Kuupäevaväljad kaovad ja nende asemele tuleb hotelliväljade plokk.',
   'help.guide.booking-hotel.step.2':
-    'Vali hotell väljal Majutus. Loendis on reisi enda kohad ja ühe valimine kirjutab selle nime väljale Pealkiri ja aadressi väljale Asukoht / aadress.',
+    'Vali hotell väljal Majutus. Loendis on reisi enda kohad ja ühe valimine kirjutab selle nime tühja pealkirja ja aadressi väljale Asukoht / aadress.',
   'help.guide.booking-hotel.step.3':
     'Määra Alates ja Kuni: esimene öö ja hommik, mil lahkud. Mõlemad pakuvad reisi päevi koos kuupäevadega ja hoiavad teineteist õiges järjekorras.',
   'help.guide.booking-hotel.step.4':
     'Täida väljad Sisseregistreerimine, Sisseregistreerimine kuni ja Väljaregistreerimine ning kinnituselt Broneerimiskood.',
   'help.guide.booking-hotel.step.5': 'Klõpsa Lisa.',
   'help.guide.booking-hotel.result':
-    'Kaardil on kuupäeva asemel päevade vahemik koos sisse- ja väljaregistreerimise aegade ning aadressiga ja sama peatumine on nüüd plaanis nendel päevadel.',
+    'Kaardil on sildi Kuupäev all päevade vahemik, sisse- ja väljaregistreerimise ajad ning aadress ja sama peatumine on nüüd plaanis nendel päevadel.',
   'help.guide.booking-hotel.tip.1':
     'Majutus on ainus tüüp, millel pole välju Kuupäev ja Algusaeg. Selle kuupäevad on Alates ja Kuni ning need on reisi päevad, mitte kalender.',
   'help.guide.booking-hotel.tip.2':
@@ -2903,14 +2926,15 @@ const help: TranslationStrings = {
   'help.guide.link-booking.title': 'Seo broneering plaaniga',
   'help.guide.link-booking.goal':
     'Seo broneering peatuse ja kohaga, mille juurde see kuulub, et see oleks seal, kus sul seda vaja läheb.',
-  'help.guide.link-booking.step.1': 'Klõpsa selle kaardi pliiatsit, mida soovid siduda. Avaneb Muuda broneeringut.',
+  'help.guide.link-booking.step.1':
+    'Osuta kaardile, mida soovid siduda, ja klõpsa selle päiseribal pliiatsit. Avaneb Muuda broneeringut.',
   'help.guide.link-booking.step.2':
     'Ava Seo päevaplaani kirjega. Loend on sinu plaan: iga päeva kohta pealkiri ja selle all selle päeva peatused, nummerdatud ja kellaaegadega. Vali see, mille juurde broneering kuulub.',
   'help.guide.link-booking.step.3':
-    'Koht / tegevus seob koha enda. Vali see seal ja Pealkiri ning Asukoht / aadress täidetakse, kui jätsid need tühjaks.',
+    'Koht / tegevus seob koha enda. Vali see seal ja pealkiri ning Asukoht / aadress täidetakse, kui jätsid need tühjaks.',
   'help.guide.link-booking.step.4': 'Klõpsa Uuenda.',
   'help.guide.link-booking.result':
-    'Kaardil on jaotises Seo päevaplaani kirjega nimetatud päev ja peatus ning broneering liigub päevaplaanis koos selle peatusega.',
+    'Kaardil on jaotises Seotud nimetatud päev ja peatus ning broneering liigub päevaplaanis koos selle peatusega.',
   'help.guide.link-booking.tip.1':
     'Loendi ülaosas olev Seoseta (eraldiseisev) eemaldab seose uuesti. Majutusel pole peatuse valijat üldse: see seotakse oma ööde kaudu.',
   'help.guide.link-booking.tip.2':
@@ -2920,48 +2944,49 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Märgi reisijad, keda broneering hõlmab, ja vaata seejärel ainult nende broneeringuid.',
   'help.guide.booking-travelers.step.1':
-    'Ava broneering pliiatsiga. Reisijad asub Broneerimiskoodi kõrval ja näitab teksti Määra reisijad, kuni broneeringul pole kedagi.',
+    'Ava broneering selle kaardil oleva pliiatsiga. Reisijad asub Broneerimiskoodi kõrval ja näitab teksti Määra reisijad, kuni broneeringul pole kedagi.',
   'help.guide.booking-travelers.step.2':
     'Klõpsa sellel ja vali inimesed, kellele see broneering on; nimega külalised on samuti loendis. Valitud inimene saab linnukese ja tema avatar kuvatakse väljal. Klõpsa nimel uuesti, et see eemaldada.',
   'help.guide.booking-travelers.step.3': 'Klõpsa Uuenda.',
   'help.guide.booking-travelers.step.4':
-    'Klõpsa üleval tööriistaribal tüübikiipide kõrval reisija avataril, et näha ainult tema broneeringuid.',
+    'Klõpsa ribal nuppu Filtreeri: jaotises Reisijad klõpsa inimesel, et näha ainult tema broneeringuid. Korraga võib valida mitu.',
   'help.guide.booking-travelers.result':
-    'Kaardil on loetletud inimesed, kellele see on, ja avatariderida kitsendab vahekaardi ühele neist.',
+    'Kaardil on loetletud inimesed, kellele see on, ja Filtreeri kitsendab vahekaardi valitud inimeste broneeringutele.',
   'help.guide.booking-travelers.tip.1':
-    'Kaardil reisijaid ainult näidatakse, neid seal ei muudeta. Need määratakse siin, vormis.',
+    'Kaardil ja üksikasjades reisijaid ainult näidatakse, neid seal ei muudeta. Need määratakse siin, vormis.',
   'help.guide.booking-travelers.tip.2':
-    'Avatariderida ilmub, kui reisil on rohkem kui üks liige ja vähemalt ühes broneeringus on keegi määratud. Sinu valik kehtib selle brauseriseansi lõpuni.',
+    'Reisijad ilmub menüüsse Filtreeri, kui reisil on rohkem kui üks liige ja vähemalt ühes broneeringus on keegi määratud. Sinu valik kehtib, kuni sulged brauseri vahelehe.',
   // booking-files
   'help.guide.booking-files.title': 'Hoia vautšer broneeringu juures',
   'help.guide.booking-files.goal': 'Lisa kinnitus, pilet või pääse broneeringule, mille juurde see kuulub.',
   'help.guide.booking-files.step.1':
-    'Ava broneering pliiatsiga, mine alla jaotiseni Failid ja klõpsa Lisa fail. Juba olemasoleva broneeringu puhul laaditakse dokument kohe üles ja TREK teatab Fail üles laaditud.',
+    'Ava broneering selle kaardil oleva pliiatsiga. Failid asub välja Link kõrval; klõpsa seal Lisa fail. Juba olemasoleva broneeringu puhul laaditakse dokument kohe üles ja TREK teatab Fail üles laaditud.',
   'help.guide.booking-files.step.2': 'Dokument on loendis oma nimega, selle kõrval avamisnupp ja X.',
   'help.guide.booking-files.step.3':
     'Seo olemasolev fail pakub reisi dokumente, mis pole veel selle broneeringu juures. Vali üks ja see lisatakse ilma midagi uuesti üles laadimata.',
   'help.guide.booking-files.step.4': 'Klõpsa Uuenda.',
-  'help.guide.booking-files.result': 'Kaardil on dokumendid loetletud jaotises Failid ja klõps ühel neist avab selle.',
+  'help.guide.booking-files.result':
+    'Kaardil ja üksikasjades on dokumendid loetletud jaotises Failid ja klõps ühel neist avab selle.',
   'help.guide.booking-files.tip.1':
     'Alles loodava broneeringu puhul dokument ootab ja laaditakse üles hetkel, kui klõpsad Lisa.',
   'help.guide.booking-files.tip.2':
     'Dokumendi kõrval olev X eemaldab seose, mitte dokumendi. See jääb reisi vahekaardile Failid.',
   'help.guide.booking-files.tip.3':
-    'Milliseid failitüüpe võib lisada, määrab administraatori loend; dokumendid, tekst ja pildid on vaikimisi lubatud.',
+    'Milliseid failitüüpe võib lisada, määrab administraatori loend jaotises Lubatud failitüübid; dokumendid, tekst ja pildid on vaikimisi lubatud.',
   // booking-cost
   'help.guide.booking-cost.title': 'Muuda broneeringu hind kuluks',
   'help.guide.booking-cost.goal': 'Vii broneeringu hind jaotisse Kulud ja jaga see maksjate vahel.',
   'help.guide.booking-cost.step.1':
-    'Ava broneering ja mine vormi lõppu. Jaotises Kulud on Loo kulu ja Seo olemasolev kulu koos märkusega Salvestab broneeringu ja avab seejärel kulude muutmise vaate.',
+    'Ava broneering selle kaardil oleva pliiatsiga ja mine vormi lõppu. Jaotises Kulud on Loo kulu ja Seo olemasolev kulu koos märkusega Salvestab broneeringu ja avab seejärel kulude muutmise vaate.',
   'help.guide.booking-cost.step.2':
-    'Klõpsa Loo kulu. Broneering salvestatakse, selle vorm sulgub ja avaneb kulude muutmise vaade.',
+    'Klõpsa Loo kulu. Broneering salvestatakse, selle vorm sulgub ja kulude muutmise vaade avaneb pealkirjaga Lisa kulu.',
   'help.guide.booking-cost.step.3':
-    'Väljal Mille eest? on juba broneeringu pealkiri. Sisesta Kogusumma ning kontrolli välju Valuuta ja Päev.',
+    'Päiseribal olev nimi on juba broneeringu pealkiri. Sisesta Kogusumma ning kontrolli selle kõrval olevaid välju Valuuta ja Päev.',
   'help.guide.booking-cost.step.4':
-    'Kategooria tuleneb broneeringu tüübist. Määra Kes maksis? ja kuidas summa jagatakse.',
+    'Päiseribal olev kiip on Kategooria, juba see, mis tuleneb broneeringu tüübist. Vali jaotises Kes maksis?, kes maksis, ja jaotises Jaotus, kuidas summa jagatakse.',
   'help.guide.booking-cost.step.5': 'Klõpsa Lisa kulu.',
   'help.guide.booking-cost.result':
-    'Broneeringu vormis on kulu nüüd jaotises Seotud kulud koos summaga ja sama kulu on vahekaardil Kulud, seotud selle broneeringuga.',
+    'Kaardi allservas on summa, broneeringu vormis on kulu jaotises Seotud kulud ja sama kulu on vahekaardil Kulud, seotud selle broneeringuga.',
   'help.guide.booking-cost.tip.1':
     'Kategooria järgib tüüpi: Restoranist saab Söök ja jook, Majutusest Majutus, Parkimisest Parkimine ning Üritus ja Ekskursioon lähevad mõlemad kategooriasse Muu.',
   'help.guide.booking-cost.tip.2':
@@ -2970,41 +2995,42 @@ const help: TranslationStrings = {
     'Kulud on vormis ainult siis, kui lisamoodul Kulud on sisse lülitatud; administraator lülitab selle jaotises Lisamoodulid.',
   // filter-bookings
   'help.guide.filter-bookings.title': 'Leia broneering',
-  'help.guide.filter-bookings.goal': 'Kitsenda pikk vahekaart soovitud tüübi, inimese või olekuni.',
+  'help.guide.filter-bookings.goal': 'Kitsenda pikk vahekaart sõna, oleku, tüübi või inimese järgi.',
   'help.guide.filter-bookings.step.1':
-    'Pealkirja kõrval olevad kiibid on tüübid, mida see reis tegelikult kasutab, igaüks oma arvuga. Kõik on kogu vahekaart.',
+    'Kirjuta ribal olevale väljale Otsi. See otsib pealkirjadest, tüüpidest, kohtadest ja aadressidest, märkmetest, broneerimiskoodidest ja reisijate nimedest ning vahekaart kitseneb kirjutamise ajal; Escape tühjendab välja.',
   'help.guide.filter-bookings.step.2':
-    'Klõpsa kiibil, et jätta alles ainult see tüüp. Klõpsa teisel ja alles jäävad mõlemad.',
-  'help.guide.filter-bookings.step.3': 'Kõik toob kõik tagasi.',
+    'Klõpsa otsingu kõrval olevat lehtrit Filtreeri. Selle paneelil on Olek, Tüüp ja, kui mõnes broneeringus on inimesed määratud, Reisijad.',
+  'help.guide.filter-bookings.step.3':
+    'Vali jaotises Olek Kinnitatud või Ootel, et näha ainult neid; Kõik näitab mõlemaid.',
   'help.guide.filter-bookings.step.4':
-    'Kiipide kõrval olevad avatarid filtreerivad reisija järgi, üks inimene või mitu korraga.',
+    'Klõpsa jaotises Tüüp ühel või mitmel tüübil, et jätta alles ainult need. Iga tüüp näitab, mitu broneeringut sellel on, ja linnuke märgib sisselülitatud tüübid.',
   'help.guide.filter-bookings.step.5':
-    'Ootel ja Kinnitatud on kaks jaotist, igaühel oma arv. Klõpsa pealkirjal, et jaotis kokku voltida; see on tagasi tulles ikka kokku volditud.',
+    'Nupul Filtreeri olev arv näitab, mitu filtrit on sisse lülitatud, ja otsingu kõrval olev kiip ütleb, mitu kõigist broneeringutest alles jääb. Klõpsa kiibil või paneeli allservas nupul Lähtesta filtrid, et näha jälle kõike.',
   'help.guide.filter-bookings.result':
-    'Vahekaart näitab ainult sinu valitut ja valik kehtib ka siis, kui selle brauseriseansi jooksul tagasi tuled.',
+    'Vahekaart näitab ainult sinu valitut, nii vaates Kaardid, Loend kui ka Ajajoon, ja filtrid kehtivad selle reisi jaoks, kuni sulged brauseri vahelehe.',
   'help.guide.filter-bookings.tip.1':
-    'Kiibid pakuvad ainult reisil olevaid tüüpe, nii et ühegi ekskursioonita reisil pole kiipi Ekskursioon.',
+    'Tüüp on olemas ainult siis, kui vahekaardil on rohkem kui üks tüüp, ja see loetleb ainult vahekaardil olevaid tüüpe, nii et ühegi ekskursioonita vahekaardil pole valikut Ekskursioon.',
   'help.guide.filter-bookings.tip.2':
-    'Filter, millele midagi ei vasta, jätab vahekaardi tühjaks teatega Kohti ei leitud. Sõnastus on pärit kohtade loendist, tähendus on sama.',
+    'Filter, millele midagi ei vasta, jätab vahekaardile teate Nende filtritega ei leitud midagi ja kohe selle alla nupu Lähtesta filtrid.',
   // import-booking-file
   'help.guide.import-booking-file.title': 'Loe broneering kinnitusest välja',
   'help.guide.import-booking-file.goal':
     'Lase TREKil võtta broneering teenusepakkuja saadetud kirjast või PDF-ist, selle asemel et seda uuesti sisestada.',
   'help.guide.import-booking-file.step.1':
-    'Klõpsa tööriistaribal Impordi failist. Avaneb Impordi broneeringukinnitused.',
+    'Klõpsa ribal allalaadimisikoonil Impordi broneeringukinnitused; nimi ilmub, kui sellele osutad. Avaneb samanimeline dialoog.',
   'help.guide.import-booking-file.step.2':
     'Lohista kinnitused kasti või klõpsa kastil ja vali need: EML, PDF, PKPass, HTML ja TXT, kuni viis faili, igaüks kuni 10 MB. Valitud failide nimed on kastis näha.',
   'help.guide.import-booking-file.step.3': 'Klõpsa Impordi. Dialoog sulgub kohe, sest lugemine toimub taustal.',
   'help.guide.import-booking-file.step.4':
     'Paremas alanurgas olev kaart näitab faili nime all töötluse käiku ning jääb nähtavaks kogu rakenduses ka pärast lehe uuesti laadimist. Kui lugemine on valmis, asendub Failide töötlemine… linnukesega ja kaardil on nupp Impordi. Klõpsa sellel.',
   'help.guide.import-booking-file.step.5':
-    'Iga leitud broneering avaneb üksteise järel vormis Uus broneering juba täidetuna. Hotelli puhul on see nimi väljal Pealkiri ja, kui koht on reisis olemas, väljal Majutus, selle Asukoht / aadress, Alates ja Kuni vastavatel öödel, Sisseregistreerimine ja Väljaregistreerimine, Broneerimiskood, kinnitus jaotises Failid ning, kui Kulud on sisse lülitatud, hind kui Seotud kulu. Kontrolli ja klõpsa Lisa.',
+    'Iga leitud broneering avaneb üksteise järel vormis Uus broneering juba täidetuna. Hotelli puhul on see selle nimi pealkirjana ja, kui koht on reisis olemas, väljal Majutus, selle Asukoht / aadress, Alates ja Kuni vastavatel öödel, Sisseregistreerimine ja Väljaregistreerimine, Broneerimiskood, kinnitus jaotises Failid ning, kui Kulud on sisse lülitatud, hind kui Seotud kulu. Kontrolli ja klõpsa Lisa.',
   'help.guide.import-booking-file.result':
     'Broneering on kaart grupis Ootel koos öödega, koodiga ja kinnitusega jaotises Failid, peatumine on plaanis nendel päevadel ning kui Kulud on sisse lülitatud, on hind sellega seotud kulu.',
   'help.guide.import-booking-file.tip.1':
-    'Impordi failist on olemas ainult siis, kui server oskab kinnitusi lugeda, milleks on vaja kas ekstraktorit või lisamoodulit Tehisintellektiga parsimine. Administraator lülitab selle jaotises Lisamoodulid.',
+    'Impordiikoon on olemas ainult siis, kui server oskab kinnitusi lugeda, milleks on vaja kas ekstraktorit või lisamoodulit Tehisintellektiga parsimine; administraator lülitab selle jaotises Lisamoodulid. Vahekaart, kus pole ühtegi broneeringut, pakub seda ka nupuna Impordi failist.',
   'help.guide.import-booking-file.tip.2':
-    'Kui midagi ei õnnestunud lugeda, ütleb kaart seda ja pakub nuppu Proovi tehisintellektiga töötlemist, mis saadab samad failid otse mudelile. Valmis töötluse tulemust hoitakse kümme minutit; alusta ülevaatamist selle aja jooksul.',
+    'Kui midagi ei õnnestunud lugeda, ütleb kaart seda ja pakub, kui Tehisintellektiga parsimine on sees, nuppu Proovi tehisintellektiga töötlemist, mis saadab samad failid otse mudelile. Valmis töötluse tulemust hoitakse kümme minutit; alusta ülevaatamist selle aja jooksul.',
   'help.guide.import-booking-file.tip.3':
     'Kinnitus lisatakse ainult siis, kui selle tüüp on administraatori seadetes loendis Lubatud failitüübid. PDF on seal vaikimisi; e-kiri, EML, tuleb enne lisada, muidu salvestatakse broneering ilma selleta.',
   // edit-booking
@@ -3012,28 +3038,31 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.goal':
     'Paranda kellaaega, lisa hiljem saabunud kood või vii broneering olekust Ootel olekusse Kinnitatud.',
   'help.guide.edit-booking.step.1':
-    'Klõpsa kaardi päises pliiatsit. Avaneb Muuda broneeringut kõigi broneeringu andmetega.',
+    'Osuta kaardile ja klõpsa selle päiseribal pliiatsit. Avaneb Muuda broneeringut kõigi broneeringu andmetega.',
   'help.guide.edit-booking.step.2': 'Muuda seda, mida vaja, siin Broneerimiskoodi, mille teenusepakkuja lõpuks saatis.',
-  'help.guide.edit-booking.step.3': 'Klõpsa vormi päises nupul Ootel. See muutub olekuks Kinnitatud.',
+  'help.guide.edit-booking.step.3':
+    'Klõpsa päiseribal nupul Ootel. See muutub olekuks Kinnitatud ja riba muutub roheliseks.',
   'help.guide.edit-booking.step.4': 'Klõpsa Uuenda.',
   'help.guide.edit-booking.result':
-    'Kaart liigub: kinnitatud broneering on jaotises Kinnitatud rohelise täpiga ja kõik reisil osalejad näevad seda liikumas.',
+    'Kaart liigub: kinnitatud broneering on jaotises Kinnitatud rohelise täpi ja rohelise päiseribaga ning kõik reisil osalejad näevad seda liikumas.',
   'help.guide.edit-booking.tip.1':
-    'Kui sa ei saa Broneerimiskoodi lugeda, on sisse lülitatud Hägusta broneerimiskoodid menüü Seaded jaotises Kuva. Vii kursor koodile või klõpsa sellel ja see muutub loetavaks.',
+    'Kui sa ei saa Broneerimiskoodi lugeda, on sisse lülitatud Hägusta broneerimiskoodid menüü Seaded jaotises Üldine. Vii kursor koodile või klõpsa sellel ja see muutub loetavaks.',
   'help.guide.edit-booking.tip.2':
     'Kui muudad tüüpi, muutub ka seotud kulu kategooria, välja arvatud juhul, kui valisid kategooria kulude muutmise vaates käsitsi.',
-  'help.guide.edit-booking.tip.3': 'Ka majutust muudetakse siin: selle päevad Alates ja Kuni on samas vormis.',
+  'help.guide.edit-booking.tip.3':
+    'Broneeringu üksikasjade allservas olev Muuda avab sama vormi. Oleku saab vahetada ka ilma vormita: klõpsa kaardil või real oleval täpil või üksikasjades olekukiibil.',
   // delete-booking
   'help.guide.delete-booking.title': 'Kustuta broneering',
   'help.guide.delete-booking.goal': 'Eemalda ärajäänud broneering reisist.',
-  'help.guide.delete-booking.step.1': 'Klõpsa kaardi päises prügikasti.',
+  'help.guide.delete-booking.step.1':
+    'Osuta kaardile ja klõpsa selle päiseribal prügikasti. Broneeringu üksikasjade allservas olev prügikast küsib sama.',
   'help.guide.delete-booking.step.2':
     'Kas kustutada broneering? nimetab valitud broneeringu ja ütleb, et see kustutatakse jäädavalt.',
-  'help.guide.delete-booking.step.3': 'Klõpsa Kinnita.',
+  'help.guide.delete-booking.step.3': 'Klõpsa Kustuta.',
   'help.guide.delete-booking.result':
     'Kaart on kadunud kõigi reisil osalejate jaoks. Broneeringu kustutamist ei saa tagasi võtta, nii et küsimus on viimane võimalus peatuda.',
   'help.guide.delete-booking.tip.1':
-    'Majutusbroneeringu kustutamine eemaldab päevaplaanist ka selle ööd ning sellega seotud kulu.',
+    'Broneeringu kustutamine eemaldab ka sellega seotud kulud ning majutus võtab oma ööd päevaplaanist ära.',
   'help.guide.delete-booking.tip.2':
     'Lisatud dokumendid jäävad reisi vahekaardile Failid; kaob ainult nende seos broneeringuga.',
 
@@ -3042,31 +3071,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-lists.summary':
     'Kaks nimekirja ühe reisi jaoks: pakkimisnimekiri, kus on kirjas, kes mida kaasa võtab ja mis see kaalub, ning ülesannete nimekiri kõigest, mis peab enne reisi ja selle ajal juhtuma. Vahekaart on olemas, kui lisamoodul Nimekirjad on sisse lülitatud.',
   'help.ctx.trip-lists.bullet.1':
-    'Üleval olevad Pakkimisnimekiri ja Ülesanded lülitavad nende kahe vahel ja näitavad kummagi kirjete arvu; paremal olevad nupud kuuluvad parajasti avatud nimekirjale.',
+    'Ülal ribal olevad Pakkimisnimekiri ja Ülesanded lülitavad nende kahe vahel ja näitavad kummagi kirjete arvu; riba paremas otsas olevad nupud kuuluvad parajasti avatud nimekirjale.',
   'help.ctx.trip-lists.bullet.2':
-    'Pakkimisnimekiri on jagatud nimekirjadeks, näiteks Dokumendid, Riided või kuidas iganes sa neid nimetad, igaühel värvitäpp, pakitud ja kogu arvu märk ning kolm punkti, mille all on Nimeta ümber, Märgi kõik, Eemalda kõik märgistused ja Kustuta nimekiri. Ülal ribal olev Lisa nimekiri loob uue.',
+    'Pakkimisnimekiri on jagatud nimekirjadeks, näiteks Dokumendid, Riided või kuidas iganes sa neid nimetad; iga nimekiri on kaart, mille päiseribal on värvitäpp, pakitud ja kogu arvu märk, kolm punkti valikutega Nimeta ümber, Märgi kõik, Eemalda kõik märgistused ja Kustuta nimekiri ning nool, mis kaardi kokku voldib. Ülal ribal olev Lisa nimekiri loob uue.',
   'help.ctx.trip-lists.bullet.3':
-    'Rida koosneb märkeruudust ja nimest, seejärel väikestest märkidest, mis näitavad, kes eseme kaasa võtab, kogust ja kaalu grammides, koti ringist, kui Kottide haldus on sisse lülitatud, ning lõpuks prügikastist ja kolmest punktist valikutega Teisalda nimekirja, Jagamine, Nimeta ümber ja Kustuta. Mida rida ei kasuta, jääb tuhmiks, kuni sellele osutad, ja vasakul olevast pidemest saab rea nimekirja sees üles või alla lohistada.',
+    'Rida koosneb märkeruudust ja nimest, seejärel väikesest avatarist, mis näitab, kes eseme kaasa võtab, ja väikesest kogusemärgist; kui Kottide haldus on sisse lülitatud, lisanduvad kaal grammides ja koti ring. Lõpus on prügikast ja kolm punkti valikutega Teisalda nimekirja, Jagamine, Nimeta ümber ja Kustuta. Mida rida ei kasuta, jääb tuhmiks, kuni sellele osutad, ja vasakul olevast pidemest saab rea nimekirja sees üles või alla lohistada.',
   'help.ctx.trip-lists.bullet.4':
-    'Jagatud ja Minu nimekiri jagavad pakkimisnimekirja kaheks: ühine osa, mida kõik näevad, ja sinu oma. Kõik, Avatud ja Valmis kitsendavad parajasti avatud nimekirja ning ülal olev riba loendab pakitut.',
+    'Ühine ja Minu nimekiri jagavad pakkimisnimekirja kaheks: osa, mida kõik näevad, ja sinu oma. Nende kõrval olevad Kõik, Pakkimata ja Pakitud kitsendavad parajasti avatud nimekirja ning ülal olev edenemise kaart loendab pakitut.',
   'help.ctx.trip-lists.bullet.5':
-    'Rakenda mall ja Salvesta mallina täidavad või salvestavad nimekirja ilma seda käsitsi sisestamata ning nende kõrval olevad kaks ikooni ekspordivad nimekirja väljatrükina, PDF-ina või failina ja impordivad nimekirja. Edenemisriba kõrval olev punane nupp näitab, mitu eset on märgitud, ja eemaldab need.',
+    'Rakenda mall ja Salvesta mallina täidavad või salvestavad nimekirja ilma seda käsitsi sisestamata ning nende järel olevad kaks ikooni, Ekspordi ja Impordi, viivad nimekirja välja väljatrükina, PDF-ina või failina ja toovad nimekirja sisse. Edenemise kaardi paremas otsas olev punane nupp näitab, mitu eset on märgitud, ja eemaldab need.',
   'help.ctx.trip-lists.bullet.6':
-    'Ülesannetel on oma külgriba: edenemise kaart, filtrid Kõik, Minu ülesanded, Üle tähtaja ja Tehtud, üks rida iga nimekirja kohta ning nende all Lisa nimekiri. Ülesanded on kaardil, mille päis nimetab filtri ja hoiab sortimist, Tähtsus või Tähtaeg. Klõps ülesandel avab selle paremal paanil ja Lisa uus ülesanne avab ekraani keskel vormi Uus ülesanne.',
+    'Ülesannetel on oma külgriba: edenemise kaart, filtrid Kõik, Minu ülesanded, Üle tähtaja ja Tehtud, üks rida iga nimekirja kohta ning nende all Lisa nimekiri. Ülesanded on kaardil, mille päis nimetab filtri ja hoiab sortimist, Tähtsus või Tähtaeg. Klõps ülesandel avab selle paremal paanil ja ribal olev Lisa uus ülesanne avab dialoogi Uus ülesanne.',
   // packing-categories
   'help.guide.packing-categories.title': 'Koosta pakkimisnimekiri',
   'help.guide.packing-categories.goal':
     'Jaga kaasa võetavad asjad nimekirjadesse, täida need esemetega ja määra, kes iga nimekirja eest hoolitseb.',
   'help.guide.packing-categories.step.1':
-    'Klõpsa nimekirjade kohal oleval ribal nuppu Lisa nimekiri, sisesta nimi väljale Nimekirja nimi (nt Riided) ja klõpsa nuppu Lisa.',
+    'Klõpsa nimekirjade kohal oleval ribal nuppu Lisa nimekiri. Avaneb väike dialoog: sisesta nimi selle päiseribale, kus on kirjas Nimekirja nimi (nt Riided), ja klõpsa nuppu Lisa.',
   'help.guide.packing-categories.step.2':
-    'Uues nimekirjas on alguses üks tühi rida. Klõpsa Lisa kirje, sisesta ese väljale Eseme nimi… ja vajuta Enter; väli jääb järgmise jaoks avatuks.',
+    'Uues nimekirjas on alguses kohatäiterida, millel on näha ainult kolm kahvatut punkti. Klõpsa selle allservas nuppu Lisa ese, sisesta ese väljale Eseme nimi... ja vajuta Enter: esimene ese võtab kohatäite koha ja väli jääb järgmise jaoks avatuks.',
   'help.guide.packing-categories.step.3':
     'Nimeta rida ümber, klõpsates selle nimel, või valikuga Nimeta ümber rea paremas otsas olevate kolme punkti all.',
   'help.guide.packing-categories.step.4':
-    'Nimekirja päises olev katkendjoonega ring määrab nimekirjale reisi liikmeid. Vali nimi; ilmuv kiip eemaldab klõpsamisel selle inimese uuesti.',
+    'Nimekirja päiseribal olev katkendjoonega ring, milles on inimene, määrab nimekirjale reisi liikmeid. Vali nimi; ilmuv kiip eemaldab klõpsamisel selle inimese uuesti.',
   'help.guide.packing-categories.step.5':
-    'Päise lõpus olevate kolme punkti all on ülejäänu: Nimeta ümber, Märgi kõik, Eemalda kõik märgistused ja Kustuta nimekiri, mis kustutab nimekirja koos kogu sisuga uuesti küsimata.',
+    'Arvu kõrval olevate kolme punkti all on ülejäänu: Nimeta ümber, Märgi kõik, Eemalda kõik märgistused ja Kustuta nimekiri, mis kustutab nimekirja koos kogu sisuga uuesti küsimata. Päris paremal olev nool voldib nimekirja kokku.',
   'help.guide.packing-categories.result':
     'Uus nimekiri on ruudustikus koos esemete ja värvitäpiga ning selle märk loendab juba pakitut.',
   'help.guide.packing-categories.tip.1':
@@ -3081,13 +3110,13 @@ const help: TranslationStrings = {
   'help.guide.check-off-packing.step.1':
     'Klõpsa rea vasakus servas oleval ruudul. Nimi kriipsutatakse läbi ja riba liigub.',
   'help.guide.check-off-packing.step.2':
-    'Ülal olev riba näitab pakitut võrreldes kogu nimekirjaga, arvu ja protsendina.',
+    'Nimekirjade kohal olev edenemise kaart näitab pakitut võrreldes kogu nimekirjaga, arvu, protsendi ja ribana.',
   'help.guide.check-off-packing.step.3':
-    'Terve nimekiri korraga: selle päises olevate kolme punkti all on Märgi kõik ja Eemalda kõik märgistused.',
+    'Terve nimekiri korraga: selle päiseribal olevate kolme punkti all on Märgi kõik ja Eemalda kõik märgistused.',
   'help.guide.check-off-packing.step.4':
-    'Kõik, Avatud ja Valmis kitsendavad ruudustikku. Avatud jätab alles ainult selle, mis veel puudub, nii et täielikult pakitud nimekiri kaob sealt.',
+    'Valikute Ühine ja Minu nimekiri kõrval olevad Kõik, Pakkimata ja Pakitud kitsendavad ruudustikku. Pakkimata jätab alles ainult selle, mis veel puudub, nii et täielikult pakitud nimekiri kaob sealt.',
   'help.guide.check-off-packing.step.5':
-    'Edenemisriba kõrval olev Eemalda 3 märgitud eset kustutab kõik märgitud esemed korraga pärast üht brauseri kinnitust.',
+    'Edenemise kaardi paremas otsas olev Eemalda 3 märgitud eset kustutab kõik märgitud esemed korraga pärast üht brauseri kinnitust.',
   'help.guide.check-off-packing.result':
     'Loendis on ainult see, mis on veel avatud, ja ülal olev riba näitab, kui kaugel pakkimisega oled.',
   'help.guide.check-off-packing.tip.1': 'Märgitud eset saab siiski ümber nimetada: klõpsa selle nimel.',
@@ -3104,7 +3133,7 @@ const help: TranslationStrings = {
   'help.guide.apply-packing-template.step.3':
     'Esemed lisatakse vaatesse, kus sa parasjagu oled: Jagatud paneb need ühisesse kogusse, mida kõik näevad, Minu nimekiri teeb need sinu omaks.',
   'help.guide.apply-packing-template.step.4':
-    'Säilita selle reisi nimekiri järgmiseks reisiks: Salvesta mallina avab dialoogi, sisesta nimi ja klõpsa nuppu Salvesta.',
+    'Säilita selle reisi nimekiri järgmiseks reisiks: Salvesta mallina avab väikese dialoogi. Sisesta nimi selle päiseribale, kus on kirjas Malli nimi, ja klõpsa nuppu Salvesta.',
   'help.guide.apply-packing-template.result': 'Malli nimekirjad ja esemed on nüüd reisil, olemasolevate kõrval.',
   'help.guide.apply-packing-template.tip.1':
     'Mall kannab üle ainult nimed ja nimekirjad. Kogused, kaalud, kotid ja juba tehtud linnukesed jäävad maha.',
@@ -3115,12 +3144,14 @@ const help: TranslationStrings = {
   // import-packing-list
   'help.guide.import-packing-list.title': 'Kleebi sisse terve pakkimisnimekiri',
   'help.guide.import-packing-list.goal': 'Muuda mujal olemasolev nimekiri korraga pakkimisesemeteks.',
-  'help.guide.import-packing-list.step.1': 'Klõpsa nimekirja kohal olevas ribas allanoolega impordinuppu.',
+  'help.guide.import-packing-list.step.1':
+    'Klõpsa nimekirja kohal oleva riba paremas otsas allanoolega ikooni Impordi.',
   'help.guide.import-packing-list.step.2':
-    'Üks ese rea kohta: Kategooria, Nimi, Kaal grammides (valikuline), Kott (valikuline), checked/unchecked (valikuline). Kastis olev hall näidis näitab kõiki nelja kuju. Sobib ka Markdowni loend: pealkiri annab nimekirjale nime ning "- [ ]" ja "- [x]" muutuvad esemeteks.',
+    'Üks ese rea kohta: Kategooria, Nimi, Kaal grammides (valikuline), Kott (valikuline), checked/unchecked (valikuline). Kastis olev hall näidis näitab kõiki nelja kuju ja selle vasakus servas olevad numbrid loendavad sinu sisestatud ridu. Sobib ka Markdowni loend: pealkiri annab nimekirjale nime ning "- [ ]" ja "- [x]" muutuvad esemeteks.',
   'help.guide.import-packing-list.step.3':
-    'Või laadi read failist nupuga Laadi CSV/TXT/MD. See võtab vastu .csv-, .txt- või .md-faili ja asendab kogu kasti sisu.',
-  'help.guide.import-packing-list.step.4': 'Klõpsa nuppu Impordi. Nupp näitab, mitu rida see ära tundis.',
+    'Või laadi read failist dialoogi vasakus allnurgas oleva nupuga Laadi CSV/TXT/MD. See võtab vastu .csv-, .txt- või .md-faili ja asendab kogu kasti sisu.',
+  'help.guide.import-packing-list.step.4':
+    'Klõpsa paremas allnurgas nuppu Impordi 3; selle number näitab, mitu rida TREK ära tundis.',
   'help.guide.import-packing-list.result':
     'Igast reast saab kirje nimekirjas, mille nimi on rea esimeses väljas, ja olemasolevat sisu ei muudeta.',
   'help.guide.import-packing-list.tip.1':
@@ -3131,11 +3162,12 @@ const help: TranslationStrings = {
   'help.guide.export-packing-list.title': 'Prindi või ekspordi pakkimisnimekiri',
   'help.guide.export-packing-list.goal':
     'Võta nimekiri kaasa paberil, PDF-ina või failina teise rakenduse või järgmise reisi jaoks.',
-  'help.guide.export-packing-list.step.1': 'Klõpsa nimekirja kohal olevas ribas ülesnoolega ekspordinuppu.',
+  'help.guide.export-packing-list.step.1':
+    'Klõpsa nimekirja kohal oleval ribal ülesnoolega ikooni Ekspordi, kohe enne ikooni Impordi.',
   'help.guide.export-packing-list.step.2':
     'Markdowni kontrollnimekiri (.md) ja CSV importimiseks (.csv) salvestavad nimekirja kohe failina.',
   'help.guide.export-packing-list.step.3':
-    'Klõpsa valikut Prindi või salvesta PDF-ina. Eelvaade näitab nimekirja lehena: üleval reis ja selle kuupäevad, seejärel iga nimekiri kaardina, millel on märkeruut.',
+    'Klõpsa valikut Prindi või salvesta PDF-ina. Eelvaade näitab nimekirja lehena: üleval reis, selle kuupäevad ja kui palju on pakitud, seejärel iga nimekiri kaardina, iga ese märkeruuduga.',
   'help.guide.export-packing-list.step.4':
     'Klõpsa eelvaate all nuppu Prindi või salvesta PDF-ina. Brauser avab oma printimisakna: vali printer või Salvesta PDF-ina, et fail alles hoida.',
   'help.guide.export-packing-list.result':
@@ -3159,9 +3191,9 @@ const help: TranslationStrings = {
     'Ava uuesti Jagamine ja märgi nimi jaotises Jagatud kasutajatega…. Ese ilmub ka selle inimese nimekirja ja reale tekib väike märk, mis loeb, kui mitme inimesega seda jagatakse.',
   'help.guide.share-packing-item.result': 'Ese on valitud tasemel ja real on näha, kes selle kaasa võtab.',
   'help.guide.share-packing-item.tip.1':
-    'Eseme jagamist saab muuta ainult see, kes selle kaasa võtab. Inimene, kellega sa seda jagasid, näeb seda oma vaates Minu nimekiri sinu nimega märgituna ja saab selle ära märkida.',
+    'Eseme jagamist saab muuta ainult see, kes selle kaasa võtab. Inimene, kellega sa seda jagasid, näeb seda oma vaates Minu nimekiri väikese käe märgiga, mis osutamisel näitab sinu nime, ja saab selle ära märkida.',
   'help.guide.share-packing-item.tip.2':
-    'Eseme puhul, mille võtab kaasa keegi teine, näed selle asemel kaht teist nuppu: Võin selle ka kaasa võtta, mis lisab sind tema kõrvale, ja Kopeeri minu nimekirja, mis teeb sulle privaatse koopia.',
+    'Jagatud eseme puhul, mille võtab kaasa keegi teine, on kolme punkti all valiku Jagamine asemel kaks muud valikut: Võin selle ka kaasa võtta, mis lisab sind tema kõrvale, ja Kopeeri minu nimekirja, mis teeb sulle privaatse koopia.',
   'help.guide.share-packing-item.tip.3':
     'Uued esemed pärivad vaate, kus need lisatakse. Vaates Minu nimekiri lisatud esemed on isiklikud, vaates Jagatud lisatud lähevad ühisesse kogusse.',
   // packing-bags
@@ -3169,18 +3201,19 @@ const help: TranslationStrings = {
   'help.guide.packing-bags.goal':
     'Määra igale esemele kaal, jaota esemed kottidesse ja hoia iga kott lennufirma piirangu piires.',
   'help.guide.packing-bags.step.1': 'Klõpsa ringi ees oleval kaalumärgil ja sisesta eseme kaal grammides.',
-  'help.guide.packing-bags.step.2': 'Rea lõpus olev ring on eseme kott. Klõpsa sellel.',
+  'help.guide.packing-bags.step.2': 'Kaalu järel olev ring on eseme kott. Klõpsa sellel.',
   'help.guide.packing-bags.step.3':
     'Kui kotti veel pole: Lisa kott, nimi, Enter. Kott luuakse ja ese läheb otse sinna.',
   'help.guide.packing-bags.step.4':
-    'Paneel Kotid ilmub paremale kohe, kui esimene kott on olemas: nimi, kaal, täituvusriba, kes seda kannab ja mitu eset selles on, seejärel Määramata ja Kogukaal.',
+    'Kaart Kotid ilmub nimekirjadest paremale kohe, kui esimene kott on olemas: nimi, kes seda kannab, täituvusriba, mitu eset selles on ja selle kaal, seejärel Määramata ja Kogukaal.',
   'help.guide.packing-bags.step.5':
-    'Klõpsa Määra piirang ja sisesta piirang kilogrammides, nagu lennufirmad seda märgivad.',
-  'help.guide.packing-bags.step.6': 'Koti nime kõrval olev katkendjoonega pluss määrab, kes seda kannab.',
+    'Klõpsa koti kaalu kõrval Määra piirang ja sisesta piirang kilogrammides, nagu lennufirmad seda märgivad.',
+  'help.guide.packing-bags.step.6':
+    'Koti nimerea lõpus, kohe risti ees olev katkendjoonega pluss avab Määra liikmed: märgi, kes kotti kannab, ja nad ilmuvad plussi kõrvale.',
   'help.guide.packing-bags.result':
-    'Paremal olev paneel Kotid näitab iga koti kaalu võrreldes selle piiranguga, seda, mis pole üheski kotis, ja kogukaalu.',
+    'Paremal olev kaart Kotid näitab iga koti kaalu võrreldes selle piiranguga, seda, mis pole üheski kotis, ja kogukaalu.',
   'help.guide.packing-bags.tip.1':
-    'Kaaluväli, koti ring ja paneel Kotid on olemas ainult siis, kui administraator on lisamooduli Nimekirjad all sisse lülitanud valiku Kottide haldus.',
+    'Kaaluväli, koti ring ja kaart Kotid on olemas ainult siis, kui administraator on lisamooduli Nimekirjad all sisse lülitanud valiku Kottide haldus. Kitsamas aknas avanevad kotid hoopis edenemise kaardi kohal olevast nupust Kotid.',
   'help.guide.packing-bags.tip.2':
     'Koti kaal liidetakse serveris kokku kõigi liikmete esemetest, ka nendest, mida sa ei näe, nii et number on tõesti koti tegelik kaal.',
   'help.guide.packing-bags.tip.3':
@@ -3188,16 +3221,17 @@ const help: TranslationStrings = {
   // create-todo
   'help.guide.create-todo.title': 'Lisa ülesanne',
   'help.guide.create-todo.goal': 'Pane kirja midagi, mis peab juhtuma, koos loendi, tähtsuse, kuupäeva ja vastutajaga.',
-  'help.guide.create-todo.step.1': 'Klõpsa paremas ülanurgas nuppu Lisa uus ülesanne.',
+  'help.guide.create-todo.step.1': 'Klõpsa riba paremas otsas nuppu Lisa uus ülesanne.',
   'help.guide.create-todo.step.2':
-    'Anna sellele nimi väljal Ülesande nimi ja kirjuta kõik meelespidamist väärt väljale Kirjeldus.',
+    'Avaneb dialoog Uus ülesanne ja kursor on selle päiseribal: sisesta nimi sinna, kus on kirjas Ülesande nimi, ja kirjuta kõik meelespidamist väärt väljale Kirjeldus.',
   'help.guide.create-todo.step.3':
     'Nimekiri rühmitab ülesande. Vali üks või kasuta selle kõrval olevat plussi, et väikeses dialoogis uuele nimi anda.',
   'help.guide.create-todo.step.4': 'Tähtsus koosneb neljast nupust: Puudub, P1, P2 ja P3, punasest siniseni.',
-  'help.guide.create-todo.step.5': 'Tähtaeg avab kalendri ja Vastutaja määrab ülesandele inimese.',
+  'help.guide.create-todo.step.5':
+    'Välja Nimekiri kõrval olev Tähtaeg avab kalendri ja Vastutaja määrab ülesandele inimese.',
   'help.guide.create-todo.step.6': 'Klõpsa nuppu Loo ülesanne.',
   'help.guide.create-todo.result':
-    'Ülesanne on loendis koos oma märkidega: tähtsus, tähtaeg, loend ja vastutaja, ning see avaneb paremal paanil.',
+    'Ülesanne on loendis, tähtsus, tähtaeg ja nimekiri märkidena ning vastutaja avatar rea lõpus, ja see avaneb paremal paanil.',
   'help.guide.create-todo.tip.1': 'Kohustuslik on ainult nimi. Kõik muu saab hiljem paremal paanil täita.',
   'help.guide.create-todo.tip.2': 'Kui külgribal on loend valitud, lisatakse uus ülesanne sellesse loendisse.',
   'help.guide.create-todo.tip.3': 'Enter nimeväljal loob ülesande kohe, ilma et peaksid teisi välju puudutama.',
@@ -3212,7 +3246,7 @@ const help: TranslationStrings = {
     'Sortimine nimekirja päises muudab ekraanil oleva järjekorda: Tähtsus paneb ette P1, Tähtaeg paneb ette lähima tähtaja. Korraga saab kasutada ainult üht neist ja teine klõps viib tagasi sinu enda järjekorra juurde.',
   'help.guide.todo-filters.step.4': 'Klõpsa ülesandel, et see paremal paanil avada.',
   'help.guide.todo-filters.step.5':
-    'Muuda vajalikku, Kirjeldus, Tähtsus, Nimekiri, Tähtaeg või Vastutaja, ja klõpsa Salvesta muudatused. Paani päises olev märkeruut märgib ülesande tehtuks ja Kustuta eemaldab selle kohe.',
+    'Muuda vajalikku, nimi, Kirjeldus, Tähtsus, Nimekiri, Tähtaeg või Vastutaja, ja klõpsa paani allservas Salvesta muudatused. Paani päises olev märkeruut märgib ülesande tehtuks ja nupu Salvesta muudatused kõrval olev Kustuta eemaldab selle kohe.',
   'help.guide.todo-filters.result':
     'Loendis on ainult soovitud ülesanded ja paremal paanil saad valitud ülesannet muuta.',
   'help.guide.todo-filters.tip.1':
@@ -3223,80 +3257,82 @@ const help: TranslationStrings = {
   // ── Screen: trip-costs ────────────────────────────────────────────────────────────────
   'help.ctx.trip-costs.title': 'Kulud',
   'help.ctx.trip-costs.summary':
-    'Reisi raha: kõik kulud kuupäevadega pearaamatuna, kes maksis ja kes on võlgu, selles valuutas, milles kviitung oli, ning parempoolses veerus see, kes peab kellele maksma, et kõik oleks jälle tasa.',
+    'Reisi raha: kõik kulud kuupäevadega pearaamatus või tabelis, kes maksis ja kes on võlgu, selles valuutas, milles kviitung oli, ning parempoolses veerus see, kes peab kellele maksma, et kõik oleks jälle tasa.',
   'help.ctx.trip-costs.bullet.1':
-    'Üleval on neli kaarti: Sina võlgned ja Sulle võlgnetakse on sinu pool arveldusest, Tasumata summa on see, mis on kirja pandud, kuid millel pole veel maksjat, ning Reisi kogukulu liidab kõik kokku, selle all sinu osa ja see, mida sina maksid.',
+    'Üleval olev riba nimetab reisi kuupäevad ja reisijad, kelle vahel kulud jagatakse, ning selles on Otsi kulusid…, Filtreeri (lehter), Ekspordi CSV (allalaadimisikoon) ja lüliti Loend / Tabel.',
   'help.ctx.trip-costs.bullet.2':
-    'Paremas ülanurgas olev Lisa kulu avab redaktori; selle kõrval olev Arvelda registreerib korraga kõik avatud ülekanded.',
+    'Selle paremas otsas registreerib Arvelda korraga kõik avatud ülekanded, Skanni kviitung täidab kulu foto põhjal, kui lisamoodul Tehisintellektiga parsimine oskab pilte lugeda, ja Lisa kulu avab redaktori.',
   'help.ctx.trip-costs.bullet.3':
-    'Pearaamat on rühmitatud päevade kaupa, uusimad eespool, ja paremal on selle päeva kogusumma. Real on kategooria värvilise sakina, nimi, maksjate märgid, märkus ja summa ning lisaks laenasid välja või võtsid laenu, kui jaotus jätab sind plussi või miinusesse.',
+    'Riba all on neli kaarti: Sina võlgned ja Sulle võlgnetakse on sinu pool arveldusest, Tasumata summa on see, mis on kirja pandud, kuid millel pole veel maksjat, ning Reisi kogukulu liidab kõik kokku, selle all Sinu osa ja Sina maksid.',
   'help.ctx.trip-costs.bullet.4':
-    'Loendi kohal on Otsi kulusid…, kategooriafilter, päevafilter, lüliti Kõik / Minu makstud / Mulle võlgnetakse ja nupp Ekspordi CSV.',
+    'Pearaamat on rühmitatud päevade kaupa, uusimad eespool, ja iga päeva pealkirjas on selle kirjete arv ja päeval kulutatud summa. Real on kategooria värvilise sakina, nimi, maksjate märgid, märkus ja summa ning lisaks laenasid välja või võtsid laenu, kui jaotus jätab sind plussi või miinusesse.',
   'help.ctx.trip-costs.bullet.5':
     'Parempoolne veerg annab vastuse: Arvelda näitab, kes kellele maksab, Saldod iga reisija ülejääki või puudujääki, Lõplik eelarve seda, mis reis igaühele maksma läheb, ja Kategooriate kaupa seda, kuhu raha läks.',
   'help.ctx.trip-costs.bullet.6':
-    'Registreeritud makse on samas pearaamatus eraldi real, kõrval Muuda ja Võta tagasi; kulul on pliiats ja prügikast ning prügikast kustutab selle küsimata.',
+    'Registreeritud makse on samas pearaamatus eraldi real, kõrval pliiats ja Võta tagasi; kulul on pliiats ja prügikast ning prügikast kustutab selle küsimata.',
+  'help.ctx.trip-costs.bullet.7':
+    'Riba nupp Tabel näitab samu kulusid tabelina, rühmitatuna kategooriate kaupa, veergudega Inimesi ja Päevi ning sellega, kui palju see teeb inimese ja päeva kohta; Kokkuvõte asendab siis jaotise Kategooriate kaupa. Kulud jätab valitud vaate meelde.',
   // add-expense
   'help.guide.add-expense.title': 'Lisa kulu',
   'help.guide.add-expense.goal': 'Pane kirja, mis miski maksis, kes selle eest maksis ja kellega see jagatakse.',
   'help.guide.add-expense.step.1':
-    'Klõpsa vahekaardi Kulud paremas ülanurgas nuppu Lisa kulu. Redaktor avaneb tänase kuupäevaga ja kõik on juba jaotusesse kaasatud.',
+    'Klõpsa riba paremas otsas nuppu Lisa kulu. Redaktor avaneb tänase kuupäevaga, maksjaks sina ja kõik on juba jaotusesse kaasatud.',
   'help.guide.add-expense.step.2':
-    'Kirjuta väljale Mille eest?, mis on ainus kohustuslik väli, mille eest kulu oli, ja väljale Kogusumma kviitungil olev summa.',
+    'Kirjuta dialoogi päisesse, mille eest kulu oli: väljale, kus tühjana seisab Nt õhtusöök, suveniirid, kütus… See on kulu nimi ja ilma selleta ei saa kulu salvestada.',
   'help.guide.add-expense.step.3':
-    'Valuuta ja Päev on summa all. Valuuta on algselt reisi oma; kui seda muudad, näitab redaktor summa väärtust reisi valuutas. Päev on algselt tänane ja selle järgi rühmitab pearaamat kulu.',
+    'Nime all olev kiip on Kategooria, Söök ja jook, kuni valid mõne muu. Neid on neliteist ja neid ei saa muuta: päis võtab valitud kategooria värvi, samuti rea sakk ja selle riba jaotises Kategooriate kaupa.',
   'help.guide.add-expense.step.4':
-    'Vali Kategooria. Neid on neliteist ja neid ei saa muuta: valitud kategooria on real värviline sakk ja riba jaotises Kategooriate kaupa.',
+    'Sisesta kviitungil olev summa väljale Kogusumma. Selle kõrval olev Valuuta on algselt see valuuta, milles vahekaarti Kulud näidatakse; kui seda muudad, näitab redaktor summa väärtust. Päev on algselt tänane ja selle järgi rühmitab pearaamat kulu.',
   'help.guide.add-expense.step.5':
-    'Vali jaotises Kes maksis? inimene, kes tegelikult maksis. Vaikimisi on valitud Sina; Keegi pole veel maksnud paneb summa kirja, ilma et keegi selle eest võlgu jääks, ja Maksjaid oli mitu jaotab arve mitme maksja vahel.',
+    'Klõpsa jaotises Kes maksis? inimesel, kes tegelikult maksis. Vaikimisi on valitud Sina; Keegi pole veel maksnud paneb summa kirja, ilma et keegi selle eest võlgu jääks, ja pealkirja kõrval oleva lüliti valik Maksjaid oli mitu jaotab arve mitme maksja vahel.',
   'help.guide.add-expense.step.6':
-    'Jaotus on algselt Võrdselt ja kõik on kaasatud ning iga nime juures on näha tema osa. Salvestamiseks klõpsa Lisa kulu.',
+    'All olev Jaotus on algselt Võrdselt, kõik on märgitud ja iga osa on nime kõrval; jäta see nii või muuda. Salvestamiseks klõpsa dialoogi allservas Lisa kulu.',
   'help.guide.add-expense.result':
     'Kulu on pearaamatus oma päeva all, arvestatud Reisi kogukulu hulka, ja arvelduse veerg on uuesti arvutanud, kes kellele võlgneb.',
   'help.guide.add-expense.tip.1':
-    'Kui midagi ei muuda, on kulu reisi valuutas, tänase kuupäevaga ja jaotatud kõigi vahel võrdselt: tegelikult tuleb täita ainult nimi ja summa.',
+    'Kui midagi ei muuda, on kulu tänase kuupäevaga, maksjaks sina ja jaotatud kõigi vahel võrdselt: tegelikult tuleb täita ainult nimi ja summa.',
   'help.guide.add-expense.tip.2':
     'Summa kõrval olev ± muudab kulu tagasimakseks. Negatiivne kogusumma annab raha tagasi, selle asemel et seda võtta, ja jaotus toimib vastupidi.',
   'help.guide.add-expense.tip.3':
-    'All olev Lisa kviitung või arve võtab vastu pilte ja PDF-e. Need laaditakse üles salvestamisel, satuvad reisi Failidesse ja loendis ilmub nime kõrvale märk Kviitungid.',
+    'Dialoogi allservas pealkirja Kviitungid ja arved kõrval olev Lisa võtab vastu pilte ja PDF-e. Need laaditakse üles salvestamisel, satuvad reisi Failidesse ja loendis ilmub nime kõrvale märk Kviitungid.',
   // expense-payers
   'help.guide.expense-payers.title': 'Märgi, kes arve maksis',
   'help.guide.expense-payers.goal':
     'Pane kirja, kes on kulu eest oma taskust maksnud; see on arvelduse arvutuse teine pool.',
   'help.guide.expense-payers.step.1':
-    'Ava kulu selle rea kõrval oleva pliiatsiga ja vaata jaotist Kes maksis?. Vaikimisi on Maksja oli üks: rippmenüüs on see üks inimene, kes maksis.',
+    'Ava kulu selle rea kõrval oleva pliiatsiga ja vaata jaotist Kes maksis?. Pealkirja kõrval oleval lülitil on vaikimisi Maksja oli üks: iga reisija on kiip ja ääristatud kiip on see, kes maksis. Muutmiseks klõpsa teisel kiibil.',
   'help.guide.expense-payers.step.2':
-    'Keegi pole veel maksnud, selle rippmenüü esimene valik, paneb summa kirja, ilma et keegi midagi võlgneks. Kulu arvestatakse siiski Reisi kogukulu hulka.',
+    'Keegi pole veel maksnud, reisijate järel olev katkendjoonega kiip, paneb summa kirja, ilma et keegi midagi võlgneks. Kulu arvestatakse siiski Reisi kogukulu hulka.',
   'help.guide.expense-payers.step.3':
-    'Maksjaid oli mitu, sildi kõrval olev link, avab iga reisija kohta rea. Kaasa need, kes maksid, ja sisesta, kui palju igaüks maksis; summad peavad kokku andma kogusumma.',
+    'Maksjaid oli mitu, sama lüliti teine pool, loetleb kõik reisijad koos märkeruuduga ja iga märgitud reisija saab summavälja. Märgi need, kes maksid, ja sisesta, kui palju igaüks maksis; summad peavad kokku andma kogusumma.',
   'help.guide.expense-payers.step.4':
-    'Kulu, mille eest keegi pole maksnud, märgitakse real kui Lõpetamata ja arvestatakse kaardile Tasumata summa, kuhu koguneb kirja pandud, kuid arveldamata kulutus.',
+    'Kulu, mille eest keegi pole maksnud, märgitakse real kui Lõpetamata ja arvestatakse kaardile Tasumata summa, kuhu koguneb kulutus, millel pole veel maksjat.',
   'help.guide.expense-payers.result':
     'Maksja määrab, kes saab raha tagasi, jaotus määrab, kes maksab, ja Saldod on nende kahe vahe.',
   'help.guide.expense-payers.tip.1':
     'Kes maksis? ja Jaotus on teineteisest sõltumatud: võid maksta õhtusöögi eest, kus sa ei olnud, ja olla kaasatud sellise kulu jaotusesse, mille eest sa ei maksnud.',
   'help.guide.expense-payers.tip.2':
-    'Mitme maksja korral peavad summad kokku andma kogusumma. Kui kaasad veel ühe, jaotuvad teiste summad ümber; kuni need ei klapi, näitab redaktor, milline peab summa olema, ega luba salvestada.',
+    'Mitme maksja korral peavad summad kokku andma kogusumma. Kui märgid veel ühe, jaotavad summad, mida sa ise pole sisestanud, ülejäänu uuesti; kuni need ei klapi, näitab redaktor, milline peab summa olema, ega luba salvestada.',
   'help.guide.expense-payers.tip.3':
-    'Maksja eemaldamine ei eemalda kulu: summa jääb Reisi kogukulu hulka ja rida saab oleku Lõpetamata.',
+    'Kui sead kulu tagasi valikule Keegi pole veel maksnud, ei eemaldu kulu: summa jääb Reisi kogukulu hulka ja rida saab oleku Lõpetamata.',
   // split-expense
   'help.guide.split-expense.title': 'Jaga arve reisijate vahel',
   'help.guide.split-expense.goal':
     'Otsusta, kes kulu eest võlgneb: kõik võrdselt, summade kaupa või kviitungi järgi rida realt.',
   'help.guide.split-expense.step.1':
-    'Kulu redaktoris on jaotises Jaotus kõik reisijad. Klõpsa nimel, et jätta see inimene sellest kulust välja; välja jäetud reisija juures on kirjas Välja jäetud ja ta ei võlgne selle eest midagi.',
+    'Kulu redaktoris on jaotises Jaotus kõik reisijad koos märkeruuduga. Eemalda nimelt märge, et jätta see inimene sellest kulust välja: nimi muutub halliks, kaotab oma osa ja ta ei võlgne selle eest midagi.',
   'help.guide.split-expense.step.2':
-    'Vaikimisi on Võrdselt: iga kaasatud reisija saab sama osa ning loendi all olev rida näitab, mitmeks osaks kulu jagatakse ja kui suur on iga osa.',
+    'Vaikimisi on pealkirja kõrval oleval lülitil Võrdselt: iga märgitud reisija saab sama osa, mis on näha nime kõrval, ning loendi all olevad märgid näitavad, mitu inimest kulu jagavad ja kui suur on iga osa.',
   'help.guide.split-expense.step.3':
-    'Kohandatud asendab osad summaväljadega. Sisesta, kui palju iga reisija võlgneb; all olev rida arvutab kaasa ja muutub roheliseks tekstiga Jaotus vastab kogusummale. Kuni summa ei klapi, salvestada ei saa.',
+    'Kohandatud asendab osad summaväljadega. Sisesta, kui palju iga reisija võlgneb; all olev märk arvutab kaasa ja muutub roheliseks tekstiga Jaotus vastab kogusummale. Kuni summa ei klapi, salvestada ei saa.',
   'help.guide.split-expense.step.4':
-    'Tšekk jaotab kviitungi rida realt: Lisa kirje, seejärel igale reale nimi ja hind ning jaotises Jaotus: reisijad, kes selle rea jagavad.',
+    'Tšekk jaotab kviitungi rida realt: Lisa kirje, seejärel igale reale nimi ja hind ning sildi Jaotus: kõrval reisijad, kes selle rea jagavad.',
   'help.guide.split-expense.step.5':
-    'Ridade all olev Individuaalsed osad näitab, kui palju iga reisija lõpuks võlgneb, ja üleval olev Kogusumma liidetakse ridadest. Klõpsa Salvesta.',
+    'Ridade all olev Individuaalsed osad näitab, kui palju iga reisija lõpuks võlgneb, ja üleval olev Kogusumma liidetakse ridadest. Klõpsa dialoogi allservas Salvesta.',
   'help.guide.split-expense.result':
     'Jaotusest arvutatakse kõik saldod. See salvestatakse koos kuluga ja seda saab hiljem muuta, ilma et midagi muud muutuks.',
   'help.guide.split-expense.tip.1':
-    'Välja jäetud reisija juures on kirjas Välja jäetud ja ta ei võlgne selle ühe kulu eest midagi; teised võtavad oma osa.',
+    'Reisija, kelle märke eemaldad, ei võlgne selle ühe kulu eest midagi; teised võtavad oma osa.',
   'help.guide.split-expense.tip.2':
     'Võrdselt on sendi täpsusega: ülejääv sent liigub kulult kulule edasi, nii et keegi ei pea seda alati maksma.',
   'help.guide.split-expense.tip.3':
@@ -3306,48 +3342,50 @@ const help: TranslationStrings = {
   'help.guide.expense-currency.goal':
     'Sisesta see, mis kviitungil tegelikult kirjas on, ja lase TREKil kurss meelde jätta.',
   'help.guide.expense-currency.step.1':
-    'Ava Lisa kulu ja täida nimi ja summa täpselt nii, nagu kviitungil kirjas, just see arv, mitte selle ümberarvestus.',
+    'Ava Lisa kulu, seejärel kirjuta nimi dialoogi päisesse ja summa väljale Kogusumma täpselt nii, nagu kviitungil kirjas, just see arv, mitte selle ümberarvestus.',
   'help.guide.expense-currency.step.2':
-    'Ava Valuuta ja vali kviitungi valuuta. Loendis on kõik TREKile teadaolevad koodid ja seda saab otsida: sisesta kolm tähte.',
+    'Ava summa kõrval olev Valuuta ja vali kviitungi valuuta. Loendis on kõik TREKile teadaolevad koodid ja seda saab otsida: sisesta kolm tähte.',
   'help.guide.expense-currency.step.3':
-    'Väljade alla ilmub rida, mis näitab summa praegust väärtust, märgisega hetkekurss. See on eelvaade, mitte salvestatav väärtus.',
+    'Väljade alla ilmub märkide rida: sinu sisestatud summa ja selle praegune väärtus, märgisega hetkekurss. See on eelvaade, mitte salvestatav väärtus.',
   'help.guide.expense-currency.step.4':
-    'Klõpsa Lisa kulu. Kurss külmutatakse kohe: edaspidi on selle kulu väärtus sama, mis see oli sisestamise päeval.',
+    'Klõpsa dialoogi allservas Lisa kulu. Kurss külmutatakse kohe: edaspidi on selle kulu väärtus sama, mis see oli sisestamise päeval.',
   'help.guide.expense-currency.step.5':
-    'Pearaamatus on real nime all mõlemad summad: sinu sisestatud summa, nool ja selle väärtus reisi valuutas. Kõik ülal olevad kogusummad, saldod ja arveldused kasutavad teist neist.',
+    'Pearaamatus on real nime all mõlemad summad: sinu sisestatud summa, nool ja selle väärtus reisi valuutas. Kõik vahekaardi Kulud kogusummad, saldod ja arveldused arvutatakse teise põhjal.',
   'help.guide.expense-currency.result':
-    'Kulu säilitab sinu sisestatud summa ja valuuta. Pearaamat näitab mõlemat ning reisi kogusummad ja saldod jäävad reisi valuutasse.',
+    'Kulu säilitab sinu sisestatud summa ja valuuta. Pearaamat näitab mõlemat ning reisi kogusummad ja saldod arvestatakse reisi valuutas.',
   'help.guide.expense-currency.tip.1':
     'Kurss külmutatakse salvestamise hetkel, nii et arveldatud võlg ei avane uuesti selle tõttu, et turg nädal hiljem liikus. Uus kurss külmutatakse ainult siis, kui muudad kulu valuutat.',
   'help.guide.expense-currency.tip.2':
     'Seadetes olev Kuvamisvaluuta muudab ainult seda, mida sa näed; salvestatud summad ei muutu kunagi. Kui see on tühi, kuvatakse iga reisi selle enda valuutas.',
   'help.guide.expense-currency.tip.3':
-    'Reisi valuuta ise on määratud reisi juures, jaotises Muuda reisi, ja selle muutmiseks on vaja reisi muutmise õigust. Selle muutmine seob kõik külmutatud kursid uuesti, summasid ümber arvestamata.',
+    'Reisi valuuta ise on määratud reisi juures, jaotises Muuda reisi, ja selle muutmiseks on vaja õigust Reisiandmete muutmine. Selle muutmine seob kõik külmutatud kursid uuesti, summasid ümber arvestamata.',
   // filter-costs
   'help.guide.filter-costs.title': 'Leia kulu või ühe päeva kulutused',
   'help.guide.filter-costs.goal': 'Kitsenda pikk pearaamat selleni, mida tegelikult otsid.',
   'help.guide.filter-costs.step.1':
-    'Kirjuta loendi kohal olevale väljale Otsi kulusid… Kulude nimesid võrreldakse juba kirjutamise ajal.',
+    'Kirjuta ribal olevale väljale Otsi kulusid… Kulude nimesid võrreldakse juba kirjutamise ajal ja Esc tühjendab välja uuesti.',
   'help.guide.filter-costs.step.2':
-    'Kõik kategooriad avab neliteist kategooriat. Vali üks ja alles jäävad ainult selle kategooria kulud.',
+    'Otsingu kõrval olev lehter Filtreeri avab filtrid. Üleval olev lüliti on sinu isiklik vaade pearaamatule: Kõik, Minu makstud selle kohta, mille eest sina maksid, ja Mulle võlgnetakse kulude kohta, milles maksid rohkem kui oma osa.',
   'help.guide.filter-costs.step.3':
-    'Kõik päevad loetleb kõik päevad, mil midagi kulutati. Vali üks ja päevapäiste asemel kuvatakse riba selle päeva, selle kulude arvu ja kogusummaga.',
+    'Vali jaotises Kategooria üks neljateistkümnest kategooriast ja alles jäävad ainult selle kategooria kulud. Lehtril olev arv näitab, mitu filtrit on sees.',
   'help.guide.filter-costs.step.4':
-    'Lüliti Kõik / Minu makstud / Mulle võlgnetakse on sinu isiklik vaade pearaamatule: mille eest sa maksid ja mille eest sa pole veel raha tagasi saanud.',
+    'Vali jaotises Päev üks päevadest, mil midagi kulutati. Päevapäiste asemel kuvatakse riba, kus on päev täielikult välja kirjutatud, selle kulude arv ja kogusumma.',
   'help.guide.filter-costs.step.5':
-    'Rea lõpus olev Ekspordi CSV kirjutab kõik kulud faili koos algse summa, selle valuuta ja ümberarvestatud summaga.',
+    'Lehtri kõrval olev allalaadimisikoon Ekspordi CSV kirjutab kõik kulud faili koos algse summa, selle valuuta ja ümberarvestatud summaga.',
   'help.guide.filter-costs.result':
     'Filtreid saab kombineerida ning päevarühmad kuvatakse uuesti alles jäänud kulude kogusummadega.',
   'help.guide.filter-costs.tip.1':
-    'Registreeritud maksetel pole nime ega kategooriat, seega peidab otsing või kategooriafilter need. Päevafilter jätab need alles, selle päeva alla, mil makse registreeriti.',
+    'Registreeritud maksetel pole nime ega kategooriat, seega peidab otsing või kategooriafilter need. Päevafilter jätab need alles, selle päeva alla, mil makse toimus.',
   'help.guide.filter-costs.tip.2':
     'Ekspordi CSV ekspordib alati kõik kulud, olenemata ekraanil olevatest filtritest, iga kulu eraldi real.',
+  'help.guide.filter-costs.tip.3':
+    'Kui mõni filter on sees, ilmub filtrimenüü allserva Lähtesta filtrid, mis lülitab need kõik korraga välja.',
   // settle-up
   'help.guide.settle-up.title': 'Selgita välja, kes kellele võlgneb, ja arvelda',
   'help.guide.settle-up.goal':
     'Muuda hulk ühiseid kulusid võimalikult väheseks arvuks ülekanneteks, mis teevad kõik tasaseks, ja registreeri need, kui need toimuvad.',
   'help.guide.settle-up.step.1':
-    'Parempoolse veeru kaart Arvelda loetleb ülekanded, mis teeksid kõik tasaseks: kes kellele maksab ja kui palju. Pealkirja kõrval olev number näitab, mitu neist on veel avatud.',
+    'Parempoolse veeru kaart Arvelda loetleb ülekanded, mis teeksid kõik tasaseks: kes kellele maksab, kahe avatarina, mille kohtspikris on nimed, ja kui palju. Selle päises olev number näitab, mitu neist on veel avatud.',
   'help.guide.settle-up.step.2':
     'Ülekande kõrval olev Arvelda märgib selle tehtuks. Ülekanne kaob kaardilt ja saldod arvutatakse uuesti.',
   'help.guide.settle-up.step.3':
@@ -3355,9 +3393,9 @@ const help: TranslationStrings = {
   'help.guide.settle-up.step.4':
     'Selle rea kõrval olev pliiats parandab makset ja Võta tagasi tühistab selle, misjärel ülekanne naaseb kaardile Arvelda.',
   'help.guide.settle-up.step.5':
-    'Kaardi päises olev Lisa makse registreerib ülekande, mis ei järginud soovitust. Vali Maksja ja Saaja, summa, selle valuuta ja päev, mil see toimus.',
+    'Kaardi päises olev Lisa makse registreerib ülekande, mis ei järginud soovitust. Vali Maksja ja Saaja, summa, selle valuuta ja päev, mil see toimus, seejärel klõpsa dialoogi allservas Lisa makse.',
   'help.guide.settle-up.step.6':
-    'Ekraani ülaosas päises olev Arvelda registreerib korraga kõik avatud ülekanded, nagu grupp reisi lõpus arved klaarib.',
+    'Ülal ribal olev Arvelda registreerib korraga kõik avatud ülekanded, küsimata, nagu grupp reisi lõpus arved klaarib.',
   'help.guide.settle-up.result':
     'Iga registreeritud ülekanne on rida pearaamatus ja üks rida vähem kaardil Arvelda. Kui kaardil on kirjas Kõik on tasa, on reis tasutud.',
   'help.guide.settle-up.tip.1':
@@ -3376,7 +3414,7 @@ const help: TranslationStrings = {
   'help.guide.final-budget.step.3':
     'Klõpsa nimel, et näha arvutust: Makstud kulud, selle all Tagasimaksete netosumma ja Ootel tagasimaksed.',
   'help.guide.final-budget.step.4':
-    'Iga rea all on read, millest see koosneb: kulud, mille eest see reisija maksis, juba registreeritud ülekanded ja veel avatud ülekanded. Nende summa võrdub täpselt nende kohal oleva reaga.',
+    'Kolme rea all on iga rea nime all loend ridadest, millest see koosneb: kulud, mille eest see reisija maksis, juba registreeritud ülekanded ja veel avatud ülekanded. Iga loendi summa võrdub täpselt samanimelise reaga.',
   'help.guide.final-budget.result':
     'Saldod näitab, kes on täna plussis või miinuses; Lõplik eelarve näitab, mis reis igaühele teist lõpuks maksma läheb, kui kõik on tagasi makstud.',
   'help.guide.final-budget.tip.1':
@@ -3387,35 +3425,59 @@ const help: TranslationStrings = {
   'help.guide.expense-from-booking.title': 'Muuda broneering kuluks',
   'help.guide.expense-from-booking.goal': 'Seo lennu, hotelli või koha tegelik hind kirjega, kuhu see kuulub.',
   'help.guide.expense-from-booking.step.1':
-    'Ava broneering vahekaardil Transport või Broneeringud ja klõpsa selle pliiatsit.',
+    'Leia broneering vahekaardil Transport või Broneer. ja klõpsa selle kaardi päises pliiatsit.',
   'help.guide.expense-from-booking.step.2':
-    'Keri vormi allosas olevasse plokki Kulud. See pakub valikut Loo kulu, mis salvestab broneeringu esmalt, ja valikut Seo olemasolev kulu sellise kulu jaoks, mis on juba vahekaardil Kulud.',
+    'Keri vormi lõpu lähedal olevasse jaotisse Kulud. See pakub valikut Loo kulu, mis salvestab broneeringu esmalt, ja valikut Seo olemasolev kulu sellise kulu jaoks, mis on juba vahekaardil Kulud.',
   'help.guide.expense-from-booking.step.3':
     'Klõpsa Loo kulu. Broneering salvestatakse, vorm suletakse ja avaneb kulude redaktor, kus nimeks on broneeringu pealkiri ja selle tüübile vastav kategooria on juba valitud.',
   'help.guide.expense-from-booking.step.4':
-    'Täida summa ja selle valuuta, maksja ja jaotus nagu iga kulu puhul ning salvesta. Kui broneeringu uuesti avad, on kulu näha jaotises Seotud kulud, koos pliiatsiga muutmiseks, valikuga Eemalda seos, jäta kulu alles lahtisidumiseks ja prügikastiga eemaldamiseks.',
+    'Täida summa ja selle valuuta, maksja ja jaotus nagu iga kulu puhul ning klõpsa Lisa kulu. Kui broneeringu uuesti avad, on kulu näha jaotises Seotud kulud, koos pliiatsiga muutmiseks, valikuga Eemalda seos, jäta kulu alles lahtisidumiseks ja prügikastiga eemaldamiseks.',
   'help.guide.expense-from-booking.result':
     'Broneeringul on nüüd oma hind ja kulu on tavaline rida vahekaardil Kulud, maksja, jaotuse ja valuutaga nagu iga teine.',
   'help.guide.expense-from-booking.tip.1':
     'Broneeringu kustutamine kustutab ka sellega seotud kulud. Broneeringu plokis Kulud olev Eemalda kulu teeb vastupidi: kulu kaob, broneering jääb alles. Eemalda seos, jäta kulu alles hoiab alles mõlemad.',
   'help.guide.expense-from-booking.tip.2': 'Koha vormis on sama plokk ja Loo kulu salvestab esmalt koha.',
+  // costs-table
+  'help.guide.costs-table.title': 'Planeeri kulud tabelis',
+  'help.guide.costs-table.goal':
+    'Loe ja muuda kulusid tabelina, sorteerituna kategooriate kaupa ning arvutatuna inimese ja päeva kohta.',
+  'help.guide.costs-table.step.1':
+    'Klõpsa Tabel, ribal oleva lüliti Loend / Tabel teist ikooni. Pearaamatu asemel kuvatakse samade kulude tabel ning otsing ja filtrid kehtivad ka sellele.',
+  'help.guide.costs-table.step.2':
+    'Tabel on rühmitatud kategooriate kaupa, iga rühma päises on selle nimi, kulude arv ja vahesumma; klõps päisel voldib rühma kokku. Veerud on Nimi, Kuupäev, Kokku, Inimesi ja Päevi, seejärel nende põhjal hallil taustal arvutatud Inimese kohta, Päeva kohta ja Inimese/päeva kohta.',
+  'help.guide.costs-table.step.3':
+    'Klõpsa lahtril, et seda kohapeal muuta: nime, summat, Inimesi või Päevi. Kirjuta ja vajuta muudatuse säilitamiseks Enter või klõpsa mujal, või vajuta Esc, et jätta see nii, nagu oli; kuupäev avab kalendri. Inimese kohta ja teised arvutatud veerud uuenevad kohe.',
+  'help.guide.costs-table.step.4':
+    'Lukuga summat ei saa siin muuta: keegi on selle maksnud või see sisestati teises valuutas ja selle kohtspikker ütleb, kumb. Klõps sellel avab hoopis kulu, et saldod ja külmutatud kurss jääksid õigeks.',
+  'help.guide.costs-table.step.5':
+    'Kategooria lõpus olev Lisa kulu lisab sellele rea nimega Uus kirje, mis saab sama kuupäeva nagu seal viimane kirje ja mille nimi on kohe muutmiseks avatud. Summa sisesta samamoodi.',
+  'help.guide.costs-table.step.6':
+    'Selles vaates näitab parempoolne veerg jaotise Kategooriate kaupa asemel jaotist Kokkuvõte. See liidab kulud kokku neljal viisil: Kategooria, Päev, Maksja (tasumata kulud all Maksjat veel pole) ja Olek, Makstud versus Avatud.',
+  'help.guide.costs-table.result':
+    'Iga kulu on oma kategoorias koos summaga inimese ja päeva kohta ning lahtris muudetud summa arvestatakse kohe ülal olevatesse kaartidesse ja jaotisse Kokkuvõte.',
+  'help.guide.costs-table.tip.1':
+    'Kulud jätab vaate selles brauseris meelde: see avaneb tabelina, kuni klõpsad uuesti Loend.',
+  'help.guide.costs-table.tip.2':
+    'Kulul, mille jaotus on Kohandatud või Tšekk, pole ühtset osa inimese kohta, seega jäävad selle Inimese kohta ja Inimese/päeva kohta tühjaks.',
+  'help.guide.costs-table.tip.3':
+    'Maksjaid, jaotust, märkust ja kviitungeid muudetakse kulus endas: rea lõpus olev Veel valikuid pakub valikut Muuda ning Kustuta rea eemaldamiseks.',
 
   // ── Screen: trip-files ────────────────────────────────────────────────────────────────
   'help.ctx.trip-files.title': 'Failid',
   'help.ctx.trip-files.summary':
     'Kõik reisi dokumendid ühes loendis: piletid, kinnitused, pääsmed ja pildid, igaüks koos märkuse ja lingiga kohale või broneeringule, kuhu see kuulub, ning prügikastiga, kust selle saab tagasi tuua.',
   'help.ctx.trip-files.bullet.1':
-    'Ülaosas olev Lohista failid siia võtab failid vastu; kastil klõpsamine avab failivalija. Selle all olev rida loetleb failitüübid, mida see TREK aktsepteerib, ja piirangu 50 MB faili kohta.',
+    'Lohista failid siia, riba all olev katkendjoonega kast, võtab failid vastu; klõps sellel avab failivalija. Selle sees on failitüübid, mida see TREK aktsepteerib, ja Kuni 50 MB, piirang faili kohta.',
   'help.ctx.trip-files.bullet.2':
-    'Vahekaardid näitavad, mida loend kuvab: Kõik, PDF-id, Pildid ja Dokumendid, igaüks koos oma arvuga. Tärniga vahekaart lisandub kohe, kui mõnele failile on tärn lisatud, ja Ühismärkmed siis, kui mõnel märkmel on manus.',
+    'Ülal oleval ribal on Failid ja filtrivahekaardid Kõik, PDF-id, Pildid ja Dokumendid, igaüks koos oma arvuga. Tärn lisandub nende hulka kohe pärast Kõik, kui mõnele failile on tärn lisatud, ja Ühismärkmed lõppu, kui mõnel märkmel on manus.',
   'help.ctx.trip-files.bullet.3':
-    'Real on üleslaadija, nimi, selle all märkus, suurus ja kuupäev ning iga lingi kohta üks märk: Päevaplaan ja koht, Broneering või Transport ja broneering, Ühismärkmetest.',
+    'Real on pisipilt või faili tüüp, üleslaadija, nimi, selle all märkus, suurus ja kuupäev ning iga lingi kohta üks märk: koht, broneering või transport oma nimega (sellele osutades on kirjas Päevaplaan, Broneering või Transport) ja Ühismärkmetest.',
   'help.ctx.trip-files.bullet.4':
-    'Rea lõpus on Lisa tärn, Määra, Ava, Laadi alla ja Kustuta. Kustuta ei küsi kinnitust: fail läheb prügikasti, kust selle saab tagasi tuua.',
+    'Rea lõpus on kuni viis ikooni, igaüks näitab osutamisel oma nime: Lisa tärn, Määra (pliiats), Ava, Laadi alla ja Kustuta. Kustuta ei küsi kinnitust: fail läheb prügikasti, kust selle saab tagasi tuua.',
   'help.ctx.trip-files.bullet.5':
-    'Pilt või video avaneb täisekraanil, noolenuppude ja pisipiltide ribaga; kõik muud dokumendid avanevad lehe peal eelvaates koos nuppudega Ava uuel vahekaardil ja Laadi alla. Rahakotipääse laaditakse kohe alla.',
+    'Pilt või video avaneb täisekraanil, noolenuppude ja pisipiltide ribaga; kõik muud dokumendid avanevad dialoogis, mille ülaosas on nimi ja selle all nupud Ava uuel vahekaardil ja Laadi alla. Rahakotipääse laaditakse kohe alla.',
   'help.ctx.trip-files.bullet.6':
-    'Paremas otsas olev Prügikast lülitab loendi kustutatud failidele, kus iga faili saab taastada või jäädavalt kustutada ja Tühjenda prügikast eemaldab need kõik. Kui administraator on ühendanud dokumendihoidla, on selle kõrval Dokumentide sünkroonimine.',
+    'Riba paremas otsas olev prügikastiikoon (Prügikast) lülitab loendi kustutatud failidele, kus iga faili saab taastada või jäädavalt kustutada ja ribal olev Tühjenda prügikast eemaldab need kõik. Kui reis on seotud dokumendihoidlaga, või omanikule ja administraatorile kohe, kui mõni hoidla on sisse lülitatud, on prügikastiikoonist vasakul Dokumentide sünkroonimine.',
   // files-upload
   'help.guide.files-upload.title': 'Lisa dokument reisile',
   'help.guide.files-upload.goal':
@@ -3423,15 +3485,15 @@ const help: TranslationStrings = {
   'help.guide.files-upload.step.1':
     'Ava reis ja klõpsa vahekaardiribal Failid. Seal on loetletud reisi dokumendid ja nende kohal on üleslaadimiskast.',
   'help.guide.files-upload.step.2':
-    'Klõpsa Lohista failid siia ja vali üks või mitu faili. Need laaditakse üles üksteise järel ja selle ajal on kastis kirjas Üleslaadimine... Kasti all olev rida ütleb, milliseid tüüpe see TREK vastu võtab ja et fail võib olla kuni 50 MB.',
+    'Klõpsa Lohista failid siia ja vali üks või mitu faili. Need laaditakse üles üksteise järel ja selle ajal on kastis kirjas Üleslaadimine... Kasti sees, teksti või klõpsa sirvimiseks all, on tüübid, mida see TREK vastu võtab, ja Kuni 50 MB, faili suurim lubatud suurus.',
   'help.guide.files-upload.step.3':
-    'Kohe kui viimane fail on üles laaditud, avaneb selle jaoks automaatselt Määra fail. Väli Lisa märkus... annab failile oma rea ja selle all olevad loendid seovad selle koha või broneeringuga. Sulge see ×-ga; sulgemisel ei lähe midagi kaotsi.',
+    'Kohe kui viimane fail on üles laaditud, avaneb selle jaoks automaatselt Määra fail (kui reisil on üldse kohti või broneeringuid), dialoogi päises faili nimi. Jaotises Märkus olev väli Lisa märkus... annab failile oma rea ja selle all olevad loendid seovad selle koha või broneeringuga. Sulge see paremas ülanurgas oleva ×-ga; sulgemisel ei lähe midagi kaotsi.',
   'help.guide.files-upload.step.4':
-    'Uued failid on loendi alguses. Real on näha üleslaadija, nimi, suurus ja kuupäev; pildil on pisipilt, muudel failidel nende tüüp.',
+    'Uued failid on loendi alguses; nende kohal on ainult tärniga failid. Real on näha üleslaadija, nimi, suurus ja kuupäev; pildil on pisipilt, muudel failidel nende tüüp.',
   'help.guide.files-upload.result':
     'Dokumendid on reisil ning kõik, kes reisi näevad, saavad neid avada ja alla laadida.',
   'help.guide.files-upload.tip.1':
-    'Faili saab ka töölaualt otse kastile lohistada; kast süttib, kui fail on selle kohal.',
+    'Faili saab ka töölaualt otse kastile lohistada; kast on esile tõstetud, kui fail on selle kohal.',
   'help.guide.files-upload.tip.2':
     'Lõikelaual oleva pildi saab loendisse lisada klahvidega Ctrl+V, nii et broneeringu ekraanipilti ei pea enne salvestama.',
   'help.guide.files-upload.tip.3':
@@ -3440,18 +3502,19 @@ const help: TranslationStrings = {
   'help.guide.files-link.title': 'Seo dokument koha või broneeringuga',
   'help.guide.files-link.goal': 'Tee pilet leitavaks ka päevast, kuhu see kuulub, mitte ainult sellest loendist.',
   'help.guide.files-link.step.1':
-    'Klõpsa rea lõpus olevat pliiatsit Määra. Avaneb Määra fail, mille pealkirjas on faili nimi.',
+    'Klõpsa rea lõpus olevat pliiatsit (Määra). Avaneb Määra fail, dialoogi päises selle all faili nimi.',
   'help.guide.files-link.step.2':
-    'Jaotises Märkus saab väljale Lisa märkus... kirjutada ühe rea, mis kuvatakse loendis faili nime all. See salvestatakse hetkel, kui väljalt lahkud.',
+    'Jaotises Märkus saab väljale Lisa märkus... kirjutada ühe rea, mis kuvatakse loendis faili nime all. See salvestatakse, kui vajutad Enter või väljalt lahkud.',
   'help.guide.files-link.step.3':
-    'Jaotises Koht on reisi kohad, rühmitatud päevade kaupa, ja lõpus Määramata nende jaoks, mis pole üheski päevas. Klõpsa ühel ja see saab linnukese.',
+    'Vasakul jaotises Koht on reisi kohad, rühmitatud päevade kaupa koos päeva kuupäevaga, ja lõpus Määramata nende jaoks, mis pole üheski päevas. Klõpsa ühel ja see saab linnukese.',
   'help.guide.files-link.step.4':
-    'Jaotistes Broneering ja Transport on reisi broneeringud. Klõpsa sellel, kuhu dokument kuulub; ka see saab linnukese.',
-  'help.guide.files-link.step.5': 'Sulge ×-ga. Salvestamisnuppu siin pole: iga klõps salvestati kohe.',
+    'Paremal jaotistes Broneering ja Transport on reisi broneeringud. Klõpsa sellel, kuhu dokument kuulub; ka see saab linnukese.',
+  'help.guide.files-link.step.5':
+    'Sulge paremas ülanurgas oleva ×-ga. Salvestamisnuppu siin pole: iga klõps salvestati kohe.',
   'help.guide.files-link.result':
-    'Real on märkus ja iga lingi kohta üks märk, Päevaplaan ja koha nimi, Transport ja lennu nimi, ning dokument on seotud ka koha ja lennuga.',
+    'Real on märkus ja iga lingi kohta üks märk, üks koha nimega ja üks lennu nimega (märgile osutades on kirjas Päevaplaan või Transport), ning dokument on seotud ka koha ja lennuga.',
   'help.guide.files-link.tip.1':
-    'Failil võib olla korraga mitu linki, nii et sama kinnitus kuulub nii hotellile kui ka ööle, mida see katab.',
+    'Failil võib olla korraga mitu linki, nii et sama kinnitus võib samal ajal kuuluda nii hotelli broneeringule kui ka hotelli kohale.',
   'help.guide.files-link.tip.2': 'Märgitud kirjel uuesti klõpsamine eemaldab selle lingi; fail ise jääb alles.',
   'help.guide.files-link.tip.3':
     'See toimib ka vastupidi: kohale või broneeringule lisatud dokument on samuti selles loendis, real sama märk.',
@@ -3460,22 +3523,22 @@ const help: TranslationStrings = {
   'help.guide.files-star.goal':
     'Too kogu reisi jooksul kasvavast loendist esile need kaks-kolm paberit, mida sul tõesti vaja läheb.',
   'help.guide.files-star.step.1':
-    'Klõpsa rea lõpus Lisa tärn. Tärn muutub kollaseks, faili nime ette ilmub teine tärn ja nupul on nüüd kirjas Eemalda tärn.',
+    'Klõpsa rea lõpus olevat tärni (Lisa tärn). Tärn muutub kuldseks, faili nime ette ilmub teine tärn ja nupule osutades on nüüd kirjas Eemalda tärn.',
   'help.guide.files-star.step.2':
     'Loend sorditakse uuesti: tärniga failid on kõigist teistest eespool, kummaski rühmas uusimad eespool.',
   'help.guide.files-star.step.3':
-    'Üleval vahekaartide hulka on lisandunud tärn koos tärniga failide arvuga. Klõpsa sellel, et näha ainult neid.',
+    'Ribal olevate filtrivahekaartide hulka on kohe pärast Kõik lisandunud tärn, selle kõrval tärniga failide arv. Klõpsa sellel, et näha ainult neid.',
   'help.guide.files-star.result':
     'Paberid, mida sul leti ääres vaja läheb, on loendi alguses ja üks vahekaart näitab ainult neid.',
   'help.guide.files-star.tip.1':
     'Tärniga vahekaart on olemas ainult siis, kui millelgi on tärn. Eemalda viimaselt faililt tärn ja vahekaart kaob koos sellega.',
   'help.guide.files-star.tip.2':
-    'Tärni lisamine loetakse muutmiseks: liige, kellel on reisi failidele ainult lugemisõigus, näeb tärne, kuid ei saa neid lisada.',
+    'Tärni lisamiseks on vaja sama õigust mis Määra jaoks, Failide metaandmete muutmine. Liige, kellel seda pole, näeb tärne, kuid klõps nupul Lisa tärn ei muuda tema jaoks midagi.',
   // files-filter
   'help.guide.files-filter.title': 'Leia dokument loendist',
   'help.guide.files-filter.goal': 'Kitsenda kõike sisaldav loend seda tüüpi paberiteni, mida otsid.',
   'help.guide.files-filter.step.1':
-    'Loendi kohal on vahekaardid Kõik, PDF-id, Pildid ja Dokumendid, igaühe järel failide arv.',
+    'Filtrivahekaardid asuvad üleval ribal, Failid kõrval: Kõik, PDF-id, Pildid ja Dokumendid, igaühe kõrval failide arv.',
   'help.guide.files-filter.step.2': 'Klõpsa PDF-id: loendisse jäävad ainult PDF-failid.',
   'help.guide.files-filter.step.3':
     'Veel kaks vahekaarti ilmuvad ja kaovad vastavalt reisi sisule. Klõpsa Ühismärkmed, mis on olemas kohe, kui mõnel vahekaardi Koostöö märkmel on manus: loendisse jäävad ainult need failid. Samamoodi lisandub ritta tärn kohe, kui mõnele failile on tärn lisatud.',
@@ -3483,21 +3546,22 @@ const help: TranslationStrings = {
   'help.guide.files-filter.result':
     'Loend näitab ainult seda, mida vahekaart nimetab, ja iga vahekaardi arv ütleb, kui palju neid on.',
   'help.guide.files-filter.tip.1':
-    'Siin pole kaustu ega ümbernimetamist: dokumente korrastavad märkus aknas Määra fail, lingid kohtadele ja broneeringutele ning tärn.',
+    'Siin pole kaustu ega ümbernimetamist: dokumente eristavad märkus aknas Määra fail, lingid kohtadele ja broneeringutele ning tärn.',
   'help.guide.files-filter.tip.2':
     'Loend ise on alati sorditud nii, et tärniga failid on eespool ja seejärel uusimad eespool, nii et täna üles laaditud dokument on eelmise kuu omast eespool.',
   // files-preview
   'help.guide.files-preview.title': 'Loe dokumenti TREKist lahkumata',
   'help.guide.files-preview.goal': 'Vaata piletit või pilti kohapeal ja laadi see oma seadmesse, kui seda seal vajad.',
   'help.guide.files-preview.step.1':
-    'Klõpsa pildi nimel või pisipildil. See avaneb täisekraanil ning päises on faili nimi ja selle järjekorranumber piltide seas.',
+    'Klõpsa pildi nimel või pisipildil. See avaneb täisekraanil ning vasakus ülanurgas on faili nimi ja selle järjekorranumber piltide seas.',
   'help.guide.files-preview.step.2':
     'Külgedel olevad ümmargused nooled, vasak- ja paremnooleklahv ning all olev pisipiltide riba liiguvad läbi kõigi piltide, mida loend parasjagu näitab.',
-  'help.guide.files-preview.step.3': 'Päises on Ava uuel vahekaardil ja Laadi alla; × või Escape sulgeb pildi uuesti.',
+  'help.guide.files-preview.step.3':
+    'Ava uuel vahekaardil ja Laadi alla on ümmargused nupud paremas ülanurgas, × kõrval. ×, Escape või klõps tumedal taustal sulgeb pildi uuesti.',
   'help.guide.files-preview.step.4':
-    'Dokument, mis pole pilt, avaneb selle asemel lehe peal eelvaates, mille päises on samad kaks nuppu. See sulgub ×-ga või klõpsuga selle kõrvale.',
+    'Dokument, mis pole pilt, avaneb selle asemel dialoogis: ülaosas selle nimi, selle all kiipidena Ava uuel vahekaardil ja Laadi alla ning PDF-i puhul allpool leht ise. Paremas ülanurgas olev ×, Escape või klõps dialoogi kõrvale sulgeb selle.',
   'help.guide.files-preview.step.5':
-    'Rea lõpus olev Laadi alla salvestab faili otse sinu seadmesse, ilma et midagi enne avataks.',
+    'Rea lõpus olev nool (Laadi alla) salvestab faili otse sinu seadmesse, ilma et midagi enne avataks.',
   'help.guide.files-preview.result':
     'Dokument on ekraanil ning samad kaks nuppu avavad selle brauseri vahekaardil või salvestavad kettale.',
   'help.guide.files-preview.tip.1': 'Puuteekraanil libistad pilte sõrmega, selle asemel et nooltel klõpsata.',
@@ -3509,28 +3573,27 @@ const help: TranslationStrings = {
   'help.guide.files-trash.title': 'Viska dokument ära ja too see tagasi',
   'help.guide.files-trash.goal': 'Eemalda see, mida reis enam ei vaja, kaotamata midagi, mida sul siiski vaja oli.',
   'help.guide.files-trash.step.1':
-    'Klõpsa rea lõpus Kustuta. Fail kaob loendist kohe ja teates on kirjas Prügikasti tõstetud. Kinnitust ei küsita.',
+    'Klõpsa rea lõpus olevat prügikasti (Kustuta). Fail kaob loendist kohe ja teates on kirjas Prügikasti tõstetud. Kinnitust ei küsita.',
   'help.guide.files-trash.step.2':
-    'Tööriistariba paremas otsas olev Prügikast lülitab loendi äravisatud failidele. Pealkirjas on Prügikast ja filtri vahekaardid on kadunud.',
+    'Riba paremas otsas olev prügikastiikoon (Prügikast) lülitab loendi äravisatud failidele. Riba pealkirjas on Prügikast ning filtrivahekaardid ja üleslaadimiskast on kadunud.',
   'help.guide.files-trash.step.3':
-    'Äravisatud rida on hall ja sellel on alles kaks nuppu: Taasta, mis toob faili tagasi, ja Kustuta, mis eemaldab selle pärast kinnitust jäädavalt.',
+    'Äravisatud rida on hall ja sellel on alles kaks ikooni: Taasta, mis toob faili tagasi, ja Kustuta, mis eemaldab selle pärast kinnitust jäädavalt.',
   'help.guide.files-trash.step.4':
     'Klõpsa Taasta. Teates on kirjas Fail taastatud ja rida lahkub prügikastist, märkus ja lingid endiselt alles.',
   'help.guide.files-trash.step.5':
-    'Üleval olev Tühjenda prügikast kustutab jäädavalt kõik, mis siin veel on, ja brauser küsib enne seda ühe korra kinnitust. Prügikast lülitab tagasi failidele.',
+    'Ribal prügikastiikooni kõrval olev Tühjenda prügikast kustutab jäädavalt kõik, mis siin veel on, ja brauser küsib enne seda ühe korra kinnitust. Prügikastiikoon lülitab tagasi failidele.',
   'help.guide.files-trash.result': 'Fail on tagasi loendis oma kohal, nagu poleks midagi juhtunud.',
   'help.guide.files-trash.tip.1':
     'Rea nupp Kustuta ei küsi kinnitust ja just selleks prügikast ongi: midagi ei lahku TREKist enne, kui sa siin nii otsustad.',
   'help.guide.files-trash.tip.2':
     'Faili äraviskamiseks ja tagasitoomiseks on vaja failide kustutamise õigust. Ilma selleta ei näe liige ei rea nuppu Kustuta ega prügikasti nuppe.',
   'help.guide.files-trash.tip.3': 'Prügikastis jäädavalt kustutatud faili ei saa tagasi tuua.',
-
   // files-sync
   'help.guide.files-sync.title': 'Hoia dokumendid dokumendihoidlaga sünkroonis',
   'help.guide.files-sync.goal':
     'Seo reis oma dokumendihoidlaga, et siia üles laaditu jõuaks sinna ja sinna arhiveeritu ilmuks siia.',
   'help.guide.files-sync.step.1':
-    'Klõpsa tööriistariba paremas otsas nupu Prügikast kõrval Dokumentide sünkroonimine. Avaneb dialoog, mille pealkirja all on reisi nimi. Vasakul jaotises Ühenda teenus on hoidlad, mille administraator on sisse lülitanud, igaühel rida selle kohta, kuidas see faile hoiab: Paperless-ngx ja Papra siltide järgi, Nextcloud ja Synology Drive kaustas, OpenCloud ruumis. Paremal on kirjas Midagi pole veel ühendatud.',
+    'Klõpsa riba paremas otsas prügikastiikooni kõrval Dokumentide sünkroonimine. Avaneb dialoog, mille pealkirja all on reisi nimi. Vasakul jaotises Ühenda teenus on hoidlad, mille administraator on sisse lülitanud, igaühel rida selle kohta, kuidas see faile hoiab: Paperless-ngx ja Papra siltide järgi, Nextcloud ja Synology Drive kaustas, OpenCloud ruumis. Paremal on kirjas Midagi pole veel ühendatud.',
   'help.guide.files-sync.step.2':
     'Klõpsa oma hoidlal, siin Nextcloud. Avaneb väiksem ühenduse dialoog, mille pealkirjas on hoidla nimi ja mis küsib andmeid, millega see hoidla sisse logib.',
   'help.guide.files-sync.step.3':
@@ -3540,69 +3603,71 @@ const help: TranslationStrings = {
   'help.guide.files-sync.step.5':
     'Klõpsa Ühenda. Ühendus salvestatakse reisi juurde ja TREK küsib, kus reis hoidlas asuma peaks: silt, kaust või ruum, mis selle dokumente hoiab. Sünkroonitakse ainult seal olevat. Loo uus loob selle nupuga Loo, nimi on reisi pealkirjast eeltäidetud; jaotises Või kasuta olemasolevat on need, mis on juba olemas. Klõpsa ühel, siin kaustal Sügis Jaapanis.',
   'help.guide.files-sync.step.6':
-    'Dialoog on tagasi: sinu hoidla on vasakul jaotises See reis ning paremal oleval kaardil on näha, kuhu see sünkroonib, millal see viimati käivitus, ja nupp Sünkrooni kohe. Esimene sünkroonimine käivitub iseenesest; Sünkrooni kohe käivitab selle igal ajal. Kui sünkroonimine on lõppenud, asendub nime kõrval olev märk Veel sünkroonimata rohelise täpiga, millele osutades on kirjas Sünkroonis, ja vooriba loendab dokumente, mis on TREKis ja hoidlas, nende vahel rajad Salvestusteenusesse ja Salvestusteenusest. Sulge dialoog ×-ga.',
+    'Dialoog on tagasi: sinu hoidla on vasakul jaotises See reis ning paremal oleval kaardil on näha, kuhu see sünkroonib, millal see viimati käivitus, ja nupp Sünkrooni kohe. Esimene sünkroonimine käivitub iseenesest; Sünkrooni kohe käivitab selle igal ajal. Kui sünkroonimine on lõppenud, asendub nime kõrval olev märk Veel sünkroonimata rohelise täpiga, millele osutades on kirjas Sünkroonis, ja vooriba loendab dokumente, mis on TREKis ja hoidlas, nende vahel rajad Salvestusteenusesse ja Salvestusteenusest. Sulge dialoog paremas ülanurgas oleva ×-ga.',
   'help.guide.files-sync.result':
-    'Seal juba olnud dokumendid on loendi alguses, sinu nimel üles laaditud, ja kõik reisi dokumendid on ka hoidlas. Edaspidi kontrollib TREK hoidlat taustal ja hoidla järgib loendit.',
+    'Seal juba olnud dokumendid on loendi alguses, sinu nimel üles laaditud, ja kõik reisi dokumendid on ka hoidlas, välja arvatud need, mis pärinevad Ühismärkmetest. Edaspidi kontrollib TREK hoidlat taustal ja hoidla järgib loendit.',
   'help.guide.files-sync.tip.1':
-    'Reisi saab siduda ainult reisi omanik või instantsi administraator, sest kasutajaandmed annavad ligipääsu kogu selle hoidla kontole. Iga liige saab avada Dokumentide sünkroonimise, lugeda kaarti ja vajutada Sünkrooni kohe.',
+    'Reisi saab siduda ainult reisi omanik või instantsi administraator, sest kasutajaandmed annavad ligipääsu kogu selle hoidla kontole. Iga liige näeb Dokumentide sünkroonimist, kui reis on seotud, ning saab selle avada, lugeda kaarti ja vajutada Sünkrooni kohe.',
   'help.guide.files-sync.tip.2':
     'Sinu enda võrgus olev hoidla vajab TREKi serveris seadet ALLOW_INTERNAL_NETWORK=true ja selle aadress peab olema masina aadress võrgus, mitte kunagi localhost. Ilma selleta vastab Testi ühendust teatega See aadress pole lubatud.',
   'help.guide.files-sync.tip.3':
-    'Kaardil olev Katkesta ühendus lõpetab sidumise ja jätab kõik dokumendid mõlemale poolele alles. Teist korda seotud silti, kausta või ruumi käsitletakse uuena ja kõik selles imporditakse uuesti, nii et pärast ühenduse katkestamist seo tühi, mitte vana.',
+    'Katkesta ühendus, ikoon nupu Sünkrooni kohe kõrval, küsib ühe korra ja seejärel lõpetab sidumise ning jätab kõik dokumendid mõlemale poolele alles. Teist korda seotud silti, kausta või ruumi käsitletakse uuena ja kõik selles imporditakse uuesti, nii et pärast ühenduse katkestamist seo tühi, mitte vana.',
   // ── Screen: trip-collab ───────────────────────────────────────────────────────────────
   'help.ctx.trip-collab.title': 'Koostöö',
   'help.ctx.trip-collab.summary':
-    'Vahekaart, kus grupp koos planeerib: vasakul vestlus, selle kõrval ühised märkmed ja lingid, nende all küsitlused ja lõpus Järgmisena. Kõik siia kirjutatu ilmub kohe iga teise liikme ekraanile, ilma lehte uuesti laadimata.',
+    'Vahekaart, kus grupp koos planeerib, viiel kaardil: vasakul vestlus, selle kõrval Märkmed ja Lingid, nende all Küsitlused ja Järgmisena. Kõik siia kirjutatu ilmub kohe iga teise liikme ekraanile, ilma lehte uuesti laadimata.',
   'help.ctx.trip-collab.bullet.1':
-    'Vestlus on vasakpoolne veerg. Kirjuta väljale Kirjuta sõnum... ja vajuta Enter; Shift ja Enter teevad uue rea. Naerunägu lisab emotikoni, Lisa pildid lisab sõnumile kuni neli pilti.',
+    'Vestlus on vasakpoolne kaart. Kirjuta väljale Kirjuta sõnum... ja vajuta Enter; Shift ja Enter teevad uue rea. Naerunägu lisab emotikoni, Lisa pildid lisab sõnumile kuni neli pilti.',
   'help.ctx.trip-collab.bullet.2':
-    'Vii kursor sõnumile, et näha nuppu Vasta ja oma sõnumite puhul ka Kustuta; paremklõps avab kaheksa kiirreaktsiooni. Kustutatud sõnumist jääb alles üks rida, mis ütleb, et sa kustutasid selle.',
+    'Vii kursor sõnumile, et näha nuppu Vasta ja oma sõnumite puhul ka Kustuta; paremklõps avab kaheksa kiirreaktsiooni. Kustutatud sõnumist jääb alles üks rida, mis ütleb, kes selle kustutas.',
   'help.ctx.trip-collab.bullet.3':
-    'Märkmed on ühine märkmik: Uus märge loob uue märkme ja selle kõrval olev hammasratas avab Halda kategooriaid, kus saab määrata kategooriate nimed ja värvid. Kaardil on Laienda, Kinnita, Muuda ja Kustuta.',
+    'Märkmed on ühine märkmik: selle päises olev Uus märge loob uue märkme ja selle kõrval olev hammasratas avab Halda kategooriaid, kus saab määrata kategooriate nimed ja värvid. Märkme kaardil on kategooria värvilise täpina ja link ümmarguse nupuna ning selle kolm punkti (Veel valikuid) sisaldavad valikuid Laienda, Kinnita, Muuda ja Kustuta.',
   'help.ctx.trip-collab.bullet.4':
     'Lingid koondab aadressid, millele reis tugineb. Lisa link võtab pealkirja ja http- või https-aadressi; Muuda linki, Kinnita link ja Kustuta link on märgi lõpus ning kinnitatud lingid jäävad ette.',
   'help.ctx.trip-collab.bullet.5':
-    'Küsitlustega tehakse otsuseid. Uus küsitlus esitab küsimuse vähemalt kahe valikuga; valikul klõpsamine on sinu hääl, Sulge lõpetab hääletuse ja Kustuta eemaldab küsitluse.',
+    'Küsitlustega tehakse otsuseid. Uus küsitlus esitab küsimuse vähemalt kahe valikuga; valikul klõpsamine on sinu hääl ning küsitluse päise paremas servas olevad lukk (Sulge) ja prügikast (Kustuta) lõpetavad hääletuse või eemaldavad küsitluse.',
   'help.ctx.trip-collab.bullet.6':
     'Järgmisena loetleb reisi eelseisvad peatused, kuni kaheksa, koos nende aegade ja osalejatega. See ainult loeb päevaplaani; ajad määratakse seal.',
   // write-note
   'help.guide.write-note.title': 'Kirjuta ühine märge',
   'help.guide.write-note.goal':
     'Pane see, mida kogu grupp vajab, reegel, aadress, meeldetuletus, kohta, kust kõik selle uuesti leiavad.',
-  'help.guide.write-note.step.1': 'Klõpsa paneeli Märkmed ülaosas Uus märge. Avaneb vorm.',
+  'help.guide.write-note.step.1':
+    'Klõpsa kaardi Märkmed päises Uus märge. Avaneb märkme dialoog ja kursor on juba selle päises.',
   'help.guide.write-note.step.2':
-    'Märkme pealkiri on kaardil kuvatav nimi. See on vormis ainus kohustuslik väli: Loo jääb halliks, kuni sinna midagi kirjutatakse.',
+    'Kirjuta pealkiri dialoogi päisesse, kus on kirjas Märkme pealkiri. See on dialoogis ainus kohustuslik väli: Loo jääb halliks, kuni sinna midagi kirjutatakse, ja Enter pealkirjas loob märkme kohe.',
   'help.guide.write-note.step.3':
-    'Selle all olevasse suurde kasti tuleb tekst ja see toetab Markdowni: paks sõna, loend, pealkiri. Kaardil on näha esimesed read ja selle nupp Laienda avab kogu märkme.',
+    'Sisu mahutab teksti ja toetab Markdowni: paks sõna, loend, pealkiri. Kaardil on näha esimesed kolm rida ja selle menüüs olev Laienda avab kogu märkme.',
   'help.guide.write-note.step.4':
-    'Vali jaotises Kategooria see, kuhu märge kuulub; selle värv saab kaardi värviks. Nupud on juba olemasolevad kategooriad ja uue saab luua jaotises Halda kategooriaid.',
+    'Vali jaotises Kategooria see, kuhu märge kuulub; selle värv toonib nüüd dialoogi päise ja hiljem kaardi päise. Nupud on juba olemasolevad kategooriad ja uue saab luua jaotises Halda kategooriaid.',
   'help.guide.write-note.step.5':
-    'Väljale Veebisait saab lisada märkmega seotud lingi. Kaardile ilmub siis lingipaan, mis selle avab.',
-  'help.guide.write-note.step.6': 'Klõpsa Loo.',
+    'Väljale Veebisait saab lisada märkmega seotud lingi. Kaardi päisesse ilmub siis ümmargune linginupp, mis selle avab.',
+  'help.guide.write-note.step.6':
+    'Klõpsa Loo. Dialoogi sulgevad ainult Tühista ja dialoogi rist, nii et juhuslik klõps selle kõrvale või Esc ei kaota sinu kirjutatut.',
   'help.guide.write-note.result':
-    'Märge on kaart paneelis Märkmed, oma kategooria värvi, ja see on juba iga teise liikme ekraanil.',
+    'Märge on kaart paneelis Märkmed, päis toonitud kategooria värviga, ja see on juba iga teise liikme ekraanil.',
   'help.guide.write-note.tip.1':
-    'Kaardi nupp Kinnita hoiab selle paneeli ülaosas; kõik selle all olev on sorditud viimase muutmise aja järgi.',
+    'Kaardi kolm punkti (Veel valikuid) sisaldavad valikuid Laienda, Kinnita, Muuda ja Kustuta. Kinnita hoiab märget paneeli ülaosas selle värvi raamis; kõik selle all olev on sorditud viimase muutmise aja järgi.',
   'help.guide.write-note.tip.2':
-    'Nupu Uus märge kõrval olev hammasratas avab Halda kategooriaid: seal saab kategooriale värvi määrata, selle korraga kõikjal ümber nimetada või lisada enne, kui ükski märge seda kasutab.',
+    'Nupu Uus märge kõrval olev hammasratas avab Halda kategooriaid: seal saab kategooriale värvi määrata, selle korraga kõikjal ümber nimetada või lisada enne, kui ükski märge seda kasutab. Midagi ei muutu enne, kui klõpsad Salvesta.',
   'help.guide.write-note.tip.3':
-    'Lisa failid lisab märkmele dokumendi. Lisa avab failivalija ning pildi või PDF-i saab ka lihtsalt vormi kleepida.',
+    'Lisa failid lisab märkmele dokumendi. Lisa avab failivalija ning pildi või PDF-i saab ka lihtsalt dialoogi kleepida.',
   'help.guide.write-note.tip.4':
     'Märkmetel on oma lüliti jaotises Lisamoodulid, Koostöö all: administraator saab selle välja lülitada ning vestlus, lingid, küsitlused ja Järgmisena jäävad tööle.',
   // shared-links
   'help.guide.shared-links.title': 'Kogu reisi lingid kokku',
   'help.guide.shared-links.goal':
     'Hoia broneerimisportaal, ühine album ja sõiduplaan ühes kohas, selle asemel et neid vestlusest otsida.',
-  'help.guide.shared-links.step.1': 'Klõpsa paneeli Lingid ülaosas Lisa link.',
+  'help.guide.shared-links.step.1': 'Klõpsa kaardi Lingid päises Lisa link. Dialoog avaneb ja kursor on selle päises.',
   'help.guide.shared-links.step.2':
-    'Anna lingile nimi väljal Lingi pealkiri, kleebi aadress selle all olevale väljale ja klõpsa Salvesta link.',
+    'Kirjuta nimi sinna, kus on kirjas Lingi pealkiri, kleebi aadress selle all olevale väljale Link ja klõpsa Salvesta link.',
   'help.guide.shared-links.step.3':
     'Märgil on nimi ja sait, kuhu see viitab. Sellel klõpsamine avab lehe uuel vahekaardil.',
   'help.guide.shared-links.step.4':
-    'Märgi lõpus olevad kolm väikest nuppu on Muuda linki, Kinnita link ja Kustuta link. Kinnita link tõstab märgi paneeli algusesse; Kustuta link ei küsi midagi.',
+    'Märgi lõpus olevad kolm ümmargust nuppu on Muuda linki, Kinnita link ja Kustuta link. Kinnita link tõstab märgi paneeli algusesse, rõhuvärvi toonis; Kustuta link küsib enne kinnitust, sest link kaob kõigi liikmete jaoks.',
   'help.guide.shared-links.result': 'Link on märk paneelis Lingid, kinnitatuna algusesse, ja kohe iga liikme ekraanil.',
   'help.guide.shared-links.tip.1':
-    'Vastu võetakse ainult http- ja https-aadresse; väli lükkab kõik muu enne salvestamist tagasi.',
+    'Vastu võetakse ainult http- või https-aadress: kõik muu lükatakse tagasi ja dialoog jääb avatuks koos sinu kirjutatuga.',
   'help.guide.shared-links.tip.2':
     'Kinnitatud lingid on eespool, seejärel uusimad. Pealkirja kõrval olev väike ikoon on saidi enda favicon, mis tuuakse saidilt endalt, nii et ilma internetita näitab märk selle asemel tavalist lingiikooni.',
   'help.guide.shared-links.tip.3':
@@ -3611,37 +3676,39 @@ const help: TranslationStrings = {
   'help.guide.create-poll.title': 'Küsi grupilt',
   'help.guide.create-poll.goal':
     'Muuda küsimus, millele vestluses keegi ei vasta, küsitluseks, kus igaüks saab oma valiku märkida.',
-  'help.guide.create-poll.step.1': 'Klõpsa paneeli Küsitlused ülaosas Uus küsitlus.',
+  'help.guide.create-poll.step.1': 'Klõpsa kaardi Küsitlused päises Uus küsitlus. Avaneb dialoog.',
   'help.guide.create-poll.step.2':
-    'Kirjuta küsimus. Kasti all olev Markdowni tugi tähendab, et siin töötavad paks sõna, reavahetus või lühike loend.',
-  'help.guide.create-poll.step.3': 'Täida Valik 1 ja Valik 2. Vähemalt kaks täidetud valikut on nõutud.',
+    'Kirjuta küsimus jaotisse Küsimus. Kasti all olev Markdowni tugi tähendab, et siin töötavad paks sõna, reavahetus või lühike loend.',
+  'help.guide.create-poll.step.3':
+    'Täida jaotises Valikud Valik 1 ja Valik 2. Vähemalt kaks täidetud valikut on nõutud ja valik võib ulatuda üle mitme rea.',
   'help.guide.create-poll.step.4':
-    '+ Lisa valik lisab kolmanda, neljanda, nii palju kui vaja; rea kõrval olev väike rist eemaldab selle uuesti.',
+    'Nende all olev Lisa valik lisab kolmanda, neljanda, nii palju kui vaja; rea kõrval olev väike rist, mis ilmub, kui valikuid on rohkem kui kaks, eemaldab selle uuesti.',
   'help.guide.create-poll.step.5':
     'Mitu valikut lubab igaühel märkida rohkem kui ühe valiku. Kui see on väljas, liigub hääl üle, kui keegi valib midagi muud.',
   'help.guide.create-poll.step.6': 'Klõpsa Loo küsitlus.',
-  'help.guide.create-poll.result': 'Küsitlus on paneeli Küsitlused ülaosas, avatud, ja keegi pole veel hääletanud.',
+  'help.guide.create-poll.result': 'Küsitlus on paneeli Küsitlused ülaosas, avatud, päises 0 häält.',
   'help.guide.create-poll.tip.1': 'Küsimus kuvatakse Markdownina; valikud jäävad lihttekstiks.',
   'help.guide.create-poll.tip.2':
     'Loo küsitlus jääb halliks, kuni on olemas küsimus ja vähemalt kaks täidetud valikut.',
   'help.guide.create-poll.tip.3':
-    'Tähtaega saab määrata ainult telefonirakenduses. Tähtajaga küsitlus näitab siin allesjäänud aega merevaiguvärvi märgil ja loetakse suletuks, kui aeg saab otsa.',
+    'Tähtaega saab määrata ainult telefonirakenduses. Tähtajaga küsitlus näitab oma päises allesjäänud aega merevaiguvärvi märgil ja loetakse suletuks, kui aeg saab otsa.',
   'help.guide.create-poll.tip.4':
     'Küsitlustel on oma lüliti jaotises Lisamoodulid, Koostöö all: administraator saab selle välja lülitada ning ülejäänud neli paneeli jäävad tööle.',
   // vote-poll
   'help.guide.vote-poll.title': 'Hääleta ja vaata tulemust',
   'help.guide.vote-poll.goal': 'Anna oma hääl, vaata, kuidas grupp arvab, ja muuda vajadusel meelt.',
-  'help.guide.vote-poll.step.1': 'Klõpsa soovitud valikul. Selle ring täitub ja selle taga olev riba kasvab.',
+  'help.guide.vote-poll.step.1':
+    'Klõpsa soovitud valikul. Selle ring täitub linnukesega, valik saab rõhuvärvi raami ja selle taga olev riba kasvab.',
   'help.guide.vote-poll.step.2':
-    'Nüüd on kogu tulemus näha: riba on osakaal, protsent on paremal ja väikesed ringid on inimesed, kes selle valiku tegid.',
+    'Nüüd on kogu tulemus näha: riba on osakaal, protsent on paremal ja väikesed ringid on inimesed, kes selle valiku tegid, kuni kolm neist.',
   'help.guide.vote-poll.step.3':
     'Muutsid meelt? Klõpsa teisel valikul. Küsitluses, kus pole sisse lülitatud valikut Mitu valikut, liigub sinu hääl üle, selle asemel et lisanduks teine.',
   'help.guide.vote-poll.step.4':
-    'Küsimuse all on näha, mitu häält küsitlusel on. Juba valitud valikul klõpsamine võtab sinu hääle tagasi ja loendur väheneb uuesti.',
+    'Küsimuse all oleval märgil on näha, mitu häält küsitlusel on. Juba valitud valikul klõpsamine võtab sinu hääle tagasi ja arv väheneb uuesti.',
   'help.guide.vote-poll.result':
     'Sinu märge on ühel valikul, ribad näitavad, kuidas grupp jagunes, ja ringid ütlevad, kes mida valis.',
   'help.guide.vote-poll.tip.1':
-    'Ribad ja protsendid ilmuvad alles siis, kui oled ise hääletanud või kui küsitlus on suletud, et seis kedagi ei mõjutaks.',
+    'Protsendid ja see, kes mille poolt hääletas, ilmuvad alles siis, kui oled ise hääletanud või kui küsitlus on suletud. Päises olev häälte arv on nähtav kõigile.',
   'help.guide.vote-poll.tip.2':
     'Hääl pole kunagi anonüümne: vii kursor valiku mõnele ringile, et näha selle taga olevat nime.',
   // close-poll
@@ -3649,11 +3716,11 @@ const help: TranslationStrings = {
   'help.guide.close-poll.goal':
     'Lõpeta hääletus, kui grupp on otsustanud, ja eemalda küsitlus, mida keegi enam ei vaja.',
   'help.guide.close-poll.step.1':
-    'Sulge, lukk küsitluse nurgas, lõpetab hääletuse. Valikud ei reageeri enam klõpsudele.',
+    'Sulge, lukk küsitluse päise paremas servas, lõpetab hääletuse. Valikud ei reageeri enam klõpsudele.',
   'help.guide.close-poll.step.2':
-    'Suletud küsitlus vajub paneeli allossa pealkirja Suletud alla, saab märgi Suletud ja näitab kõigile tulemust, olenemata sellest, kas nad hääletasid või mitte. Võitnud valik on roheliseks toonitud.',
+    'Suletud küsitlus vajub paneeli allossa pealkirja Suletud alla, saab kiibi Suletud ja näitab kõigile tulemust, olenemata sellest, kas nad hääletasid või mitte. Võitnud valik on paksus kirjas rohelisel ribal; kui see on sinu valitud valik, jääb ribale hoopis sinu rõhuvärv.',
   'help.guide.close-poll.step.3':
-    'Kustuta, prügikast samas nurgas, eemaldab küsitluse. Midagi üle ei küsita ja hääled kaovad koos sellega.',
+    'Kustuta, prügikast päise paremas servas, eemaldab küsitluse; suletud küsitlusel on see seal üksi, sest lukk on kadunud. Midagi üle ei küsita ja hääled kaovad koos sellega.',
   'help.guide.close-poll.result':
     'Küsitlus on kadunud iga liikme paneelilt. Ainult suletud küsitlus jääb koos tulemusega allosas loetavaks.',
   'help.guide.close-poll.tip.1':
@@ -3663,11 +3730,11 @@ const help: TranslationStrings = {
   'help.guide.whats-next.title': 'Vaata paneeli Järgmisena',
   'help.guide.whats-next.goal': 'Vaata plaani avamata, mida grupp järgmisena teeb.',
   'help.guide.whats-next.step.1':
-    'Paneel loetleb reisi eelseisvad peatused, kuni kaheksa, ajalises järjekorras, iga päeva jaoks oma pealkirja all: Täna, Homme või kuupäev.',
+    'Kaart loetleb reisi eelseisvad peatused, kuni kaheksa, ajalises järjekorras, iga päeva jaoks oma pealkirja all: Täna, Homme või kuupäev, ja selle kõrval päeva pealkiri, kui see on olemas. Päis näitab nende arvu.',
   'help.guide.whats-next.step.2':
-    'Rea vasakus servas on selle aeg: algus, kuni ja lõpp, kui peatusel see on, või TBD, kui aega pole veel määratud.',
+    'Iga peatuse vasakus servas on selle aeg: algus, kuni ja lõpp, kui peatusel see on, või TBD, kui aega pole veel määratud.',
   'help.guide.whats-next.step.3':
-    'Nime all olevad märgid on selle peatuse osalejad. Kui kedagi pole valitud, on loetletud kõik reisil osalejad.',
+    'Selle kõrval on nimi, aadress ja märkidena selle peatuse osalejad. Kui kedagi pole valitud, on loetletud kõik reisil osalejad.',
   'help.guide.whats-next.result': 'Eelseisva loend, ainult lugemiseks: see järgib plaani ja miski siin seda ei muuda.',
   'help.guide.whats-next.tip.1':
     'Siin ei määrata midagi. Ajad tulevad päevaplaanist; muuda neid seal ja see loend järgib kohe.',
@@ -3679,7 +3746,7 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.title': 'Räägi grupiga',
   'help.guide.trip-chat.goal': 'Ütle midagi, vasta konkreetsele sõnumile, reageeri teisele ja võta oma sõnum tagasi.',
   'help.guide.trip-chat.step.1':
-    'Kirjuta väljale Kirjuta sõnum... ja vajuta Enter. Kasti kõrval olev sinine nool teeb sama; Shift ja Enter teevad selle asemel uue rea.',
+    'Kirjuta väljale Kirjuta sõnum... ja vajuta Enter. Kasti kõrval olev ümmargune nool teeb sama; Shift ja Enter teevad selle asemel uue rea.',
   'help.guide.trip-chat.step.2':
     'Naerunägu avab emotikonivalija, milles on Smileys, Reactions ja Travel. Valitud emotikon lisatakse kirjutatavale tekstile, seda ei saadeta eraldi.',
   'help.guide.trip-chat.step.3':
@@ -3689,11 +3756,11 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.step.5':
     'Tee sõnumil paremklõps, et näha kaheksat kiirreaktsiooni. Sinu reaktsioon on mulli all ja teine klõps samal reaktsioonil võtab selle tagasi.',
   'help.guide.trip-chat.step.6':
-    'Sinu enda sõnumitel on nupu Vasta kõrval Kustuta. See eemaldab sõnumi ja jätab alles ühe rea, mis ütleb, et sa kustutasid selle: tagasiteed pole.',
+    'Sinu enda sõnumitel on nupu Vasta kõrval Kustuta, prügikast. See eemaldab sõnumi kohe ja jätab alles ühe rea, mis ütleb, et sa kustutasid selle: tagasiteed pole.',
   'help.guide.trip-chat.result':
-    'Sinu vastus on koos tsiteeritud sõnumiga vestluses, kolmandal sõnumil on reaktsioon ja tagasi võetud sõnumist jääb üks rida, mis seda ütleb.',
+    'Sinu vastus on uusim sõnum, mille ülaosas on sõnum, mida see tsiteerib; kolmandal sõnumil on reaktsioon ja tagasi võetud sõnumist jääb üks rida, mis seda ütleb.',
   'help.guide.trip-chat.tip.1':
-    'Enter saadab, Shift ja Enter teevad uue rea. Ainult emotikonidest koosnev sõnum kuvatakse suurelt.',
+    'Enter saadab, Shift ja Enter teevad uue rea. Sõnum, milles on ainult üks kuni kolm emotikoni, kuvatakse suurelt.',
   'help.guide.trip-chat.tip.2':
     'Lisa pildid võtab ühe sõnumi jaoks kuni neli pilti; neid saab ka lihtsalt kasti kleepida või lohistada.',
   'help.guide.trip-chat.tip.3':
@@ -3708,13 +3775,13 @@ const help: TranslationStrings = {
   'help.ctx.trip-roadtrip.bullet.1':
     'Vasaku veeru ülaosas olevad Päevad ja Autoreis lülitavad päevaplaani ja sõidu vahel. Midagi ei kopeerita ega muudeta: Päevad toob plaani tagasi täpselt sellisena, nagu see oli.',
   'help.ctx.trip-roadtrip.bullet.2':
-    'Riba päises on reisi kokkuvõte: Vahemaa, Sõiduaeg ja Peatused. Selle all on iga päeva kohta üks kaart päeva enda kilomeetrite, peatuste arvu, ületatud piirangute ja märgiga Rada.',
+    'Riba päises on reisi kokkuvõte: Vahemaa, Sõiduaeg ja Peatused. Selle all on kaart iga päeva kohta, millel on sõit, päeva enda kilomeetrite, peatuste arvu, ületatud piirangute ja märgiga Rada.',
   'help.ctx.trip-roadtrip.bullet.3':
     'Nummerdatud peatus on koht, mille pärast päev ette võetakse. Vahepeatus, näiteks tankimine, laadimine või puhkeala, kannab numbri asemel oma tüübi ikooni ja seda ei loeta. Klõpsa numbril, et muuta peatuse liiki, ja märgil Peatumine, et määrata, kui kaua see kestab.',
   'help.ctx.trip-roadtrip.bullet.4':
     'Kahe peatuse vahel näitab sõiduriba lõigu vahemaad ja aega. Klõpsa sellel, et avada Selle lõigu sõiduvõimalused, või klõpsa kaardile joonistatud marsruudil, et suunata lõik läbi vahepunkti.',
   'help.ctx.trip-roadtrip.bullet.5':
-    'Parem veerg muutub vaateks Marsruudil: vali päev, mida otsida ja kui lai on koridor, seejärel Otsi. Lisa paneb leitud koha sõidule täpselt sinna, kus sellest tegelikult mööda sõidetakse.',
+    'Parem veerg muutub vaateks Marsruudil: vali ühel real, mida otsida ja päev, seejärel kui lai on koridor, ning klõpsa Otsi. Tulemusel olev pluss, Lisa, avab lühikese dialoogi, mis paneb leitud koha sõidule täpselt sinna, kus sellest tegelikult mööda sõidetakse.',
   'help.ctx.trip-roadtrip.bullet.6':
     'Selle all olevas jaotises Sõiduseaded on piirangud, auto ja selle sõiduulatus, igapäevased sõiduajad, mida vältida ja kuidas joon joonistatakse. Need kuuluvad reisile, nii et kõik planeerivad sama autoga.',
   // roadtrip-mode
@@ -3724,7 +3791,7 @@ const help: TranslationStrings = {
     'Klõpsa vasaku veeru ülaosas lülitis Päevad / Autoreis valikut Autoreis. Päevaplaan asendub sõiduga ja kaart joonistab iga päeva, millele on marsruut arvutatud.',
   'help.guide.roadtrip-mode.step.2': 'Riba päises on kogu reisi kokkuvõte: Vahemaa, Sõiduaeg ja Peatused.',
   'help.guide.roadtrip-mode.step.3':
-    'Selle all on iga päeva kohta üks kaart. Kaardi päises on päeva number ja kuupäev, sõit vahemaa ja ajana ning see, mitu peatust päeval on.',
+    'Selle all on kaart iga päeva kohta, millel on sõit; päev, millel pole midagi sõita, jäetakse välja. Kaardi päises on päeva number ja kuupäev, sõit vahemaa ja ajana ning see, mitu peatust päeval on.',
   'help.guide.roadtrip-mode.step.4':
     'Kaardi sees on päev ahel: iga koha kohta nummerdatud peatus, iga paari vahel sõiduriba ja paremas servas saabumisaeg.',
   'help.guide.roadtrip-mode.step.5':
@@ -3741,43 +3808,45 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.title': 'Vahepeatused ja peatumise kestus',
   'help.guide.roadtrip-stops.goal': 'Muuda sõidul olev koht vahepeatuseks ja määra, kui kaua iga peatus kestab.',
   'help.guide.roadtrip-stops.step.1':
-    'Klõpsa ribal peatuse ees oleval numbril. Selle silt on Muuda vahepeatuseks ja see avab akna Peatuse tüüp.',
+    'Klõpsa ribal peatuse ees oleval numbril. Selle silt on Muuda vahepeatuseks ja see avab selle all peatuse tüübid värviliste ketaste reana.',
   'help.guide.roadtrip-stops.step.2':
-    'Vali tüüp: Majutus, Kütus, Laadimine, Puhkeala, Telkimisala, Toit või Vaatamisväärsused. Number muutub selle tüübi ikooniks ja allpool olevad peatused nummerdatakse ümber.',
+    'Vali tüüp; iga ketas näitab osutamisel oma nime: Majutus, Kütus, Laadimine, Puhkeala, Telkimisala, Toit või Vaatamisväärsused. Number muutub selle tüübi ikooniks ja allpool olevad peatused nummerdatakse ümber.',
   'help.guide.roadtrip-stops.step.3': 'Vahepeatus pole sihtkoht, seega loeb päeva päis ühe peatuse vähem.',
   'help.guide.roadtrip-stops.step.4':
     'Klõpsa uuesti ikoonil, Muuda peatuse tüüpi, ja vali Muuda tagasi sihtkohaks, et peatus saaks oma numbri tagasi.',
   'help.guide.roadtrip-stops.step.5': 'Igal peatusel on märk Peatumine. Klõpsa sellel, et avada Aeg selles peatuses.',
   'help.guide.roadtrip-stops.step.6':
-    'Määra kestus liuguri, miinus- ja plussnuppude või mõne eelseadistusega, vaata, kuidas muutuvad Saabumine ja Lahkumine, ning klõpsa Salvesta.',
+    'Määra kestus liuguri, miinus- ja plussnuppude või mõne eelseadistusega, vaata, kuidas Lahkumine liigub, samal ajal kui Saabumine jääb ajale, mil sõit sinna jõuab, ning klõpsa Salvesta.',
   'help.guide.roadtrip-stops.result':
-    'Peatuse, mille kestuse määrasid, märgil Peatumine on nüüd aeg ja kõik järgnevad saabumised on sellega koos nihkunud, ning peatus, mille muutsid mingiks tüübiks ja tagasi, on jälle nummerdatud sihtkoht.',
+    'Peatuse, mille kestuse määrasid, märgil Peatumine on nüüd selle uus kestus ja kõik järgnevad saabumised on sellega koos nihkunud, ning peatus, mille muutsid mingiks tüübiks ja tagasi, on jälle nummerdatud sihtkoht.',
   'help.guide.roadtrip-stops.tip.1':
     'Peatumine kuulub kohale, mitte ühele külastusele: kahel päeval plaanitud kohas peatutakse mõlemal päeval sama kaua.',
   'help.guide.roadtrip-stops.tip.2':
     'Vahepeatused on näha ka vaates Päevad. Kui lülitad Sõiduseadetes jaotises Teeninduspeatused välja valiku Näita ka päevade vaates, jäävad need ainult vaatesse Autoreis.',
   'help.guide.roadtrip-stops.tip.3': 'Samas dialoogis olev Peatumiseta eemaldab aja uuesti.',
+  'help.guide.roadtrip-stops.tip.4':
+    'Klõpsa vahepeatusel või broneeritud ööl, et avada selle paneel kaardi kohal. Kui Autoreis on sees, avab seal olev Muuda kohavormi asemel kompaktse dialoogi, mida kasutab otsing, ja selle dialoogi nupp Rohkem üksikasju avab täieliku vormi.',
   // roadtrip-corridor
   'help.guide.roadtrip-corridor.title': 'Leia marsruudi äärest kütust, toitu ja ööbimiskohta',
   'help.guide.roadtrip-corridor.goal': 'Otsi teelt, mida tegelikult sõidad, ja pane leitu õigele lõigule.',
   'help.guide.roadtrip-corridor.step.1':
-    'Vali vaate Marsruudil ülaosas päev. Pakutakse ainult päevi, millele on marsruut arvutatud.',
+    'Ava jaotises Otsitav loend ja märgi, mida vajad. Kütus, Laadimine, Puhkeala, Telkimisala, Majutus, Toit ja Vaatamisväärsused on omavahel kombineeritavad: loend jääb teise valiku jaoks avatuks ja rida näitab seejärel iga tüüpi selle ikooniga.',
   'help.guide.roadtrip-corridor.step.2':
-    'Märgi jaotises Otsitav, mida vajad. Kütus, Laadimine, Puhkeala, Telkimisala, Majutus, Toit ja Vaatamisväärsused on omavahel kombineeritavad.',
+    'Vali päev sama rea lõpus olevast rippmenüüst. See pakub päevi, mille kohta ribal on kaart, ja Otsi ootab, kuni valitud päevale on marsruut arvutatud.',
   'help.guide.roadtrip-corridor.step.3':
     'Vali jaotises Kaugusel kuni, kui kaugelt tee kummaltki poolt otsida, 2 km, 5 km või 10 km, ja klõpsa Otsi.',
   'help.guide.roadtrip-corridor.step.4':
     'Tulemused tulevad tagasi tüüpide kaupa rühmitatuna, möödumise järjekorras, igaühe juures näha, kui kaugel see päeva teekonnal asub ja kui kaugel marsruudist see on.',
   'help.guide.roadtrip-corridor.step.5':
-    'Tulemuse nupp Lisa avab akna Lisa peatusena. See näitab, millisele päevale ja millisele kohale peatus tuleb, küsib tüüpi ja peatuses veedetavat aega ning Lisa paneb selle sõidule.',
+    'Tulemusel olev pluss, Lisa, avab akna Lisa peatusena. See näitab, millisele päevale ja millisele kohale peatus tuleb, ning küsib välju Peatuse tüüp ja Aeg selles peatuses. Lisa paneb selle sõidule; Rohkem üksikasju avab selle asemel täieliku kohavormi. Majutuse tulemusel on plussi asemel voodi, Lisa ööbimisena, ja selle dialoog pakub valikuid Paus või Ööbimine; ööbimine küsib ainult välja Sisseregistreerimine.',
   'help.guide.roadtrip-corridor.result':
-    'Tulemused on loetletud möödumise järjekorras ja kaardile joonistatud ning lisatud peatus on sõidul täpselt seal, kus sellest tegelikult mööda sõidetakse.',
+    'Lisatud peatus on sõidul täpselt seal, kus sellest tegelikult mööda sõidetakse, oma tüübi ikooniga. Päeva marsruut arvutatakse selle kaudu uuesti, mis tühjendab loendi: järgmise leidmiseks otsi uuesti.',
   'help.guide.roadtrip-corridor.tip.1':
     'Midagi ei otsita enne, kui vajutad Otsi: üks otsing tähendab palju päringuid ühisele teenusele.',
   'help.guide.roadtrip-corridor.tip.2':
     'Filtreeri nime järgi kitsendab tulemusi uut päringut tegemata ja Tühjenda tulemused tühjendab loendi ja selle nööpnõelad. Klõpsa tulemusel, et see kaardil nähtavale tuua.',
   'help.guide.roadtrip-corridor.tip.3':
-    'Tulemuse saab ka kaardilt joonistatud marsruudile lohistada; nii valid ise lõigu, kui sama teed sõidetakse kaks korda. Nupu Otsi kõrval olev Lisa käsitsi otsib selle asemel kohta nime järgi.',
+    'Tulemuse saab ka kaardilt joonistatud marsruudile lohistada; nii valid ise lõigu, kui sama teed sõidetakse kaks korda. Nupu Otsi kõrval olev Käsitsi lisab koha, mida otsing ei leidnud, otsides seda nime järgi.',
   // roadtrip-via
   'help.guide.roadtrip-via.title': 'Suuna lõik läbi vahepunkti',
   'help.guide.roadtrip-via.goal': 'Saada lõik mööda teed, mida tegelikult soovid, ilma sellele peatust lisamata.',
@@ -3804,14 +3873,14 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.step.1':
     'Klõpsa ribal sõiduribal, kahe peatuse vahelisel real, mis näitab lõigu vahemaad ja aega. Selle silt on Muud marsruudid.',
   'help.guide.roadtrip-alternatives.step.2':
-    'Kaardi peale avaneb Selle lõigu sõiduvõimalused, iga tee kohta üks kirje, igaüks kaardile oma värviga joonistatud.',
+    'Kaardi peale avaneb Selle lõigu sõiduvõimalused, iga tee kohta üks kirje koos selle pikkusega. Kaart joonistab iga tee koos sõiduajaga: praegu kasutatav tee täissinisena, teised heledamas sinises.',
   'help.guide.roadtrip-alternatives.step.3':
     'Vii kursor kirjele, et see tee esile tõsta. Praegune on tee, mida praegu sõidetakse, ja Kiireim kõige kiirem; teised näitavad, kui palju aeglasemad need on või millise teeklassi need välja jätavad.',
   'help.guide.roadtrip-alternatives.step.4': 'Klõpsa kirjel, et sõita seda teed, või Sulge, et jääda praegusele teele.',
   'help.guide.roadtrip-alternatives.result':
     'Lõik kulgeb valitud teed ning riba vahemaa ja sellele järgnevad saabumised muutuvad vastavalt.',
   'help.guide.roadtrip-alternatives.tip.1':
-    'Teise tee valimine lisab lõigule vahepunkti ja asendab olemasolevad; marsruudiplaneerija enda tee valimine eemaldab need uuesti.',
+    'Teise tee valimisel kontrollitakse seda kõigepealt autoreisi marsruudiplaneerijaga ja seejärel hoitakse lõiku sellel võimalikult väheste vahepunktidega, mis asendavad lõigu olemasolevad vahepunktid. Teed, mida marsruudiplaneerija ei järgi, ei salvestata. Marsruudiplaneerija enda tee valimine eemaldab vahepunktid uuesti.',
   'help.guide.roadtrip-alternatives.tip.2':
     'Kiirteeta, Teemaksudeta ja Praamita tulevad teiselt mootorilt, millel on oma kiirusmudel, seega pole nende ajad teistega võrreldavad.',
   // roadtrip-limits
@@ -3824,7 +3893,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.step.3':
     'Märgi jaotises Sõiduk, millega sõidad. Bensiin tangib ainult kütusepeatustes, Elektriline ainult laadimispeatustes, Kumb tahes mõlemas.',
   'help.guide.roadtrip-limits.step.4':
-    'Sisesta Sõiduulatus ühe paagiga või Sõiduulatus ühe laadimisega ise. Selle all olev Arvuta auto andmetest võtab Paagi mahu ja Kulu või Aku ja Kulu ning teeb arvutuse ise.',
+    'Sisesta Sõiduulatus ühe paagiga või Sõiduulatus ühe laadimisega ise. Allpool olev Arvuta auto andmetest võtab Paagi mahu ja Kulu või Aku, Kulu ja Aku kulumise ning teeb arvutuse ise.',
   'help.guide.roadtrip-limits.step.5':
     'Võimaluse korral väldi on eelistus, mitte keeld: päev, millel ümbersõitu pole, kasutab siiski seda teed ja ütleb seda oma päises.',
   'help.guide.roadtrip-limits.step.6':
@@ -3836,7 +3905,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.tip.2':
     'Täida kuni määrab, kui täis peatuses tangitakse, sest teel ei laadi keegi 100 %-ni. Kütuse- või laadimispeatus saab selle enda jaoks üle kirjutada.',
   'help.guide.roadtrip-limits.tip.3':
-    'Marsruudijoon määrab, kuidas sõit joonistatakse: Ühenda päevad arvutab marsruudi ka kahe päeva vahelise öö jaoks ja Igale päevale oma värv annab igale päevale oma värvi.',
+    'Jaotises Marsruudijoon arvutab Ühenda päevad marsruudi ka ühe päeva viimasest peatusest järgmise päeva esimeseni, Alusta ja lõpeta iga päev oma peatumiskohas alustab ja lõpetab päeva seal, kus on broneeritud sellele eelnev ja järgnev öö, ning Igale päevale oma värv joonistab iga päeva oma värviga.',
   // roadtrip-day-window
   'help.guide.roadtrip-day-window.title': 'Anna sõidupäevale algus ja lõpp',
   'help.guide.roadtrip-day-window.goal': 'Lõpeta sõit sinu valitud kellaajal ja määra, kus päev lõppema peaks.',
@@ -3860,15 +3929,15 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-refuel.title': 'Tangi enne, kui paak tühjaks saab',
   'help.guide.roadtrip-refuel.goal': 'Leia tankimiskoht lõigul, kuhu auto veel jõuab, ja lisa see sõidule.',
   'help.guide.roadtrip-refuel.step.1':
-    'Kui sõiduulatus on määratud, kuvab riba lõigul, kus kütus otsa saab, hoiatusriba: Siin saab paak tühjaks ja selle all, kui kaugel lõigu algusest see on.',
+    'Kui sõiduulatus on määratud, kuvab riba lõigul, kus kütus otsa saab, hoiatusriba: Siin saab paak tühjaks või elektriauto puhul Siin saab aku tühjaks, ja selle all, kui kaugel lõigu algusest see on.',
   'help.guide.roadtrip-refuel.step.2':
-    'Hoiatusriba lamp on nupp. Otsi kütust otsib mööda juba sõidetud teed ja otsingu ajal on kirjas Otsimine marsruudi äärest…',
+    'Hoiatusriba lamp on nupp: Otsi kütust või elektriauto puhul Otsi laadimist. See otsib mööda teed enne seda punkti ja otsingu ajal on kirjas Otsimine marsruudi äärest…',
   'help.guide.roadtrip-refuel.step.3':
     'Tagasi tuleb kuni kolm jaama, igaühe juures näha, kui kaugel marsruudist see on ja kui palju sõiduulatust sellest varuks jääks.',
   'help.guide.roadtrip-refuel.step.4':
     'Pakkumise pluss lisab selle kütusepeatusena. Lisa peatusena avaneb tüübi ja ajaga juba täidetuna ning Lisa paneb selle lõigule täpselt sinna, kus sellest tegelikult mööda sõidetakse.',
   'help.guide.roadtrip-refuel.result':
-    'Peatus on õigel lõigul oma ikooniga, sõiduulatust arvestatakse sealt uuesti ja hoiatusriba on kadunud.',
+    'Peatus on õigel lõigul oma ikooniga ja sõiduulatust arvestatakse sealt uuesti: hoiatusriba liigub edasi sinna, kus paak nüüd tühjaks saab, või kaob, kui ülejäänud sõit on ulatuse piires.',
   'help.guide.roadtrip-refuel.tip.1':
     'Sõiduulatust arvestatakse viimasest kütuse- või laadimispeatusest, üle päevade. Sõiduk määrab, millised peatused lähevad arvesse: Bensiin ainult kütusepeatused, Elektriline ainult laadimispeatused.',
   'help.guide.roadtrip-refuel.tip.2':
@@ -3884,11 +3953,11 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-track.step.3':
     'Klõpsa Järgi seda rada. TREK lisab vahepunktid sinna, kus sõit rajast kõige kaugemale kaldub, ja arvutab marsruudi uuesti, ring ringi järel.',
   'help.guide.roadtrip-track.step.4':
-    'See näitab, mitu vahepunkti lisati ja kui lähedal sõit nüüd rajale püsib. Selle all olev nupp eemaldab need vahepunktid uuesti ja annab päeva tagasi marsruudiplaneerijale; dialoogi sulgemine jätab raja alles.',
+    'Dialoog näitab, mitu vahepunkti lisati ja kui lähedal sõit nüüd rajale püsib, või et sõit juba järgis rada. Kui vahepunkte lisati, eemaldab selle all olev nupp need uuesti ja annab päeva tagasi marsruudiplaneerijale; dialoogi sulgemine jätab raja alles.',
   'help.guide.roadtrip-track.result':
-    'Päeva sõit järgib rada marsruudiplaneerija valitud tee asemel ning selle märk Rada on esile tõstetud ja näitab osutamisel raja nime.',
+    'Päeva sõit järgib rada tee asemel, mille marsruudiplaneerija oleks valinud, ja märgile Rada osutamine näitab raja nime. Kui vahepunktid hoiavad sõitu rajal, on märk ka esile tõstetud.',
   'help.guide.roadtrip-track.tip.1':
-    'Impordi fail vaates Päevad nupuga Impordi fail, kui Marsruudid või Rajad on märgitud. Kuni reisil pole ühtegi rada, pole ühelgi päeval seda märki.',
+    'Impordi fail vaates Päevad: kohtade veerus impordinupu all olev Impordi fail, kus GPX-i puhul on märgitud Marsruudid või Rajad (koos teekonna geomeetriaga) ja KML-i puhul Teekonnad (LineStrings). Kuni reisil pole ühtegi rada, pole ühelgi päeval seda märki.',
   'help.guide.roadtrip-track.tip.2':
     'Raja järgimine asendab päeva lõikudel juba olnud vahepunktid, nii et kujunda lõiku käsitsi pärast raja rakendamist, mitte enne.',
 };

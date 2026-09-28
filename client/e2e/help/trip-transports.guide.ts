@@ -49,6 +49,8 @@ async function openDayMenu(page: Page, n: number): Promise<void> {
 }
 /** A booking card in the tab: an <article> named by the booking's title. */
 const card = (page: Page, title: string) => page.getByRole('article', { name: title }).first()
+/** A card found by something it shows rather than its title, such as a booking code. */
+const cardShowing = (page: Page, text: string) => page.getByRole('article').filter({ hasText: text }).first()
 /** The two popovers of the tab's toolbar, each opened by its own button. */
 const toolbarButton = (page: Page, name: 'Filter' | 'View options') => page.getByRole('button', { name, exact: true })
 const toolbarMenu = (page: Page, name: 'Filter' | 'View options') => toolbarButton(page, name).locator('xpath=../..').getByRole('menu')
@@ -334,7 +336,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await modal(p).getByRole('button', { name: 'Add', exact: true }).click()
           await expect(modal(p)).toHaveCount(0, { timeout: 20_000 })
-          await expect(card(p, IMPORTED.code)).toBeVisible({ timeout: 20_000 })
+          await expect(cardShowing(p, IMPORTED.code)).toBeVisible({ timeout: 20_000 })
           await settle(p)
         },
       },
@@ -379,6 +381,15 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
+        // Leave when Senso-ji ends. The search opens on 09:00, and a connection
+        // from there would land in the day before the stop it starts from.
+        prepare: async p => {
+          const time = modal(p).getByPlaceholder('00:00')
+          await time.fill('11:00')
+          await time.blur()
+          await expect(time).toHaveValue('11:00')
+          await beat(p, 300)
+        },
         target: p => modal(p).getByRole('button', { name: 'Depart' }).locator('xpath=ancestor::div[3]'),
         act: async p => {
           await modal(p).getByRole('button', { name: 'Fewer transfers' }).click()

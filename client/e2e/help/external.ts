@@ -1,6 +1,6 @@
 import type { APIRequestContext } from '@playwright/test'
 import { day, PICTURE_DAY_ISO } from '../dates'
-import { dawarichRecording, recordingWindow, type TrackFeature } from './dawarich-track'
+import { DAWARICH_DEVICE, dawarichRecording, recordingWindow, type TrackFeature } from './dawarich-track'
 
 /**
  * The services outside TREK that a few guides need: an AirTrail with flights,
@@ -111,19 +111,61 @@ export async function disconnectAirtrail(api: APIRequestContext): Promise<void> 
 
 // ── Dawarich ────────────────────────────────────────────────────────────────
 
-/** Uploads the synthetic recording, one part at a time, unless its window already holds points. */
+/** The ids of the fixture's own points between two instants (ISO), every page of them. */
+async function fixturePointIds(base: string, key: string, from: string, to: string): Promise<number[]> {
+  const ids: number[] = []
+  for (let page = 1; ; page++) {
+    const res = await expectOk(
+      await fetch(`${base}/api/v1/points?start_at=${from}&end_at=${to}&per_page=1000&page=${page}`, { headers: { Authorization: `Bearer ${key}` } }),
+      `Dawarich points ${from}..${to}`,
+    )
+    const points = (await res.json()) as { id: number; tracker_id?: string | null }[]
+    // Only what this fixture uploaded: whatever else the account holds is not ours to touch.
+    ids.push(...points.filter(p => p.tracker_id === DAWARICH_DEVICE).map(p => p.id))
+    if (points.length === 0 || page >= Number(res.headers.get('x-total-pages') ?? 1)) return ids
+  }
+}
+
+const shiftIso = (iso: string, days: number) => new Date(Date.parse(`${iso}T00:00:00Z`) + days * 86_400_000).toISOString().slice(0, 10)
+const aroundInstant = (iso: string, seconds: number) => new Date(Date.parse(iso) + seconds * 1000).toISOString()
+
+/**
+ * Uploads the synthetic recording, one part at a time, unless this run's copy
+ * of it is already there.
+ *
+ * The recording moves with the picture day, so the copy an earlier run left
+ * sits a few days off this run's and overlaps its window. Asking whether the
+ * window held any point at all found that copy and uploaded nothing, and the
+ * trip map then drew the earlier run's last days, in Kyoto, on this run's
+ * first days, which are in Tokyo. So the probe asks for this run's first and
+ * last point, and a part that lacks either is cleared of the fixture's own
+ * points, a month either side of its window, before it goes up again.
+ */
 export async function ensureDawarichRecording(): Promise<void> {
   const base = env('HELP_MEDIA_DAWARICH_URL')
   const key = env('HELP_MEDIA_DAWARICH_API_KEY')
   const recording = dawarichRecording(PICTURE_DAY_ISO)
   for (const part of ['world', 'trip'] as const) {
-    const { from, to } = recordingWindow(PICTURE_DAY_ISO, part)
-    const probe = await expectOk(
-      await fetch(`${base}/api/v1/points?start_at=${from}&end_at=${to}&per_page=1`, { headers: { Authorization: `Bearer ${key}` } }),
-      `Dawarich points ${part}`,
-    )
-    if (Number(probe.headers.get('x-total-pages') ?? 0) > 0) continue
     const features = recording[part]
+    const ends = [features[0], features[features.length - 1]].map(f => f.properties.timestamp)
+    let present = true
+    for (const at of ends) {
+      if ((await fixturePointIds(base, key, aroundInstant(at, -1), aroundInstant(at, 1))).length === 0) present = false
+    }
+    if (present) continue
+
+    const { from, to } = recordingWindow(PICTURE_DAY_ISO, part)
+    const stale = await fixturePointIds(base, key, shiftIso(from, -30), shiftIso(to, 30))
+    for (let i = 0; i < stale.length; i += 1000) {
+      await expectOk(
+        await fetch(`${base}/api/v1/points/bulk_destroy`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ point_ids: stale.slice(i, i + 1000) }),
+        }),
+        `Dawarich clear ${part}`,
+      )
+    }
     for (let i = 0; i < features.length; i += 500) {
       const batch: TrackFeature[] = features.slice(i, i + 500)
       await expectOk(

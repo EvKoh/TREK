@@ -78,16 +78,24 @@ const shareMenu = (page: Page): Locator =>
   page.getByText('In the group pool, visible to everyone').locator('xpath=ancestor::div[1]')
 /** Its click-catcher, the only way back out of the menu once a name is ticked. */
 const shareOverlay = (page: Page): Locator => page.locator('div[role="presentation"][style*="z-index: 1099"]').last()
-/** The bulk-import dialog: its own portal, with none of the shared backdrop classes. */
+/** The bulk-import dialog, a DialogShell whose head band carries its title. */
 const importCard = (page: Page): Locator =>
-  page.getByText('Import Packing List', { exact: true }).locator('xpath=..')
+  page.getByRole('dialog').filter({ has: page.getByText('Import Packing List', { exact: true }) })
+/**
+ * The bag picker of a row and the member picker of a bag both hang off the
+ * body now, so they are found by their caption rather than inside the row.
+ */
+const bagPicker = (page: Page): Locator => page.locator('.trek-menu-enter').filter({ hasText: 'Bags' }).last()
+const bagMemberPicker = (page: Page): Locator => page.locator('.trek-menu-enter').filter({ hasText: 'Assign members' }).last()
+/** The calendar a date field opens, a portal of its own. */
+const datePicker = (page: Page): Locator => page.getByRole('dialog', { name: 'Date picker' })
 /** The Export button's menu: print, Markdown and CSV. */
 const exportMenu = (page: Page): Locator => page.getByRole('menu')
 /** The printable page inside the preview, a srcdoc frame of its own. */
 const printFrame = (page: Page) => page.frameLocator('iframe[title^="Packing List"]')
-/** The bags column. Total weight is a span two divs inside it, under the rule. */
+/** The Bags card beside the lists. Total weight is a span in its foot band. */
 const bagSidebar = (page: Page): Locator =>
-  page.getByText('Total weight', { exact: true }).locator('xpath=ancestor::div[3]')
+  page.getByText('Total weight', { exact: true }).locator('xpath=ancestor::div[2]')
 /** The detail pane on the right; its header reads Task. */
 const todoPane = (page: Page): Locator => page.getByText('Task', { exact: true }).locator('xpath=ancestor::div[2]')
 /** A task row is a div with role=button whose name starts with the task's own. */
@@ -248,6 +256,12 @@ const SCRIPTS: Record<string, GuideScript> = {
           await beat(p, 300)
         },
         target: catMenuCard,
+        // The pointer rests on the three dots that opened it, not on an entry.
+        // Moved by coordinates: the menu's click-catcher covers the button.
+        hover: async p => {
+          const b = await catMenu(p, NEW_LIST).boundingBox()
+          if (b) await p.mouse.move(b.x + b.width / 2, b.y + b.height / 2)
+        },
         act: async p => {
           // The menu sits over a full-viewport catcher; a click in the corner
           // closes it without deleting the list the picture was just taken of.
@@ -276,8 +290,9 @@ const SCRIPTS: Record<string, GuideScript> = {
           await settle(p)
         },
       },
-      // The whole progress card: the count, the bar, and the clean-up beside it.
-      only(p => p.getByText('/9', { exact: true }).locator('xpath=ancestor::div[4]')),
+      // The count and the percentage, with the bar beside them: the whole card is
+      // wider than any frame and would lose both at its edges.
+      only(p => p.getByText('/9', { exact: true }).locator('xpath=ancestor::div[2]')),
       {
         prepare: async p => {
           await catMenu(p, 'Documents').click()
@@ -357,6 +372,7 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openLists,
     steps: [
       {
+        // An icon at the right end of the bar, named Import by its label and tooltip.
         target: p => p.getByRole('button', { name: 'Import', exact: true }),
         act: async p => {
           await p.getByRole('button', { name: 'Import', exact: true }).click()
@@ -372,17 +388,21 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await typeInto(p, importCard(p).locator('textarea'), IMPORT_LINES)
           await expect(importCard(p).locator('textarea')).toHaveValue(IMPORT_LINES, { timeout: 20_000 })
+          // Out of the box again, or its dark focus ring reads as a second ring
+          // in the next two pictures.
+          await importCard(p).locator('textarea').blur()
           await settle(p)
         },
       },
-      // Clicking it would open the operating system's file chooser, which is
-      // not part of the picture; the button is shown, not pressed.
+      // In the dialog's footer, on the left. Clicking it would open the operating
+      // system's file chooser, which is not part of the picture; the button is
+      // shown, not pressed.
       only(p => importCard(p).getByRole('button', { name: 'Load CSV/TXT/MD' })),
       {
         target: p => importCard(p).getByRole('button', { name: /^Import \d+$/ }),
         act: async p => {
           await importCard(p).getByRole('button', { name: /^Import \d+$/ }).click()
-          await expect(p.getByText('Import Packing List', { exact: true })).toHaveCount(0, { timeout: 30_000 })
+          await expect(importCard(p)).toHaveCount(0, { timeout: 30_000 })
           await expect(item(p, 'Sunscreen')).toBeVisible({ timeout: 30_000 })
           await settle(p)
         },
@@ -517,18 +537,19 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: p => item(p, BAG_ITEM).locator('button:has(svg.lucide-package)'),
         act: async p => {
           await item(p, BAG_ITEM).locator('button:has(svg.lucide-package)').click()
-          await expect(item(p, BAG_ITEM).getByRole('button', { name: 'Add bag' })).toBeVisible()
+          await expect(bagPicker(p).getByRole('button', { name: 'Add bag' })).toBeVisible()
           await settle(p)
         },
       },
       {
-        target: p => item(p, BAG_ITEM).getByRole('button', { name: 'Add bag' }),
+        target: p => bagPicker(p).getByRole('button', { name: 'Add bag' }),
         act: async p => {
-          await item(p, BAG_ITEM).getByRole('button', { name: 'Add bag' }).click()
-          const field = item(p, BAG_ITEM).getByPlaceholder('Bag name...')
+          await bagPicker(p).getByRole('button', { name: 'Add bag' }).click()
+          const field = bagPicker(p).getByPlaceholder('Bag name...')
           await typeInto(p, field, BAG)
           await field.press('Enter')
           await expect(bagSidebar(p)).toBeVisible({ timeout: 30_000 })
+          await expect(bagPicker(p)).toHaveCount(0)
           await settle(p)
         },
       },
@@ -551,7 +572,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: p => bagSidebar(p).locator('button[style*="dashed"]').first(),
         act: async p => {
           await bagSidebar(p).locator('button[style*="dashed"]').first().click()
-          await bagSidebar(p).getByRole('button', { name: MEMBER }).click()
+          await bagMemberPicker(p).getByRole('button', { name: MEMBER }).click()
           // The picker closes on a click anywhere beside it.
           await p.mouse.click(20, VIEWPORT.height - 40)
           await expect(bagSidebar(p).getByRole('button', { name: MEMBER })).toBeVisible({ timeout: 20_000 })
@@ -587,8 +608,11 @@ const SCRIPTS: Record<string, GuideScript> = {
         prepare: async p => {
           await typeInto(p, modal(p).getByPlaceholder('Task name'), NEW_TASK)
           await typeInto(p, modal(p).getByPlaceholder('Description (optional)'), NEW_TASK_NOTE)
+          // Out of the field, so its dark focus border does not read as a second ring.
+          await modal(p).getByPlaceholder('Description (optional)').blur()
           await settle(p)
         },
+        // The name is typed into the dialog's head band, where Task name stands.
         target: p => modal(p).getByPlaceholder('Task name'),
       },
       {
@@ -613,12 +637,20 @@ const SCRIPTS: Record<string, GuideScript> = {
           // Exact: the keyboard button beside it is "Enter date manually", which a
           // loose name match also finds.
           await modal(p).getByRole('button', { name: 'Date', exact: true }).click()
-          await expect(p.getByRole('button', { name: DUE_DAY })).toBeVisible()
+          await expect(datePicker(p)).toBeVisible()
+          // The calendar opens on the picture day's month, the last of the trip,
+          // and four days later can already be in the next one.
+          if (!(await datePicker(p).getByRole('button', { name: DUE_DAY }).isVisible())) {
+            await datePicker(p).getByRole('button', { name: 'Next month' }).click()
+          }
+          await expect(datePicker(p).getByRole('button', { name: DUE_DAY })).toBeVisible()
           await beat(p, 300)
         },
-        target: p => p.getByRole('dialog').last(),
+        target: datePicker,
+        // The pointer on the day about to be picked, not on whatever the middle is.
+        hover: async p => { await datePicker(p).getByRole('button', { name: DUE_DAY }).hover() },
         act: async p => {
-          await p.getByRole('button', { name: DUE_DAY }).click()
+          await datePicker(p).getByRole('button', { name: DUE_DAY }).click()
           await modal(p).getByRole('button', { name: 'Unassigned' }).click()
           await p.getByRole('button', { name: ASSIGNEE }).click()
           await expect(modal(p).getByRole('button', { name: ASSIGNEE })).toBeVisible({ timeout: 20_000 })

@@ -1103,7 +1103,7 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.step.1':
     'Travel & map altında Rezervasyon rotalarını her zaman göster, günleri açık olmasa bile uçuşları ve trenleri haritada tutar; Haritada yerleri keşfet yer bulma hapını gösterir; Rotayı konaklamadan optimize et rotayı uyuduğunuz yerden başlatır.',
   'help.guide.travel-map-prefs.step.2':
-    'Rezervasyon Kodlarını Bulanıklaştır, üzerine gelene kadar onay numaralarını gizler; Rezervasyon rota etiketleri rezervasyon adını rotası boyunca yazar.',
+    'Rezervasyon Kodlarını Bulanıklaştır, üzerine gelene kadar onay numaralarını gizler; Rezervasyon rota etiketleri, bir rezervasyonun rotasının her iki ucundaki hapa havalimanı kodunu ya da istasyonun adını koyar, aksi hâlde orada yalnızca simge görünür.',
   'help.guide.travel-map-prefs.result': 'Gezi haritası, siz geri çevirene kadar bunlara her gezide uyar.',
   'help.guide.travel-map-prefs.tip.1':
     'Bunlar gezi başına değil, hesap başınadır. Paylaşılan bir gezinin üyeleri her biri kendi seçimlerini görür.',
@@ -1718,7 +1718,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.summary':
     'Tek bir seyahat, hepsi bir arada: günleri, haritası ve yerleriyle plan, ayrıca ulaşım, rezervasyonlar, listeler, maliyetler, dosyalar ve iş birliği sekmeleri. Bunların her birinin bu ekranın altında kendi yardım ekranı var.',
   'help.ctx.trip.bullet.1':
-    'Sekme çubuğu: Planı, Ulaşım, Rezervasyonlar, Listeler, Maliyetler, Dosyalar ve İş birliği. TREK’inizde hangi sekmelerin bulunacağına eklentiler ve plugin’ler karar verir.',
+    'Sekme çubuğu: Plan, Ulaşım, Rezerv., Liste, Maliyetler, Dosyalar ve İş birliği. TREK’inizde hangi sekmelerin bulunacağına eklentiler ve plugin’ler karar verir.',
   'help.ctx.trip.bullet.2':
     'Planı üç sütundur: solda günler, ortada harita, sağda yerler. Rezervasyonlar ve ulaşım planın içinde yaşar, durakta ve duraklar arasında; sekmeler onları listeler.',
   'help.ctx.trip.bullet.3':
@@ -1843,7 +1843,7 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.4':
     'Formda neler olduğunu kontrol edin: ad iletişim kutusunun başında durur ve tek zorunlu alandır; altındaki Kategori etiketi gezinin kategorilerinden birini seçer ve yanındaki + anında yenisini oluşturur. Adres, Enlem ve Boylam aramadan gelir ya da yazılır; Tanım ve Notlar sizindir; Web sitesi bağlantıyı alır.',
   'help.guide.create-place.step.5':
-    'Ekle düğmesine tıklayın. Aynı adlı bir yer gezide zaten varsa form bunu söyler ve düğme Yine de ekle olur.',
+    'Ekle düğmesine tıklayın. Aynı adlı ya da aynı noktada bir yer gezide zaten varsa TREK bunu söyler ve düğme Yine de ekle olur.',
   'help.guide.create-place.result': 'Yer listede ve haritadadır, bir güne konana kadar Planlanmamış altında.',
   'help.guide.create-place.tip.1':
     'Formun altındaki Dosyalar ve Maliyetler, yere bir belge ekler ya da kaydettikten hemen sonra gideri için Maliyetler düzenleyicisini açar.',
@@ -2128,10 +2128,10 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.step.4':
     'Haritada, bir ulaşım satırındaki düğme onun rotasını çizer; araç çubuğundaki Tüm rezervasyon rotalarını göster hepsini çizer.',
   'help.guide.bookings-in-plan.step.5':
-    'Oluşturma: üzerine gelinen bir durakta Rezervasyon ekle, günün + menüsünde Ulaşım ekle ve Toplu taşıma, içe aktarma ve dosyalarla tam liste için de Rezervasyonlar ve Ulaşım sekmeleri.',
+    'Oluşturma: üzerine gelinen bir durakta Rezervasyon ekle, günün + menüsünde Ulaşım ekle ve Toplu taşıma, içe aktarma ve dosyalarla tam liste için de Rezerv. ve Ulaşım sekmeleri.',
   'help.guide.bookings-in-plan.result': 'Bir rezervasyon, planda bir yer; sekmeler aynı rezervasyonların liste hali.',
   'help.guide.bookings-in-plan.tip.1':
-    'Onaylandı ve Askıda olması, rezervasyona sizin verdiğiniz durumlardır; plan bunları durakta gösterir, Rezervasyonlar sekmesi ikisini de sayar.',
+    'Onaylandı ve Beklemede, rezervasyona sizin verdiğiniz durumlardır; plan bunları durakta gösterir, Rezerv. sekmesi ikisini de sayar.',
   'help.guide.bookings-in-plan.tip.2':
     'Sabit saatli bir ulaşım sürüklenemez; bunun yerine saatini rezervasyonda değiştirin.',
   // export-plan
@@ -2268,7 +2268,7 @@ const help: TranslationStrings = {
   'help.guide.place-booking.title': 'Bir duraktaki rezervasyon',
   'help.guide.place-booking.goal': 'Bir durağa ait rezervasyonu okuyun, açın ve ona yeni bir tane iliştirin.',
   'help.guide.place-booking.step.1':
-    'Rezervasyonun ait olduğu durağı açın. Kart onu Rezervasyonlar altında kendi küçük kartı olarak, rezervasyonun adı ve Onaylandı ya da Askıda olması durumuyla listeler.',
+    'Rezervasyonun ait olduğu durağı açın. Kart onu Rezervasyonlar altında kendi küçük kartı olarak, rezervasyonun adı ve Onaylandı ya da Beklemede durumuyla listeler.',
   'help.guide.place-booking.step.2':
     'Rezervasyon kartı Tarih, Zaman ve Rezervasyon Kodu ile rezervasyonun sahip olduğu notları taşır.',
   'help.guide.place-booking.step.3': 'Rezervasyon kartına tıklayın. Rezervasyon haritanın üzerinde açılır.',
@@ -2361,17 +2361,17 @@ const help: TranslationStrings = {
   'help.ctx.trip-files.summary':
     'Gezinin her belgesi tek bir listede: biletler, onaylar, cüzdan kartları ve resimler, her biri bir notla, ait olduğu yere ya da rezervasyona bir bağla ve içinden geri çıkabileceği bir çöp kutusuyla.',
   'help.ctx.trip-files.bullet.1':
-    'Üstteki Dosyaları buraya bırakın dosyaları alır; kutuya bir tıklama dosya seçiciyi açar. Altındaki satır bu TREK’in kabul ettiği dosya türlerini ve dosya başına 50 MB sınırını listeler.',
+    'Çubuğun altındaki kesik çizgili kutu olan Dosyaları buraya bırakın dosyaları alır; ona bir tıklama dosya seçiciyi açar. İçinde bu TREK’in kabul ettiği dosya türleri ve dosya başına sınır olan Max 50 MB yazar.',
   'help.ctx.trip-files.bullet.2':
-    "Sekmeler listenin ne gösterdiğini söyler: Tüm, PDF'ler, Görseller ve Belgeler, her biri kendi sayısıyla. Bir dosya yıldızlanır yıldızlanmaz yanlarına bir yıldız katılır, bir not ek taşır taşımaz da İşbirliği Notları.",
+    "Üstteki çubukta Dosyalar ve filtre sekmeleri durur: Tüm, PDF'ler, Görseller ve Belgeler, her biri kendi sayısıyla. Bir dosya yıldızlanır yıldızlanmaz Tüm’ün ardına bir yıldız katılır, bir not ek taşır taşımaz da sona İşbirliği Notları.",
   'help.ctx.trip-files.bullet.3':
-    'Bir satır kimin yüklediğini, adı, altındaki notu, boyutu ve tarihi taşır, bir de her bağ için bir rozet: Gün Planı ve yer, Rezervasyon ya da Ulaşım ve rezervasyon, İşbirliği notlarından.',
+    'Bir satır bir küçük önizleme ya da dosyanın türünü, kimin yüklediğini, adı, altındaki notu, boyutu ve tarihi taşır, bir de her bağ için bir rozet: adıyla yer, rezervasyon ya da ulaşım (üzerine gelince Gün Planı, Rezervasyon ya da Ulaşım yazar) ve İşbirliği notlarından.',
   'help.ctx.trip-files.bullet.4':
-    'Satırın sonunda Yıldızla, Ata, Aç, İndir ve Sil durur. Sil sormaz: dosya çöp kutusuna gider, oradan geri getirilebilir.',
+    'Satırın sonunda, üzerine gelince her biri adını söyleyen en fazla beş simge durur: Yıldızla, Ata (kalem), Aç, İndir ve Sil. Sil sormaz: dosya çöp kutusuna gider, oradan geri getirilebilir.',
   'help.ctx.trip-files.bullet.5':
-    'Bir resim ya da video tam ekran açılır, ok tuşlarıyla ve bir küçük resim şeridiyle; her başka belge sayfanın üstünde bir önizlemede açılır, Yeni sekmede aç ve İndir ile. Bir cüzdan kartı doğrudan indirilir.',
+    'Bir resim ya da video tam ekran açılır, ok tuşlarıyla ve bir küçük resim şeridiyle; her başka belge, en üstte adı ve altında Yeni sekmede aç ile İndir bulunan bir iletişim kutusunda açılır. Bir cüzdan kartı doğrudan indirilir.',
   'help.ctx.trip-files.bullet.6':
-    'Sağ uçtaki Çöp kutusu listeyi silinen dosyalara çevirir, orada her biri geri yüklenir ya da kalıcı olarak silinir ve Çöp kutusunu boşalt hepsini temizler. Bir yöneticinin bir belge deposu bağladığı yerde yanında Belge eşitleme durur.',
+    'Çubuğun sağ ucundaki çöp kutusu simgesi (Çöp kutusu) listeyi silinen dosyalara çevirir; orada her biri geri yüklenir ya da kalıcı olarak silinir ve çubuktaki Çöp kutusunu boşalt hepsini temizler. Gezi bir belge deposuna bağlıysa, ya da bir depo açılır açılmaz gezinin sahibi veya bir yönetici için, çöp kutusu simgesinin solunda Belge eşitleme durur.',
   // files-upload
   'help.guide.files-upload.title': 'Geziye bir belge koyun',
   'help.guide.files-upload.goal':
@@ -2379,14 +2379,14 @@ const help: TranslationStrings = {
   'help.guide.files-upload.step.1':
     'Geziyi açın ve sekme çubuğunda Dosyalar’a tıklayın. Gezinin belgeleri orada listelenir, üstlerinde de yükleme kutusu durur.',
   'help.guide.files-upload.step.2':
-    'Dosyaları buraya bırakın kutusuna tıklayın ve bir ya da birkaç dosya seçin. Birbiri ardına yüklenirler ve bu sürerken kutuda Yükleniyor... yazar. Kutunun altındaki satır bu TREK’in hangi türleri aldığını ve bir dosyanın en fazla 50 MB olabileceğini söyler.',
+    'Dosyaları buraya bırakın kutusuna tıklayın ve bir ya da birkaç dosya seçin. Birbiri ardına yüklenirler ve bu sürerken kutuda Yükleniyor... yazar. Kutunun içinde, veya göz atmak için tıklayın altında, bu TREK’in aldığı türler ve bir dosyanın en fazla olabileceği boyut olan Max 50 MB yazar.',
   'help.guide.files-upload.step.3':
-    'Son dosya yüklenir yüklenmez onun için Dosya Ata kendiliğinden açılır. Not ekleyin... dosyaya kendine ait bir satır verir, altındaki listeler de onu bir yere ya da bir rezervasyona bağlar. × ile kapatın; kapatmakla hiçbir şey kaybolmaz.',
+    'Son dosya yüklenir yüklenmez onun için Dosya Ata kendiliğinden açılır (gezide herhangi bir yer ya da rezervasyon olduğu sürece), iletişim kutusunun başında dosyanın adıyla. Not altındaki Not ekleyin... dosyaya kendine ait bir satır verir, altındaki listeler de onu bir yere ya da bir rezervasyona bağlar. Sağ üstteki × ile kapatın; kapatmakla hiçbir şey kaybolmaz.',
   'help.guide.files-upload.step.4':
-    'Yeni dosyalar listenin en üstünde durur. Bir satır kimin yüklediğini, adı, boyutu ve tarihi gösterir; bir resim küçük bir önizleme alır, her başka dosya kendi türünü.',
+    'Yeni dosyalar listenin en üstünde durur; yalnızca yıldızlı dosyalar onların da üstündedir. Bir satır kimin yüklediğini, adı, boyutu ve tarihi gösterir; bir resim küçük bir önizleme alır, her başka dosya kendi türünü.',
   'help.guide.files-upload.result': 'Belgeler gezidedir ve geziyi görebilen herkes onları açabilir ve indirebilir.',
   'help.guide.files-upload.tip.1':
-    'Bir dosya masaüstünden doğrudan kutunun üzerine de sürüklenebilir; dosya üzerindeyken kutu aydınlanır.',
+    'Bir dosya masaüstünden doğrudan kutunun üzerine de sürüklenebilir; dosya üzerindeyken kutu vurgulanır.',
   'help.guide.files-upload.tip.2':
     'Panodaki bir resim Ctrl+V ile listeye girer, böylece bir rezervasyonun ekran görüntüsünü önce kaydetmek hiç gerekmez.',
   'help.guide.files-upload.tip.3':
@@ -2395,18 +2395,19 @@ const help: TranslationStrings = {
   'help.guide.files-link.title': 'Bir belgeyi bir yere ya da bir rezervasyona bağlayın',
   'help.guide.files-link.goal': 'Biletin yalnızca bu listeden değil, ait olduğu günden de bulunabilmesini sağlayın.',
   'help.guide.files-link.step.1':
-    'Satırın sonundaki kalem olan Ata düğmesine tıklayın. Dosyanın adını taşıyan Dosya Ata açılır.',
+    'Satırın sonundaki kaleme (Ata) tıklayın. Dosya Ata açılır, iletişim kutusunun başında altında dosyanın adıyla.',
   'help.guide.files-link.step.2':
-    'Not altında Not ekleyin... bir satır alır, o da listede dosyanın adının altında durur. Kutudan çıktığınız anda kaydedilir.',
+    'Not altında Not ekleyin... bir satır alır, o da listede dosyanın adının altında durur. Enter’a bastığınızda ya da kutudan çıktığınızda kaydedilir.',
   'help.guide.files-link.step.3':
-    'Yer altında gezinin yerleri, bulundukları güne göre gruplanmış olarak durur, hiçbir günde olmayanlar için de sonda Atanmamış. Birine tıklayın, bir onay işareti alır.',
+    'Solda, Yer altında gezinin yerleri, bulundukları güne göre ve o günün tarihiyle gruplanmış olarak durur, hiçbir günde olmayanlar için de sonda Atanmamış. Birine tıklayın, bir onay işareti alır.',
   'help.guide.files-link.step.4':
-    'Rezervasyon ve Ulaşım altında gezinin rezervasyonları durur. Belgenin ait olduğuna tıklayın; o da kendi onay işaretini alır.',
-  'help.guide.files-link.step.5': '× ile kapatın. Burada kaydet düğmesi yoktur: her tıklama, yaptığınız anda yazıldı.',
+    'Sağda, Rezervasyon ve Ulaşım altında gezinin rezervasyonları durur. Belgenin ait olduğuna tıklayın; o da kendi onay işaretini alır.',
+  'help.guide.files-link.step.5':
+    'Sağ üstteki × ile kapatın. Burada kaydet düğmesi yoktur: her tıklama, yaptığınız anda yazıldı.',
   'help.guide.files-link.result':
-    'Satır notu ve her bağ için bir rozet taşır, Gün Planı ve yerin adı, Ulaşım ve uçuşun adı, belge de hem yerde hem uçuşta asılı durur.',
+    'Satır notu ve her bağ için bir rozet taşır, biri yerin adıyla, biri uçuşun adıyla (bir rozetin üzerine gelince Gün Planı ya da Ulaşım yazar), belge de hem yerde hem uçuşta asılı durur.',
   'help.guide.files-link.tip.1':
-    'Bir dosya aynı anda birkaç bağ tutabilir, böylece aynı onay hem otele hem de kapsadığı geceye ait olur.',
+    'Bir dosya aynı anda birkaç bağ tutabilir, böylece aynı onay hem otelin rezervasyonuna hem de otelin yerine aynı anda ait olabilir.',
   'help.guide.files-link.tip.2': 'İşaretli bir girdiye yeniden tıklamak o bağı kaldırır; dosyanın kendisi kalır.',
   'help.guide.files-link.tip.3':
     'Tersi de geçerlidir: bir yere ya da bir rezervasyona eklenmiş bir belge bu listede de vardır, satırında aynı rozetle.',
@@ -2414,22 +2415,22 @@ const help: TranslationStrings = {
   'help.guide.files-star.title': 'Önemli belgeleri üstte tutun',
   'help.guide.files-star.goal': 'Gezi boyunca büyüyen bir listeden, gerçekten gerekecek iki üç kağıdı çekip çıkarın.',
   'help.guide.files-star.step.1':
-    'Satırın sonundaki Yıldızla düğmesine tıklayın. Sarıya dolar, dosyanın adının önünde ikinci bir yıldız belirir ve düğmede artık Yıldızı kaldır yazar.',
+    'Satırın sonundaki yıldıza (Yıldızla) tıklayın. Altın rengiyle dolar, dosyanın adının önünde ikinci bir yıldız belirir ve artık düğmenin üzerine gelince Yıldızı kaldır yazar.',
   'help.guide.files-star.step.2':
     'Liste kendini yeniden sıralar: yıldızlı dosyalar diğerlerinin üstünde durur, her grubun içinde en yeniler önce.',
   'help.guide.files-star.step.3':
-    'Üstteki sekmelere bir yıldız katıldı, arkasında yıldızlı dosyaların sayısıyla. Yalnızca onları görmek için ona tıklayın.',
+    'Çubuktaki filtre sekmelerine, Tüm’ün hemen ardına, yanında yıldızlı dosyaların sayısıyla bir yıldız katıldı. Yalnızca onları görmek için ona tıklayın.',
   'help.guide.files-star.result':
     'Gişede gereken kağıtlar listenin en üstünde durur ve bir sekme başka hiçbir şey göstermez.',
   'help.guide.files-star.tip.1':
     'Yıldız sekmesi yalnızca bir şey yıldızlıyken vardır. Son dosyanın yıldızını kaldırın, sekme de onunla birlikte gider.',
   'help.guide.files-star.tip.2':
-    'Yıldızlamak bir düzenleme sayılır: gezinin dosyalarını yalnızca okuyabilen bir üye yıldızları görür ama koyamaz.',
+    'Yıldızlamak, Ata ile aynı hakkı gerektirir: Dosya meta verisini düzenle. Bu hakkı olmayan bir üye yıldızları görür ama Yıldızla’ya tıklaması onun için hiçbir şeyi değiştirmez.',
   // files-filter
   'help.guide.files-filter.title': 'Listede bir belge bulun',
   'help.guide.files-filter.goal': 'Her şeyin listesini, aradığınız tek tür kağıda daraltın.',
   'help.guide.files-filter.step.1':
-    "Listenin üstündeki sekmeler Tüm, PDF'ler, Görseller ve Belgeler’dir, her biri arkasında dosya sayısıyla.",
+    "Filtre sekmeleri en üstteki çubukta, Dosyalar’ın yanında durur: Tüm, PDF'ler, Görseller ve Belgeler, her biri yanında dosya sayısıyla.",
   'help.guide.files-filter.step.2': "PDF'ler sekmesine tıklayın: liste PDF dosyalarını tutar, başka hiçbir şeyi değil.",
   'help.guide.files-filter.step.3':
     'İki sekme daha gezide ne olduğuna göre gelir gider. İş birliği sekmesindeki bir not ek taşır taşımaz orada olan İşbirliği Notları sekmesine tıklayın: liste o dosyaları tutar, başka hiçbir şeyi değil. Bir dosya yıldızlanır yıldızlanmaz aynı şekilde sıraya bir yıldız katılır.',
@@ -2437,7 +2438,7 @@ const help: TranslationStrings = {
   'help.guide.files-filter.result':
     'Liste yalnızca sekmenin adlandırdığını gösterir ve her sekmedeki sayı bunun kaç olduğunu söyler.',
   'help.guide.files-filter.tip.1':
-    'Burada klasör yoktur ve yeniden adlandırma yoktur: bir belge Dosya Ata içindeki nota, yerlere ve rezervasyonlara bağlarına ve yıldıza göre düzenlenir.',
+    'Burada klasör yoktur ve yeniden adlandırma yoktur: belgeleri Dosya Ata içindeki notla, yerlere ve rezervasyonlara bağlarla ve yıldızla birbirinden ayırırsınız.',
   'help.guide.files-filter.tip.2':
     'Listenin kendisi her zaman önce yıldızlı, sonra en yeni sırasıyla gider, böylece bugün yüklenen bir belge geçen ayki bir belgenin üstünde durur.',
   // files-preview
@@ -2445,14 +2446,15 @@ const help: TranslationStrings = {
   'help.guide.files-preview.goal':
     'Bir bilete ya da bir resme yerinde bakın ve gerektiğinde onu kendi makinenize alın.',
   'help.guide.files-preview.step.1':
-    'Bir resmin adına ya da küçük önizlemesine tıklayın. Tam ekran açılır, başlıkta dosyanın adı ve resimler arasındaki sırası ile.',
+    'Bir resmin adına ya da küçük önizlemesine tıklayın. Tam ekran açılır, sol üstte dosyanın adı ve resimler arasındaki sırası ile.',
   'help.guide.files-preview.step.2':
     'Yanlardaki yuvarlak oklar, sol ve sağ ok tuşları ve alttaki küçük resim şeridi, listenin o anda gösterdiği her resmin arasında gezer.',
-  'help.guide.files-preview.step.3': 'Yeni sekmede aç ve İndir başlıkta durur; × ya da Escape resmi yeniden kapatır.',
+  'help.guide.files-preview.step.3':
+    'Yeni sekmede aç ve İndir, sağ üstte × yanındaki yuvarlak düğmelerdir. ×, Escape ya da koyu arka plana bir tıklama resmi yeniden kapatır.',
   'help.guide.files-preview.step.4':
-    'Resim olmayan bir belge bunun yerine sayfanın üstünde bir önizlemede açılır, başlığında aynı iki düğmeyle. Bu, × ile ya da yanına bir tıklamayla kapanır.',
+    'Resim olmayan bir belge bunun yerine bir iletişim kutusunda açılır: en üstte adı, altında hap biçimli düğmeler olarak Yeni sekmede aç ve İndir, bir PDF için de aşağıda sayfanın kendisi. Sağ üstteki ×, Escape ya da iletişim kutusunun yanına bir tıklama onu kapatır.',
   'help.guide.files-preview.step.5':
-    'Satırın sonundaki İndir, önce hiçbir şey açmadan dosyayı doğrudan makinenize kaydeder.',
+    'Satırın sonundaki ok (İndir), önce hiçbir şey açmadan dosyayı doğrudan makinenize kaydeder.',
   'help.guide.files-preview.result':
     'Belge ekrandadır ve aynı iki düğme onu bir tarayıcı sekmesine ya da diskinize koyar.',
   'help.guide.files-preview.tip.1':
@@ -2466,15 +2468,15 @@ const help: TranslationStrings = {
   'help.guide.files-trash.goal':
     'Gezinin artık ihtiyaç duymadığını temizleyin, sonunda gerçekten gereken hiçbir şeyi kaybetmeden.',
   'help.guide.files-trash.step.1':
-    'Satırın sonundaki Sil düğmesine tıklayın. Dosya listeden hemen çıkar ve ileti Çöp kutusuna taşındı der. Önce hiçbir şey sormaz.',
+    'Satırın sonundaki çöp kutusuna (Sil) tıklayın. Dosya listeden hemen çıkar ve ileti Çöp kutusuna taşındı der. Önce hiçbir şey sormaz.',
   'help.guide.files-trash.step.2':
-    'Araç çubuğunun sağ ucundaki Çöp kutusu listeyi atılanlara çevirir. Başlık Çöp kutusu der ve filtre sekmeleri yoktur.',
+    'Çubuğun sağ ucundaki çöp kutusu simgesi (Çöp kutusu) listeyi atılanlara çevirir. Çubuğun başlığında Çöp kutusu yazar, filtre sekmeleri ve yükleme kutusu da yoktur.',
   'help.guide.files-trash.step.3':
-    'Atılmış bir satır soluklaşır ve iki düğmesi kalır: dosyayı geri getiren Geri yükle ve bir sorudan sonra onu kalıcı olarak kaldıran Sil.',
+    'Atılmış bir satır soluklaşır ve iki simgesi kalır: dosyayı geri getiren Geri yükle ve bir sorudan sonra onu kalıcı olarak kaldıran Sil.',
   'help.guide.files-trash.step.4':
     'Geri yükle düğmesine tıklayın. İleti Dosya geri yüklendi der ve satır, notu ve bağları hâlâ üzerindeyken çöp kutusundan çıkar.',
   'help.guide.files-trash.step.5':
-    'Üstteki Çöp kutusunu boşalt, burada duran her şeyi kalıcı olarak temizler ve tarayıcı bunu yapmadan önce bir kez sorar. Çöp kutusu yeniden dosyalara döner.',
+    'Çubukta çöp kutusu simgesinin yanındaki Çöp kutusunu boşalt, burada duran her şeyi kalıcı olarak temizler ve tarayıcı bunu yapmadan önce bir kez sorar. Çöp kutusu simgesi yeniden dosyalara döner.',
   'help.guide.files-trash.result': 'Dosya listede durduğu yere, hiçbir şey olmamış gibi geri döner.',
   'help.guide.files-trash.tip.1':
     'Satırdaki Sil önce sormaz ve çöp kutusu tam da bunun içindir: burada siz söyleyene kadar hiçbir şey TREK’ten çıkmaz.',
@@ -2486,7 +2488,7 @@ const help: TranslationStrings = {
   'help.guide.files-sync.goal':
     'Geziyi kendi belge deponuza bağlayın, böylece burada yüklenen oraya iner, orada dosyalanan burada belirir.',
   'help.guide.files-sync.step.1':
-    'Araç çubuğunun sağ ucunda, Çöp kutusu yanındaki Belge eşitleme düğmesine tıklayın. Pencere, başlığının altında gezinin adıyla açılır. Solda, Sağlayıcı bağla altında, bir yöneticinin açtığı depolar durur, her biri nasıl dosyaladığına dair bir satırla: Paperless-ngx ve Papra etiketlerle, Nextcloud ve Synology Drive bir klasörde, OpenCloud bir alanda. Sağda Henüz bir şey bağlanmadı yazar.',
+    'Çubuğun sağ ucunda, çöp kutusu simgesinin yanındaki Belge eşitleme düğmesine tıklayın. Pencere, başlığının altında gezinin adıyla açılır. Solda, Sağlayıcı bağla altında, bir yöneticinin açtığı depolar durur, her biri nasıl dosyaladığına dair bir satırla: Paperless-ngx ve Papra etiketlerle, Nextcloud ve Synology Drive bir klasörde, OpenCloud bir alanda. Sağda Henüz bir şey bağlanmadı yazar.',
   'help.guide.files-sync.step.2':
     'Deponuza tıklayın, burada Nextcloud. Bağlantı için depodan adını alan daha küçük bir pencere açılır ve o deponun oturum açmak için istediği bilgileri sorar.',
   'help.guide.files-sync.step.3':
@@ -2496,15 +2498,15 @@ const help: TranslationStrings = {
   'help.guide.files-sync.step.5':
     'Bağlan düğmesine tıklayın. Bağlantı geziyle birlikte kaydedilir ve TREK gezinin depoda nerede duracağını sorar: belgelerini tutan etiket, klasör ya da alan. Yalnızca oradakiler eşitlenir. Yeni bir tane oluştur, Oluştur ile gezinin başlığından önceden doldurulmuş bir adla onu oluşturur; Ya da var olanlardan birini kullanın altında zaten var olanlar durur. Birine tıklayın, burada Autumn in Japan klasörüne.',
   'help.guide.files-sync.step.6':
-    'Pencere geri gelir: deponuz solda Bu gezi altında durur ve sağdaki kartında nereye eşitlendiği, en son ne zaman çalıştığı ve Şimdi eşitle düğmesi yer alır. İlk çalışma kendiliğinden başlar; Şimdi eşitle istediğiniz zaman bir tane çalıştırır. Bir çalışma bittiğinde adın yanındaki Henüz eşitlenmedi rozeti yerini yeşil bir noktaya bırakır, üzerine geldiğinizde Eşit durumda, ve akış çubuğu TREK ile deponun her birinin tuttuğu belgeleri sayar, aralarında Depoya giden ve Depodan gelen şeritleriyle. Pencereyi × ile kapatın.',
+    'Pencere geri gelir: deponuz solda Bu gezi altında durur ve sağdaki kartında nereye eşitlendiği, en son ne zaman çalıştığı ve Şimdi eşitle düğmesi yer alır. İlk çalışma kendiliğinden başlar; Şimdi eşitle istediğiniz zaman bir tane çalıştırır. Bir çalışma bittiğinde adın yanındaki Henüz eşitlenmedi rozeti yerini yeşil bir noktaya bırakır, üzerine geldiğinizde Eşit durumda, ve akış çubuğu TREK ile deponun her birinin tuttuğu belgeleri sayar, aralarında Depoya giden ve Depodan gelen şeritleriyle. Pencereyi sağ üstteki × ile kapatın.',
   'help.guide.files-sync.result':
-    'Orada zaten olan belgeler listenin en üstünde, sizin adınıza yüklenmiş olarak durur ve gezinin her belgesi depoda da vardır. Bundan sonra TREK depoyu arka planda denetler ve depo listeyi izler.',
+    'Orada zaten olan belgeler listenin en üstünde, sizin adınıza yüklenmiş olarak durur ve İşbirliği Notları’ndan gelenler dışında gezinin her belgesi depoda da vardır. Bundan sonra TREK depoyu arka planda denetler ve depo listeyi izler.',
   'help.guide.files-sync.tip.1':
-    'Bir geziyi yalnızca gezinin sahibi ya da bir örnek yöneticisi bağlayabilir, çünkü kimlik bilgileri depodaki o hesabın tamamına ulaşır. Her üye Belge eşitleme’yi açabilir, kartı okuyabilir ve Şimdi eşitle düğmesine basabilir.',
+    'Bir geziyi yalnızca gezinin sahibi ya da bir örnek yöneticisi bağlayabilir, çünkü kimlik bilgileri depodaki o hesabın tamamına ulaşır. Gezi bağlandığında her üye Belge eşitleme’yi görür, onu açabilir, kartı okuyabilir ve Şimdi eşitle düğmesine basabilir.',
   'help.guide.files-sync.tip.2':
     'Kendi ağınızdaki bir depo TREK sunucusunda ALLOW_INTERNAL_NETWORK=true ister ve adresi makinenin ağdaki adresi olmalıdır, asla localhost değil. Bu olmadan Bağlantıyı test et, Bu adrese izin verilmiyor. yanıtını verir.',
   'help.guide.files-sync.tip.3':
-    'Karttaki Bağlantıyı kes eşleştirmeyi bitirir ve her belgeyi iki tarafta da tutar. İkinci kez bağlanan bir etiket, klasör ya da alan yeni sayılır ve içindeki her şey yeniden gelir, bu yüzden bir Bağlantıyı kes sonrasında eskisi yerine boş bir tane bağlayın.',
+    'Şimdi eşitle yanındaki simge olan Bağlantıyı kes bir kez sorar, sonra eşleştirmeyi bitirir ve her belgeyi iki tarafta da tutar. İkinci kez bağlanan bir etiket, klasör ya da alan yeni sayılır ve içindeki her şey yeniden gelir, bu yüzden bir Bağlantıyı kes sonrasında eskisi yerine boş bir tane bağlayın.',
 
   // ── Screen: trip-day-detail ───────────────────────────────────────────────────────────
   'help.ctx.trip-day-detail.title': 'Gün ayrıntıları',
@@ -2588,7 +2590,7 @@ const help: TranslationStrings = {
     'Tesisi gezinin yerlerinden seçin. Listenin üstündeki Kategori onu tek bir kategoriye daraltır.',
   'help.guide.add-accommodation.step.6': 'Kaydet düğmesine tıklayın.',
   'help.guide.add-accommodation.result':
-    'Konaklama kapsadığı her günde görünür, ilkinde Giriş ve sonuncusunda Çıkış yapmak ile. Tesis giriş gününde bir durak olur, böylece harita oraya giden yolu çizer ve Rezervasyonlar sekmesinde Konaklama türünde bir rezervasyon belirir.',
+    'Konaklama kapsadığı her günde görünür, ilkinde Giriş ve sonuncusunda Çıkış yapmak ile. Tesis giriş gününde bir durak olur, böylece harita oraya giden yolu çizer ve Rezerv. sekmesinde Konaklama türünde bir rezervasyon belirir.',
   'help.guide.add-accommodation.tip.1':
     'Seçici geldiğiniz günde açılır, çıkış ertesi günde; kaydetmeden önce ikisi de taşınabilir.',
   'help.guide.add-accommodation.tip.2':
@@ -2609,7 +2611,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.5':
     'Kalemin yanındaki X konaklamayı bitirir. Hiçbir şey sormaz ve ona ait Konaklama türündeki rezervasyon da onunla gider.',
   'help.guide.edit-accommodation.result':
-    'Değişiklik konaklamanın kapsadığı her güne aynı anda ulaşır, Rezervasyonlar sekmesindeki Konaklama türündeki rezervasyona da.',
+    'Değişiklik konaklamanın kapsadığı her güne aynı anda ulaşır, Rezerv. sekmesindeki Konaklama türündeki rezervasyona da.',
   'help.guide.edit-accommodation.tip.1':
     'Bir konaklamanın ortasındaki gece ne Giriş ne de Çıkış yapmak etiketini taşır: bunlar yalnızca aralığın ilk ve son gününde olur.',
   'help.guide.edit-accommodation.tip.2':
@@ -2624,11 +2626,11 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Renk bir rezervasyonun nerede olduğunu söyler: yeşil satır onaylandı, kehribar rengi olan hâlâ askıda. Oteller bu listede değildir, aşağıda kendi blokları vardır.',
   'help.guide.day-bookings.step.4':
-    'Bir satıra tıklayın, rezervasyon açılır. Altındaki Düzenle onu değiştirir; yeni rezervasyonlar Rezervasyonlar sekmesinde oluşturulur.',
+    'Bir satıra tıklayın, rezervasyon açılır. Altındaki Düzenle onu değiştirir; yeni rezervasyonlar Rezerv. sekmesinde oluşturulur.',
   'help.guide.day-bookings.result':
     'Tarihi o güne düşen her şey ve duraklarından birine bağlı olan her şey bu tek listededir.',
   'help.guide.day-bookings.tip.1':
-    'Bir rezervasyon güne kendi tarihiyle iner. Tarihi Rezervasyonlar sekmesinde değiştirin, kendiliğinden diğer güne taşınır.',
+    'Bir rezervasyon güne kendi tarihiyle iner. Tarihi Rezerv. sekmesinde değiştirin, kendiliğinden diğer güne taşınır.',
   'help.guide.day-bookings.tip.2':
     'Rezervasyonlar bloğunun olmaması, günün rezervasyonu olmadığı anlamına gelir: boş gösterilmek yerine gizlenir.',
 
@@ -2637,30 +2639,32 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.summary':
     'Planın ortası: gezinin her yeri bir iğne, onları birleştiren rotalar ve haritanın kenarları boyunca uydu için, tüm gezi için ve baktığınız şehir parçasının çevresindeki yerler için anahtarlar.',
   'help.ctx.trip-map.bullet.1':
-    'Bir iğne bir yerdir: varsa kendi fotoğrafı, yoksa kategori rengi ve kategori simgesi. İmleci bir iğnenin üzerine getirin, adını ve adresini taşıyan bir kart gelir, yerin taşıdığı yerlerde kategorisi ve puanıyla birlikte. Yeri o güne planlamak için bir iğneyi gün kartının üzerine sürükleyin.',
+    'Bir iğne bir yerdir: varsa kendi fotoğrafı, yoksa kategori rengi ve kategori simgesi. İmleci bir iğnenin üzerine getirin, resmini, adını ve adresini taşıyan bir kart gelir, yerin taşıdığı yerlerde puanı ve kategorisiyle birlikte. Yeri o güne planlamak için bir iğneyi gün kartının üzerine sürükleyin.',
   'help.ctx.trip-map.bullet.2':
     'Birbirinden ayırt edilemeyecek kadar yakın duran iğneler, sayıyı taşıyan tek bir koyu baloncukta toplanır. Baloncuğa tıklayın, harita içindekine yakınlaşır.',
   'help.ctx.trip-map.bullet.3':
-    'Yeri haritanın altında açmak için bir iğneye tıklayın: puanı, dosyaları ve onunla sırada ne yapacağınız oradadır; bırakmak için haritanın boş bir parçasına tıklayın.',
+    'Yeri haritanın alt kenarındaki bir kartta açmak için bir iğneye tıklayın: puanı, dosyaları ve onunla sırada ne yapacağınız oradadır; bırakmak için haritanın boş bir parçasına tıklayın.',
   'help.ctx.trip-map.bullet.4':
-    'Günler sütununda bir gün açıkken, o günün durakları o gündeki sıra numarasını taşıyan küçük beyaz bir rozet taşır ve iki güne planlanmış bir yer, · ile birleştirilmiş iki numarayı birden taşır.',
+    'Günler sütununda bir gün açıkken, o günün durakları o gündeki sıra numarasını taşıyan küçük beyaz bir rozet taşır ve günde iki kez geçen bir yer iki numarasını birden taşır.',
   'help.ctx.trip-map.bullet.5':
     'Üstteki simge sırası haritanın gördüğünüz parçasında arar: Restoranlar, Kafeler, Bar ve gece hayatı, Konaklama, Gezilecek yerler, Müzeler ve kültür, Doğa ve parklar ile Aktiviteler. Bu alanda ara, haritayı oynattıktan sonra aramayı yeniden çalıştırır.',
   'help.ctx.trip-map.bullet.6':
     'Haritanın herhangi bir yerine sağ tıklayarak o noktada yer formunu açın, adres çoktan bulunmuş olur. Sol alttaki yuvarlak düğme çizilmiş haritayı hava görüntüleriyle değiştirir.',
   'help.ctx.trip-map.bullet.7':
-    'Sağ alttaki Tüm geziyi göster her seyahat gününü aynı anda çizer ve her birinin neyi kapsadığını listeler; bir rezervasyonun satırındaki rota simgesi o rezervasyonu çizer, günlerin üstündeki araç çubuğundaki ise hepsini çizer.',
+    'Sağ alttaki Tüm geziyi göster her seyahat gününü aynı anda çizer ve her birinin neyi kapsadığını listeler; bir rezervasyonun satırındaki rota simgesi o rezervasyonu çizer, günlerin üstündeki araç çubuğundaki ise hepsini çizer. Ayrıntılarını açmak için çizilmiş bir rezervasyonun ucuna tıklayın.',
+  'help.ctx.trip-map.bullet.8':
+    'Dawarich eklentisi açıkken Tüm geziyi göster altındaki yuvarlak Dawarich düğmesi telefonunuzun gerçekten kaydettiği rotayı çizer: Kaydedilen rotayı göster onu planlanan rotanın altına kesikli olarak, her gün bir renkte serer ve çizgi olmadığında düğmenin etiketi neden olmadığını söyler.',
   // map-markers
   'help.guide.map-markers.title': 'Haritayı okuyun',
   'help.guide.map-markers.goal': 'Haritadaki her iğnenin, rozetin ve baloncuğun size ne söylediğini bilin.',
   'help.guide.map-markers.step.1':
     'Harita gezinin her yerini tutar. İğnelerin birbirinden ayırt edilemeyecek kadar yakın durduğu yerde, içlerindeki sayıyı taşıyan tek bir koyu baloncukta toplanırlar; baloncuğa tıklayın, harita içinde olana yakınlaşır ya da en derin yakınlaştırmada iğneleri yelpaze gibi açar.',
   'help.guide.map-markers.step.2':
-    'Bir iğne, varsa yerin kendi fotoğrafıdır, yoksa kategori rengi ve kategori simgesidir. İmleci üzerine getirin, bir kart adını ve adresini verir, yerin taşıdığı yerlerde kategorisi ve puanıyla birlikte.',
+    'Bir iğne, varsa yerin kendi fotoğrafıdır, yoksa kategori rengi ve kategori simgesidir. İmleci üzerine getirin, yanında bir kart açılır: aynı fotoğraf daha büyük hâliyle, ad ve adres, yerin taşıdığı yerlerde puan ve kategoriyle birlikte.',
   'help.guide.map-markers.step.3':
-    'Bir iğneye tıklayın, yer haritanın altındaki bir kartta açılır: koordinatları, puanı, Dosyalar ve alt kenar boyunca onunla sonra ne yapacağınız, aralarında Navigasyon, Düzenle ve Sil, bir gün açıkken de Güne Ekle. Bırakmak için haritanın boş bir parçasına tıklayın.',
+    'Bir iğneye tıklayın, yer haritanın alt kenarındaki bir kartta açılır: baş kısmında resim, ad ve adres, ardından yıldızlar, açıklama ve dosyalar, alt kenar boyunca da onunla sonra ne yapacağınız, aralarında Navigasyon, Koleksiyona kaydet (yer bir koleksiyona girdiğinde Kaydedildi), Düzenle ve Sil, bir gün açıkken de Güne Ekle ya da yer zaten o gündeyse Günden Kaldır. Baş kısımdaki X ya da haritanın boş bir parçasına bir tıklama onu yeniden kapatır.',
   'help.guide.map-markers.step.4':
-    'Günler sütununda bir gün açın, durakları numaralanır: iğnenin köşesindeki küçük beyaz rozet o durağın gündeki sırasıdır. İki güne planlanmış bir yer, · ile birleştirilmiş iki numarayı birden taşır. Açık bir gün yokken numara olmaz ve köşe onun yerine puanı taşır.',
+    'Günler sütununda bir gün açın, durakları numaralanır: iğnenin köşesindeki küçük beyaz rozet o durağın gündeki sırasıdır. Günde iki kez geçen bir yer iki numarasını birden taşır. Açık bir gün yokken numara olmaz ve köşe onun yerine, varsa yerin puanını taşır.',
   'help.guide.map-markers.step.5':
     'Bir iğneyi haritadan günler sütunundaki bir gün kartının üzerine sürükleyin, yer o güne planlanır, tıpkı satırını yerler listesinden sürüklemek gibi.',
   'help.guide.map-markers.result':
@@ -2682,11 +2686,11 @@ const help: TranslationStrings = {
   'help.guide.map-nearby-places.step.3':
     'Haritayı oynatın, sıranın altında ikinci bir düğme belirir: Bu alanda ara aynı aramayı yeni görünüm için çalıştırır. Yalnızca oynatmak asla yeniden aramaz, bu da istek sayısını düşük tutar.',
   'help.guide.map-nearby-places.step.4':
-    'İğneler buldukları şeyin adını taşır. Birine tıklayın, yer formu ondan doldurulmuş olarak açılır: İsim, Adres, Enlem ve Boylam ile OpenStreetMap’te varsa web sitesi ve telefon numarası.',
+    'Bulunan şeyin adını görmek için imleci bir iğnenin üzerine getirin. Ona tıklayın, yer formu ondan doldurulmuş olarak açılır: iletişim kutusunun başında ad, Adres, Enlem ve Boylam, aramanın bir tane bulduğu yerde de Web sitesi.',
   'help.guide.map-nearby-places.step.5':
-    'Neyi doldurduğunu kontrol edin ve aramanın bilemeyeceğini ekleyin: bir Tanım, bir Kategori, kendi notlarınız.',
+    'Neyi doldurduğunu kontrol edin ve aramanın bilemeyeceğini ekleyin: adın altındaki, siz seçene kadar Kategori Yok yazan etiketten bir kategori, bir Tanım, kendi notlarınız.',
   'help.guide.map-nearby-places.step.6':
-    'Ekle düğmesine tıklayın. Aynı adlı bir yer gezide zaten varsa form bunu söyler ve düğme Yine de ekle olur.',
+    'Ekle düğmesine tıklayın. Aynı adlı ya da aynı noktada bir yer gezide zaten varsa TREK bunu söyler ve düğme Yine de ekle olur.',
   'help.guide.map-nearby-places.result':
     'Yer, yerler listesinde ve haritada gezinin kendi iğnelerinden biri olarak durur, bir güne koyana kadar Planlanmamış altında. Arama iğneleri, kategoriyi kapatana kadar kalır.',
   'help.guide.map-nearby-places.tip.1':
@@ -2699,11 +2703,11 @@ const help: TranslationStrings = {
   'help.guide.map-add-place.title': 'Haritaya sağ tıklayarak yer oluşturun',
   'help.guide.map-add-place.goal': 'Bir yeri önce aramadan, tam istediğiniz noktaya koyun.',
   'help.guide.map-add-place.step.1':
-    'Haritada kastettiğiniz noktaya sağ tıklayın. Yer formu Yer/etkinlik Ekle başlığıyla açılır.',
+    'Haritada kastettiğiniz noktaya sağ tıklayın. Yer formu, başında Yer/etkinlik Ekle yazarak açılır.',
   'help.guide.map-add-place.step.2':
-    'Enlem ve Boylam zaten o noktadadır ve TREK koordinatları arayıp orada bulduğundan Adres alanını, aramanın verecek bir adı olduğu yerde de İsim alanını doldurur. Henüz hiçbir şey yazılmadı, yanlış olanın üzerine yazın.',
+    'Enlem ve Boylam zaten o noktadadır ve TREK koordinatları arayıp orada bulduğundan Adres alanını, aramanın verecek bir adı olduğu yerde de iletişim kutusunun başındaki adı doldurur. Henüz hiçbir şey kaydedilmedi, yanlış olanın üzerine yazın.',
   'help.guide.map-add-place.step.3':
-    'Ona tanıyacağınız bir İsim verin ve planın bilmesi gereken geri kalanı: Tanım, Notlar, Kategori, Web sitesi.',
+    'İletişim kutusunun başına tanıyacağınız bir ad yazın, altındaki, siz seçene kadar Kategori Yok yazan etiketten bir kategori seçin ve planın bilmesi gereken geri kalanı ekleyin: Tanım, Notlar, Web sitesi.',
   'help.guide.map-add-place.step.4':
     'Ekle düğmesine tıklayın. Bir gün açık olsa bile yer listeye planlanmamış olarak iner: haritaya sağ tıklamak nerede olduğunu söyler, ne zaman olduğunu değil.',
   'help.guide.map-add-place.result': 'Yer listede ve haritadadır, bir güne koyana kadar Planlanmamış altında.',
@@ -2729,11 +2733,11 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.goal':
     'Açık olan tek günü gezinin bütün seyahat günleriyle değiştirin ve her birinin ne kadar gittiğini okuyun.',
   'help.guide.map-whole-trip.step.1':
-    'Yuvarlak Tüm geziyi göster düğmesi haritanın sağ alt köşesinde durur. Tıklayın, gezinin her seyahat günü aynı anda çizilir, her biri beyaz bir kılıf üzerinde kendi renginde, böylece komşu günler ayrı kalır.',
+    'Yuvarlak Tüm geziyi göster düğmesi haritanın sağ alt köşesinde durur. Tıklayın, gezinin her seyahat günü aynı anda çizilir, her biri kendi renginde, böylece komşu günler ayrı kalır.',
   'help.guide.map-whole-trip.step.2':
     'Düğmenin üstündeki kart o günleri listeler: bir renk noktası, günün adı, onu kat ettiğiniz her ulaşım biçimi için bir simge ve kapsadığı mesafe. Toplam mesafe en üstte.',
   'help.guide.map-whole-trip.step.3':
-    'Kartta bir güne tıklayıp onu seçin, günler sütununda seçmekle aynıdır: harita o günü çerçeveler ve durakları numaralarını geri alır.',
+    'Seçmek için kartta bir güne tıklayın: satırı gölgelenir ve gün, günler sütununda açılır. Yakınlaşmak için tekerleği bir şehrin üzerinde çevirin, oradan geçen günler her biri kendi renginde yan yana uzanır.',
   'help.guide.map-whole-trip.step.4': 'Düğmede artık Tüm geziyi gizle yazar. Açık olan tek güne dönmek için basın.',
   'help.guide.map-whole-trip.result':
     'Her seyahat günü kendi renginde çizilir ve kart her birinin neyi kapsadığını ve gezinin toplamda ne ettiğini söyler.',
@@ -2742,17 +2746,17 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.tip.2':
     'Rota motorunun reddettiği bir etap düz çizgi olarak kalır ve hiçbir şey saymaz, kart da sessizce düşük göstermek yerine bunu söyler.',
   'help.guide.map-whole-trip.tip.3':
-    'İki taneden az konumlu durağı olan bir günün çizecek rotası yoktur, bu yüzden karttan tamamen çıkarılır.',
+    'Birleştirecek hiçbir şeyi olmayan, yani iki taneden az konumlu durağı olan ve oteline gidiş ya da otelinden dönüş sürüşü bulunmayan bir günün çizecek rotası yoktur, bu yüzden karttan tamamen çıkarılır.',
   // map-booking-routes
   'help.guide.map-booking-routes.title': 'Bir rezervasyonun rotasını haritada gösterin',
   'help.guide.map-booking-routes.goal':
     'Rezerve ettiğiniz uçuşları, trenleri ve sürüşleri haritada çizin ve yeniden kaldırın.',
   'help.guide.map-booking-routes.step.1':
-    'Rezervasyon rotaları, siz isteyene kadar kapalıdır. Günler sütununda bir rezervasyonun satırında küçük bir rota simgesi durur: Rezervasyon rotalarını göster.',
+    'Rezervasyon rotaları, siz isteyene kadar kapalıdır. Günler sütununda bir ulaşımın satırının sağ ucunda küçük bir rota simgesi durur: Rezervasyon rotalarını göster.',
   'help.guide.map-booking-routes.step.2':
     'Tıklayın, rezervasyon haritada belirir: bir uçuş büyük daire yayı olarak, bir sürüş gerçek yollar boyunca, bir tren istasyonlarının zinciri olarak. Onaylandı düz çizgiyle, Beklemede kesik çizgiyle çizilir ve rotanın uçları ulaşım simgesini taşıyan mavi haplardır.',
   'help.guide.map-booking-routes.step.3':
-    'Bir uç hapa tıklayın, arkasındaki rezervasyon açılır: saatleri, Rezervasyon Kodu ve başladığı Konum / Adres. Kapat onu yeniden kaldırır.',
+    'Bir uç hapa tıklayın, rezervasyonun ayrıntıları açılır: renklendirilmiş baş kısımda rozet olarak durum, tür ve günler, iki uçtaki saatler, altında geri kalanı, en altta da bu rotayı yeniden kapatan Haritada, rezervasyonu silen çöp kutusu ve Düzenle. Baş kısımdaki X onları kapatır.',
   'help.guide.map-booking-routes.step.4':
     'Günlerin üstündeki araç çubuğundaki rota simgesi tüm geziyi aynı anda yapar: Tüm rezervasyon rotalarını göster, rotası olan her rezervasyonu çizer.',
   'help.guide.map-booking-routes.step.5':
@@ -2765,8 +2769,6 @@ const help: TranslationStrings = {
     'Aynı ayarlardaki Rezervasyon rotalarını her zaman göster, hakkında henüz karar vermediğiniz her gezide onları en baştan çizer.',
   'help.guide.map-booking-routes.tip.3':
     'Bir rezervasyonun çizilebilmesi için koordinatlı iki uca ihtiyacı vardır, bu yüzden bir otel ya da bir restoran rota simgesi taşımaz.',
-  'help.ctx.trip-map.bullet.8':
-    'Dawarich eklentisi açıkken Tüm geziyi göster altındaki yuvarlak Dawarich düğmesi telefonunuzun gerçekten kaydettiği rotayı çizer: Kaydedilen rotayı göster onu planlanan rotanın altına kesikli olarak, her gün bir renkte serer ve çizgi olmadığında düğmenin etiketi neden olmadığını söyler.',
   // map-dawarich-trail
   'help.guide.map-dawarich-trail.title': 'Gerçekten gittiğiniz rotayı gösterin',
   'help.guide.map-dawarich-trail.goal':
@@ -2801,57 +2803,61 @@ const help: TranslationStrings = {
   // ── Screen: trip-collab ───────────────────────────────────────────────────────────────
   'help.ctx.trip-collab.title': 'İş birliği',
   'help.ctx.trip-collab.summary':
-    'Grubun birlikte planladığı sekme: solda sohbet, yanında ortak notlar ve bağlantılar, onların altında anketler ve en sonda What’s Next. Buraya yazılan her şey, sayfa yeniden yüklenmeden, aynı anda diğer her üyenin ekranında durur.',
+    'Grubun birlikte planladığı sekme, beş kartta: solda sohbet, yanında Notlar ve Bağlantılar, onların altında Anketler ve What’s Next. Buraya yazılan her şey, sayfa yeniden yüklenmeden, aynı anda diğer her üyenin ekranında durur.',
   'help.ctx.trip-collab.bullet.1':
-    'Sohbet soldaki sütundur. Mesaj yazın... kutusuna yazın ve Enter’a basın; Shift ve Enter yeni bir satır açar. Gülen yüz emoji ekler, Görsel ekle mesaja dört taneye kadar resim iliştirir.',
+    'Sohbet soldaki karttır. Mesaj yazın... kutusuna yazın ve Enter’a basın; Shift ve Enter yeni bir satır açar. Gülen yüz emoji ekler, Görsel ekle mesaja dört taneye kadar resim iliştirir.',
   'help.ctx.trip-collab.bullet.2':
-    'Yanıtla için bir mesajın üzerine gelin, kendi mesajınızda yanında Sil de çıkar; sekiz hızlı tepki için mesaja sağ tıklayın. Silinen bir mesajdan geriye, bir mesajı sildiğinizi söyleyen tek bir satır kalır.',
+    'Yanıtla için bir mesajın üzerine gelin, kendi mesajınızda yanında Sil de çıkar; sekiz hızlı tepki için mesaja sağ tıklayın. Silinen bir mesajdan geriye, onu kimin sildiğini söyleyen tek bir satır kalır.',
   'help.ctx.trip-collab.bullet.3':
-    'Notlar ortak bloknottur: Yeni Not bir tane yazar, yanındaki dişli ise adları ve renkleri için Kategorileri Yönet penceresini açar. Bir kart Genişlet, Sabitle, Düzenle ve Sil taşır.',
+    'Notlar ortak bloknottur: başlığındaki Yeni Not bir tane yazar, yanındaki dişli ise adları ve renkleri için Kategorileri Yönet penceresini açar. Bir not kartı kategorisini renkli bir nokta, bağlantısını da yuvarlak bir düğme olarak gösterir; üç noktası (Diğer seçenekler) Genişlet, Sabitle, Düzenle ve Sil seçeneklerini tutar.',
   'help.ctx.trip-collab.bullet.4':
     'Bağlantılar gezinin üzerinde yürüdüğü adresleri toplar. Bağlantı ekle bir başlık ve bir http ya da https adresi alır; Bağlantıyı düzenle, Bağlantıyı sabitle ve Bağlantıyı sil etiketin kuyruğunda oturur, sabitlenen bağlantılar ise en önde kalır.',
   'help.ctx.trip-collab.bullet.5':
-    'Anketler işleri karara bağlar. Yeni Anket en az iki seçenekli bir soru sorar; bir seçeneğe tıklamak sizin oyunuzdur, Kapat oylamayı bitirir ve Sil anketi kaldırır.',
+    'Anketler işleri karara bağlar. Yeni Anket en az iki seçenekli bir soru sorar; bir seçeneğe tıklamak sizin oyunuzdur, bir anketin başlığının sağındaki kilit (Kapat) ve çöp kutusu (Sil) ise oylamayı bitirir ya da anketi kaldırır.',
   'help.ctx.trip-collab.bullet.6':
     'What’s Next gezinin hâlâ önde duran duraklarını, en fazla sekiz tanesini, saatleri ve üzerlerindeki kişilerle birlikte listeler. Yalnızca gün planını okur; saatler orada ayarlanır.',
   // write-note
   'help.guide.write-note.title': 'Ortak bir not yazın',
   'help.guide.write-note.goal':
     'Bütün grubun ihtiyaç duyduğu şeyi, bir kuralı, bir adresi, bir hatırlatmayı, herkesin yeniden bulacağı yere koyun.',
-  'help.guide.write-note.step.1': 'Notlar panelinin üstündeki Yeni Not düğmesine tıklayın. Form açılır.',
+  'help.guide.write-note.step.1':
+    'Notlar kartının başlığındaki Yeni Not düğmesine tıklayın. Not iletişim kutusu, imleç zaten baş kısmında olarak açılır.',
   'help.guide.write-note.step.2':
-    'Not başlığı kartın taşıdığı addır. Formun ısrar ettiği tek şey odur: içinde bir şey olana kadar Oluştur gri kalır.',
+    'Başlığı iletişim kutusunun başında, Not başlığı yazan yere yazın. İletişim kutusunun ısrar ettiği tek şey odur: içinde bir şey olana kadar Oluştur gri kalır ve başlıkta Enter’a basmak notu hemen oluşturur.',
   'help.guide.write-note.step.3':
-    'Altındaki büyük kutu metni tutar ve Markdown alır: kalın bir kelime, bir liste, bir başlık. Kart ilk birkaç satırı gösterir, üzerindeki Genişlet ise notun tamamını açar.',
+    'İçerik metni tutar ve Markdown alır: kalın bir kelime, bir liste, bir başlık. Kart ilk üç satırı gösterir, menüsündeki Genişlet ise notun tamamını açar.',
   'help.guide.write-note.step.4':
-    'Kategori altında notun ait olduğu kategoriyi seçin; onun rengi kartın rengi olur. Haplar zaten var olan kategorilerdir, yenisi ise Kategorileri Yönet altında yapılır.',
-  'help.guide.write-note.step.5': 'Web sitesi nota ait bir bağlantı alır. Kart o zaman onu açan bir Link karosu taşır.',
-  'help.guide.write-note.step.6': 'Oluştur düğmesine tıklayın.',
+    'Kategori altında notun ait olduğu kategoriyi seçin; onun rengi şimdi iletişim kutusunun baş kısmını, sonra da kartın baş kısmını renklendirir. Haplar zaten var olan kategorilerdir, yenisi ise Kategorileri Yönet altında yapılır.',
+  'help.guide.write-note.step.5':
+    'Web sitesi nota ait bir bağlantı alır. Kart o zaman baş kısmında onu açan yuvarlak bir bağlantı düğmesi taşır.',
+  'help.guide.write-note.step.6':
+    'Oluştur düğmesine tıklayın. İletişim kutusunu İptal ve çarpısından başka hiçbir şey kapatmaz, bu yüzden yanına yanlışlıkla bir tıklama ya da Esc yazdıklarınızı kaybettirmez.',
   'help.guide.write-note.result':
-    'Not, Notlar panelinde kendi kategorisinin renginde bir karttır ve şimdiden diğer her üyenin ekranındadır.',
+    'Not, Notlar panelinde baş kısmı kategorisinin rengine boyanmış bir karttır ve şimdiden diğer her üyenin ekranındadır.',
   'help.guide.write-note.tip.1':
-    'Bir karttaki Sabitle onu panelin en üstünde tutar; altındaki her şey en son ne zaman değiştirildiğine göre sıralanır.',
+    'Bir karttaki üç nokta (Diğer seçenekler) Genişlet, Sabitle, Düzenle ve Sil seçeneklerini tutar. Sabitle notu kendi renginde bir çerçeve içinde panelin en üstünde tutar; altındaki her şey en son ne zaman değiştirildiğine göre sıralanır.',
   'help.guide.write-note.tip.2':
-    'Yeni Not yanındaki dişli Kategorileri Yönet penceresini açar: orada bir kategori rengini alır, bir kerede her yerde yeniden adlandırılır ya da herhangi bir not onu kullanmadan önce eklenir.',
+    'Yeni Not yanındaki dişli Kategorileri Yönet penceresini açar: orada bir kategori rengini alır, bir kerede her yerde yeniden adlandırılır ya da herhangi bir not onu kullanmadan önce eklenir. Kaydet düğmesine tıklayana kadar hiçbir şey değişmez.',
   'help.guide.write-note.tip.3':
-    'Dosya ekle nota bir belge iliştirir. Ekle dosya seçiciyi açar, bir görsel ya da bir PDF ise forma yapıştırılabilir de.',
+    'Dosya ekle nota bir belge iliştirir. Ekle dosya seçiciyi açar, bir görsel ya da bir PDF ise iletişim kutusuna yapıştırılabilir de.',
   'help.guide.write-note.tip.4':
     'Notlar, Eklentiler altında, İş birliği bölümünde kendi anahtarına sahiptir: bir yönetici onu kapatıp sohbeti, bağlantıları, anketleri ve What’s Next bölümünü çalışır bırakabilir.',
   // shared-links
   'help.guide.shared-links.title': 'Gezinin bağlantılarını toplayın',
   'help.guide.shared-links.goal':
     'Rezervasyon portalını, ortak albümü ve tarifeyi sohbeti kaydırarak aramak yerine tek bir yerde tutun.',
-  'help.guide.shared-links.step.1': 'Bağlantılar panelinin üstündeki Bağlantı ekle düğmesine tıklayın.',
+  'help.guide.shared-links.step.1':
+    'Bağlantılar kartının başlığındaki Bağlantı ekle düğmesine tıklayın. İletişim kutusu, imleç baş kısmında olarak açılır.',
   'help.guide.shared-links.step.2':
-    'Bağlantı başlığı alanında bağlantıya bir ad verin, adresi altındaki alana yapıştırın, sonra Bağlantıyı kaydet düğmesine tıklayın.',
+    'Adı Bağlantı başlığı yazan yere yazın, adresi altındaki Bağlantı alanına yapıştırın, sonra Bağlantıyı kaydet düğmesine tıklayın.',
   'help.guide.shared-links.step.3':
     'Etiket adı ve işaret ettiği siteyi gösterir. Üzerine tıklamak sayfayı yeni bir sekmede açar.',
   'help.guide.shared-links.step.4':
-    'Kuyruğundaki üç küçük düğme Bağlantıyı düzenle, Bağlantıyı sabitle ve Bağlantıyı sil düğmeleridir. Bağlantıyı sabitle etiketi panelin en önüne taşır; Bağlantıyı sil hiçbir şey sormaz.',
+    'Kuyruğundaki üç yuvarlak düğme Bağlantıyı düzenle, Bağlantıyı sabitle ve Bağlantıyı sil düğmeleridir. Bağlantıyı sabitle etiketi vurgu rengine boyanmış olarak panelin en önüne taşır; Bağlantıyı sil önce sorar, çünkü bağlantı her üye için gider.',
   'help.guide.shared-links.result':
     'Bağlantı, Bağlantılar panelinde en öne sabitlenmiş bir etikettir ve aynı anda her üyenin ekranındadır.',
   'help.guide.shared-links.tip.1':
-    'Yalnızca http ve https adresleri alınır; alan, kaydetmeden önce başka her şeyi reddeder.',
+    'Yalnızca bir http ya da https adresi alınır: başka her şey reddedilir ve iletişim kutusu yazdıklarınızla açık kalır.',
   'help.guide.shared-links.tip.2':
     'Önce sabitlenen bağlantılar gelir, sonra en yenileri. Bir başlığın yanındaki küçük simge sitenin kendi faviconudur, sitenin kendisinden alınır, bu yüzden internet yokken etiket onun yerine düz bir bağlantı işareti gösterir.',
   'help.guide.shared-links.tip.3':
@@ -2860,39 +2866,40 @@ const help: TranslationStrings = {
   'help.guide.create-poll.title': 'Gruba sorun',
   'help.guide.create-poll.goal':
     'Sohbette kimsenin yanıtlamadığı bir soruyu, herkesin işaretleyebileceği bir ankete dönüştürün.',
-  'help.guide.create-poll.step.1': 'Anketler panelinin üstündeki Yeni Anket düğmesine tıklayın.',
+  'help.guide.create-poll.step.1':
+    'Anketler kartının başlığındaki Yeni Anket düğmesine tıklayın. İletişim kutusu açılır.',
   'help.guide.create-poll.step.2':
-    'Soruyu yazın. Kutunun altındaki Markdown desteklenir, kalın bir kelimenin, bir satır sonunun ya da kısa bir listenin burada işe yaradığı anlamına gelir.',
+    'Soruyu Soru altına yazın. Kutunun altındaki Markdown desteklenir, kalın bir kelimenin, bir satır sonunun ya da kısa bir listenin burada işe yaradığı anlamına gelir.',
   'help.guide.create-poll.step.3':
-    'Seçenek 1 ve Seçenek 2 alanlarını doldurun. İçinde bir şey olan iki seçenek en alt sınırdır.',
+    'Seçenekler altında Seçenek 1 ve Seçenek 2 alanlarını doldurun. İçinde bir şey olan iki seçenek en alt sınırdır ve bir seçenek birkaç satıra yayılabilir.',
   'help.guide.create-poll.step.4':
-    '+ Seçenek ekle üçüncüyü, dördüncüyü, ihtiyacınız kadarını ekler; bir satırın yanındaki küçük çarpı birini geri alır.',
+    'Altlarındaki Seçenek ekle üçüncüyü, dördüncüyü, ihtiyacınız kadarını ekler; ikiden fazla seçenek olduğunda bir satırın yanında beliren küçük çarpı birini geri alır.',
   'help.guide.create-poll.step.5':
     'Çoklu seçim herkesin birden fazla seçeneği işaretlemesine izin verir. Kapalı bırakıldığında, biri başka bir şey seçince oyu oraya kayar.',
   'help.guide.create-poll.step.6': 'Anket Oluştur düğmesine tıklayın.',
-  'help.guide.create-poll.result':
-    'Anket, Anketler panelinin en üstünde, açık ve henüz kimse oy vermemiş olarak durur.',
+  'help.guide.create-poll.result': 'Anket, Anketler panelinin en üstünde, açık ve başlığında 0 oy ile durur.',
   'help.guide.create-poll.tip.1': 'Soru Markdown olarak işlenir; seçenekler düz metin kalır.',
   'help.guide.create-poll.tip.2':
     'Bir soru ve içinde bir şey olan en az iki seçenek olana kadar Anket Oluştur gri kalır.',
   'help.guide.create-poll.tip.3':
-    'Son tarih yalnızca telefon uygulamasında ayarlanabilir. Son tarihi olan bir anket burada kalan süreyi kehribar renkli bir etikette gösterir ve süre dolunca kapalı sayılır.',
+    'Son tarih yalnızca telefon uygulamasında ayarlanabilir. Son tarihi olan bir anket kalan süreyi başlığında kehribar renkli bir etikette gösterir ve süre dolunca kapalı sayılır.',
   'help.guide.create-poll.tip.4':
     'Anketler, Eklentiler altında, İş birliği bölümünde kendi anahtarına sahiptir: bir yönetici onu kapatıp diğer dört paneli çalışır bırakabilir.',
   // vote-poll
   'help.guide.vote-poll.title': 'Oy verin ve sonucu okuyun',
   'help.guide.vote-poll.goal': 'Oyunuzu verin, grubun nerede durduğunu görün ve fikrinizi değiştirin.',
-  'help.guide.vote-poll.step.1': 'İstediğiniz seçeneğe tıklayın. Dairesi dolar ve arkasındaki çubuk büyür.',
+  'help.guide.vote-poll.step.1':
+    'İstediğiniz seçeneğe tıklayın. Dairesi bir onay işaretiyle dolar, seçenek vurgu renginde bir çerçeve alır ve arkasındaki çubuk büyür.',
   'help.guide.vote-poll.step.2':
-    'Artık sonucun tamamı okunur: çubuk paydır, yüzde sağda durur ve küçük daireler o seçeneği seçen kişilerdir.',
+    'Artık sonucun tamamı okunur: çubuk paydır, yüzde sağda durur ve küçük daireler o seçeneği seçen kişilerdir, en fazla üç tanesi.',
   'help.guide.vote-poll.step.3':
     'Fikriniz mi değişti? Başka bir seçeneğe tıklayın. Çoklu seçim olmayan bir ankette oyunuz ikinci bir oy eklemek yerine oraya kayar.',
   'help.guide.vote-poll.step.4':
-    'Sorunun altında anketin kaç oyu olduğu durur. Zaten seçtiğiniz seçeneğe tıklamak oyunuzu geri çeker ve sayaç yeniden düşer.',
+    'Anketin kaç oyu olduğu, sorunun altındaki bir etikette durur. Zaten seçtiğiniz seçeneğe tıklamak oyunuzu geri çeker ve sayı yeniden düşer.',
   'help.guide.vote-poll.result':
     'İşaretiniz bir seçenekte durur, çubuklar grubun nasıl bölündüğünü gösterir ve daireler kimin neyi seçtiğini söyler.',
   'help.guide.vote-poll.tip.1':
-    'Çubuklar ve yüzdeler ancak siz kendiniz oy verdikten sonra ya da anket kapandıktan sonra görünür, böylece kimse duruma bakıp yönlendirilmez.',
+    'Yüzdeler ve kimin neye oy verdiği ancak siz kendiniz oy verdikten sonra ya da anket kapandıktan sonra görünür. Başlıktaki oy sayısını herkes görür.',
   'help.guide.vote-poll.tip.2':
     'Bir oy asla gizli değildir: arkasındaki adı görmek için bir seçenekteki dairelerden birinin üzerine gelin.',
   // close-poll
@@ -2900,11 +2907,11 @@ const help: TranslationStrings = {
   'help.guide.close-poll.goal':
     'Grup karar verdikten sonra oylamayı durdurun ve artık kimsenin ihtiyaç duymadığı bir anketi temizleyin.',
   'help.guide.close-poll.step.1':
-    'Bir anketin köşesindeki kilit olan Kapat, oylamayı bitirir. Seçenekler tıklama almayı bırakır.',
+    'Bir anketin başlığının sağındaki kilit olan Kapat, oylamayı bitirir. Seçenekler tıklama almayı bırakır.',
   'help.guide.close-poll.step.2':
-    'Kapatılan bir anket panelin altındaki Kapalı başlığının altına iner, bir Kapalı rozeti taşır ve oy versinler ya da vermesinler sonucu herkese gösterir. Kazanan seçenek yeşile boyanır.',
+    'Kapatılan bir anket panelin altındaki Kapalı başlığının altına iner, bir Kapalı etiketi taşır ve oy versinler ya da vermesinler sonucu herkese gösterir. Kazanan seçenek yeşil bir çubuk üzerinde kalın yazılır; onu siz seçtiyseniz çubuk bunun yerine vurgu renginizi korur.',
   'help.guide.close-poll.step.3':
-    'Aynı köşedeki çöp kutusu olan Sil, anketi kaldırır. Hiçbir şey iki kez sormaz ve oylar da onunla birlikte gider.',
+    'Başlığın sağındaki çöp kutusu olan Sil, anketi kaldırır; kapatılmış bir ankette kilit gittiği için orada tek başına durur. Hiçbir şey iki kez sormaz ve oylar da onunla birlikte gider.',
   'help.guide.close-poll.result':
     'Anket her üyenin panelinden gitmiştir. Yalnızca kapattığınız bir anket ise sonucuyla birlikte altta okunur durumda kalır.',
   'help.guide.close-poll.tip.1':
@@ -2914,11 +2921,11 @@ const help: TranslationStrings = {
   'help.guide.whats-next.title': 'What’s Next bölümünü okuyun',
   'help.guide.whats-next.goal': 'Planı açmadan grubun sırada ne yaptığını görün.',
   'help.guide.whats-next.step.1':
-    'Panel, gezinin hâlâ önde duran duraklarını, en fazla sekiz tanesini, zaman sırasıyla, her gün için bir başlık altında listeler: Bugün, Yarın ya da tarih.',
+    'Kart, gezinin hâlâ önde duran duraklarını, en fazla sekiz tanesini, zaman sırasıyla, her gün için bir başlık altında listeler: Bugün, Yarın ya da tarih, günün bir adı varsa yanında o adla. Kartın üst kısmı onları sayar.',
   'help.guide.whats-next.step.2':
-    'Bir satırın solunda saati durur: başlangıç, aradaki ayraç ve durağın varsa bitiş saati, ya da üzerinde henüz saat ayarlanmamışsa TBD.',
+    'Her durağın solunda saati durur: başlangıç, aradaki ayraç ve durağın varsa bitiş saati, ya da üzerinde henüz saat ayarlanmamışsa TBD.',
   'help.guide.whats-next.step.3':
-    'Adın altındaki etiketler o duraktaki kişilerdir. Onun için kimse seçilmemişse gezideki herkes listelenir.',
+    'Yanında ad, adres ve etiketler olarak o duraktaki kişiler durur. Onun için kimse seçilmemişse gezideki herkes listelenir.',
   'help.guide.whats-next.result':
     'Gelecek olanların yalnızca okunacak bir listesi: planı izler ve buradaki hiçbir şey onu değiştirmez.',
   'help.guide.whats-next.tip.1':
@@ -2932,7 +2939,7 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.goal':
     'Bir şey söyleyin, belirli bir mesajı yanıtlayın, bir başkasına tepki verin ve kendi mesajınızı geri alın.',
   'help.guide.trip-chat.step.1':
-    'Mesaj yazın... kutusuna yazın ve Enter’a basın. Kutunun yanındaki mavi ok da aynısını yapar; Shift ve Enter ise bunun yerine yeni bir satır açar.',
+    'Mesaj yazın... kutusuna yazın ve Enter’a basın. Kutunun yanındaki yuvarlak ok da aynısını yapar; Shift ve Enter ise bunun yerine yeni bir satır açar.',
   'help.guide.trip-chat.step.2':
     'Gülen yüz, içinde Smileys, Reactions ve Travel bulunan emoji seçiciyi açar. Seçtiğiniz şey yazmakta olduğunuza eklenir, kendi başına gönderilmez.',
   'help.guide.trip-chat.step.3':
@@ -2942,11 +2949,11 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.step.5':
     'Sekiz hızlı tepki için bir mesaja sağ tıklayın. Sizinki baloncuğun altında oturur, aynısına ikinci kez tıklamak onu geri alır.',
   'help.guide.trip-chat.step.6':
-    'Kendi mesajlarınız Yanıtla yanında Sil de taşır. Mesajı kaldırır ve bir mesajı sildiğinizi söyleyen tek bir satır bırakır: geri dönüş yoktur.',
+    'Kendi mesajlarınız Yanıtla yanında Sil’i, yani çöp kutusunu da taşır. Mesajı hemen kaldırır ve onu sildiğinizi söyleyen tek bir satır bırakır: geri dönüş yoktur.',
   'help.guide.trip-chat.result':
-    'Yanıtınız alıntıladığı mesajın altında oturur, bir tepki üçüncü bir mesajda asılı durur ve geri aldığınız mesaj bunu söyleyen tek bir satır bırakır.',
+    'Yanıtınız en yeni mesajdır ve alıntıladığı mesaj en üstünde durur; bir tepki üçüncü bir mesajda asılı durur ve geri aldığınız mesaj bunu söyleyen tek bir satır bırakır.',
   'help.guide.trip-chat.tip.1':
-    'Enter gönderir, Shift ve Enter yeni bir satır açar. Emojiden başka bir şey içermeyen bir mesaj büyük gösterilir.',
+    'Enter gönderir, Shift ve Enter yeni bir satır açar. Birden üçe kadar emojiden başka bir şey içermeyen bir mesaj büyük gösterilir.',
   'help.guide.trip-chat.tip.2':
     'Görsel ekle bir mesaj için dört taneye kadar resim alır; bunlar ayrıca yapıştırılabilir ya da kutunun üzerine bırakılabilir.',
   'help.guide.trip-chat.tip.3':
@@ -2959,31 +2966,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-lists.summary':
     'Bir gezi için iki liste: kimin neyi getirdiğini ve ne kadar ağır olduğunu tutan paket listesi ve gezi öncesinde ve sırasında olması gereken her şeyin yapılacaklar listesi. Listeler eklentisi açık olduğu sürece sekme oradadır.',
   'help.ctx.trip-lists.bullet.1':
-    'Üstteki Paket Listesi ve Yapılacaklar ikisi arasında geçiş yapar ve her birinde ne olduğunu sayar; sağdaki düğmeler hangisi açıksa ona aittir.',
+    'Üstteki çubukta yer alan Paket Listesi ve Yapılacaklar ikisi arasında geçiş yapar ve her birinde ne olduğunu sayar; çubuğun sağ ucundaki düğmeler hangisi açıksa ona aittir.',
   'help.ctx.trip-lists.bullet.2':
-    'Paket listesi listelere ayrılmıştır, Belgeler, Giysi, siz onlara ne ad verirseniz, her biri renkli bir nokta, paketlenen bölü toplam rozeti ve Yeniden adlandır, Tümünü İşaretle, Tüm işaretleri kaldır ve Listeyi sil barındıran üç nokta ile. Yukarıdaki çubuktaki Liste ekle yenisini oluşturur.',
+    'Paket listesi listelere ayrılmıştır, Belgeler, Giysi, siz onlara ne ad verirseniz; her biri, baş şeridinde renkli bir nokta, paketlenen bölü toplam rozeti, Yeniden adlandır, Tümünü İşaretle, Tüm işaretleri kaldır ve Listeyi sil barındıran üç nokta ve kartı katlayan bir ok taşıyan bir karttır. Yukarıdaki çubuktaki Liste ekle yenisini oluşturur.',
   'help.ctx.trip-lists.bullet.3':
-    'Bir satır bir onay kutusu ve bir addır, sonra küçük rozetler olarak onu kimin getireceği, adet ve gram cinsinden ağırlık ve Çanta Takibi açıkken bir çanta dairesi, sonra çöp kutusu ve Listeye taşı, Paylaşım, Yeniden adlandır ve Sil barındıran üç nokta. Bir satırın kullanmadığı şeyler üzerine gelene kadar soluk kalır ve soldaki tutamak satırı kendi listesi içinde yukarı ya da aşağı sürükler.',
+    'Bir satır bir onay kutusu ve bir addır, sonra küçük bir avatar olarak onu kimin getireceği ve küçük bir rozet olarak adet, Çanta Takibi açıkken ayrıca gram cinsinden ağırlık ve bir çanta dairesi, sonra çöp kutusu ve Listeye taşı, Paylaşım, Yeniden adlandır ve Sil barındıran üç nokta. Bir satırın kullanmadığı şeyler üzerine gelene kadar soluk kalır ve soldaki tutamak satırı kendi listesi içinde yukarı ya da aşağı sürükler.',
   'help.ctx.trip-lists.bullet.4':
-    'Ortak ve Listem paket listesini ikiye böler: herkesin gördüğü havuz ve sizin kendi listeniz. Tüm, Açık ve Tamamlamak hangisi açıksa onu daraltır ve üstteki çubuk neyin paketlendiğini sayar.',
+    'Ortak ve Listem paket listesini ikiye böler: herkesin gördüğü havuz ve sizin kendi listeniz. Yanlarındaki Tüm, Açık ve Tamamlamak hangisi açıksa onu daraltır ve üstteki ilerleme kartı neyin paketlendiğini sayar.',
   'help.ctx.trip-lists.bullet.5':
-    'Şablon uygula ve Şablon olarak kaydet bir listeyi yazmadan doldurur ya da saklar, yanlarındaki iki simge ise listeyi çıktı, PDF ya da dosya olarak dışa aktarır ve bir liste içe aktarır. İlerleme çubuğunun yanındaki kırmızı düğme kaç öğenin işaretli olduğunu söyler ve onları temizler.',
+    'Şablon uygula ve Şablon olarak kaydet bir listeyi yazmadan doldurur ya da saklar; onlardan sonraki iki simge, Dışa aktar ve İçe aktar, listeyi çıktı, PDF ya da dosya olarak dışarı çıkarır ve bir liste içeri alır. İlerleme kartının sağ ucundaki kırmızı düğme kaç öğenin işaretli olduğunu söyler ve onları temizler.',
   'help.ctx.trip-lists.bullet.6':
-    'Yapılacaklar kendi kenar çubuğuna sahiptir: ilerleme kartı, Tümü, Görevlerim, Gecikmiş ve Tamamlandı filtreleri, liste başına bir satır ve bunların altında Liste ekle. Görevler bir kartın içindedir; kartın başlığında filtrenin adı ve sıralama, yani Öncelik ya da Son tarih, yer alır. Bir göreve tıklamak onu sağdaki bölmede açar, Yeni görev ekle ise ekranın ortasında Yeni görev formunu açar.',
+    'Yapılacaklar kendi kenar çubuğuna sahiptir: ilerleme kartı, Tümü, Görevlerim, Gecikmiş ve Tamamlandı filtreleri, liste başına bir satır ve bunların altında Liste ekle. Görevler bir kartın içindedir; kartın başlığında filtrenin adı ve sıralama, yani Öncelik ya da Son tarih, yer alır. Bir göreve tıklamak onu sağdaki bölmede açar, çubuktaki Yeni görev ekle ise Yeni görev iletişim kutusunu açar.',
   // packing-categories
   'help.guide.packing-categories.title': 'Paket listesini kurun',
   'help.guide.packing-categories.goal':
     'Götürdüklerinizi listeler halinde gruplayın, onları öğelerle doldurun ve her listeyle kimin ilgilendiğini söyleyin.',
   'help.guide.packing-categories.step.1':
-    'Listelerin üstündeki çubukta Liste ekle düğmesine tıklayın, adı Liste adı (ör. Giysi) alanına yazın ve Ekle düğmesine tıklayın.',
+    'Listelerin üstündeki çubukta Liste ekle düğmesine tıklayın. Küçük bir iletişim kutusu açılır: adı, baş şeridinde Liste adı (ör. Giysi) yazan yere yazın ve Ekle düğmesine tıklayın.',
   'help.guide.packing-categories.step.2':
-    'Yeni liste bir boş satırla başlar. Öğe ekle düğmesine tıklayın, öğeyi Öğe adı... alanına yazın ve Enter tuşuna basın; alan bir sonraki için açık kalır.',
+    'Yeni liste yalnızca üç soluk nokta gösteren bir yer tutucu satırla başlar. Altındaki Öğe ekle düğmesine tıklayın, öğeyi Öğe adı... alanına yazın ve Enter tuşuna basın: ilk öğe yer tutucunun yerini alır ve alan bir sonraki için açık kalır.',
   'help.guide.packing-categories.step.3':
     'Bir satırı adına tıklayarak ya da sağ ucundaki üç noktadaki Yeniden adlandır ile yeniden adlandırın.',
   'help.guide.packing-categories.step.4':
-    'Liste başlığındaki kesik çizgili daire geziye katılan üyeleri listeye atar. Bir ad seçin; beliren etiket tek tıkla o kişiyi yine çıkarır.',
+    'Listenin baş şeridindeki, içinde bir kişi bulunan kesik çizgili daire geziye katılan üyeleri listeye atar. Bir ad seçin; beliren etiket tek tıkla o kişiyi yine çıkarır.',
   'help.guide.packing-categories.step.5':
-    'Başlığın sonundaki üç nokta gerisini barındırır: Yeniden adlandır, Tümünü İşaretle, Tüm işaretleri kaldır ve Listeyi sil, ki bu listeyi ve içindeki her şeyi bir daha sormadan alır.',
+    'Sayacın yanındaki üç nokta gerisini barındırır: Yeniden adlandır, Tümünü İşaretle, Tüm işaretleri kaldır ve Listeyi sil, ki bu listeyi ve içindeki her şeyi bir daha sormadan alır. En sağdaki ok listeyi katlar.',
   'help.guide.packing-categories.result':
     'Yeni liste ızgarada, öğeleri altında ve renkli noktasıyla oturur ve rozeti şimdiden neyin paketlendiğini sayar.',
   'help.guide.packing-categories.tip.1':
@@ -2999,13 +3006,13 @@ const help: TranslationStrings = {
   'help.guide.check-off-packing.step.1':
     'Bir satırın solundaki kutuya tıklayın. Adın üstü çizilir ve çubuk hareket eder.',
   'help.guide.check-off-packing.step.2':
-    'Üstteki çubuk paketleneni listedeki her şeye karşı sayar, hem sayı hem yüzde olarak.',
+    'Listelerin üstündeki ilerleme kartı paketleneni listedeki her şeye karşı sayar: sayı, yüzde ve çubuk olarak.',
   'help.guide.check-off-packing.step.3':
-    'Bütün bir liste birden: başlığındaki üç nokta Tümünü İşaretle ve Tüm işaretleri kaldır seçeneklerini barındırır.',
+    'Bütün bir liste birden: baş şeridindeki üç nokta Tümünü İşaretle ve Tüm işaretleri kaldır seçeneklerini barındırır.',
   'help.guide.check-off-packing.step.4':
-    'Tüm, Açık ve Tamamlamak ızgarayı daraltır. Açık yalnızca hâlâ eksik olanı bırakır, bu yüzden tamamen paketlenmiş bir liste onun dışında kalır.',
+    'Ortak ve Listem yanındaki Tüm, Açık ve Tamamlamak ızgarayı daraltır. Açık yalnızca hâlâ eksik olanı bırakır, bu yüzden tamamen paketlenmiş bir liste onun dışında kalır.',
   'help.guide.check-off-packing.step.5':
-    'İlerleme çubuğunun yanındaki 3 İşaretli öğeyi kaldır, tarayıcıdan bir onay sonrasında işaretli her öğeyi bir kerede siler.',
+    'İlerleme kartının sağ ucundaki 3 İşaretli öğeyi kaldır, tarayıcıdan bir onay sonrasında işaretli her öğeyi bir kerede siler.',
   'help.guide.check-off-packing.result':
     'Yalnızca hâlâ açık olan listelenir ve üstteki çubuk paketlemenin ne kadar ilerlediğini söyler.',
   'help.guide.check-off-packing.tip.1': 'İşaretli bir öğe yine de yeniden adlandırılabilir: adına tıklayın.',
@@ -3022,7 +3029,7 @@ const help: TranslationStrings = {
   'help.guide.apply-packing-template.step.3':
     'Öğeler bulunduğunuz görünüme iner: Ortak onları herkesin gördüğü havuza koyar, Listem onları sizin yapar.',
   'help.guide.apply-packing-template.step.4':
-    'Bu gezinin listesini bir sonraki gezi için saklayın: Şablon olarak kaydet bir iletişim kutusu açar, bir ad yazın ve Kaydet düğmesine tıklayın.',
+    'Bu gezinin listesini bir sonraki gezi için saklayın: Şablon olarak kaydet küçük bir iletişim kutusu açar. Baş şeridinde Şablon adı yazan yere bir ad yazın ve Kaydet düğmesine tıklayın.',
   'help.guide.apply-packing-template.result': 'Şablonun listeleri ve öğeleri gezidedir, zaten orada olanın yanında.',
   'help.guide.apply-packing-template.tip.1':
     'Bir şablon yalnızca adları ve listeleri taşır. Adetler, ağırlıklar, çantalar ve şimdiden işaretli olanlar geride kalır.',
@@ -3034,12 +3041,14 @@ const help: TranslationStrings = {
   'help.guide.import-packing-list.title': 'Bütün bir paket listesini yapıştırın',
   'help.guide.import-packing-list.goal':
     'Başka bir yerde zaten var olan bir listeyi tek seferde paket öğelerine çevirin.',
-  'help.guide.import-packing-list.step.1': 'Listenin üstündeki çubukta aşağı oklu içe aktarma düğmesine tıklayın.',
+  'help.guide.import-packing-list.step.1':
+    'Listenin üstündeki çubuğun sağ ucunda, aşağı oklu simge olan İçe aktar’a tıklayın.',
   'help.guide.import-packing-list.step.2':
-    'Satır başına bir öğe: Kategori, Ad, g cinsinden ağırlık (isteğe bağlı), Çanta (isteğe bağlı), checked/unchecked (isteğe bağlı). Kutudaki gri örnek dört biçimi de gösterir. Markdown listesi de olur: başlık listeye adını verir, "- [ ]" ve "- [x]" ise öğeye dönüşür.',
+    'Satır başına bir öğe: Kategori, Ad, g cinsinden ağırlık (isteğe bağlı), Çanta (isteğe bağlı), checked/unchecked (isteğe bağlı). Kutudaki gri örnek dört biçimi de gösterir ve sol kenarındaki numaralar yazdığınız satırları sayar. Markdown listesi de olur: başlık listeye adını verir, "- [ ]" ve "- [x]" ise öğeye dönüşür.',
   'help.guide.import-packing-list.step.3':
-    'Ya da satırları CSV/TXT/MD Yükle ile bir dosyadan yükleyin. Bir .csv, bir .txt ya da bir .md alır ve kutuda ne varsa onun yerini alır.',
-  'help.guide.import-packing-list.step.4': 'İçe aktar düğmesine tıklayın. Düğme anladığı satırları sayar.',
+    'Ya da satırları iletişim kutusunun sol altındaki CSV/TXT/MD Yükle ile bir dosyadan yükleyin. Bir .csv, bir .txt ya da bir .md alır ve kutuda ne varsa onun yerini alır.',
+  'help.guide.import-packing-list.step.4':
+    'Sağ alttaki 3 Öğeyi içe aktar düğmesine tıklayın; üzerindeki sayı TREK’in anladığı satırları sayar.',
   'help.guide.import-packing-list.result':
     'Her satır bir öğedir, ilk alanının adlandırdığı listede, ve zaten orada olan hiçbir şeye dokunulmaz.',
   'help.guide.import-packing-list.tip.1':
@@ -3050,11 +3059,12 @@ const help: TranslationStrings = {
   'help.guide.export-packing-list.title': 'Paket listesini yazdırın veya dışa aktarın',
   'help.guide.export-packing-list.goal':
     'Listeyi kâğıt üzerinde, PDF olarak ya da başka bir uygulama veya sonraki gezi için dosya olarak yanınıza alın.',
-  'help.guide.export-packing-list.step.1': 'Listenin üstündeki çubukta yukarı oklu dışa aktarma düğmesine tıklayın.',
+  'help.guide.export-packing-list.step.1':
+    'Listenin üstündeki çubukta, İçe aktar’ın hemen önündeki yukarı oklu simge olan Dışa aktar’a tıklayın.',
   'help.guide.export-packing-list.step.2':
     'Markdown kontrol listesi (.md) ve İçe aktarma için CSV (.csv) listeyi hemen dosya olarak kaydeder.',
   'help.guide.export-packing-list.step.3':
-    'Yazdır veya PDF olarak kaydet seçeneğine tıklayın. Önizleme listeyi bir sayfa olarak gösterir: üstte gezi ve tarihleri, ardından her liste işaretlenecek bir kutuyla birlikte bir kart olarak.',
+    'Yazdır veya PDF olarak kaydet seçeneğine tıklayın. Önizleme listeyi bir sayfa olarak gösterir: üstte gezi, tarihleri ve ne kadarının paketlendiği, ardından her liste bir kart olarak, her öğe işaretlenecek bir kutuyla.',
   'help.guide.export-packing-list.step.4':
     'Önizlemenin altındaki Yazdır veya PDF olarak kaydet düğmesine tıklayın. Tarayıcı kendi yazdırma penceresini açar: bir yazıcı seçin ya da dosya olarak saklamak için PDF olarak kaydet seçeneğini seçin.',
   'help.guide.export-packing-list.result':
@@ -3078,9 +3088,9 @@ const help: TranslationStrings = {
     'Paylaşım seçeneğini yeniden açın ve Şu kişilerle paylaş… altında bir adı işaretleyin. Öğe o kişinin listesinde de görünür ve satır, kaç kişiyle paylaşıldığını sayan küçük bir rozet alır.',
   'help.guide.share-packing-item.result': 'Öğe seçtiğiniz katmanda durur ve satır onu kimin getirdiğini söyler.',
   'help.guide.share-packing-item.tip.1':
-    'Bir öğenin paylaşımını yalnızca onu getiren kişi değiştirir. Paylaştığınız kişi onu kendi Listem görünümünde, adınızla işaretli olarak görür ve işaretleyebilir.',
+    'Bir öğenin paylaşımını yalnızca onu getiren kişi değiştirir. Paylaştığınız kişi onu kendi Listem görünümünde, üzerine gelince sizin adınızı söyleyen küçük bir el rozetiyle görür ve işaretleyebilir.',
   'help.guide.share-packing-item.tip.2':
-    'Başkasının getirdiği bir öğede bunun yerine iki başka düğme alırsınız: Ben de getirebilirim, sizi onun yanına ekler, ve Listeme kopyala, size ait özel bir kopya oluşturur.',
+    'Başkasının getirdiği ortak bir öğede üç nokta, Paylaşım yerine iki başka seçenek barındırır: sizi onun yanına ekleyen Ben de getirebilirim ve size ait özel bir kopya oluşturan Listeme kopyala.',
   'help.guide.share-packing-item.tip.3':
     'Yeni öğeler onları eklediğiniz görünümü devralır. Listem içinde eklenenler Kişisel olur, Ortak içinde eklenenler havuza gider.',
   // packing-bags
@@ -3089,18 +3099,19 @@ const help: TranslationStrings = {
     'Her öğeye bir ağırlık verin, öğeleri çantalara ayırın ve her çantayı havayolunun limitinin altında tutun.',
   'help.guide.packing-bags.step.1':
     'Dairenin önündeki ağırlık rozetine tıklayın ve öğenin ağırlığını gram olarak yazın.',
-  'help.guide.packing-bags.step.2': 'Satırın sonundaki daire onun çantasıdır. Ona tıklayın.',
+  'help.guide.packing-bags.step.2': 'Ağırlıktan sonraki daire öğenin çantasıdır. Ona tıklayın.',
   'help.guide.packing-bags.step.3':
     'Henüz çanta yok: Çanta ekle, bir ad, Enter. Çanta oluşturulur ve öğe doğrudan içine girer.',
   'help.guide.packing-bags.step.4':
-    'Bir çanta var olur olmaz sağda Çantalar paneli belirir: ad, ağırlık, bir doluluk çubuğu, onu kimin taşıdığı ve içinde kaç öğe olduğu, sonra Atanmamış ve Toplam ağırlık.',
+    'Bir çanta var olur olmaz listelerin sağında Çantalar kartı belirir: ad, onu kimin taşıdığı, bir doluluk çubuğu, içinde kaç öğe olduğu ve ağırlığı, sonra Atanmamış ve Toplam ağırlık.',
   'help.guide.packing-bags.step.5':
-    'Limit belirle düğmesine tıklayın ve limiti havayollarının belirttiği gibi kilogram olarak yazın.',
-  'help.guide.packing-bags.step.6': 'Bir çantanın adının yanındaki kesik çizgili artı onu kimin taşıdığını söyler.',
+    'Çantanın ağırlığının yanındaki Limit belirle düğmesine tıklayın ve limiti havayollarının belirttiği gibi kilogram olarak yazın.',
+  'help.guide.packing-bags.step.6':
+    'Çantanın ad satırının sonundaki, çarpının hemen önündeki kesik çizgili artı Üye ata’yı açar: çantayı kimin taşıdığını işaretleyin, o kişi artının yanında görünür.',
   'help.guide.packing-bags.result':
-    'Sağdaki Çantalar paneli her çantanın ağırlığını limitine karşı, hiçbir çantada olmayanı ve toplamı gösterir.',
+    'Sağdaki Çantalar kartı her çantanın ağırlığını limitine karşı, hiçbir çantada olmayanı ve toplamı gösterir.',
   'help.guide.packing-bags.tip.1':
-    'Ağırlık alanı, çanta dairesi ve Çantalar paneli yalnızca bir yönetici Listeler eklentisi altında Çanta Takibi seçeneğini açık tuttuğu sürece vardır.',
+    'Ağırlık alanı, çanta dairesi ve Çantalar kartı yalnızca bir yönetici Listeler eklentisi altında Çanta Takibi seçeneğini açık tuttuğu sürece vardır. Daha dar bir pencerede çantalar bunun yerine ilerleme kartının üstündeki Çantalar düğmesinden açılır.',
   'help.guide.packing-bags.tip.2':
     'Bir çantanın ağırlığı sunucuda her üyenin öğeleri üzerinden, göremedikleriniz dahil, toplanır, bu yüzden sayı gerçekten çantanın ağırlığıdır.',
   'help.guide.packing-bags.tip.3':
@@ -3109,16 +3120,16 @@ const help: TranslationStrings = {
   'help.guide.create-todo.title': 'Bir görev ekleyin',
   'help.guide.create-todo.goal':
     'Olması gereken bir şeyi, bir liste, bir öncelik, bir tarih ve bir adla birlikte yazın.',
-  'help.guide.create-todo.step.1': 'Sağ üstteki Yeni görev ekle düğmesine tıklayın.',
+  'help.guide.create-todo.step.1': 'Çubuğun sağ ucundaki Yeni görev ekle düğmesine tıklayın.',
   'help.guide.create-todo.step.2':
-    'Görev adı alanında ona bir ad verin ve hatırlanmaya değer ne varsa Açıklama altına koyun.',
+    'Yeni görev iletişim kutusu, imleç baş şeridinde olarak açılır: adı Görev adı yazan yere yazın ve hatırlanmaya değer ne varsa Açıklama altına koyun.',
   'help.guide.create-todo.step.3':
     'Liste görevi gruplar. Birini seçin ya da yanındaki artıyı kullanarak küçük bir iletişim kutusunda yenisine ad verin.',
   'help.guide.create-todo.step.4': 'Öncelik dört düğmedir: Yok, P1, P2 ve P3, kırmızıdan maviye.',
-  'help.guide.create-todo.step.5': 'Son tarih bir takvim açar, Atanan ise göreve bir ad koyar.',
+  'help.guide.create-todo.step.5': 'Liste’nin yanındaki Son tarih bir takvim açar, Atanan ise göreve bir ad koyar.',
   'help.guide.create-todo.step.6': 'Görev oluştur düğmesine tıklayın.',
   'help.guide.create-todo.result':
-    'Görev listededir, rozetleriyle, önceliğiyle, son tarihiyle, listesiyle ve atandığı kişiyle, ve sağdaki bölmede açılır.',
+    'Görev listededir; önceliği, son tarihi ve listesi rozet olarak, atanan kişinin avatarı da satırın sonunda durur ve görev sağdaki bölmede açılır.',
   'help.guide.create-todo.tip.1':
     'Yalnızca ad zorunludur. Geri kalan her şey sonradan sağdaki bölmeden doldurulabilir.',
   'help.guide.create-todo.tip.2': 'Kenar çubuğunda bir liste seçiliyken, yeni bir görev o listede başlar.',
@@ -3135,7 +3146,7 @@ const help: TranslationStrings = {
     'Listenin başlığındaki sıralama ekrandakinin sırasını değiştirir: Öncelik P1 olanları öne alır, Son tarih en yakın tarihi öne alır. Aynı anda yalnızca ikisinden biri, ikinci bir tıklama ise sizin kendi sıranıza geri döner.',
   'help.guide.todo-filters.step.4': 'Sağdaki bölmede açmak için bir göreve tıklayın.',
   'help.guide.todo-filters.step.5':
-    'Neyi gerekiyorsa değiştirin, Açıklama, Öncelik, Liste, Son tarih ya da Atanan, sonra Değişiklikleri kaydet. Bölmenin başlığındaki kutu görevi tamamlandı olarak işaretler, Sil ise onu hemen alır götürür.',
+    'Neyi gerekiyorsa değiştirin, adı, Açıklama, Öncelik, Liste, Son tarih ya da Atanan, sonra bölmenin altındaki Değişiklikleri kaydet. Bölmenin başlığındaki kutu görevi tamamlandı olarak işaretler, Değişiklikleri kaydet yanındaki Sil ise onu hemen alır götürür.',
   'help.guide.todo-filters.result':
     'Liste yalnızca istediğiniz görevleri gösterir ve sağdaki bölme seçtiğinizi düzenler.',
   'help.guide.todo-filters.tip.1':
@@ -3146,57 +3157,81 @@ const help: TranslationStrings = {
   // ── Screen: trip-bookings ─────────────────────────────────────────────────────────────
   'help.ctx.trip-bookings.title': 'Rezervasyonlar',
   'help.ctx.trip-bookings.summary':
-    'Gezi için ayırtılmış olan ve bir ulaşım yolu olmayan her şeyi tutan sekme: konaklamalar, masalar, biletler, turlar, otopark. Her rezervasyon Askıda olması ya da Onaylandı bölümünde bir karttır ve kendi kodunu, belgesini, yolcularını ve maliyetini taşır.',
+    'Gezi için ayırtılmış olan ve bir ulaşım yolu olmayan her şeyi tutan sekme: konaklamalar, masalar, biletler, turlar, otopark. Her rezervasyon bir kart, bir liste satırı ya da zaman çizelgesinde bir çubuktur; kodunu, belgelerini, yolcularını ve maliyetini taşır ve bir tıklama ayrıntılarını açar.',
   'help.ctx.trip-bookings.bullet.1':
-    'Sağ üstteki Manuel Rezervasyon formu açar. Yaptığı altı tür Konaklama, Restoran, Etkinlik, Tur, Otopark ve Diğer; uçuşlar, trenler ve geri kalanı Ulaşım sekmesinde yaşar ve burada asla görünmez.',
+    'Araç çubuğunun sağ ucundaki Manuel Rezervasyon, Yeni Rezervasyon formunu açar. Yaptığı altı tür Konaklama, Restoran, Etkinlik, Tur, Otopark ve Diğer; uçuşlar, trenler ve geri kalanı Ulaşım sekmesinde yaşar ve burada asla görünmez.',
   'help.ctx.trip-bookings.bullet.2':
-    'Dosyadan içe aktar bir onayı ayrıştırıcıya verir: EML, PDF, PKPass, HTML ya da TXT, en fazla 10 MB olan beş dosya. Düğme yalnızca sunucu bunları okuyabildiğinde oradadır.',
+    'Manuel Rezervasyon’un önündeki indirme simgesi, yani Rezervasyon onaylarını içe aktar, onayları ayrıştırıcıya verir: EML, PDF, PKPass, HTML ya da TXT, en fazla 10 MB olan beş dosya. Simge yalnızca sunucu bunları okuyabildiğinde oradadır.',
   'help.ctx.trip-bookings.bullet.3':
-    'Başlığın yanındaki rozetler türe göre filtreler, her biri kendi sayısıyla, ve Tümü her şeyi geri getirir. Bir rezervasyon kişileri adlandırdığında, rozetlerin yanındaki avatar sırası sekmeyi onlardan birine daraltır.',
+    'Ara; başlıklarda, türlerde, yerlerde, notlarda, rezervasyon kodlarında ve yolcularda arar. Yanındaki huni olan Filtrele, sekmeyi Durum’a, her biri için bir sayı gösteren Tür’e ve bir rezervasyon kişileri adlandırdığı anda Yolcular’a göre daraltır; huninin üzerindeki sayı açık olan filtreleri sayar.',
   'help.ctx.trip-bookings.bullet.4':
-    'Kartlar iki bölümde durur, Askıda olması ve Onaylandı, her biri kendi sayısıyla. Bir bölüm başlığına tıklamak onu katlar ve açık olup olmadığını TREK bu gezi için hatırlar.',
+    'Filtrele’den sonraki üç simge görünümü değiştirir: Kartlar, Liste ve Zaman çizelgesi. Yanlarındaki kaydırıcı simgesi olan Görünüm seçenekleri, kartları ve listeyi gruplandırır ve sıralar ya da zaman çizelgesinin şeritlerini belirler. Kartlar varsayılan olarak Onaylandı ve Beklemede bölümlerinde durur ve bir bölümün başlığına tıklamak onu katlar.',
   'help.ctx.trip-bookings.bullet.5':
-    'Bir kart durum noktasını, türü, başlığı, tarihleri ve saatleri, Rezervasyon Kodunu, Konum / Adres bilgisini, rezervasyonun neye bağlı olduğunu, Bağlantısını, Notlarını, Dosyalarını ve Yolcularını taşır.',
+    'Bir kartın durumuna göre renklenen bir baş şeridi vardır: durum noktası (bir tıklama Beklemede ile Onaylandı arasında geçiş yapar), tür, başlık, kalem ve çöp kutusu. Altında rezervasyonda ne varsa o durur: Tarih, Zaman, Rezervasyon Kodu, Giriş ve Çıkış yapmak, Konum / Adres, Konaklama, Bağlı olduğu (plandaki durak), Bağlantı, Notlar, Yolcular, Dosyalar ve bağlı maliyetler.',
   'help.ctx.trip-bookings.bullet.6':
-    'Karttaki kalem aynı formu yeniden açar; çöp kutusu bir kez sorar ve sonra rezervasyon gitmiştir. Bir konaklamada gün planındaki geceleri ve bağlı gideri de onunla birlikte gider.',
+    'Bir karta, bir satıra ya da bir çubuğa tıklamak rezervasyonun ayrıntılarını açar; en altta Haritada, çöp kutusu ve Düzenle durur. Silme bir kez sorar, sonra rezervasyon bağlı harcamalarıyla birlikte gitmiştir; bir konaklama da gecelerini gün planından alıp götürür.',
+  // booking-views
+  'help.guide.booking-views.title': 'Görünümü değiştirin ve bir rezervasyonu açın',
+  'help.guide.booking-views.goal':
+    'Rezervasyonları kart, liste ya da zaman çizelgesi olarak görün ve tuttuğu her şeyi görmek için birini açın.',
+  'help.guide.booking-views.step.1':
+    'Araç çubuğunda Filtrele’den sonraki üç simge görünümlerdir ve üzerine geldiğinizde her biri adını gösterir: Kartlar, Liste ve Zaman çizelgesi. Sekme Kartlar görünümünde açılır, Onaylandı ve Beklemede bölümlerinde her rezervasyon için bir kartla. Ortadaki Liste’ye tıklayın.',
+  'help.guide.booking-views.step.2':
+    'Liste, her rezervasyonu günlere ait başlıkların altına birer satır olarak koyar, gün ve saat sağda durur; ok tuşları satırdan satıra geçer. Üçünün sonuncusu olan Zaman çizelgesi’ne tıklayın.',
+  'help.guide.booking-views.step.3':
+    'Zaman çizelgesi rezervasyonları gezinin günlerinin üzerine serer: her tür için bir şerit ve her başlangıçtan bitişine uzanan bir çubuk, bekleyen bir rezervasyon kesik çizgili bir kenarla. Gezi, bütün geziyi genişliğe sığdırır; o günü saat saat görmek için bir günün başlığına tıklayın.',
+  'help.guide.booking-views.step.4':
+    'Gün, tek bir günü bir saat ölçeğine yayar ve çubuklar saatlerini gösterecek kadar büyür. Günün adının yanındaki oklar önceki ve sonraki güne geçer, sağdaki Gezi ve Gün anahtarı ise bütün geziye geri döner.',
+  'help.guide.booking-views.step.5':
+    'Gününü, saatlerini ve yerini görmek için imleci bir çubuğun üzerine getirin, sonra rezervasyonun ayrıntılarını açmak için ona tıklayın. Kartlar içindeki bir kart ve Liste içindeki bir satır aynı açılır pencereyi açar.',
+  'help.guide.booking-views.step.6':
+    'Ayrıntıların baş şeridi başlığı ve durum (bir tıklama onu değiştirir), tür, gün ve rezervasyon kodu için rozetleri taşır; kodun yanında onu kopyalayan bir düğme vardır. Altında kutucuklar hâlinde saatler, sonra rezervasyonda ne varsa yer, yolcular, notlar, maliyetler ve dosyalar gelir, en altta da Haritada, çöp kutusu ve Düzenle.',
+  'help.guide.booking-views.result':
+    'Rezervasyon ayrıntılarında açık durur: Düzenle formunu açar, Haritada onu planda gösterir, Kapat ya da Escape tuşu sizi geldiğiniz görünüme geri götürür.',
+  'help.guide.booking-views.tip.1':
+    'Görünüm simgelerinden sonraki kaydırıcı simgesi olan Görünüm seçenekleri, Kartlar ve Liste görünümlerini Gruplandır ve Sırala ile gruplandırır ve sıralar. Zaman çizelgesi içinde Her tür için ayrı şerit ile Diğer sekmeyi de göster seçeneklerini açıp kapatır; ikincisi Ulaşım sekmesinin kayıtlarını soluk olarak en üstte ince bir şeride koyar. Görünümü sıfırla varsayılanları geri getirir ve her sekme görünümünü bu tarayıcıda hatırlar.',
+  'help.guide.booking-views.tip.2':
+    'Geziden önceki ya da sonraki ya da tarihsiz bir rezervasyon zaman çizelgesinde yer alamaz: grafiğin altında Geziden önce, Geziden sonra ya da Tarihsiz altında küçük bir kart olarak bekler.',
+  'help.guide.booking-views.tip.3':
+    'Bir rezervasyon nerede görünürse görünsün aynı ayrıntılar açılır: Ulaşım sekmesinde, gün planında, bir günün ayrıntılarında ve bir yerin ayrıntılarında. Başlığına tıklamak rezervasyonu yeniden adlandırır.',
   // create-booking
   'help.guide.create-booking.title': 'Bir rezervasyon oluşturun',
   'help.guide.create-booking.goal':
     'Bir restoranı, bir etkinliği, bir turu, bir otopark yerini ya da başka herhangi bir şeyi geziye elle koyun.',
   'help.guide.create-booking.step.1':
-    'Sekmenin sağ üstündeki Manuel Rezervasyon düğmesine tıklayın. Yeni Rezervasyon açılır.',
+    'Araç çubuğunun sağ ucundaki Manuel Rezervasyon düğmesine tıklayın. Yeni Rezervasyon açılır; en üstteki baş şeridinde başlık ve iki rozet durur.',
   'help.guide.create-booking.step.2':
-    'Formun üst kısmında, başlığın altındaki tür rozetine tıklayın ve Rezervasyon Türünü seçin. Konaklama, Restoran, Etkinlik, Tur, Otopark ve Diğer bu sekmenin yaptığı altı türdür ve form seçimle birlikte değişir: yalnızca Konaklama tarihlerini bir gün aralığıyla değiştirir.',
+    'Baş şeridindeki, yeni bir rezervasyonda Diğer yazan tür rozetine tıklayın ve Rezervasyon Türünü seçin. Konaklama, Restoran, Etkinlik, Tur, Otopark ve Diğer bu sekmenin yaptığı altı türdür ve form seçimle birlikte değişir: yalnızca Konaklama tarihlerini bir gün aralığıyla değiştirir.',
   'help.guide.create-booking.step.3':
-    'Başlık yazın. Formun ısrar ettiği tek alan budur ve içinde bir şey olana kadar Ekle ölü kalır.',
+    'Başlığı baş şeridine, rozetlerin üstündeki alana yazın. Formun ısrar ettiği tek alan budur ve içinde bir şey olana kadar Ekle gri kalır.',
   'help.guide.create-booking.step.4':
     'Tarih ve Başlangıç zamanını, rezervasyonun bir sonu varsa Bitiş tarihi ile Bitiş zamanını da ayarlayın. Takvimler yalnızca gezinin içindeki günleri sunar ve başlangıçtan sonra olmayan bir bitiş bunu kırmızıyla söyler ve Ekle düğmesini engeller.',
   'help.guide.create-booking.step.5':
-    'Onaydan gelen Rezervasyon Kodunu girin. Türün yanındaki durum rozetinde Askıda olması yazar; bir tıklama onu Onaylandı yapar ve geri alır, bu da kartın iki bölümden hangisine düşeceğine karar verir.',
-  'help.guide.create-booking.step.6': 'Ekle düğmesine tıklayın.',
+    'Onaydan gelen Rezervasyon Kodunu girin, sonra baş şeridinde türün yanındaki durum rozetine tıklayın. Yeni bir rezervasyonda Beklemede yazar ve Onaylandı olur; bu da kartın hangi bölüme düşeceğine karar verir.',
+  'help.guide.create-booking.step.6': 'Formun en altındaki Ekle düğmesine tıklayın.',
   'help.guide.create-booking.result':
-    'Rezervasyon kendi bölümünde tür rozetiyle, tarihleriyle ve koduyla bir karttır ve gezideki herkes onun belirdiğini görür.',
+    'Rezervasyon kendi bölümünde bir karttır; baş şeridi durumuna göre renklenir, türünü, tarihini ve saatlerini ve kodunu taşır ve gezideki herkes onun belirdiğini görür.',
   'help.guide.create-booking.tip.1':
     'Konum / Adres siz yazarken gerçek adresler sunar; birini seçmek yazdığınızın yerine geçer, kendi yazdığınız bir adres ise olduğu gibi kalır.',
   'help.guide.create-booking.tip.2':
-    'Bağlantı rezervasyonun sağlayıcıdaki kendi sayfasına götürür. Kart onu yeni bir sekmede açılan bir bağlantıya çevirir.',
+    'Bağlantı rezervasyonun sağlayıcıdaki kendi sayfasına götürür. Kart ve ayrıntılar onu yeni bir sekmede açılan bir bağlantıya çevirir.',
   'help.guide.create-booking.tip.3':
-    'Notlar Markdown biçimindedir, bu yüzden bir liste ya da kalın bir satır kartta liste ya da kalın satır olarak görünür.',
+    'Notlar Markdown biçimindedir, bu yüzden bir liste ya da kalın bir satır kartta ve ayrıntılarda liste ya da kalın satır olarak görünür.',
   // booking-hotel
   'help.guide.booking-hotel.title': 'Bir konaklama yeri ayırtın',
   'help.guide.booking-hotel.goal':
     'Bir konaklamayı, hem bir rezervasyon hem de gün planındaki geceler olarak aynı anda sayılacak şekilde girin.',
   'help.guide.booking-hotel.step.1':
-    'Manuel Rezervasyon düğmesine tıklayın ve Konaklama seçin. Tarih alanları gider ve yerlerini bir otel alanları bloğu alır.',
+    'Manuel Rezervasyon düğmesine tıklayın ve baş şeridindeki tür rozetiyle Konaklama seçin. Tarih alanları gider ve yerlerini bir otel alanları bloğu alır.',
   'help.guide.booking-hotel.step.2':
-    'Oteli Konaklama altında seçin. Liste gezinin kendi yerleridir ve birini seçmek adını Başlık alanına, adresini de Konum / Adres alanına yazar.',
+    'Oteli Konaklama altında seçin. Liste gezinin kendi yerleridir ve birini seçmek adını boş bir başlığa, adresini de Konum / Adres alanına yazar.',
   'help.guide.booking-hotel.step.3':
     'İtibaren ve İle alanlarını ayarlayın: ilk gece ve ayrıldığınız sabah. İkisi de gezinin günlerini tarihleriyle sunar ve ikisi birbirini sırada tutar.',
   'help.guide.booking-hotel.step.4':
     'Giriş, Giriş tarihi şu tarihe kadar ve Çıkış yapmak alanlarını, bir de onaydan gelen Rezervasyon Kodunu doldurun.',
   'help.guide.booking-hotel.step.5': 'Ekle düğmesine tıklayın.',
   'help.guide.booking-hotel.result':
-    'Kart bir tarih yerine bir gün aralığı taşır, giriş ve çıkış saatleri ile adresiyle birlikte, ve aynı konaklama artık planın o günlerinde oturur.',
+    'Kart gün aralığını Tarih altında, giriş ve çıkış saatleriyle adresi de birlikte taşır ve aynı konaklama artık planın o günlerinde oturur.',
   'help.guide.booking-hotel.tip.1':
     'Konaklama, Tarih ve Başlangıç zamanı olmayan tek türdür. Tarihleri İtibaren ve İle alanlarıdır ve bunlar bir takvim değil, gezinin günleridir.',
   'help.guide.booking-hotel.tip.2':
@@ -3206,14 +3241,15 @@ const help: TranslationStrings = {
   'help.guide.link-booking.title': 'Bir rezervasyonu plana bağlayın',
   'help.guide.link-booking.goal':
     'Bir rezervasyonu ait olduğu durağa ve yere asın, böylece onu isteyeceğiniz yerde karşınıza çıksın.',
-  'help.guide.link-booking.step.1': 'Bağlamak istediğiniz karttaki kaleme tıklayın. Rezervasyonu Düzenle açılır.',
+  'help.guide.link-booking.step.1':
+    'İmleci bağlamak istediğiniz kartın üzerine getirin ve baş şeridindeki kaleme tıklayın. Rezervasyonu Düzenle açılır.',
   'help.guide.link-booking.step.2':
     'Gün atamasına bağla alanını açın. Liste sizin planınızdır: her gün için bir başlık, sonra o günün numaralanmış ve saatleriyle duran durakları. Rezervasyonun ait olduğunu seçin.',
   'help.guide.link-booking.step.3':
-    'Yer / Etkinlik yerin kendisini bağlar. Onu orada seçin, Başlık ve Konum / Adres boş bıraktığınız her yerde dolar.',
+    'Yer / Etkinlik yerin kendisini bağlar. Onu orada seçin, başlık ve Konum / Adres boş bıraktığınız her yerde dolar.',
   'help.guide.link-booking.step.4': 'Güncelle düğmesine tıklayın.',
   'help.guide.link-booking.result':
-    'Kart günü ve durağı Gün atamasına bağla altında adlandırır ve rezervasyon gün planında o durakla birlikte yol alır.',
+    'Kart günü ve durağı Bağlı olduğu altında adlandırır ve rezervasyon gün planında o durakla birlikte yol alır.',
   'help.guide.link-booking.tip.1':
     'Listenin üstündeki Bağlantı yok (bağımsız) bağlantıyı yeniden kaldırır. Konaklamanın hiç durak seçicisi yoktur: o, geceleri üzerinden bağlanır.',
   'help.guide.link-booking.tip.2':
@@ -3223,49 +3259,50 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.goal':
     'Bir rezervasyonun kapsadığı yolcuları işaretleyin ve sonra yalnızca onlarınkini görün.',
   'help.guide.booking-travelers.step.1':
-    'Rezervasyonu kalemle açın. Yolcular, Rezervasyon Kodunun yanında durur ve rezervasyonda kimse yokken Yolcu ata yazar.',
+    'Rezervasyonu kartındaki kalemle açın. Yolcular, Rezervasyon Kodunun yanında durur ve rezervasyonda kimse yokken Yolcu ata yazar.',
   'help.guide.booking-travelers.step.2':
     'Ona tıklayın ve bu rezervasyonun kimler için olduğunu seçin; adı verilmiş misafirler de listededir. Seçilen bir onay işareti alır ve avatarı alanda görünür. Kaldırmak için ada yeniden tıklayın.',
   'help.guide.booking-travelers.step.3': 'Güncelle düğmesine tıklayın.',
   'help.guide.booking-travelers.step.4':
-    'Yukarıda araç çubuğunda, tür rozetlerinin yanında, yalnızca o kişinin rezervasyonlarını görmek için bir yolcunun avatarına tıklayın.',
+    'Araç çubuğunda Filtrele’ye tıklayın: Yolcular altında, yalnızca o kişinin rezervasyonlarını görmek için bir kişiye tıklayın. Aynı anda birkaçı açık olabilir.',
   'help.guide.booking-travelers.result':
-    'Kart kimler için olduğunu listeler ve avatar sırası sekmeyi onlardan birine daraltır.',
+    'Kart kimler için olduğunu listeler ve Filtrele sekmeyi seçtiğiniz kişilerin rezervasyonlarına daraltır.',
   'help.guide.booking-travelers.tip.1':
-    'Kartta yolcular yalnızca gösterilir, asla değiştirilmez. Burada, formda ayarlanırlar.',
+    'Kartta ve ayrıntılarda yolcular yalnızca gösterilir, asla değiştirilmez. Burada, formda ayarlanırlar.',
   'help.guide.booking-travelers.tip.2':
-    'Avatar sırası, gezinin birden fazla üyesi olduğunda ve en az bir rezervasyon birini adlandırdığında belirir. Seçtiğiniz şey bu tarayıcı oturumu boyunca kalır.',
+    'Yolcular, gezinin birden fazla üyesi olduğunda ve en az bir rezervasyon birini adlandırdığında Filtrele içinde belirir. Seçtiğiniz şey tarayıcı sekmesini kapatana kadar kalır.',
   // booking-files
   'help.guide.booking-files.title': 'Voucher belgesini rezervasyonun yanında tutun',
   'help.guide.booking-files.goal': 'Onayı, bileti ya da geçiş kartını ait olduğu rezervasyona ekleyin.',
   'help.guide.booking-files.step.1':
-    'Rezervasyonu kalemle açın, Dosyalar alanına inin ve Dosya ekle düğmesine tıklayın. Zaten var olan bir rezervasyonda belge hemen yüklenir ve TREK Dosya yüklendi der.',
+    'Rezervasyonu kartındaki kalemle açın. Dosyalar, Bağlantı’nın yanında durur; oradaki Dosya ekle düğmesine tıklayın. Zaten var olan bir rezervasyonda belge hemen yüklenir ve TREK Dosya yüklendi der.',
   'help.guide.booking-files.step.2': 'Belge adıyla listelenir, onu açan bir düğme ve yanında bir X ile birlikte.',
   'help.guide.booking-files.step.3':
     'Mevcut dosyayı bağla, gezinin henüz bu rezervasyonda olmayan belgelerini sunar. Birini seçin, hiçbir şey yeniden yüklenmeden eklenir.',
   'help.guide.booking-files.step.4': 'Güncelle düğmesine tıklayın.',
-  'help.guide.booking-files.result': 'Kart belgeleri Dosyalar altında listeler ve birine tıklamak onu açar.',
+  'help.guide.booking-files.result':
+    'Kart ve ayrıntılar belgeleri Dosyalar altında listeler ve birine tıklamak onu açar.',
   'help.guide.booking-files.tip.1':
     'Henüz oluşturmakta olduğunuz bir rezervasyonda belge bekler ve Ekle düğmesine tıkladığınız anda yüklenir.',
   'help.guide.booking-files.tip.2':
     'Bir belgenin yanındaki X bağı kaldırır, belgeyi değil. Belge gezinin Dosyalar sekmesinde kalır.',
   'help.guide.booking-files.tip.3':
-    'Hangi tür dosyaların eklenebileceği yöneticinin listesidir; belgeler, metin ve resimler kutudan çıktığı gibi izinlidir.',
+    'Hangi tür dosyaların eklenebileceği, yöneticinin İzin Verilen Dosya Türleri altındaki listesidir; belgeler, metin ve resimler kutudan çıktığı gibi izinlidir.',
   // booking-cost
   'help.guide.booking-cost.title': 'Bir rezervasyonun fiyatını bir maliyete çevirin',
   'help.guide.booking-cost.goal':
     'Bir rezervasyonun tuttuğu parayı, onu ödeyen kişiler arasında bölünmüş olarak Maliyetler bölümüne taşıyın.',
   'help.guide.booking-cost.step.1':
-    'Rezervasyonu açın ve formun en altına inin. Maliyetler altında Harcama oluştur ve Mevcut harcamayı bağla durur, Rezervasyonu kaydeder, sonra masraf düzenleyicisini açar notuyla birlikte.',
+    'Rezervasyonu kartındaki kalemle açın ve formun en altına inin. Maliyetler altında Harcama oluştur ve Mevcut harcamayı bağla durur, Rezervasyonu kaydeder, sonra masraf düzenleyicisini açar notuyla birlikte.',
   'help.guide.booking-cost.step.2':
-    'Harcama oluştur düğmesine tıklayın. Rezervasyon kaydedilir, formu kapanır ve maliyet düzenleyicisi açılır.',
+    'Harcama oluştur düğmesine tıklayın. Rezervasyon kaydedilir, formu kapanır ve maliyet düzenleyicisi Harcama ekle olarak açılır.',
   'help.guide.booking-cost.step.3':
-    'Ne içindi? alanı zaten rezervasyonun başlığıdır. Toplam tutar girin ve Para birimi ile Gün alanlarını denetleyin.',
+    'Baş şeridindeki ad zaten rezervasyonun başlığıdır. Toplam tutar girin ve yanındaki Para birimi ile Gün alanlarını denetleyin.',
   'help.guide.booking-cost.step.4':
-    'Kategori, rezervasyon türünün işaret ettiği kategoridir. Kim ödedi? alanını ve tutarın nasıl bölündüğünü ayarlayın.',
+    'Baş şeridindeki rozet Kategori’dir, zaten rezervasyon türünün işaret ettiği kategori. Kim ödedi? altında kimin ödediğini, Paylaşım altında da tutarın nasıl paylaşıldığını seçin.',
   'help.guide.booking-cost.step.5': 'Harcama ekle düğmesine tıklayın.',
   'help.guide.booking-cost.result':
-    'Rezervasyonun formu artık harcamayı tutarıyla birlikte Bağlı harcamalar altında listeler ve aynı harcama bu rezervasyona bağlı olarak Maliyetler sekmesinde durur.',
+    'Kart tutarı en altında taşır, rezervasyonun formu harcamayı Bağlı harcamalar altında listeler ve aynı harcama bu rezervasyona bağlı olarak Maliyetler sekmesinde durur.',
   'help.guide.booking-cost.tip.1':
     'Kategori türü izler: Restoran Yiyecek & içecek olur, Konaklama Konaklama olur, Otopark Otopark olur, Etkinlik ile Tur ise ikisi de Diğer içine düşer.',
   'help.guide.booking-cost.tip.2':
@@ -3274,153 +3311,158 @@ const help: TranslationStrings = {
     'Maliyetler formda yalnızca Maliyetler eklentisi açıkken bulunur, onu da yönetici Eklentiler altından açıp kapatır.',
   // filter-bookings
   'help.guide.filter-bookings.title': 'Bir rezervasyon bulun',
-  'help.guide.filter-bookings.goal': 'Uzun bir sekmeyi aradığınız türe, kişiye ya da duruma daraltın.',
+  'help.guide.filter-bookings.goal': 'Uzun bir sekmeyi bir kelimeye, bir duruma, bir türe ya da bir kişiye daraltın.',
   'help.guide.filter-bookings.step.1':
-    'Başlığın yanındaki rozetler bu gezinin gerçekten kullandığı türlerdir, her biri tuttuğu sayıyla. Tümü, sekmenin tamamıdır.',
+    'Araç çubuğundaki Ara alanına yazın. Başlıklarda, türlerde, yerlerde ve adreslerde, notlarda, rezervasyon kodlarında ve yolcuların adlarında arar ve sekme siz yazdıkça daralır; Escape kutuyu boşaltır.',
   'help.guide.filter-bookings.step.2':
-    'Yalnızca o türü tutmak için bir rozete tıklayın. İkinciye tıklayın, ikisi birden tutulur.',
-  'help.guide.filter-bookings.step.3': 'Tümü her şeyi geri koyar.',
+    'Aramanın yanındaki huni olan Filtrele’ye tıklayın. Panelinde Durum, Tür ve bir rezervasyon kişileri adlandırdığı anda Yolcular bulunur.',
+  'help.guide.filter-bookings.step.3':
+    'Durum altında yalnızca onları görmek için Onaylandı ya da Beklemede seçin; Tümü ikisini de gösterir.',
   'help.guide.filter-bookings.step.4':
-    'Rozetlerin yanındaki avatarlar yolcuya göre filtreler, bir kişiye ya da aynı anda birkaçına.',
+    'Tür altında yalnızca onları tutmak için bir ya da daha fazla türe tıklayın. Her biri kaç rezervasyon tuttuğunu gösterir ve açık olanları bir onay işareti belirtir.',
   'help.guide.filter-bookings.step.5':
-    'Askıda olması ve Onaylandı iki bölümdür, her biri kendi sayısıyla. Birini katlamak için bir başlığa tıklayın; geri geldiğinizde hâlâ katlıdır.',
+    'Filtrele üzerindeki bir sayı açık olanları sayar, aramanın yanındaki bir rozet de bütün rezervasyonlardan kaçının kaldığını söyler. Her şeyi yeniden görmek için rozete ya da panelin altındaki Filtreleri sıfırla’ya tıklayın.',
   'help.guide.filter-bookings.result':
-    'Sekme yalnızca seçtiğinizi gösterir ve bu tarayıcı oturumunda ona geri döndüğünüzde seçim hâlâ yerindedir.',
+    'Sekme yalnızca seçtiğinizi gösterir, Kartlar, Liste ve Zaman çizelgesi içinde aynı şekilde, ve filtreler tarayıcı sekmesini kapatana kadar bu gezi için kalır.',
   'help.guide.filter-bookings.tip.1':
-    'Rozetler yalnızca gezinin sahip olduğu türleri sunar, bu yüzden tek bir turu olmayan bir gezide Tur rozeti yoktur.',
+    'Tür yalnızca sekmede birden fazla tür olduğunda vardır ve yalnızca sekmenin tuttuğu türleri listeler, bu yüzden tek bir turu olmayan bir sekmede Tur yoktur.',
   'help.guide.filter-bookings.tip.2':
-    'Hiçbir şeyle eşleşmeyen bir filtre sekmeyi Hiçbir yer bulunamadı ile boş bırakır. Bu ifade yerler listesinindir; anlamı aynıdır.',
+    'Hiçbir şeyle eşleşmeyen bir filtre sekmede Bu filtrelere uyan bir şey yok yazısını bırakır, hemen altında da Filtreleri sıfırla durur.',
   // import-booking-file
   'help.guide.import-booking-file.title': 'Bir rezervasyonu onayından okuyun',
   'help.guide.import-booking-file.goal':
     'Rezervasyonu yeniden yazmak yerine, sağlayıcının gönderdiği postadan ya da PDF dosyasından TREK çekip çıkarsın.',
   'help.guide.import-booking-file.step.1':
-    'Araç çubuğunda Dosyadan içe aktar düğmesine tıklayın. Rezervasyon onaylarını içe aktar açılır.',
+    'Araç çubuğundaki indirme simgesine, yani Rezervasyon onaylarını içe aktar’a tıklayın; üzerine geldiğinizde adı görünür. Aynı adlı iletişim kutusu açılır.',
   'help.guide.import-booking-file.step.2':
     'Onayları kutunun üzerine bırakın ya da kutuya tıklayıp seçin: EML, PDF, PKPass, HTML ve TXT, her biri 10 MB olan en fazla beş dosya. Seçtikleriniz kutunun üzerinde adlarıyla yazar.',
   'help.guide.import-booking-file.step.3':
     'İçe aktar düğmesine tıklayın. Okuma arka planda olduğu için pencere hemen kapanır.',
   'help.guide.import-booking-file.step.4':
     'Sağ altta bir kart, dosyanın adı altında işin gidişatını bildirir ve uygulama içinde, bir yeniden yüklemede bile sizi izler. Okuma bittiğinde Dosyalar işleniyor… bir onay işaretine dönüşür ve kart İçe aktar sunar. Tıklayın.',
+  'help.guide.import-booking-file.step.5':
+    'Bulunan her rezervasyon Yeni Rezervasyon içinde, art arda ve çoktan doldurulmuş olarak açılır. Bir otel için bu, başlık olarak adı ve gezide yer varsa Konaklama altında yer, Konum / Adres bilgisi, geceleri üzerinde İtibaren ve İle, Giriş ve Çıkış yapmak, Rezervasyon Kodu, Dosyalar altında onay ve Maliyetler açıkken Bağlı harcama olarak fiyattır. Denetleyin ve Ekle düğmesine tıklayın.',
   'help.guide.import-booking-file.result':
-    'Rezervasyon, geceleri, kodu ve Dosyalar altındaki onayıyla Askıda olması altında bir karttır, konaklama planın o günlerinde durur ve Maliyetler açıkken fiyat ona bağlı bir harcamadır.',
+    'Rezervasyon, geceleri, kodu ve Dosyalar altındaki onayıyla Beklemede altında bir karttır, konaklama planın o günlerinde durur ve Maliyetler açıkken fiyat ona bağlı bir harcamadır.',
   'help.guide.import-booking-file.tip.1':
-    'Dosyadan içe aktar yalnızca sunucu onayları okuyabildiğinde vardır, bunun için de ya çıkarıcı ya da Yapay zekâ ile ayrıştırma eklentisi gerekir. Yönetici o eklentiyi Eklentiler altından açıp kapatır.',
+    'İçe aktarma simgesi yalnızca sunucu onayları okuyabildiğinde vardır, bunun için de ya çıkarıcı ya da Yapay zekâ ile ayrıştırma eklentisi gerekir; yönetici o eklentiyi Eklentiler altından açıp kapatır. Hiç rezervasyonu olmayan bir sekme bunu ayrıca Dosyadan içe aktar düğmesi olarak sunar.',
   'help.guide.import-booking-file.tip.2':
-    'Hiçbir şey okunamadıysa kart bunu söyler ve aynı dosyaları doğrudan modele gönderen Try AI parsing sunar. Biten bir ayrıştırma on dakika saklanır; gözden geçirmeyi bu süre içinde başlatın.',
+    'Hiçbir şey okunamadıysa kart bunu söyler ve Yapay zekâ ile ayrıştırma açıksa aynı dosyaları doğrudan modele gönderen Yapay zekâ ile okumayı dene seçeneğini sunar. Biten bir ayrıştırma on dakika saklanır; gözden geçirmeyi bu süre içinde başlatın.',
   'help.guide.import-booking-file.tip.3':
     'Onay yalnızca türü yönetici ayarlarındaki İzin Verilen Dosya Türleri arasında olduğunda eklenir. PDF baştan oradadır; bir posta, EML, önce eklenmelidir, yoksa rezervasyon onsuz kaydedilir.',
   // edit-booking
   'help.guide.edit-booking.title': 'Bir rezervasyonu değiştirin',
   'help.guide.edit-booking.goal':
-    'Bir saati düzeltin, sonradan gelen kodu ekleyin ya da bir rezervasyonu Askıda olması durumundan Onaylandı durumuna taşıyın.',
+    'Bir saati düzeltin, sonradan gelen kodu ekleyin ya da bir rezervasyonu Beklemede durumundan Onaylandı durumuna taşıyın.',
   'help.guide.edit-booking.step.1':
-    'Kartın başlığındaki kaleme tıklayın. Rezervasyonu Düzenle, rezervasyonun bildiği her şeyle açılır.',
+    'İmleci kartın üzerine getirin ve baş şeridindeki kaleme tıklayın. Rezervasyonu Düzenle, rezervasyonun bildiği her şeyle açılır.',
   'help.guide.edit-booking.step.2':
     'Değişmesi gerekeni değiştirin, burada işletmecinin sonunda gönderdiği Rezervasyon Kodunu.',
-  'help.guide.edit-booking.step.3': 'Formun üst kısmındaki Askıda olması rozetine tıklayın. Onaylandı olarak değişir.',
+  'help.guide.edit-booking.step.3':
+    'Baş şeridindeki Beklemede rozetine tıklayın. Onaylandı olarak değişir ve şerit yeşile döner.',
   'help.guide.edit-booking.step.4': 'Güncelle düğmesine tıklayın.',
   'help.guide.edit-booking.result':
-    'Kart taşınır: onaylanmış bir rezervasyon yeşil bir noktanın arkasında Onaylandı bölümünde durur ve gezideki herkes onun taşındığını görür.',
+    'Kart taşınır: onaylanmış bir rezervasyon yeşil bir nokta ve yeşil bir baş şeridiyle Onaylandı bölümünde durur ve gezideki herkes onun taşındığını görür.',
   'help.guide.edit-booking.tip.1':
     'Okuyamadığınız bir Rezervasyon Kodu, Ayarlar içinde Görünüm altındaki Rezervasyon Kodlarını Bulanıklaştır ayarıdır. Üzerine gelin ya da tıklayın, okunur hâle gelir.',
   'help.guide.edit-booking.tip.2':
     'Türü değiştirin, bağlı bir harcamanın kategorisi de onu izler, maliyet düzenleyicisinde bir kategoriyi elle seçmiş olmadığınız sürece.',
-  'help.guide.edit-booking.tip.3': 'Bir konaklama da burada düzenlenir: İtibaren ve İle günleri aynı formdadır.',
+  'help.guide.edit-booking.tip.3':
+    'Bir rezervasyonun ayrıntılarının altındaki Düzenle aynı formu açar. Durum hiç form açmadan da değişir: bir karttaki ya da bir satırdaki noktaya ya da ayrıntılardaki durum rozetine tıklayın.',
   // delete-booking
   'help.guide.delete-booking.title': 'Bir rezervasyonu silin',
   'help.guide.delete-booking.goal': 'Suya düşen bir rezervasyonu geziden çıkarın.',
-  'help.guide.delete-booking.step.1': 'Kartın başlığındaki çöp kutusuna tıklayın.',
+  'help.guide.delete-booking.step.1':
+    'İmleci kartın üzerine getirin ve baş şeridindeki çöp kutusuna tıklayın. Bir rezervasyonun ayrıntılarının altındaki çöp kutusu da aynı şeyi sorar.',
   'help.guide.delete-booking.step.2':
     'Rezervasyon silinsin mi? seçtiğinizi adlandırır ve kalıcı olarak silineceğini söyler.',
-  'help.guide.delete-booking.step.3': 'Onayla düğmesine tıklayın.',
+  'help.guide.delete-booking.step.3': 'Sil düğmesine tıklayın.',
   'help.guide.delete-booking.result':
     'Kart gitmiştir, gezideki herkes için. Bir rezervasyonun geri alması yoktur, bu yüzden o soru son duraktır.',
   'help.guide.delete-booking.tip.1':
-    'Bir konaklama rezervasyonunu silmek gecelerini de gün planından çıkarır ve ona bağlı olan harcamayı kaldırır.',
+    'Bir rezervasyonu silmek ona bağlı harcamaları da kaldırır; bir konaklama da gecelerini gün planından çıkarır.',
   'help.guide.delete-booking.tip.2':
     'Eklenmiş olan belgeler gezinin Dosyalar sekmesinde kalır; yalnızca rezervasyona olan bağları gider.',
-  // import-booking-file
-  'help.guide.import-booking-file.step.5':
-    'Bulunan her rezervasyon Yeni Rezervasyon içinde, art arda ve çoktan doldurulmuş olarak açılır. Bir otel için bu, Başlık içindeki ad ve gezide yer varsa Konaklama altında yer, Konum / Adres bilgisi, geceleri üzerinde İtibaren ve İle, Giriş ve Çıkış yapmak, Rezervasyon Kodu, Dosyalar altında onay ve Maliyetler açıkken Bağlı harcama olarak fiyattır. Denetleyin ve Ekle düğmesine tıklayın.',
 
   // ── Screen: trip-costs ────────────────────────────────────────────────────────────────
   'help.ctx.trip-costs.title': 'Maliyetler',
   'help.ctx.trip-costs.summary':
-    'Seyahatin parası: her harcama tarihli bir defter olarak, parayı kimin verdiği ve kimin borçlu olduğu, fiş hangi para birimindeyse o para biriminde, ve sağ sütunda, her şeyin yeniden denk olması için kimin kime ödemesi gerektiği.',
+    'Seyahatin parası: her harcama tarihli bir defterde ya da bir tabloda, parayı kimin verdiği ve kimin borçlu olduğu, fiş hangi para birimindeyse o para biriminde, ve sağ sütunda, her şeyin yeniden denk olması için kimin kime ödemesi gerektiği.',
   'help.ctx.trip-costs.bullet.1':
-    'Üstte dört kart: Borcunuz ve Size borçlu hesaplaşmanın kendi tarafınız, Bekleyen tutar kaydedilmiş ama henüz ödeyeni olmayan şey, Toplam seyahat harcaması ise her şeyi toplar ve altında Sizin payınız ile Siz ödediniz yer alır.',
+    'Üstteki çubuk seyahatin tarihlerini ve maliyetlerin paylaşıldığı yolcuları adlandırır, ardından Harcamalarda ara…, Filtrele (huni), CSV dışa aktar (indirme simgesi) ve Liste / Tablo anahtarını taşır.',
   'help.ctx.trip-costs.bullet.2':
-    'Sağ üstteki Harcama ekle düzenleyiciyi açar; yanındaki Hesaplaş açık olan bütün transferleri tek seferde kaydeder.',
+    'Sağ ucunda Hesaplaş açık olan bütün transferleri tek seferde kaydeder, Yapay zekâ ile ayrıştırma eklentisi görselleri okuyabildiğinde Fiş tara bir fotoğraftan harcama doldurur, Harcama ekle ise düzenleyiciyi açar.',
   'help.ctx.trip-costs.bullet.3':
-    'Defter güne göre gruplanır, en yenisi önce, o günün toplamı sağda. Bir satır kategoriyi renkli bir sekme olarak, adı, ödeyen pullarını, notu ve tutarı taşır; bölüşüm sizi artıda ya da ekside bırakıyorsa ayrıca verdiniz veya aldınız ibaresini taşır.',
+    'Çubuğun altında dört kart: Borcunuz ve Size borçlu hesaplaşmanın kendi tarafınız, Bekleyen tutar kaydedilmiş ama henüz ödeyeni olmayan şey, Toplam seyahat harcaması ise her şeyi toplar ve altında Sizin payınız ile Siz ödediniz yer alır.',
   'help.ctx.trip-costs.bullet.4':
-    'Listenin üstünde Harcamalarda ara…, bir kategori filtresi, bir gün filtresi, Tümü / Benim ödediklerim / Bana borçlu anahtarı ve CSV dışa aktar düğmesi durur.',
+    'Defter güne göre gruplanır, en yenisi önce; her günün başlığında kaç kayıt tuttuğu ve o gün ne harcandığı yazar. Bir satır kategoriyi renkli bir sekme olarak, adı, ödeyen pullarını, notu ve tutarı taşır; bölüşüm sizi o harcamada artıda ya da ekside bırakıyorsa ayrıca verdiniz veya aldınız ibaresini taşır.',
   'help.ctx.trip-costs.bullet.5':
     'Sağ sütun cevaptır: Hesaplaş kimin kime ödediğini listeler, Bakiyeler her yolcunun fazlasını ya da eksiğini gösterir, Nihai bütçe seyahatin her birine kaça mal olduğunu, Kategoriye göre ise paranın nereye gittiğini gösterir.',
   'help.ctx.trip-costs.bullet.6':
-    'Kaydedilmiş bir ödeme aynı defterde kendi satırı olarak durur, yanında Düzenle ve Geri al ile; bir harcamanın kalemi ve çöp kutusu vardır ve çöp kutusu onu sormadan siler.',
+    'Kaydedilmiş bir ödeme aynı defterde kendi satırı olarak durur, yanında bir kalem ve Geri al ile; bir harcamanın kalemi ve çöp kutusu vardır ve çöp kutusu onu sormadan siler.',
+  'help.ctx.trip-costs.bullet.7':
+    'Çubuktaki Tablo aynı harcamaları kategoriye göre gruplanmış bir tablo olarak gösterir; Kişiler ve Günler ile bunların kişi başına ve gün başına ne ettiği de yer alır. Bu durumda Kategoriye göre’nin yerini Özet alır. Maliyetler seçtiğiniz görünümü hatırlar.',
   // add-expense
   'help.guide.add-expense.title': 'Harcama ekleyin',
   'help.guide.add-expense.goal': 'Bir şeyin kaça mal olduğunu, kimin ödediğini ve kimlerle paylaşıldığını kaydedin.',
   'help.guide.add-expense.step.1':
-    'Maliyetler sekmesinin sağ üstündeki Harcama ekle düğmesine tıklayın. Düzenleyici, bugünün tarihiyle ve herkes bölüşüme dahil olarak açılır.',
+    'Çubuğun sağ ucundaki Harcama ekle düğmesine tıklayın. Düzenleyici bugünün tarihiyle, ödeyen siz olarak ve herkes bölüşüme dahil olarak açılır.',
   'help.guide.add-expense.step.2':
-    'Ne için olduğunu, doldurulması zorunlu tek alan olan Ne içindi? alanına, fişteki rakamı da Toplam tutar alanına yazın.',
+    'Ne için olduğunu iletişim kutusunun başına, boşken örn. Akşam yemeği, hediyelik, benzin… yazan alana yazın. Bu, harcamanın adıdır ve harcama adsız kaydedilemez.',
   'help.guide.add-expense.step.3':
-    'Para birimi ve Gün tutarın altında durur. Para birimi seyahatin kendi para biriminden başlar; değiştirin, düzenleyici tutarın seyahat para biriminde ne ettiğini gösterir. Gün bugünden başlar ve defter harcamayı onun altında gruplar.',
+    'Adın altındaki rozet Kategori’dir, siz başkasını seçene kadar Yiyecek & içecek. On dört tane vardır ve değiştirilemezler: baş kısım seçtiğinizin rengini alır, satırdaki sekme ve Kategoriye göre içindeki çubuğu da öyle.',
   'help.guide.add-expense.step.4':
-    'Bir Kategori seçin. On dört tane vardır ve değiştirilemezler: seçtiğiniz kategori satırdaki renkli sekme ve Kategoriye göre içindeki çubuktur.',
+    'Fişteki rakamı Toplam tutar alanına girin. Yanındaki Para birimi, Maliyetler’in gösterildiği para biriminden başlar; değiştirin, düzenleyici tutarın ne ettiğini gösterir. Gün bugünden başlar ve defter harcamayı onun altında gruplar.',
   'help.guide.add-expense.step.5':
-    'Kim ödedi? altında parayı gerçekten veren kişiyi seçin. Siz önceden seçilidir; Henüz kimse ödemedi tutarı kimseyi borçlu kılmadan kaydeder, Birden fazla kişi ödedi ise hesabı birkaç ödeyen arasında böler.',
+    'Kim ödedi? altında parayı gerçekten veren kişiye tıklayın. Siz önceden seçilidir; Henüz kimse ödemedi tutarı kimseyi borçlu kılmadan kaydeder, başlığın yanındaki anahtarda yer alan Birden fazla kişi ödedi ise hesabı birkaç ödeyen arasında böler.',
   'help.guide.add-expense.step.6':
-    'Split, herkes dahil olacak şekilde Equally ile başlar ve her adın yanında düşen pay görünür. Kaydetmek için Harcama ekle düğmesine tıklayın.',
+    'Altındaki Paylaşım, herkes işaretli ve her adın yanında payı yazılı olarak Eşit ile başlar; olduğu gibi bırakın ya da değiştirin. Kaydetmek için iletişim kutusunun altındaki Harcama ekle düğmesine tıklayın.',
   'help.guide.add-expense.result':
     'Harcama kendi gününün altında deftere girer, Toplam seyahat harcaması içine sayılır ve hesaplaşma sütunu kimin kime borçlu olduğunu yeniden hesaplar.',
   'help.guide.add-expense.tip.1':
-    'Açıldığı gibi bırakılırsa harcama seyahatin para biriminde, bugünün tarihli ve herkes arasında eşit bölüşülmüş olur: gerçekten doldurulması gereken yalnızca ad ve tutardır.',
+    'Açıldığı gibi bırakılırsa harcama bugünün tarihli, sizin ödediğiniz ve herkes arasında eşit bölüşülmüş olur: gerçekten doldurulması gereken yalnızca ad ve tutardır.',
   'help.guide.add-expense.tip.2':
     'Tutarın yanındaki ±, harcamayı iadeye çevirir. Eksi bir toplam para almak yerine para geri verir ve bölüşüm ters yönde işler.',
   'help.guide.add-expense.tip.3':
-    'Aşağıdaki Fiş / fatura ekle görselleri ve PDF dosyalarını alır. Kaydettiğinizde yüklenirler, seyahatin Dosyalar bölümüne düşerler ve listede adın yanında bir Fişler rozeti belirir.',
+    'İletişim kutusunun altında, Fişler ve Faturalar yanındaki Ekle görselleri ve PDF dosyalarını alır. Kaydettiğinizde yüklenirler, seyahatin Dosyalar bölümüne düşerler ve listede adın yanında bir Fişler rozeti belirir.',
   // expense-payers
   'help.guide.expense-payers.title': 'Hesabı kimin ödediğini belirtin',
   'help.guide.expense-payers.goal':
     'Bir harcama için cebinden parayı kimin çıkardığını kaydedin, hesaplaşma matematiğinin diğer yarısı.',
   'help.guide.expense-payers.step.1':
-    'Satırının yanındaki kalemle bir harcamayı açın ve Kim ödedi? alanına bakın. Tek kişi ödedi varsayılandır: açılır liste parayı veren tek kişiyi adlandırır.',
+    'Satırının yanındaki kalemle bir harcamayı açın ve Kim ödedi? alanına bakın. Başlığın yanındaki anahtarda Tek kişi ödedi varsayılandır: her yolcu bir puldur ve çerçeveli olan parayı vermiştir. Değiştirmek için başka bir pula tıklayın.',
   'help.guide.expense-payers.step.2':
-    'O listenin ilk girdisi olan Henüz kimse ödemedi, tutarı kimseyi bir şeye borçlu kılmadan kaydeder. Harcama yine de Toplam seyahat harcaması içine sayılır.',
+    'Yolculardan sonraki kesik çizgili pul olan Henüz kimse ödemedi, tutarı kimseyi bir şeye borçlu kılmadan kaydeder. Harcama yine de Toplam seyahat harcaması içine sayılır.',
   'help.guide.expense-payers.step.3':
-    'Etiketin yanındaki bağlantı olan Birden fazla kişi ödedi, her yolcu için bir satır açar. Ödeyenleri ekleyin ve her birinin ne kadar koyduğunu yazın; tutarların toplamı toplam tutarı vermelidir.',
+    'O anahtarın öbür tarafı olan Birden fazla kişi ödedi, her yolcuyu işaretlenecek bir kutuyla listeler ve işaretlenen her biri bir tutar alanı alır. Ödeyenleri işaretleyin ve her birinin ne kadar koyduğunu yazın; tutarların toplamı toplam tutarı vermelidir.',
   'help.guide.expense-payers.step.4':
-    'Kimsenin ödemediği bir harcama satırında Tamamlanmadı olarak işaretlenir ve kaydedilmiş ama hesaplaşılmamış harcamaların toplandığı Bekleyen tutar kartına sayılır.',
+    'Kimsenin ödemediği bir harcama satırında Tamamlanmadı olarak işaretlenir ve henüz ödeyeni olmayan harcamaların toplandığı Bekleyen tutar kartına sayılır.',
   'help.guide.expense-payers.result':
     'Kimin ödediği kime geri ödeneceğini belirler, bölüşüm kimin ödeyeceğini belirler ve Bakiyeler ikisi arasındaki farktır.',
   'help.guide.expense-payers.tip.1':
     'Kim ödedi? ve Split birbirinden bağımsızdır: katılmadığınız bir yemeği ödeyebilir, ödemediğiniz bir yemeğin bölüşümüne girebilirsiniz.',
   'help.guide.expense-payers.tip.2':
-    'Birkaç ödeyen varken tutarların toplamı toplam tutarı vermelidir. Bir kişi daha ekleyin, diğerleri onun etrafında yeniden düzenlenir; tutmadıkları sürece düzenleyici toplamda ne etmeleri gerektiğini söyler ve kaydetmeyi reddeder.',
+    'Birkaç ödeyen varken tutarların toplamı toplam tutarı vermelidir. Bir kişi daha işaretleyin, kendiniz yazmadığınız tutarlar kalanı yeniden aralarında paylaşır; tutmadıkları sürece düzenleyici toplamda ne etmeleri gerektiğini söyler ve kaydetmeyi reddeder.',
   'help.guide.expense-payers.tip.3':
-    'Bir ödeyeni kaldırmak harcamayı kaldırmaz: tutar Toplam seyahat harcaması içinde kalır ve satır Tamamlanmadı olur.',
+    'Bir harcamayı yeniden Henüz kimse ödemedi durumuna getirmek onu kaldırmaz: tutar Toplam seyahat harcaması içinde kalır ve satır Tamamlanmadı olur.',
   // split-expense
   'help.guide.split-expense.title': 'Bir hesabı yolcular arasında bölüşün',
   'help.guide.split-expense.goal':
     'Bir harcamanın kime borç yazılacağına karar verin: herkes eşit olarak, tutara göre ya da fişten satır satır.',
   'help.guide.split-expense.step.1':
-    'Harcama düzenleyicisinde Split her yolcuyu listeler. Birini bu harcamanın dışında bırakmak için adına tıklayın; dışarıda bırakılan yolcu Dahil değil olarak görünür ve onun için hiçbir şey borçlu olmaz.',
+    'Harcama düzenleyicisinde Paylaşım her yolcuyu işaretlenecek bir kutuyla listeler. Birini bu harcamanın dışında bırakmak için adının işaretini kaldırın: ad grileşir, payını kaybeder ve onun için hiçbir şey borçlu olmaz.',
   'help.guide.split-expense.step.2':
-    'Equally varsayılandır: dahil edilen her yolcu aynı payı alır ve listenin altındaki satır kaç kişiye bölündüğünü ve her payın ne ettiğini söyler.',
+    'Başlığın yanındaki anahtarda yer alan Eşit varsayılandır: işaretlenen her yolcu, adının yanında gösterilen aynı payı alır ve listenin altındaki rozetler kaç kişinin paylaştığını ve her payın ne ettiğini söyler.',
   'help.guide.split-expense.step.3':
-    'Custom payları tutar alanlarıyla değiştirir. Her yolcunun ne kadar borçlu olduğunu yazın; alttaki satır siz yazdıkça toplamı sayar ve Bölüşüm toplamla eşleşiyor olunca yeşile döner. Tutmadığı sürece kaydetmez.',
+    'Özel payları tutar alanlarıyla değiştirir. Her yolcunun ne kadar borçlu olduğunu yazın; alttaki rozet siz yazdıkça toplamı sayar ve Bölüşüm toplamla eşleşiyor olunca yeşile döner. Tutmadığı sürece kaydetmez.',
   'help.guide.split-expense.step.4':
-    'Ticket fişi satır satır böler: Kalem ekle, sonra her satıra bir ad ve bir fiyat, ve Bölüşülüyor: altında o satırı paylaşan yolcular.',
+    'Fiş kipi, fişteki hesabı satır satır böler: Kalem ekle, sonra her satıra bir ad ve bir fiyat, ve Bölüşülüyor: yanında o satırı paylaşan yolcular.',
   'help.guide.split-expense.step.5':
-    'Satırların altındaki Kişi başı pay her yolcunun sonunda ne kadar borçlu olduğunu gösterir, üstteki Toplam tutar ise satırlardan toplanır. Kaydet düğmesine tıklayın.',
+    'Satırların altındaki Kişi başı pay her yolcunun sonunda ne kadar borçlu olduğunu gösterir, üstteki Toplam tutar ise satırlardan toplanır. İletişim kutusunun altındaki Kaydet düğmesine tıklayın.',
   'help.guide.split-expense.result':
     'Bölüşüm her bakiyenin üzerine kurulduğu temeldir. Harcamayla birlikte kaydedilir ve başka hiçbir şeye dokunmadan sonradan değiştirilebilir.',
   'help.guide.split-expense.tip.1':
-    'Dışarıda bıraktığınız bir yolcu Dahil değil olarak görünür ve yalnızca bu harcama için hiçbir şey borçlu olmaz; diğerleri onun payını üstlenir.',
+    'İşaretini kaldırdığınız bir yolcu yalnızca bu harcama için hiçbir şey borçlu olmaz; diğerleri onun payını üstlenir.',
   'help.guide.split-expense.tip.2':
     'Equally sente kadar kusursuzdur: artan sent harcamadan harcamaya dönerek geçer, böylece onu hep aynı kişi ödemez.',
   'help.guide.split-expense.tip.3':
@@ -3429,48 +3471,50 @@ const help: TranslationStrings = {
   'help.guide.expense-currency.title': 'Başka bir para biriminde harcama girin',
   'help.guide.expense-currency.goal': 'Fişte gerçekten yazan neyse onu girin, kuru TREK tutsun.',
   'help.guide.expense-currency.step.1':
-    'Harcama ekle düğmesine tıklayın ve adı ile tutarı tam olarak fişte yazdığı gibi doldurun, rakamın kendisini, çevrilmiş halini değil.',
+    'Harcama ekle ile düzenleyiciyi açın, sonra adı iletişim kutusunun başına, tutarı da Toplam tutar alanına tam olarak fişte yazdığı gibi yazın, rakamın kendisini, çevrilmiş hâlini değil.',
   'help.guide.expense-currency.step.2':
-    'Para birimi alanını açın ve fişin para birimini seçin. Liste TREK’in bildiği her kodu taşır ve içinde arama yapılabilir: üç harfi yazın.',
+    'Tutarın yanındaki Para birimi alanını açın ve fişin para birimini seçin. Liste TREK’in bildiği her kodu taşır ve içinde arama yapılabilir: üç harfi yazın.',
   'help.guide.expense-currency.step.3':
-    'Alanların altında tutarın şu anda ne ettiğini gösteren, anlık kur olarak işaretlenmiş bir satır belirir. Bu bir önizlemedir, saklanan şey değildir.',
+    'Alanların altında bir rozet sırası belirir: yazdığınız tutar ve onun şu anda ne ettiği, anlık kur olarak işaretlenmiş. Bu bir önizlemedir, saklanan şey değildir.',
   'help.guide.expense-currency.step.4':
-    'Harcama ekle düğmesine tıklayın. Kur o anda dondurulur: bundan sonra bu harcama, girdiğiniz gün ne ediyorsa o kadar eder.',
+    'İletişim kutusunun altındaki Harcama ekle düğmesine tıklayın. Kur o anda dondurulur: bundan sonra bu harcama, girdiğiniz gün ne ediyorsa o kadar eder.',
   'help.guide.expense-currency.step.5':
-    'Defterde satır adın altında iki rakamı da taşır: yazdığınız tutar, bir ok ve seyahatin para biriminde ne saydığı. Yukarıdaki her toplam, bakiye ve hesaplaşma ikincisini kullanır.',
+    'Defterde satır adın altında iki rakamı da taşır: yazdığınız tutar, bir ok ve seyahatin para biriminde ne saydığı. Maliyetler sekmesindeki her toplam, bakiye ve hesaplaşma ikincisine dayanır.',
   'help.guide.expense-currency.result':
-    'Harcama yazdığınız tutarı ve para birimini korur. Defter ikisini de gösterir, seyahatin toplamları ve bakiyeleri ise seyahatin para biriminde kalır.',
+    'Harcama yazdığınız tutarı ve para birimini korur. Defter ikisini de gösterir, seyahatin toplamları ve bakiyeleri ise seyahatin para biriminde hesaplanır.',
   'help.guide.expense-currency.tip.1':
     'Kur kaydettiğiniz anda dondurulur, böylece hesaplaşılmış bir borç, piyasa bir hafta sonra kımıldadı diye yeniden açılmaz. Yeni bir kuru yalnızca harcamanın para birimini değiştirmek dondurur.',
   'help.guide.expense-currency.tip.2':
     'Ayarlar içindeki Görüntüleme para birimi yalnızca okuduğunuzu değiştirir; saklanan tutarlar asla yerinden oynamaz. Boş bırakılırsa her seyahat kendi para biriminde gösterilir.',
   'help.guide.expense-currency.tip.3':
-    'Seyahat para biriminin kendisi seyahatin üzerinde, Seyahati Düzenle altında yaşar ve Seyahat ayrıntılarını düzenle hakkını gerektirir. Onu değiştirmek tutarları başka bir para birimine çevirmek yerine dondurulmuş her kuru yeniden çıpalar.',
+    'Seyahat para biriminin kendisi seyahatin üzerinde, Seyahati Düzenle altında yaşar ve Seyahat ayrıntılarını düzenle iznini gerektirir. Onu değiştirmek tutarları başka bir para birimine çevirmek yerine dondurulmuş her kuru yeniden çıpalar.',
   // filter-costs
   'help.guide.filter-costs.title': 'Bir harcamayı ya da bir günün harcamalarını bulun',
   'help.guide.filter-costs.goal': 'Uzun bir defteri gerçekten aradığınız şeye daraltın.',
   'help.guide.filter-costs.step.1':
-    'Listenin üstündeki Harcamalarda ara… alanına yazın. Siz yazdıkça harcamanın adında eşleşme arar.',
+    'Çubuktaki Harcamalarda ara… alanına yazın. Siz yazdıkça harcamanın adında eşleşme arar, Esc de onu yeniden temizler.',
   'help.guide.filter-costs.step.2':
-    'Tüm kategoriler on dört kategoriyi açar. Birini seçin, yalnızca o kategorinin harcamaları kalır.',
+    'Aramanın yanındaki huni olan Filtrele, filtreleri açar. En üstteki anahtar defterin size ait görünümüdür: Tümü, para verdiğiniz şeyler için Benim ödediklerim ve payınızdan fazlasını koyduğunuz harcamalar için Bana borçlu.',
   'help.guide.filter-costs.step.3':
-    'Tüm günler bir şey harcanmış her günü listeler. Birini seçin, bir şerit gün başlıklarının yerini o günle, kaç harcama tuttuğuyla ve toplamıyla değiştirir.',
+    'Kategori altında on dört kategoriden birini seçin, yalnızca o kategorinin harcamaları kalır. Huni kaç filtrenin açık olduğunu sayar.',
   'help.guide.filter-costs.step.4':
-    'Tümü / Benim ödediklerim / Bana borçlu anahtarı defterin size ait görünümüdür: ne için para verdiğiniz ve hangi harcamalarda hâlâ cebinizden çıkmış durumda olduğunuz.',
+    'Gün altında bir şey harcanmış günlerden birini seçin. Bir şerit gün başlıklarının yerini alır: o günün açık adı, kaç harcama tuttuğu ve toplamı.',
   'help.guide.filter-costs.step.5':
-    'Satırın sonundaki CSV dışa aktar her harcamayı bir dosyaya yazar; özgün tutar, para birimi ve çevrilmiş tutarla birlikte.',
+    'Huninin yanındaki indirme simgesi olan CSV dışa aktar her harcamayı bir dosyaya yazar; özgün tutar, para birimi ve çevrilmiş tutarla birlikte.',
   'help.guide.filter-costs.result':
     'Filtreler birleşir ve gün grupları, geriye ne kalırsa onun kendi toplamlarıyla yeniden çizilir.',
   'help.guide.filter-costs.tip.1':
-    'Kaydedilmiş ödemeler ad ve kategori taşımaz, bu yüzden bir arama ya da kategori filtresi onları gizler. Gün filtresi onları, ödemenin kaydedildiği günün altında tutar.',
+    'Kaydedilmiş ödemeler ad ve kategori taşımaz, bu yüzden bir arama ya da kategori filtresi onları gizler. Gün filtresi onları, ödemenin gerçekleştiği günün altında tutar.',
   'help.guide.filter-costs.tip.2':
     'CSV dışa aktar, ekranda ne filtrelenmiş olursa olsun her zaman her harcamayı, harcama başına bir satır olarak dışa aktarır.',
+  'help.guide.filter-costs.tip.3':
+    'Bir filtre açık olduğu anda filtre menüsünün altında beliren Filtreleri sıfırla, hepsini tek seferde kapatır.',
   // settle-up
   'help.guide.settle-up.title': 'Kimin kime borçlu olduğunu çıkarın ve hesaplaşın',
   'help.guide.settle-up.goal':
     'Bir yığın ortak harcamayı herkesi denkleştiren en az sayıda transfere dönüştürün ve gerçekleştikçe kaydedin.',
   'help.guide.settle-up.step.1':
-    'Sağ sütundaki Hesaplaş kartı herkesi denkleştirecek transferleri listeler: kimin kime, ne kadar ödediğini. Başlığın yanındaki sayı kaç tanesinin hâlâ açık olduğudur.',
+    'Sağ sütundaki Hesaplaş kartı herkesi denkleştirecek transferleri listeler: kimin kime ödediğini, ipuçlarında adları yazan iki avatar olarak, ve ne kadar ödediğini. Kartın baş kısmındaki sayı kaç tanesinin hâlâ açık olduğudur.',
   'help.guide.settle-up.step.2':
     'Bir transferin yanındaki Hesaplaş onu yapılmış olarak kaydeder. Akış karttan kaybolur ve bakiyeler yeniden çizilir.',
   'help.guide.settle-up.step.3':
@@ -3478,9 +3522,9 @@ const help: TranslationStrings = {
   'help.guide.settle-up.step.4':
     'O satırın yanında kalem bir ödemeyi düzeltir, Geri al onu geri alır ve transfer Hesaplaş kartına döner.',
   'help.guide.settle-up.step.5':
-    'Kart başlığındaki Ödeme ekle, bir öneriyi izlemeyen bir transferi kaydeder. Gönderen ve Alıcı seçin, tutarı, para birimini ve gerçekleştiği günü girin.',
+    'Kartın baş kısmındaki Ödeme ekle, bir öneriyi izlemeyen bir transferi kaydeder. Gönderen ve Alıcı seçin, tutarı, para birimini ve gerçekleştiği günü girin, sonra iletişim kutusunun altındaki Ödeme ekle düğmesine tıklayın.',
   'help.guide.settle-up.step.6':
-    'Ekranın en üstündeki başlıkta yer alan Hesaplaş, açık olan bütün transferleri tek seferde kaydeder, bir grubun seyahat sonunda hesabını kapatması gibi.',
+    'En üstteki çubukta yer alan Hesaplaş, açık olan bütün transferleri sormadan tek seferde kaydeder, bir grubun seyahat sonunda hesabını kapatması gibi.',
   'help.guide.settle-up.result':
     'Kaydedilen her transfer defterde bir satır, Hesaplaş kartında bir satır eksilmesidir. Kartta Herkesin hesabı kapalı yazdığında seyahat ödenmiş demektir.',
   'help.guide.settle-up.tip.1':
@@ -3500,7 +3544,7 @@ const help: TranslationStrings = {
   'help.guide.final-budget.step.3':
     'Aritmetiği açmak için bir ada tıklayın: Ödenen harcamalar, sonra altında Net geri ödemeler ve Bekleyen geri ödemeler.',
   'help.guide.final-budget.step.4':
-    'Her satırın altında onu oluşturan satırlar durur: o yolcunun ödediği harcamalar, kaydedilmiş transferler ve hâlâ açık olanlar. Üstlerindeki satırı tam olarak verirler.',
+    'Üç satırın altında, her birinin adını taşıyan bir liste onu oluşturan kayıtları tutar: o yolcunun ödediği harcamalar, kaydedilmiş transferler ve hâlâ açık olanlar. Her liste, aynı adlı satırı tam olarak verir.',
   'help.guide.final-budget.result':
     'Bakiyeler bugün kimin artıda ya da ekside olduğudur; Nihai bütçe her şey geri ödendiğinde seyahatin her birinize kaça mal olduğudur.',
   'help.guide.final-budget.tip.1':
@@ -3512,83 +3556,127 @@ const help: TranslationStrings = {
   'help.guide.expense-from-booking.goal':
     'Bir uçuşun, bir otelin ya da bir yerin gerçekten kaça mal olduğunu ait olduğu kayda iliştirin.',
   'help.guide.expense-from-booking.step.1':
-    'Rezervasyonu Ulaşım ya da Rezervasyonlar sekmesinde açın ve kalemine tıklayın.',
+    'Rezervasyonu Ulaşım ya da Rezerv. sekmesinde bulun ve kartının baş kısmındaki kaleme tıklayın.',
   'help.guide.expense-from-booking.step.2':
-    'Formun altındaki Maliyetler bloğuna inin. Önce rezervasyonu kaydeden Harcama oluştur ile zaten Maliyetler içinde olan bir harcama için Mevcut harcamayı bağla sunar.',
+    'Formun sonlarına doğru Maliyetler’e inin. Önce rezervasyonu kaydeden Harcama oluştur ile zaten Maliyetler içinde olan bir harcama için Mevcut harcamayı bağla sunar.',
   'help.guide.expense-from-booking.step.3':
     'Harcama oluştur düğmesine tıklayın. Rezervasyon kaydedilir, form kapanır ve Maliyetler düzenleyicisi rezervasyonun başlığını ad olarak, türünü de bir kategoriyle eşleştirilmiş halde açar.',
   'help.guide.expense-from-booking.step.4':
-    'Tutarı ve para birimini, kimin ödediğini ve bölüşümü her harcamada olduğu gibi doldurup kaydedin. Rezervasyonu yeniden açtığınızda harcama Bağlı harcamalar altında görünür; düzenlemek için bir kalem, serbest bırakmak için Bağlantıyı kaldır, harcamayı tut ve kaldırmak için bir çöp kutusuyla.',
+    'Tutarı ve para birimini, kimin ödediğini ve bölüşümü her harcamada olduğu gibi doldurun ve Harcama ekle düğmesine tıklayın. Rezervasyonu yeniden açtığınızda harcama Bağlı harcamalar altında görünür; düzenlemek için bir kalem, serbest bırakmak için Bağlantıyı kaldır, harcamayı tut ve kaldırmak için bir çöp kutusuyla.',
   'help.guide.expense-from-booking.result':
     'Rezervasyon maliyetini taşır ve harcama, Maliyetler sekmesinde ödeyeni, bölüşümü ve para birimiyle diğerleri gibi sıradan bir satırdır.',
   'help.guide.expense-from-booking.tip.1':
     'Rezervasyonu silmek bağlı harcamalarını da onunla birlikte siler. Rezervasyonun Maliyetler bloğundaki Harcamayı kaldır bunun tersini yapar: harcama gider, rezervasyon kalır. Bağlantıyı kaldır, harcamayı tut ikisini de tutar.',
   'help.guide.expense-from-booking.tip.2':
     'Bir yerin formunda da aynı blok vardır, Harcama oluştur orada önce yeri kaydeder.',
+  // costs-table
+  'help.guide.costs-table.title': 'Maliyetleri bir tabloda planlayın',
+  'help.guide.costs-table.goal':
+    'Harcamaları kategoriye göre sıralanmış, kişi başına ve gün başına hesaplanmış bir tablo olarak okuyun ve değiştirin.',
+  'help.guide.costs-table.step.1':
+    'Çubuktaki Liste / Tablo anahtarının ikinci simgesi olan Tablo’ya tıklayın. Defterin yerini aynı harcamaların bir tablosu alır; arama ve filtreler onun için de geçerlidir.',
+  'help.guide.costs-table.step.2':
+    'Tablo kategoriye göre gruplanır; her grubun başında adı, kaç harcama tuttuğu ve ara toplamı yazar ve katlamak için bu başlığa tıklarsınız. Sütunlar İsim, Tarih, Toplam, Kişiler ve Günler, ardından bunlardan hesaplanıp gri zemin üzerinde duran Kişi Başı, Gün Başı ve Kişi/gün’dür.',
+  'help.guide.costs-table.step.3':
+    'Yerinde değiştirmek için bir hücreye tıklayın: bir ad, bir toplam, Kişiler ya da Günler. Yazın, sonra korumak için Enter’a basın ya da başka bir yere tıklayın, olduğu gibi bırakmak için de Esc’e basın; tarih takvimi açar. Kişi Başı ve hesaplanan diğer sütunlar hemen güncellenir.',
+  'help.guide.costs-table.step.4':
+    'Kilitli bir toplam burada değiştirilemez: ya birisi onu ödemiştir ya da başka bir para biriminde girilmiştir, ipucu da hangisi olduğunu söyler. Ona tıklamak bunun yerine harcamayı açar, böylece bakiyeler ve dondurulmuş kur doğru kalır.',
+  'help.guide.costs-table.step.5':
+    'Bir kategorinin sonundaki Harcama ekle, ona Yeni Kayıt adlı bir satır ekler; tarihi oradaki en son kayıtla aynıdır ve adı değiştirilmek üzere zaten açıktır. Toplamı da aynı şekilde girin.',
+  'help.guide.costs-table.step.6':
+    'Bu görünümde sağ sütun Kategoriye göre yerine Özet gösterir. Harcamaları dört şekilde toplar: Kategori, Gün, ödenmemişler için Henüz ödeyen yok ile birlikte Ödeyen, ve Açık karşısında Ödendi olarak Durum.',
+  'help.guide.costs-table.result':
+    'Her harcama kendi kategorisinde, kişi başına ve gün başına ne ettiğiyle birlikte durur ve bir hücrede değiştirilen bir toplam hemen üstteki kartlara ve Özet’e sayılır.',
+  'help.guide.costs-table.tip.1':
+    'Maliyetler görünümü bu tarayıcıda hatırlar: siz yeniden Liste’ye tıklayana kadar tabloyla açılır.',
+  'help.guide.costs-table.tip.2':
+    'Özel ya da Fiş ile bölüşülmüş bir harcamanın kişi başına tek bir payı yoktur, bu yüzden Kişi Başı ve Kişi/gün hücreleri boş kalır.',
+  'help.guide.costs-table.tip.3':
+    'Ödeyenler, bölüşüm, not ve fişler harcamanın kendisinde düzenlenir: bir satırın sonundaki Diğer seçenekler Düzenle’yi ve satırı kaldırmak için Sil’i sunar.',
 
   // ── Screen: trip-transports ───────────────────────────────────────────────────────────
   'help.ctx.trip-transports.title': 'Ulaşım',
   'help.ctx.trip-transports.summary':
     'Sizi duraklar arasında taşıyan her şey: uçuşlar, trenler, otobüsler, arabalar, taksiler, bisikletler, gemi turları, feribotlar ve TREK’in sizin için bulduğu toplu taşıma bağlantıları. Sekme bunların listesidir; planda da oluşturulur ve okunurlar, haritaya da çizilirler.',
   'help.ctx.trip-transports.bullet.1':
-    'Sekme yalnızca yolculukları tutar. Konaklama, restoranlar, etkinlikler ve biletler Rezervasyonlar sekmesinde yaşar, bu yüzden aynı kayıt asla iki kez görünmez.',
+    'Sekme yalnızca yolculukları tutar. Konaklama, restoranlar, etkinlikler ve biletler Rezerv. sekmesinde yaşar, bu yüzden aynı kayıt asla iki kez görünmez.',
   'help.ctx.trip-transports.bullet.2':
-    'Araç çubuğu hepsini Tümü altında sayar ve kullanılan her türe kendi sayısıyla kendi çipini verir: Uçuş, Tren, Araba, Toplu taşıma. Sağdaki Ulaşım elle bir tane ekler.',
+    "Üstteki çubukta arama, durum, türler ve yolcular için Filtrele, üç görünüm olan Kartlar, Liste ve Zaman çizelgesi ile Görünüm seçenekleri durur. Sağdaki Ulaşım elle bir yolculuk ekler; önündeki simgeler, Rezervasyon onaylarını içe aktar ve AirTrail'den içe aktar, sunucu onayları okuyabildiğinde ya da bir AirTrail bağlı olduğunda belirir.",
   'help.ctx.trip-transports.bullet.3':
-    'Kartlar üç grup hâlinde gelir, her biri başlığından katlanabilir: aramanın planladığı bağlantılar için Otomatik toplu taşıma, sonra Askıda olması, sonra Onaylandı.',
+    'Kartlar, sekmenin açıldığı görünümdür: önce Onaylandı, sonra Beklemede, her bölüm başlığından katlanabilir. Planlanmış toplu taşıma bağlantılarının durumu yoktur ve Görünüm seçenekleri onlara Otomatik toplu taşıma adlı kendi bölümlerini vermedikçe zaman sırasına göre onaylanmış yolculukların arasında dururlar. Liste güne göre gruplar, Zaman çizelgesi ise her yolculuğu gezinin günleri boyunca serer.',
   'help.ctx.trip-transports.bullet.4':
-    'Bir kart durumu, türü, kapsadığı günleri, saatleri, Rezervasyon Kodunu, rotayı ve Havayolu ile Uçuş No. ya da Tren No., Platformu ve Koltuk bilgisini taşır. Kalem onu açar, çöp kutusu bir sorudan sonra siler.',
+    'Bir kartın baş şeridi durumuna göre renklenir: onaylanmış için yeşil, bekleyen için kehribar, planlanmış bir bağlantı için mavi; şerit durum noktasını, türü, başlığı, kalemi ve çöp kutusunu taşır. Altında: Tarih, Zaman, Rezervasyon Kodu, Rota ve Havayolu ile Uçuş No. ya da Tren No., Platformu ve Koltuk. Karta tıklamak ayrıntılarını açar.',
   'help.ctx.trip-transports.bullet.5':
-    'Ulaşım planda da oluşturulur: her gün başlığında Ulaşım ekle için bir artı ve Toplu taşıma için bir tramvay düğmesi vardır, iki durak arasındaki yolculuk süresi bağlayıcısı da aynı aramayı o tek etap için açar.',
+    'Ulaşım planda da oluşturulur: bir günün baş kısmındaki + Ulaşım ekle ve Toplu taşıma seçeneklerini sunar, iki durak arasındaki yolculuk süresi bağlayıcısı da aynı aramayı o tek etap için açar.',
   'help.ctx.trip-transports.bullet.6':
-    'İki ucu da ayarlanmış bir ulaşım haritaya bir çizgi çizer. Gün planındaki satırında bulunan rota simgesi o çizgiyi açar, günlerin üstündeki araç çubuğundaki Tüm rezervasyon rotalarını göster ise bütün seyahati çevirir.',
+    'İki ucu da ayarlanmış bir ulaşım haritaya bir çizgi çizer. Gün planındaki satırında bulunan rota simgesi ve ayrıntılarındaki Haritada o çizgiyi açar, günlerin üstündeki araç çubuğundaki Tüm rezervasyon rotalarını göster ise bütün seyahati çevirir.',
   // transports-list
   'help.guide.transports-list.title': 'Ulaşım sekmesini okuyun',
   'help.guide.transports-list.goal': 'Listede bir şey değiştirmeden önce size ne anlattığını bilin.',
   'help.guide.transports-list.step.1':
-    'Ulaşım, seyahatin ikinci sekmesidir. Yalnızca yolculukları tutar: oteller, restoranlar, etkinlikler ve biletler Rezervasyonlar sekmesindedir.',
+    'Ulaşım, seyahatin ikinci sekmesidir. Yalnızca yolculukları tutar: oteller, restoranlar, etkinlikler ve biletler Rezerv. sekmesindedir.',
   'help.guide.transports-list.step.2':
-    'Araç çubuğu her ulaşımı Tümü altında sayar ve kullanılan her türe kendi sayısıyla kendi çipini verir. Yalnızca o türü bırakmak için bir çipe tıklayın, bırakmak için tekrar tıklayın. Aynı anda birkaç çip açık olabilir, Tümü ise hepsini temizler.',
+    'Çubuktaki huni olan Filtrele seçenekleri açar: Tümü, Onaylandı ve Beklemede ile Durum, ardından kullanılan her tür kendi sayısıyla. Yalnızca onları tutmak için bir ya da birkaç türü işaretleyin; huninin üzerindeki sayı açık olanları sayar, çubuk da kaç yolculuğun gösterildiğini söyler, örneğin 4 içinden 1. Menünün altındaki Filtreleri sıfırla her şeyi geri getirir.',
   'help.guide.transports-list.step.3':
-    'Otomatik toplu taşıma kendi grubudur, toplu taşıma aramasının planladığı bağlantılar. Askıda olması ve Onaylandı elle girilen her şeyi tutar. Bir başlığın yanındaki ok grubu katlar.',
+    'Yanındaki Kartlar, Liste ve Zaman çizelgesi yolculukları kart olarak, güne göre gruplanmış satırlar olarak ya da gezinin günleri boyunca çubuklar olarak serer. Kaydırıcı simgesi olan Görünüm seçenekleri, Kartlar ve Liste için Gruplandır ile Sırala’yı, Zaman çizelgesi için de şeritleri ayarlar; Görünümü sıfırla varsayılanlara döner. Kartlar içinde Toplu taşıma ayrı bir bölümde, planlanmış bağlantıları Otomatik toplu taşıma altında toplar.',
   'help.guide.transports-list.step.4':
-    'Bir kart her şeyi söyler: Askıda olması ya da Onaylandı ile durum noktası, tür, kapsadığı günler ve tarihleri, saatler, Rezervasyon Kodu, rota ve Havayolu ile Uçuş No. ya da Tren No., Platformu ve Koltuk.',
+    'Bir kart her şeyi söyler. Baş şeridi Onaylandı için yeşil, Beklemede için kehribar rengidir ve durum noktasını, türü ve başlığı taşır. Altında Tarih kapsadığı günleri tarihleriyle verir, ardından Zaman, Rezervasyon Kodu, duraklar arasında türün simgesiyle Rota ve Havayolu ile Uçuş No. ya da Tren No., Platformu ve Koltuk gelir. Karta tıklayın, ayrıntıları açılır.',
   'help.guide.transports-list.step.5':
-    'Kalem ulaşımı düzenlemek için açar, çöp kutusu ise neyin gideceğini adlandıran bir sorudan sonra siler.',
+    'Durum noktasına tıklamak yolculuğu Beklemede ile Onaylandı arasında değiştirir. Baş şeridindeki kalem ulaşımın formunu açar, çöp kutusu ise neyin gideceğini adlandıran Rezervasyon silinsin mi? sorusundan sonra onu siler.',
   'help.guide.transports-list.result':
-    'Liste aradığınız şeye daraltılır ve her kart bir bakışta yolculuğun rezerve edilip edilmediğini söyler.',
+    'Her kart bir bakışta yolculuğun rezerve edilip edilmediğini söyler ve çubuk, ne zaman gerekirse listeyi daraltır ya da yeniden düzenler.',
   'help.guide.transports-list.tip.1':
-    'Çipler ve katlanmış gruplar her seyahat için ayrı hatırlanır, böylece sekme bıraktığınız gibi yeniden açılır.',
+    'Sekme onu nasıl bıraktığınızı hatırlar: görünümü, gruplamayı ve sıralamayı bu tarayıcıda, katlanmış bölümleri her gezi için ayrı, filtreleri de tarayıcı sekmesini kapatana kadar.',
   'help.guide.transports-list.tip.2':
-    'Dosyadan içe aktar ve AirTrail araç çubuğunda Ulaşım düğmesine yalnızca sunucu rezervasyon onaylarını okuyabildiğinde ve bir AirTrail örneği bağlı olduğunda katılır. Onlar olmadan liste elle ve toplu taşıma aramasıyla doldurulur.',
+    "Ulaşım’ın önündeki iki simge olan Rezervasyon onaylarını içe aktar ve AirTrail'den içe aktar, yalnızca sunucu onayları okuyabildiğinde ve bir AirTrail örneği bağlı olduğunda oradadır. Onlar olmadan liste elle ve toplu taşıma aramasıyla doldurulur.",
   // add-transport
   'help.guide.add-transport.title': 'Bir güne ulaşım ekleyin',
   'help.guide.add-transport.goal': 'Sizi bir duraktan diğerine götüren yolculuğu, gerçekleştiği güne koyun.',
   'help.guide.add-transport.step.1':
-    'Her gün başlığı sağında dört küçük düğme taşır. İpucu Ulaşım ekle yazan artıya tıklayın. Form, Tarih zaten o güne ayarlanmış olarak açılır.',
+    'Yolculuğun olduğu günün baş kısmında, ipucu Güne ekle yazan + işaretine tıklayın ve Ulaşım ekle seçin. Form o gün zaten doldurulmuş olarak açılır.',
   'help.guide.add-transport.step.2':
-    'Rezervasyon Türü neyle gittiğinizi seçer: Uçuş, Tren, Otobüs, Araba, Taksi, Bisiklet, Dolaşmak, Feribot ya da Diğer. Form buna uyar. Bir uçuş her etapta bir havaalanı, bir tren bir istasyon zinciri, bir araba ise Alış ve İade sözcükleriyle Yol üzerindeki duraklar alanını alır.',
+    'Baş şeridindeki tür rozeti neyle gittiğinizi söyler, başlangıçta Uçuş. Uçuş, Tren, Otobüs, Araba, Taksi, Bisiklet, Dolaşmak, Feribot ya da Diğer için ona tıklayın, form da buna uyar: bir uçuş her durakta bir havaalanı, bir tren bir istasyon zinciri, bir araba ise Alış ve İade ile Yol üzerindeki duraklar alanını alır.',
   'help.guide.add-transport.step.3':
-    'Başlık doldurulması zorunlu tek alandır; onsuz Ekle gri kalır. Peron panosunda tanıyacağınız şeyi yazın.',
+    'Başlığı doğrudan baş şeridine, gri örneğin durduğu yere yazın. Doldurulması zorunlu tek alan budur: dolana kadar altındaki satırda Başlık * yazar ve Ekle gri kalır. Peron panosunda tanıyacağınız şeyi yazın.',
   'help.guide.add-transport.step.4':
-    'İtibaren ve İle bir istasyon, bir liman ya da bir adres arar. En az üç harf yazın ve listeden bir sonuç seçin. Yalnızca yazılmış bir ad koordinat taşımaz, bu yüzden haritaya hiçbir şey çizmez.',
+    'Rota altında İtibaren ve İle bir istasyon, bir liman ya da bir adres alır. Siz yazmadan önce gezinin kendi yerleri sunulur; aramak için en az üç harf yazın ve bir sonuç seçin. Yalnızca yazılıp hiç seçilmemiş bir ad kaydedilmez ve haritaya hiçbir şey çizmez.',
   'help.guide.add-transport.step.5':
-    'Tarih ve Başlangıç zamanı ne zaman gittiğini, Bitiş tarihi ve Bitiş zamanı ne zaman bittiğini söyler; ertesi gün inen bir yolculuk orada ertesi günü alır. Rezervasyon Kodu, Askıda olması ya da Onaylandı ile Durum ve Notlar isteğe bağlıdır.',
+    'Tarih ve Başlangıç zamanı ne zaman gittiğini, Bitiş tarihi ve Bitiş zamanı ne zaman bittiğini söyler; ertesi gün inen bir yolculuk orada ertesi günü alır. Daha aşağıdaki Rezervasyon Kodu ve Notlar isteğe bağlıdır, baş şeridindeki Beklemede rozetine bir tıklama da onu Onaylandı yapar.',
   'help.guide.add-transport.step.6': 'Ekle düğmesine tıklayın.',
   'help.guide.add-transport.result':
-    'Ulaşım, gündeki bir satırdır, duraklar arasında kendi saatinde, ve Ulaşım sekmesinde Askıda olması ya da Onaylandı altında bir karttır.',
+    'Ulaşım, gündeki bir satırdır, duraklar arasında kendi saatinde, ve Ulaşım sekmesinde Beklemede ya da Onaylandı altında bir karttır.',
   'help.guide.add-transport.tip.1':
     'Satır, başlangıç saatinin koyduğu yere, daha erken başlayan son duraktan sonra iner. Tutamağı onu gün içinde başka herhangi bir yere ya da başka bir güne sürükler.',
   'help.guide.add-transport.tip.2':
     'Dosyalar altındaki Dosya ekle bileti alır, Maliyetler altındaki Harcama oluştur ise rezervasyonu kaydeder ve bilet ücreti için Maliyetler düzenleyicisini açar.',
   'help.guide.add-transport.tip.3':
-    'Yolcular bu yolculukta kimin olduğunu işaretler. Bir ulaşımın yolcuları olur olmaz sekmenin araç çubuğunda avatarları belirir ve listeyi onlara göre süzer.',
+    'Formun ilk bloğu olan Yolcular bu yolculukta kimin olduğunu işaretler. Gezinin birden fazla üyesi olduğunda ve bir ulaşım birini adlandırdığında, sekmedeki Filtrele Yolcular’ı da sunar; bu da listeyi tek bir kişinin yolculuklarına daraltır.',
+  // import-transport-file
+  'help.guide.import-transport-file.title': 'Bir uçuşu e-biletinden okuyun',
+  'help.guide.import-transport-file.goal':
+    'Taşıyıcının gönderdiği biletten bir uçuşu, treni ya da feribotu TREK çekip çıkarsın ve kaydedilmeden önce siz denetleyin.',
+  'help.guide.import-transport-file.step.1':
+    'Ulaşım sekmesinin çubuğunda, Ulaşım’ın önündeki, ipucu Rezervasyon onaylarını içe aktar yazan indirme simgesine tıklayın. Bu adı taşıyan pencere açılır, Rezerv. sekmesindekiyle aynısı.',
+  'help.guide.import-transport-file.step.2':
+    'Bileti kutunun üzerine bırakın ya da kutuya tıklayıp seçin: EML, PDF, PKPass, HTML ve TXT, her biri 10 MB olan en fazla beş dosya. Seçtiğiniz dosyalar kutunun üzerinde adlarıyla yazar.',
+  'help.guide.import-transport-file.step.3':
+    'İçe aktar düğmesine tıklayın. Pencere hemen kapanır; okuma arka planda olur.',
+  'help.guide.import-transport-file.step.4':
+    'Sağ altta bir kart, dosyanın adı altında işin gidişatını bildirir. Okuma bittiğinde Dosyalar işleniyor… bir onay işaretine dönüşür ve kart İçe aktar sunar. Tıklayın.',
+  'help.guide.import-transport-file.step.5':
+    'Ulaşım ekle içinde, çoktan doldurulmuş bir uçuş açılır: tür rozeti Uçuş üzerinde, havayolu ve uçuş numarası baş şeridinde başlık olarak, iki havalimanı Rota altında Kalkış ve Varış ile, saatleri ve saat dilimleri, Havayolu ve Uçuş No., Rezervasyon Kodu ve Dosyalar altında bilet. Denetleyin ve Ekle düğmesine tıklayın.',
+  'help.guide.import-transport-file.result':
+    'Uçuş, Ulaşım sekmesinde Beklemede altında bir kart ve kalktığı günde bir satırdır, bilet Dosyalar altındadır ve iki havalimanı da bilindiğinden eğrisini haritaya çizer.',
+  'help.guide.import-transport-file.tip.1':
+    'İki sekme tek bir içe aktarmayı paylaşır: bir uçuş ve bir otel taşıyan bir dosya, hangi sekmeden başlamış olursanız olun, uçuşu Ulaşım ekle içinde, oteli Yeni Rezervasyon içinde art arda açar.',
+  'help.guide.import-transport-file.tip.2':
+    'Havalimanları koduyla yerleştirilir. Okumanın konumlandıramadığı bir istasyon ya da liman, sağ alttaki içe aktarma kartında kehribar renkte adlandırılır; Ekle düğmesine tıklamadan önce onu Rota altında elle seçin, yoksa ulaşım haritaya hiçbir şey çizmez.',
   // plan-transit
   'help.guide.plan-transit.title': 'Bir toplu taşıma bağlantısı planlayın',
   'help.guide.plan-transit.goal':
     'TREK’in bir günün iki noktası arasındaki gerçek trenleri ve otobüsleri bulmasına izin verin ve seçtiğinizi plana koyun.',
   'help.guide.plan-transit.step.1':
-    'Gün başlığında tramvay düğmesine, Toplu taşıma, tıklayın. Arama o gün için açılır.',
+    'Günün baş kısmındaki + işaretine tıklayın ve Toplu taşıma seçin. Arama o gün için açılır: gün, baş şeridindeki rozettir, yanındaki Manuel ve Otomatik ise bu arama ile sıradan form arasında geçiş yapar.',
   'help.guide.plan-transit.step.2':
     'Nereden ve Nereye bir durak ya da istasyon alır. Kutu hâlâ boşken günün kendi durakları ve gezinin konaklamaları sunulur; iki harf yazmak bunun yerine tarifedeki istasyonları arar. İki kutu arasındaki Değiştir bağlantıyı ters çevirir.',
   'help.guide.plan-transit.step.3':
@@ -3596,10 +3684,10 @@ const help: TranslationStrings = {
   'help.guide.plan-transit.step.4':
     'Aşağıdaki çipler hangi türlerin kullanılabileceğini söyler: Tren, Metro, Tramvay, Otobüs, Vapur ve Teleferik. Birini dışarıda bırakmak için kapatın, en az biri açık kalır. Sonra Ara düğmesine tıklayın.',
   'help.guide.plan-transit.step.5':
-    'Her sonuç kalkış ve varışı, ne kadar sürdüğünü, kaç aktarma ve ne kadar yürüme olduğunu ve hatları kendi renkleriyle verir. Durak durak açmak için birine tıklayın, peronlarla ve hatlar arasındaki yürüyüşlerle birlikte.',
+    'Her sonuç kalkış ve varışı, ne kadar sürdüğünü, kaç aktarma ve ne kadar yürüme olduğunu ve hatları rozet olarak, tarifenin verdiği yerde kendi renkleriyle verir. Etap etap açmak için birine tıklayın; binip aktarma yaptığınız duraklarla, peronlarla ve hatlar arasındaki yürüyüşlerle birlikte.',
   'help.guide.plan-transit.step.6': 'Güne ekle düğmesine tıklayın.',
   'help.guide.plan-transit.result':
-    'Bağlantı, hatlarıyla, aktarmalarıyla ve yürüme süresiyle gündeki bir satırdır, ve Ulaşım sekmesinde Otomatik toplu taşıma altında bir karttır.',
+    'Bağlantı gündeki bir satırdır, hat rozetleri ve onu etap etap açan bir okla; Ulaşım sekmesinde de onaylanmış yolculukların arasında maviye boyanmış bir karttır.',
   'help.guide.plan-transit.tip.1':
     'Bağlantılar, açık tarife verileri üzerinde çalışan ücretsiz bir topluluk hizmeti olan Transitous’tan gelir: anahtar yok, hesap yok. Bir yönetici aramayı bunun yerine Google’a yöneltebilir.',
   'help.guide.plan-transit.tip.2':
@@ -3608,28 +3696,27 @@ const help: TranslationStrings = {
     'Aynı arama tek bir etap için de açılır: iki durak arasındaki yolculuk süresi bağlayıcısına tıklayın ve Toplu taşıma seçin. Nereden, Nereye ve kalkış saati sizin için doldurulur.',
   // change-transit-route
   'help.guide.change-transit-route.title': 'Planlanmış bir bağlantıyı açın ve değiştirin',
-  'help.guide.change-transit-route.goal':
-    'Bağlantıyı durak durak okuyun, adını değiştirin ya da rotayı yeniden arayın.',
+  'help.guide.change-transit-route.goal': 'Bağlantıyı hat hat okuyun, adını değiştirin ya da rotayı yeniden arayın.',
   'help.guide.change-transit-route.step.1':
-    'Ulaşım sekmesinde planlanmış bağlantılar Otomatik toplu taşıma altında durur. Karta tıklayın; bağlantı bir rezervasyon olarak açılır.',
+    'Ulaşım sekmesinde planlanmış bir bağlantı, zaman sırasına göre onaylanmış yolculukların arasında duran, baş şeridi mavi bir karttır; Görünüm seçenekleri altında Toplu taşıma ayrı bir bölümde açıksa bunun yerine Otomatik toplu taşıma altında durur. Karta tıklayın; bağlantı bir rezervasyon olarak açılır.',
   'help.guide.change-transit-route.step.2':
-    'Süre, Aktarma ve Yürüyüş en üstte durur. Altlarındaki Güzergah bağlantıyı durak durak yürür, peronlarla ve hatlar arasındaki yürüyüşlerle birlikte.',
+    'En üstteki kutucuklar kalkışı ve varışı duraklarıyla, Süre, Aktarma ve Yürüyüş değerlerini verir. Altlarındaki Güzergah bağlantıyı hat hat yürür, saatlerle, peronlarla ve hatlar arasındaki yürüyüşlerle birlikte.',
   'help.guide.change-transit-route.step.3':
-    'Rezervasyonun altındaki Rotayı değiştir aramayı yeniden çalıştırır, bu bağlantının iki ucu ve günü zaten doldurulmuş olarak.',
+    'Rezervasyonun altındaki Rotayı değiştir aramayı yeniden açar, bu bağlantının iki ucu ve günü zaten doldurulmuş olarak.',
   'help.guide.change-transit-route.step.4':
-    'Başka bir bağlantı seçin ve Güne ekle düğmesine tıklayın; eskisinin yerini alır. Aynı çubuğun öbür ucundaki Düzenle ise onun yerine sıradan ulaşım formunu açar; Rezervasyon Kodu, Durum, yolcular, notlar ve dosyalar orada yaşar.',
+    'Ara düğmesine tıklayın, başka bir bağlantıyı açın ve Güne ekle düğmesine tıklayın; eskisinin yerini alır. Rezervasyonun alt kısmının en sağındaki Düzenle ise onun yerine sıradan ulaşım formunu açar; Rezervasyon Kodu, yolcular, notlar ve dosyalar orada yaşar.',
   'help.guide.change-transit-route.result':
     'Toplu taşıma yolculuğu görünümü yeni Güzergahı taşır ve Ulaşım sekmesindeki kartı yeni hatları ve saatleri gösterir.',
   'help.guide.change-transit-route.tip.1':
-    'Rezervasyonun üst kısmındaki başlık, rotaya dokunmadan bağlantının adını değiştirir. Notları ise Düzenle’nin arkasındaki ulaşım formunda yazılır.',
+    'Bağlantıyı rotaya dokunmadan yeniden adlandırmak için rezervasyonun baş kısmındaki başlığa tıklayın. Notları ise Düzenle’nin arkasındaki ulaşım formunda yazılır.',
   'help.guide.change-transit-route.tip.2':
-    'Rezervasyonun altındaki Sil bağlantıyı seyahatten çıkarır; gün duraklarını korur.',
+    'Rezervasyonun altındaki çöp kutusu bağlantıyı bir sorudan sonra siler; gün duraklarını korur.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Bir etabın nasıl gidildiğini değiştirin',
   'help.guide.leg-travel-mode.goal':
     'Bir günün, geri kalanı arabayla gidilen bir etabını yürüyün ya da o etabı toplu taşıma aramasına devredin.',
   'help.guide.leg-travel-mode.step.1':
-    'Duraklar arasındaki bağlayıcılar yalnızca günün Rota seçeneği açıkken görünür. Günü açmak için ona tıklayın, sonra duraklarının altındaki Rota seçeneğine.',
+    'Duraklar arasındaki bağlayıcılar yalnızca günün Rota seçeneği açıkken görünür. Günü açmak için baş kısmına tıklayın, sonra duraklarının altındaki çubukta Rota seçeneğine.',
   'help.guide.leg-travel-mode.step.2':
     'Her bağlayıcı o etabın yolculuk süresini ve mesafesini, rotalandığı türün simgesiyle birlikte adlandırır: sürüş için bir araba, yürüyüş için bir ayak.',
   'help.guide.leg-travel-mode.step.3':
@@ -3648,17 +3735,17 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Bir saati, bir peronu ya da bir rezervasyon kodunu düzeltin ya da yolculuğu seyahatten çıkarın.',
   'help.guide.edit-transport.step.1':
-    'Gün planında bir ulaşım, duraklar arasındaki renkli bir satırdır. Ona tıklayın; rezervasyonu saatler, rota ve Rezervasyon Kodu ile açılır.',
+    'Gün planında bir ulaşım, duraklar arasında türüne göre renklenmiş bir satırdır. Ona tıklayın, rezervasyonu açılır: baş kısmında rozet olarak durum, tür, günler ve Rezervasyon Kodu, altında da havalimanları ya da istasyonlarıyla kalkış ve varış saatleri.',
   'help.guide.edit-transport.step.2':
-    'Rezervasyonun altındaki Düzenle, onu oluşturan formu açar; başlık çubuğunda Ulaşımı düzenle yazar. Her şey değiştirilebilir: tür, rota, günler ve saatler, Rezervasyon Kodu, Durum.',
+    'Rezervasyonun altındaki Düzenle, onu oluşturan formu açar; baş şeridinde başlığın üstünde Ulaşımı düzenle yazar. Orada her şey değiştirilebilir: başlık, durum ve tür rozetleri, rota, günler ve saatler, Rezervasyon Kodu.',
   'help.guide.edit-transport.step.3':
     'Bir uçuşun rotası havaalanları zinciri, bir trenin rotası istasyonlar zinciridir. Durak ekle araya bir tane daha koyar ve her etap kendi saatlerini ve kendi uçuş ya da tren numarasını korur.',
   'help.guide.edit-transport.step.4':
-    'Güncelle düğmesine tıklayın. Ulaşımı tamamen kaldırmak için rezervasyonunun altındaki Sil düğmesini ya da Ulaşım sekmesindeki kartında bulunan çöp kutusunu kullanın ve onaylayın.',
+    'Güncelle düğmesine tıklayın. Ulaşımı tamamen kaldırmak için aynı çubuğun solundaki çöp kutusunu, rezervasyonunun altındakini ya da Ulaşım sekmesindeki kartında bulunanı kullanın ve onaylayın.',
   'help.guide.edit-transport.result':
     'Değişiklik ulaşımın göründüğü her yerde görünür: Ulaşım sekmesinde, gittiği günde ve haritadaki çizgisinde.',
   'help.guide.edit-transport.tip.1':
-    'Aynı form iki taraftan da açılır: gün planındaki bir satırın açtığı rezervasyondaki Düzenle üzerinden ve Ulaşım sekmesindeki karttaki kalemden. Planlanmış bir toplu taşıma bağlantısı da bir rezervasyon olarak açılır; oradaki Rotayı değiştir yeniden arar, Düzenle ise bu forma götürür.',
+    'Aynı form iki taraftan da açılır: gün planındaki bir satırın açtığı rezervasyondaki Düzenle üzerinden ve Ulaşım sekmesindeki karttaki kalemden. Planlanmış bir toplu taşıma bağlantısı da bir rezervasyon olarak açılır; oradaki Rotayı değiştir aramayı yeniden açar, Düzenle ise bu forma götürür.',
   'help.guide.edit-transport.tip.2':
     'Bir ulaşımı başka bir güne taşımak forma hiç ihtiyaç duymaz: satırını bir gün kartından diğerine sürükleyin.',
   // transport-on-map
@@ -3666,15 +3753,15 @@ const help: TranslationStrings = {
   'help.guide.transport-on-map.goal':
     'Bir uçuşun, bir araba yolculuğunun ya da bir bağlantının gerçekte nereden geçtiğini görün.',
   'help.guide.transport-on-map.step.1':
-    'İki ucu da ayarlanmış bir ulaşım, gün planındaki satırında küçük bir rota simgesi taşır. Ona tıklayın; etiketi Rezervasyon rotalarını gizle olur.',
+    'İki ucu da ayarlanmış bir ulaşım, gün planındaki satırında küçük bir rota simgesi taşır. Ona tıklayın; ipucu Rezervasyon rotalarını gizle olur.',
   'help.guide.transport-on-map.step.2':
     'Rota haritaya çizilir, her iki uçta ulaşımın simgesini taşıyan hap biçiminde bir işaretçiyle.',
   'help.guide.transport-on-map.step.3':
-    'Haritadan ayrılmadan rezervasyonu okumak için bir uç işaretçisine tıklayın: saatler, Havayolu ve Uçuş No., Rezervasyon Kodu ve adres. Kapat sayfayı kaldırır.',
+    'Bir uç işaretçisine tıklayın, rezervasyon doğrudan haritanın üzerinde açılır: baş kısmında durum, tür, günler ve Rezervasyon Kodu, altlarında havalimanları ya da istasyonlarıyla saatler, havayolu ve uçuş numarası. Baş şeridindeki Kapat onu kaldırır.',
   'help.guide.transport-on-map.step.4':
     'Günlerin üstündeki araç çubuğundaki rota simgesi bütün seyahati aynı anda halleder: Tüm rezervasyon rotalarını göster ve onları yeniden temizlemek için Tüm rezervasyon rotalarını gizle.',
   'help.guide.transport-on-map.step.5':
-    'Planlanmış bir toplu taşıma bağlantısının kendi simgesi yoktur. Günün Rota anahtarıyla çizilir, bu yüzden o günün rotası hâlâ açıkken Tüm rezervasyon rotalarını gizle onu temizlemez.',
+    'Planlanmış bir toplu taşıma bağlantısının kendi rota simgesi yoktur. Günün Rota anahtarıyla çizilir, bu yüzden o günün rotası hâlâ açıkken Tüm rezervasyon rotalarını gizle onu temizlemez.',
   'help.guide.transport-on-map.result':
     'Rotalar her iki ucunda bir işaretçiyle haritadadır ve siz onları yeniden kapatana kadar orada kalır.',
   'help.guide.transport-on-map.tip.1':
@@ -3683,32 +3770,12 @@ const help: TranslationStrings = {
     'Onaylanmış bir rezervasyon düz bir çizgidir, askıdaki bir rezervasyon kesik çizgidir. Rezervasyon rota etiketleri ayarı uç işaretçilerine havaalanı kodunu ya da istasyon adını yazar.',
   'help.guide.transport-on-map.tip.3':
     'Tüm rezervasyon rotalarını göster bir katman değil, temiz bir sayfadır: tek tek simgelerin ayarladığını atar, bu yüzden iki kez basmak sizi ya her şey açık ya da her şey kapalı bırakır.',
-  // import-transport-file
-  'help.guide.import-transport-file.title': 'Bir uçuşu e-biletinden okuyun',
-  'help.guide.import-transport-file.goal':
-    'Taşıyıcının gönderdiği biletten bir uçuşu, treni ya da feribotu TREK çekip çıkarsın ve kaydedilmeden önce siz denetleyin.',
-  'help.guide.import-transport-file.step.1':
-    'Ulaşım sekmesinin araç çubuğunda, Ulaşım düğmesinin yanındaki Dosyadan içe aktar düğmesine tıklayın. Rezervasyonlar sekmesindekiyle aynı pencere olan Rezervasyon onaylarını içe aktar açılır.',
-  'help.guide.import-transport-file.step.2':
-    'Bileti kutunun üzerine bırakın ya da kutuya tıklayıp seçin: EML, PDF, PKPass, HTML ve TXT, her biri 10 MB olan en fazla beş dosya. Seçtiğiniz dosyalar kutunun üzerinde adlarıyla yazar.',
-  'help.guide.import-transport-file.step.3':
-    'İçe aktar düğmesine tıklayın. Pencere hemen kapanır; okuma arka planda olur.',
-  'help.guide.import-transport-file.step.4':
-    'Sağ altta bir kart, dosyanın adı altında işin gidişatını bildirir. Okuma bittiğinde Dosyalar işleniyor… bir onay işaretine dönüşür ve kart İçe aktar sunar. Tıklayın.',
-  'help.guide.import-transport-file.step.5':
-    'Ulaşım ekle içinde, çoktan doldurulmuş bir uçuş açılır: Rezervasyon Türü Uçuş üzerinde, havayolu ve uçuş numarası Başlık içinde, iki havalimanı Rota altında Kalkış ve Varış ile, saatleri ve saat dilimleri, Havayolu ve Uçuş No., Rezervasyon Kodu ve Dosyalar altında bilet. Denetleyin ve Ekle düğmesine tıklayın.',
-  'help.guide.import-transport-file.result':
-    'Uçuş, Ulaşım sekmesinde Askıda olması altında bir kart ve kalktığı günde bir satırdır, bilet Dosyalar altındadır ve iki havalimanı da bilindiğinden eğrisini haritaya çizer.',
-  'help.guide.import-transport-file.tip.1':
-    'İki sekme tek bir içe aktarmayı paylaşır: bir uçuş ve bir otel taşıyan bir dosya, hangi sekmeden başlamış olursanız olun, uçuşu Ulaşım ekle içinde, oteli Yeni Rezervasyon içinde art arda açar.',
-  'help.guide.import-transport-file.tip.2':
-    'Havalimanları koduyla yerleştirilir. Okumanın konumlandıramadığı bir istasyon ya da liman kartta kehribar renkte adlandırılır; Ekle düğmesine tıklamadan önce onu Rota altında elle seçin, yoksa ulaşım haritaya hiçbir şey çizmez.',
   // airtrail-import
   'help.guide.airtrail-import.title': 'AirTrail’den uçuşları içe aktarın',
   'help.guide.airtrail-import.goal':
     'AirTrail’de zaten tuttuğunuz uçuşları tek seferde geziye getirin ve o andan itibaren AirTrail’i izlesinler.',
   'help.guide.airtrail-import.step.1':
-    'AirTrail eklentisi açıkken ve örneğiniz Ayarlar içindeki Entegrasyonlar altında bağlıyken Ulaşım sekmesinin araç çubuğu, Ulaşım düğmesinin yanında bir AirTrail düğmesi taşır. Tıklayın.',
+    "AirTrail eklentisi açıkken ve örneğiniz Ayarlar içindeki Entegrasyonlar altında bağlıyken Ulaşım sekmesinin çubuğu, Ulaşım’ın önünde bir uçak simgesi, yani AirTrail'den içe aktar taşır. Tıklayın.",
   'help.guide.airtrail-import.step.2':
     "AirTrail'den içe aktar hesabınızın uçuşlarını iki grupta listeler. Bu gezi sırasında gezinin içine tarihlenmiş olanları, çoktan işaretli olarak tutar; Diğer uçuşlar geri kalanı, işaretsiz olarak tutar. Gezide zaten olan bir uçuş gri görünür ve İçe aktarıldı ile işaretlidir.",
   'help.guide.airtrail-import.step.3':
@@ -3716,13 +3783,13 @@ const help: TranslationStrings = {
   'help.guide.airtrail-import.step.4':
     'Birbirine bağlanan uçuşlar, her biri bir öncekinin indiği havalimanından bir gün içinde kalkanlar, birlikte çerçevelenir. Altındaki onay kutusu, o havalimanı aktarmalı tek uçuş olarak içe aktar, zaten açıktır: aktarmalı tek bir rezervasyon için açık bırakın ya da etapları ayrı uçuşlar olarak içe aktarmak için kapatın.',
   'help.guide.airtrail-import.step.5':
-    'İçe aktar düğmesine tıklayın. Düğme işaretli uçuşları sayar ve sonraki mesaj kaç tanesinin geldiğini söyler.',
+    'Sağ alttaki, işaretli uçuşları sayan düğmeye tıklayın, örneğin 2 içe aktar. Sonraki mesaj kaç tanesinin geldiğini söyler.',
   'help.guide.airtrail-import.step.6':
-    'Uçuşlar Onaylandı altında kartlardır, her biri durumunun yanında mavi bir AirTrail rozetiyle, ve gittikleri günlerde satırlardır. Birleştirilmiş bir bağlantı tek bir karttır, rotası aktarmadan geçer.',
+    'Uçuşlar Onaylandı altında kartlardır, her biri başlığının yanında mavi bir AirTrail rozetiyle, ve gittikleri günlerde satırlardır. Birleştirilmiş bir bağlantı tek bir karttır, rotası aktarmadan geçer.',
   'help.guide.airtrail-import.result':
     'AirTrail’den gelen uçuşlar Ulaşım sekmesinde kartlar ve günlerinde satırlardır, her biri nereden geldiğini söyleyen AirTrail rozetini taşır.',
   'help.guide.airtrail-import.tip.1':
-    'Aynı numara ve tarihle gezide zaten olan bir uçuş atlanır ve bir mesaj kaç tanesinin atlandığını söyler. Günlerin üstündeki araç çubuğundaki Geri al bütün içe aktarmayı geri alır.',
+    'Aynı numara ve tarihle gezide zaten olan bir uçuş atlanır ve bir mesaj kaç tanesinin atlandığını söyler. Günlerin üstündeki araç çubuğundaki geri alma oku bütün içe aktarmayı geri alır.',
   'help.guide.airtrail-import.tip.2':
     'AirTrail doğruluk kaynağı olarak kalır. TREK geziyi açtığınızda ve arka planda birkaç dakikada bir onun değişikliklerini okur; orada silinen bir uçuş kartını korur, rozeti Senkronize değil olur. TREK’te yapılan düzenlemeler yalnızca Entegrasyonlar altında Değişiklikleri AirTrail’e geri yaz açıkken geri gider.',
   'help.guide.airtrail-import.tip.3':
@@ -3735,13 +3802,13 @@ const help: TranslationStrings = {
   'help.ctx.trip-roadtrip.bullet.1':
     'Sol sütunun üstündeki Günler ve Yol gezisi, gün planı ile sürüş arasında geçiş yapar. Hiçbir şey kopyalanmaz ve hiçbir şey değişmez: Günler planı tam olduğu gibi geri verir.',
   'help.ctx.trip-roadtrip.bullet.2':
-    'Şeridin başı geziyi toplar: Mesafe, Sürüş süresi ve Duraklar. Altında her gün için bir kart gelir; günün kendi kilometresi, kaç durak için olduğu, neyi aştığı ve bir İz rozeti ile.',
+    'Şeridin başı geziyi toplar: Mesafe, Sürüş süresi ve Duraklar. Altında sürüş olan her gün için bir kart gelir; günün kendi kilometresi, kaç durak için olduğu, neyi aştığı ve bir İz rozeti ile.',
   'help.ctx.trip-roadtrip.bullet.3':
     'Numaralı bir durak, günün var olduğu bir yerdir. Yol üzerindeki bir mola, yakıt, şarj, bir dinlenme alanı, numara yerine kendi türünün simgesini taşır ve sayılmaz. Hangisi olduğunu değiştirmek için numaraya, ne kadar sürdüğünü söylemek için Süre rozetine tıklayın.',
   'help.ctx.trip-roadtrip.bullet.4':
     'İki durak arasında bir sürüş bandı, etabı mesafe ve süre olarak verir. Bu etap için yollar için üzerine tıklayın ya da etabı bir ara noktadan büküp geçirmek için haritada çizili rotaya tıklayın.',
   'help.ctx.trip-roadtrip.bullet.5':
-    'Sağ sütun Rota boyunca olur: bir gün seçin, ne arayacağınızı ve koridorun ne kadar geniş olduğunu belirleyin, sonra Ara. Ekle, bir sonucu sürüşün gerçekten geçildiği noktasına koyar.',
+    'Sağ sütun Rota boyunca olur: tek bir satırda ne arayacağınızı ve günü, sonra koridorun ne kadar geniş olduğunu seçin ve Ara. Bir sonuçtaki artı, yani Ekle, onu sürüşün gerçekten geçildiği noktasına koyan kısa bir iletişim kutusu açar.',
   'help.ctx.trip-roadtrip.bullet.6':
     'Altındaki Sürüş ayarları sınırları, aracı ve menzilini, günlük yolculuk saatlerini, nelerden kaçınılacağını ve çizginin nasıl çizileceğini tutar. Geziye aittirler, bu yüzden herkes aynı araçla plan yapar.',
   // roadtrip-mode
@@ -3751,7 +3818,7 @@ const help: TranslationStrings = {
     'Sol sütunun üstündeki Günler ve Yol gezisi anahtarında Yol gezisi seçeneğine tıklayın. Gün planının yerini sürüş alır ve harita rotası hesaplanmış her günü çizer.',
   'help.guide.roadtrip-mode.step.2': 'Şeridin başı tüm geziyi toplar: Mesafe, Sürüş süresi ve Duraklar.',
   'help.guide.roadtrip-mode.step.3':
-    'Altında her gün için bir kart gelir. Başlığı günün numarasını ve tarihini, sürüşü mesafe ve süre olarak ve günün kaç durak için olduğunu taşır.',
+    'Altında sürüş olan her gün için bir kart gelir; sürülecek bir şeyi olmayan gün dışarıda kalır. Başlığı günün numarasını ve tarihini, sürüşü mesafe ve süre olarak ve günün kaç durak için olduğunu taşır.',
   'help.guide.roadtrip-mode.step.4':
     'Kartın içinde gün bir zincirdir: her yer için numaralı bir durak, her çift arasında bir sürüş bandı ve sağ kenarda varış saati.',
   'help.guide.roadtrip-mode.step.5':
@@ -3768,9 +3835,9 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.goal':
     'Sürüş üzerindeki bir yeri yol üzerinde bir molaya dönüştürün ve her molanın ne kadar sürdüğünü söyleyin.',
   'help.guide.roadtrip-stops.step.1':
-    'Şeritte bir durağın önündeki numaraya tıklayın. Etiketi Yol üzerinde molaya dönüştür şeklindedir ve Mola türü penceresini açar.',
+    'Şeritte bir durağın önündeki numaraya tıklayın. Etiketi Yol üzerinde molaya dönüştür şeklindedir ve altında mola türlerini bir renkli daireler sırası olarak açar.',
   'help.guide.roadtrip-stops.step.2':
-    'Bir tür seçin: Konaklama, Yakıt, Şarj, Dinlenme alanı, Kamp alanı, Yemek ya da Görülecek yerler. Numara o türün simgesine döner ve altındaki duraklar yeniden numaralanır.',
+    'Bir tür seçin; her daire, üzerine gelince adını söyler: Konaklama, Yakıt, Şarj, Dinlenme alanı, Kamp alanı, Yemek ya da Görülecek yerler. Numara o türün simgesine döner ve altındaki duraklar yeniden numaralanır.',
   'help.guide.roadtrip-stops.step.3':
     'Yol üzerindeki bir mola varış noktası değildir, bu yüzden günün başlığı bir durak eksik sayar.',
   'help.guide.roadtrip-stops.step.4':
@@ -3778,35 +3845,37 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.step.5':
     'Her durak bir Süre rozeti taşır. Bu duraktaki süre penceresini açmak için ona tıklayın.',
   'help.guide.roadtrip-stops.step.6':
-    'Uzunluğu kaydırıcıyla, eksi ve artı düğmeleriyle ya da hazır sürelerden biriyle ayarlayın, Varis ile Kalkis ne yapıyor bakın, sonra Kaydet düğmesine tıklayın.',
+    'Uzunluğu kaydırıcıyla, eksi ve artı düğmeleriyle ya da hazır sürelerden biriyle ayarlayın; Varış sürüşün oraya vardığı saatte kalırken Kalkış’in onunla birlikte kaydığını izleyin, sonra Kaydet düğmesine tıklayın.',
   'help.guide.roadtrip-stops.result':
-    'Süresini verdiğiniz durak saati Süre rozetinde taşır ve ondan sonraki her varış onunla birlikte kaymıştır, bir türe gönderip geri getirdiğiniz durak ise yeniden numaralı bir varış noktasıdır.',
+    'Süresini verdiğiniz durak yeni uzunluğunu Süre rozetinde taşır ve ondan sonraki her varış onunla birlikte kaymıştır, bir türe gönderip geri getirdiğiniz durak ise yeniden numaralı bir varış noktasıdır.',
   'help.guide.roadtrip-stops.tip.1':
     'Mola süresi bir ziyarete değil yere aittir: iki güne planlanmış bir yerde her iki gün de aynı süre durulur.',
   'help.guide.roadtrip-stops.tip.2':
     'Yol üzerindeki molalar Günler içinde de görünür. Sürüş ayarlarındaki Hizmet durakları altında yer alan Günler içinde de göster seçeneğini kapatmak, onları yalnızca Yol gezisinde tutar.',
   'help.guide.roadtrip-stops.tip.3': 'Aynı penceredeki Mola yok, bu süreyi yeniden kaldırır.',
+  'help.guide.roadtrip-stops.tip.4':
+    'Kartını haritanın üzerinde açmak için yol üzerindeki bir molaya ya da rezerve edilmiş bir geceye tıklayın. Yol gezisi açıkken oradaki Düzenle, yer formu yerine aramanın kullandığı kompakt iletişim kutusunu açar; o iletişim kutusundaki Daha fazla ayrıntı ise tam formu açar.',
   // roadtrip-corridor
   'help.guide.roadtrip-corridor.title': 'Rota boyunca yakıt, yemek ve yatacak yer bulun',
   'help.guide.roadtrip-corridor.goal': 'Gerçekten sürdüğünüz yolu arayın ve bulduğunuzu doğru etaba koyun.',
   'help.guide.roadtrip-corridor.step.1':
-    'Rota boyunca bölümünün üstünden günü seçin. Yalnızca rotası hesaplanmış günler sunulur.',
+    'Aranan altında listeyi açın ve neye ihtiyacınız olduğunu işaretleyin. Yakıt, Şarj, Dinlenme alanı, Kamp alanı, Konaklama, Yemek ve Görülecek yerler birlikte seçilebilir: liste ikinci bir seçim için açık kalır ve satır ardından her türü simgesiyle gösterir.',
   'help.guide.roadtrip-corridor.step.2':
-    'Aranan altında neye ihtiyacınız olduğunu işaretleyin. Yakıt, Şarj, Dinlenme alanı, Kamp alanı, Konaklama, Yemek ve Görülecek yerler birlikte seçilebilir.',
+    'Günü aynı satırın sonundaki açılır listeden seçin. Liste şeridin kart gösterdiği günleri sunar ve Ara, seçtiğiniz günün rotası hesaplanana kadar bekler.',
   'help.guide.roadtrip-corridor.step.3':
     'Mesafe altında yolun iki yanında ne kadar uzağa bakılacağını seçin, 2 km, 5 km ya da 10 km, sonra Ara düğmesine tıklayın.',
   'help.guide.roadtrip-corridor.step.4':
     'Sonuçlar türlerine göre gruplanmış olarak, geçtiğiniz sırayla döner; her biri gün içinde ne kadar ileride olduğunu ve rotadan ne kadar uzakta durduğunu taşır.',
   'help.guide.roadtrip-corridor.step.5':
-    'Bir sonuçtaki Ekle, Mola olarak ekle penceresini açar. Molanın hangi güne ve hangi sıraya düştüğünü söyler, türü ve duraktaki süreyi sorar, Ekle ise onu sürüşe koyar.',
+    'Bir sonuçtaki artı, yani Ekle, Mola olarak ekle penceresini açar. Molanın hangi güne ve hangi sıraya düştüğünü söyler, Mola türü ile Bu duraktaki süre değerlerini sorar. Ekle onu sürüşe koyar; Daha fazla ayrıntı ise bunun yerine tam yer formunu açar. Bir konaklama sonucu artı yerine bir yatak, yani Konaklama olarak ekle taşır ve penceresi Mola ya da Konaklama sunar; bir gece yalnızca Giriş saatini sorar.',
   'help.guide.roadtrip-corridor.result':
-    'Sonuçlar geçtiğiniz sırayla listelenir ve haritada çizilir, eklediğiniz ise sürüşün gerçekten geçildiği noktasında oturur.',
+    'Eklediğiniz mola, türünün simgesiyle sürüşün gerçekten geçildiği noktasında oturur. Gün onun üzerinden yeniden rotalanır, bu da listeyi boşaltır: bir sonraki için yeniden arayın.',
   'help.guide.roadtrip-corridor.tip.1':
     'Ara düğmesine basmadan hiçbir şey aranmaz: tek bir çalıştırma, paylaşılan bir hizmete yapılan birçok istektir.',
   'help.guide.roadtrip-corridor.tip.2':
     'Ada göre süz, yeniden sormadan gelenleri daraltır; Sonuçları temizle ise listeyi ve iğnelerini boşaltır. Bir sonuca tıklayarak onu haritada görüş alanına getirirsiniz.',
   'help.guide.roadtrip-corridor.tip.3':
-    'Bir sonuç haritadan çizili rotanın üzerine de sürüklenebilir; aynı yoldan iki kez geçildiğinde etabı böyle kendiniz seçersiniz. Ara düğmesinin yanındaki Elle ekle ise bir yeri adıyla arar.',
+    'Bir sonuç haritadan çizili rotanın üzerine de sürüklenebilir; aynı yoldan iki kez geçildiğinde etabı böyle kendiniz seçersiniz. Ara düğmesinin yanındaki Elle ise aramanın bulamadığı bir yeri adıyla arayarak ekler.',
   // roadtrip-via
   'help.guide.roadtrip-via.title': 'Bir etabı ara noktadan büküp geçirin',
   'help.guide.roadtrip-via.goal': 'Bir etaba durak eklemeden onu gerçekten istediğiniz yoldan gönderin.',
@@ -3833,7 +3902,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.step.1':
     'Şeritte bir sürüş bandına, iki durak arasındaki etabı mesafe ve süre olarak veren satıra tıklayın. Etiketi Başka yollar şeklindedir.',
   'help.guide.roadtrip-alternatives.step.2':
-    'Bu etap için yollar haritanın üzerinde açılır, her yol için bir kayıt, her biri haritada kendi renginde çizili.',
+    'Bu etap için yollar haritanın üzerinde açılır, her yol için uzunluğuyla bir kayıt. Harita her yolu sürüş süresiyle çizer: üzerinde olduğunuzu koyu mavi, diğerlerini daha açık bir mavi ile.',
   'help.guide.roadtrip-alternatives.step.3':
     'O yolu yakmak için bir kaydın üzerine gelin. Mevcut sürülen yoldur, En hızlı ise en çabuğu; diğerleri ne kadar daha yavaş olduklarını ya da hangi yol sınıfını dışarıda bıraktıklarını söyler.',
   'help.guide.roadtrip-alternatives.step.4':
@@ -3841,9 +3910,9 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.result':
     'Etap seçtiğiniz yoldan gider, şeridin mesafesi ve ondan sonraki varışlar onunla birlikte değişir.',
   'help.guide.roadtrip-alternatives.tip.1':
-    'Başka bir yol seçmek etaba bir ara nokta koyar ve zaten olanların yerini alır; rota motorunun kendi yolunu seçmek onları yeniden kaldırır.',
+    'Başka bir yol seçmek onu önce yol gezisinin rota motoruyla denetler, sonra etabı gerektiği kadar az ara noktayla o yolda tutar ve etabın zaten sahip olduğu ara noktaların yerini alır. Rota motorunun izlemeyeceği bir yol kaydedilmez. Rota motorunun kendi yolunu seçmek ara noktaları yeniden kaldırır.',
   'help.guide.roadtrip-alternatives.tip.2':
-    'Otoyolsuz, Ucretsiz ve Feribotsuz, kendi hız modeli olan ikinci bir motordan gelir, bu yüzden süreleri diğerleriyle karşılaştırılabilir değildir.',
+    'Otoyolsuz, Paralı yolsuz ve Feribotsuz, kendi hız modeli olan ikinci bir motordan gelir, bu yüzden süreleri diğerleriyle karşılaştırılabilir değildir.',
   // roadtrip-limits
   'help.guide.roadtrip-limits.title': 'Aracı ve sürüş sınırlarını ayarlayın',
   'help.guide.roadtrip-limits.goal':
@@ -3855,7 +3924,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.step.3':
     'Araç altında ne kullandığınızı söyleyin. Benzin yalnızca yakıt duraklarında, Elektrik yalnızca şarj duraklarında, İkisi de her ikisinde doldurur.',
   'help.guide.roadtrip-limits.step.4':
-    'Bir depoyla menzil ya da Şarj başına menzil değerini kendiniz yazın. Altındaki Araç verilerinden hesapla, Depo hacmi ile Tüketim değerlerini ya da Batarya ile Tüketim değerlerini alır ve hesabı yapar.',
+    'Bir depoyla menzil ya da Şarj başına menzil değerini kendiniz yazın. Daha aşağıdaki Araç verilerinden hesapla, Depo hacmi ile Tüketim değerlerini ya da Batarya, Tüketim ve Batarya yıpranması değerlerini alır ve hesabı yapar.',
   'help.guide.roadtrip-limits.step.5':
     'Mümkünse kaçın bir tercihtir, yasak değil: etrafından dolaşacak yolu olmayan bir gün yine de o yolu kullanır ve bunu başlığında söyler.',
   'help.guide.roadtrip-limits.step.6':
@@ -3867,7 +3936,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.tip.2':
     'Şu kadar doldur, bir durağın ne kadar doldurduğunu söyler, çünkü kimse yolda %100 şarj etmez. Bir yakıt ya da şarj durağı bunu kendisi için geçersiz kılabilir.',
   'help.guide.roadtrip-limits.tip.3':
-    'Rota çizgisi sürüşün nasıl çizileceğine karar verir: Günleri birleştir iki gün arasındaki geceyi rotalar, Her güne bir renk ise her güne kendi rengini verir.',
+    'Rota çizgisi altında Günleri birleştir, bir günün son durağından ertesi günün ilk durağına olan sürüşü de rotalar; Her güne konaklama yerinde başla ve orada bitir, bir günü çevresinde rezerve edilmiş gecelerde başlatıp bitirir; Her güne bir renk ise her günü kendi renginde çizer.',
   // roadtrip-day-window
   'help.guide.roadtrip-day-window.title': 'Sürüş gününe bir başlangıç ve bir bitiş verin',
   'help.guide.roadtrip-day-window.goal':
@@ -3893,15 +3962,15 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-refuel.title': 'Depo bitmeden yakıt alın',
   'help.guide.roadtrip-refuel.goal': 'Aracın hâlâ ulaşabildiği bölümde yakıt alacak bir yer bulun ve onu sürüşe koyun.',
   'help.guide.roadtrip-refuel.step.1':
-    'Bir menzil ayarlıyken şerit, etabın bittiği yere bir bant çizer: Depo burada bitiyor, altında da bunun etabın ne kadar içinde olduğu.',
+    'Bir menzil ayarlıyken şerit, etabın bittiği yere bir bant çizer: Depo burada bitiyor, elektrikli bir araçta Batarya burada bitiyor, altında da bunun etabın ne kadar içinde olduğu.',
   'help.guide.roadtrip-refuel.step.2':
-    'Banttaki lamba düğmedir. Yakıt bul, zaten sürdüğünüz yol boyunca bakar ve bunu yaparken Rota boyunca aranıyor… der.',
+    'Banttaki lamba düğmedir: Yakıt bul, elektrikli bir araçta Şarj noktası bul. O noktadan önceki yol boyunca bakar ve bunu yaparken Rota boyunca aranıyor… der.',
   'help.guide.roadtrip-refuel.step.3':
     'En fazla üç istasyon döner; her biri rotadan ne kadar uzakta olduğunu ve geriye ne kadar menzil bırakacağını taşır.',
   'help.guide.roadtrip-refuel.step.4':
     'Bir tekliftaki artı onu yakıt molası olarak ekler. Mola olarak ekle, türü ve süresi çoktan doldurulmuş olarak açılır, Ekle ise onu etabın gerçekten geçildiği noktasına koyar.',
   'help.guide.roadtrip-refuel.result':
-    'Durak kendi simgesiyle doğru etapta durur, menzil ondan itibaren yeniden sayılır ve bant kaybolur.',
+    'Durak kendi simgesiyle doğru etapta durur ve menzil ondan itibaren yeniden sayılır: bant deponun şimdi bittiği yere kayar ya da sürüşün geri kalanı menzil içindeyse kaybolur.',
   'help.guide.roadtrip-refuel.tip.1':
     'Menzil, günler boyunca son yakıt ya da şarj durağından itibaren sayılır. Ne kullandığınız hangi durakların sayıldığına karar verir: Benzin yalnızca yakıt, Elektrik yalnızca şarj.',
   'help.guide.roadtrip-refuel.tip.2':
@@ -3918,11 +3987,11 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-track.step.3':
     'Bu izi takip et düğmesine tıklayın. TREK, sürüşün izden en çok saptığı yerlere ara noktalar bırakır ve tur tur yeniden rotalar.',
   'help.guide.roadtrip-track.step.4':
-    'Kaç ara nokta yerleştirdiğini ve sürüşün artık ne kadar yakın kaldığını söyler. Altındaki düğme o ara noktaları yeniden kaldırır ve günü rota motoruna geri verir; pencereyi kapatmak izi korur.',
+    'Pencere kaç ara nokta yerleştirildiğini ve sürüşün artık ne kadar yakın kaldığını ya da sürüşün izi zaten takip ettiğini söyler. Ara nokta yerleştirildiyse altındaki düğme onları yeniden kaldırır ve günü rota motoruna geri verir; pencereyi kapatmak izi korur.',
   'help.guide.roadtrip-track.result':
-    'Günün sürüşü, rota motorunun seçtiği yol yerine izi takip eder ve İz rozeti yanar, üzerine geldiğinizde o izin adını verir.',
+    'Günün sürüşü, rota motorunun seçeceği yol yerine izi takip eder ve İz rozetinin üzerine geldiğinizde izin adı görünür. Ara noktalar sürüşü izin üzerinde tuttuğunda rozet ayrıca yanar.',
   'help.guide.roadtrip-track.tip.1':
-    'Dosyayı Günler altında Dosyayı içe aktar ile, Rotalar ya da İzler işaretli olarak içe aktarın. Gezi bir tane tutana kadar hiçbir gün rozeti taşımaz.',
+    "Dosyayı Günler altında içe aktarın: yerler sütununda, içe aktarma düğmesinin arkasındaki Dosyayı içe aktar ile, bir GPX için Rotalar ya da İzler (yol geometrisi ile), bir KML için Yollar (LineString'ler) işaretli olarak. Gezide bir iz olana kadar hiçbir gün rozeti taşımaz.",
   'help.guide.roadtrip-track.tip.2':
     'Bir izi takip etmek, günün etaplarının zaten sahip olduğu ara noktaların yerini alır, bu yüzden bir etabı elle izden sonra şekillendirin, önce değil.',
 };

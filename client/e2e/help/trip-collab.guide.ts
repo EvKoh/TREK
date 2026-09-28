@@ -53,12 +53,18 @@ const CHAT = {
 
 // ── Locators ─────────────────────────────────────────────────────────────────
 
-/** Each of the four right-hand panels is a card; find it from what only it holds. */
-const CARD = 'xpath=ancestor::div[contains(@class,"rounded-2xl") and contains(@class,"bg-surface-card")][1]'
-const notesPanel = (page: Page) => page.getByRole('button', { name: 'New Note' }).locator(CARD)
-const pollsPanel = (page: Page) => page.getByRole('button', { name: 'New Poll' }).locator(CARD)
-const linksPanel = (page: Page) => page.getByRole('button', { name: 'Add link' }).locator(CARD)
-const nextPanel = (page: Page) => page.getByText("What's Next", { exact: true }).locator(CARD)
+/**
+ * One of the five cards of the tab, found from the name in its head band. The
+ * head band is `CollabPanelHead`, whose name is an h3 set in small capitals, so
+ * the match ignores case; the card is the nearest rounded ancestor (the cards
+ * inside a panel, notes and polls, are never an ancestor of that heading).
+ */
+const panel = (page: Page, name: RegExp) =>
+  page.getByRole('heading', { name }).locator('xpath=ancestor::div[contains(@class,"rounded-2xl")][1]')
+const notesPanel = (page: Page) => panel(page, /^Notes$/i)
+const pollsPanel = (page: Page) => panel(page, /^Polls$/i)
+const linksPanel = (page: Page) => panel(page, /^Links$/i)
+const nextPanel = (page: Page) => panel(page, /^What.s Next$/i)
 
 const chatBox = (page: Page) => page.getByPlaceholder('Type a message...')
 /** The row that holds the emoji button, the image button, the box and the arrow. */
@@ -93,17 +99,22 @@ const hoverMessageAction = (text: string, name: 'Reply' | 'Delete') => async (pa
   await bubble(page, text).getByRole('button', { name }).hover()
 }
 
-/** The note form is a `form[role="presentation"]` in its own portal, not a Modal. */
-const noteForm = (page: Page) => page.locator('form[role="presentation"]')
-/** The poll and link forms sit inside a full-screen overlay; ring the form, not it. */
-const pollForm = (page: Page) => page.locator('form').filter({ has: page.getByPlaceholder('What should we do?') })
-const linkForm = (page: Page) => page.locator('form').filter({ has: page.locator('#collab-link-url') })
+/**
+ * The three editors are DialogShell panels (`role="dialog"`), told apart by a
+ * field only each of them has. The whole panel is the dialog: the head band
+ * with the title typed into it, the body, and the footer with the buttons.
+ */
+const noteDialog = (page: Page) => page.getByRole('dialog').filter({ has: page.getByPlaceholder('Write something...') })
+const pollDialog = (page: Page) => page.getByRole('dialog').filter({ has: page.getByPlaceholder('What should we do?') })
+const linkDialog = (page: Page) => page.getByRole('dialog').filter({ has: page.locator('#collab-link-url') })
+/** A field of an editor with the eyebrow label over it: the box's parent. */
+const field = (box: Locator) => box.locator('xpath=..')
 
-const noteCard = (page: Page, title: string) =>
-  notesPanel(page).getByText(title, { exact: true }).locator('xpath=ancestor::div[2]')
-/** A poll card, from its question: the question is markdown, so it is four up. */
+/** A note card is an article named by the note's title. */
+const noteCard = (page: Page, title: string) => page.getByRole('article', { name: title, exact: true })
+/** A poll card is an article too, without a name: found from its question. */
 const pollCard = (page: Page, question: string) =>
-  page.getByText(question, { exact: true }).locator('xpath=ancestor::div[4]')
+  page.getByRole('article').filter({ has: page.getByText(question, { exact: true }) })
 const linkChip = (page: Page, title: string) => page.locator('.collab-link-chip').filter({ hasText: title })
 /** A What's Next row, from the place name in it: name → details → row. */
 const nextRow = (page: Page, place: string) =>
@@ -114,7 +125,7 @@ const nextRow = (page: Page, place: string) =>
 const start = async (page: Page): Promise<void> => {
   await openTrip(page, { tab: 'collab' })
   // The Collab panel is a lazy chunk: everything below needs it mounted.
-  await expect(page.getByRole('button', { name: 'New Poll' })).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByRole('button', { name: 'New Poll', exact: true })).toBeVisible({ timeout: 30_000 })
   await settle(page)
 }
 
@@ -167,38 +178,42 @@ const SCRIPTS: Record<string, GuideScript> = {
     start,
     steps: [
       {
-        target: page => notesPanel(page).getByRole('button', { name: 'New Note' }),
+        target: page => notesPanel(page).getByRole('button', { name: 'New Note', exact: true }),
         act: async page => {
-          await notesPanel(page).getByRole('button', { name: 'New Note' }).click()
-          await expect(noteForm(page)).toBeVisible()
+          await notesPanel(page).getByRole('button', { name: 'New Note', exact: true }).click()
+          await expect(noteDialog(page)).toBeVisible()
           await settle(page)
         },
       },
       {
-        prepare: page => typeInto(page, noteForm(page).getByPlaceholder('Note title'), NOTE.title),
-        target: page => noteForm(page).getByPlaceholder('Note title'),
+        // The title is typed into the dialog's head band, under the New Note eyebrow.
+        prepare: page => typeInto(page, noteDialog(page).getByRole('textbox', { name: 'Note title' }), NOTE.title),
+        target: page => noteDialog(page).getByRole('textbox', { name: 'Note title' }),
       },
       {
-        prepare: page => typeInto(page, noteForm(page).getByPlaceholder('Write something...'), NOTE.body),
-        target: page => noteForm(page).getByPlaceholder('Write something...'),
+        prepare: page => typeInto(page, noteDialog(page).getByPlaceholder('Write something...'), NOTE.body),
+        // The Content eyebrow and the box under it.
+        target: page => field(noteDialog(page).getByPlaceholder('Write something...')),
       },
       {
-        // The pills are the categories that already exist; ring the row, then pick.
-        target: page => noteForm(page).getByRole('button', { name: NOTE.category, exact: true }).locator('xpath=..'),
-        act: async page => {
-          await noteForm(page).getByRole('button', { name: NOTE.category, exact: true }).click()
+        // Picked before the shot, so the pill and the head band already wear its colour.
+        prepare: async page => {
+          await noteDialog(page).getByRole('button', { name: NOTE.category, exact: true }).click()
+          await expect(noteDialog(page).getByRole('button', { name: NOTE.category, exact: true })).toHaveAttribute('aria-pressed', 'true')
           await beat(page, 300)
         },
+        // The Category eyebrow and the row of pills: pill, row, field.
+        target: page => noteDialog(page).getByRole('button', { name: NOTE.category, exact: true }).locator('xpath=../..'),
       },
       {
-        prepare: page => typeInto(page, noteForm(page).getByPlaceholder('https://...'), NOTE.website),
-        target: page => noteForm(page).getByPlaceholder('https://...'),
+        prepare: page => typeInto(page, noteDialog(page).getByPlaceholder('https://...'), NOTE.website),
+        target: page => field(noteDialog(page).getByPlaceholder('https://...')),
       },
       {
-        target: page => noteForm(page).getByRole('button', { name: 'Create', exact: true }),
+        target: page => noteDialog(page).getByRole('button', { name: 'Create', exact: true }),
         act: async page => {
-          await noteForm(page).getByRole('button', { name: 'Create', exact: true }).click()
-          await expect(noteForm(page)).toHaveCount(0)
+          await noteDialog(page).getByRole('button', { name: 'Create', exact: true }).click()
+          await expect(noteDialog(page)).toHaveCount(0, { timeout: 15_000 })
           await expect(noteCard(page, NOTE.title)).toBeVisible({ timeout: 15_000 })
           await settle(page)
         },
@@ -211,23 +226,24 @@ const SCRIPTS: Record<string, GuideScript> = {
     start,
     steps: [
       {
-        target: page => linksPanel(page).getByRole('button', { name: 'Add link' }),
+        target: page => linksPanel(page).getByRole('button', { name: 'Add link', exact: true }),
         act: async page => {
-          await linksPanel(page).getByRole('button', { name: 'Add link' }).click()
-          await expect(linkForm(page)).toBeVisible()
+          await linksPanel(page).getByRole('button', { name: 'Add link', exact: true }).click()
+          await expect(linkDialog(page)).toBeVisible()
           await settle(page)
         },
       },
       {
         prepare: async page => {
-          await typeInto(page, linkForm(page).locator('#collab-link-title'), LINK.title)
-          await typeInto(page, linkForm(page).locator('#collab-link-url'), LINK.url)
+          // The title sits in the head band, the address in the Link field under it.
+          await typeInto(page, linkDialog(page).getByRole('textbox', { name: 'Link title' }), LINK.title)
+          await typeInto(page, linkDialog(page).locator('#collab-link-url'), LINK.url)
           await beat(page, 300)
         },
-        target: linkForm,
+        target: linkDialog,
         act: async page => {
-          await linkForm(page).getByRole('button', { name: 'Save link' }).click()
-          await expect(linkForm(page)).toHaveCount(0)
+          await linkDialog(page).getByRole('button', { name: 'Save link', exact: true }).click()
+          await expect(linkDialog(page)).toHaveCount(0, { timeout: 15_000 })
           await expect(linkChip(page, LINK.title)).toBeVisible({ timeout: 15_000 })
           await settle(page)
         },
@@ -255,40 +271,42 @@ const SCRIPTS: Record<string, GuideScript> = {
     start,
     steps: [
       {
-        target: page => pollsPanel(page).getByRole('button', { name: 'New Poll' }),
+        target: page => pollsPanel(page).getByRole('button', { name: 'New Poll', exact: true }),
         act: async page => {
-          await pollsPanel(page).getByRole('button', { name: 'New Poll' }).click()
-          await expect(pollForm(page)).toBeVisible()
+          await pollsPanel(page).getByRole('button', { name: 'New Poll', exact: true }).click()
+          await expect(pollDialog(page)).toBeVisible()
           await settle(page)
         },
       },
       {
-        prepare: page => typeInto(page, pollForm(page).getByPlaceholder('What should we do?'), POLL.question),
-        // The label, the box and the Markdown supported hint under it.
-        target: page => pollForm(page).getByPlaceholder('What should we do?').locator('xpath=..'),
+        prepare: page => typeInto(page, pollDialog(page).getByPlaceholder('What should we do?'), POLL.question),
+        // The Question eyebrow, the box and the Markdown supported hint under it.
+        target: page => field(pollDialog(page).getByPlaceholder('What should we do?')),
       },
       {
         prepare: async page => {
-          await typeInto(page, pollForm(page).getByPlaceholder('Option 1'), POLL.options[0])
-          await typeInto(page, pollForm(page).getByPlaceholder('Option 2'), POLL.options[1])
+          await typeInto(page, pollDialog(page).getByPlaceholder('Option 1'), POLL.options[0])
+          await typeInto(page, pollDialog(page).getByPlaceholder('Option 2'), POLL.options[1])
         },
-        target: page => pollForm(page).getByPlaceholder('Option 1').locator('xpath=ancestor::div[2]'),
+        // The Options field: box, its row, the column of rows, the field with its eyebrow.
+        target: page => pollDialog(page).getByPlaceholder('Option 1').locator('xpath=ancestor::div[3]'),
       },
       {
-        target: page => pollForm(page).getByRole('button', { name: '+ Add option' }),
+        // The label drops the string's own "+"; the button draws a plus icon instead.
+        target: page => pollDialog(page).getByRole('button', { name: 'Add option', exact: true }),
         act: async page => {
-          await pollForm(page).getByRole('button', { name: '+ Add option' }).click()
-          await typeInto(page, pollForm(page).getByPlaceholder('Option 3'), POLL.options[2])
+          await pollDialog(page).getByRole('button', { name: 'Add option', exact: true }).click()
+          await typeInto(page, pollDialog(page).getByPlaceholder('Option 3'), POLL.options[2])
           await beat(page, 300)
         },
       },
-      // The switch alone is 36 px wide; ring the label it sits in.
-      only(page => pollForm(page).getByRole('switch', { name: 'Multiple choice' }).locator('xpath=..')),
+      // The switch alone is 36 px wide; ring the row it sits in, which is its label.
+      only(page => pollDialog(page).locator('label').filter({ hasText: 'Multiple choice' })),
       {
-        target: page => pollForm(page).getByRole('button', { name: 'Create Poll' }),
+        target: page => pollDialog(page).getByRole('button', { name: 'Create Poll', exact: true }),
         act: async page => {
-          await pollForm(page).getByRole('button', { name: 'Create Poll' }).click()
-          await expect(pollForm(page)).toHaveCount(0)
+          await pollDialog(page).getByRole('button', { name: 'Create Poll', exact: true }).click()
+          await expect(pollDialog(page)).toHaveCount(0, { timeout: 15_000 })
           await expect(pollCard(page, POLL.question)).toBeVisible({ timeout: 15_000 })
           await settle(page)
         },
@@ -319,7 +337,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await settle(page)
         },
       },
-      // The counter is hardcoded English in the component: "1 vote" / "3 votes".
+      // The count is a chip under the question, in the card's head band: "1 vote" / "3 votes".
       only(page => pollCard(page, SEEDED_POLL).getByText(/^\d+ votes?$/)),
     ],
     cleanup: page => resetVote(page, SEEDED_POLL, 0),
@@ -329,18 +347,19 @@ const SCRIPTS: Record<string, GuideScript> = {
     start,
     steps: [
       {
-        target: page => pollCard(page, COLLAB_SPARE_POLL.question).locator('button:has(svg.lucide-lock)'),
+        // The lock and the bin are round buttons at the right of the card's head band, named by their tooltips.
+        target: page => pollCard(page, COLLAB_SPARE_POLL.question).getByRole('button', { name: 'Close', exact: true }),
         act: async page => {
-          await pollCard(page, COLLAB_SPARE_POLL.question).locator('button:has(svg.lucide-lock)').click()
+          await pollCard(page, COLLAB_SPARE_POLL.question).getByRole('button', { name: 'Close', exact: true }).click()
           await expect(pollCard(page, COLLAB_SPARE_POLL.question).getByText('Closed', { exact: true })).toBeVisible({ timeout: 15_000 })
           await settle(page)
         },
       },
       only(page => pollCard(page, COLLAB_SPARE_POLL.question)),
       {
-        target: page => pollCard(page, COLLAB_SPARE_POLL.question).locator('button:has(svg.lucide-trash2)'),
+        target: page => pollCard(page, COLLAB_SPARE_POLL.question).getByRole('button', { name: 'Delete', exact: true }),
         act: async page => {
-          await pollCard(page, COLLAB_SPARE_POLL.question).locator('button:has(svg.lucide-trash2)').click()
+          await pollCard(page, COLLAB_SPARE_POLL.question).getByRole('button', { name: 'Delete', exact: true }).click()
           await expect(pollsPanel(page).getByText(COLLAB_SPARE_POLL.question)).toHaveCount(0, { timeout: 15_000 })
           await settle(page)
         },
@@ -354,9 +373,9 @@ const SCRIPTS: Record<string, GuideScript> = {
     start,
     steps: [
       only(nextPanel),
-      // The time column is the first child of a row, the chips the last of its details.
+      // The time column is the first child of a row; the name, the address and the chips are its last.
       only(page => nextRow(page, WHATS_NEXT_STOPS.timed).locator('> div').first()),
-      only(page => nextRow(page, WHATS_NEXT_STOPS.timed).locator('> div').last().locator('> div').last()),
+      only(page => nextRow(page, WHATS_NEXT_STOPS.timed).locator('> div').last()),
     ],
     // Read-only panel: the guide writes nothing.
   },

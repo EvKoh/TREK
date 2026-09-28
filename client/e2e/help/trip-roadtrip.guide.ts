@@ -1,5 +1,5 @@
 import { test, expect, type Locator, type Page } from '@playwright/test'
-import { captureGuide, captureHero, settle, VIEWPORT, type GuideScript } from './guide'
+import { captureGuide, captureHero, settle, PICTURE_DAY, VIEWPORT, type GuideScript } from './guide'
 import { seededTrip, ensureRoadtripFixtures } from './fixtures'
 import { openTrip, modal, dialog } from './trip-shared'
 import { tripRoadtripContext, tripRoadtripGuides } from '../../src/help/contexts/tripRoadtrip'
@@ -40,9 +40,17 @@ const stopRow = (page: Page, name: string) => stopItem(page, name).getByRole('bu
 const kindDialog = (page: Page) => page.getByRole('dialog', { name: 'Kind of stop' })
 /** The corridor panel: before a search its heading is the only stable thing in it. */
 const corridor = (page: Page) => page.getByRole('heading', { name: 'Along the route' }).locator('xpath=ancestor::div[2]')
-const kindPicker = (page: Page) => corridor(page).locator('button[aria-haspopup="listbox"]')
+/**
+ * The two dropdowns of the Looking for line. Both are listbox triggers, so they
+ * are told apart by name: the kinds read "Looking for: Fuel", the day "Day 1".
+ */
+const kindPicker = (page: Page) => corridor(page).getByRole('button', { name: /^Looking for/ })
 const dayPicker = (page: Page) => corridor(page).getByRole('button', { name: /^Day \d/ }).first()
+/** The list a dropdown opens; only one is open at a time. */
+const openList = (page: Page) => corridor(page).locator('div[role="listbox"]')
 const settingsCard = (page: Page) => page.getByRole('button', { name: /^Driving settings/ })
+/** The drive band of day 4's long leg, the one with more than one road to it. */
+const altBand = (page: Page) => dayCard(page, 4).getByRole('button', { name: /Other ways$/ }).first()
 /** The alternatives bar floats over the map, inside neither column. */
 const altBar = (page: Page) => page.getByText('Ways to drive this leg').locator('xpath=ancestor::div[2]')
 /** The refuel band belongs to no stop: it runs across the rail between two of them. */
@@ -78,12 +86,39 @@ async function waitForTheDrive(page: Page): Promise<void> {
  * stop frames that stop instead, and the card it opens is closed again at once.
  */
 async function frameOnStop(page: Page, name: string): Promise<void> {
-  await stopRow(page, name).click()
-  await page.waitForTimeout(2500)
-  const close = page.locator('button:has(svg.lucide-x)').last()
-  if (await close.isVisible().catch(() => false)) await close.click()
+  // On the name: the row's centre can land on its Stay badge, which opens its
+  // own dialog instead of selecting the stop.
+  await stopRow(page, name).click({ position: { x: 70, y: 12 } })
+  // The place's card opens over the map; its Close sits in the card's head band.
+  const head = placeCardHead(page, name)
+  await expect(head).toBeVisible({ timeout: 15_000 })
+  await finishMapPan(page)
+  await head.getByRole('button', { name: 'Close', exact: true }).click()
+  await expect(head).toHaveCount(0)
   await settle(page)
 }
+
+/**
+ * Let the map's pan to a picked place land. Leaflet times its pan from
+ * `+new Date()`, and the clock is pinned to the picture day (`PICTURE_DAY`), so
+ * the pan starts and never gets anywhere: the map stays where it was. Moving the
+ * pinned clock a few seconds on ends it on the next frame, as a second passing
+ * would; nothing in these pictures reads the time to the second.
+ */
+async function finishMapPan(page: Page): Promise<void> {
+  await page.waitForTimeout(400)
+  await page.clock.setFixedTime(new Date(PICTURE_DAY.getTime() + 5_000))
+  await page.waitForTimeout(1200)
+  await settle(page)
+}
+
+/**
+ * The head band of the card a stop opens over the map (the place inspector):
+ * the place's name as a heading, and Close beside it. The rail prints the same
+ * name, but never as a heading.
+ */
+const placeCardHead = (page: Page, name: string) =>
+  page.getByRole('heading', { name, exact: true, level: 2 }).locator('xpath=ancestor::header[1]')
 
 type RoutePoint = { leg: number; x: number; y: number }
 
@@ -158,6 +193,15 @@ async function clearVias(page: Page): Promise<void> {
   const { tripId } = seededTrip()
   for (const via of await listVias(page)) {
     await page.request.delete(`/api/trips/${tripId}/roadtrip/days/${via.day_id}/vias/${via.id}`)
+  }
+  // A followed track is recorded per day even when the drive needed no via to
+  // follow it, and deleting vias leaves that record standing: clear it too.
+  const res = await page.request.get(`/api/trips/${tripId}/roadtrip/vias`)
+  const { tracks = [] } = (await res.json()) as { tracks?: { day_id: number }[] }
+  for (const track of tracks) {
+    await page.request.post(`/api/trips/${tripId}/roadtrip/days/${track.day_id}/vias/batch`, {
+      data: { vias: [], track: null },
+    })
   }
 }
 
@@ -309,27 +353,31 @@ const SCRIPTS: Record<string, GuideScript> = {
     },
     steps: [
       {
-        target: dayPicker,
+        // The line reads "these kinds, along this day", so the kinds come first.
+        prepare: async p => {
+          await kindPicker(p).click()
+          await expect(openList(p)).toBeVisible()
+          await settle(p)
+        },
+        target: openList,
         act: async p => {
-          await dayPicker(p).click()
-          // The rows are options named by the day's number and its label, "2 Day 2".
-          await p.getByRole('option', { name: /\bDay 2$/ }).last().click()
-          await expect(dayPicker(p)).toContainText('Day 2')
+          // Fuel is what the panel opens on for a petrol car; Food is ticked beside it.
+          await openList(p).getByRole('option', { name: 'Food' }).click()
+          await expect(openList(p).getByRole('option', { name: 'Food' })).toHaveAttribute('aria-selected', 'true')
+          // The list stays open for a second kind; a second click on its trigger shuts it.
+          await kindPicker(p).click()
+          await expect(openList(p)).toHaveCount(0)
+          await expect(kindPicker(p)).toHaveAccessibleName(/Food/)
           await settle(p)
         },
       },
       {
-        prepare: async p => {
-          await kindPicker(p).click()
-          await expect(corridor(p).locator('div[role="listbox"]')).toBeVisible()
-          await settle(p)
-        },
-        target: p => corridor(p).locator('div[role="listbox"]'),
+        target: dayPicker,
         act: async p => {
-          await corridor(p).getByRole('option', { name: 'Food' }).click()
-          // The list closes on a second click of its own trigger, not on Escape.
-          await kindPicker(p).click()
-          await expect(kindPicker(p)).toContainText('Food')
+          await dayPicker(p).click()
+          // The rows are options named by the day's number and its label, "2 Day 2".
+          await openList(p).getByRole('option', { name: /\bDay 2$/ }).click()
+          await expect(dayPicker(p)).toContainText('Day 2')
           await settle(p)
         },
       },
@@ -376,9 +424,12 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openRoadtrip,
     steps: [
       {
-        target: p => stopItem(p, 'Meiji Jingu'),
+        // A stop of day 4, the drive out of Tokyo: the one leg long enough to be
+        // worth bending, and once Hakone is in the middle of the map it runs
+        // east across the open map rather than under the right column.
+        target: p => stopItem(p, 'Hakone Shrine'),
         act: async p => {
-          await frameOnStop(p, 'Meiji Jingu')
+          await frameOnStop(p, 'Hakone Shrine')
           await aimAtLeg(p)
         },
       },
@@ -443,11 +494,14 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openRoadtrip,
     steps: [
       {
-        target: p => dayCard(p, 2).getByRole('button', { name: /Other ways$/ }).last(),
+        // Day 4's drive out of Tokyo, not a city leg: for three kilometres across
+        // Shibuya the router knows one sensible way, and the bar says only that.
+        target: altBand,
         act: async p => {
-          await dayCard(p, 2).getByRole('button', { name: /Other ways$/ }).last().click()
+          await altBand(p).click()
           await expect(p.getByText('Ways to drive this leg')).toBeVisible({ timeout: 60_000 })
           await expect(p.getByText('Asking the router…')).toHaveCount(0, { timeout: 60_000 })
+          await expect(altBar(p).getByRole('button', { name: /km/ }).nth(1)).toBeVisible({ timeout: 60_000 })
           await settle(p)
         },
       },
@@ -512,7 +566,9 @@ const SCRIPTS: Record<string, GuideScript> = {
       // Not toggled on purpose: each of these switches sends every leg of the
       // trip back through the avoidance router, which is minutes of waiting for
       // one picture of a row of switches.
-      only(p => modal(p).getByRole('button', { name: 'Toll roads' }).locator('xpath=ancestor::section[1]')),
+      // By its title, not by a switch: without an avoidance router the switches
+      // are replaced by a dash and the section is all that is left of it.
+      only(p => modal(p).getByText('Avoid where possible', { exact: true }).locator('xpath=ancestor::section[1]')),
       {
         prepare: async p => {
           await closeModal(p)

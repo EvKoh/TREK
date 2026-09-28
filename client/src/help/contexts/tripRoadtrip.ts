@@ -21,7 +21,7 @@ export const { context: tripRoadtripContext, guides: tripRoadtripGuides } = defi
   docs: [{ slug: RT }, { slug: RT, anchor: 'what-needs-a-connection' }],
   guides: [
     ['roadtrip-mode', 'route', 'guide', 5, 3, { slug: RT, anchor: 'switching-to-road-trip' }, ['read-day-plan', 'roadtrip-limits'], true],
-    ['roadtrip-stops', 'mapPin', 'guide', 6, 3, { slug: RT, anchor: 'stops-on-the-way' }, ['roadtrip-corridor', 'set-stop-times'], true],
+    ['roadtrip-stops', 'mapPin', 'guide', 6, 4, { slug: RT, anchor: 'stops-on-the-way' }, ['roadtrip-corridor', 'set-stop-times'], true],
     ['roadtrip-corridor', 'search', 'guide', 5, 3, { slug: RT, anchor: 'search-along-the-route' }, ['roadtrip-stops', 'roadtrip-refuel'], true],
     ['roadtrip-via', 'map', 'guide', 5, 3, { slug: RT, anchor: 'via-points' }, ['roadtrip-alternatives', 'roadtrip-track']],
     ['roadtrip-alternatives', 'repeat', 'quick', 4, 2, { slug: RT, anchor: 'other-ways-and-avoidance' }, ['roadtrip-via', 'roadtrip-limits']],

@@ -32,6 +32,14 @@ const clusters = (page: Page) => page.locator('#trek-map .marker-cluster-custom'
  */
 const pins = (page: Page) =>
   page.locator('#trek-map .leaflet-marker-icon:not(:has(.marker-cluster-custom)):not([aria-label])')
+/** A place pin wearing the place's photo rather than its category icon. */
+const photoPins = (page: Page) => pins(page).filter({ has: page.locator('img') })
+/**
+ * The pin the markers guide works on after its bubble opened, marked when it
+ * was chosen: a photo pin the pointer can reach, or any reachable pin when no
+ * photo has landed.
+ */
+const markerPin = (page: Page) => page.locator('#trek-map .leaflet-marker-icon[data-help-pin]')
 /** The pin of the stop that is number `n` in the open day. */
 const badged = (page: Page, n: number) => pins(page).filter({ hasText: new RegExp(`^\\s*${n}\\s*$`) }).first()
 /** An explore result: the one kind of marker with an accessible name. */
@@ -77,8 +85,12 @@ const glCanvas = (page: Page) => page.locator('.maplibregl-canvas')
  */
 const resetNorth = (page: Page) => page.getByRole('button', { name: 'Reset north' })
 const compassPill = (page: Page) => resetNorth(page).locator('xpath=..')
-/** The sheet a booking's endpoint opens. Its own portal, and the only Close on the plan. */
-const sheetClose = (page: Page) => page.getByRole('button', { name: 'Close', exact: true })
+/**
+ * The booking detail an endpoint opens: a DialogShell portal, so `dialog` finds
+ * its panel, and its Close is the round X in the head band.
+ */
+const bookingDetail = (page: Page) => dialog(page)
+const bookingDetailClose = (page: Page) => bookingDetail(page).getByRole('button', { name: 'Close', exact: true })
 /** A row of the places column. */
 const row = (page: Page, name: string) => page.getByRole('option').filter({ hasText: name }).first()
 /**
@@ -91,6 +103,47 @@ const row = (page: Page, name: string) => page.getByRole('option').filter({ hasT
 const inspector = (page: Page) => page.getByTestId('inspector-scroll')
 /** The details panel's collapse: it keeps the day selected, where its close would drop it. */
 const collapseDayDetails = (page: Page) => page.locator('button:has(svg.lucide-chevrons-down)')
+/** A day card's header in the days column, the drop target of a dragged pin. */
+const dayHeader = (page: Page, n: number) => page.getByRole('button', { name: new RegExp(`^${n} .*Day ${n} `) })
+
+/**
+ * Fold the day details away and take the focus off the fold button. The
+ * button keeps the focus after the click, and TREK's tooltip shows on focus,
+ * so its Expand would otherwise stand at the foot of every later picture.
+ */
+async function foldDayDetails(page: Page): Promise<void> {
+  await collapseDayDetails(page).last().click()
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
+}
+
+/**
+ * The part of the map between the two floating columns, in page pixels. A
+ * pin under a column can still be hovered at its edge, but a picture of it is
+ * a picture of the column.
+ */
+async function openCorridor(page: Page): Promise<{ left: number; right: number }> {
+  const box = await map(page).boundingBox()
+  if (!box) throw new Error('the map has no box')
+  return { left: box.x + 420, right: box.x + box.width - 420 }
+}
+
+/** Like `reachable`, but the pin also has to stand in the open part of the map when one does. */
+async function reachableInView(page: Page, locator: Locator, fromEnd = false): Promise<number> {
+  const { left, right } = await openCorridor(page)
+  const total = await locator.count()
+  for (let i = 0; i < total; i++) {
+    const index = fromEnd ? total - 1 - i : i
+    const b = await locator.nth(index).boundingBox()
+    if (!b || b.x < left || b.x + b.width > right || b.y < 260) continue
+    try {
+      await locator.nth(index).hover({ trial: true, timeout: 1500 })
+      return index
+    } catch {
+      // Covered by another marker.
+    }
+  }
+  return reachable(locator, fromEnd)
+}
 
 /**
  * A spot on the map with nothing on it: right of the days column, left of the
@@ -121,12 +174,7 @@ async function reachable(locator: Locator, fromEnd = false): Promise<number> {
 }
 
 /**
- * Move the map, so "Search this area" appears. Leaflet's own keyboard panning
- * rather than a mouse drag: a drag has to start on bare map, and after a search
- * there are sixty result pins that each swallow the press it starts with.
- */
-/**
- * Drag the map the way a reader would.
+ * Drag the map the way a reader would, so "Search this area" appears.
  *
  * Not the arrow keys: Leaflet only listens for them while its container has
  * focus, and focusing it from here did not take, so the map never moved and the
@@ -134,7 +182,7 @@ async function reachable(locator: Locator, fromEnd = false): Promise<number> {
  * point checked to be empty, because a press on a marker drags the place onto a
  * day instead of moving the map.
  */
-async function panMap(page: Page): Promise<void> {
+async function panMap(page: Page, by: { x: number; y: number } = { x: -176, y: -72 }): Promise<void> {
   const box = await map(page).boundingBox()
   if (!box) throw new Error('the map has no box to drag')
   const candidates = [0.3, 0.7, 0.5].flatMap(fx => [0.75, 0.25].map(fy => ({
@@ -153,7 +201,7 @@ async function panMap(page: Page): Promise<void> {
   await page.mouse.move(from.x, from.y)
   await page.mouse.down()
   // In steps, so Leaflet reads a drag rather than a click.
-  for (let i = 1; i <= 8; i++) await page.mouse.move(from.x - i * 22, from.y - i * 9, { steps: 2 })
+  for (let i = 1; i <= 8; i++) await page.mouse.move(from.x + (by.x * i) / 8, from.y + (by.y * i) / 8, { steps: 2 })
   await page.mouse.up()
   await settle(page)
 }
@@ -175,7 +223,7 @@ async function panMap(page: Page): Promise<void> {
  */
 async function openOnTokyo(page: Page): Promise<void> {
   await openTripOnDay(page, 1)
-  await collapseDayDetails(page).last().click()
+  await foldDayDetails(page)
   await expect(badged(page, 1)).toBeVisible({ timeout: 20_000 })
   await settle(page)
 }
@@ -273,24 +321,32 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await clusters(p).nth(bubble).click()
           await expect.poll(() => pins(p).count(), { timeout: 20_000 }).toBeGreaterThan(2)
+          // The pin's own photo is a thumb cut after the page has loaded, and
+          // until it lands the pin is a bare icon beside a card that already
+          // shows the photo. Bounded: a place with no photo anywhere stays an icon.
+          await expect.poll(() => photoPins(p).count(), { timeout: 20_000 }).toBeGreaterThan(0).catch(() => {})
           await settle(p)
-          pin = await reachable(pins(p))
+          // Marked rather than counted: more thumbs keep landing, and an index
+          // among the photo pins would point at another pin a moment later.
+          const photoPin = await reachable(photoPins(p)).catch(() => -1)
+          const chosen = photoPin >= 0 ? photoPins(p).nth(photoPin) : pins(p).nth(await reachable(pins(p)))
+          await chosen.evaluate(el => el.setAttribute('data-help-pin', ''))
         },
       },
       {
         // captureGuide hovers the target itself; this only makes sure the card
         // is up before the shot rather than a frame after it.
         prepare: async p => {
-          await pins(p).nth(pin).hover()
+          await markerPin(p).hover()
           await expect(hoverCard(p)).toBeVisible({ timeout: 10_000 })
         },
-        target: p => pins(p).nth(pin),
+        target: markerPin,
       },
       {
         // The picture worth having is the panel the click opens, not the pin
         // again, so the click is the preparation and the panel is the target.
         prepare: async p => {
-          await pins(p).nth(pin).click()
+          await markerPin(p).click()
           await expect(inspector(p)).toBeVisible({ timeout: 15_000 })
           await settle(p)
         },
@@ -306,7 +362,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await selectDay(p, 1)
           // The panel IS the selection, so it is folded away rather than closed:
           // closing it would take the numbers off the pins again.
-          await collapseDayDetails(p).last().click()
+          await foldDayDetails(p)
           await expect(badged(p, 1)).toBeVisible({ timeout: 20_000 })
           await settle(p)
         },
@@ -315,11 +371,15 @@ const SCRIPTS: Record<string, GuideScript> = {
       {
         // Picture only, like the other drags in this family: HTML5 drag is what
         // the map hands the day plan, and a synthesised one does not start it.
+        // Day 1's second stop onto day 3, the first empty day: a drop there
+        // plainly plans something new, where one onto a day that already holds
+        // the place would read as a move.
         prepare: async p => {
-          pin = await reachable(pins(p))
+          await expect(badged(p, 2)).toBeVisible({ timeout: 20_000 })
+          await settle(p)
         },
-        target: p => pins(p).nth(pin),
-        dropTo: p => p.getByRole('button', { name: /^2 .*Day 2 / }).locator('xpath=..'),
+        target: p => badged(p, 2),
+        dropTo: p => dayHeader(p, 3).locator('xpath=..'),
       },
     ],
   },
@@ -341,7 +401,12 @@ const SCRIPTS: Record<string, GuideScript> = {
       },
       {
         prepare: async p => {
-          await panMap(p)
+          // Towards the right. The search covers the whole map, the part under
+          // the two columns included, and on day 1's frame most of the first
+          // answer lay under the days column; dragged this way, the west of the
+          // view is open map when it is searched again, and the new pins are
+          // where a reader can see them.
+          await panMap(p, { x: 440, y: 96 })
           await expect(p.getByRole('button', { name: 'Search this area' })).toBeVisible({ timeout: 15_000 })
         },
         target: p => p.getByRole('button', { name: 'Search this area' }),
@@ -353,7 +418,7 @@ const SCRIPTS: Record<string, GuideScript> = {
       },
       {
         prepare: async p => {
-          pin = await reachable(poiPins(p), true)
+          pin = await reachableInView(p, poiPins(p), true)
         },
         target: p => poiPins(p).nth(pin),
         act: async p => {
@@ -491,6 +556,23 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await overviewPanel(p).getByRole('button').first().click()
           await settle(p)
+          // The text's second half: the wheel over Tokyo. With the whole trip
+          // shown, the camera stays on all of it after the pick (the fit that
+          // follows takes in every day's line), and there a day of ten
+          // kilometres is a few pixels under a bubble; four notches bring days
+          // 1 and 2 out side by side. Tokyo is the easternmost bubble of the seed.
+          const boxes = await clusters(p).evaluateAll(els => els.map(el => {
+            const r = el.getBoundingClientRect()
+            return { x: r.x + r.width / 2, y: r.y + r.height / 2 }
+          }))
+          const tokyo = boxes.sort((a, b) => b.x - a.x)[0]
+          if (!tokyo) throw new Error('no bubble on the map to zoom in on')
+          await p.mouse.move(tokyo.x, tokyo.y)
+          for (let i = 0; i < 4; i++) {
+            await p.mouse.wheel(0, -100)
+            await p.waitForTimeout(450)
+          }
+          await settle(p)
         },
       },
       // No act: the guide ends with the whole trip on the map, which is what
@@ -517,16 +599,16 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: p => endpoints(p).nth(pin),
         act: async p => {
           await endpoints(p).nth(pin).click()
-          await expect(sheetClose(p)).toBeVisible({ timeout: 15_000 })
+          await expect(bookingDetailClose(p)).toBeVisible({ timeout: 15_000 })
           await settle(p)
         },
       },
       {
-        target: p => sheetClose(p).locator('xpath=ancestor::div[2]'),
-        // The booking sheet is its own portal and ignores Escape.
+        // The whole detail, head band to footer: the text walks through all of it.
+        target: bookingDetail,
         act: async p => {
-          await sheetClose(p).click()
-          await expect(sheetClose(p)).toHaveCount(0)
+          await bookingDetailClose(p).click()
+          await expect(modal(p)).toHaveCount(0)
           await settle(p)
         },
       },

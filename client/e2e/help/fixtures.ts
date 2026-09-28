@@ -1938,9 +1938,10 @@ export const COLLAB_LINKS = [
 /**
  * A poll to spend. Closing one cannot be undone (there is no reopen route), so
  * the guide about closing must not be pointed at either of the seeded polls.
- * `ensureCollabFixtures` also casts one vote on it: a closed poll nobody voted
- * on has no winning option, and `isWinner` in `CollabPolls.tsx` needs a count
- * above zero before it tints one green, which is what the guide's text says.
+ * `ensureCollabFixtures` also has a member cast one vote on it: a closed poll
+ * nobody voted on has no winning option, and `isWinner` in `CollabPolls.tsx`
+ * needs a count above zero before it tints one green, which is what the guide's
+ * text says.
  */
 export const COLLAB_SPARE_POLL = {
   question: 'Rent a car for the Hakone leg?',
@@ -1956,6 +1957,27 @@ export const COLLAB_SPARE_POLL = {
  * evening for a time on today to still be ahead.
  */
 export const WHATS_NEXT_STOPS = { timed: 'Nishiki Market', untimed: 'Fushimi Inari Taisha' }
+
+/** The seeded member who votes on the spare poll. */
+const COLLAB_VOTER = { email: 'mira@example.com', password: 'DemoSeed12345!' }
+
+/**
+ * A request context acting as COLLAB_VOTER, or undefined when the login fails.
+ * Its own context with a bearer token: a login on the shared one would set the
+ * session cookie there, and every later write would be the member's.
+ */
+async function collabMember(): Promise<APIRequestContext | undefined> {
+  const anon = await apiRequest.newContext({ baseURL: E2E_BASE_URL, storageState: undefined })
+  const login = await anon.post('/api/auth/login', { data: COLLAB_VOTER })
+  const token = login.ok() ? ((await login.json()) as { token?: string }).token : undefined
+  await anon.dispose()
+  if (!token) return undefined
+  return apiRequest.newContext({
+    baseURL: E2E_BASE_URL,
+    storageState: undefined,
+    extraHTTPHeaders: { Authorization: `Bearer ${token}` },
+  })
+}
 
 /**
  * What the Collab guides need beyond the seed, which already holds the three
@@ -1987,7 +2009,12 @@ export async function ensureCollabFixtures(api: APIRequestContext): Promise<void
   if (!spareRes.ok()) throw new Error(`could not create the spare poll: ${spareRes.status()} ${await spareRes.text()}`)
   const { poll: spare } = (await spareRes.json()) as { poll: { id: number } }
   // One vote on it, so the poll the close-poll guide closes has a winner to tint.
-  const voted = await api.post(`${collab}/polls/${spare.id}/vote`, { data: { option_index: 0 } })
+  // Cast by another member: a winner the viewer picked wears the accent tint of
+  // their own vote instead of the green the guide's text describes. A login that
+  // fails falls back to the admin's vote rather than to no winner at all.
+  const voter = await collabMember()
+  const voted = await (voter ?? api).post(`${collab}/polls/${spare.id}/vote`, { data: { option_index: 0 } })
+  await voter?.dispose()
   if (!voted.ok()) throw new Error(`could not vote on the spare poll: ${voted.status()} ${await voted.text()}`)
 
   // What's Next lists a stop on a later day, or one on today whose start has not

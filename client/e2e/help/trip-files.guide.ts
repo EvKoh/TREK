@@ -1,7 +1,7 @@
 import { test, expect, type Page, type Locator } from '@playwright/test'
 import { captureGuide, captureHero, typeInto, beat, settle, VIEWPORT, type GuideScript } from './guide'
 import { seededTrip, ensureFilesFixtures, filesPdfFixture, filesImageFixture, drawPdf } from './fixtures'
-import { openTrip, portalDialog, modal, dialog } from './trip-shared'
+import { openTrip, modal, dialog } from './trip-shared'
 import { ensureNextcloudFolder, NEXTCLOUD_CONNECTION, NEXTCLOUD_DOCUMENTS, NEXTCLOUD_FOLDER, resetDocSync, toggleAddon } from './external'
 import { tripFilesContext, tripFilesGuides } from '../../src/help/contexts/tripFiles'
 import type { HelpGuide } from '../../src/help/types'
@@ -36,11 +36,16 @@ const NOTE = 'Seat 34K, boarding 12:20'
 
 const openFiles = (page: Page) => openTrip(page, { tab: 'dateien' })
 
-/** A file row: the only `.group` block the Files panel renders, one per file. */
-const row = (page: Page, name: string) => page.locator('div.group').filter({ hasText: name }).first()
-/** A row's action buttons take their accessible name from their `title`. */
-const action = (page: Page, name: string, title: string) =>
-  row(page, name).getByRole('button', { name: title, exact: true })
+/**
+ * The file rows, in the order the list shows them. A row is the `.group` card
+ * whose last child holds the row's icon actions (`.file-actions`); matching on
+ * that keeps any other hover group on the trip page out of the count.
+ */
+const rows = (page: Page) => page.locator('div.group:has(> div.file-actions)')
+const row = (page: Page, name: string) => rows(page).filter({ hasText: name }).first()
+/** A row's actions are icons; each takes its accessible name from its tooltip. */
+const action = (page: Page, name: string, label: string) =>
+  row(page, name).getByRole('button', { name: label, exact: true })
 /** react-dropzone always sets `role="presentation"` on the box it wraps. */
 const dropzone = (page: Page) => page.locator('div[role="presentation"]').filter({ hasText: 'Drop files here' }).first()
 /** The filter row, found through the one tab that is always there. */
@@ -54,10 +59,16 @@ const starTab = (page: Page) => tabRow(page).getByRole('button').filter({ has: p
  * fixture adding a file of its own.
  */
 const tabCount = async (tab: Locator): Promise<number> => Number(((await tab.textContent()) ?? '').replace(/\D+/g, ''))
-/** Trash and Empty Trash both contain "Trash", so the toolbar's own button needs `exact`. */
+/**
+ * The trash icon at the right end of the bar, named by its tooltip. Trash and
+ * Empty Trash both contain "Trash", so it needs `exact`.
+ */
 const trashTab = (page: Page) => page.getByRole('button', { name: 'Trash', exact: true })
-/** Assign File is a raw portal with no shared backdrop class; `portalDialog` finds its card. */
-const assignDialog = (page: Page) => portalDialog(page, page.getByText('Assign File', { exact: true }))
+/**
+ * Assign File is a DialogShell: the panel is the `dialog`, and the eyebrow in
+ * its head band (Assign File, over the file's name) is what labels it.
+ */
+const assignDialog = (page: Page) => page.getByRole('dialog', { name: 'Assign File' })
 const noteBox = (page: Page) => assignDialog(page).getByPlaceholder('Add a note...')
 /**
  * The lightbox, found by the one header button only it and the document preview
@@ -67,21 +78,26 @@ const noteBox = (page: Page) => assignDialog(page).getByPlaceholder('Add a note.
 const lightbox = (page: Page) =>
   page.locator('div[role="presentation"]').filter({ has: page.getByRole('button', { name: 'Open in new tab' }) }).first()
 /**
- * The preview for everything that is not a picture. For a PDF it is the card
- * around the browser's embedded viewer, found by the one `<object>` only it
- * renders; the markdown preview (`.collab-note-md`) has no step of its own.
+ * The preview for everything that is not a picture: a DialogShell panel with
+ * the file's name in the head band. For a PDF it holds the browser's embedded
+ * viewer, the one `<object>` only it renders; the markdown preview
+ * (`.collab-note-md`) has no step of its own.
  */
-const pdfPreview = (page: Page) => portalDialog(page, page.locator('object[type="application/pdf"]'))
+const pdfPreview = (page: Page) => page.getByRole('dialog').filter({ has: page.locator('object[type="application/pdf"]') })
 const pdfViewer = (page: Page) => pdfPreview(page).locator('object[type="application/pdf"]')
+/** The round × in a dialog's head band, named Close by its tooltip. */
+const closeX = (dialog: Locator) => dialog.getByRole('button', { name: 'Close', exact: true }).first()
 /**
- * The × of a portal. The assign dialog and the document preview have no key
- * handler at all, so it is their only way out; the lightbox does listen for
- * Escape, which is what its own step uses.
+ * A DialogShell hands the focus back to whatever opened it when it closes,
+ * and a Tooltip opens on focus as well as on hover. The opener of the assign
+ * dialog and of document sync is an icon with a tooltip, so without this the
+ * after-picture shows "Assign" or "Document sync" floating under the pointer
+ * that has long since moved away.
  */
-const closeX = (dialog: Locator) => dialog.locator('button:has(svg.lucide-x)').first()
-/** The toolbar's way into document sync; there only while a store is on offer (see beforeAll). */
+const dropFocus = (page: Page) => page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
+/** The bar's way into document sync; there only while a store is on offer (see beforeAll). */
 const syncButton = (page: Page) => page.getByRole('button', { name: 'Document sync', exact: true })
-/** The dialog's title carries the trip's name under it, so the heading is matched by its first line. */
+/** The head band's title; the trip's name stands under it as a line of its own. */
 const syncTitle = (page: Page) => modal(page).getByRole('heading', { name: /^Document sync/ })
 /**
  * A store row in the dialog's sidebar. Its accessible name runs on into the
@@ -100,6 +116,8 @@ const folderRow = (page: Page) => dialog(page).locator('li button').filter({ has
 const bindingCard = (page: Page) => dialog(page).locator('article').first()
 /** Reads Syncing, disabled, while a run is going; the locator waits it out. */
 const syncNow = (page: Page) => bindingCard(page).getByRole('button', { name: 'Sync now' })
+/** A healthy binding is a green dot beside the store's name, named In sync by its tooltip. */
+const inSync = (page: Page) => bindingCard(page).getByRole('img', { name: 'In sync' })
 
 interface ApiFile {
   id: number
@@ -185,6 +203,8 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
+        // The whole panel: the head band with the file's name, the note and
+        // the two lists are what the step's text walks through.
         target: assignDialog,
         act: async p => {
           await closeX(assignDialog(p)).click()
@@ -207,9 +227,6 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openFiles,
     steps: [
       {
-        prepare: async p => {
-          await row(p, LINKED).hover()
-        },
         target: p => action(p, LINKED, 'Assign'),
         act: async p => {
           await action(p, LINKED, 'Assign').click()
@@ -252,7 +269,10 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await closeX(assignDialog(p)).click()
           await expect(assignDialog(p)).toHaveCount(0)
-          await expect(row(p, LINKED).getByText(`Transport · ${FLIGHT}`)).toBeVisible({ timeout: 20_000 })
+          await dropFocus(p)
+          // A badge carries the name alone now; what it links to is its tooltip.
+          await expect(row(p, LINKED).getByText(FLIGHT, { exact: true })).toBeVisible({ timeout: 20_000 })
+          await expect(row(p, LINKED).getByText(PLACE, { exact: true })).toBeVisible({ timeout: 20_000 })
           await settle(p)
         },
       },
@@ -264,9 +284,6 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openFiles,
     steps: [
       {
-        prepare: async p => {
-          await row(p, STARRED).hover()
-        },
         target: p => action(p, STARRED, 'Star'),
         act: async p => {
           await action(p, STARRED, 'Star').click()
@@ -278,17 +295,17 @@ const SCRIPTS: Record<string, GuideScript> = {
         // Sorting is the server's (starred first, then newest first), so the
         // list is only right once the reload has come back.
         prepare: async p => {
-          await expect(p.locator('div.group').first()).toContainText(STARRED, { timeout: 20_000 })
+          await expect(rows(p).first()).toContainText(STARRED, { timeout: 20_000 })
           await settle(p)
         },
-        target: p => p.locator('div.group').first(),
+        target: p => rows(p).first(),
       },
       {
         target: starTab,
         act: async p => {
           const starred = await tabCount(starTab(p))
           await starTab(p).click()
-          await expect(p.locator('div.group')).toHaveCount(starred)
+          await expect(rows(p)).toHaveCount(starred)
           await settle(p)
         },
       },
@@ -305,7 +322,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           const pdfs = await tabCount(p.getByRole('button', { name: /^PDFs \d+$/ }))
           await p.getByRole('button', { name: /^PDFs \d+$/ }).click()
-          await expect(p.locator('div.group')).toHaveCount(pdfs)
+          await expect(rows(p)).toHaveCount(pdfs)
           await settle(p)
         },
       },
@@ -322,7 +339,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           const all = await tabCount(p.getByRole('button', { name: /^All \d+$/ }))
           await p.getByRole('button', { name: /^All \d+$/ }).click()
-          await expect(p.locator('div.group')).toHaveCount(all)
+          await expect(rows(p)).toHaveCount(all)
           await settle(p)
         },
       },
@@ -333,9 +350,6 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openFiles,
     steps: [
       {
-        prepare: async p => {
-          await row(p, PHOTO).hover()
-        },
         // Two buttons in the row carry the file's name: the thumbnail and the
         // name itself. The reader is told about the name, which comes second.
         target: p => row(p, PHOTO).getByRole('button', { name: PHOTO }).last(),
@@ -400,9 +414,6 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        prepare: async p => {
-          await row(p, STARRED).hover()
-        },
         target: p => action(p, STARRED, 'Download'),
         // The button fetches the bytes and clicks a synthetic anchor, so the
         // browser reports a real download.
@@ -420,9 +431,6 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: openFiles,
     steps: [
       {
-        prepare: async p => {
-          await row(p, DOOMED).hover()
-        },
         target: p => action(p, DOOMED, 'Delete'),
         act: async p => {
           await action(p, DOOMED, 'Delete').click()
@@ -452,7 +460,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         // Empty Trash is there because the fixture leaves one document in the
         // trash. It asks with the browser's own confirm, which Playwright
         // dismisses, so clicking it would do nothing at all; the step shows the
-        // button and leaves the trash by the toolbar instead.
+        // button and leaves the trash by the trash icon instead.
         target: p => p.getByRole('button', { name: 'Empty Trash' }),
         act: async p => {
           await trashTab(p).click()
@@ -542,18 +550,20 @@ const SCRIPTS: Record<string, GuideScript> = {
         // now while it is going answers busy and moves nothing, and the card
         // only learns of that first run from the ping it sends when it is
         // through. So the click is repeated until the card reports In sync,
-        // which is a dot with a title once the state is good.
+        // which is a dot named by its tooltip once the state is good.
         prepare: async p => {
           await expect(async () => {
             await syncNow(p).click({ timeout: 15_000 })
-            await expect(bindingCard(p).getByTitle('In sync')).toBeVisible({ timeout: 15_000 })
+            await expect(inSync(p)).toBeVisible({ timeout: 15_000 })
           }).toPass({ timeout: 120_000, intervals: [3_000] })
           await settle(p)
         },
         target: bindingCard,
+        // Closed with the × in the head band, as the step's text says.
         act: async p => {
-          await p.keyboard.press('Escape')
+          await closeX(dialog(p)).click()
           await expect(modal(p)).toHaveCount(0, { timeout: 20_000 })
+          await dropFocus(p)
           // The run's file:created events put the pulled documents at the top of the list.
           for (const name of NEXTCLOUD_DOCUMENTS) await expect(row(p, name)).toBeVisible({ timeout: 30_000 })
           await settle(p)
@@ -576,9 +586,9 @@ test.describe.configure({ mode: 'serial' })
 
 test.beforeAll(async ({ request }) => {
   await ensureFilesFixtures(request)
-  // A store on offer puts Document sync next to Trash for the trip's owner,
-  // which is how bullet 6 of the screen text describes the toolbar; on for the
-  // whole file, so the hero and all seven guides show the same toolbar.
+  // A store on offer puts Document sync beside the trash icon for the trip's
+  // owner, which is how bullet 6 of the screen text describes the bar; on for
+  // the whole file, so the hero and all seven guides show the same bar.
   await toggleAddon(request, 'nextcloud', true)
 })
 

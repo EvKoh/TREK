@@ -1125,7 +1125,7 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.step.1':
     'In Travel & map houdt Boekingsroutes altijd tonen vluchten en treinen op de kaart, ook als hun dag niet open is; Plaatsen op de kaart ontdekken toont de pil om plaatsen te vinden; Route optimaliseren vanaf accommodatie laat de route beginnen waar je slaapt.',
   'help.guide.travel-map-prefs.step.2':
-    'Boekingscodes vervagen verbergt bevestigingsnummers tot je eroverheen beweegt; Routelabels voor boekingen schrijft de naam van de boeking langs zijn route.',
+    'Boekingscodes vervagen verbergt bevestigingsnummers tot je eroverheen beweegt; Routelabels voor boekingen zet de luchthavencode of de naam van het station op de pil aan elk uiteinde van de route van een boeking, waar anders alleen het icoon staat.',
   'help.guide.travel-map-prefs.result': 'De reiskaart volgt dit op elke reis, tot je het weer terugzet.',
   'help.guide.travel-map-prefs.tip.1':
     'Dit is per account, niet per reis. Leden van een gedeelde reis zien elk hun eigen keuzes.',
@@ -1883,7 +1883,7 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.4':
     'Loop na wat het formulier bevat: de naam staat in de kop van het venster en is het enige verplichte veld; de pil Categorie eronder kiest een van de categorieën van de reis, en de + ernaast maakt er ter plekke een nieuwe aan. Adres, Breedtegraad en Lengtegraad komen uit de zoekopdracht of typ je zelf; Beschrijving en Notities zijn van jou; Website neemt de link.',
   'help.guide.create-place.step.5':
-    'Klik op Toevoegen. Ligt er al een plek met dezelfde naam in de reis, dan zegt het formulier dat en wordt de knop Toch toevoegen.',
+    'Klik op Toevoegen. Ligt er al een plek met dezelfde naam of op hetzelfde punt in de reis, dan zegt TREK dat en wordt de knop Toch toevoegen.',
   'help.guide.create-place.result':
     'De plek staat in de lijst en op de kaart, onder Ongepland tot hij op een dag wordt gezet.',
   'help.guide.create-place.tip.1':
@@ -2216,14 +2216,14 @@ const help: TranslationStrings = {
   'help.ctx.trip-place.bullet.5':
     'De rij onderaan: Toevoegen aan dag of Verwijderen van dag zolang een dag open is, dan In collectie opslaan, Navigatie, Website openen, Bewerken en Verwijderen.',
   'help.ctx.trip-place.bullet.6':
-    'Een plek die uit het zoeken is gekozen draagt wat de TREK-index of OpenStreetMap over hem weten: Openingstijden of Gesloten tussen de pillen van de kop, met een groene of rode ring om de afbeelding, beoordeeld naar de eigen klok van de plek, ook zijn telefoonnummer als pil, Openingstijden verderop met de regel van de dag op de rij en de hele week achter een klik, en zijn website achter Website openen. De beoordeling van Google verschijnt alleen bij een plek die via Google is gevonden, op een TREK met een Google-sleutel.',
+    'Een plek die uit het zoeken is gekozen draagt wat de TREK-index of OpenStreetMap over hem weten: Geopend of Gesloten tussen de pillen van de kop, met een groene of rode ring om de afbeelding, beoordeeld naar de eigen klok van de plek, ook zijn telefoonnummer als pil, Openingstijden verderop met de regel van de dag op de rij en de hele week achter een klik, en zijn website achter Website openen. De beoordeling van Google verschijnt alleen bij een plek die via Google is gevonden, op een TREK met een Google-sleutel.',
   // read-place
   'help.guide.read-place.title': 'Wat de plaatsdetails je over een plek vertellen',
   'help.guide.read-place.goal': 'Lees alles wat de reis over een plek weet, in één venster.',
   'help.guide.read-place.step.1':
     'Klik in de dagenkolom op de stop die je wilt lezen. De plaatsdetails gaan boven de kaart open en de stop blijft gemarkeerd in zijn dag.',
   'help.guide.read-place.step.2':
-    'De kop: de ronde afbeelding, de naam en het adres op één regel; de tooltip ervan bevat het hele adres. De pillen daaronder zeggen met Openingstijden of Gesloten of de plek op dit moment open is, naar zijn eigen klok, met een bijpassende groene of rode ring om de afbeelding, en dragen het telefoonnummer, dat een klik doorgeeft aan je telefoon-app, en de exacte coördinaten. De X rechts sluit de details weer.',
+    'De kop: de ronde afbeelding, de naam en het adres op één regel; de tooltip ervan bevat het hele adres. De pillen daaronder zeggen met Geopend of Gesloten of de plek op dit moment open is, naar zijn eigen klok, met een bijpassende groene of rode ring om de afbeelding, en dragen het telefoonnummer, dat een klik doorgeeft aan je telefoon-app, en de exacte coördinaten. De X rechts sluit de details weer.',
   'help.guide.read-place.step.3':
     'Beoordeling komt als eerste onder de kop: de sterren die elke reiziger de plek gaf, met het gemiddelde en hoeveel er stemden. Nog niet beoordeeld zolang niemand dat deed.',
   'help.guide.read-place.step.4':
@@ -2415,17 +2415,17 @@ const help: TranslationStrings = {
   'help.ctx.trip-files.summary':
     'Elk document van de reis in één lijst: tickets, bevestigingen, passen en foto’s, elk met een notitie, een koppeling naar de plek of de boeking waar het bij hoort, en een prullenbak waar het weer uit kan komen.',
   'help.ctx.trip-files.bullet.1':
-    'Sleep bestanden hierheen bovenaan neemt de bestanden aan; een klik op het vak opent de bestandskiezer. De regel eronder noemt de bestandstypen die deze TREK aanneemt en de grens van 50 MB per bestand.',
+    'Sleep bestanden hierheen, het gestippelde vak onder de balk, neemt de bestanden aan; een klik erop opent de bestandskiezer. Erin staan de bestandstypen die deze TREK aanneemt en Max 50 MB, de grens per bestand.',
   'help.ctx.trip-files.bullet.2':
-    "De tabbladen zeggen wat de lijst toont: Alle, PDF's, Afbeeldingen en Documenten, elk met zijn aantal. Een stertabblad komt erbij zodra een bestand een ster heeft, Collab-notities zodra een notitie een bijlage draagt.",
+    "De balk bovenaan bevat Bestanden en de filtertabbladen Alle, PDF's, Afbeeldingen en Documenten, elk met zijn aantal. Een ster komt erbij na Alle zodra een bestand een ster heeft, Collab-notities aan het eind zodra een notitie een bijlage draagt.",
   'help.ctx.trip-files.bullet.3':
-    'Een rij draagt wie hem heeft geüpload, de naam, de notitie eronder, de grootte en de datum, en één label per koppeling: Dagplan en de plek, Boeking of Transport en de boeking, Uit Collab-notities.',
+    'Een rij draagt een miniatuur of het type van het bestand, wie hem heeft geüpload, de naam, de notitie eronder, de grootte en de datum, en één label per koppeling: de plek, de boeking of het transport met zijn naam (als je erop wijst, staat er Dagplan, Boeking of Transport), en Uit Collab-notities.',
   'help.ctx.trip-files.bullet.4':
-    'Aan het eind van een rij zitten Ster, Toewijzen, Openen, Downloaden en Verwijderen. Verwijderen vraagt niets: het bestand gaat naar de prullenbak, waar het weer uit kan worden gehaald.',
+    'Aan het eind van een rij zitten tot vijf iconen, elk met zijn naam als je ernaar wijst: Ster, Toewijzen (het potlood), Openen, Downloaden en Verwijderen. Verwijderen vraagt niets: het bestand gaat naar de prullenbak, waar het weer uit kan worden gehaald.',
   'help.ctx.trip-files.bullet.5':
-    'Een afbeelding of een video opent schermvullend, met de pijltjestoetsen en een strook miniaturen; elk ander document opent in een voorbeeld over de pagina heen, met Openen in nieuw tabblad en Downloaden. Een wallet-pas wordt meteen gedownload.',
+    'Een afbeelding of een video opent schermvullend, met de pijltjestoetsen en een strook miniaturen; elk ander document opent in een venster met zijn naam bovenaan en Openen in nieuw tabblad en Downloaden eronder. Een wallet-pas wordt meteen gedownload.',
   'help.ctx.trip-files.bullet.6':
-    'Prullenbak uiterst rechts zet de lijst over naar de verwijderde bestanden, waar elk wordt hersteld of voorgoed verwijderd en Prullenbak legen ze allemaal weghaalt. Waar een beheerder een documentopslag heeft gekoppeld, staat Documentsynchronisatie ernaast.',
+    'Het prullenbakicoon uiterst rechts in de balk (Prullenbak) zet de lijst over naar de verwijderde bestanden, waar elk wordt hersteld of voorgoed verwijderd en Prullenbak legen in de balk ze allemaal weghaalt. Waar de reis aan een documentopslag gekoppeld is, of voor de eigenaar of een beheerder zodra er een opslag is aangezet, staat Documentsynchronisatie links van het prullenbakicoon.',
   // files-upload
   'help.guide.files-upload.title': 'Een document in de reis zetten',
   'help.guide.files-upload.goal':
@@ -2433,15 +2433,15 @@ const help: TranslationStrings = {
   'help.guide.files-upload.step.1':
     'Open de reis en klik op Bestanden in de tabbladenbalk. Daar staan de documenten van de reis, met het uploadvak erboven.',
   'help.guide.files-upload.step.2':
-    'Klik op Sleep bestanden hierheen en kies één of meer bestanden. Ze worden na elkaar geüpload en in het vak staat Uploaden... zolang het loopt. De regel onder het vak zegt welke typen deze TREK aanneemt, en dat een bestand hoogstens 50 MB mag zijn.',
+    'Klik op Sleep bestanden hierheen en kies één of meer bestanden. Ze worden na elkaar geüpload en in het vak staat Uploaden... zolang het loopt. In het vak, onder of klik om te bladeren, staan de typen die deze TREK aanneemt en Max 50 MB, het maximum voor één bestand.',
   'help.guide.files-upload.step.3':
-    'Zodra het laatste bestand binnen is, gaat Bestand toewijzen er vanzelf voor open. Notitie toevoegen... geeft het bestand een eigen regel, en de lijsten eronder binden het aan een plek of een boeking. Sluit het met de ×; door te sluiten gaat er niets verloren.',
+    'Zodra het laatste bestand binnen is, gaat Bestand toewijzen er vanzelf voor open (zolang de reis plekken of boekingen heeft), met de naam van het bestand in de kop van het venster. Notitie toevoegen... onder Notitie geeft het bestand een eigen regel, en de lijsten eronder binden het aan een plek of een boeking. Sluit het met de × rechtsboven; door te sluiten gaat er niets verloren.',
   'help.guide.files-upload.step.4':
-    'De nieuwe bestanden staan bovenaan de lijst. Een rij toont wie hem heeft geüpload, de naam, de grootte en de datum; een afbeelding krijgt een miniatuur, elk ander bestand zijn type.',
+    'De nieuwe bestanden staan bovenaan de lijst; alleen bestanden met een ster staan erboven. Een rij toont wie hem heeft geüpload, de naam, de grootte en de datum; een afbeelding krijgt een miniatuur, elk ander bestand zijn type.',
   'help.guide.files-upload.result':
     'De documenten staan in de reis, en iedereen die de reis kan zien kan ze openen en downloaden.',
   'help.guide.files-upload.tip.1':
-    'Een bestand kan ook van het bureaublad rechtstreeks op het vak worden gesleept, dat oplicht zolang het bestand erboven hangt.',
+    'Een bestand kan ook van het bureaublad rechtstreeks op het vak worden gesleept, dat gemarkeerd wordt zolang het bestand erboven hangt.',
   'help.guide.files-upload.tip.2':
     'Een afbeelding op het klembord komt met Ctrl+V in de lijst, zodat een schermafbeelding van een boeking nooit eerst hoeft te worden opgeslagen.',
   'help.guide.files-upload.tip.3':
@@ -2451,19 +2451,19 @@ const help: TranslationStrings = {
   'help.guide.files-link.goal':
     'Maak het ticket vindbaar vanaf de dag waar het bij hoort, niet alleen vanuit deze lijst.',
   'help.guide.files-link.step.1':
-    'Klik op Toewijzen, het potlood aan het eind van de rij. Bestand toewijzen gaat open, met de naam van het bestand.',
+    'Klik op het potlood aan het eind van de rij (Toewijzen). Bestand toewijzen gaat open, met de naam van het bestand eronder in de kop van het venster.',
   'help.guide.files-link.step.2':
-    'Onder Notitie neemt Notitie toevoegen... één regel aan, die daarna in de lijst onder de naam van het bestand staat. Hij wordt opgeslagen op het moment dat je het veld verlaat.',
+    'Onder Notitie neemt Notitie toevoegen... één regel aan, die daarna in de lijst onder de naam van het bestand staat. Hij wordt opgeslagen als je op Enter drukt of het veld verlaat.',
   'help.guide.files-link.step.3':
-    'Onder Plaats staan de plekken van de reis, gegroepeerd per dag waarop ze staan, met Niet toegewezen aan het eind voor de plekken zonder dag. Klik er een aan en die krijgt een vinkje.',
+    'Onder Plaats, links, staan de plekken van de reis, gegroepeerd per dag waarop ze staan, met de datum van die dag, en Niet toegewezen aan het eind voor de plekken zonder dag. Klik er een aan en die krijgt een vinkje.',
   'help.guide.files-link.step.4':
-    'Onder Boeking en Transport staan de boekingen van de reis. Klik die aan waar het document bij hoort; die krijgt ook zijn vinkje.',
+    'Onder Boeking en Transport, rechts, staan de boekingen van de reis. Klik die aan waar het document bij hoort; die krijgt ook zijn vinkje.',
   'help.guide.files-link.step.5':
-    'Sluit met de ×. Een opslaanknop is er hier niet: elke klik is geschreven op het moment dat je hem maakte.',
+    'Sluit met de × rechtsboven. Een opslaanknop is er hier niet: elke klik is geschreven op het moment dat je hem maakte.',
   'help.guide.files-link.result':
-    'De rij draagt de notitie en één label per koppeling, Dagplan en de naam van de plek, Transport en de naam van de vlucht, en het document hangt ook aan de plek en aan de vlucht.',
+    'De rij draagt de notitie en één label per koppeling, een met de naam van de plek en een met die van de vlucht (als je naar een label wijst, staat er Dagplan of Transport), en het document hangt ook aan de plek en aan de vlucht.',
   'help.guide.files-link.tip.1':
-    'Een bestand kan meerdere koppelingen tegelijk dragen, zodat dezelfde bevestiging bij het hotel hoort en bij de nacht die hij dekt.',
+    'Een bestand kan meerdere koppelingen tegelijk dragen, zodat dezelfde bevestiging tegelijk bij de boeking van het hotel en bij de plek van het hotel kan horen.',
   'help.guide.files-link.tip.2':
     'Nog een keer op een aangevinkte regel klikken haalt die koppeling weg; het bestand zelf blijft.',
   'help.guide.files-link.tip.3':
@@ -2473,22 +2473,22 @@ const help: TranslationStrings = {
   'help.guide.files-star.goal':
     'Haal de twee of drie papieren die je echt nodig hebt uit een lijst die de hele reis lang groeit.',
   'help.guide.files-star.step.1':
-    'Klik op Ster aan het eind van een rij. De ster kleurt geel, een tweede ster verschijnt voor de naam van het bestand, en de knop heet nu Ster verwijderen.',
+    'Klik op de ster aan het eind van een rij (Ster). Ze kleurt goud, een tweede ster verschijnt voor de naam van het bestand, en als je naar de knop wijst, staat er nu Ster verwijderen.',
   'help.guide.files-star.step.2':
     'De lijst sorteert zichzelf opnieuw: bestanden met een ster staan boven alle andere, binnen elke groep de nieuwste eerst.',
   'help.guide.files-star.step.3':
-    'Bovenaan is een ster bij de tabbladen gekomen, met het aantal bestanden met een ster erachter. Klik erop om alleen die te zien.',
+    'Er is een ster bij de filtertabbladen in de balk gekomen, direct na Alle, met het aantal bestanden met een ster ernaast. Klik erop om alleen die te zien.',
   'help.guide.files-star.result':
     'De papieren die je aan de balie nodig hebt staan bovenaan de lijst, en één tabblad toont niets anders.',
   'help.guide.files-star.tip.1':
     'Het stertabblad bestaat alleen zolang er iets een ster heeft. Haal de ster bij het laatste bestand weg en het tabblad verdwijnt ermee.',
   'help.guide.files-star.tip.2':
-    'Een ster zetten telt als bewerken: een lid dat de bestanden van de reis alleen mag lezen ziet de sterren wel, maar kan ze niet zetten.',
+    'Een ster zetten vraagt hetzelfde recht als Toewijzen, Bestandsmetadata bewerken. Een lid zonder dat recht ziet de sterren wel, maar een klik op Ster verandert voor hem niets.',
   // files-filter
   'help.guide.files-filter.title': 'Een document in de lijst vinden',
   'help.guide.files-filter.goal': 'Breng een lijst met alles terug tot het ene soort papier dat je zoekt.',
   'help.guide.files-filter.step.1':
-    "De tabbladen boven de lijst zijn Alle, PDF's, Afbeeldingen en Documenten, elk met het aantal bestanden erachter.",
+    "De filtertabbladen staan in de balk bovenaan, naast Bestanden: Alle, PDF's, Afbeeldingen en Documenten, elk met het aantal bestanden ernaast.",
   'help.guide.files-filter.step.2': "Klik op PDF's: de lijst houdt de PDF-bestanden over en niets anders.",
   'help.guide.files-filter.step.3':
     'Nog twee tabbladen komen en gaan met wat er in de reis zit. Klik op Collab-notities, dat er is zodra een notitie in het tabblad Samenwerking een bijlage draagt: de lijst houdt die bestanden en niets anders. Een ster voegt zich op dezelfde manier bij de rij, zodra een bestand een ster heeft.',
@@ -2496,7 +2496,7 @@ const help: TranslationStrings = {
   'help.guide.files-filter.result':
     'De lijst toont alleen wat het tabblad noemt, en het aantal op elk tabblad zegt hoeveel dat er zijn.',
   'help.guide.files-filter.tip.1':
-    'Mappen zijn er hier niet en hernoemen ook niet: de notitie in Bestand toewijzen, de koppelingen naar plekken en boekingen, en de ster zijn waar een document op wordt gesorteerd.',
+    'Mappen zijn er hier niet en hernoemen ook niet: met de notitie in Bestand toewijzen, de koppelingen naar plekken en boekingen, en de ster houd je documenten uit elkaar.',
   'help.guide.files-filter.tip.2':
     'De lijst zelf staat altijd eerst met ster, daarna nieuwste eerst, zodat een document dat vandaag is geüpload boven een document van vorige maand staat.',
   // files-preview
@@ -2504,15 +2504,15 @@ const help: TranslationStrings = {
   'help.guide.files-preview.goal':
     'Bekijk een ticket of een afbeelding ter plekke, en haal het naar je eigen machine wanneer je het daar nodig hebt.',
   'help.guide.files-preview.step.1':
-    'Klik op de naam van een afbeelding of op de miniatuur. Hij opent schermvullend, met de naam van het bestand en zijn plaats in de afbeeldingen in de kop.',
+    'Klik op de naam van een afbeelding of op de miniatuur. Hij opent schermvullend, met de naam van het bestand en zijn plaats tussen de afbeeldingen linksboven.',
   'help.guide.files-preview.step.2':
     'De ronde pijlen aan de zijkanten, de pijltjestoetsen links en rechts en de strook miniaturen onderaan lopen door elke afbeelding die de lijst op dat moment toont.',
   'help.guide.files-preview.step.3':
-    'Openen in nieuw tabblad en Downloaden zitten in de kop; de × of Escape sluit de afbeelding weer.',
+    'Openen in nieuw tabblad en Downloaden zijn de ronde knoppen rechtsboven, naast de ×. De ×, Escape of een klik op de donkere achtergrond sluit de afbeelding weer.',
   'help.guide.files-preview.step.4':
-    'Een document dat geen afbeelding is opent in plaats daarvan in een voorbeeld over de pagina heen, met dezelfde twee knoppen in zijn kop. Dat sluit met de × of met een klik ernaast.',
+    'Een document dat geen afbeelding is, opent in plaats daarvan in een venster: zijn naam bovenaan met Openen in nieuw tabblad en Downloaden als pillen eronder, en bij een PDF de pagina zelf daaronder. De × rechtsboven, Escape of een klik naast het venster sluit het.',
   'help.guide.files-preview.step.5':
-    'Downloaden aan het eind van een rij zet het bestand rechtstreeks op je machine, zonder eerst iets te openen.',
+    'De pijl aan het eind van een rij (Downloaden) zet het bestand rechtstreeks op je machine, zonder eerst iets te openen.',
   'help.guide.files-preview.result':
     'Het document staat op het scherm, en dezelfde twee knoppen zetten het in een tabblad van de browser of op je schijf.',
   'help.guide.files-preview.tip.1':
@@ -2526,15 +2526,15 @@ const help: TranslationStrings = {
   'help.guide.files-trash.goal':
     'Ruim op wat de reis niet meer nodig heeft, zonder iets te verliezen dat je toch nodig had.',
   'help.guide.files-trash.step.1':
-    'Klik op Verwijderen aan het eind van een rij. Het bestand verlaat de lijst meteen en de melding zegt Naar prullenbak verplaatst. Niets vraagt eerst.',
+    'Klik op de prullenbak aan het eind van een rij (Verwijderen). Het bestand verlaat de lijst meteen en de melding zegt Naar prullenbak verplaatst. Niets vraagt eerst.',
   'help.guide.files-trash.step.2':
-    'Prullenbak uiterst rechts in de werkbalk zet de lijst over naar wat is weggegooid. De kop zegt Prullenbak en de filtertabbladen zijn weg.',
+    'Het prullenbakicoon uiterst rechts in de balk (Prullenbak) zet de lijst over naar wat is weggegooid. De titel van de balk zegt Prullenbak, en de filtertabbladen en het uploadvak zijn weg.',
   'help.guide.files-trash.step.3':
-    'Een weggegooide rij is grijs en heeft nog twee knoppen: Herstellen, dat het bestand terughaalt, en Verwijderen, dat het na een vraag voorgoed weghaalt.',
+    'Een weggegooide rij is grijs en heeft nog twee iconen: Herstellen, dat het bestand terughaalt, en Verwijderen, dat het na een vraag voorgoed weghaalt.',
   'help.guide.files-trash.step.4':
     'Klik op Herstellen. De melding zegt Bestand hersteld en de rij verlaat de prullenbak, met zijn notitie en zijn koppelingen er nog op.',
   'help.guide.files-trash.step.5':
-    'Prullenbak legen bovenaan haalt alles wat hier nog ligt voorgoed weg, en de browser vraagt het één keer voordat hij het doet. Prullenbak schakelt terug naar de bestanden.',
+    'Prullenbak legen, in de balk naast het prullenbakicoon, haalt alles wat hier nog ligt voorgoed weg, en de browser vraagt het één keer voordat hij het doet. Het prullenbakicoon schakelt terug naar de bestanden.',
   'help.guide.files-trash.result': 'Het bestand staat weer in de lijst waar het stond, alsof er niets was gebeurd.',
   'help.guide.files-trash.tip.1':
     'Verwijderen op een rij vraagt niets vooraf, en daar is de prullenbak voor: niets verlaat TREK tot jij het hier zegt.',
@@ -2547,7 +2547,7 @@ const help: TranslationStrings = {
   'help.guide.files-sync.goal':
     'Koppel de reis aan je eigen documentopslag, zodat wat hier wordt geüpload daar belandt en wat daar wordt opgeborgen hier opduikt.',
   'help.guide.files-sync.step.1':
-    'Klik op Documentsynchronisatie, naast Prullenbak aan de rechterkant van de werkbalk. Het venster gaat open met de naam van de reis onder zijn titel. Links, onder Aanbieder koppelen, staan de opslagen die een beheerder heeft aangezet, elk met een regel over hoe hij ordent: Paperless-ngx en Papra op tag, Nextcloud en Synology Drive in een map, OpenCloud in een ruimte. Rechts leest het Nog niets verbonden.',
+    'Klik op Documentsynchronisatie, naast het prullenbakicoon aan de rechterkant van de balk. Het venster gaat open met de naam van de reis onder zijn titel. Links, onder Aanbieder koppelen, staan de opslagen die een beheerder heeft aangezet, elk met een regel over hoe hij ordent: Paperless-ngx en Papra op tag, Nextcloud en Synology Drive in een map, OpenCloud in een ruimte. Rechts leest het Nog niets verbonden.',
   'help.guide.files-sync.step.2':
     'Klik op je opslag, hier Nextcloud. Een kleiner venster gaat open voor de verbinding, genoemd naar de opslag, en vraagt om de gegevens waarmee je bij die opslag inlogt.',
   'help.guide.files-sync.step.3':
@@ -2557,15 +2557,15 @@ const help: TranslationStrings = {
   'help.guide.files-sync.step.5':
     'Klik op Verbinden. De verbinding wordt bij de reis opgeslagen en TREK vraagt waar de reis in de opslag moet komen te staan: de tag, map of ruimte die haar documenten bevat. Alleen wat daarin staat wordt gesynchroniseerd. Een nieuwe maken maakt hem aan bij Aanmaken, met een naam die uit de titel van de reis is voorgevuld; onder Of gebruik er een die je al hebt staan de bestaande. Klik op een ervan, hier de map Autumn in Japan.',
   'help.guide.files-sync.step.6':
-    'Het venster is terug: je opslag staat links onder Deze reis, en zijn kaart rechts draagt waarheen hij synchroniseert, wanneer hij voor het laatst liep en Nu synchroniseren. Een eerste uitvoering start vanzelf; Nu synchroniseren draait er een wanneer je maar wilt. Zodra een uitvoering klaar is, maakt de badge Nog niet gesynchroniseerd naast de naam plaats voor een groene stip, Synchroon als je erop wijst, en de stroombalk telt de documenten die TREK en de opslag elk hebben, met de banen Naar de opslag en Uit de opslag ertussen. Sluit het venster met de ×.',
+    'Het venster is terug: je opslag staat links onder Deze reis, en zijn kaart rechts draagt waarheen hij synchroniseert, wanneer hij voor het laatst liep en Nu synchroniseren. Een eerste uitvoering start vanzelf; Nu synchroniseren draait er een wanneer je maar wilt. Zodra een uitvoering klaar is, maakt de badge Nog niet gesynchroniseerd naast de naam plaats voor een groene stip, Synchroon als je erop wijst, en de stroombalk telt de documenten die TREK en de opslag elk hebben, met de banen Naar de opslag en Uit de opslag ertussen. Sluit het venster met de × rechtsboven.',
   'help.guide.files-sync.result':
-    'De documenten die er al stonden staan bovenaan de lijst, geüpload op jouw naam, en elk document van de reis staat ook in de opslag. Vanaf nu controleert TREK de opslag op de achtergrond en volgt de opslag de lijst.',
+    'De documenten die er al stonden staan bovenaan de lijst, geüpload op jouw naam, en elk document van de reis staat ook in de opslag, behalve die uit Collab-notities. Vanaf nu controleert TREK de opslag op de achtergrond en volgt de opslag de lijst.',
   'help.guide.files-sync.tip.1':
-    'Alleen de eigenaar van de reis of een beheerder van de instantie kan een reis koppelen, omdat de inloggegevens dat hele account bij de opslag bereiken. Elk lid kan Documentsynchronisatie openen, de kaart lezen en op Nu synchroniseren drukken.',
+    'Alleen de eigenaar van de reis of een beheerder van de instantie kan een reis koppelen, omdat de inloggegevens dat hele account bij de opslag bereiken. Elk lid ziet Documentsynchronisatie zodra de reis gekoppeld is, en kan het openen, de kaart lezen en op Nu synchroniseren drukken.',
   'help.guide.files-sync.tip.2':
     'Een opslag op je eigen netwerk heeft ALLOW_INTERNAL_NETWORK=true op de TREK-server nodig, en zijn adres moet het adres van de machine op het netwerk zijn, nooit localhost. Zonder dat antwoordt Verbinding testen Dat adres is niet toegestaan.',
   'help.guide.files-sync.tip.3':
-    'Verbinding verbreken op de kaart beëindigt de koppeling en houdt elk document aan beide kanten. Een tag, map of ruimte die een tweede keer wordt gekoppeld geldt als nieuw, en alles erin komt opnieuw binnen, koppel na een Verbinding verbreken dus liever een lege dan de oude.',
+    'Verbinding verbreken, het icoon naast Nu synchroniseren, vraagt het één keer, beëindigt dan de koppeling en houdt elk document aan beide kanten. Een tag, map of ruimte die een tweede keer wordt gekoppeld geldt als nieuw, en alles erin komt opnieuw binnen, koppel na een Verbinding verbreken dus liever een lege dan de oude.',
 
   // ── Screen: trip-day-detail ───────────────────────────────────────────────────────────
   'help.ctx.trip-day-detail.title': 'Dagdetails',
@@ -2653,7 +2653,7 @@ const help: TranslationStrings = {
     'Kies het pand uit de plekken van de reis. Categorie boven de lijst beperkt haar tot één categorie.',
   'help.guide.add-accommodation.step.6': 'Klik op Opslaan.',
   'help.guide.add-accommodation.result':
-    'Het verblijf staat op elke dag die het beslaat, Inchecken op de eerste en Uitchecken op de laatste. Het pand wordt een stop op de incheckdag, zodat de kaart de weg ernaartoe tekent, en onder Boekingen verschijnt een boeking van het type Accommodatie.',
+    'Het verblijf staat op elke dag die het beslaat, Inchecken op de eerste en Uitchecken op de laatste. Het pand wordt een stop op de incheckdag, zodat de kaart de weg ernaartoe tekent, en op het tabblad Boekingen verschijnt een boeking van het type Accommodatie.',
   'help.guide.add-accommodation.tip.1':
     'De kiezer opent op de dag waar je vandaan kwam, met uitchecken de dag erna; beide kun je nog verzetten voor je opslaat.',
   'help.guide.add-accommodation.tip.2':
@@ -2674,7 +2674,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.5':
     'Het kruisje naast het potlood beëindigt het verblijf. Het vraagt niets, en de boeking van het type Accommodatie die erbij hoort gaat mee.',
   'help.guide.edit-accommodation.result':
-    'De wijziging bereikt in één keer elke dag die het verblijf beslaat, en de boeking van het type Accommodatie onder Boekingen erbij.',
+    'De wijziging bereikt in één keer elke dag die het verblijf beslaat, en de boeking van het type Accommodatie op het tabblad Boekingen erbij.',
   'help.guide.edit-accommodation.tip.1':
     'Een nacht midden in een verblijf draagt geen label Inchecken en geen label Uitchecken: alleen de eerste en de laatste dag van het bereik doen dat.',
   'help.guide.edit-accommodation.tip.2':
@@ -2689,11 +2689,11 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'De kleur zegt hoe een boeking ervoor staat: een groene rij is bevestigd, een amberkleurige is nog in behandeling. Accommodaties staan niet in deze lijst, die hebben hun eigen blok eronder.',
   'help.guide.day-bookings.step.4':
-    'Klik op een rij en de boeking gaat open. Bewerken onderaan wijzigt hem; nieuwe boekingen maak je onder Boekingen.',
+    'Klik op een rij en de boeking gaat open. Bewerken onderaan wijzigt hem; nieuwe boekingen maak je op het tabblad Boekingen.',
   'help.guide.day-bookings.result':
     'Alles wat op de dag gedateerd is, en alles wat aan een van zijn stops hangt, staat in deze ene lijst.',
   'help.guide.day-bookings.tip.1':
-    'Een boeking belandt op een dag door zijn eigen datum. Wijzig de datum onder Boekingen en hij verhuist vanzelf naar de andere dag.',
+    'Een boeking belandt op een dag door zijn eigen datum. Wijzig de datum op het tabblad Boekingen en hij verhuist vanzelf naar de andere dag.',
   'help.guide.day-bookings.tip.2':
     'Geen blok Reserveringen betekent dat de dag geen boekingen heeft: het wordt verborgen in plaats van leeg getoond.',
 
@@ -2702,30 +2702,32 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.summary':
     'Het midden van het plan: elke plek van de reis als speld, de routes die ze verbinden, en de schakelaars langs de randen van de kaart voor satelliet, voor de hele reis in één keer en voor de plekken rond de buurt waar je naar kijkt.',
   'help.ctx.trip-map.bullet.1':
-    'Een speld is een plek: de eigen foto als die er is, anders de kleur van zijn categorie met het categorie-icoon. Houd de aanwijzer erop voor een kaartje met zijn naam en zijn adres, plus zijn categorie en zijn beoordeling waar de plek die draagt. Sleep een speld op een dagkaart om de plek daar in te plannen.',
+    'Een speld is een plek: de eigen foto als die er is, anders de kleur van zijn categorie met het categorie-icoon. Houd de aanwijzer erop voor een kaartje met zijn afbeelding, zijn naam en zijn adres, plus zijn beoordeling en zijn categorie waar de plek die draagt. Sleep een speld op een dagkaart om de plek daar in te plannen.',
   'help.ctx.trip-map.bullet.2':
     'Spelden die te dicht bij elkaar zitten om uit elkaar te houden, vouwen samen tot één donkere bel met een aantal. Klik op de bel en de kaart zoomt in op wat erin zit.',
   'help.ctx.trip-map.bullet.3':
-    'Klik op een speld om de plek onder de kaart te openen, met zijn beoordeling, zijn bestanden en wat er verder mee kan; klik op een leeg stuk van de kaart om hem weer los te laten.',
+    'Klik op een speld om de plek te openen in een kaartje aan de onderrand van de kaart, met zijn beoordeling, zijn bestanden en wat er verder mee kan; klik op een leeg stuk van de kaart om hem weer los te laten.',
   'help.ctx.trip-map.bullet.4':
-    'Met een dag open in de dagenkolom dragen zijn stops een kleine witte badge met hun nummer in die dag, en een plek die op twee dagen is gepland draagt beide nummers, verbonden door ·.',
+    'Met een dag open in de dagenkolom dragen zijn stops een kleine witte badge met hun nummer in die dag, en een plek die twee keer in de dag voorkomt draagt allebei zijn nummers.',
   'help.ctx.trip-map.bullet.5':
     'De rij iconen bovenaan doorzoekt het stuk kaart dat je ziet: Restaurants, Cafés, Bars & uitgaan, Accommodatie, Bezienswaardigheden, Musea & cultuur, Natuur & parken en Activiteiten. Dit gebied doorzoeken draait de zoekopdracht opnieuw nadat je de kaart hebt verschoven.',
   'help.ctx.trip-map.bullet.6':
     'Met een rechterklik ergens op de kaart gaat het plekformulier open op dat punt, met het adres al opgezocht. De ronde knop linksonder ruilt de getekende kaart in voor luchtbeelden.',
   'help.ctx.trip-map.bullet.7':
-    'Hele reis tonen rechtsonder tekent elke reisdag in één keer en zet op een rij wat elke dag beslaat; het route-icoon op de rij van een boeking tekent die boeking, en dat in de werkbalk boven de dagen tekent ze allemaal.',
+    'Hele reis tonen rechtsonder tekent elke reisdag in één keer en zet op een rij wat elke dag beslaat; het route-icoon op de rij van een boeking tekent die boeking, en dat in de werkbalk boven de dagen tekent ze allemaal. Klik op het uiteinde van een getekende boeking om haar details te openen.',
+  'help.ctx.trip-map.bullet.8':
+    'Met de add-on Dawarich aan tekent de ronde knop Dawarich onder Hele reis tonen de route die je telefoon echt heeft opgenomen: Opgenomen route tonen legt hem gestreept onder de geplande route, één kleur per dag, en het label van de knop zegt waarom er geen lijn is als die er niet is.',
   // map-markers
   'help.guide.map-markers.title': 'De kaart lezen',
   'help.guide.map-markers.goal': 'Weten wat elke speld, badge en bel op de kaart je vertelt.',
   'help.guide.map-markers.step.1':
     'De kaart draagt elke plek van de reis. Waar spelden te dicht bij elkaar zitten om uit elkaar te houden, vouwen ze samen tot één donkere bel met het aantal dat erin zit; klik op de bel en de kaart zoomt in op wat erin zat, of waaiert op het diepste zoomniveau de spelden uit.',
   'help.guide.map-markers.step.2':
-    'Een speld is de eigen foto van de plek als die er is, anders de kleur van zijn categorie met het categorie-icoon. Houd de aanwijzer erop en een kaartje geeft zijn naam en zijn adres, met zijn categorie en zijn beoordeling waar de plek die draagt.',
+    'Een speld is de eigen foto van de plek als die er is, anders de kleur van zijn categorie met het categorie-icoon. Houd de aanwijzer erop en ernaast gaat een kaartje open: dezelfde foto, groter, de naam en het adres, met de beoordeling en de categorie waar de plek die draagt.',
   'help.guide.map-markers.step.3':
-    'Klik op een speld en de plek gaat open in een kaartje onder de kaart: zijn coördinaten, zijn beoordeling, zijn bestanden, en onderaan wat je er daarna mee kunt doen, waaronder Navigatie, Bewerken en Verwijderen, met Toevoegen aan dag zolang er een dag open is. Klik op een leeg stuk van de kaart om hem weer los te laten.',
+    'Klik op een speld en de plek gaat open in een kaartje aan de onderrand van de kaart: de afbeelding, de naam en het adres in de kop, dan de sterren, de beschrijving en de bestanden, en onderaan wat je er daarna mee kunt doen, waaronder Navigatie, In collectie opslaan (Opgeslagen zodra de plek in een collectie zit), Bewerken en Verwijderen, en zolang er een dag open is Toevoegen aan dag, of Verwijderen van dag als de plek er al op staat. De X in de kop, of een klik op een leeg stuk van de kaart, sluit het weer.',
   'help.guide.map-markers.step.4':
-    'Open een dag in de dagenkolom en zijn stops krijgen nummers: de kleine witte badge in de hoek van een speld is de plaats van die stop in de dag. Een plek die op twee dagen is gepland draagt beide nummers, verbonden door ·. Zonder open dag zijn er geen nummers, en draagt de hoek in plaats daarvan de beoordeling.',
+    'Open een dag in de dagenkolom en zijn stops krijgen nummers: de kleine witte badge in de hoek van een speld is de plaats van die stop in de dag. Een plek die twee keer in de dag voorkomt draagt allebei zijn nummers. Zonder open dag zijn er geen nummers, en draagt de hoek in plaats daarvan de beoordeling van de plek, als hij er een heeft.',
   'help.guide.map-markers.step.5':
     'Sleep een speld van de kaart op een dagkaart in de dagenkolom en de plek is op die dag ingepland, precies zoals wanneer je zijn rij uit de plekkenlijst sleept.',
   'help.guide.map-markers.result':
@@ -2747,11 +2749,11 @@ const help: TranslationStrings = {
   'help.guide.map-nearby-places.step.3':
     'Verschuif de kaart en er verschijnt een tweede knop onder de rij: Dit gebied doorzoeken draait dezelfde zoekopdracht voor het nieuwe beeld. Verschuiven alleen zoekt nooit opnieuw, wat het aantal verzoeken laag houdt.',
   'help.guide.map-nearby-places.step.4':
-    'De spelden dragen de naam van wat er gevonden is. Klik er een aan en het plekformulier gaat open, al ingevuld vanuit die treffer: Naam, Adres, Breedtegraad en Lengtegraad, en de website en het telefoonnummer waar OpenStreetMap ze heeft.',
+    'Houd de aanwijzer op een speld voor de naam van wat er gevonden is. Klik erop en het plekformulier gaat open, al ingevuld vanuit die treffer: de naam in de kop van het venster, Adres, Breedtegraad en Lengtegraad, en Website waar de zoekopdracht er een vond.',
   'help.guide.map-nearby-places.step.5':
-    'Loop na wat er is ingevuld en vul aan wat de zoekopdracht niet kon weten: een Beschrijving, een Categorie, eigen notities.',
+    'Loop na wat er is ingevuld en vul aan wat de zoekopdracht niet kon weten: een categorie uit de pil onder de naam, waarop Geen categorie staat tot je er een kiest, een Beschrijving, eigen notities.',
   'help.guide.map-nearby-places.step.6':
-    'Klik op Toevoegen. Ligt er al een plek met dezelfde naam in de reis, dan zegt het formulier dat en wordt de knop Toch toevoegen.',
+    'Klik op Toevoegen. Ligt er al een plek met dezelfde naam of op hetzelfde punt in de reis, dan zegt TREK dat en wordt de knop Toch toevoegen.',
   'help.guide.map-nearby-places.result':
     'De plek staat in de plekkenlijst en op de kaart als een van de eigen spelden van de reis, onder Ongepland tot je hem op een dag zet. De zoekspelden blijven staan tot je de categorie uitzet.',
   'help.guide.map-nearby-places.tip.1':
@@ -2764,11 +2766,11 @@ const help: TranslationStrings = {
   'help.guide.map-add-place.title': 'Een plek aanmaken met een rechterklik op de kaart',
   'help.guide.map-add-place.goal': 'Zet een plek precies waar je hem wilt, zonder er eerst naar te zoeken.',
   'help.guide.map-add-place.step.1':
-    'Klik met rechts op het punt op de kaart dat je bedoelt. Het plekformulier gaat open, met de titel Plaats/activiteit toevoegen.',
+    'Klik met rechts op het punt op de kaart dat je bedoelt. Het plekformulier gaat open, met als kop Plaats/activiteit toevoegen.',
   'help.guide.map-add-place.step.2':
-    'Breedtegraad en Lengtegraad staan al op dat punt, en TREK zoekt de coördinaten op en vult Adres met wat het daar vindt, en Naam ook waar het opzoeken er een oplevert. Er is nog niets opgeslagen, dus overschrijf wat niet klopt.',
+    'Breedtegraad en Lengtegraad staan al op dat punt, en TREK zoekt de coördinaten op en vult Adres met wat het daar vindt, en ook de naam in de kop van het venster waar het opzoeken er een oplevert. Er is nog niets opgeslagen, dus overschrijf wat niet klopt.',
   'help.guide.map-add-place.step.3':
-    'Geef hem een Naam die je herkent, en de rest van wat het plan moet weten: Beschrijving, Notities, Categorie, Website.',
+    'Typ in de kop van het venster een naam die je herkent, kies een categorie uit de pil eronder, waarop Geen categorie staat tot je dat doet, en voeg de rest toe die het plan moet weten: Beschrijving, Notities, Website.',
   'help.guide.map-add-place.step.4':
     'Klik op Toevoegen. De plek belandt ongepland in de lijst, ook met een dag open: een rechterklik op de kaart zegt waar, niet wanneer.',
   'help.guide.map-add-place.result':
@@ -2797,11 +2799,11 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.goal':
     'Ruil de ene open dag in voor elke reisdag van de reis, en lees hoe ver elke dag gaat.',
   'help.guide.map-whole-trip.step.1':
-    'De ronde knop Hele reis tonen zit rechtsonder op de kaart. Klik erop en elke reisdag van de reis wordt in één keer getekend, elk in zijn eigen kleur over een witte omlijning, zodat dagen naast elkaar uit elkaar blijven.',
+    'De ronde knop Hele reis tonen zit rechtsonder op de kaart. Klik erop en elke reisdag van de reis wordt in één keer getekend, elk in zijn eigen kleur, zodat dagen naast elkaar uit elkaar blijven.',
   'help.guide.map-whole-trip.step.2':
     'Het kaartje boven de knop somt die dagen op: een gekleurde stip, de naam van de dag, een icoon voor elke manier waarop je hem aflegt, en de afstand die hij beslaat. Totale afstand staat bovenaan.',
   'help.guide.map-whole-trip.step.3':
-    'Klik op een dag in het kaartje om hem te kiezen, net als kiezen in de dagenkolom: de kaart brengt die dag in beeld, en zijn stops krijgen hun nummers terug.',
+    'Klik op een dag in het kaartje om hem te kiezen: zijn rij kleurt in en de dag gaat open in de dagenkolom. Draai met het wieltje boven een stad om in te zoomen, en de dagen die erdoorheen lopen liggen naast elkaar, elk in zijn kleur.',
   'help.guide.map-whole-trip.step.4':
     'De knop zegt nu Hele reis verbergen. Druk erop om terug te vallen op die ene open dag.',
   'help.guide.map-whole-trip.result':
@@ -2811,17 +2813,17 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.tip.2':
     'Een etappe die de router weigert blijft een rechte lijn en telt niets mee, en het kaartje zegt dat, in plaats van stilletjes te laag uit te komen.',
   'help.guide.map-whole-trip.tip.3':
-    'Een dag met minder dan twee stops met een locatie heeft geen route om te tekenen en valt dus helemaal buiten het kaartje.',
+    'Een dag zonder iets om te verbinden, met minder dan twee stops met een locatie en geen rit van of naar zijn hotel, heeft geen route om te tekenen en valt dus helemaal buiten het kaartje.',
   // map-booking-routes
   'help.guide.map-booking-routes.title': 'De route van een boeking op de kaart tonen',
   'help.guide.map-booking-routes.goal':
     'Teken de vluchten, treinen en ritten die je hebt geboekt op de kaart, en haal ze er weer af.',
   'help.guide.map-booking-routes.step.1':
-    'Boekingsroutes staan uit tot je erom vraagt. Op de rij van een boeking in de dagenkolom zit een klein route-icoon: Boekingsroutes tonen.',
+    'Boekingsroutes staan uit tot je erom vraagt. Aan het rechteruiteinde van een vervoersrij in de dagenkolom zit een klein route-icoon: Boekingsroutes tonen.',
   'help.guide.map-booking-routes.step.2':
     'Klik erop en de boeking verschijnt op de kaart: een vlucht als een grootcirkelboog, een rit langs de echte wegen, een trein als de keten van zijn stations. Bevestigd wordt doorgetrokken getekend, In behandeling gestreept, en de uiteinden van de route zijn blauwe pillen met het icoon van het vervoer.',
   'help.guide.map-booking-routes.step.3':
-    'Klik op een eindpil en de boeking erachter gaat open, met de tijden, de referentie en waar hij begint. Sluiten bergt hem weer op.',
+    'Klik op een eindpil en de details van de boeking gaan open: status, soort en dagen als pillen in de getinte kop, de tijden aan beide uiteinden, de rest daaronder, en onderaan Op kaart, dat deze route weer uitzet, de prullenbak die de boeking verwijdert, en Bewerken. De X in de kop sluit ze.',
   'help.guide.map-booking-routes.step.4':
     'Het route-icoon in de werkbalk boven de dagen doet de hele reis in één keer: Alle boekingsroutes tonen tekent elke boeking die er een heeft.',
   'help.guide.map-booking-routes.step.5':
@@ -2834,8 +2836,6 @@ const help: TranslationStrings = {
     'Boekingsroutes altijd tonen, in dezelfde instellingen, tekent ze vanaf het begin op elke reis waarover je nog niet hebt beslist.',
   'help.guide.map-booking-routes.tip.3':
     'Een boeking heeft twee uiteinden met coördinaten nodig voordat hij getekend kan worden, dus een hotel of een restaurant draagt geen route-icoon.',
-  'help.ctx.trip-map.bullet.8':
-    'Met de add-on Dawarich aan tekent de ronde knop Dawarich onder Hele reis tonen de route die je telefoon echt heeft opgenomen: Opgenomen route tonen legt hem gestreept onder de geplande route, één kleur per dag, en het label van de knop zegt waarom er geen lijn is als die er niet is.',
   // map-dawarich-trail
   'help.guide.map-dawarich-trail.title': 'De route tonen die je echt hebt afgelegd',
   'help.guide.map-dawarich-trail.goal':
@@ -2870,58 +2870,61 @@ const help: TranslationStrings = {
   // ── Screen: trip-collab ───────────────────────────────────────────────────────────────
   'help.ctx.trip-collab.title': 'Samenwerking',
   'help.ctx.trip-collab.summary':
-    'Het tabblad waar de groep samen plant: links de chat, daarnaast de gedeelde notities en links, daaronder de polls en aan het eind Wat komt er. Alles wat hier geschreven wordt, staat meteen op het scherm van elk ander lid, zonder herladen.',
+    'Het tabblad waar de groep samen plant, in vijf kaarten: links de chat, daarnaast Notities en Links, daaronder Polls en Wat komt er. Alles wat hier geschreven wordt, staat meteen op het scherm van elk ander lid, zonder herladen.',
   'help.ctx.trip-collab.bullet.1':
-    'De chat is de linkerkolom. Typ in Typ een bericht... en druk op Enter; Shift en Enter maken een nieuwe regel. De smiley zet er een emoji in, Afbeeldingen toevoegen hangt tot vier afbeeldingen aan het bericht.',
+    'De chat is de kaart links. Typ in Typ een bericht... en druk op Enter; Shift en Enter maken een nieuwe regel. De smiley zet er een emoji in, Afbeeldingen toevoegen hangt tot vier afbeeldingen aan het bericht.',
   'help.ctx.trip-collab.bullet.2':
-    'Ga met de muis over een bericht voor Beantwoorden en, bij je eigen bericht, Verwijderen; met rechts klikken komen de acht snelle reacties. Een verwijderd bericht laat één regel achter die zegt dat jij het verwijderd hebt.',
+    'Ga met de muis over een bericht voor Beantwoorden en, bij je eigen bericht, Verwijderen; met rechts klikken komen de acht snelle reacties. Een verwijderd bericht laat één regel achter die zegt wie het verwijderd heeft.',
   'help.ctx.trip-collab.bullet.3':
-    'Notities is het gedeelde blok: Nieuwe notitie schrijft er een, en het tandwiel ernaast opent Categorieën beheren voor hun namen en kleuren. Een kaart draagt Uitvouwen, Vastpinnen, Bewerken en Verwijderen.',
+    'Notities is het gedeelde blok: Nieuwe notitie in de kop schrijft er een, en het tandwiel ernaast opent Categorieën beheren voor hun namen en kleuren. Een notitiekaart toont haar categorie als gekleurde stip en haar link als ronde knop, en haar drie puntjes (Meer opties) bevatten Uitvouwen, Vastpinnen, Bewerken en Verwijderen.',
   'help.ctx.trip-collab.bullet.4':
     'Links verzamelt de adressen waar de reis op draait. Link toevoegen neemt een titel en een http- of https-adres; Link bewerken, Link vastmaken en Link verwijderen zitten aan het eind van de chip, en vastgemaakte links blijven vooraan.',
   'help.ctx.trip-collab.bullet.5':
-    'Polls beslissen dingen. Nieuwe poll stelt een vraag met minstens twee opties; een klik op een optie is jouw stem, Sluiten beëindigt de stemming en Verwijderen haalt de poll weg.',
+    'Polls beslissen dingen. Nieuwe poll stelt een vraag met minstens twee opties; een klik op een optie is jouw stem, en het slotje (Sluiten) en de prullenbak (Verwijderen) rechts in de kop van een poll beëindigen de stemming of halen de poll weg.',
   'help.ctx.trip-collab.bullet.6':
     'Wat komt er toont de stops van de reis die nog voor je liggen, tot acht ervan, met hun tijden en de mensen die erbij zijn. Het leest alleen het dagplan; de tijden worden daar gezet.',
   // write-note
   'help.guide.write-note.title': 'Een gedeelde notitie schrijven',
   'help.guide.write-note.goal':
     'Zet wat de hele groep nodig heeft, een afspraak, een adres, een herinnering, daar waar iedereen het terugvindt.',
-  'help.guide.write-note.step.1': 'Klik bovenaan het paneel Notities op Nieuwe notitie. Het formulier gaat open.',
+  'help.guide.write-note.step.1':
+    'Klik in de kop van de kaart Notities op Nieuwe notitie. Het notitievenster gaat open, met de cursor al in de kop.',
   'help.guide.write-note.step.2':
-    'Notitietitel is de naam die de kaart draagt. Het is het enige waar het formulier op staat: Aanmaken blijft grijs zolang er niets in staat.',
+    'Typ de titel waar Notitietitel staat, in de kop van het venster. Het is het enige waar het venster op staat: Aanmaken blijft grijs zolang er niets in staat, en Enter in de titel maakt de notitie meteen aan.',
   'help.guide.write-note.step.3':
-    'Het grote vak eronder bevat de tekst en neemt Markdown: een vet woord, een lijst, een kop. De kaart toont de eerste regels, en Uitvouwen erop opent de hele notitie.',
+    'Inhoud bevat de tekst en neemt Markdown: een vet woord, een lijst, een kop. De kaart toont de eerste drie regels, en Uitvouwen in haar menu opent de hele notitie.',
   'help.guide.write-note.step.4':
-    'Kies onder Categorie die waar de notitie bij hoort; haar kleur wordt de kleur van de kaart. De pillen zijn de categorieën die al bestaan, en een nieuwe maak je onder Categorieën beheren.',
+    'Kies onder Categorie die waar de notitie bij hoort; haar kleur tint nu de kop van het venster en later de kop van de kaart. De pillen zijn de categorieën die al bestaan, en een nieuwe maak je onder Categorieën beheren.',
   'help.guide.write-note.step.5':
-    'Website neemt een link die bij de notitie hoort. De kaart draagt dan een tegel Link die hem opent.',
-  'help.guide.write-note.step.6': 'Klik op Aanmaken.',
+    'Website neemt een link die bij de notitie hoort. De kaart draagt dan een ronde linkknop in haar kop die hem opent.',
+  'help.guide.write-note.step.6':
+    'Klik op Aanmaken. Niets anders sluit het venster dan Annuleren en het kruisje, dus een verdwaalde klik ernaast of Esc laat wat je schreef niet verloren gaan.',
   'help.guide.write-note.result':
-    'De notitie is een kaart in het paneel Notities, in de kleur van haar categorie, en staat al op het scherm van elk ander lid.',
+    'De notitie is een kaart in het paneel Notities, met haar kop getint in de kleur van haar categorie, en staat al op het scherm van elk ander lid.',
   'help.guide.write-note.tip.1':
-    'Vastpinnen op een kaart houdt hem bovenaan het paneel; alles daaronder is gesorteerd op wanneer het het laatst is gewijzigd.',
+    'De drie puntjes op een kaart (Meer opties) bevatten Uitvouwen, Vastpinnen, Bewerken en Verwijderen. Vastpinnen houdt de notitie bovenaan het paneel, in een kader in haar kleur; alles daaronder is gesorteerd op wanneer het het laatst is gewijzigd.',
   'help.guide.write-note.tip.2':
-    'Het tandwiel naast Nieuwe notitie opent Categorieën beheren: daar krijgt een categorie haar kleur, wordt ze overal in één keer hernoemd, of wordt ze aangemaakt voordat een notitie haar gebruikt.',
+    'Het tandwiel naast Nieuwe notitie opent Categorieën beheren: daar krijgt een categorie haar kleur, wordt ze overal in één keer hernoemd, of wordt ze aangemaakt voordat een notitie haar gebruikt. Er verandert niets tot je op Opslaan klikt.',
   'help.guide.write-note.tip.3':
-    'Bestanden bijvoegen hangt een document aan de notitie. Bijvoegen opent de bestandskiezer, en een afbeelding of een PDF kun je ook gewoon in het formulier plakken.',
+    'Bestanden bijvoegen hangt een document aan de notitie. Bijvoegen opent de bestandskiezer, en een afbeelding of een PDF kun je ook gewoon in het venster plakken.',
   'help.guide.write-note.tip.4':
     'Notities is een eigen schakelaar onder Add-ons, onder Samenwerking: een beheerder kan hem uitzetten en de Chat, de Links, de Polls en Wat nu laten draaien.',
   // shared-links
   'help.guide.shared-links.title': 'De links van de reis verzamelen',
   'help.guide.shared-links.goal':
     'Houd het boekingsportaal, het gedeelde album en de dienstregeling op één plek in plaats van er de chat voor door te scrollen.',
-  'help.guide.shared-links.step.1': 'Klik bovenaan het paneel Links op Link toevoegen.',
+  'help.guide.shared-links.step.1':
+    'Klik in de kop van de kaart Links op Link toevoegen. Het venster gaat open met de cursor in de kop.',
   'help.guide.shared-links.step.2':
-    'Geef de link een naam in Linktitel, plak het adres in het veld eronder en klik dan op Link opslaan.',
+    'Typ de naam waar Linktitel staat, plak het adres in Link eronder en klik dan op Link opslaan.',
   'help.guide.shared-links.step.3':
     'De chip toont de naam en de site waar hij naartoe wijst. Een klik erop opent de pagina in een nieuw tabblad.',
   'help.guide.shared-links.step.4':
-    'De drie kleine knoppen aan het eind zijn Link bewerken, Link vastmaken en Link verwijderen. Link vastmaken zet de chip vooraan in het paneel; Link verwijderen vraagt niets.',
+    'De drie ronde knoppen aan het eind zijn Link bewerken, Link vastmaken en Link verwijderen. Link vastmaken zet de chip vooraan in het paneel, in de accenttint; Link verwijderen vraagt het eerst, want de link verdwijnt voor elk lid.',
   'help.guide.shared-links.result':
     'De link is een chip in het paneel Links, vooraan vastgemaakt, en tegelijk op het scherm van elk lid.',
   'help.guide.shared-links.tip.1':
-    'Alleen http- en https-adressen worden aangenomen; het veld weigert al het andere voordat het opslaat.',
+    'Alleen een http- of https-adres wordt aangenomen: al het andere wordt geweigerd, en het venster blijft open met wat je hebt getypt.',
   'help.guide.shared-links.tip.2':
     'Vastgemaakte links komen eerst, dan de nieuwste. Het kleine pictogram naast een titel is de eigen favicon van de site, opgehaald bij de site zelf, dus zonder internet toont de chip in plaats daarvan een gewoon linkteken.',
   'help.guide.shared-links.tip.3':
@@ -2930,37 +2933,39 @@ const help: TranslationStrings = {
   'help.guide.create-poll.title': 'De groep vragen',
   'help.guide.create-poll.goal':
     'Maak van een vraag die in de chat niemand beantwoordt een poll die iedereen kan aantikken.',
-  'help.guide.create-poll.step.1': 'Klik bovenaan het paneel Polls op Nieuwe poll.',
+  'help.guide.create-poll.step.1': 'Klik in de kop van de kaart Polls op Nieuwe poll. Het venster gaat open.',
   'help.guide.create-poll.step.2':
-    'Schrijf de vraag. Markdown wordt ondersteund onder het vak betekent dat een vet woord, een regeleinde of een korte lijst hier werkt.',
-  'help.guide.create-poll.step.3': 'Vul Optie 1 en Optie 2 in. Twee opties met iets erin zijn het minimum.',
+    'Schrijf de vraag onder Vraag. Markdown wordt ondersteund onder het vak betekent dat een vet woord, een regeleinde of een korte lijst hier werkt.',
+  'help.guide.create-poll.step.3':
+    'Vul onder Opties Optie 1 en Optie 2 in. Twee opties met iets erin zijn het minimum, en een optie mag over meerdere regels lopen.',
   'help.guide.create-poll.step.4':
-    '+ Optie toevoegen voegt een derde toe, een vierde, zoveel als je nodig hebt; het kleine kruisje naast een rij haalt er weer een weg.',
+    'Optie toevoegen eronder voegt een derde toe, een vierde, zoveel als je nodig hebt; het kleine kruisje naast een rij, dat er staat zodra je meer dan twee opties hebt, haalt er weer een weg.',
   'help.guide.create-poll.step.5':
     'Meerkeuze laat iedereen meer dan één optie aantikken. Staat hij uit, dan schuift een stem mee als iemand iets anders kiest.',
   'help.guide.create-poll.step.6': 'Klik op Poll aanmaken.',
-  'help.guide.create-poll.result': 'De poll staat bovenaan het paneel Polls, open, en niemand heeft nog gestemd.',
+  'help.guide.create-poll.result': 'De poll staat bovenaan het paneel Polls, open, met 0 stemmen in de kop.',
   'help.guide.create-poll.tip.1': 'De vraag wordt als Markdown weergegeven; de opties blijven platte tekst.',
   'help.guide.create-poll.tip.2':
     'Poll aanmaken blijft grijs tot er een vraag is en minstens twee opties met iets erin.',
   'help.guide.create-poll.tip.3':
-    'Een deadline kun je alleen in de telefoonapp zetten. Een poll die er een heeft toont hier de resterende tijd in een amberkleurige chip en geldt als gesloten zodra die afloopt.',
+    'Een deadline kun je alleen in de telefoonapp zetten. Een poll die er een heeft, toont de resterende tijd in een amberkleurige chip in de kop en geldt als gesloten zodra die afloopt.',
   'help.guide.create-poll.tip.4':
     'Polls is een eigen schakelaar onder Add-ons, onder Samenwerking: een beheerder kan hem uitzetten en de andere vier panelen laten draaien.',
   // vote-poll
   'help.guide.vote-poll.title': 'Stemmen en het resultaat lezen',
   'help.guide.vote-poll.goal': 'Breng je stem uit, zie waar de groep staat, en verander van gedachten.',
-  'help.guide.vote-poll.step.1': 'Klik op de optie die je wilt. De cirkel ervan vult zich en de balk erachter groeit.',
+  'help.guide.vote-poll.step.1':
+    'Klik op de optie die je wilt. De cirkel ervan vult zich met een vinkje, de optie krijgt een kader in de accentkleur en de balk erachter groeit.',
   'help.guide.vote-poll.step.2':
-    'Nu is het hele resultaat te lezen: de balk is het aandeel, het percentage staat rechts, en de kleine cirkels zijn de mensen die die optie kozen.',
+    'Nu is het hele resultaat te lezen: de balk is het aandeel, het percentage staat rechts, en de kleine cirkels zijn de mensen die die optie kozen, tot drie van hen.',
   'help.guide.vote-poll.step.3':
     'Van gedachten veranderd? Klik op een andere optie. Bij een poll zonder Meerkeuze schuift je stem mee in plaats van dat er een tweede bij komt.',
   'help.guide.vote-poll.step.4':
-    'Onder de vraag staat hoeveel stemmen de poll heeft. Een klik op de optie die je al koos haalt je stem er weer uit, en de teller daalt.',
+    'Hoeveel stemmen de poll heeft, staat in een chip onder de vraag. Een klik op de optie die je al koos haalt je stem er weer uit, en het aantal daalt weer.',
   'help.guide.vote-poll.result':
     'Je vinkje staat op één optie, de balken tonen hoe de groep verdeeld is, en de cirkels zeggen wie wat koos.',
   'help.guide.vote-poll.tip.1':
-    'De balken en de percentages verschijnen pas als je zelf gestemd hebt, of als de poll gesloten is, zodat niemand door de tussenstand gestuurd wordt.',
+    'De percentages en wie wat gestemd heeft verschijnen pas als je zelf gestemd hebt, of als de poll gesloten is. Het aantal stemmen in de kop is er voor iedereen.',
   'help.guide.vote-poll.tip.2':
     'Een stem is nooit anoniem: ga met de muis over een van de cirkels bij een optie voor de naam erachter.',
   // close-poll
@@ -2968,11 +2973,11 @@ const help: TranslationStrings = {
   'help.guide.close-poll.goal':
     'Stop de stemming zodra de groep beslist heeft, en ruim een poll op die niemand meer nodig heeft.',
   'help.guide.close-poll.step.1':
-    'Sluiten, het slotje in de hoek van een poll, beëindigt de stemming. De opties nemen geen klikken meer aan.',
+    'Sluiten, het slotje rechts in de kop van een poll, beëindigt de stemming. De opties nemen geen klikken meer aan.',
   'help.guide.close-poll.step.2':
-    'Een gesloten poll zakt onder de kop Gesloten onderaan het paneel, draagt een badge Gesloten en toont iedereen het resultaat, of ze nu gestemd hebben of niet. De winnende optie krijgt een groene tint.',
+    'Een gesloten poll zakt onder de kop Gesloten onderaan het paneel, draagt een chip Gesloten en toont iedereen het resultaat, of ze nu gestemd hebben of niet. De winnende optie staat vetgedrukt op een groene balk; is het de optie die jij koos, dan houdt de balk in plaats daarvan jouw accentkleur.',
   'help.guide.close-poll.step.3':
-    'Verwijderen, de prullenbak in dezelfde hoek, haalt de poll weg. Niets vraagt het twee keer, en de stemmen gaan mee.',
+    'Verwijderen, de prullenbak rechts in de kop, haalt de poll weg; bij een gesloten poll staat hij daar alleen, want het slotje is weg. Niets vraagt het twee keer, en de stemmen gaan mee.',
   'help.guide.close-poll.result':
     'De poll is uit het paneel van elk lid verdwenen. Een die je alleen gesloten hebt, blijft onderaan leesbaar, met zijn resultaat.',
   'help.guide.close-poll.tip.1':
@@ -2983,11 +2988,11 @@ const help: TranslationStrings = {
   'help.guide.whats-next.title': 'Wat komt er lezen',
   'help.guide.whats-next.goal': 'Zie wat de groep hierna doet zonder het plan te openen.',
   'help.guide.whats-next.step.1':
-    'Het paneel toont de stops van de reis die nog voor je liggen, tot acht ervan, op tijd gesorteerd, onder een kop per dag: Vandaag, Morgen of de datum.',
+    'De kaart toont de stops van de reis die nog voor je liggen, tot acht ervan, op tijd gesorteerd, onder een kop per dag: Vandaag, Morgen of de datum, met de titel van de dag ernaast als hij er een heeft. De kop van de kaart telt ze.',
   'help.guide.whats-next.step.2':
-    'Links in een rij staat de tijd: het begin, tot, en het einde als de stop dat heeft, of TBD als er nog geen tijd op gezet is.',
+    'Links van elke stop staat zijn tijd: het begin, tot, en het einde als de stop dat heeft, of TBD als er nog geen tijd op gezet is.',
   'help.guide.whats-next.step.3':
-    'De chips onder de naam zijn de mensen bij die stop. Is er niemand voor gekozen, dan staat iedereen in de reis er.',
+    'Ernaast staan de naam, het adres en, als chips, de mensen bij die stop. Is er niemand voor gekozen, dan staat iedereen in de reis er.',
   'help.guide.whats-next.result':
     'Een lijst van wat eraan komt, alleen om te lezen: hij volgt het plan, en niets hier verandert het.',
   'help.guide.whats-next.tip.1':
@@ -3001,7 +3006,7 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.goal':
     'Zeg iets, antwoord op één bepaald bericht, reageer op een ander, en neem je eigen bericht terug.',
   'help.guide.trip-chat.step.1':
-    'Typ in Typ een bericht... en druk op Enter. De blauwe pijl naast het vak doet hetzelfde; Shift en Enter maken in plaats daarvan een nieuwe regel.',
+    'Typ in Typ een bericht... en druk op Enter. De ronde pijl naast het vak doet hetzelfde; Shift en Enter maken in plaats daarvan een nieuwe regel.',
   'help.guide.trip-chat.step.2':
     'De smiley opent de emojikiezer, met Smileys, Reactions en Travel erin. Wat je kiest wordt toegevoegd aan wat je aan het schrijven bent, het wordt niet op zichzelf verstuurd.',
   'help.guide.trip-chat.step.3':
@@ -3011,11 +3016,11 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.step.5':
     'Klik met rechts op een bericht voor de acht snelle reacties. De jouwe zit onder de bubbel, en een tweede klik op dezelfde haalt hem terug.',
   'help.guide.trip-chat.step.6':
-    'Je eigen berichten dragen Verwijderen naast Beantwoorden. Het haalt het bericht weg en laat één regel achter die zegt dat jij het verwijderd hebt: terug kan niet.',
+    'Je eigen berichten dragen Verwijderen, de prullenbak, naast Beantwoorden. Het haalt het bericht meteen weg en laat één regel achter die zegt dat jij het verwijderd hebt: terug kan niet.',
   'help.guide.trip-chat.result':
-    'Je antwoord staat onder het bericht dat het citeert, een reactie hangt aan een derde, en het bericht dat je terugnam laat één enkele regel achter die dat zegt.',
+    'Je antwoord is het nieuwste bericht, met het bericht dat het citeert bovenaan; een reactie hangt aan een derde, en het bericht dat je terugnam laat één enkele regel achter die dat zegt.',
   'help.guide.trip-chat.tip.1':
-    'Enter verstuurt, Shift en Enter maken een nieuwe regel. Een bericht dat alleen uit emoji bestaat wordt groot getoond.',
+    'Enter verstuurt, Shift en Enter maken een nieuwe regel. Een bericht van één tot drie emoji en verder niets wordt groot getoond.',
   'help.guide.trip-chat.tip.2':
     'Afbeeldingen toevoegen neemt tot vier afbeeldingen voor één bericht; ze kunnen ook gewoon geplakt of op het vak gesleept worden.',
   'help.guide.trip-chat.tip.3':
@@ -3028,31 +3033,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-lists.summary':
     'Twee lijsten voor één reis: de inpaklijst, met wie wat meeneemt en wat het weegt, en de takenlijst met alles wat vooraf en onderweg moet gebeuren. Het tabblad is er zolang de addon Lijsten aan staat.',
   'help.ctx.trip-lists.bullet.1':
-    'Inpaklijst en Taken bovenaan wisselen tussen de twee en tellen wat er in elk zit; de knoppen rechts horen bij degene die open is.',
+    'Inpaklijst en Taken in de balk bovenaan wisselen tussen de twee en tellen wat er in elk zit; de knoppen aan het rechteruiteinde van de balk horen bij degene die open is.',
   'help.ctx.trip-lists.bullet.2':
-    'De inpaklijst is gegroepeerd in lijsten, Documenten, Kleding, hoe je ze ook noemt, elk met een kleurstip, een teller van ingepakt op totaal en drie puntjes met Hernoemen, Alles aanvinken, Alles uitvinken en Lijst verwijderen. Lijst toevoegen in de balk erboven maakt er een nieuwe.',
+    'De inpaklijst is gegroepeerd in lijsten, Documenten, Kleding, hoe je ze ook noemt, elk een kaart waarvan de kopband een kleurstip bevat, een teller van ingepakt op totaal, drie puntjes met Hernoemen, Alles aanvinken, Alles uitvinken en Lijst verwijderen, en een pijltje dat de kaart inklapt. Lijst toevoegen in de balk erboven maakt er een nieuwe.',
   'help.ctx.trip-lists.bullet.3':
-    'Een rij is een vinkvakje en een naam, dan als kleine badges wie het item meeneemt, het aantal en het gewicht in grammen, en een bagagerondje zolang Bagagetracking aan staat, dan de prullenbak en drie puntjes met Naar lijst verplaatsen, Delen, Hernoemen en Verwijderen. Wat een rij niet gebruikt, blijft gedimd tot je erop wijst, en de greep links sleept hem omhoog of omlaag binnen zijn lijst.',
+    'Een rij is een vinkvakje en een naam, dan wie het item meeneemt als kleine avatar en het aantal als kleine badge, zolang Bagagetracking aan staat ook het gewicht in grammen en een bagagerondje, dan de prullenbak en drie puntjes met Naar lijst verplaatsen, Delen, Hernoemen en Verwijderen. Wat een rij niet gebruikt, blijft gedimd tot je erop wijst, en de greep links sleept hem omhoog of omlaag binnen zijn lijst.',
   'help.ctx.trip-lists.bullet.4':
-    'Gedeeld en Mijn lijst splitsen de inpaklijst in tweeën: de pot die iedereen ziet, en die van jou. Alle, Openstaand en Klaar versmallen degene die open is, en de balk erboven telt wat er ingepakt is.',
+    'Gedeeld en Mijn lijst splitsen de inpaklijst in tweeën: de pot die iedereen ziet, en die van jou. Alle, Openstaand en Klaar ernaast versmallen degene die open is, en de voortgangskaart erboven telt wat er ingepakt is.',
   'help.ctx.trip-lists.bullet.5':
-    'Sjabloon toepassen en Opslaan als sjabloon vullen of bewaren een lijst zonder hem uit te typen, en de twee pictogrammen ernaast exporteren de lijst, als afdruk, als PDF of als bestand, en importeren er een. De rode knop naast de voortgangsbalk noemt hoeveel items aangevinkt zijn en ruimt ze op.',
+    'Sjabloon toepassen en Opslaan als sjabloon vullen of bewaren een lijst zonder hem uit te typen, en de twee pictogrammen erna, Exporteren en Importeren, halen de lijst eruit als afdruk, als PDF of als bestand, en halen er een binnen. De rode knop aan het rechteruiteinde van de voortgangskaart noemt hoeveel items aangevinkt zijn en ruimt ze op.',
   'help.ctx.trip-lists.bullet.6':
-    'Taken heeft een eigen zijbalk: de voortgangskaart, de filters Alles, Mijn taken, Verlopen en Klaar, één rij per lijst en daaronder Lijst toevoegen. De taken staan in een kaart waarvan de kop het filter noemt en de sortering bevat, Prioriteit of Vervaldatum. Een klik op een taak opent hem in het paneel rechts, en Nieuwe taak opent het formulier Nieuwe taak over het midden van het scherm.',
+    'Taken heeft een eigen zijbalk: de voortgangskaart, de filters Alles, Mijn taken, Verlopen en Klaar, één rij per lijst en daaronder Lijst toevoegen. De taken staan in een kaart waarvan de kop het filter noemt en de sortering bevat, Prioriteit of Vervaldatum. Een klik op een taak opent hem in het paneel rechts, en Nieuwe taak in de balk opent het venster Nieuwe taak.',
   // packing-categories
   'help.guide.packing-categories.title': 'De inpaklijst opbouwen',
   'help.guide.packing-categories.goal':
     'Groepeer wat je meeneemt in lijsten, vul ze met items en zeg wie zich om welke lijst bekommert.',
   'help.guide.packing-categories.step.1':
-    'Klik in de balk boven de lijsten op Lijst toevoegen, typ de naam in Lijstnaam (bijv. Kleding) en klik op Toevoegen.',
+    'Klik in de balk boven de lijsten op Lijst toevoegen. Er gaat een klein venster open: typ de naam in de kopband, waar Lijstnaam (bijv. Kleding) staat, en klik op Toevoegen.',
   'help.guide.packing-categories.step.2':
-    'De nieuwe lijst begint met één lege rij. Klik op Item toevoegen, typ het item in Itemnaam... en druk op Enter; het veld blijft open voor het volgende.',
+    'De nieuwe lijst begint met een plaatshouderrij die alleen drie vage puntjes toont. Klik onderaan op Item toevoegen, typ het item in Itemnaam... en druk op Enter: het eerste item neemt de plaats van de plaatshouder in, en het veld blijft open voor het volgende.',
   'help.guide.packing-categories.step.3':
     'Hernoem een rij door op de naam te klikken, of met Hernoemen in de drie puntjes aan het rechteruiteinde.',
   'help.guide.packing-categories.step.4':
-    'Het gestippelde rondje in de kop van de lijst wijst reisleden aan de lijst toe. Kies een naam; het label dat verschijnt haalt die persoon er met een klik weer af.',
+    'Het gestippelde rondje met een persoon in de kopband van de lijst wijst reisleden aan de lijst toe. Kies een naam; het label dat verschijnt haalt die persoon er met een klik weer af.',
   'help.guide.packing-categories.step.5':
-    'De drie puntjes aan het eind van de kop bevatten de rest: Hernoemen, Alles aanvinken, Alles uitvinken en Lijst verwijderen, dat de lijst met alles erin meeneemt zonder nog eens te vragen.',
+    'De drie puntjes naast de teller bevatten de rest: Hernoemen, Alles aanvinken, Alles uitvinken en Lijst verwijderen, dat de lijst met alles erin meeneemt zonder nog eens te vragen. Het pijltje helemaal rechts klapt de lijst in.',
   'help.guide.packing-categories.result':
     'De nieuwe lijst staat in het raster met zijn items eronder en zijn kleurstip, en zijn teller telt wat er al ingepakt is.',
   'help.guide.packing-categories.tip.1':
@@ -3067,13 +3072,13 @@ const help: TranslationStrings = {
   'help.guide.check-off-packing.step.1':
     'Klik op het vakje links van een rij. De naam wordt doorgestreept en de balk beweegt.',
   'help.guide.check-off-packing.step.2':
-    'De balk erboven telt wat ingepakt is tegen alles op de lijst, als getal en als percentage.',
+    'De voortgangskaart boven de lijsten telt wat ingepakt is tegen alles op de lijst, als getal, als percentage en als balk.',
   'help.guide.check-off-packing.step.3':
-    'Een hele lijst in één keer: de drie puntjes in zijn kop bevatten Alles aanvinken en Alles uitvinken.',
+    'Een hele lijst in één keer: de drie puntjes in zijn kopband bevatten Alles aanvinken en Alles uitvinken.',
   'help.guide.check-off-packing.step.4':
-    'Alle, Openstaand en Klaar versmallen het raster. Openstaand laat alleen wat nog ontbreekt, een volledig ingepakte lijst valt er dus uit.',
+    'Alle, Openstaand en Klaar naast Gedeeld en Mijn lijst versmallen het raster. Openstaand laat alleen wat nog ontbreekt, een volledig ingepakte lijst valt er dus uit.',
   'help.guide.check-off-packing.step.5':
-    '3 aangevinkte verwijderen naast de voortgangsbalk wist alle aangevinkte items in één keer, na één bevestiging van de browser.',
+    '3 aangevinkte verwijderen aan het rechteruiteinde van de voortgangskaart wist alle aangevinkte items in één keer, na één bevestiging van de browser.',
   'help.guide.check-off-packing.result':
     'Alleen wat nog open staat wordt getoond, en de balk erboven zegt hoe ver het inpakken is.',
   'help.guide.check-off-packing.tip.1': 'Een aangevinkt item kun je toch hernoemen: klik op de naam.',
@@ -3091,7 +3096,7 @@ const help: TranslationStrings = {
   'help.guide.apply-packing-template.step.3':
     'De items landen in de weergave waarin je zit: Gedeeld zet ze in de pot die iedereen ziet, Mijn lijst maakt ze van jou.',
   'help.guide.apply-packing-template.step.4':
-    'De lijst van deze reis bewaren voor de volgende: Opslaan als sjabloon opent een venster, typ een naam en klik op Opslaan.',
+    'De lijst van deze reis bewaren voor de volgende: Opslaan als sjabloon opent een klein venster. Typ een naam in de kopband, waar Sjabloonnaam staat, en klik op Opslaan.',
   'help.guide.apply-packing-template.result':
     'De lijsten en items van het sjabloon staan in de reis, naast wat er al was.',
   'help.guide.apply-packing-template.tip.1':
@@ -3103,12 +3108,14 @@ const help: TranslationStrings = {
   // import-packing-list
   'help.guide.import-packing-list.title': 'Een hele inpaklijst erin plakken',
   'help.guide.import-packing-list.goal': 'Maak in één keer inpakitems van een lijst die je ergens anders al hebt.',
-  'help.guide.import-packing-list.step.1': 'Klik op de importknop met de pijl omlaag in de balk boven de lijst.',
+  'help.guide.import-packing-list.step.1':
+    'Klik op Importeren, het icoon met de pijl omlaag aan het rechteruiteinde van de balk boven de lijst.',
   'help.guide.import-packing-list.step.2':
-    'Eén item per regel: Categorie, Naam, Gewicht in g (optioneel), Bagage (optioneel), checked/unchecked (optioneel). Het grijze voorbeeld in het vak toont alle vier de vormen. Een Markdown-lijst werkt ook: een kop geeft de lijst een naam, en "- [ ]" en "- [x]" worden items.',
+    'Eén item per regel: Categorie, Naam, Gewicht in g (optioneel), Bagage (optioneel), checked/unchecked (optioneel). Het grijze voorbeeld in het vak toont alle vier de vormen, en de nummers langs de linkerrand tellen de regels die je typt. Een Markdown-lijst werkt ook: een kop geeft de lijst een naam, en "- [ ]" en "- [x]" worden items.',
   'help.guide.import-packing-list.step.3':
-    'Of laad de regels uit een bestand met CSV/TXT/MD laden. Het neemt een .csv, een .txt of een .md en vervangt wat er in het vak staat.',
-  'help.guide.import-packing-list.step.4': 'Klik op Importeren. De knop telt de regels die hij begrepen heeft.',
+    'Of laad de regels uit een bestand met CSV/TXT/MD laden, linksonder in het venster. Het neemt een .csv, een .txt of een .md en vervangt wat er in het vak staat.',
+  'help.guide.import-packing-list.step.4':
+    'Klik rechtsonder op 3 importeren; het getal erop telt de regels die TREK begrepen heeft.',
   'help.guide.import-packing-list.result':
     'Elke regel wordt een rij, in de lijst die zijn eerste veld noemt, en niets van wat er al stond wordt aangeraakt.',
   'help.guide.import-packing-list.tip.1':
@@ -3119,11 +3126,12 @@ const help: TranslationStrings = {
   'help.guide.export-packing-list.title': 'De inpaklijst afdrukken of exporteren',
   'help.guide.export-packing-list.goal':
     'Neem de lijst mee op papier, als PDF of als bestand voor een andere app of de volgende reis.',
-  'help.guide.export-packing-list.step.1': 'Klik op de exportknop met de pijl omhoog in de balk boven de lijst.',
+  'help.guide.export-packing-list.step.1':
+    'Klik op Exporteren, het icoon met de pijl omhoog in de balk boven de lijst, vlak vóór Importeren.',
   'help.guide.export-packing-list.step.2':
     'Markdown-checklist (.md) en CSV voor import (.csv) slaan de lijst meteen op als bestand.',
   'help.guide.export-packing-list.step.3':
-    'Klik op Afdrukken of opslaan als pdf. Het voorbeeld toont de lijst als pagina: bovenaan de reis en de datums, dan elke lijst als kaart met een vakje om af te vinken.',
+    'Klik op Afdrukken of opslaan als pdf. Het voorbeeld toont de lijst als pagina: bovenaan de reis, de datums en hoeveel er ingepakt is, dan elke lijst als kaart, elk item met een vakje om af te vinken.',
   'help.guide.export-packing-list.step.4':
     'Klik onder het voorbeeld op Afdrukken of opslaan als pdf. De browser opent zijn afdrukvenster: kies een printer, of Opslaan als pdf om een bestand te bewaren.',
   'help.guide.export-packing-list.result':
@@ -3148,9 +3156,9 @@ const help: TranslationStrings = {
     'Open Delen opnieuw en vink een naam aan onder Delen met…. Het item staat dan ook op de lijst van die persoon, en de rij krijgt een kleine badge die telt met hoeveel mensen het gedeeld is.',
   'help.guide.share-packing-item.result': 'Het item zit in het niveau dat je koos, en de rij zegt wie het meeneemt.',
   'help.guide.share-packing-item.tip.1':
-    'Alleen wie een item meeneemt verandert het delen ervan. Degene met wie je het gedeeld hebt ziet het op zijn eigen Mijn lijst, gemarkeerd met jouw naam, en kan het afvinken.',
+    'Alleen wie een item meeneemt verandert het delen ervan. Degene met wie je het gedeeld hebt, ziet het op zijn eigen Mijn lijst met een klein handlabel dat jouw naam noemt als hij ernaar wijst, en kan het afvinken.',
   'help.guide.share-packing-item.tip.2':
-    'Bij een item dat iemand anders meeneemt krijg je in plaats daarvan twee andere knoppen: Ik kan het ook meenemen, dat jou ernaast zet, en Kopiëren naar mijn lijst, dat er een eigen privékopie van maakt.',
+    'Bij een gedeeld item dat iemand anders meeneemt, bevatten de drie puntjes in plaats van Delen twee andere keuzes: Ik kan het ook meenemen, dat jou ernaast zet, en Kopiëren naar mijn lijst, dat er een eigen privékopie van maakt.',
   'help.guide.share-packing-item.tip.3':
     'Nieuwe items erven de weergave waarin je ze toevoegt. Toegevoegd in Mijn lijst zijn ze Persoonlijk, toegevoegd in Gedeeld gaan ze in de pot.',
   // packing-bags
@@ -3159,18 +3167,19 @@ const help: TranslationStrings = {
     'Zet een gewicht op elk item, verdeel de items over de bagage en houd elk stuk onder de limiet van de luchtvaartmaatschappij.',
   'help.guide.packing-bags.step.1':
     'Klik op de gewichtsbadge vóór het rondje en typ het gewicht van het item in grammen.',
-  'help.guide.packing-bags.step.2': 'Het rondje aan het eind van de rij is zijn bagagestuk. Klik erop.',
+  'help.guide.packing-bags.step.2': 'Het rondje na het gewicht is het bagagestuk van het item. Klik erop.',
   'help.guide.packing-bags.step.3':
     'Nog geen bagage: Bagage toevoegen, een naam, Enter. Het bagagestuk wordt aangemaakt en het item gaat er meteen in.',
   'help.guide.packing-bags.step.4':
-    'Het paneel Bagage verschijnt rechts zodra er één bagagestuk bestaat: naam, gewicht, een vulbalk, wie het draagt en hoeveel items erin zitten, dan Niet toegewezen en Totaalgewicht.',
+    'De kaart Bagage verschijnt rechts van de lijsten zodra er één bagagestuk bestaat: naam, wie het draagt, een vulbalk, hoeveel items erin zitten en zijn gewicht, dan Niet toegewezen en Totaalgewicht.',
   'help.guide.packing-bags.step.5':
-    'Klik op Limiet instellen en typ de limiet in kilogrammen, zoals luchtvaartmaatschappijen hem opgeven.',
-  'help.guide.packing-bags.step.6': 'De gestippelde plus naast de naam van een bagagestuk zegt wie het draagt.',
+    'Klik op Limiet instellen naast het gewicht van het bagagestuk en typ de limiet in kilogrammen, zoals luchtvaartmaatschappijen hem opgeven.',
+  'help.guide.packing-bags.step.6':
+    'De gestippelde plus aan het eind van de regel van het bagagestuk, vlak voor het kruisje, opent Leden toewijzen: vink aan wie het bagagestuk draagt, en die personen verschijnen naast de plus.',
   'help.guide.packing-bags.result':
-    'Het paneel Bagage rechts toont het gewicht van elk bagagestuk tegen zijn limiet, wat in geen enkel stuk zit, en het totaal.',
+    'De kaart Bagage rechts toont het gewicht van elk bagagestuk tegen zijn limiet, wat in geen enkel stuk zit, en het totaal.',
   'help.guide.packing-bags.tip.1':
-    'Het gewichtsveld, het bagagerondje en het paneel Bagage bestaan alleen zolang een beheerder Bagagetracking onder de addon Lijsten aan heeft staan.',
+    'Het gewichtsveld, het bagagerondje en de kaart Bagage bestaan alleen zolang een beheerder Bagagetracking onder de addon Lijsten aan heeft staan. In een smaller venster open je de bagagestukken in plaats daarvan met de knop Bagage boven de voortgangskaart.',
   'help.guide.packing-bags.tip.2':
     'Het gewicht van een bagagestuk wordt op de server opgeteld over de items van elk lid, ook die je niet kunt zien, het getal is dus echt wat het stuk weegt.',
   'help.guide.packing-bags.tip.3':
@@ -3179,16 +3188,17 @@ const help: TranslationStrings = {
   'help.guide.create-todo.title': 'Een taak toevoegen',
   'help.guide.create-todo.goal':
     'Schrijf op wat er moet gebeuren, met een lijst, een prioriteit, een datum en een naam erbij.',
-  'help.guide.create-todo.step.1': 'Klik rechtsboven op Nieuwe taak.',
+  'help.guide.create-todo.step.1': 'Klik op Nieuwe taak aan het rechteruiteinde van de balk.',
   'help.guide.create-todo.step.2':
-    'Geef hem een naam in Taaknaam, en zet alles wat het onthouden waard is onder Beschrijving.',
+    'Het venster Nieuwe taak gaat open met de cursor in de kopband: typ de naam waar Taaknaam staat, en zet alles wat het onthouden waard is onder Beschrijving.',
   'help.guide.create-todo.step.3':
     'Lijst groepeert de taak. Kies er een, of gebruik de plus ernaast om een nieuwe te benoemen in een klein dialoogvenster.',
   'help.guide.create-todo.step.4': 'Prioriteit is vier knoppen: Geen, P1, P2 en P3, van rood tot blauw.',
-  'help.guide.create-todo.step.5': 'Vervaldatum opent een kalender, en Toegewezen aan zet een naam op de taak.',
+  'help.guide.create-todo.step.5':
+    'Vervaldatum, naast Lijst, opent een kalender, en Toegewezen aan zet een naam op de taak.',
   'help.guide.create-todo.step.6': 'Klik op Taak aanmaken.',
   'help.guide.create-todo.result':
-    'De taak staat in de lijst met zijn badges, de prioriteit, de vervaldatum, de lijst en de persoon aan wie hij is toegewezen, en hij opent in het paneel rechts.',
+    'De taak staat in de lijst met de prioriteit, de vervaldatum en de lijst als badges, en aan het eind van de rij de avatar van degene aan wie hij is toegewezen, en hij opent in het paneel rechts.',
   'help.guide.create-todo.tip.1':
     'Alleen de naam is verplicht. Al het andere kan later vanuit het paneel rechts worden ingevuld.',
   'help.guide.create-todo.tip.2': 'Met een lijst geselecteerd in de zijbalk begint een nieuwe taak in die lijst.',
@@ -3206,7 +3216,7 @@ const help: TranslationStrings = {
     'De sortering in de kop van de lijst herschikt wat op het scherm staat: Prioriteit zet P1 vooraan, Vervaldatum zet de dichtstbijzijnde deadline vooraan. Maar één van de twee tegelijk, en een tweede klik gaat terug naar je eigen volgorde.',
   'help.guide.todo-filters.step.4': 'Klik op een taak om hem in het paneel rechts te openen.',
   'help.guide.todo-filters.step.5':
-    'Verander wat je nodig hebt, Beschrijving, Prioriteit, Lijst, Vervaldatum of Toegewezen aan, en dan Wijzigingen opslaan. Het vakje in de kop van het paneel vinkt de taak af, en Verwijderen haalt hem meteen weg.',
+    'Verander wat je nodig hebt, de naam, Beschrijving, Prioriteit, Lijst, Vervaldatum of Toegewezen aan, en dan Wijzigingen opslaan onderaan het paneel. Het vakje in de kop van het paneel vinkt de taak af, en Verwijderen naast Wijzigingen opslaan haalt hem meteen weg.',
   'help.guide.todo-filters.result':
     'De lijst toont alleen de taken waar je om vroeg, en het paneel rechts bewerkt degene die je koos.',
   'help.guide.todo-filters.tip.1':
@@ -3217,57 +3227,81 @@ const help: TranslationStrings = {
   // ── Screen: trip-bookings ─────────────────────────────────────────────────────────────
   'help.ctx.trip-bookings.title': 'Boekingen',
   'help.ctx.trip-bookings.summary':
-    'Het tabblad dat alles bewaart wat voor de reis geboekt is en geen manier is om je te verplaatsen: de accommodaties, de tafels, de kaartjes, de rondleidingen, het parkeren. Elke boeking is een kaart in In behandeling of in Bevestigd, met haar code, haar document, haar reizigers en haar kosten.',
+    'Het tabblad dat alles bewaart wat voor de reis geboekt is en geen manier is om je te verplaatsen: de accommodaties, de tafels, de kaartjes, de rondleidingen, het parkeren. Elke boeking is een kaart, een rij in de lijst of een balk op de tijdlijn, met haar code, haar documenten, haar reizigers en haar kosten, en een klik opent haar details.',
   'help.ctx.trip-bookings.bullet.1':
-    'Handmatige boeking rechtsboven opent het formulier. De zes soorten die het maakt zijn Accommodatie, Restaurant, Evenement, Rondleiding, Parkeren en Overig; vluchten, treinen en de rest wonen op het tabblad Transport en komen hier nooit voor.',
+    'Handmatige boeking aan het rechteruiteinde van de balk opent Nieuwe reservering. De zes soorten die het maakt zijn Accommodatie, Restaurant, Evenement, Rondleiding, Parkeren en Overig; vluchten, treinen en de rest wonen op het tabblad Transport en komen hier nooit voor.',
   'help.ctx.trip-bookings.bullet.2':
-    'Importeren vanuit bestand geeft een bevestiging aan de verwerking: EML, PDF, PKPass, HTML of TXT, hoogstens vijf bestanden van 10 MB. De knop is er alleen als de server ze kan lezen.',
+    'Het downloadicoon vóór Handmatige boeking, Boekingsbevestigingen importeren, geeft bevestigingen aan de verwerking: EML, PDF, PKPass, HTML of TXT, hoogstens vijf bestanden van 10 MB. Het icoon is er alleen als de server ze kan lezen.',
   'help.ctx.trip-bookings.bullet.3':
-    'De chips naast de kop filteren op soort, elk met zijn eigen aantal, en Alles haalt alles terug. Zodra een boeking mensen noemt, versmalt de rij avatars naast de chips het tabblad tot één van hen.',
+    'Zoeken doorzoekt titels, soorten, plaatsen, notities, boekingscodes en reizigers. Filteren, de trechter ernaast, versmalt het tabblad op Status, op Type met een aantal bij elk, en op Reizigers zodra een boeking mensen noemt; een getal op de trechter telt wat er aan staat.',
   'help.ctx.trip-bookings.bullet.4':
-    'De kaarten staan in twee secties, In behandeling en Bevestigd, elk met zijn aantal. Een klik op een sectiekop klapt hem weg, en of hij open staat wordt voor deze reis onthouden.',
+    'De drie iconen na Filteren wisselen de weergave: Kaarten, Lijst en Tijdlijn. Weergaveopties, de schuifjes ernaast, groepeert en sorteert kaarten en lijst of stelt de banen van de tijdlijn in. De kaarten staan standaard in Bevestigd en In behandeling, en een klik op een sectiekop klapt hem weg.',
   'help.ctx.trip-bookings.bullet.5':
-    'Een kaart draagt de statusstip, de soort, de titel, de data en tijden, de Boekingscode, de Locatie / Adres, waaraan de boeking gekoppeld is, haar Link, Notities, Bestanden en Reizigers.',
+    'Een kaart heeft een kopband, getint naar haar status, met de statusstip (een klik wisselt tussen In behandeling en Bevestigd), de soort, de titel, het potlood en de prullenbak. Daaronder staat wat de boeking heeft: Datum, Tijd, Boekingscode, Inchecken en Uitchecken, Locatie / Adres, Accommodatie, Gekoppeld aan (de stop in het plan), Link, Notities, Reizigers, Bestanden en de gekoppelde kosten.',
   'help.ctx.trip-bookings.bullet.6':
-    'Het potlood op een kaart opent hetzelfde formulier opnieuw; de prullenbak vraagt één keer en dan is de boeking weg. Bij een accommodatie gaan haar nachten in het Dagplan en haar gekoppelde kostenpost mee.',
+    'Een klik op een kaart, een rij of een balk opent de details van de boeking, met onderaan Op kaart, de prullenbak en Bewerken. Verwijderen vraagt één keer, dan is de boeking weg, samen met haar gekoppelde kostenposten, en een accommodatie haalt haar nachten uit het Dagplan.',
+  // booking-views
+  'help.guide.booking-views.title': 'De weergave wisselen en een boeking openen',
+  'help.guide.booking-views.goal':
+    'Bekijk de boekingen als kaarten, als lijst of op een tijdlijn, en open er een om alles te zien wat ze bevat.',
+  'help.guide.booking-views.step.1':
+    'De drie iconen na Filteren in de balk zijn de weergaven, en elk toont zijn naam als je ernaar wijst: Kaarten, Lijst en Tijdlijn. Het tabblad opent in Kaarten, één kaart per boeking in de secties Bevestigd en In behandeling. Klik op Lijst, het middelste.',
+  'help.guide.booking-views.step.2':
+    'Lijst zet één rij per boeking onder een kop per dag, met de dag en de tijd rechts; de pijltjestoetsen gaan van rij naar rij. Klik op Tijdlijn, het laatste van de drie.',
+  'help.guide.booking-views.step.3':
+    'Tijdlijn legt de boekingen over de dagen van de reis, één baan per soort en een balk van elk begin tot zijn einde, een boeking in behandeling met een gestreepte rand. Reis past de hele reis in de breedte; klik op de kop van een dag om die dag per uur te zien.',
+  'help.guide.booking-views.step.4':
+    'Dag spreidt één dag uit over een urenschaal, en de balken groeien tot ze hun tijden tonen. De pijlen naast de naam van de dag gaan naar de dag ervoor en de dag erna, en de schakelaar Reis en Dag rechts gaat terug naar de hele reis.',
+  'help.guide.booking-views.step.5':
+    'Wijs een balk aan om zijn dag, tijden en plaats te zien, en klik er dan op om de details van de boeking te openen. Een kaart in Kaarten en een rij in Lijst openen hetzelfde venster.',
+  'help.guide.booking-views.step.6':
+    'De kopband van de details bevat de titel en pillen voor de status (een klik wisselt hem), de soort, de dag en de boekingscode, met een knop die hem kopieert. Daaronder komen de tijden als tegels, dan de plaats, de reizigers, notities, kosten en bestanden, wat de boeking maar heeft, en onderaan Op kaart, de prullenbak en Bewerken.',
+  'help.guide.booking-views.result':
+    'De boeking staat open in haar details: Bewerken opent haar formulier, Op kaart toont haar in het plan, en Sluiten of Escape brengt je terug naar de weergave waar je vandaan kwam.',
+  'help.guide.booking-views.tip.1':
+    'Weergaveopties, de schuifjes na de weergave-iconen, groepeert en sorteert Kaarten en Lijst met Groeperen op en Sorteren op. In Tijdlijn zet het Eén baan per type en Het andere tabblad tonen aan of uit; dat laatste legt de items van het tabblad Transport gedimd in een smalle baan bovenaan. Weergave resetten zet de standaard terug, en elk tabblad onthoudt zijn weergave in deze browser.',
+  'help.guide.booking-views.tip.2':
+    'Een boeking vóór of na de reis, of zonder datum, kan niet op de tijdlijn staan: ze wacht onder de grafiek als klein kaartje onder Vóór de reis, Na de reis of Zonder datum.',
+  'help.guide.booking-views.tip.3':
+    'Dezelfde details gaan open overal waar een boeking opduikt: op het tabblad Transport, in het Dagplan, in de details van een dag en in die van een plek. Een klik op de titel hernoemt de boeking.',
   // create-booking
   'help.guide.create-booking.title': 'Een boeking aanmaken',
   'help.guide.create-booking.goal':
     'Zet met de hand een restaurant, een evenement, een rondleiding, een parkeerplaats of wat dan ook in de reis.',
   'help.guide.create-booking.step.1':
-    'Klik rechtsboven op het tabblad op Handmatige boeking. Nieuwe reservering gaat open.',
+    'Klik op Handmatige boeking aan het rechteruiteinde van de balk. Nieuwe reservering gaat open, met de titel en twee pillen in een kopband bovenaan.',
   'help.guide.create-booking.step.2':
-    'Klik op de typepil onder de titel, in de kop van het formulier, en kies het Boekingstype. Accommodatie, Restaurant, Evenement, Rondleiding, Parkeren en Overig zijn de zes die dit tabblad maakt, en het formulier verandert met de keuze: alleen Accommodatie ruilt haar data in voor een reeks dagen.',
+    'Klik op de typepil in de kopband, waarop bij een nieuwe boeking Overig staat, en kies het Boekingstype. Accommodatie, Restaurant, Evenement, Rondleiding, Parkeren en Overig zijn de zes die dit tabblad maakt, en het formulier verandert met de keuze: alleen Accommodatie ruilt haar data in voor een reeks dagen.',
   'help.guide.create-booking.step.3':
-    'Typ de Titel. Het is het enige veld waar het formulier op staat, en Toevoegen blijft dood tot er iets in staat.',
+    'Typ de titel in de kopband, in het veld boven de pillen. Het is het enige veld waar het formulier op staat, en Toevoegen blijft grijs tot er iets in staat.',
   'help.guide.create-booking.step.4':
     'Zet Datum en Starttijd, en Einddatum en Eindtijd als de boeking een eind heeft. De kalenders bieden alleen dagen binnen de reis, en een eind dat niet na het begin ligt zegt dat in rood en blokkeert Toevoegen.',
   'help.guide.create-booking.step.5':
-    'Vul de Boekingscode uit de bevestiging in. De statuspil naast het type toont In behandeling; een klik zet hem op Bevestigd en weer terug, en dat bepaalt in welke van de twee secties de kaart landt.',
-  'help.guide.create-booking.step.6': 'Klik op Toevoegen.',
+    'Vul de Boekingscode uit de bevestiging in en klik dan op de statuspil in de kopband, naast het type. Bij een nieuwe boeking toont die In behandeling en springt dan op Bevestigd, en dat bepaalt in welke sectie de kaart landt.',
+  'help.guide.create-booking.step.6': 'Klik onderaan het formulier op Toevoegen.',
   'help.guide.create-booking.result':
-    'De boeking is een kaart in haar sectie, met haar chip voor de soort, haar data en haar code, en alle anderen in de reis zien hem verschijnen.',
+    'De boeking is een kaart in haar sectie, met een kopband getint naar haar status, met haar soort, haar datum en tijden en haar code, en alle anderen in de reis zien haar verschijnen.',
   'help.guide.create-booking.tip.1':
     'Locatie / Adres biedt echte adressen terwijl je typt; er een kiezen vervangt wat je had geschreven, en een adres dat je zelf typte blijft zoals het is.',
   'help.guide.create-booking.tip.2':
-    'Link neemt de eigen pagina van de boeking bij de aanbieder op. De kaart maakt er een link van die in een nieuw tabblad opent.',
+    'Link neemt de eigen pagina van de boeking bij de aanbieder op. De kaart en de details maken er een link van die in een nieuw tabblad opent.',
   'help.guide.create-booking.tip.3':
-    'Notities zijn Markdown, dus een lijst of een vetgedrukte regel wordt op de kaart ook zo weergegeven.',
+    'Notities zijn Markdown, dus een lijst of een vetgedrukte regel wordt op de kaart en in de details ook zo weergegeven.',
   // booking-hotel
   'help.guide.booking-hotel.title': 'Een accommodatie boeken',
   'help.guide.booking-hotel.goal':
     'Voer een accommodatie in, zodat ze tegelijk als boeking en als nachten in het Dagplan telt.',
   'help.guide.booking-hotel.step.1':
-    'Klik op Handmatige boeking en kies Accommodatie. De datumvelden verdwijnen en een blok hotelvelden neemt hun plaats in.',
+    'Klik op Handmatige boeking en kies Accommodatie met de typepil in de kopband. De datumvelden verdwijnen en een blok hotelvelden neemt hun plaats in.',
   'help.guide.booking-hotel.step.2':
-    'Kies het hotel onder Accommodatie. De lijst zijn de eigen plekken van de reis, en er een kiezen schrijft zijn naam in Titel en zijn adres in Locatie / Adres.',
+    'Kies het hotel onder Accommodatie. De lijst zijn de eigen plekken van de reis, en er een kiezen schrijft zijn naam in een lege titel en zijn adres in Locatie / Adres.',
   'help.guide.booking-hotel.step.3':
     'Zet Van en Tot: de eerste nacht en de ochtend waarop je vertrekt. Beide bieden de dagen van de reis met hun data, en die twee houden elkaar op volgorde.',
   'help.guide.booking-hotel.step.4':
     'Vul Inchecken, Check-in tot en Uitchecken in, en de Boekingscode uit de bevestiging.',
   'help.guide.booking-hotel.step.5': 'Klik op Toevoegen.',
   'help.guide.booking-hotel.result':
-    'De kaart draagt een reeks dagen in plaats van een datum, met de tijden van inchecken en uitchecken en het adres, en hetzelfde verblijf staat nu op die dagen van het plan.',
+    'De kaart draagt de reeks dagen onder Datum, de tijden van inchecken en uitchecken en het adres, en hetzelfde verblijf staat nu op die dagen van het plan.',
   'help.guide.booking-hotel.tip.1':
     'Accommodatie is het enige type zonder Datum en zonder Starttijd. Haar data zijn Van en Tot, en dat zijn dagen van de reis in plaats van een kalender.',
   'help.guide.booking-hotel.tip.2':
@@ -3278,14 +3312,14 @@ const help: TranslationStrings = {
   'help.guide.link-booking.goal':
     'Hang een boeking aan de stop en de plek waar ze bij hoort, zodat ze opduikt waar je haar wilt hebben.',
   'help.guide.link-booking.step.1':
-    'Klik op het potlood van de kaart die je wilt koppelen. Reservering bewerken gaat open.',
+    'Wijs de kaart aan die je wilt koppelen en klik op het potlood in haar kopband. Reservering bewerken gaat open.',
   'help.guide.link-booking.step.2':
     'Open Koppelen aan dagtoewijzing. De lijst is jouw plan: een kop per dag, dan de stops van die dag, genummerd en met hun tijden. Kies degene waar de boeking bij hoort.',
   'help.guide.link-booking.step.3':
-    'Plaats / Activiteit koppelt de plek zelf. Kies hem daar, en Titel en Locatie / Adres vullen zich overal waar je ze leeg liet.',
+    'Plaats / Activiteit koppelt de plek zelf. Kies hem daar, en de titel en Locatie / Adres vullen zich overal waar je ze leeg liet.',
   'help.guide.link-booking.step.4': 'Klik op Bijwerken.',
   'help.guide.link-booking.result':
-    'De kaart noemt de dag en de stop onder Koppelen aan dagtoewijzing, en de boeking reist met die stop mee in het Dagplan.',
+    'De kaart noemt de dag en de stop onder Gekoppeld aan, en de boeking reist met die stop mee in het Dagplan.',
   'help.guide.link-booking.tip.1':
     'Geen koppeling (zelfstandig) bovenaan de lijst haalt de koppeling er weer af. Accommodatie heeft helemaal geen stopkeuze: ze koppelt via haar nachten.',
   'help.guide.link-booking.tip.2':
@@ -3294,50 +3328,50 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Zeggen voor wie een boeking is',
   'help.guide.booking-travelers.goal': 'Markeer de reizigers die een boeking dekt, en zie daarna alleen die van hen.',
   'help.guide.booking-travelers.step.1':
-    'Open de boeking met het potlood. Reizigers staat naast de Boekingscode en toont Reizigers toewijzen zolang er niemand op de boeking staat.',
+    'Open de boeking met het potlood op haar kaart. Reizigers staat naast de Boekingscode en toont Reizigers toewijzen zolang er niemand op de boeking staat.',
   'help.guide.booking-travelers.step.2':
     'Klik erop en kies de mensen voor wie deze boeking is; genoemde gasten staan ook in de lijst. Een gekozen persoon krijgt een vinkje en zijn avatar in het veld. Klik nog eens op de naam om hem eraf te halen.',
   'help.guide.booking-travelers.step.3': 'Klik op Bijwerken.',
   'help.guide.booking-travelers.step.4':
-    'Boven in de werkbalk, naast de chips voor de soort, klik je op de avatar van een reiziger om alleen zijn boekingen te zien.',
+    'Klik op Filteren in de balk en klik onder Reizigers op een persoon om alleen zijn boekingen te zien. Er kunnen er meerdere tegelijk aan staan.',
   'help.guide.booking-travelers.result':
-    'De kaart somt de mensen op voor wie ze is, en de rij avatars versmalt het tabblad tot één van hen.',
+    'De kaart somt de mensen op voor wie ze is, en Filteren versmalt het tabblad tot de boekingen van de mensen die je kiest.',
   'help.guide.booking-travelers.tip.1':
-    'Op de kaart worden de reizigers alleen getoond, nooit gewijzigd. Ze worden hier gezet, in het formulier.',
+    'Op de kaart en in de details worden de reizigers alleen getoond, nooit gewijzigd. Ze worden hier gezet, in het formulier.',
   'help.guide.booking-travelers.tip.2':
-    'De rij avatars verschijnt zodra de reis meer dan één lid heeft en minstens één boeking iemand noemt. Wat je kiest houdt stand voor deze browsersessie.',
+    'Reizigers verschijnt in Filteren zodra de reis meer dan één lid heeft en minstens één boeking iemand noemt. Wat je kiest blijft staan tot je het browsertabblad sluit.',
   // booking-files
   'help.guide.booking-files.title': 'De voucher bij de boeking houden',
   'help.guide.booking-files.goal': 'Voeg de bevestiging, het kaartje of de pas toe aan de boeking waar ze bij horen.',
   'help.guide.booking-files.step.1':
-    'Open de boeking met het potlood, ga omlaag naar Bestanden en klik op Bestand bijvoegen. Bij een boeking die al bestaat gaat het document meteen omhoog en zegt TREK Bestand geüpload.',
+    'Open de boeking met het potlood op haar kaart. Bestanden staat naast Link; klik daar op Bestand bijvoegen. Bij een boeking die al bestaat gaat het document meteen omhoog en zegt TREK Bestand geüpload.',
   'help.guide.booking-files.step.2':
     'Het document staat er met zijn naam, met een knop om het te openen en een X ernaast.',
   'help.guide.booking-files.step.3':
     'Bestaand bestand koppelen biedt de documenten van de reis die nog niet aan deze boeking hangen. Kies er een en het wordt gekoppeld zonder dat er iets opnieuw wordt geüpload.',
   'help.guide.booking-files.step.4': 'Klik op Bijwerken.',
   'help.guide.booking-files.result':
-    'De kaart somt de documenten op onder Bestanden, en een klik op een ervan opent het.',
+    'De kaart en de details sommen de documenten op onder Bestanden, en een klik op een ervan opent het.',
   'help.guide.booking-files.tip.1':
     'Bij een boeking die je nog aan het maken bent wacht het document en gaat het omhoog op het moment dat je op Toevoegen klikt.',
   'help.guide.booking-files.tip.2':
     'De X naast een document haalt de koppeling weg, niet het document. Het blijft in het tabblad Bestanden van de reis.',
   'help.guide.booking-files.tip.3':
-    'Welke soorten bestanden bijgevoegd mogen worden is de lijst Toegestane bestandstypen van de beheerder; documenten, tekst en afbeeldingen zijn standaard toegestaan.',
+    'Welke soorten bestanden bijgevoegd mogen worden, staat in de lijst van de beheerder onder Toegestane bestandstypen; documenten, tekst en afbeeldingen zijn standaard toegestaan.',
   // booking-cost
   'help.guide.booking-cost.title': 'De prijs van een boeking in kosten omzetten',
   'help.guide.booking-cost.goal': 'Breng wat een boeking kost in Onkosten, verdeeld over de mensen die ervoor betalen.',
   'help.guide.booking-cost.step.1':
-    'Open de boeking en ga naar de voet van het formulier. Onder Kosten staan Kostenpost aanmaken en Bestaande kostenpost koppelen, met de notitie Boeking opslaan en daarna de Onkosteneditor openen.',
+    'Open de boeking met het potlood op haar kaart en ga naar de voet van het formulier. Onder Kosten staan Kostenpost aanmaken en Bestaande kostenpost koppelen, met de notitie Boeking opslaan en daarna de Onkosteneditor openen.',
   'help.guide.booking-cost.step.2':
-    'Klik op Kostenpost aanmaken. De boeking wordt opgeslagen, het formulier gaat dicht en de Kosten-editor gaat open.',
+    'Klik op Kostenpost aanmaken. De boeking wordt opgeslagen, het formulier gaat dicht en de Kosten-editor gaat open als Uitgave toevoegen.',
   'help.guide.booking-cost.step.3':
-    'Waar was het voor? is al de titel van de boeking. Vul het Totaalbedrag in en controleer de Valuta en de Dag.',
+    'De naam in de kopband is al de titel van de boeking. Vul het Totaalbedrag in en controleer de Valuta en de Dag ernaast.',
   'help.guide.booking-cost.step.4':
-    'Categorie is die welke het boekingstype impliceert. Zet Wie heeft betaald? en hoe het bedrag verdeeld wordt.',
+    'De pil in de kopband is de Categorie, al die welke het boekingstype impliceert. Kies onder Wie heeft betaald? wie er betaald heeft, en onder Verdelen hoe het bedrag gedeeld wordt.',
   'help.guide.booking-cost.step.5': 'Klik op Uitgave toevoegen.',
   'help.guide.booking-cost.result':
-    'Het formulier van de boeking toont de uitgave nu onder Gekoppelde kostenposten met het bedrag, en dezelfde uitgave staat in het tabblad Onkosten, vast aan deze boeking.',
+    'De kaart draagt het bedrag onderaan, het formulier van de boeking toont de uitgave onder Gekoppelde kostenposten, en dezelfde uitgave staat in het tabblad Onkosten, vast aan deze boeking.',
   'help.guide.booking-cost.tip.1':
     'De categorie volgt het type: Restaurant wordt Eten & drinken, Accommodatie wordt Accommodatie, Parkeren wordt Parkeren, en Evenement en Rondleiding landen allebei in Overig.',
   'help.guide.booking-cost.tip.2':
@@ -3346,40 +3380,43 @@ const help: TranslationStrings = {
     'Kosten staat alleen in het formulier zolang de add-on Onkosten aan staat, die de beheerder onder Add-ons omzet.',
   // filter-bookings
   'help.guide.filter-bookings.title': 'Een boeking vinden',
-  'help.guide.filter-bookings.goal': 'Breng een lang tabblad terug tot de soort, de persoon of de staat die je zoekt.',
+  'help.guide.filter-bookings.goal': 'Breng een lang tabblad terug tot een woord, een staat, een soort of een persoon.',
   'help.guide.filter-bookings.step.1':
-    'De chips naast de kop zijn de soorten die deze reis echt gebruikt, elk met het aantal dat het bevat. Alles is het hele tabblad.',
+    'Typ in Zoeken in de balk. Het doorzoekt titels, soorten, plaatsen en adressen, notities, boekingscodes en de namen van de reizigers, en het tabblad versmalt terwijl je typt; Escape maakt het vak leeg.',
   'help.guide.filter-bookings.step.2':
-    'Klik op een chip om alleen die soort te houden. Klik op een tweede en beide blijven.',
-  'help.guide.filter-bookings.step.3': 'Alles zet alles terug.',
+    'Klik op Filteren, de trechter naast het zoekveld. Het paneel bevat Status, Type en, zodra een boeking mensen noemt, Reizigers.',
+  'help.guide.filter-bookings.step.3':
+    'Kies onder Status Bevestigd of In behandeling om alleen die te zien; Alles toont ze allebei.',
   'help.guide.filter-bookings.step.4':
-    'De avatars naast de chips filteren op reiziger, één persoon of meerdere tegelijk.',
+    'Klik onder Type op een of meer soorten om alleen die te houden. Elke soort toont hoeveel boekingen hij bevat, en een vinkje markeert de soorten die aan staan.',
   'help.guide.filter-bookings.step.5':
-    'In behandeling en Bevestigd zijn de twee secties, elk met zijn aantal. Klik op een kop om er een weg te klappen; hij is nog steeds ingeklapt als je terugkomt.',
+    'Een getal op Filteren telt wat er aan staat, en een chip naast het zoekveld zegt hoeveel van alle boekingen er over zijn. Klik op de chip, of op Filters resetten onderaan het paneel, om weer alles te zien.',
   'help.guide.filter-bookings.result':
-    'Het tabblad toont alleen wat je koos, en dat is nog steeds gekozen als je er in deze browsersessie naar terugkomt.',
+    'Het tabblad toont alleen wat je koos, in Kaarten, Lijst en Tijdlijn gelijk, en de filters blijven voor deze reis staan tot je het browsertabblad sluit.',
   'help.guide.filter-bookings.tip.1':
-    'De chips bieden alleen de soorten die de reis heeft, dus een reis zonder ook maar één rondleiding heeft geen chip Rondleiding.',
+    'Type is er alleen als het tabblad meer dan één soort bevat, en het somt alleen de soorten op die het tabblad bevat, dus een tabblad zonder ook maar één rondleiding heeft er geen Rondleiding in.',
   'help.guide.filter-bookings.tip.2':
-    'Een filter dat nergens op past laat het tabblad leeg achter met Geen plaatsen gevonden. De formulering is die van de plekkenlijst; de betekenis is dezelfde.',
+    'Een filter dat nergens op past laat Niets voldoet aan deze filters achter in het tabblad, met Filters resetten er direct onder.',
   // import-booking-file
   'help.guide.import-booking-file.title': 'Een boeking uit haar bevestiging lezen',
   'help.guide.import-booking-file.goal':
     'Laat TREK de boeking uit de mail of de PDF halen die de aanbieder stuurde, in plaats van haar opnieuw te typen.',
   'help.guide.import-booking-file.step.1':
-    'Klik in de werkbalk op Importeren vanuit bestand. Boekingsbevestigingen importeren gaat open.',
+    'Klik op het downloadicoon in de balk, Boekingsbevestigingen importeren; de naam verschijnt als je ernaar wijst. Het dialoogvenster met dezelfde naam gaat open.',
   'help.guide.import-booking-file.step.2':
     'Laat de bevestigingen op het vak vallen, of klik erop en kies ze: EML, PDF, PKPass, HTML en TXT, tot vijf bestanden van elk 10 MB. Die je koos staan met naam op het vak.',
   'help.guide.import-booking-file.step.3':
     'Klik op Importeren. Het venster sluit meteen, want het lezen gebeurt op de achtergrond.',
   'help.guide.import-booking-file.step.4':
     'Een kaart rechtsonder doet verslag van de uitvoering onder de naam van het bestand, en die volgt je door de app en door een herlaadbeurt heen. Bestanden verwerken… wordt een vinkje als het lezen klaar is, en de kaart biedt Importeren aan. Klik erop.',
+  'help.guide.import-booking-file.step.5':
+    'Elke boeking die is gevonden opent in Nieuwe reservering, de een na de ander, al ingevuld. Voor een hotel is dat zijn naam als titel en, als de reis de plek heeft, onder Accommodatie, zijn Locatie / Adres, Van en Tot op zijn nachten, Inchecken en Uitchecken, de Boekingscode, de bevestiging onder Bestanden en, met Onkosten aan, de prijs als Gekoppelde kostenpost. Kijk het na en klik op Toevoegen.',
   'help.guide.import-booking-file.result':
     'De boeking is een kaart in In behandeling met haar nachten, haar code en de bevestiging onder Bestanden, het verblijf staat op die dagen van het plan, en met Onkosten aan is de prijs een uitgave die eraan hangt.',
   'help.guide.import-booking-file.tip.1':
-    'Importeren vanuit bestand is er alleen als de server bevestigingen kan lezen, en dat vraagt ofwel de uitlezer ofwel de add-on AI-analyse. Die laatste zet de beheerder onder Add-ons om.',
+    'Het importicoon is er alleen als de server bevestigingen kan lezen, en dat vraagt ofwel de uitlezer ofwel de add-on AI-analyse; die laatste zet de beheerder onder Add-ons om. Een tabblad zonder enige boeking biedt het ook aan als de knop Importeren vanuit bestand.',
   'help.guide.import-booking-file.tip.2':
-    'Als er niets gelezen kon worden zegt de kaart dat en biedt ze Try AI parsing aan, dat dezelfde bestanden rechtstreeks naar het model stuurt. Een afgeronde verwerking wordt tien minuten bewaard; start de controle binnen dat venster.',
+    'Als er niets gelezen kon worden, zegt de kaart dat en biedt ze, met AI-analyse aan, Uitlezen met AI proberen aan, dat dezelfde bestanden rechtstreeks naar het model stuurt. Een afgeronde verwerking wordt tien minuten bewaard; start de controle binnen dat venster.',
   'help.guide.import-booking-file.tip.3':
     'De bevestiging wordt alleen bijgevoegd als haar type bij de Toegestane bestandstypen van de beheerinstellingen staat. PDF staat er standaard; een mail, EML, moet eerst worden toegevoegd, anders wordt de boeking zonder opgeslagen.',
   // edit-booking
@@ -3387,113 +3424,113 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.goal':
     'Corrigeer een tijd, voeg de code toe die later aankwam, of haal een boeking van In behandeling naar Bevestigd.',
   'help.guide.edit-booking.step.1':
-    'Klik op het potlood in de kop van de kaart. Reservering bewerken gaat open met alles wat de boeking weet.',
+    'Wijs de kaart aan en klik op het potlood in haar kopband. Reservering bewerken gaat open met alles wat de boeking weet.',
   'help.guide.edit-booking.step.2':
     'Wijzig wat gewijzigd moet worden, hier de Boekingscode die de aanbieder eindelijk stuurde.',
   'help.guide.edit-booking.step.3':
-    'Klik op de pil In behandeling in de kop van het formulier. Hij springt op Bevestigd.',
+    'Klik op de pil In behandeling in de kopband. Hij springt op Bevestigd, en de band wordt groen.',
   'help.guide.edit-booking.step.4': 'Klik op Bijwerken.',
   'help.guide.edit-booking.result':
-    'De kaart verhuist: een bevestigde boeking staat in de sectie Bevestigd achter een groene stip, en iedereen in de reis ziet haar verhuizen.',
+    'De kaart verhuist: een bevestigde boeking staat in de sectie Bevestigd met een groene stip en een groene kopband, en iedereen in de reis ziet haar verhuizen.',
   'help.guide.edit-booking.tip.1':
     'Een Boekingscode die je niet kunt lezen is Boekingscodes vervagen in Instellingen, onder Weergave. Ga er met de muis overheen, of klik erop, en hij is leesbaar.',
   'help.guide.edit-booking.tip.2':
     'Wijzig het type en de categorie van een gekoppelde kostenpost gaat mee, tenzij je in de Kosten-editor met de hand een categorie had gekozen.',
   'help.guide.edit-booking.tip.3':
-    'Een accommodatie wordt hier ook bewerkt: haar dagen Van en Tot staan in hetzelfde formulier.',
+    'Bewerken onderaan de details van een boeking opent hetzelfde formulier. De status wisselt ook zonder formulier: klik op de stip op een kaart of een rij, of op de statuspil in de details.',
   // delete-booking
   'help.guide.delete-booking.title': 'Een boeking verwijderen',
   'help.guide.delete-booking.goal': 'Haal een boeking die niet doorging uit de reis.',
-  'help.guide.delete-booking.step.1': 'Klik op de prullenbak in de kop van de kaart.',
+  'help.guide.delete-booking.step.1':
+    'Wijs de kaart aan en klik op de prullenbak in haar kopband. De prullenbak onderaan de details van een boeking vraagt hetzelfde.',
   'help.guide.delete-booking.step.2':
     'Boeking verwijderen? noemt degene die je koos en zegt dat ze permanent verwijderd wordt.',
-  'help.guide.delete-booking.step.3': 'Klik op Bevestigen.',
+  'help.guide.delete-booking.step.3': 'Klik op Verwijderen.',
   'help.guide.delete-booking.result':
     'De kaart is weg, voor iedereen in de reis. Een boeking heeft geen ongedaan maken, dus de vraag is de laatste halte.',
   'help.guide.delete-booking.tip.1':
-    'Een accommodatieboeking verwijderen haalt ook haar nachten uit het Dagplan en verwijdert de kostenpost die eraan gekoppeld was.',
+    'Een boeking verwijderen verwijdert ook de kostenposten die eraan gekoppeld zijn, en een accommodatie haalt daarbij haar nachten uit het Dagplan.',
   'help.guide.delete-booking.tip.2':
     'Documenten die bijgevoegd waren blijven in het tabblad Bestanden van de reis; alleen hun koppeling met de boeking gaat weg.',
-  // import-booking-file
-  'help.guide.import-booking-file.step.5':
-    'Elke boeking die is gevonden opent in Nieuwe reservering, de een na de ander, al ingevuld. Voor een hotel is dat de naam in Titel en, als de reis de plek heeft, onder Accommodatie, zijn Locatie / Adres, Van en Tot op zijn nachten, Inchecken en Uitchecken, de Boekingscode, de bevestiging onder Bestanden en, met Onkosten aan, de prijs als Gekoppelde kostenpost. Kijk het na en klik op Toevoegen.',
 
   // ── Screen: trip-costs ────────────────────────────────────────────────────────────────
   'help.ctx.trip-costs.title': 'Onkosten',
   'help.ctx.trip-costs.summary':
-    'Het geld van de reis: elke uitgave in een gedateerd overzicht, wie hem heeft voorgeschoten en wie ervoor verschuldigd is, in de valuta van het bonnetje, en, in de rechterkolom, wie wie moet betalen om het weer gelijk te trekken.',
+    'Het geld van de reis: elke uitgave in een gedateerd overzicht of een tabel, wie hem heeft voorgeschoten en wie ervoor verschuldigd is, in de valuta van het bonnetje, en, in de rechterkolom, wie wie moet betalen om het weer gelijk te trekken.',
   'help.ctx.trip-costs.bullet.1':
-    'Vier kaarten bovenaan: Jij bent verschuldigd en Jij krijgt nog zijn jouw eigen kant van de afrekening, Openstaand bedrag is wat is vastgelegd maar nog geen betaler heeft, en Totale reisuitgaven telt alles op, met Jouw aandeel en Jij hebt betaald eronder.',
+    'De balk bovenaan noemt de data van de reis en de reizigers over wie de kosten verdeeld worden, en bevat dan Uitgaven zoeken…, Filteren (de trechter), CSV exporteren (het downloadicoon) en de schakelaar Lijst / Tabel.',
   'help.ctx.trip-costs.bullet.2':
-    'Uitgave toevoegen rechtsboven opent de editor; Afrekenen ernaast legt alle openstaande overboekingen in één keer vast.',
+    'Aan het rechteruiteinde legt Afrekenen alle openstaande overboekingen in één keer vast, vult Bon scannen een uitgave in vanaf een foto als de add-on AI-analyse afbeeldingen kan lezen, en opent Uitgave toevoegen de editor.',
   'help.ctx.trip-costs.bullet.3':
-    'Het overzicht is per dag gegroepeerd, het nieuwste eerst, met het totaal van die dag rechts. Een rij draagt de categorie als gekleurd tabblad, de naam, de betalerschips, de notitie en het bedrag, plus je hebt voorgeschoten of je hebt geleend wanneer de verdeling je op die uitgave omhoog of omlaag brengt.',
+    'Vier kaarten onder de balk: Jij bent verschuldigd en Jij krijgt nog zijn jouw eigen kant van de afrekening, Openstaand bedrag is wat is vastgelegd maar nog geen betaler heeft, en Totale reisuitgaven telt alles op, met Jouw aandeel en Jij hebt betaald eronder.',
   'help.ctx.trip-costs.bullet.4':
-    'Boven de lijst zitten Uitgaven zoeken…, een categoriefilter, een dagfilter, de schakelaar Alles / Door mij betaald / Mij verschuldigd en de knop CSV exporteren.',
+    'Het overzicht is per dag gegroepeerd, het nieuwste eerst, met boven elke dag hoeveel posten hij bevat en wat er die dag is uitgegeven. Een rij draagt de categorie als gekleurd tabblad, de naam, de betalerschips, de notitie en het bedrag, plus je hebt voorgeschoten of je hebt geleend wanneer de verdeling je op die uitgave omhoog of omlaag brengt.',
   'help.ctx.trip-costs.bullet.5':
     'De rechterkolom is het antwoord: Afrekenen somt op wie wie betaalt, Saldi toont het overschot of tekort van elke reiziger, Eindbudget wat de reis elk van hen kost, en Per categorie waar het geld heen is gegaan.',
   'help.ctx.trip-costs.bullet.6':
-    'Een vastgelegde betaling staat in hetzelfde overzicht als een eigen rij, met Bewerken en Ongedaan maken ernaast; een uitgave heeft een potlood en een prullenbak, en de prullenbak verwijdert hem zonder te vragen.',
+    'Een vastgelegde betaling staat in hetzelfde overzicht als een eigen rij, met een potlood en Ongedaan maken ernaast; een uitgave heeft een potlood en een prullenbak, en de prullenbak verwijdert hem zonder te vragen.',
+  'help.ctx.trip-costs.bullet.7':
+    'Tabel in de balk toont dezelfde uitgaven als een rekenblad, gegroepeerd per categorie, met Personen en Dagen en wat dat per persoon en per dag oplevert; Overzicht neemt dan de plaats in van Per categorie. Onkosten onthoudt de weergave die je koos.',
   // add-expense
   'help.guide.add-expense.title': 'Een uitgave toevoegen',
   'help.guide.add-expense.goal': 'Leg vast wat iets heeft gekost, wie het heeft betaald en met wie het wordt gedeeld.',
   'help.guide.add-expense.step.1':
-    'Klik rechtsboven op het tabblad Onkosten op Uitgave toevoegen. De editor gaat open, met de datum van vandaag en met iedereen al in de verdeling.',
+    'Klik op Uitgave toevoegen aan het rechteruiteinde van de balk. De editor gaat open, met de datum van vandaag, betaald door jou en met iedereen al in de verdeling.',
   'help.guide.add-expense.step.2':
-    'Typ waar het voor was in Waar was het voor?, het enige veld dat ingevuld moet worden, en het bedrag van het bonnetje in Totaalbedrag.',
+    'Typ waar het voor was in de kop van het venster, het veld waarin bijv. Diner, souvenirs, benzine… staat zolang het leeg is. Dat is de naam van de uitgave, en zonder naam kan de uitgave niet worden opgeslagen.',
   'help.guide.add-expense.step.3':
-    'Valuta en Dag zitten onder het bedrag. Valuta begint op die van de reis; verander hem en de editor toont wat het bedrag waard is in de valuta van de reis. Dag begint op vandaag en is de dag waaronder het overzicht de uitgave groepeert.',
+    'De pil onder de naam is de Categorie, Eten & drinken tot je een andere kiest. Er zijn er veertien en ze kunnen niet gewijzigd worden: de kop neemt de kleur aan van de categorie die je kiest, en dat doen ook het tabblad op de rij en zijn balk in Per categorie.',
   'help.guide.add-expense.step.4':
-    'Kies een Categorie. Er zijn er veertien en ze kunnen niet gewijzigd worden: de gekozen categorie is het gekleurde tabblad op de rij en de balk in Per categorie.',
+    'Vul het bedrag van het bonnetje in bij Totaalbedrag. Valuta ernaast begint op de valuta waarin Onkosten wordt getoond; verander hem en de editor toont wat het bedrag waard is. Dag begint op vandaag en is de dag waaronder het overzicht de uitgave groepeert.',
   'help.guide.add-expense.step.5':
-    'Kies onder Wie heeft betaald? de persoon die het geld werkelijk heeft voorgeschoten. Jij staat voorgeselecteerd; Nog niemand heeft betaald legt het bedrag vast zonder dat iemand ervoor verschuldigd is, en Meerdere personen hebben betaald verdeelt de rekening over meerdere betalers.',
+    'Klik onder Wie heeft betaald? op de persoon die het geld werkelijk heeft voorgeschoten. Jij staat voorgeselecteerd; Nog niemand heeft betaald legt het bedrag vast zonder dat iemand ervoor verschuldigd is, en Meerdere personen hebben betaald in de schakelaar naast de kop verdeelt de rekening over meerdere betalers.',
   'help.guide.add-expense.step.6':
-    'Split begint op Equally met iedereen erbij, en bij elke naam staat het aandeel dat eruit komt. Klik op Uitgave toevoegen om op te slaan.',
+    'Verdelen daaronder begint op Gelijk, met iedereen aangevinkt en elk aandeel naast de naam; laat het zo of verander het. Klik onderaan het venster op Uitgave toevoegen om op te slaan.',
   'help.guide.add-expense.result':
     'De uitgave staat in het overzicht onder zijn dag, meegeteld in Totale reisuitgaven, en de afrekenkolom heeft opnieuw berekend wie wie verschuldigd is.',
   'help.guide.add-expense.tip.1':
-    'Zoals hij opengaat, staat de uitgave in de valuta van de reis, met de datum van vandaag en gelijk verdeeld over iedereen: alleen de naam en het bedrag moeten echt worden ingevuld.',
+    'Zoals hij opengaat, heeft de uitgave de datum van vandaag, is hij door jou betaald en is hij gelijk verdeeld over iedereen: alleen de naam en het bedrag moeten echt worden ingevuld.',
   'help.guide.add-expense.tip.2':
     'De ± naast het bedrag maakt van de uitgave een terugbetaling. Een negatief totaal geeft geld terug in plaats van het te nemen, en de verdeling loopt de andere kant op.',
   'help.guide.add-expense.tip.3':
-    'Bon / factuur bijvoegen onderaan neemt afbeeldingen en PDF-bestanden. Ze worden geüpload als je opslaat, komen in de Bestanden van de reis terecht, en naast de naam in de lijst verschijnt een chip Bonnetjes.',
+    'Bijvoegen, naast Bonnetjes & facturen onderaan het venster, neemt afbeeldingen en PDF-bestanden. Ze worden geüpload als je opslaat, komen in de Bestanden van de reis terecht, en naast de naam in de lijst verschijnt een chip Bonnetjes.',
   // expense-payers
   'help.guide.expense-payers.title': 'Zeggen wie de rekening heeft betaald',
   'help.guide.expense-payers.goal': 'Leg vast wie een uitgave heeft voorgeschoten, de andere helft van de afrekensom.',
   'help.guide.expense-payers.step.1':
-    'Open een uitgave met het potlood naast zijn rij en kijk naar Wie heeft betaald?. Eén persoon heeft betaald is de standaard: het uitklapmenu noemt de ene persoon die het geld heeft voorgeschoten.',
+    'Open een uitgave met het potlood naast zijn rij en kijk naar Wie heeft betaald?. Eén persoon heeft betaald is de standaard in de schakelaar naast de kop: elke reiziger is een chip, en de omlijnde chip heeft het geld voorgeschoten. Klik op een andere chip om dat te veranderen.',
   'help.guide.expense-payers.step.2':
-    'Nog niemand heeft betaald, de eerste vermelding van dat uitklapmenu, legt het bedrag vast zonder dat iemand iets verschuldigd is. De uitgave telt toch mee in Totale reisuitgaven.',
+    'Nog niemand heeft betaald, de gestreepte chip na de reizigers, legt het bedrag vast zonder dat iemand iets verschuldigd is. De uitgave telt toch mee in Totale reisuitgaven.',
   'help.guide.expense-payers.step.3':
-    'Meerdere personen hebben betaald, de link naast het label, opent een rij per reiziger. Voeg degenen toe die hebben betaald en typ wat ieder van hen heeft ingelegd; de bedragen moeten samen optellen tot het totaal.',
+    'Meerdere personen hebben betaald, de andere kant van die schakelaar, somt elke reiziger op met een vakje om aan te vinken, en elke aangevinkte reiziger krijgt een bedragveld. Vink degenen aan die hebben betaald en typ wat ieder van hen heeft ingelegd; de bedragen moeten samen optellen tot het totaal.',
   'help.guide.expense-payers.step.4':
-    'Een uitgave die niemand heeft betaald, krijgt op zijn rij de markering Onvoltooid en wordt meegeteld in de kaart Openstaand bedrag, waar vastgelegde maar niet afgerekende uitgaven samenkomen.',
+    'Een uitgave die niemand heeft betaald, krijgt op zijn rij de markering Onvoltooid en wordt meegeteld in de kaart Openstaand bedrag, waar de uitgaven zonder betaler samenkomen.',
   'help.guide.expense-payers.result':
     'Wie heeft betaald bepaalt wie terugkrijgt, de verdeling bepaalt wie betaalt, en Saldi is het verschil tussen die twee.',
   'help.guide.expense-payers.tip.1':
     'Wie heeft betaald? en Split staan los van elkaar: je kunt een diner betalen waar je niet bij was, en meegeteld worden in de verdeling van een diner dat je niet hebt betaald.',
   'help.guide.expense-payers.tip.2':
-    'Met meerdere betalers moeten de bedragen optellen tot het totaal. Voeg er nog een toe en de anderen schikken zich eromheen; zolang ze niet kloppen, zegt de editor waartoe ze moeten optellen en slaat niet op.',
+    'Met meerdere betalers moeten de bedragen optellen tot het totaal. Vink er nog een aan en de bedragen die je niet zelf hebt getypt verdelen de rest opnieuw; zolang ze niet kloppen, zegt de editor waartoe ze moeten optellen en slaat niet op.',
   'help.guide.expense-payers.tip.3':
-    'Een betaler verwijderen verwijdert de uitgave niet: het bedrag blijft in Totale reisuitgaven en de rij wordt Onvoltooid.',
+    'Een uitgave terugzetten op Nog niemand heeft betaald verwijdert hem niet: het bedrag blijft in Totale reisuitgaven en de rij wordt Onvoltooid.',
   // split-expense
   'help.guide.split-expense.title': 'Een rekening over de reizigers verdelen',
   'help.guide.split-expense.goal':
     'Bepaal wie voor een uitgave verschuldigd is: iedereen gelijk, per bedrag, of regel voor regel van het bonnetje.',
   'help.guide.split-expense.step.1':
-    'In de uitgave-editor somt Split elke reiziger op. Klik op een naam om hem buiten deze uitgave te laten; een uitgesloten reiziger toont Niet inbegrepen en is er niets voor verschuldigd.',
+    'In de uitgave-editor somt Verdelen elke reiziger op met een vakje om aan te vinken. Vink een naam uit om die persoon buiten deze uitgave te laten: de naam wordt grijs, verliest zijn aandeel en is er niets voor verschuldigd.',
   'help.guide.split-expense.step.2':
-    'Equally is de standaard: elke opgenomen reiziger krijgt hetzelfde aandeel, en de regel onder de lijst zegt over hoeveel het wordt verdeeld en op hoeveel elk aandeel uitkomt.',
+    'Gelijk, in de schakelaar naast de kop, is de standaard: elke aangevinkte reiziger krijgt hetzelfde aandeel, dat naast de naam staat, en de badges onder de lijst zeggen door hoeveel mensen het wordt gedeeld en op hoeveel elk aandeel uitkomt.',
   'help.guide.split-expense.step.3':
-    'Custom vervangt de aandelen door bedragvelden. Typ wat elke reiziger verschuldigd is; de regel eronder telt mee en wordt groen bij Verdeling klopt met het totaal. Er wordt niet opgeslagen zolang het niet klopt.',
+    'Aangepast vervangt de aandelen door bedragvelden. Typ wat elke reiziger verschuldigd is; de badge eronder telt mee en wordt groen bij Verdeling klopt met het totaal. Er wordt niet opgeslagen zolang het niet klopt.',
   'help.guide.split-expense.step.4':
-    'Ticket verdeelt het bonnetje regel voor regel: Item toevoegen, dan per regel een naam en een prijs, en onder Verdeeld over: de reizigers die die regel delen.',
+    'Bon verdeelt het bonnetje regel voor regel: Item toevoegen, dan per regel een naam en een prijs, en naast Verdeeld over: de reizigers die die regel delen.',
   'help.guide.split-expense.step.5':
-    'Aandeel per persoon onder de regels toont wat elke reiziger uiteindelijk verschuldigd is, en Totaalbedrag bovenaan wordt uit de regels opgeteld. Klik op Opslaan.',
+    'Aandeel per persoon onder de regels toont wat elke reiziger uiteindelijk verschuldigd is, en Totaalbedrag bovenaan wordt uit de regels opgeteld. Klik onderaan het venster op Opslaan.',
   'help.guide.split-expense.result':
     'De verdeling is waaruit elk saldo wordt opgebouwd. Ze wordt met de uitgave opgeslagen en kan later worden gewijzigd zonder iets anders aan te raken.',
   'help.guide.split-expense.tip.1':
-    'Een reiziger die je eruit laat toont Niet inbegrepen en is niets verschuldigd voor deze ene uitgave; de anderen nemen zijn aandeel over.',
+    'Een reiziger die je uitvinkt, is niets verschuldigd voor deze ene uitgave; de anderen nemen zijn aandeel over.',
   'help.guide.split-expense.tip.2':
     'Equally klopt tot op de cent: de overgebleven cent rouleert van uitgave naar uitgave, zodat niet altijd dezelfde hem betaalt.',
   'help.guide.split-expense.tip.3':
@@ -3502,17 +3539,17 @@ const help: TranslationStrings = {
   'help.guide.expense-currency.title': 'Een uitgave in een andere valuta invoeren',
   'help.guide.expense-currency.goal': 'Voer in wat er echt op het bonnetje staat en laat TREK de koers vasthouden.',
   'help.guide.expense-currency.step.1':
-    'Open Uitgave toevoegen en vul de naam en het bedrag precies in zoals het bonnetje het zegt, het getal zelf en niet een omrekening ervan.',
+    'Open Uitgave toevoegen en typ dan de naam in de kop van het venster en het bedrag in Totaalbedrag, precies zoals het bonnetje het zegt, het getal zelf en niet een omrekening ervan.',
   'help.guide.expense-currency.step.2':
-    'Open Valuta en kies de valuta van het bonnetje. De lijst bevat elke code die TREK kent en is doorzoekbaar: typ de drie letters.',
+    'Open Valuta naast het bedrag en kies de valuta van het bonnetje. De lijst bevat elke code die TREK kent en is doorzoekbaar: typ de drie letters.',
   'help.guide.expense-currency.step.3':
-    'Onder de velden verschijnt een regel met wat het bedrag op dit moment waard is, gemarkeerd met live koers. Het is een voorbeeld, niet wat wordt opgeslagen.',
+    'Onder de velden verschijnt een rij badges: wat je hebt getypt en wat het op dit moment waard is, gemarkeerd met live koers. Het is een voorbeeld, niet wat wordt opgeslagen.',
   'help.guide.expense-currency.step.4':
-    'Klik op Uitgave toevoegen. De koers wordt ter plekke vastgezet: vanaf nu is deze uitgave waard wat hij waard was op de dag dat je hem invoerde.',
+    'Klik onderaan het venster op Uitgave toevoegen. De koers wordt ter plekke vastgezet: vanaf nu is deze uitgave waard wat hij waard was op de dag dat je hem invoerde.',
   'help.guide.expense-currency.step.5':
-    'In het overzicht draagt de rij beide getallen onder de naam: wat je hebt getypt, een pijl, en waarvoor het meetelt in de valuta van de reis. Elk totaal, elk saldo en elke afrekening hierboven gebruikt het tweede.',
+    'In het overzicht draagt de rij beide getallen onder de naam: wat je hebt getypt, een pijl, en waarvoor het meetelt in de valuta van de reis. Elk totaal, elk saldo en elke afrekening op het tabblad Onkosten wordt uit het tweede opgebouwd.',
   'help.guide.expense-currency.result':
-    'De uitgave houdt het bedrag en de valuta die je hebt getypt. Het overzicht toont beide, en de totalen en saldi van de reis blijven in de valuta van de reis.',
+    'De uitgave houdt het bedrag en de valuta die je hebt getypt. Het overzicht toont beide, en de totalen en saldi van de reis worden in de valuta van de reis geteld.',
   'help.guide.expense-currency.tip.1':
     'De koers wordt vastgezet op het moment dat je opslaat, zodat een afgerekende schuld niet opnieuw opengaat omdat de markt een week later bewoog. Alleen het wijzigen van de valuta van de uitgave zet een nieuwe vast.',
   'help.guide.expense-currency.tip.2':
@@ -3523,27 +3560,29 @@ const help: TranslationStrings = {
   'help.guide.filter-costs.title': 'Een uitgave vinden, of de uitgaven van één dag',
   'help.guide.filter-costs.goal': 'Beperk een lang overzicht tot wat je echt zoekt.',
   'help.guide.filter-costs.step.1':
-    'Typ in Uitgaven zoeken… boven de lijst. Het zoekt in de naam van de uitgave terwijl je typt.',
+    'Typ in Uitgaven zoeken… in de balk. Het zoekt in de naam van de uitgave terwijl je typt, en Esc maakt het weer leeg.',
   'help.guide.filter-costs.step.2':
-    'Alle categorieën opent de veertien categorieën. Kies er een en alleen de uitgaven van die categorie blijven over.',
+    'Filteren, de trechter naast het zoekveld, opent de filters. De schakelaar bovenaan is jouw eigen blik op het overzicht: Alles, Door mij betaald voor waarvoor jij geld hebt voorgeschoten, en Mij verschuldigd voor de uitgaven waarin je meer hebt ingelegd dan je aandeel.',
   'help.guide.filter-costs.step.3':
-    'Alle dagen somt elke dag op waarop iets is uitgegeven. Kies er een en een banner vervangt de dagkoppen door die dag, hoeveel uitgaven hij bevat en zijn totaal.',
+    'Kies onder Categorie een van de veertien categorieën en alleen de uitgaven van die categorie blijven over. De trechter telt hoeveel filters er aan staan.',
   'help.guide.filter-costs.step.4':
-    'De schakelaar Alles / Door mij betaald / Mij verschuldigd is jouw eigen blik op het overzicht: waarvoor jij geld hebt voorgeschoten, en waarvoor je nog altijd uit eigen zak zit.',
+    'Kies onder Dag een van de dagen waarop iets is uitgegeven. Een banner vervangt de dagkoppen door die dag in zijn geheel, hoeveel uitgaven hij bevat en zijn totaal.',
   'help.guide.filter-costs.step.5':
-    'CSV exporteren aan het eind van de rij schrijft elke uitgave naar een bestand, met het oorspronkelijke bedrag, zijn valuta en het omgerekende bedrag.',
+    'CSV exporteren, het downloadicoon naast de trechter, schrijft elke uitgave naar een bestand, met het oorspronkelijke bedrag, zijn valuta en het omgerekende bedrag.',
   'help.guide.filter-costs.result':
     'De filters werken samen, en de daggroepen tekenen zich opnieuw met hun eigen totalen voor wat overblijft.',
   'help.guide.filter-costs.tip.1':
-    'Vastgelegde betalingen hebben geen naam en geen categorie, dus een zoekopdracht of een categoriefilter verbergt ze. Het dagfilter houdt ze, onder de dag waarop de betaling is vastgelegd.',
+    'Vastgelegde betalingen hebben geen naam en geen categorie, dus een zoekopdracht of een categoriefilter verbergt ze. Het dagfilter houdt ze, onder de dag waarop de betaling plaatsvond.',
   'help.guide.filter-costs.tip.2':
     'CSV exporteren exporteert altijd elke uitgave, wat er ook op het scherm gefilterd is, één rij per uitgave.',
+  'help.guide.filter-costs.tip.3':
+    'Filters resetten, onderaan het filtermenu zodra er een filter aan staat, zet ze allemaal in één keer uit.',
   // settle-up
   'help.guide.settle-up.title': 'Uitzoeken wie wie verschuldigd is, en het afrekenen',
   'help.guide.settle-up.goal':
     'Maak van een stapel gedeelde uitgaven het kleinste aantal overboekingen dat iedereen gelijk zet, en leg ze vast zodra ze gebeuren.',
   'help.guide.settle-up.step.1':
-    'De kaart Afrekenen in de rechterkolom somt de overboekingen op die iedereen gelijk zouden zetten: wie wie betaalt, en hoeveel. Het getal naast de titel is hoeveel er nog openstaan.',
+    'De kaart Afrekenen in de rechterkolom somt de overboekingen op die iedereen gelijk zouden zetten: wie wie betaalt, als twee avatars met de namen in hun tooltip, en hoeveel. Het getal in de kop van de kaart is hoeveel er nog openstaan.',
   'help.guide.settle-up.step.2':
     'Afrekenen naast een overboeking legt hem als gedaan vast. De stroom verdwijnt van de kaart en de saldi tekenen zich opnieuw.',
   'help.guide.settle-up.step.3':
@@ -3551,9 +3590,9 @@ const help: TranslationStrings = {
   'help.guide.settle-up.step.4':
     'Naast die rij corrigeert het potlood een betaling en Ongedaan maken neemt hem terug, en de overboeking keert terug naar de kaart Afrekenen.',
   'help.guide.settle-up.step.5':
-    'Betaling toevoegen in de kop van de kaart legt een overboeking vast die geen suggestie volgde. Kies Van en Aan, het Bedrag, de valuta ervan en de dag waarop hij plaatsvond.',
+    'Betaling toevoegen in de kop van de kaart legt een overboeking vast die geen suggestie volgde. Kies Van en Aan, het Bedrag, de valuta ervan en de dag waarop hij plaatsvond, en klik dan onderaan het venster op Betaling toevoegen.',
   'help.guide.settle-up.step.6':
-    'Afrekenen in de kop bovenaan het scherm legt alle openstaande overboekingen in één keer vast, zoals een groep aan het eind van een reis alles gelijktrekt.',
+    'Afrekenen in de balk bovenaan legt alle openstaande overboekingen in één keer vast, zonder te vragen, zoals een groep aan het eind van een reis alles gelijktrekt.',
   'help.guide.settle-up.result':
     'Elke vastgelegde overboeking is een rij in het overzicht en een regel minder op de kaart Afrekenen. Als de kaart Iedereen is quitte toont, is de reis betaald.',
   'help.guide.settle-up.tip.1':
@@ -3573,7 +3612,7 @@ const help: TranslationStrings = {
   'help.guide.final-budget.step.3':
     'Klik op een naam om de rekensom te openen: Betaalde uitgaven, daaronder Terugbetalingen netto en Openstaande terugbetalingen.',
   'help.guide.final-budget.step.4':
-    'Onder elke regel zitten de rijen waaruit hij bestaat: de uitgaven die die reiziger heeft betaald, de al vastgelegde overboekingen en de nog openstaande. Samen zijn ze precies de regel erboven.',
+    'Onder de drie regels bevat een lijst onder elk van hun namen de rijen waaruit de regel bestaat: de uitgaven die die reiziger heeft betaald, de al vastgelegde overboekingen en de nog openstaande. Elke lijst telt precies op tot de regel met dezelfde naam.',
   'help.guide.final-budget.result':
     'Saldi is wie er vandaag boven of onder zit; Eindbudget is wat de reis uiteindelijk elk van jullie kost zodra alles is terugbetaald.',
   'help.guide.final-budget.tip.1':
@@ -3585,84 +3624,128 @@ const help: TranslationStrings = {
   'help.guide.expense-from-booking.goal':
     'Hang wat een vlucht, een hotel of een plek echt heeft gekost aan het item waar het bij hoort.',
   'help.guide.expense-from-booking.step.1':
-    'Open de boeking op het tabblad Transport of Boekingen en klik op zijn potlood.',
+    'Zoek de boeking op het tabblad Transport of Boekingen en klik op het potlood in de kop van haar kaart.',
   'help.guide.expense-from-booking.step.2':
-    'Scroll naar het blok Kosten onderaan het formulier. Het biedt Kostenpost aanmaken aan, dat eerst de boeking opslaat, en Bestaande kostenpost koppelen voor een post die al in Onkosten staat.',
+    'Scroll naar Kosten tegen het eind van het formulier. Het biedt Kostenpost aanmaken aan, dat eerst de boeking opslaat, en Bestaande kostenpost koppelen voor een post die al in Onkosten staat.',
   'help.guide.expense-from-booking.step.3':
     'Klik op Kostenpost aanmaken. De boeking wordt opgeslagen, het formulier gaat dicht, en de Onkosteneditor gaat open met de titel van de boeking als naam en zijn type al gekoppeld aan een categorie.',
   'help.guide.expense-from-booking.step.4':
-    'Vul het bedrag en de valuta ervan, wie heeft betaald en de verdeling in zoals bij elke uitgave, en sla op. Als je de boeking opnieuw opent, staat hij onder Gekoppelde kostenposten, met een potlood om hem te bewerken, Ontkoppelen, kostenpost behouden om hem los te maken en een prullenbak om hem te verwijderen.',
+    'Vul het bedrag en de valuta ervan, wie heeft betaald en de verdeling in zoals bij elke uitgave, en klik op Uitgave toevoegen. Als je de boeking opnieuw opent, staat hij onder Gekoppelde kostenposten, met een potlood om hem te bewerken, Ontkoppelen, kostenpost behouden om hem los te maken en een prullenbak om hem te verwijderen.',
   'help.guide.expense-from-booking.result':
     'De boeking draagt zijn kosten, en de uitgave is een gewone rij op het tabblad Onkosten, met een betaler, een verdeling en een valuta zoals elke andere.',
   'help.guide.expense-from-booking.tip.1':
     'De boeking verwijderen verwijdert ook zijn gekoppelde kostenposten. Kostenpost verwijderen in het blok Kosten van de boeking doet het omgekeerde: de kostenpost gaat weg, de boeking blijft. Ontkoppelen, kostenpost behouden houdt ze allebei.',
   'help.guide.expense-from-booking.tip.2':
     'Een plek heeft hetzelfde blok in zijn formulier, waar Kostenpost aanmaken eerst de plek opslaat.',
+  // costs-table
+  'help.guide.costs-table.title': 'De kosten in een tabel plannen',
+  'help.guide.costs-table.goal':
+    'Lees en wijzig de uitgaven als rekenblad, gesorteerd per categorie en uitgerekend per persoon en per dag.',
+  'help.guide.costs-table.step.1':
+    'Klik op Tabel, het tweede icoon van de schakelaar Lijst / Tabel in de balk. Het overzicht maakt plaats voor een tabel met dezelfde uitgaven, en het zoeken en de filters gelden daar ook.',
+  'help.guide.costs-table.step.2':
+    'De tabel is gegroepeerd per categorie, met boven elke groep haar naam, hoeveel uitgaven ze bevat en haar subtotaal; klik op die kop om haar in te klappen. De kolommen zijn Naam, Datum, Totaal, Personen en Dagen, en daarna Per persoon, Per dag en P. p. / dag, daaruit berekend op een grijze achtergrond.',
+  'help.guide.costs-table.step.3':
+    'Klik op een cel om hem ter plekke te wijzigen: een naam, een totaal, Personen of Dagen. Typ, en druk dan op Enter of klik ergens anders om het te houden, of op Esc om het te laten zoals het was; de datum opent de kalender. Per persoon en de andere berekende kolommen volgen meteen.',
+  'help.guide.costs-table.step.4':
+    'Een totaal met een slotje kan hier niet worden gewijzigd: iemand heeft het betaald, of het is in een andere valuta ingevoerd, en de tooltip zegt welke van de twee. Een klik erop opent in plaats daarvan de uitgave, zodat de saldi en de vastgezette koers blijven kloppen.',
+  'help.guide.costs-table.step.5':
+    'Uitgave toevoegen aan het eind van een categorie voegt er een rij met de naam Nieuwe invoer aan toe, gedateerd zoals de laatste post daar, met de naam al open om te wijzigen. Geef hem op dezelfde manier een totaal.',
+  'help.guide.costs-table.step.6':
+    'In deze weergave toont de rechterkolom Overzicht in plaats van Per categorie. Dat telt de uitgaven op vier manieren op: Categorie, Dag, Betaler, met Nog geen betaler voor de onbetaalde, en Status, Betaald tegenover Open.',
+  'help.guide.costs-table.result':
+    'Elke uitgave staat in zijn categorie met wat hij per persoon en per dag oplevert, en een totaal dat je in een cel wijzigt, telt meteen mee in de kaarten erboven en in Overzicht.',
+  'help.guide.costs-table.tip.1':
+    'Onkosten onthoudt de weergave in deze browser: het tabblad opent op de tabel tot je weer op Lijst klikt.',
+  'help.guide.costs-table.tip.2':
+    'Een uitgave die Aangepast of met Bon is verdeeld, heeft geen vast aandeel per persoon, dus blijven zijn Per persoon en P. p. / dag leeg.',
+  'help.guide.costs-table.tip.3':
+    'Betalers, de verdeling, de notitie en de bonnetjes bewerk je in de uitgave zelf: Meer opties aan het eind van een rij biedt Bewerken, en Verwijderen om de rij weg te halen.',
 
   // ── Screen: trip-transports ───────────────────────────────────────────────────────────
   'help.ctx.trip-transports.title': 'Transport',
   'help.ctx.trip-transports.summary':
     'Alles wat je tussen de stops vervoert: vluchten, treinen, bussen, auto’s, taxi’s, fietsen, cruises, veerboten en de verbindingen met openbaar vervoer die TREK voor je opzoekt. Het tabblad is de lijst ervan; ze worden ook in het plan gemaakt en gelezen, en op de kaart getekend.',
   'help.ctx.trip-transports.bullet.1':
-    'Het tabblad houdt alleen de ritten. Accommodatie, restaurants, evenementen en tickets wonen onder Boekingen, zodat dezelfde vermelding nooit twee keer opduikt.',
+    'Het tabblad houdt alleen de ritten. Accommodatie, restaurants, evenementen en tickets wonen op het tabblad Boekingen, zodat dezelfde vermelding nooit twee keer opduikt.',
   'help.ctx.trip-transports.bullet.2':
-    'De werkbalk telt ze allemaal onder Alles en geeft elk gebruikt type een eigen chip met een eigen aantal, Vlucht, Trein, Auto, Openbaar vervoer. Vervoer rechts voegt er met de hand een toe.',
+    'De balk bovenaan heeft het zoekveld, Filteren voor de status, de types en de reizigers, de drie weergaven Kaarten, Lijst en Tijdlijn, en Weergaveopties. Vervoer rechts voegt met de hand een rit toe, en de iconen ervoor, Boekingsbevestigingen importeren en Importeren uit AirTrail, verschijnen als de server bevestigingen kan lezen of als er een AirTrail verbonden is.',
   'help.ctx.trip-transports.bullet.3':
-    'De kaarten komen in drie groepen, elk inklapbaar via de kop: Automatisch openbaar vervoer voor de verbindingen die het zoeken plande, dan In behandeling, dan Bevestigd.',
+    'Kaarten is de weergave waarin het tabblad opent: eerst Bevestigd, dan In behandeling, elke sectie inklapbaar via de kop. De geplande ov-verbindingen hebben geen status en staan op tijdsvolgorde tussen de bevestigde ritten, tenzij Weergaveopties ze een eigen sectie geeft, Automatisch openbaar vervoer. Lijst groepeert per dag, en Tijdlijn legt elke rit over de dagen van de reis.',
   'help.ctx.trip-transports.bullet.4':
-    'Een kaart draagt de status, het type, de dagen die hij beslaat, de tijden, de Boekingscode, de route en de Luchtvaartmaatschappij met het Vluchtnr., of het Treinnr., het Perron en de Stoel. Het potlood opent hem, de prullenbak verwijdert hem na een vraag.',
+    'De kopband van een kaart is getint naar zijn status, groen voor bevestigd, amber voor in behandeling, blauw voor een geplande verbinding, en bevat de statusstip, het type, de titel, het potlood en de prullenbak. Daaronder: Datum, Tijd, Boekingscode, Route en de Luchtvaartmaatschappij met het Vluchtnr., of het Treinnr., het Perron en de Stoel. Een klik op de kaart opent zijn details.',
   'help.ctx.trip-transports.bullet.5':
-    'Vervoer ontstaat ook in het plan: elke dagkop heeft een plus voor Vervoer toevoegen en een tramknop voor Openbaar vervoer, en de reistijdverbinding tussen twee stops opent hetzelfde zoeken voor dat ene traject.',
+    'Vervoer ontstaat ook in het plan: de + in de kop van een dag biedt Vervoer toevoegen en Openbaar vervoer, en de reistijdverbinding tussen twee stops opent hetzelfde zoeken voor dat ene traject.',
   'help.ctx.trip-transports.bullet.6':
-    'Een transport met beide uiteinden gezet tekent een lijn op de kaart. Het route-icoon op zijn rij in het dagplan zet die lijn aan, en Alle boekingsroutes tonen in de balk boven de dagen schakelt de hele reis om.',
+    'Een transport met beide uiteinden gezet tekent een lijn op de kaart. Het route-icoon op zijn rij in het dagplan en Op kaart in zijn details zetten die lijn aan, en Alle boekingsroutes tonen in de balk boven de dagen schakelt de hele reis om.',
   // transports-list
   'help.guide.transports-list.title': 'Het tabblad Transport lezen',
   'help.guide.transports-list.goal': 'Weten wat de lijst je vertelt voordat je er iets aan verandert.',
   'help.guide.transports-list.step.1':
-    'Transport is het tweede tabblad van de reis. Het houdt alleen de ritten: hotels, restaurants, evenementen en tickets staan onder Boekingen.',
+    'Transport is het tweede tabblad van de reis. Het houdt alleen de ritten: hotels, restaurants, evenementen en tickets staan op het tabblad Boekingen.',
   'help.guide.transports-list.step.2':
-    'De werkbalk telt elk transport onder Alles en geeft elk gebruikt type een eigen chip met een eigen aantal. Klik op een chip om alleen dat type te houden, klik er nog eens op om hem los te laten. Meerdere chips kunnen tegelijk aan staan, en Alles ruimt ze op.',
+    'Filteren, de trechter in de balk, opent de keuzes: Status met Alles, Bevestigd en In behandeling, dan elk gebruikt type met zijn aantal. Vink een of meer types aan om alleen die te houden; een getal op de trechter telt wat er aan staat, en de balk zegt hoeveel ritten er getoond worden, bijvoorbeeld 1 van 4. Filters resetten onderaan het menu haalt alles terug.',
   'help.guide.transports-list.step.3':
-    'Automatisch openbaar vervoer is een eigen groep, de verbindingen die het ov-zoeken plande. In behandeling en Bevestigd houden alles wat met de hand is ingevoerd. De pijl naast een kop klapt een groep weg.',
+    'Kaarten, Lijst en Tijdlijn ernaast leggen de ritten uit als kaarten, als rijen gegroepeerd per dag, of als balken over de dagen van de reis. Weergaveopties, de schuifjes, stelt Groeperen op en Sorteren op in voor Kaarten en Lijst en de banen voor Tijdlijn, en Weergave resetten gaat terug naar de standaard. In Kaarten verzamelt Openbaar vervoer als eigen sectie de geplande verbindingen onder Automatisch openbaar vervoer.',
   'help.guide.transports-list.step.4':
-    'Een kaart zegt het allemaal: de statusstip met In behandeling of Bevestigd, het type, de dagen die hij beslaat met hun datums, de tijden, de Boekingscode, de route, en de Luchtvaartmaatschappij met het Vluchtnr., of het Treinnr., het Perron en de Stoel.',
+    'Een kaart zegt het allemaal. Zijn kopband is groen voor Bevestigd en amber voor In behandeling en draagt de statusstip, het type en de titel. Daaronder geeft Datum de dagen die hij beslaat met hun datums, en dan komen Tijd, Boekingscode, Route met het icoon van het type tussen de haltes, en de Luchtvaartmaatschappij met het Vluchtnr., of het Treinnr., het Perron en de Stoel. Klik op de kaart en zijn details gaan open.',
   'help.guide.transports-list.step.5':
-    'Het potlood opent het transport om te bewerken, de prullenbak verwijdert het, na een vraag die noemt wat er weggaat.',
+    'Een klik op de statusstip wisselt de rit tussen In behandeling en Bevestigd. Het potlood in de kopband opent het formulier van het transport, en de prullenbak verwijdert het na de vraag Boeking verwijderen?, die noemt wat er weggaat.',
   'help.guide.transports-list.result':
-    'De lijst is ingeperkt tot waar je naar zocht, en elke kaart zegt in één oogopslag of de rit geboekt is.',
+    'Elke kaart zegt in één oogopslag of de rit geboekt is, en de balk perkt de lijst in of deelt hem anders in wanneer je dat nodig hebt.',
   'help.guide.transports-list.tip.1':
-    'De chips en de ingeklapte groepen worden per reis onthouden, dus het tabblad gaat weer open zoals je het achterliet.',
+    'Het tabblad onthoudt hoe je het achterliet: de weergave, de groepering en de sortering in deze browser, de ingeklapte secties per reis, en de filters tot je het browsertabblad sluit.',
   'help.guide.transports-list.tip.2':
-    'Importeren vanuit bestand en AirTrail voegen zich alleen bij Vervoer in de werkbalk wanneer de server boekingsbevestigingen kan lezen en wanneer er een AirTrail-instantie verbonden is. Zonder die twee vult de lijst zich met de hand en via het ov-zoeken.',
+    'Boekingsbevestigingen importeren en Importeren uit AirTrail, de twee iconen vóór Vervoer, zijn er alleen wanneer de server bevestigingen kan lezen en wanneer er een AirTrail-instantie verbonden is. Zonder die twee vult de lijst zich met de hand en via het ov-zoeken.',
   // add-transport
   'help.guide.add-transport.title': 'Vervoer aan een dag toevoegen',
   'help.guide.add-transport.goal':
     'Zet de rit die je van de ene stop naar de volgende brengt in de dag waarop hij plaatsvindt.',
   'help.guide.add-transport.step.1':
-    'Elke dagkop draagt rechts vier kleine knoppen. Klik op de plus, waarvan de tooltip Vervoer toevoegen luidt. Het formulier gaat open met Datum al op die dag gezet.',
+    'Klik in de kop van de dag waarop de rit valt op de +, waarvan de tooltip Toevoegen aan dag luidt, en kies Vervoer toevoegen. Het formulier gaat open met die dag al ingevuld.',
   'help.guide.add-transport.step.2':
-    'Boekingstype kiest wat je neemt: Vlucht, Trein, Bus, Auto, Taxi, Fiets, Cruise, Veerboot of Overig. Het formulier volgt. Een vlucht krijgt op elk traject een luchthaven, een trein een keten van stations, een auto de woorden Ophalen en Inleveren en Stops onderweg.',
+    'De typepil in de kopband zegt wat je neemt, om te beginnen Vlucht. Klik erop voor Vlucht, Trein, Bus, Auto, Taxi, Fiets, Cruise, Veerboot of Overig, en het formulier volgt: een vlucht krijgt bij elke stop een luchthaven, een trein een keten van stations, een auto Ophalen en Inleveren en Stops onderweg.',
   'help.guide.add-transport.step.3':
-    'Titel is het enige veld dat ingevuld moet zijn; Toevoegen blijft zonder titel grijs. Schrijf op wat je op een vertrekbord zou herkennen.',
+    'Typ de titel direct in de kopband, waar het grijze voorbeeld staat. Het is het enige veld dat ingevuld moet zijn: tot dat gebeurd is, staat er op de regel eronder Titel * en blijft Toevoegen grijs. Schrijf op wat je op een vertrekbord zou herkennen.',
   'help.guide.add-transport.step.4':
-    'Van en Naar zoeken een station, een haven of een adres. Typ minstens drie letters en kies een resultaat uit de lijst. Een naam die alleen getypt is draagt geen coördinaten en tekent dus niets op de kaart.',
+    'Onder Route nemen Van en Naar een station, een haven of een adres. De eigen plekken van de reis worden aangeboden voordat je typt; typ minstens drie letters om te zoeken, en kies een resultaat. Een naam die alleen getypt en nooit gekozen is, wordt niet opgeslagen en tekent niets op de kaart.',
   'help.guide.add-transport.step.5':
-    'Datum en Starttijd zeggen wanneer hij rijdt, Einddatum en Eindtijd wanneer hij voorbij is; een rit die de volgende dag aankomt neemt daar de volgende dag. Boekingscode, Status met In behandeling of Bevestigd, en Notities zijn optioneel.',
+    'Datum en Starttijd zeggen wanneer hij rijdt, Einddatum en Eindtijd wanneer hij voorbij is; een rit die de volgende dag aankomt neemt daar de volgende dag. Boekingscode en Notities verderop zijn optioneel, en een klik op de pil In behandeling in de kopband zet hem op Bevestigd.',
   'help.guide.add-transport.step.6': 'Klik op Toevoegen.',
   'help.guide.add-transport.result':
-    'Het transport is een rij op de dag, op zijn tijd tussen de stops, en een kaart in het tabblad Transport onder In behandeling of Bevestigd.',
+    'Het transport is een rij op de dag, op zijn tijd tussen de stops, en een kaart op het tabblad Transport onder In behandeling of Bevestigd.',
   'help.guide.add-transport.tip.1':
     'De rij belandt waar zijn starttijd hem zet, na de laatste stop die eerder begint. Zijn greep sleept hem overal anders in de dag naartoe, of naar een andere dag.',
   'help.guide.add-transport.tip.2':
     'Bestand bijvoegen onder Bestanden neemt het ticket, en Kostenpost aanmaken onder Kosten bewaart de boeking en opent de Onkosten-editor voor de prijs.',
   'help.guide.add-transport.tip.3':
-    'Reizigers markeert wie er mee gaat op deze rit. Zodra één transport reizigers heeft, laat de werkbalk van het tabblad hun avatars groeien en filtert hij de lijst erop.',
+    'Reizigers, het eerste blok van het formulier, markeert wie er meegaat op deze rit. Zodra de reis meer dan één lid heeft en een transport iemand noemt, biedt Filteren op het tabblad ook Reizigers, dat de lijst versmalt tot de ritten van één persoon.',
+  // import-transport-file
+  'help.guide.import-transport-file.title': 'Een vlucht uit haar e-ticket lezen',
+  'help.guide.import-transport-file.goal':
+    'Laat TREK een vlucht, een trein of een veerboot uit het ticket halen dat de vervoerder stuurde, en kijk het na voor het wordt opgeslagen.',
+  'help.guide.import-transport-file.step.1':
+    'Klik in de balk van het tabblad Transport op het downloadicoon vóór Vervoer, waarvan de tooltip Boekingsbevestigingen importeren luidt. Het venster met die naam gaat open, hetzelfde als op het tabblad Boekingen.',
+  'help.guide.import-transport-file.step.2':
+    'Laat het ticket op het vak vallen, of klik erop en kies het: EML, PDF, PKPass, HTML en TXT, tot vijf bestanden van elk 10 MB. De bestanden die je koos staan met naam op het vak.',
+  'help.guide.import-transport-file.step.3':
+    'Klik op Importeren. Het venster sluit meteen; het lezen gebeurt op de achtergrond.',
+  'help.guide.import-transport-file.step.4':
+    'Een kaart rechtsonder doet verslag van de uitvoering onder de naam van het bestand. Bestanden verwerken… wordt een vinkje als het lezen klaar is, en de kaart biedt Importeren aan. Klik erop.',
+  'help.guide.import-transport-file.step.5':
+    'Een vlucht gaat open in Vervoer toevoegen, al ingevuld: de typepil op Vlucht, de luchtvaartmaatschappij en het vluchtnummer als titel in de kopband, beide luchthavens onder Route met Vertrek en Aankomst, hun tijden en hun tijdzones, Luchtvaartmaatschappij en Vluchtnr., de Boekingscode en het ticket onder Bestanden. Kijk het na en klik op Toevoegen.',
+  'help.guide.import-transport-file.result':
+    'De vlucht is een kaart onder In behandeling op het tabblad Transport en een rij op de dag waarop hij vertrekt, met het ticket onder Bestanden, en met beide luchthavens bekend tekent hij zijn boog op de kaart.',
+  'help.guide.import-transport-file.tip.1':
+    'De twee tabbladen delen één import: een bestand dat een vlucht en een hotel bevat opent de vlucht in Vervoer toevoegen en het hotel in Nieuwe reservering, de een na de ander, vanuit welk tabblad je ook begon.',
+  'help.guide.import-transport-file.tip.2':
+    'Luchthavens worden op hun code geplaatst. Een station of een haven die het lezen niet kon vinden, staat amberkleurig op de importkaart rechtsonder; kies het met de hand onder Route voor je op Toevoegen klikt, anders tekent het transport niets op de kaart.',
   // plan-transit
   'help.guide.plan-transit.title': 'Een ov-verbinding plannen',
   'help.guide.plan-transit.goal':
     'Laat TREK de echte treinen en bussen tussen twee punten van een dag opzoeken en zet die je kiest in het plan.',
   'help.guide.plan-transit.step.1':
-    'Klik in de dagkop op de tramknop, Openbaar vervoer. Het zoeken gaat open voor die dag.',
+    'Klik op de + in de kop van de dag en kies Openbaar vervoer. Het zoeken gaat open voor die dag: de dag is de pil in de kopband, en Handmatig en Automatisch ernaast wisselen tussen dit zoeken en het gewone formulier.',
   'help.guide.plan-transit.step.2':
     'Van en Naar nemen een halte of een station. Zolang het veld leeg is worden de eigen stops van de dag en de accommodaties van de reis aangeboden; vanaf twee letters worden in plaats daarvan de stations van de dienstregeling doorzocht. Wisselen tussen de twee velden draait de verbinding om.',
   'help.guide.plan-transit.step.3':
@@ -3670,10 +3753,10 @@ const help: TranslationStrings = {
   'help.guide.plan-transit.step.4':
     'De chips eronder zeggen welke vervoerswijzen gebruikt mogen worden: Trein, Metro, Tram, Bus, Veerboot en Kabelbaan. Zet er een uit om hem weg te laten, minstens één blijft aan. Klik dan op Zoeken.',
   'help.guide.plan-transit.step.5':
-    'Elk resultaat geeft vertrek en aankomst, hoe lang het duurt, hoeveel keer overstappen en hoeveel lopen, en de lijnen in hun eigen kleuren. Klik er een aan om hem halte voor halte uit te klappen, met de perrons en de stukken lopen tussen de lijnen.',
+    'Elk resultaat geeft vertrek en aankomst, hoe lang het duurt, hoeveel keer overstappen en hoeveel lopen, en de lijnen als badges, in hun eigen kleuren waar de dienstregeling die geeft. Klik er een aan om hem traject voor traject uit te klappen, met de haltes waar je instapt en overstapt, de perrons en de stukken lopen tussen de lijnen.',
   'help.guide.plan-transit.step.6': 'Klik op Toevoegen aan dag.',
   'help.guide.plan-transit.result':
-    'De verbinding is een rij op de dag met haar lijnen, haar overstappen en haar looptijd, en een kaart in het tabblad Transport onder Automatisch openbaar vervoer.',
+    'De verbinding is een rij op de dag met haar lijnbadges, en het pijltje van die rij klapt haar traject voor traject uit. Op het tabblad Transport is ze een blauw getinte kaart tussen de bevestigde ritten.',
   'help.guide.plan-transit.tip.1':
     'De verbindingen komen van Transitous, een vrije gemeenschapsdienst op publieke dienstregelingsdata: geen sleutel, geen account. Een beheerder kan het zoeken in plaats daarvan op Google richten.',
   'help.guide.plan-transit.tip.2':
@@ -3683,27 +3766,27 @@ const help: TranslationStrings = {
   // change-transit-route
   'help.guide.change-transit-route.title': 'Een geplande verbinding openen en wijzigen',
   'help.guide.change-transit-route.goal':
-    'De verbinding halte voor halte lezen, hernoemen, of de route opnieuw laten opzoeken.',
+    'De verbinding lijn voor lijn lezen, hernoemen, of de route opnieuw laten opzoeken.',
   'help.guide.change-transit-route.step.1':
-    'In het tabblad Transport zitten de geplande verbindingen onder Automatisch openbaar vervoer. Klik op de kaart; de verbinding gaat open als boeking.',
+    'Op het tabblad Transport is een geplande verbinding een kaart met een blauwe kopband, op tijdsvolgorde tussen de bevestigde ritten; met Openbaar vervoer als eigen sectie aan onder Weergaveopties staat ze in plaats daarvan onder Automatisch openbaar vervoer. Klik op de kaart; de verbinding gaat open als boeking.',
   'help.guide.change-transit-route.step.2':
-    'Duur, Overstappen en Lopen staan bovenaan. Reisplan daaronder loopt de verbinding halte voor halte door, met de perrons en de stukken lopen tussen de lijnen.',
+    'De tegels bovenaan geven het vertrek en de aankomst met hun haltes, Duur, Overstappen en Lopen. Reisplan daaronder loopt de verbinding lijn voor lijn door, met de tijden, de perrons en de stukken lopen tussen de lijnen.',
   'help.guide.change-transit-route.step.3':
-    'Route wijzigen onderaan de boeking draait het zoeken opnieuw, al gevuld met de twee uiteinden van deze verbinding en met haar dag.',
+    'Route wijzigen onderaan de boeking opent het zoeken opnieuw, al gevuld met de twee uiteinden van deze verbinding en met haar dag.',
   'help.guide.change-transit-route.step.4':
-    'Kies een andere verbinding en klik op Toevoegen aan dag; die neemt de plaats van de oude in. Bewerken, aan het andere eind van dezelfde balk, opent in plaats daarvan het gewone vervoersformulier, waar de Boekingscode, de Status, de reizigers, de notities en de bestanden wonen.',
+    'Klik op Zoeken, klap een andere verbinding uit en klik op Toevoegen aan dag; die neemt de plaats van de oude in. Bewerken, helemaal rechts onderaan de boeking, opent in plaats daarvan het gewone vervoersformulier, waar de Boekingscode, de reizigers, de notities en de bestanden wonen.',
   'help.guide.change-transit-route.result':
-    'De ov-reis draagt het nieuwe reisplan, en haar kaart in het tabblad Transport toont de nieuwe lijnen en tijden.',
+    'De ov-reis draagt het nieuwe reisplan, en haar kaart op het tabblad Transport toont de nieuwe lijnen en tijden.',
   'help.guide.change-transit-route.tip.1':
-    'De titel in de kop van de boeking hernoemt de verbinding zonder de route aan te raken. Haar notities schrijf je in het vervoersformulier achter Bewerken.',
+    'Klik op de titel in de kop van de boeking om de verbinding te hernoemen zonder de route aan te raken. Haar notities schrijf je in het vervoersformulier achter Bewerken.',
   'help.guide.change-transit-route.tip.2':
-    'Verwijderen onderaan de boeking haalt de verbinding uit de reis; de dag houdt zijn stops.',
+    'De prullenbak onderaan de boeking verwijdert de verbinding na een vraag; de dag houdt zijn stops.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Wijzigen hoe één traject wordt afgelegd',
   'help.guide.leg-travel-mode.goal':
     'Eén traject van een dag die verder met de auto gaat te voet doen, of dat traject aan het ov-zoeken overlaten.',
   'help.guide.leg-travel-mode.step.1':
-    'De verbindingsstukken tussen de stops verschijnen pas als de route van de dag aan staat. Klik op de dag om hem te openen, dan op Route onder zijn stops.',
+    'De verbindingsstukken tussen de stops verschijnen pas als de route van de dag aan staat. Klik op de kop van de dag om hem te openen, dan op Route in de balk onder zijn stops.',
   'help.guide.leg-travel-mode.step.2':
     'Elk verbindingsstuk noemt de reistijd en de afstand van dat traject, met het icoon van de wijze waarin het berekend is: een auto voor rijden, een voet voor lopen.',
   'help.guide.leg-travel-mode.step.3':
@@ -3723,32 +3806,32 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Een tijd, een perron of een boekingscode rechtzetten, of de rit uit de reis halen.',
   'help.guide.edit-transport.step.1':
-    'In het dagplan is een transport een gekleurde rij tussen de stops. Klik erop; zijn boeking gaat open met de tijden, de route en de Boekingscode.',
+    'In het dagplan is een transport een rij tussen de stops, getint naar zijn type. Klik erop en zijn boeking gaat open: de status, het type, de dagen en de Boekingscode als pillen in de kop, de vertrek- en aankomsttijden met hun luchthavens of stations daaronder.',
   'help.guide.edit-transport.step.2':
-    'Bewerken onderaan de boeking opent het formulier dat hem aanmaakte, met Vervoer bewerken in de titelbalk. Alles kan veranderen: het type, de route, de dagen en tijden, de Boekingscode, de Status.',
+    'Bewerken onderaan de boeking opent het formulier dat hem aanmaakte, met Vervoer bewerken boven de titel in de kopband. Daar kan alles veranderen: de titel, de pillen voor status en type, de route, de dagen en tijden, de Boekingscode.',
   'help.guide.edit-transport.step.3':
     'De route van een vlucht is een keten van luchthavens, die van een trein een keten van stations. Tussenstop toevoegen zet er nog een tussenin, en elk traject houdt zijn eigen tijden en zijn eigen vlucht- of treinnummer.',
   'help.guide.edit-transport.step.4':
-    'Klik op Bijwerken. Om het transport helemaal weg te halen, gebruik je Verwijderen onderaan zijn boeking, of de prullenbak op zijn kaart in het tabblad Transport, en bevestig je.',
+    'Klik op Bijwerken. Om het transport helemaal weg te halen, gebruik je de prullenbak links in dezelfde balk, die onderaan zijn boeking of die op zijn kaart in het tabblad Transport, en bevestig je.',
   'help.guide.edit-transport.result':
     'De wijziging is overal te zien waar het transport voorkomt: het tabblad Transport, de dag waarop het rijdt, en zijn lijn op de kaart.',
   'help.guide.edit-transport.tip.1':
-    'Hetzelfde formulier gaat van twee kanten open: via Bewerken in de boeking die een rij van het dagplan opent, en via het potlood op de kaart in het tabblad Transport. Een geplande ov-verbinding gaat ook als boeking open; Route wijzigen zoekt daar opnieuw, en Bewerken leidt naar dit formulier.',
+    'Hetzelfde formulier gaat van twee kanten open: via Bewerken in de boeking die een rij van het dagplan opent, en via het potlood op de kaart in het tabblad Transport. Een geplande ov-verbinding gaat ook als boeking open; Route wijzigen opent daar het zoeken opnieuw, en Bewerken leidt naar dit formulier.',
   'help.guide.edit-transport.tip.2':
     'Een transport naar een andere dag verplaatsen heeft het formulier helemaal niet nodig: sleep zijn rij van de ene dagkaart naar de volgende.',
   // transport-on-map
   'help.guide.transport-on-map.title': 'Vervoer op de kaart tekenen',
   'help.guide.transport-on-map.goal': 'Zien waar een vlucht, een autorit of een verbinding echt langsgaat.',
   'help.guide.transport-on-map.step.1':
-    'Een transport met beide uiteinden gezet draagt een klein route-icoon op zijn rij in het dagplan. Klik erop; het label wordt Boekingsroutes verbergen.',
+    'Een transport met beide uiteinden gezet draagt een klein route-icoon op zijn rij in het dagplan. Klik erop; de tooltip wordt Boekingsroutes verbergen.',
   'help.guide.transport-on-map.step.2':
     'De route wordt op de kaart getekend, met aan elk uiteinde een pilvormige markering die het icoon van het transport draagt.',
   'help.guide.transport-on-map.step.3':
-    'Klik op een eindmarkering om de boeking te lezen zonder de kaart te verlaten: de tijden, de Luchtvaartmaatschappij en het Vluchtnr., de Boekingscode en het adres. Sluiten ruimt het blad op.',
+    'Klik op een eindmarkering en de boeking gaat open, recht boven de kaart: de status, het type, de dagen en de Boekingscode in de kop, daaronder de tijden met hun luchthavens of stations, de luchtvaartmaatschappij en het vluchtnummer. Sluiten in de kopband ruimt haar weer op.',
   'help.guide.transport-on-map.step.4':
     'Het route-icoon in de balk boven de dagen doet de hele reis in één keer: Alle boekingsroutes tonen, en Alle boekingsroutes verbergen om ze weer op te ruimen.',
   'help.guide.transport-on-map.step.5':
-    'Een geplande ov-verbinding heeft geen eigen icoon. Ze wordt getekend met de schakelaar Route van de dag, en daarom ruimt Alle boekingsroutes verbergen haar niet op zolang de route van die dag nog aan staat.',
+    'Een geplande ov-verbinding heeft geen eigen route-icoon. Ze wordt getekend met de schakelaar Route van de dag, en daarom ruimt Alle boekingsroutes verbergen haar niet op zolang de route van die dag nog aan staat.',
   'help.guide.transport-on-map.result':
     'De routes liggen op de kaart met aan elk uiteinde een markering, en ze blijven daar tot je ze weer uitzet.',
   'help.guide.transport-on-map.tip.1':
@@ -3757,32 +3840,12 @@ const help: TranslationStrings = {
     'Een bevestigde boeking is een doorgetrokken lijn, een boeking in behandeling een gestippelde. De instelling Routelabels voor boekingen zet de luchthavencode of de stationsnaam in de eindmarkeringen.',
   'help.guide.transport-on-map.tip.3':
     'Alle boekingsroutes tonen is een schone lei, geen laag: het gooit weg wat de losse iconen hadden gezet, dus twee keer drukken laat je met alles aan of alles uit achter.',
-  // import-transport-file
-  'help.guide.import-transport-file.title': 'Een vlucht uit haar e-ticket lezen',
-  'help.guide.import-transport-file.goal':
-    'Laat TREK een vlucht, een trein of een veerboot uit het ticket halen dat de vervoerder stuurde, en kijk het na voor het wordt opgeslagen.',
-  'help.guide.import-transport-file.step.1':
-    'Klik op Importeren vanuit bestand in de werkbalk van het tabblad Transport, naast Vervoer. Boekingsbevestigingen importeren gaat open, hetzelfde venster als het tabblad Boekingen heeft.',
-  'help.guide.import-transport-file.step.2':
-    'Laat het ticket op het vak vallen, of klik erop en kies het: EML, PDF, PKPass, HTML en TXT, tot vijf bestanden van elk 10 MB. De bestanden die je koos staan met naam op het vak.',
-  'help.guide.import-transport-file.step.3':
-    'Klik op Importeren. Het venster sluit meteen; het lezen gebeurt op de achtergrond.',
-  'help.guide.import-transport-file.step.4':
-    'Een kaart rechtsonder doet verslag van de uitvoering onder de naam van het bestand. Bestanden verwerken… wordt een vinkje als het lezen klaar is, en de kaart biedt Importeren aan. Klik erop.',
-  'help.guide.import-transport-file.step.5':
-    'Een vlucht gaat open in Vervoer toevoegen, al ingevuld: Boekingstype op Vlucht, de luchtvaartmaatschappij en het vluchtnummer in Titel, beide luchthavens onder Route met Vertrek en Aankomst, hun tijden en hun tijdzones, Luchtvaartmaatschappij en Vluchtnr., de Boekingscode en het ticket onder Bestanden. Kijk het na en klik op Toevoegen.',
-  'help.guide.import-transport-file.result':
-    'De vlucht is een kaart in In behandeling op het tabblad Transport en een rij op de dag waarop hij vertrekt, met het ticket onder Bestanden, en met beide luchthavens bekend tekent hij zijn boog op de kaart.',
-  'help.guide.import-transport-file.tip.1':
-    'De twee tabbladen delen één import: een bestand dat een vlucht en een hotel bevat opent de vlucht in Vervoer toevoegen en het hotel in Nieuwe reservering, de een na de ander, vanuit welk tabblad je ook begon.',
-  'help.guide.import-transport-file.tip.2':
-    'Luchthavens worden op hun code geplaatst. Een station of een haven die het lezen niet kon vinden staat amberkleurig op de kaart; kies het met de hand onder Route voor je op Toevoegen klikt, anders tekent het transport niets op de kaart.',
   // airtrail-import
   'help.guide.airtrail-import.title': 'Vluchten importeren uit AirTrail',
   'help.guide.airtrail-import.goal':
     'Haal de vluchten die je al in AirTrail bijhoudt in één keer de reis in, en laat ze vanaf dan AirTrail volgen.',
   'help.guide.airtrail-import.step.1':
-    'Met de add-on AirTrail aan en je instantie verbonden onder Integraties in Instellingen draagt de werkbalk van het tabblad Transport een knop AirTrail naast Vervoer. Klik erop.',
+    'Met de add-on AirTrail aan en je instantie verbonden onder Integraties in Instellingen draagt de balk van het tabblad Transport een vliegtuigicoon vóór Vervoer, Importeren uit AirTrail. Klik erop.',
   'help.guide.airtrail-import.step.2':
     'Importeren uit AirTrail noemt de vluchten van je account in twee groepen. Tijdens deze reis bevat de vluchten die binnen de reis gedateerd zijn, al aangevinkt; Andere vluchten bevat de rest, niet aangevinkt. Een vlucht die al in de reis zit is grijs en gemarkeerd als Geïmporteerd.',
   'help.guide.airtrail-import.step.3':
@@ -3790,17 +3853,17 @@ const help: TranslationStrings = {
   'help.guide.airtrail-import.step.4':
     'Vluchten die op elkaar aansluiten, elk binnen een dag vertrekkend van de luchthaven waar de vorige landde, staan samen in een kader. Het vinkje eronder, Importeren als één vlucht met een tussenstop in die luchthaven, staat al aan: laat het aan voor één boeking met een tussenstop, of zet het uit om de segmenten als losse vluchten te importeren.',
   'help.guide.airtrail-import.step.5':
-    'Klik op Importeren. De knop telt de aangevinkte vluchten, en de melding daarna zegt hoeveel er binnenkwamen.',
+    'Klik op de knop rechtsonder, die de aangevinkte vluchten telt, zoals in 2 importeren. De melding daarna zegt hoeveel er binnenkwamen.',
   'help.guide.airtrail-import.step.6':
-    'De vluchten zijn kaarten onder Bevestigd, elk met een blauwe badge AirTrail naast zijn status, en rijen op de dagen waarop ze gaan. Een samengevoegde verbinding is één kaart, met zijn route door de tussenstop.',
+    'De vluchten zijn kaarten onder Bevestigd, elk met een blauwe pil AirTrail naast zijn titel, en rijen op de dagen waarop ze gaan. Een samengevoegde verbinding is één kaart, met zijn route door de tussenstop.',
   'help.guide.airtrail-import.result':
-    'De vluchten uit AirTrail zijn kaarten op het tabblad Transport en rijen op hun dagen, elk met de badge AirTrail die zegt waar hij vandaan komt.',
+    'De vluchten uit AirTrail zijn kaarten op het tabblad Transport en rijen op hun dagen, elk met de pil AirTrail die zegt waar hij vandaan komt.',
   'help.guide.airtrail-import.tip.1':
-    'Een vlucht die al in de reis zit onder hetzelfde nummer en dezelfde datum wordt overgeslagen, en een melding zegt hoeveel dat er waren. Ongedaan maken in de werkbalk boven de dagen neemt de hele import terug.',
+    'Een vlucht die al in de reis zit onder hetzelfde nummer en dezelfde datum wordt overgeslagen, en een melding zegt hoeveel dat er waren. De pijl Ongedaan maken in de werkbalk boven de dagen neemt de hele import terug.',
   'help.guide.airtrail-import.tip.2':
-    'AirTrail blijft de bron van de waarheid. TREK leest zijn wijzigingen als je de reis opent en om de paar minuten op de achtergrond; een vlucht die daar is verwijderd houdt zijn kaart, met de badge omgezet naar Niet gesynchroniseerd. Wijzigingen in TREK gaan alleen terug met Wijzigingen terugschrijven naar AirTrail aan onder Integraties.',
+    'AirTrail blijft de bron van de waarheid. TREK leest zijn wijzigingen als je de reis opent en om de paar minuten op de achtergrond; een vlucht die daar is verwijderd houdt zijn kaart, met zijn pil omgezet naar Niet gesynchroniseerd. Wijzigingen in TREK gaan alleen terug met Wijzigingen terugschrijven naar AirTrail aan onder Integraties.',
   'help.guide.airtrail-import.tip.3':
-    'Een samengevoegde verbinding heeft geen enkele AirTrail-vlucht om te volgen, dus het is een eenmalige import: hij houdt de blauwe badge, en over de badge zweven zegt dat. Hetzelfde gebeurt met een gesynchroniseerde vlucht die je met de hand een tussenstop geeft.',
+    'Een samengevoegde verbinding heeft geen enkele AirTrail-vlucht om te volgen, dus het is een eenmalige import: hij houdt de blauwe pil, en als je naar de pil wijst, zegt die dat ook. Hetzelfde gebeurt met een gesynchroniseerde vlucht die je met de hand een tussenstop geeft.',
 
   // ── Screen: trip-roadtrip ─────────────────────────────────────────────────────────────
   'help.ctx.trip-roadtrip.title': 'Roadtrip',
@@ -3809,13 +3872,13 @@ const help: TranslationStrings = {
   'help.ctx.trip-roadtrip.bullet.1':
     'Dagen en Roadtrip boven aan de linkerkolom wisselen tussen het dagplan en de rit. Er wordt niets gekopieerd en niets gewijzigd: Dagen geeft het plan precies terug zoals het was.',
   'help.ctx.trip-roadtrip.bullet.2':
-    'De kop van de lijst telt de reis op: Afstand, Rijtijd en Stops. Daaronder komt één kaartje per dag, met de eigen kilometers van de dag, voor hoeveel stops hij is, waar hij overheen gaat, en een badge Track.',
+    'De kop van de lijst telt de reis op: Afstand, Rijtijd en Stops. Daaronder komt een kaartje voor elke dag met een rit, met de eigen kilometers van de dag, voor hoeveel stops hij is, waar hij overheen gaat, en een badge Track.',
   'help.ctx.trip-roadtrip.bullet.3':
     'Een genummerde stop is een plek waarvoor de dag bestaat. Een stop onderweg, tanken, laden, een rustplaats, draagt het pictogram van zijn soort in plaats van een nummer en telt niet mee. Klik op een nummer om te wijzigen wat het is, en op de badge Duur om te zeggen hoe lang hij duurt.',
   'help.ctx.trip-roadtrip.bullet.4':
     'Tussen twee stops geeft een ritbalk het traject als afstand en tijd. Klik erop voor Routes voor dit traject, of klik op de getekende route op de kaart om het traject via een tussenpunt om te buigen.',
   'help.ctx.trip-roadtrip.bullet.5':
-    'De rechterkolom wordt Langs de route: kies een dag, wat je zoekt en hoe breed de corridor is, en dan Zoeken. Toevoegen zet een resultaat op de rit op het punt waar je er echt langskomt.',
+    'De rechterkolom wordt Langs de route: kies op één regel wat je zoekt en de dag, hoe breed de corridor is, en dan Zoeken. De plus op een treffer, Toevoegen, opent een kort venster dat hem op de rit zet op het punt waar je er echt langskomt.',
   'help.ctx.trip-roadtrip.bullet.6':
     'De Rij-instellingen eronder houden de grenzen, de auto en zijn bereik, de dagelijkse reistijden, wat vermeden moet worden en hoe de lijn wordt getekend. Ze horen bij de reis, dus iedereen plant met dezelfde auto.',
   // roadtrip-mode
@@ -3825,7 +3888,7 @@ const help: TranslationStrings = {
     'Klik op Roadtrip in de schakelaar Dagen en Roadtrip boven aan de linkerkolom. Het dagplan wordt vervangen door de rit, en de kaart tekent elke dag waarvoor een route is berekend.',
   'help.guide.roadtrip-mode.step.2': 'De kop van de lijst telt de hele reis op: Afstand, Rijtijd en Stops.',
   'help.guide.roadtrip-mode.step.3':
-    'Daaronder komt één kaartje per dag. De koptekst draagt het nummer en de datum van de dag, het rijden als afstand en tijd, en voor hoeveel stops de dag is.',
+    'Daaronder komt een kaartje voor elke dag met een rit; een dag zonder iets te rijden valt weg. De koptekst draagt het nummer en de datum van de dag, het rijden als afstand en tijd, en voor hoeveel stops de dag is.',
   'help.guide.roadtrip-mode.step.4':
     'In het kaartje is de dag een ketting: een genummerde stop per plek, een ritbalk tussen elk paar, en de aankomsttijd aan de rechterrand.',
   'help.guide.roadtrip-mode.step.5':
@@ -3842,44 +3905,46 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.title': 'Stops onderweg, en hoe lang je blijft',
   'help.guide.roadtrip-stops.goal': 'Maak van een plek op de rit een stop onderweg, en zeg hoe lang elke stop duurt.',
   'help.guide.roadtrip-stops.step.1':
-    'Klik op het nummer voor een stop in de lijst. Het label is Maak er een stop onderweg van, en het opent Soort stop.',
+    'Klik op het nummer voor een stop in de lijst. Het label is Maak er een stop onderweg van, en het opent de soorten stop als een rij gekleurde schijfjes eronder.',
   'help.guide.roadtrip-stops.step.2':
-    'Kies een soort: Accommodatie, Tanken, Laden, Rustplaats, Camping, Eten of Bezienswaardig. Het nummer wordt het pictogram van die soort en de stops eronder worden hernummerd.',
+    'Kies een soort; elk schijfje zegt zijn naam als je ernaar wijst: Accommodatie, Tanken, Laden, Rustplaats, Camping, Eten of Bezienswaardig. Het nummer wordt het pictogram van die soort en de stops eronder worden hernummerd.',
   'help.guide.roadtrip-stops.step.3':
     'Een stop onderweg is geen bestemming, dus de koptekst van de dag telt één stop minder.',
   'help.guide.roadtrip-stops.step.4':
     'Klik nog eens op het pictogram, Soort stop wijzigen, en kies Weer een bestemming om de stop zijn nummer terug te geven.',
   'help.guide.roadtrip-stops.step.5': 'Elke stop draagt een badge Duur. Klik erop om Tijd bij deze stop te openen.',
   'help.guide.roadtrip-stops.step.6':
-    'Stel de lengte in met de schuif, met de knoppen min en plus of met een van de voorkeuzes, kijk wat Aankomst en Vertrek doen, en klik dan op Opslaan.',
+    'Stel de lengte in met de schuif, met de knoppen min en plus of met een van de voorkeuzes, kijk hoe Vertrek meeschuift terwijl Aankomst blijft staan op het moment dat de rit er aankomt, en klik dan op Opslaan.',
   'help.guide.roadtrip-stops.result':
-    'De stop waarvan je de tijd zette draagt het uur op zijn badge Duur en elke aankomst erna is meegeschoven, en die je naar een soort en weer terug stuurde is weer een genummerde bestemming.',
+    'De stop waarvan je de tijd zette draagt zijn nieuwe lengte op zijn badge Duur en elke aankomst erna is meegeschoven, en die je naar een soort en weer terug stuurde is weer een genummerde bestemming.',
   'help.guide.roadtrip-stops.tip.1':
     'Een verblijf hoort bij de plek, niet bij één bezoek: op een plek die op twee dagen gepland staat, sta je op beide even lang.',
   'help.guide.roadtrip-stops.tip.2':
     'Stops onderweg verschijnen ook onder Dagen. Ook in Dagen tonen uitzetten, onder Servicestops in de Rij-instellingen, houdt ze alleen in Roadtrip.',
   'help.guide.roadtrip-stops.tip.3': 'Geen verblijf, in hetzelfde venster, haalt die tijd er weer af.',
+  'help.guide.roadtrip-stops.tip.4':
+    'Klik op een stop onderweg of een geboekte nacht om zijn kaartje boven de kaart te openen. Met Roadtrip aan opent Bewerken daar het compacte venster van het zoeken in plaats van het plekformulier, en Meer details in dat venster opent het volledige formulier.',
   // roadtrip-corridor
   'help.guide.roadtrip-corridor.title': 'Tanken, eten en een bed vinden langs de route',
   'help.guide.roadtrip-corridor.goal': 'Doorzoek de weg die je echt rijdt, en zet wat je vindt op het juiste traject.',
   'help.guide.roadtrip-corridor.step.1':
-    'Kies de dag boven in Langs de route. Alleen dagen met een berekende route worden aangeboden.',
+    'Open onder Gezocht wordt de lijst en vink aan wat je nodig hebt. Tanken, Laden, Rustplaats, Camping, Accommodatie, Eten en Bezienswaardig zijn te combineren: de lijst blijft open voor een tweede keuze, en de regel toont daarna elke soort met zijn pictogram.',
   'help.guide.roadtrip-corridor.step.2':
-    'Vink onder Gezocht wordt aan wat je nodig hebt. Tanken, Laden, Rustplaats, Camping, Accommodatie, Eten en Bezienswaardig zijn te combineren.',
+    'Kies de dag in het uitklapmenu aan het eind van dezelfde regel. Het biedt de dagen aan waarvoor de lijst een kaartje heeft, en Zoeken wacht tot de route van de gekozen dag berekend is.',
   'help.guide.roadtrip-corridor.step.3':
     'Kies onder Binnen hoe ver er aan weerszijden van de weg gezocht wordt, 2 km, 5 km of 10 km, en klik dan op Zoeken.',
   'help.guide.roadtrip-corridor.step.4':
     'De treffers komen per soort gegroepeerd terug, in de volgorde waarin je ze passeert, elk met hoe ver in de dag hij ligt en hoe ver hij van de route af ligt.',
   'help.guide.roadtrip-corridor.step.5':
-    'Toevoegen op een treffer opent Als stop toevoegen. Daar staat op welke dag en op welke positie de stop terechtkomt, het vraagt om de soort en de tijd bij de stop, en Toevoegen zet hem op de rit.',
+    'De plus op een treffer, Toevoegen, opent Als stop toevoegen. Daar staat op welke dag en op welke positie de stop terechtkomt, en het vraagt om Soort stop en Tijd bij deze stop. Toevoegen zet hem op de rit; Meer details opent in plaats daarvan het volledige plekformulier. Een accommodatietreffer draagt een bed in plaats van de plus, Toevoegen als overnachting, en zijn venster biedt Pauze of Overnachten; een nacht vraagt alleen om Inchecken.',
   'help.guide.roadtrip-corridor.result':
-    'De treffers staan in de volgorde waarin je ze passeert en zijn op de kaart getekend, en de toegevoegde zit op de rit op het punt waar je er echt langskomt.',
+    'De stop die je toevoegde zit op de rit op het punt waar je er echt langskomt, met het pictogram van zijn soort. De route van de dag wordt er opnieuw doorheen berekend, en daardoor wordt de lijst leeg: zoek opnieuw voor de volgende.',
   'help.guide.roadtrip-corridor.tip.1':
     'Er wordt pas gezocht als je op Zoeken drukt: één ronde zijn veel verzoeken aan een gedeelde dienst.',
   'help.guide.roadtrip-corridor.tip.2':
     'Filteren op naam versmalt wat er terugkwam zonder opnieuw te vragen, en Resultaten wissen leegt de lijst en haar spelden. Klik op een treffer om hem op de kaart in beeld te halen.',
   'help.guide.roadtrip-corridor.tip.3':
-    'Een treffer kun je ook van de kaart op de getekende route slepen, zo kies je zelf het traject waar dezelfde weg twee keer gereden wordt. Handmatig toevoegen, naast Zoeken, zoekt in plaats daarvan een plek op naam op.',
+    'Een treffer kun je ook van de kaart op de getekende route slepen, zo kies je zelf het traject waar dezelfde weg twee keer gereden wordt. Handmatig, naast Zoeken, voegt er een toe die het zoeken niet vond, door een plek op naam op te zoeken.',
   // roadtrip-via
   'help.guide.roadtrip-via.title': 'Een traject via een tussenpunt ombuigen',
   'help.guide.roadtrip-via.goal':
@@ -3908,7 +3973,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.step.1':
     'Klik op een ritbalk in de lijst, de rij tussen twee stops die het traject als afstand en tijd geeft. Het label is Andere routes.',
   'help.guide.roadtrip-alternatives.step.2':
-    'Routes voor dit traject gaat over de kaart open, één regel per weg, elk in een eigen kleur op de kaart getekend.',
+    'Routes voor dit traject gaat over de kaart open, één regel per weg met zijn lengte. De kaart tekent elke weg met zijn rijtijd: die waarop je zit in vol blauw, de andere in een lichter blauw.',
   'help.guide.roadtrip-alternatives.step.3':
     'Ga met de muis over een regel om die weg te laten oplichten. Huidig is de weg waarover wordt gereden en Snelste de snelste; de andere zeggen hoeveel langzamer ze zijn, of welke wegklasse ze weglaten.',
   'help.guide.roadtrip-alternatives.step.4':
@@ -3916,7 +3981,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.result':
     'Het traject rijdt de weg die je hebt gekozen, en de afstand in de lijst en de aankomsten erna veranderen mee.',
   'help.guide.roadtrip-alternatives.tip.1':
-    'Een andere weg kiezen zet een tussenpunt op het traject en vervangt de tussenpunten die het al had; de eigen weg van de router kiezen haalt ze er weer af.',
+    'Een andere weg kiezen controleert hem eerst met de router van de roadtrip en houdt het traject er dan op met zo weinig tussenpunten als nodig, in plaats van de tussenpunten die het traject al had. Een weg die de router niet wil volgen, wordt niet opgeslagen. De eigen weg van de router kiezen haalt de tussenpunten er weer af.',
   'help.guide.roadtrip-alternatives.tip.2':
     'Zonder snelweg, Zonder tol en Zonder veerboot komen van een tweede motor met een eigen snelheidsmodel, dus hun tijden zijn niet met de andere te vergelijken.',
   // roadtrip-limits
@@ -3929,7 +3994,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.step.3':
     'Zeg onder Voertuig wat je rijdt. Benzine tankt alleen bij tankstops bij, Elektrisch alleen bij laadstops, Beide bij allebei.',
   'help.guide.roadtrip-limits.step.4':
-    'Typ Bereik per tank, of Actieradius per lading, zelf in. Uit de autogegevens berekenen eronder neemt Tankinhoud en Verbruik, of Accu en Verbruik, en rekent het uit.',
+    'Typ Bereik per tank, of Actieradius per lading, zelf in. Uit de autogegevens berekenen verderop neemt Tankinhoud en Verbruik, of Accu, Verbruik en Accuslijtage, en rekent het uit.',
   'help.guide.roadtrip-limits.step.5':
     'Vermijden waar het kan is een voorkeur, geen verbod: een dag zonder weg eromheen gebruikt die weg toch, en zegt dat in zijn koptekst.',
   'help.guide.roadtrip-limits.step.6':
@@ -3941,7 +4006,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.tip.2':
     'Vullen tot zegt hoe vol een stop tankt, want niemand laadt onderweg tot 100 %. Een tank- of laadstop kan dat voor zichzelf overschrijven.',
   'help.guide.roadtrip-limits.tip.3':
-    'Routelijn bepaalt hoe de rit getekend wordt: Dagen verbinden berekent de nacht tussen twee dagen, en Een kleur per dag geeft elke dag zijn eigen kleur.',
+    'Onder Routelijn berekent Dagen verbinden ook de rit van de laatste stop van de ene dag naar de eerste van de volgende, laat Elke dag bij je verblijf beginnen en eindigen een dag beginnen en eindigen bij de geboekte nachten eromheen, en tekent Een kleur per dag elke dag in zijn eigen kleur.',
   // roadtrip-day-window
   'help.guide.roadtrip-day-window.title': 'De rijdag een begin en een einde geven',
   'help.guide.roadtrip-day-window.goal':
@@ -3968,15 +4033,15 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-refuel.goal':
     'Vind op het stuk dat de auto nog haalt een plek om te tanken, en zet die op de rit.',
   'help.guide.roadtrip-refuel.step.1':
-    'Met een bereik ingesteld tekent de lijst een balk dwars over het traject waar het opraakt: Hier is de tank leeg, en eronder hoe ver in het traject dat is.',
+    'Met een bereik ingesteld tekent de lijst een balk dwars over het traject waar het opraakt: Hier is de tank leeg, of Hier is de accu leeg bij een elektrische auto, en eronder hoe ver in het traject dat is.',
   'help.guide.roadtrip-refuel.step.2':
-    'Het lampje op de balk is de knop. Tankstation zoeken kijkt langs de weg die je al gereden hebt, met Zoeken langs de route… zolang het bezig is.',
+    'Het lampje op de balk is de knop: Tankstation zoeken, of Laadpunt zoeken bij een elektrische auto. Het kijkt langs de weg vóór dat punt en toont Zoeken langs de route… zolang het bezig is.',
   'help.guide.roadtrip-refuel.step.3':
     'Er komen tot drie stations terug, elk met hoe ver het van de route af ligt en hoeveel bereik het zou overlaten.',
   'help.guide.roadtrip-refuel.step.4':
     'De plus op een aanbod voegt het toe als tankstop. Als stop toevoegen gaat open met de soort en de tijd al ingevuld, en Toevoegen zet het op het traject op het punt waar je er echt langskomt.',
   'help.guide.roadtrip-refuel.result':
-    'De stop staat op het juiste traject met een eigen pictogram, het bereik telt vanaf daar opnieuw, en de balk is weg.',
+    'De stop staat op het juiste traject met een eigen pictogram, en het bereik telt vanaf daar opnieuw: de balk schuift door naar waar de tank nu leeg raakt, of is weg zodra de rest van de rit binnen bereik ligt.',
   'help.guide.roadtrip-refuel.tip.1':
     'Het bereik telt vanaf de laatste tank- of laadstop, over dagen heen. Wat je rijdt bepaalt welke stops meetellen: Benzine alleen tanken, Elektrisch alleen laden.',
   'help.guide.roadtrip-refuel.tip.2':
@@ -3994,11 +4059,11 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-track.step.3':
     'Klik op Deze track volgen. TREK zet tussenpunten waar de rit het verst van de track afdwaalt, en berekent opnieuw, ronde na ronde.',
   'help.guide.roadtrip-track.step.4':
-    'Het zegt hoeveel tussenpunten het heeft geplaatst en hoe dicht de rit nu blijft. De knop eronder haalt die tussenpunten er weer af en geeft de dag terug aan de router; het venster sluiten behoudt de track.',
+    'Het venster zegt hoeveel tussenpunten er geplaatst zijn en hoe dicht de rit nu blijft, of dat de rit de track al volgde. Waar er tussenpunten geplaatst zijn, haalt de knop eronder ze er weer af en geeft de dag terug aan de router; het venster sluiten behoudt de track.',
   'help.guide.roadtrip-track.result':
-    'De rit van de dag volgt de track in plaats van de weg die de router koos, en zijn badge Track brandt en noemt die track als je erop wijst.',
+    'De rit van de dag volgt de track in plaats van de weg die de router gekozen zou hebben, en als je naar zijn badge Track wijst, noemt die de track. Waar tussenpunten de rit erop houden, brandt de badge bovendien.',
   'help.guide.roadtrip-track.tip.1':
-    'Importeer het bestand onder Dagen met Bestand importeren, met Routes of Tracks aangevinkt. Zolang de reis er geen heeft, draagt geen enkele dag de badge.',
+    'Importeer het bestand onder Dagen: in de plekkenkolom, Bestand importeren achter de importknop, met Routes of Tracks (met routegeometrie) aangevinkt voor een GPX, of Paden (LineStrings) voor een KML. Zolang de reis geen track heeft, draagt geen enkele dag de badge.',
   'help.guide.roadtrip-track.tip.2':
     'Een track volgen vervangt de tussenpunten die de trajecten van de dag al hadden, vorm een traject dus met de hand na de track, niet ervoor.',
 };

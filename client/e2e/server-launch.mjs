@@ -23,7 +23,10 @@ for (const f of [dbFile, `${dbFile}-wal`, `${dbFile}-shm`]) {
 }
 
 // Build once (no watcher) — the resulting process is a single killable node.
-execSync('node scripts/build.mjs', { cwd: serverDir, stdio: 'inherit' })
+// Several runs on their own port pairs share one dist, so they build it once
+// beforehand and set E2E_SERVER_PREBUILT: a rebuild under a running server
+// swaps its files mid-flight.
+if (!process.env.E2E_SERVER_PREBUILT) execSync('node scripts/build.mjs', { cwd: serverDir, stdio: 'inherit' })
 
 const env = {
   ...process.env,

@@ -1146,7 +1146,7 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.step.1':
     "Dans Travel & map, Toujours afficher les itinéraires de réservation garde vols et trains sur la carte même quand leur jour n’est pas ouvert ; Explorer les lieux sur la carte affiche la pastille pour trouver des lieux ; Optimiser l'itinéraire depuis l'hébergement fait partir l’itinéraire de là où vous dormez.",
   'help.guide.travel-map-prefs.step.2':
-    'Masquer les codes de réservation cache les numéros de confirmation jusqu’au survol ; Étiquettes des itinéraires écrit le nom de la réservation le long de son itinéraire.',
+    'Masquer les codes de réservation cache les numéros de confirmation jusqu’au survol ; Étiquettes des itinéraires met le code de l’aéroport ou le nom de la gare sur la pastille à chaque extrémité de l’itinéraire d’une réservation, là où sinon seule l’icône apparaît.',
   'help.guide.travel-map-prefs.result':
     'La carte du voyage suit ces réglages sur chaque voyage, jusqu’à ce que vous les rebasculiez.',
   'help.guide.travel-map-prefs.tip.1':
@@ -1799,7 +1799,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.summary':
     'Un voyage, tout entier : le plan avec ses jours, sa carte et ses lieux, et les onglets pour les transports, les réservations, les listes, les coûts, les fichiers et la collaboration. Chacun d’eux a sa propre page d’aide sous celle-ci.',
   'help.ctx.trip.bullet.1':
-    'La barre d’onglets : Plan, Transports, Réservations, Listes, Coûts, Fichiers et Collaboration. Les modules et les plugins décident quels onglets existent sur votre TREK.',
+    'La barre d’onglets : Plan, Transports, Résa, Listes, Coûts, Fichiers et Collaboration. Les modules et les plugins décident quels onglets existent sur votre TREK.',
   'help.ctx.trip.bullet.2':
     'Plan, ce sont trois colonnes : les jours à gauche, la carte au milieu, les lieux à droite. Les réservations et les transports vivent dans le plan, à l’étape et entre les étapes ; les onglets les listent.',
   'help.ctx.trip.bullet.3':
@@ -1930,7 +1930,7 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.4':
     'Vérifiez ce que contient le formulaire : le nom se trouve dans l’en-tête de la boîte de dialogue et c’est le seul champ obligatoire ; la pastille Catégorie en dessous choisit une des catégories du voyage, et le + à côté en crée une nouvelle sur place. Adresse, Latitude et Longitude viennent de la recherche ou se tapent ; Description et Notes sont à vous ; Site web prend le lien.',
   'help.guide.create-place.step.5':
-    'Cliquez sur Ajouter. Si un lieu du même nom est déjà dans le voyage, le formulaire le signale et le bouton devient Ajouter quand même.',
+    'Cliquez sur Ajouter. Si un lieu du même nom ou au même endroit est déjà dans le voyage, TREK le signale et le bouton devient Ajouter quand même.',
   'help.guide.create-place.result':
     'Le lieu est dans la liste et sur la carte, sous Non planifiés tant qu’il n’est pas posé sur un jour.',
   'help.guide.create-place.tip.1':
@@ -2228,11 +2228,11 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.step.4':
     'Sur la carte, l’interrupteur d’une ligne de transport trace son itinéraire ; Afficher tous les itinéraires dans la barre d’outils les trace tous.',
   'help.guide.bookings-in-plan.step.5':
-    'Pour créer : Ajouter une réservation sur une étape survolée, Ajouter un transport et Transports en commun dans le menu + du jour, et les onglets Réservations et Transports pour la liste complète avec import et fichiers.',
+    'Pour créer : Ajouter une réservation sur une étape survolée, Ajouter un transport et Transports en commun dans le menu + du jour, et les onglets Résa et Transports pour la liste complète avec import et fichiers.',
   'help.guide.bookings-in-plan.result':
     'Une réservation, une place dans le plan ; les onglets montrent les mêmes réservations sous forme de liste.',
   'help.guide.bookings-in-plan.tip.1':
-    'Confirmée et En attente est un statut que vous posez sur la réservation ; le plan l’affiche sur l’étape, l’onglet Réservations compte les deux.',
+    'Confirmée et En attente est un statut que vous posez sur la réservation ; le plan l’affiche sur l’étape, l’onglet Résa compte les deux.',
   'help.guide.bookings-in-plan.tip.2':
     'Un transport à heure fixe ne peut pas être glissé ; changez plutôt son heure dans la réservation.',
   // export-plan
@@ -2471,17 +2471,17 @@ const help: TranslationStrings = {
   'help.ctx.trip-files.summary':
     'Tous les documents du voyage en une seule liste : billets, confirmations, cartes et photos, chacun avec une note, un lien vers le lieu ou la réservation auquel il appartient, et une corbeille d’où il peut ressortir.',
   'help.ctx.trip-files.bullet.1':
-    'Déposez les fichiers ici, en haut, prend les fichiers ; un clic sur la zone ouvre le sélecteur de fichiers. La ligne en dessous indique les types de fichiers que ce TREK accepte et la limite de 50 MB par fichier.',
+    'Déposez les fichiers ici, la zone en pointillés sous la barre, prend les fichiers ; un clic dessus ouvre le sélecteur de fichiers. À l’intérieur se trouvent les types de fichiers que ce TREK accepte et Max 50 MB, la limite par fichier.',
   'help.ctx.trip-files.bullet.2':
-    'Les onglets disent ce que la liste montre : Tous, PDF, Images et Documents, chacun avec son compte. Un onglet étoile les rejoint dès qu’un fichier est en favori, Notes Collab dès qu’une note porte une pièce jointe.',
+    'La barre du haut contient Fichiers et les onglets de filtre Tous, PDF, Images et Documents, chacun avec son compte. Une étoile les rejoint après Tous dès qu’un fichier est en favori, Notes Collab à la fin dès qu’une note porte une pièce jointe.',
   'help.ctx.trip-files.bullet.3':
-    'Une ligne porte qui l’a importé, le nom, la note en dessous, la taille et la date, et un badge par lien : Plan du jour et le lieu, Réservation ou Transport et la réservation, Depuis les notes Collab.',
+    'Une ligne porte une miniature ou le type du fichier, qui l’a importé, le nom, la note en dessous, la taille et la date, et un badge par lien : le lieu, la réservation ou le transport par son nom (en le pointant, on lit Plan du jour, Réservation ou Transport), et Depuis les notes Collab.',
   'help.ctx.trip-files.bullet.4':
-    'Au bout d’une ligne se trouvent Favori, Assigner, Ouvrir, Télécharger et Supprimer. Supprimer ne demande rien : le fichier part à la corbeille, d’où il peut être ramené.',
+    'Au bout d’une ligne se trouvent jusqu’à cinq icônes, chacune nommée quand vous la pointez : Favori, Assigner (le crayon), Ouvrir, Télécharger et Supprimer. Supprimer ne demande rien : le fichier part à la corbeille, d’où il peut être ramené.',
   'help.ctx.trip-files.bullet.5':
-    'Une image ou une vidéo s’ouvre en plein écran, avec les touches fléchées et une bande de miniatures ; tout autre document s’ouvre dans un aperçu par-dessus la page, avec Ouvrir dans un nouvel onglet et Télécharger. Une carte de wallet est téléchargée aussitôt.',
+    'Une image ou une vidéo s’ouvre en plein écran, avec les touches fléchées et une bande de miniatures ; tout autre document s’ouvre dans une boîte de dialogue avec son nom en haut, et Ouvrir dans un nouvel onglet et Télécharger en dessous. Une carte de wallet est téléchargée aussitôt.',
   'help.ctx.trip-files.bullet.6':
-    'Corbeille, tout à droite, fait basculer la liste sur les fichiers supprimés, où chacun est restauré ou supprimé définitivement et où Vider la corbeille les enlève tous. Là où un administrateur a connecté un stockage de documents, Synchronisation des documents se trouve juste à côté.',
+    'L’icône de corbeille au bout droit de la barre (Corbeille) fait basculer la liste sur les fichiers supprimés, où chacun est restauré ou supprimé définitivement et où Vider la corbeille, dans la barre, les enlève tous. Là où le voyage est lié à un stockage de documents, ou pour son propriétaire ou un administrateur dès qu’un stockage est activé, Synchronisation des documents se trouve à gauche de l’icône de corbeille.',
   // files-upload
   'help.guide.files-upload.title': 'Mettre un document dans le voyage',
   'help.guide.files-upload.goal':
@@ -2489,15 +2489,15 @@ const help: TranslationStrings = {
   'help.guide.files-upload.step.1':
     'Ouvrez le voyage et cliquez sur Fichiers dans la barre d’onglets. Les documents du voyage y sont listés, avec la zone d’import au-dessus.',
   'help.guide.files-upload.step.2':
-    'Cliquez sur Déposez les fichiers ici et choisissez un ou plusieurs fichiers. Ils sont importés l’un après l’autre et la zone affiche Importation… pendant l’opération. La ligne sous la zone dit quels types ce TREK accepte, et qu’un fichier peut faire 50 MB au maximum.',
+    'Cliquez sur Déposez les fichiers ici et choisissez un ou plusieurs fichiers. Ils sont importés l’un après l’autre et la zone affiche Importation… pendant l’opération. Dans la zone, sous ou cliquez pour parcourir, se trouvent les types que ce TREK accepte et Max 50 MB, le maximum qu’un fichier peut faire.',
   'help.guide.files-upload.step.3':
-    'Dès que le dernier fichier est en place, Assigner le fichier s’ouvre tout seul pour lui. Ajouter une note… donne au fichier une ligne à lui, et les listes en dessous le rattachent à un lieu ou à une réservation. Fermez avec le × ; rien n’est perdu en fermant.',
+    'Dès que le dernier fichier est en place, Assigner le fichier s’ouvre tout seul pour lui (pour peu que le voyage ait des lieux ou des réservations), avec le nom du fichier dans l’en-tête de la boîte de dialogue. Ajouter une note…, sous Note, donne au fichier une ligne à lui, et les listes en dessous le rattachent à un lieu ou à une réservation. Fermez avec le × en haut à droite ; rien n’est perdu en fermant.',
   'help.guide.files-upload.step.4':
-    'Les nouveaux fichiers se trouvent en haut de la liste. Une ligne montre qui l’a importé, le nom, la taille et la date ; une image reçoit une miniature, tout autre fichier son type.',
+    'Les nouveaux fichiers se trouvent en haut de la liste ; seuls les fichiers en favori se tiennent au-dessus d’eux. Une ligne montre qui l’a importé, le nom, la taille et la date ; une image reçoit une miniature, tout autre fichier son type.',
   'help.guide.files-upload.result':
     'Les documents sont dans le voyage, et tous ceux qui voient le voyage peuvent les ouvrir et les télécharger.',
   'help.guide.files-upload.tip.1':
-    'Un fichier peut aussi être glissé du bureau directement sur la zone, qui s’illumine tant que le fichier est au-dessus.',
+    'Un fichier peut aussi être glissé du bureau directement sur la zone, qui est mise en évidence tant que le fichier est au-dessus.',
   'help.guide.files-upload.tip.2':
     'Une image dans le presse-papiers entre dans la liste avec Ctrl+V, si bien qu’une capture d’écran d’une réservation n’a jamais besoin d’être enregistrée d’abord.',
   'help.guide.files-upload.tip.3':
@@ -2507,19 +2507,19 @@ const help: TranslationStrings = {
   'help.guide.files-link.goal':
     'Rendez le billet trouvable depuis le jour auquel il appartient, et pas seulement depuis cette liste.',
   'help.guide.files-link.step.1':
-    'Cliquez sur Assigner, le crayon au bout de la ligne. Assigner le fichier s’ouvre, au nom du fichier.',
+    'Cliquez sur le crayon au bout de la ligne (Assigner). Assigner le fichier s’ouvre, avec le nom du fichier en dessous, dans l’en-tête de la boîte de dialogue.',
   'help.guide.files-link.step.2':
-    'Sous Note, Ajouter une note… prend une ligne, qui apparaît ensuite sous le nom du fichier dans la liste. Elle est enregistrée dès que vous quittez le champ.',
+    'Sous Note, Ajouter une note… prend une ligne, qui apparaît ensuite sous le nom du fichier dans la liste. Elle est enregistrée quand vous appuyez sur Entrée ou quittez le champ.',
   'help.guide.files-link.step.3':
-    'Sous Lieu se trouvent les lieux du voyage, groupés par le jour où ils sont, avec Non attribué à la fin pour ceux qui ne sont sur aucun jour. Cliquez sur l’un d’eux et il reçoit une coche.',
+    'Sous Lieu, à gauche, se trouvent les lieux du voyage, groupés par le jour où ils sont, avec sa date, et Non attribué à la fin pour ceux qui ne sont sur aucun jour. Cliquez sur l’un d’eux et il reçoit une coche.',
   'help.guide.files-link.step.4':
-    'Sous Réservation et Transport se trouvent les réservations du voyage. Cliquez sur celle à laquelle le document appartient ; elle reçoit sa coche elle aussi.',
+    'Sous Réservation et Transport, à droite, se trouvent les réservations du voyage. Cliquez sur celle à laquelle le document appartient ; elle reçoit sa coche elle aussi.',
   'help.guide.files-link.step.5':
-    'Fermez avec le ×. Il n’y a pas de bouton d’enregistrement ici : chaque clic a été écrit au moment où vous l’avez fait.',
+    'Fermez avec le × en haut à droite. Il n’y a pas de bouton d’enregistrement ici : chaque clic a été écrit au moment où vous l’avez fait.',
   'help.guide.files-link.result':
-    'La ligne porte la note et un badge par lien, Plan du jour et le nom du lieu, Transport et le nom du vol, et le document est aussi accroché au lieu et au vol.',
+    'La ligne porte la note et un badge par lien, l’un avec le nom du lieu et l’autre avec celui du vol (en pointant un badge, on lit Plan du jour ou Transport), et le document est aussi accroché au lieu et au vol.',
   'help.guide.files-link.tip.1':
-    'Un fichier peut tenir plusieurs liens à la fois, si bien que la même confirmation appartient à l’hôtel et à la nuit qu’elle couvre.',
+    'Un fichier peut tenir plusieurs liens à la fois, si bien que la même confirmation peut appartenir en même temps à la réservation de l’hôtel et au lieu de l’hôtel.',
   'help.guide.files-link.tip.2': 'Cliquer de nouveau sur une entrée cochée retire ce lien ; le fichier lui-même reste.',
   'help.guide.files-link.tip.3':
     'Cela marche aussi dans l’autre sens : un document attaché à un lieu ou à une réservation est dans cette liste également, avec le même badge sur sa ligne.',
@@ -2528,22 +2528,22 @@ const help: TranslationStrings = {
   'help.guide.files-star.goal':
     'Sortez d’une liste qui grossit tout au long du voyage les deux ou trois papiers dont vous aurez vraiment besoin.',
   'help.guide.files-star.step.1':
-    'Cliquez sur Favori au bout d’une ligne. L’étoile se remplit de jaune, une deuxième étoile apparaît devant le nom du fichier, et le bouton affiche maintenant Retirer des favoris.',
+    'Cliquez sur l’étoile au bout d’une ligne (Favori). Elle se remplit de doré, une deuxième étoile apparaît devant le nom du fichier, et en pointant le bouton on lit maintenant Retirer des favoris.',
   'help.guide.files-star.step.2':
     'La liste se retrie : les fichiers en favori passent au-dessus de tous les autres, du plus récent au plus ancien dans chaque groupe.',
   'help.guide.files-star.step.3':
-    'Une étoile a rejoint les onglets en haut, avec le nombre de fichiers en favori derrière elle. Cliquez dessus pour ne voir que ceux-là.',
+    'Une étoile a rejoint les onglets de filtre dans la barre, juste après Tous, avec le nombre de fichiers en favori à côté. Cliquez dessus pour ne voir que ceux-là.',
   'help.guide.files-star.result':
     'Les papiers dont vous avez besoin au guichet sont en haut de la liste, et un onglet ne montre rien d’autre.',
   'help.guide.files-star.tip.1':
     'L’onglet étoile n’existe que tant que quelque chose est en favori. Retirez des favoris le dernier fichier et l’onglet disparaît avec lui.',
   'help.guide.files-star.tip.2':
-    'Mettre en favori compte comme une modification : un membre qui peut seulement lire les fichiers du voyage voit les étoiles mais ne peut pas les poser.',
+    'Mettre en favori demande le même droit qu’Assigner, Modifier les métadonnées des fichiers. Un membre qui ne l’a pas voit les étoiles, mais un clic sur Favori ne change rien pour lui.',
   // files-filter
   'help.guide.files-filter.title': 'Trouver un document dans la liste',
   'help.guide.files-filter.goal': 'Réduisez une liste de tout au seul genre de papier que vous cherchez.',
   'help.guide.files-filter.step.1':
-    'Les onglets au-dessus de la liste sont Tous, PDF, Images et Documents, chacun avec le nombre de fichiers derrière lui.',
+    'Les onglets de filtre se trouvent dans la barre du haut, à côté de Fichiers : Tous, PDF, Images et Documents, chacun avec le nombre de fichiers à côté.',
   'help.guide.files-filter.step.2': 'Cliquez sur PDF : la liste garde les fichiers PDF et rien d’autre.',
   'help.guide.files-filter.step.3':
     'Deux autres onglets vont et viennent selon ce qu’il y a dans le voyage. Cliquez sur Notes Collab, qui est là dès qu’une note de l’onglet Collaboration porte une pièce jointe : la liste garde ces fichiers et rien d’autre. Une étoile rejoint la rangée de la même façon, dès qu’un fichier est en favori.',
@@ -2551,7 +2551,7 @@ const help: TranslationStrings = {
   'help.guide.files-filter.result':
     'La liste ne montre que ce que l’onglet nomme, et le compte sur chaque onglet dit combien cela fait.',
   'help.guide.files-filter.tip.1':
-    'Il n’y a pas de dossiers ici ni de renommage : la note dans Assigner le fichier, les liens vers les lieux et les réservations, et l’étoile sont ce par quoi un document est trié.',
+    'Il n’y a pas de dossiers ici ni de renommage : la note dans Assigner le fichier, les liens vers les lieux et les réservations, et l’étoile sont ce qui permet de distinguer les documents.',
   'help.guide.files-filter.tip.2':
     'La liste elle-même est toujours favoris d’abord, puis du plus récent au plus ancien, si bien qu’un document importé aujourd’hui passe au-dessus d’un document du mois dernier.',
   // files-preview
@@ -2559,15 +2559,15 @@ const help: TranslationStrings = {
   'help.guide.files-preview.goal':
     'Regardez un billet ou une image sur place, et mettez-les sur votre propre machine quand c’est là que vous en avez besoin.',
   'help.guide.files-preview.step.1':
-    'Cliquez sur le nom d’une image ou sur sa miniature. Elle s’ouvre en plein écran, avec le nom du fichier et sa place dans les images dans l’en-tête.',
+    'Cliquez sur le nom d’une image ou sur sa miniature. Elle s’ouvre en plein écran, avec le nom du fichier et sa place parmi les images en haut à gauche.',
   'help.guide.files-preview.step.2':
     'Les flèches rondes sur les côtés, les touches fléchées gauche et droite et la bande de miniatures en bas parcourent toutes les images que la liste montre à cet instant.',
   'help.guide.files-preview.step.3':
-    'Ouvrir dans un nouvel onglet et Télécharger se trouvent dans l’en-tête ; le × ou Échap referme l’image.',
+    'Ouvrir dans un nouvel onglet et Télécharger sont les boutons ronds en haut à droite, à côté du ×. Le ×, Échap ou un clic sur le fond sombre referme l’image.',
   'help.guide.files-preview.step.4':
-    'Un document qui n’est pas une image s’ouvre à la place dans un aperçu par-dessus la page, avec les deux mêmes boutons dans son en-tête. Celui-ci se ferme sur le × ou sur un clic à côté.',
+    'Un document qui n’est pas une image s’ouvre à la place dans une boîte de dialogue : son nom en haut, avec Ouvrir dans un nouvel onglet et Télécharger en pastilles en dessous, et pour un PDF la page elle-même plus bas. Le × en haut à droite, Échap ou un clic à côté de la boîte de dialogue la ferme.',
   'help.guide.files-preview.step.5':
-    'Télécharger au bout d’une ligne enregistre le fichier directement sur votre machine, sans rien ouvrir d’abord.',
+    'La flèche au bout d’une ligne (Télécharger) enregistre le fichier directement sur votre machine, sans rien ouvrir d’abord.',
   'help.guide.files-preview.result':
     'Le document est à l’écran, et les deux mêmes boutons le mettent dans un onglet du navigateur ou sur votre disque.',
   'help.guide.files-preview.tip.1':
@@ -2581,15 +2581,15 @@ const help: TranslationStrings = {
   'help.guide.files-trash.goal':
     'Faites le ménage de ce dont le voyage n’a plus besoin, sans perdre ce dont vous aviez besoin malgré tout.',
   'help.guide.files-trash.step.1':
-    'Cliquez sur Supprimer au bout d’une ligne. Le fichier quitte la liste aussitôt et le message affiche Déplacé dans la corbeille. Rien ne demande avant.',
+    'Cliquez sur la corbeille au bout d’une ligne (Supprimer). Le fichier quitte la liste aussitôt et le message affiche Déplacé dans la corbeille. Rien ne demande avant.',
   'help.guide.files-trash.step.2':
-    'Corbeille, au bout droit de la barre d’outils, fait basculer la liste sur ce qui a été jeté. Le titre affiche Corbeille et les onglets de filtre ont disparu.',
+    'L’icône de corbeille au bout droit de la barre (Corbeille) fait basculer la liste sur ce qui a été jeté. Le titre de la barre affiche Corbeille, et les onglets de filtre et la zone d’import ont disparu.',
   'help.guide.files-trash.step.3':
-    'Une ligne jetée est grisée et n’a plus que deux boutons : Restaurer, qui ramène le fichier, et Supprimer, qui l’enlève définitivement après une question.',
+    'Une ligne jetée est grisée et n’a plus que deux icônes : Restaurer, qui ramène le fichier, et Supprimer, qui l’enlève définitivement après une question.',
   'help.guide.files-trash.step.4':
     'Cliquez sur Restaurer. Le message affiche Fichier restauré et la ligne quitte la corbeille, avec sa note et ses liens toujours dessus.',
   'help.guide.files-trash.step.5':
-    'Vider la corbeille en haut enlève définitivement tout ce qui reste ici, et le navigateur demande une fois avant de le faire. Corbeille rebascule vers les fichiers.',
+    'Vider la corbeille, dans la barre à côté de l’icône de corbeille, enlève définitivement tout ce qui reste ici, et le navigateur demande une fois avant de le faire. L’icône de corbeille rebascule vers les fichiers.',
   'help.guide.files-trash.result': 'Le fichier est de retour dans la liste où il était, comme si de rien n’était.',
   'help.guide.files-trash.tip.1':
     'Supprimer sur une ligne ne demande pas avant, et c’est à cela que sert la corbeille : rien ne quitte TREK tant que vous ne le dites pas ici.',
@@ -2601,7 +2601,7 @@ const help: TranslationStrings = {
   'help.guide.files-sync.goal':
     'Liez le voyage à votre propre stockage de documents, pour que ce qui est importé ici arrive là-bas et que ce qui est classé là-bas apparaisse ici.',
   'help.guide.files-sync.step.1':
-    'Cliquez sur Synchronisation des documents, à côté de Corbeille à l’extrémité droite de la barre d’outils. Le dialogue s’ouvre avec le nom du voyage sous son titre. À gauche, sous Connecter un fournisseur, se trouvent les stockages qu’un administrateur a activés, chacun avec une ligne sur sa façon de classer : Paperless-ngx et Papra par étiquette, Nextcloud et Synology Drive dans un dossier, OpenCloud dans un espace. À droite, on lit Rien de connecté pour le moment.',
+    'Cliquez sur Synchronisation des documents, à côté de l’icône de corbeille au bout droit de la barre. Le dialogue s’ouvre avec le nom du voyage sous son titre. À gauche, sous Connecter un fournisseur, se trouvent les stockages qu’un administrateur a activés, chacun avec une ligne sur sa façon de classer : Paperless-ngx et Papra par étiquette, Nextcloud et Synology Drive dans un dossier, OpenCloud dans un espace. À droite, on lit Rien de connecté pour le moment.',
   'help.guide.files-sync.step.2':
     'Cliquez sur votre stockage, ici Nextcloud. Un dialogue plus petit s’ouvre pour la connexion, au nom du stockage, et demande ce dont ce stockage a besoin pour vous connecter.',
   'help.guide.files-sync.step.3':
@@ -2611,15 +2611,15 @@ const help: TranslationStrings = {
   'help.guide.files-sync.step.5':
     'Cliquez sur Connecter. La connexion est enregistrée avec le voyage et TREK demande où le voyage doit se trouver dans le stockage : l’étiquette, le dossier ou l’espace qui contient ses documents. Seul ce qui s’y trouve est synchronisé. En créer un nouveau le crée avec Créer, avec un nom prérempli d’après le titre du voyage ; sous Ou en utiliser un existant se trouvent ceux qui existent déjà. Cliquez sur l’un d’eux, ici le dossier Autumn in Japan.',
   'help.guide.files-sync.step.6':
-    'Le dialogue est de retour : votre stockage se trouve sous Ce voyage à gauche, et sa carte à droite indique où il se synchronise, la date de sa dernière exécution et Synchroniser maintenant. Une première exécution démarre d’elle-même ; Synchroniser maintenant en lance une quand vous voulez. Une fois une exécution terminée, le badge Pas encore synchronisé à côté du nom cède la place à un point vert, À jour quand vous le pointez, et la barre de flux compte les documents que TREK et le stockage tiennent chacun, avec les voies Vers le fournisseur et Depuis le fournisseur entre eux. Fermez le dialogue avec le ×.',
+    'Le dialogue est de retour : votre stockage se trouve sous Ce voyage à gauche, et sa carte à droite indique où il se synchronise, la date de sa dernière exécution et Synchroniser maintenant. Une première exécution démarre d’elle-même ; Synchroniser maintenant en lance une quand vous voulez. Une fois une exécution terminée, le badge Pas encore synchronisé à côté du nom cède la place à un point vert, À jour quand vous le pointez, et la barre de flux compte les documents que TREK et le stockage tiennent chacun, avec les voies Vers le fournisseur et Depuis le fournisseur entre eux. Fermez le dialogue avec le × en haut à droite.',
   'help.guide.files-sync.result':
-    'Les documents qui étaient déjà là-bas figurent en haut de la liste, importés en votre nom, et chaque document du voyage est aussi dans le stockage. Désormais TREK vérifie le stockage en arrière-plan, et le stockage suit la liste.',
+    'Les documents qui étaient déjà là-bas figurent en haut de la liste, importés en votre nom, et chaque document du voyage est aussi dans le stockage, sauf ceux qui viennent des Notes Collab. Désormais TREK vérifie le stockage en arrière-plan, et le stockage suit la liste.',
   'help.guide.files-sync.tip.1':
-    'Seul le propriétaire du voyage ou un administrateur de l’instance peut lier un voyage, puisque les identifiants donnent accès à tout ce compte sur le stockage. Chaque membre peut ouvrir Synchronisation des documents, lire la carte et appuyer sur Synchroniser maintenant.',
+    'Seul le propriétaire du voyage ou un administrateur de l’instance peut lier un voyage, puisque les identifiants donnent accès à tout ce compte sur le stockage. Chaque membre voit Synchronisation des documents une fois le voyage lié, et peut l’ouvrir, lire la carte et appuyer sur Synchroniser maintenant.',
   'help.guide.files-sync.tip.2':
     'Un stockage sur votre propre réseau a besoin de ALLOW_INTERNAL_NETWORK=true sur le serveur TREK, et son adresse doit être celle de la machine sur le réseau, jamais localhost. Sans cela, Tester la connexion répond Cette adresse n’est pas autorisée.',
   'help.guide.files-sync.tip.3':
-    'Déconnecter sur la carte met fin à l’appariement et garde chaque document des deux côtés. Une étiquette, un dossier ou un espace lié une seconde fois est traité comme nouveau, et tout ce qu’il contient entre à nouveau, alors après un Déconnecter, liez-en un vide plutôt que l’ancien.',
+    'Déconnecter, l’icône à côté de Synchroniser maintenant, demande une fois, puis met fin à l’appariement et garde chaque document des deux côtés. Une étiquette, un dossier ou un espace lié une seconde fois est traité comme nouveau, et tout ce qu’il contient entre à nouveau, alors après un Déconnecter, liez-en un vide plutôt que l’ancien.',
 
   // ── Screen: trip-day-detail ───────────────────────────────────────────────────────────
   'help.ctx.trip-day-detail.title': 'Détails du jour',
@@ -2709,7 +2709,7 @@ const help: TranslationStrings = {
     'Choisissez l’établissement parmi les lieux du voyage. Catégorie, au-dessus de la liste, la réduit à une seule catégorie.',
   'help.guide.add-accommodation.step.6': 'Cliquez sur Enregistrer.',
   'help.guide.add-accommodation.result':
-    'Le séjour s’affiche sur chaque jour qu’il couvre, Arrivée sur le premier et Départ sur le dernier. L’établissement devient une étape du jour d’arrivée, si bien que la carte trace le chemin jusque-là, et une réservation de type Hébergement apparaît dans l’onglet Réservations.',
+    'Le séjour s’affiche sur chaque jour qu’il couvre, Arrivée sur le premier et Départ sur le dernier. L’établissement devient une étape du jour d’arrivée, si bien que la carte trace le chemin jusque-là, et une réservation de type Hébergement apparaît dans l’onglet Résa.',
   'help.guide.add-accommodation.tip.1':
     'Le sélecteur s’ouvre sur le jour d’où vous venez, avec le départ le lendemain ; les deux peuvent être déplacés avant d’enregistrer.',
   'help.guide.add-accommodation.tip.2':
@@ -2729,7 +2729,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.5':
     'La croix à côté du crayon met fin au séjour. Elle ne demande rien, et la réservation de type Hébergement qui lui appartient part avec lui.',
   'help.guide.edit-accommodation.result':
-    'La modification atteint d’un coup chaque jour que le séjour couvre, et la réservation de type Hébergement dans l’onglet Réservations avec.',
+    'La modification atteint d’un coup chaque jour que le séjour couvre, et la réservation de type Hébergement dans l’onglet Résa avec.',
   'help.guide.edit-accommodation.tip.1':
     'Une nuit au milieu d’un séjour ne porte ni l’étiquette Arrivée ni l’étiquette Départ : seuls le premier et le dernier jour de la plage les portent.',
   'help.guide.edit-accommodation.tip.2':
@@ -2744,11 +2744,11 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'La couleur dit où en est une réservation : une ligne verte est confirmée, une ligne ambre est encore en attente. Les hébergements ne sont pas dans cette liste, ils ont leur propre bloc en dessous.',
   'help.guide.day-bookings.step.4':
-    'Cliquez sur une ligne et la réservation s’ouvre. Modifier, à son pied, la change ; les nouvelles réservations se créent dans l’onglet Réservations.',
+    'Cliquez sur une ligne et la réservation s’ouvre. Modifier, à son pied, la change ; les nouvelles réservations se créent dans l’onglet Résa.',
   'help.guide.day-bookings.result':
     'Tout ce qui est daté du jour, et tout ce qui est rattaché à l’une de ses étapes, est dans cette seule liste.',
   'help.guide.day-bookings.tip.1':
-    'Une réservation atterrit sur un jour par sa propre date. Changez la date dans l’onglet Réservations et elle passe à l’autre jour toute seule.',
+    'Une réservation atterrit sur un jour par sa propre date. Changez la date dans l’onglet Résa et elle passe à l’autre jour toute seule.',
   'help.guide.day-bookings.tip.2':
     'Pas de bloc Réservations veut dire que le jour n’a aucune réservation : il est masqué plutôt qu’affiché vide.',
 
@@ -2757,30 +2757,32 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.summary':
     'Le milieu du plan : chaque lieu du voyage en épingle, les itinéraires qui les relient, et les boutons sur les bords de la carte pour le satellite, pour tout le voyage d’un coup et pour les lieux autour du quartier que vous regardez.',
   'help.ctx.trip-map.bullet.1':
-    'Une épingle est un lieu : sa propre photo quand il en a une, sinon la couleur de sa catégorie avec l’icône de la catégorie. Posez le pointeur dessus pour une fiche avec son nom et son adresse, plus sa catégorie et sa note quand le lieu en porte. Faites glisser une épingle sur une carte du jour pour y planifier le lieu.',
+    'Une épingle est un lieu : sa propre photo quand il en a une, sinon la couleur de sa catégorie avec l’icône de la catégorie. Posez le pointeur dessus pour une fiche avec son image, son nom et son adresse, plus sa note et sa catégorie quand le lieu en porte. Faites glisser une épingle sur une carte du jour pour y planifier le lieu.',
   'help.ctx.trip-map.bullet.2':
     'Les épingles trop proches pour être distinguées se replient en une bulle sombre portant un compte. Cliquez la bulle et la carte zoome sur ce qu’elle contient.',
   'help.ctx.trip-map.bullet.3':
-    'Cliquez sur une épingle pour ouvrir le lieu sous la carte, avec sa note, ses fichiers et ce qu’il y a à en faire ensuite ; cliquez sur un endroit vide de la carte pour le relâcher.',
+    'Cliquez sur une épingle pour ouvrir le lieu dans une fiche au pied de la carte, avec sa note, ses fichiers et ce qu’il y a à en faire ensuite ; cliquez sur un endroit vide de la carte pour le relâcher.',
   'help.ctx.trip-map.bullet.4':
-    'Avec un jour ouvert dans la colonne des jours, ses étapes portent un petit badge blanc avec leur numéro dans ce jour, et un lieu planifié sur deux jours porte les deux numéros, joints par ·.',
+    'Avec un jour ouvert dans la colonne des jours, ses étapes portent un petit badge blanc avec leur numéro dans ce jour, et un lieu qui revient deux fois dans la journée porte ses deux numéros.',
   'help.ctx.trip-map.bullet.5':
     'La rangée d’icônes en haut cherche dans la partie de la carte que vous voyez : Restaurants, Cafés, Bars & vie nocturne, Hébergement, Sites touristiques, Musées & culture, Nature & parcs et Activités. Rechercher dans cette zone la relance après que vous avez déplacé la carte.',
   'help.ctx.trip-map.bullet.6':
     'Un clic droit n’importe où sur la carte ouvre le formulaire de lieu à cet endroit, avec l’adresse déjà recherchée. Le bouton rond en bas à gauche échange la carte dessinée contre des images aériennes.',
   'help.ctx.trip-map.bullet.7':
-    'Afficher tout le voyage, en bas à droite, dessine chaque jour de trajet d’un coup et liste ce que chacun couvre ; l’icône d’itinéraire sur la ligne d’une réservation dessine cette réservation, et celle de la barre d’outils au-dessus des jours les dessine toutes.',
+    'Afficher tout le voyage, en bas à droite, dessine chaque jour de trajet d’un coup et liste ce que chacun couvre ; l’icône d’itinéraire sur la ligne d’une réservation dessine cette réservation, et celle de la barre d’outils au-dessus des jours les dessine toutes. Cliquez sur l’extrémité d’une réservation dessinée pour ouvrir ses détails.',
+  'help.ctx.trip-map.bullet.8':
+    'Avec le module Dawarich actif, le bouton rond Dawarich sous Afficher tout le voyage dessine le trajet que votre téléphone a réellement enregistré : Afficher le trajet enregistré le pose en pointillés sous l’itinéraire prévu, une couleur par jour, et le libellé du bouton dit pourquoi il n’y a pas de ligne quand il n’y en a pas.',
   // map-markers
   'help.guide.map-markers.title': 'Lire la carte',
   'help.guide.map-markers.goal': 'Savoir ce que chaque épingle, badge et bulle de la carte vous dit.',
   'help.guide.map-markers.step.1':
     'La carte porte chaque lieu du voyage. Là où des épingles sont trop proches pour être distinguées, elles se replient en une bulle sombre portant le nombre qu’elle contient ; cliquez la bulle et la carte zoome sur ce qu’elle contenait, ou, au zoom le plus profond, déploie les épingles en éventail.',
   'help.guide.map-markers.step.2':
-    'Une épingle est la photo du lieu quand il en a une, sinon la couleur de sa catégorie avec l’icône de la catégorie. Posez le pointeur dessus et une fiche donne son nom et son adresse, avec sa catégorie et sa note quand le lieu en porte.',
+    'Une épingle est la photo du lieu quand il en a une, sinon la couleur de sa catégorie avec l’icône de la catégorie. Posez le pointeur dessus et une fiche s’ouvre à côté : la même photo, en plus grand, le nom et l’adresse, avec la note et la catégorie quand le lieu en porte.',
   'help.guide.map-markers.step.3':
-    'Cliquez sur une épingle et le lieu s’ouvre dans une fiche sous la carte : ses coordonnées, sa note, ses fichiers, et en bas ce qu’il est possible d’en faire ensuite, dont Navigation, Modifier et Supprimer, avec Ajouter au jour tant qu’un jour est ouvert. Cliquez sur un endroit vide de la carte pour le relâcher.',
+    'Cliquez sur une épingle et le lieu s’ouvre dans une fiche au pied de la carte : l’image, le nom et l’adresse dans son en-tête, puis les étoiles, la description et les fichiers, et en bas ce qu’il est possible d’en faire ensuite, dont Navigation, Enregistrer dans une collection (Enregistré une fois le lieu dans une collection), Modifier et Supprimer, et tant qu’un jour est ouvert Ajouter au jour, ou Retirer du jour quand le lieu s’y trouve déjà. Le X de son en-tête, ou un clic sur un endroit vide de la carte, la referme.',
   'help.guide.map-markers.step.4':
-    'Ouvrez un jour dans la colonne des jours et ses étapes se numérotent : le petit badge blanc au coin d’une épingle est la place de cette étape dans le jour. Un lieu planifié sur deux jours porte les deux numéros, joints par ·. Sans jour ouvert il n’y a pas de numéros, et le coin porte la note à la place.',
+    'Ouvrez un jour dans la colonne des jours et ses étapes se numérotent : le petit badge blanc au coin d’une épingle est la place de cette étape dans le jour. Un lieu qui revient deux fois dans la journée porte ses deux numéros. Sans jour ouvert il n’y a pas de numéros, et le coin porte à la place la note du lieu, quand il en a une.',
   'help.guide.map-markers.step.5':
     'Faites glisser une épingle de la carte sur une carte du jour dans la colonne des jours et le lieu est planifié ce jour-là, exactement comme si vous sortiez sa ligne de la liste des lieux.',
   'help.guide.map-markers.result':
@@ -2802,11 +2804,11 @@ const help: TranslationStrings = {
   'help.guide.map-nearby-places.step.3':
     'Déplacez la carte et un second bouton apparaît sous la rangée : Rechercher dans cette zone relance la même recherche pour la nouvelle vue. Le déplacement seul ne recherche jamais de nouveau, ce qui limite le nombre de requêtes.',
   'help.guide.map-nearby-places.step.4':
-    'Les épingles portent le nom de ce qui a été trouvé. Cliquez-en une et le formulaire de lieu s’ouvre déjà rempli à partir d’elle : Nom, Adresse, Latitude et Longitude, ainsi que le site web et le numéro de téléphone là où OpenStreetMap les a.',
+    'Posez le pointeur sur une épingle pour voir le nom de ce qui a été trouvé. Cliquez dessus et le formulaire de lieu s’ouvre déjà rempli à partir d’elle : le nom dans l’en-tête de la boîte de dialogue, Adresse, Latitude et Longitude, et Site web quand la recherche en a trouvé un.',
   'help.guide.map-nearby-places.step.5':
-    'Vérifiez ce qui a été rempli et ajoutez ce que la recherche ne pouvait pas savoir : une Description, une Catégorie, vos propres notes.',
+    'Vérifiez ce qui a été rempli et ajoutez ce que la recherche ne pouvait pas savoir : une catégorie depuis la pastille sous le nom, qui affiche Sans catégorie tant que vous n’en avez pas choisi, une Description, vos propres notes.',
   'help.guide.map-nearby-places.step.6':
-    'Cliquez sur Ajouter. Si un lieu du même nom est déjà dans le voyage, le formulaire le signale et le bouton devient Ajouter quand même.',
+    'Cliquez sur Ajouter. Si un lieu du même nom ou au même endroit est déjà dans le voyage, TREK le signale et le bouton devient Ajouter quand même.',
   'help.guide.map-nearby-places.result':
     'Le lieu est dans la liste des lieux et sur la carte parmi les épingles propres au voyage, sous Non planifiés tant que vous ne le posez pas sur un jour. Les épingles de recherche restent jusqu’à ce que vous désactiviez la catégorie.',
   'help.guide.map-nearby-places.tip.1':
@@ -2819,11 +2821,11 @@ const help: TranslationStrings = {
   'help.guide.map-add-place.title': 'Créer un lieu par un clic droit sur la carte',
   'help.guide.map-add-place.goal': 'Posez un lieu exactement où vous le voulez, sans le chercher d’abord.',
   'help.guide.map-add-place.step.1':
-    'Faites un clic droit sur l’endroit de la carte que vous visez. Le formulaire de lieu s’ouvre, intitulé Ajouter un lieu/activité.',
+    'Faites un clic droit sur l’endroit de la carte que vous visez. Le formulaire de lieu s’ouvre, avec Ajouter un lieu/activité en en-tête.',
   'help.guide.map-add-place.step.2':
-    'Latitude et Longitude sont déjà à ce point, et TREK recherche les coordonnées et remplit Adresse avec ce qu’il trouve là, et Nom aussi quand la recherche en donne un. Rien n’est encore enregistré, alors écrasez tout ce qui est faux.',
+    'Latitude et Longitude sont déjà à ce point, et TREK recherche les coordonnées et remplit Adresse avec ce qu’il trouve là, et le nom dans l’en-tête de la boîte de dialogue aussi quand la recherche en donne un. Rien n’est encore enregistré, alors écrasez tout ce qui est faux.',
   'help.guide.map-add-place.step.3':
-    'Donnez-lui un Nom que vous reconnaîtrez, et le reste de ce que le plan doit savoir : Description, Notes, Catégorie, Site web.',
+    'Tapez dans l’en-tête de la boîte de dialogue un nom que vous reconnaîtrez, choisissez une catégorie depuis la pastille en dessous, qui affiche Sans catégorie tant que vous ne l’avez pas fait, et ajoutez le reste de ce que le plan doit savoir : Description, Notes, Site web.',
   'help.guide.map-add-place.step.4':
     'Cliquez sur Ajouter. Le lieu arrive dans la liste comme non planifié même avec un jour ouvert : un clic droit sur la carte dit où, pas quand.',
   'help.guide.map-add-place.result':
@@ -2852,11 +2854,11 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.goal':
     'Échangez le seul jour ouvert contre chaque jour de trajet du voyage, et lisez la distance de chacun.',
   'help.guide.map-whole-trip.step.1':
-    'Le bouton rond Afficher tout le voyage se trouve en bas à droite de la carte. Cliquez-le et chaque jour de trajet du voyage est dessiné d’un coup, chacun dans sa couleur par-dessus un liseré blanc, pour que les jours voisins restent distincts.',
+    'Le bouton rond Afficher tout le voyage se trouve en bas à droite de la carte. Cliquez-le et chaque jour de trajet du voyage est dessiné d’un coup, chacun dans sa couleur, pour que les jours voisins restent distincts.',
   'help.guide.map-whole-trip.step.2':
     'La fiche au-dessus du bouton liste ces jours : une pastille de couleur, le nom du jour, une icône par mode de transport utilisé, et la distance couverte. Distance totale est en haut.',
   'help.guide.map-whole-trip.step.3':
-    'Cliquez un jour dans la fiche pour le sélectionner, comme si vous le choisissiez dans la colonne des jours : la carte cadre ce jour, et ses étapes retrouvent leurs numéros.',
+    'Cliquez un jour dans la fiche pour le sélectionner : sa ligne est ombrée et le jour est ouvert dans la colonne des jours. Tournez la molette au-dessus d’une ville pour zoomer, et les jours qui la traversent s’étendent côte à côte, chacun dans sa couleur.',
   'help.guide.map-whole-trip.step.4':
     'Le bouton affiche maintenant Masquer tout le voyage. Appuyez dessus pour revenir au seul jour ouvert.',
   'help.guide.map-whole-trip.result':
@@ -2866,17 +2868,17 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.tip.2':
     'Une étape que le routeur refuse reste une ligne droite et ne compte rien, et la fiche le dit au lieu d’afficher discrètement une valeur trop basse.',
   'help.guide.map-whole-trip.tip.3':
-    'Un jour avec moins de deux étapes localisées n’a pas d’itinéraire à dessiner, il est donc entièrement laissé hors de la fiche.',
+    'Un jour sans rien à relier (moins de deux étapes localisées et aucun trajet vers ou depuis son hôtel) n’a pas d’itinéraire à dessiner, il est donc entièrement laissé hors de la fiche.',
   // map-booking-routes
   'help.guide.map-booking-routes.title': 'Afficher l’itinéraire d’une réservation sur la carte',
   'help.guide.map-booking-routes.goal':
     'Dessinez sur la carte les vols, les trains et les trajets en voiture que vous avez réservés, et retirez-les ensuite.',
   'help.guide.map-booking-routes.step.1':
-    'Les itinéraires des réservations sont masqués jusqu’à ce que vous en demandiez un. Sur la ligne d’une réservation dans la colonne des jours se trouve une petite icône d’itinéraire : Afficher les itinéraires.',
+    'Les itinéraires des réservations sont masqués jusqu’à ce que vous en demandiez un. Au bout droit de la ligne d’un transport, dans la colonne des jours, se trouve une petite icône d’itinéraire : Afficher les itinéraires.',
   'help.guide.map-booking-routes.step.2':
     'Cliquez-la et la réservation apparaît sur la carte : un vol en arc de grand cercle, un trajet en voiture le long des vraies routes, un train comme la chaîne de ses gares. Confirmée est dessinée en trait plein, En attente en pointillés, et les extrémités de l’itinéraire sont des pastilles bleues portant l’icône du transport.',
   'help.guide.map-booking-routes.step.3':
-    'Cliquez une pastille d’extrémité et la réservation derrière s’ouvre, avec ses horaires, sa référence et l’endroit d’où elle part. Fermer la referme.',
+    'Cliquez une pastille d’extrémité et les détails de la réservation s’ouvrent : statut, type et jours en pastilles dans l’en-tête teinté, les horaires aux deux extrémités, le reste en dessous, et au pied Sur la carte, qui éteint de nouveau cet itinéraire, la corbeille qui supprime la réservation, et Modifier. Le X de l’en-tête les ferme.',
   'help.guide.map-booking-routes.step.4':
     'L’icône d’itinéraire dans la barre d’outils au-dessus des jours fait tout le voyage d’un coup : Afficher tous les itinéraires dessine chaque réservation qui en a un.',
   'help.guide.map-booking-routes.step.5':
@@ -2889,8 +2891,6 @@ const help: TranslationStrings = {
     'Toujours afficher les itinéraires de réservation, dans les mêmes paramètres, les dessine dès le départ sur chaque voyage pour lequel vous n’avez pas déjà décidé.',
   'help.guide.map-booking-routes.tip.3':
     'Une réservation a besoin de deux extrémités avec des coordonnées avant de pouvoir être dessinée, un hôtel ou un restaurant ne porte donc pas d’icône d’itinéraire.',
-  'help.ctx.trip-map.bullet.8':
-    'Avec le module Dawarich actif, le bouton rond Dawarich sous Afficher tout le voyage dessine le trajet que votre téléphone a réellement enregistré : Afficher le trajet enregistré le pose en pointillés sous l’itinéraire prévu, une couleur par jour, et le libellé du bouton dit pourquoi il n’y a pas de ligne quand il n’y en a pas.',
   // map-dawarich-trail
   'help.guide.map-dawarich-trail.title': 'Afficher le trajet que vous avez réellement parcouru',
   'help.guide.map-dawarich-trail.goal':
@@ -2925,58 +2925,61 @@ const help: TranslationStrings = {
   // ── Screen: trip-collab ───────────────────────────────────────────────────────────────
   'help.ctx.trip-collab.title': 'Collaboration',
   'help.ctx.trip-collab.summary':
-    'L’onglet où le groupe planifie ensemble : la Discussion à gauche, les notes partagées et les liens à côté, les sondages en dessous et À venir à la fin. Tout ce qui s’écrit ici est aussitôt sur l’écran de chaque autre membre, sans rechargement.',
+    'L’onglet où le groupe planifie ensemble, en cinq cartes : la Discussion à gauche, Notes et Liens à côté, Sondages et À venir en dessous. Tout ce qui s’écrit ici est aussitôt sur l’écran de chaque autre membre, sans rechargement.',
   'help.ctx.trip-collab.bullet.1':
-    'La Discussion est la colonne de gauche. Écrivez dans Écrire un message… et appuyez sur Enter ; Shift et Enter font un saut de ligne. Le smiley ajoute un emoji, Joindre des images accroche jusqu’à quatre images au message.',
+    'La Discussion est la carte de gauche. Écrivez dans Écrire un message… et appuyez sur Enter ; Shift et Enter font un saut de ligne. Le smiley ajoute un emoji, Joindre des images accroche jusqu’à quatre images au message.',
   'help.ctx.trip-collab.bullet.2':
-    'Survolez un message pour Répondre et, sur les vôtres, Supprimer ; le clic droit ouvre les huit réactions rapides. Un message supprimé laisse une ligne qui dit que vous l’avez supprimé.',
+    'Survolez un message pour Répondre et, sur les vôtres, Supprimer ; le clic droit ouvre les huit réactions rapides. Un message supprimé laisse une ligne qui dit qui l’a supprimé.',
   'help.ctx.trip-collab.bullet.3':
-    'Notes est le bloc partagé : Nouvelle note en écrit une, et l’engrenage à côté ouvre Gérer les catégories pour leurs noms et leurs couleurs. Une carte porte Développer, Épingler, Modifier et Supprimer.',
+    'Notes est le bloc partagé : Nouvelle note, dans son en-tête, en écrit une, et l’engrenage à côté ouvre Gérer les catégories pour leurs noms et leurs couleurs. Une carte de note montre sa catégorie par un point coloré et son lien par un bouton rond, et ses trois points (Plus d’options) contiennent Développer, Épingler, Modifier et Supprimer.',
   'help.ctx.trip-collab.bullet.4':
     'Liens rassemble les adresses sur lesquelles tourne le voyage. Ajouter un lien prend un titre et une adresse http ou https ; Modifier le lien, Épingler le lien et Supprimer le lien sont au bout de la pastille, et les liens épinglés restent devant.',
   'help.ctx.trip-collab.bullet.5':
-    'Sondages tranche les questions. Nouveau sondage pose une question avec au moins deux options ; un clic sur une option est votre vote, Fermer met fin au vote et Supprimer retire le sondage.',
+    'Sondages tranche les questions. Nouveau sondage pose une question avec au moins deux options ; un clic sur une option est votre vote, et le cadenas (Fermer) et la corbeille (Supprimer), à droite de l’en-tête d’un sondage, mettent fin au vote ou retirent le sondage.',
   'help.ctx.trip-collab.bullet.6':
     'À venir liste les étapes du voyage encore devant vous, jusqu’à huit d’entre elles, avec leurs heures et les personnes qui y sont. Il ne fait que lire le plan du jour ; les heures se règlent là-bas.',
   // write-note
   'help.guide.write-note.title': 'Écrire une note partagée',
   'help.guide.write-note.goal':
     'Mettez ce dont tout le groupe a besoin, une règle, une adresse, un rappel, là où chacun le retrouve.',
-  'help.guide.write-note.step.1': 'Cliquez sur Nouvelle note en haut du panneau Notes. Le formulaire s’ouvre.',
+  'help.guide.write-note.step.1':
+    'Cliquez sur Nouvelle note dans l’en-tête de la carte Notes. La boîte de dialogue de la note s’ouvre, avec le curseur déjà dans son en-tête.',
   'help.guide.write-note.step.2':
-    'Titre de la note est le nom que porte la carte. C’est la seule chose que le formulaire exige : Créer reste gris tant qu’il est vide.',
+    'Tapez le titre là où s’affiche Titre de la note, dans l’en-tête de la boîte de dialogue. C’est la seule chose que la boîte de dialogue exige : Créer reste grisé tant qu’il est vide, et Enter dans le titre crée aussitôt la note.',
   'help.guide.write-note.step.3':
-    'La grande zone en dessous contient le texte et accepte le Markdown : un mot en gras, une liste, un titre. La carte montre les premières lignes, et Développer dessus ouvre la note entière.',
+    'Contenu tient le texte et accepte le Markdown : un mot en gras, une liste, un titre. La carte montre les trois premières lignes, et Développer, dans son menu, ouvre la note entière.',
   'help.guide.write-note.step.4':
-    'Sous Catégorie, choisissez celle à laquelle la note appartient ; sa couleur devient la couleur de la carte. Les pastilles sont les catégories qui existent déjà, et une nouvelle se crée sous Gérer les catégories.',
+    'Sous Catégorie, choisissez celle à laquelle la note appartient ; sa couleur teinte maintenant l’en-tête de la boîte de dialogue, et plus tard celui de la carte. Les pastilles sont les catégories qui existent déjà, et une nouvelle se crée sous Gérer les catégories.',
   'help.guide.write-note.step.5':
-    'Site web prend un lien qui appartient à la note. La carte porte alors une tuile Link qui l’ouvre.',
-  'help.guide.write-note.step.6': 'Cliquez sur Créer.',
+    'Site web prend un lien qui appartient à la note. La carte porte alors dans son en-tête un bouton de lien rond qui l’ouvre.',
+  'help.guide.write-note.step.6':
+    'Cliquez sur Créer. Seuls Annuler et sa croix ferment la boîte de dialogue, si bien qu’un clic égaré à côté ou Échap ne fait pas perdre ce que vous avez écrit.',
   'help.guide.write-note.result':
-    'La note est une carte dans le panneau Notes, dans la couleur de sa catégorie, et elle est déjà sur l’écran de chaque autre membre.',
+    'La note est une carte dans le panneau Notes, son en-tête teinté de la couleur de sa catégorie, et elle est déjà sur l’écran de chaque autre membre.',
   'help.guide.write-note.tip.1':
-    'Épingler sur une carte la garde en haut du panneau ; tout ce qui est en dessous est trié par date de dernière modification.',
+    'Les trois points d’une carte (Plus d’options) contiennent Développer, Épingler, Modifier et Supprimer. Épingler garde la note en haut du panneau, dans un cadre de sa couleur ; tout ce qui est en dessous est trié par date de dernière modification.',
   'help.guide.write-note.tip.2':
-    'L’engrenage à côté de Nouvelle note ouvre Gérer les catégories : là, une catégorie reçoit sa couleur, est renommée partout d’un coup, ou est ajoutée avant qu’une note l’utilise.',
+    'L’engrenage à côté de Nouvelle note ouvre Gérer les catégories : là, une catégorie reçoit sa couleur, est renommée partout d’un coup, ou est ajoutée avant qu’une note l’utilise. Rien ne change tant que vous ne cliquez pas sur Enregistrer.',
   'help.guide.write-note.tip.3':
-    'Joindre des fichiers accroche un document à la note. Joindre ouvre le sélecteur de fichiers, et une image ou un PDF peut aussi être simplement collé dans le formulaire.',
+    'Joindre des fichiers accroche un document à la note. Joindre ouvre le sélecteur de fichiers, et une image ou un PDF peut aussi être simplement collé dans la boîte de dialogue.',
   'help.guide.write-note.tip.4':
     'Notes est un interrupteur à part sous Extensions, sous Collaboration : un administrateur peut l’éteindre et laisser tourner le Chat, les Liens, les Sondages ainsi que Et ensuite.',
   // shared-links
   'help.guide.shared-links.title': 'Rassembler les liens du voyage',
   'help.guide.shared-links.goal':
     'Gardez le portail de réservation, l’album partagé et les horaires au même endroit au lieu de fouiller la Discussion pour les retrouver.',
-  'help.guide.shared-links.step.1': 'Cliquez sur Ajouter un lien en haut du panneau Liens.',
+  'help.guide.shared-links.step.1':
+    'Cliquez sur Ajouter un lien dans l’en-tête de la carte Liens. La boîte de dialogue s’ouvre avec le curseur dans son en-tête.',
   'help.guide.shared-links.step.2':
-    'Donnez un nom au lien dans Titre du lien, collez l’adresse dans le champ en dessous, puis cliquez sur Enregistrer le lien.',
+    'Tapez le nom là où s’affiche Titre du lien, collez l’adresse dans Lien en dessous, puis cliquez sur Enregistrer le lien.',
   'help.guide.shared-links.step.3':
     'La pastille montre le nom et le site vers lequel elle pointe. Un clic dessus ouvre la page dans un nouvel onglet.',
   'help.guide.shared-links.step.4':
-    'Les trois petits boutons au bout sont Modifier le lien, Épingler le lien et Supprimer le lien. Épingler le lien déplace la pastille devant le panneau ; Supprimer le lien ne demande rien.',
+    'Les trois boutons ronds à son bout sont Modifier le lien, Épingler le lien et Supprimer le lien. Épingler le lien déplace la pastille en tête du panneau, dans la teinte d’accent ; Supprimer le lien demande d’abord, parce que le lien disparaît pour chaque membre.',
   'help.guide.shared-links.result':
     'Le lien est une pastille dans le panneau Liens, épinglée devant, et sur l’écran de chaque membre en même temps.',
   'help.guide.shared-links.tip.1':
-    'Seules les adresses http et https sont acceptées ; le champ refuse tout le reste avant d’enregistrer.',
+    'Seule une adresse http ou https est acceptée : tout le reste est refusé, et la boîte de dialogue reste ouverte avec ce que vous avez tapé.',
   'help.guide.shared-links.tip.2':
     'Les liens épinglés viennent d’abord, puis les plus récents. La petite icône à côté d’un titre est le favicon du site, récupéré sur le site lui-même, donc sans internet la pastille montre un simple symbole de lien à la place.',
   'help.guide.shared-links.tip.3':
@@ -2985,39 +2988,40 @@ const help: TranslationStrings = {
   'help.guide.create-poll.title': 'Demander au groupe',
   'help.guide.create-poll.goal':
     'Transformez une question à laquelle personne ne répond dans la Discussion en un sondage que tout le monde peut cocher.',
-  'help.guide.create-poll.step.1': 'Cliquez sur Nouveau sondage en haut du panneau Sondages.',
+  'help.guide.create-poll.step.1':
+    'Cliquez sur Nouveau sondage dans l’en-tête de la carte Sondages. La boîte de dialogue s’ouvre.',
   'help.guide.create-poll.step.2':
-    'Écrivez la question. Markdown pris en charge sous la zone signifie qu’un mot en gras, un saut de ligne ou une courte liste fonctionnent ici.',
+    'Écrivez la question sous Question. Markdown pris en charge sous la zone signifie qu’un mot en gras, un saut de ligne ou une courte liste fonctionnent ici.',
   'help.guide.create-poll.step.3':
-    'Remplissez Option 1 et Option 2. Deux options avec quelque chose dedans sont le minimum.',
+    'Remplissez Option 1 et Option 2 sous Options. Deux options avec quelque chose dedans sont le minimum, et une option peut s’étendre sur plusieurs lignes.',
   'help.guide.create-poll.step.4':
-    '+ Ajouter une option en ajoute une troisième, une quatrième, autant que nécessaire ; la petite croix à côté d’une ligne en retire une.',
+    'Ajouter une option, en dessous, en ajoute une troisième, une quatrième, autant que nécessaire ; la petite croix à côté d’une ligne, présente dès que vous en avez plus de deux, en retire une.',
   'help.guide.create-poll.step.5':
     'Choix multiples laisse chacun cocher plus d’une option. Laissé éteint, un vote se déplace quand quelqu’un choisit autre chose.',
   'help.guide.create-poll.step.6': 'Cliquez sur Créer le sondage.',
-  'help.guide.create-poll.result': 'Le sondage est en haut du panneau Sondages, ouvert, et personne n’a encore voté.',
+  'help.guide.create-poll.result': 'Le sondage est en haut du panneau Sondages, ouvert, avec 0 votes dans son en-tête.',
   'help.guide.create-poll.tip.1': 'La question est rendue en Markdown ; les options restent du texte brut.',
   'help.guide.create-poll.tip.2':
-    'Créer le sondage reste gris tant qu’il n’y a pas une question et au moins deux options avec quelque chose dedans.',
+    'Créer le sondage reste grisé tant qu’il n’y a pas une question et au moins deux options avec quelque chose dedans.',
   'help.guide.create-poll.tip.3':
-    'Une date limite ne peut être fixée que dans l’application mobile. Un sondage qui en a une montre ici le temps restant dans une pastille ambre et compte comme fermé dès qu’il est écoulé.',
+    'Une date limite ne peut être fixée que dans l’application mobile. Un sondage qui en a une montre le temps restant dans une pastille ambre de son en-tête et compte comme fermé dès qu’il est écoulé.',
   'help.guide.create-poll.tip.4':
     'Sondages est un interrupteur à part sous Extensions, sous Collaboration : un administrateur peut l’éteindre et laisser tourner les quatre autres panneaux.',
   // vote-poll
   'help.guide.vote-poll.title': 'Voter et lire le résultat',
   'help.guide.vote-poll.goal': 'Donnez votre voix, voyez où en est le groupe, et changez d’avis.',
   'help.guide.vote-poll.step.1':
-    'Cliquez sur l’option que vous voulez. Son cercle se remplit et la barre derrière elle grandit.',
+    'Cliquez sur l’option que vous voulez. Son cercle se remplit d’une coche, l’option reçoit un cadre de la couleur d’accent et la barre derrière elle grandit.',
   'help.guide.vote-poll.step.2':
-    'Maintenant tout le résultat est lisible : la barre est la part, le pourcentage est à droite, et les petits cercles sont les personnes qui ont choisi cette option.',
+    'Maintenant tout le résultat est lisible : la barre est la part, le pourcentage est à droite, et les petits cercles sont les personnes qui ont choisi cette option, jusqu’à trois d’entre elles.',
   'help.guide.vote-poll.step.3':
     'Vous avez changé d’avis ? Cliquez sur une autre option. Sur un sondage sans Choix multiples, votre vote se déplace au lieu d’en ajouter un second.',
   'help.guide.vote-poll.step.4':
-    'Sous la question figure le nombre de votes du sondage. Un clic sur l’option que vous avez déjà choisie retire votre vote, et le compteur redescend.',
+    'Le nombre de votes du sondage figure dans une pastille sous la question. Un clic sur l’option que vous avez déjà choisie retire votre vote, et le compte redescend.',
   'help.guide.vote-poll.result':
     'Votre coche est sur une option, les barres montrent comment le groupe se partage, et les cercles disent qui a choisi quoi.',
   'help.guide.vote-poll.tip.1':
-    'Les barres et les pourcentages n’apparaissent qu’une fois que vous avez voté vous-même, ou une fois le sondage fermé, pour que personne ne soit influencé par les résultats en cours.',
+    'Les pourcentages et qui a voté pour quoi n’apparaissent qu’une fois que vous avez voté vous-même, ou une fois le sondage fermé. Le nombre de votes dans l’en-tête est visible pour tout le monde.',
   'help.guide.vote-poll.tip.2':
     'Un vote n’est jamais anonyme : survolez l’un des cercles d’une option pour le nom derrière.',
   // close-poll
@@ -3025,11 +3029,11 @@ const help: TranslationStrings = {
   'help.guide.close-poll.goal':
     'Arrêtez le vote une fois que le groupe a décidé, et enlevez un sondage dont personne n’a plus besoin.',
   'help.guide.close-poll.step.1':
-    'Fermer, le cadenas dans le coin d’un sondage, met fin au vote. Les options n’acceptent plus les clics.',
+    'Fermer, le cadenas à droite de l’en-tête d’un sondage, met fin au vote. Les options n’acceptent plus les clics.',
   'help.guide.close-poll.step.2':
-    'Un sondage fermé descend sous le titre Fermés en bas du panneau, porte un badge Fermé et montre le résultat à tout le monde, que l’on ait voté ou non. L’option gagnante est teintée en vert.',
+    'Un sondage fermé descend sous le titre Fermés en bas du panneau, porte une pastille Fermé et montre le résultat à tout le monde, que l’on ait voté ou non. L’option gagnante est en gras sur une barre verte ; si c’est celle que vous avez choisie, la barre garde plutôt votre couleur d’accent.',
   'help.guide.close-poll.step.3':
-    'Supprimer, la corbeille dans le même coin, retire le sondage. Rien ne demande deux fois, et les votes partent avec lui.',
+    'Supprimer, la corbeille à droite de l’en-tête, retire le sondage ; sur un sondage fermé, elle y est seule, parce que le cadenas a disparu. Rien ne demande deux fois, et les votes partent avec lui.',
   'help.guide.close-poll.result':
     'Le sondage a disparu du panneau de chaque membre. Celui que vous avez seulement fermé reste lisible en bas, avec son résultat.',
   'help.guide.close-poll.tip.1':
@@ -3040,11 +3044,11 @@ const help: TranslationStrings = {
   'help.guide.whats-next.title': 'Lire À venir',
   'help.guide.whats-next.goal': 'Voyez ce que le groupe fait ensuite sans ouvrir le plan.',
   'help.guide.whats-next.step.1':
-    'Le panneau liste les étapes du voyage encore devant vous, jusqu’à huit d’entre elles, dans l’ordre chronologique, sous un titre par jour : Aujourd’hui, Demain ou la date.',
+    'La carte liste les étapes du voyage encore devant vous, jusqu’à huit d’entre elles, dans l’ordre chronologique, sous un titre par jour : Aujourd’hui, Demain ou la date, avec le titre du jour à côté quand il en a un. L’en-tête les compte.',
   'help.guide.whats-next.step.2':
-    'À gauche d’une ligne figure son heure : le début, à, et la fin quand l’étape en a une, ou TBD quand aucune heure n’est encore fixée.',
+    'À gauche de chaque étape figure son heure : le début, à, et la fin quand l’étape en a une, ou TBD quand aucune heure n’est encore fixée.',
   'help.guide.whats-next.step.3':
-    'Les pastilles sous le nom sont les personnes présentes à cette étape. Si personne n’a été choisi, tout le monde dans le voyage est listé.',
+    'À côté se trouvent le nom, l’adresse et, en pastilles, les personnes présentes à cette étape. Si personne n’a été choisi, tout le monde dans le voyage est listé.',
   'help.guide.whats-next.result':
     'Une liste de ce qui vient, en lecture seule : elle suit le plan, et rien ici ne le change.',
   'help.guide.whats-next.tip.1':
@@ -3058,7 +3062,7 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.goal':
     'Dites quelque chose, répondez à un message précis, réagissez à un autre, et reprenez le vôtre.',
   'help.guide.trip-chat.step.1':
-    'Écrivez dans Écrire un message… et appuyez sur Enter. La flèche bleue à côté de la zone fait la même chose ; Shift et Enter font un saut de ligne à la place.',
+    'Écrivez dans Écrire un message… et appuyez sur Enter. La flèche ronde à côté de la zone fait la même chose ; Shift et Enter font un saut de ligne à la place.',
   'help.guide.trip-chat.step.2':
     'Le smiley ouvre le sélecteur d’emoji, avec Smileys, Reactions et Travel dedans. Ce que vous choisissez s’ajoute à ce que vous êtes en train d’écrire, ce n’est pas envoyé tout seul.',
   'help.guide.trip-chat.step.3':
@@ -3068,11 +3072,11 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.step.5':
     'Faites un clic droit sur un message pour les huit réactions rapides. La vôtre se place sous la bulle, et un second clic sur la même la retire.',
   'help.guide.trip-chat.step.6':
-    'Vos propres messages portent Supprimer à côté de Répondre. Cela retire le message et laisse une ligne qui dit que vous l’avez supprimé : il n’y a pas de retour.',
+    'Vos propres messages portent Supprimer, la corbeille, à côté de Répondre. Cela retire le message aussitôt et laisse une ligne qui dit que vous l’avez supprimé : il n’y a pas de retour.',
   'help.guide.trip-chat.result':
-    'Votre réponse est sous le message qu’elle cite, une réaction est accrochée à un troisième, et celui que vous avez repris laisse une seule ligne qui le dit.',
+    'Votre réponse est le message le plus récent, avec celui qu’elle cite en haut ; une réaction est accrochée à un troisième, et celui que vous avez repris laisse une seule ligne qui le dit.',
   'help.guide.trip-chat.tip.1':
-    'Enter envoie, Shift et Enter font un saut de ligne. Un message qui n’est fait que d’emoji est affiché en grand.',
+    'Enter envoie, Shift et Enter font un saut de ligne. Un message d’un à trois emoji et rien d’autre est affiché en grand.',
   'help.guide.trip-chat.tip.2':
     'Joindre des images prend jusqu’à quatre images pour un message ; elles peuvent aussi être simplement collées ou déposées sur la zone.',
   'help.guide.trip-chat.tip.3':
@@ -3085,31 +3089,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-lists.summary':
     'Deux listes pour un voyage : la liste de bagages, avec qui apporte quoi et ce que cela pèse, et la liste de tout ce qui doit se faire avant et pendant. L’onglet est là tant que l’addon Listes est activé.',
   'help.ctx.trip-lists.bullet.1':
-    'Liste de bagages et À faire en haut basculent entre les deux et comptent ce que chacune contient ; les boutons à droite appartiennent à celle qui est ouverte.',
+    'Liste de bagages et À faire, dans la barre du haut, basculent entre les deux et comptent ce que chacune contient ; les boutons au bout droit de la barre appartiennent à celle qui est ouverte.',
   'help.ctx.trip-lists.bullet.2':
-    'La liste de bagages est groupée en listes, Documents, Vêtements, comme vous voulez les appeler, chacune avec une pastille de couleur, un compteur emballé sur total et trois points contenant Renommer, Tout cocher, Tout décocher et Supprimer la liste. Ajouter une liste, dans la barre au-dessus, en crée une nouvelle.',
+    'La liste de bagages est groupée en listes, Documents, Vêtements, comme vous voulez les appeler, chacune étant une carte dont le bandeau d’en-tête porte une pastille de couleur, un compteur emballé sur total, trois points contenant Renommer, Tout cocher, Tout décocher et Supprimer la liste, et une flèche qui replie la carte. Ajouter une liste, dans la barre au-dessus, en crée une nouvelle.',
   'help.ctx.trip-lists.bullet.3':
-    'Une ligne, c’est une case à cocher et un nom, puis, en petits badges, qui apporte l’article, la quantité et le poids en grammes, et une pastille de bagage tant que Suivi des bagages est activé, puis la corbeille et trois points contenant Déplacer vers une liste, Partage, Renommer et Supprimer. Ce qu’une ligne n’utilise pas reste estompé jusqu’à ce que vous le survoliez, et la poignée à gauche la fait monter ou descendre dans sa liste.',
+    'Une ligne, c’est une case à cocher et un nom, puis qui apporte l’article en petit avatar et la quantité en petit badge, tant que Suivi des bagages est activé aussi le poids en grammes et une pastille de bagage, puis la corbeille et trois points contenant Déplacer vers une liste, Partage, Renommer et Supprimer. Ce qu’une ligne n’utilise pas reste estompé jusqu’à ce que vous le survoliez, et la poignée à gauche la fait monter ou descendre dans sa liste.',
   'help.ctx.trip-lists.bullet.4':
-    'Partagé et Ma liste coupent la liste de bagages en deux : le fonds commun que tout le monde voit, et la vôtre. Tous, À faire et Fait restreignent celle qui est ouverte, et la barre au-dessus compte ce qui est emballé.',
+    'Partagé et Ma liste coupent la liste de bagages en deux : le fonds commun que tout le monde voit, et la vôtre. Tous, À faire et Fait, à côté, restreignent celle qui est ouverte, et la carte de progression au-dessus compte ce qui est emballé.',
   'help.ctx.trip-lists.bullet.5':
-    'Appliquer un modèle et Enregistrer comme modèle remplissent ou conservent une liste sans la retaper, et les deux icônes à côté exportent la liste, en impression, en PDF ou en fichier, et en importent une. Le bouton rouge près de la barre de progression indique combien d’articles sont cochés et les efface.',
+    'Appliquer un modèle et Enregistrer comme modèle remplissent ou conservent une liste sans la retaper, et les deux icônes après eux, Exporter et Importer, sortent la liste en impression, en PDF ou en fichier, et en font entrer une. Le bouton rouge au bout droit de la carte de progression indique combien d’articles sont cochés et les efface.',
   'help.ctx.trip-lists.bullet.6':
-    'À faire a sa propre barre latérale : la carte de progression, les filtres Tout, Mes tâches, En retard et Terminé, une ligne par liste et Ajouter une liste en dessous. Les tâches sont dans une carte dont l’en-tête nomme le filtre et porte le tri, Priorité ou Date d’échéance. Un clic sur une tâche l’ouvre dans le panneau de droite, et Nouvelle tâche ouvre le formulaire Nouvelle tâche au milieu de l’écran.',
+    'À faire a sa propre barre latérale : la carte de progression, les filtres Tout, Mes tâches, En retard et Terminé, une ligne par liste et Ajouter une liste en dessous. Les tâches sont dans une carte dont l’en-tête nomme le filtre et porte le tri, Priorité ou Date d’échéance. Un clic sur une tâche l’ouvre dans le panneau de droite, et Nouvelle tâche, dans la barre, ouvre la boîte de dialogue Nouvelle tâche.',
   // packing-categories
   'help.guide.packing-categories.title': 'Construire la liste de bagages',
   'help.guide.packing-categories.goal':
     'Groupez ce que vous emportez en listes, remplissez-les d’articles et dites qui s’occupe de chaque liste.',
   'help.guide.packing-categories.step.1':
-    'Cliquez sur Ajouter une liste dans la barre au-dessus des listes, tapez le nom dans Nom de la liste (ex. Vêtements) et cliquez sur Ajouter.',
+    'Cliquez sur Ajouter une liste dans la barre au-dessus des listes. Une petite boîte de dialogue s’ouvre : tapez le nom dans son bandeau d’en-tête, là où figure Nom de la liste (ex. Vêtements), et cliquez sur Ajouter.',
   'help.guide.packing-categories.step.2':
-    'La nouvelle liste commence par une ligne vide. Cliquez sur Ajouter un article, tapez l’article dans Nom de l’article… et appuyez sur Entrée ; le champ reste ouvert pour le suivant.',
+    'La nouvelle liste commence par une ligne d’attente qui ne montre que trois points pâles. Cliquez sur Ajouter un article à son pied, tapez l’article dans Nom de l’article... et appuyez sur Entrée : le premier article prend la place de la ligne d’attente, et le champ reste ouvert pour le suivant.',
   'help.guide.packing-categories.step.3':
     'Renommez une ligne en cliquant sur son nom, ou avec Renommer dans les trois points à son extrémité droite.',
   'help.guide.packing-categories.step.4':
-    'Le cercle en pointillés dans l’en-tête de la liste attribue des membres du voyage à la liste. Choisissez un nom ; la pastille qui apparaît retire de nouveau cette personne d’un clic.',
+    'Le cercle en pointillés avec une personne, dans le bandeau d’en-tête de la liste, attribue des membres du voyage à la liste. Choisissez un nom ; la pastille qui apparaît retire de nouveau cette personne d’un clic.',
   'help.guide.packing-categories.step.5':
-    'Les trois points au bout de l’en-tête contiennent le reste : Renommer, Tout cocher, Tout décocher, et Supprimer la liste, qui emporte la liste et tout ce qu’elle contient sans demander de nouveau.',
+    'Les trois points à côté du compteur contiennent le reste : Renommer, Tout cocher, Tout décocher, et Supprimer la liste, qui emporte la liste et tout ce qu’elle contient sans demander de nouveau. La flèche tout à droite replie la liste.',
   'help.guide.packing-categories.result':
     'La nouvelle liste s’installe dans la grille avec ses articles en dessous et sa pastille de couleur, et son compteur indique ce qui est déjà emballé.',
   'help.guide.packing-categories.tip.1':
@@ -3125,13 +3129,13 @@ const help: TranslationStrings = {
   'help.guide.check-off-packing.step.1':
     'Cliquez sur la case à gauche d’une ligne. Le nom est barré et la barre bouge.',
   'help.guide.check-off-packing.step.2':
-    'La barre au-dessus compte ce qui est emballé par rapport à tout ce qui est sur la liste, en nombre et en pourcentage.',
+    'La carte de progression au-dessus des listes compte ce qui est emballé par rapport à tout ce qui est sur la liste, en nombre, en pourcentage et en barre.',
   'help.guide.check-off-packing.step.3':
-    'Une liste entière d’un coup : les trois points de son en-tête contiennent Tout cocher et Tout décocher.',
+    'Une liste entière d’un coup : les trois points de son bandeau d’en-tête contiennent Tout cocher et Tout décocher.',
   'help.guide.check-off-packing.step.4':
-    'Tous, À faire et Fait restreignent la grille. À faire ne laisse que ce qui manque encore, une liste entièrement emballée en sort donc.',
+    'Tous, À faire et Fait, à côté de Partagé et Ma liste, restreignent la grille. À faire ne laisse que ce qui manque encore, une liste entièrement emballée en sort donc.',
   'help.guide.check-off-packing.step.5':
-    'Supprimer 3 cochés à côté de la barre de progression supprime tous les articles cochés d’un coup, après une confirmation du navigateur.',
+    'Supprimer 3 cochés, au bout droit de la carte de progression, supprime tous les articles cochés d’un coup, après une confirmation du navigateur.',
   'help.guide.check-off-packing.result':
     'Seul ce qui reste ouvert est listé, et la barre au-dessus dit où en est l’emballage.',
   'help.guide.check-off-packing.tip.1': 'Un article coché peut quand même être renommé : cliquez sur son nom.',
@@ -3149,7 +3153,7 @@ const help: TranslationStrings = {
   'help.guide.apply-packing-template.step.3':
     'Les articles arrivent dans la vue où vous êtes : Partagé les met dans le fonds commun que tout le monde voit, Ma liste les rend vôtres.',
   'help.guide.apply-packing-template.step.4':
-    'Garder la liste de ce voyage pour le prochain : Enregistrer comme modèle ouvre une boîte de dialogue, tapez un nom et cliquez sur Enregistrer.',
+    'Garder la liste de ce voyage pour le prochain : Enregistrer comme modèle ouvre une petite boîte de dialogue. Tapez un nom dans son bandeau d’en-tête, là où figure Nom du modèle, et cliquez sur Enregistrer.',
   'help.guide.apply-packing-template.result':
     'Les listes et les articles du modèle sont dans le voyage, à côté de ce qui s’y trouvait déjà.',
   'help.guide.apply-packing-template.tip.1':
@@ -3163,12 +3167,13 @@ const help: TranslationStrings = {
   'help.guide.import-packing-list.goal':
     'Transformez d’un seul coup une liste que vous avez déjà ailleurs en articles de bagages.',
   'help.guide.import-packing-list.step.1':
-    'Cliquez sur le bouton d’import avec la flèche vers le bas dans la barre au-dessus de la liste.',
+    'Cliquez sur Importer, l’icône avec la flèche vers le bas au bout droit de la barre au-dessus de la liste.',
   'help.guide.import-packing-list.step.2':
-    'Un article par ligne : Catégorie, Nom, Poids en g (facultatif), Bagage (facultatif), checked/unchecked (facultatif). L’exemple gris dans le cadre montre les quatre formes. Une liste Markdown fonctionne aussi : un titre nomme la liste, et "- [ ]" et "- [x]" deviennent des articles.',
+    'Un article par ligne : Catégorie, Nom, Poids en g (facultatif), Bagage (facultatif), checked/unchecked (facultatif). L’exemple gris dans le cadre montre les quatre formes, et les numéros le long de son bord gauche comptent les lignes que vous tapez. Une liste Markdown fonctionne aussi : un titre nomme la liste, et "- [ ]" et "- [x]" deviennent des articles.',
   'help.guide.import-packing-list.step.3':
-    'Ou chargez les lignes depuis un fichier avec Charger CSV/TXT/MD. Il prend un .csv, un .txt ou un .md et remplace ce qui est dans le cadre.',
-  'help.guide.import-packing-list.step.4': 'Cliquez sur Importer. Le bouton compte les lignes qu’il a comprises.',
+    'Ou chargez les lignes depuis un fichier avec Charger CSV/TXT/MD, en bas à gauche de la boîte de dialogue. Il prend un .csv, un .txt ou un .md et remplace ce qui est dans le cadre.',
+  'help.guide.import-packing-list.step.4':
+    'Cliquez sur Importer 3 en bas à droite ; le nombre qu’il porte compte les lignes que TREK a comprises.',
   'help.guide.import-packing-list.result':
     'Chaque ligne devient un article, dans la liste que nomme son premier champ, et rien de ce qui était déjà là n’est touché.',
   'help.guide.import-packing-list.tip.1':
@@ -3180,11 +3185,11 @@ const help: TranslationStrings = {
   'help.guide.export-packing-list.goal':
     'Emportez la liste sur papier, en PDF ou sous forme de fichier pour une autre application ou le prochain voyage.',
   'help.guide.export-packing-list.step.1':
-    'Cliquez sur le bouton d’export avec la flèche vers le haut dans la barre au-dessus de la liste.',
+    'Cliquez sur Exporter, l’icône avec la flèche vers le haut dans la barre au-dessus de la liste, juste avant Importer.',
   'help.guide.export-packing-list.step.2':
     'Checklist Markdown (.md) et CSV pour l’import (.csv) enregistrent aussitôt la liste dans un fichier.',
   'help.guide.export-packing-list.step.3':
-    'Cliquez sur Imprimer ou enregistrer en PDF. L’aperçu montre la liste sous forme de page : le voyage et ses dates en haut, puis chaque liste sous forme de carte avec une case à cocher.',
+    'Cliquez sur Imprimer ou enregistrer en PDF. L’aperçu montre la liste sous forme de page : le voyage, ses dates et ce qui est déjà emballé en haut, puis chaque liste sous forme de carte, chaque article avec une case à cocher.',
   'help.guide.export-packing-list.step.4':
     'Cliquez sur Imprimer ou enregistrer en PDF sous l’aperçu. Le navigateur ouvre sa boîte de dialogue d’impression : choisissez une imprimante, ou Enregistrer au format PDF pour garder un fichier.',
   'help.guide.export-packing-list.result':
@@ -3209,9 +3214,9 @@ const help: TranslationStrings = {
   'help.guide.share-packing-item.result':
     'L’article se place dans le niveau que vous avez choisi, et la ligne dit qui l’apporte.',
   'help.guide.share-packing-item.tip.1':
-    'Seule la personne qui apporte un article change son partage. Celui avec qui vous l’avez partagé le voit sur sa propre Ma liste, marqué de votre nom, et peut le cocher.',
+    'Seule la personne qui apporte un article change son partage. Celui avec qui vous l’avez partagé le voit sur sa propre Ma liste avec un petit badge en forme de main qui vous nomme quand il le pointe, et peut le cocher.',
   'help.guide.share-packing-item.tip.2':
-    'Sur un article apporté par quelqu’un d’autre, vous obtenez deux autres boutons à la place : Je peux l’apporter aussi, qui vous ajoute à côté, et Copier dans ma liste, qui en fait une copie privée à vous.',
+    'Sur un article partagé que quelqu’un d’autre apporte, les trois points contiennent deux autres entrées à la place de Partage : Je peux l’apporter aussi, qui vous ajoute à côté, et Copier dans ma liste, qui en fait une copie privée à vous.',
   'help.guide.share-packing-item.tip.3':
     'Les nouveaux articles héritent de la vue dans laquelle vous les ajoutez. Ajoutés dans Ma liste ils sont Personnel, ajoutés dans Partagé ils vont dans le fonds commun.',
   // packing-bags
@@ -3220,18 +3225,19 @@ const help: TranslationStrings = {
     'Mettez un poids sur chaque article, répartissez les articles dans les bagages et gardez chaque bagage sous sa limite de compagnie aérienne.',
   'help.guide.packing-bags.step.1':
     'Cliquez sur le badge de poids avant le cercle et tapez le poids de l’article en grammes.',
-  'help.guide.packing-bags.step.2': 'Le cercle au bout de la ligne est son bagage. Cliquez dessus.',
+  'help.guide.packing-bags.step.2': 'Le cercle après le poids est le bagage de l’article. Cliquez dessus.',
   'help.guide.packing-bags.step.3':
     'Pas encore de bagage : Ajouter un bagage, un nom, Entrée. Le bagage est créé et l’article y va directement.',
   'help.guide.packing-bags.step.4':
-    'Le panneau Bagages apparaît à droite dès qu’un bagage existe : nom, poids, une barre de remplissage, qui le porte et combien d’articles il contient, puis Non assigné et Poids total.',
+    'La carte Bagages apparaît à droite des listes dès qu’un bagage existe : nom, qui le porte, une barre de remplissage, combien d’articles il contient et son poids, puis Non assigné et Poids total.',
   'help.guide.packing-bags.step.5':
-    'Cliquez sur Définir une limite et tapez la limite en kilogrammes, comme les compagnies aériennes l’indiquent.',
-  'help.guide.packing-bags.step.6': 'Le signe plus en pointillés à côté du nom d’un bagage dit qui le porte.',
+    'Cliquez sur Définir une limite à côté du poids du bagage et tapez la limite en kilogrammes, comme les compagnies aériennes l’indiquent.',
+  'help.guide.packing-bags.step.6':
+    'Le signe plus en pointillés au bout de la ligne du nom du bagage, juste avant la croix, ouvre Attribuer des membres : cochez qui porte le bagage, et ces personnes apparaissent à côté du signe plus.',
   'help.guide.packing-bags.result':
-    'Le panneau Bagages à droite montre le poids de chaque bagage face à sa limite, ce qui n’est dans aucun bagage, et le total.',
+    'La carte Bagages à droite montre le poids de chaque bagage face à sa limite, ce qui n’est dans aucun bagage, et le total.',
   'help.guide.packing-bags.tip.1':
-    'Le champ de poids, la pastille de bagage et le panneau Bagages n’existent que tant qu’un administrateur a activé Suivi des bagages sous l’addon Listes.',
+    'Le champ de poids, la pastille de bagage et la carte Bagages n’existent que tant qu’un administrateur a activé Suivi des bagages sous l’addon Listes. Dans une fenêtre plus étroite, les bagages s’ouvrent plutôt depuis le bouton Bagages au-dessus de la carte de progression.',
   'help.guide.packing-bags.tip.2':
     'Le poids d’un bagage est additionné sur le serveur sur les articles de tous les membres, y compris ceux que vous ne pouvez pas voir, le chiffre est donc vraiment ce que pèse le bagage.',
   'help.guide.packing-bags.tip.3':
@@ -3240,16 +3246,17 @@ const help: TranslationStrings = {
   'help.guide.create-todo.title': 'Ajouter une tâche',
   'help.guide.create-todo.goal':
     'Notez quelque chose qui doit se faire, avec une liste, une priorité, une date et un nom en face.',
-  'help.guide.create-todo.step.1': 'Cliquez sur Nouvelle tâche en haut à droite.',
+  'help.guide.create-todo.step.1': 'Cliquez sur Nouvelle tâche au bout droit de la barre.',
   'help.guide.create-todo.step.2':
-    'Nommez-la dans Nom de la tâche, et mettez tout ce qui vaut la peine d’être retenu sous Description.',
+    'La boîte de dialogue Nouvelle tâche s’ouvre avec le curseur dans son bandeau d’en-tête : tapez le nom là où figure Nom de la tâche, et mettez tout ce qui vaut la peine d’être retenu sous Description.',
   'help.guide.create-todo.step.3':
     'Liste groupe la tâche. Choisissez-en une, ou utilisez le signe plus à côté pour en nommer une nouvelle dans une petite fenêtre.',
   'help.guide.create-todo.step.4': 'Priorité, ce sont quatre boutons : Aucune, P1, P2 et P3, du rouge au bleu.',
-  'help.guide.create-todo.step.5': 'Date d’échéance ouvre un calendrier, et Assigné à met un nom sur la tâche.',
+  'help.guide.create-todo.step.5':
+    'Date d’échéance, à côté de Liste, ouvre un calendrier, et Assigné à met un nom sur la tâche.',
   'help.guide.create-todo.step.6': 'Cliquez sur Créer la tâche.',
   'help.guide.create-todo.result':
-    'La tâche est dans la liste avec ses badges, la priorité, la date d’échéance, la liste et la personne à qui elle est assignée, et elle s’ouvre dans le panneau de droite.',
+    'La tâche est dans la liste avec la priorité, la date d’échéance et la liste en badges, et l’avatar de la personne assignée au bout de la ligne, et elle s’ouvre dans le panneau de droite.',
   'help.guide.create-todo.tip.1':
     'Seul le nom est obligatoire. Tout le reste peut être rempli plus tard depuis le panneau de droite.',
   'help.guide.create-todo.tip.2':
@@ -3268,7 +3275,7 @@ const help: TranslationStrings = {
     'Le tri dans l’en-tête de la liste réordonne ce qui est à l’écran : Priorité met P1 en premier, Date d’échéance met l’échéance la plus proche en premier. Un seul des deux à la fois, et un second clic revient à votre propre ordre.',
   'help.guide.todo-filters.step.4': 'Cliquez sur une tâche pour l’ouvrir dans le panneau de droite.',
   'help.guide.todo-filters.step.5':
-    'Changez ce qu’il vous faut, Description, Priorité, Liste, Date d’échéance ou Assigné à, puis Enregistrer les modifications. La case dans l’en-tête du panneau coche la tâche, et Supprimer l’emporte aussitôt.',
+    'Changez ce qu’il vous faut, le nom, Description, Priorité, Liste, Date d’échéance ou Assigné à, puis Enregistrer les modifications au pied du panneau. La case dans l’en-tête du panneau coche la tâche, et Supprimer, à côté d’Enregistrer les modifications, l’emporte aussitôt.',
   'help.guide.todo-filters.result':
     'La liste ne montre que les tâches que vous avez demandées, et le panneau de droite modifie celle que vous avez choisie.',
   'help.guide.todo-filters.tip.1':
@@ -3279,57 +3286,81 @@ const help: TranslationStrings = {
   // ── Screen: trip-bookings ─────────────────────────────────────────────────────────────
   'help.ctx.trip-bookings.title': 'Réservations',
   'help.ctx.trip-bookings.summary':
-    'L’onglet qui tient tout ce qui est réservé pour le voyage sans être un moyen de se déplacer : les hébergements, les tables, les billets, les visites, les parkings. Chaque réservation est une carte dans En attente ou dans Confirmée, avec son code, son document, ses voyageurs et son coût.',
+    'L’onglet qui tient tout ce qui est réservé pour le voyage sans être un moyen de se déplacer : les hébergements, les tables, les billets, les visites, les parkings. Chaque réservation est une carte, une ligne de la liste ou une barre sur la chronologie, avec son code, ses documents, ses voyageurs et son coût, et un clic ouvre son détail.',
   'help.ctx.trip-bookings.bullet.1':
-    'Réservation manuelle, en haut à droite, ouvre le formulaire. Les six sortes qu’il crée sont Hébergement, Restaurant, Événement, Visite, Parking et Autre ; les vols, les trains et le reste vivent dans l’onglet Transports et n’apparaissent jamais ici.',
+    'Réservation manuelle, au bout droit de la barre, ouvre Nouvelle réservation. Les six sortes qu’on y crée sont Hébergement, Restaurant, Événement, Visite, Parking et Autre ; les vols, les trains et le reste vivent dans l’onglet Transports et n’apparaissent jamais ici.',
   'help.ctx.trip-bookings.bullet.2':
-    'Importer depuis un fichier remet une confirmation à l’analyse : EML, PDF, PKPass, HTML ou TXT, cinq fichiers de 10 Mo au plus. Le bouton n’est là que si le serveur sait les lire.',
+    'L’icône de téléchargement avant Réservation manuelle, Importer des confirmations de réservation, remet les confirmations à l’analyse : EML, PDF, PKPass, HTML ou TXT, cinq fichiers de 10 Mo au plus. L’icône n’est là que si le serveur sait les lire.',
   'help.ctx.trip-bookings.bullet.3':
-    'Les pastilles à côté du titre filtrent par sorte, chacune avec son propre compte, et Tout ramène tout. Dès qu’une réservation nomme des personnes, la rangée d’avatars à côté des pastilles réduit l’onglet à l’une d’elles.',
+    'Rechercher parcourt les titres, les types, les lieux, les notes, les codes de réservation et les voyageurs. Filtrer, l’entonnoir à côté, resserre l’onglet par Statut, par Type avec un compte pour chacun, et par Voyageurs dès qu’une réservation nomme des personnes ; un nombre sur l’entonnoir compte ce qui est activé.',
   'help.ctx.trip-bookings.bullet.4':
-    'Les cartes se tiennent dans deux sections, En attente et Confirmée, chacune avec son compte. Un clic sur le titre d’une section la replie, et le fait qu’elle soit ouverte est retenu pour ce voyage.',
+    'Les trois icônes après Filtrer changent la vue : Cartes, Liste et Chronologie. Le bouton Options d’affichage, les curseurs à côté, groupe et trie les cartes et la liste, ou règle les lignes de la chronologie. Par défaut, les cartes se tiennent dans Confirmée et En attente, et un clic sur le titre d’une section la replie.',
   'help.ctx.trip-bookings.bullet.5':
-    'Une carte porte le point de statut, la sorte, le titre, les dates et les heures, son Code de réservation, son Lieu / Adresse, ce à quoi la réservation est liée, son Lien, ses Notes, ses Fichiers et ses Voyageurs.',
+    'Une carte a un bandeau d’en-tête teinté selon son statut, avec le point de statut (un clic bascule entre En attente et Confirmée), le type, le titre, le crayon et la corbeille. En dessous, tout ce que la réservation a : Date, Heure, Code de réservation, Arrivée et Départ, Lieu / Adresse, Hébergement, Lié à (l’étape du plan), Lien, Notes, Voyageurs, Fichiers et les coûts liés.',
   'help.ctx.trip-bookings.bullet.6':
-    'Le crayon d’une carte rouvre le même formulaire ; la corbeille demande une fois et la réservation a disparu. Pour un hébergement, ses nuits dans le Plan du jour et sa dépense liée partent avec elle.',
+    'Un clic sur une carte, une ligne ou une barre ouvre le détail de la réservation, avec Sur la carte, la corbeille et Modifier à son pied. La suppression demande une fois, puis la réservation a disparu avec ses dépenses liées, et un hébergement retire ses nuits du Plan du jour.',
+  // booking-views
+  'help.guide.booking-views.title': 'Changer de vue et ouvrir une réservation',
+  'help.guide.booking-views.goal':
+    'Voyez les réservations en cartes, en liste ou sur une chronologie, et ouvrez-en une pour voir tout ce qu’elle contient.',
+  'help.guide.booking-views.step.1':
+    'Les trois icônes après Filtrer dans la barre sont les vues, et chacune affiche son nom quand vous pointez dessus : Cartes, Liste et Chronologie. L’onglet s’ouvre en Cartes, une carte par réservation dans les sections Confirmée et En attente. Cliquez sur Liste, celle du milieu.',
+  'help.guide.booking-views.step.2':
+    'Liste met une ligne par réservation sous un titre par jour, avec le jour et l’heure à droite ; les flèches du clavier passent d’une ligne à l’autre. Cliquez sur Chronologie, la dernière des trois.',
+  'help.guide.booking-views.step.3':
+    'Chronologie étale les réservations sur les jours du voyage, une ligne par type et une barre de chaque début à sa fin, une réservation en attente avec un contour en pointillés. Voyage fait tenir tout le voyage dans la largeur ; cliquez sur le titre d’un jour pour voir ce jour heure par heure.',
+  'help.guide.booking-views.step.4':
+    'Jour étale un jour sur une échelle d’heures, et les barres s’allongent pour montrer leurs horaires. Les flèches à côté du nom du jour passent au jour précédent et au jour suivant, et le sélecteur Voyage et Jour, à droite, revient au voyage entier.',
+  'help.guide.booking-views.step.5':
+    'Pointez une barre pour voir son jour, ses horaires et son lieu, puis cliquez dessus pour ouvrir le détail de la réservation. Une carte dans Cartes et une ligne dans Liste ouvrent la même fenêtre.',
+  'help.guide.booking-views.step.6':
+    'Le bandeau d’en-tête du détail contient le titre et des pastilles pour le statut (un clic le change), le type, le jour et le code de réservation, avec un bouton qui le copie. En dessous viennent les horaires en tuiles, puis le lieu, les voyageurs, les notes, les coûts et les fichiers, tout ce que la réservation a, et au pied Sur la carte, la corbeille et Modifier.',
+  'help.guide.booking-views.result':
+    'La réservation est ouverte dans son détail : Modifier ouvre son formulaire, Sur la carte la montre sur le plan, et Fermer ou Échap vous ramène à la vue d’où vous veniez.',
+  'help.guide.booking-views.tip.1':
+    'Le bouton Options d’affichage, les curseurs après les icônes de vue, groupe et trie Cartes et Liste avec Grouper par et Trier par. Dans Chronologie, il active Une ligne par type et Afficher l’autre onglet, qui pose les entrées de l’onglet Transports, estompées, dans une fine ligne en haut. Réinitialiser l’affichage remet les valeurs par défaut, et chaque onglet retient sa vue dans ce navigateur.',
+  'help.guide.booking-views.tip.2':
+    'Une réservation avant ou après le voyage, ou sans date, ne peut pas se placer sur la chronologie : elle attend sous le graphique, en petite carte, sous Avant le voyage, Après le voyage ou Sans date.',
+  'help.guide.booking-views.tip.3':
+    'Le même détail s’ouvre partout où une réservation apparaît : dans l’onglet Transports, dans le Plan du jour, dans les détails d’un jour et dans ceux d’un lieu. Un clic sur son titre renomme la réservation.',
   // create-booking
   'help.guide.create-booking.title': 'Créer une réservation',
   'help.guide.create-booking.goal':
     'Ajoutez à la main au voyage un restaurant, un événement, une visite, une place de parking ou n’importe quoi d’autre.',
   'help.guide.create-booking.step.1':
-    'Cliquez sur Réservation manuelle en haut à droite de l’onglet. Nouvelle réservation s’ouvre.',
+    'Cliquez sur Réservation manuelle au bout droit de la barre. Nouvelle réservation s’ouvre, avec le titre et deux pastilles dans un bandeau d’en-tête, en haut.',
   'help.guide.create-booking.step.2':
-    'Cliquez sur la pastille de type sous le titre, dans l’en-tête du formulaire, et choisissez le Type de réservation. Hébergement, Restaurant, Événement, Visite, Parking et Autre sont les six que cet onglet crée, et le formulaire change avec le choix : seul Hébergement échange ses dates contre une plage de jours.',
+    'Cliquez sur la pastille de type dans le bandeau d’en-tête, qui affiche Autre sur une nouvelle réservation, et choisissez le Type de réservation. Hébergement, Restaurant, Événement, Visite, Parking et Autre sont les six que cet onglet crée, et le formulaire change avec le choix : seul Hébergement échange ses dates contre une plage de jours.',
   'help.guide.create-booking.step.3':
-    'Tapez le Titre. C’est le seul champ sur lequel le formulaire insiste, et Ajouter reste mort tant qu’il est vide.',
+    'Tapez le titre dans le bandeau d’en-tête, le champ au-dessus des pastilles. C’est le seul champ sur lequel le formulaire insiste, et Ajouter reste grisé tant qu’il est vide.',
   'help.guide.create-booking.step.4':
     'Réglez Date et Heure de début, puis Date de fin et Heure de fin si la réservation a une fin. Les calendriers ne proposent que les jours à l’intérieur du voyage, et une fin qui n’est pas après le début le dit en rouge et bloque Ajouter.',
   'help.guide.create-booking.step.5':
-    'Entrez le Code de réservation de la confirmation. La pastille de statut à côté du type affiche En attente ; un clic la fait passer à Confirmée et inversement, et c’est ce qui décide dans laquelle des deux sections la carte atterrit.',
-  'help.guide.create-booking.step.6': 'Cliquez sur Ajouter.',
+    'Entrez le Code de réservation de la confirmation, puis cliquez sur la pastille de statut dans le bandeau d’en-tête, à côté du type. Elle affiche En attente sur une nouvelle réservation et passe à Confirmée, et c’est ce qui décide dans quelle section la carte atterrit.',
+  'help.guide.create-booking.step.6': 'Cliquez sur Ajouter au pied du formulaire.',
   'help.guide.create-booking.result':
-    'La réservation est une carte dans sa section, avec sa pastille de sorte, ses dates et son code, et tous les autres du voyage la voient apparaître.',
+    'La réservation est une carte dans sa section, son bandeau d’en-tête teinté selon son statut, avec son type, sa date, ses heures et son code, et tous les autres du voyage la voient apparaître.',
   'help.guide.create-booking.tip.1':
     'Lieu / Adresse propose de vraies adresses pendant que vous tapez ; en choisir une remplace ce que vous aviez écrit, et une adresse que vous avez tapée vous-même est gardée telle quelle.',
   'help.guide.create-booking.tip.2':
-    'Lien prend la page de la réservation chez le prestataire. La carte en fait un lien qui s’ouvre dans un nouvel onglet.',
+    'Lien prend la page de la réservation chez le prestataire. La carte et le détail en font un lien qui s’ouvre dans un nouvel onglet.',
   'help.guide.create-booking.tip.3':
-    'Les Notes sont du Markdown, une liste ou une ligne en gras est donc rendue comme telle sur la carte.',
+    'Les Notes sont du Markdown, une liste ou une ligne en gras est donc rendue comme telle sur la carte et dans le détail.',
   // booking-hotel
   'help.guide.booking-hotel.title': 'Réserver un hébergement',
   'help.guide.booking-hotel.goal':
     'Entrez un hébergement pour qu’il compte à la fois comme réservation et comme nuits dans le Plan du jour.',
   'help.guide.booking-hotel.step.1':
-    'Cliquez sur Réservation manuelle et choisissez Hébergement. Les champs de date s’en vont et un bloc de champs d’hôtel prend leur place.',
+    'Cliquez sur Réservation manuelle et choisissez Hébergement avec la pastille de type du bandeau d’en-tête. Les champs de date s’en vont et un bloc de champs d’hôtel prend leur place.',
   'help.guide.booking-hotel.step.2':
-    'Choisissez l’hôtel sous Hébergement. La liste, ce sont les lieux du voyage, et en choisir un écrit son nom dans Titre et son adresse dans Lieu / Adresse.',
+    'Choisissez l’hôtel sous Hébergement. La liste, ce sont les lieux du voyage, et en choisir un écrit son nom dans le titre s’il est vide et son adresse dans Lieu / Adresse.',
   'help.guide.booking-hotel.step.3':
     'Réglez Du et Au : la première nuit et le matin de votre départ. Les deux proposent les jours du voyage avec leurs dates, et ils se tiennent en ordre l’un l’autre.',
   'help.guide.booking-hotel.step.4':
     'Remplissez Arrivée, Check-in jusqu’à et Départ, ainsi que le Code de réservation de la confirmation.',
   'help.guide.booking-hotel.step.5': 'Cliquez sur Ajouter.',
   'help.guide.booking-hotel.result':
-    'La carte porte une plage de jours au lieu d’une date, avec les heures d’arrivée et de départ et l’adresse, et le même séjour se trouve désormais sur ces jours du plan.',
+    'La carte porte la plage de jours sous Date, les heures d’arrivée et de départ et l’adresse, et le même séjour se trouve désormais sur ces jours du plan.',
   'help.guide.booking-hotel.tip.1':
     'Hébergement est le seul type sans Date ni Heure de début. Ses dates sont Du et Au, et ce sont des jours du voyage plutôt qu’un calendrier.',
   'help.guide.booking-hotel.tip.2':
@@ -3340,14 +3371,14 @@ const help: TranslationStrings = {
   'help.guide.link-booking.goal':
     'Accrochez une réservation à l’étape et au lieu auxquels elle appartient, pour qu’elle apparaisse là où vous en aurez besoin.',
   'help.guide.link-booking.step.1':
-    'Cliquez sur le crayon de la carte que vous voulez lier. Modifier la réservation s’ouvre.',
+    'Pointez la carte que vous voulez lier et cliquez sur le crayon de son bandeau d’en-tête. Modifier la réservation s’ouvre.',
   'help.guide.link-booking.step.2':
     'Ouvrez Lier à l’affectation du jour. La liste, c’est votre plan : un titre par jour, puis les étapes de ce jour, numérotées et avec leurs heures. Choisissez celle à laquelle la réservation appartient.',
   'help.guide.link-booking.step.3':
-    'Lieu / Activité lie le lieu lui-même. Choisissez-le là, et Titre et Lieu / Adresse se remplissent partout où vous les avez laissés vides.',
+    'Lieu / Activité lie le lieu lui-même. Choisissez-le là, et le titre et Lieu / Adresse se remplissent partout où vous les avez laissés vides.',
   'help.guide.link-booking.step.4': 'Cliquez sur Mettre à jour.',
   'help.guide.link-booking.result':
-    'La carte nomme le jour et l’étape sous Lier à l’affectation du jour, et la réservation voyage avec cette étape dans le Plan du jour.',
+    'La carte nomme le jour et l’étape sous Lié à, et la réservation voyage avec cette étape dans le Plan du jour.',
   'help.guide.link-booking.tip.1':
     'Aucun lien (autonome), en haut de la liste, retire le lien. Hébergement n’a aucun sélecteur d’étape : il se lie par ses nuits.',
   'help.guide.link-booking.tip.2':
@@ -3356,50 +3387,51 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Dire pour qui est une réservation',
   'help.guide.booking-travelers.goal': 'Marquez les voyageurs que couvre une réservation, puis ne voyez que les leurs.',
   'help.guide.booking-travelers.step.1':
-    'Ouvrez la réservation avec le crayon. Voyageurs se trouve à côté du Code de réservation, et affiche Assigner des voyageurs tant que personne n’est sur la réservation.',
+    'Ouvrez la réservation avec le crayon de sa carte. Voyageurs se trouve à côté du Code de réservation, et affiche Assigner des voyageurs tant que personne n’est sur la réservation.',
   'help.guide.booking-travelers.step.2':
     'Cliquez dessus et choisissez les personnes pour qui est cette réservation ; les invités nommés sont aussi dans la liste. Une personne choisie reçoit une coche et son avatar dans le champ. Cliquez de nouveau sur le nom pour l’enlever.',
   'help.guide.booking-travelers.step.3': 'Cliquez sur Mettre à jour.',
   'help.guide.booking-travelers.step.4':
-    'En haut, dans la barre d’outils, à côté des pastilles de sorte, cliquez l’avatar d’un voyageur pour ne voir que ses réservations.',
+    'Cliquez sur Filtrer dans la barre : sous Voyageurs, cliquez sur une personne pour ne voir que ses réservations. Plusieurs peuvent être activées à la fois.',
   'help.guide.booking-travelers.result':
-    'La carte liste les personnes pour qui elle est, et la rangée d’avatars réduit l’onglet à l’une d’elles.',
+    'La carte liste les personnes pour qui elle est, et Filtrer réduit l’onglet aux réservations des personnes que vous choisissez.',
   'help.guide.booking-travelers.tip.1':
-    'Sur la carte, les voyageurs sont seulement montrés, jamais modifiés. Ils se règlent ici, dans le formulaire.',
+    'Sur la carte et dans le détail, les voyageurs sont seulement montrés, jamais modifiés. Ils se règlent ici, dans le formulaire.',
   'help.guide.booking-travelers.tip.2':
-    'La rangée d’avatars apparaît dès que le voyage a plus d’un membre et qu’au moins une réservation nomme quelqu’un. Ce que vous choisissez dure le temps de cette session du navigateur.',
+    'Voyageurs apparaît dans Filtrer dès que le voyage a plus d’un membre et qu’au moins une réservation nomme quelqu’un. Ce que vous choisissez dure jusqu’à ce que vous fermiez l’onglet du navigateur.',
   // booking-files
   'help.guide.booking-files.title': 'Garder le justificatif avec la réservation',
   'help.guide.booking-files.goal':
     'Joignez la confirmation, le billet ou le laissez-passer à la réservation à laquelle ils appartiennent.',
   'help.guide.booking-files.step.1':
-    'Ouvrez la réservation avec le crayon, descendez jusqu’à Fichiers et cliquez sur Joindre un fichier. Sur une réservation qui existe déjà, le document part tout de suite et TREK dit Fichier importé.',
+    'Ouvrez la réservation avec le crayon de sa carte. Fichiers se trouve à côté de Lien ; cliquez là sur Joindre un fichier. Sur une réservation qui existe déjà, le document part tout de suite et TREK dit Fichier importé.',
   'help.guide.booking-files.step.2': 'Le document est listé par son nom, avec un bouton pour l’ouvrir et un X à côté.',
   'help.guide.booking-files.step.3':
     'Lier un fichier existant propose les documents du voyage qui ne sont pas encore sur cette réservation. Choisissez-en un et il est joint sans rien importer de nouveau.',
   'help.guide.booking-files.step.4': 'Cliquez sur Mettre à jour.',
-  'help.guide.booking-files.result': 'La carte liste les documents sous Fichiers, et un clic sur l’un d’eux l’ouvre.',
+  'help.guide.booking-files.result':
+    'La carte et le détail listent les documents sous Fichiers, et un clic sur l’un d’eux l’ouvre.',
   'help.guide.booking-files.tip.1':
     'Sur une réservation que vous êtes en train de créer, le document attend et part au moment où vous cliquez sur Ajouter.',
   'help.guide.booking-files.tip.2':
     'Le X à côté d’un document retire le lien, pas le document. Il reste dans l’onglet Fichiers du voyage.',
   'help.guide.booking-files.tip.3':
-    'Quels types de fichiers peuvent être joints relève de la liste Types de fichiers autorisés de l’administrateur ; les documents, le texte et les images sont permis d’origine.',
+    'Quels types de fichiers peuvent être joints relève de la liste de l’administrateur sous Types de fichiers autorisés ; les documents, le texte et les images sont permis d’origine.',
   // booking-cost
   'help.guide.booking-cost.title': 'Transformer le prix d’une réservation en coût',
   'help.guide.booking-cost.goal':
     'Faites entrer ce que coûte une réservation dans les Coûts, partagé entre les personnes qui paient.',
   'help.guide.booking-cost.step.1':
-    'Ouvrez la réservation et descendez au bas du formulaire. Sous Coûts se trouvent Créer une dépense et Lier une dépense existante, avec la note Enregistre la réservation, puis ouvre l’éditeur de dépenses.',
+    'Ouvrez la réservation avec le crayon de sa carte et descendez au bas du formulaire. Sous Coûts se trouvent Créer une dépense et Lier une dépense existante, avec la note Enregistre la réservation, puis ouvre l’éditeur de dépenses.',
   'help.guide.booking-cost.step.2':
-    'Cliquez sur Créer une dépense. La réservation est enregistrée, son formulaire se ferme et l’éditeur de Coûts s’ouvre.',
+    'Cliquez sur Créer une dépense. La réservation est enregistrée, son formulaire se ferme et l’éditeur de Coûts s’ouvre sous le titre Ajouter une dépense.',
   'help.guide.booking-cost.step.3':
-    'C’était pour quoi ? est déjà le titre de la réservation. Entrez le Montant total et vérifiez la Devise et le Jour.',
+    'Le nom dans le bandeau d’en-tête est déjà le titre de la réservation. Entrez le Montant total et vérifiez la Devise et le Jour à côté.',
   'help.guide.booking-cost.step.4':
-    'Catégorie est celle qu’implique le type de réservation. Réglez Qui a payé ? et la façon dont le montant est partagé.',
+    'La pastille du bandeau d’en-tête est la Catégorie, déjà celle qu’implique le type de réservation. Sous Qui a payé ? choisissez qui a payé, et sous Répartition comment le montant est partagé.',
   'help.guide.booking-cost.step.5': 'Cliquez sur Ajouter une dépense.',
   'help.guide.booking-cost.result':
-    'Le formulaire de la réservation affiche maintenant la dépense sous Dépenses liées avec son montant, et la même dépense se trouve dans l’onglet Coûts, rattachée à cette réservation.',
+    'La carte porte le montant à son pied, le formulaire de la réservation liste la dépense sous Dépenses liées, et la même dépense se trouve dans l’onglet Coûts, rattachée à cette réservation.',
   'help.guide.booking-cost.tip.1':
     'La catégorie suit le type : Restaurant devient Nourriture et boissons, Hébergement devient Hébergement, Parking devient Parking, et Événement et Visite atterrissent tous deux dans Autre.',
   'help.guide.booking-cost.tip.2':
@@ -3408,40 +3440,43 @@ const help: TranslationStrings = {
     'Coûts n’est dans le formulaire que tant que l’extension Coûts est activée, ce que l’administrateur règle sous Extensions.',
   // filter-bookings
   'help.guide.filter-bookings.title': 'Retrouver une réservation',
-  'help.guide.filter-bookings.goal': 'Réduisez un onglet long à la sorte, à la personne ou à l’état que vous cherchez.',
+  'help.guide.filter-bookings.goal': 'Réduisez un onglet long à un mot, un état, un type ou une personne.',
   'help.guide.filter-bookings.step.1':
-    'Les pastilles à côté du titre sont les sortes que ce voyage utilise vraiment, chacune avec le nombre qu’elle contient. Tout, c’est l’onglet entier.',
+    'Tapez dans Rechercher, dans la barre. La recherche parcourt les titres, les types, les lieux et les adresses, les notes, les codes de réservation et les noms des voyageurs, et l’onglet se resserre à mesure que vous tapez ; Échap vide le champ.',
   'help.guide.filter-bookings.step.2':
-    'Cliquez une pastille pour ne garder que cette sorte. Cliquez-en une deuxième et les deux sont gardées.',
-  'help.guide.filter-bookings.step.3': 'Tout remet tout en place.',
+    'Cliquez sur Filtrer, l’entonnoir à côté de la recherche. Son panneau contient Statut, Type et, dès qu’une réservation nomme des personnes, Voyageurs.',
+  'help.guide.filter-bookings.step.3':
+    'Sous Statut, choisissez Confirmée ou En attente pour ne voir que celles-là ; Tout montre les deux.',
   'help.guide.filter-bookings.step.4':
-    'Les avatars à côté des pastilles filtrent par voyageur, une personne ou plusieurs à la fois.',
+    'Sous Type, cliquez sur un ou plusieurs types pour ne garder que ceux-là. Chacun indique combien de réservations il contient, et une coche marque ceux qui sont activés.',
   'help.guide.filter-bookings.step.5':
-    'En attente et Confirmée sont les deux sections, chacune avec son compte. Cliquez un titre pour en replier une ; elle est encore repliée quand vous revenez.',
+    'Un nombre sur Filtrer compte ce qui est activé, et une pastille à côté de la recherche dit combien de réservations il reste sur le total. Cliquez sur la pastille, ou sur Réinitialiser les filtres au pied du panneau, pour tout revoir.',
   'help.guide.filter-bookings.result':
-    'L’onglet ne montre que ce que vous avez choisi, et c’est encore choisi quand vous y revenez dans cette session du navigateur.',
+    'L’onglet ne montre que ce que vous avez choisi, en Cartes, en Liste comme en Chronologie, et les filtres restent pour ce voyage jusqu’à ce que vous fermiez l’onglet du navigateur.',
   'help.guide.filter-bookings.tip.1':
-    'Les pastilles ne proposent que les sortes que le voyage a, un voyage sans une seule visite n’a donc pas de pastille Visite.',
+    'Type n’est là que si l’onglet contient plus d’un type, et il ne liste que les types que l’onglet contient : sans une seule visite dans l’onglet, Visite n’y figure donc pas.',
   'help.guide.filter-bookings.tip.2':
-    'Un filtre qui ne trouve rien laisse l’onglet vide avec Aucun lieu trouvé. La formulation est celle de la liste des lieux ; le sens est le même.',
+    'Un filtre qui ne trouve rien laisse Aucun résultat pour ces filtres dans l’onglet, avec Réinitialiser les filtres juste en dessous.',
   // import-booking-file
   'help.guide.import-booking-file.title': 'Lire une réservation dans sa confirmation',
   'help.guide.import-booking-file.goal':
     'Laissez TREK tirer la réservation du courriel ou du PDF envoyé par le prestataire, au lieu de la retaper.',
   'help.guide.import-booking-file.step.1':
-    'Cliquez sur Importer depuis un fichier dans la barre d’outils. Importer des confirmations de réservation s’ouvre.',
+    'Cliquez sur l’icône de téléchargement dans la barre, Importer des confirmations de réservation ; le nom s’affiche quand vous pointez dessus. La boîte de dialogue du même nom s’ouvre.',
   'help.guide.import-booking-file.step.2':
     'Déposez les confirmations sur la zone, ou cliquez-la et choisissez-les : EML, PDF, PKPass, HTML et TXT, jusqu’à cinq fichiers de 10 Mo chacun. Celles que vous avez choisies sont nommées sur la zone.',
   'help.guide.import-booking-file.step.3':
     'Cliquez sur Importer. Le dialogue se ferme aussitôt, car la lecture se fait en arrière-plan.',
   'help.guide.import-booking-file.step.4':
     'Une carte en bas à droite rend compte de l’exécution sous le nom du fichier, et elle vous suit à travers l’application et à travers un rechargement. Analyse des fichiers… devient une coche quand la lecture est finie, et la carte propose Importer. Cliquez dessus.',
+  'help.guide.import-booking-file.step.5':
+    'Chaque réservation trouvée s’ouvre dans Nouvelle réservation, l’une après l’autre, déjà remplie. Pour un hôtel, c’est son nom en titre et, quand le voyage a le lieu, sous Hébergement, son Lieu / Adresse, Du et Au sur ses nuits, Arrivée et Départ, le Code de réservation, la confirmation sous Fichiers et, avec Coûts activé, le prix en Dépense liée. Contrôlez-la et cliquez sur Ajouter.',
   'help.guide.import-booking-file.result':
     'La réservation est une carte dans En attente avec ses nuits, son code et la confirmation sous Fichiers, le séjour se pose sur ces jours du plan, et avec Coûts activé le prix est une dépense qui lui est liée.',
   'help.guide.import-booking-file.tip.1':
-    'Importer depuis un fichier n’est là que si le serveur sait lire les confirmations, ce qui demande soit l’extracteur, soit l’extension Analyse par IA. Celle-ci, l’administrateur la règle sous Extensions.',
+    'L’icône d’import n’est là que si le serveur sait lire les confirmations, ce qui demande soit l’extracteur, soit l’extension Analyse par IA ; celle-ci, l’administrateur la règle sous Extensions. Un onglet sans aucune réservation la propose aussi sous la forme du bouton Importer depuis un fichier.',
   'help.guide.import-booking-file.tip.2':
-    'Si rien n’a pu être lu, la carte le dit et propose Try AI parsing, qui envoie les mêmes fichiers directement au modèle. Une analyse terminée est gardée dix minutes ; lancez la revue dans ce délai.',
+    'Si rien n’a pu être lu, la carte le dit et, avec Analyse par IA activée, propose Essayer l’analyse par IA, qui envoie les mêmes fichiers directement au modèle. Une analyse terminée est gardée dix minutes ; lancez la revue dans ce délai.',
   'help.guide.import-booking-file.tip.3':
     'La confirmation n’est jointe que si son type figure dans les Types de fichiers autorisés des réglages d’administration. PDF y est d’office ; un courriel, EML, doit d’abord être ajouté, sinon la réservation est enregistrée sans lui.',
   // edit-booking
@@ -3449,114 +3484,114 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.goal':
     'Corrigez une heure, ajoutez le code arrivé plus tard, ou faites passer une réservation de En attente à Confirmée.',
   'help.guide.edit-booking.step.1':
-    'Cliquez sur le crayon dans l’en-tête de la carte. Modifier la réservation s’ouvre avec tout ce que la réservation sait.',
+    'Pointez la carte et cliquez sur le crayon de son bandeau d’en-tête. Modifier la réservation s’ouvre avec tout ce que la réservation sait.',
   'help.guide.edit-booking.step.2':
     'Changez ce qui doit changer, ici le Code de réservation que le prestataire a fini par envoyer.',
   'help.guide.edit-booking.step.3':
-    'Cliquez sur la pastille En attente dans l’en-tête du formulaire. Elle passe à Confirmée.',
+    'Cliquez sur la pastille En attente dans le bandeau d’en-tête. Elle passe à Confirmée, et le bandeau devient vert.',
   'help.guide.edit-booking.step.4': 'Cliquez sur Mettre à jour.',
   'help.guide.edit-booking.result':
-    'La carte se déplace : une réservation confirmée se tient dans la section Confirmée derrière un point vert, et tout le monde dans le voyage la voit bouger.',
+    'La carte se déplace : une réservation confirmée se tient dans la section Confirmée avec un point vert et un bandeau d’en-tête vert, et tout le monde dans le voyage la voit bouger.',
   'help.guide.edit-booking.tip.1':
     'Un Code de réservation que vous n’arrivez pas à lire, c’est Masquer les codes de réservation dans les Paramètres, sous Affichage. Survolez-le, ou cliquez-le, et il devient lisible.',
   'help.guide.edit-booking.tip.2':
     'Changez le type et la catégorie d’une dépense liée suit, sauf si vous aviez choisi une catégorie à la main dans l’éditeur de Coûts.',
   'help.guide.edit-booking.tip.3':
-    'Un hébergement se modifie ici aussi : ses jours Du et Au sont dans le même formulaire.',
+    'Modifier, au pied du détail d’une réservation, ouvre le même formulaire. Le statut se change aussi sans aucun formulaire : cliquez sur le point d’une carte ou d’une ligne, ou sur la pastille de statut dans le détail.',
   // delete-booking
   'help.guide.delete-booking.title': 'Supprimer une réservation',
   'help.guide.delete-booking.goal': 'Sortez du voyage une réservation qui est tombée à l’eau.',
-  'help.guide.delete-booking.step.1': 'Cliquez sur la corbeille dans l’en-tête de la carte.',
+  'help.guide.delete-booking.step.1':
+    'Pointez la carte et cliquez sur la corbeille de son bandeau d’en-tête. La corbeille au pied du détail d’une réservation pose la même question.',
   'help.guide.delete-booking.step.2':
     'Supprimer la réservation ? nomme celle que vous avez choisie et dit qu’elle sera définitivement supprimée.',
-  'help.guide.delete-booking.step.3': 'Cliquez sur Confirmer.',
+  'help.guide.delete-booking.step.3': 'Cliquez sur Supprimer.',
   'help.guide.delete-booking.result':
     'La carte a disparu, pour tout le monde dans le voyage. Une réservation n’a pas d’annulation, la question est donc le dernier arrêt.',
   'help.guide.delete-booking.tip.1':
-    'Supprimer une réservation d’hébergement retire aussi ses nuits du Plan du jour et supprime la dépense qui y était liée.',
+    'Supprimer une réservation retire aussi les dépenses qui y sont liées, et un hébergement retire ses nuits du Plan du jour.',
   'help.guide.delete-booking.tip.2':
     'Les documents qui étaient joints restent dans l’onglet Fichiers du voyage ; seul leur lien avec la réservation s’en va.',
-  // import-booking-file
-  'help.guide.import-booking-file.step.5':
-    'Chaque réservation trouvée s’ouvre dans Nouvelle réservation, l’une après l’autre, déjà remplie. Pour un hôtel, c’est le nom dans Titre et, quand le voyage a le lieu, sous Hébergement, son Lieu / Adresse, Du et Au sur ses nuits, Arrivée et Départ, le Code de réservation, la confirmation sous Fichiers et, avec Coûts activé, le prix en Dépense liée. Contrôlez-la et cliquez sur Ajouter.',
 
   // ── Screen: trip-costs ────────────────────────────────────────────────────────────────
   'help.ctx.trip-costs.title': 'Coûts',
   'help.ctx.trip-costs.summary':
-    'L’argent du voyage : chaque dépense dans un registre daté, qui l’a avancée et qui la doit, dans la devise du reçu, et, dans la colonne de droite, qui doit payer qui pour que tout soit à nouveau équilibré.',
+    'L’argent du voyage : chaque dépense dans un registre daté ou un tableau, qui l’a avancée et qui la doit, dans la devise du reçu, et, dans la colonne de droite, qui doit payer qui pour que tout soit à nouveau équilibré.',
   'help.ctx.trip-costs.bullet.1':
-    'Quatre cartes en haut : Vous devez et On vous doit sont votre propre côté du règlement, Montant en attente est ce qui est enregistré mais n’a pas encore de payeur, et Dépenses totales du voyage additionne tout, avec Votre part et Vous avez payé en dessous.',
+    'La barre du haut nomme les dates du voyage et les voyageurs entre qui les coûts sont partagés, puis contient Rechercher des dépenses…, Filtrer (l’entonnoir), Exporter CSV (l’icône de téléchargement) et le sélecteur Liste / Tableau.',
   'help.ctx.trip-costs.bullet.2':
-    'Ajouter une dépense en haut à droite ouvre l’éditeur ; Régler à côté enregistre d’un coup tous les transferts ouverts.',
+    'À son bout droit, Régler enregistre d’un coup tous les transferts ouverts, Scanner un reçu remplit une dépense à partir d’une photo quand l’extension Analyse par IA sait lire les images, et Ajouter une dépense ouvre l’éditeur.',
   'help.ctx.trip-costs.bullet.3':
-    'Le registre est groupé par jour, le plus récent en premier, avec le total de ce jour à droite. Une ligne porte la catégorie comme onglet coloré, le nom, les pastilles des payeurs, la note et le montant, plus vous avez prêté ou vous avez emprunté quand le partage vous laisse en positif ou en négatif dessus.',
+    'Quatre cartes sous la barre : Vous devez et On vous doit sont votre propre côté du règlement, Montant en attente est ce qui est enregistré mais n’a pas encore de payeur, et Dépenses totales du voyage additionne tout, avec Votre part et Vous avez payé en dessous.',
   'help.ctx.trip-costs.bullet.4':
-    'Au-dessus de la liste se trouvent Rechercher des dépenses…, un filtre de catégorie, un filtre de jour, le sélecteur Toutes / Payées par moi / On me doit et le bouton Exporter CSV.',
+    'Le registre est groupé par jour, le plus récent en premier, chaque jour portant en tête le nombre d’entrées qu’il contient et ce qui y a été dépensé. Une ligne porte la catégorie comme onglet coloré, le nom, les pastilles des payeurs, la note et le montant, plus vous avez prêté ou vous avez emprunté quand le partage vous laisse en positif ou en négatif dessus.',
   'help.ctx.trip-costs.bullet.5':
     'La colonne de droite est la réponse : Régler liste qui paie qui, Soldes montre l’excédent ou le déficit de chaque voyageur, Budget final ce que le voyage coûte à chacun d’eux, et Par catégorie où est parti l’argent.',
   'help.ctx.trip-costs.bullet.6':
-    'Un paiement enregistré est dans le même registre comme sa propre ligne, avec Modifier et Annuler à côté ; une dépense a un crayon et une corbeille, et la corbeille la supprime sans demander.',
+    'Un paiement enregistré est dans le même registre comme sa propre ligne, avec un crayon et Annuler à côté ; une dépense a un crayon et une corbeille, et la corbeille la supprime sans demander.',
+  'help.ctx.trip-costs.bullet.7':
+    'Tableau, dans la barre, montre les mêmes dépenses sous forme de feuille, groupées par catégorie, avec Personnes et Jours et ce que cela donne par personne et par jour ; Résumé prend alors la place de Par catégorie. Coûts retient la vue que vous avez choisie.',
   // add-expense
   'help.guide.add-expense.title': 'Ajouter une dépense',
   'help.guide.add-expense.goal': 'Enregistrez ce qu’une chose a coûté, qui l’a payée et avec qui elle est partagée.',
   'help.guide.add-expense.step.1':
-    'Cliquez sur Ajouter une dépense en haut à droite de l’onglet Coûts. L’éditeur s’ouvre, daté d’aujourd’hui, avec tout le monde déjà dans le partage.',
+    'Cliquez sur Ajouter une dépense au bout droit de la barre. L’éditeur s’ouvre, daté d’aujourd’hui, payé par vous et avec tout le monde déjà dans le partage.',
   'help.guide.add-expense.step.2':
-    'Tapez à quoi elle a servi dans C’était pour quoi ?, le seul champ qui doit être rempli, et le chiffre du reçu dans Montant total.',
+    'Tapez à quoi elle a servi dans l’en-tête de la boîte de dialogue, le champ qui affiche ex. dîner, souvenirs, essence… tant qu’il est vide. C’est le nom de la dépense, et la dépense ne peut pas être enregistrée sans lui.',
   'help.guide.add-expense.step.3':
-    'Devise et Jour se trouvent sous le montant. Devise part sur celle du voyage ; changez-la et l’éditeur montre ce que le montant vaut dans la devise du voyage. Jour part sur aujourd’hui et c’est sous ce jour que le registre groupe la dépense.',
+    'La pastille sous le nom est la Catégorie, Nourriture et boissons tant que vous n’en choisissez pas une autre. Il y en a quatorze et elles ne peuvent pas être modifiées : l’en-tête prend la couleur de celle que vous choisissez, tout comme l’onglet de la ligne et sa barre dans Par catégorie.',
   'help.guide.add-expense.step.4':
-    'Choisissez une Catégorie. Il y en a quatorze et elles ne peuvent pas être modifiées : celle que vous choisissez est l’onglet coloré de la ligne et la barre dans Par catégorie.',
+    'Entrez le chiffre du reçu dans Montant total. Devise, à côté, part sur la devise dans laquelle Coûts est affiché ; changez-la et l’éditeur montre ce que vaut le montant. Jour part sur aujourd’hui et c’est sous ce jour que le registre groupe la dépense.',
   'help.guide.add-expense.step.5':
-    'Sous Qui a payé ?, choisissez la personne qui a réellement avancé l’argent. Vous est présélectionné ; Personne n’a encore payé enregistre le montant sans que personne ne le doive, et Plusieurs personnes ont payé répartit l’addition entre plusieurs payeurs.',
+    'Sous Qui a payé ?, cliquez sur la personne qui a réellement avancé l’argent. Vous est présélectionné ; Personne n’a encore payé enregistre le montant sans que personne ne le doive, et Plusieurs personnes ont payé, dans le sélecteur à côté du titre, répartit l’addition entre plusieurs payeurs.',
   'help.guide.add-expense.step.6':
-    'Split part sur Equally avec tout le monde inclus, et chaque nom affiche la part qui en résulte. Cliquez sur Ajouter une dépense pour enregistrer.',
+    'Répartition, en dessous, part sur À parts égales, avec tout le monde coché et chaque part à côté du nom ; laissez-la ou changez-la. Cliquez sur Ajouter une dépense au pied de la boîte de dialogue pour enregistrer.',
   'help.guide.add-expense.result':
     'La dépense est dans le registre sous son jour, comptée dans Dépenses totales du voyage, et la colonne de règlement a recalculé qui doit à qui.',
   'help.guide.add-expense.tip.1':
-    'Laissée telle qu’elle s’ouvre, la dépense est dans la devise du voyage, datée d’aujourd’hui et partagée à parts égales entre tous : seuls le nom et le montant doivent vraiment être remplis.',
+    'Laissée telle qu’elle s’ouvre, la dépense est datée d’aujourd’hui, payée par vous et partagée à parts égales entre tous : seuls le nom et le montant doivent vraiment être remplis.',
   'help.guide.add-expense.tip.2':
     'Le ± à côté du montant transforme la dépense en remboursement. Un total négatif rend de l’argent au lieu d’en prendre, et le partage fonctionne dans l’autre sens.',
   'help.guide.add-expense.tip.3':
-    'Joindre un reçu / une facture en bas prend des images et des PDF. Ils sont téléversés quand vous enregistrez, arrivent dans les Fichiers du voyage, et une pastille Reçus apparaît à côté du nom dans la liste.',
+    'Joindre, à côté de Reçus et factures en bas de la boîte de dialogue, prend des images et des PDF. Ils sont téléversés quand vous enregistrez, arrivent dans les Fichiers du voyage, et une pastille Reçus apparaît à côté du nom dans la liste.',
   // expense-payers
   'help.guide.expense-payers.title': 'Dire qui a payé l’addition',
   'help.guide.expense-payers.goal':
     'Enregistrez qui a avancé l’argent pour une dépense, l’autre moitié du calcul du règlement.',
   'help.guide.expense-payers.step.1':
-    'Ouvrez une dépense avec le crayon à côté de sa ligne et regardez Qui a payé ?. Une seule personne a payé est le réglage par défaut : le menu déroulant nomme la personne qui a avancé l’argent.',
+    'Ouvrez une dépense avec le crayon à côté de sa ligne et regardez Qui a payé ?. Une seule personne a payé est le réglage par défaut dans le sélecteur à côté du titre : chaque voyageur est une pastille, et celle qui est entourée a avancé l’argent. Cliquez sur une autre pastille pour le changer.',
   'help.guide.expense-payers.step.2':
-    'Personne n’a encore payé, la première entrée de ce menu déroulant, enregistre le montant sans que personne ne doive quoi que ce soit. La dépense compte quand même dans Dépenses totales du voyage.',
+    'Personne n’a encore payé, la pastille en pointillés après les voyageurs, enregistre le montant sans que personne ne doive quoi que ce soit. La dépense compte quand même dans Dépenses totales du voyage.',
   'help.guide.expense-payers.step.3':
-    'Plusieurs personnes ont payé, le lien à côté du libellé, ouvre une ligne par voyageur. Incluez celles qui ont payé et tapez ce que chacune a mis ; les montants doivent être égaux au total.',
+    'Plusieurs personnes ont payé, l’autre côté de ce sélecteur, liste chaque voyageur avec une case à cocher, et chaque personne cochée reçoit un champ de montant. Cochez celles qui ont payé et tapez ce que chacune a mis ; les montants doivent être égaux au total.',
   'help.guide.expense-payers.step.4':
-    'Une dépense que personne n’a payée est marquée Inachevé sur sa ligne et comptée dans la carte Montant en attente, là où s’accumulent les dépenses enregistrées mais non réglées.',
+    'Une dépense que personne n’a payée est marquée Inachevé sur sa ligne et comptée dans la carte Montant en attente, là où s’accumulent les dépenses qui n’ont pas encore de payeur.',
   'help.guide.expense-payers.result':
     'Qui a payé décide qui est remboursé, le partage décide qui paie, et Soldes est la différence entre les deux.',
   'help.guide.expense-payers.tip.1':
     'Qui a payé ? et Split sont indépendants : vous pouvez payer un dîner auquel vous n’étiez pas, et être compté dans le partage d’un dîner que vous n’avez pas payé.',
   'help.guide.expense-payers.tip.2':
-    'Avec plusieurs payeurs, les montants doivent être égaux au total. Incluez-en un de plus et les autres se réorganisent autour de lui ; tant qu’ils ne correspondent pas, l’éditeur dit à combien ils doivent s’élever et refuse d’enregistrer.',
+    'Avec plusieurs payeurs, les montants doivent être égaux au total. Cochez-en un de plus et les montants que vous n’avez pas tapés vous-même se partagent de nouveau le reste ; tant qu’ils ne correspondent pas, l’éditeur dit à combien ils doivent s’élever et refuse d’enregistrer.',
   'help.guide.expense-payers.tip.3':
-    'Retirer un payeur ne retire pas la dépense : le montant reste dans Dépenses totales du voyage et la ligne devient Inachevé.',
+    'Remettre une dépense sur Personne n’a encore payé ne la retire pas : le montant reste dans Dépenses totales du voyage et la ligne devient Inachevé.',
   // split-expense
   'help.guide.split-expense.title': 'Partager une addition entre les voyageurs',
   'help.guide.split-expense.goal':
     'Décidez qui doit quoi sur une dépense : tout le monde à parts égales, par montant, ou ligne par ligne d’après le reçu.',
   'help.guide.split-expense.step.1':
-    'Dans l’éditeur de dépense, Split liste tous les voyageurs. Cliquez sur un nom pour le laisser en dehors de cette dépense ; un voyageur exclu affiche Exclu et ne doit rien dessus.',
+    'Dans l’éditeur de dépense, Répartition liste chaque voyageur avec une case à cocher. Décochez un nom pour le laisser en dehors de cette dépense : le nom devient gris, perd sa part et ne doit rien dessus.',
   'help.guide.split-expense.step.2':
-    'Equally est le réglage par défaut : chaque voyageur inclus reçoit la même part, et la ligne sous la liste indique en combien de parts la dépense est partagée et à combien revient chaque part.',
+    'À parts égales, dans le sélecteur à côté du titre, est le réglage par défaut : chaque voyageur coché reçoit la même part, affichée à côté du nom, et les badges sous la liste indiquent combien de personnes la partagent et à combien revient chaque part.',
   'help.guide.split-expense.step.3':
-    'Custom remplace les parts par des champs de montant. Tapez ce que chaque voyageur doit ; la ligne en dessous compte au fur et à mesure et passe au vert sur La répartition correspond au total. Rien ne s’enregistre tant que cela ne correspond pas.',
+    'Personnalisé remplace les parts par des champs de montant. Tapez ce que chaque voyageur doit ; le badge en dessous compte au fur et à mesure et passe au vert sur La répartition correspond au total. Rien ne s’enregistre tant que cela ne correspond pas.',
   'help.guide.split-expense.step.4':
-    'Ticket partage le reçu ligne par ligne : Ajouter un article, puis un nom et un prix par ligne, et sous Partagé entre : les voyageurs qui se partagent cette ligne.',
+    'Reçu répartit le ticket de caisse ligne par ligne : Ajouter un article, puis un nom et un prix par ligne, et à côté de Partagé entre : les voyageurs qui se partagent cette ligne.',
   'help.guide.split-expense.step.5':
-    'Part de chacun sous les lignes montre ce que chaque voyageur doit au final, et Montant total en haut est la somme des lignes. Cliquez sur Enregistrer.',
+    'Part de chacun, sous les lignes, montre ce que chaque voyageur doit au final, et Montant total en haut est la somme des lignes. Cliquez sur Enregistrer au pied de la boîte de dialogue.',
   'help.guide.split-expense.result':
     'Le partage est ce à partir de quoi chaque solde est construit. Il est enregistré avec la dépense et peut être modifié plus tard sans toucher à quoi que ce soit d’autre.',
   'help.guide.split-expense.tip.1':
-    'Un voyageur que vous laissez de côté affiche Exclu et ne doit rien sur cette dépense-là ; les autres reprennent sa part.',
+    'Un voyageur que vous décochez ne doit rien sur cette dépense-là ; les autres reprennent sa part.',
   'help.guide.split-expense.tip.2':
     'Equally est juste au centime près : le centime restant tourne d’une dépense à l’autre, pour que ce ne soit pas toujours la même personne qui le paie.',
   'help.guide.split-expense.tip.3':
@@ -3565,48 +3600,50 @@ const help: TranslationStrings = {
   'help.guide.expense-currency.title': 'Saisir une dépense dans une autre devise',
   'help.guide.expense-currency.goal': 'Saisissez ce que le reçu dit vraiment et laissez TREK garder le taux.',
   'help.guide.expense-currency.step.1':
-    'Ouvrez Ajouter une dépense et remplissez le nom et le montant exactement comme le dit le reçu, le chiffre lui-même et non une conversion de celui-ci.',
+    'Ouvrez Ajouter une dépense, puis tapez le nom dans l’en-tête de la boîte de dialogue et le montant dans Montant total exactement comme le dit le reçu, le chiffre lui-même et non une conversion de celui-ci.',
   'help.guide.expense-currency.step.2':
-    'Ouvrez Devise et choisissez la devise du reçu. La liste porte tous les codes que TREK connaît et se recherche : tapez les trois lettres.',
+    'Ouvrez Devise, à côté du montant, et choisissez la devise du reçu. La liste porte tous les codes que TREK connaît et se recherche : tapez les trois lettres.',
   'help.guide.expense-currency.step.3':
-    'Une ligne apparaît sous les champs avec ce que vaut le montant en ce moment, marquée taux en direct. C’est un aperçu, pas ce qui est enregistré.',
+    'Une rangée de badges apparaît sous les champs : ce que vous avez tapé et ce que cela vaut en ce moment, marqué taux en direct. C’est un aperçu, pas ce qui est enregistré.',
   'help.guide.expense-currency.step.4':
-    'Cliquez sur Ajouter une dépense. Le taux est figé sur-le-champ : à partir de là, cette dépense vaut ce qu’elle valait le jour où vous l’avez saisie.',
+    'Cliquez sur Ajouter une dépense au pied de la boîte de dialogue. Le taux est figé sur-le-champ : à partir de là, cette dépense vaut ce qu’elle valait le jour où vous l’avez saisie.',
   'help.guide.expense-currency.step.5':
-    'Dans le registre, la ligne porte les deux chiffres sous le nom : ce que vous avez tapé, une flèche, et ce que cela compte dans la devise du voyage. Chaque total, chaque solde et chaque règlement au-dessus utilise le second.',
+    'Dans le registre, la ligne porte les deux chiffres sous le nom : ce que vous avez tapé, une flèche, et ce que cela compte dans la devise du voyage. Chaque total, chaque solde et chaque règlement de l’onglet Coûts est calculé à partir du second.',
   'help.guide.expense-currency.result':
-    'La dépense garde le montant et la devise que vous avez tapés. Le registre montre les deux, et les totaux et les soldes du voyage restent dans la devise du voyage.',
+    'La dépense garde le montant et la devise que vous avez tapés. Le registre montre les deux, et les totaux et les soldes du voyage sont comptés dans la devise du voyage.',
   'help.guide.expense-currency.tip.1':
     'Le taux est figé au moment où vous enregistrez, pour qu’une dette réglée ne rouvre pas parce que le marché a bougé la semaine suivante. Seul un changement de devise de la dépense en fige un nouveau.',
   'help.guide.expense-currency.tip.2':
     'Devise d’affichage dans Paramètres ne change que ce que vous lisez ; les montants enregistrés ne bougent jamais. Laissée vide, chaque voyage est affiché dans sa propre devise.',
   'help.guide.expense-currency.tip.3':
-    'La devise du voyage elle-même vit sur le voyage, sous Modifier le voyage, et demande le droit Modifier les détails du voyage. La changer ré-ancre chaque taux figé au lieu de redénominer les montants.',
+    'La devise du voyage elle-même vit sur le voyage, sous Modifier le voyage, et demande la permission Modifier les détails du voyage. La changer ré-ancre chaque taux figé au lieu de redénominer les montants.',
   // filter-costs
   'help.guide.filter-costs.title': 'Trouver une dépense, ou les dépenses d’un jour',
   'help.guide.filter-costs.goal': 'Resserrez un long registre sur ce que vous cherchez vraiment.',
   'help.guide.filter-costs.step.1':
-    'Tapez dans Rechercher des dépenses… au-dessus de la liste. La recherche porte sur le nom de la dépense, au fur et à mesure que vous tapez.',
+    'Tapez dans Rechercher des dépenses…, dans la barre. La recherche porte sur le nom de la dépense, au fur et à mesure que vous tapez, et Échap l’efface de nouveau.',
   'help.guide.filter-costs.step.2':
-    'Toutes les catégories ouvre les quatorze catégories. Choisissez-en une et seules les dépenses de cette catégorie restent.',
+    'Filtrer, l’entonnoir à côté de la recherche, ouvre les filtres. Le sélecteur en haut est votre propre vue du registre : Toutes, Payées par moi pour ce que vous avez avancé, et On me doit pour les dépenses où vous avez mis plus que votre part.',
   'help.guide.filter-costs.step.3':
-    'Tous les jours liste chaque jour où quelque chose a été dépensé. Choisissez-en un et une bannière remplace les en-têtes de jour par ce jour, le nombre de dépenses qu’il contient et son total.',
+    'Sous Catégorie, choisissez l’une des quatorze catégories et seules les dépenses de cette catégorie restent. L’entonnoir compte combien de filtres sont activés.',
   'help.guide.filter-costs.step.4':
-    'Le sélecteur Toutes / Payées par moi / On me doit est votre propre vue du registre : ce pour quoi vous avez avancé de l’argent, et ce sur quoi vous êtes encore de votre poche.',
+    'Sous Jour, choisissez l’un des jours où quelque chose a été dépensé. Une bannière remplace les en-têtes de jour par ce jour en toutes lettres, le nombre de dépenses qu’il contient et son total.',
   'help.guide.filter-costs.step.5':
-    'Exporter CSV au bout de la ligne écrit chaque dépense dans un fichier, avec le montant d’origine, sa devise et le montant converti.',
+    'Exporter CSV, l’icône de téléchargement à côté de l’entonnoir, écrit chaque dépense dans un fichier, avec le montant d’origine, sa devise et le montant converti.',
   'help.guide.filter-costs.result':
     'Les filtres se combinent, et les groupes de jours se redessinent avec leurs propres totaux pour ce qui reste.',
   'help.guide.filter-costs.tip.1':
-    'Les paiements enregistrés n’ont ni nom ni catégorie, une recherche ou un filtre de catégorie les cache donc. Le filtre de jour les garde, sous le jour où le paiement a été enregistré.',
+    'Les paiements enregistrés n’ont ni nom ni catégorie, une recherche ou un filtre de catégorie les cache donc. Le filtre de jour les garde, sous le jour où le paiement a eu lieu.',
   'help.guide.filter-costs.tip.2':
     'Exporter CSV exporte toujours toutes les dépenses, quel que soit le filtre à l’écran, une ligne par dépense.',
+  'help.guide.filter-costs.tip.3':
+    'Réinitialiser les filtres, au pied du menu des filtres dès qu’un filtre est activé, les désactive tous d’un coup.',
   // settle-up
   'help.guide.settle-up.title': 'Déterminer qui doit à qui, et régler',
   'help.guide.settle-up.goal':
     'Transformez un tas de dépenses partagées en le plus petit nombre de transferts qui mettent tout le monde à égalité, et enregistrez-les au fur et à mesure.',
   'help.guide.settle-up.step.1':
-    'La carte Régler dans la colonne de droite liste les transferts qui mettraient tout le monde à égalité : qui paie qui, et combien. Le nombre à côté du titre indique combien sont encore ouverts.',
+    'La carte Régler dans la colonne de droite liste les transferts qui mettraient tout le monde à égalité : qui paie qui, sous forme de deux avatars avec les noms dans leur infobulle, et combien. Le nombre dans son en-tête indique combien sont encore ouverts.',
   'help.guide.settle-up.step.2':
     'Régler à côté d’un transfert l’enregistre comme fait. Le flux disparaît de la carte et les soldes se redessinent.',
   'help.guide.settle-up.step.3':
@@ -3614,9 +3651,9 @@ const help: TranslationStrings = {
   'help.guide.settle-up.step.4':
     'À côté de cette ligne, le crayon corrige un paiement et Annuler le reprend, et le transfert revient dans la carte Régler.',
   'help.guide.settle-up.step.5':
-    'Ajouter un paiement dans l’en-tête de la carte enregistre un transfert qui n’a suivi aucune suggestion. Choisissez De et À, le Montant, sa devise et le jour où il a eu lieu.',
+    'Ajouter un paiement dans l’en-tête de la carte enregistre un transfert qui n’a suivi aucune suggestion. Choisissez De et À, le montant, sa devise et le jour où il a eu lieu, puis cliquez sur Ajouter un paiement au pied de la boîte de dialogue.',
   'help.guide.settle-up.step.6':
-    'Régler dans l’en-tête en haut de l’écran enregistre d’un coup tous les transferts ouverts, comme un groupe qui solde tout à la fin d’un voyage.',
+    'Régler, dans la barre du haut, enregistre d’un coup tous les transferts ouverts, sans demander, comme un groupe qui solde tout à la fin d’un voyage.',
   'help.guide.settle-up.result':
     'Chaque transfert enregistré est une ligne du registre et une ligne de moins sur la carte Régler. Quand la carte affiche Tout le monde est quitte, le voyage est soldé.',
   'help.guide.settle-up.tip.1':
@@ -3636,7 +3673,7 @@ const help: TranslationStrings = {
   'help.guide.final-budget.step.3':
     'Cliquez sur un nom pour ouvrir le calcul : Dépenses payées, puis Remboursements nets et Remboursements en attente en dessous.',
   'help.guide.final-budget.step.4':
-    'Sous chaque ligne se trouvent les lignes dont elle est faite : les dépenses que ce voyageur a payées, les transferts déjà enregistrés et ceux encore ouverts. Leur somme fait exactement la ligne au-dessus.',
+    'Sous les trois lignes, une liste à chacun de leurs noms reprend les éléments dont la ligne est faite : les dépenses que ce voyageur a payées, les transferts déjà enregistrés et ceux encore ouverts. La somme de chaque liste fait exactement la ligne du même nom.',
   'help.guide.final-budget.result':
     'Soldes, c’est qui est en positif ou en négatif aujourd’hui ; Budget final, c’est ce que le voyage finit par coûter à chacun de vous une fois que tout est remboursé.',
   'help.guide.final-budget.tip.1':
@@ -3648,69 +3685,93 @@ const help: TranslationStrings = {
   'help.guide.expense-from-booking.goal':
     'Attachez ce qu’un vol, un hôtel ou un lieu a réellement coûté à la fiche à laquelle cela appartient.',
   'help.guide.expense-from-booking.step.1':
-    'Ouvrez la réservation dans l’onglet Transports ou Réservations et cliquez sur son crayon.',
+    'Trouvez la réservation dans l’onglet Transports ou Résa et cliquez sur le crayon dans l’en-tête de sa carte.',
   'help.guide.expense-from-booking.step.2':
-    'Faites défiler jusqu’au bloc Coûts en bas du formulaire. Il propose Créer une dépense, qui enregistre d’abord la réservation, et Lier une dépense existante pour une dépense déjà dans l’onglet Coûts.',
+    'Faites défiler jusqu’à Coûts, vers la fin du formulaire. Il propose Créer une dépense, qui enregistre d’abord la réservation, et Lier une dépense existante pour une dépense déjà dans l’onglet Coûts.',
   'help.guide.expense-from-booking.step.3':
     'Cliquez sur Créer une dépense. La réservation est enregistrée, le formulaire se ferme, et l’éditeur de Coûts s’ouvre avec le titre de la réservation comme nom et son type déjà associé à une catégorie.',
   'help.guide.expense-from-booking.step.4':
-    'Remplissez le montant et sa devise, qui a payé et le partage comme pour n’importe quelle dépense, puis enregistrez. En rouvrant la réservation, elle apparaît sous Dépenses liées, avec un crayon pour la modifier, Délier, garder la dépense pour la détacher et une corbeille pour la retirer.',
+    'Remplissez le montant et sa devise, qui a payé et le partage comme pour n’importe quelle dépense, puis cliquez sur Ajouter une dépense. En rouvrant la réservation, elle apparaît sous Dépenses liées, avec un crayon pour la modifier, Délier, garder la dépense pour la détacher et une corbeille pour la retirer.',
   'help.guide.expense-from-booking.result':
     'La réservation porte son coût, et la dépense est une ligne ordinaire de l’onglet Coûts, avec un payeur, un partage et une devise comme n’importe quelle autre.',
   'help.guide.expense-from-booking.tip.1':
     'Supprimer la réservation supprime aussi ses dépenses liées. Retirer la dépense dans le bloc Coûts de la réservation fait l’inverse : la dépense part, la réservation reste. Délier, garder la dépense garde les deux.',
   'help.guide.expense-from-booking.tip.2':
     'Un lieu a le même bloc dans son formulaire, où Créer une dépense enregistre d’abord le lieu.',
+  // costs-table
+  'help.guide.costs-table.title': 'Planifier les coûts dans un tableau',
+  'help.guide.costs-table.goal':
+    'Lisez et modifiez les dépenses sous forme de feuille, triées par catégorie et calculées par personne et par jour.',
+  'help.guide.costs-table.step.1':
+    'Cliquez sur Tableau, la deuxième icône du sélecteur Liste / Tableau dans la barre. Le registre laisse place à un tableau des mêmes dépenses, et la recherche et les filtres s’y appliquent aussi.',
+  'help.guide.costs-table.step.2':
+    'Le tableau est groupé par catégorie, chaque groupe portant en tête son nom, le nombre de dépenses qu’il contient et son sous-total ; cliquez sur l’en-tête pour le replier. Les colonnes sont Nom, Date, Total, Personnes et Jours, puis Par personne, Par jour et P. p / Jour, calculées à partir d’elles sur fond gris.',
+  'help.guide.costs-table.step.3':
+    'Cliquez sur une cellule pour la modifier sur place : un nom, un total, Personnes ou Jours. Tapez, puis appuyez sur Entrée ou cliquez ailleurs pour garder la valeur, ou sur Échap pour la laisser comme elle était ; la date ouvre le calendrier. Par personne et les autres colonnes calculées suivent aussitôt.',
+  'help.guide.costs-table.step.4':
+    'Un total avec un cadenas ne peut pas être modifié ici : quelqu’un l’a payé, ou il a été saisi dans une autre devise, et son infobulle dit lequel des deux. Un clic dessus ouvre plutôt la dépense, pour que les soldes et le taux figé restent justes.',
+  'help.guide.costs-table.step.5':
+    'Ajouter une dépense, au bout d’une catégorie, y ajoute une ligne nommée Nouvelle entrée, datée comme la dernière entrée de la catégorie, avec le nom déjà ouvert pour être modifié. Donnez-lui un total de la même façon.',
+  'help.guide.costs-table.step.6':
+    'Dans cette vue, la colonne de droite affiche Résumé à la place de Par catégorie. Il additionne les dépenses de quatre façons : Catégorie, Jour, Payeur, avec Pas encore de payeur pour celles qui ne sont pas payées, et Statut, Payé contre En attente.',
+  'help.guide.costs-table.result':
+    'Chaque dépense se trouve dans sa catégorie avec ce qu’elle donne par personne et par jour, et un total modifié dans une cellule compte aussitôt dans les cartes au-dessus et dans Résumé.',
+  'help.guide.costs-table.tip.1':
+    'Coûts retient la vue dans ce navigateur : l’onglet s’ouvre sur le tableau jusqu’à ce que vous cliquiez de nouveau sur Liste.',
+  'help.guide.costs-table.tip.2':
+    'Une dépense répartie en Personnalisé ou en Reçu n’a pas de part unique par personne, ses colonnes Par personne et P. p / Jour restent donc vides.',
+  'help.guide.costs-table.tip.3':
+    'Les payeurs, la répartition, la note et les reçus se modifient dans la dépense elle-même : Plus d’options, au bout d’une ligne, propose Modifier, et Supprimer pour retirer la ligne.',
 
   // ── Screen: trip-transports ───────────────────────────────────────────────────────────
   'help.ctx.trip-transports.title': 'Transports',
   'help.ctx.trip-transports.summary':
     'Tout ce qui vous porte d’une étape à l’autre : vols, trains, bus, voitures, taxis, vélos, croisières, ferries et les liaisons en transports en commun que TREK cherche pour vous. L’onglet en est la liste ; ils se créent et se lisent aussi dans le plan, et se dessinent sur la carte.',
   'help.ctx.trip-transports.bullet.1':
-    'L’onglet ne tient que les trajets. Hébergements, restaurants, événements et billets vivent sous Réservations, si bien que la même entrée n’apparaît jamais deux fois.',
+    'L’onglet ne tient que les trajets. Hébergements, restaurants, événements et billets vivent dans l’onglet Résa, si bien que la même entrée n’apparaît jamais deux fois.',
   'help.ctx.trip-transports.bullet.2':
-    'La barre d’outils les compte tous sous Tout et donne à chaque type utilisé sa propre puce avec son propre compte, Vol, Train, Voiture, Transports en commun. Transport, à droite, en ajoute un à la main.',
+    'La barre du haut a la recherche, Filtrer pour le statut, les types et les voyageurs, les trois vues Cartes, Liste et Chronologie, et Options d’affichage. Transport, à droite, ajoute un trajet à la main, et les icônes avant lui, Importer des confirmations de réservation et Importer depuis AirTrail, apparaissent quand le serveur sait lire les confirmations ou qu’un AirTrail est connecté.',
   'help.ctx.trip-transports.bullet.3':
-    'Les cartes viennent en trois groupes, chacun repliable par son titre : Transports en commun automatisés pour les liaisons planifiées par la recherche, puis En attente, puis Confirmée.',
+    'Cartes est la vue dans laquelle l’onglet s’ouvre : Confirmée d’abord, puis En attente, chaque section repliable par son titre. Les liaisons de transports en commun planifiées n’ont pas de statut et se rangent parmi les trajets confirmés dans l’ordre chronologique, à moins qu’Options d’affichage ne leur donne une section à part, Transports en commun automatisés. Liste groupe par jour, et Chronologie étale chaque trajet sur les jours du voyage.',
   'help.ctx.trip-transports.bullet.4':
-    'Une carte porte le statut, le type, les jours qu’elle couvre, les heures, le Code de réservation, l’itinéraire, et la Compagnie aérienne avec le N° de vol, ou le N° de train, le Quai et la Place. Le crayon l’ouvre, la corbeille la supprime après une question.',
+    'Le bandeau d’en-tête d’une carte est teinté selon son statut, vert pour confirmé, ambre pour en attente, bleu pour une liaison planifiée, et contient le point de statut, le type, le titre, le crayon et la corbeille. En dessous : Date, Heure, Code de réservation, Itinéraire et la Compagnie aérienne avec le N° de vol, ou le N° de train, le Quai et la Place. Un clic sur la carte ouvre ses détails.',
   'help.ctx.trip-transports.bullet.5':
-    'Les transports se créent aussi dans le plan : chaque en-tête de jour a un plus pour Ajouter un transport et un bouton tram pour Transports en commun, et le connecteur de temps de trajet entre deux étapes ouvre la même recherche pour ce seul tronçon.',
+    'Les transports se créent aussi dans le plan : le + dans l’en-tête d’un jour propose Ajouter un transport et Transports en commun, et le connecteur de temps de trajet entre deux étapes ouvre la même recherche pour ce seul tronçon.',
   'help.ctx.trip-transports.bullet.6':
-    'Un transport dont les deux extrémités sont posées trace une ligne sur la carte. L’icône d’itinéraire sur sa ligne dans le plan du jour allume cette ligne, et Afficher tous les itinéraires dans la barre au-dessus des jours bascule tout le voyage.',
+    'Un transport dont les deux extrémités sont posées trace une ligne sur la carte. L’icône d’itinéraire sur sa ligne dans le plan du jour et Sur la carte dans ses détails allument cette ligne, et Afficher tous les itinéraires dans la barre au-dessus des jours bascule tout le voyage.',
   // transports-list
   'help.guide.transports-list.title': 'Lire l’onglet Transports',
   'help.guide.transports-list.goal': 'Savoir ce que la liste vous dit avant d’y changer quoi que ce soit.',
   'help.guide.transports-list.step.1':
-    'Transports est le deuxième onglet du voyage. Il ne tient que les trajets : hôtels, restaurants, événements et billets sont sous Réservations.',
+    'Transports est le deuxième onglet du voyage. Il ne tient que les trajets : hôtels, restaurants, événements et billets sont dans l’onglet Résa.',
   'help.guide.transports-list.step.2':
-    'La barre d’outils compte chaque transport sous Tout et donne à chaque type utilisé sa propre puce avec son propre compte. Cliquez sur une puce pour ne garder que ce type, cliquez de nouveau pour la relâcher. Plusieurs puces peuvent être actives à la fois, et Tout les efface.',
+    'Filtrer, l’entonnoir dans la barre, ouvre les choix : Statut avec Tout, Confirmée et En attente, puis chaque type utilisé avec son compte. Cochez un ou plusieurs types pour ne garder que ceux-là ; un nombre sur l’entonnoir compte ce qui est activé, et la barre dit combien de trajets sont affichés, par exemple 1 sur 4. Réinitialiser les filtres, au pied du menu, ramène tout.',
   'help.guide.transports-list.step.3':
-    'Transports en commun automatisés est un groupe à part, les liaisons planifiées par la recherche de transports en commun. En attente et Confirmée tiennent tout ce qui a été saisi à la main. La flèche à côté d’un titre replie un groupe.',
+    'Cartes, Liste et Chronologie, à côté, présentent les trajets en cartes, en lignes groupées par jour, ou en barres sur les jours du voyage. Le bouton Options d’affichage, les curseurs, règle Grouper par et Trier par pour Cartes et Liste et les lignes pour Chronologie, et Réinitialiser l’affichage revient aux valeurs par défaut. Dans Cartes, Transports en commun dans une section à part rassemble les liaisons planifiées sous Transports en commun automatisés.',
   'help.guide.transports-list.step.4':
-    'Une carte dit tout : le point de statut avec En attente ou Confirmée, le type, les jours qu’elle couvre avec leurs dates, les heures, le Code de réservation, l’itinéraire, et la Compagnie aérienne avec le N° de vol, ou le N° de train, le Quai et la Place.',
+    'Une carte dit tout. Son bandeau d’en-tête est vert pour Confirmée et ambre pour En attente, et porte le point de statut, le type et le titre. En dessous, Date donne les jours qu’elle couvre avec leurs dates, puis viennent Heure, Code de réservation, Itinéraire avec l’icône du type entre les arrêts, et la Compagnie aérienne avec le N° de vol, ou le N° de train, le Quai et la Place. Cliquez sur la carte et ses détails s’ouvrent.',
   'help.guide.transports-list.step.5':
-    'Le crayon ouvre le transport pour le modifier, la corbeille le supprime, après une question qui nomme ce qui part.',
+    'Un clic sur le point de statut fait passer le trajet de En attente à Confirmée et inversement. Le crayon du bandeau d’en-tête ouvre le formulaire du transport, et la corbeille le supprime après la question Supprimer la réservation ?, qui nomme ce qui part.',
   'help.guide.transports-list.result':
-    'La liste est réduite à ce que vous cherchiez, et chaque carte dit d’un coup d’œil si le trajet est réservé.',
+    'Chaque carte dit d’un coup d’œil si le trajet est réservé, et la barre réduit ou réorganise la liste chaque fois que vous en avez besoin.',
   'help.guide.transports-list.tip.1':
-    'Les puces et les groupes repliés sont retenus par voyage, si bien que l’onglet se rouvre comme vous l’avez laissé.',
+    'L’onglet se souvient de la façon dont vous l’avez laissé : la vue, le regroupement et le tri dans ce navigateur, les sections repliées pour chaque voyage, et les filtres jusqu’à ce que vous fermiez l’onglet du navigateur.',
   'help.guide.transports-list.tip.2':
-    'Importer depuis un fichier et AirTrail ne rejoignent Transport dans la barre d’outils que lorsque le serveur sait lire les confirmations de réservation et lorsqu’une instance AirTrail est connectée. Sans eux, la liste se remplit à la main et par la recherche de transports en commun.',
+    'Importer des confirmations de réservation et Importer depuis AirTrail, les deux icônes avant Transport, ne sont là que lorsque le serveur sait lire les confirmations et lorsqu’une instance AirTrail est connectée. Sans eux, la liste se remplit à la main et par la recherche de transports en commun.',
   // add-transport
   'help.guide.add-transport.title': 'Ajouter un transport à un jour',
   'help.guide.add-transport.goal':
     'Mettre le trajet qui vous mène d’une étape à la suivante dans le jour où il a lieu.',
   'help.guide.add-transport.step.1':
-    'Chaque en-tête de jour porte quatre petits boutons à sa droite. Cliquez sur le plus, dont l’infobulle indique Ajouter un transport. Le formulaire s’ouvre avec Date déjà réglée sur ce jour.',
+    'Dans l’en-tête du jour où a lieu le trajet, cliquez sur le +, dont l’infobulle indique Ajouter au jour, et choisissez Ajouter un transport. Le formulaire s’ouvre avec ce jour déjà rempli.',
   'help.guide.add-transport.step.2':
-    'Type de réservation choisit ce que vous prenez : Vol, Train, Bus, Voiture, Taxi, Vélo, Croisière, Ferry ou Autre. Le formulaire suit. Un vol reçoit un aéroport sur chaque tronçon, un train une chaîne de gares, une voiture les mots Prise en charge et Restitution ainsi que Étapes en chemin.',
+    'La pastille de type du bandeau d’en-tête dit ce que vous prenez, Vol pour commencer. Cliquez dessus pour Vol, Train, Bus, Voiture, Taxi, Vélo, Croisière, Ferry ou Autre, et le formulaire suit : un vol reçoit un aéroport à chaque arrêt, un train une chaîne de gares, une voiture Prise en charge et Restitution ainsi que Étapes en chemin.',
   'help.guide.add-transport.step.3':
-    'Titre est le seul champ qui doit être rempli ; Ajouter reste gris sans lui. Écrivez ce que vous reconnaîtriez sur un tableau d’affichage.',
+    'Tapez le titre directement dans le bandeau d’en-tête, là où figure l’exemple gris. C’est le seul champ qui doit être rempli : tant qu’il ne l’est pas, la ligne en dessous affiche Titre * et Ajouter reste gris. Écrivez ce que vous reconnaîtriez sur un tableau d’affichage.',
   'help.guide.add-transport.step.4':
-    'De et À cherchent une gare, un port ou une adresse. Tapez au moins trois lettres et choisissez un résultat dans la liste. Un nom seulement tapé ne porte pas de coordonnées, il ne trace donc rien sur la carte.',
+    'Sous Itinéraire, De et À prennent une gare, un port ou une adresse. Les lieux du voyage sont proposés avant que vous tapiez ; tapez au moins trois lettres pour chercher, et choisissez un résultat. Un nom seulement tapé et jamais choisi n’est pas enregistré, et ne trace rien sur la carte.',
   'help.guide.add-transport.step.5':
-    'Date et Heure de début disent quand il roule, Date de fin et Heure de fin quand il est terminé ; un trajet qui arrive le lendemain y prend le jour suivant. Code de réservation, Statut avec En attente ou Confirmée, et Notes sont facultatifs.',
+    'Date et Heure de début disent quand il roule, Date de fin et Heure de fin quand il est terminé ; un trajet qui arrive le lendemain y prend le jour suivant. Code de réservation et Notes, plus bas, sont facultatifs, et un clic sur la pastille En attente du bandeau d’en-tête la fait passer à Confirmée.',
   'help.guide.add-transport.step.6': 'Cliquez sur Ajouter.',
   'help.guide.add-transport.result':
     'Le transport est une ligne sur le jour, à son heure parmi les étapes, et une carte dans l’onglet Transports sous En attente ou Confirmée.',
@@ -3719,13 +3780,33 @@ const help: TranslationStrings = {
   'help.guide.add-transport.tip.2':
     'Joindre un fichier sous Fichiers prend le billet, et Créer une dépense sous Coûts enregistre la réservation et ouvre l’éditeur de Coûts pour le prix.',
   'help.guide.add-transport.tip.3':
-    'Voyageurs marque qui est de ce trajet. Dès qu’un transport a des voyageurs, la barre d’outils de l’onglet fait pousser leurs avatars et filtre la liste par eux.',
+    'Voyageurs, le premier bloc du formulaire, marque qui est de ce trajet. Dès que le voyage a plus d’un membre et qu’un transport nomme quelqu’un, Filtrer, dans l’onglet, propose aussi Voyageurs, qui réduit la liste aux trajets d’une personne.',
+  // import-transport-file
+  'help.guide.import-transport-file.title': 'Lire un vol dans son billet électronique',
+  'help.guide.import-transport-file.goal':
+    'Laissez TREK tirer un vol, un train ou un ferry du billet envoyé par le transporteur, et contrôlez-le avant qu’il soit enregistré.',
+  'help.guide.import-transport-file.step.1':
+    'Dans la barre de l’onglet Transports, cliquez sur l’icône de téléchargement avant Transport, dont l’infobulle indique Importer des confirmations de réservation. La boîte de dialogue de ce nom s’ouvre, la même que celle de l’onglet Résa.',
+  'help.guide.import-transport-file.step.2':
+    'Déposez le billet sur la zone, ou cliquez-la et choisissez-le : EML, PDF, PKPass, HTML et TXT, jusqu’à cinq fichiers de 10 Mo chacun. Les fichiers que vous avez choisis sont nommés sur la zone.',
+  'help.guide.import-transport-file.step.3':
+    'Cliquez sur Importer. Le dialogue se ferme aussitôt ; la lecture se fait en arrière-plan.',
+  'help.guide.import-transport-file.step.4':
+    'Une carte en bas à droite rend compte de l’exécution sous le nom du fichier. Analyse des fichiers… devient une coche quand la lecture est finie, et la carte propose Importer. Cliquez dessus.',
+  'help.guide.import-transport-file.step.5':
+    'Un vol s’ouvre dans Ajouter un transport, déjà rempli : la pastille de type sur Vol, la compagnie et le numéro de vol comme titre dans le bandeau d’en-tête, les deux aéroports sous Itinéraire avec Départ et Arrivée, leurs heures et leurs fuseaux horaires, Compagnie aérienne et N° de vol, le Code de réservation et le billet sous Fichiers. Contrôlez-le et cliquez sur Ajouter.',
+  'help.guide.import-transport-file.result':
+    'Le vol est une carte sous En attente dans l’onglet Transports et une ligne sur le jour de son départ, avec le billet sous Fichiers, et avec les deux aéroports connus il dessine sa courbe sur la carte.',
+  'help.guide.import-transport-file.tip.1':
+    'Les deux onglets partagent un seul import : un fichier qui contient un vol et un hôtel ouvre le vol dans Ajouter un transport et l’hôtel dans Nouvelle réservation, l’un après l’autre, quel que soit l’onglet de départ.',
+  'help.guide.import-transport-file.tip.2':
+    'Les aéroports sont placés par leur code. Une gare ou un port que la lecture n’a pas su situer est nommé en ambre sur la carte d’import en bas à droite ; choisissez-le à la main sous Itinéraire avant de cliquer sur Ajouter, sinon le transport ne dessine rien sur la carte.',
   // plan-transit
   'help.guide.plan-transit.title': 'Planifier une liaison en transports en commun',
   'help.guide.plan-transit.goal':
     'Laisser TREK chercher les vrais trains et bus entre deux points d’un jour et poser dans le plan celui que vous choisissez.',
   'help.guide.plan-transit.step.1':
-    'Dans l’en-tête du jour, cliquez sur le bouton tram, Transports en commun. La recherche s’ouvre pour ce jour.',
+    'Cliquez sur le + dans l’en-tête du jour et choisissez Transports en commun. La recherche s’ouvre pour ce jour : le jour est la pastille du bandeau d’en-tête, et Manuel et Automatique, à côté, basculent entre cette recherche et le formulaire ordinaire.',
   'help.guide.plan-transit.step.2':
     'Départ et Arrivée prennent un arrêt ou une gare. Tant que le champ est vide, les étapes du jour lui-même et les hébergements du voyage sont proposés ; à partir de deux lettres, ce sont les gares de l’horaire qui sont cherchées. Inverser entre les deux champs retourne la liaison.',
   'help.guide.plan-transit.step.3':
@@ -3733,10 +3814,10 @@ const help: TranslationStrings = {
   'help.guide.plan-transit.step.4':
     'Les puces en dessous disent quels modes peuvent servir : Train, Métro, Tramway, Bus, Ferry et Téléphérique. Désactivez-en une pour l’exclure, au moins une reste active. Puis cliquez sur Rechercher.',
   'help.guide.plan-transit.step.5':
-    'Chaque résultat donne le départ et l’arrivée, la durée, le nombre de correspondances et la marche, et les lignes dans leurs propres couleurs. Cliquez sur l’un pour le déplier arrêt par arrêt, avec les voies et les marches entre les lignes.',
+    'Chaque résultat donne le départ et l’arrivée, la durée, le nombre de correspondances et la marche, et les lignes en badges, dans leurs propres couleurs quand l’horaire les donne. Cliquez sur l’un pour le déplier tronçon par tronçon, avec les arrêts où vous montez et changez, les voies et les marches entre les lignes.',
   'help.guide.plan-transit.step.6': 'Cliquez sur Ajouter au jour.',
   'help.guide.plan-transit.result':
-    'La liaison est une ligne sur le jour avec ses lignes de transport, ses correspondances et son temps de marche, et une carte dans l’onglet Transports sous Transports en commun automatisés.',
+    'La liaison est une ligne sur le jour avec ses badges de lignes, dont le chevron la déplie tronçon par tronçon, et une carte dans l’onglet Transports parmi les trajets confirmés, teintée en bleu.',
   'help.guide.plan-transit.tip.1':
     'Les liaisons viennent de Transitous, un service communautaire libre bâti sur des données horaires publiques : pas de clé, pas de compte. Un administrateur peut diriger la recherche vers Google à la place.',
   'help.guide.plan-transit.tip.2':
@@ -3746,27 +3827,27 @@ const help: TranslationStrings = {
   // change-transit-route
   'help.guide.change-transit-route.title': 'Ouvrir et modifier une liaison planifiée',
   'help.guide.change-transit-route.goal':
-    'Lire la liaison arrêt par arrêt, la renommer, ou rechercher de nouveau l’itinéraire.',
+    'Lire la liaison ligne par ligne, la renommer, ou rechercher de nouveau l’itinéraire.',
   'help.guide.change-transit-route.step.1':
-    'Dans l’onglet Transports, les liaisons planifiées sont sous Transports en commun automatisés. Cliquez sur la carte ; la liaison s’ouvre comme une réservation.',
+    'Dans l’onglet Transports, une liaison planifiée est une carte au bandeau d’en-tête bleu, parmi les trajets confirmés dans l’ordre chronologique ; avec Transports en commun dans une section à part activé sous Options d’affichage, elle se trouve plutôt sous Transports en commun automatisés. Cliquez sur la carte ; la liaison s’ouvre comme une réservation.',
   'help.guide.change-transit-route.step.2':
-    'Durée, Correspondances et Marche sont en haut. Itinéraire en dessous parcourt la liaison arrêt par arrêt, avec les voies et les marches entre les lignes.',
+    'Les tuiles en haut donnent le départ et l’arrivée avec leurs arrêts, la Durée, les Correspondances et la Marche. Itinéraire en dessous parcourt la liaison ligne par ligne, avec les heures, les voies et les marches entre les lignes.',
   'help.guide.change-transit-route.step.3':
-    "Modifier l'itinéraire, au pied de la réservation, relance la recherche, déjà remplie avec les deux extrémités de cette liaison et son jour.",
+    'Modifier l’itinéraire, au pied de la réservation, rouvre la recherche, déjà remplie avec les deux extrémités de cette liaison et son jour.',
   'help.guide.change-transit-route.step.4':
-    'Choisissez une autre liaison et cliquez sur Ajouter au jour ; elle prend la place de l’ancienne. Modifier, à l’autre bout de la même barre, ouvre au contraire le formulaire de transport ordinaire, où vivent le Code de réservation, le Statut, les voyageurs, les notes et les fichiers.',
+    'Cliquez sur Rechercher, dépliez une autre liaison et cliquez sur Ajouter au jour ; elle prend la place de l’ancienne. Modifier, tout à droite du pied de la réservation, ouvre au contraire le formulaire de transport ordinaire, où vivent le Code de réservation, les voyageurs, les notes et les fichiers.',
   'help.guide.change-transit-route.result':
     'Le trajet porte le nouvel itinéraire, et sa carte dans l’onglet Transports montre les nouvelles lignes et les nouvelles heures.',
   'help.guide.change-transit-route.tip.1':
-    'Le titre dans l’en-tête de la réservation renomme la liaison sans toucher à l’itinéraire. Ses notes s’écrivent dans le formulaire de transport, derrière Modifier.',
+    'Cliquez sur le titre dans l’en-tête de la réservation pour renommer la liaison sans toucher à l’itinéraire. Ses notes s’écrivent dans le formulaire de transport, derrière Modifier.',
   'help.guide.change-transit-route.tip.2':
-    'Supprimer au pied de la réservation sort la liaison du voyage ; le jour garde ses étapes.',
+    'La corbeille au pied de la réservation supprime la liaison après une question ; le jour garde ses étapes.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Changer la façon de parcourir un tronçon',
   'help.guide.leg-travel-mode.goal':
     'Faire à pied un tronçon d’un jour autrement parcouru en voiture, ou confier ce tronçon à la recherche de transports en commun.',
   'help.guide.leg-travel-mode.step.1':
-    'Les connecteurs entre les étapes n’apparaissent qu’une fois l’itinéraire du jour activé. Cliquez sur le jour pour l’ouvrir, puis sur Itinéraire sous ses étapes.',
+    'Les connecteurs entre les étapes n’apparaissent qu’une fois l’itinéraire du jour activé. Cliquez sur l’en-tête du jour pour l’ouvrir, puis sur Itinéraire dans la barre sous ses étapes.',
   'help.guide.leg-travel-mode.step.2':
     'Chaque connecteur nomme le temps de trajet et la distance de ce tronçon, avec l’icône du mode dans lequel il a été calculé : une voiture pour la conduite, un pied pour la marche.',
   'help.guide.leg-travel-mode.step.3':
@@ -3786,32 +3867,32 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Corriger une heure, un quai ou un code de réservation, ou sortir le trajet du voyage.',
   'help.guide.edit-transport.step.1':
-    'Dans le plan du jour, un transport est une ligne colorée entre les étapes. Cliquez dessus ; sa réservation s’ouvre avec les horaires, l’itinéraire et le Code de réservation.',
+    'Dans le plan du jour, un transport est une ligne entre les étapes, teintée selon son type. Cliquez dessus et sa réservation s’ouvre : le statut, le type, les jours et le Code de réservation en pastilles dans son en-tête, les heures de départ et d’arrivée avec leurs aéroports ou leurs gares en dessous.',
   'help.guide.edit-transport.step.2':
-    'Modifier, au pied de la réservation, ouvre le formulaire qui l’a créé, avec Modifier le transport dans sa barre de titre. Tout peut changer : le type, l’itinéraire, les jours et les heures, le Code de réservation, le Statut.',
+    'Modifier, au pied de la réservation, ouvre le formulaire qui l’a créé, avec Modifier le transport au-dessus du titre dans son bandeau d’en-tête. Tout peut y changer : le titre, les pastilles de statut et de type, l’itinéraire, les jours et les heures, le Code de réservation.',
   'help.guide.edit-transport.step.3':
     'L’itinéraire d’un vol est une chaîne d’aéroports, celui d’un train une chaîne de gares. Ajouter une escale en met une autre au milieu, et chaque tronçon garde ses propres heures et son propre numéro de vol ou de train.',
   'help.guide.edit-transport.step.4':
-    'Cliquez sur Mettre à jour. Pour retirer complètement le transport, utilisez Supprimer au pied de sa réservation, ou la corbeille sur sa carte dans l’onglet Transports, et confirmez.',
+    'Cliquez sur Mettre à jour. Pour retirer complètement le transport, utilisez la corbeille à gauche de la même barre, celle du pied de sa réservation ou celle de sa carte dans l’onglet Transports, et confirmez.',
   'help.guide.edit-transport.result':
     'Le changement se voit partout où le transport apparaît : l’onglet Transports, le jour où il roule, et sa ligne sur la carte.',
   'help.guide.edit-transport.tip.1':
-    "Le même formulaire s’ouvre des deux côtés : par Modifier dans la réservation qu’ouvre une ligne du plan du jour, et par le crayon sur la carte dans l’onglet Transports. Une liaison en transports en commun planifiée s’ouvre elle aussi comme une réservation ; Modifier l'itinéraire y relance la recherche, et Modifier mène à ce formulaire.",
+    'Le même formulaire s’ouvre des deux côtés : par Modifier dans la réservation qu’ouvre une ligne du plan du jour, et par le crayon sur la carte dans l’onglet Transports. Une liaison en transports en commun planifiée s’ouvre elle aussi comme une réservation ; Modifier l’itinéraire y rouvre la recherche, et Modifier mène à ce formulaire.',
   'help.guide.edit-transport.tip.2':
     'Déplacer un transport vers un autre jour n’a pas besoin du formulaire du tout : glissez sa ligne d’une carte de jour à la suivante.',
   // transport-on-map
   'help.guide.transport-on-map.title': 'Tracer un transport sur la carte',
   'help.guide.transport-on-map.goal': 'Voir où passent réellement un vol, un trajet en voiture ou une liaison.',
   'help.guide.transport-on-map.step.1':
-    'Un transport dont les deux extrémités sont posées porte une petite icône d’itinéraire sur sa ligne dans le plan du jour. Cliquez dessus ; son libellé devient Masquer les itinéraires.',
+    'Un transport dont les deux extrémités sont posées porte une petite icône d’itinéraire sur sa ligne dans le plan du jour. Cliquez dessus ; son infobulle devient Masquer les itinéraires.',
   'help.guide.transport-on-map.step.2':
     'L’itinéraire est tracé sur la carte, avec un marqueur en pastille à chaque extrémité portant l’icône du transport.',
   'help.guide.transport-on-map.step.3':
-    'Cliquez sur un marqueur d’extrémité pour lire la réservation sans quitter la carte : les heures, la Compagnie aérienne et le N° de vol, le Code de réservation et l’adresse. Fermer range la fiche.',
+    'Cliquez sur un marqueur d’extrémité et la réservation s’ouvre juste par-dessus la carte : le statut, le type, les jours et le Code de réservation dans son en-tête, en dessous les heures avec leurs aéroports ou leurs gares, la compagnie aérienne et le numéro de vol. Fermer, dans son bandeau d’en-tête, la range.',
   'help.guide.transport-on-map.step.4':
     'L’icône d’itinéraire dans la barre au-dessus des jours fait tout le voyage d’un coup : Afficher tous les itinéraires, et Masquer tous les itinéraires pour les effacer de nouveau.',
   'help.guide.transport-on-map.step.5':
-    'Une liaison en transports en commun planifiée n’a pas d’icône à elle. Elle est tracée par le bouton Itinéraire du jour, et c’est pourquoi Masquer tous les itinéraires ne l’efface pas tant que l’itinéraire de ce jour est encore actif.',
+    'Une liaison en transports en commun planifiée n’a pas d’icône d’itinéraire à elle. Elle est tracée par le bouton Itinéraire du jour, et c’est pourquoi Masquer tous les itinéraires ne l’efface pas tant que l’itinéraire de ce jour est encore actif.',
   'help.guide.transport-on-map.result':
     'Les itinéraires sont sur la carte avec un marqueur à chaque extrémité, et ils y restent jusqu’à ce que vous les éteigniez de nouveau.',
   'help.guide.transport-on-map.tip.1':
@@ -3820,32 +3901,12 @@ const help: TranslationStrings = {
     'Une réservation confirmée est une ligne pleine, une réservation en attente une ligne pointillée. Le réglage Étiquettes des itinéraires inscrit le code de l’aéroport ou le nom de la gare dans les marqueurs d’extrémité.',
   'help.guide.transport-on-map.tip.3':
     'Afficher tous les itinéraires fait table rase, ce n’est pas une couche : il jette ce que les icônes individuelles avaient réglé, appuyer deux fois vous laisse donc avec tout activé ou tout désactivé.',
-  // import-transport-file
-  'help.guide.import-transport-file.title': 'Lire un vol dans son billet électronique',
-  'help.guide.import-transport-file.goal':
-    'Laissez TREK tirer un vol, un train ou un ferry du billet envoyé par le transporteur, et contrôlez-le avant qu’il soit enregistré.',
-  'help.guide.import-transport-file.step.1':
-    'Cliquez sur Importer depuis un fichier dans la barre d’outils de l’onglet Transports, à côté de Transport. Importer des confirmations de réservation s’ouvre, le même dialogue que celui de l’onglet Réservations.',
-  'help.guide.import-transport-file.step.2':
-    'Déposez le billet sur la zone, ou cliquez-la et choisissez-le : EML, PDF, PKPass, HTML et TXT, jusqu’à cinq fichiers de 10 Mo chacun. Les fichiers que vous avez choisis sont nommés sur la zone.',
-  'help.guide.import-transport-file.step.3':
-    'Cliquez sur Importer. Le dialogue se ferme aussitôt ; la lecture se fait en arrière-plan.',
-  'help.guide.import-transport-file.step.4':
-    'Une carte en bas à droite rend compte de l’exécution sous le nom du fichier. Analyse des fichiers… devient une coche quand la lecture est finie, et la carte propose Importer. Cliquez dessus.',
-  'help.guide.import-transport-file.step.5':
-    'Un vol s’ouvre dans Ajouter un transport, déjà rempli : Type de réservation sur Vol, la compagnie et le numéro de vol dans Titre, les deux aéroports sous Itinéraire avec Départ et Arrivée, leurs heures et leurs fuseaux horaires, Compagnie aérienne et N° de vol, le Code de réservation et le billet sous Fichiers. Contrôlez-le et cliquez sur Ajouter.',
-  'help.guide.import-transport-file.result':
-    'Le vol est une carte dans En attente sur l’onglet Transports et une ligne sur le jour de son départ, avec le billet sous Fichiers, et avec les deux aéroports connus il dessine sa courbe sur la carte.',
-  'help.guide.import-transport-file.tip.1':
-    'Les deux onglets partagent un seul import : un fichier qui contient un vol et un hôtel ouvre le vol dans Ajouter un transport et l’hôtel dans Nouvelle réservation, l’un après l’autre, quel que soit l’onglet de départ.',
-  'help.guide.import-transport-file.tip.2':
-    'Les aéroports sont placés par leur code. Une gare ou un port que la lecture n’a pas su situer est nommé en ambre sur la carte ; choisissez-le à la main sous Itinéraire avant de cliquer sur Ajouter, sinon le transport ne dessine rien sur la carte.',
   // airtrail-import
   'help.guide.airtrail-import.title': 'Importer des vols depuis AirTrail',
   'help.guide.airtrail-import.goal':
     'Amenez d’un coup dans le voyage les vols que vous tenez déjà dans AirTrail, et laissez-les suivre AirTrail à partir de là.',
   'help.guide.airtrail-import.step.1':
-    'Avec le module AirTrail actif et votre instance connectée sous Intégrations dans Paramètres, la barre d’outils de l’onglet Transports porte un bouton AirTrail à côté de Transport. Cliquez dessus.',
+    'Avec le module AirTrail actif et votre instance connectée sous Intégrations dans Paramètres, la barre de l’onglet Transports porte une icône d’avion avant Transport, Importer depuis AirTrail. Cliquez dessus.',
   'help.guide.airtrail-import.step.2':
     'Importer depuis AirTrail liste les vols de votre compte en deux groupes. Pendant ce voyage tient ceux datés dans le voyage, déjà cochés ; Autres vols tient le reste, non cochés. Un vol déjà dans le voyage est grisé et marqué Importé.',
   'help.guide.airtrail-import.step.3':
@@ -3853,17 +3914,17 @@ const help: TranslationStrings = {
   'help.guide.airtrail-import.step.4':
     'Les vols qui se suivent, chacun partant dans la journée de l’aéroport où le précédent a atterri, sont encadrés ensemble. La case en dessous, Importer comme un seul vol avec escale à cet aéroport, est déjà cochée : laissez-la pour une seule réservation avec escale, ou décochez-la pour importer les segments comme des vols séparés.',
   'help.guide.airtrail-import.step.5':
-    'Cliquez sur Importer. Le bouton compte les vols cochés, et le message qui suit dit combien sont entrés.',
+    'Cliquez sur le bouton en bas à droite, qui compte les vols cochés, comme dans Importer 2. Le message qui suit dit combien sont entrés.',
   'help.guide.airtrail-import.step.6':
-    'Les vols sont des cartes sous Confirmée, chacune avec un badge AirTrail bleu à côté de son statut, et des lignes sur les jours où ils ont lieu. Une correspondance jointe est une seule carte, avec son itinéraire passant par l’escale.',
+    'Les vols sont des cartes sous Confirmée, chacune avec une pastille AirTrail bleue à côté de son titre, et des lignes sur les jours où ils ont lieu. Une correspondance jointe est une seule carte, avec son itinéraire passant par l’escale.',
   'help.guide.airtrail-import.result':
-    'Les vols venus d’AirTrail sont des cartes dans l’onglet Transports et des lignes sur leurs jours, chacune portant le badge AirTrail qui dit d’où elle vient.',
+    'Les vols venus d’AirTrail sont des cartes dans l’onglet Transports et des lignes sur leurs jours, chacune portant la pastille AirTrail qui dit d’où elle vient.',
   'help.guide.airtrail-import.tip.1':
-    'Un vol déjà dans le voyage sous le même numéro et la même date est sauté, et un message dit combien l’ont été. Annuler dans la barre d’outils au-dessus des jours reprend tout l’import.',
+    'Un vol déjà dans le voyage sous le même numéro et la même date est sauté, et un message dit combien l’ont été. La flèche d’annulation dans la barre d’outils au-dessus des jours reprend tout l’import.',
   'help.guide.airtrail-import.tip.2':
-    'AirTrail reste la source de vérité. TREK lit ses changements quand vous ouvrez le voyage et toutes les quelques minutes en arrière-plan ; un vol supprimé là-bas garde sa carte, avec le badge passé à Non synchronisé. Les modifications faites dans TREK ne repartent que si Réécrire les modifications dans AirTrail est activé sous Intégrations.',
+    'AirTrail reste la source de vérité. TREK lit ses changements quand vous ouvrez le voyage et toutes les quelques minutes en arrière-plan ; un vol supprimé là-bas garde sa carte, avec sa pastille passée à Non synchronisé. Les modifications faites dans TREK ne repartent que si Réécrire les modifications dans AirTrail est activé sous Intégrations.',
   'help.guide.airtrail-import.tip.3':
-    'Une correspondance jointe n’a pas de vol AirTrail unique à suivre, c’est donc un import ponctuel : elle garde le badge bleu, et survoler le badge le dit. Il en va de même pour un vol synchronisé auquel vous donnez une escale à la main.',
+    'Une correspondance jointe n’a pas de vol AirTrail unique à suivre, c’est donc un import ponctuel : elle garde la pastille bleue, et en pointant la pastille on le lit. Il en va de même pour un vol synchronisé auquel vous donnez une escale à la main.',
 
   // ── Screen: trip-roadtrip ─────────────────────────────────────────────────────────────
   'help.ctx.trip-roadtrip.title': 'Road trip',
@@ -3872,13 +3933,13 @@ const help: TranslationStrings = {
   'help.ctx.trip-roadtrip.bullet.1':
     'Jours et Road trip en haut de la colonne de gauche basculent entre le plan des jours et le trajet. Rien n’est copié et rien n’est modifié : Jours redonne le plan exactement tel qu’il était.',
   'help.ctx.trip-roadtrip.bullet.2':
-    'La tête de la liste totalise le voyage : Distance, Temps de conduite et Étapes. En dessous vient une fiche par jour, avec les kilomètres propres au jour, le nombre d’arrêts pour lesquels il existe, ce qu’il dépasse, et un badge Trace.',
+    'La tête de la liste totalise le voyage : Distance, Temps de conduite et Étapes. En dessous vient une fiche pour chaque jour avec un trajet, avec les kilomètres propres au jour, le nombre d’arrêts pour lesquels il existe, ce qu’il dépasse, et un badge Trace.',
   'help.ctx.trip-roadtrip.bullet.3':
     'Un arrêt numéroté est un lieu pour lequel le jour existe. Un arrêt en chemin, carburant, recharge, une aire de repos, porte l’icône de son type au lieu d’un numéro et n’est pas compté. Cliquez sur un numéro pour changer ce qu’il est, et sur le badge Durée pour dire combien de temps il prend.',
   'help.ctx.trip-roadtrip.bullet.4':
     'Entre deux arrêts, une bande de conduite donne l’étape en distance et en temps. Cliquez dessus pour Itinéraires pour cette étape, ou cliquez sur l’itinéraire tracé sur la carte pour courber l’étape par un point de passage.',
   'help.ctx.trip-roadtrip.bullet.5':
-    'La colonne de droite devient Le long de l’itinéraire : choisissez un jour, ce que vous cherchez et la largeur du couloir, puis Rechercher. Ajouter pose un résultat sur le trajet à l’endroit où il est réellement passé.',
+    'La colonne de droite devient Le long de l’itinéraire : choisissez sur une même ligne ce que vous cherchez et le jour, la largeur du couloir, puis Rechercher. Le plus sur un résultat, Ajouter, ouvre une courte boîte de dialogue qui le pose sur le trajet à l’endroit où il est réellement passé.',
   'help.ctx.trip-roadtrip.bullet.6':
     'Les Réglages de conduite en dessous tiennent les limites, la voiture et son autonomie, les horaires quotidiens, ce qu’il faut éviter et la façon dont la ligne est tracée. Ils appartiennent au voyage, donc tout le monde planifie avec la même voiture.',
   // roadtrip-mode
@@ -3889,7 +3950,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-mode.step.2':
     'La tête de la liste totalise tout le voyage : Distance, Temps de conduite et Étapes.',
   'help.guide.roadtrip-mode.step.3':
-    'En dessous vient une fiche par jour. Son en-tête porte le numéro et la date du jour, la conduite en distance et en temps, et le nombre d’arrêts pour lesquels le jour existe.',
+    'En dessous vient une fiche pour chaque jour avec un trajet ; un jour sans rien à conduire est laissé de côté. Son en-tête porte le numéro et la date du jour, la conduite en distance et en temps, et le nombre d’arrêts pour lesquels le jour existe.',
   'help.guide.roadtrip-mode.step.4':
     'Dans la fiche, le jour est une chaîne : un arrêt numéroté par lieu, une bande de conduite entre chaque paire, et l’heure d’arrivée au bord droit.',
   'help.guide.roadtrip-mode.step.5':
@@ -3907,45 +3968,47 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.goal':
     'Transformez un lieu du trajet en arrêt en chemin, et dites combien de temps prend chaque arrêt.',
   'help.guide.roadtrip-stops.step.1':
-    'Cliquez sur le numéro devant un arrêt dans la liste. Son libellé est En faire un arrêt en chemin, et il ouvre Type d’arrêt.',
+    'Cliquez sur le numéro devant un arrêt dans la liste. Son libellé est En faire un arrêt en chemin, et il ouvre en dessous les types d’arrêt, sous forme d’une rangée de disques colorés.',
   'help.guide.roadtrip-stops.step.2':
-    'Choisissez un type : Hébergement, Carburant, Recharge, Aire de repos, Camping, Restauration ou À voir. Le numéro devient l’icône de ce type et les arrêts en dessous sont renumérotés.',
+    'Choisissez un type ; chaque disque dit son nom quand vous le pointez : Hébergement, Carburant, Recharge, Aire de repos, Camping, Restauration ou À voir. Le numéro devient l’icône de ce type et les arrêts en dessous sont renumérotés.',
   'help.guide.roadtrip-stops.step.3':
     'Un arrêt en chemin n’est pas une destination, l’en-tête du jour compte donc un arrêt de moins.',
   'help.guide.roadtrip-stops.step.4':
     'Cliquez de nouveau sur l’icône, Changer le type d’arrêt, et choisissez Redevenir une destination pour rendre son numéro à l’arrêt.',
   'help.guide.roadtrip-stops.step.5': 'Chaque arrêt porte un badge Durée. Cliquez dessus pour ouvrir Temps sur place.',
   'help.guide.roadtrip-stops.step.6':
-    'Réglez la durée avec le curseur, avec les boutons moins et plus ou avec l’un des préréglages, regardez ce que font Arrivee et Depart, puis cliquez sur Enregistrer.',
+    'Réglez la durée avec le curseur, avec les boutons moins et plus ou avec l’un des préréglages, regardez Départ bouger tandis qu’Arrivée reste à l’heure où le trajet arrive, puis cliquez sur Enregistrer.',
   'help.guide.roadtrip-stops.result':
-    'L’arrêt dont vous avez réglé la durée porte l’heure sur son badge Durée et chaque arrivée après lui a bougé avec, et celui que vous avez envoyé vers un type puis ramené est de nouveau une destination numérotée.',
+    'L’arrêt dont vous avez réglé la durée porte sa nouvelle durée sur son badge Durée et chaque arrivée après lui a bougé avec, et celui que vous avez envoyé vers un type puis ramené est de nouveau une destination numérotée.',
   'help.guide.roadtrip-stops.tip.1':
     'Une durée appartient au lieu, pas à une visite : un lieu planifié sur deux jours reçoit le même temps sur les deux.',
   'help.guide.roadtrip-stops.tip.2':
     'Les arrêts en chemin apparaissent aussi sous Jours. Décocher Afficher aussi dans Jours, sous Arrêts de service dans les Réglages de conduite, les garde uniquement dans Road trip.',
-  'help.guide.roadtrip-stops.tip.3': 'Aucune duree, dans la même boîte de dialogue, retire de nouveau ce temps.',
+  'help.guide.roadtrip-stops.tip.3': 'Aucune durée, dans la même boîte de dialogue, retire de nouveau ce temps.',
+  'help.guide.roadtrip-stops.tip.4':
+    'Cliquez sur un arrêt en chemin ou sur une nuit réservée pour ouvrir sa fiche par-dessus la carte. Avec Road trip activé, Modifier y ouvre la boîte de dialogue compacte qu’utilise la recherche au lieu du formulaire de lieu, et Plus de détails, dans cette boîte de dialogue, ouvre le formulaire complet.',
   // roadtrip-corridor
   'help.guide.roadtrip-corridor.title': 'Trouver du carburant, à manger et un lit le long de l’itinéraire',
   'help.guide.roadtrip-corridor.goal':
     'Cherchez sur la route que vous roulez vraiment, et posez ce que vous trouvez sur la bonne étape.',
   'help.guide.roadtrip-corridor.step.1':
-    'Choisissez le jour en haut de Le long de l’itinéraire. Seuls les jours dont l’itinéraire est calculé sont proposés.',
+    'Sous Recherche de, ouvrez la liste et cochez ce qu’il vous faut. Carburant, Recharge, Aire de repos, Camping, Hébergement, Restauration et À voir se combinent : la liste reste ouverte pour un deuxième choix, et la ligne montre ensuite chaque type par son icône.',
   'help.guide.roadtrip-corridor.step.2':
-    'Sous Recherche de, cochez ce qu’il vous faut. Carburant, Recharge, Aire de repos, Camping, Hébergement, Restauration et À voir se combinent.',
+    'Choisissez le jour dans le menu déroulant au bout de la même ligne. Il propose les jours pour lesquels la liste a une fiche, et Rechercher attend que l’itinéraire du jour choisi soit calculé.',
   'help.guide.roadtrip-corridor.step.3':
     'Sous Dans un rayon de, choisissez jusqu’où chercher de part et d’autre de la route, 2 km, 5 km ou 10 km, puis cliquez sur Rechercher.',
   'help.guide.roadtrip-corridor.step.4':
     'Les résultats reviennent groupés par type, dans l’ordre où vous les passez, chacun avec sa position le long du jour et sa distance hors itinéraire.',
   'help.guide.roadtrip-corridor.step.5':
-    'Ajouter sur un résultat ouvre Ajouter comme arrêt. La boîte dit sur quel jour et à quelle position l’arrêt se pose, demande le type et le temps sur place, et Ajouter le met sur le trajet.',
+    'Le plus sur un résultat, Ajouter, ouvre Ajouter comme arrêt. La boîte dit sur quel jour et à quelle position l’arrêt se pose et demande le Type d’arrêt et le Temps sur place. Ajouter le met sur le trajet ; Plus de détails ouvre plutôt le formulaire de lieu complet. Un résultat d’hébergement porte un lit au lieu du plus, Ajouter comme nuitée, et sa boîte propose Pause ou Nuitée ; une nuit ne demande que son Arrivée.',
   'help.guide.roadtrip-corridor.result':
-    'Les résultats sont listés dans l’ordre où vous les passez et tracés sur la carte, et celui que vous avez ajouté se pose sur le trajet à l’endroit où il est réellement passé.',
+    'L’arrêt que vous avez ajouté se pose sur le trajet à l’endroit où il est réellement passé, avec l’icône de son type. L’itinéraire du jour est recalculé en passant par lui, ce qui vide la liste : relancez la recherche pour le suivant.',
   'help.guide.roadtrip-corridor.tip.1':
     'Rien n’est cherché tant que vous n’appuyez pas sur Rechercher : une exécution représente de nombreuses requêtes vers un service partagé.',
   'help.guide.roadtrip-corridor.tip.2':
     'Filtrer par nom restreint ce qui est revenu sans redemander, et Effacer les résultats vide la liste et ses repères. Cliquez sur un résultat pour l’amener dans le champ de la carte.',
   'help.guide.roadtrip-corridor.tip.3':
-    'Un résultat peut aussi être glissé de la carte sur l’itinéraire tracé, c’est ainsi que vous choisissez vous-même l’étape là où la même route est parcourue deux fois. Ajouter manuellement, à côté de Rechercher, cherche plutôt un lieu par son nom.',
+    'Un résultat peut aussi être glissé de la carte sur l’itinéraire tracé, c’est ainsi que vous choisissez vous-même l’étape là où la même route est parcourue deux fois. Manuel, à côté de Rechercher, en ajoute un que la recherche n’a pas trouvé, en cherchant un lieu par son nom.',
   // roadtrip-via
   'help.guide.roadtrip-via.title': 'Courber une étape par un point de passage',
   'help.guide.roadtrip-via.goal': 'Envoyez une étape sur la route que vous voulez vraiment, sans y ajouter d’arrêt.',
@@ -3973,7 +4036,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.step.1':
     'Cliquez sur une bande de conduite dans la liste, la ligne entre deux arrêts qui donne l’étape en distance et en temps. Son libellé est Autres itinéraires.',
   'help.guide.roadtrip-alternatives.step.2':
-    'Itinéraires pour cette étape s’ouvre par-dessus la carte, une entrée par route, chacune tracée sur la carte dans sa propre couleur.',
+    'Itinéraires pour cette étape s’ouvre par-dessus la carte, une entrée par route avec sa longueur. La carte trace chaque route avec son temps de conduite : celle que vous suivez en bleu plein, les autres en bleu plus pâle.',
   'help.guide.roadtrip-alternatives.step.3':
     'Survolez une entrée pour allumer cette route. Actuel est la route empruntée et La plus rapide la plus rapide ; les autres disent de combien elles sont plus lentes, ou quelle classe de route elles laissent de côté.',
   'help.guide.roadtrip-alternatives.step.4':
@@ -3981,9 +4044,9 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.result':
     'L’étape emprunte la route que vous avez choisie, et la distance dans la liste ainsi que les arrivées suivantes changent avec elle.',
   'help.guide.roadtrip-alternatives.tip.1':
-    'Choisir une autre route pose un point de passage sur l’étape et remplace ceux qu’elle avait déjà ; choisir la route propre du calculateur les retire de nouveau.',
+    'Choisir une autre route la fait d’abord vérifier par le calculateur du road trip, puis maintient l’étape dessus avec aussi peu de points de passage que nécessaire, en remplaçant ceux qu’elle avait déjà. Un itinéraire que le calculateur ne suit pas n’est pas enregistré. Choisir la route propre du calculateur retire de nouveau les points de passage.',
   'help.guide.roadtrip-alternatives.tip.2':
-    'Sans autoroute, Sans peage et Sans ferry viennent d’un second moteur avec son propre modèle de vitesse, leurs temps ne sont donc pas comparables aux autres.',
+    'Sans autoroute, Sans péage et Sans ferry viennent d’un second moteur avec son propre modèle de vitesse, leurs temps ne sont donc pas comparables aux autres.',
   // roadtrip-limits
   'help.guide.roadtrip-limits.title': 'Régler la voiture et les limites de conduite',
   'help.guide.roadtrip-limits.goal':
@@ -3995,7 +4058,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.step.3':
     'Sous Véhicule, dites ce que vous conduisez. Carburant ne refait le plein qu’aux arrêts carburant, Électrique seulement aux arrêts de recharge, Les deux aux deux.',
   'help.guide.roadtrip-limits.step.4':
-    'Tapez vous-même Autonomie par plein, ou Autonomie par charge. Calculer d’après la voiture en dessous prend Réservoir et Consommation, ou Batterie et Consommation, et fait le calcul.',
+    'Tapez vous-même Autonomie par plein, ou Autonomie par charge. Calculer d’après la voiture, plus bas, prend Réservoir et Consommation, ou Batterie, Consommation et Usure batterie, et fait le calcul.',
   'help.guide.roadtrip-limits.step.5':
     'Éviter si possible est une préférence, pas une interdiction : un jour sans contournement emprunte quand même la route, et le dit dans son en-tête.',
   'help.guide.roadtrip-limits.step.6':
@@ -4007,7 +4070,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.tip.2':
     'Remplir jusqu’à dit jusqu’où un arrêt remplit, parce que personne ne recharge à 100 % sur la route. Un arrêt carburant ou de recharge peut le remplacer pour lui-même.',
   'help.guide.roadtrip-limits.tip.3':
-    'Ligne de l’itinéraire décide comment le trajet est tracé : Relier les jours calcule la nuit entre deux jours, et Une couleur par jour donne à chaque jour la sienne.',
+    'Sous Ligne de l’itinéraire, Relier les jours calcule aussi le trajet du dernier arrêt d’un jour au premier du lendemain, Commencer et finir chaque jour à votre hébergement fait commencer et finir un jour aux nuits réservées autour de lui, et Une couleur par jour trace chaque jour dans sa propre couleur.',
   // roadtrip-day-window
   'help.guide.roadtrip-day-window.title': 'Donner un début et une fin à la journée de conduite',
   'help.guide.roadtrip-day-window.goal':
@@ -4035,15 +4098,15 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-refuel.goal':
     'Trouvez où refaire le plein sur la portion que la voiture peut encore atteindre, et posez-le sur le trajet.',
   'help.guide.roadtrip-refuel.step.1':
-    'Avec une autonomie réglée, la liste trace une bande en travers de l’étape à l’endroit où elle s’épuise : Réservoir vide ici, et en dessous à quelle distance dans l’étape cela tombe.',
+    'Avec une autonomie réglée, la liste trace une bande en travers de l’étape à l’endroit où elle s’épuise : Réservoir vide ici, ou La batterie est vide ici pour une voiture électrique, et en dessous à quelle distance dans l’étape cela tombe.',
   'help.guide.roadtrip-refuel.step.2':
-    'La lampe sur la bande est le bouton. Chercher du carburant regarde le long de la route déjà parcourue, avec Recherche le long du trajet… pendant ce temps.',
+    'La lampe sur la bande est le bouton : Chercher du carburant, ou Chercher une borne pour une voiture électrique. Il regarde le long de la route avant ce point et affiche Recherche le long du trajet… pendant ce temps.',
   'help.guide.roadtrip-refuel.step.3':
     'Jusqu’à trois stations reviennent, chacune avec sa distance hors itinéraire et l’autonomie qu’elle laisserait en réserve.',
   'help.guide.roadtrip-refuel.step.4':
     'Le plus sur une proposition l’ajoute comme arrêt carburant. Ajouter comme arrêt s’ouvre avec le type et le temps déjà remplis, et Ajouter le pose sur l’étape à l’endroit où il est réellement passé.',
   'help.guide.roadtrip-refuel.result':
-    'L’arrêt est sur la bonne étape avec sa propre icône, l’autonomie repart de lui, et la bande a disparu.',
+    'L’arrêt se trouve sur la bonne étape avec sa propre icône, et l’autonomie repart de lui : la bande avance jusqu’à l’endroit où le réservoir s’épuise désormais, ou disparaît une fois le reste du trajet à portée.',
   'help.guide.roadtrip-refuel.tip.1':
     'L’autonomie compte depuis le dernier arrêt carburant ou de recharge, d’un jour à l’autre. Ce que vous conduisez décide des arrêts qui comptent : Carburant seulement le carburant, Électrique seulement la recharge.',
   'help.guide.roadtrip-refuel.tip.2':
@@ -4061,11 +4124,11 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-track.step.3':
     'Cliquez sur Suivre cette trace. TREK pose des points de passage là où le trajet s’écarte le plus de la trace, et recalcule, tour après tour.',
   'help.guide.roadtrip-track.step.4':
-    'Il dit combien de points de passage il a posés et à quelle distance le trajet reste désormais. Le bouton en dessous retire ces points de passage et rend le jour au calculateur ; fermer la boîte de dialogue garde la trace.',
+    'La boîte de dialogue dit combien de points de passage ont été posés et à quelle distance le trajet reste désormais, ou que le trajet suivait déjà la trace. Là où certains ont été posés, le bouton en dessous les retire et rend le jour au calculateur ; fermer la boîte de dialogue garde la trace.',
   'help.guide.roadtrip-track.result':
-    'Le trajet du jour suit la trace au lieu de la route choisie par le calculateur, et son badge Trace est allumé et nomme cette trace quand vous le survolez.',
+    'Le trajet du jour suit la trace au lieu de la route que le calculateur aurait choisie, et son badge Trace nomme la trace quand vous le pointez. Là où des points de passage maintiennent le trajet dessus, le badge est aussi allumé.',
   'help.guide.roadtrip-track.tip.1':
-    'Importez le fichier sous Jours avec Importer un fichier, en cochant Itinéraires ou Traces. Tant que le voyage n’en contient aucune, aucun jour ne porte le badge.',
+    'Importez le fichier sous Jours : dans la colonne des lieux, Importer un fichier derrière le bouton d’import, en cochant Itinéraires ou Traces (avec géométrie) pour un GPX, ou Chemins (LineStrings) pour un KML. Tant que le voyage ne contient aucune trace, aucun jour ne porte le badge.',
   'help.guide.roadtrip-track.tip.2':
     'Suivre une trace remplace les points de passage que les étapes du jour avaient déjà, façonnez donc une étape à la main après la trace, pas avant.',
 };

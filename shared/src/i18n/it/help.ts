@@ -1121,7 +1121,7 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.step.1':
     "In Travel & map, Mostra sempre i percorsi delle prenotazioni tiene voli e treni sulla mappa anche quando il loro giorno non è aperto; Esplora luoghi sulla mappa mostra la pillola per trovare luoghi; Ottimizza il percorso dall'alloggio fa partire il percorso da dove dormi.",
   'help.guide.travel-map-prefs.step.2':
-    'Nascondi codici di prenotazione nasconde i numeri di conferma finché non ci passi sopra; Etichette percorsi prenotati scrive il nome della prenotazione lungo il suo percorso.',
+    'Nascondi codici di prenotazione nasconde i numeri di conferma finché non ci passi sopra; Etichette percorsi prenotati mette il codice dell’aeroporto o il nome della stazione sulla pillola a ciascuna estremità del percorso di una prenotazione, dove altrimenti si vede solo l’icona.',
   'help.guide.travel-map-prefs.result':
     'La mappa del viaggio segue queste scelte su ogni viaggio, finché non le cambi di nuovo.',
   'help.guide.travel-map-prefs.tip.1':
@@ -1737,7 +1737,7 @@ const help: TranslationStrings = {
   'help.ctx.trip.summary':
     'Un viaggio, tutto intero: il programma con i suoi giorni, la mappa e i luoghi, e le schede per trasporti, prenotazioni, liste, costi, file e collaborazione. Ognuna di queste ha la sua schermata di aiuto sotto questa.',
   'help.ctx.trip.bullet.1':
-    'La barra delle schede: Programma, Trasporti, Prenotazioni, Liste, Costi, File e Collaborazione. Addon e plugin decidono quali schede esistono sul tuo TREK.',
+    'La barra delle schede: Programma, Trasporti, Pren., Liste, Costi, File e Collaborazione. Addon e plugin decidono quali schede esistono sul tuo TREK.',
   'help.ctx.trip.bullet.2':
     'Programma è tre colonne: i giorni a sinistra, la mappa al centro, i luoghi a destra. Prenotazioni e trasporti vivono dentro il programma, alla tappa e tra le tappe; le schede li elencano.',
   'help.ctx.trip.bullet.3':
@@ -1864,7 +1864,7 @@ const help: TranslationStrings = {
   'help.guide.create-place.step.4':
     'Controlla cosa contiene il modulo: il nome sta nell’intestazione della finestra ed è l’unico campo obbligatorio; la pillola Categoria sotto di esso sceglie una delle categorie del viaggio, e il + accanto ne crea una nuova sul momento. Indirizzo, Latitudine e Longitudine arrivano dalla ricerca o si digitano; Descrizione e Note sono tue; Sito web prende il link.',
   'help.guide.create-place.step.5':
-    'Clicca Aggiungi. Se un luogo con lo stesso nome è già nel viaggio, il modulo lo dice e il pulsante diventa Aggiungi comunque.',
+    'Clicca Aggiungi. Se un luogo con lo stesso nome o nello stesso punto è già nel viaggio, TREK lo dice e il pulsante diventa Aggiungi comunque.',
   'help.guide.create-place.result':
     'Il luogo è nella lista e sulla mappa, sotto Non pianificati finché non viene messo su un giorno.',
   'help.guide.create-place.tip.1':
@@ -2159,11 +2159,11 @@ const help: TranslationStrings = {
   'help.guide.bookings-in-plan.step.4':
     'Sulla mappa, l’interruttore su una riga di trasporto disegna il suo percorso; Mostra tutti i percorsi prenotati nella barra li disegna tutti.',
   'help.guide.bookings-in-plan.step.5':
-    'Per crearle: Aggiungi prenotazione su una tappa con il mouse sopra, Aggiungi trasporto e Trasporto pubblico nel menu + del giorno, e le schede Prenotazioni e Trasporti per la lista completa con importazione e file.',
+    'Per crearle: Aggiungi prenotazione su una tappa con il mouse sopra, Aggiungi trasporto e Trasporto pubblico nel menu + del giorno, e le schede Pren. e Trasporti per la lista completa con importazione e file.',
   'help.guide.bookings-in-plan.result':
     'Una prenotazione, un posto nel programma; le schede sono le stesse prenotazioni sotto forma di lista.',
   'help.guide.bookings-in-plan.tip.1':
-    'Confermata e In attesa è uno stato che imposti sulla prenotazione; il programma lo mostra sulla tappa, la scheda Prenotazioni le conta entrambe.',
+    'Confermata e In attesa è uno stato che imposti sulla prenotazione; il programma lo mostra sulla tappa, la scheda Pren. le conta entrambe.',
   'help.guide.bookings-in-plan.tip.2':
     'Un trasporto con un orario fisso non si può trascinare; cambia invece il suo orario nella prenotazione.',
   // export-plan
@@ -2397,17 +2397,17 @@ const help: TranslationStrings = {
   'help.ctx.trip-files.summary':
     'Ogni documento del viaggio in un unico elenco: biglietti, conferme, pass e immagini, ognuno con una nota, un collegamento al luogo o alla prenotazione a cui appartiene, e un cestino da cui può tornare fuori.',
   'help.ctx.trip-files.bullet.1':
-    'Trascina qui i file, in alto, prende i file; un clic sul riquadro apre la finestra di scelta dei file. La riga sotto elenca i tipi di file che questo TREK accetta e il limite di 50 MB per file.',
+    'Trascina qui i file, il riquadro tratteggiato sotto la barra, prende i file; un clic su di esso apre la finestra di scelta dei file. Dentro stanno i tipi di file che questo TREK accetta e Max 50 MB, il limite per file.',
   'help.ctx.trip-files.bullet.2':
-    'Le schede dicono cosa mostra l’elenco: Tutti, PDF, Immagini e Documenti, ognuna con il suo conteggio. Una scheda con la stella si aggiunge appena un file finisce tra i preferiti, Note Collaborazione appena una nota porta un allegato.',
+    'La barra in alto contiene File e le schede di filtro Tutti, PDF, Immagini e Documenti, ognuna con il suo conteggio. Una stella si aggiunge dopo Tutti appena un file finisce tra i preferiti, Note Collaborazione alla fine appena una nota porta un allegato.',
   'help.ctx.trip-files.bullet.3':
-    'Una riga porta chi l’ha caricato, il nome, la nota sotto, la dimensione e la data, e un contrassegno per ogni collegamento: Programma giornaliero e il luogo, Prenotazione o Trasporto e la prenotazione, Da Note Collaborazione.',
+    'Una riga porta una miniatura o il tipo del file, chi l’ha caricato, il nome, la nota sotto, la dimensione e la data, e un contrassegno per ogni collegamento: il luogo, la prenotazione o il trasporto con il suo nome (puntandoci sopra si legge Programma giornaliero, Prenotazione o Trasporto), e Da Note Collaborazione.',
   'help.ctx.trip-files.bullet.4':
-    'In fondo a una riga stanno Aggiungi ai preferiti, Assegna, Apri, Scarica ed Elimina. Elimina non chiede: il file va nel cestino, da dove può essere riportato indietro.',
+    'In fondo a una riga stanno fino a cinque icone, ognuna con il suo nome quando ci punti sopra: Aggiungi ai preferiti, Assegna (la matita), Apri, Scarica ed Elimina. Elimina non chiede: il file va nel cestino, da dove può essere riportato indietro.',
   'help.ctx.trip-files.bullet.5':
-    'Un’immagine o un video si apre a schermo intero, con i tasti freccia e una striscia di miniature; ogni altro documento si apre in un’anteprima sopra la pagina, con Apri in una nuova scheda e Scarica. Un pass per il wallet viene scaricato subito.',
+    'Un’immagine o un video si apre a schermo intero, con i tasti freccia e una striscia di miniature; ogni altro documento si apre in una finestra con il suo nome in alto e, sotto, Apri in una nuova scheda e Scarica. Un pass per il wallet viene scaricato subito.',
   'help.ctx.trip-files.bullet.6':
-    'Cestino all’estremità destra porta l’elenco sui file eliminati, dove ognuno viene ripristinato o eliminato per sempre e Svuota cestino li toglie tutti. Dove un amministratore ha collegato un archivio di documenti, accanto sta Sincronizzazione documenti.',
+    'L’icona del cestino all’estremità destra della barra (Cestino) porta l’elenco sui file eliminati, dove ognuno viene ripristinato o eliminato per sempre e Svuota cestino nella barra li toglie tutti. Dove il viaggio è legato a un archivio di documenti, oppure per il suo proprietario o un amministratore appena un archivio è attivato, Sincronizzazione documenti sta a sinistra dell’icona del cestino.',
   // files-upload
   'help.guide.files-upload.title': 'Mettere un documento nel viaggio',
   'help.guide.files-upload.goal':
@@ -2415,15 +2415,15 @@ const help: TranslationStrings = {
   'help.guide.files-upload.step.1':
     'Apri il viaggio e clicca File nella barra delle schede. Lì sono elencati i documenti del viaggio, con il riquadro di caricamento sopra.',
   'help.guide.files-upload.step.2':
-    'Clicca Trascina qui i file e scegli uno o più file. Vengono caricati uno dopo l’altro e nel riquadro si legge Caricamento... finché dura. La riga sotto il riquadro dice quali tipi accetta questo TREK, e che un file può pesare al massimo 50 MB.',
+    'Clicca Trascina qui i file e scegli uno o più file. Vengono caricati uno dopo l’altro e nel riquadro si legge Caricamento... finché dura. Dentro il riquadro, sotto oppure clicca per sfogliare, stanno i tipi che questo TREK accetta e Max 50 MB, il massimo che un file può pesare.',
   'help.guide.files-upload.step.3':
-    'Appena l’ultimo file è caricato, Assegna file si apre da solo per lui. Aggiungi una nota... dà al file una riga tutta sua, e gli elenchi sotto lo legano a un luogo o a una prenotazione. Chiudilo con la ×; chiudendolo non si perde nulla.',
+    'Appena l’ultimo file è caricato, Assegna file si apre da solo per lui (purché il viaggio abbia dei luoghi o delle prenotazioni), con il nome del file nell’intestazione della finestra. Aggiungi una nota... sotto Nota dà al file una riga tutta sua, e gli elenchi sotto lo legano a un luogo o a una prenotazione. Chiudilo con la × in alto a destra; chiudendolo non si perde nulla.',
   'help.guide.files-upload.step.4':
-    'I nuovi file stanno in cima all’elenco. Una riga mostra chi l’ha caricato, il nome, la dimensione e la data; un’immagine riceve una miniatura, ogni altro file il suo tipo.',
+    'I nuovi file stanno in cima all’elenco; solo i file preferiti stanno sopra di loro. Una riga mostra chi l’ha caricato, il nome, la dimensione e la data; un’immagine riceve una miniatura, ogni altro file il suo tipo.',
   'help.guide.files-upload.result':
     'I documenti sono nel viaggio, e chiunque possa vedere il viaggio può aprirli e scaricarli.',
   'help.guide.files-upload.tip.1':
-    'Un file si può anche trascinare dalla scrivania direttamente sul riquadro, che si illumina finché il file gli sta sopra.',
+    'Un file si può anche trascinare dalla scrivania direttamente sul riquadro, che si evidenzia finché il file gli sta sopra.',
   'help.guide.files-upload.tip.2':
     'Un’immagine negli appunti entra nell’elenco con Ctrl+V, così uno screenshot di una prenotazione non va mai salvato prima.',
   'help.guide.files-upload.tip.3':
@@ -2432,19 +2432,19 @@ const help: TranslationStrings = {
   'help.guide.files-link.title': 'Legare un documento a un luogo o a una prenotazione',
   'help.guide.files-link.goal': 'Rendi il biglietto trovabile dal giorno a cui appartiene, non solo da questo elenco.',
   'help.guide.files-link.step.1':
-    'Clicca Assegna, la matita in fondo alla riga. Si apre Assegna file, con il nome del file.',
+    'Clicca la matita in fondo alla riga (Assegna). Si apre Assegna file, con sotto il nome del file nell’intestazione della finestra.',
   'help.guide.files-link.step.2':
-    'Sotto Nota, Aggiungi una nota... prende una riga, che poi sta sotto il nome del file nell’elenco. Viene salvata nel momento in cui esci dal campo.',
+    'Sotto Nota, Aggiungi una nota... prende una riga, che poi sta sotto il nome del file nell’elenco. Viene salvata quando premi Invio o esci dal campo.',
   'help.guide.files-link.step.3':
-    'Sotto Luogo stanno i luoghi del viaggio, raggruppati per il giorno in cui si trovano, con Non assegnato in fondo per quelli che non stanno in nessun giorno. Cliccane uno e riceve un segno di spunta.',
+    'Sotto Luogo, a sinistra, stanno i luoghi del viaggio, raggruppati per il giorno in cui si trovano con la sua data, e Non assegnato in fondo per quelli che non stanno in nessun giorno. Cliccane uno e riceve un segno di spunta.',
   'help.guide.files-link.step.4':
-    'Sotto Prenotazione e Trasporto stanno le prenotazioni del viaggio. Clicca quella a cui appartiene il documento; anche lei riceve la sua spunta.',
+    'Sotto Prenotazione e Trasporto, a destra, stanno le prenotazioni del viaggio. Clicca quella a cui appartiene il documento; anche lei riceve la sua spunta.',
   'help.guide.files-link.step.5':
-    'Chiudi con la ×. Qui non c’è un pulsante di salvataggio: ogni clic è stato scritto mentre lo facevi.',
+    'Chiudi con la × in alto a destra. Qui non c’è un pulsante di salvataggio: ogni clic è stato scritto mentre lo facevi.',
   'help.guide.files-link.result':
-    'La riga porta la nota e un contrassegno per ogni collegamento, Programma giornaliero e il nome del luogo, Trasporto e il nome del volo, e il documento è appeso anche al luogo e al volo.',
+    'La riga porta la nota e un contrassegno per ogni collegamento, uno con il nome del luogo e uno con quello del volo (puntando un contrassegno si legge Programma giornaliero o Trasporto), e il documento è appeso anche al luogo e al volo.',
   'help.guide.files-link.tip.1':
-    'Un file può tenere più collegamenti insieme, così la stessa conferma appartiene all’hotel e alla notte che copre.',
+    'Un file può tenere più collegamenti insieme, così la stessa conferma può appartenere nello stesso momento alla prenotazione dell’hotel e al luogo dell’hotel.',
   'help.guide.files-link.tip.2': 'Cliccare di nuovo una voce spuntata toglie quel collegamento; il file in sé resta.',
   'help.guide.files-link.tip.3':
     'Funziona anche al contrario: un documento allegato a un luogo o a una prenotazione sta anche in questo elenco, con lo stesso contrassegno sulla sua riga.',
@@ -2453,22 +2453,22 @@ const help: TranslationStrings = {
   'help.guide.files-star.goal':
     'Tira fuori i due o tre fogli che ti serviranno davvero da un elenco che cresce per tutto il viaggio.',
   'help.guide.files-star.step.1':
-    'Clicca Aggiungi ai preferiti in fondo a una riga. La stella si riempie di giallo, una seconda stella compare davanti al nome del file, e il pulsante ora dice Rimuovi dai preferiti.',
+    'Clicca la stella in fondo a una riga (Aggiungi ai preferiti). Si riempie d’oro, una seconda stella compare davanti al nome del file, e puntando il pulsante ora si legge Rimuovi dai preferiti.',
   'help.guide.files-star.step.2':
     'L’elenco si riordina: i file tra i preferiti stanno sopra tutti gli altri, i più recenti per primi dentro ogni gruppo.',
   'help.guide.files-star.step.3':
-    'In alto una stella si è aggiunta alle schede, con il numero di file preferiti dietro. Cliccala per vedere solo quelli.',
+    'Una stella si è aggiunta alle schede di filtro nella barra, subito dopo Tutti, con il numero di file preferiti accanto. Cliccala per vedere solo quelli.',
   'help.guide.files-star.result':
     'I fogli che ti servono allo sportello stanno in cima all’elenco, e una scheda non mostra altro.',
   'help.guide.files-star.tip.1':
     'La scheda con la stella esiste solo finché qualcosa è tra i preferiti. Togli dai preferiti l’ultimo file e la scheda se ne va con lui.',
   'help.guide.files-star.tip.2':
-    'Mettere tra i preferiti conta come una modifica: un membro che può solo leggere i file del viaggio vede le stelle ma non può metterle.',
+    'Mettere tra i preferiti richiede lo stesso permesso di Assegna, Modificare metadati dei file. Un membro che non ce l’ha vede le stelle, ma per lui un clic su Aggiungi ai preferiti non cambia nulla.',
   // files-filter
   'help.guide.files-filter.title': 'Trovare un documento nell’elenco',
   'help.guide.files-filter.goal': 'Restringi un elenco che contiene tutto all’unico tipo di foglio che cerchi.',
   'help.guide.files-filter.step.1':
-    'Le schede sopra l’elenco sono Tutti, PDF, Immagini e Documenti, ognuna con il numero di file dietro.',
+    'Le schede di filtro stanno nella barra in alto, accanto a File: Tutti, PDF, Immagini e Documenti, ognuna con il numero di file accanto.',
   'help.guide.files-filter.step.2': 'Clicca PDF: l’elenco tiene i file PDF e nient’altro.',
   'help.guide.files-filter.step.3':
     'Altre due schede vanno e vengono con ciò che c’è nel viaggio. Clicca Note Collaborazione, che c’è appena una nota nella scheda Collaborazione porta un allegato: la lista tiene quei file e nient’altro. Una stella si aggiunge alla fila allo stesso modo, appena un file finisce tra i preferiti.',
@@ -2476,7 +2476,7 @@ const help: TranslationStrings = {
   'help.guide.files-filter.result':
     'L’elenco mostra solo ciò che la scheda nomina, e il conteggio su ogni scheda dice quanti sono.',
   'help.guide.files-filter.tip.1':
-    'Qui non ci sono cartelle e non si rinomina nulla: la nota in Assegna file, i collegamenti a luoghi e prenotazioni, e la stella sono ciò per cui un documento viene ordinato.',
+    'Qui non ci sono cartelle e non si rinomina nulla: la nota in Assegna file, i collegamenti a luoghi e prenotazioni, e la stella sono il modo per distinguere i documenti.',
   'help.guide.files-filter.tip.2':
     'L’elenco stesso mette sempre prima i preferiti, poi i più recenti, così un documento caricato oggi sta sopra a uno del mese scorso.',
   // files-preview
@@ -2484,15 +2484,15 @@ const help: TranslationStrings = {
   'help.guide.files-preview.goal':
     'Guarda un biglietto o un’immagine sul posto, e portali sulla tua macchina quando ti servono lì.',
   'help.guide.files-preview.step.1':
-    'Clicca il nome di un’immagine o la sua miniatura. Si apre a schermo intero, con il nome del file e la sua posizione tra le immagini nell’intestazione.',
+    'Clicca il nome di un’immagine o la sua miniatura. Si apre a schermo intero, con il nome del file e la sua posizione tra le immagini in alto a sinistra.',
   'help.guide.files-preview.step.2':
     'Le frecce tonde ai lati, i tasti freccia sinistra e destra e la striscia di miniature in basso scorrono tutte le immagini che l’elenco sta mostrando in quel momento.',
   'help.guide.files-preview.step.3':
-    'Apri in una nuova scheda e Scarica stanno nell’intestazione; la × o Esc richiude l’immagine.',
+    'Apri in una nuova scheda e Scarica sono i pulsanti rotondi in alto a destra, accanto alla ×. La ×, Esc o un clic sullo sfondo scuro richiude l’immagine.',
   'help.guide.files-preview.step.4':
-    'Un documento che non è un’immagine si apre invece in un’anteprima sopra la pagina, con gli stessi due pulsanti nella sua intestazione. Questa si chiude con la × o con un clic di fianco.',
+    'Un documento che non è un’immagine si apre invece in una finestra: il suo nome in alto con Apri in una nuova scheda e Scarica come pillole sotto, e per un PDF la pagina stessa più in basso. La × in alto a destra, Esc o un clic di fianco alla finestra la chiude.',
   'help.guide.files-preview.step.5':
-    'Scarica in fondo a una riga salva il file direttamente sulla tua macchina, senza aprire prima nulla.',
+    'La freccia in fondo a una riga (Scarica) salva il file direttamente sulla tua macchina, senza aprire prima nulla.',
   'help.guide.files-preview.result':
     'Il documento è sullo schermo, e gli stessi due pulsanti lo mettono in una scheda del browser o sul tuo disco.',
   'help.guide.files-preview.tip.1': 'Su uno schermo touch scorri le immagini con il dito invece di cliccare le frecce.',
@@ -2505,15 +2505,15 @@ const help: TranslationStrings = {
   'help.guide.files-trash.goal':
     'Fai pulizia di ciò che al viaggio non serve più, senza perdere niente che invece ti serviva.',
   'help.guide.files-trash.step.1':
-    'Clicca Elimina in fondo a una riga. Il file lascia subito l’elenco e il messaggio dice Spostato nel cestino. Niente chiede prima.',
+    'Clicca il cestino in fondo a una riga (Elimina). Il file lascia subito l’elenco e il messaggio dice Spostato nel cestino. Niente chiede prima.',
   'help.guide.files-trash.step.2':
-    'Cestino all’estremità destra della barra degli strumenti porta l’elenco su ciò che è stato buttato. L’intestazione dice Cestino e le schede dei filtri spariscono.',
+    'L’icona del cestino all’estremità destra della barra (Cestino) porta l’elenco su ciò che è stato buttato. Il titolo della barra dice Cestino, e le schede di filtro e il riquadro di caricamento spariscono.',
   'help.guide.files-trash.step.3':
-    'Una riga buttata è in grigio e le restano due pulsanti: Ripristina, che riporta indietro il file, ed Elimina, che lo toglie per sempre dopo una domanda.',
+    'Una riga buttata è in grigio e le restano due icone: Ripristina, che riporta indietro il file, ed Elimina, che lo toglie per sempre dopo una domanda.',
   'help.guide.files-trash.step.4':
     'Clicca Ripristina. Il messaggio dice File ripristinato e la riga lascia il cestino, con la sua nota e i suoi collegamenti ancora addosso.',
   'help.guide.files-trash.step.5':
-    'Svuota cestino in alto toglie per sempre tutto ciò che resta qui, e il browser chiede una volta prima di farlo. Cestino torna ai file.',
+    'Svuota cestino, nella barra accanto all’icona del cestino, toglie per sempre tutto ciò che resta qui, e il browser chiede una volta prima di farlo. L’icona del cestino torna ai file.',
   'help.guide.files-trash.result': 'Il file è di nuovo nell’elenco dov’era, come se niente fosse.',
   'help.guide.files-trash.tip.1':
     'Elimina su una riga non chiede prima, ed è per questo che c’è il cestino: niente lascia TREK finché non lo dici qui dentro.',
@@ -2525,7 +2525,7 @@ const help: TranslationStrings = {
   'help.guide.files-sync.goal':
     'Lega il viaggio al tuo archivio di documenti, così che ciò che viene caricato qui finisca lì e ciò che viene archiviato lì compaia qui.',
   'help.guide.files-sync.step.1':
-    'Clicca Sincronizzazione documenti, accanto a Cestino all’estremità destra della barra degli strumenti. La finestra si apre con il nome del viaggio sotto il titolo. A sinistra, sotto Collega un provider, stanno gli archivi che un amministratore ha acceso, ognuno con una riga su come archivia: Paperless-ngx e Papra per tag, Nextcloud e Synology Drive in una cartella, OpenCloud in uno spazio. A destra si legge Ancora nessun collegamento.',
+    'Clicca Sincronizzazione documenti, accanto all’icona del cestino all’estremità destra della barra. La finestra si apre con il nome del viaggio sotto il titolo. A sinistra, sotto Collega un provider, stanno gli archivi che un amministratore ha acceso, ognuno con una riga su come archivia: Paperless-ngx e Papra per tag, Nextcloud e Synology Drive in una cartella, OpenCloud in uno spazio. A destra si legge Ancora nessun collegamento.',
   'help.guide.files-sync.step.2':
     'Clicca il tuo archivio, qui Nextcloud. Si apre una finestra più piccola per la connessione, con il nome dell’archivio, che chiede le credenziali con cui si accede a quell’archivio.',
   'help.guide.files-sync.step.3':
@@ -2535,15 +2535,15 @@ const help: TranslationStrings = {
   'help.guide.files-sync.step.5':
     'Clicca Connetti. La connessione viene salvata con il viaggio e TREK chiede dove deve stare il viaggio nell’archivio: il tag, la cartella o lo spazio che ne contiene i documenti. Solo ciò che sta lì dentro viene sincronizzato. Creane uno nuovo lo crea con Crea, con un nome precompilato dal titolo del viaggio; sotto Oppure usane uno che hai già stanno quelli che esistono già. Cliccane uno, qui la cartella Autumn in Japan.',
   'help.guide.files-sync.step.6':
-    'La finestra è tornata: il tuo archivio sta sotto Questo viaggio a sinistra, e la sua scheda a destra porta dove sincronizza, quando è girata l’ultima volta e Sincronizza ora. Una prima esecuzione parte da sola; Sincronizza ora ne lancia una quando vuoi. Finita un’esecuzione, il contrassegno Non ancora sincronizzato accanto al nome lascia il posto a un punto verde, Allineato quando ci punti sopra, e la barra di flusso conta i documenti che TREK e l’archivio tengono ciascuno, con le corsie Verso l’archivio e Dall’archivio in mezzo. Chiudi la finestra con la ×.',
+    'La finestra è tornata: il tuo archivio sta sotto Questo viaggio a sinistra, e la sua scheda a destra porta dove sincronizza, quando è girata l’ultima volta e Sincronizza ora. Una prima esecuzione parte da sola; Sincronizza ora ne lancia una quando vuoi. Finita un’esecuzione, il contrassegno Non ancora sincronizzato accanto al nome lascia il posto a un punto verde, Allineato quando ci punti sopra, e la barra di flusso conta i documenti che TREK e l’archivio tengono ciascuno, con le corsie Verso l’archivio e Dall’archivio in mezzo. Chiudi la finestra con la × in alto a destra.',
   'help.guide.files-sync.result':
-    'I documenti che erano già lì stanno in cima all’elenco, caricati a tuo nome, e ogni documento del viaggio è anche nell’archivio. Da ora in poi TREK controlla l’archivio in secondo piano e l’archivio segue l’elenco.',
+    'I documenti che erano già lì stanno in cima all’elenco, caricati a tuo nome, e ogni documento del viaggio è anche nell’archivio, tranne quelli da Note Collaborazione. Da ora in poi TREK controlla l’archivio in secondo piano e l’archivio segue l’elenco.',
   'help.guide.files-sync.tip.1':
-    'Solo il proprietario del viaggio o un amministratore dell’istanza può legare un viaggio, perché le credenziali raggiungono tutto quell’account nell’archivio. Ogni membro può aprire Sincronizzazione documenti, leggere la scheda e premere Sincronizza ora.',
+    'Solo il proprietario del viaggio o un amministratore dell’istanza può legare un viaggio, perché le credenziali raggiungono tutto quell’account nell’archivio. Ogni membro vede Sincronizzazione documenti una volta che il viaggio è legato, e può aprirla, leggere la scheda e premere Sincronizza ora.',
   'help.guide.files-sync.tip.2':
     'Un archivio sulla tua rete ha bisogno di ALLOW_INTERNAL_NETWORK=true sul server TREK, e il suo indirizzo dev’essere quello della macchina in rete, mai localhost. Senza, Prova la connessione risponde Questo indirizzo non è consentito.',
   'help.guide.files-sync.tip.3':
-    'Disconnetti sulla scheda chiude l’abbinamento e tiene ogni documento da entrambe le parti. Un tag, una cartella o uno spazio legato una seconda volta è trattato come nuovo, e tutto ciò che contiene entra di nuovo, quindi dopo un Disconnetti lega uno vuoto invece del vecchio.',
+    'Disconnetti, l’icona accanto a Sincronizza ora, chiede una volta, poi chiude l’abbinamento e tiene ogni documento da entrambe le parti. Un tag, una cartella o uno spazio legato una seconda volta è trattato come nuovo, e tutto ciò che contiene entra di nuovo, quindi dopo un Disconnetti lega uno vuoto invece del vecchio.',
 
   // ── Screen: trip-day-detail ───────────────────────────────────────────────────────────
   'help.ctx.trip-day-detail.title': 'Dettagli del giorno',
@@ -2632,7 +2632,7 @@ const help: TranslationStrings = {
     'Scegli la struttura tra i luoghi del viaggio. Categoria sopra la lista la restringe a una sola categoria.',
   'help.guide.add-accommodation.step.6': 'Clicca Salva.',
   'help.guide.add-accommodation.result':
-    'Il soggiorno compare su ogni giorno che copre, Check-in sul primo e Check-out sull’ultimo. La struttura diventa una tappa del giorno di check-in, così la mappa disegna la via fin lì, e nella scheda Prenotazioni compare una prenotazione di tipo Alloggio.',
+    'Il soggiorno compare su ogni giorno che copre, Check-in sul primo e Check-out sull’ultimo. La struttura diventa una tappa del giorno di check-in, così la mappa disegna la via fin lì, e nella scheda Pren. compare una prenotazione di tipo Alloggio.',
   'help.guide.add-accommodation.tip.1':
     'Il selettore si apre sul giorno da cui sei venuto, con il check-out il giorno dopo; entrambi si possono spostare prima di salvare.',
   'help.guide.add-accommodation.tip.2':
@@ -2653,7 +2653,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.step.5':
     'La croce accanto alla matita pone fine al soggiorno. Non chiede nulla, e la prenotazione di tipo Alloggio che gli appartiene se ne va con lui.',
   'help.guide.edit-accommodation.result':
-    'La modifica raggiunge in un colpo solo ogni giorno che il soggiorno copre, e con essa la prenotazione di tipo Alloggio nella scheda Prenotazioni.',
+    'La modifica raggiunge in un colpo solo ogni giorno che il soggiorno copre, e con essa la prenotazione di tipo Alloggio nella scheda Pren.',
   'help.guide.edit-accommodation.tip.1':
     'Una notte in mezzo a un soggiorno non porta né l’etichetta Check-in né Check-out: le portano solo il primo e l’ultimo giorno dell’intervallo.',
   'help.guide.edit-accommodation.tip.2':
@@ -2669,11 +2669,11 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.step.3':
     'Il colore dice a che punto è una prenotazione: una riga verde è confermata, una ambra è ancora in attesa. Gli alloggi non sono in questa lista, hanno il loro blocco più sotto.',
   'help.guide.day-bookings.step.4':
-    'Clicca una riga e la prenotazione si apre. Modifica ai suoi piedi la cambia; le nuove prenotazioni si creano nella scheda Prenotazioni.',
+    'Clicca una riga e la prenotazione si apre. Modifica ai suoi piedi la cambia; le nuove prenotazioni si creano nella scheda Pren.',
   'help.guide.day-bookings.result':
     'Tutto ciò che è datato sul giorno, e tutto ciò che è legato a una delle sue tappe, sta in questa sola lista.',
   'help.guide.day-bookings.tip.1':
-    'Una prenotazione finisce su un giorno per la sua data. Cambia la data nella scheda Prenotazioni e passa all’altro giorno da sola.',
+    'Una prenotazione finisce su un giorno per la sua data. Cambia la data nella scheda Pren. e passa all’altro giorno da sola.',
   'help.guide.day-bookings.tip.2':
     'Nessun blocco Prenotazioni vuol dire che il giorno non ha prenotazioni: viene nascosto invece che mostrato vuoto.',
 
@@ -2682,30 +2682,32 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.summary':
     'Il centro del programma: ogni luogo del viaggio come segnaposto, i percorsi che li uniscono e gli interruttori lungo i bordi della mappa per il satellite, per tutto il viaggio insieme e per i luoghi intorno alla zona che stai guardando.',
   'help.ctx.trip-map.bullet.1':
-    'Un segnaposto è un luogo: la sua foto quando ce l’ha, altrimenti il colore della sua categoria con l’icona della categoria. Poggiaci sopra il puntatore per una scheda con il nome e l’indirizzo, più la categoria e la valutazione quando il luogo le porta. Trascina un segnaposto su una scheda del giorno per pianificare lì il luogo.',
+    'Un segnaposto è un luogo: la sua foto quando ce l’ha, altrimenti il colore della sua categoria con l’icona della categoria. Poggiaci sopra il puntatore per una scheda con la sua immagine, il nome e l’indirizzo, più la valutazione e la categoria quando il luogo le porta. Trascina un segnaposto su una scheda del giorno per pianificare lì il luogo.',
   'help.ctx.trip-map.bullet.2':
     'I segnaposto troppo vicini per distinguersi si ripiegano in una bolla scura con un conteggio. Clicca la bolla e la mappa si avvicina a ciò che c’è dentro.',
   'help.ctx.trip-map.bullet.3':
-    'Clicca un segnaposto per aprire il luogo sotto la mappa, con la sua valutazione, i suoi file e cosa farne poi; clicca un punto vuoto della mappa per lasciarlo andare di nuovo.',
+    'Clicca un segnaposto per aprire il luogo in una scheda in fondo alla mappa, con la sua valutazione, i suoi file e cosa farne poi; clicca un punto vuoto della mappa per lasciarlo andare di nuovo.',
   'help.ctx.trip-map.bullet.4':
-    'Con un giorno aperto nella colonna dei giorni, le sue tappe portano un piccolo distintivo bianco con il loro numero in quel giorno, e un luogo pianificato su due giorni porta entrambi i numeri, uniti da ·.',
+    'Con un giorno aperto nella colonna dei giorni, le sue tappe portano un piccolo distintivo bianco con il loro numero in quel giorno, e un luogo che compare due volte nel giorno porta entrambi i suoi numeri.',
   'help.ctx.trip-map.bullet.5':
     'La riga di icone in alto cerca nella parte di mappa che vedi: Ristoranti, Caffè, Bar e vita notturna, Alloggi, Attrazioni, Musei e cultura, Natura e parchi e Attività. Cerca in questa zona la rilancia dopo che hai spostato la mappa.',
   'help.ctx.trip-map.bullet.6':
     'Un clic destro in un punto qualsiasi della mappa apre il modulo del luogo in quel punto, con l’indirizzo già cercato. Il pulsante rotondo in basso a sinistra scambia la mappa disegnata con le immagini aeree.',
   'help.ctx.trip-map.bullet.7':
-    'Mostra tutto il viaggio, in basso a destra, disegna ogni giornata di spostamento insieme alle altre ed elenca cosa copre ciascuna; l’icona del percorso sulla riga di una prenotazione disegna quella prenotazione, e quella nella barra degli strumenti sopra i giorni le disegna tutte.',
+    'Mostra tutto il viaggio, in basso a destra, disegna ogni giornata di spostamento insieme alle altre ed elenca cosa copre ciascuna; l’icona del percorso sulla riga di una prenotazione disegna quella prenotazione, e quella nella barra degli strumenti sopra i giorni le disegna tutte. Clicca l’estremità di una prenotazione disegnata per aprirne i dettagli.',
+  'help.ctx.trip-map.bullet.8':
+    'Con l’addon Dawarich acceso, il pulsante rotondo Dawarich sotto Mostra tutto il viaggio disegna il percorso che il tuo telefono ha davvero registrato: Mostra il percorso registrato lo posa tratteggiato sotto il percorso pianificato, un colore per giorno, e l’etichetta del pulsante dice perché non c’è una linea quando non c’è.',
   // map-markers
   'help.guide.map-markers.title': 'Leggere la mappa',
   'help.guide.map-markers.goal': 'Sapere cosa ti dice ogni segnaposto, distintivo e bolla sulla mappa.',
   'help.guide.map-markers.step.1':
     'La mappa porta ogni luogo del viaggio. Dove i segnaposto stanno troppo vicini per distinguersi, si ripiegano in una bolla scura che porta il numero al suo interno; clicca la bolla e la mappa si avvicina a ciò che c’era dentro, oppure, allo zoom più profondo, apre i segnaposto a ventaglio.',
   'help.guide.map-markers.step.2':
-    'Un segnaposto è la foto del luogo quando ce l’ha, altrimenti il colore della sua categoria con l’icona della categoria. Poggiaci sopra il puntatore e una scheda dà il nome e l’indirizzo, con la categoria e la valutazione quando il luogo le porta.',
+    'Un segnaposto è la foto del luogo quando ce l’ha, altrimenti il colore della sua categoria con l’icona della categoria. Poggiaci sopra il puntatore e accanto si apre una scheda: la stessa foto, più grande, il nome e l’indirizzo, con la valutazione e la categoria quando il luogo le porta.',
   'help.guide.map-markers.step.3':
-    'Clicca un segnaposto e il luogo si apre in una scheda sotto la mappa: le sue coordinate, la sua valutazione, i suoi file, e in fondo che cosa farne poi, tra cui Navigazione, Modifica ed Elimina, con Aggiungi al giorno finché un giorno è aperto. Clicca un punto vuoto della mappa per lasciarlo andare di nuovo.',
+    'Clicca un segnaposto e il luogo si apre in una scheda in fondo alla mappa: l’immagine, il nome e l’indirizzo nella sua intestazione, poi le stelle, la descrizione e i file, e in basso che cosa farne poi, tra cui Navigazione, Salva nella raccolta (Salvato quando il luogo è in una raccolta), Modifica ed Elimina, e finché un giorno è aperto Aggiungi al giorno, oppure Rimuovi dal giorno quando il luogo è già su quel giorno. La X nella sua intestazione, o un clic su un punto vuoto della mappa, la richiude.',
   'help.guide.map-markers.step.4':
-    'Apri un giorno nella colonna dei giorni e le sue tappe vengono numerate: il piccolo distintivo bianco all’angolo di un segnaposto è il posto di quella tappa nel giorno. Un luogo pianificato su due giorni porta entrambi i numeri, uniti da ·. Senza un giorno aperto non ci sono numeri, e l’angolo porta invece la valutazione.',
+    'Apri un giorno nella colonna dei giorni e le sue tappe vengono numerate: il piccolo distintivo bianco all’angolo di un segnaposto è il posto di quella tappa nel giorno. Un luogo che compare due volte nel giorno porta entrambi i suoi numeri. Senza un giorno aperto non ci sono numeri, e l’angolo porta invece la valutazione del luogo, quando ne ha una.',
   'help.guide.map-markers.step.5':
     'Trascina un segnaposto dalla mappa su una scheda del giorno nella colonna dei giorni e il luogo è pianificato in quel giorno, esattamente come trascinando la sua riga fuori dalla lista dei luoghi.',
   'help.guide.map-markers.result':
@@ -2727,11 +2729,11 @@ const help: TranslationStrings = {
   'help.guide.map-nearby-places.step.3':
     'Sposta la mappa e sotto la riga compare un secondo pulsante: Cerca in questa zona rilancia la stessa ricerca per la nuova vista. Spostarla da sola non cerca mai di nuovo, e così le richieste restano poche.',
   'help.guide.map-nearby-places.step.4':
-    'I segnaposto portano il nome di ciò che è stato trovato. Cliccane uno e il modulo del luogo si apre già compilato da esso: Nome, Indirizzo, Latitudine e Longitudine, e il sito web e il numero di telefono dove OpenStreetMap li ha.',
+    'Poggia il puntatore su un segnaposto per vedere il nome di ciò che è stato trovato. Cliccalo e il modulo del luogo si apre già compilato da esso: il nome nell’intestazione della finestra, Indirizzo, Latitudine e Longitudine, e Sito web dove la ricerca ne ha trovato uno.',
   'help.guide.map-nearby-places.step.5':
-    'Controlla cosa è stato compilato e aggiungi ciò che la ricerca non poteva sapere: una Descrizione, una Categoria, note tue.',
+    'Controlla cosa è stato compilato e aggiungi ciò che la ricerca non poteva sapere: una categoria dalla pillola sotto il nome, che dice Nessuna categoria finché non ne scegli una, una Descrizione, note tue.',
   'help.guide.map-nearby-places.step.6':
-    'Clicca Aggiungi. Se un luogo con lo stesso nome è già nel viaggio, il modulo lo dice e il pulsante diventa Aggiungi comunque.',
+    'Clicca Aggiungi. Se un luogo con lo stesso nome o nello stesso punto è già nel viaggio, TREK lo dice e il pulsante diventa Aggiungi comunque.',
   'help.guide.map-nearby-places.result':
     'Il luogo è nella lista dei luoghi e sulla mappa come uno dei segnaposto propri del viaggio, sotto Non pianificati finché non lo metti su un giorno. I segnaposto della ricerca restano finché non spegni la categoria.',
   'help.guide.map-nearby-places.tip.1':
@@ -2744,11 +2746,11 @@ const help: TranslationStrings = {
   'help.guide.map-add-place.title': 'Creare un luogo con un clic destro sulla mappa',
   'help.guide.map-add-place.goal': 'Metti un luogo esattamente dove lo vuoi, senza cercarlo prima.',
   'help.guide.map-add-place.step.1':
-    'Fai clic destro sul punto della mappa che intendi. Il modulo del luogo si apre, con il titolo Aggiungi Luogo/Attività.',
+    'Fai clic destro sul punto della mappa che intendi. Il modulo del luogo si apre, con l’intestazione Aggiungi Luogo/Attività.',
   'help.guide.map-add-place.step.2':
-    'Latitudine e Longitudine sono già su quel punto, e TREK cerca le coordinate e riempie Indirizzo con ciò che trova lì, e anche Nome quando la ricerca ne dà uno. Non è ancora salvato niente, quindi sovrascrivi tutto ciò che è sbagliato.',
+    'Latitudine e Longitudine sono già su quel punto, e TREK cerca le coordinate e riempie Indirizzo con ciò che trova lì, e anche il nome nell’intestazione della finestra quando la ricerca ne dà uno. Non è ancora salvato niente, quindi sovrascrivi tutto ciò che è sbagliato.',
   'help.guide.map-add-place.step.3':
-    'Dagli un Nome che riconoscerai, e il resto di ciò che il programma deve sapere: Descrizione, Note, Categoria, Sito web.',
+    'Digita nell’intestazione della finestra un nome che riconoscerai, scegli una categoria dalla pillola sotto di esso, che dice Nessuna categoria finché non lo fai, e aggiungi il resto di ciò che il programma deve sapere: Descrizione, Note, Sito web.',
   'help.guide.map-add-place.step.4':
     'Clicca Aggiungi. Il luogo finisce nella lista come non pianificato anche con un giorno aperto: un clic destro sulla mappa dice dove, non quando.',
   'help.guide.map-add-place.result':
@@ -2777,11 +2779,11 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.goal':
     'Scambia l’unico giorno aperto con ogni giornata di spostamento del viaggio, e leggi quanto lontano arriva ciascuna.',
   'help.guide.map-whole-trip.step.1':
-    'Il pulsante rotondo Mostra tutto il viaggio sta in basso a destra della mappa. Cliccalo e ogni giornata di spostamento del viaggio viene disegnata insieme alle altre, ciascuna nel proprio colore sopra un bordo bianco, così i giorni vicini restano distinti.',
+    'Il pulsante rotondo Mostra tutto il viaggio sta in basso a destra della mappa. Cliccalo e ogni giornata di spostamento del viaggio viene disegnata insieme alle altre, ciascuna nel proprio colore, così i giorni vicini restano distinti.',
   'help.guide.map-whole-trip.step.2':
     'La scheda sopra il pulsante elenca quelle giornate: un punto colorato, il nome del giorno, un’icona per ogni modo in cui lo percorri, e la distanza che copre. Distanza totale sta in cima.',
   'help.guide.map-whole-trip.step.3':
-    'Clicca un giorno nella scheda per selezionarlo, come se lo scegliessi nella colonna dei giorni: la mappa inquadra quel giorno, e le sue tappe riprendono i loro numeri.',
+    'Clicca un giorno nella scheda per selezionarlo: la sua riga si ombreggia e il giorno è aperto nella colonna dei giorni. Gira la rotellina sopra una città per ingrandire, e i giorni che la attraversano stanno fianco a fianco, ciascuno nel suo colore.',
   'help.guide.map-whole-trip.step.4':
     'Il pulsante ora dice Nascondi tutto il viaggio. Premilo per tornare all’unico giorno aperto.',
   'help.guide.map-whole-trip.result':
@@ -2791,17 +2793,17 @@ const help: TranslationStrings = {
   'help.guide.map-whole-trip.tip.2':
     'Una tratta che il router rifiuta resta una linea dritta e non conta nulla, e la scheda lo dice invece di mostrare in silenzio un numero troppo basso.',
   'help.guide.map-whole-trip.tip.3':
-    'Un giorno con meno di due tappe localizzate non ha un percorso da disegnare, quindi resta del tutto fuori dalla scheda.',
+    'Un giorno senza niente da unire, con meno di due tappe localizzate e nessun tragitto da o verso il suo alloggio, non ha un percorso da disegnare, quindi resta del tutto fuori dalla scheda.',
   // map-booking-routes
   'help.guide.map-booking-routes.title': 'Mostrare il percorso di una prenotazione sulla mappa',
   'help.guide.map-booking-routes.goal':
     'Disegna sulla mappa i voli, i treni e i tragitti in auto che hai prenotato, e toglili di nuovo.',
   'help.guide.map-booking-routes.step.1':
-    'I percorsi prenotati sono spenti finché non ne chiedi uno. Sulla riga di una prenotazione nella colonna dei giorni sta una piccola icona di percorso: Mostra percorsi prenotati.',
+    'I percorsi prenotati sono spenti finché non ne chiedi uno. All’estremità destra della riga di un trasporto nella colonna dei giorni sta una piccola icona di percorso: Mostra percorsi prenotati.',
   'help.guide.map-booking-routes.step.2':
     'Cliccala e la prenotazione compare sulla mappa: un volo come arco di cerchio massimo, un tragitto in auto lungo le strade vere, un treno come la catena delle sue stazioni. Confermata è disegnata continua, In attesa tratteggiata, e le estremità del percorso sono pillole blu con l’icona del trasporto.',
   'help.guide.map-booking-routes.step.3':
-    'Clicca una pillola di estremità e si apre la prenotazione dietro di essa, con i suoi orari, il suo riferimento e il punto da cui parte. Chiudi la mette via di nuovo.',
+    'Clicca una pillola di estremità e si aprono i dettagli della prenotazione: stato, tipo e giorni come pillole nella fascia di testa colorata, gli orari a entrambe le estremità, il resto sotto, e in fondo Sulla mappa, che spegne di nuovo questo percorso, il cestino che elimina la prenotazione, e Modifica. La X nella fascia di testa li chiude.',
   'help.guide.map-booking-routes.step.4':
     'L’icona del percorso nella barra degli strumenti sopra i giorni fa tutto il viaggio in una volta: Mostra tutti i percorsi prenotati disegna ogni prenotazione che ne ha uno.',
   'help.guide.map-booking-routes.step.5':
@@ -2814,8 +2816,6 @@ const help: TranslationStrings = {
     'Mostra sempre i percorsi delle prenotazioni, nelle stesse impostazioni, li disegna fin dall’inizio su ogni viaggio per cui non hai già deciso.',
   'help.guide.map-booking-routes.tip.3':
     'Una prenotazione ha bisogno di due estremità con coordinate prima di poter essere disegnata, quindi un hotel o un ristorante non porta l’icona del percorso.',
-  'help.ctx.trip-map.bullet.8':
-    'Con l’addon Dawarich acceso, il pulsante rotondo Dawarich sotto Mostra tutto il viaggio disegna il percorso che il tuo telefono ha davvero registrato: Mostra il percorso registrato lo posa tratteggiato sotto il percorso pianificato, un colore per giorno, e l’etichetta del pulsante dice perché non c’è una linea quando non c’è.',
   // map-dawarich-trail
   'help.guide.map-dawarich-trail.title': 'Mostrare il percorso che hai davvero fatto',
   'help.guide.map-dawarich-trail.goal':
@@ -2850,58 +2850,61 @@ const help: TranslationStrings = {
   // ── Screen: trip-collab ───────────────────────────────────────────────────────────────
   'help.ctx.trip-collab.title': 'Collaborazione',
   'help.ctx.trip-collab.summary':
-    'La scheda in cui il gruppo pianifica insieme: la chat a sinistra, accanto le note condivise e i link, sotto i sondaggi e alla fine Cosa c’è dopo. Tutto quello che si scrive qui è subito sullo schermo di ogni altro membro, senza ricaricare.',
+    'La scheda in cui il gruppo pianifica insieme, in cinque pannelli: la chat a sinistra, Note e Link accanto, Sondaggi e Cosa c’è dopo sotto di loro. Tutto quello che si scrive qui è subito sullo schermo di ogni altro membro, senza ricaricare.',
   'help.ctx.trip-collab.bullet.1':
-    'La chat è la colonna di sinistra. Scrivi in Scrivi un messaggio... e premi Enter; Shift e Enter vanno a capo. Lo smiley inserisce un emoji, Allega immagini attacca fino a quattro immagini al messaggio.',
+    'La chat è il pannello a sinistra. Scrivi in Scrivi un messaggio... e premi Enter; Shift e Enter vanno a capo. Lo smiley inserisce un emoji, Allega immagini attacca fino a quattro immagini al messaggio.',
   'help.ctx.trip-collab.bullet.2':
-    'Passa il mouse su un messaggio per Rispondi e, sui tuoi, Elimina; con il clic destro escono le otto reazioni rapide. Un messaggio eliminato lascia una riga che dice che lo hai eliminato.',
+    'Passa il mouse su un messaggio per Rispondi e, sui tuoi, Elimina; con il clic destro escono le otto reazioni rapide. Un messaggio eliminato lascia una riga che dice chi lo ha eliminato.',
   'help.ctx.trip-collab.bullet.3':
-    'Note è il blocco condiviso: Nuova nota ne scrive una, e l’ingranaggio accanto apre Gestisci categorie per i loro nomi e colori. Una scheda porta Espandi, Fissa, Modifica ed Elimina.',
+    'Note è il blocco condiviso: Nuova nota nella sua intestazione ne scrive una, e l’ingranaggio accanto apre Gestisci categorie per i loro nomi e colori. La scheda di una nota mostra la sua categoria come un punto colorato e il suo link come un pulsante rotondo, e i suoi tre puntini (Altre opzioni) contengono Espandi, Fissa, Modifica ed Elimina.',
   'help.ctx.trip-collab.bullet.4':
     'Link raccoglie gli indirizzi su cui gira il viaggio. Aggiungi link prende un titolo e un indirizzo http o https; Modifica link, Fissa link ed Elimina link stanno in fondo al chip, e i link fissati restano davanti.',
   'help.ctx.trip-collab.bullet.5':
-    'Sondaggi decide le cose. Nuovo sondaggio pone una domanda con almeno due opzioni; un clic su un’opzione è il tuo voto, Chiudi termina la votazione ed Elimina toglie il sondaggio.',
+    'Sondaggi decide le cose. Nuovo sondaggio pone una domanda con almeno due opzioni; un clic su un’opzione è il tuo voto, e il lucchetto (Chiudi) e il cestino (Elimina) a destra nell’intestazione di un sondaggio terminano la votazione o tolgono il sondaggio.',
   'help.ctx.trip-collab.bullet.6':
     'Cosa c’è dopo elenca le tappe del viaggio ancora davanti, fino a otto, con i loro orari e le persone che ci sono. Legge solo il programma del giorno; gli orari si impostano lì.',
   // write-note
   'help.guide.write-note.title': 'Scrivere una nota condivisa',
   'help.guide.write-note.goal':
     'Metti quello che serve a tutto il gruppo, una regola, un indirizzo, un promemoria, dove ognuno lo ritrova.',
-  'help.guide.write-note.step.1': 'Clicca Nuova nota in cima al pannello Note. Si apre il modulo.',
+  'help.guide.write-note.step.1':
+    'Clicca Nuova nota nell’intestazione del pannello Note. Si apre la finestra della nota, con il cursore già nella sua intestazione.',
   'help.guide.write-note.step.2':
-    'Titolo della nota è il nome che porta la scheda. È l’unica cosa su cui il modulo insiste: Crea resta grigio finché è vuoto.',
+    'Digita il titolo dove si legge Titolo della nota, nell’intestazione della finestra. È l’unica cosa su cui la finestra insiste: Crea resta grigio finché non c’è qualcosa, e Enter nel titolo crea subito la nota.',
   'help.guide.write-note.step.3':
-    'Il riquadro grande sotto contiene il testo e accetta Markdown: una parola in grassetto, un elenco, un titolo. La scheda mostra le prime righe, ed Espandi su di essa apre tutta la nota.',
+    'Contenuto contiene il testo e accetta Markdown: una parola in grassetto, un elenco, un titolo. La scheda mostra le prime tre righe, ed Espandi nel suo menu apre tutta la nota.',
   'help.guide.write-note.step.4':
-    'Sotto Categoria scegli quella a cui appartiene la nota; il suo colore diventa il colore della scheda. Le pillole sono le categorie che esistono già, e una nuova si crea sotto Gestisci categorie.',
+    'Sotto Categoria scegli quella a cui appartiene la nota; il suo colore tinge ora l’intestazione della finestra e poi quella della scheda. Le pillole sono le categorie che esistono già, e una nuova si crea sotto Gestisci categorie.',
   'help.guide.write-note.step.5':
-    'Sito web prende un link che appartiene alla nota. La scheda porta allora un riquadro Link che lo apre.',
-  'help.guide.write-note.step.6': 'Clicca Crea.',
+    'Sito web prende un link che appartiene alla nota. La scheda porta allora nella sua intestazione un pulsante rotondo di link che lo apre.',
+  'help.guide.write-note.step.6':
+    'Clicca Crea. Nient’altro chiude la finestra se non Annulla e la sua croce, quindi un clic accidentale di fianco o Esc non ti fanno perdere ciò che hai scritto.',
   'help.guide.write-note.result':
-    'La nota è una scheda nel pannello Note, nel colore della sua categoria, ed è già sullo schermo di ogni altro membro.',
+    'La nota è una scheda nel pannello Note, con l’intestazione tinta nel colore della categoria, ed è già sullo schermo di ogni altro membro.',
   'help.guide.write-note.tip.1':
-    'Fissa su una scheda la tiene in cima al pannello; tutto quello che sta sotto è ordinato per ultima modifica.',
+    'I tre puntini su una scheda (Altre opzioni) contengono Espandi, Fissa, Modifica ed Elimina. Fissa tiene la nota in cima al pannello in una cornice del suo colore; tutto quello che sta sotto è ordinato per ultima modifica.',
   'help.guide.write-note.tip.2':
-    'L’ingranaggio accanto a Nuova nota apre Gestisci categorie: lì una categoria riceve il suo colore, viene rinominata ovunque in una volta, oppure viene aggiunta prima che qualche nota la usi.',
+    'L’ingranaggio accanto a Nuova nota apre Gestisci categorie: lì una categoria riceve il suo colore, viene rinominata ovunque in una volta, oppure viene aggiunta prima che qualche nota la usi. Non cambia nulla finché non clicchi Salva.',
   'help.guide.write-note.tip.3':
-    'Allega file attacca un documento alla nota. Allega apre il selettore di file, e un’immagine o un PDF si possono anche semplicemente incollare nel modulo.',
+    'Allega file attacca un documento alla nota. Allega apre il selettore di file, e un’immagine o un PDF si possono anche semplicemente incollare nella finestra.',
   'help.guide.write-note.tip.4':
     'Note è un interruttore a sé sotto Moduli, sotto Collaborazione: un amministratore può spegnerlo e lasciare accesi Chat, Link, Sondaggi e Prossimi passi.',
   // shared-links
   'help.guide.shared-links.title': 'Raccogliere i link del viaggio',
   'help.guide.shared-links.goal':
     'Tieni il portale delle prenotazioni, l’album condiviso e gli orari in un posto solo invece di cercarli scorrendo la chat.',
-  'help.guide.shared-links.step.1': 'Clicca Aggiungi link in cima al pannello Link.',
+  'help.guide.shared-links.step.1':
+    'Clicca Aggiungi link nell’intestazione del pannello Link. La finestra si apre con il cursore nella sua intestazione.',
   'help.guide.shared-links.step.2':
-    'Dai un nome al link in Titolo del link, incolla l’indirizzo nel campo sotto, poi clicca Salva link.',
+    'Digita il nome dove si legge Titolo del link, incolla l’indirizzo in Link sotto, poi clicca Salva link.',
   'help.guide.shared-links.step.3':
     'Il chip mostra il nome e il sito a cui punta. Un clic su di esso apre la pagina in una nuova scheda del browser.',
   'help.guide.shared-links.step.4':
-    'I tre pulsantini in fondo sono Modifica link, Fissa link ed Elimina link. Fissa link sposta il chip all’inizio del pannello; Elimina link non chiede nulla.',
+    'I tre pulsanti rotondi in fondo sono Modifica link, Fissa link ed Elimina link. Fissa link sposta il chip all’inizio del pannello, nella tinta d’accento; Elimina link chiede prima, perché il link sparisce per ogni membro.',
   'help.guide.shared-links.result':
     'Il link è un chip nel pannello Link, fissato all’inizio, e sullo schermo di ogni membro nello stesso momento.',
   'help.guide.shared-links.tip.1':
-    'Vengono accettati solo indirizzi http e https; il campo rifiuta tutto il resto prima di salvare.',
+    'Viene accettato solo un indirizzo http o https: tutto il resto viene rifiutato, e la finestra resta aperta con ciò che hai digitato.',
   'help.guide.shared-links.tip.2':
     'I link fissati vengono per primi, poi i più recenti. L’iconcina accanto a un titolo è la favicon del sito, presa dal sito stesso, quindi senza internet il chip mostra al suo posto un semplice simbolo di link.',
   'help.guide.shared-links.tip.3':
@@ -2910,38 +2913,41 @@ const help: TranslationStrings = {
   'help.guide.create-poll.title': 'Chiedere al gruppo',
   'help.guide.create-poll.goal':
     'Trasforma una domanda a cui nella chat non risponde nessuno in un sondaggio che tutti possono spuntare.',
-  'help.guide.create-poll.step.1': 'Clicca Nuovo sondaggio in cima al pannello Sondaggi.',
+  'help.guide.create-poll.step.1':
+    'Clicca Nuovo sondaggio nell’intestazione del pannello Sondaggi. Si apre la finestra.',
   'help.guide.create-poll.step.2':
-    'Scrivi la domanda. Markdown supportato sotto il riquadro significa che qui funzionano una parola in grassetto, un a capo o un breve elenco.',
-  'help.guide.create-poll.step.3': 'Compila Opzione 1 e Opzione 2. Due opzioni con qualcosa dentro sono il minimo.',
+    'Scrivi la domanda sotto Domanda. Markdown supportato sotto il riquadro significa che qui funzionano una parola in grassetto, un a capo o un breve elenco.',
+  'help.guide.create-poll.step.3':
+    'Compila Opzione 1 e Opzione 2 sotto Opzioni. Due opzioni con qualcosa dentro sono il minimo, e un’opzione può occupare più righe.',
   'help.guide.create-poll.step.4':
-    '+ Aggiungi opzione ne aggiunge una terza, una quarta, quante ne servono; la crocetta accanto a una riga ne toglie una.',
+    'Aggiungi opzione, sotto di esse, ne aggiunge una terza, una quarta, quante ne servono; la crocetta accanto a una riga, presente quando ne hai più di due, ne toglie di nuovo una.',
   'help.guide.create-poll.step.5':
     'Scelta multipla lascia che ognuno spunti più di un’opzione. Lasciata spenta, un voto si sposta quando qualcuno sceglie altro.',
   'help.guide.create-poll.step.6': 'Clicca Crea sondaggio.',
   'help.guide.create-poll.result':
-    'Il sondaggio sta in cima al pannello Sondaggi, aperto, e non ha ancora votato nessuno.',
+    'Il sondaggio sta in cima al pannello Sondaggi, aperto, con 0 voti nella sua intestazione.',
   'help.guide.create-poll.tip.1': 'La domanda viene resa come Markdown; le opzioni restano testo semplice.',
   'help.guide.create-poll.tip.2':
     'Crea sondaggio resta grigio finché non ci sono una domanda e almeno due opzioni con qualcosa dentro.',
   'help.guide.create-poll.tip.3':
-    'Una scadenza si può impostare solo nell’app per telefono. Un sondaggio che ne ha una mostra qui il tempo rimasto in un chip ambra e conta come chiuso appena scade.',
+    'Una scadenza si può impostare solo nell’app per telefono. Un sondaggio che ne ha una mostra il tempo rimasto in un chip ambra nella sua intestazione e conta come chiuso appena scade.',
   'help.guide.create-poll.tip.4':
     'Sondaggi è un interruttore a sé sotto Moduli, sotto Collaborazione: un amministratore può spegnerlo e lasciare accesi gli altri quattro pannelli.',
   // vote-poll
   'help.guide.vote-poll.title': 'Votare e leggere il risultato',
   'help.guide.vote-poll.goal': 'Dai il tuo voto, guarda a che punto è il gruppo e cambia idea.',
-  'help.guide.vote-poll.step.1': 'Clicca l’opzione che vuoi. Il suo cerchio si riempie e la barra dietro cresce.',
+  'help.guide.vote-poll.step.1':
+    'Clicca l’opzione che vuoi. Il suo cerchio si riempie con un segno di spunta, l’opzione riceve una cornice nel colore d’accento e la barra dietro cresce.',
   'help.guide.vote-poll.step.2':
-    'Ora tutto il risultato è leggibile: la barra è la quota, la percentuale sta a destra, e i cerchietti sono le persone che hanno scelto quell’opzione.',
+    'Ora tutto il risultato è leggibile: la barra è la quota, la percentuale sta a destra, e i cerchietti sono le persone che hanno scelto quell’opzione, fino a tre.',
   'help.guide.vote-poll.step.3':
     'Cambiato idea? Clicca un’altra opzione. In un sondaggio senza Scelta multipla il tuo voto si sposta invece di aggiungerne un secondo.',
   'help.guide.vote-poll.step.4':
-    'Sotto la domanda sta quanti voti ha il sondaggio. Un clic sull’opzione che hai già scelto ritira il tuo voto, e il contatore scende.',
+    'Quanti voti ha il sondaggio sta in un chip sotto la domanda. Un clic sull’opzione che hai già scelto ritira il tuo voto, e il conteggio scende.',
   'help.guide.vote-poll.result':
     'La tua spunta è su un’opzione, le barre mostrano come è diviso il gruppo, e i cerchi dicono chi ha scelto cosa.',
   'help.guide.vote-poll.tip.1':
-    'Le barre e le percentuali compaiono solo dopo che hai votato tu, o una volta chiuso il sondaggio, così nessuno viene condizionato dai risultati parziali.',
+    'Le percentuali e chi ha votato cosa compaiono solo dopo che hai votato tu, o una volta chiuso il sondaggio. Il numero di voti nell’intestazione è visibile a tutti.',
   'help.guide.vote-poll.tip.2':
     'Un voto non è mai anonimo: passa il mouse su uno dei cerchi di un’opzione per il nome che c’è dietro.',
   // close-poll
@@ -2949,11 +2955,11 @@ const help: TranslationStrings = {
   'help.guide.close-poll.goal':
     'Ferma la votazione una volta che il gruppo ha deciso, e togli di mezzo un sondaggio che non serve più a nessuno.',
   'help.guide.close-poll.step.1':
-    'Chiudi, il lucchetto nell’angolo di un sondaggio, termina la votazione. Le opzioni non accettano più clic.',
+    'Chiudi, il lucchetto a destra nell’intestazione di un sondaggio, termina la votazione. Le opzioni non accettano più clic.',
   'help.guide.close-poll.step.2':
-    'Un sondaggio chiuso scende sotto il titolo Chiusi in fondo al pannello, porta un distintivo Chiuso e mostra a tutti il risultato, che abbiano votato o no. L’opzione vincente è tinta di verde.',
+    'Un sondaggio chiuso scende sotto il titolo Chiusi in fondo al pannello, porta un chip Chiuso e mostra a tutti il risultato, che abbiano votato o no. L’opzione vincente è in grassetto su una barra verde; se è quella che hai scelto tu, la barra mantiene invece il tuo colore d’accento.',
   'help.guide.close-poll.step.3':
-    'Elimina, il cestino nello stesso angolo, toglie il sondaggio. Niente chiede due volte, e i voti se ne vanno con lui.',
+    'Elimina, il cestino a destra nell’intestazione, toglie il sondaggio; su un sondaggio chiuso sta lì da solo, perché il lucchetto non c’è più. Niente chiede due volte, e i voti se ne vanno con lui.',
   'help.guide.close-poll.result':
     'Il sondaggio è sparito dal pannello di ogni membro. Quello che hai solo chiuso resta leggibile in fondo, con il suo risultato.',
   'help.guide.close-poll.tip.1':
@@ -2964,11 +2970,11 @@ const help: TranslationStrings = {
   'help.guide.whats-next.title': 'Leggere Cosa c’è dopo',
   'help.guide.whats-next.goal': 'Guarda cosa fa il gruppo dopo senza aprire il programma.',
   'help.guide.whats-next.step.1':
-    'Il pannello elenca le tappe del viaggio ancora davanti, fino a otto, in ordine di orario, sotto un titolo per giorno: Oggi, Domani o la data.',
+    'Il pannello elenca le tappe del viaggio ancora davanti, fino a otto, in ordine di orario, sotto un titolo per giorno: Oggi, Domani o la data, con accanto il titolo del giorno quando ne ha uno. L’intestazione le conta.',
   'help.guide.whats-next.step.2':
-    'A sinistra di una riga sta il suo orario: l’inizio, a, e la fine quando la tappa ce l’ha, oppure TBD quando non è ancora impostato nessun orario.',
+    'A sinistra di ogni tappa sta il suo orario: l’inizio, a, e la fine quando la tappa ce l’ha, oppure TBD quando non è ancora impostato nessun orario.',
   'help.guide.whats-next.step.3':
-    'I chip sotto il nome sono le persone su quella tappa. Se non è stato scelto nessuno, sono elencati tutti quelli del viaggio.',
+    'Accanto stanno il nome, l’indirizzo e, come chip, le persone su quella tappa. Se non è stato scelto nessuno, sono elencati tutti quelli del viaggio.',
   'help.guide.whats-next.result':
     'Un elenco di quello che arriva, da leggere soltanto: segue il programma, e niente qui lo cambia.',
   'help.guide.whats-next.tip.1':
@@ -2981,7 +2987,7 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.title': 'Parlare con il gruppo',
   'help.guide.trip-chat.goal': 'Dì qualcosa, rispondi a un messaggio preciso, reagisci a un altro e ritira il tuo.',
   'help.guide.trip-chat.step.1':
-    'Scrivi in Scrivi un messaggio... e premi Enter. La freccia blu accanto al riquadro fa lo stesso; Shift e Enter vanno invece a capo.',
+    'Scrivi in Scrivi un messaggio... e premi Enter. La freccia rotonda accanto al riquadro fa lo stesso; Shift e Enter vanno invece a capo.',
   'help.guide.trip-chat.step.2':
     'Lo smiley apre il selettore di emoji, con dentro Smileys, Reactions e Travel. Quello che scegli si aggiunge a ciò che stai scrivendo, non viene inviato da solo.',
   'help.guide.trip-chat.step.3':
@@ -2991,11 +2997,11 @@ const help: TranslationStrings = {
   'help.guide.trip-chat.step.5':
     'Clic destro su un messaggio per le otto reazioni rapide. La tua sta sotto la bolla, e un secondo clic sulla stessa la ritira.',
   'help.guide.trip-chat.step.6':
-    'I tuoi messaggi portano Elimina accanto a Rispondi. Toglie il messaggio e lascia una riga che dice che lo hai eliminato: non si torna indietro.',
+    'I tuoi messaggi portano Elimina, il cestino, accanto a Rispondi. Toglie subito il messaggio e lascia una riga che dice che lo hai eliminato: non si torna indietro.',
   'help.guide.trip-chat.result':
-    'La tua risposta sta sotto il messaggio che cita, una reazione è appesa a un terzo, e quello che hai ritirato lascia una sola riga che lo dice.',
+    'La tua risposta è il messaggio più recente, con in cima quello che cita; una reazione è appesa a un terzo, e quello che hai ritirato lascia una sola riga che lo dice.',
   'help.guide.trip-chat.tip.1':
-    'Enter invia, Shift e Enter vanno a capo. Un messaggio fatto solo di emoji viene mostrato grande.',
+    'Enter invia, Shift e Enter vanno a capo. Un messaggio fatto solo di emoji, da uno a tre, viene mostrato grande.',
   'help.guide.trip-chat.tip.2':
     'Allega immagini prende fino a quattro immagini per un messaggio; si possono anche solo incollare o lasciar cadere sul riquadro.',
   'help.guide.trip-chat.tip.3':
@@ -3008,31 +3014,31 @@ const help: TranslationStrings = {
   'help.ctx.trip-lists.summary':
     'Due liste per un viaggio: la lista valigia, con chi porta cosa e quanto pesa, e la lista di tutto quello che deve succedere prima e durante. La scheda c’è finché l’addon Liste è attivo.',
   'help.ctx.trip-lists.bullet.1':
-    'Lista di imballaggio e Da fare in alto passano dall’una all’altra e contano che cosa c’è in ciascuna; i pulsanti a destra appartengono a quella aperta.',
+    'Lista di imballaggio e Da fare nella barra in alto passano dall’una all’altra e contano che cosa c’è in ciascuna; i pulsanti all’estremità destra della barra appartengono a quella aperta.',
   'help.ctx.trip-lists.bullet.2':
-    'La lista valigia è raggruppata in liste, Documenti, Abbigliamento, comunque tu le chiami, ognuna con un punto colorato, un contatore di quanto è in valigia sul totale e tre puntini con Rinomina, Seleziona tutti, Deseleziona tutti ed Elimina lista. Aggiungi lista, nella barra sopra, ne crea una nuova.',
+    'La lista valigia è raggruppata in liste, Documenti, Abbigliamento, comunque tu le chiami, ognuna una scheda la cui fascia di testa contiene un punto colorato, un contatore di quanto è in valigia sul totale, tre puntini con Rinomina, Seleziona tutti, Deseleziona tutti ed Elimina lista, e una freccia che ripiega la scheda. Aggiungi lista, nella barra sopra, ne crea una nuova.',
   'help.ctx.trip-lists.bullet.3':
-    'Una riga è una casella e un nome, poi, come piccoli contrassegni, chi porta l’elemento, la quantità e il peso in grammi, e un cerchio della valigia finché Tracciamento valigia è attivo, poi il cestino e tre puntini con Sposta nella lista, Condivisione, Rinomina ed Elimina. Ciò che una riga non usa resta attenuato finché non ci passi sopra, e la maniglia a sinistra la trascina su o giù dentro la sua lista.',
+    'Una riga è una casella e un nome, poi chi porta l’elemento come piccolo avatar e la quantità come piccolo contrassegno, finché Tracciamento valigia è attivo anche il peso in grammi e un cerchio della valigia, poi il cestino e tre puntini con Sposta nella lista, Condivisione, Rinomina ed Elimina. Ciò che una riga non usa resta attenuato finché non ci passi sopra, e la maniglia a sinistra la trascina su o giù dentro la sua lista.',
   'help.ctx.trip-lists.bullet.4':
-    'Condiviso e La mia lista dividono la lista valigia in due: il fondo comune che vedono tutti, e la tua. Tutti, Da fare e Fatto restringono quella aperta, e la barra sopra conta che cosa è in valigia.',
+    'Condiviso e La mia lista dividono la lista valigia in due: il fondo comune che vedono tutti, e la tua. Tutti, Da fare e Fatto, accanto, restringono quella aperta, e la scheda di avanzamento sopra conta che cosa è in valigia.',
   'help.ctx.trip-lists.bullet.5':
-    'Applica modello e Salva come modello riempiono o conservano una lista senza digitarla, e le due icone accanto esportano la lista, come stampa, come PDF o come file, e ne importano una. Il pulsante rosso vicino alla barra di avanzamento dice quanti elementi sono spuntati e li porta via.',
+    'Applica modello e Salva come modello riempiono o conservano una lista senza digitarla, e le due icone dopo di loro, Esporta e Importa, portano fuori la lista come stampa, come PDF o come file, e ne portano dentro una. Il pulsante rosso all’estremità destra della scheda di avanzamento dice quanti elementi sono spuntati e li porta via.',
   'help.ctx.trip-lists.bullet.6':
-    'Da fare ha una barra laterale propria: la scheda di avanzamento, i filtri Tutti, Le mie attività, Scaduta e Fatto, una riga per lista e sotto Aggiungi lista. Le attività stanno in una scheda la cui intestazione nomina il filtro e contiene l’ordinamento, Priorità o Scadenza. Un clic su un’attività la apre nel pannello a destra, e Nuova attività apre il modulo Nuova attività sopra il centro dello schermo.',
+    'Da fare ha una barra laterale propria: la scheda di avanzamento, i filtri Tutti, Le mie attività, Scaduta e Fatto, una riga per lista e sotto Aggiungi lista. Le attività stanno in una scheda la cui intestazione nomina il filtro e contiene l’ordinamento, Priorità o Scadenza. Un clic su un’attività la apre nel pannello a destra, e Nuova attività nella barra apre la finestra Nuova attività.',
   // packing-categories
   'help.guide.packing-categories.title': 'Costruire la lista valigia',
   'help.guide.packing-categories.goal':
     'Raggruppa in liste quello che porti, riempile di elementi e indica chi si occupa di ogni lista.',
   'help.guide.packing-categories.step.1':
-    'Clicca Aggiungi lista nella barra sopra le liste, digita il nome in Nome della lista (es. Abbigliamento) e clicca Aggiungi.',
+    'Clicca Aggiungi lista nella barra sopra le liste. Si apre una piccola finestra: digita il nome nella sua fascia di testa, dove si legge Nome della lista (es. Abbigliamento), e clicca Aggiungi.',
   'help.guide.packing-categories.step.2':
-    'La nuova lista parte con una riga vuota. Clicca Aggiungi elemento, digita l’elemento in Nome elemento... e premi Invio; il campo resta aperto per il successivo.',
+    'La nuova lista parte con una riga segnaposto che mostra solo tre puntini sbiaditi. Clicca Aggiungi elemento in fondo, digita l’elemento in Nome elemento... e premi Invio: il primo elemento prende il posto del segnaposto, e il campo resta aperto per il successivo.',
   'help.guide.packing-categories.step.3':
     'Rinomina una riga cliccandone il nome, oppure con Rinomina nei tre puntini alla sua estremità destra.',
   'help.guide.packing-categories.step.4':
-    'Il cerchio tratteggiato nell’intestazione della lista assegna membri del viaggio alla lista. Scegli un nome; il chip che compare rimuove di nuovo quella persona con un clic.',
+    'Il cerchio tratteggiato con una persona nella fascia di testa della lista assegna membri del viaggio alla lista. Scegli un nome; il chip che compare rimuove di nuovo quella persona con un clic.',
   'help.guide.packing-categories.step.5':
-    'I tre puntini in fondo all’intestazione tengono il resto: Rinomina, Seleziona tutti, Deseleziona tutti ed Elimina lista, che porta via la lista e tutto quello che contiene senza chiedere di nuovo.',
+    'I tre puntini accanto al conteggio tengono il resto: Rinomina, Seleziona tutti, Deseleziona tutti ed Elimina lista, che porta via la lista e tutto quello che contiene senza chiedere di nuovo. La freccia all’estrema destra ripiega la lista.',
   'help.guide.packing-categories.result':
     'La nuova lista sta nella griglia con i suoi elementi sotto e il suo punto colorato, e il suo contatore dice quanto è già in valigia.',
   'help.guide.packing-categories.tip.1':
@@ -3048,13 +3054,13 @@ const help: TranslationStrings = {
   'help.guide.check-off-packing.step.1':
     'Clicca la casella a sinistra di una riga. Il nome viene barrato e la barra si muove.',
   'help.guide.check-off-packing.step.2':
-    'La barra sopra conta quello che è in valigia rispetto a tutto quello che sta sulla lista, come numero e come percentuale.',
+    'La scheda di avanzamento sopra le liste conta quello che è in valigia rispetto a tutto quello che sta sulla lista, come numero, come percentuale e come barra.',
   'help.guide.check-off-packing.step.3':
-    'Una lista intera in un colpo: i tre puntini nella sua intestazione tengono Seleziona tutti e Deseleziona tutti.',
+    'Una lista intera in un colpo: i tre puntini nella sua fascia di testa tengono Seleziona tutti e Deseleziona tutti.',
   'help.guide.check-off-packing.step.4':
-    'Tutti, Da fare e Fatto restringono la griglia. Da fare lascia solo quello che manca ancora, quindi una lista del tutto in valigia ne esce.',
+    'Tutti, Da fare e Fatto, accanto a Condiviso e La mia lista, restringono la griglia. Da fare lascia solo quello che manca ancora, quindi una lista del tutto in valigia ne esce.',
   'help.guide.check-off-packing.step.5':
-    'Rimuovi 3 spuntati accanto alla barra di avanzamento elimina tutti gli elementi spuntati in una volta, dopo una conferma del browser.',
+    'Rimuovi 3 spuntati all’estremità destra della scheda di avanzamento elimina tutti gli elementi spuntati in una volta, dopo una conferma del browser.',
   'help.guide.check-off-packing.result':
     'Resta elencato solo quello che è ancora aperto, e la barra sopra dice a che punto è la valigia.',
   'help.guide.check-off-packing.tip.1': 'Un elemento spuntato si può comunque rinominare: clicca il suo nome.',
@@ -3071,7 +3077,7 @@ const help: TranslationStrings = {
   'help.guide.apply-packing-template.step.3':
     'Gli elementi finiscono nella vista in cui sei: Condiviso li mette nel fondo comune che vedono tutti, La mia lista li rende tuoi.',
   'help.guide.apply-packing-template.step.4':
-    'Conservare la lista di questo viaggio per il prossimo: Salva come modello apre una finestra, digita un nome e clicca Salva.',
+    'Conservare la lista di questo viaggio per il prossimo: Salva come modello apre una piccola finestra. Digita un nome nella sua fascia di testa, dove si legge Nome modello, e clicca Salva.',
   'help.guide.apply-packing-template.result':
     'Le liste e gli elementi del modello sono nel viaggio, accanto a quello che c’era già.',
   'help.guide.apply-packing-template.tip.1':
@@ -3085,12 +3091,13 @@ const help: TranslationStrings = {
   'help.guide.import-packing-list.goal':
     'Trasforma in un colpo solo una lista che hai già altrove in elementi della valigia.',
   'help.guide.import-packing-list.step.1':
-    'Clicca il pulsante di importazione con la freccia in giù nella barra sopra la lista.',
+    'Clicca Importa, l’icona con la freccia in giù all’estremità destra della barra sopra la lista.',
   'help.guide.import-packing-list.step.2':
-    'Un elemento per riga: Categoria, Nome, Peso in g (opzionale), Borsa (opzionale), checked/unchecked (opzionale). L’esempio grigio nel riquadro mostra tutte e quattro le forme. Funziona anche un elenco in Markdown: un titolo dà il nome alla lista, e "- [ ]" e "- [x]" diventano elementi.',
+    'Un elemento per riga: Categoria, Nome, Peso in g (opzionale), Borsa (opzionale), checked/unchecked (opzionale). L’esempio grigio nel riquadro mostra tutte e quattro le forme, e i numeri lungo il suo bordo sinistro contano le righe che digiti. Funziona anche un elenco in Markdown: un titolo dà il nome alla lista, e "- [ ]" e "- [x]" diventano elementi.',
   'help.guide.import-packing-list.step.3':
-    'Oppure carica le righe da un file con Carica CSV/TXT/MD. Accetta un .csv, un .txt o un .md e sostituisce quello che sta nel riquadro.',
-  'help.guide.import-packing-list.step.4': 'Clicca Importa. Il pulsante conta le righe che ha capito.',
+    'Oppure carica le righe da un file con Carica CSV/TXT/MD, in basso a sinistra nella finestra. Accetta un .csv, un .txt o un .md e sostituisce quello che sta nel riquadro.',
+  'help.guide.import-packing-list.step.4':
+    'Clicca Importa 3 in basso a destra; il numero sul pulsante conta le righe che TREK ha capito.',
   'help.guide.import-packing-list.result':
     'Ogni riga diventa un elemento, nella lista che nomina il suo primo campo, e niente di quello che c’era già viene toccato.',
   'help.guide.import-packing-list.tip.1':
@@ -3102,11 +3109,11 @@ const help: TranslationStrings = {
   'help.guide.export-packing-list.goal':
     'Porta la lista con te su carta, come PDF o come file per un’altra app o per il prossimo viaggio.',
   'help.guide.export-packing-list.step.1':
-    'Clicca il pulsante di esportazione con la freccia in su nella barra sopra la lista.',
+    'Clicca Esporta, l’icona con la freccia in su nella barra sopra la lista, subito prima di Importa.',
   'help.guide.export-packing-list.step.2':
     'Checklist in Markdown (.md) e CSV per l’importazione (.csv) salvano subito la lista come file.',
   'help.guide.export-packing-list.step.3':
-    'Clicca Stampa o salva come PDF. L’anteprima mostra la lista come una pagina: in alto il viaggio e le sue date, poi ogni lista come una scheda con una casella da spuntare.',
+    'Clicca Stampa o salva come PDF. L’anteprima mostra la lista come una pagina: in alto il viaggio, le sue date e quanto è già in valigia, poi ogni lista come una scheda, ogni elemento con una casella da spuntare.',
   'help.guide.export-packing-list.step.4':
     'Clicca Stampa o salva come PDF sotto l’anteprima. Il browser apre la sua finestra di stampa: scegli una stampante, oppure Salva come PDF per tenere un file.',
   'help.guide.export-packing-list.result':
@@ -3130,9 +3137,9 @@ const help: TranslationStrings = {
     'Apri di nuovo Condivisione e spunta un nome sotto Condividi con…. L’elemento compare anche sulla lista di quella persona, e la riga riceve un piccolo contrassegno che conta le persone con cui è condiviso.',
   'help.guide.share-packing-item.result': 'L’elemento sta nel livello che hai scelto, e la riga dice chi lo porta.',
   'help.guide.share-packing-item.tip.1':
-    'Solo chi porta un elemento ne cambia la condivisione. Chi l’ha ricevuto da te lo vede sulla sua La mia lista, segnato con il tuo nome, e può spuntarlo.',
+    'Solo chi porta un elemento ne cambia la condivisione. Chi l’ha ricevuto da te lo vede sulla sua La mia lista con un piccolo contrassegno a forma di mano che ti nomina quando ci punta sopra, e può spuntarlo.',
   'help.guide.share-packing-item.tip.2':
-    'Su un elemento portato da qualcun altro ottieni invece due pulsanti diversi: Posso portarlo anch’io, che ti mette accanto, e Copia nella mia lista, che ne fa una copia privata tua.',
+    'Su un elemento condiviso portato da qualcun altro, i tre puntini contengono al posto di Condivisione due voci diverse: Posso portarlo anch’io, che ti mette accanto, e Copia nella mia lista, che ne fa una copia privata tua.',
   'help.guide.share-packing-item.tip.3':
     'I nuovi elementi ereditano la vista in cui li aggiungi. Aggiunti in La mia lista sono Personale, aggiunti in Condiviso vanno nel fondo comune.',
   // packing-bags
@@ -3141,18 +3148,19 @@ const help: TranslationStrings = {
     'Metti un peso su ogni elemento, smista gli elementi nelle valigie e tieni ogni valigia sotto il limite della compagnia aerea.',
   'help.guide.packing-bags.step.1':
     'Clicca il contrassegno del peso prima del cerchio e digita il peso dell’elemento in grammi.',
-  'help.guide.packing-bags.step.2': 'Il cerchio in fondo alla riga è la sua valigia. Cliccalo.',
+  'help.guide.packing-bags.step.2': 'Il cerchio dopo il peso è la valigia dell’elemento. Cliccalo.',
   'help.guide.packing-bags.step.3':
     'Nessuna valigia ancora: Aggiungi valigia, un nome, Invio. La valigia viene creata e l’elemento ci finisce dentro subito.',
   'help.guide.packing-bags.step.4':
-    'Il pannello Valigie compare a destra appena esiste una valigia: nome, peso, una barra di riempimento, chi la porta e quanti elementi contiene, poi Non assegnato e Peso totale.',
+    'La scheda Valigie compare a destra delle liste appena esiste una valigia: nome, chi la porta, una barra di riempimento, quanti elementi contiene e il suo peso, poi Non assegnato e Peso totale.',
   'help.guide.packing-bags.step.5':
-    'Clicca Imposta limite e digita il limite in chilogrammi, come lo indicano le compagnie aeree.',
-  'help.guide.packing-bags.step.6': 'Il segno più tratteggiato accanto al nome di una valigia dice chi la porta.',
+    'Clicca Imposta limite accanto al peso della valigia e digita il limite in chilogrammi, come lo indicano le compagnie aeree.',
+  'help.guide.packing-bags.step.6':
+    'Il segno più tratteggiato alla fine della riga del nome della valigia, subito prima della croce, apre Assegna membri: spunta chi porta la valigia, e le persone compaiono accanto al più.',
   'help.guide.packing-bags.result':
-    'Il pannello Valigie a destra mostra il peso di ogni valigia rispetto al suo limite, quello che non sta in nessuna, e il totale.',
+    'La scheda Valigie a destra mostra il peso di ogni valigia rispetto al suo limite, quello che non sta in nessuna, e il totale.',
   'help.guide.packing-bags.tip.1':
-    'Il campo del peso, il cerchio della valigia e il pannello Valigie esistono solo finché un amministratore tiene Tracciamento valigia acceso sotto l’addon Liste.',
+    'Il campo del peso, il cerchio della valigia e la scheda Valigie esistono solo finché un amministratore tiene Tracciamento valigia acceso sotto l’addon Liste. In una finestra più stretta le valigie si aprono invece dal pulsante Valigie sopra la scheda di avanzamento.',
   'help.guide.packing-bags.tip.2':
     'Il peso di una valigia viene sommato sul server su tutti gli elementi di ogni membro, compresi quelli che non puoi vedere, quindi il numero è davvero quanto pesa la valigia.',
   'help.guide.packing-bags.tip.3':
@@ -3161,16 +3169,17 @@ const help: TranslationStrings = {
   'help.guide.create-todo.title': 'Aggiungere un’attività',
   'help.guide.create-todo.goal':
     'Annota qualcosa che deve succedere, con una lista, una priorità, una data e un nome accanto.',
-  'help.guide.create-todo.step.1': 'Clicca Nuova attività in alto a destra.',
+  'help.guide.create-todo.step.1': 'Clicca Nuova attività all’estremità destra della barra.',
   'help.guide.create-todo.step.2':
-    'Dalle un nome in Nome attività, e metti sotto Descrizione tutto quello che vale la pena ricordare.',
+    'La finestra Nuova attività si apre con il cursore nella sua fascia di testa: digita il nome dove si legge Nome attività, e metti sotto Descrizione tutto quello che vale la pena ricordare.',
   'help.guide.create-todo.step.3':
     'Lista raggruppa l’attività. Scegline una, oppure usa il segno più accanto per dare un nome a una nuova in una piccola finestra.',
   'help.guide.create-todo.step.4': 'Priorità sono quattro pulsanti: Nessuna, P1, P2 e P3, dal rosso al blu.',
-  'help.guide.create-todo.step.5': 'Scadenza apre un calendario, e Assegnato a mette un nome sull’attività.',
+  'help.guide.create-todo.step.5':
+    'Scadenza, accanto a Lista, apre un calendario, e Assegnato a mette un nome sull’attività.',
   'help.guide.create-todo.step.6': 'Clicca Crea attività.',
   'help.guide.create-todo.result':
-    'L’attività è nella lista con i suoi distintivi, la priorità, la scadenza, la lista e la persona a cui è assegnata, e si apre nel pannello a destra.',
+    'L’attività è nella lista con la priorità, la scadenza e la lista come distintivi e l’avatar della persona assegnata in fondo alla riga, e si apre nel pannello a destra.',
   'help.guide.create-todo.tip.1':
     'Solo il nome è obbligatorio. Tutto il resto si può riempire dopo dal pannello a destra.',
   'help.guide.create-todo.tip.2':
@@ -3188,7 +3197,7 @@ const help: TranslationStrings = {
     'L’ordinamento nell’intestazione della lista riordina quello che è sullo schermo: Priorità mette P1 per primo, Scadenza mette la scadenza più vicina per prima. Solo uno dei due alla volta, e un secondo clic torna al tuo ordine.',
   'help.guide.todo-filters.step.4': 'Clicca un’attività per aprirla nel pannello a destra.',
   'help.guide.todo-filters.step.5':
-    'Cambia quello che ti serve, Descrizione, Priorità, Lista, Scadenza o Assegnato a, poi Salva modifiche. La casella nell’intestazione del pannello spunta l’attività, ed Elimina la porta via all’istante.',
+    'Cambia quello che ti serve, il nome, Descrizione, Priorità, Lista, Scadenza o Assegnato a, poi Salva modifiche in fondo al pannello. La casella nell’intestazione del pannello spunta l’attività, ed Elimina accanto a Salva modifiche la porta via all’istante.',
   'help.guide.todo-filters.result':
     'La lista mostra solo le attività che hai chiesto, e il pannello a destra modifica quella che hai scelto.',
   'help.guide.todo-filters.tip.1':
@@ -3199,57 +3208,81 @@ const help: TranslationStrings = {
   // ── Screen: trip-bookings ─────────────────────────────────────────────────────────────
   'help.ctx.trip-bookings.title': 'Prenotazioni',
   'help.ctx.trip-bookings.summary':
-    'La scheda che raccoglie tutto ciò che è prenotato per il viaggio e non serve a spostarsi: gli alloggi, i tavoli, i biglietti, i tour, i parcheggi. Ogni prenotazione è una scheda in In attesa o in Confermata, con il suo codice, il suo documento, i suoi viaggiatori e il suo costo.',
+    'La scheda che raccoglie tutto ciò che è prenotato per il viaggio e non serve a spostarsi: gli alloggi, i tavoli, i biglietti, i tour, i parcheggi. Ogni prenotazione è una scheda, una riga dell’elenco o una barra nella cronologia, con il suo codice, i suoi documenti, i suoi viaggiatori e il suo costo, e un clic ne apre il dettaglio.',
   'help.ctx.trip-bookings.bullet.1':
-    'Prenotazione manuale in alto a destra apre il modulo. I sei generi che crea sono Alloggio, Ristorante, Evento, Tour, Parcheggio e Altro; voli, treni e il resto vivono nella scheda Trasporti e qui non compaiono mai.',
+    'Prenotazione manuale all’estremità destra della barra apre Nuova prenotazione. I sei generi che crea sono Alloggio, Ristorante, Evento, Tour, Parcheggio e Altro; voli, treni e il resto vivono nella scheda Trasporti e qui non compaiono mai.',
   'help.ctx.trip-bookings.bullet.2':
-    'Importa da file consegna una conferma all’analisi: EML, PDF, PKPass, HTML o TXT, cinque file da 10 MB al massimo. Il pulsante c’è solo se il server sa leggerli.',
+    'L’icona di download prima di Prenotazione manuale, Importa conferme di prenotazione, consegna le conferme all’analisi: EML, PDF, PKPass, HTML o TXT, cinque file da 10 MB al massimo. L’icona c’è solo se il server sa leggerli.',
   'help.ctx.trip-bookings.bullet.3':
-    'I chip accanto al titolo filtrano per genere, ognuno con il proprio conteggio, e Tutti riporta indietro tutto. Non appena una prenotazione nomina delle persone, la fila di avatar accanto ai chip restringe la scheda a una di loro.',
+    'Cerca guarda nei titoli, nei tipi, nei luoghi, nelle note, nei codici di prenotazione e nei viaggiatori. Filtra, l’imbuto accanto, restringe la scheda per Stato, per Tipo con un conteggio per ciascuno, e per Viaggiatori non appena una prenotazione nomina delle persone; un numero sull’imbuto conta ciò che è attivo.',
   'help.ctx.trip-bookings.bullet.4':
-    'Le schede delle prenotazioni stanno in due sezioni, In attesa e Confermata, ognuna con il suo conteggio. Un clic sul titolo di una sezione la ripiega, e se è aperta viene ricordato per questo viaggio.',
+    'Le tre icone dopo Filtra cambiano la vista: Schede, Elenco e Cronologia. Opzioni di visualizzazione, i cursori accanto, raggruppa e ordina schede ed elenco o imposta le corsie della cronologia. Per impostazione predefinita le schede stanno in Confermata e In attesa, e un clic sul titolo di una sezione la ripiega.',
   'help.ctx.trip-bookings.bullet.5':
-    'Una scheda porta il punto di stato, il genere, il titolo, le date e gli orari, il Codice prenotazione, Posizione / Indirizzo, ciò a cui la prenotazione è collegata, il suo Link, le Note, i File e i Viaggiatori.',
+    'Una scheda ha una fascia di testa colorata secondo il suo stato, con il punto di stato (un clic passa tra In attesa e Confermata), il tipo, il titolo, la matita e il cestino. Sotto, tutto ciò che la prenotazione ha: Data, Ora, Codice prenotazione, Check-in e Check-out, Posizione / Indirizzo, Alloggio, Collegata a (la tappa nel programma), Link, Note, Viaggiatori, File e i costi collegati.',
   'help.ctx.trip-bookings.bullet.6':
-    'La matita su una scheda riapre lo stesso modulo; il cestino chiede una volta e poi la prenotazione è sparita. Con un alloggio se ne vanno anche le sue notti nel Programma giornaliero e la sua spesa collegata.',
+    'Un clic su una scheda, una riga o una barra apre il dettaglio della prenotazione, con Sulla mappa, il cestino e Modifica in fondo. L’eliminazione chiede una volta, poi la prenotazione è sparita insieme alle sue spese collegate, e un alloggio toglie le sue notti dal Programma giornaliero.',
+  // booking-views
+  'help.guide.booking-views.title': 'Cambiare vista e aprire una prenotazione',
+  'help.guide.booking-views.goal':
+    'Vedi le prenotazioni come schede, come elenco o su una cronologia, e aprine una per vedere tutto ciò che contiene.',
+  'help.guide.booking-views.step.1':
+    'Le tre icone dopo Filtra nella barra sono le viste, e ognuna mostra il suo nome quando ci punti sopra: Schede, Elenco e Cronologia. La vista iniziale è Schede, una scheda per prenotazione nelle sezioni Confermata e In attesa. Clicca Elenco, quella in mezzo.',
+  'help.guide.booking-views.step.2':
+    'Elenco mette una riga per prenotazione sotto un titolo per giorno, con il giorno e l’ora a destra; i tasti freccia passano da una riga all’altra. Clicca Cronologia, l’ultima delle tre.',
+  'help.guide.booking-views.step.3':
+    'Cronologia stende le prenotazioni sui giorni del viaggio, una corsia per tipo e una barra da ogni inizio alla sua fine, una prenotazione in attesa con un contorno tratteggiato. Viaggio fa stare tutto il viaggio nella larghezza; clicca il titolo di un giorno per vedere quel giorno ora per ora.',
+  'help.guide.booking-views.step.4':
+    'Giorno distende un giorno su una scala oraria, e le barre si allungano fino a mostrare i loro orari. Le frecce accanto al nome del giorno passano al giorno prima e al giorno dopo, e il selettore Viaggio e Giorno a destra torna a tutto il viaggio.',
+  'help.guide.booking-views.step.5':
+    'Punta il mouse su una barra per vederne giorno, orari e luogo, poi cliccala per aprire il dettaglio della prenotazione. Una scheda in Schede e una riga in Elenco aprono la stessa finestra.',
+  'help.guide.booking-views.step.6':
+    'La fascia di testa del dettaglio porta il titolo e le pillole per lo stato (un clic lo cambia), il tipo, il giorno e il codice di prenotazione, con un pulsante che lo copia. Sotto vengono gli orari come riquadri, poi il luogo, i viaggiatori, le note, i costi e i file, quello che la prenotazione ha, e in fondo Sulla mappa, il cestino e Modifica.',
+  'help.guide.booking-views.result':
+    'La prenotazione è aperta nel suo dettaglio: Modifica apre il suo modulo, Sulla mappa la mostra nel programma, e Chiudi o Esc ti riportano alla vista da cui venivi.',
+  'help.guide.booking-views.tip.1':
+    'Opzioni di visualizzazione, i cursori dopo le icone delle viste, raggruppa e ordina Schede ed Elenco con Raggruppa per e Ordina per. In Cronologia attiva o disattiva Una corsia per tipo e Mostra l’altra scheda, che stende le voci della scheda Trasporti, attenuate, in una corsia sottile in alto. Reimposta vista rimette i valori predefiniti, e ogni scheda ricorda la sua vista in questo browser.',
+  'help.guide.booking-views.tip.2':
+    'Una prenotazione prima o dopo il viaggio, o senza data, non può stare sulla cronologia: aspetta sotto il grafico come piccola scheda sotto Prima del viaggio, Dopo il viaggio o Senza data.',
+  'help.guide.booking-views.tip.3':
+    'Lo stesso dettaglio si apre ovunque compaia una prenotazione: nella scheda Trasporti, nel Programma giornaliero, nei dettagli di un giorno e in quelli di un luogo. Un clic sul suo titolo rinomina la prenotazione.',
   // create-booking
   'help.guide.create-booking.title': 'Creare una prenotazione',
   'help.guide.create-booking.goal':
     'Metti a mano nel viaggio un ristorante, un evento, un tour, un posto auto o qualsiasi altra cosa.',
   'help.guide.create-booking.step.1':
-    'Clicca Prenotazione manuale in alto a destra nella scheda. Si apre Nuova prenotazione.',
+    'Clicca Prenotazione manuale all’estremità destra della barra. Si apre Nuova prenotazione, con il titolo e due pillole in una fascia di testa in alto.',
   'help.guide.create-booking.step.2':
-    'Clicca la pillola del tipo sotto il titolo, nell’intestazione del modulo, e scegli il Tipo di prenotazione. Alloggio, Ristorante, Evento, Tour, Parcheggio e Altro sono i sei che questa scheda crea, e il modulo cambia con la scelta: solo Alloggio scambia le sue date con un intervallo di giorni.',
+    'Clicca la pillola del tipo nella fascia di testa, che su una nuova prenotazione dice Altro, e scegli il Tipo di prenotazione. Alloggio, Ristorante, Evento, Tour, Parcheggio e Altro sono i sei che questa scheda crea, e il modulo cambia con la scelta: solo Alloggio scambia le sue date con un intervallo di giorni.',
   'help.guide.create-booking.step.3':
-    'Digita il Titolo. È l’unico campo su cui il modulo insiste, e Aggiungi resta morto finché non c’è qualcosa.',
+    'Digita il titolo nella fascia di testa, il campo sopra le pillole. È l’unico campo su cui il modulo insiste, e Aggiungi resta grigio finché non c’è qualcosa.',
   'help.guide.create-booking.step.4':
     'Imposta Data e Ora di inizio, e Data fine e Ora di fine se la prenotazione ha una fine. I calendari offrono solo i giorni dentro il viaggio, e una fine che non è successiva all’inizio lo dice in rosso e blocca Aggiungi.',
   'help.guide.create-booking.step.5':
-    'Inserisci il Codice prenotazione dalla conferma. La pillola di stato accanto al tipo dice In attesa; un clic la passa a Confermata e viceversa, e questo decide in quale delle due sezioni finisce la scheda.',
-  'help.guide.create-booking.step.6': 'Clicca Aggiungi.',
+    'Inserisci il Codice prenotazione dalla conferma, poi clicca la pillola di stato nella fascia di testa, accanto al tipo. Su una nuova prenotazione dice In attesa e passa a Confermata, e questo decide in quale sezione finisce la scheda.',
+  'help.guide.create-booking.step.6': 'Clicca Aggiungi in fondo al modulo.',
   'help.guide.create-booking.result':
-    'La prenotazione è una scheda nella sua sezione, con il suo chip di genere, le sue date e il suo codice, e tutti gli altri nel viaggio la vedono comparire.',
+    'La prenotazione è una scheda nella sua sezione, la fascia di testa colorata secondo il suo stato, con il tipo, la data, gli orari e il codice, e tutti gli altri nel viaggio la vedono comparire.',
   'help.guide.create-booking.tip.1':
     'Posizione / Indirizzo propone indirizzi veri mentre digiti; sceglierne uno sostituisce ciò che avevi scritto, e un indirizzo digitato da te resta com’è.',
   'help.guide.create-booking.tip.2':
-    'Link prende la pagina della prenotazione presso il fornitore. La scheda ne fa un collegamento che si apre in una nuova scheda del browser.',
+    'Link prende la pagina della prenotazione presso il fornitore. La scheda e il dettaglio ne fanno un collegamento che si apre in una nuova scheda del browser.',
   'help.guide.create-booking.tip.3':
-    'Le Note sono Markdown, quindi un elenco o una riga in grassetto vengono resi come tali sulla scheda.',
+    'Le Note sono Markdown, quindi un elenco o una riga in grassetto vengono resi come tali sulla scheda e nel dettaglio.',
   // booking-hotel
   'help.guide.booking-hotel.title': 'Prenotare un alloggio',
   'help.guide.booking-hotel.goal':
     'Inserisci un alloggio perché valga insieme come prenotazione e come notti nel Programma giornaliero.',
   'help.guide.booking-hotel.step.1':
-    'Clicca Prenotazione manuale e scegli Alloggio. I campi della data se ne vanno e un blocco di campi d’albergo prende il loro posto.',
+    'Clicca Prenotazione manuale e scegli Alloggio con la pillola del tipo nella fascia di testa. I campi della data se ne vanno e un blocco di campi d’albergo prende il loro posto.',
   'help.guide.booking-hotel.step.2':
-    'Scegli l’albergo sotto Alloggio. La lista sono i luoghi del viaggio, e sceglierne uno scrive il suo nome in Titolo e il suo indirizzo in Posizione / Indirizzo.',
+    'Scegli l’albergo sotto Alloggio. La lista sono i luoghi del viaggio, e sceglierne uno scrive il suo nome nel titolo, se è vuoto, e il suo indirizzo in Posizione / Indirizzo.',
   'help.guide.booking-hotel.step.3':
     'Imposta Da e A: la prima notte e la mattina in cui parti. Entrambi offrono i giorni del viaggio con le loro date, e i due si tengono in ordine a vicenda.',
   'help.guide.booking-hotel.step.4':
     'Compila Check-in, Check-in fino a e Check-out, e il Codice prenotazione dalla conferma.',
   'help.guide.booking-hotel.step.5': 'Clicca Aggiungi.',
   'help.guide.booking-hotel.result':
-    'La scheda porta un intervallo di giorni invece di una data, con gli orari di check-in e check-out e l’indirizzo, e lo stesso soggiorno ora sta su quei giorni del programma.',
+    'La scheda porta l’intervallo di giorni sotto Data, gli orari di check-in e check-out e l’indirizzo, e lo stesso soggiorno ora sta su quei giorni del programma.',
   'help.guide.booking-hotel.tip.1':
     'Alloggio è l’unico tipo senza Data e senza Ora di inizio. Le sue date sono Da e A, e sono giorni del viaggio invece che un calendario.',
   'help.guide.booking-hotel.tip.2':
@@ -3259,14 +3292,15 @@ const help: TranslationStrings = {
   'help.guide.link-booking.title': 'Legare una prenotazione al programma',
   'help.guide.link-booking.goal':
     'Aggancia una prenotazione alla tappa e al luogo a cui appartiene, così spunta dove ti servirà.',
-  'help.guide.link-booking.step.1': 'Clicca la matita sulla scheda che vuoi collegare. Si apre Modifica prenotazione.',
+  'help.guide.link-booking.step.1':
+    'Passa il mouse sulla scheda che vuoi collegare e clicca la matita nella sua fascia di testa. Si apre Modifica prenotazione.',
   'help.guide.link-booking.step.2':
     'Apri Collega all’assegnazione del giorno. La lista è il tuo programma: un titolo per giorno, poi le tappe di quel giorno, numerate e con i loro orari. Scegli quella a cui la prenotazione appartiene.',
   'help.guide.link-booking.step.3':
-    'Luogo / Attività collega il luogo stesso. Scegli lì, e Titolo e Posizione / Indirizzo si riempiono ovunque tu li abbia lasciati vuoti.',
+    'Luogo / Attività collega il luogo stesso. Sceglilo lì, e il titolo e Posizione / Indirizzo si riempiono ovunque tu li abbia lasciati vuoti.',
   'help.guide.link-booking.step.4': 'Clicca Aggiorna.',
   'help.guide.link-booking.result':
-    'La scheda nomina il giorno e la tappa sotto Collega all’assegnazione del giorno, e la prenotazione viaggia insieme a quella tappa nel Programma giornaliero.',
+    'La scheda nomina il giorno e la tappa sotto Collegata a, e la prenotazione viaggia insieme a quella tappa nel Programma giornaliero.',
   'help.guide.link-booking.tip.1':
     'Nessun collegamento (autonomo) in cima alla lista toglie di nuovo il collegamento. Alloggio non ha nessun selettore di tappa: si collega tramite le sue notti.',
   'help.guide.link-booking.tip.2':
@@ -3275,49 +3309,50 @@ const help: TranslationStrings = {
   'help.guide.booking-travelers.title': 'Dire per chi è una prenotazione',
   'help.guide.booking-travelers.goal': 'Segna i viaggiatori che una prenotazione copre, e poi vedi solo le loro.',
   'help.guide.booking-travelers.step.1':
-    'Apri la prenotazione con la matita. Viaggiatori sta accanto al Codice prenotazione, e dice Assegna viaggiatori finché nessuno è sulla prenotazione.',
+    'Apri la prenotazione con la matita sulla sua scheda. Viaggiatori sta accanto al Codice prenotazione, e dice Assegna viaggiatori finché nessuno è sulla prenotazione.',
   'help.guide.booking-travelers.step.2':
     'Cliccalo e scegli le persone per cui è questa prenotazione; anche gli ospiti con nome sono nell’elenco. Una scelta riceve una spunta e il suo avatar nel campo. Clicca di nuovo il nome per toglierla.',
   'help.guide.booking-travelers.step.3': 'Clicca Aggiorna.',
   'help.guide.booking-travelers.step.4':
-    'In alto nella barra degli strumenti, accanto ai chip di genere, clicca l’avatar di un viaggiatore per vedere solo le sue prenotazioni.',
+    'Clicca Filtra nella barra: sotto Viaggiatori, clicca una persona per vedere solo le sue prenotazioni. Se ne possono attivare diverse insieme.',
   'help.guide.booking-travelers.result':
-    'La scheda elenca le persone per cui è, e la fila di avatar restringe la scheda delle prenotazioni a una di loro.',
+    'Ogni scheda elenca le persone per cui è, e Filtra riduce la vista alle prenotazioni delle persone che scegli.',
   'help.guide.booking-travelers.tip.1':
-    'Sulla scheda i viaggiatori vengono solo mostrati, mai cambiati. Si impostano qui, nel modulo.',
+    'Sulla scheda e nel dettaglio i viaggiatori vengono solo mostrati, mai cambiati. Si impostano qui, nel modulo.',
   'help.guide.booking-travelers.tip.2':
-    'La fila di avatar compare non appena il viaggio ha più di un membro e almeno una prenotazione nomina qualcuno. Ciò che scegli dura per questa sessione del browser.',
+    'Viaggiatori compare in Filtra non appena il viaggio ha più di un membro e almeno una prenotazione nomina qualcuno. Ciò che scegli dura finché non chiudi la scheda del browser.',
   // booking-files
   'help.guide.booking-files.title': 'Tenere il voucher con la prenotazione',
   'help.guide.booking-files.goal': 'Allega la conferma, il biglietto o il pass alla prenotazione a cui appartengono.',
   'help.guide.booking-files.step.1':
-    'Apri la prenotazione con la matita, scendi fino a File e clicca Allega file. Su una prenotazione che esiste già il documento sale subito e TREK dice File caricato.',
+    'Apri la prenotazione con la matita sulla sua scheda. File sta accanto a Link; lì clicca Allega file. Su una prenotazione che esiste già il documento sale subito e TREK dice File caricato.',
   'help.guide.booking-files.step.2':
     'Il documento è elencato con il suo nome, con un pulsante per aprirlo e una X accanto.',
   'help.guide.booking-files.step.3':
     'Collega file esistente offre i documenti del viaggio che non stanno ancora su questa prenotazione. Scegline uno e viene allegato senza caricare di nuovo nulla.',
   'help.guide.booking-files.step.4': 'Clicca Aggiorna.',
-  'help.guide.booking-files.result': 'La scheda elenca i documenti sotto File, e un clic su uno di essi lo apre.',
+  'help.guide.booking-files.result':
+    'La scheda e il dettaglio elencano i documenti sotto File, e un clic su uno di essi lo apre.',
   'help.guide.booking-files.tip.1':
     'Su una prenotazione che stai ancora creando il documento aspetta e sale nel momento in cui clicchi Aggiungi.',
   'help.guide.booking-files.tip.2':
     'La X accanto a un documento toglie il collegamento, non il documento. Resta nella scheda File del viaggio.',
   'help.guide.booking-files.tip.3':
-    'Quali generi di file si possono allegare è la lista Tipi di File Consentiti dell’amministratore; documenti, testo e immagini sono permessi di serie.',
+    'Quali generi di file si possono allegare è la lista dell’amministratore sotto Tipi di File Consentiti; documenti, testo e immagini sono permessi di serie.',
   // booking-cost
   'help.guide.booking-cost.title': 'Trasformare il prezzo di una prenotazione in un costo',
   'help.guide.booking-cost.goal': 'Porta ciò che una prenotazione costa nei Costi, diviso fra le persone che pagano.',
   'help.guide.booking-cost.step.1':
-    'Apri la prenotazione e vai in fondo al modulo. Sotto Costi stanno Crea spesa e Collega spesa esistente, con la nota Salva la prenotazione e poi apre l’editor dei costi.',
+    'Apri la prenotazione con la matita sulla sua scheda e vai in fondo al modulo. Sotto Costi stanno Crea spesa e Collega spesa esistente, con la nota Salva la prenotazione e poi apre l’editor dei costi.',
   'help.guide.booking-cost.step.2':
-    'Clicca Crea spesa. La prenotazione viene salvata, il suo modulo si chiude e l’editor dei Costi si apre.',
+    'Clicca Crea spesa. La prenotazione viene salvata, il suo modulo si chiude e l’editor dei Costi si apre come Aggiungi spesa.',
   'help.guide.booking-cost.step.3':
-    'Per cosa era? è già il titolo della prenotazione. Inserisci l’Importo totale e controlla la Valuta e il Giorno.',
+    'Il nome nella fascia di testa è già il titolo della prenotazione. Inserisci l’Importo totale e controlla la Valuta e il Giorno accanto.',
   'help.guide.booking-cost.step.4':
-    'Categoria è quella che il tipo di prenotazione implica. Imposta Chi ha pagato? e come l’importo viene diviso.',
+    'La pillola nella fascia di testa è la Categoria, già quella che il tipo di prenotazione implica. Sotto Chi ha pagato? scegli chi ha pagato, e sotto Suddivisione come viene ripartito l’importo.',
   'help.guide.booking-cost.step.5': 'Clicca Aggiungi spesa.',
   'help.guide.booking-cost.result':
-    'Il modulo della prenotazione ora elenca la spesa sotto Spese collegate con il suo importo, e la stessa spesa sta nella scheda Costi, legata a questa prenotazione.',
+    'La scheda porta l’importo in fondo, il modulo della prenotazione elenca la spesa sotto Spese collegate, e la stessa spesa sta nella scheda Costi, legata a questa prenotazione.',
   'help.guide.booking-cost.tip.1':
     'La categoria segue il tipo: Ristorante diventa Cibo e bevande, Alloggio diventa Alloggio, Parcheggio diventa Parcheggio, ed Evento e Tour finiscono entrambi in Altro.',
   'help.guide.booking-cost.tip.2':
@@ -3326,40 +3361,43 @@ const help: TranslationStrings = {
     'Costi sta nel modulo solo finché l’addon Costi è attivo, che l’amministratore accende sotto Moduli.',
   // filter-bookings
   'help.guide.filter-bookings.title': 'Trovare una prenotazione',
-  'help.guide.filter-bookings.goal': 'Restringi una scheda lunga al genere, alla persona o allo stato che cerchi.',
+  'help.guide.filter-bookings.goal': 'Restringi una scheda lunga a una parola, uno stato, un tipo o una persona.',
   'help.guide.filter-bookings.step.1':
-    'I chip accanto al titolo sono i generi che questo viaggio usa davvero, ognuno con il numero che contiene. Tutti è la scheda intera.',
+    'Digita in Cerca nella barra. Cerca nei titoli, nei tipi, nei luoghi e negli indirizzi, nelle note, nei codici di prenotazione e nei nomi dei viaggiatori, e la scheda si restringe mentre scrivi; Esc svuota il campo.',
   'help.guide.filter-bookings.step.2':
-    'Clicca un chip per tenere solo quel genere. Cliccane un secondo e restano entrambi.',
-  'help.guide.filter-bookings.step.3': 'Tutti rimette tutto.',
+    'Clicca Filtra, l’imbuto accanto alla ricerca. Il suo pannello contiene Stato, Tipo e, non appena una prenotazione nomina delle persone, Viaggiatori.',
+  'help.guide.filter-bookings.step.3':
+    'Sotto Stato, scegli Confermata o In attesa per vedere solo quelle; Tutti le mostra entrambe.',
   'help.guide.filter-bookings.step.4':
-    'Gli avatar accanto ai chip filtrano per viaggiatore, una persona o diverse insieme.',
+    'Sotto Tipo, clicca uno o più tipi per tenere solo quelli. Ognuno mostra quante prenotazioni contiene, e un segno di spunta indica quelli attivi.',
   'help.guide.filter-bookings.step.5':
-    'In attesa e Confermata sono le due sezioni, ognuna con il suo conteggio. Clicca un titolo per ripiegarne una; è ancora ripiegata quando torni.',
+    'Un numero su Filtra conta ciò che è attivo, e un chip accanto alla ricerca dice quante prenotazioni restano sul totale. Clicca il chip, o Reimposta filtri in fondo al pannello, per vedere di nuovo tutto.',
   'help.guide.filter-bookings.result':
-    'La scheda mostra solo ciò che hai scelto, ed è ancora scelto quando ci torni in questa sessione del browser.',
+    'La scheda mostra solo ciò che hai scelto, allo stesso modo in Schede, Elenco e Cronologia, e i filtri restano per questo viaggio finché non chiudi la scheda del browser.',
   'help.guide.filter-bookings.tip.1':
-    'I chip offrono solo i generi che il viaggio ha, quindi un viaggio senza un solo tour non ha il chip Tour.',
+    'Tipo c’è solo quando la scheda contiene più di un tipo, ed elenca solo i tipi che la scheda contiene, quindi in una scheda senza un solo tour non c’è Tour.',
   'help.guide.filter-bookings.tip.2':
-    'Un filtro che non trova nulla lascia la scheda vuota con Nessun luogo trovato. La formulazione è quella della lista dei luoghi; il senso è lo stesso.',
+    'Un filtro che non trova nulla lascia nella scheda Nessun risultato con questi filtri, con Reimposta filtri subito sotto.',
   // import-booking-file
   'help.guide.import-booking-file.title': 'Leggere una prenotazione dalla sua conferma',
   'help.guide.import-booking-file.goal':
     'Lascia che TREK tiri fuori la prenotazione dalla mail o dal PDF che il fornitore ha mandato, invece di digitarla di nuovo.',
   'help.guide.import-booking-file.step.1':
-    'Clicca Importa da file nella barra degli strumenti. Si apre Importa conferme di prenotazione.',
+    'Clicca l’icona di download nella barra, Importa conferme di prenotazione; il nome compare quando ci punti sopra. Si apre la finestra con lo stesso nome.',
   'help.guide.import-booking-file.step.2':
     'Lascia cadere le conferme sul riquadro, oppure cliccalo e sceglile: EML, PDF, PKPass, HTML e TXT, fino a cinque file da 10 MB ciascuno. Quelle che hai scelto sono nominate sul riquadro.',
   'help.guide.import-booking-file.step.3':
     'Clicca Importa. La finestra si chiude subito, perché la lettura avviene in secondo piano.',
   'help.guide.import-booking-file.step.4':
     'Una scheda in basso a destra racconta l’esecuzione sotto il nome del file, e ti segue attraverso l’app e attraverso un ricaricamento. Analisi dei file in corso… diventa una spunta quando la lettura è finita, e la scheda offre Importa. Cliccalo.',
+  'help.guide.import-booking-file.step.5':
+    'Ogni prenotazione trovata si apre in Nuova prenotazione, una dopo l’altra, già compilata. Per un hotel è il suo nome come titolo e, quando il viaggio ha il luogo, sotto Alloggio, la sua Posizione / Indirizzo, Da e A sulle sue notti, Check-in e Check-out, il Codice prenotazione, la conferma sotto File e, con Costi attivo, il prezzo come Spesa collegata. Controllala e clicca Aggiungi.',
   'help.guide.import-booking-file.result':
     'La prenotazione è una scheda in In attesa con le sue notti, il suo codice e la conferma sotto File, il soggiorno sta su quei giorni del programma, e con Costi attivo il prezzo è una spesa legata a lei.',
   'help.guide.import-booking-file.tip.1':
-    'Importa da file c’è solo se il server sa leggere le conferme, e questo richiede o l’estrattore o il modulo Analisi con IA. Quello l’amministratore lo accende sotto Moduli.',
+    'L’icona di importazione c’è solo se il server sa leggere le conferme, e questo richiede o l’estrattore o il modulo Analisi con IA; quello l’amministratore lo accende sotto Moduli. Una scheda senza alcuna prenotazione lo offre anche come pulsante Importa da file.',
   'help.guide.import-booking-file.tip.2':
-    'Se non si è potuto leggere nulla la scheda lo dice e offre Try AI parsing, che manda gli stessi file dritti al modello. Un’analisi finita viene tenuta per dieci minuti; avvia la revisione dentro quella finestra.',
+    'Se non si è potuto leggere nulla la scheda lo dice e, con Analisi con IA attivo, offre Prova la lettura con l’IA, che manda gli stessi file dritti al modello. Un’analisi finita viene tenuta per dieci minuti; avvia la revisione dentro quella finestra.',
   'help.guide.import-booking-file.tip.3':
     'La conferma viene allegata solo se il suo tipo è tra i Tipi di File Consentiti delle impostazioni di amministrazione. PDF c’è di default; una mail, EML, va aggiunta prima, altrimenti la prenotazione viene salvata senza.',
   // edit-booking
@@ -3367,113 +3405,114 @@ const help: TranslationStrings = {
   'help.guide.edit-booking.goal':
     'Correggi un orario, aggiungi il codice arrivato più tardi, o sposta una prenotazione da In attesa a Confermata.',
   'help.guide.edit-booking.step.1':
-    'Clicca la matita nell’intestazione della scheda. Modifica prenotazione si apre con tutto ciò che la prenotazione sa.',
+    'Passa il mouse sulla scheda e clicca la matita nella sua fascia di testa. Modifica prenotazione si apre con tutto ciò che la prenotazione sa.',
   'help.guide.edit-booking.step.2':
     'Cambia ciò che va cambiato, qui il Codice prenotazione che l’operatore ha finalmente mandato.',
-  'help.guide.edit-booking.step.3': 'Clicca la pillola In attesa nell’intestazione del modulo. Diventa Confermata.',
+  'help.guide.edit-booking.step.3':
+    'Clicca la pillola In attesa nella fascia di testa. Diventa Confermata, e la fascia diventa verde.',
   'help.guide.edit-booking.step.4': 'Clicca Aggiorna.',
   'help.guide.edit-booking.result':
-    'La scheda si sposta: una prenotazione confermata sta nella sezione Confermata dietro un punto verde, e tutti nel viaggio la vedono spostarsi.',
+    'La scheda si sposta: una prenotazione confermata sta nella sezione Confermata con un punto verde e una fascia di testa verde, e tutti nel viaggio la vedono spostarsi.',
   'help.guide.edit-booking.tip.1':
     'Un Codice prenotazione che non riesci a leggere è Nascondi codici di prenotazione nelle Impostazioni, sotto Visualizzazione. Passaci sopra, o cliccalo, ed è leggibile.',
   'help.guide.edit-booking.tip.2':
     'Cambia il tipo e la categoria di una spesa collegata lo segue, a meno che tu non avessi scelto una categoria a mano nell’editor dei Costi.',
   'help.guide.edit-booking.tip.3':
-    'Un alloggio si modifica anche qui: i suoi giorni Da e A stanno nello stesso modulo.',
+    'Modifica in fondo al dettaglio di una prenotazione apre lo stesso modulo. Anche lo stato si cambia senza modulo: clicca il punto su una scheda o su una riga, o la pillola di stato nel dettaglio.',
   // delete-booking
   'help.guide.delete-booking.title': 'Eliminare una prenotazione',
   'help.guide.delete-booking.goal': 'Togli dal viaggio una prenotazione saltata.',
-  'help.guide.delete-booking.step.1': 'Clicca il cestino nell’intestazione della scheda.',
+  'help.guide.delete-booking.step.1':
+    'Passa il mouse sulla scheda e clicca il cestino nella sua fascia di testa. Il cestino in fondo al dettaglio di una prenotazione chiede la stessa cosa.',
   'help.guide.delete-booking.step.2':
     'Eliminare la prenotazione? nomina quella che hai scelto e dice che verrà eliminata in modo permanente.',
-  'help.guide.delete-booking.step.3': 'Clicca Conferma.',
+  'help.guide.delete-booking.step.3': 'Clicca Elimina.',
   'help.guide.delete-booking.result':
     'La scheda è sparita, per tutti nel viaggio. Una prenotazione non ha un annulla, quindi la domanda è l’ultima fermata.',
   'help.guide.delete-booking.tip.1':
-    'Eliminare una prenotazione di alloggio toglie anche le sue notti dal Programma giornaliero e rimuove la spesa che era collegata a essa.',
+    'Eliminare una prenotazione rimuove anche le spese collegate a essa, e un alloggio toglie le sue notti dal Programma giornaliero.',
   'help.guide.delete-booking.tip.2':
     'I documenti che erano allegati restano nella scheda File del viaggio; se ne va solo il loro collegamento con la prenotazione.',
-  // import-booking-file
-  'help.guide.import-booking-file.step.5':
-    'Ogni prenotazione trovata si apre in Nuova prenotazione, una dopo l’altra, già compilata. Per un hotel è il nome in Titolo e, quando il viaggio ha il luogo, sotto Alloggio, la sua Posizione / Indirizzo, Da e A sulle sue notti, Check-in e Check-out, il Codice prenotazione, la conferma sotto File e, con Costi attivo, il prezzo come Spesa collegata. Controllala e clicca Aggiungi.',
 
   // ── Screen: trip-costs ────────────────────────────────────────────────────────────────
   'help.ctx.trip-costs.title': 'Costi',
   'help.ctx.trip-costs.summary':
-    'Il denaro del viaggio: ogni spesa in un registro datato, chi l’ha anticipata e chi la deve, nella valuta in cui era la ricevuta, e, nella colonna di destra, chi deve pagare chi perché torni tutto in pari.',
+    'Il denaro del viaggio: ogni spesa in un registro datato o in una tabella, chi l’ha anticipata e chi la deve, nella valuta in cui era la ricevuta, e, nella colonna di destra, chi deve pagare chi perché torni tutto in pari.',
   'help.ctx.trip-costs.bullet.1':
-    'Quattro schede in alto: Devi e Ti devono sono il tuo lato del conguaglio, Importo in sospeso è ciò che è registrato ma non ha ancora un pagante, e Spesa totale del viaggio somma tutto, con La tua quota e Hai pagato sotto.',
+    'La barra in alto indica le date del viaggio e i viaggiatori tra cui si dividono i costi, poi contiene Cerca spese…, Filtra (l’imbuto), Esporta CSV (l’icona di download) e il selettore Elenco / Tabella.',
   'help.ctx.trip-costs.bullet.2':
-    'Aggiungi spesa in alto a destra apre l’editor; Salda accanto registra in una volta sola tutti i trasferimenti aperti.',
+    'Alla sua estremità destra, Salda registra in una volta sola tutti i trasferimenti aperti, Scansiona ricevuta compila una spesa da una foto quando il modulo Analisi con IA sa leggere le immagini, e Aggiungi spesa apre l’editor.',
   'help.ctx.trip-costs.bullet.3':
-    'Il registro è raggruppato per giorno, il più recente per primo, con il totale di quel giorno a destra. Una riga porta la categoria come linguetta colorata, il nome, i segnalini dei paganti, la nota e l’importo, più hai prestato o hai preso in prestito quando la divisione ti lascia in attivo o in passivo su quella spesa.',
+    'Quattro schede sotto la barra: Devi e Ti devono sono il tuo lato del conguaglio, Importo in sospeso è ciò che è registrato ma non ha ancora un pagante, e Spesa totale del viaggio somma tutto, con La tua quota e Hai pagato sotto.',
   'help.ctx.trip-costs.bullet.4':
-    'Sopra la lista stanno Cerca spese…, un filtro di categoria, un filtro di giorno, il selettore Tutte / Pagate da me / Mi devono e il pulsante Esporta CSV.',
+    'Il registro è raggruppato per giorno, il più recente per primo, e in testa a ogni giorno stanno quante voci contiene e quanto vi si è speso. Una riga porta la categoria come linguetta colorata, il nome, i segnalini dei paganti, la nota e l’importo, più hai prestato o hai preso in prestito quando la divisione ti lascia in attivo o in passivo su quella spesa.',
   'help.ctx.trip-costs.bullet.5':
     'La colonna di destra è la risposta: Salda elenca chi paga chi, Saldi mostra l’attivo o il passivo di ogni viaggiatore, Budget finale quanto il viaggio costa a ciascuno di loro, e Per categoria dove sono finiti i soldi.',
   'help.ctx.trip-costs.bullet.6':
-    'Un pagamento registrato sta nello stesso registro come riga a sé, con Modifica e Annulla accanto; una spesa ha una matita e un cestino, e il cestino la elimina senza chiedere.',
+    'Un pagamento registrato sta nello stesso registro come riga a sé, con una matita e Annulla accanto; una spesa ha una matita e un cestino, e il cestino la elimina senza chiedere.',
+  'help.ctx.trip-costs.bullet.7':
+    'Tabella nella barra mostra le stesse spese come un foglio, raggruppate per categoria, con Persone e Giorni e quanto fanno per persona e per giorno; Riepilogo prende allora il posto di Per categoria. Costi ricorda la vista che hai scelto.',
   // add-expense
   'help.guide.add-expense.title': 'Aggiungere una spesa',
   'help.guide.add-expense.goal': 'Registra quanto è costato qualcosa, chi l’ha pagato e con chi è diviso.',
   'help.guide.add-expense.step.1':
-    'Clicca Aggiungi spesa in alto a destra nella scheda Costi. L’editor si apre, datato oggi, con tutti già nella divisione.',
+    'Clicca Aggiungi spesa all’estremità destra della barra. L’editor si apre, datato oggi, pagato da te e con tutti già nella divisione.',
   'help.guide.add-expense.step.2':
-    'Scrivi per cosa era in Per cosa era?, l’unico campo che deve essere compilato, e la cifra della ricevuta in Importo totale.',
+    'Scrivi per cosa era nell’intestazione della finestra, il campo che dice es. Cena, souvenir, benzina… finché è vuoto. È il nome della spesa, e senza un nome la spesa non si può salvare.',
   'help.guide.add-expense.step.3':
-    'Valuta e Giorno stanno sotto l’importo. Valuta parte da quella del viaggio; cambiala e l’editor mostra quanto vale l’importo nella valuta del viaggio. Giorno parte da oggi ed è il giorno sotto cui il registro raggruppa la spesa.',
+    'La pillola sotto il nome è la Categoria, Cibo e bevande finché non ne scegli un’altra. Ce ne sono quattordici e non si possono modificare: l’intestazione prende il colore di quella che scegli, e così la linguetta sulla riga e la sua barra in Per categoria.',
   'help.guide.add-expense.step.4':
-    'Scegli una Categoria. Ce ne sono quattordici e non si possono modificare: quella che scegli è la linguetta colorata della riga e la barra in Per categoria.',
+    'Inserisci la cifra della ricevuta in Importo totale. Valuta, accanto, parte dalla valuta in cui è mostrato Costi; cambiala e l’editor mostra quanto vale l’importo. Giorno parte da oggi ed è il giorno sotto cui il registro raggruppa la spesa.',
   'help.guide.add-expense.step.5':
-    'Sotto Chi ha pagato?, scegli la persona che ha davvero anticipato i soldi. Tu è preselezionato; Nessuno ha ancora pagato registra l’importo senza che nessuno lo debba, e Hanno pagato più persone divide il conto tra più paganti.',
+    'Sotto Chi ha pagato?, clicca la persona che ha davvero anticipato i soldi. Tu è preselezionato; Nessuno ha ancora pagato registra l’importo senza che nessuno lo debba, e Hanno pagato più persone, nel selettore accanto al titolo, divide il conto tra più paganti.',
   'help.guide.add-expense.step.6':
-    'Split parte da Equally con tutti inclusi, e accanto a ogni nome c’è la quota che ne risulta. Clicca Aggiungi spesa per salvare.',
+    'Suddivisione, più sotto, parte da In parti uguali, con tutti spuntati e la quota di ciascuno accanto al nome; lasciala così o cambiala. Clicca Aggiungi spesa in fondo alla finestra per salvare.',
   'help.guide.add-expense.result':
     'La spesa è nel registro sotto il suo giorno, conteggiata in Spesa totale del viaggio, e la colonna del conguaglio ha ricalcolato chi deve a chi.',
   'help.guide.add-expense.tip.1':
-    'Lasciata com’è quando si apre, la spesa è nella valuta del viaggio, datata oggi e divisa in parti uguali tra tutti: davvero da compilare ci sono solo il nome e l’importo.',
+    'Lasciata com’è quando si apre, la spesa è datata oggi, pagata da te e divisa in parti uguali tra tutti: davvero da compilare ci sono solo il nome e l’importo.',
   'help.guide.add-expense.tip.2':
     'Il ± accanto all’importo trasforma la spesa in un rimborso. Un totale negativo restituisce denaro invece di prenderlo, e la divisione va al contrario.',
   'help.guide.add-expense.tip.3':
-    'Allega ricevuta / fattura in fondo accetta immagini e PDF. Vengono caricati quando salvi, finiscono nei File del viaggio, e accanto al nome nella lista compare un segnalino Ricevute.',
+    'Allega, accanto a Ricevute e fatture in fondo alla finestra, accetta immagini e PDF. Vengono caricati quando salvi, finiscono nei File del viaggio, e accanto al nome nella lista compare un segnalino Ricevute.',
   // expense-payers
   'help.guide.expense-payers.title': 'Dire chi ha pagato il conto',
   'help.guide.expense-payers.goal':
     'Registra chi ha anticipato i soldi per una spesa, l’altra metà del calcolo del conguaglio.',
   'help.guide.expense-payers.step.1':
-    'Apri una spesa con la matita accanto alla sua riga e guarda Chi ha pagato?. Ha pagato una sola persona è l’impostazione predefinita: il menu a tendina nomina l’unica persona che ha anticipato i soldi.',
+    'Apri una spesa con la matita accanto alla sua riga e guarda Chi ha pagato?. Ha pagato una sola persona è l’impostazione predefinita nel selettore accanto al titolo: ogni viaggiatore è un chip, e quello con il contorno evidenziato ha anticipato i soldi. Clicca un altro chip per cambiarlo.',
   'help.guide.expense-payers.step.2':
-    'Nessuno ha ancora pagato, la prima voce di quel menu a tendina, registra l’importo senza che nessuno debba nulla. La spesa conta comunque in Spesa totale del viaggio.',
+    'Nessuno ha ancora pagato, il chip tratteggiato dopo i viaggiatori, registra l’importo senza che nessuno debba nulla. La spesa conta comunque in Spesa totale del viaggio.',
   'help.guide.expense-payers.step.3':
-    'Hanno pagato più persone, il link accanto all’etichetta, apre una riga per viaggiatore. Includi quelli che hanno pagato e scrivi quanto ha messo ciascuno; gli importi devono sommare al totale.',
+    'Hanno pagato più persone, l’altro lato di quel selettore, elenca ogni viaggiatore con una casella da spuntare, e ognuno di quelli spuntati riceve un campo per l’importo. Spunta quelli che hanno pagato e scrivi quanto ha messo ciascuno; gli importi devono sommare al totale.',
   'help.guide.expense-payers.step.4':
-    'Una spesa che nessuno ha pagato è contrassegnata Incompleto sulla sua riga e conteggiata nella scheda Importo in sospeso, dove si raccoglie la spesa registrata ma non saldata.',
+    'Una spesa che nessuno ha pagato è contrassegnata Incompleto sulla sua riga e conteggiata nella scheda Importo in sospeso, dove si raccoglie la spesa che non ha ancora un pagante.',
   'help.guide.expense-payers.result':
     'Chi ha pagato decide chi viene rimborsato, la divisione decide chi paga, e Saldi è la differenza tra i due.',
   'help.guide.expense-payers.tip.1':
     'Chi ha pagato? e Split sono indipendenti: puoi pagare una cena a cui non eri, ed essere incluso nella divisione di una che non hai pagato.',
   'help.guide.expense-payers.tip.2':
-    'Con più paganti gli importi devono sommare al totale. Includine un altro e gli altri si riorganizzano attorno a lui; finché non corrispondono, l’editor dice a quanto devono sommare e rifiuta di salvare.',
+    'Con più paganti gli importi devono sommare al totale. Spuntane un altro e gli importi che non hai digitato tu si ripartiscono di nuovo il resto; finché non corrispondono, l’editor dice a quanto devono sommare e rifiuta di salvare.',
   'help.guide.expense-payers.tip.3':
-    'Togliere un pagante non toglie la spesa: l’importo resta in Spesa totale del viaggio e la riga diventa Incompleto.',
+    'Riportare una spesa a Nessuno ha ancora pagato non la toglie: l’importo resta in Spesa totale del viaggio e la riga diventa Incompleto.',
   // split-expense
   'help.guide.split-expense.title': 'Dividere un conto tra i viaggiatori',
   'help.guide.split-expense.goal':
     'Decidi chi deve per una spesa: tutti in parti uguali, per importo, o riga per riga dalla ricevuta.',
   'help.guide.split-expense.step.1':
-    'Nell’editor della spesa, Split elenca ogni viaggiatore. Clicca un nome per lasciarlo fuori da questa spesa; un viaggiatore escluso indica Escluso e non deve nulla per essa.',
+    'Nell’editor della spesa, Suddivisione elenca ogni viaggiatore con una casella da spuntare. Togli la spunta a un nome per lasciarlo fuori da questa spesa: il nome diventa grigio, perde la sua quota e non deve nulla per essa.',
   'help.guide.split-expense.step.2':
-    'Equally è l’impostazione predefinita: ogni viaggiatore incluso riceve la stessa quota, e la riga sotto la lista dice in quante parti è divisa e a quanto ammonta ciascuna quota.',
+    'In parti uguali, nel selettore accanto al titolo, è l’impostazione predefinita: ogni viaggiatore spuntato riceve la stessa quota, mostrata accanto al nome, e i distintivi sotto la lista dicono in quanti la dividono e a quanto ammonta ciascuna quota.',
   'help.guide.split-expense.step.3':
-    'Custom sostituisce le quote con campi importo. Scrivi quanto deve ogni viaggiatore; la riga sotto conta man mano e diventa verde su La divisione corrisponde al totale. Non salva finché non corrisponde.',
+    'Personalizzato sostituisce le quote con campi importo. Scrivi quanto deve ogni viaggiatore; il distintivo sotto conta man mano e diventa verde su La divisione corrisponde al totale. Non salva finché non corrisponde.',
   'help.guide.split-expense.step.4':
-    'Ticket divide la ricevuta riga per riga: Aggiungi articolo, poi un nome e un prezzo per riga, e sotto Diviso tra: i viaggiatori che si dividono quella riga.',
+    'Scontrino divide la ricevuta riga per riga: Aggiungi articolo, poi un nome e un prezzo per riga, e accanto a Diviso tra: i viaggiatori che si dividono quella riga.',
   'help.guide.split-expense.step.5':
-    'Quota di ciascuno sotto le righe mostra quanto deve alla fine ogni viaggiatore, e Importo totale in alto è la somma delle righe. Clicca Salva.',
+    'Quota di ciascuno sotto le righe mostra quanto deve alla fine ogni viaggiatore, e Importo totale in alto è la somma delle righe. Clicca Salva in fondo alla finestra.',
   'help.guide.split-expense.result':
     'La divisione è ciò da cui è costruito ogni saldo. Viene salvata con la spesa e si può cambiare più tardi senza toccare nient’altro.',
   'help.guide.split-expense.tip.1':
-    'Un viaggiatore che lasci fuori indica Escluso e non deve nulla per questa singola spesa; gli altri si prendono la sua quota.',
+    'Un viaggiatore a cui togli la spunta non deve nulla per questa singola spesa; gli altri si prendono la sua quota.',
   'help.guide.split-expense.tip.2':
     'Equally è preciso al centesimo: il centesimo che avanza ruota di spesa in spesa, così non è sempre la stessa persona a pagarlo.',
   'help.guide.split-expense.tip.3':
@@ -3483,17 +3522,17 @@ const help: TranslationStrings = {
   'help.guide.expense-currency.goal':
     'Inserisci quello che dice davvero la ricevuta e lascia che sia TREK a tenere il tasso.',
   'help.guide.expense-currency.step.1':
-    'Apri Aggiungi spesa e compila nome e importo esattamente come dice la ricevuta, la cifra stessa e non una sua conversione.',
+    'Apri Aggiungi spesa, poi digita il nome nell’intestazione della finestra e l’importo in Importo totale esattamente come dice la ricevuta, la cifra stessa e non una sua conversione.',
   'help.guide.expense-currency.step.2':
-    'Apri Valuta e scegli la valuta della ricevuta. La lista porta ogni codice che TREK conosce ed è ricercabile: digita le tre lettere.',
+    'Apri Valuta accanto all’importo e scegli la valuta della ricevuta. La lista porta ogni codice che TREK conosce ed è ricercabile: digita le tre lettere.',
   'help.guide.expense-currency.step.3':
-    'Sotto i campi compare una riga con quanto vale l’importo in questo momento, contrassegnata tasso in tempo reale. È un’anteprima, non ciò che viene salvato.',
+    'Sotto i campi compare una fila di distintivi: quello che hai digitato e quanto vale in questo momento, contrassegnato tasso in tempo reale. È un’anteprima, non ciò che viene salvato.',
   'help.guide.expense-currency.step.4':
-    'Clicca Aggiungi spesa. Il tasso viene congelato sul posto: da qui in poi questa spesa vale quello che valeva il giorno in cui l’hai inserita.',
+    'Clicca Aggiungi spesa in fondo alla finestra. Il tasso viene congelato sul posto: da qui in poi questa spesa vale quello che valeva il giorno in cui l’hai inserita.',
   'help.guide.expense-currency.step.5':
-    'Nel registro la riga porta entrambe le cifre sotto il nome: quello che hai digitato, una freccia, e quanto conta nella valuta del viaggio. Ogni totale, saldo e conguaglio qui sopra usa la seconda.',
+    'Nel registro la riga porta entrambe le cifre sotto il nome: quello che hai digitato, una freccia, e quanto conta nella valuta del viaggio. Ogni totale, saldo e conguaglio della scheda Costi si basa sulla seconda.',
   'help.guide.expense-currency.result':
-    'La spesa mantiene l’importo e la valuta che hai digitato. Il registro mostra entrambi, e i totali e i saldi del viaggio restano nella valuta del viaggio.',
+    'La spesa mantiene l’importo e la valuta che hai digitato. Il registro mostra entrambi, e i totali e i saldi del viaggio vengono calcolati nella valuta del viaggio.',
   'help.guide.expense-currency.tip.1':
     'Il tasso viene congelato nel momento in cui salvi, così un debito saldato non si riapre perché il mercato si è mosso la settimana dopo. Solo cambiare la valuta della spesa ne congela uno nuovo.',
   'help.guide.expense-currency.tip.2':
@@ -3503,27 +3542,30 @@ const help: TranslationStrings = {
   // filter-costs
   'help.guide.filter-costs.title': 'Trovare una spesa, o le spese di un giorno',
   'help.guide.filter-costs.goal': 'Restringi un registro lungo a ciò che cerchi davvero.',
-  'help.guide.filter-costs.step.1': 'Scrivi in Cerca spese…, sopra la lista. Cerca nel nome della spesa mentre digiti.',
+  'help.guide.filter-costs.step.1':
+    'Scrivi in Cerca spese… nella barra. Cerca nel nome della spesa mentre digiti, ed Esc lo svuota di nuovo.',
   'help.guide.filter-costs.step.2':
-    'Tutte le categorie apre le quattordici categorie. Scegline una e restano solo le spese di quella categoria.',
+    'Filtra, l’imbuto accanto alla ricerca, apre i filtri. Il selettore in alto è la tua vista del registro: Tutte, Pagate da me per ciò per cui hai anticipato dei soldi, e Mi devono per le spese in cui hai messo più della tua quota.',
   'help.guide.filter-costs.step.3':
-    'Tutti i giorni elenca ogni giorno in cui è stato speso qualcosa. Scegline uno e un banner sostituisce le intestazioni dei giorni con quel giorno, quante spese contiene e il suo totale.',
+    'Sotto Categoria, scegli una delle quattordici categorie e restano solo le spese di quella categoria. L’imbuto conta quanti filtri sono attivi.',
   'help.guide.filter-costs.step.4':
-    'Il selettore Tutte / Pagate da me / Mi devono è la tua vista del registro: ciò per cui hai anticipato dei soldi, e ciò che devi ancora recuperare.',
+    'Sotto Giorno, scegli uno dei giorni in cui è stato speso qualcosa. Un banner sostituisce le intestazioni dei giorni con quel giorno per esteso, quante spese contiene e il suo totale.',
   'help.guide.filter-costs.step.5':
-    'Esporta CSV in fondo alla riga scrive ogni spesa in un file, con l’importo originale, la sua valuta e l’importo convertito.',
+    'Esporta CSV, l’icona di download accanto all’imbuto, scrive ogni spesa in un file, con l’importo originale, la sua valuta e l’importo convertito.',
   'help.guide.filter-costs.result':
     'I filtri si combinano, e i gruppi dei giorni si ridisegnano con i propri totali per quello che resta.',
   'help.guide.filter-costs.tip.1':
-    'I pagamenti registrati non hanno né nome né categoria, quindi una ricerca o un filtro di categoria li nasconde. Il filtro di giorno li mantiene, sotto il giorno in cui il pagamento è stato registrato.',
+    'I pagamenti registrati non hanno né nome né categoria, quindi una ricerca o un filtro di categoria li nasconde. Il filtro di giorno li mantiene, sotto il giorno in cui il pagamento è avvenuto.',
   'help.guide.filter-costs.tip.2':
     'Esporta CSV esporta sempre tutte le spese, qualunque cosa sia filtrata sullo schermo, una riga per spesa.',
+  'help.guide.filter-costs.tip.3':
+    'Reimposta filtri, in fondo al menu dei filtri quando un filtro è attivo, li spegne tutti in una volta.',
   // settle-up
   'help.guide.settle-up.title': 'Capire chi deve a chi, e saldare',
   'help.guide.settle-up.goal':
     'Trasforma un mucchio di spese condivise nel minor numero di trasferimenti che mettono tutti in pari, e registrali man mano che avvengono.',
   'help.guide.settle-up.step.1':
-    'La scheda Salda nella colonna di destra elenca i trasferimenti che metterebbero tutti in pari: chi paga chi, e quanto. Il numero accanto al titolo è quanti sono ancora aperti.',
+    'La scheda Salda nella colonna di destra elenca i trasferimenti che metterebbero tutti in pari: chi paga chi, come due avatar con i nomi nel loro suggerimento, e quanto. Il numero nella sua intestazione è quanti sono ancora aperti.',
   'help.guide.settle-up.step.2':
     'Salda accanto a un trasferimento lo registra come fatto. Il flusso sparisce dalla scheda e i saldi si ridisegnano.',
   'help.guide.settle-up.step.3':
@@ -3531,9 +3573,9 @@ const help: TranslationStrings = {
   'help.guide.settle-up.step.4':
     'Accanto a quella riga la matita corregge un pagamento e Annulla lo ritira, e il trasferimento torna nella scheda Salda.',
   'help.guide.settle-up.step.5':
-    'Aggiungi pagamento nell’intestazione della scheda registra un trasferimento che non ha seguito un suggerimento. Scegli Da e A, l’Importo, la sua valuta e il giorno in cui è avvenuto.',
+    'Aggiungi pagamento nell’intestazione della scheda registra un trasferimento che non ha seguito un suggerimento. Scegli Da e A, l’Importo, la sua valuta e il giorno in cui è avvenuto, poi clicca Aggiungi pagamento in fondo alla finestra.',
   'help.guide.settle-up.step.6':
-    'Salda nell’intestazione in cima allo schermo registra in una volta sola tutti i trasferimenti aperti, come un gruppo che si mette in pari alla fine di un viaggio.',
+    'Salda nella barra in alto registra in una volta sola tutti i trasferimenti aperti, senza chiedere, come un gruppo che si mette in pari alla fine di un viaggio.',
   'help.guide.settle-up.result':
     'Ogni trasferimento registrato è una riga nel registro e una riga in meno sulla scheda Salda. Quando la scheda dice Sono tutti in pari, il viaggio è saldato.',
   'help.guide.settle-up.tip.1':
@@ -3553,7 +3595,7 @@ const help: TranslationStrings = {
   'help.guide.final-budget.step.3':
     'Clicca un nome per aprire il conto: Spese pagate, poi Rimborsi netti e Rimborsi in sospeso sotto.',
   'help.guide.final-budget.step.4':
-    'Sotto ogni riga stanno le righe di cui è fatta: le spese che quel viaggiatore ha pagato, i trasferimenti già registrati e quelli ancora aperti. La loro somma fa esattamente la riga sopra.',
+    'Sotto le tre righe, un elenco per ciascuno dei loro nomi raccoglie le voci di cui la riga è fatta: le spese che quel viaggiatore ha pagato, i trasferimenti già registrati e quelli ancora aperti. Ogni elenco somma esattamente alla riga con lo stesso nome.',
   'help.guide.final-budget.result':
     'Saldi è chi oggi è in attivo o in passivo; Budget finale è quanto il viaggio finisce per costare a ciascuno di voi una volta che tutto è stato restituito.',
   'help.guide.final-budget.tip.1':
@@ -3565,69 +3607,93 @@ const help: TranslationStrings = {
   'help.guide.expense-from-booking.goal':
     'Allega quanto sono costati davvero un volo, un hotel o un luogo alla scheda a cui appartengono.',
   'help.guide.expense-from-booking.step.1':
-    'Apri la prenotazione nella scheda Trasporti o Prenotazioni e clicca la sua matita.',
+    'Trova la prenotazione nella scheda Trasporti o Pren. e clicca la matita nell’intestazione della sua scheda.',
   'help.guide.expense-from-booking.step.2':
-    'Scorri fino al blocco Costi in fondo al modulo. Offre Crea spesa, che salva prima la prenotazione, e Collega spesa esistente per una che è già nella scheda Costi.',
+    'Scorri fino a Costi, verso la fine del modulo. Offre Crea spesa, che salva prima la prenotazione, e Collega spesa esistente per una che è già nella scheda Costi.',
   'help.guide.expense-from-booking.step.3':
     'Clicca Crea spesa. La prenotazione viene salvata, il modulo si chiude, e l’editor dei Costi si apre con il titolo della prenotazione come nome e il suo tipo già abbinato a una categoria.',
   'help.guide.expense-from-booking.step.4':
-    'Compila l’importo e la sua valuta, chi ha pagato e la divisione come per qualsiasi spesa, e salva. Riaprendo la prenotazione la si vede sotto Spese collegate, con una matita per modificarla, Scollega, mantieni la spesa per staccarla e un cestino per rimuoverla.',
+    'Compila l’importo e la sua valuta, chi ha pagato e la divisione come per qualsiasi spesa, e clicca Aggiungi spesa. Riaprendo la prenotazione la si vede sotto Spese collegate, con una matita per modificarla, Scollega, mantieni la spesa per staccarla e un cestino per rimuoverla.',
   'help.guide.expense-from-booking.result':
     'La prenotazione porta il suo costo, e la spesa è una riga ordinaria nella scheda Costi, con un pagante, una divisione e una valuta come ogni altra.',
   'help.guide.expense-from-booking.tip.1':
     'Eliminare la prenotazione elimina con sé le spese collegate. Rimuovi spesa nel blocco Costi della prenotazione fa il contrario: la spesa va via, la prenotazione resta. Scollega, mantieni la spesa le tiene entrambe.',
   'help.guide.expense-from-booking.tip.2':
     'Un luogo ha lo stesso blocco nel suo modulo, dove Crea spesa salva prima il luogo.',
+  // costs-table
+  'help.guide.costs-table.title': 'Pianificare i costi in una tabella',
+  'help.guide.costs-table.goal':
+    'Leggi e modifica le spese come un foglio, ordinate per categoria e calcolate per persona e per giorno.',
+  'help.guide.costs-table.step.1':
+    'Clicca Tabella, la seconda icona del selettore Elenco / Tabella nella barra. Il registro lascia il posto a una tabella delle stesse spese, e anche la ricerca e i filtri valgono per essa.',
+  'help.guide.costs-table.step.2':
+    'La tabella è raggruppata per categoria, ogni gruppo con in testa il suo nome, quante spese contiene e il suo subtotale; clicca l’intestazione per ripiegarlo. Le colonne sono Nome, Data, Totale, Persone e Giorni, poi Per persona, Per giorno e P. p / gio., calcolate da quelle su fondo grigio.',
+  'help.guide.costs-table.step.3':
+    'Clicca una cella per modificarla sul posto: un nome, un totale, Persone o Giorni. Digita, poi premi Invio o clicca altrove per confermare, oppure Esc per lasciarla com’era; la data apre il calendario. Per persona e le altre colonne calcolate si aggiornano subito.',
+  'help.guide.costs-table.step.4':
+    'Un totale con un lucchetto non si può modificare qui: qualcuno l’ha pagato, oppure è stato inserito in un’altra valuta, e il suo suggerimento dice quale dei due. Un clic su di esso apre invece la spesa, così i saldi e il tasso congelato restano giusti.',
+  'help.guide.costs-table.step.5':
+    'Aggiungi spesa alla fine di una categoria vi aggiunge una riga chiamata Nuova voce, datata come l’ultima voce lì presente, con il nome già aperto per la modifica. Dagli un totale allo stesso modo.',
+  'help.guide.costs-table.step.6':
+    'In questa vista la colonna di destra mostra Riepilogo al posto di Per categoria. Somma le spese in quattro modi: Categoria, Giorno, Pagante, con Ancora nessun pagante per quelle non pagate, e Stato, Pagato contro Aperto.',
+  'help.guide.costs-table.result':
+    'Ogni spesa sta nella sua categoria con quanto fa per persona e per giorno, e un totale cambiato in una cella entra subito nelle schede in alto e in Riepilogo.',
+  'help.guide.costs-table.tip.1':
+    'Costi ricorda la vista in questo browser: si apre sulla tabella finché non clicchi di nuovo Elenco.',
+  'help.guide.costs-table.tip.2':
+    'Una spesa divisa con Personalizzato o Scontrino non ha una quota unica per persona, quindi i suoi Per persona e P. p / gio. restano vuoti.',
+  'help.guide.costs-table.tip.3':
+    'Paganti, suddivisione, nota e ricevute si modificano nella spesa stessa: Altre opzioni alla fine di una riga offre Modifica, ed Elimina per rimuovere la riga.',
 
   // ── Screen: trip-transports ───────────────────────────────────────────────────────────
   'help.ctx.trip-transports.title': 'Trasporti',
   'help.ctx.trip-transports.summary':
     'Tutto ciò che ti porta tra una tappa e l’altra: voli, treni, autobus, auto, taxi, biciclette, crociere, traghetti e i collegamenti di trasporto pubblico che TREK cerca per te. La scheda ne è l’elenco; si creano e si leggono anche nel programma, e si disegnano sulla mappa.',
   'help.ctx.trip-transports.bullet.1':
-    'La scheda tiene solo i tragitti. Alloggi, ristoranti, eventi e biglietti vivono in Prenotazioni, così la stessa voce non compare mai due volte.',
+    'La scheda tiene solo i tragitti. Alloggi, ristoranti, eventi e biglietti vivono nella scheda Pren., così la stessa voce non compare mai due volte.',
   'help.ctx.trip-transports.bullet.2':
-    'La barra degli strumenti li conta tutti sotto Tutti e dà a ogni tipo in uso un chip proprio con il proprio conteggio, Volo, Treno, Auto, Trasporto pubblico. Trasporto, a destra, ne aggiunge uno a mano.',
+    'La barra in alto contiene la ricerca, Filtra per lo stato, i tipi e i viaggiatori, le tre viste Schede, Elenco e Cronologia, e Opzioni di visualizzazione. Trasporto, a destra, aggiunge un tragitto a mano, e le icone prima di esso, Importa conferme di prenotazione e Importa da AirTrail, compaiono quando il server sa leggere le conferme o quando è collegato un AirTrail.',
   'help.ctx.trip-transports.bullet.3':
-    'Le schede arrivano in tre gruppi, ciascuno richiudibile dal suo titolo: Trasporto pubblico automatico per i collegamenti pianificati dalla ricerca, poi In attesa, poi Confermata.',
+    'La scheda si apre nella vista Schede: prima Confermata, poi In attesa, ogni sezione richiudibile dal suo titolo. I collegamenti di trasporto pubblico pianificati non hanno stato e stanno tra i tragitti confermati in ordine di orario, a meno che Opzioni di visualizzazione non dia loro una sezione propria, Trasporto pubblico automatico. Elenco raggruppa per giorno, e Cronologia stende ogni tragitto sui giorni del viaggio.',
   'help.ctx.trip-transports.bullet.4':
-    'Una scheda porta lo stato, il tipo, i giorni che copre, gli orari, il Codice prenotazione, l’itinerario e la Compagnia aerea con il N. volo, oppure il N. treno, il Binario e il Posto. La matita la apre, il cestino la elimina dopo una domanda.',
+    'La fascia di testa di una scheda è colorata secondo il suo stato, verde per confermato, ambra per in attesa, blu per un collegamento pianificato, e contiene il punto di stato, il tipo, il titolo, la matita e il cestino. Sotto: Data, Ora, Codice prenotazione, Itinerario e la Compagnia aerea con il N. volo, oppure il N. treno, il Binario e il Posto. Un clic sulla scheda apre i suoi dettagli.',
   'help.ctx.trip-transports.bullet.5':
-    'I trasporti nascono anche nel programma: ogni intestazione di giorno ha un più per Aggiungi trasporto e un pulsante tram per Trasporto pubblico, e il connettore del tempo di viaggio tra due tappe apre la stessa ricerca per quella sola tratta.',
+    'I trasporti nascono anche nel programma: il + nell’intestazione di un giorno offre Aggiungi trasporto e Trasporto pubblico, e il connettore del tempo di viaggio tra due tappe apre la stessa ricerca per quella sola tratta.',
   'help.ctx.trip-transports.bullet.6':
-    'Un trasporto con entrambi gli estremi impostati disegna una linea sulla mappa. L’icona del percorso sulla sua riga nel programma del giorno accende quella linea, e Mostra tutti i percorsi prenotati nella barra sopra i giorni commuta l’intero viaggio.',
+    'Un trasporto con entrambi gli estremi impostati disegna una linea sulla mappa. L’icona del percorso sulla sua riga nel programma del giorno e Sulla mappa nei suoi dettagli accendono quella linea, e Mostra tutti i percorsi prenotati nella barra sopra i giorni commuta l’intero viaggio.',
   // transports-list
   'help.guide.transports-list.title': 'Leggere la scheda Trasporti',
   'help.guide.transports-list.goal': 'Sapere cosa ti dice l’elenco prima di cambiarci qualcosa.',
   'help.guide.transports-list.step.1':
-    'Trasporti è la seconda scheda del viaggio. Tiene solo i tragitti: hotel, ristoranti, eventi e biglietti stanno in Prenotazioni.',
+    'Trasporti è la seconda scheda del viaggio. Tiene solo i tragitti: hotel, ristoranti, eventi e biglietti stanno nella scheda Pren.',
   'help.guide.transports-list.step.2':
-    'La barra degli strumenti conta ogni trasporto sotto Tutti e dà a ogni tipo in uso un chip proprio con il proprio conteggio. Clicca un chip per tenere solo quel tipo, cliccalo di nuovo per lasciarlo andare. Più chip possono essere attivi insieme, e Tutti li azzera.',
+    'Filtra, l’imbuto nella barra, apre le scelte: Stato con Tutti, Confermata e In attesa, poi ogni tipo in uso con il suo conteggio. Spunta uno o più tipi per tenere solo quelli; un numero sull’imbuto conta ciò che è attivo, e la barra dice quanti tragitti sono mostrati, per esempio 1 di 4. Reimposta filtri in fondo al menu riporta tutto.',
   'help.guide.transports-list.step.3':
-    'Trasporto pubblico automatico è un gruppo a sé, i collegamenti pianificati dalla ricerca di trasporto pubblico. In attesa e Confermata tengono tutto ciò che è stato inserito a mano. La freccia accanto a un titolo richiude un gruppo.',
+    'Schede, Elenco e Cronologia, accanto, dispongono i tragitti come schede, come righe raggruppate per giorno o come barre sui giorni del viaggio. Opzioni di visualizzazione, i cursori, imposta Raggruppa per e Ordina per per Schede ed Elenco e le corsie per Cronologia, e Reimposta vista torna ai valori predefiniti. In Schede, Trasporto pubblico in una sezione a parte raccoglie i collegamenti pianificati sotto Trasporto pubblico automatico.',
   'help.guide.transports-list.step.4':
-    'Una scheda dice tutto: il punto di stato con In attesa o Confermata, il tipo, i giorni che copre con le loro date, gli orari, il Codice prenotazione, l’itinerario, e la Compagnia aerea con il N. volo, oppure il N. treno, il Binario e il Posto.',
+    'Una scheda dice tutto. La sua fascia di testa è verde per Confermata e ambra per In attesa e porta il punto di stato, il tipo e il titolo. Sotto, Data dà i giorni che copre con le loro date, poi vengono Ora, Codice prenotazione, Itinerario con l’icona del tipo tra le fermate, e la Compagnia aerea con il N. volo, oppure il N. treno, il Binario e il Posto. Clicca la scheda e si aprono i suoi dettagli.',
   'help.guide.transports-list.step.5':
-    'La matita apre il trasporto per modificarlo, il cestino lo elimina, dopo una domanda che nomina ciò che se ne va.',
+    'Un clic sul punto di stato passa il tragitto tra In attesa e Confermata. La matita nella fascia di testa apre il modulo del trasporto, e il cestino lo elimina dopo la domanda Eliminare la prenotazione?, che nomina ciò che se ne va.',
   'help.guide.transports-list.result':
-    'L’elenco è ristretto a ciò che cercavi, e ogni scheda dice a colpo d’occhio se il tragitto è prenotato.',
+    'Ogni scheda dice a colpo d’occhio se il tragitto è prenotato, e la barra restringe o riordina l’elenco ogni volta che ti serve.',
   'help.guide.transports-list.tip.1':
-    'I chip e i gruppi richiusi vengono ricordati per viaggio, così la scheda si riapre come l’hai lasciata.',
+    'La scheda ricorda come l’hai lasciata: la vista, il raggruppamento e l’ordinamento in questo browser, le sezioni richiuse per ogni viaggio, e i filtri finché non chiudi la scheda del browser.',
   'help.guide.transports-list.tip.2':
-    'Importa da file e AirTrail si affiancano a Trasporto nella barra degli strumenti solo quando il server sa leggere le conferme di prenotazione e quando un’istanza AirTrail è collegata. Senza di loro l’elenco si riempie a mano e con la ricerca di trasporto pubblico.',
+    'Importa conferme di prenotazione e Importa da AirTrail, le due icone prima di Trasporto, ci sono solo quando il server sa leggere le conferme e quando un’istanza AirTrail è collegata. Senza di loro l’elenco si riempie a mano e con la ricerca di trasporto pubblico.',
   // add-transport
   'help.guide.add-transport.title': 'Aggiungere un trasporto a un giorno',
   'help.guide.add-transport.goal':
     'Mettere il tragitto che ti porta da una tappa alla successiva nel giorno in cui avviene.',
   'help.guide.add-transport.step.1':
-    'Ogni intestazione di giorno porta quattro piccoli pulsanti a destra. Clicca il più, il cui suggerimento dice Aggiungi trasporto. Il modulo si apre con Data già impostata su quel giorno.',
+    'Nell’intestazione del giorno del tragitto, clicca il +, il cui suggerimento dice Aggiungi al giorno, e scegli Aggiungi trasporto. Il modulo si apre con quel giorno già compilato.',
   'help.guide.add-transport.step.2':
-    'Tipo di prenotazione sceglie cosa prendi: Volo, Treno, Autobus, Auto, Taxi, Bicicletta, Crociera, Traghetto o Altro. Il modulo segue. Un volo riceve un aeroporto su ogni tratta, un treno una catena di stazioni, un’auto le parole Ritiro e Riconsegna e Soste lungo il tragitto.',
+    'La pillola del tipo nella fascia di testa dice cosa prendi, Volo per cominciare. Cliccala per Volo, Treno, Autobus, Auto, Taxi, Bicicletta, Crociera, Traghetto o Altro, e il modulo segue: un volo riceve un aeroporto a ogni fermata, un treno una catena di stazioni, un’auto Ritiro e Riconsegna e Soste lungo il tragitto.',
   'help.guide.add-transport.step.3':
-    'Titolo è l’unico campo che deve essere compilato; Aggiungi resta grigio senza. Scrivi ciò che riconosceresti su un tabellone.',
+    'Digita il titolo direttamente nella fascia di testa, dove sta l’esempio grigio. È l’unico campo che deve essere compilato: finché non lo è, la riga sotto dice Titolo * e Aggiungi resta grigio. Scrivi ciò che riconosceresti su un tabellone.',
   'help.guide.add-transport.step.4':
-    'Da e A cercano una stazione, un porto o un indirizzo. Digita almeno tre lettere e scegli un risultato dall’elenco. Un nome solo digitato non porta coordinate, quindi non disegna nulla sulla mappa.',
+    'Sotto Itinerario, Da e A prendono una stazione, un porto o un indirizzo. I luoghi del viaggio vengono proposti prima che tu digiti; digita almeno tre lettere per cercare e scegli un risultato. Un nome solo digitato e mai scelto non viene salvato, e non disegna nulla sulla mappa.',
   'help.guide.add-transport.step.5':
-    'Data e Ora di inizio dicono quando parte, Data fine e Ora di fine quando è finito; un tragitto che arriva il giorno dopo lì prende il giorno successivo. Codice prenotazione, Stato con In attesa o Confermata, e Note sono facoltativi.',
+    'Data e Ora di inizio dicono quando parte, Data fine e Ora di fine quando è finito; un tragitto che arriva il giorno dopo lì prende il giorno successivo. Codice prenotazione e Note, più in basso, sono facoltativi, e un clic sulla pillola In attesa nella fascia di testa la passa a Confermata.',
   'help.guide.add-transport.step.6': 'Clicca Aggiungi.',
   'help.guide.add-transport.result':
     'Il trasporto è una riga sul giorno, al suo orario tra le tappe, e, nella scheda Trasporti, una scheda sotto In attesa o Confermata.',
@@ -3636,13 +3702,33 @@ const help: TranslationStrings = {
   'help.guide.add-transport.tip.2':
     'Allega file sotto File prende il biglietto, e Crea spesa sotto Costi salva la prenotazione e apre l’editor dei Costi per la tariffa.',
   'help.guide.add-transport.tip.3':
-    'Viaggiatori segna chi è su questo tragitto. Appena un trasporto ha viaggiatori, la barra della scheda fa crescere i loro avatar e filtra l’elenco per loro.',
+    'Viaggiatori, il primo blocco del modulo, segna chi è su questo tragitto. Quando il viaggio ha più di un membro e un trasporto nomina qualcuno, anche Filtra nella scheda offre Viaggiatori, che restringe l’elenco ai tragitti di una persona.',
+  // import-transport-file
+  'help.guide.import-transport-file.title': 'Leggere un volo dal suo biglietto elettronico',
+  'help.guide.import-transport-file.goal':
+    'Lascia che TREK tiri fuori un volo, un treno o un traghetto dal biglietto che il vettore ha mandato, e controllalo prima che venga salvato.',
+  'help.guide.import-transport-file.step.1':
+    'Nella barra della scheda Trasporti, clicca l’icona di download prima di Trasporto, il cui suggerimento dice Importa conferme di prenotazione. Si apre la finestra con quel nome, la stessa che ha la scheda Pren.',
+  'help.guide.import-transport-file.step.2':
+    'Lascia cadere il biglietto sul riquadro, oppure cliccalo e scegli il file: EML, PDF, PKPass, HTML e TXT, fino a cinque file da 10 MB ciascuno. I file che hai scelto sono nominati sul riquadro.',
+  'help.guide.import-transport-file.step.3':
+    'Clicca Importa. La finestra si chiude subito; la lettura avviene in secondo piano.',
+  'help.guide.import-transport-file.step.4':
+    'Una scheda in basso a destra racconta l’esecuzione sotto il nome del file. Analisi dei file in corso… diventa una spunta quando la lettura è finita, e la scheda offre Importa. Cliccalo.',
+  'help.guide.import-transport-file.step.5':
+    'Un volo si apre in Aggiungi trasporto, già compilato: la pillola del tipo su Volo, la compagnia e il numero di volo come titolo nella fascia di testa, entrambi gli aeroporti sotto Itinerario con Partenza e Arrivo, i loro orari e i loro fusi orari, Compagnia aerea e N. volo, il Codice prenotazione e il biglietto sotto File. Controllalo e clicca Aggiungi.',
+  'help.guide.import-transport-file.result':
+    'Il volo è una scheda sotto In attesa nella scheda Trasporti e una riga nel giorno in cui parte, con il biglietto sotto File, e con entrambi gli aeroporti noti disegna la sua curva sulla mappa.',
+  'help.guide.import-transport-file.tip.1':
+    'Le due schede condividono un solo import: un file che contiene un volo e un hotel apre il volo in Aggiungi trasporto e l’hotel in Nuova prenotazione, uno dopo l’altro, qualunque sia la scheda da cui sei partito.',
+  'help.guide.import-transport-file.tip.2':
+    'Gli aeroporti sono posizionati dal loro codice. Una stazione o un porto che la lettura non è riuscita a localizzare è nominato in ambra sulla scheda di importazione in basso a destra; sceglilo a mano sotto Itinerario prima di cliccare Aggiungi, altrimenti il trasporto non disegna nulla sulla mappa.',
   // plan-transit
   'help.guide.plan-transit.title': 'Pianificare un collegamento di trasporto pubblico',
   'help.guide.plan-transit.goal':
     'Lasciare che TREK cerchi i treni e gli autobus reali tra due punti di un giorno e metta nel programma quello che scegli.',
   'help.guide.plan-transit.step.1':
-    'Nell’intestazione del giorno, clicca il pulsante tram, Trasporto pubblico. La ricerca si apre per quel giorno.',
+    'Clicca il + nell’intestazione del giorno e scegli Trasporto pubblico. La ricerca si apre per quel giorno: il giorno è la pillola nella fascia di testa, e Manuale e Automatico accanto passano tra questa ricerca e il modulo normale.',
   'help.guide.plan-transit.step.2':
     'Da e A prendono una fermata o una stazione. Finché la casella è vuota vengono offerte le tappe proprie del giorno e gli alloggi del viaggio; digitando due lettere si cercano invece le stazioni dell’orario. Inverti tra le due caselle gira il collegamento.',
   'help.guide.plan-transit.step.3':
@@ -3650,10 +3736,10 @@ const help: TranslationStrings = {
   'help.guide.plan-transit.step.4':
     'I chip sotto dicono quali mezzi si possono usare: Treno, Metropolitana, Tram, Autobus, Traghetto e Funivia. Spegnine uno per lasciarlo fuori, almeno uno resta acceso. Poi clicca Cerca.',
   'help.guide.plan-transit.step.5':
-    'Ogni risultato dà partenza e arrivo, quanto dura, quanti cambi e quanto si cammina, e le linee nei loro colori. Cliccane uno per aprirlo fermata per fermata, con i binari e i tratti a piedi tra le linee.',
+    'Ogni risultato dà partenza e arrivo, quanto dura, quanti cambi e quanto si cammina, e le linee come distintivi, nei loro colori quando l’orario dei trasporti li fornisce. Cliccane uno per aprirlo tratta per tratta, con le fermate dove sali e cambi, i binari e i tratti a piedi tra le linee.',
   'help.guide.plan-transit.step.6': 'Clicca Aggiungi al giorno.',
   'help.guide.plan-transit.result':
-    'Il collegamento è una riga sul giorno con le sue linee, i suoi cambi e il suo tempo a piedi, e una scheda nella scheda Trasporti sotto Trasporto pubblico automatico.',
+    'Il collegamento è una riga sul giorno con i distintivi delle sue linee, la cui freccia lo apre tratta per tratta, e una scheda nella scheda Trasporti tra i tragitti confermati, colorata di blu.',
   'help.guide.plan-transit.tip.1':
     'I collegamenti vengono da Transitous, un servizio comunitario libero sui dati pubblici degli orari: nessuna chiave, nessun account. Un amministratore può puntare la ricerca su Google al suo posto.',
   'help.guide.plan-transit.tip.2':
@@ -3663,27 +3749,27 @@ const help: TranslationStrings = {
   // change-transit-route
   'help.guide.change-transit-route.title': 'Aprire e cambiare un collegamento pianificato',
   'help.guide.change-transit-route.goal':
-    'Leggere il collegamento fermata per fermata, rinominarlo, oppure cercare di nuovo il percorso.',
+    'Leggere il collegamento linea per linea, rinominarlo, oppure cercare di nuovo il percorso.',
   'help.guide.change-transit-route.step.1':
-    'Nella scheda Trasporti i collegamenti pianificati stanno sotto Trasporto pubblico automatico. Clicca la scheda; il collegamento si apre come prenotazione.',
+    'Nella scheda Trasporti un collegamento pianificato è una scheda con una fascia di testa blu, tra i tragitti confermati in ordine di orario; con Trasporto pubblico in una sezione a parte attivato in Opzioni di visualizzazione, sta invece sotto Trasporto pubblico automatico. Clicca la scheda; il collegamento si apre come prenotazione.',
   'help.guide.change-transit-route.step.2':
-    'Durata, Cambi e A piedi stanno in alto. Itinerario sotto di essi percorre il collegamento fermata per fermata, con i binari e i tratti a piedi tra le linee.',
+    'I riquadri in alto danno la partenza e l’arrivo con le loro fermate, la Durata, i Cambi e A piedi. Itinerario sotto di essi percorre il collegamento linea per linea, con gli orari, i binari e i tratti a piedi tra le linee.',
   'help.guide.change-transit-route.step.3':
-    'Cambia percorso ai piedi della prenotazione rilancia la ricerca, già compilata con i due estremi di questo collegamento e con il suo giorno.',
+    'Cambia percorso ai piedi della prenotazione apre di nuovo la ricerca, già compilata con i due estremi di questo collegamento e con il suo giorno.',
   'help.guide.change-transit-route.step.4':
-    'Scegli un altro collegamento e clicca Aggiungi al giorno; prende il posto del vecchio. Modifica, all’altra estremità della stessa barra, apre invece il normale modulo di trasporto, dove stanno il Codice prenotazione, lo Stato, i viaggiatori, le note e i file.',
+    'Clicca Cerca, apri un altro collegamento e clicca Aggiungi al giorno; prende il posto del vecchio. Modifica, all’estrema destra ai piedi della prenotazione, apre invece il normale modulo di trasporto, dove stanno il Codice prenotazione, i viaggiatori, le note e i file.',
   'help.guide.change-transit-route.result':
     'Il viaggio in trasporto pubblico porta il nuovo itinerario, e la sua scheda nella scheda Trasporti mostra le nuove linee e i nuovi orari.',
   'help.guide.change-transit-route.tip.1':
-    'Il titolo nell’intestazione della prenotazione rinomina il collegamento senza toccare il percorso. Le sue note si scrivono nel modulo di trasporto dietro Modifica.',
+    'Clicca il titolo nell’intestazione della prenotazione per rinominare il collegamento senza toccare il percorso. Le sue note si scrivono nel modulo di trasporto dietro Modifica.',
   'help.guide.change-transit-route.tip.2':
-    'Elimina ai piedi della prenotazione toglie il collegamento dal viaggio; il giorno mantiene le sue tappe.',
+    'Il cestino ai piedi della prenotazione elimina il collegamento dopo una domanda; il giorno mantiene le sue tappe.',
   // leg-travel-mode
   'help.guide.leg-travel-mode.title': 'Cambiare come si percorre una tratta',
   'help.guide.leg-travel-mode.goal':
     'Fare a piedi una tratta di un giorno che per il resto è in auto, oppure affidare quella tratta alla ricerca di trasporto pubblico.',
   'help.guide.leg-travel-mode.step.1':
-    'I connettori tra le tappe compaiono solo quando il percorso del giorno è acceso. Clicca il giorno per aprirlo, poi Percorso sotto le sue tappe.',
+    'I connettori tra le tappe compaiono solo quando il percorso del giorno è acceso. Clicca l’intestazione del giorno per aprirlo, poi Percorso nella barra sotto le sue tappe.',
   'help.guide.leg-travel-mode.step.2':
     'Ogni connettore nomina il tempo di viaggio e la distanza di quella tratta, con l’icona del mezzo con cui è stata calcolata: un’auto per la guida, un piede per il cammino.',
   'help.guide.leg-travel-mode.step.3':
@@ -3703,32 +3789,32 @@ const help: TranslationStrings = {
   'help.guide.edit-transport.goal':
     'Sistemare un orario, un binario o un codice di prenotazione, oppure togliere il tragitto dal viaggio.',
   'help.guide.edit-transport.step.1':
-    'Nel programma del giorno un trasporto è una riga colorata tra le tappe. Cliccala; la sua prenotazione si apre con gli orari, l’itinerario e il Codice prenotazione.',
+    'Nel programma del giorno un trasporto è una riga tra le tappe, colorata secondo il suo tipo. Cliccala e si apre la sua prenotazione: lo stato, il tipo, i giorni e il Codice prenotazione come pillole nella sua intestazione, sotto gli orari di partenza e arrivo con i loro aeroporti o stazioni.',
   'help.guide.edit-transport.step.2':
-    'Modifica ai piedi della prenotazione apre il modulo che l’ha creato, con Modifica trasporto nella barra del titolo. Tutto si può cambiare: il tipo, l’itinerario, i giorni e gli orari, il Codice prenotazione, lo Stato.',
+    'Modifica ai piedi della prenotazione apre il modulo che l’ha creato, con Modifica trasporto sopra il titolo nella sua fascia di testa. Lì si può cambiare tutto: il titolo, le pillole di stato e di tipo, l’itinerario, i giorni e gli orari, il Codice prenotazione.',
   'help.guide.edit-transport.step.3':
     'L’itinerario di un volo è una catena di aeroporti, quello di un treno una catena di stazioni. Aggiungi scalo ne mette un altro in mezzo, e ogni tratta mantiene i propri orari e il proprio numero di volo o di treno.',
   'help.guide.edit-transport.step.4':
-    'Clicca Aggiorna. Per togliere del tutto il trasporto, usa Elimina ai piedi della sua prenotazione, oppure il cestino sulla sua scheda nella scheda Trasporti, e conferma.',
+    'Clicca Aggiorna. Per togliere del tutto il trasporto, usa il cestino a sinistra della stessa barra, quello ai piedi della sua prenotazione o quello sulla sua scheda nella scheda Trasporti, e conferma.',
   'help.guide.edit-transport.result':
     'La modifica si vede ovunque compaia il trasporto: nella scheda Trasporti, nel giorno in cui avviene, e nella sua linea sulla mappa.',
   'help.guide.edit-transport.tip.1':
-    'Lo stesso modulo si apre da entrambi i lati: tramite Modifica nella prenotazione che apre una riga del programma del giorno, e tramite la matita sulla scheda nella scheda Trasporti. Anche un collegamento di trasporto pubblico pianificato si apre come prenotazione; lì Cambia percorso cerca di nuovo, e Modifica porta a questo modulo.',
+    'Lo stesso modulo si apre da entrambi i lati: tramite Modifica nella prenotazione che apre una riga del programma del giorno, e tramite la matita sulla scheda nella scheda Trasporti. Anche un collegamento di trasporto pubblico pianificato si apre come prenotazione; lì Cambia percorso apre di nuovo la ricerca, e Modifica porta a questo modulo.',
   'help.guide.edit-transport.tip.2':
     'Spostare un trasporto a un altro giorno non ha affatto bisogno del modulo: trascina la sua riga da una scheda del giorno a quella dopo.',
   // transport-on-map
   'help.guide.transport-on-map.title': 'Disegnare un trasporto sulla mappa',
   'help.guide.transport-on-map.goal': 'Vedere dove passa davvero un volo, un tragitto in auto o un collegamento.',
   'help.guide.transport-on-map.step.1':
-    'Un trasporto con entrambi gli estremi impostati porta una piccola icona del percorso sulla sua riga nel programma del giorno. Cliccala; la sua etichetta diventa Nascondi percorsi prenotati.',
+    'Un trasporto con entrambi gli estremi impostati porta una piccola icona del percorso sulla sua riga nel programma del giorno. Cliccala; il suo suggerimento diventa Nascondi percorsi prenotati.',
   'help.guide.transport-on-map.step.2':
     'Il percorso viene disegnato sulla mappa, con un indicatore a pillola a ogni estremo che porta l’icona del trasporto.',
   'help.guide.transport-on-map.step.3':
-    'Clicca un indicatore di estremità per leggere la prenotazione senza lasciare la mappa: gli orari, la Compagnia aerea e il N. volo, il Codice prenotazione e l’indirizzo. Chiudi mette via il foglio.',
+    'Clicca un indicatore di estremità e la prenotazione si apre proprio sopra la mappa: lo stato, il tipo, i giorni e il Codice prenotazione nella sua intestazione, sotto gli orari con i loro aeroporti o stazioni, la Compagnia aerea e il N. volo. Chiudi nella sua fascia di testa la mette via.',
   'help.guide.transport-on-map.step.4':
     'L’icona del percorso nella barra sopra i giorni fa l’intero viaggio in una volta: Mostra tutti i percorsi prenotati, e Nascondi tutti i percorsi prenotati per ripulirli di nuovo.',
   'help.guide.transport-on-map.step.5':
-    'Un collegamento di trasporto pubblico pianificato non ha un’icona propria. Viene disegnato con l’interruttore Percorso del giorno, ed è per questo che Nascondi tutti i percorsi prenotati non lo toglie finché il percorso di quel giorno è ancora acceso.',
+    'Un collegamento di trasporto pubblico pianificato non ha un’icona di percorso propria. Viene disegnato con l’interruttore Percorso del giorno, ed è per questo che Nascondi tutti i percorsi prenotati non lo toglie finché il percorso di quel giorno è ancora acceso.',
   'help.guide.transport-on-map.result':
     'I percorsi sono sulla mappa con un indicatore a ogni estremo, e restano lì finché non li spegni di nuovo.',
   'help.guide.transport-on-map.tip.1':
@@ -3737,32 +3823,12 @@ const help: TranslationStrings = {
     'Una prenotazione confermata è una linea continua, una in attesa è tratteggiata. L’impostazione Etichette percorsi prenotati scrive il codice dell’aeroporto o il nome della stazione negli indicatori alle estremità.',
   'help.guide.transport-on-map.tip.3':
     'Mostra tutti i percorsi prenotati è una tabula rasa, non un livello: scarta ciò che avevano impostato le singole icone, quindi premerlo due volte ti lascia con tutto acceso o tutto spento.',
-  // import-transport-file
-  'help.guide.import-transport-file.title': 'Leggere un volo dal suo biglietto elettronico',
-  'help.guide.import-transport-file.goal':
-    'Lascia che TREK tiri fuori un volo, un treno o un traghetto dal biglietto che il vettore ha mandato, e controllalo prima che venga salvato.',
-  'help.guide.import-transport-file.step.1':
-    'Clicca Importa da file nella barra degli strumenti della scheda Trasporti, accanto a Trasporto. Si apre Importa conferme di prenotazione, la stessa finestra che ha la scheda Prenotazioni.',
-  'help.guide.import-transport-file.step.2':
-    'Lascia cadere il biglietto sul riquadro, oppure cliccalo e scegli il file: EML, PDF, PKPass, HTML e TXT, fino a cinque file da 10 MB ciascuno. I file che hai scelto sono nominati sul riquadro.',
-  'help.guide.import-transport-file.step.3':
-    'Clicca Importa. La finestra si chiude subito; la lettura avviene in secondo piano.',
-  'help.guide.import-transport-file.step.4':
-    'Una scheda in basso a destra racconta l’esecuzione sotto il nome del file. Analisi dei file in corso… diventa una spunta quando la lettura è finita, e la scheda offre Importa. Cliccalo.',
-  'help.guide.import-transport-file.step.5':
-    'Un volo si apre in Aggiungi trasporto, già compilato: Tipo di prenotazione su Volo, la compagnia e il numero di volo in Titolo, entrambi gli aeroporti sotto Itinerario con Partenza e Arrivo, i loro orari e i loro fusi orari, Compagnia aerea e N. volo, il Codice prenotazione e il biglietto sotto File. Controllalo e clicca Aggiungi.',
-  'help.guide.import-transport-file.result':
-    'Il volo è una scheda in In attesa nella scheda Trasporti e una riga nel giorno in cui parte, con il biglietto sotto File, e con entrambi gli aeroporti noti disegna la sua curva sulla mappa.',
-  'help.guide.import-transport-file.tip.1':
-    'Le due schede condividono un solo import: un file che contiene un volo e un hotel apre il volo in Aggiungi trasporto e l’hotel in Nuova prenotazione, uno dopo l’altro, qualunque sia la scheda da cui sei partito.',
-  'help.guide.import-transport-file.tip.2':
-    'Gli aeroporti sono posizionati dal loro codice. Una stazione o un porto che la lettura non è riuscita a localizzare è nominato in ambra sulla scheda; sceglilo a mano sotto Itinerario prima di cliccare Aggiungi, altrimenti il trasporto non disegna nulla sulla mappa.',
   // airtrail-import
   'help.guide.airtrail-import.title': 'Importare voli da AirTrail',
   'help.guide.airtrail-import.goal':
     'Porta nel viaggio in un colpo solo i voli che tieni già in AirTrail, e lascia che da lì in poi seguano AirTrail.',
   'help.guide.airtrail-import.step.1':
-    'Con l’addon AirTrail acceso e la tua istanza collegata sotto Integrazioni in Impostazioni, la barra degli strumenti della scheda Trasporti porta un pulsante AirTrail accanto a Trasporto. Cliccalo.',
+    'Con l’addon AirTrail acceso e la tua istanza collegata sotto Integrazioni in Impostazioni, la barra della scheda Trasporti porta un’icona a forma di aereo prima di Trasporto, Importa da AirTrail. Cliccala.',
   'help.guide.airtrail-import.step.2':
     'Importa da AirTrail elenca i voli del tuo account in due gruppi. Durante questo viaggio tiene quelli datati dentro il viaggio, già spuntati; Altri voli tiene il resto, non spuntati. Un volo che è già nel viaggio è in grigio e segnato Importato.',
   'help.guide.airtrail-import.step.3':
@@ -3770,17 +3836,17 @@ const help: TranslationStrings = {
   'help.guide.airtrail-import.step.4':
     'I voli che si collegano, ciascuno in partenza entro un giorno dall’aeroporto in cui è atterrato il precedente, sono incorniciati insieme. La casella sotto, Importa come un unico volo con scalo a quell’aeroporto, è già spuntata: lasciala per una sola prenotazione con scalo, oppure togli la spunta per importare le tratte come voli separati.',
   'help.guide.airtrail-import.step.5':
-    'Clicca Importa. Il pulsante conta i voli spuntati, e il messaggio dopo dice quanti sono entrati.',
+    'Clicca il pulsante in basso a destra, che conta i voli spuntati, come in Importa 2. Il messaggio dopo dice quanti sono entrati.',
   'help.guide.airtrail-import.step.6':
-    'I voli sono schede sotto Confermata, ognuna con un distintivo blu AirTrail accanto al suo stato, e righe nei giorni in cui volano. Un collegamento unito è una sola scheda, con il suo itinerario che passa per lo scalo.',
+    'I voli sono schede sotto Confermata, ognuna con una pillola blu AirTrail accanto al suo titolo, e righe nei giorni in cui volano. Un collegamento unito è una sola scheda, con il suo itinerario che passa per lo scalo.',
   'help.guide.airtrail-import.result':
-    'I voli da AirTrail sono schede nella scheda Trasporti e righe nei loro giorni, ognuna con il distintivo AirTrail che dice da dove viene.',
+    'I voli da AirTrail sono schede nella scheda Trasporti e righe nei loro giorni, ognuna con la pillola AirTrail che dice da dove viene.',
   'help.guide.airtrail-import.tip.1':
-    'Un volo che è già nel viaggio con lo stesso numero e la stessa data viene saltato, e un messaggio dice quanti lo sono stati. Annulla nella barra degli strumenti sopra i giorni ritira l’intero import.',
+    'Un volo che è già nel viaggio con lo stesso numero e la stessa data viene saltato, e un messaggio dice quanti lo sono stati. La freccia Annulla nella barra degli strumenti sopra i giorni ritira l’intero import.',
   'help.guide.airtrail-import.tip.2':
-    'AirTrail resta la fonte di verità. TREK legge le sue modifiche quando apri il viaggio e ogni pochi minuti in secondo piano; un volo eliminato lì tiene la sua scheda, con il distintivo passato a Non sincronizzato. Le modifiche fatte in TREK tornano indietro solo con Scrivi le modifiche su AirTrail acceso sotto Integrazioni.',
+    'AirTrail resta la fonte di verità. TREK legge le sue modifiche quando apri il viaggio e ogni pochi minuti in secondo piano; un volo eliminato lì tiene la sua scheda, con la sua pillola passata a Non sincronizzato. Le modifiche fatte in TREK tornano indietro solo con Scrivi le modifiche su AirTrail acceso sotto Integrazioni.',
   'help.guide.airtrail-import.tip.3':
-    'Un collegamento unito non ha un singolo volo AirTrail da seguire, quindi è un import una tantum: tiene il distintivo blu, e passando sopra il distintivo lo si legge. Lo stesso succede a un volo sincronizzato a cui dai uno scalo a mano.',
+    'Un collegamento unito non ha un singolo volo AirTrail da seguire, quindi è un import una tantum: tiene la pillola blu, e puntando la pillola lo si legge. Lo stesso succede a un volo sincronizzato a cui dai uno scalo a mano.',
 
   // ── Screen: trip-roadtrip ─────────────────────────────────────────────────────────────
   'help.ctx.trip-roadtrip.title': 'Viaggio su strada',
@@ -3789,13 +3855,13 @@ const help: TranslationStrings = {
   'help.ctx.trip-roadtrip.bullet.1':
     'Giorni e Viaggio su strada in cima alla colonna di sinistra passano dal programma dei giorni al tragitto in auto. Niente viene copiato e niente viene cambiato: Giorni restituisce il programma esattamente com’era.',
   'help.ctx.trip-roadtrip.bullet.2':
-    'La testa dell’elenco somma il viaggio: Distanza, Tempo di guida e Soste. Sotto arriva un riquadro per giorno, con i chilometri propri del giorno, per quante soste è fatto, quello che sfora, e un distintivo Traccia.',
+    'La testa dell’elenco somma il viaggio: Distanza, Tempo di guida e Soste. Sotto arriva un riquadro per ogni giorno con un tragitto in auto, con i chilometri propri del giorno, per quante soste è fatto, quello che sfora, e un distintivo Traccia.',
   'help.ctx.trip-roadtrip.bullet.3':
     'Una sosta numerata è un luogo per cui il giorno esiste. Una sosta lungo il percorso, carburante, ricarica, un’area di sosta, porta l’icona del suo tipo al posto di un numero e non viene contata. Clicca un numero per cambiare cos’è, e il distintivo Sosta per dire quanto dura.',
   'help.ctx.trip-roadtrip.bullet.4':
     'Tra due soste una fascia di guida dà la tratta come distanza e tempo. Cliccala per Percorsi per questa tratta, oppure clicca il percorso disegnato sulla mappa per piegare la tratta attraverso un punto di passaggio.',
   'help.ctx.trip-roadtrip.bullet.5':
-    'La colonna di destra diventa Lungo il percorso: scegli un giorno, cosa cercare e quanto è largo il corridoio, poi Cerca. Aggiungi mette un risultato nel tragitto nel punto in cui viene davvero passato.',
+    'La colonna di destra diventa Lungo il percorso: scegli cosa cercare e il giorno su una sola riga, quanto è largo il corridoio, poi Cerca. Il più su un risultato, Aggiungi, apre una breve finestra che lo mette nel tragitto nel punto in cui viene davvero passato.',
   'help.ctx.trip-roadtrip.bullet.6':
     'Le Impostazioni di guida sotto tengono i limiti, l’auto e la sua autonomia, gli orari giornalieri, cosa evitare e come viene disegnata la linea. Appartengono al viaggio, quindi tutti pianificano con la stessa auto.',
   // roadtrip-mode
@@ -3805,7 +3871,7 @@ const help: TranslationStrings = {
     'Clicca Viaggio su strada nel selettore Giorni e Viaggio su strada in cima alla colonna di sinistra. Il programma dei giorni viene sostituito dal tragitto in auto, e la mappa disegna ogni giorno per cui il percorso è stato calcolato.',
   'help.guide.roadtrip-mode.step.2': 'La testa dell’elenco somma tutto il viaggio: Distanza, Tempo di guida e Soste.',
   'help.guide.roadtrip-mode.step.3':
-    'Sotto arriva un riquadro per giorno. La sua intestazione porta numero e data del giorno, la guida come distanza e tempo, e per quante soste è fatto il giorno.',
+    'Sotto arriva un riquadro per ogni giorno con un tragitto in auto; un giorno senza niente da guidare resta fuori. La sua intestazione porta numero e data del giorno, la guida come distanza e tempo, e per quante soste è fatto il giorno.',
   'help.guide.roadtrip-mode.step.4':
     'Dentro il riquadro il giorno è una catena: una sosta numerata per luogo, una fascia di guida tra ogni coppia, e l’orario di arrivo sul bordo destro.',
   'help.guide.roadtrip-mode.step.5':
@@ -3823,45 +3889,47 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-stops.goal':
     'Trasforma un luogo del tragitto in una sosta lungo il percorso, e indica quanto dura ogni sosta.',
   'help.guide.roadtrip-stops.step.1':
-    'Clicca il numero davanti a una sosta nell’elenco. La sua etichetta è Trasforma in sosta lungo il percorso, e apre Tipo di sosta.',
+    'Clicca il numero davanti a una sosta nell’elenco. La sua etichetta è Trasforma in sosta lungo il percorso, e apre i tipi di sosta come una fila di dischi colorati sotto di esso.',
   'help.guide.roadtrip-stops.step.2':
-    'Scegli un tipo: Alloggi, Carburante, Ricarica, Area di sosta, Campeggio, Ristoro o Da vedere. Il numero diventa l’icona di quel tipo e le soste sotto vengono rinumerate.',
+    'Scegli un tipo; ogni disco dice il suo nome quando ci punti sopra: Alloggi, Carburante, Ricarica, Area di sosta, Campeggio, Ristoro o Da vedere. Il numero diventa l’icona di quel tipo e le soste sotto vengono rinumerate.',
   'help.guide.roadtrip-stops.step.3':
     'Una sosta lungo il percorso non è una destinazione, quindi l’intestazione del giorno conta una sosta in meno.',
   'help.guide.roadtrip-stops.step.4':
     'Clicca di nuovo l’icona, Cambia il tipo di sosta, e scegli Torna a essere una destinazione per ridare il suo numero alla sosta.',
   'help.guide.roadtrip-stops.step.5': 'Ogni sosta porta un distintivo Sosta. Cliccalo per aprire Tempo alla sosta.',
   'help.guide.roadtrip-stops.step.6':
-    'Imposta la durata con il cursore, con i pulsanti meno e più o con uno dei valori pronti, guarda cosa fanno Arrivo e Partenza, poi clicca Salva.',
+    'Imposta la durata con il cursore, con i pulsanti meno e più o con uno dei valori pronti, guarda Partenza spostarsi mentre Arrivo resta all’ora in cui il tragitto arriva lì, poi clicca Salva.',
   'help.guide.roadtrip-stops.result':
-    'La sosta a cui hai dato un tempo porta l’ora sul suo distintivo Sosta e ogni arrivo dopo di lei si è spostato, e quella che hai mandato a un tipo e indietro è di nuovo una destinazione numerata.',
+    'La sosta a cui hai dato un tempo porta la sua nuova durata sul suo distintivo Sosta e ogni arrivo dopo di lei si è spostato, e quella che hai mandato a un tipo e indietro è di nuovo una destinazione numerata.',
   'help.guide.roadtrip-stops.tip.1':
     'Una permanenza appartiene al luogo, non a una visita: in un luogo pianificato in due giorni ci si ferma lo stesso tempo in entrambi.',
   'help.guide.roadtrip-stops.tip.2':
     'Le soste lungo il percorso compaiono anche sotto Giorni. Spegnere Mostra anche in Giorni, sotto Soste di servizio nelle Impostazioni di guida, le tiene solo nel Viaggio su strada.',
   'help.guide.roadtrip-stops.tip.3': 'Nessuna sosta, nella stessa finestra, toglie di nuovo quel tempo.',
+  'help.guide.roadtrip-stops.tip.4':
+    'Clicca una sosta lungo il percorso o una notte prenotata per aprire la sua scheda sopra la mappa. Con Viaggio su strada attivo, Modifica lì apre la finestra compatta usata dalla ricerca invece del modulo del luogo, e Altri dettagli in quella finestra apre il modulo completo.',
   // roadtrip-corridor
   'help.guide.roadtrip-corridor.title': 'Trovare carburante, cibo e un letto lungo il percorso',
   'help.guide.roadtrip-corridor.goal':
     'Cerca sulla strada che percorri davvero, e metti quel che trovi sulla tratta giusta.',
   'help.guide.roadtrip-corridor.step.1':
-    'Scegli il giorno in cima a Lungo il percorso. Vengono offerti solo i giorni con il percorso calcolato.',
+    'Sotto Sto cercando, apri l’elenco e spunta ciò che ti serve. Carburante, Ricarica, Area di sosta, Campeggio, Alloggi, Ristoro e Da vedere si possono combinare: l’elenco resta aperto per una seconda scelta, e la riga mostra poi ogni tipo con la sua icona.',
   'help.guide.roadtrip-corridor.step.2':
-    'Sotto Sto cercando, spunta ciò che ti serve. Carburante, Ricarica, Area di sosta, Campeggio, Alloggi, Ristoro e Da vedere si possono combinare.',
+    'Scegli il giorno nel menu a tendina alla fine della stessa riga. Offre i giorni per cui l’elenco ha un riquadro, e Cerca aspetta finché il giorno che hai scelto non ha il percorso calcolato.',
   'help.guide.roadtrip-corridor.step.3':
     'Sotto Entro, scegli quanto cercare ai due lati della strada, 2 km, 5 km o 10 km, poi clicca Cerca.',
   'help.guide.roadtrip-corridor.step.4':
     'I risultati tornano raggruppati per tipo, nell’ordine in cui li passi, ognuno con il punto del giorno in cui si trova e quanto è fuori percorso.',
   'help.guide.roadtrip-corridor.step.5':
-    'Aggiungi su un risultato apre Aggiungi come sosta. Dice su quale giorno e in quale posizione finisce la sosta, chiede il tipo e il tempo alla sosta, e Aggiungi la mette nel tragitto.',
+    'Il più su un risultato, Aggiungi, apre Aggiungi come sosta. Dice su quale giorno e in quale posizione finisce la sosta e chiede il Tipo di sosta e il Tempo alla sosta. Aggiungi la mette nel tragitto; Altri dettagli apre invece il modulo completo del luogo. Un risultato di alloggio porta un letto al posto del più, Aggiungi come pernottamento, e la sua finestra offre Sosta o Pernottamento; una notte chiede solo il suo Check-in.',
   'help.guide.roadtrip-corridor.result':
-    'I risultati sono elencati nell’ordine in cui li passi e disegnati sulla mappa, e quello che hai aggiunto sta nel tragitto nel punto in cui viene davvero passato.',
+    'La sosta che hai aggiunto sta nel tragitto nel punto in cui viene davvero passata, con l’icona del suo tipo. Il percorso del giorno viene ricalcolato passando da lì, e questo svuota l’elenco: cerca di nuovo per la prossima.',
   'help.guide.roadtrip-corridor.tip.1':
     'Non si cerca niente finché non premi Cerca: una sola esecuzione sono molte richieste a un servizio condiviso.',
   'help.guide.roadtrip-corridor.tip.2':
     'Filtra per nome restringe quello che è tornato senza chiedere di nuovo, e Svuota risultati svuota l’elenco e i suoi segnaposti. Clicca un risultato per portarlo in vista sulla mappa.',
   'help.guide.roadtrip-corridor.tip.3':
-    'Un risultato si può anche trascinare dalla mappa sul percorso disegnato, ed è così che scegli tu la tratta dove la stessa strada viene percorsa due volte. Aggiungi a mano, accanto a Cerca, cerca invece un luogo per nome.',
+    'Un risultato si può anche trascinare dalla mappa sul percorso disegnato, ed è così che scegli tu la tratta dove la stessa strada viene percorsa due volte. A mano, accanto a Cerca, aggiunge un luogo che la ricerca non ha trovato, cercandolo per nome.',
   // roadtrip-via
   'help.guide.roadtrip-via.title': 'Piegare una tratta attraverso un punto di passaggio',
   'help.guide.roadtrip-via.goal': 'Manda una tratta sulla strada che vuoi davvero, senza aggiungerle una sosta.',
@@ -3889,7 +3957,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.step.1':
     'Clicca una fascia di guida nell’elenco, la riga tra due soste che dà la tratta come distanza e tempo. La sua etichetta è Altri percorsi.',
   'help.guide.roadtrip-alternatives.step.2':
-    'Percorsi per questa tratta si apre sopra la mappa, una voce per strada, ognuna disegnata sulla mappa con il suo colore.',
+    'Percorsi per questa tratta si apre sopra la mappa, una voce per strada con la sua lunghezza. La mappa disegna ogni strada con il suo tempo di guida: quella su cui sei in blu pieno, le altre in un blu più chiaro.',
   'help.guide.roadtrip-alternatives.step.3':
     'Passa sopra una voce per accendere quella strada. Attuale è la strada che si sta percorrendo e La più veloce la più rapida; le altre dicono quanto sono più lente, o quale classe di strada lasciano fuori.',
   'help.guide.roadtrip-alternatives.step.4':
@@ -3897,7 +3965,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-alternatives.result':
     'La tratta fa la strada che hai scelto, e la distanza nell’elenco e gli arrivi successivi cambiano con lei.',
   'help.guide.roadtrip-alternatives.tip.1':
-    'Scegliere un’altra strada posa un punto di passaggio sulla tratta e sostituisce quelli che aveva già; scegliere la strada propria del router li toglie di nuovo.',
+    'Scegliere un’altra strada la verifica prima con il router del viaggio su strada, poi tiene la tratta su di essa con il minor numero di punti di passaggio necessario, sostituendo quelli che la tratta aveva già. Un percorso che il router non segue non viene salvato. Scegliere la strada propria del router toglie di nuovo i punti di passaggio.',
   'help.guide.roadtrip-alternatives.tip.2':
     'Senza autostrada, Senza pedaggi e Senza traghetto vengono da un secondo motore con un suo modello di velocità, quindi i loro tempi non sono confrontabili con gli altri.',
   // roadtrip-limits
@@ -3910,7 +3978,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.step.3':
     'Sotto Veicolo, indica cosa guidi. Benzina fa il pieno solo alle soste carburante, Elettrico solo a quelle di ricarica, Entrambi a tutte e due.',
   'help.guide.roadtrip-limits.step.4':
-    'Scrivi tu stesso Autonomia con un pieno, oppure Autonomia per ricarica. Calcola dai dati dell’auto sotto prende Serbatoio e Consumo, o Batteria e Consumo, e fa il conto.',
+    'Scrivi tu stesso Autonomia con un pieno, oppure Autonomia per ricarica. Calcola dai dati dell’auto, più sotto, prende Serbatoio e Consumo, oppure Batteria, Consumo e Degrado batteria, e fa il conto.',
   'help.guide.roadtrip-limits.step.5':
     'Evita se possibile è una preferenza, non un divieto: un giorno senza alternative usa comunque quella strada, e lo dice nella sua intestazione.',
   'help.guide.roadtrip-limits.step.6':
@@ -3922,7 +3990,7 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-limits.tip.2':
     'Riempi fino a dice quanto riempie una sosta, perché nessuno carica al 100 % per strada. Una sosta carburante o di ricarica può scavalcarlo per sé.',
   'help.guide.roadtrip-limits.tip.3':
-    'Linea del percorso decide come viene disegnato il tragitto: Collega i giorni calcola la notte tra due giorni, e Un colore per giorno dà a ogni giorno il suo.',
+    'Sotto Linea del percorso, Collega i giorni calcola anche il tragitto dall’ultima sosta di un giorno alla prima del giorno dopo, Inizia e termina ogni giorno al tuo alloggio fa iniziare e finire un giorno alle notti prenotate intorno a esso, e Un colore per giorno disegna ogni giorno nel suo colore.',
   // roadtrip-day-window
   'help.guide.roadtrip-day-window.title': 'Dare un inizio e una fine alla giornata di guida',
   'help.guide.roadtrip-day-window.goal':
@@ -3950,15 +4018,15 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-refuel.goal':
     'Trova dove fare rifornimento sul tratto che l’auto riesce ancora a raggiungere, e mettilo nel tragitto.',
   'help.guide.roadtrip-refuel.step.1':
-    'Con un’autonomia impostata, l’elenco disegna una fascia attraverso la tratta nel punto in cui finisce: Qui il serbatoio si esaurisce, e sotto quanto dentro la tratta cade quel punto.',
+    'Con un’autonomia impostata, l’elenco disegna una fascia attraverso la tratta nel punto in cui finisce: Qui il serbatoio si esaurisce, oppure Qui la batteria si esaurisce su un’auto elettrica, e sotto quanto dentro la tratta cade quel punto.',
   'help.guide.roadtrip-refuel.step.2':
-    'La lampadina sulla fascia è il pulsante. Cerca carburante guarda lungo la strada che hai già percorso, con Ricerca lungo il percorso… mentre lo fa.',
+    'La lampadina sulla fascia è il pulsante: Cerca carburante, oppure Cerca una ricarica su un’auto elettrica. Guarda lungo la strada prima di quel punto e dice Ricerca lungo il percorso… mentre lo fa.',
   'help.guide.roadtrip-refuel.step.3':
     'Tornano fino a tre stazioni, ognuna con quanto è fuori percorso e quanta autonomia lascerebbe di riserva.',
   'help.guide.roadtrip-refuel.step.4':
     'Il più su un’offerta la aggiunge come sosta carburante. Aggiungi come sosta si apre con tipo e tempo già compilati, e Aggiungi la mette sulla tratta nel punto in cui viene davvero passata.',
   'help.guide.roadtrip-refuel.result':
-    'La sosta è sulla tratta giusta con la sua icona, l’autonomia riparte da lei, e la fascia è sparita.',
+    'La sosta sta sulla tratta giusta con la sua icona, e l’autonomia riparte da lei: la fascia si sposta dove ora si esaurisce il serbatoio, oppure sparisce quando il resto del tragitto è a portata.',
   'help.guide.roadtrip-refuel.tip.1':
     'L’autonomia conta dall’ultima sosta carburante o di ricarica, anche tra giorni diversi. Cosa guidi decide quali soste contano: Benzina solo il carburante, Elettrico solo la ricarica.',
   'help.guide.roadtrip-refuel.tip.2':
@@ -3976,11 +4044,11 @@ const help: TranslationStrings = {
   'help.guide.roadtrip-track.step.3':
     'Clicca Segui questa traccia. TREK posa punti di passaggio dove il tragitto si allontana di più dalla traccia, e ricalcola, giro dopo giro.',
   'help.guide.roadtrip-track.step.4':
-    'Dice quanti punti di passaggio ha posato e quanto vicino resta ora il tragitto. Il pulsante sotto toglie di nuovo quei punti di passaggio e ridà il giorno al router; chiudere la finestra tiene la traccia.',
+    'La finestra dice quanti punti di passaggio sono stati posati e quanto vicino resta ora il tragitto, oppure che il tragitto seguiva già la traccia. Dove ne sono stati posati, il pulsante sotto li toglie di nuovo e ridà il giorno al router; chiudere la finestra tiene la traccia.',
   'help.guide.roadtrip-track.result':
-    'Il tragitto del giorno segue la traccia invece della strada scelta dal router, e il suo distintivo Traccia è acceso e nomina quella traccia quando ci punti sopra.',
+    'Il tragitto del giorno segue la traccia invece della strada che il router avrebbe scelto, e puntando il suo distintivo Traccia si legge il nome della traccia. Dove dei punti di passaggio tengono il tragitto su di essa, il distintivo è anche acceso.',
   'help.guide.roadtrip-track.tip.1':
-    'Importa il file sotto Giorni con Importa file, spuntando Percorsi o Tracce. Finché il viaggio non ne ha una, nessun giorno porta il distintivo.',
+    'Importa il file sotto Giorni: nella colonna dei luoghi, Importa file dietro il pulsante di importazione, spuntando Percorsi o Tracce (con geometria percorso) per un GPX, oppure Percorsi (LineStrings) per un KML. Finché il viaggio non ha una traccia, nessun giorno porta il distintivo.',
   'help.guide.roadtrip-track.tip.2':
     'Seguire una traccia sostituisce i punti di passaggio che le tratte del giorno avevano già, quindi modella una tratta a mano dopo la traccia, non prima.',
 };
