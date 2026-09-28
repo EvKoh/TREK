@@ -49,7 +49,6 @@ function OpenDialog({ onClose, tripId, tripTitle, onMembersChanged }: TripShareD
         onClose={onClose}
         labelledBy={labelId}
         width={m.canManageShare ? 'wide' : 'detail'}
-        align="top"
         blocked={!!ask}
         header={(
           <DialogHeader
