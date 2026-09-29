@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Tất cả',
   'packing.filterOpen': 'Mở',
   'packing.filterDone': 'Xong',
+  'packing.sortBy': 'Sắp xếp theo',
+  'packing.sortByName': 'A đến Z',
   'packing.emptyTitle': 'Danh sách đóng gói trống',
   'packing.emptyFiltered': 'Không có mục nào phù hợp với bộ lọc này',
   'packing.menuRename': 'Đổi tên',

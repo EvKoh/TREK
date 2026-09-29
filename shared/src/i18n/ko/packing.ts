@@ -39,6 +39,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': '전체',
   'packing.filterOpen': '미완료',
   'packing.filterDone': '완료',
+  'packing.sortBy': '정렬',
+  'packing.sortByName': '가나다순',
   'packing.emptyTitle': '짐 목록이 비어 있습니다',
   'packing.emptyFiltered': '이 필터와 일치하는 항목이 없습니다',
   'packing.menuRename': '이름 변경',

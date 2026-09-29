@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Vše',
   'packing.filterOpen': 'K zabalení',
   'packing.filterDone': 'Hotovo',
+  'packing.sortBy': 'Seřadit podle',
+  'packing.sortByName': 'A až Z',
   'packing.emptyTitle': 'Seznam věcí je prázdný',
   'packing.emptyFiltered': 'Žádné položky neodpovídají filtru',
   'packing.menuRename': 'Přejmenovat',

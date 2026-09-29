@@ -236,6 +236,44 @@ describe('PackingListPanel', () => {
     expect(screen.getByText('No items match this filter')).toBeInTheDocument();
   });
 
+  it('FE-COMP-PACKING-093: the A to Z switch sorts each list by name and a second click restores the manual order', async () => {
+    const user = userEvent.setup();
+    const items = [
+      buildPackingItem({ id: 1, name: 'Toothbrush', category: 'Bag' }),
+      buildPackingItem({ id: 2, name: 'adapter', category: 'Bag' }),
+      buildPackingItem({ id: 3, name: 'Shirt', category: 'Bag' }),
+    ];
+    render(<PackingListPanel tripId={1} items={items} />);
+    const order = () => ['Toothbrush', 'adapter', 'Shirt']
+      .map(n => [n, screen.getByText(n)] as const)
+      .sort(([, a], [, b]) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+      .map(([n]) => n);
+    const toggle = screen.getByRole('button', { name: 'A to Z' });
+
+    expect(order()).toEqual(['Toothbrush', 'adapter', 'Shirt']);
+    expect(toggle).toHaveAttribute('aria-pressed', 'false');
+
+    await user.click(toggle);
+    expect(order()).toEqual(['adapter', 'Shirt', 'Toothbrush']);
+    expect(toggle).toHaveAttribute('aria-pressed', 'true');
+    expect(localStorage.getItem('trek:packing-sort')).toBe('name');
+
+    await user.click(toggle);
+    expect(order()).toEqual(['Toothbrush', 'adapter', 'Shirt']);
+    expect(localStorage.getItem('trek:packing-sort')).toBe('manual');
+  });
+
+  it('FE-COMP-PACKING-094: sorted A to Z the rows cannot be dragged, and the choice is remembered', () => {
+    localStorage.setItem('trek:packing-sort', 'name');
+    const items = [
+      buildPackingItem({ id: 1, name: 'Toothbrush', category: 'Bag' }),
+      buildPackingItem({ id: 2, name: 'adapter', category: 'Bag' }),
+    ];
+    const { container } = render(<PackingListPanel tripId={1} items={items} />);
+    expect(screen.getByRole('button', { name: 'A to Z' })).toHaveAttribute('aria-pressed', 'true');
+    expect(container.querySelector('[draggable="true"]')).toBeNull();
+  });
+
   it('FE-COMP-PACKING-023: inline edit item name via pencil icon calls PUT', async () => {
     const user = userEvent.setup();
     const item = buildPackingItem({ id: 42, name: 'Sunscreen', category: 'Toiletries' });

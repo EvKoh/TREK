@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Все',
   'packing.filterOpen': 'Не собрано',
   'packing.filterDone': 'Собрано',
+  'packing.sortBy': 'Сортировка',
+  'packing.sortByName': 'От А до Я',
   'packing.emptyTitle': 'Список вещей пуст',
   'packing.emptyFiltered': 'Нет вещей, соответствующих фильтру',
   'packing.menuRename': 'Переименовать',

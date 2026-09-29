@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Tutti',
   'packing.filterOpen': 'Da fare',
   'packing.filterDone': 'Fatto',
+  'packing.sortBy': 'Ordina per',
+  'packing.sortByName': 'A-Z',
   'packing.emptyTitle': 'La lista valigia è vuota',
   'packing.emptyFiltered': 'Nessun elemento corrisponde a questo filtro',
   'packing.menuRename': 'Rinomina',

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { katColor, itemWeight, bagFillPct, bagTotalWeight, countsTowardsMyLoad, isMarkdownList, parseCsvLine, parseImportLines, unassignedTotalWeight } from './packingListPanel.helpers'
+import { katColor, itemWeight, bagFillPct, bagTotalWeight, countsTowardsMyLoad, isMarkdownList, parseCsvLine, parseImportLines, sortItemsByName, unassignedTotalWeight } from './packingListPanel.helpers'
 import { KAT_COLORS } from './packingListPanel.constants'
 
 describe('packingListPanel.helpers', () => {
@@ -217,6 +217,28 @@ describe('packingListPanel.helpers', () => {
       expect(unassignedTotalWeight(0, [{ weight_grams: 900 }])).toBe(0)
       expect(unassignedTotalWeight(null, [{ weight_grams: 900 }])).toBe(900)
       expect(unassignedTotalWeight(undefined, [])).toBe(0)
+    })
+  })
+  describe('sortItemsByName', () => {
+    const names = (items: { name: string }[]) => items.map(i => i.name)
+
+    it('orders by name, ignoring case and accents the way the language does', () => {
+      const items = [{ name: 'shirt' }, { name: 'Éponge' }, { name: 'adapter' }, { name: 'Zahnbürste' }, { name: 'Bag' }]
+      expect(names(sortItemsByName(items, 'en'))).toEqual(['adapter', 'Bag', 'Éponge', 'shirt', 'Zahnbürste'])
+    })
+
+    it('reads numbers as numbers', () => {
+      expect(names(sortItemsByName([{ name: 'Shirt 10' }, { name: 'Shirt 2' }], 'en'))).toEqual(['Shirt 2', 'Shirt 10'])
+    })
+
+    it('keeps the placeholder of an empty list at the bottom', () => {
+      expect(names(sortItemsByName([{ name: '...' }, { name: 'Zip bag' }, { name: 'Adapter' }], 'en'))).toEqual(['Adapter', 'Zip bag', '...'])
+    })
+
+    it('leaves the array it was given in its manual order', () => {
+      const items = [{ name: 'b' }, { name: 'a' }]
+      sortItemsByName(items, 'en')
+      expect(names(items)).toEqual(['b', 'a'])
     })
   })
 })

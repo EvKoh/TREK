@@ -39,6 +39,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': '全部',
   'packing.filterOpen': '未完成',
   'packing.filterDone': '已完成',
+  'packing.sortBy': '排序方式',
+  'packing.sortByName': '依名稱',
   'packing.emptyTitle': '行李清單為空',
   'packing.emptyFiltered': '沒有匹配的物品',
   'packing.menuRename': '重新命名',

@@ -46,6 +46,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Hamısı',
   'packing.filterOpen': 'Hazır deyil',
   'packing.filterDone': 'Hazırdır',
+  'packing.sortBy': 'Sıralama',
+  'packing.sortByName': 'A-dan Z-yə',
 
   'packing.emptyTitle': 'Baqaj siyahısı boşdur',
   'packing.emptyFiltered':

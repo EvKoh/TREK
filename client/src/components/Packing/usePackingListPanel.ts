@@ -11,7 +11,11 @@ import { useNetworkMode } from '../../hooks/useNetworkMode'
 import { useBagTotalsPing } from './useBagTotalsPing'
 import type { PackingItem, PackingBag } from '../../types'
 import { BAG_COLORS, PACKING_PLACEHOLDER_NAME } from './packingListPanel.constants'
-import { parseImportLines } from './packingListPanel.helpers'
+import { parseImportLines, sortItemsByName } from './packingListPanel.helpers'
+
+const PACKING_SORT_KEY = 'trek:packing-sort'
+
+export type PackingSort = 'manual' | 'name'
 
 export interface TripMember {
   id: number
@@ -50,6 +54,15 @@ export interface PackingListPanelProps {
  */
 export function usePackingList({ tripId, items, openImportSignal = 0, addCategorySignal = 0, saveTemplateSignal = 0, inlineHeader = true, view: viewProp, onViewChange }: PackingListPanelProps) {
   const [filter, setFilter] = useState('alle') // 'alle' | 'offen' | 'erledigt'
+  // A-Z only changes what is shown; the manual order stays stored underneath and
+  // comes back when the switch is turned off. Remembered per browser.
+  const [sort, setSortState] = useState<PackingSort>(() => {
+    try { return localStorage.getItem(PACKING_SORT_KEY) === 'name' ? 'name' : 'manual' } catch { return 'manual' }
+  })
+  const setSort = (next: PackingSort) => {
+    setSortState(next)
+    try { localStorage.setItem(PACKING_SORT_KEY, next) } catch { /* storage unavailable: the choice lasts until reload */ }
+  }
   // Three-tier sharing (#858): 'common' = the group pool (where existing items
   // live — non-breaking), 'personal' = my own list (private + shared-to-me).
   const [ownView, setOwnView] = useState<'common' | 'personal'>('common')
@@ -65,7 +78,7 @@ export function usePackingList({ tripId, items, openImportSignal = 0, addCategor
   const isAdmin = useAuthStore((s) => s.user?.role === 'admin')
   const currentUserId = useAuthStore((s) => s.user?.id)
   const toast = useToast()
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
 
   // Trip members & category assignees
   const [tripMembers, setTripMembers] = useState<TripMember[]>([])
@@ -120,8 +133,11 @@ export function usePackingList({ tripId, items, openImportSignal = 0, addCategor
       if (!groups[kat]) groups[kat] = []
       groups[kat].push(item)
     }
+    if (sort === 'name') {
+      for (const kat of Object.keys(groups)) groups[kat] = sortItemsByName(groups[kat], locale)
+    }
     return groups
-  }, [viewItems, filter, t])
+  }, [viewItems, filter, sort, locale, t])
 
   const abgehakt = viewItems.filter(i => i.checked).length
   const fortschritt = viewItems.length > 0 ? Math.round((abgehakt / viewItems.length) * 100) : 0
@@ -399,7 +415,7 @@ export function usePackingList({ tripId, items, openImportSignal = 0, addCategor
     view, setView, currentUserId,
     handleSetSharing, handleCloneItem, handleJoinItem, handleLeaveItem,
     tripId, items, inlineHeader, t, canEdit, isAdmin, font, reorderPackingItems,
-    filter, setFilter, addingCategory, setAddingCategory, newCatName, setNewCatName,
+    filter, setFilter, sort, setSort, addingCategory, setAddingCategory, newCatName, setNewCatName,
     tripMembers, categoryAssignees, handleSetAssignees, allCategories, gruppiert, abgehakt, fortschritt,
     handleAddItemToCategory, handleAddNewCategory, handleRenameCategory, handleDeleteCategory, handleDeleteItem, handleClearChecked,
     bagTrackingEnabled, bags, unassignedWeightGrams, serverWeightsFresh, newBagName, setNewBagName, showAddBag, setShowAddBag, showBagModal, setShowBagModal,

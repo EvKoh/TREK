@@ -39,6 +39,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'すべて',
   'packing.filterOpen': '未完了',
   'packing.filterDone': '完了',
+  'packing.sortBy': '並べ替え',
+  'packing.sortByName': '名前順',
   'packing.emptyTitle': '持ち物リストは空です',
   'packing.emptyFiltered': 'このフィルターに一致する項目はありません',
   'packing.menuRename': '名前を変更',

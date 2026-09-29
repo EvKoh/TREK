@@ -161,6 +161,8 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
           <GripVertical size={13} />
         </div>
       )}
+      {/* Sorted A-Z there is nothing to drag, but the box keeps its column. */}
+      {!canDrag && canEdit && !isPlaceholder && <span aria-hidden style={{ width: 13, flexShrink: 0 }} />}
       {/* The phone's box: filled with the accent once packed, an outline until then. */}
       <button type="button" onClick={handleToggle} className="packing-check" aria-pressed={!!item.checked} style={{
         flexShrink: 0, cursor: 'pointer', padding: 0, width: 20, height: 20, borderRadius: 6,

@@ -41,6 +41,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Όλα',
   'packing.filterOpen': 'Ανοιχτά',
   'packing.filterDone': 'Ολοκληρωμένα',
+  'packing.sortBy': 'Ταξινόμηση κατά',
+  'packing.sortByName': 'Α έως Ω',
   'packing.emptyTitle': 'Η λίστα αποσκευών είναι κενή',
   'packing.emptyFiltered': 'Κανένα αντικείμενο δεν ταιριάζει με αυτό το φίλτρο',
   'packing.menuRename': 'Μετονομασία',

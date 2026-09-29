@@ -1,4 +1,4 @@
-import { KAT_COLORS } from './packingListPanel.constants'
+import { KAT_COLORS, PACKING_PLACEHOLDER_NAME } from './packingListPanel.constants'
 
 // Stable color assignment: category name → index via simple hash
 export function katColor(kat: string, allCategories?: string[]): string {
@@ -179,4 +179,20 @@ export const parseImportLines = (text: string): ParsedImportItem[] => {
     // Single value = just a name
     return { ...splitQuantity(parts[0]), category: undefined, weight_grams: undefined, bag: undefined, checked: false }
   }).filter(i => i.name)
+}
+
+/**
+ * One list's items in name order, for the A-Z view. Compared the way the reader's
+ * language sorts (accents next to their letter, "Shirt 2" before "Shirt 10"), and
+ * the '...' stand-in of an empty list stays at the bottom where it always sits.
+ * Returns a new array; the stored manual order is left alone.
+ */
+export function sortItemsByName<T extends { name: string }>(items: T[], locale?: string): T[] {
+  const collator = new Intl.Collator(locale, { sensitivity: 'base', numeric: true })
+  return [...items].sort((a, b) => {
+    const pa = a.name === PACKING_PLACEHOLDER_NAME
+    const pb = b.name === PACKING_PLACEHOLDER_NAME
+    if (pa !== pb) return pa ? 1 : -1
+    return collator.compare(a.name.trim(), b.name.trim())
+  })
 }

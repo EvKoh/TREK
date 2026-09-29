@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Kõik',
   'packing.filterOpen': 'Pakkimata',
   'packing.filterDone': 'Pakitud',
+  'packing.sortBy': 'Sordi',
+  'packing.sortByName': 'A kuni Ü',
   'packing.emptyTitle': 'Pakkimisnimekiri on tühi',
   'packing.emptyFiltered': 'Ükski ese ei vasta sellele filtrile',
   'packing.menuRename': 'Nimeta ümber',

@@ -41,6 +41,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Összes',
   'packing.filterOpen': 'Nyitott',
   'packing.filterDone': 'Kész',
+  'packing.sortBy': 'Rendezés',
+  'packing.sortByName': 'A-tól Z-ig',
   'packing.emptyTitle': 'A csomagolási lista üres',
   'packing.emptyFiltered': 'Nincs elem ebben a szűrőben',
   'packing.menuRename': 'Átnevezés',

@@ -35,6 +35,9 @@ interface KategorieGruppeProps {
   // order is global, so a within-category drag is mapped back onto the full list.
   allItems: PackingItem[]
   onReorder: (orderedIds: number[]) => void
+  // Off while the list is shown A-Z: a drop there would move an item in an order
+  // the reader cannot see.
+  reorderable?: boolean
   // Three-tier sharing (#858) — threaded down to each item's share control.
   currentUserId?: number
   onSetSharing?: (id: number, visibility: 'common' | 'personal' | 'shared', recipientIds: number[]) => void
@@ -43,7 +46,7 @@ interface KategorieGruppeProps {
   onLeave?: (id: number, userId: number) => void
 }
 
-export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRename, onDeleteAll, onDeleteItem, onAddItem, assignees, tripMembers, onSetAssignees, bagTrackingEnabled, bags, onCreateBag, canEdit = true, allItems, onReorder, currentUserId, onSetSharing, onClone, onJoin, onLeave }: KategorieGruppeProps) {
+export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRename, onDeleteAll, onDeleteItem, onAddItem, assignees, tripMembers, onSetAssignees, bagTrackingEnabled, bags, onCreateBag, canEdit = true, allItems, onReorder, reorderable = true, currentUserId, onSetSharing, onClone, onJoin, onLeave }: KategorieGruppeProps) {
   const [offen, setOffen] = useState(true)
   const [dragId, setDragId] = useState<number | null>(null)
   const [overId, setOverId] = useState<number | null>(null)
@@ -280,7 +283,7 @@ export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRen
               <React.Fragment key={item.id}>
                 <ArtikelZeile item={item} tripId={tripId} categories={allCategories} onCategoryChange={() => {}} onDelete={onDeleteItem} bagTrackingEnabled={bagTrackingEnabled} bags={bags} onCreateBag={onCreateBag} canEdit={canEdit} divider={index > 0}
                   tripMembers={tripMembers} currentUserId={currentUserId} onSetSharing={onSetSharing} onClone={onClone} onJoin={onJoin} onLeave={onLeave}
-                  drag={canEdit ? {
+                  drag={canEdit && reorderable ? {
                     isDragging: dragId === item.id,
                     isOver: overId === item.id && dragId !== null && dragId !== item.id,
                     onStart: (id) => { setDragId(id); setOverId(null) },

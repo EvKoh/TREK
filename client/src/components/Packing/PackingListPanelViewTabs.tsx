@@ -1,14 +1,15 @@
-import { Users, UserRound } from 'lucide-react'
+import { Users, UserRound, ArrowDownAZ } from 'lucide-react'
 import type { PackingState } from './usePackingListPanel'
 
 /**
  * One tab row: the three-tier view switch (Gemeinsam / Meine Liste, #858) on the
- * left, and the all/open/done filter on the right. Each sits in its own tinted
- * track, the way the phone shows them, so the row reads as two questions
- * (whose list, which state) rather than five pills of equal weight.
+ * left, then the all/open/done filter. Each sits in its own tinted track, the way
+ * the phone shows them, so the row reads as two questions (whose list, which
+ * state) rather than five pills of equal weight. The A-Z switch keeps to the far
+ * end in a track of its own: it changes the order, not what is listed.
  */
 export function PackingViewTabs(S: PackingState) {
-  const { view, setView, filter, setFilter, t, items } = S
+  const { view, setView, filter, setFilter, sort, setSort, t, items } = S
   const commonCount = items.filter(i => !i.is_private).length
   const personalCount = items.filter(i => !!i.is_private).length
 
@@ -53,6 +54,15 @@ export function PackingViewTabs(S: PackingState) {
           {filterPill('alle', t('packing.filterAll'))}
           {filterPill('offen', t('packing.filterOpen'))}
           {filterPill('erledigt', t('packing.filterDone'))}
+        </div>
+      )}
+      {items.length > 0 && (
+        // A second click on the active switch goes back to the manual order.
+        <div role="group" aria-label={t('packing.sortBy')} style={{ ...track, marginLeft: 'auto' }}>
+          <button type="button" aria-pressed={sort === 'name'} title={t('packing.sortByName')}
+            onClick={() => setSort(sort === 'name' ? 'manual' : 'name')} style={segment(sort === 'name')}>
+            <ArrowDownAZ size={14} /><span className="hidden sm:inline">{t('packing.sortByName')}</span>
+          </button>
         </div>
       )}
     </div>

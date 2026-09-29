@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Alla',
   'packing.filterOpen': 'Öppna',
   'packing.filterDone': 'Klar',
+  'packing.sortBy': 'Sortera efter',
+  'packing.sortByName': 'A till Ö',
   'packing.emptyTitle': 'Packlistan är tom',
   'packing.emptyFiltered': 'Inga föremål matchar detta filter',
   'packing.menuRename': 'Döp om',

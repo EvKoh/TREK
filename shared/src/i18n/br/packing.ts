@@ -42,6 +42,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Todos',
   'packing.filterOpen': 'Abertos',
   'packing.filterDone': 'Prontos',
+  'packing.sortBy': 'Ordenar por',
+  'packing.sortByName': 'A a Z',
   'packing.emptyTitle': 'A lista de mala está vazia',
   'packing.emptyFiltered': 'Nenhum item corresponde ao filtro',
   'packing.menuRename': 'Renomear',

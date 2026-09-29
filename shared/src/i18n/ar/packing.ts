@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'الكل',
   'packing.filterOpen': 'مفتوح',
   'packing.filterDone': 'تم',
+  'packing.sortBy': 'ترتيب حسب',
+  'packing.sortByName': 'أ إلى ي',
   'packing.emptyTitle': 'قائمة التجهيز فارغة',
   'packing.emptyFiltered': 'لا توجد عناصر مطابقة لهذا الفلتر',
   'packing.menuRename': 'إعادة تسمية',

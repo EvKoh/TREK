@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Tüm',
   'packing.filterOpen': 'Açık',
   'packing.filterDone': 'Tamamlamak',
+  'packing.sortBy': 'Sırala',
+  'packing.sortByName': "A'dan Z'ye",
   'packing.emptyTitle': 'Paket listesi boş',
   'packing.emptyFiltered': 'Bu filtreye uyan öğe yok',
   'packing.menuRename': 'Yeniden adlandır',

@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Alle',
   'packing.filterOpen': 'Openstaand',
   'packing.filterDone': 'Klaar',
+  'packing.sortBy': 'Sorteren op',
+  'packing.sortByName': 'A tot Z',
   'packing.emptyTitle': 'Inpaklijst is leeg',
   'packing.emptyFiltered': 'Geen items gevonden voor dit filter',
   'packing.menuRename': 'Hernoemen',

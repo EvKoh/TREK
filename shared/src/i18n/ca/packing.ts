@@ -31,6 +31,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Tot',
   'packing.filterOpen': 'Pendents',
   'packing.filterDone': 'Fet',
+  'packing.sortBy': 'Ordena per',
+  'packing.sortByName': 'A a Z',
   'packing.emptyTitle': "La llista d'equipatge és buida",
   'packing.emptyFiltered': 'Cap element coincideix amb aquest filtre',
   'packing.menuRename': 'Canvia el nom',

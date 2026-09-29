@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': 'Semua',
   'packing.filterOpen': 'Belum',
   'packing.filterDone': 'Selesai',
+  'packing.sortBy': 'Urutkan',
+  'packing.sortByName': 'A ke Z',
   'packing.emptyTitle': 'Daftar bawaan kosong',
   'packing.emptyFiltered': 'Tidak ada item yang cocok dengan filter ini',
   'packing.menuRename': 'Ganti Nama',

@@ -40,6 +40,8 @@ const packing: TranslationStrings = {
   'packing.filterAll': "ทั้งหมด",
   'packing.filterOpen': "ยังไม่ได้จัด",
   'packing.filterDone': "เสร็จแล้ว",
+  'packing.sortBy': 'เรียงตาม',
+  'packing.sortByName': 'ก ถึง ฮ',
   'packing.emptyTitle': "รายการจัดกระเป๋าว่างเปล่า",
   'packing.emptyFiltered': "ไม่มีรายการที่ตรงกับตัวกรองนี้",
   'packing.menuRename': "เปลี่ยนชื่อ",
