@@ -14,7 +14,7 @@ import { buildPlanner } from '../../../helpers/mobileTrip'
 import { resetAllStores, seedStore } from '../../../helpers/store'
 import { act, fireEvent, render, screen, waitFor } from '../../../helpers/render'
 
-// FE-MOB-TRFRM-001 to FE-MOB-TRFRM-057
+// FE-MOB-TRFRM-001 to FE-MOB-TRFRM-059
 //
 // The sheet's own pickers (airport/location search, day select, time picker) and
 // the embedded transit panel are replaced by minimal controlled stand-ins so the
@@ -1116,5 +1116,30 @@ describe('MTransportFormSheet', () => {
     renderSheet(makePlanner())
     expect(screen.getByRole('button', { name: 'Create expense' })).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Link' })).not.toBeInTheDocument()
+  })
+
+  it('FE-MOB-TRFRM-058: files attached while editing a transport are uploaded against it (#2534)', async () => {
+    const handleSaveTransport = makeSave(SHINKANSEN)
+    const addFile = vi.fn(async (_tripId: number, _form: FormData) => undefined)
+    renderSheet(makePlanner({ editingTransport: SHINKANSEN, handleSaveTransport, tripActions: { addFile } }))
+    fireEvent.click(screen.getByRole('button', { name: 'attach-file' }))
+
+    await submit('common.update')
+    expect(addFile).toHaveBeenCalledTimes(1)
+    const fd = addFile.mock.calls[0][1] as FormData
+    expect(fd.get('reservation_id')).toBe('61')
+    expect(fd.get('description')).toBe('Shinkansen')
+    expect((fd.get('file') as File).name).toBe('extra.pdf')
+  })
+
+  it('FE-MOB-TRFRM-059: a failed transport edit keeps the attached files off the server', async () => {
+    const handleSaveTransport = vi.fn(async (_payload: SavePayload) => undefined)
+    const addFile = vi.fn(async (_tripId: number, _form: FormData) => undefined)
+    renderSheet(makePlanner({ editingTransport: SHINKANSEN, handleSaveTransport, tripActions: { addFile } }))
+    fireEvent.click(screen.getByRole('button', { name: 'attach-file' }))
+
+    await submit('common.update')
+    expect(handleSaveTransport).toHaveBeenCalled()
+    expect(addFile).not.toHaveBeenCalled()
   })
 })

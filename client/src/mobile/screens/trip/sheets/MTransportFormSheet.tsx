@@ -16,6 +16,7 @@ import { importedPriceEntry } from '../../../../components/Planner/importedPrice
 import TransitSearchPanel from '../../../../components/Planner/TransitSearchPanel'
 import { Eyebrow, FIELD_AREA_CLS, FIELD_CLS, FormSheetFooter, FormSheetHeader } from './PlSheetChrome'
 import MBookingFilesCosts from './MBookingFilesCosts'
+import { uploadBookingFiles } from './uploadBookingFiles'
 import GuestBadge from '../../../../components/shared/GuestBadge'
 import { SPLIT_COLORS } from '../../../../components/Budget/BudgetPanel.constants'
 import { useTripStore } from '../../../../store/tripStore'
@@ -146,7 +147,7 @@ export default function MTransportFormSheet({ planner, onOpenExpense }: MTranspo
     transportPrefill, transitPrefill, setTransitPrefill,
     importReviewActive, advanceImportReview,
     handleSaveTransport, handleDeleteReservation,
-    canUploadFiles, tripActions,
+    canUploadFiles,
   } = planner
   const { locale } = useTranslation()
   const setReservationTravelers = useTripStore(s => s.setReservationTravelers)
@@ -586,15 +587,7 @@ export default function MTransportFormSheet({ planner, onOpenExpense }: MTranspo
         const changed = original.length !== next.length || next.some(id => !original.includes(id))
         if (changed) await setReservationTravelers(tripId, savedId, next)
       }
-      if (!res?.id && saved?.id && pendingFiles.length > 0 && canUploadFiles) {
-        for (const file of pendingFiles) {
-          const fd = new FormData()
-          fd.append('file', file)
-          fd.append('reservation_id', String(saved.id))
-          fd.append('description', form.title)
-          await tripActions.addFile(tripId, fd)
-        }
-      }
+      await uploadBookingFiles(planner, saved?.id, pendingFiles, form.title)
       if (withExpense && saved?.id) {
         onOpenExpense({ prefill: { reservationId: saved.id, name: form.title, category: typeToCostCategory(form.type) } })
       }

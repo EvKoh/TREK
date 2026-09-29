@@ -13,7 +13,7 @@ import { buildPlanner } from '../../../helpers/mobileTrip'
 import { resetAllStores } from '../../../helpers/store'
 import { act, fireEvent, render, screen, waitFor } from '../../../helpers/render'
 
-// FE-MOB-RESSH-001 to FE-MOB-RESSH-068
+// FE-MOB-RESSH-001 to FE-MOB-RESSH-068 (plus 037b)
 
 // Date/time/select pickers have their own suites — here they only have to be
 // addressable, so they render as plain controls.
@@ -724,8 +724,22 @@ describe('MReservationSheet', () => {
     expect((fd.get('file') as File).name).toBe('a.pdf')
   })
 
-  it('FE-MOB-RESSH-037: files are not re-uploaded when an existing booking is edited', async () => {
-    const { planner } = setup(makePlanner({ editingReservation: DINNER }))
+  it('FE-MOB-RESSH-037: files attached while editing a booking are uploaded against it (#2534)', async () => {
+    const { planner } = setup(makePlanner({ editingReservation: DINNER, handleSaveReservation: vi.fn(async () => DINNER) }))
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement
+    fireEvent.change(input, { target: { files: [new File(['a'], 'a.pdf'), new File(['b'], 'b.pdf')] } })
+    fireEvent.click(submitBtn())
+
+    await waitFor(() => expect(planner.tripActions.addFile).toHaveBeenCalledTimes(2))
+    const [tripId, fd] = vi.mocked(planner.tripActions.addFile).mock.calls[1] as [number, FormData]
+    expect(tripId).toBe(5)
+    expect(fd.get('reservation_id')).toBe('55')
+    expect(fd.get('description')).toBe('Dinner')
+    expect((fd.get('file') as File).name).toBe('b.pdf')
+  })
+
+  it('FE-MOB-RESSH-037b: a failed edit keeps the attached files off the server', async () => {
+    const { planner } = setup(makePlanner({ editingReservation: DINNER, handleSaveReservation: vi.fn(async () => undefined) }))
     const input = document.querySelector('input[type="file"]') as HTMLInputElement
     fireEvent.change(input, { target: { files: [new File(['a'], 'a.pdf')] } })
     fireEvent.click(submitBtn())

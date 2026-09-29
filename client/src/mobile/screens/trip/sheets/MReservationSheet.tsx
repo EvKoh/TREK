@@ -12,6 +12,7 @@ import { CustomDatePicker } from '../../../../components/shared/CustomDateTimePi
 import { BookingCodeInput } from '../../../../components/shared/BookingCode'
 import { Eyebrow, FIELD_AREA_CLS, FIELD_CLS, FormSheetFooter, FormSheetHeader } from './PlSheetChrome'
 import MBookingFilesCosts from './MBookingFilesCosts'
+import { uploadBookingFiles } from './uploadBookingFiles'
 import { buildAssignmentOptions } from '../../../../components/Planner/assignmentOptions'
 import GuestBadge from '../../../../components/shared/GuestBadge'
 import { SPLIT_COLORS } from '../../../../components/Budget/BudgetPanel.constants'
@@ -62,7 +63,7 @@ export default function MReservationSheet({ planner, onOpenExpense }: MReservati
     bookingForAssignmentId, setBookingForAssignmentId,
     assignments,
     importReviewActive, advanceImportReview,
-    handleSaveReservation, canUploadFiles, tripActions,
+    handleSaveReservation, canUploadFiles,
   } = planner
   const { locale } = useTranslation()
   const setReservationTravelers = useTripStore(s => s.setReservationTravelers)
@@ -286,15 +287,7 @@ export default function MReservationSheet({ planner, onOpenExpense }: MReservati
         const changed = original.length !== next.length || next.some(id => !original.includes(id))
         if (changed) await setReservationTravelers(tripId, savedId, next)
       }
-      if (!res?.id && saved?.id && pendingFiles.length > 0 && canUploadFiles) {
-        for (const file of pendingFiles) {
-          const fd = new FormData()
-          fd.append('file', file)
-          fd.append('reservation_id', String(saved.id))
-          fd.append('description', form.title)
-          await tripActions.addFile(tripId, fd)
-        }
-      }
+      await uploadBookingFiles(planner, saved?.id, pendingFiles, form.title)
       if (withExpense && saved?.id) {
         onOpenExpense({ prefill: { reservationId: saved.id, name: form.title, category: typeToCostCategory(form.type) } })
       }
