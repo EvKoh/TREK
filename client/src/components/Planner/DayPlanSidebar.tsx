@@ -7,7 +7,7 @@ declare global { interface Window { __dragData: DragDataPayload | null } }
 import React, { useState, useEffect, useLayoutEffect, useRef, useMemo, useCallback } from 'react'
 import { avatarSrc } from '../../utils/avatarSrc'
 import { safeHttpUrl } from '../../utils/safeUrl'
-import { ChevronDown, ChevronRight, ChevronUp, Compass, Navigation, RotateCcw, ExternalLink, Pencil, GripVertical, Ticket, Plus, FileText, Trash2, Car, Lock, Hotel, Footprints, Route as RouteIcon, Bookmark, StickyNote, TramFront, Zap, MapPin, Wallet } from 'lucide-react'
+import { ChevronDown, ChevronRight, ChevronUp, Compass, Navigation, RotateCcw, ExternalLink, Pencil, GripVertical, Ticket, Plus, FileText, Trash2, Car, Lock, Hotel, Footprints, Route as RouteIcon, Bookmark, StickyNote, TramFront, Zap, MapPin, Wallet, Globe } from 'lucide-react'
 import { type PickedPlace } from './TransitSearchPanel'
 import { buildTransitLeg, buildTransitNameIndex } from './transitLeg'
 import { assignmentsApi, reservationsApi, daysApi } from '../../api/client'
@@ -2559,15 +2559,24 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
                                 const timeText = [
                                   dispTime ? formatTime(dispTime, locale, timeFormat) : '',
                                   spanPhase === 'single' && endTime ? `– ${formatTime(endTime, locale, timeFormat)}` : '',
-                                  meta.departure_timezone && spanPhase === 'start' ? meta.departure_timezone : '',
-                                  meta.arrival_timezone && spanPhase === 'end' ? meta.arrival_timezone : '',
                                 ].filter(Boolean).join(' ')
-                                if (!timeText && !spanLabel && !transitMeta && !subtitle) return null
+                                // The zone a leg's time is read in. Written out it took the width
+                                // the route needs, so it is a globe that names it on hover.
+                                const timeZone = (spanPhase === 'start' && meta.departure_timezone) || (spanPhase === 'end' && meta.arrival_timezone) || ''
+                                if (!timeText && !timeZone && !spanLabel && !transitMeta && !subtitle) return null
                                 return (
                                   <div className="mt-0.5 flex min-w-0 items-center gap-1.5">
                                     {/* Where in a multi-day span this day falls, said quietly beside its time. */}
                                     {spanLabel && <SoftPill caps>{spanLabel}</SoftPill>}
                                     {timeText && <TimePill>{timeText}</TimePill>}
+                                    {timeZone && (
+                                      <Tooltip label={timeZone} placement="top">
+                                        <span role="img" aria-label={timeZone} data-dp="transport-timezone"
+                                          className="grid h-[19px] w-[19px] flex-none place-items-center rounded-full bg-surface-card text-content-faint shadow-sm">
+                                          <Globe size={10} strokeWidth={2.2} aria-hidden="true" />
+                                        </span>
+                                      </Tooltip>
+                                    )}
                                     {transitMeta ? (
                                       <span className="flex min-w-0 items-center"><TransitLegChips legs={transitMeta.legs} size="sm" t={t} /></span>
                                     ) : subtitle && (

@@ -1040,6 +1040,28 @@ describe('DayPlanSidebar', () => {
 
   // ── Multi-day transport span phases ────────────────────────────────────
 
+  it('FE-PLANNER-DAYPLAN-233: a leg names its time zone behind a globe, not as text beside the route', async () => {
+    const day1 = buildDay({ id: 10, date: '2025-06-01', title: 'Out' })
+    const day2 = buildDay({ id: 11, date: '2025-06-02', title: 'In' })
+    const flight = buildReservation({
+      id: 202, type: 'flight', title: 'Overnight',
+      reservation_time: '2025-06-01T22:00:00',
+      reservation_end_time: '2025-06-02T06:00:00',
+      day_id: 10,
+      end_day_id: 11,
+      metadata: JSON.stringify({ departure_timezone: 'Europe/Berlin', arrival_timezone: 'America/New_York' }),
+    } as any)
+    const { container } = render(<DayPlanSidebar {...makeDefaultProps({ days: [day1, day2], reservations: [flight] })} />)
+
+    // Written out, the zone took the width the route needed.
+    expect(screen.queryByText(/Europe\/Berlin|America\/New_York/)).not.toBeInTheDocument()
+    const globes = container.querySelectorAll('[data-dp="transport-timezone"]')
+    expect([...globes].map(g => g.getAttribute('aria-label'))).toEqual(['Europe/Berlin', 'America/New_York'])
+
+    fireEvent.mouseEnter(globes[0])
+    expect(await screen.findByText('Europe/Berlin')).toBeInTheDocument()
+  })
+
   it('FE-PLANNER-DAYPLAN-045: multi-day flight shows departure label on first day', () => {
     const day1 = buildDay({ id: 10, date: '2025-06-01', title: 'Departure' })
     const day2 = buildDay({ id: 11, date: '2025-06-02', title: 'Arrival' })
