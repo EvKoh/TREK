@@ -7,6 +7,7 @@ import { transitApi } from '../../api/client'
 import { useSettingsStore } from '../../store/settingsStore'
 import { useToast } from '../shared/Toast'
 import { useTranslation } from '../../i18n'
+import { getDayBookendHotels } from '../../utils/dayOrder'
 import type { Day, Place, Accommodation } from '../../types'
 import type { TransitProvider } from '@trek/shared'
 
@@ -99,6 +100,41 @@ function fmtDuration(seconds: number, t: (k: string, p?: Record<string, string |
   const h = Math.floor(mins / 60)
   const m = mins % 60
   return m > 0 ? `${h} h ${m} min` : `${h} h`
+}
+
+// ── quick picks ──────────────────────────────────────────────────────────────
+
+const MAX_QUICK_PICKS = 8
+
+function stayPick(a: Accommodation): PickedPlace | null {
+  return a.place_lat != null && a.place_lng != null && a.place_name ? { name: a.place_name, lat: a.place_lat, lng: a.place_lng } : null
+}
+
+/**
+ * What the from/to fields offer before anything is typed. The stay the day
+ * starts in and the one it ends in come first and are never cut, since most
+ * connections of a day begin or end there (#2538); then the day's own located
+ * places and the trip's other stays, up to MAX_QUICK_PICKS.
+ */
+function buildQuickPicks(day: Day, days: Day[], places: Place[], accommodations: Accommodation[]): PickedPlace[] {
+  const { morning, evening } = getDayBookendHotels(day, days, accommodations)
+  const dayStays = [morning, evening].filter((a): a is Accommodation => a != null)
+
+  const seen = new Set<string>()
+  const unique = (p: PickedPlace | null): p is PickedPlace => {
+    if (!p) return false
+    const k = `${p.name}:${p.lat}`
+    if (seen.has(k)) return false
+    seen.add(k)
+    return true
+  }
+
+  const stays = dayStays.map(stayPick).filter(unique)
+  const rest = [
+    ...places.map(p => (p.lat != null && p.lng != null ? { name: p.name, lat: p.lat, lng: p.lng } : null)),
+    ...accommodations.filter(a => !dayStays.includes(a)).map(stayPick),
+  ].filter(unique)
+  return [...stays, ...rest.slice(0, MAX_QUICK_PICKS)]
 }
 
 // ── from/to stop picker ──────────────────────────────────────────────────────
@@ -366,21 +402,7 @@ export default function TransitSearchPanel({ day, days, places, accommodations =
   const [addingIdx, setAddingIdx] = useState<number | null>(null)
   const [provider, setProvider] = useState<TransitProvider | null>(null)
 
-  // Quick picks: the day's located places, plus the trip's located accommodations.
-  const quickPicks = useMemo<PickedPlace[]>(() => {
-    const picks: PickedPlace[] = []
-    for (const p of places) {
-      if (p.lat != null && p.lng != null) picks.push({ name: p.name, lat: p.lat, lng: p.lng })
-    }
-    for (const a of accommodations) {
-      const lat = (a as { place_lat?: number | null }).place_lat
-      const lng = (a as { place_lng?: number | null }).place_lng
-      const name = (a as { place_name?: string | null }).place_name
-      if (lat != null && lng != null && name) picks.push({ name, lat, lng })
-    }
-    const seen = new Set<string>()
-    return picks.filter(p => { const k = `${p.name}:${p.lat}`; if (seen.has(k)) return false; seen.add(k); return true }).slice(0, 8)
-  }, [places, accommodations])
+  const quickPicks = useMemo(() => buildQuickPicks(day, days, places, accommodations), [day, days, places, accommodations])
 
   const near = quickPicks.length > 0 ? `${quickPicks[0].lat},${quickPicks[0].lng}` : null
 
