@@ -1,5 +1,5 @@
 import L from 'leaflet'
-import { createElement, useEffect, useRef, type ReactNode } from 'react'
+import { createElement, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { MapContainer, Marker, Polyline, TileLayer, Tooltip, useMap } from 'react-leaflet'
 import MarkerClusterGroup from 'react-leaflet-cluster'
@@ -55,6 +55,12 @@ function createMarkerIcon(place: MapPlace, orderNumbers?: number[] | null) {
   })
 }
 
+// One frame for both the opening camera and every later fit, so the map opens on
+// exactly the view that picking a day and going back to the whole trip produces.
+// The top edge leaves room for the day picker floating over the map.
+const FRAME_PADDING = { top: 64, right: 48, bottom: 48, left: 48 }
+const FRAME_MAX_ZOOM = 14
+
 function FitBoundsToPlaces({ places, framedOnMount }: { places: MapPlace[]; framedOnMount: boolean }) {
   const map = useMap()
   const fitRan = useRef(false)
@@ -72,7 +78,11 @@ function FitBoundsToPlaces({ places, framedOnMount }: { places: MapPlace[]; fram
     }
     fitRan.current = true
     const bounds = L.latLngBounds(places.map(p => [p.lat, p.lng]))
-    map.fitBounds(bounds, { padding: [48, 48], maxZoom: 14 })
+    map.fitBounds(bounds, {
+      paddingTopLeft: [FRAME_PADDING.left, FRAME_PADDING.top],
+      paddingBottomRight: [FRAME_PADDING.right, FRAME_PADDING.bottom],
+      maxZoom: FRAME_MAX_ZOOM,
+    })
   }, [fitKey, map]) // eslint-disable-line react-hooks/exhaustive-deps
   return null
 }
@@ -94,10 +104,31 @@ interface SharedMapProps {
  * map and the list can never disagree on which day is open.
  */
 export function SharedMap({ places, line, orderByPlace, cartoApiKey, days, selectedDay, onSelectDay }: SharedMapProps) {
+  // The card's own size, read before the map mounts. Framing for the browser window
+  // instead zoomed a card a fraction of its size far too close, and the fit below
+  // then skipped the correction because it believed the map had opened framed (#2549).
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [card, setCard] = useState<{ width: number; height: number } | null>(null)
+  useLayoutEffect(() => {
+    const el = cardRef.current
+    if (el) setCard({ width: el.clientWidth, height: el.clientHeight })
+  }, [])
+  // A card with no layout yet (hidden, or a test DOM) has nothing to frame against,
+  // so the map opens near the places and the first fit does the real framing.
+  const measured = card !== null && card.width > 0 && card.height > 0
   // Open framed on the trip's places instead of on Paris. MapContainer only reads
   // center/zoom at mount, so recomputing this per render is free.
-  const framed = computeMapViewport(places, { tileSize: TILE_SIZE_RASTER, padding: { top: 64, right: 48, bottom: 48, left: 48 } })
-  const initialView = framed ?? { center: DEFAULT_MAP_CENTER, zoom: DEFAULT_MAP_ZOOM }
+  const framed = computeMapViewport(places, {
+    tileSize: TILE_SIZE_RASTER,
+    padding: FRAME_PADDING,
+    maxZoom: FRAME_MAX_ZOOM,
+    ...(measured ? { width: card.width, height: card.height } : {}),
+  })
+  // Whole levels, as fitBounds settles on: Leaflet rounds a fractional opening zoom
+  // to the nearest level, and rounding up crops the outermost places.
+  const initialView = framed
+    ? { center: framed.center, zoom: Math.floor(framed.zoom) }
+    : { center: DEFAULT_MAP_CENTER, zoom: DEFAULT_MAP_ZOOM }
   // A visitor of a share link has no settings of their own, so the basemap is the
   // app default: OpenFreeMap, a vector style that needs no key at all. The owner's
   // CARTO key still travels in the payload and is still applied, because a raster
@@ -107,8 +138,8 @@ export function SharedMap({ places, line, orderByPlace, cartoApiKey, days, selec
 
   return (
     // `isolate` keeps Leaflet's pane z-indexes inside the card, under the sticky tab bar.
-    <div className="relative isolate h-full w-full overflow-hidden rounded-2xl border border-edge-faint bg-surface-tertiary shadow-sm">
-      <MapContainer
+    <div ref={cardRef} className="relative isolate h-full w-full overflow-hidden rounded-2xl border border-edge-faint bg-surface-tertiary shadow-sm">
+      {card && <MapContainer
         center={initialView.center}
         zoom={initialView.zoom}
         zoomControl={false}
@@ -122,7 +153,7 @@ export function SharedMap({ places, line, orderByPlace, cartoApiKey, days, selec
         ) : (
           <TileLayer url={basemap.url} attribution={attributionForTile(basemap.url)} referrerPolicy="strict-origin-when-cross-origin" />
         )}
-        <FitBoundsToPlaces places={places} framedOnMount={framed !== null} />
+        <FitBoundsToPlaces places={places} framedOnMount={measured && framed !== null} />
         {selectedDay != null && line.length > 1 && (
           <Polyline
             positions={line.map(p => [p.lat, p.lng])}
@@ -142,7 +173,7 @@ export function SharedMap({ places, line, orderByPlace, cartoApiKey, days, selec
             </Marker>
           ))}
         </MarkerClusterGroup>
-      </MapContainer>
+      </MapContainer>}
 
       {days.length > 0 && <DayPicker days={days} selectedDay={selectedDay} onSelectDay={onSelectDay} />}
     </div>
