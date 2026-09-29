@@ -602,7 +602,7 @@ export default function MReservationSheet({ planner, onOpenExpense }: MReservati
           canUploadFiles={canUploadFiles}
           showCosts={isBudgetEnabled}
           createDisabled={!form.title.trim() || isSaving}
-          onCreate={() => { expenseIntentRef.current = true; handleSubmit() }}
+          onCreate={() => { expenseIntentRef.current = true; void handleSubmit() }}
           onEdit={item => onOpenExpense({ editItem: item })}
         />
       </div>

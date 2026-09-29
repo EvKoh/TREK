@@ -1086,7 +1086,7 @@ export default function MTransportFormSheet({ planner, onOpenExpense }: MTranspo
               canUploadFiles={canUploadFiles}
               showCosts={isBudgetEnabled}
               createDisabled={!form.title.trim() || isSaving}
-              onCreate={() => { expenseIntentRef.current = true; handleSubmit() }}
+              onCreate={() => { expenseIntentRef.current = true; void handleSubmit() }}
               onEdit={item => onOpenExpense({ editItem: item })}
             />
           </>

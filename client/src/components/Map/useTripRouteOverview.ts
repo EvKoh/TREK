@@ -104,7 +104,7 @@ export function useTripRouteOverview(
       if (!loading && reframe) frameRef.current = { tripId, points: next.focusPoints }
       setResult({ ...next, focusPoints: loading ? frame : frameRef.current!.points, loading })
     }
-    routeTripLegs(plan, { tripId, signal: controller.signal, onAnswer: routed => publish(routed, true) })
+    void routeTripLegs(plan, { tripId, signal: controller.signal, onAnswer: routed => publish(routed, true) })
       .then(routed => publish(routed, false))
 
     return () => controller.abort()
