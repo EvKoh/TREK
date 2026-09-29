@@ -129,7 +129,7 @@ export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRen
             autoFocus value={editKatName}
             onChange={e => setEditKatName(e.target.value)}
             onBlur={handleSaveKatName}
-            onKeyDown={e => { if (e.key === 'Enter') handleSaveKatName(); if (e.key === 'Escape') { setEditingName(false); setEditKatName(kategorie) } }}
+            onKeyDown={e => { if (e.key === 'Enter') void handleSaveKatName(); if (e.key === 'Escape') { setEditingName(false); setEditKatName(kategorie) } }}
             style={{ flex: 1, fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 700, border: 'none', borderBottom: '2px solid var(--text-primary)', outline: 'none', background: 'transparent', fontFamily: 'inherit', color: 'var(--text-primary)', padding: '0 2px' }}
           />
         ) : (
@@ -171,7 +171,7 @@ export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRen
             return (
               <button type="button" key={a.user_id}
                 style={{ position: 'relative', background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer' }}
-                onClick={e => { e.stopPropagation(); onSetAssignees(kategorie, assignees.filter(x => x.user_id !== a.user_id).map(x => x.user_id)) }}
+                onClick={e => { e.stopPropagation(); void onSetAssignees(kategorie, assignees.filter(x => x.user_id !== a.user_id).map(x => x.user_id)) }}
               >
                 {chip}
               </button>
@@ -200,7 +200,7 @@ export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRen
                       const newIds = isAssigned
                         ? assignees.filter(a => a.user_id !== m.id).map(a => a.user_id)
                         : [...assignees.map(a => a.user_id), m.id]
-                      onSetAssignees(kategorie, newIds)
+                      void onSetAssignees(kategorie, newIds)
                     }}
                       style={{
                         display: 'flex', alignItems: 'center', gap: 8, width: '100%',
@@ -258,8 +258,8 @@ export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRen
               <div role="presentation" style={{ position: 'fixed', inset: 0, zIndex: 99 }} onClick={() => setShowMenu(false)} />
               <div className="trek-menu-enter" style={{ ...POPOVER, position: 'fixed', right: rect ? window.innerWidth - rect.right : 0, top: rect ? rect.bottom + 6 : 0, zIndex: 100, minWidth: 200 }}>
                 {canEdit && <PopoverItem icon={<Pencil size={13} />} label={t('packing.menuRename')} onClick={() => { setEditingName(true); setShowMenu(false) }} />}
-                <PopoverItem icon={<CheckCheck size={13} />} label={t('packing.menuCheckAll')} onClick={() => { handleCheckAll(); setShowMenu(false) }} />
-                <PopoverItem icon={<RotateCcw size={13} />} label={t('packing.menuUncheckAll')} onClick={() => { handleUncheckAll(); setShowMenu(false) }} />
+                <PopoverItem icon={<CheckCheck size={13} />} label={t('packing.menuCheckAll')} onClick={() => { void handleCheckAll(); setShowMenu(false) }} />
+                <PopoverItem icon={<RotateCcw size={13} />} label={t('packing.menuUncheckAll')} onClick={() => { void handleUncheckAll(); setShowMenu(false) }} />
                 {canEdit && <>
                 <div style={POPOVER_DIVIDER} />
                 <PopoverItem icon={<Trash2 size={13} />} label={t('packing.menuDeleteCat')} danger onClick={handleDeleteAll} />
@@ -308,7 +308,7 @@ export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRen
                 onChange={e => setNewItemName(e.target.value)}
                 onKeyDown={e => {
                   if (e.key === 'Enter' && newItemName.trim()) {
-                    onAddItem(kategorie, newItemName.trim())
+                    void onAddItem(kategorie, newItemName.trim())
                     setNewItemName('')
                     setTimeout(() => addItemRef.current?.focus(), 30)
                   }
@@ -318,7 +318,7 @@ export function KategorieGruppe({ kategorie, items, tripId, allCategories, onRen
                 style={{ flex: 1, minWidth: 0, padding: '5px 0', border: 'none', fontSize: 'calc(13.5px * var(--fs-scale-body, 1))', fontWeight: 500, fontFamily: 'inherit', outline: 'none', color: 'var(--text-primary)', background: 'transparent' }}
               />
               {/* disabled while the field is empty, so no extra guard here */}
-              <button type="button" onClick={() => { onAddItem(kategorie, newItemName.trim()); setNewItemName(''); setTimeout(() => addItemRef.current?.focus(), 30) }}
+              <button type="button" onClick={() => { void onAddItem(kategorie, newItemName.trim()); setNewItemName(''); setTimeout(() => addItemRef.current?.focus(), 30) }}
                 disabled={!newItemName.trim()} aria-label={t('common.add')}
                 style={composerConfirm(!!newItemName.trim())}>
                 <Plus size={15} strokeWidth={2.5} />

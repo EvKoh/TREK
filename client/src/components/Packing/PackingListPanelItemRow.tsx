@@ -185,7 +185,7 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
           placeholder={isPlaceholder ? '...' : undefined}
           onChange={e => setEditName(e.target.value)}
           onBlur={handleSaveName}
-          onKeyDown={e => { if (e.key === 'Enter') handleSaveName(); if (e.key === 'Escape') { setEditing(false); setEditName(isPlaceholder ? '' : item.name) } }}
+          onKeyDown={e => { if (e.key === 'Enter') void handleSaveName(); if (e.key === 'Escape') { setEditing(false); setEditName(isPlaceholder ? '' : item.name) } }}
           style={{ flex: 1, minWidth: 0, fontSize: 'calc(13.5px * var(--fs-scale-body, 1))', padding: '2px 8px', borderRadius: 6, border: '1px solid var(--border-primary)', outline: 'none', fontFamily: 'inherit' }}
         />
       ) : canEdit ? (
@@ -427,7 +427,7 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
 
                   <div style={POPOVER_DIVIDER} />
                   <PopoverItem icon={<Pencil size={13} />} label={t('common.rename')} onClick={() => { setEditing(true); setShowItemMenu(false) }} />
-                  <PopoverItem icon={<Trash2 size={13} />} label={t('common.delete')} danger onClick={() => { setShowItemMenu(false); handleDelete() }} />
+                  <PopoverItem icon={<Trash2 size={13} />} label={t('common.delete')} danger onClick={() => { setShowItemMenu(false); void handleDelete() }} />
                 </div>
               </>
             )
