@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import { readEnv, type AppEnv } from '../app-config';
 import { logDebug, logWarn, logError } from '../nest/audit/audit-log.logger';
+import { isSameHostOrigin } from '../nest/common/same-origin';
 
 /**
  * Field names redacted from request-log query/body dumps (case-insensitive —
@@ -162,17 +163,28 @@ export function applyGlobalMiddleware(
 
   const allowedOrigins = http.corsOrigins;
 
-  let corsOrigin: cors.CorsOptions['origin'];
-  if (allowedOrigins) {
-    corsOrigin = (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-      if (!origin || allowedOrigins.includes(origin)) callback(null, true);
-      else callback(new Error('Not allowed by CORS'));
-    };
-  } else if (isProduction) {
-    corsOrigin = false;
-  } else {
-    corsOrigin = true;
-  }
+  // With ALLOWED_ORIGINS set, a request from anywhere else is refused outright.
+  // Two things keep that from hitting the instance's own pages (#2543): a request
+  // whose Origin is the host it was sent to is same-origin and always passes, and
+  // a refusal is a 403 naming the cause instead of an unhandled error, which the
+  // exception filter turned into a bare 500 on the login screen.
+  const warnedOrigins = new Set<string>();
+  const corsOptions: cors.CorsOptions | cors.CorsOptionsDelegate<Request> = allowedOrigins
+    ? (req: Request, callback: (err: Error | null, options?: cors.CorsOptions) => void) => {
+        const origin = req.headers.origin;
+        if (!origin || allowedOrigins.includes(origin) || isSameHostOrigin(origin, req.headers.host)) {
+          callback(null, { origin: true, credentials: true });
+          return;
+        }
+        if (!warnedOrigins.has(origin) && warnedOrigins.size < 50) {
+          warnedOrigins.add(origin);
+          logWarn(
+            `CORS: refused origin ${origin} for host ${req.headers.host ?? '(none)'}; add it to ALLOWED_ORIGINS if it is yours`,
+          );
+        }
+        callback(Object.assign(new Error('Not allowed by CORS'), { statusCode: 403 }));
+      }
+    : { origin: isProduction ? false : true, credentials: true };
 
   const shouldForceHttps = http.forceHttps;
   // HSTS is worth enabling any time we're serving production traffic,
@@ -225,7 +237,7 @@ export function applyGlobalMiddleware(
       }
     },
   );
-  app.use(cors({ origin: corsOrigin, credentials: true }));
+  app.use(cors(corsOptions));
   app.use(helmet({
     contentSecurityPolicy: {
       directives: {
