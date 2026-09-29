@@ -255,4 +255,22 @@ describe('useTripRouteOverview', () => {
     await waitFor(() => expect(result.current.loading).toBe(false))
     expect(result.current.focusPoints).not.toBe(frame)
   })
+
+  it('FE-MAP-TRO-014: opening another trip with the overview on publishes a fresh frame', async () => {
+    // Same days and stops on purpose: only the trip changed, so nothing but the trip
+    // switch itself can be what asks the map to frame again.
+    const { result, rerender } = renderHook(
+      ({ tripId }: { tripId: number }) =>
+        useTripRouteOverview(tripId, DAYS, ASSIGNMENTS, [], [], 'driving', true),
+      { initialProps: { tripId: 7 } },
+    )
+    await waitFor(() => expect(result.current.loading).toBe(false))
+    const frame = result.current.focusPoints
+
+    rerender({ tripId: 8 })
+
+    await waitFor(() => expect(result.current.focusPoints).not.toBe(frame))
+    await waitFor(() => expect(result.current.loading).toBe(false))
+    expect(result.current.focusPoints).toEqual(frame)
+  })
 })
