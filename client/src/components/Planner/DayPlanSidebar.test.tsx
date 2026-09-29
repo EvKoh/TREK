@@ -1,5 +1,5 @@
 // FE-PLANNER-DAYPLAN-001 to FE-PLANNER-DAYPLAN-232
-import { render, screen, waitFor, fireEvent, within } from '../../../tests/helpers/render'
+import { render, screen, waitFor, fireEvent, within, act } from '../../../tests/helpers/render'
 import userEvent from '@testing-library/user-event'
 import { http, HttpResponse } from 'msw'
 import { server } from '../../../tests/helpers/msw/server'
@@ -8,10 +8,11 @@ import { useAuthStore } from '../../store/authStore'
 import { useTripStore, type TripStoreState } from '../../store/tripStore'
 import { useSettingsStore } from '../../store/settingsStore'
 import { usePluginStore } from '../../store/pluginStore'
+import { useAddonStore } from '../../store/addonStore'
 import { installTouchDragBridge } from '../../utils/touchDragBridge'
 import { resetAllStores, seedStore } from '../../../tests/helpers/store'
 import {
-  buildUser, buildTrip, buildDay, buildPlace, buildCategory, buildAssignment, buildDayNote, buildReservation,
+  buildUser, buildTrip, buildDay, buildPlace, buildCategory, buildAssignment, buildDayNote, buildReservation, buildBudgetItem,
 } from '../../../tests/helpers/factories'
 import type { Accommodation, Reservation } from '../../types'
 import { calculateRouteWithLegs, generateCoMapsUrl, generateGoogleMapsUrl } from '../Map/RouteCalculator'
@@ -873,6 +874,30 @@ describe('DayPlanSidebar', () => {
     await waitFor(() => expect(screen.getByText(/kr.*\+.*\$2,730\.27|2\s?500,00\s?kr.*\+/)).toBeInTheDocument())
     expect(screen.queryByText(/≈/)).toBeNull()
     expect(screen.queryByText(/5\s?230/)).toBeNull()
+  })
+
+  it('FE-PLANNER-DAYPLAN-037d: with Costs on, the day and the total follow the expenses, and drop one that is deleted (#2551)', async () => {
+    seedStore(useAddonStore, { addons: [{ id: 'budget', name: 'Costs', type: 'trip', icon: 'wallet', enabled: true }], loaded: true })
+    // The price on the place is not an expense: it stays out of both figures.
+    const place = buildPlace({ id: 1, name: 'Hanging Bridges', price: 999 })
+    const day = buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' })
+    const ticket = buildBudgetItem({ id: 7, name: 'Tickets', total_price: 60, currency: null, place_id: 1 })
+    const insurance = buildBudgetItem({ id: 8, name: 'Insurance', total_price: 40, currency: null })
+    seedStore(useTripStore, { budgetItems: [ticket, insurance] } as Partial<TripStoreState>)
+    render(<DayPlanSidebar {...makeDefaultProps({
+      days: [day],
+      places: [place],
+      assignments: { '10': [buildAssignment({ id: 1, day_id: 10, order_index: 0, place })] },
+      trip: buildTrip({ id: 1, currency: 'EUR' }),
+    })} />)
+    // The ticket is on the day of its place; the insurance belongs to no day but to the trip.
+    expect(screen.getByText(/^60\s€$/)).toBeInTheDocument()
+    expect(screen.getByText(/^100,00\s€$/)).toBeInTheDocument()
+    expect(screen.queryByText(/999/)).toBeNull()
+
+    act(() => { useTripStore.setState({ budgetItems: [insurance] }) })
+    await waitFor(() => expect(screen.getByText(/^40,00\s€$/)).toBeInTheDocument())
+    expect(screen.queryByText(/^60\s€$/)).toBeNull()
   })
 
   // ── Route tools (Optimize / Google Maps) ────────────────────────────────
@@ -4842,7 +4867,6 @@ describe('DayPlanSidebar remaining branches', () => {
     expect(contextMenu().queryByText(/save to/i)).not.toBeInTheDocument()
     unmount()
 
-    const { useAddonStore } = await import('../../store/addonStore')
     seedStore(useAddonStore, {
       addons: [{ id: 'collections', name: 'Collections', type: 'trip', icon: '', enabled: true }],
       loaded: true,

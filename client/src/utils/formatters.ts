@@ -1,4 +1,4 @@
-import type { AssignmentsMap, Day } from '../types'
+import type { Day } from '../types'
 
 // Collapses verbose Nominatim display_name strings (e.g. "Place, 1, Road, Neighbourhood,
 // City, County, State, Country, Postcode, Country") into "Place, Postcode, Country".
@@ -319,20 +319,4 @@ export function formatMoneySum(
     ...foreign.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0)),
   ]
   return parts.map(cur => formatMoney(groups.get(cur)!, cur, locale, opts)).join(' + ')
-}
-
-export function dayTotalCost(
-  dayId: number,
-  assignments: AssignmentsMap,
-  base: string,
-  tripCurrency: string,
-  locale: string,
-  rates?: Record<string, number> | null,
-): string | null {
-  const da = assignments[String(dayId)] || []
-  const entries = da.map(a => ({
-    amount: Number.parseFloat(String(a.place?.price ?? '')) || 0,
-    currency: a.place?.currency || tripCurrency,
-  }))
-  return formatMoneySum(entries, base, locale, rates, { decimals: 0 })
 }

@@ -3,13 +3,16 @@ import { createElement } from 'react'
 import { getCategoryIcon } from '../shared/categoryIcons'
 import { FileText, Info, Clock, MapPin, Navigation, Train, Plane, Bus, Car, Ship, Sailboat, Bike, CarTaxiFront, Route, Coffee, Ticket, Star, Heart, Camera, Flag, Lightbulb, AlertTriangle, ShoppingBag, Bookmark, Hotel, LogIn, LogOut, KeyRound, BedDouble, Utensils, Users, ParkingSquare, LucideIcon } from 'lucide-react'
 import { accommodationsApi, mapsApi, pluginsApi } from '../../api/client'
-import type { Trip, Day, Place, Category, AssignmentsMap, DayNote, DistanceUnit } from '../../types'
+import type { Trip, Day, Place, Category, AssignmentsMap, DayNote, DistanceUnit, BudgetItem } from '../../types'
 import { isDayInAccommodationRange, getDayOrder } from '../../utils/dayOrder'
 import { hidesOnMiddleDay, getTransportForDay, getMergedItems, getSpanPhase, getDisplayTimeForDay } from '../../utils/dayMerge'
 import { safeHexColor } from '../../utils/safeColor'
 import { renderIconMarkup } from '../../utils/iconMarkup'
 import { formatMoney, formatMoneySum, formatClockTime, splitReservationDateTime, type MoneyEntry } from '../../utils/formatters'
 import { useSettingsStore } from '../../store/settingsStore'
+import { useTripStore } from '../../store/tripStore'
+import { useAddonStore } from '../../store/addonStore'
+import { planCosts } from '../Planner/planCosts'
 import { routeTrip, type TripRouteSummary } from '../Map/tripRouteGeometry'
 import { buildTripMapSvg } from './tripMapSvg'
 import { renderTripMapImage } from './tripMapImage'
@@ -141,16 +144,6 @@ function longDateRange(days, locale) {
   return `${f.toLocaleDateString(locale, { day: 'numeric', month: 'long', timeZone: 'UTC' })} – ${l.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}`
 }
 
-// Day totals render in the trip's currency; foreign-currency place prices are
-// converted via the pre-fetched rates, or listed per-currency when rates are
-// unavailable (#1561).
-function dayCost(assignments, dayId, locale, tripCurrency, rates) {
-  const entries: MoneyEntry[] = (assignments[String(dayId)] || []).map(a => ({
-    amount: Number.parseFloat(a.place?.price) || 0,
-    currency: a.place?.currency || tripCurrency,
-  }))
-  return formatMoneySum(entries, tripCurrency, locale || 'en', rates)
-}
 
 // Pre-fetch place photos for all assigned places.
 // Assignment places are a server-side projection that drops osm_id, so we recover
@@ -206,6 +199,10 @@ interface downloadTripPDFProps {
    * the road trip view, and so does the print.
    */
   showServiceStops?: boolean
+  /** The trip's expenses, which the cost figures add up with Costs on (#2551). Read from the trip store when left out. */
+  budgetItems?: BudgetItem[]
+  /** Whether the Costs addon is on. Read from the addon store when left out. */
+  costsEnabled?: boolean
 }
 
 /**
@@ -226,7 +223,7 @@ function planAssignments(assignments: AssignmentsMap, showServiceStops: boolean)
 
 // `assignments` is normalised here once, to the plan's own list; every read below
 // (and fetchPlacePhotos) relies on it being an object.
-export async function downloadTripPDF({ trip, days, places, assignments: stored = {}, categories, dayNotes, reservations = [], t: _t, locale: _locale, timeFormat: _timeFormat, distanceUnit: _distanceUnit, showServiceStops = true }: downloadTripPDFProps) {
+export async function downloadTripPDF({ trip, days, places, assignments: stored = {}, categories, dayNotes, reservations = [], t: _t, locale: _locale, timeFormat: _timeFormat, distanceUnit: _distanceUnit, showServiceStops = true, budgetItems, costsEnabled }: downloadTripPDFProps) {
   const assignments = planAssignments(stored, showServiceStops)
   const breaksPerDay = pageBreakPerDay()
   const loc = _locale || undefined
@@ -328,12 +325,25 @@ export async function downloadTripPDF({ trip, days, places, assignments: stored 
   // entirely (offline export keeps working), and a failed fetch degrades to
   // per-currency breakdowns instead of mislabeled sums (#1561).
   const tripCur = (trip?.currency || 'EUR').toUpperCase()
-  const allCostEntries: MoneyEntry[] = Object.values(assignments)
-    .flatMap(a => a)
-    .map(a => ({ amount: Number(a.place?.price) || 0, currency: a.place?.currency || tripCur }))
+  // The same figures the plan shows (#2551): the expenses with Costs on, each once,
+  // else each planned place's own price once. An expense linked to a place finds its
+  // day through every stop, the booked night's included.
+  const withCosts = costsEnabled ?? useAddonStore.getState().isEnabled('budget')
+  const costs = planCosts({
+    days: sorted,
+    assignments: withCosts ? stored : assignments,
+    reservations,
+    budgetItems: budgetItems ?? useTripStore.getState().budgetItems,
+    costsEnabled: withCosts,
+    tripCurrency: tripCur,
+  })
+  const allCostEntries: MoneyEntry[] = costs.total
   const needsFx = allCostEntries.some(e => e.amount !== 0 && e.currency.toUpperCase() !== tripCur)
   const fxRates = needsFx ? await fetchExchangeRates(tripCur) : null
   const totalCostLabel = formatMoneySum(allCostEntries, tripCur, loc || 'en', fxRates)
+  // Day totals render in the trip's currency; foreign amounts are converted via the
+  // pre-fetched rates, or listed per-currency when rates are unavailable (#1561).
+  const dayCost = (dayId: number) => formatMoneySum(costs.byDay.get(dayId) || [], tripCur, loc || 'en', fxRates)
 
   /*
    * The span label is the only PDF-specific piece left here. Everything else
@@ -366,7 +376,7 @@ export async function downloadTripPDF({ trip, days, places, assignments: stored 
       .sort((a, b) => (a.order_index ?? 0) - (b.order_index ?? 0))
     const notes = (dayNotes || []).filter(n => n.day_id === day.id).slice()
       .sort((a: any, b: any) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
-    const cost = dayCost(assignments, day.id, loc, tripCur, fxRates)
+    const cost = dayCost(day.id)
 
     // Assembled exactly the way DayPlanSidebar assembles it, so the page and the
     // print cannot disagree about what order a day is in.

@@ -19,7 +19,7 @@ From left to right, the head band of a day shows:
 - **Pills** for what the day holds:
   - the stay, with a hotel icon: green on the check-in day, red on the check-out day, grey for the nights in between. Rest the pointer on it for *Check-in: Hotel Adler* or *Check-out: Hotel Adler*, and click it to open the place. See [Accommodations](Accommodations).
   - a rental car that runs across the day, with a car icon. Click it to open the booking.
-  - the day's cost: the prices of the day's places, added up.
+  - the day's cost: with the [Costs](Budget-Tracking) addon on, the expenses of the day, added up. An expense counts on the day its booking starts, else on the first day its place is planned, else on its date. With Costs off, the prices of the day's places.
   - a label a plugin gives the day, for example the leg of the trip it belongs to.
 - **+** (*Add to day*): the menu of everything a day can be given, see below. Shown to members who can edit days.
 - **The chevron** expands or collapses the day.
@@ -142,7 +142,7 @@ The head band of the days column holds, from left to right:
 
 With the [Road trip](Road-Trip) addon on, the **Days** / **Road trip** switch sits above this band.
 
-At the foot of the column, **Total Cost** adds up the prices of every planned place, once at least one has a price.
+At the foot of the column, **Total Cost** adds up every expense of the trip with Costs on, the same figure as *Total trip spend* in Costs, so deleting an expense lowers it. With Costs off it adds up the prices of the planned places, each place once.
 
 ### The route bar
 

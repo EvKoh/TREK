@@ -48,7 +48,8 @@ import {
   type MergedItem,
 } from '../../utils/dayMerge'
 import { withinDriveRange } from '@trek/shared/roadtrip'
-import { formatDate, formatTime, dayTotalCost, formatMoneySum, splitReservationDateTime } from '../../utils/formatters'
+import { formatDate, formatTime, formatMoneySum, splitReservationDateTime } from '../../utils/formatters'
+import { planCosts } from './planCosts'
 import { useDayNotes } from '../../hooks/useDayNotes'
 import { useExchangeRates } from '../../hooks/useExchangeRates'
 import { RES_ICONS, getNoteIcon } from './DayPlanSidebar.constants'
@@ -1163,13 +1164,15 @@ function useDayPlanSidebar(props: DayPlanSidebarProps) {
     window.__dragData = null
   }
 
-  const totalCostLabel = useMemo(() => {
-    const entries = days.flatMap(d => (assignments[String(d.id)] || []).map(a => ({
-      amount: Number(a.place?.price) || 0,
-      currency: a.place?.currency || currency,
-    })))
-    return formatMoneySum(entries, costBase, locale, fxRates)
-  }, [days, assignments, currency, costBase, locale, fxRates])
+  // The day pills and Total Cost read the expenses in Costs when it is on (#2551).
+  const budgetItems = useTripStore(s => s.budgetItems)
+  const costsEnabled = useAddonStore(s => s.isEnabled('budget'))
+  const { totalCostLabel, dayCostLabels } = useMemo(() => {
+    const costs = planCosts({ days, assignments, reservations, budgetItems, costsEnabled, tripCurrency: currency })
+    const labels = new Map<number, string | null>()
+    for (const [dayId, entries] of costs.byDay) labels.set(dayId, formatMoneySum(entries, costBase, locale, fxRates, { decimals: 0 }))
+    return { totalCostLabel: formatMoneySum(costs.total, costBase, locale, fxRates), dayCostLabels: labels }
+  }, [days, assignments, reservations, budgetItems, costsEnabled, currency, costBase, locale, fxRates])
 
   return {
     tripId,
@@ -1290,9 +1293,6 @@ function useDayPlanSidebar(props: DayPlanSidebarProps) {
     dayRefs,
     initedTransportIds,
     lastAutoScrolledIdRef,
-    currency,
-    costBase,
-    fxRates,
     getDragData,
     prevDayCount,
     toggleDay,
@@ -1316,6 +1316,7 @@ function useDayPlanSidebar(props: DayPlanSidebarProps) {
     handleOptimize,
     handleDropOnDay,
     totalCostLabel,
+    dayCostLabels,
     expandedRouteDayIds,
     setExpandedRouteDayIds,
   }
@@ -1498,9 +1499,6 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
     dayRefs,
     initedTransportIds,
     lastAutoScrolledIdRef,
-    currency,
-    costBase,
-    fxRates,
     getDragData,
     prevDayCount,
     toggleDay,
@@ -1524,6 +1522,7 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
     handleOptimize,
     handleDropOnDay,
     totalCostLabel,
+    dayCostLabels,
     expandedRouteDayIds,
     setExpandedRouteDayIds,
   } = S
@@ -1680,7 +1679,7 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
           }
           const isExpanded = expandedDays.has(day.id)
           const da = getDayAssignments(day.id)
-          const cost = dayTotalCost(day.id, assignments, costBase, currency, locale, fxRates)
+          const cost = dayCostLabels.get(day.id) ?? null
           const formattedDate = formatDate(day.date, locale)
           const loc = da.find(a => a.place?.lat && a.place?.lng)
           // Route tools normally need 2+ stops, but a single located place is still

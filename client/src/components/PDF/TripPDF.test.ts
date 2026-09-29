@@ -473,6 +473,31 @@ describe('downloadTripPDF', () => {
     expect(srcdoc).not.toMatch(/5 ?230/)
   })
 
+  it('FE-COMP-TRIPPDF-016g: with Costs on, the day and cover totals are the expenses, not the place prices (#2551)', async () => {
+    const args = {
+      ...richArgs,
+      trip: { ...richArgs.trip, currency: 'USD' },
+      costsEnabled: true,
+      budgetItems: [
+        { id: 1, trip_id: 10, category: 'activities', name: 'Tickets', total_price: 42, currency: null, place_id: 100 },
+        { id: 2, trip_id: 10, category: 'other', name: 'Insurance', total_price: 8, currency: null },
+      ],
+    }
+    await downloadTripPDF(args)
+    const srcdoc = getIframe()!.srcdoc
+    // The day carries the ticket linked to its place, the cover the whole trip.
+    expect(srcdoc).toContain('$42.00')
+    expect(srcdoc).toContain('$50.00')
+
+    document.getElementById('pdf-preview-overlay')?.remove()
+    // Every expense deleted: nothing is left to add up, whatever price the place carries.
+    await downloadTripPDF({ ...args, budgetItems: [] })
+    const after = getIframe()!.srcdoc
+    expect(after).not.toContain('$42.00')
+    expect(after).not.toContain('$50.00')
+    expect(after).toContain('$15.00') // the place's own price chip stays on its card
+  })
+
   it('FE-COMP-TRIPPDF-016f: an all-same-currency trip makes no FX request', async () => {
     let fxCalled = false
     server.use(http.get('https://api.frankfurter.dev/v2/rates', () => {
