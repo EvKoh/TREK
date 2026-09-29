@@ -1,4 +1,4 @@
-// FE-COMP-LINKS-001 to FE-COMP-LINKS-015
+// FE-COMP-LINKS-001 to FE-COMP-LINKS-016
 
 vi.mock('../../api/websocket', () => ({
   connect: vi.fn(),
@@ -221,6 +221,32 @@ describe('CollabLinks', () => {
     }
     // The height comes back through the margin, so the chip itself stays 36px.
     expect(action).toMatch(/margin:\s*-4px 0/);
+  });
+
+  it('FE-COMP-LINKS-016: a long title wraps and grows the chip instead of ending in an ellipsis (#2550)', async () => {
+    const title = 'Very long ferry timetable for the northern isles in the summer season';
+    server.use(http.get('/api/trips/1/collab/links', () => HttpResponse.json({ links: [buildLink({ title })] })));
+    render(<CollabLinks tripId={1} />);
+    // The whole name is in the chip, not a shortened copy of it.
+    expect(await screen.findByText(title)).toHaveClass('collab-link-chip__title');
+
+    // jsdom lays nothing out, so the rules are the assertion: the title may not be
+    // cut, and it has to be allowed to break, even inside one long word.
+    const css = readFileSync(resolve(process.cwd(), 'src/index.css'), 'utf8');
+    const rule = (selector: string) => {
+      const at = css.indexOf(`\n${selector} {`);
+      return at === -1 ? '' : css.slice(at, css.indexOf('}', at));
+    };
+    const titleRule = rule('.collab-link-chip__title');
+    expect(titleRule, '.collab-link-chip__title rule missing from index.css').not.toBe('');
+    expect(titleRule).not.toMatch(/white-space:\s*nowrap/);
+    expect(titleRule).not.toMatch(/text-overflow:\s*ellipsis/);
+    expect(titleRule).not.toMatch(/overflow:\s*hidden/);
+    expect(titleRule).toMatch(/overflow-wrap:\s*anywhere/);
+    // The host drops below a wrapping title instead of squeezing it.
+    expect(rule('.collab-link-chip__text')).toMatch(/flex-wrap:\s*wrap/);
+    // A grown chip keeps rounded corners rather than a pill's stadium ends.
+    expect(rule('.collab-link-chip')).not.toMatch(/border-radius:\s*999px/);
   });
 
   it('FE-COMP-LINKS-008: a viewer without edit rights gets no add button', async () => {

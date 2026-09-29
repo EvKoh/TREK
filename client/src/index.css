@@ -1401,7 +1401,9 @@ img[alt="TREK"] {
   gap: 6px;
   min-width: 0;
   padding: 5px 8px 5px 5px;
-  border-radius: 999px;
+  /* Half the one-line height, so a one-line chip is still a pill and one whose
+     title wraps (#2550) keeps its rounded corners instead of a stadium end. */
+  border-radius: 18px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-faint);
   box-shadow: var(--shadow-sm);
@@ -1453,12 +1455,13 @@ img[alt="TREK"] {
 .collab-link-chip__main:hover .collab-link-chip__go, .collab-link-chip__main:focus-visible .collab-link-chip__go { opacity: 1; }
 .collab-link-chip__main:hover .collab-link-chip__icon > :not(.collab-link-chip__go),
 .collab-link-chip__main:focus-visible .collab-link-chip__icon > :not(.collab-link-chip__go) { opacity: 0; }
-/* Title first, host with what is left: a max-content track takes its full width
-   before the fr track sees any, and shrinks only once the title alone no longer
-   fits. Two flex items shrank together and both ended in an ellipsis. */
+/* The title is never cut (#2550): it wraps and the chip grows in height, so the
+   full name is on screen on every device, not behind a tooltip a phone has no
+   way to show. The host sits beside a title short enough to leave room and drops
+   to its own line below one that wraps; only the host is allowed an ellipsis. */
 .collab-link-chip__text {
-  display: grid;
-  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   column-gap: 6px;
   min-width: 0;
@@ -1467,11 +1470,11 @@ img[alt="TREK"] {
 .collab-link-chip__title {
   font-size: calc(12.5px * var(--fs-scale-body, 1));
   font-weight: 600;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.25;
+  white-space: normal;
+  overflow-wrap: anywhere;
   min-width: 0;
+  max-width: 100%;
 }
 .collab-link-chip__host {
   font-size: calc(10.5px * var(--fs-scale-caption, 1));
@@ -1480,6 +1483,7 @@ img[alt="TREK"] {
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+  max-width: 100%;
 }
 .collab-link-chip__actions {
   display: flex;
