@@ -1,4 +1,4 @@
-// FE-COMP-LIGHTBOX-001 to FE-COMP-LIGHTBOX-020
+// FE-COMP-LIGHTBOX-001 to FE-COMP-LIGHTBOX-021
 
 // Plyr needs a real media pipeline, so the player is stubbed here.
 vi.mock('./VideoPlayer', () => ({
@@ -211,6 +211,17 @@ describe('PhotoLightbox', () => {
     expect(img.style.transform).toContain('scale(2.5)');
     fireEvent.keyDown(window, { key: 'ArrowRight' });
     expect(screen.getByRole('img').style.transform).toBe('translate(0px, 0px) scale(1)');
+  });
+
+  it('FE-COMP-LIGHTBOX-021: two quick taps zoom in, two quick swipes turn two pages', () => {
+    render(<PhotoLightbox photos={samplePhotos} startIndex={0} onClose={vi.fn()} />);
+    const surface = screen.getByRole('img').closest('div[style*="position: fixed"]') as HTMLElement;
+    for (let i = 0; i < 2; i++) {
+      fireEvent.touchStart(surface, { touches: [{ clientX: 200, clientY: 200 }] });
+      fireEvent.touchEnd(surface, { touches: [], changedTouches: [{ clientX: 202, clientY: 201 }] });
+    }
+    expect(screen.getByRole('button', { name: 'Zoom out' })).not.toBeDisabled();
+    expect(screen.getByText('1 / 3')).toBeInTheDocument();
   });
 
   it('FE-COMP-LIGHTBOX-019: a swipe on an enlarged photo pans instead of turning the page', () => {

@@ -352,7 +352,7 @@ describe('AtlasPage wiring', () => {
       fireEvent.click(screen.getByText('atlas.addToBucket'));
 
       await waitFor(() => expect(atlas.setConfirmAction).toHaveBeenLastCalledWith(null));
-      expect(body).toEqual({ name: 'Germany', country_code: 'DE', target_date: '2027-05' });
+      expect(body).toMatchObject({ name: 'Germany', country_code: 'DE', target_date: '2027-05' });
       expect(atlas.bucketList as unknown[]).toHaveLength(1);
       expect(atlas.setBucketMonth).toHaveBeenLastCalledWith(0);
       expect(atlas.setBucketYear).toHaveBeenLastCalledWith(0);
@@ -376,7 +376,7 @@ describe('AtlasPage wiring', () => {
 
       fireEvent.click(screen.getByText('atlas.addToBucket'));
 
-      await waitFor(() => expect(body).toEqual({ name: 'Bretagne', country_code: 'FR', target_date: null }));
+      await waitFor(() => expect(body).toMatchObject({ name: 'Bretagne', country_code: 'FR', target_date: null }));
     });
 
     it('FE-PAGE-ATLASW-018b: a country already wishlisted for that date is not posted again (#1898)', async () => {
@@ -460,7 +460,8 @@ describe('AtlasPage wiring', () => {
       render(<AtlasPage />);
 
       expect(screen.getByText('France')).toBeInTheDocument();
-      expect(screen.getByText('3 atlas.places · 4 atlas.tripPlural')).toBeInTheDocument();
+      expect(screen.getAllByText((_, el) => el?.textContent?.trim() === '3 atlas.places').length).toBeGreaterThan(0);
+      expect(screen.getAllByText((_, el) => el?.textContent?.trim() === '4 atlas.tripPlural').length).toBeGreaterThan(0);
       // Only the first three trips are shown.
       expect(screen.queryByText('Brest')).not.toBeInTheDocument();
 

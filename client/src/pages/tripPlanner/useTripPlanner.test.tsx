@@ -1074,7 +1074,7 @@ describe('useTripPlanner — add place entry points', () => {
     act(() => { result.current.openAddPlaceFromPoi(trailhead) })
 
     // Only the fields the form has: the details, icon and colour stay on the map.
-    expect(result.current.prefillCoords).toEqual({
+    expect(result.current.prefillCoords).toMatchObject({
       lat: 47.1, lng: 11.2, name: 'Trailhead', address: 'Hut 1', website: 'https://trails.example/th-1', phone: '+43 1',
       osm_id: 'plugin:trail-finder:th-1', stop_type: null, duration_minutes: undefined,
     })

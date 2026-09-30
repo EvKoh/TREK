@@ -3,6 +3,8 @@ import { MAX_ZOOM, NO_ZOOM, panBy, toggleZoom, zoomAt, type ZoomState } from './
 
 const STEP = 1.5
 const DOUBLE_TAP_MS = 300
+/** How far a finger may move and still have tapped rather than swiped. */
+const TAP_SLOP_PX = 10
 
 /**
  * Zoom and pan for one photo of the lightbox (#1484): the wheel and a double click
@@ -17,6 +19,8 @@ export function usePhotoZoom(resetKey: unknown) {
   const pinch = useRef<{ dist: number; scale: number } | null>(null)
   const drag = useRef<{ x: number; y: number } | null>(null)
   const lastTap = useRef(0)
+  // Where a one finger touch began, so a swipe is never counted as a tap.
+  const tapStart = useRef<{ x: number; y: number } | null>(null)
 
   useEffect(() => { setZoom(NO_ZOOM) }, [resetKey])
 
@@ -74,6 +78,7 @@ export function usePhotoZoom(resetKey: unknown) {
    * gesture was a zoom or a pan, so a pinch never also turns the page.
    */
   const touchStart = useCallback((e: React.TouchEvent): boolean => {
+    tapStart.current = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null
     if (e.touches.length === 2) {
       const [a, b] = [e.touches[0], e.touches[1]]
       pinch.current = { dist: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), scale: zoomRef.current.scale }
@@ -114,7 +119,11 @@ export function usePhotoZoom(resetKey: unknown) {
     if (e.touches.length < 2) pinch.current = null
     if (e.touches.length === 0) drag.current = null
     // A double tap zooms in on the tapped spot, or back out.
-    if (!wasGesture && e.changedTouches.length === 1) {
+    const t = e.changedTouches[0]
+    const start = tapStart.current
+    tapStart.current = null
+    const isTap = !!start && !!t && Math.hypot(t.clientX - start.x, t.clientY - start.y) < TAP_SLOP_PX
+    if (!wasGesture && e.changedTouches.length === 1 && isTap) {
       const now = Date.now()
       if (now - lastTap.current < DOUBLE_TAP_MS) {
         lastTap.current = 0
