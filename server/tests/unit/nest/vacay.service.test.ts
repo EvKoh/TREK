@@ -1514,7 +1514,7 @@ describe('getSharedCalendars', () => {
 
     const calendars = svc.getSharedCalendars(viewer.id, '2025');
 
-    expect(calendars[0].companyHolidays).toEqual([{ date: '2025-12-24' }]);
+    expect(calendars[0].companyHolidays).toEqual([{ date: '2025-12-24', fraction: 1 }]);
   });
 
   it('VACAY-SVC-065: an owner without any plan yields empty arrays (no lazy creation)', () => {

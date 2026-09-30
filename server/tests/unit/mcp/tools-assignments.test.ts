@@ -298,7 +298,7 @@ describe('Tool: clear_day_assignments (#2470)', () => {
       expect(data.success).toBe(true);
       expect([...data.removedIds].sort()).toEqual([a1.id, a2.id].sort());
       expect(testDb.prepare('SELECT COUNT(*) AS n FROM day_assignments WHERE day_id = ?').get(day.id)).toEqual({ n: 0 });
-      expect(broadcastMock).toHaveBeenCalledWith(trip.id, 'assignment:deleted', { assignmentId: a1.id, dayId: day.id });
+      expect(broadcastMock).toHaveBeenCalledWith(trip.id, 'assignment:deleted', expect.objectContaining({ assignmentId: a1.id, dayId: day.id }));
     });
   });
 

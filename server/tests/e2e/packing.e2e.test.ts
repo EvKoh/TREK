@@ -37,6 +37,7 @@ const { db } = vi.hoisted(() => {
     is_private INTEGER NOT NULL DEFAULT 0,
     owner_id INTEGER,
     updated_at DATETIME,
+    packed_quantity INTEGER,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );`);
   tmp.exec(`CREATE TABLE packing_bags (

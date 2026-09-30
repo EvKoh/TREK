@@ -932,14 +932,15 @@ describe('MapsService: Amap first inside China when picked outright (#1636)', ()
     mockProviderGet.mockReturnValue({ value: 'amap' });
     keys({ amap: 'akey' });
     osmAnswers([]);
-    const fetchSpy = vi.fn().mockResolvedValue(ok({ count: '0', pois: [] }));
-    vi.stubGlobal('fetch', fetchSpy);
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(ok({ count: '0', pois: [] })));
+    const searchText = vi.spyOn(AmapPlacesProvider.prototype, 'searchText');
+    spies.push(searchText);
 
     const result = await svc.searchPlaces(1, 'nothing here', 'zh', BEIJING);
 
     expect(result).toEqual({ places: [], source: 'amap' });
     expect(trekPlacesSearch).toHaveBeenCalled();
-    expect(fetchSpy).toHaveBeenCalledTimes(1);
+    expect(searchText).toHaveBeenCalledTimes(1);
   });
 
   it('AMAP-097: a search centred outside China keeps the usual order, so the Eiffel Tower does not land in Macau', async () => {

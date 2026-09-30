@@ -1917,8 +1917,9 @@ describe('DayDetailPanel time format', () => {
     );
     render(<DayDetailPanel {...defaultProps} />);
 
+    // The arrival day shows only the check-in; the check-out belongs to the last day (#2393).
     expect(await screen.findByText('15:00')).toBeInTheDocument();
-    expect(screen.getByText('11:00')).toBeInTheDocument();
+    expect(screen.queryByText('11:00')).not.toBeInTheDocument();
   });
 });
 

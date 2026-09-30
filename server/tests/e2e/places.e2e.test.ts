@@ -41,8 +41,11 @@ const { db } = vi.hoisted(() => {
   tmp.exec('CREATE TABLE days (id INTEGER PRIMARY KEY AUTOINCREMENT, trip_id INTEGER NOT NULL, day_number INTEGER, date TEXT, title TEXT);');
   // The GPX export reads the trip title for <metadata> and the filename.
   tmp.exec('CREATE TABLE trips (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT);');
+  // The places list reads each place's country and region (#2537).
+  tmp.exec(`CREATE TABLE place_regions (place_id INTEGER PRIMARY KEY, country_code TEXT NOT NULL,
+    region_code TEXT NOT NULL, region_name TEXT NOT NULL);`);
   tmp.exec(`CREATE TABLE day_assignments (id INTEGER PRIMARY KEY AUTOINCREMENT, day_id INTEGER NOT NULL,
-    place_id INTEGER NOT NULL, order_index INTEGER DEFAULT 0);`);
+    place_id INTEGER NOT NULL, order_index INTEGER DEFAULT 0, route_excluded INTEGER NOT NULL DEFAULT 0);`);
   // reclaimPlaceImage ref-counts an uploaded thumbnail across both tables.
   // Deleting a place cancels the nights booked at it (#2354), so the delete path
   // reads this table even in a file that never books one.
