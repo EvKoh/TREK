@@ -310,6 +310,38 @@ describe('PlaceFormModal', () => {
     expect(await screen.findByText('Eiffel Tower')).toBeInTheDocument();
   });
 
+  it('FE-PLANNER-PLACEFORM-018c: a pin lists the places around it, nearest first with their distance, and one pick fills the form', async () => {
+    const user = userEvent.setup();
+    seedStore(useAuthStore, { user: buildUser(), isAuthenticated: true, hasMapsKey: true });
+    const bodies: Record<string, unknown>[] = [];
+    server.use(
+      http.post('/api/maps/nearby', async ({ request }) => {
+        bodies.push((await request.json()) as Record<string, unknown>);
+        return HttpResponse.json({
+          places: [{ name: 'Café am Tor', address: 'Pariser Platz 1', lat: 52.5163, lng: 13.378, distance_m: 40 }],
+          source: 'trek-places',
+        });
+      }),
+    );
+
+    render(<PlaceFormModal {...defaultProps} prefillCoords={{ lat: 52.5163, lng: 13.3777 }} />);
+    await user.click(screen.getByRole('button', { name: 'Places near this pin' }));
+
+    expect(bodies).toEqual([{ lat: 52.5163, lng: 13.3777 }]);
+    expect(await screen.findByText('Café am Tor')).toBeInTheDocument();
+    expect(screen.getByText('40 m')).toBeInTheDocument();
+    // No typed query, so nothing to send to Google instead.
+    expect(screen.queryByText('Not the right place? Search Google instead')).not.toBeInTheDocument();
+
+    await user.click(screen.getByText('Café am Tor'));
+    expect(screen.getByDisplayValue('Pariser Platz 1')).toBeInTheDocument();
+  });
+
+  it('FE-PLANNER-PLACEFORM-018d: without a pin there is nothing to look around', () => {
+    render(<PlaceFormModal {...defaultProps} />);
+    expect(screen.queryByRole('button', { name: 'Places near this pin' })).not.toBeInTheDocument();
+  });
+
   it('FE-PLANNER-PLACEFORM-018b: a list the index answered offers Google instead, and the link sends the same query there alone', async () => {
     const user = userEvent.setup();
     seedStore(useAuthStore, { user: buildUser(), isAuthenticated: true, hasMapsKey: true });

@@ -332,6 +332,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Částky v Nákladech se do této měny přepočítávají pouze pro zobrazení – původní částky zůstávají beze změny.',
   'settings.currencyTrip': 'Měna cesty',
+  'settings.placeLanguage': 'Názvy míst',
+  'settings.placeLanguageApp': 'Stejně jako aplikace',
+  'settings.placeLanguageHint': 'Jazyk, ve kterém odpovídá vyhledávání míst, návrhy a adresy. Pokud místo v tomto jazyce název nemá, zobrazí se jeho místní název.',
   'settings.passkey.title': 'Přístupové klíče',
   'settings.passkey.description':
     'Přihlašujte se rychleji a s ochranou proti phishingu pomocí přístupového klíče — otiskem prstu, obličejem, PINem nebo hardwarovým klíčem. Vaše heslo zůstává jako záloha.',
@@ -476,6 +479,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Spuštění',
+  'settings.dayDateFirst': 'Datum na začátku nadpisů dnů',
+  'settings.compactUnplanned': 'Kompaktní značky pro nenaplánovaná místa',
+  'settings.compactUnplannedHint': 'Místa, která nejsou naplánovaná v žádném dni, se zobrazí jako malé značky bez fotky, aby plánované zastávky vynikly.',
+  'settings.dayDateFirstHint': 'Každý den začne kalendářním datem a vedle něj se zobrazí „Den 1“ nebo vlastní název dne.',
   'settings.startPage': 'Úvodní stránka',
   'settings.startPageDashboard': 'Přehled',
   'settings.startPageActiveTrip': 'Aktivní cesta',

@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': '지도에서',
   'mobileTrip.profileDriving': '자동차',
   'mobileTrip.profileWalking': '도보',
+  'mobileTrip.profileCycling': '자전거',
   'mobileTrip.renameDay': '일차 이름 바꾸기',
   'mobileTrip.resBadge': '예약',
   'mobileTrip.showOnMap': '지도에서 보기',

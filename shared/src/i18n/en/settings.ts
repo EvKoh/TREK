@@ -345,6 +345,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Amounts in Costs are shown converted to this currency for display only — the original amounts are unchanged.',
   'settings.currencyTrip': 'Trip currency',
+  'settings.placeLanguage': 'Place names',
+  'settings.placeLanguageApp': 'Same as the app',
+  'settings.placeLanguageHint':
+    'The language place search, suggestions and addresses answer in. Where a place has no name in that language, its local name is shown.',
   'settings.passkey.title': 'Passkeys',
   'settings.passkey.description':
     'Sign in faster and phishing-resistant with a passkey — your fingerprint, face, PIN, or a hardware key. Your password stays as a backup.',
@@ -485,6 +489,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Startup',
+  'settings.dayDateFirst': 'Date first in day headings',
+  'settings.compactUnplanned': 'Compact markers for unplanned places',
+  'settings.compactUnplannedHint': 'Places not planned into any day show as small markers without a photo, so the planned stops stand out.',
+  'settings.dayDateFirstHint': "Lead each day with its calendar date and show \"Day 1\" or the day's own title next to it.",
   'settings.startPage': 'Start page',
   'settings.startPageDashboard': 'Dashboard',
   'settings.startPageActiveTrip': 'Active trip',

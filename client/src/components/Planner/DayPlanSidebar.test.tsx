@@ -850,9 +850,9 @@ describe('DayPlanSidebar', () => {
       ] },
       trip: buildTrip({ id: 1, currency: 'NOK' }),
     })} />)
-    // $25 + 250 NOK / 10 = $50, marked as approximate; footer and day header agree.
+    // $25 + 250 NOK / 10 = $50, marked as approximate. The day header carries no money.
     await waitFor(() => expect(screen.getByText('≈ $50.00')).toBeInTheDocument())
-    expect(screen.getByText('≈ $50')).toBeInTheDocument()
+    expect(screen.queryByText('≈ $50')).toBeNull()
   })
 
   it('FE-PLANNER-DAYPLAN-037c: falls back to a per-currency breakdown when rates are unavailable (#1561)', async () => {
@@ -876,7 +876,7 @@ describe('DayPlanSidebar', () => {
     expect(screen.queryByText(/5\s?230/)).toBeNull()
   })
 
-  it('FE-PLANNER-DAYPLAN-037d: with Costs on, the day and the total follow the expenses, and drop one that is deleted (#2551)', async () => {
+  it('FE-PLANNER-DAYPLAN-037d: with Costs on, the total follows the expenses and drops one that is deleted (#2551)', async () => {
     seedStore(useAddonStore, { addons: [{ id: 'budget', name: 'Costs', type: 'trip', icon: 'wallet', enabled: true }], loaded: true })
     // The price on the place is not an expense: it stays out of both figures.
     const place = buildPlace({ id: 1, name: 'Hanging Bridges', price: 999 })
@@ -890,8 +890,8 @@ describe('DayPlanSidebar', () => {
       assignments: { '10': [buildAssignment({ id: 1, day_id: 10, order_index: 0, place })] },
       trip: buildTrip({ id: 1, currency: 'EUR' }),
     })} />)
-    // The ticket is on the day of its place; the insurance belongs to no day but to the trip.
-    expect(screen.getByText(/^60\s€$/)).toBeInTheDocument()
+    // Both count toward the trip; the day header itself shows no amount.
+    expect(screen.queryByText(/^60\s€$/)).toBeNull()
     expect(screen.getByText(/^100,00\s€$/)).toBeInTheDocument()
     expect(screen.queryByText(/999/)).toBeNull()
 
@@ -3925,7 +3925,7 @@ describe('DayPlanSidebar', () => {
     expect(toggle).toHaveAccessibleName('Keep position during route optimization')
   })
 
-  it('FE-PLANNER-DAYPLAN-167: the place context menu opens the website, maps and collection actions', async () => {
+  it('FE-PLANNER-DAYPLAN-167: the place context menu opens the website but offers no navigation apps', async () => {
     const user = userEvent.setup()
     const openSpy = vi.spyOn(window, 'open').mockReturnValue(null)
     const place = buildPlace({ id: 1, name: 'Louvre', website: 'https://louvre.fr', google_place_id: 'abc' })
@@ -3936,10 +3936,9 @@ describe('DayPlanSidebar', () => {
     await user.click(screen.getByRole('button', { name: 'Open Website' }))
     expect(openSpy).toHaveBeenCalledWith('https://louvre.fr', '_blank', 'noopener,noreferrer')
 
+    // Navigation lives on the place's own Navigation button, not in this menu.
     fireEvent.contextMenu(dragRow(screen.getByText('Louvre')))
-    await user.click(screen.getByRole('button', { name: 'Google Maps' }))
-    expect(openSpy).toHaveBeenCalledTimes(2)
-    expect(openSpy.mock.calls[1][0]).toContain('google.com/maps')
+    expect(screen.queryByRole('button', { name: 'Google Maps' })).not.toBeInTheDocument()
     openSpy.mockRestore()
   })
 
@@ -5055,4 +5054,14 @@ describe('the day route-tools row', () => {
 
   /* The click itself is already pinned by FE-PLANNER-DAYPLAN-038 above, which
      finds the button the same way. */
+
+  it('FE-PLANNER-DAYPLAN-235: with "date first" the day heading leads with its date', () => {
+    seedStore(useSettingsStore, { settings: { time_format: '24h', temperature_unit: 'celsius', day_date_first: true } } as any)
+    const day = buildDay({ id: 10, date: '2025-06-01', title: null })
+    render(<DayPlanSidebar {...makeDefaultProps({ days: [day], assignments: {} })} />)
+    const secondary = screen.getByText('Day 1')
+    expect(secondary.className).toContain('text-content-faint')
+    expect(secondary.previousElementSibling?.className).toContain('font-bold')
+  })
 })
+

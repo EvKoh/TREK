@@ -340,6 +340,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Los importes en Costes se muestran convertidos a esta moneda solo a efectos de visualización — los importes originales no se modifican.',
   'settings.currencyTrip': 'Moneda del viaje',
+  'settings.placeLanguage': 'Nombres de lugares',
+  'settings.placeLanguageApp': 'Igual que la app',
+  'settings.placeLanguageHint':
+    'El idioma en el que responden la búsqueda de lugares, las sugerencias y las direcciones. Si un lugar no tiene nombre en ese idioma, se muestra su nombre local.',
   'settings.passkey.title': 'Passkeys',
   'settings.passkey.description':
     'Inicia sesión más rápido y con protección frente al phishing usando una passkey: tu huella, tu cara, tu PIN o una llave de seguridad física. Tu contraseña sigue disponible como respaldo.',
@@ -484,6 +488,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Inicio',
+  'settings.dayDateFirst': 'Fecha primero en los títulos de día',
+  'settings.compactUnplanned': 'Marcadores compactos para lugares sin planificar',
+  'settings.compactUnplannedHint':
+    'Los lugares que no están en ningún día se muestran como marcadores pequeños sin foto, para que destaquen las paradas planificadas.',
+  'settings.dayDateFirstHint':
+    'Empieza cada día con su fecha del calendario y muestra «Día 1» o el título propio del día al lado.',
   'settings.startPage': 'Página de inicio',
   'settings.startPageDashboard': 'Panel',
   'settings.startPageActiveTrip': 'Viaje activo',

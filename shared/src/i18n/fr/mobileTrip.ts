@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Sur la carte',
   'mobileTrip.profileDriving': 'Voiture',
   'mobileTrip.profileWalking': 'Marche',
+  'mobileTrip.profileCycling': 'Vélo',
   'mobileTrip.renameDay': 'Renommer le jour',
   'mobileTrip.resBadge': 'Réservation',
   'mobileTrip.showOnMap': 'Afficher sur la carte',

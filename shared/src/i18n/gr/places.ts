@@ -53,6 +53,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Εμφάνιση όλου του ταξιδιού',
   'places.filterTracks': 'Ίχνη',
   'places.filterByRating': 'Φιλτράρισμα κατά βαθμολογία',
+  'places.filterByLocation': 'Φιλτράρισμα ανά χώρα ή περιοχή',
+  'places.allLocations': 'Όλες οι χώρες',
   'places.filterShow': 'Εμφάνιση',
   'places.clearSearch': 'Καθαρισμός αναζήτησης',
   'places.yourRating': 'Η βαθμολογία σου',
@@ -79,6 +81,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Κατηγορία',
   'places.noCategory': 'Χωρίς Κατηγορία',
   'places.newCategory': 'Νέα κατηγορία',
+  'places.openInMaps': 'Άνοιγμα σε χάρτες',
   'places.categoryNamePlaceholder': 'Όνομα κατηγορίας',
   'places.formTime': 'Ώρα',
   'places.startTime': 'Έναρξη',
@@ -95,6 +98,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Αναζήτηση μερών...',
   'places.mapsSearchError': 'Η αναζήτηση μέρους απέτυχε.',
   'places.searchGoogleInstead': 'Δεν είναι το σωστό μέρος; Αναζήτηση στο Google',
+  'places.nearby': 'Μέρη κοντά σε αυτή την πινέζα',
+  'places.nearbyNone': 'Δεν βρέθηκε τίποτα κοντά σε αυτή την πινέζα',
   'places.loadingDetails': 'Φόρτωση λεπτομερειών μέρους…',
   'places.osmHint':
     'Χρήση αναζήτησης OpenStreetMap (χωρίς φωτογραφίες, ώρες λειτουργίας ή αξιολογήσεις). Προσθέστε ένα κλειδί Google API στις ρυθμίσεις για πλήρεις λεπτομέρειες.',
@@ -133,9 +138,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Εμπλουτισμός τόπων μέσω Google',
   'places.enrichOnImportHint':
     'Αναζητά κάθε εισαγόμενο μέρος για να προσθέσει φωτογραφίες, διεύθυνση και στοιχεία επικοινωνίας. Απαιτεί κλειδί Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Στη συνέχεια αναζητά κάθε εισαγόμενο σημείο στο Google και προσθέτει φωτογραφία, διεύθυνση, ιστότοπο και τηλέφωνο. Οι διαδρομές και τα ίχνη μένουν ως έχουν.',
   'places.uploadImage': 'Μεταφόρτωση εικόνας',
   'places.changeImage': 'Αλλαγή εικόνας',
   'places.removeImage': 'Αφαίρεση εικόνας',
+  'places.chooseImage': 'Επιλογή εικόνας',
+  'places.uploadFromDevice': 'Μεταφόρτωση από τη συσκευή',
+  'places.fromAttachedFiles': 'Από συνημμένα αρχεία',
   'places.imageUploadError': 'Δεν ήταν δυνατή η μεταφόρτωση της εικόνας',
   'places.imageRemoveError': 'Δεν ήταν δυνατή η αφαίρεση της εικόνας',
 };

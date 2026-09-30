@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Hiện toàn bộ chuyến đi',
   'places.filterTracks': 'Đường đi',
   'places.filterByRating': 'Lọc theo đánh giá',
+  'places.filterByLocation': 'Lọc theo quốc gia hoặc vùng',
+  'places.allLocations': 'Tất cả quốc gia',
   'places.filterShow': 'Hiển thị',
   'places.clearSearch': 'Xóa tìm kiếm',
   'places.yourRating': 'Đánh giá của bạn',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Loại',
   'places.noCategory': 'Không có danh mục',
   'places.newCategory': 'Danh mục mới',
+  'places.openInMaps': 'Mở trong ứng dụng bản đồ',
   'places.categoryNamePlaceholder': 'Tên danh mục',
   'places.formTime': 'Thời gian',
   'places.startTime': 'Bắt đầu',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Tìm kiếm địa điểm...',
   'places.mapsSearchError': 'Tìm kiếm địa điểm không thành công.',
   'places.searchGoogleInstead': 'Không đúng địa điểm? Tìm trên Google',
+  'places.nearby': 'Địa điểm gần ghim này',
+  'places.nearbyNone': 'Không tìm thấy gì gần ghim này',
   'places.loadingDetails': 'Đang tải chi tiết địa điểm…',
   'places.osmHint':
     'Sử dụng tìm kiếm OpenStreetMap (không có ảnh, giờ mở cửa hoặc xếp hạng). Thêm khóa Google API trong cài đặt để biết đầy đủ chi tiết.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Làm phong phú các địa điểm thông qua Google',
   'places.enrichOnImportHint':
     'Tra cứu từng địa điểm đã nhập để điền ảnh, địa chỉ và thông tin liên hệ. Sử dụng khóa Google Maps của bạn.',
+  'places.enrichOnImportFileHint':
+    'Sau khi nhập, tra cứu từng điểm trên Google và thêm ảnh, địa chỉ, trang web và số điện thoại. Đường đi và tuyến ghi được giữ nguyên.',
   'places.uploadImage': 'Tải ảnh lên',
   'places.changeImage': 'Đổi ảnh',
   'places.removeImage': 'Xóa ảnh',
+  'places.chooseImage': 'Chọn ảnh',
+  'places.uploadFromDevice': 'Tải lên từ thiết bị',
+  'places.fromAttachedFiles': 'Từ tệp đính kèm',
   'places.imageUploadError': 'Không thể tải ảnh lên',
   'places.imageRemoveError': 'Không thể xóa ảnh',
 };

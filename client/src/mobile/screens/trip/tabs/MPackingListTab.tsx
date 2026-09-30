@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useCallback } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import {
-  Briefcase, Check, CheckCheck, ChevronDown, ChevronUp, HandHelping,
+  Briefcase, Check, CheckCheck, ChevronDown, ChevronUp, HandHelping, Minus,
   Download, FileSpreadsheet, FileText, LayoutTemplate, MoreHorizontal, Package, Pencil, Plus, Printer, RotateCcw, Save as SaveIcon,
   Trash2, UserPlus, UserRound,
 } from 'lucide-react'
@@ -18,7 +18,7 @@ import type { TripPlanner } from '../MTripShell'
 import MConfirmSheet from '../../settings/MConfirmSheet'
 import { FIELD_CLS } from '../sheets/PlSheetChrome'
 import { TabScroller } from './tabChrome'
-import { katColor } from '../../../../components/Packing/packingListPanel.helpers'
+import { katColor, newItemSharing, packedOf } from '../../../../components/Packing/packingListPanel.helpers'
 import { BAG_COLORS, PACKING_PLACEHOLDER_NAME } from '../../../../components/Packing/packingListPanel.constants'
 import {
   formatWeight, groupPackingItems, isLastCustomItemInCategory, isPackingPlaceholder,
@@ -121,7 +121,8 @@ export default function MPackingListTab({ planner }: { planner: TripPlanner }) {
       } else {
         await tripActions.addPackingItem(
           tripId,
-          { name, category, visibility: view === 'personal' ? 'personal' : 'common' } as Parameters<typeof tripActions.addPackingItem>[1],
+          // In "my list", shared the way the category's own items all are (#2241).
+          { name, category, ...newItemSharing(items, category, view, currentUserId) } as Parameters<typeof tripActions.addPackingItem>[1],
         )
       }
     } catch {
@@ -827,6 +828,10 @@ function PackingItemRow({ item, planner, currentUserId, editMode, canEdit, bagTr
   const ownerAvatarUrl = ownerMember?.avatar_url ?? (item.owner_id === me?.id ? me?.avatar_url ?? null : null)
 
   const toggle = () => tripActions.togglePackingItem(tripId, item.id, !item.checked)
+  // Multi-piece items count their pieces into the bag (#2296).
+  const quantity = item.quantity || 1
+  const packed = packedOf(item)
+  const partlyPacked = !item.checked && packed > 0
 
   const assignBag = async (bagId: number | null) => {
     setBagPickerOpen(false)
@@ -850,7 +855,7 @@ function PackingItemRow({ item, planner, currentUserId, editMode, canEdit, bagTr
           aria-label={item.name}
           aria-pressed={!!item.checked}
           className={`flex h-[22px] w-[22px] flex-none items-center justify-center rounded-[7px] border-[1.5px] ${
-            item.checked ? 'border-m-act bg-m-act text-m-actfg' : 'border-[color:var(--m-rowbr)] text-transparent'
+            item.checked ? 'border-m-act bg-m-act text-m-actfg' : partlyPacked ? 'border-m-act text-transparent' : 'border-[color:var(--m-rowbr)] text-transparent'
           }`}
         >
           <Check size={12} strokeWidth={3} />
@@ -893,11 +898,27 @@ function PackingItemRow({ item, planner, currentUserId, editMode, canEdit, bagTr
           </span>
         )}
 
-        {(item.quantity || 1) > 1 && (
-          <span className="flex-none rounded-full bg-[color:var(--m-ic)] px-2 py-[2px] font-geist text-[0.625rem] font-bold tabular-nums text-m-muted">
-            {item.quantity}×
+        {quantity > 1 && (canEdit && !isPlaceholder ? (
+          <span
+            role="group"
+            aria-label={t('packing.packedCount', { packed, total: quantity })}
+            className={`flex flex-none items-center rounded-full font-geist text-[0.625rem] font-bold tabular-nums ${partlyPacked ? 'bg-[color:color-mix(in_srgb,var(--m-act)_14%,transparent)] text-m-ink' : 'bg-[color:var(--m-ic)] text-m-muted'}`}
+          >
+            <button type="button" aria-label={t('packing.packedLess')} disabled={packed <= 0} onClick={() => tripActions.setPackedCount(tripId, item.id, packed - 1)}
+              className="flex h-[22px] w-[22px] items-center justify-center disabled:opacity-30">
+              <Minus size={11} strokeWidth={2.6} />
+            </button>
+            <span className="min-w-[26px] text-center">{packed}/{quantity}</span>
+            <button type="button" aria-label={t('packing.packedMore')} disabled={packed >= quantity} onClick={() => tripActions.setPackedCount(tripId, item.id, packed + 1)}
+              className="flex h-[22px] w-[22px] items-center justify-center disabled:opacity-30">
+              <Plus size={11} strokeWidth={2.6} />
+            </button>
           </span>
-        )}
+        ) : (
+          <span className="flex-none rounded-full bg-[color:var(--m-ic)] px-2 py-[2px] font-geist text-[0.625rem] font-bold tabular-nums text-m-muted">
+            {partlyPacked ? `${packed}/${quantity}` : `${quantity}×`}
+          </span>
+        ))}
 
         {/* A weight nobody entered is not worth a column: "— g" on every row
             cost as much width as a real value (#1525). */}

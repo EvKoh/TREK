@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Impossibile determinare la tua posizione.',
   'map.location.timeout': 'La localizzazione ha richiesto troppo tempo. Riprova con una visuale più libera del cielo.',
   'map.overview.show': 'Mostra tutto il viaggio',
+  'map.lock.lock': 'Blocca la vista della mappa',
+  'map.lock.unlock': 'Lascia che la mappa segua la selezione',
   'map.overview.hide': 'Nascondi tutto il viaggio',
   'map.overview.total': 'Distanza totale',
   'map.attribution': 'Crediti della mappa',

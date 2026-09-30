@@ -36,7 +36,8 @@ import {
   JourneyAddTripDto, JourneyContributorAddDto, JourneyContributorUpdateDto, JourneyCreateDto,
   JourneyEntryCreateDto, JourneyEntryPhotoUploadDto, JourneyEntryUpdateDto, JourneyGalleryVideoDto,
   JourneyLinkPhotoDto, JourneyPhotoUpdateDto, JourneyPreferencesDto, JourneyProviderPhotosDto,
-  JourneyReorderEntriesDto, JourneyShareLinkDto, JourneyUpdateDto,
+  JourneyReorderEntriesDto,
+  JourneyReorderEntryPhotosDto, JourneyShareLinkDto, JourneyUpdateDto,
   BookSaveDto,
 } from './journey.dto';
 import { isVideoMime, isVideoExtension, MAX_VIDEO_SIZE } from '../files/files.constants';
@@ -204,6 +205,14 @@ export class JourneyController {
       throw new HttpException({ error: 'Entry not found' }, 404);
     }
     return result;
+  }
+
+  @Put('entries/:entryId/photos/reorder')
+  reorderEntryPhotos(@CurrentUser() user: User, @Param('entryId') entryId: string, @Body() body: JourneyReorderEntryPhotosDto, @Headers('x-socket-id') socketId?: string) {
+    if (!this.journey.reorderEntryPhotos(Number(entryId), user.id, body.orderedIds, socketId)) {
+      throw new HttpException({ error: 'Entry not found' }, 404);
+    }
+    return { success: true };
   }
 
   @Delete('entries/:entryId')

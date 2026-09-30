@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Không thể xác định vị trí của bạn.',
   'map.location.timeout': 'Việc xác định vị trí mất quá nhiều thời gian. Hãy thử lại ở nơi nhìn thấy bầu trời thoáng hơn.',
   'map.overview.show': 'Hiện toàn bộ chuyến đi',
+  'map.lock.lock': 'Khóa góc nhìn bản đồ',
+  'map.lock.unlock': 'Để bản đồ đi theo mục đang chọn',
   'map.overview.hide': 'Ẩn toàn bộ chuyến đi',
   'map.overview.total': 'Tổng quãng đường',
   'map.attribution': 'Nguồn bản đồ',

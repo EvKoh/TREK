@@ -11,6 +11,7 @@ const todo: TranslationStrings = {
   'todo.uncategorized': 'Nimekirjata',
   'todo.namePlaceholder': 'Ülesande nimi',
   'todo.descriptionPlaceholder': 'Kirjeldus (valikuline)',
+  'todo.editDescription': 'Klõpsa muutmiseks, lingid avanevad otse',
   'todo.unassigned': 'Määramata',
   'todo.noCategory': 'Nimekirjata',
   'todo.hasDescription': 'Kirjeldusega',

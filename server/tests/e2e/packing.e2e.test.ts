@@ -353,6 +353,18 @@ describe('Packing e2e (real auth guard + real SQL over temp SQLite)', () => {
     expect(res.body.item.checked).toBe(1);
   });
 
+  it('counts packed pieces and ticks the item once the count is full (#2296)', async () => {
+    const id = insertItem(tripId, 'Shirts');
+    await request(server).put(`/api/trips/${tripId}/packing/${id}`).set('Cookie', sessionCookie(1)).send({ quantity: 3 });
+    const partial = await request(server).put(`/api/trips/${tripId}/packing/${id}`).set('Cookie', sessionCookie(1)).send({ packed_quantity: 2 });
+    expect(partial.status).toBe(200);
+    expect(partial.body.item).toMatchObject({ packed_quantity: 2, checked: 0 });
+    const full = await request(server).put(`/api/trips/${tripId}/packing/${id}`).set('Cookie', sessionCookie(1)).send({ packed_quantity: 3 });
+    expect(full.body.item).toMatchObject({ packed_quantity: null, checked: 1 });
+    const negative = await request(server).put(`/api/trips/${tripId}/packing/${id}`).set('Cookie', sessionCookie(1)).send({ packed_quantity: -1 });
+    expect(negative.status).toBe(400);
+  });
+
   it('whitespace-only bag name still gets the bespoke 400', async () => {
     const res = await request(server).post(`/api/trips/${tripId}/packing/bags`).set('Cookie', sessionCookie(1)).send({ name: '   ' });
     expect(res.status).toBe(400);

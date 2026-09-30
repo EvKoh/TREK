@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Не вдалося визначити ваше місцезнаходження.',
   'map.location.timeout': 'Визначення місцезнаходження тривало надто довго. Спробуйте ще раз просто неба.',
   'map.overview.show': 'Показати всю подорож',
+  'map.lock.lock': 'Зафіксувати вигляд карти',
+  'map.lock.unlock': 'Дозволити карті стежити за вибором',
   'map.overview.hide': 'Сховати всю подорож',
   'map.overview.total': 'Загальна відстань',
   'map.attribution': 'Джерела карти',

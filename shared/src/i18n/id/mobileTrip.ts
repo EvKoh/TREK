@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Di peta',
   'mobileTrip.profileDriving': 'Berkendara',
   'mobileTrip.profileWalking': 'Jalan kaki',
+  'mobileTrip.profileCycling': 'Bersepeda',
   'mobileTrip.renameDay': 'Ubah nama hari',
   'mobileTrip.resBadge': 'Reservasi',
   'mobileTrip.showOnMap': 'Tampilkan di peta',

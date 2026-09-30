@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState, type ReactNode } from 'react'
 import {
-  ArrowDownUp, CalendarDays, Check, Download, Filter, GanttChart, Layers, LayoutGrid, Plane, Plus, RotateCcw, Rows3,
+  ArrowDownUp, CalendarDays, Check, Download, FileSpreadsheet, Filter, GanttChart, Layers, LayoutGrid, Plane, Plus, RotateCcw, Rows3,
   Search, SlidersHorizontal, Tag, X,
 } from 'lucide-react'
 import { useTranslation } from '../../../i18n'
@@ -53,6 +53,8 @@ export interface BookingsHeaderProps {
   onTransitApart?: () => void
   viewIsDefault: boolean
   onResetView: () => void
+  /** Downloads what is shown as a CSV (#1360). */
+  onExport?: () => void
 }
 
 /** A 36 px control on the bar, in the card colour so it reads on the bar's tint. */
@@ -118,6 +120,11 @@ export default function BookingsHeader(p: BookingsHeaderProps) {
             ))}
           </div>
           <ViewOptions {...p} />
+          {p.onExport && (
+            <Tooltip label={t('reservations.exportCsv')}>
+              <button type="button" onClick={p.onExport} aria-label={t('reservations.exportCsv')} className={BAR_BTN}><FileSpreadsheet size={15} strokeWidth={2} /></button>
+            </Tooltip>
+          )}
         </>
       )}
 

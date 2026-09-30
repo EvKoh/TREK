@@ -196,3 +196,30 @@ export function sortItemsByName<T extends { name: string }>(items: T[], locale?:
     return collator.compare(a.name.trim(), b.name.trim())
   })
 }
+
+/** The packed count an item shows (#2296): all of it once ticked, its partial count before that. */
+export function packedOf(item: { checked?: number | boolean; packed_quantity?: number | null; quantity?: number }): number {
+  return item.checked ? (item.quantity || 1) : (item.packed_quantity ?? 0)
+}
+
+type SharingItem = { category?: string | null; name: string; is_private?: number; owner_id?: number | null; recipients?: { user_id: number }[] }
+
+/**
+ * The tier a new item takes in the given category (#2241). In "my list" a category
+ * whose own items are all shared with the very same people shares the next one with
+ * them too, so a list kept for two does not need every new line shared by hand. Any
+ * difference between the items, or one kept to myself, and the new item stays mine
+ * alone: sharing is only ever carried over when the category is unanimous about it.
+ */
+export function newItemSharing(
+  items: SharingItem[],
+  category: string,
+  view: 'common' | 'personal',
+  userId: number | null | undefined,
+): { visibility: 'common' | 'personal' | 'shared'; recipient_ids?: number[] } {
+  if (view !== 'personal') return { visibility: 'common' }
+  const own = items.filter(i => i.category === category && i.name !== PACKING_PLACEHOLDER_NAME && !!i.is_private && i.owner_id === userId)
+  const sets = own.map(i => (i.recipients || []).map(r => r.user_id).sort((a, b) => a - b).join(','))
+  if (!own.length || !sets[0] || sets.some(set => set !== sets[0])) return { visibility: 'personal' }
+  return { visibility: 'shared', recipient_ids: sets[0].split(',').map(Number) }
+}

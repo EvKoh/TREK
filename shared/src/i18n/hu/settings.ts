@@ -340,6 +340,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'A Költségek részben az összegek csak a megjelenítéshez lesznek erre a pénznemre átszámítva – az eredeti összegek nem változnak.',
   'settings.currencyTrip': 'Az utazás pénzneme',
+  'settings.placeLanguage': 'Helynevek',
+  'settings.placeLanguageApp': 'Ugyanaz, mint az alkalmazás',
+  'settings.placeLanguageHint': 'Ezen a nyelven válaszol a helykeresés, a javaslatok és a címek. Ha egy helynek nincs neve ezen a nyelven, a helyi neve jelenik meg.',
   'settings.passkey.title': 'Passkey-k',
   'settings.passkey.description':
     'Jelentkezz be gyorsabban és adathalászat-állóan egy passkey-jel — ujjlenyomattal, arccal, PIN-kóddal vagy hardveres kulccsal. A jelszavad tartalékként megmarad.',
@@ -484,6 +487,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Indítás',
+  'settings.dayDateFirst': 'Dátum elöl a napok fejlécében',
+  'settings.compactUnplanned': 'Kompakt jelölők a nem tervezett helyekhez',
+  'settings.compactUnplannedHint': 'Az egyik napra sem beosztott helyek kis, fotó nélküli jelölőként jelennek meg, így a tervezett megállók kiemelkednek.',
+  'settings.dayDateFirstHint': 'Minden nap a naptári dátumával kezdődik, mellette pedig az „1. nap” felirat vagy a nap saját címe látható.',
   'settings.startPage': 'Kezdőoldal',
   'settings.startPageDashboard': 'Irányítópult',
   'settings.startPageActiveTrip': 'Aktív utazás',

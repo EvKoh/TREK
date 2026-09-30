@@ -40,6 +40,7 @@ import { collapsedDayDates } from '../../components/Map/dawarichTrail'
 import { useRoadtripCorridor } from '../../components/Roadtrip/useRoadtripCorridor'
 import { PHONE_CORRIDOR_OPTIONS } from '../../components/Roadtrip/corridorSearchModel'
 import { useRoadtripVias } from '../../components/Roadtrip/useRoadtripVias'
+import { useDayClear } from './useDayClear'
 import { useRefuelSearch } from '../../components/Roadtrip/useRefuelSearch'
 import type { RefuelCandidate } from '../../components/Roadtrip/refuelSuggestion'
 import { useFollowTrack } from '../../components/Roadtrip/useFollowTrack'
@@ -78,7 +79,9 @@ import {
   toggleConnectionId, toggleAllConnections as flipAllConnectionsMode,
   type StoredConnections,
 } from '../../utils/connectionsVisibility'
+import { usePlaceLanguage } from '../../hooks/usePlaceLanguage'
 import { plannedPlaceIds, plannedPlaceIdsForDay } from '../../utils/plannedPlaces'
+import { pendingStayPlaceIds } from '../../utils/pendingStays'
 import { useDayDelete } from './useDayDelete'
 import { useDayAdd } from './useDayAdd'
 
@@ -103,6 +106,7 @@ export function useTripPlanner() {
   const navigate = useNavigate()
   const toast = useToast()
   const { t, language, locale } = useTranslation()
+  const placeLang = usePlaceLanguage()
   const { settings } = useSettingsStore()
   const roadtripSettings = useRoadtripSettings(s => s, tripId)
   // trip-page plugins mount as tabs inside this trip planner (tripId-scoped).
@@ -319,7 +323,7 @@ export function useTripPlanner() {
   const [stayPickerDayId, setStayPickerDayId] = useState<number | null>(null)
   const [showPlaceForm, setShowPlaceForm] = useState<boolean>(false)
   const [editingPlace, setEditingPlace] = useState<Place | null>(null)
-  const [prefillCoords, setPrefillCoords] = useState<{ lat: number; lng: number; name?: string; address?: string; website?: string; phone?: string; osm_id?: string; stop_type?: RoadtripStopType | null; duration_minutes?: number } | null>(null)
+  const [prefillCoords, setPrefillCoords] = useState<{ lat: number; lng: number; name?: string; address?: string; website?: string; phone?: string; osm_id?: string; stop_type?: RoadtripStopType | null; duration_minutes?: number; category?: string } | null>(null)
   const [editingAssignmentId, setEditingAssignmentId] = useState<number | null>(null)
   // Day context of the open form. Set only by the day-scoped entry points (the
   // mobile day toolbar, a long-press on the mobile map); every other opener
@@ -530,6 +534,23 @@ export function useTripPlanner() {
       return next
     })
   }, [tripId])
+  // A locked map stays where the traveller put it (#2010): picking a day or a place no
+  // longer zooms or pans it. Remembered per browser, like the other view toggles; the
+  // first frame of a trip still fits, or the map would open on nothing.
+  const [mapLocked, setMapLocked] = useState<boolean>(() => {
+    try { return localStorage.getItem('trek:map-locked') === '1' } catch { return false }
+  })
+  const mapLockedRef = useRef(mapLocked)
+  mapLockedRef.current = mapLocked
+  const isMobileRef = useRef(isMobile)
+  isMobileRef.current = isMobile
+  const toggleMapLocked = useCallback(() => {
+    setMapLocked(prev => {
+      const next = !prev
+      try { localStorage.setItem('trek:map-locked', next ? '1' : '0') } catch { /* private mode keeps it for the session */ }
+      return next
+    })
+  }, [])
   // The recorded route from Dawarich (#2279), per trip and per session for the
   // same reason as the overview above: it answers "what actually happened on
   // this trip", which is a question about one trip rather than a preference.
@@ -693,6 +714,7 @@ export function useTripPlanner() {
 
   const [expandedDayIds, setExpandedDayIds] = useState<Set<number> | null>(null)
 
+  const compactUnplanned = useSettingsStore(s => s.settings.map_compact_unplanned === true)
   const mapPlaces = useMemo(() => {
     // Build set of place IDs assigned to collapsed days
     const hiddenPlaceIds = new Set<number>()
@@ -725,6 +747,8 @@ export function useTripPlanner() {
         : plannedPlaceIds({ assignments, accommodations: tripAccommodations, reservations }))
       : null
 
+    const compactIds = compactUnplanned ? plannedPlaceIds({ assignments, accommodations: tripAccommodations, reservations }) : null
+    const pendingIds = pendingStayPlaceIds(tripAccommodations, reservations)
     return places.filter(p => {
       if (!p.lat || !p.lng) return false
       if (placesFilter === 'tracks' && !p.route_geometry) return false
@@ -740,10 +764,15 @@ export function useTripPlanner() {
       if (placesFilter === 'unplanned' && plannedIds && plannedIds.has(p.id)) return false
       if (placesFilter === 'planned' && plannedIds && !plannedIds.has(p.id)) return false
       return true
+    }).map(p => {
+      // How the map tells a place apart (#2024, #2281); untouched places keep their identity.
+      const compact = !!compactIds && !compactIds.has(p.id)
+      const pending = pendingIds.has(p.id)
+      return compact || pending ? { ...p, _compact: compact, _pending: pending } : p
     })
-  }, [places, placesCategoryFilter, placesFilter, assignments, expandedDayIds, selectedDayId, days, tripAccommodations, reservations])
+  }, [places, placesCategoryFilter, placesFilter, assignments, expandedDayIds, selectedDayId, days, tripAccommodations, reservations, compactUnplanned])
 
-  const { route, routeSegments, routeVias, routeInfo, setRoute, setRouteInfo, updateRouteForDay } = useRouteCalculation({ assignments } as any, selectedDayId, routeShown, routeProfile, tripAccommodations)
+  const { route, routeWalking, routeSegments, routeVias, routeInfo, setRoute, setRouteInfo, updateRouteForDay } = useRouteCalculation({ assignments } as any, selectedDayId, routeShown, routeProfile, tripAccommodations)
   // Road trip mode already draws the whole trip its own way, so the overview stands
   // down there rather than drawing a second set of lines over it.
   const overviewActive = overviewShown && !roadtripMode
@@ -834,7 +863,8 @@ export function useTripPlanner() {
 
   const handleSelectDay = useCallback((dayId: number | null, skipFit?: boolean) => {
     tripActions.setSelectedDay(dayId)
-    if (!skipFit) setFitKey(k => k + 1)
+    // The lock is a desktop control; the phone always follows the day.
+    if (!skipFit && !(mapLockedRef.current && !isMobileRef.current)) setFitKey(k => k + 1)
     setMobileSidebarOpen(null)
     updateRouteForDay(dayId)
   }, [updateRouteForDay])
@@ -899,17 +929,17 @@ export function useTripPlanner() {
     setShowPlaceForm(true)
     try {
       const { mapsApi } = await import('../../api/client')
-      const data = await mapsApi.reverse(lat, lng, language)
+      const data = await mapsApi.reverse(lat, lng, placeLang)
       if (data.name || data.address) {
         setPrefillCoords(prev => prev ? { ...prev, name: data.name || '', address: data.address || '' } : prev)
       }
     } catch { /* best effort */ }
-  }, [language])
+  }, [placeLang])
 
   // Open the Add-Place form pre-filled from an OSM "explore" POI marker — all the
   // data already comes from the POI, so no reverse-geocode is needed.
   const openAddPlaceFromPoi = useCallback((
-    poi: { lat: number; lng: number; name: string; address: string | null; website: string | null; phone: string | null; osm_id: string },
+    poi: { lat: number; lng: number; name: string; address: string | null; website: string | null; phone: string | null; osm_id: string; category?: string | null; poi_type?: string | null },
     dayId?: number | null,
     /** Index within that day. Omitted, the place is appended, which is what every caller did before. */
     position?: number | null,
@@ -933,6 +963,8 @@ export function useTripPlanner() {
       // A plugin POI's `plugin:<pluginId>:<id>` rides along as it is. The server never
       // takes that prefix for a Google place id, so the details column makes no Google call.
       osm_id: poi.osm_id,
+      // What the map search filed it under, so the form can preselect a category (#2282).
+      category: poi.poi_type || poi.category || undefined,
       stop_type: stop?.stopType ?? null,
       duration_minutes: stop?.dwellMinutes,
     })
@@ -2593,6 +2625,10 @@ export function useTripPlanner() {
     canEditDays: can('day_edit', trip), t, locale, toast, onDeleted: afterDayDeleted,
   })
 
+  const dayClear = useDayClear({
+    tripId, days, canEditDays: can('day_edit', trip), t, locale, toast, roadtripVias, updateRouteForDay, pushUndo,
+  })
+
   const handleSaveReservation = async (data: Record<string, string | number | null> & { title: string }) => {
     try {
       // Imported hotel with a reviewed address but no existing place picked: match
@@ -2959,17 +2995,19 @@ export function useTripPlanner() {
     bookingDetail, openBookingDetail, openBookingFromDayList, closeBookingDetail, bookingDetailEditor, bookingDetailChangeRoute, showBookingOnMap, isBookingOnMap,
     reservationPrefill, transportPrefill, importReviewActive, startImportReview, advanceImportReview,
     receiptExpense, clearReceiptExpense: () => setReceiptExpense(null),
+    mapLocked, toggleMapLocked,
     routeShown, setRouteShown, autoShowRoute, transitRoutesShown, routeProfile, setRouteProfile, routeVias, fitKey, setFitKey,
     mobileSidebarOpen, setMobileSidebarOpen, mobilePlanScrollTopRef, mobilePlacesScrollTopRef,
     deletePlaceId, setDeletePlaceId, deletePlaceIds, setDeletePlaceIds, deletePlaceNote, deletePlacesNote,
     visibleConnections, roadtripConnections, toggleConnection, allConnectionsShown, toggleAllConnections, mapTransportDetail, setMapTransportDetail,
     isMobile, isTouch,
     expandedDayIds, setExpandedDayIds, mapPlaces,
-    route, routeSegments, routeInfo, setRoute, setRouteInfo, updateRouteForDay,
+    route, routeWalking, routeSegments, routeInfo, setRoute, setRouteInfo, updateRouteForDay,
     handleSelectDay, handlePlaceClick, handleMarkerClick, handleMapClick, handleMapContextMenu, openAddPlaceFromPoi, handlePoiClick,
     handleSavePlace, openPlaceEditor, handleDeletePlace, confirmDeletePlace, confirmDeletePlaces, confirmChangeCategory,
     handleAssignToDay, handleMoveToDay, handleRemoveAssignment, handleReorder, handleReorderDays, handleAddDay, dayAdd, handleUpdateDayTitle,
     ...dayDelete,
+    ...dayClear,
     handleSaveReservation, handleSaveTransport, handleDeleteReservation,
     selectedPlace, dayOrderMap, dayPlaces,
     mapTileUrl, fontStyle, splashDone,

@@ -23,6 +23,7 @@ import { noAccess, permissionDenied } from '../../mcp/tools/_shared';
 import { DatabaseService } from '../database/database.service';
 import { MapsService } from '../maps/maps.service';
 import { PlacesService } from './places.service';
+import { isUpdateConflict } from '../common/conflictResult';
 import { isDirectionsUrl } from './maps-dir.helpers';
 
 function parseId(value: string | string[]): number | null {
@@ -212,6 +213,33 @@ export class PlacesMcp {
   }
 
   @Tool({
+    name: 'set_place_image_from_file',
+    description: 'Use a picture already attached in the trip (a jpg, png, gif or webp from list_files) as the image of the place. The file is copied, so deleting the attachment later keeps the image.',
+    inputSchema: {
+      tripId: z.number().int().positive(),
+      placeId: z.number().int().positive(),
+      fileId: z.number().int().positive().describe('Id of a trip file that is an image'),
+    },
+    annotations: TOOL_ANNOTATIONS_WRITE,
+    access: { group: 'places', mode: 'write' },
+  })
+  async setPlaceImageFromFile(
+    { tripId, placeId, fileId }: { tripId: number; placeId: number; fileId: number },
+    ctx: McpContext,
+  ) {
+    if (this.auth.isDemoUser(ctx.userId)) return demoDenied();
+    if (!this.db.canAccessTrip(tripId, ctx.userId)) return noAccess();
+    if (!this.guards.hasTripPermission('place_edit', tripId, ctx.userId)) return permissionDenied();
+    const result = await this.places.setImageFromFile(String(tripId), String(placeId), fileId);
+    if (result === 'not_found') return errorResult('File not found.');
+    if (result === 'not_image') return errorResult('That file is not a jpg, png, gif or webp image.');
+    if (result === 'too_large') return errorResult('That image is too large.');
+    if (!result || isUpdateConflict(result)) return errorResult('Place not found.');
+    this.guards.safeBroadcast(tripId, 'place:updated', { place: result });
+    return ok({ place: result });
+  }
+
+  @Tool({
     name: 'rate_place',
     description: "Set or clear the current user's 1-5 star rating on a trip place (#1435). Every trip member rates independently; the place shows the average. Omit rating (or pass null) to remove the user's vote. Use the ratings to capture the user's preferences and shape the itinerary around highly-rated places.",
     inputSchema: {
@@ -380,6 +408,7 @@ export class PlacesMcp {
       const imported = this.places.importGpx(String(input.tripId), Buffer.from(input.gpx, 'utf8'), { importWaypoints: input.importWaypoints, importRoutes: input.importRoutes, importTracks: input.importTracks, defaultName: input.name });
       if (!imported) return errorResult('No matching places found in GPX.');
       for (const place of imported.places) this.guards.safeBroadcast(input.tripId, 'place:created', { place });
+      if (input.enrich) this.places.enrichImportedFilePlaces(String(input.tripId), ctx.userId, imported.places);
       return ok(imported);
     } catch {
       return errorResult('Could not import GPX. Check the XML and coordinates.');

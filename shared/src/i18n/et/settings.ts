@@ -350,6 +350,10 @@ const settings: TranslationStrings = {
   'settings.currency': 'Kuvamisvaluuta',
   'settings.currencyHint': 'Kulude summad teisendatakse sellesse valuutasse ainult kuvamiseks — algsummad ei muutu.',
   'settings.currencyTrip': 'Reisi valuuta',
+  'settings.placeLanguage': 'Kohtade nimed',
+  'settings.placeLanguageApp': 'Sama mis rakendusel',
+  'settings.placeLanguageHint':
+    'Keel, milles vastavad kohaotsing, soovitused ja aadressid. Kui kohal pole selles keeles nime, näidatakse selle kohalikku nime.',
   'settings.passkey.title': 'Pääsuvõtmed',
   'settings.passkey.description':
     'Logi kiiremini ja andmepüügi suhtes turvalisemalt sisse pääsuvõtmega — sõrmejälje, näotuvastuse, PIN-i või riistvaravõtmega. Parool jääb varuvariandiks.',
@@ -489,6 +493,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Keel ja piirkond',
   'settings.general.travelMap': 'Reisimine ja kaart',
   'settings.general.startup': 'Käivitamine',
+  'settings.dayDateFirst': 'Kuupäev päevapealkirjades eespool',
+  'settings.compactUnplanned': 'Kompaktsed tähised planeerimata kohtadele',
+  'settings.compactUnplannedHint':
+    'Kohad, mis pole ühegi päeva plaanis, kuvatakse väikeste fotota tähistena, et planeeritud peatused esile tõuseksid.',
+  'settings.dayDateFirstHint':
+    'Alusta iga päeva kalendrikuupäevaga ja näita selle kõrval „1. päev” või päeva enda pealkirja.',
   'settings.startPage': 'Avaleht',
   'settings.startPageDashboard': 'Ülevaade',
   'settings.startPageActiveTrip': 'Aktiivne reis',

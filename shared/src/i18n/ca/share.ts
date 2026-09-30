@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Equipatge',
   'share.permBudget': 'Pressupost',
   'share.permCollab': 'Xat',
+  'share.options': 'Opcions',
+  'share.optTravelOnly': 'Només transport i allotjament',
+  'share.optTravelOnlyHint': 'Mostra només transport i allotjament, sense activitats, notes del dia ni dies buits',
+  'share.optHideImages': 'Sense fotos',
+  'share.optHideImagesHint': 'Omet les fotos dels llocs a la pàgina compartida',
 };
 export default share;

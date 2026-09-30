@@ -341,6 +341,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Belopp under Kostnader visas omräknade till denna valuta endast för visning – de ursprungliga beloppen ändras inte.',
   'settings.currencyTrip': 'Resans valuta',
+  'settings.placeLanguage': 'Platsnamn',
+  'settings.placeLanguageApp': 'Samma som appen',
+  'settings.placeLanguageHint': 'Språket som platssökning, förslag och adresser svarar på. Om en plats saknar namn på det språket visas dess lokala namn.',
   'settings.passkey.title': 'Inloggningsnycklar',
   'settings.passkey.description':
     'Logga in snabbare och med bättre skydd mot nätfiske med en inloggningsnyckel – ditt fingeravtryck, ditt ansikte, din PIN-kod eller en hårdvarunyckel. Ditt lösenord finns kvar som reserv.',
@@ -482,6 +485,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Start',
+  'settings.dayDateFirst': 'Datum först i dagsrubriker',
+  'settings.compactUnplanned': 'Kompakta markörer för oplanerade platser',
+  'settings.compactUnplannedHint': 'Platser som inte är planerade på någon dag visas som små markörer utan foto, så att de planerade stoppen sticker ut.',
+  'settings.dayDateFirstHint': 'Inled varje dag med dess kalenderdatum och visa ”Dag 1” eller dagens egen titel bredvid.',
   'settings.startPage': 'Startsida',
   'settings.startPageDashboard': 'Översikt',
   'settings.startPageActiveTrip': 'Aktiv resa',

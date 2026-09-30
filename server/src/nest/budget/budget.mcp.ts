@@ -432,7 +432,7 @@ export class BudgetMcp {
 
   @Tool({
     name: 'create_settlement',
-    description: "Record a settle-up payment: from_user_id paid to_user_id the given amount to settle shared expenses. The amount is in the trip's base currency unless `currency` says otherwise. Use get_settlement_summary first to find who owes whom and how much. When the server has no exchange rate for a foreign `currency`, the payment counts in no balance and is listed under `unconverted` in get_settlement_summary until freeze_budget_rates pins one.",
+    description: "Record a settle-up payment: from_user_id paid to_user_id the given amount to settle shared expenses, optionally with a note. The amount is in the trip's base currency unless `currency` says otherwise. Use get_settlement_summary first to find who owes whom and how much. When the server has no exchange rate for a foreign `currency`, the payment counts in no balance and is listed under `unconverted` in get_settlement_summary until freeze_budget_rates pins one.",
     inputSchema: {
       tripId: z.number().int().positive(),
       from_user_id: z.number().int().positive().describe('User ID of the member who paid'),
@@ -440,13 +440,14 @@ export class BudgetMcp {
       amount: z.number().positive().describe('Amount paid, in `currency`'),
       currency: z.string().max(10).nullable().optional().describe("ISO currency code the payment was made in (e.g. \"USD\"); defaults to the trip currency. Its FX rate is frozen now, so the transfer keeps cancelling its expense when live rates drift."),
       settled_at: z.string().max(40).nullable().optional().describe('Day the payment actually happened, YYYY-MM-DD. Omitted means no day is stored and the ledger files the payment under the day it was recorded.'),
+      note: z.string().max(500).nullable().optional().describe('A short note on the payment, such as how or where it was paid'),
     },
     annotations: TOOL_ANNOTATIONS_NON_IDEMPOTENT,
     when: budgetAddonOn,
     access: { group: 'budget', mode: 'write' },
   })
   async createSettlement(
-    { tripId, from_user_id, to_user_id, amount, currency, settled_at }: { tripId: number; from_user_id: number; to_user_id: number; amount: number; currency?: string | null; settled_at?: string | null },
+    { tripId, from_user_id, to_user_id, amount, currency, settled_at, note }: { tripId: number; from_user_id: number; to_user_id: number; amount: number; currency?: string | null; settled_at?: string | null; note?: string | null },
     ctx: McpContext,
   ) {
     if (this.isDemoUser(ctx.userId)) return demoDenied();
@@ -454,7 +455,7 @@ export class BudgetMcp {
     if (!this.guards.hasTripPermission('budget_edit', tripId, ctx.userId)) return permissionDenied();
     // Freeze-then-write composite, same as the REST path: the rate for the display
     // currency is frozen at entry time (#1445).
-    const settlement = await this.budget.createSettlement(tripId, { from_user_id, to_user_id, amount, currency, settled_at }, ctx.userId);
+    const settlement = await this.budget.createSettlement(tripId, { from_user_id, to_user_id, amount, currency, settled_at, note }, ctx.userId);
     if (!settlement) return errorResult('Settlement not found.');
     this.guards.safeBroadcast(tripId, 'budget:settlement-created', { settlement });
     return ok({ settlement });
@@ -462,7 +463,7 @@ export class BudgetMcp {
 
   @Tool({
     name: 'update_settlement',
-    description: 'Update a recorded settle-up payment (who paid, who received, the amount and the currency it was made in). Every field is a full replace, so restate the ones that stay the same. When the server has no exchange rate for a foreign `currency`, the payment counts in no balance and is listed under `unconverted` in get_settlement_summary until freeze_budget_rates pins one.',
+    description: 'Update a recorded settle-up payment (who paid, who received, the amount, the currency it was made in and its note). Every field is a full replace, so restate the ones that stay the same. When the server has no exchange rate for a foreign `currency`, the payment counts in no balance and is listed under `unconverted` in get_settlement_summary until freeze_budget_rates pins one.',
     inputSchema: {
       tripId: z.number().int().positive(),
       settlementId: z.number().int().positive(),
@@ -471,13 +472,14 @@ export class BudgetMcp {
       amount: z.number().positive().describe('Amount paid, in `currency`'),
       currency: z.string().max(10).nullable().optional().describe('ISO currency code the payment was made in (e.g. "USD"); null puts it back in the trip currency. Omit to leave it as recorded, which also keeps the rate frozen at settle time.'),
       settled_at: z.string().max(40).nullable().optional().describe('Date the payment actually happened, YYYY-MM-DD. Omit to leave it as recorded.'),
+      note: z.string().max(500).nullable().optional().describe('A short note on the payment; null or blank clears it. Omit to leave it as recorded.'),
     },
     annotations: TOOL_ANNOTATIONS_WRITE,
     when: budgetAddonOn,
     access: { group: 'budget', mode: 'write' },
   })
   async updateSettlement(
-    { tripId, settlementId, from_user_id, to_user_id, amount, currency, settled_at }: { tripId: number; settlementId: number; from_user_id: number; to_user_id: number; amount: number; currency?: string | null; settled_at?: string | null },
+    { tripId, settlementId, from_user_id, to_user_id, amount, currency, settled_at, note }: { tripId: number; settlementId: number; from_user_id: number; to_user_id: number; amount: number; currency?: string | null; settled_at?: string | null; note?: string | null },
     ctx: McpContext,
   ) {
     if (this.isDemoUser(ctx.userId)) return demoDenied();
@@ -485,7 +487,7 @@ export class BudgetMcp {
     if (!this.guards.hasTripPermission('budget_edit', tripId, ctx.userId)) return permissionDenied();
     // Freeze-then-write composite, same as the REST path: an edit that leaves the
     // currency alone keeps the rate frozen at settle time.
-    const settlement = await this.budget.updateSettlement(settlementId, tripId, { from_user_id, to_user_id, amount, currency, settled_at });
+    const settlement = await this.budget.updateSettlement(settlementId, tripId, { from_user_id, to_user_id, amount, currency, settled_at, note });
     if (!settlement) return errorResult('Settlement not found.');
     this.guards.safeBroadcast(tripId, 'budget:settlement-updated', { settlement });
     return ok({ settlement });

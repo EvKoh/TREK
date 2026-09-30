@@ -107,6 +107,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'เช่น อาหารเย็น ของที่ระลึก น้ำมัน…',
   'costs.note': 'หมายเหตุ',
   'costs.notePlaceholder': 'คุ้มครองอะไร ใครเป็นหนี้อะไรคืน...',
+  'costs.paymentNotePlaceholder': 'จ่ายเงินสด, โอนผ่านธนาคาร...',
   'costs.addNote': 'เพิ่มบันทึก',
   'costs.showNote': 'แสดงบันทึก',
   'costs.hideNote': 'ซ่อนบันทึก',

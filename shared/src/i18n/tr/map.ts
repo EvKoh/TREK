@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Konumunuz belirlenemedi.',
   'map.location.timeout': 'Konum belirleme çok uzun sürdü. Gökyüzünü daha iyi gören bir yerde tekrar deneyin.',
   'map.overview.show': 'Tüm geziyi göster',
+  'map.lock.lock': 'Harita görünümünü kilitle',
+  'map.lock.unlock': 'Harita seçimi takip etsin',
   'map.overview.hide': 'Tüm geziyi gizle',
   'map.overview.total': 'Toplam mesafe',
   'map.attribution': 'Harita kaynakları',

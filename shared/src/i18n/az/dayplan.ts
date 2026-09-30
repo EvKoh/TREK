@@ -88,6 +88,8 @@ const dayplan: TranslationStrings = {
 
   'dayplan.pdf': 'PDF',
   'dayplan.pdfTooltip': 'Günlük planı PDF kimi ixrac et',
+  'dayplan.pdfMine': 'Mənim planım PDF kimi',
+  'dayplan.pdfMineSub': 'Yalnız iştirak etdiyiniz fəaliyyətlər və rezervasiyalar',
   'dayplan.gpxTooltip':
     'Oflayn xəritələr və GPS cihazları üçün GPX kimi ixrac et',
   'dayplan.gpxAll': 'Bütün səyahət',
@@ -117,6 +119,14 @@ const dayplan: TranslationStrings = {
   'dayplan.deleteDay': 'Günü sil',
   'dayplan.deleteDayTitle': '{day} silinsin?',
   'dayplan.deleteDayBody': 'Gün səyahətdən silinəcək. Bunu geri qaytarmaq mümkün deyil.',
+  'dayplan.excludeFromRoute': 'Marşruta daxil etmə',
+  'dayplan.includeInRoute': 'Yenidən marşruta əlavə et',
+  'dayplan.offRoute': 'Marşrutdan kənar',
+  'dayplan.offRouteHint': 'Gündə və xəritədə qalır, lakin marşrut onu buraxır',
+  'dayplan.clearDay': 'Günü təmizlə',
+  'dayplan.clearDayTitle': '{day} təmizlənsin?',
+  'dayplan.clearDayBody':
+    'Bütün məkanlar bu gündən çıxarılır. Məkanlar səyahətdə qalır, gün isə öz qeydlərini və rezervasiyalarını saxlayır.',
   'dayplan.deleteDayEmpty': 'Bu gün üçün heç nə planlaşdırılmayıb.',
   'dayplan.impactPlaces': 'Planlaşdırılmış məkanlar: {count}',
   'dayplan.impactPlacesHint': 'Onlar məkanlar siyahısında qalır.',

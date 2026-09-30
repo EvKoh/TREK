@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo, type ReactNode } from 'react'
 import { useParams } from 'react-router'
-import { Plane, Train, Car, Ship, Bus, Sailboat, Bike, CarTaxiFront, Route, X, Trash2, ChevronUp, ChevronDown, CalendarDays, type LucideIcon } from 'lucide-react'
+import { Plane, Train, Car, Ship, Bus, Sailboat, CableCar, Bike, CarTaxiFront, Route, X, Trash2, ChevronUp, ChevronDown, CalendarDays, type LucideIcon } from 'lucide-react'
 import ConfirmDialog from '../shared/ConfirmDialog'
 import CustomSelect from '../shared/CustomSelect'
 import { BookingCodeInput } from '../shared/BookingCode'
@@ -31,7 +31,7 @@ import { fs, Eyebrow, type StatusTone } from './bookings/bookingParts'
 import { typeInfo } from './bookings/bookingsModel'
 import { typeToCostCategory } from '@trek/shared'
 
-const TRANSPORT_TYPES = ['flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'transit', 'transport_other'] as const
+const TRANSPORT_TYPES = ['flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'cable_car', 'transit', 'transport_other'] as const
 type TransportType = typeof TRANSPORT_TYPES[number]
 
 interface EndpointPick {
@@ -142,6 +142,7 @@ const TYPE_OPTIONS: { value: TransportType; labelKey: string; Icon: LucideIcon }
   { value: 'bicycle',         labelKey: 'reservations.type.bicycle',         Icon: Bike },
   { value: 'cruise',          labelKey: 'reservations.type.cruise',          Icon: Ship },
   { value: 'ferry',           labelKey: 'reservations.type.ferry',           Icon: Sailboat },
+  { value: 'cable_car',       labelKey: 'reservations.type.cable_car',       Icon: CableCar },
   { value: 'transport_other', labelKey: 'reservations.type.transport_other', Icon: Route },
 ]
 

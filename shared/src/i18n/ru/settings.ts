@@ -338,6 +338,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Суммы в разделе «Расходы» отображаются в этой валюте только для просмотра — исходные суммы не изменяются.',
   'settings.currencyTrip': 'Валюта поездки',
+  'settings.placeLanguage': 'Названия мест',
+  'settings.placeLanguageApp': 'Как в приложении',
+  'settings.placeLanguageHint':
+    'Язык, на котором отвечают поиск мест, подсказки и адреса. Если у места нет названия на этом языке, показывается местное название.',
   'settings.passkey.title': 'Passkeys',
   'settings.passkey.description':
     'Входите быстрее и с защитой от фишинга с помощью passkey — отпечатка пальца, лица, PIN-кода или аппаратного ключа. Ваш пароль остаётся как резервный способ.',
@@ -485,6 +489,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Язык и регион',
   'settings.general.travelMap': 'Карта и путешествия',
   'settings.general.startup': 'Запуск',
+  'settings.dayDateFirst': 'Дата первой в заголовках дней',
+  'settings.compactUnplanned': 'Компактные метки для незапланированных мест',
+  'settings.compactUnplannedHint':
+    'Места, не включённые ни в один день, отображаются маленькими метками без фото, чтобы запланированные остановки выделялись.',
+  'settings.dayDateFirstHint':
+    'Начинать каждый день с календарной даты и показывать рядом «День 1» или собственное название дня.',
   'settings.startPage': 'Стартовая страница',
   'settings.startPageDashboard': 'Панель управления',
   'settings.startPageActiveTrip': 'Активная поездка',

@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Zobrazit celou cestu',
   'places.filterTracks': 'Trasy',
   'places.filterByRating': 'Filtrovat podle hodnocení',
+  'places.filterByLocation': 'Filtrovat podle země nebo regionu',
+  'places.allLocations': 'Všechny země',
   'places.filterShow': 'Zobrazit',
   'places.clearSearch': 'Vymazat hledání',
   'places.yourRating': 'Tvé hodnocení',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategorie',
   'places.noCategory': 'Bez kategorie',
   'places.newCategory': 'Nová kategorie',
+  'places.openInMaps': 'Otevřít v mapách',
   'places.categoryNamePlaceholder': 'Název kategorie',
   'places.formTime': 'Čas',
   'places.startTime': 'Od',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Hledat místa...',
   'places.mapsSearchError': 'Hledání místa se nezdařilo.',
   'places.searchGoogleInstead': 'Není to správné místo? Hledat na Googlu',
+  'places.nearby': 'Místa poblíž tohoto špendlíku',
+  'places.nearbyNone': 'Poblíž tohoto špendlíku nebylo nic nalezeno',
   'places.loadingDetails': 'Načítání podrobností místa…',
   'places.osmHint':
     'Používáte hledání přes OpenStreetMap (bez fotek a hodnocení). Pro plné detaily přidejte Google API klíč v nastavení.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Obohatit místa přes Google',
   'places.enrichOnImportHint':
     'Vyhledá každé importované místo a doplní fotky, adresu a kontakty. Vyžaduje klíč Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Poté každý importovaný bod vyhledá na Google a doplní jeho fotku, adresu, web a telefon. Cesty a trasy zůstanou beze změny.',
   'places.uploadImage': 'Nahrát obrázek',
   'places.changeImage': 'Změnit obrázek',
   'places.removeImage': 'Odebrat obrázek',
+  'places.chooseImage': 'Vybrat obrázek',
+  'places.uploadFromDevice': 'Nahrát ze zařízení',
+  'places.fromAttachedFiles': 'Z přiložených souborů',
   'places.imageUploadError': 'Obrázek se nepodařilo nahrát',
   'places.imageRemoveError': 'Obrázek se nepodařilo odebrat',
 };

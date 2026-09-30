@@ -293,6 +293,23 @@ describe('Budget e2e (real auth guard + temp SQLite, real budget SQL)', () => {
     expect(row).toEqual({ settled_at: null });
   });
 
+  it('keeps a note on a settlement, leaves it alone when omitted and clears it on blank (#2340)', async () => {
+    const created = await request(server)
+      .post(`/api/trips/${tripId}/budget/settlements`)
+      .set('Cookie', sessionCookie(1))
+      .send({ from_user_id: 2, to_user_id: 1, amount: 10, note: '  Cash at the airport  ' });
+    expect(created.status).toBe(201);
+    expect(created.body.settlement.note).toBe('Cash at the airport');
+    const url = `/api/trips/${tripId}/budget/settlements/${created.body.settlement.id}`;
+
+    const kept = await request(server).put(url).set('Cookie', sessionCookie(1)).send({ from_user_id: 2, to_user_id: 1, amount: 12 });
+    expect(kept.body.settlement.note).toBe('Cash at the airport');
+    const cleared = await request(server).put(url).set('Cookie', sessionCookie(1)).send({ from_user_id: 2, to_user_id: 1, amount: 12, note: '   ' });
+    expect(cleared.body.settlement.note).toBeNull();
+    const tooLong = await request(server).put(url).set('Cookie', sessionCookie(1)).send({ from_user_id: 2, to_user_id: 1, amount: 12, note: 'x'.repeat(501) });
+    expect(tooLong.status).toBe(400);
+  });
+
   it('404 on settlement update when it does not exist', async () => {
     const res = await request(server)
       .put(`/api/trips/${tripId}/budget/settlements/424242`)

@@ -349,6 +349,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Τα ποσά στα Κόστη εμφανίζονται σε αυτό το νόμισμα μόνο για λόγους προβολής — τα αρχικά ποσά δεν αλλάζουν.',
   'settings.currencyTrip': 'Νόμισμα ταξιδιού',
+  'settings.placeLanguage': 'Ονόματα μερών',
+  'settings.placeLanguageApp': 'Ίδια με την εφαρμογή',
+  'settings.placeLanguageHint': 'Η γλώσσα στην οποία απαντούν η αναζήτηση μερών, οι προτάσεις και οι διευθύνσεις. Όταν ένα μέρος δεν έχει όνομα σε αυτή τη γλώσσα, εμφανίζεται το τοπικό του όνομα.',
   'settings.passkey.title': 'Passkeys',
   'settings.passkey.description':
     'Συνδεθείτε πιο γρήγορα και με προστασία από phishing χρησιμοποιώντας ένα passkey — το δαχτυλικό σας αποτύπωμα, το πρόσωπό σας, ένα PIN ή ένα κλειδί υλικού. Ο κωδικός σας παραμένει ως εφεδρεία.',
@@ -495,6 +498,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Εκκίνηση',
+  'settings.dayDateFirst': 'Πρώτα η ημερομηνία στους τίτλους ημερών',
+  'settings.compactUnplanned': 'Συμπαγείς δείκτες για μη προγραμματισμένα μέρη',
+  'settings.compactUnplannedHint': 'Τα μέρη που δεν έχουν προγραμματιστεί σε καμία ημέρα εμφανίζονται ως μικροί δείκτες χωρίς φωτογραφία, ώστε να ξεχωρίζουν οι προγραμματισμένες στάσεις.',
+  'settings.dayDateFirstHint': 'Κάθε ημέρα ξεκινά με την ημερομηνία της και δίπλα εμφανίζεται «Ημέρα 1» ή ο δικός της τίτλος.',
   'settings.startPage': 'Αρχική σελίδα',
   'settings.startPageDashboard': 'Πίνακας ελέγχου',
   'settings.startPageActiveTrip': 'Ενεργό ταξίδι',

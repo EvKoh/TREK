@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { getNavigationTargets, openNavigationTarget, showsAppleMaps } from './placeNavigation'
+import { getNavigationTargets, navigationTargetLabel, openNavigationTarget, showsAppleMaps, showsGeoUri } from './placeNavigation'
 import type { Place } from '../../types'
 
 // FE-PLANNER-NAV-001 to FE-PLANNER-NAV-008
@@ -58,7 +58,7 @@ describe('getNavigationTargets', () => {
   it('FE-PLANNER-NAV-004b: an Android phone does not, because nobody there wants it', () => {
     const restore = withUserAgent('Mozilla/5.0 (Linux; Android 15; Pixel 9)')
     try {
-      expect(getNavigationTargets(place()).map(t => t.id)).toEqual(['google', 'waze', 'osm', 'comaps'])
+      expect(getNavigationTargets(place()).map(t => t.id)).toEqual(['google', 'waze', 'osm', 'comaps', 'geo'])
     } finally { restore() }
   })
 
@@ -92,6 +92,25 @@ describe('getNavigationTargets', () => {
     // has nothing to attach to, the same reason Waze and Apple Maps drop out.
     const targets = getNavigationTargets(place({ lat: null, lng: null, name: 'Stephansdom' }))
     expect(targets.map(t => t.id)).not.toContain('comaps')
+  })
+
+  it('FE-PLANNER-NAV-104: Android gets a geo: link for any installed map app, labeled in the UI language (#1406)', () => {
+    const restore = withUserAgent('Mozilla/5.0 (Linux; Android 15; Pixel 9)')
+    try {
+      expect(showsGeoUri()).toBe(true)
+      const geo = getNavigationTargets(place()).find(t => t.id === 'geo')!
+      expect(geo.url).toBe('geo:48.2038,16.3616?q=48.2038,16.3616(Stephansdom)')
+      expect(navigationTargetLabel(geo, key => `t:${key}`)).toBe('t:inspector.otherMapApp')
+    } finally { restore() }
+  })
+
+  it('FE-PLANNER-NAV-105: no geo: entry where nothing would answer it', () => {
+    const restore = withUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)')
+    try {
+      expect(getNavigationTargets(place()).map(t => t.id)).not.toContain('geo')
+      const google = getNavigationTargets(place())[0]
+      expect(navigationTargetLabel(google, key => `t:${key}`)).toBe('Google Maps')
+    } finally { restore() }
   })
 
   it('FE-PLANNER-NAV-008: no place at all yields nothing', () => {

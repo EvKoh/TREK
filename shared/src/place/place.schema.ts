@@ -188,6 +188,13 @@ export const placeSchema = z.object({
   ratings: z.array(placeRatingVoteSchema).optional(),
   rating_avg: z.number().nullable().optional(),
   rating_count: z.number().optional(),
+  /**
+   * Where the place lies, as resolved from its position (place_regions): an ISO country
+   * code and the state or province. Read-only and only on the trip's place list, for
+   * filtering it (#2537); null until the position has been resolved.
+   */
+  country_code: z.string().nullable().optional(),
+  region_name: z.string().nullable().optional(),
 });
 export type Place = z.infer<typeof placeSchema>;
 
@@ -298,6 +305,8 @@ export const placeImportGpxRequestSchema = z.object({
   importWaypoints: z.string().optional(),
   importRoutes: z.string().optional(),
   importTracks: z.string().optional(),
+  // Fill in the imported points from Google Places afterwards, as a list import can (#2536).
+  enrich: z.string().optional(),
 });
 export type PlaceImportGpxRequest = z.infer<typeof placeImportGpxRequestSchema>;
 
@@ -317,6 +326,7 @@ export type PlaceExportGpxRequest = z.infer<typeof placeExportGpxRequestSchema>;
 export const placeImportMapRequestSchema = z.object({
   importPoints: z.string().optional(),
   importPaths: z.string().optional(),
+  enrich: z.string().optional(),
 });
 export type PlaceImportMapRequest = z.infer<typeof placeImportMapRequestSchema>;
 
@@ -327,3 +337,9 @@ export const placeListQuerySchema = z.object({
   tag: z.string().optional(),
 });
 export type PlaceListQuery = z.infer<typeof placeListQuerySchema>;
+
+/** Use a file already attached in the trip as the place's own picture (#1242). */
+export const placeImageFromFileRequestSchema = z.object({
+  file_id: z.number().int().positive(),
+});
+export type PlaceImageFromFileRequest = z.infer<typeof placeImageFromFileRequestSchema>;

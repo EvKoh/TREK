@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { AxiosError, AxiosHeaders } from 'axios'
 import {
-  coverSrc, formatDateRange, formatDurationMinutes, groupInOrder, isHttpUrl, isSharedTripPayload, legFacts, linkHost,
-  sharedTripLoadError, spanLabelKey, stopNumbers, transportFacts,
+  coverSrc, dayHasEntries, formatDateRange, formatDurationMinutes, groupInOrder, isHttpUrl, isSharedTripPayload, legFacts, linkHost,
+  sharedTripLoadError, spanLabelKey, stopNumbers, transportFacts, unplannedPlaces,
 } from './sharedTripModel'
 
 describe('sharedTripModel (#2320)', () => {
@@ -157,5 +157,20 @@ describe('sharedTripModel, the redesigned page', () => {
   it('lists a leg with its carrier, number, platform and route', () => {
     expect(legFacts({ train_number: 'IC 8', platform: '12', from: 'Bern', to: 'Zurich' }, 'Platform')).toEqual(['IC 8', 'Platform 12', 'Bern → Zurich'])
     expect(legFacts({ airline: 'Emirates', flight_number: 'EK350' }, 'Platform')).toEqual(['Emirates', 'EK350'])
+  })
+})
+
+describe('unplanned places and day entries (#1758, #1712)', () => {
+  it('keeps the pool places no day has picked up, in pool order', () => {
+    const places = [{ id: 3 }, { id: 1 }, { id: 2 }]
+    const assignments = { 10: [{ place: { id: 1 } }, { place: null }], 11: [] }
+    expect(unplannedPlaces(places, assignments)).toEqual([{ id: 3 }, { id: 2 }])
+    expect(unplannedPlaces([], assignments)).toEqual([])
+  })
+
+  it('counts a day with an entry or a night booked', () => {
+    expect(dayHasEntries(0, 0)).toBe(false)
+    expect(dayHasEntries(1, 0)).toBe(true)
+    expect(dayHasEntries(0, 1)).toBe(true)
   })
 })

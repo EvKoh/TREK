@@ -9,9 +9,10 @@ import {
   MoreHorizontal, ChevronDown, ChevronRight,
 } from 'lucide-react'
 import type { PackingItem, PackingBag } from '../../types'
-import { katColor } from './packingListPanel.helpers'
+import { katColor, packedOf } from './packingListPanel.helpers'
 import { PACKING_PLACEHOLDER_NAME } from './packingListPanel.constants'
 import { QuantityInput } from './PackingListPanelQuantityInput'
+import { PackedCounter } from './PackingPackedCounter'
 import PackingShareControl from './PackingShareControl'
 import { PopoverItem } from './PackingPopover'
 import { POPOVER, POPOVER_CAPTION, POPOVER_DIVIDER } from './packingPopoverStyles'
@@ -65,7 +66,7 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
   const [bagInlineCreate, setBagInlineCreate] = useState(false)
   const [bagInlineName, setBagInlineName] = useState('')
   const itemMenuBtnRef = useRef<HTMLButtonElement>(null)
-  const { togglePackingItem, updatePackingItem, deletePackingItem } = useTripStore()
+  const { togglePackingItem, updatePackingItem, deletePackingItem, setPackedCount } = useTripStore()
   const toast = useToast()
   const { t } = useTranslation()
 
@@ -104,6 +105,9 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
   const canDrag = canEdit && !isPlaceholder && !!drag
   const selectedBag = bags.find(b => b.id === item.bag_id)
   const quantity = item.quantity || 1
+  // A multi-piece item counts its pieces into the bag (#2296).
+  const packed = packedOf(item)
+  const partlyPacked = !item.checked && packed > 0
   const owner = tripMembers.find(m => m.id === item.owner_id)
   const ownerAvatar = owner?.avatar_url ?? owner?.avatar ?? null
 
@@ -167,7 +171,7 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
       <button type="button" onClick={handleToggle} className="packing-check" aria-pressed={!!item.checked} style={{
         flexShrink: 0, cursor: 'pointer', padding: 0, width: 20, height: 20, borderRadius: 6,
         display: 'grid', placeItems: 'center',
-        border: `1.5px solid ${item.checked ? 'var(--accent)' : 'var(--text-faint)'}`,
+        border: `1.5px solid ${item.checked || partlyPacked ? 'var(--accent)' : 'var(--text-faint)'}`,
         background: item.checked ? 'var(--accent)' : 'transparent',
         color: 'var(--accent-text)',
         transition: 'background 180ms cubic-bezier(0.23,1,0.32,1), border-color 180ms cubic-bezier(0.23,1,0.32,1)',
@@ -233,6 +237,9 @@ export function ArtikelZeile({ item, tripId, categories, onCategoryChange: _onCa
       )}
 
       <div className="packing-row-inline-actions" style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+        {canEdit && !isPlaceholder && quantity > 1 && (
+          <PackedCounter packed={packed} quantity={quantity} onChange={count => setPackedCount(tripId, item.id, count)} style={reveal(active || partlyPacked)} />
+        )}
         {/* Quantity */}
         {canEdit && <QuantityInput value={quantity} onSave={qty => updatePackingItem(tripId, item.id, { quantity: qty })} style={badge(active || quantity > 1)} />}
 

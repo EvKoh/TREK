@@ -233,3 +233,15 @@ export function timeCollisions(
     return s1 < (e2 || '23:59') && s2 < (e1 || '23:59') && s1 !== e2 && s2 !== e1
   })
 }
+
+/**
+ * The pin the form holds, when both fields are real coordinates: what "places
+ * near here" asks about (#976). Empty or half-typed fields are no pin.
+ */
+export function formPin(form: Pick<PlaceFormData, 'lat' | 'lng'>): { lat: number; lng: number } | null {
+  if (!form.lat.trim() || !form.lng.trim()) return null
+  const lat = Number(form.lat)
+  const lng = Number(form.lng)
+  if (!Number.isFinite(lat) || !Number.isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return null
+  return { lat, lng }
+}

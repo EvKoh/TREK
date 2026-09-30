@@ -57,6 +57,9 @@ const journey: TranslationStrings = {
   'journey.title': 'Journey', // en-fallback
   'journey.subtitle': 'Track your travels as they happen', // en-fallback
   'journey.new': 'New Journey', // en-fallback
+  'journey.lightbox.zoomIn': 'تكبير',
+  'journey.lightbox.zoomOut': 'تصغير',
+  'journey.lightbox.zoomReset': 'العودة إلى الصورة كاملة',
   'journey.create': 'Create', // en-fallback
   'journey.titlePlaceholder': 'Where are you going?', // en-fallback
   'journey.empty': 'No journeys yet', // en-fallback
@@ -127,6 +130,8 @@ const journey: TranslationStrings = {
   'journey.detail.addEntry': 'Add Entry', // en-fallback
   'journey.detail.jumpToTop': 'العودة إلى الأعلى',
   'journey.detail.jumpToLast': 'الانتقال إلى آخر مدخل',
+  'journey.detail.dayJump': 'الانتقال إلى يوم',
+  'journey.detail.dayJumpCount': 'الأيام: {count}',
   'journey.detail.newEntry': 'New Entry', // en-fallback
   'journey.detail.editEntry': 'Edit Entry', // en-fallback
   'journey.detail.noEntries': 'No entries yet', // en-fallback
@@ -431,6 +436,17 @@ const journey: TranslationStrings = {
   'journey.studio.kind.list': 'قائمة',
   'journey.studio.kind.icon': 'أيقونة',
   'journey.studio.duplicate': 'تكرار',
+  'journey.studio.copyToPage': 'نسخ للصق في أي صفحة (Ctrl+C)',
+  'journey.studio.paste': 'لصق (Ctrl+V)',
+  'journey.studio.pasteEmpty': 'انسخ شيئًا أولًا، ثم الصقه في أي صفحة',
+  'journey.studio.myLayouts': 'تخطيطاتي',
+  'journey.studio.myLayoutsEmpty': 'احتفظ بصفحة رتّبتها، ورتّب صفحات أخرى بالطريقة نفسها. تبقى صورها ونصوصها كما هي.',
+  'journey.studio.saveLayout': 'حفظ هذه الصفحة كتخطيط',
+  'journey.studio.saveLayoutHint': 'يحتفظ بالترتيب دون الصور، لكل محرري هذا الكتاب',
+  'journey.studio.saveLayoutFull': 'يحتفظ هذا الكتاب بما يصل إلى 24 تخطيطًا. احذف واحدًا لحفظ آخر.',
+  'journey.studio.deleteLayout': 'حذف التخطيط',
+  'journey.studio.layoutName': 'تخطيط',
+  'journey.studio.builtInLayouts': 'مدمجة',
   'journey.studio.style': 'النمط',
   'journey.studio.shows': 'المعروض',
   'journey.studio.size': 'الحجم',
@@ -623,6 +639,11 @@ const journey: TranslationStrings = {
   'journey.editor.statsExcludedHint':
     'تبقى المحطة في اليوميات لكنها لا تُحتسب ضمن المسافة أو الدول أو الخريطة في Studio.',
   'journey.entry.offRoute': 'خارج المسار',
+  'journey.entry.draft': 'مسودة',
+  'journey.editor.draft': 'مسودة',
+  'journey.editor.draftHint': 'لا يرى هذا المدخل سواك وسوى المساهمين الآخرين. تستبعده اليوميات المشتركة حتى توقف هذا الخيار.',
+  'journey.editor.tripSuggestionHint': 'يقع هذا اليوم ضمن هذه الرحلة. اربطه لتنضم أماكنها إلى هذه اليوميات.',
+  'journey.editor.tripSuggestionLater': 'ليس الآن',
   'journey.suggestions.dismiss': 'تجاهل هذا الاقتراح',
   'journey.suggestions.dismissed': 'تم تجاهل الاقتراح',
   'journey.suggestions.restore': 'استعادة الاقتراحات المتجاهَلة',

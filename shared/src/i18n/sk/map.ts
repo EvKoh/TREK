@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Vašu polohu sa nepodarilo zistiť.',
   'map.location.timeout': 'Zisťovanie polohy trvalo príliš dlho. Skúste to znova s voľným výhľadom na oblohu.',
   'map.overview.show': 'Zobraziť celú cestu',
+  'map.lock.lock': 'Uzamknúť zobrazenie mapy',
+  'map.lock.unlock': 'Nechať mapu sledovať výber',
   'map.overview.hide': 'Skryť celú cestu',
   'map.overview.total': 'Celková vzdialenosť',
   'map.attribution': 'Zdroje mapy',

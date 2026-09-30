@@ -304,6 +304,8 @@ export function deriveBackup(raw: RawEnv) {
     maxDecompressedMb: positiveNumberOr(raw.BACKUP_MAX_DECOMPRESSED_MB, 5 * 1024),
     /** backupService only bundles data/.encryption_key into archives when the key does NOT come from env. */
     encryptionKeyFromEnv: !!raw.ENCRYPTION_KEY,
+    /** Archive restored on the first start, while no database exists yet (#1089). Null when unset or blank. */
+    restoreFromBackup: raw.RESTORE_FROM_BACKUP?.trim() || null,
   };
 }
 

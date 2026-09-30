@@ -47,6 +47,7 @@ export type CreateBucketData = {
   country_code?: string | null;
   notes?: string | null;
   target_date?: string | null;
+  region_code?: string | null;
 };
 
 export type UpdateBucketData = {
@@ -93,6 +94,18 @@ export class BucketItemExistsError extends Error {
 // bucket forms send '' where the map dialogs send null.
 function blankToNull(value: string | null | undefined): string | null {
   return value === undefined || value === null || value === '' ? null : value;
+}
+
+/**
+ * A wished-for region as stored (#1901): ISO 3166-2, upper case as the region
+ * boundaries carry it, and only when it lies in the item's own country. Anything
+ * else is no region, which keeps a caller that skips the contract (the plugin RPC)
+ * from pinning a wish to somebody else's map.
+ */
+export function bucketRegionCode(region: string | null | undefined, country: string | null): string | null {
+  const code = blankToNull(region)?.toUpperCase() ?? null;
+  if (!code || !country || !/^[A-Z]{2}-[A-Z0-9]{1,8}$/.test(code)) return null;
+  return code.startsWith(`${country.toUpperCase()}-`) ? code : null;
 }
 
 /**
@@ -986,7 +999,7 @@ export class AtlasService {
     if (this.findDuplicateBucketItem(userId, identity)) throw new BucketItemExistsError();
     const result = this.db
       .prepare(
-        'INSERT INTO bucket_list (user_id, name, lat, lng, country_code, notes, target_date) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO bucket_list (user_id, name, lat, lng, country_code, notes, target_date, region_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
       )
       .run(
         userId,
@@ -996,6 +1009,7 @@ export class AtlasService {
         identity.country_code,
         data.notes ?? null,
         identity.target_date,
+        bucketRegionCode(data.region_code, identity.country_code),
       );
     return this.db.prepare('SELECT * FROM bucket_list WHERE id = ?').get(result.lastInsertRowid);
   }

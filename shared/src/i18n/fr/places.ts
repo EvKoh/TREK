@@ -53,6 +53,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Afficher tout le voyage',
   'places.filterTracks': 'Traces',
   'places.filterByRating': 'Filtrer par note',
+  'places.filterByLocation': 'Filtrer par pays ou région',
+  'places.allLocations': 'Tous les pays',
   'places.filterShow': 'Afficher',
   'places.clearSearch': 'Effacer la recherche',
   'places.yourRating': 'Ta note',
@@ -79,6 +81,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Catégorie',
   'places.noCategory': 'Sans catégorie',
   'places.newCategory': 'Nouvelle catégorie',
+  'places.openInMaps': 'Ouvrir dans une app de cartes',
   'places.categoryNamePlaceholder': 'Nom de la catégorie',
   'places.formTime': 'Heure',
   'places.startTime': 'Début',
@@ -95,6 +98,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Rechercher des lieux…',
   'places.mapsSearchError': 'La recherche de lieu a échoué.',
   'places.searchGoogleInstead': "Ce n'est pas le bon lieu ? Rechercher sur Google",
+  'places.nearby': 'Lieux près de ce repère',
+  'places.nearbyNone': 'Rien trouvé près de ce repère',
   'places.loadingDetails': 'Chargement des détails du lieu…',
   'places.osmHint':
     'Recherche via OpenStreetMap (pas de photos, horaires ni notes). Ajoutez une clé API Google dans les paramètres pour plus de détails.',
@@ -133,9 +138,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Enrichir les lieux via Google',
   'places.enrichOnImportHint':
     'Recherche chaque lieu importé pour ajouter photos, adresse et coordonnées. Utilise votre clé Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Recherche ensuite chaque point importé sur Google et ajoute sa photo, son adresse, son site web et son téléphone. Les chemins et traces restent tels quels.',
   'places.uploadImage': 'Importer une image',
   'places.changeImage': "Changer l'image",
   'places.removeImage': "Supprimer l'image",
+  'places.chooseImage': 'Choisir une image',
+  'places.uploadFromDevice': 'Importer depuis l’appareil',
+  'places.fromAttachedFiles': 'Depuis les fichiers joints',
   'places.imageUploadError': "Impossible d'importer l'image",
   'places.imageRemoveError': "Impossible de supprimer l'image",
 };

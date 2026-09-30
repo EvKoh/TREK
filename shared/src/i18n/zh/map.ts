@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': '无法确定你的位置。',
   'map.location.timeout': '定位耗时过长。请在能看到天空的开阔位置重试。',
   'map.overview.show': '显示整个行程',
+  'map.lock.lock': '锁定地图视图',
+  'map.lock.unlock': '让地图跟随所选内容',
   'map.overview.hide': '隐藏整个行程',
   'map.overview.total': '总距离',
   'map.attribution': '地图来源',

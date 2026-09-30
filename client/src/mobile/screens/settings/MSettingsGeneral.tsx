@@ -49,6 +49,13 @@ export default function MSettingsGeneral() {
     value: (on: boolean) => boolean
   }[] = [
     {
+      key: 'day_date_first',
+      label: t('settings.dayDateFirst'),
+      sub: t('settings.dayDateFirstHint'),
+      on: settings.day_date_first === true,
+      value: (on) => on,
+    },
+    {
       key: 'map_booking_labels',
       label: t('settings.bookingLabels'),
       sub: t('settings.bookingLabelsHint'),
@@ -60,6 +67,13 @@ export default function MSettingsGeneral() {
       label: t('settings.alwaysShowRoutes'),
       sub: t('settings.alwaysShowRoutesHint'),
       on: settings.map_always_show_routes === true,
+      value: (on) => on,
+    },
+    {
+      key: 'map_compact_unplanned',
+      label: t('settings.compactUnplanned'),
+      sub: t('settings.compactUnplannedHint'),
+      on: settings.map_compact_unplanned === true,
       value: (on) => on,
     },
     {

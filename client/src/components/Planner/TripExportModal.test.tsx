@@ -1,9 +1,12 @@
-// FE-PLANNER-EXPORTMODAL-001 to FE-PLANNER-EXPORTMODAL-017
+// FE-PLANNER-EXPORTMODAL-001 to FE-PLANNER-EXPORTMODAL-018
 import { render, screen, waitFor } from '../../../tests/helpers/render'
 import userEvent from '@testing-library/user-event'
 import { downloadTripPDF } from '../PDF/TripPDF'
-import { buildDay, buildDayNote, buildTrip } from '../../../tests/helpers/factories'
+import { buildDay, buildDayNote, buildTrip, buildUser } from '../../../tests/helpers/factories'
 import { TripExportModal } from './TripExportModal'
+import { resetAllStores, seedStore } from '../../../tests/helpers/store'
+import { useAuthStore } from '../../store/authStore'
+import type { AssignmentsMap } from '../../types'
 
 vi.mock('../PDF/TripPDF', () => ({ downloadTripPDF: vi.fn().mockResolvedValue(undefined) }))
 
@@ -273,5 +276,19 @@ describe('TripExportModal', () => {
     render(<TripExportModal {...makeProps({ toast })} />)
     await user.click(screen.getByText('dayplan.gpxAll'))
     await waitFor(() => expect(toast.error).toHaveBeenCalledWith('dayplan.gpxFailed'))
+  })
+
+  it('FE-PLANNER-EXPORTMODAL-018: "My plan" appears once people are assigned, and prints only mine (#2168)', async () => {
+    const user = userEvent.setup()
+    resetAllStores()
+    seedStore(useAuthStore, { user: buildUser({ id: 7 }) })
+    const { rerender } = render(<TripExportModal {...makeProps()} />)
+    expect(screen.queryByText('dayplan.pdfMine')).toBeNull()
+
+    const assignments = { 10: [{ id: 1, participants: [{ user_id: 7, username: 'me' }] }] } as unknown as AssignmentsMap
+    rerender(<TripExportModal {...makeProps({ assignments })} />)
+    await user.click(screen.getByText('dayplan.pdfMine'))
+    await waitFor(() => expect(downloadTripPDF).toHaveBeenCalledTimes(1))
+    expect(vi.mocked(downloadTripPDF).mock.calls[0][0]).toMatchObject({ onlyUserId: 7 })
   })
 })

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { MapPin, Clock, Pencil, Trash2, Plus, RouteOff, X } from 'lucide-react'
+import { MapPin, Clock, Pencil, Trash2, Plus, PencilLine, RouteOff, X } from 'lucide-react'
 import { formatLocationName } from '../../utils/formatters'
 import { useTranslation } from '../../i18n'
 import { pluginsApi } from '../../api/client'
@@ -79,6 +79,13 @@ export function EntryCard({ entry, readOnly, onEdit, onDelete, onPhotoClick }: {
                 {t('journey.entry.offRoute')}
               </span>
             )}
+            {/* A draft (#696) is the contributors' own until it is published. */}
+            {entry.is_draft && (
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-black/40 backdrop-blur-sm rounded-full text-[10px] font-semibold text-white tracking-wide">
+                <PencilLine size={10} />
+                {t('journey.entry.draft')}
+              </span>
+            )}
           </div>
 
           {/* Menu top-right, raised on the card colour so it reads on any photo */}
@@ -112,6 +119,11 @@ export function EntryCard({ entry, readOnly, onEdit, onDelete, onPhotoClick }: {
             {entry.stats_excluded && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded-full text-[10px] font-semibold text-zinc-500">
                 <RouteOff size={10} /> {t('journey.entry.offRoute')}
+              </span>
+            )}
+            {entry.is_draft && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded-full text-[10px] font-semibold text-zinc-500">
+                <PencilLine size={10} /> {t('journey.entry.draft')}
               </span>
             )}
           </div>

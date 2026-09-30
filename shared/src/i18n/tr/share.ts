@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Ambalaj',
   'share.permBudget': 'Maliyetler',
   'share.permCollab': 'Sohbet',
+  'share.options': 'Seçenekler',
+  'share.optTravelOnly': 'Yalnızca ulaşım ve konaklama',
+  'share.optTravelOnlyHint': 'Etkinlikler, gün notları ve boş günler olmadan yalnızca ulaşım ve konaklamayı gösterir',
+  'share.optHideImages': 'Fotoğrafsız',
+  'share.optHideImagesHint': 'Yer fotoğraflarını paylaşılan sayfaya eklemez',
 };
 export default share;

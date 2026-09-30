@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { resolveCountryCodeSync } from '../atlas/atlas-geo';
 import { XMLValidator } from 'fast-xml-parser';
 import { TRACK_COLORS, placeMatchStrategies, type PlaceMatchCandidate } from '@trek/shared';
 import type { TrekWsPayload, TrekWsTripEventName } from '@trek/shared';
@@ -25,7 +26,10 @@ import type { GpxExportDay, GpxExportOptions, GpxExportPlace } from './gpx-expor
 import { UnsplashService } from '../unsplash/unsplash.service';
 import { PlacePhotoCacheService } from '../place-photos/place-photo-cache.service';
 import { type UpdateConflict, isUpdateConflict } from '../common/conflictResult';
-import { reclaimPlaceImage } from './place-image';
+import { placeImageUrl, reclaimPlaceImage } from './place-image';
+import { MAX_PLACE_IMAGE_SIZE, PLACE_IMAGE_EXTENSIONS } from '../common/place-image-upload';
+import { randomUUID } from 'node:crypto';
+import path from 'node:path';
 import { JourneyDomainService } from '../journey/journey-domain.service';
 import { StorageService } from '../storage/storage.service';
 import { AccommodationsService } from '../accommodations/accommodations.service';
@@ -179,9 +183,11 @@ export class PlacesService {
     filters: { search?: string; category?: string; tag?: string; assignment?: 'all' | 'unassigned' | 'assigned' },
   ) {
     let query = `
-    SELECT DISTINCT p.*, c.name as category_name, c.color as category_color, c.icon as category_icon
+    SELECT DISTINCT p.*, c.name as category_name, c.color as category_color, c.icon as category_icon,
+      pr.country_code as country_code, pr.region_name as region_name
     FROM places p
     LEFT JOIN categories c ON p.category_id = c.id
+    LEFT JOIN place_regions pr ON pr.place_id = p.id
     WHERE p.trip_id = ?
   `;
     const params: (string | number)[] = [tripId];
@@ -222,6 +228,9 @@ export class PlacesService {
 
     return places.map(p => ({
       ...p,
+      // The cached region row when the atlas resolved one, else the country the bundled
+      // borders place it in, which needs no network (#2537).
+      country_code: (p as { country_code?: string | null }).country_code ?? resolveCountryCodeSync(p),
       category: p.category_id ? {
         id: p.category_id,
         name: p.category_name,
@@ -232,6 +241,30 @@ export class PlacesService {
       ratings: ratingsByPlaceId[p.id] || [],
       ...ratingAggregate(ratingsByPlaceId[p.id]),
     }));
+  }
+
+  /**
+   * Makes a picture already attached in the trip the place's own image (#1242). The file
+   * is copied, not pointed at: the place keeps its picture when the attachment is deleted,
+   * and the update path reclaims the copy like any other uploaded image. Returns a reason
+   * string when the file cannot serve, the updated place otherwise.
+   */
+  async setImageFromFile(tripId: string, placeId: string, fileId: number): Promise<'not_found' | 'not_image' | 'too_large' | Awaited<ReturnType<PlacesService['update']>>> {
+    const file = this.dbs.get<{ filename: string; original_name: string; mime_type: string | null; file_size: number | null }>(
+      'SELECT filename, original_name, mime_type, file_size FROM trip_files WHERE id = ? AND trip_id = ? AND deleted_at IS NULL',
+      fileId, tripId,
+    );
+    if (!file) return 'not_found';
+    const ext = path.extname(file.original_name || file.filename).toLowerCase();
+    const mime = file.mime_type ?? '';
+    if (!mime.startsWith('image/') || mime.includes('svg') || !PLACE_IMAGE_EXTENSIONS.includes(ext)) return 'not_image';
+    if (file.file_size != null && file.file_size > MAX_PLACE_IMAGE_SIZE) return 'too_large';
+    const name = `${randomUUID()}${ext}`;
+    const { stream } = await this.storage.getStream('files', path.basename(file.filename));
+    await this.storage.put('places', name, stream, { contentType: mime });
+    const updated = await this.update(tripId, placeId, { image_url: placeImageUrl(name) } as never);
+    if (!updated || isUpdateConflict(updated)) await reclaimPlaceImage(this.storage, placeImageUrl(name));
+    return updated;
   }
 
   // -------------------------------------------------------------------------
@@ -1497,6 +1530,16 @@ export class PlacesService {
     } catch (err) {
       console.error('[Places] import enrichment pass failed:', err instanceof Error ? err.message : err);
     }
+  }
+
+  /**
+   * The Google pass for places a file brought in (#2536). Only its points: a track
+   * or a drawn path is a line, and looking a line up by its name finds a stranger.
+   * Detached like the list imports, and just as quietly a no-op without a key.
+   */
+  enrichImportedFilePlaces(tripId: string, userId: number, places: ImportedPlace[]): void {
+    const points = (places as (ImportedPlace & EnrichablePlace)[]).filter(p => !p.route_geometry);
+    void this.enrichImportedPlaces(tripId, userId, points);
   }
 
   /**

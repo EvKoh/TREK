@@ -397,6 +397,14 @@ describe('JourneyController', () => {
     expect(ctl(svc({ reorderEntries: vi.fn().mockReturnValue(true) } as Partial<JourneyService>)).reorderEntries(user, '9', { orderedIds: [3, 1, 2] })).toEqual({ success: true });
   });
 
+  it('reorderEntryPhotos forwards the order and answers 404 when refused (#824)', () => {
+    const reorderEntryPhotos = vi.fn().mockReturnValue(true);
+    expect(ctl(svc({ reorderEntryPhotos } as Partial<JourneyService>)).reorderEntryPhotos(user, '12', { orderedIds: [3, 1] }, 'sock')).toEqual({ success: true });
+    expect(reorderEntryPhotos).toHaveBeenCalledWith(12, user.id, [3, 1], 'sock');
+    expect(thrown(() => ctl(svc({ reorderEntryPhotos: vi.fn().mockReturnValue(false) } as Partial<JourneyService>)).reorderEntryPhotos(user, '12', { orderedIds: [3] })))
+      .toEqual({ status: 404, body: { error: 'Entry not found' } });
+  });
+
   it('restoreSuggestions answers with the count, and refuses a viewer the same way its siblings do', () => {
     const restore = vi.fn().mockReturnValue({ restored: 3 });
     expect(ctl(svc({ restoreDismissedSuggestions: restore } as Partial<JourneyService>)).restoreSuggestions(user, '9')).toEqual({ restored: 3 });

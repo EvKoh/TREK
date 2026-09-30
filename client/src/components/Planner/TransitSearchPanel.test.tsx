@@ -7,7 +7,7 @@ import { useAuthStore } from '../../store/authStore'
 import { useSettingsStore } from '../../store/settingsStore'
 import { buildUser, buildDay, buildPlace } from '../../../tests/helpers/factories'
 import type { Accommodation, Day } from '../../types'
-import TransitSearchPanel from './TransitSearchPanel'
+import TransitSearchPanel, { buildQuickPicks, dayBookingStops } from './TransitSearchPanel'
 
 const { transitApiMock, toastErrors } = vi.hoisted(() => ({
   transitApiMock: { geocode: vi.fn(), plan: vi.fn() },
@@ -663,3 +663,39 @@ describe('TransitSearchPanel', () => {
     expect(screen.getByText('Aachen, Bushof')).toBeInTheDocument()
   })
 })
+
+describe('quick picks from the bookings of the day (#1506)', () => {
+  const day = buildDay({ id: 2, date: '2026-07-08' }) as Day
+  const flight = {
+    id: 5, type: 'flight', day_id: 2, end_day_id: 2, status: 'confirmed', title: 'LH 190',
+    endpoints: [
+      { role: 'from', name: 'FRA', lat: 50.03, lng: 8.56, local_date: '2026-07-08', local_time: '09:00', sequence: 0 },
+      { role: 'to', name: 'BER Airport', lat: 52.36, lng: 13.5, local_date: '2026-07-08', local_time: '10:10', sequence: 1 },
+    ],
+  }
+  const nextDayTrain = {
+    id: 6, type: 'train', day_id: 3, end_day_id: 3, status: 'confirmed', title: 'ICE',
+    endpoints: [{ role: 'from', name: 'Berlin Hbf', lat: 52.52, lng: 13.37, local_date: '2026-07-09', local_time: null, sequence: 0 }],
+  }
+  const undatedFerry = {
+    id: 7, type: 'ferry', day_id: 1, end_day_id: 2, status: 'confirmed', title: 'Ferry',
+    endpoints: [
+      { role: 'from', name: 'Kiel', lat: 54.3, lng: 10.1, local_date: null, local_time: null, sequence: 0 },
+      { role: 'to', name: 'Oslo', lat: 59.9, lng: 10.7, local_date: null, local_time: null, sequence: 1 },
+    ],
+  }
+  const taxi = { id: 8, type: 'taxi', day_id: 2, status: 'confirmed', title: 'Taxi', endpoints: [{ role: 'from', name: 'Home', lat: 1, lng: 1, local_date: '2026-07-08', sequence: 0 }] }
+
+  it('FE-PLANNER-TRANSIT-031: the airports and stations of the day are offered, other days and non-carriers are not', () => {
+    const stops = dayBookingStops(day, [flight, nextDayTrain, undatedFerry, taxi] as any)
+    expect(stops.map(s => s.name)).toEqual(['FRA', 'BER Airport', 'Oslo'])
+  })
+
+  it('FE-PLANNER-TRANSIT-032: they come right after the stays and are never cut by the cap', () => {
+    const places = Array.from({ length: 12 }, (_, i) => buildPlace({ id: 100 + i, name: `P${i}`, lat: 52 + i / 100, lng: 13 }))
+    const picks = buildQuickPicks(day, [day], places as any, [], dayBookingStops(day, [flight] as any))
+    expect(picks.slice(0, 2).map(p => p.name)).toEqual(['FRA', 'BER Airport'])
+    expect(picks).toHaveLength(2 + 8)
+  })
+})
+

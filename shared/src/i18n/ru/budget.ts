@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'напр. ужин, сувениры, бензин…',
   'costs.note': 'Заметка',
   'costs.notePlaceholder': 'Что входило, кто сколько должен…',
+  'costs.paymentNotePlaceholder': 'Оплачено наличными, банковским переводом…',
   'costs.addNote': 'Добавить заметку',
   'costs.showNote': 'Показать заметку',
   'costs.hideNote': 'Скрыть заметку',

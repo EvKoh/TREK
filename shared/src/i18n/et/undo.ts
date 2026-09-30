@@ -5,6 +5,7 @@ const undo: TranslationStrings = {
   'undo.tooltip': 'Võta tagasi: {action}',
   'undo.assignPlace': 'Koht lisatud päevale',
   'undo.removeAssignment': 'Koht päevast eemaldatud',
+  'undo.clearDay': 'Päev tühjendatud',
   'undo.reorder': 'Kohtade järjekord muudetud',
   'undo.optimize': 'Marsruut optimeeritud',
   'undo.deletePlace': 'Koht kustutatud',

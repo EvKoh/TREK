@@ -17,6 +17,7 @@ import { getApiErrorMessage } from '../../types'
 import { normalizeLinkUrl, STATUS_META, STATUS_ORDER } from '../../pages/collections/collectionsModel'
 import type { Category, TranslationFn } from '../../types'
 import type { CollectionLink, CollectionStatus } from '@trek/shared'
+import { usePlaceLanguage } from '../../hooks/usePlaceLanguage'
 
 type MapsPlace = Record<string, unknown>
 const str = (v: unknown): string | undefined => (typeof v === 'string' && v ? v : undefined)
@@ -54,6 +55,7 @@ interface AddPlaceToCollectionModalProps {
  */
 export default function AddPlaceToCollectionModal({ isOpen, collectionId, collectionName, categories, onClose, onAdded, t }: AddPlaceToCollectionModalProps): React.ReactElement {
   const { language } = useTranslation()
+  const placeLang = usePlaceLanguage()
   const toast = useToast()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<MapsPlace[]>([])
@@ -87,7 +89,7 @@ export default function AddPlaceToCollectionModal({ isOpen, collectionId, collec
     setSearching(true)
     setNoResults(false)
     try {
-      const res = await mapsApi.search(query, language)
+      const res = await mapsApi.search(query, placeLang)
       const places = (res.places as MapsPlace[]) || []
       setResults(places)
       setNoResults(places.length === 0)

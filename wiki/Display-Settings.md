@@ -8,7 +8,7 @@ The General tab (Settings → General) controls your locale preferences and a fe
 
 Open the user menu in the top navigation bar, select **Settings**, and stay on the **General** tab — it is the tab the page opens on.
 
-The tab is split into three sections: **Startup** (where opening TREK lands), **Language & region** (currency, language, temperature, distance, time format, week start) and **Travel & map** (booking route labels, always show booking routes, explore places on the map, blur booking codes, optimize route from accommodation).
+The tab is split into three sections: **Startup** (where opening TREK lands), **Language & region** (currency, language, place names, temperature, distance, time format, week start) and **Travel & map** (booking route labels, always show booking routes, explore places on the map, blur booking codes, optimize route from accommodation).
 
 > Color mode (Light / Dark / Auto) is **not** here — it lives on the **Appearance** tab. See [Appearance-Settings](Appearance-Settings).
 
@@ -73,6 +73,10 @@ An administrator can set an instance-wide default in Admin → Default User Sett
 ## Language
 
 Select your preferred language from the button grid (desktop) or dropdown (mobile). The change takes effect immediately without a page reload. See [Languages](Languages) for the full list of supported languages.
+
+## Place names
+
+The language place search, typed suggestions, place details and addresses answer in. **Same as the app** (the default) follows the language above. Pick another one to keep the interface in your language while places come back in, say, English or the local language of your trip. Where a place has no name in the chosen language, its local name is shown.
 
 ## Temperature unit
 

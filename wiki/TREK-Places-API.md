@@ -38,6 +38,7 @@ Names are the ones the index has, which are the names used on the spot. The inde
 | Booking imports, and stops given only by name in an imported Google Maps route | The coordinate of a venue, found by its name | OpenStreetMap's search service, which also resolves street addresses |
 | Preparing a trip for offline use | Up to 3000 places around the trip, in one request | Nothing is cached, and offline search has nothing to answer from |
 | MCP: `search_place` and `search_pois` | The same as the full search and the category buttons | The same fallbacks |
+| Places near a point (**Nearby** in the add place dialog, `search_nearby_places`) | Named places of any kind around the point, nearest first | Google Places when the index has nothing and a key exists, OpenStreetMap otherwise |
 
 Where Google holds the keyed slot (a Google key, with neither Amap nor OpenStreetMap picked as the places provider), two things skip the index and OpenStreetMap for a search: the **Search Google instead** line under a result list (`provider: 'google'` on `search_place`) sends that one search to Google Places alone, and the admin switch **Search with Google only** sends every search and every suggestion there, `search_place` included; the category buttons and `search_pois` keep asking the index. See [Google and Amap](Places-and-Search#google-and-amap).
 

@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Na mape',
   'mobileTrip.profileDriving': 'Autom',
   'mobileTrip.profileWalking': 'Pešo',
+  'mobileTrip.profileCycling': 'Na bicykli',
   'mobileTrip.renameDay': 'Premenovať deň',
   'mobileTrip.resBadge': 'Rezervácia',
   'mobileTrip.showOnMap': 'Zobraziť na mape',

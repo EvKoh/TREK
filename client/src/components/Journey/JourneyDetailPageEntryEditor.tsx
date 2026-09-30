@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useState, useRef, type SyntheticEvent } from 'react'
 import { localIsoDate } from '../../utils/localDate'
-import { X, Plus, Image, Minus, Check, MapPin, Locate, Camera, Play, Loader2, NotebookPen } from 'lucide-react'
+import { Briefcase, X, Plus, Image, Minus, Check, MapPin, Locate, Camera, Play, Loader2, NotebookPen } from 'lucide-react'
 import { normalizeImageFiles } from '../../utils/convertHeic'
 import { isVideoFile } from '../../utils/videoPoster'
 import { type ResilientResult, type UploadProgress } from '../../utils/uploadQueue'
@@ -22,6 +22,9 @@ import ConfirmDialog from '../shared/ConfirmDialog'
 import { DialogButton, DialogFooter, DialogHeader, DialogSection, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT, fs } from '../shared/DialogShell'
 import { AddRowButton, EditorField, INPUT } from '../shared/dialogParts'
 import { Tooltip } from '../shared/Tooltip'
+import { useJourneyTripSuggestion } from './useJourneyTripSuggestion'
+import { useEntryPhotoOrder } from './useEntryPhotoOrder'
+import { usePlaceLanguage } from '../../hooks/usePlaceLanguage'
 
 type PendingProviderGroup = ProviderPhotoGroup & { provider: string }
 
@@ -144,6 +147,7 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
   onDone: () => void
 }) {
   const { t, language } = useTranslation()
+  const placeLang = usePlaceLanguage()
   const toast = useToast()
   const [title, setTitle] = useState(entry.title || '')
   const [story, setStory] = useState(entry.story || '')
@@ -161,11 +165,17 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
   const [mood, setMood] = useState(entry.mood || '')
   const [weather, setWeather] = useState(entry.weather || '')
   const [statsExcluded, setStatsExcluded] = useState(entry.stats_excluded ?? false)
+  // The trip this day belongs to, when the journey does not follow it yet (#2265).
+  const tripSuggestion = useJourneyTripSuggestion(journeyId, trips.map(tr => tr.trip_id), entryDate, true)
+  const [isDraft, setIsDraft] = useState(entry.is_draft ?? false)
   const [pros, setPros] = useState<string[]>(entry.pros_cons?.pros?.length ? entry.pros_cons.pros : [''])
   const [cons, setCons] = useState<string[]>(entry.pros_cons?.cons?.length ? entry.pros_cons.cons : [''])
   const [saving, setSaving] = useState(false)
   const [uploadProgress, setUploadProgress] = useState<{ done: number; total: number } | null>(null)
   const [photos, setPhotos] = useState<(JourneyPhoto | GalleryPhoto)[]>(entry.photos || [])
+  // Drag a photo onto another's place, or send it to the front (#824).
+  const photoOrder = useEntryPhotoOrder(entry.id, photos, setPhotos)
+  const canReorder = entry.id > 0 && photos.length > 1
   const [pendingFiles, setPendingFiles] = useState<File[]>([])
   // Minting the preview URL inline in the JSX would hand out a fresh blob on
   // every keystroke in the story field and never give one back.
@@ -206,6 +216,7 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
     mood !== (entry.mood || '') ||
     weather !== (entry.weather || '') ||
     statsExcluded !== (entry.stats_excluded ?? false) ||
+    isDraft !== (entry.is_draft ?? false) ||
     pros.filter(p => p.trim()).join('\n') !== originalPros ||
     cons.filter(c => c.trim()).join('\n') !== originalCons ||
     pendingFiles.length > 0 ||
@@ -331,6 +342,7 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
         location_lat: locationLat,
         location_lng: locationLng,
         stats_excluded: offersStatsToggle ? statsExcluded : undefined,
+        is_draft: isDraft,
         mood: mood || null,
         weather: weather || null,
         pros_cons: { pros: pros.filter(p => p.trim()), cons: cons.filter(c => c.trim()) },
@@ -420,7 +432,7 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
       setLocationResults([])
       setShowLocationResults(false)
       try {
-        const data = await mapsApi.reverse(pos.lat, pos.lng, language)
+        const data = await mapsApi.reverse(pos.lat, pos.lng, placeLang)
         const name = data.name || data.address
         // Only replace the coordinate fallback — don't clobber a search
         // result the user may have picked while the reverse call was in flight.
@@ -637,7 +649,10 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
               {(photos.length > 0 || pendingFiles.length > 0) && (
                 <div className="mt-3 flex flex-wrap gap-2">
                   {photos.map((p, idx) => (
-                    <div key={p.id} className={`group relative h-20 w-20 overflow-hidden rounded-[12px] ${idx === 0 && photos.length > 1 ? 'ring-2 ring-accent ring-offset-1 ring-offset-surface-card' : ''}`}>
+                    <div key={p.id}
+                      {...(canReorder ? photoOrder.dragProps(idx) : {})}
+                      className={`group relative h-20 w-20 overflow-hidden rounded-[12px] ${canReorder ? 'cursor-grab active:cursor-grabbing' : ''} ${idx === 0 && photos.length > 1 ? 'ring-2 ring-accent ring-offset-1 ring-offset-surface-card' : ''} ${photoOrder.overIndex === idx && photoOrder.dragIndex !== idx ? 'outline outline-2 outline-offset-2 outline-[color:var(--accent)]' : ''}`}
+                      style={photoOrder.dragIndex === idx ? { opacity: 0.4 } : undefined}>
                       {posterlessVideo(p) ? (
                         <ClipTile />
                       ) : (
@@ -648,28 +663,7 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
                       )}
                       {idx > 0 && photos.length > 1 && (
                         <button type="button"
-                          onClick={e => {
-                            e.stopPropagation()
-                            const prevOrder = photos
-                            const next = [...photos]
-                            const [moved] = next.splice(idx, 1)
-                            next.unshift(moved)
-                            setPhotos(next)
-                            // The order is shared: other members, the share view and the
-                            // PDF all read it, so a rejected write has to go back. Every
-                            // write is awaited first: snapping back on the first
-                            // rejection would do it while the rest are still landing.
-                            void (async () => {
-                              const results = await Promise.allSettled(next.map((ph, i) => journeyApi.updatePhoto(ph.id, { sort_order: i })))
-                              const rejected = results.filter(r => r.status === 'rejected') as PromiseRejectedResult[]
-                              if (rejected.length === 0) return
-                              toast.error(getApiErrorMessage(rejected[0].reason, t('common.error')))
-                              // Only a run where nothing landed can be put back: with a
-                              // partial one the server already holds part of the new
-                              // order, and hiding that would be the worse lie.
-                              if (rejected.length === results.length) setPhotos(prevOrder)
-                            })()
-                          }}
+                          onClick={e => { e.stopPropagation(); photoOrder.makeFirst(idx) }}
                           className={`absolute bottom-0.5 left-0.5 rounded px-1.5 py-0.5 font-semibold opacity-0 transition-opacity group-hover:opacity-100 ${ON_PHOTO}`}
                           style={fs(8)}
                         >
@@ -787,6 +781,22 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
               </EditorField>
             </div>
 
+            {tripSuggestion.trip && (
+              <div className="flex flex-col gap-2.5 rounded-[14px] border border-edge-faint bg-surface-secondary px-3 py-2.5">
+                <div className="flex items-start gap-3">
+                  <span className="grid h-8 w-8 flex-none place-items-center rounded-[10px] bg-surface-card text-content-muted shadow-sm"><Briefcase size={15} /></span>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-semibold text-content [overflow-wrap:anywhere]" style={fs(12.5, 'body')}>{tripSuggestion.trip.title}</div>
+                    <div className="mt-0.5 leading-snug text-content-muted" style={fs(11)}>{t('journey.editor.tripSuggestionHint')}</div>
+                  </div>
+                </div>
+                <div className="flex justify-end gap-2">
+                  <DialogButton onClick={tripSuggestion.dismiss}>{t('journey.editor.tripSuggestionLater')}</DialogButton>
+                  <DialogButton variant="primary" onClick={() => void tripSuggestion.link()} disabled={tripSuggestion.linking}>{t('journey.trips.linkTrip')}</DialogButton>
+                </div>
+              </div>
+            )}
+
             {/* The location is a free-text search, so it gets the whole width. */}
             <EditorField label={t('journey.editor.location')} htmlFor={`${labelId}-location`} className="relative">
               <div className="relative">
@@ -802,7 +812,7 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
                       locationTimerRef.current = setTimeout(async () => {
                         setLocationSearching(true)
                         try {
-                          const res = await mapsApi.search(q)
+                          const res = await mapsApi.search(q, placeLang)
                           setLocationResults((res.places || []).slice(0, 6).map((p: any) => ({
                             name: p.name, address: p.address, lat: Number(p.lat), lng: Number(p.lng),
                           })))
@@ -875,6 +885,15 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
                 <ToggleSwitch on={statsExcluded} onToggle={() => setStatsExcluded(v => !v)} label={t('journey.editor.statsExcluded')} />
               </div>
             )}
+
+            {/* A draft stays among the contributors until it is ready (#696). */}
+            <div className="flex items-center gap-3 rounded-[14px] border border-edge-faint bg-surface-secondary px-3 py-2.5">
+              <div className="min-w-0 flex-1">
+                <div className="font-semibold text-content" style={fs(12.5, 'body')}>{t('journey.editor.draft')}</div>
+                <div className="mt-0.5 leading-snug text-content-muted" style={fs(11)}>{t('journey.editor.draftHint')}</div>
+              </div>
+              <ToggleSwitch on={isDraft} onToggle={() => setIsDraft(v => !v)} label={t('journey.editor.draft')} />
+            </div>
 
             {/* The size sits on the rows rather than on each chip, so a chip at rest
                 carries no inline style and only a picked mood wears its palette. */}

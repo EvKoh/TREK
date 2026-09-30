@@ -161,6 +161,8 @@ export const envSchema = z.object({
   TREK_PLACE_PHOTO_DIR: anyString,
   BACKUP_UPLOAD_LIMIT_MB: positiveNumber,
   BACKUP_MAX_DECOMPRESSED_MB: positiveNumber,
+  // A backup archive to restore on the very first start, before any setup (#1089).
+  RESTORE_FROM_BACKUP: anyString,
 
   // Admin / demo
   ADMIN_EMAIL: anyString,

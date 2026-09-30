@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import type { TrekWsPayload, TrekWsTripEventName } from '@trek/shared';
+import { resolvePackedState, type TrekWsPayload, type TrekWsTripEventName } from '@trek/shared';
 import { RealtimeService } from '../realtime/realtime.service';
 import { PermissionsService } from '../permissions/permissions.service';
 import { avatarUrl } from '../common/avatarUrl';
@@ -276,7 +276,7 @@ export class PackingService {
   updateItem(
     tripId: string | number,
     id: string | number,
-    data: { name?: string; checked?: number; category?: string; weight_grams?: number | null; bag_id?: number | null; quantity?: number; is_private?: boolean },
+    data: { name?: string; checked?: number; category?: string; weight_grams?: number | null; bag_id?: number | null; quantity?: number; packed_quantity?: number | null; is_private?: boolean },
     bodyKeys: string[],
     ifMatch?: string,
     actingUserId?: number,
@@ -302,29 +302,37 @@ export class PackingService {
     // the visibility filter still has someone to match (#858).
     const claimOwner = bodyKeys.includes('is_private') && !!data.is_private && item.owner_id == null && actingUserId != null;
 
+    // The box and the packed count (#2296) are settled together, so a count
+    // that reaches the quantity ticks the item and a tick clears the count.
+    const quantity = bodyKeys.includes('quantity') ? Math.max(1, Math.min(999, Number(data.quantity) || 1)) : (item.quantity || 1);
+    const packed = resolvePackedState(
+      { checked: item.checked ? 1 : 0, packed_quantity: item.packed_quantity ?? null },
+      { bodyKeys, checked: data.checked, packed_quantity: data.packed_quantity, quantity },
+    );
+
     this.db.run(`
     UPDATE packing_items SET
       name = COALESCE(?, name),
-      checked = CASE WHEN ? IS NOT NULL THEN ? ELSE checked END,
+      checked = ?,
+      packed_quantity = ?,
       category = COALESCE(?, category),
       weight_grams = CASE WHEN ? THEN ? ELSE weight_grams END,
       bag_id = CASE WHEN ? THEN ? ELSE bag_id END,
-      quantity = CASE WHEN ? THEN ? ELSE quantity END,
+      quantity = ?,
       is_private = CASE WHEN ? THEN ? ELSE is_private END,
       owner_id = CASE WHEN ? THEN ? ELSE owner_id END,
       updated_at = CURRENT_TIMESTAMP
     WHERE id = ?
   `,
       data.name || null,
-      data.checked !== undefined ? 1 : null,
-      data.checked ? 1 : 0,
+      packed.checked,
+      packed.packed_quantity,
       data.category || null,
       bodyKeys.includes('weight_grams') ? 1 : 0,
       data.weight_grams ?? null,
       bodyKeys.includes('bag_id') ? 1 : 0,
       data.bag_id ?? null,
-      bodyKeys.includes('quantity') ? 1 : 0,
-      Math.max(1, Math.min(999, Number(data.quantity) || 1)),
+      quantity,
       bodyKeys.includes('is_private') ? 1 : 0,
       data.is_private ? 1 : 0,
       claimOwner ? 1 : 0,
@@ -361,7 +369,7 @@ export class PackingService {
    */
   private getItemInTrip(tripId: string | number, id: string | number, actorId: number | undefined) {
     if (actorId == null) return undefined;
-    return this.db.get<{ id: number; owner_id: number | null; is_private: number; name: string; category: string | null; quantity: number; weight_grams: number | null; bag_id: number | null; updated_at?: string | null }>(
+    return this.db.get<{ id: number; owner_id: number | null; is_private: number; name: string; category: string | null; checked: number; quantity: number; packed_quantity?: number | null; weight_grams: number | null; bag_id: number | null; updated_at?: string | null }>(
       `SELECT * FROM packing_items WHERE id = ? AND trip_id = ? AND ${PackingService.VISIBLE_TO_ACTOR}`,
       id, tripId, actorId, actorId,
     );

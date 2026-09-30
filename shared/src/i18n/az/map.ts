@@ -34,6 +34,8 @@ const map: TranslationStrings = {
     'Məkanınızı müəyyən etmək çox vaxt apardı. Səmanın daha açıq göründüyü yerdə yenidən cəhd edin.',
 
   'map.overview.show': 'Bütün səyahəti göstər',
+  'map.lock.lock': 'Xəritə görünüşünü kilidlə',
+  'map.lock.unlock': 'Xəritə seçimi izləsin',
   'map.overview.hide': 'Bütün səyahəti gizlət',
   'map.overview.total': 'Ümumi məsafə',
   'map.attribution': 'Xəritə mənbələri',

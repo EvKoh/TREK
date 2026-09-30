@@ -53,6 +53,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Show the whole trip',
   'places.filterTracks': 'Tracks',
   'places.filterByRating': 'Filter by rating',
+  'places.filterByLocation': 'Filter by country or region',
+  'places.allLocations': 'All countries',
   /** The button that opens the filter panel, and the panel's name. */
   /** Label over the all/unplanned/planned/tracks choice in the filter panel. */
   'places.filterShow': 'Show',
@@ -82,6 +84,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Category',
   'places.noCategory': 'No Category',
   'places.newCategory': 'New category',
+  'places.openInMaps': 'Open in maps',
   'places.categoryNamePlaceholder': 'Category name',
   'places.formTime': 'Time',
   'places.startTime': 'Start',
@@ -98,6 +101,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Search places...',
   'places.mapsSearchError': 'Place search failed.',
   'places.searchGoogleInstead': 'Not the right place? Search Google instead',
+  'places.nearby': 'Places near this pin',
+  'places.nearbyNone': 'Nothing found near this pin',
   'places.loadingDetails': 'Loading place details…',
   'places.osmHint':
     'Using OpenStreetMap search (no photos, opening hours, or ratings). Add a Google API key in settings for full details.',
@@ -136,9 +141,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Enrich places via Google',
   'places.enrichOnImportHint':
     'Look up each imported place to fill in photos, address and contact details. Uses your Google Maps key.',
+  'places.enrichOnImportFileHint':
+    'Looks each imported point up on Google afterwards and adds its photo, address, website and phone. Paths and tracks stay as they are.',
   'places.uploadImage': 'Upload image',
   'places.changeImage': 'Change image',
   'places.removeImage': 'Remove image',
+  'places.chooseImage': 'Choose a picture',
+  'places.uploadFromDevice': 'Upload from device',
+  'places.fromAttachedFiles': 'From attached files',
   'places.imageUploadError': 'Could not upload image',
   'places.imageRemoveError': 'Could not remove image',
 };

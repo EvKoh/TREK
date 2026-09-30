@@ -2,7 +2,8 @@ import { getMergedItems, getTransportForDay, hidesOnMiddleDay } from '../../util
 import { isDayInAccommodationRange } from '../../utils/dayOrder'
 import { SharedDayCard } from './SharedDayCard'
 import { SharedMap, type MapPlace } from './SharedMap'
-import { stopNumbers } from './sharedTripModel'
+import { SharedUnplannedCard } from './SharedUnplannedCard'
+import { dayHasEntries, stopNumbers, unplannedPlaces } from './sharedTripModel'
 
 interface Assignment {
   id: number
@@ -18,7 +19,7 @@ interface SharedPlanViewProps {
     days?: { id: number; day_number: number; title?: string | null; date?: string | null }[]
     assignments?: Record<string, Assignment[]>
     dayNotes?: Record<string, { id: number; text: string; time?: string | null; sort_order?: number | null }[]>
-    places?: MapPlace[]
+    places?: (MapPlace & { category_id?: number | null })[]
     reservations?: { id: number; type: string; title: string; day_id?: number | null; end_day_id?: number | null }[]
     accommodations?: { id: number; place_name?: string | null; start_day_id?: number | null; end_day_id?: number | null }[]
     categories?: { id: number; color?: string | null; icon?: string | null }[]
@@ -29,6 +30,8 @@ interface SharedPlanViewProps {
   onPickDayOnMap: (id: number | null) => void
   collapsedDays: ReadonlySet<number>
   onToggleDay: (id: number) => void
+  /** The owner shared only travel and stays (#1712): empty days and the unplanned pool stay out. */
+  travelOnly?: boolean
 }
 
 /**
@@ -36,7 +39,7 @@ interface SharedPlanViewProps {
  * them and staying in view while they scroll. On a phone the map comes first
  * and the days follow under it.
  */
-export function SharedPlanView({ data, selectedDay, onSelectDay, onPickDayOnMap, collapsedDays, onToggleDay }: SharedPlanViewProps) {
+export function SharedPlanView({ data, selectedDay, onSelectDay, onPickDayOnMap, collapsedDays, onToggleDay, travelOnly = false }: SharedPlanViewProps) {
   const days = [...(data.days || [])].sort((a, b) => a.day_number - b.day_number)
   const assignments = data.assignments || {}
 
@@ -98,6 +101,8 @@ export function SharedPlanView({ data, selectedDay, onSelectDay, onPickDayOnMap,
             dayTransports: transports,
             dayId: day.id,
           }).filter(item => !(item.type === 'transport' && hidesOnMiddleDay(item.data, day.id)))
+          const stays = (data.accommodations || []).filter(a => isDayInAccommodationRange(day, a.start_day_id, a.end_day_id, days))
+          if (travelOnly && !dayHasEntries(items.length, stays.length)) return null
           return (
             <SharedDayCard
               key={day.id}
@@ -108,15 +113,17 @@ export function SharedPlanView({ data, selectedDay, onSelectDay, onPickDayOnMap,
               onSelect={() => onSelectDay(selectedDay === day.id ? null : day.id)}
               onToggleCollapse={() => onToggleDay(day.id)}
               items={items}
-              stays={(data.accommodations || []).filter(a => isDayInAccommodationRange(day, a.start_day_id, a.end_day_id, days))}
+              stays={stays}
               // A share can still carry an assignment for a deleted place. The list
               // skips those rows, so the count must not count them either.
               placeCount={stops.filter(a => a.place).length}
               stopNumber={stopNumbers(stops).byAssignment}
               categories={data.categories || []}
+              travelOnly={travelOnly}
             />
           )
         })}
+        {!travelOnly && <SharedUnplannedCard places={unplannedPlaces(data.places || [], assignments)} categories={data.categories || []} />}
       </div>
     </div>
   )

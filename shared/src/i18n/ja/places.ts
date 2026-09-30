@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': '旅行全体を表示',
   'places.filterTracks': 'トラック',
   'places.filterByRating': '評価で絞り込む',
+  'places.filterByLocation': '国または地域で絞り込む',
+  'places.allLocations': 'すべての国',
   'places.filterShow': '表示',
   'places.clearSearch': '検索をクリア',
   'places.yourRating': 'あなたの評価',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'カテゴリ',
   'places.noCategory': 'カテゴリなし',
   'places.newCategory': '新しいカテゴリ',
+  'places.openInMaps': '地図アプリで開く',
   'places.categoryNamePlaceholder': 'カテゴリ名',
   'places.formTime': '時間',
   'places.startTime': '開始',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': '場所を検索…',
   'places.mapsSearchError': '場所の検索に失敗しました。',
   'places.searchGoogleInstead': '目的の場所ではない？ Google で検索',
+  'places.nearby': 'このピンの近くの場所',
+  'places.nearbyNone': 'このピンの近くには何も見つかりませんでした',
   'places.loadingDetails': '詳細を読み込み中…',
   'places.osmHint':
     'OpenStreetMapで検索しています（写真・営業時間・評価なし）。設定でGoogle APIキーを追加すると詳細が表示されます。',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Googleで場所を補完',
   'places.enrichOnImportHint':
     'インポートした各場所を検索して、写真・住所・連絡先を追加します。Google Maps キーが必要です。',
+  'places.enrichOnImportFileHint':
+    'インポート後に各地点を Google で検索し、写真、住所、ウェブサイト、電話番号を追加します。経路やトラックはそのまま残ります。',
   'places.uploadImage': '画像をアップロード',
   'places.changeImage': '画像を変更',
   'places.removeImage': '画像を削除',
+  'places.chooseImage': '画像を選択',
+  'places.uploadFromDevice': 'デバイスからアップロード',
+  'places.fromAttachedFiles': '添付ファイルから',
   'places.imageUploadError': '画像をアップロードできませんでした',
   'places.imageRemoveError': '画像を削除できませんでした',
 };

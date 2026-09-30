@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Je locatie kon niet worden bepaald.',
   'map.location.timeout': 'Het bepalen van je locatie duurde te lang. Probeer het opnieuw met vrij zicht op de lucht.',
   'map.overview.show': 'Hele reis tonen',
+  'map.lock.lock': 'Kaartweergave vergrendelen',
+  'map.lock.unlock': 'Kaart de selectie laten volgen',
   'map.overview.hide': 'Hele reis verbergen',
   'map.overview.total': 'Totale afstand',
   'map.attribution': 'Kaartvermeldingen',

@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Haritada',
   'mobileTrip.profileDriving': 'Araba',
   'mobileTrip.profileWalking': 'Yürüyüş',
+  'mobileTrip.profileCycling': 'Bisiklet',
   'mobileTrip.renameDay': 'Günü yeniden adlandır',
   'mobileTrip.resBadge': 'Rezervasyon',
   'mobileTrip.showOnMap': 'Haritada göster',

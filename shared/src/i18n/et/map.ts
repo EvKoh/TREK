@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Sinu asukohta ei õnnestunud määrata.',
   'map.location.timeout': 'Asukoha määramine võttis liiga kaua aega. Proovi uuesti lagedamas kohas.',
   'map.overview.show': 'Näita kogu reisi',
+  'map.lock.lock': 'Lukusta kaardivaade',
+  'map.lock.unlock': 'Lase kaardil valikut järgida',
   'map.overview.hide': 'Peida kogu reis',
   'map.overview.total': 'Kogupikkus',
   'map.attribution': 'Kaardi allikad',

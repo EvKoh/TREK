@@ -12,5 +12,11 @@ const share: TranslationStrings = {
   'share.permPacking': 'Πακετάρισμα',
   'share.permBudget': 'Κόστη',
   'share.permCollab': 'Συνομιλία',
+  'share.options': 'Επιλογές',
+  'share.optTravelOnly': 'Μόνο μετακινήσεις και διαμονές',
+  'share.optTravelOnlyHint':
+    'Εμφανίζει μόνο μεταφορές και καταλύματα, χωρίς δραστηριότητες, σημειώσεις ημερών και κενές ημέρες',
+  'share.optHideImages': 'Χωρίς φωτογραφίες',
+  'share.optHideImagesHint': 'Παραλείπει τις φωτογραφίες των μερών από την κοινόχρηστη σελίδα',
 };
 export default share;

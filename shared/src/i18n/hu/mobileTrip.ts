@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Térképen',
   'mobileTrip.profileDriving': 'Autózás',
   'mobileTrip.profileWalking': 'Gyaloglás',
+  'mobileTrip.profileCycling': 'Kerékpározás',
   'mobileTrip.renameDay': 'Nap átnevezése',
   'mobileTrip.resBadge': 'Foglalás',
   'mobileTrip.showOnMap': 'Megjelenítés térképen',

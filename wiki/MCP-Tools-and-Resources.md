@@ -47,7 +47,7 @@ Requires `trips:read` or `trips:write` scope.
 | `copy_trip` | Duplicate a trip (days, places, itinerary, packing, budget, reservations). Packing items reset to unchecked. |
 | `export_trip_ics` | Export the trip itinerary and reservations as iCalendar (`.ics`) text. |
 | `get_share_link` | Get the current public share link for a trip and its permission flags. Requires `trips:share`. |
-| `create_share_link` | Create or update the public share link with configurable visibility flags. Requires `trips:share`. |
+| `create_share_link` | Create or update the public share link with configurable visibility flags, including the travel-only and without-photos options. Requires `trips:share`. |
 | `delete_share_link` | Revoke the public share link for a trip. Requires `trips:share`. |
 
 ### Places
@@ -84,6 +84,9 @@ Requires `trips:read` or `trips:write` scope.
 | `set_day_default_transport_mode` | Set the whole-day default travel mode. Per-leg modes still override it. Pass `null` to clear. |
 | `assign_place_to_day` | Pin a place to a specific day in the itinerary. Requires `places:write`. |
 | `unassign_place` | Remove a place assignment from a day. Requires `places:write`. |
+| `clear_day_assignments` | Remove every place from one day at once. The day, its notes and its bookings stay. Requires `places:write`. |
+| `set_assignment_route_excluded` | Keep a place on its day but out of the day's route, or route it again. Requires `places:write`. |
+| `set_place_image_from_file` | Use a picture already attached in the trip as a place image (the file is copied). Requires `places:write`. |
 | `reorder_day_assignments` | Reorder places within a day by providing assignment IDs in order. Requires `places:write`. |
 | `update_assignment_time` | Set start/end times for a place assignment (e.g. `"09:00"` – `"11:30"`). Pass `null` to clear. Requires `places:write`. |
 | `move_assignment` | Move a place assignment to a different day. Requires `places:write`. |
@@ -159,8 +162,8 @@ Requires `budget:read` or `budget:write` scope. The Budget addon must be enabled
 | `toggle_budget_member_paid` | Mark or unmark a member as having paid their share. |
 | `get_settlement_summary` | Each member's net balance, the suggested payments to settle shared expenses, and each member's final budget (`finalBudgets`: expenses paid, net reimbursements, pending reimbursements, final cost, each figure with the rows it is made of under `sources`). `currency` says what the amounts are in: the `base` asked for when the server can quote it, otherwise the trip's base currency. An expense or payment in a foreign currency with no frozen rate, while the server has no live rate for it either, is left out of every figure and listed under `unconverted` (`item_ids`, `settlement_ids`, `currencies`). Call this before recording a settlement. |
 | `list_settlements` | List the recorded settle-up payments for a trip — who paid whom, how much, and when. |
-| `create_settlement` | Record a settle-up payment: one member paid another the given amount, with the payment's currency and the day it happened. |
-| `update_settlement` | Update a recorded settle-up payment (payer, recipient, amount, currency and the day it happened). |
+| `create_settlement` | Record a settle-up payment: one member paid another the given amount, with the payment's currency, the day it happened and an optional note. |
+| `update_settlement` | Update a recorded settle-up payment (payer, recipient, amount, currency, the day it happened and its note). |
 | `delete_settlement` | Delete a recorded settle-up payment. This is the undo for `create_settlement` and restores the affected balances. |
 | `freeze_budget_rates` | Pin today's server exchange rate on every expense and settle-up payment in a foreign currency that has no rate frozen yet, the rows under `unconverted` included. Rows with a frozen rate, in the trip currency or without a currency are never touched, and no rate is taken from the caller. Returns the rows it froze (`items`, `settlements`) and the currencies the server could not quote (`unresolved`). Needs the budget edit permission; an error when the trip currency changed meanwhile, with nothing written. |
 
@@ -183,6 +186,7 @@ Requires `places:read` or `places:write` scope.
 | `reverse_geocode` | `geo:read` | Get a human-readable address for given coordinates. |
 | `resolve_maps_url` | `geo:read` | Resolve a Google Maps or Amap (高德地图) share URL to coordinates and place name. |
 | `search_pois` | `geo:read` | List places of one or more categories inside a map rectangle, the MCP side of the category buttons on the trip map. Answers from TREK's place index where it can and from OpenStreetMap (Overpass) otherwise, names the source of each result, and never calls Google. |
+| `search_nearby_places` | `geo:read` | List named places of any kind around a coordinate, nearest first, each with its distance in metres. Takes `lat`, `lng`, an optional `radius` (50 to 5000 m, default 500), `limit` (up to 20) and `lang`. Answers from TREK's place index first, from Google Places only when the instance has a key and the index found nothing, and from OpenStreetMap otherwise. Answers are cached for 30 minutes. |
 | `list_plugin_poi_categories` | `geo:read` | List the extra categories installed plugins add to the category buttons on the trip map (trailheads, EV chargers, step-free places, drinking water, campsites and the like), each with the `pluginId` and category `id` that `search_plugin_pois` takes and its label in the requested `lang`. Empty when no plugin adds categories, which is the normal case. |
 | `search_plugin_pois` | `geo:read` | List the places of one plugin category inside a map rectangle, the MCP side of a plugin's category button. Takes `pluginId`, `category`, a `bbox` (narrowed to a centred 0.5 degree window when larger, reported as `clamped`) and an optional `lang`. Results have the `search_pois` shape plus the answering `pluginId`, a `rating` where the plugin has one and up to six `details` rows (label and value) only that plugin knows. An unknown category or a failing plugin is an error result. Never calls Google. |
 | `search_airports` | `geo:read` | Search for airports by name, city, or IATA code. Returns IATA code, name, city, country, timezone. |
@@ -221,7 +225,7 @@ Requires `settings:read` or `settings:write`.
 
 | Tool | Description |
 |---|---|
-| `get_display_settings` | Read the user's units, time format, first day of the week, language, default currency and start page. Read this before rendering a temperature, a distance or a clock time. |
+| `get_display_settings` | Read the user's units, time format, first day of the week, language, the language of place names in search, default currency and start page. Read this before rendering a temperature, a distance or a clock time. |
 | `update_display_settings` | Change one or more of those preferences. Only display preferences: API keys, map tokens and LLM settings are refused, whatever is passed. |
 
 ### Calendar feeds

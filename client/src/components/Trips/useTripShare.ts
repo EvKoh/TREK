@@ -13,10 +13,28 @@ import { copyText } from '../../utils/clipboard'
 // phone opens from its More sheet. The questions ("Remove this member?") are the
 // caller's: the desktop asks in a dialog of its own, the phone with the browser's.
 
-export type SharePerm = 'share_map' | 'share_bookings' | 'share_packing' | 'share_budget' | 'share_collab'
+export type SharePerm = 'share_map' | 'share_bookings' | 'share_packing' | 'share_budget' | 'share_collab' | 'share_travel_only' | 'share_hide_images'
 type SharePerms = Record<SharePerm, boolean>
 
-const DEFAULT_PERMS: SharePerms = { share_map: true, share_bookings: true, share_packing: false, share_budget: false, share_collab: false }
+const DEFAULT_PERMS: SharePerms = {
+  share_map: true, share_bookings: true, share_packing: false, share_budget: false, share_collab: false,
+  share_travel_only: false, share_hide_images: false,
+}
+
+/** What the link shows, one tab each. */
+export const SHARE_SECTIONS: { key: SharePerm; label: string; always?: boolean }[] = [
+  { key: 'share_map', label: 'share.permMap', always: true },
+  { key: 'share_bookings', label: 'share.permBookings' },
+  { key: 'share_packing', label: 'share.permPacking' },
+  { key: 'share_budget', label: 'share.permBudget' },
+  { key: 'share_collab', label: 'share.permCollab' },
+]
+
+/** How the plan it shows is narrowed (#1712). */
+export const SHARE_OPTIONS: { key: SharePerm; label: string }[] = [
+  { key: 'share_travel_only', label: 'share.optTravelOnly' },
+  { key: 'share_hide_images', label: 'share.optHideImages' },
+]
 
 /** Copy text and show "Copied" for two seconds, the timer restarting on every copy. */
 function useCopied() {
@@ -44,7 +62,11 @@ export function useShareLink(tripId: number) {
   useEffect(() => {
     shareApi.getLink(tripId).then(d => {
       setToken(d.token)
-      if (d.token) setPerms({ share_map: d.share_map ?? true, share_bookings: d.share_bookings ?? true, share_packing: d.share_packing ?? false, share_budget: d.share_budget ?? false, share_collab: d.share_collab ?? false })
+      if (d.token) setPerms({
+        share_map: d.share_map ?? true, share_bookings: d.share_bookings ?? true, share_packing: d.share_packing ?? false,
+        share_budget: d.share_budget ?? false, share_collab: d.share_collab ?? false,
+        share_travel_only: d.share_travel_only ?? false, share_hide_images: d.share_hide_images ?? false,
+      })
       setLoading(false)
     }).catch(() => setLoading(false))
   }, [tripId])

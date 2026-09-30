@@ -259,6 +259,19 @@ describe('Tool: update_display_settings', () => {
     });
   });
 
+  it('writes place_language, clears it with "", and refuses a language TREK does not offer (#1799)', async () => {
+    const { user } = createUser(testDb);
+    await withHarness(user.id, async (h) => {
+      const set = parseToolResult(await update(h, { place_language: 'en' })) as any;
+      expect(set.settings.place_language).toBe('en');
+      const refused = await update(h, { place_language: 'klingon' });
+      expect(refused.isError).toBe(true);
+      expect(readSetting(user.id, 'place_language')).toBe('en');
+      const cleared = parseToolResult(await update(h, { place_language: '' })) as any;
+      expect(cleared.settings.place_language).toBe('');
+    });
+  });
+
   it('writes week_start and refuses a day outside the three the app offers (#2029)', async () => {
     const { user } = createUser(testDb);
     await withHarness(user.id, async (h) => {

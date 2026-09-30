@@ -27,6 +27,7 @@ export * from './memories/memories.schema';
 export * from './atlas/atlas.schema';
 export * from './vacay/vacay.schema';
 export * from './packing/packing.schema';
+export * from './packing/packed-count';
 export * from './todo/todo.schema';
 export * from './budget/budget.schema';
 export * from './budget/receipt-scan.schema';

@@ -349,6 +349,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Sumy v Nákladoch sa do tejto meny prepočítavajú iba pre zobrazenie — pôvodné sumy zostávajú nezmenené.',
   'settings.currencyTrip': 'Mena cesty',
+  'settings.placeLanguage': 'Názvy miest',
+  'settings.placeLanguageApp': 'Rovnako ako aplikácia',
+  'settings.placeLanguageHint':
+    'Jazyk, v ktorom odpovedá vyhľadávanie miest, návrhy a adresy. Ak miesto v tomto jazyku názov nemá, zobrazí sa jeho miestny názov.',
   'settings.passkey.title': 'Prístupové kľúče',
   'settings.passkey.description':
     'Prihlasujte sa rýchlejšie a s ochranou proti phishingu pomocou prístupového kľúča — odtlačkom prsta, tvárou, PIN kódom alebo hardvérovým kľúčom. Vaše heslo zostáva ako záloha.',
@@ -489,6 +493,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Jazyk a región',
   'settings.general.travelMap': 'Cestovanie a mapa',
   'settings.general.startup': 'Spustenie',
+  'settings.dayDateFirst': 'Dátum na začiatku nadpisov dní',
+  'settings.compactUnplanned': 'Kompaktné značky pre nenaplánované miesta',
+  'settings.compactUnplannedHint':
+    'Miesta, ktoré nie sú naplánované v žiadnom dni, sa zobrazia ako malé značky bez fotky, aby naplánované zastávky vynikli.',
+  'settings.dayDateFirstHint':
+    'Každý deň začne kalendárnym dátumom a vedľa neho sa zobrazí „Deň 1“ alebo vlastný názov dňa.',
   'settings.startPage': 'Úvodná stránka',
   'settings.startPageDashboard': 'Prehľad',
   'settings.startPageActiveTrip': 'Aktívna cesta',

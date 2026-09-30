@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Mostra tutto il viaggio',
   'places.filterTracks': 'Tracce',
   'places.filterByRating': 'Filtra per valutazione',
+  'places.filterByLocation': 'Filtra per paese o regione',
+  'places.allLocations': 'Tutti i paesi',
   'places.filterShow': 'Mostra',
   'places.clearSearch': 'Cancella ricerca',
   'places.yourRating': 'La tua valutazione',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Categoria',
   'places.noCategory': 'Nessuna categoria',
   'places.newCategory': 'Nuova categoria',
+  'places.openInMaps': 'Apri nelle mappe',
   'places.categoryNamePlaceholder': 'Nome categoria',
   'places.formTime': 'Ora',
   'places.startTime': 'Inizio',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Cerca luoghi...',
   'places.mapsSearchError': 'Impossibile cercare i luoghi.',
   'places.searchGoogleInstead': 'Non è il posto giusto? Cerca su Google',
+  'places.nearby': 'Luoghi vicino a questo segnaposto',
+  'places.nearbyNone': 'Nessun risultato vicino a questo segnaposto',
   'places.loadingDetails': 'Caricamento dettagli del luogo…',
   'places.osmHint':
     'Uso della ricerca OpenStreetMap (senza foto, orari di apertura o valutazioni). Aggiungi una chiave API Google nelle impostazioni per i dettagli completi.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Arricchisci i luoghi con Google',
   'places.enrichOnImportHint':
     'Cerca ogni luogo importato per aggiungere foto, indirizzo e contatti. Usa la tua chiave Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Cerca poi ogni punto importato su Google e aggiunge foto, indirizzo, sito web e telefono. Percorsi e tracce restano come sono.',
   'places.uploadImage': 'Carica immagine',
   'places.changeImage': 'Cambia immagine',
   'places.removeImage': 'Rimuovi immagine',
+  'places.chooseImage': 'Scegli un’immagine',
+  'places.uploadFromDevice': 'Carica dal dispositivo',
+  'places.fromAttachedFiles': 'Dai file allegati',
   'places.imageUploadError': "Impossibile caricare l'immagine",
   'places.imageRemoveError': "Impossibile rimuovere l'immagine",
 };

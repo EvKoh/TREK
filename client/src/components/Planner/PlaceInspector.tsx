@@ -8,7 +8,7 @@ import remarkBreaks from 'remark-breaks'
 import { markdownLinkComponents } from '../shared/markdownLink'
 import { X, Clock, MapPin, ExternalLink, Phone, Banknote, Pencil, Plus, Minus, ChevronDown, ChevronUp, ChevronRight, FileText, Upload, File, FileImage, Star, Navigation, Mountain, Bookmark, BookmarkCheck, Copy } from 'lucide-react'
 import PlaceAvatar from '../shared/PlaceAvatar'
-import PlaceAvatarUpload from '../shared/PlaceAvatarUpload'
+import PlaceAvatarUpload, { pickableImages } from '../shared/PlaceAvatarUpload'
 import { BlurredCode } from '../shared/BookingCode'
 import PlaceRating from '../shared/StarRating'
 import TrackColorPicker from '../shared/TrackColorPicker'
@@ -33,7 +33,7 @@ import { splitReservationDateTime, formatTime, formatMoney } from '../../utils/f
 import { useTripStore } from '../../store/tripStore'
 import { useCanDo } from '../../store/permissionsStore'
 import { formatDistance, formatElevation } from '../../utils/units'
-import { getNavigationTargets, openNavigationTarget } from './placeNavigation'
+import { navigationTargetLabel, getNavigationTargets, openNavigationTarget } from './placeNavigation'
 import { TRANSPORT_TYPES, getAssignmentReservations } from '../../utils/dayMerge'
 import { NavigationMenu } from '../shared/NavigationMenu'
 import { resolveOpenNow, resolvePlaceTimeZone, placeWeekdayIndex, type OpeningPeriod } from './placeOpenState'
@@ -44,6 +44,7 @@ import { DialogButton, DialogSection, DeleteButton, FooterSpacer, NEUTRAL_TINT, 
 import { BOX, Field, TypeTile, toneOf, toneTint, useOpenFile } from './bookings/bookingParts'
 import { parseMeta } from './bookings/bookingsModel'
 import { SoftPill, TimePill, tintOf } from './planParts'
+import { usePlaceLanguage } from '../../hooks/usePlaceLanguage'
 
 const detailsCache = new Map()
 
@@ -189,6 +190,8 @@ interface PlaceInspectorProps {
   onUpdatePlace?: (placeId: number, data: Partial<Place>) => void
   /** Upload a custom thumbnail (#1136); enables the click-to-change avatar in trip mode. */
   onUploadImage?: (placeId: number, file: File) => Promise<void>
+  /** Takes a picture already attached to the place as its image (#1242). */
+  onImageFromFile?: (placeId: number, fileId: number) => Promise<void>
   /** Cast/clear the current user's star vote (#1435); enables the rating row. */
   onRate?: (placeId: number, rating: number | null) => Promise<void> | void
   leftWidth?: number
@@ -213,7 +216,7 @@ export default function PlaceInspector({
   place, categories, mode = 'trip', days = [], selectedDayId = null, selectedAssignmentId = null,
   assignments = {}, reservations = [], onEditTransport, onEditReservation, onOpenBooking,
   onClose, onEdit: editPlace, onDelete: deletePlace, onAssignToDay, onRemoveAssignment,
-  files = [], onFileUpload, tripMembers = [], onSetParticipants, onUpdatePlace: updatePlace, onUploadImage, onRate,
+  files = [], onFileUpload, tripMembers = [], onSetParticipants, onUpdatePlace: updatePlace, onUploadImage, onImageFromFile, onRate,
   leftWidth = 0, rightWidth = 0,
   collectionStatus, onCopyToTrip, onSetStatus, onRemoveFromList, roadtripEndDay, roadtripStay, roadtripActive,
 }: PlaceInspectorProps) {
@@ -245,6 +248,7 @@ export default function PlaceInspector({
     return () => { cancelled = true }
   }, [placeIdForDetails])
   const { t, locale, language } = useTranslation()
+  const placeLang = usePlaceLanguage()
   // Currency-less prices mean "the trip's currency"; null in collection mode (EUR fallback below).
   const tripCurrency = useTripStore(s => s.trip?.currency)
   // The day list handed in is the one the planner shows, and in the day view that
@@ -267,7 +271,7 @@ export default function PlaceInspector({
   const [nameValue, setNameValue] = useState('')
   const nameInputRef = useRef<HTMLInputElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const googleDetails = usePlaceDetails(place?.google_place_id, place?.osm_id, language)
+  const googleDetails = usePlaceDetails(place?.google_place_id, place?.osm_id, placeLang)
 
   // Library-wide "is this place already saved anywhere I can see?" indicator for
   // the trip-planner footer bookmark. Re-checks when the place changes or after
@@ -391,7 +395,7 @@ export default function PlaceInspector({
     place ? { ...place, google_ftid: place.google_ftid || googleDetails?.google_ftid || null } : null,
     googleDetails?.google_maps_url,
   )
-  const navigationLabel = navigationTargets.length === 1 ? navigationTargets[0].label : t('inspector.navigation')
+  const navigationLabel = navigationTargets.length === 1 ? navigationTargetLabel(navigationTargets[0], t) : t('inspector.navigation')
   const selectedDay = days?.find(d => d.id === selectedDayId)
   const weekdayIndex = getWeekdayIndex(selectedDay?.date, placeTimeZone)
 
@@ -424,6 +428,8 @@ export default function PlaceInspector({
           commitNameEdit={commitNameEdit} handleNameKeyDown={handleNameKeyDown} startNameEdit={startNameEdit}
           onUpdatePlace={onUpdatePlace}
           onUploadImage={mode === 'trip' && onUpdatePlace ? onUploadImage : undefined}
+          attachedImages={pickableImages(placeFiles)}
+          onImageFromFile={mode === 'trip' && onUpdatePlace ? onImageFromFile : undefined}
           onClose={onClose} />
 
         {/* The body scrolls inside the capped card; each block keeps its natural height (#1195). */}
@@ -626,6 +632,8 @@ interface InspectorHeadProps {
   startNameEdit: () => void
   onUpdatePlace?: (placeId: number, data: Partial<Place>) => void
   onUploadImage?: (placeId: number, file: File) => Promise<void>
+  attachedImages: TripFile[]
+  onImageFromFile?: (placeId: number, fileId: number) => Promise<void>
   onClose: () => void
 }
 
@@ -634,7 +642,7 @@ interface InspectorHeadProps {
  * name (a double-click renames it), the address, and the facts as pills.
  */
 function InspectorHead({ place, category, openNow, phone, rating, ratingCount, price, time, editingName, nameInputRef,
-  nameValue, setNameValue, commitNameEdit, handleNameKeyDown, startNameEdit, onUpdatePlace, onUploadImage, onClose }: InspectorHeadProps) {
+  nameValue, setNameValue, commitNameEdit, handleNameKeyDown, startNameEdit, onUpdatePlace, onUploadImage, attachedImages, onImageFromFile, onClose }: InspectorHeadProps) {
   const { t, locale } = useTranslation()
   const ring = openNow === true ? 'bg-success' : openNow === false ? 'bg-danger' : 'bg-surface-card shadow-sm'
   const hasCoords = !!(place.lat && place.lng)
@@ -647,7 +655,9 @@ function InspectorHead({ place, category, openNow, phone, rating, ratingCount, p
             {onUploadImage
               ? <PlaceAvatarUpload place={place} category={category} size={52}
                   onUpload={(file: File) => onUploadImage(place.id, file)}
-                  onRemove={() => onUpdatePlace(place.id, { image_url: null })} />
+                  onRemove={() => onUpdatePlace(place.id, { image_url: null })}
+                  attachedImages={attachedImages}
+                  onPickAttached={onImageFromFile ? (fileId: number) => onImageFromFile(place.id, fileId) : undefined} />
               : <PlaceAvatar place={place} category={category} size={52} />}
           </div>
           <PhotoCredit imageUrl={place.image_url} />

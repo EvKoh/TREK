@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Csomagolás',
   'share.permBudget': 'Költségek',
   'share.permCollab': 'Csevegés',
+  'share.options': 'Beállítások',
+  'share.optTravelOnly': 'Csak utazás és szállás',
+  'share.optTravelOnlyHint': 'Csak a közlekedést és a szállást mutatja, programok, napi jegyzetek és üres napok nélkül',
+  'share.optHideImages': 'Fotók nélkül',
+  'share.optHideImagesHint': 'Kihagyja a helyek fotóit a megosztott oldalról',
 };
 export default share;

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router'
 import {
-  ArrowLeft, BookOpen, Check, ChevronDown, Download, Maximize2, Minus, Plus,
+  ArrowLeft, BookOpen, Check, ChevronDown, ClipboardPaste, Download, Maximize2, Minus, Plus,
   Redo2, Sparkles, Undo2,
 } from 'lucide-react'
 import { useJourneyStudio } from '../../pages/journeyStudio/useJourneyStudio'
@@ -17,6 +17,8 @@ import { downloadSpread } from './spreadFile'
 import { StudioExport } from './StudioExport'
 import { PeerBadges } from './PeerBadges'
 import { TrimField } from './TrimField'
+import { Tooltip } from '../shared/Tooltip'
+import { useStudioStore } from '../../store/studioStore'
 import '../../styles/dashboard.css'
 import '../../styles/studio.css'
 import './bookFontFaces'
@@ -193,6 +195,7 @@ function StudioBar({
         >
           <Redo2 size={15} />
         </button>
+        <PasteButton s={s} />
 
         <div className="st-sep" />
 
@@ -221,6 +224,29 @@ function StudioBar({
  * book is behind the chevron, where it cannot be hit by accident, and both are
  * ordinary undo steps.
  */
+/**
+ * Paste what was copied onto the page on screen (#2316). Beside undo and redo
+ * because it is the same kind of thing, and there so the keyboard shortcut is
+ * not the only way to find it.
+ */
+function PasteButton({ s }: { s: Studio }) {
+  const clipboard = useStudioStore(st => st.clipboard)
+  const paste = useStudioStore(st => st.paste)
+  const label = s.t('journey.studio.paste')
+  return (
+    <Tooltip label={clipboard ? label : s.t('journey.studio.pasteEmpty')}>
+      <button type="button"
+        className="st-tool is-icon"
+        disabled={!clipboard || !s.canEdit}
+        onClick={() => paste(s.activeSpread)}
+        aria-label={label}
+      >
+        <ClipboardPaste size={15} />
+      </button>
+    </Tooltip>
+  )
+}
+
 function AutoLayoutButton({ s }: { s: Studio }) {
   const [open, setOpen] = useState(false)
   const box = useRef<HTMLDivElement>(null)

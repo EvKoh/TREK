@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Xəritədə',
   'mobileTrip.profileDriving': 'Avtomobillə',
   'mobileTrip.profileWalking': 'Piyada',
+  'mobileTrip.profileCycling': 'Velosipedlə',
   'mobileTrip.renameDay': 'Günün adını dəyiş',
   'mobileTrip.resBadge': 'Rezervasiya',
   'mobileTrip.showOnMap': 'Xəritədə göstər',

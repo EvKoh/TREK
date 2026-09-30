@@ -247,6 +247,12 @@ describe('deriveBackup', () => {
     expect(deriveBackup({}).maxDecompressedMb).toBe(5 * 1024);
     expect(deriveBackup({ ENCRYPTION_KEY: 'x' }).encryptionKeyFromEnv).toBe(true);
   });
+
+  it('reads RESTORE_FROM_BACKUP as a trimmed path, and blank as unset (#1089)', () => {
+    expect(deriveBackup({}).restoreFromBackup).toBeNull();
+    expect(deriveBackup({ RESTORE_FROM_BACKUP: '   ' }).restoreFromBackup).toBeNull();
+    expect(deriveBackup({ RESTORE_FROM_BACKUP: ' /app/data/b.zip ' }).restoreFromBackup).toBe('/app/data/b.zip');
+  });
 });
 
 describe('deriveNet', () => {

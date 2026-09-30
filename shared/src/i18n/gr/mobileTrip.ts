@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Στον χάρτη',
   'mobileTrip.profileDriving': 'Με αυτοκίνητο',
   'mobileTrip.profileWalking': 'Με τα πόδια',
+  'mobileTrip.profileCycling': 'Με ποδήλατο',
   'mobileTrip.renameDay': 'Μετονομασία ημέρας',
   'mobileTrip.resBadge': 'Κράτηση',
   'mobileTrip.showOnMap': 'Εμφάνιση στον χάρτη',

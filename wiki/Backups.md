@@ -45,6 +45,21 @@ Before restoring, TREK runs integrity checks on the uploaded database:
 
 > **Plugins & restart:** `travel.db` and `uploads/` are swapped in immediately. Plugin data and code are **staged** beside the live trees and applied right away: the running plugins hold their databases open, so the restore asks the plugin runtime to shut them down and swaps the trees in the moment the handles are closed. If the runtime isn't up (plugins switched off, or a restore that happens during startup), the staged trees are applied at the next boot instead. Restart the server after restoring an instance that uses plugins — the plugins are stopped for the swap and stay down until the process restarts, and the bundled encryption key is only read at startup.
 
+### Restoring on a new install, before setup
+
+To move TREK to a new server without setting it up first, put the backup ZIP where the container can read it and point `RESTORE_FROM_BACKUP` at it for the **first** start:
+
+```yaml
+services:
+  trek:
+    environment:
+      - RESTORE_FROM_BACKUP=/app/data/backup-2026-09-30.zip
+```
+
+On that start TREK restores the archive before it opens the database: the database, the encryption key it carries, the uploads and the plugins come back, the database is brought up to date, and no admin account is created. Sign in with an account from the backup. The same checks as above apply, and a backup that fails them stops the start with the reason in the log instead of starting an empty instance.
+
+The variable only acts while there is no database yet. Once the instance has one, a restart leaves it alone and logs a reminder, so it is safe to leave in the compose file, but you can remove it after the move.
+
 ## Auto-backup
 
 Enable scheduled backups in the **Auto-Backup** section of the Backup tab.

@@ -123,6 +123,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'məs. Şam yeməyi, suvenirlər, yanacaq…',
   'costs.note': 'Qeyd',
   'costs.notePlaceholder': 'Nələri əhatə etdiyi, kimin nə qədər qaytarmalı olduğu…',
+  'costs.paymentNotePlaceholder': 'Nağd ödənilib, bank köçürməsi ilə…',
   'costs.addNote': 'Qeyd əlavə et',
   'costs.showNote': 'Qeydi göstər',
   'costs.hideNote': 'Qeydi gizlət',

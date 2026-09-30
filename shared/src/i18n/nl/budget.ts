@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'bijv. Diner, souvenirs, benzine…',
   'costs.note': 'Notitie',
   'costs.notePlaceholder': 'Wat het omvatte, wie wat terugbetaalt…',
+  'costs.paymentNotePlaceholder': 'Contant betaald, via overschrijving…',
   'costs.addNote': 'Notitie toevoegen',
   'costs.showNote': 'Notitie tonen',
   'costs.hideNote': 'Notitie verbergen',

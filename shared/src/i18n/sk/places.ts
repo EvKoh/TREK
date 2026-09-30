@@ -53,6 +53,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Zobraziť celú cestu',
   'places.filterTracks': 'Trasy',
   'places.filterByRating': 'Filtrovať podľa hodnotenia',
+  'places.filterByLocation': 'Filtrovať podľa krajiny alebo regiónu',
+  'places.allLocations': 'Všetky krajiny',
   'places.filterShow': 'Zobraziť',
   'places.clearSearch': 'Vymazať hľadanie',
   'places.yourRating': 'Vaše hodnotenie',
@@ -79,6 +81,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategória',
   'places.noCategory': 'Bez kategórie',
   'places.newCategory': 'Nová kategória',
+  'places.openInMaps': 'Otvoriť v mapách',
   'places.categoryNamePlaceholder': 'Názov kategórie',
   'places.formTime': 'Čas',
   'places.startTime': 'Od',
@@ -95,6 +98,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Hľadať miesta...',
   'places.mapsSearchError': 'Hľadanie miesta zlyhalo.',
   'places.searchGoogleInstead': 'Nie je to správne miesto? Hľadať radšej v Google',
+  'places.nearby': 'Miesta v blízkosti tohto špendlíka',
+  'places.nearbyNone': 'V blízkosti tohto špendlíka sa nič nenašlo',
   'places.loadingDetails': 'Načítavanie podrobností miesta…',
   'places.osmHint':
     'Používate hľadanie cez OpenStreetMap (bez fotiek, otváracích hodín a hodnotení). Pre plné detaily pridajte v nastaveniach kľúč Google API.',
@@ -133,9 +138,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Obohatiť miesta cez Google',
   'places.enrichOnImportHint':
     'Vyhľadá každé importované miesto a doplní fotky, adresu a kontaktné údaje. Používa váš kľúč Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Potom vyhľadá každý importovaný bod na Google a doplní jeho fotku, adresu, web a telefón. Cesty a trasy zostanú bez zmeny.',
   'places.uploadImage': 'Nahrať obrázok',
   'places.changeImage': 'Zmeniť obrázok',
   'places.removeImage': 'Odobrať obrázok',
+  'places.chooseImage': 'Vybrať obrázok',
+  'places.uploadFromDevice': 'Nahrať zo zariadenia',
+  'places.fromAttachedFiles': 'Z priložených súborov',
   'places.imageUploadError': 'Obrázok sa nepodarilo nahrať',
   'places.imageRemoveError': 'Obrázok sa nepodarilo odobrať',
 };

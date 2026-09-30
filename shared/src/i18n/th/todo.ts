@@ -11,6 +11,7 @@ const todo: TranslationStrings = {
   'todo.uncategorized': "ไม่มีรายการ",
   'todo.namePlaceholder': "ชื่องาน",
   'todo.descriptionPlaceholder': "คำอธิบาย (ไม่บังคับ)",
+  'todo.editDescription': 'คลิกเพื่อแก้ไข ลิงก์จะเปิดได้โดยตรง',
   'todo.unassigned': "ยังไม่ได้มอบหมาย",
   'todo.noCategory': "ไม่มีรายการ",
   'todo.hasDescription': "มีคำอธิบาย",

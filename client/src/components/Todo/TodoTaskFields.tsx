@@ -6,6 +6,7 @@ import CustomSelect from '../shared/CustomSelect'
 import { CustomDatePicker } from '../shared/CustomDateTimePicker'
 import NameDialog from '../shared/NameDialog'
 import { Tooltip } from '../shared/Tooltip'
+import MarkdownEditable from '../shared/MarkdownEditable'
 import { GRID_2, LABEL, TEXTAREA } from '../shared/dialogParts'
 import { PRIO_CONFIG, katColor, taskInputStyle, taskLabelClass, type Member, type TaskFieldValues } from './todoListModel'
 
@@ -92,9 +93,14 @@ export default function TodoTaskFields({ values, onChange, categories, members, 
           <textarea value={desc} onChange={e => onChange({ desc: e.target.value })} disabled={!canEdit} rows={3}
             placeholder={t('todo.descriptionPlaceholder')} className={TEXTAREA} />
         ) : (
-          <textarea value={desc} onChange={e => onChange({ desc: e.target.value })} disabled={!canEdit} rows={4}
-            placeholder={t('todo.descriptionPlaceholder')}
-            style={{ ...taskInputStyle, resize: 'vertical', minHeight: 84 }} />
+          <MarkdownEditable value={desc} canEdit={canEdit} editLabel={t('todo.editDescription')}
+            className="text-content-secondary"
+            style={{ ...taskInputStyle, minHeight: 84, lineHeight: 1.5, overflowWrap: 'break-word' }}
+            renderEditor={editor => (
+              <textarea value={desc} onChange={e => onChange({ desc: e.target.value })} rows={4} {...editor}
+                placeholder={t('todo.descriptionPlaceholder')}
+                style={{ ...taskInputStyle, resize: 'vertical', minHeight: 84 }} />
+            )} />
         )}
       </div>
 

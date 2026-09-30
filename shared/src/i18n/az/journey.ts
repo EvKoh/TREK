@@ -6,6 +6,9 @@ const journey: TranslationStrings = {
   'journey.title': 'Səyahət gündəliyi',
   'journey.subtitle': 'Səyahətlərinizi baş verdiyi anda qeyd edin',
   'journey.new': 'Yeni səyahət gündəliyi',
+  'journey.lightbox.zoomIn': 'Yaxınlaşdır',
+  'journey.lightbox.zoomOut': 'Uzaqlaşdır',
+  'journey.lightbox.zoomReset': 'Tam fotoya qayıt',
   'journey.create': 'Yarat',
   'journey.titlePlaceholder': 'Haraya gedirsiniz?',
   'journey.empty': 'Hələ səyahət gündəliyi yoxdur',
@@ -95,6 +98,8 @@ const journey: TranslationStrings = {
   'journey.detail.addEntry': 'Qeyd əlavə et',
   'journey.detail.jumpToTop': 'Yuxarı qayıt',
   'journey.detail.jumpToLast': 'Sonuncu qeydə keç',
+  'journey.detail.dayJump': 'Günə keç',
+  'journey.detail.dayJumpCount': '{count} gün',
   'journey.detail.newEntry': 'Yeni qeyd',
   'journey.detail.editEntry': 'Qeydi redaktə et',
   'journey.detail.noEntries': 'Hələ qeyd yoxdur',
@@ -514,6 +519,20 @@ const journey: TranslationStrings = {
   'journey.studio.kind.icon': 'İkon',
 
   'journey.studio.duplicate': 'Dublikat yarat',
+  'journey.studio.copyToPage': 'İstənilən səhifəyə yapışdırmaq üçün kopyala (Ctrl+C)',
+  'journey.studio.paste': 'Yapışdır (Ctrl+V)',
+  'journey.studio.pasteEmpty': 'Əvvəlcə nəyisə kopyalayın, sonra onu istənilən səhifəyə yapışdırın',
+  'journey.studio.myLayouts': 'Mənim tərtibatlarım',
+  'journey.studio.myLayoutsEmpty':
+    'Tərtib etdiyiniz səhifəni saxlayın və digər səhifələri eyni şəkildə düzün. Onların fotoları və mətnləri qalır.',
+  'journey.studio.saveLayout': 'Bu səhifəni tərtibat kimi saxla',
+  'journey.studio.saveLayoutHint':
+    'Düzülüşü fotolar olmadan saxlayır, bu kitabın bütün redaktorları üçün',
+  'journey.studio.saveLayoutFull':
+    'Bu kitab ən çox 24 tərtibat saxlayır. Yenisini saxlamaq üçün birini silin.',
+  'journey.studio.deleteLayout': 'Tərtibatı sil',
+  'journey.studio.layoutName': 'Tərtibat',
+  'journey.studio.builtInLayouts': 'Daxili',
   'journey.studio.style': 'Üslub',
   'journey.studio.shows': 'Göstərir',
   'journey.studio.size': 'Ölçü',
@@ -747,6 +766,13 @@ const journey: TranslationStrings = {
   'journey.editor.statsExcludedHint':
     'Dayanacaq gündəlikdə qalır, lakin məsafə, ölkələr və Studiodakı xəritənin hesablanmasına daxil edilmir.',
   'journey.entry.offRoute': 'Marşrutdan kənar',
+  'journey.entry.draft': 'Qaralama',
+  'journey.editor.draft': 'Qaralama',
+  'journey.editor.draftHint':
+    'Bu qeydi yalnız siz və digər iştirakçılar görür. Siz bunu söndürənə qədər paylaşılan səyahət gündəliyi onu göstərmir.',
+  'journey.editor.tripSuggestionHint':
+    'Bu gün bu səyahətə düşür. Onu əlaqələndirin və məkanları bu səyahət gündəliyinə qoşulsun.',
+  'journey.editor.tripSuggestionLater': 'İndi yox',
 
   'journey.suggestions.dismiss': 'Bu təklifi bağla',
   'journey.suggestions.dismissed': 'Təklif bağlandı',

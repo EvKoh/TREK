@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { katColor, itemWeight, bagFillPct, bagTotalWeight, countsTowardsMyLoad, isMarkdownList, parseCsvLine, parseImportLines, sortItemsByName, unassignedTotalWeight } from './packingListPanel.helpers'
+import { katColor, itemWeight, bagFillPct, bagTotalWeight, countsTowardsMyLoad, isMarkdownList, newItemSharing, parseCsvLine, parseImportLines, sortItemsByName, unassignedTotalWeight } from './packingListPanel.helpers'
 import { KAT_COLORS } from './packingListPanel.constants'
 
 describe('packingListPanel.helpers', () => {
@@ -240,5 +240,27 @@ describe('packingListPanel.helpers', () => {
       sortItemsByName(items, 'en')
       expect(names(items)).toEqual(['b', 'a'])
     })
+  })
+})
+
+describe('newItemSharing (#2241)', () => {
+  const mine = (id: number, category: string, recipients: number[]) =>
+    ({ id, name: `item ${id}`, category, is_private: 1, owner_id: 7, recipients: recipients.map(user_id => ({ user_id, username: `u${user_id}` })) })
+
+  it('shares a new item the way every own item of the category is shared', () => {
+    const items = [mine(1, 'Beach', [9, 8]), mine(2, 'Beach', [8, 9]), mine(3, 'Other', [])]
+    expect(newItemSharing(items, 'Beach', 'personal', 7)).toEqual({ visibility: 'shared', recipient_ids: [8, 9] })
+  })
+
+  it('keeps it to me when the category disagrees, keeps something private or is new', () => {
+    expect(newItemSharing([mine(1, 'Beach', [8]), mine(2, 'Beach', [9])], 'Beach', 'personal', 7)).toEqual({ visibility: 'personal' })
+    expect(newItemSharing([mine(1, 'Beach', [8]), mine(2, 'Beach', [])], 'Beach', 'personal', 7)).toEqual({ visibility: 'personal' })
+    expect(newItemSharing([], 'Beach', 'personal', 7)).toEqual({ visibility: 'personal' })
+    // Items shared to me by somebody else say nothing about how I share mine.
+    expect(newItemSharing([{ ...mine(1, 'Beach', [7]), owner_id: 8 }], 'Beach', 'personal', 7)).toEqual({ visibility: 'personal' })
+  })
+
+  it('the shared list stays common', () => {
+    expect(newItemSharing([mine(1, 'Beach', [8])], 'Beach', 'common', 7)).toEqual({ visibility: 'common' })
   })
 })

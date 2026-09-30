@@ -15,6 +15,7 @@ const shared: TranslationStrings = {
   'shared.tabChat': 'Trò chuyện',
   'shared.days': 'ngày',
   'shared.places': 'địa điểm',
+  'shared.unplanned': 'Chưa lên kế hoạch',
   'shared.other': 'Khác',
   'shared.totalBudget': 'Tổng chi phí',
   'shared.messages': 'tin nhắn',

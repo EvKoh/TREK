@@ -111,6 +111,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'napr. večera, suveníry, benzín…',
   'costs.note': 'Poznámka',
   'costs.notePlaceholder': 'Čo zahŕňalo, kto čo dlhuje…',
+  'costs.paymentNotePlaceholder': 'Zaplatené v hotovosti, bankovým prevodom…',
   'costs.addNote': 'Pridať poznámku',
   'costs.showNote': 'Zobraziť poznámku',
   'costs.hideNote': 'Skryť poznámku',

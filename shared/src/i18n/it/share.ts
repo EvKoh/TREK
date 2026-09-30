@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Valigia',
   'share.permBudget': 'Costi',
   'share.permCollab': 'Chat',
+  'share.options': 'Opzioni',
+  'share.optTravelOnly': 'Solo trasporti e alloggi',
+  'share.optTravelOnlyHint': 'Mostra solo trasporti e alloggi, senza attività, note del giorno e giorni vuoti',
+  'share.optHideImages': 'Senza foto',
+  'share.optHideImagesHint': 'Esclude le foto dei luoghi dalla pagina condivisa',
 };
 export default share;

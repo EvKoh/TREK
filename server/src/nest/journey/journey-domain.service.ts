@@ -1291,6 +1291,7 @@ export class JourneyDomainService {
       pros_cons?: { pros: string[]; cons: string[] };
       visibility?: string;
       sort_order?: number;
+      is_draft?: boolean;
     },
     sid?: string,
   ): JourneyEntryWire | null {
@@ -1309,8 +1310,8 @@ export class JourneyDomainService {
     const res = this.db
       .prepare(
         `
-      INSERT INTO journey_entries (journey_id, author_id, type, title, story, entry_date, entry_time, location_name, location_lat, location_lng, country_code, mood, weather, tags, pros_cons, visibility, sort_order, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO journey_entries (journey_id, author_id, type, title, story, entry_date, entry_time, location_name, location_lat, location_lng, country_code, mood, weather, tags, pros_cons, visibility, sort_order, is_draft, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `,
       )
       .run(
@@ -1331,6 +1332,7 @@ export class JourneyDomainService {
         prosConsJson,
         data.visibility || 'private',
         (maxOrder?.m ?? -1) + 1,
+        data.is_draft ? 1 : 0,
         now,
         now,
       );
@@ -1364,6 +1366,7 @@ export class JourneyDomainService {
       sort_order: number;
       stats_excluded: boolean;
       dismissed: boolean;
+      is_draft: boolean;
     }>,
     sid?: string,
   ): JourneyEntryWire | null {
@@ -1394,6 +1397,7 @@ export class JourneyDomainService {
       'sort_order',
       'stats_excluded',
       'dismissed',
+      'is_draft',
     ]);
 
     for (const [key, val] of Object.entries(data)) {
@@ -1405,7 +1409,7 @@ export class JourneyDomainService {
       } else if (key === 'pros_cons') {
         fields.push('pros_cons = ?');
         values.push(val && typeof val === 'object' ? JSON.stringify(val) : val);
-      } else if (key === 'stats_excluded' || key === 'dismissed') {
+      } else if (key === 'stats_excluded' || key === 'dismissed' || key === 'is_draft') {
         // INTEGER columns, and better-sqlite3 refuses to bind a boolean.
         fields.push(`${key} = ?`);
         values.push(val ? 1 : 0);
@@ -1471,6 +1475,30 @@ export class JourneyDomainService {
     tx();
 
     this.broadcastJourneyEvent(journeyId, 'journey:entries:reordered', { orderedIds }, sid);
+    return true;
+  }
+
+  /**
+   * The photos of one entry in a new order (#824), in one transaction. The list has
+   * to be exactly the entry's photos, each once, so a stale or foreign id cannot
+   * slip in. The order is kept on this entry's own links: a photo that also sits on
+   * another entry keeps its place there.
+   */
+  reorderEntryPhotos(entryId: number, userId: number, orderedIds: number[], sid?: string): boolean {
+    const entry = this.db.prepare('SELECT id, journey_id FROM journey_entries WHERE id = ?').get(entryId) as { id: number; journey_id: number } | undefined;
+    if (!entry || !this.canEdit(entry.journey_id, userId)) return false;
+    const held = (this.db.prepare('SELECT journey_photo_id FROM journey_entry_photos WHERE entry_id = ?').all(entryId) as { journey_photo_id: number }[])
+      .map(r => r.journey_photo_id);
+    const asked = new Set(orderedIds);
+    if (asked.size !== orderedIds.length || held.length !== orderedIds.length || held.some(id => !asked.has(id))) return false;
+
+    const update = this.db.prepare('UPDATE journey_entry_photos SET sort_order = ? WHERE entry_id = ? AND journey_photo_id = ?');
+    this.db.connection.transaction(() => {
+      orderedIds.forEach((id, index) => update.run(index, entryId, id));
+      this.db.prepare('UPDATE journey_entries SET updated_at = ? WHERE id = ?').run(this.ts(), entryId);
+    })();
+    const updated = decodeEntryRow(this.db.prepare('SELECT * FROM journey_entries WHERE id = ?').get(entryId) as JourneyEntry);
+    this.broadcastJourneyEvent(entry.journey_id, 'journey:entry:updated', { entry: updated }, sid);
     return true;
   }
 

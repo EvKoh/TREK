@@ -14,6 +14,7 @@ const inspector: TranslationStrings = {
   'inspector.pendingRes': 'Čakajúca rezervácia',
   'inspector.google': 'Google Maps',
   'inspector.navigation': 'Navigácia',
+  'inspector.otherMapApp': 'Iná mapová aplikácia',
   'inspector.openWith': 'Otvoriť v',
   'inspector.openStreetMap': 'OpenStreetMap',
   'inspector.website': 'Otvoriť webovú stránku',

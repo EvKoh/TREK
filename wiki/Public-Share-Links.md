@@ -42,6 +42,17 @@ When creating or updating a share link you choose what the recipient can see. Th
 
 Disabled toggles hide the corresponding tab from the public viewer entirely. Permission changes take effect immediately — you do not need to recreate the link.
 
+### Options
+
+Under the toggles, two options narrow what the Plan tab shows. Both are off by default and apply the moment you flip them.
+
+| Option | What it does |
+|--------|--------------|
+| **Travel & stays only** (`share_travel_only`) | The link shows how the trip gets from place to place and where it sleeps, and nothing else: each day keeps its transports and its stay, day notes and activities are left out, days with neither are not shown, and the Bookings tab lists only transports and hotel bookings. Useful for family or an emergency contact. |
+| **Without photos** (`share_hide_images`) | The place photos are left out of the page; places show their category icon instead. |
+
+Both are enforced by the server: a viewer of a travel-only link never receives the activities, and a link without photos does not serve them either.
+
 ### Which currency guests see
 
 A public viewer has no account, so there is no "their" display currency to use. The Costs tab is rendered in **the sharer's display currency, falling back to the trip's own currency** — in other words, a guest sees the money the way the person who shared the trip sees it. If the sharer leaves their display currency on **Trip currency** (the default), guests read the trip in the trip's own currency. See [Currencies](Currencies).
@@ -52,7 +63,7 @@ The shared trip page speaks the planner's design. A light top bar carries the TR
 
 The Plan tab appears whenever **Map & Plan** is on, which is every link created through the share UI, since that toggle is locked on there. A link whose `share_map` flag was turned off outside the UI (through the REST API or the `create_share_link` MCP tool, both of which take it as a plain boolean) has no Plan tab at all: the server withholds the days, places, assignments and notes entirely, and the viewer opens on the first section the owner did share.
 
-On a wide screen the Plan tab puts the days on the left and the map on the right, and the map stays in view while the days scroll past it. On a phone the map comes first and the days follow under it. Every day is a card like the planner's: its number on a tile, its name and date, its stays with check-in and check-out marked, and how many places it has. The plan of the day is open underneath, places with their photo or category colour, address, description, notes, planned time and links to Google Maps, the website and the phone number, and transports and notes as tinted rows. The chevron folds a day away.
+On a wide screen the Plan tab puts the days on the left and the map on the right, and the map stays in view while the days scroll past it. On a phone the map comes first and the days follow under it. Every day is a card like the planner's: its number on a tile, its name and date, its stays with check-in and check-out marked, and how many places it has. The plan of the day is open underneath, places with their photo or category colour, address, description, notes, planned time and links to Google Maps, the website and the phone number, and transports and notes as tinted rows. The chevron folds a day away. Under the last day, a **Not planned yet** card lists the places the trip has collected but not put on a day, drawn the same way (not on a travel-only link).
 
 Which day the map shows is picked in the select at the map's top edge, with a step back and forth beside it, or by clicking a day's head; clicking it again goes back to the whole trip. A picked day numbers its stops on the map in visiting order, the same numbers the places wear in the list (a place the day returns to shows both, e.g. `1, 3`), and joins them with a dashed connector. That connector is a straight line showing sequence, not a driving route: TREK will not send a shared itinerary to a third-party routing service on an anonymous visitor's behalf. The whole trip shows every geocoded place as an unnumbered pin with no connector. On either view, pins that sit close together are grouped into a cluster bubble with their count, the same way the planner's map does it, so the stops of a busy day stay tappable on a phone; click a cluster to zoom in on its members, and at maximum zoom it fans them out.
 

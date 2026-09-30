@@ -2221,4 +2221,35 @@ describe('DayDetailPanel opening a booking', () => {
     expect(screen.queryByRole('button', { name: /Grand Hotel Booking/ })).toBeNull();
     expect(screen.getByRole('button', { name: '#XY99' })).toHaveAttribute('aria-pressed', 'false');
   });
+
+  it('FE-PLANNER-DAYDETAIL-099: the arrival day shows only the check-in time and the middle night shows neither', async () => {
+    const middleDay = buildDay({ id: 2, trip_id: 1, date: '2025-06-16', title: 'Middle Day' });
+    server.use(
+      http.get('/api/trips/1/accommodations', () =>
+        HttpResponse.json({
+          accommodations: [{
+            id: 1, place_id: 5, place_name: 'Grand Hotel', place_address: 'Paris',
+            start_day_id: 1, end_day_id: 3, check_in: '14:00', check_out: '11:00', confirmation: null,
+          }],
+        })
+      ),
+    );
+    const { unmount } = render(<DayDetailPanel {...defaultProps} />);
+    await screen.findByText('14:00');
+    expect(screen.queryByText('11:00')).toBeNull();
+    unmount();
+    render(<DayDetailPanel {...defaultProps} day={middleDay} days={[day, middleDay]} />);
+    await screen.findByText('Grand Hotel');
+    expect(screen.queryByText('14:00')).toBeNull();
+    expect(screen.queryByText('11:00')).toBeNull();
+  });
+
+  it('FE-PLANNER-DAYDETAIL-100: date-first headings lead with the date and name the day second', async () => {
+    seedStore(useSettingsStore, {
+      settings: { time_format: '24h', temperature_unit: 'celsius', day_date_first: true },
+    });
+    render(<DayDetailPanel {...defaultProps} />);
+    const title = await screen.findByText(/June 15/);
+    expect(title.className).toContain('font-bold');
+  });
 });

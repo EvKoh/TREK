@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Visa hela resan',
   'places.filterTracks': 'Spår',
   'places.filterByRating': 'Filtrera efter betyg',
+  'places.filterByLocation': 'Filtrera efter land eller region',
+  'places.allLocations': 'Alla länder',
   'places.filterShow': 'Visa',
   'places.clearSearch': 'Rensa sökning',
   'places.yourRating': 'Ditt betyg',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategori',
   'places.noCategory': 'Ingen kategori',
   'places.newCategory': 'Ny kategori',
+  'places.openInMaps': 'Öppna i kartor',
   'places.categoryNamePlaceholder': 'Kategorinamn',
   'places.formTime': 'Tid',
   'places.startTime': 'Börjar',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Sök efter platser...',
   'places.mapsSearchError': 'Sökningen efter plats misslyckades.',
   'places.searchGoogleInstead': 'Inte rätt plats? Sök på Google i stället',
+  'places.nearby': 'Platser nära den här nålen',
+  'places.nearbyNone': 'Inget hittades nära den här nålen',
   'places.loadingDetails': 'Hämtar information om platsen…',
   'places.osmHint':
     'Använder OpenStreetMap-sökningen (inga bilder, öppettider eller betyg). Lägg till en Google API-nyckel i inställningarna för fullständig information.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Berika platser via Google',
   'places.enrichOnImportHint':
     'Sök upp varje importerad plats för att fylla i bilder, adress och kontaktuppgifter. Använder din Google Maps-nyckel.',
+  'places.enrichOnImportFileHint':
+    'Slår sedan upp varje importerad punkt på Google och lägger till dess foto, adress, webbplats och telefon. Stigar och spår förblir som de är.',
   'places.uploadImage': 'Ladda upp bild',
   'places.changeImage': 'Byt bild',
   'places.removeImage': 'Ta bort bild',
+  'places.chooseImage': 'Välj en bild',
+  'places.uploadFromDevice': 'Ladda upp från enheten',
+  'places.fromAttachedFiles': 'Från bifogade filer',
   'places.imageUploadError': 'Det gick inte att ladda upp bilden',
   'places.imageRemoveError': 'Det gick inte att ta bort bilden',
 };

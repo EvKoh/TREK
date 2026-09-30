@@ -345,6 +345,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     "Les montants dans Coûts sont convertis dans cette devise uniquement pour l'affichage — les montants d'origine restent inchangés.",
   'settings.currencyTrip': 'Devise du voyage',
+  'settings.placeLanguage': 'Noms de lieux',
+  'settings.placeLanguageApp': 'Comme l’application',
+  'settings.placeLanguageHint':
+    'La langue dans laquelle répondent la recherche de lieux, les suggestions et les adresses. Si un lieu n’a pas de nom dans cette langue, son nom local est affiché.',
   'settings.passkey.title': 'Passkeys',
   'settings.passkey.description':
     'Connectez-vous plus rapidement et de façon résistante au phishing avec une passkey — votre empreinte digitale, votre visage, votre code PIN ou une clé matérielle. Votre mot de passe reste disponible en secours.',
@@ -492,6 +496,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Démarrage',
+  'settings.dayDateFirst': 'Date en premier dans les titres de jour',
+  'settings.compactUnplanned': 'Repères compacts pour les lieux non planifiés',
+  'settings.compactUnplannedHint':
+    'Les lieux planifiés dans aucun jour s’affichent en petits repères sans photo, pour que les étapes planifiées ressortent.',
+  'settings.dayDateFirstHint':
+    'Commencer chaque jour par sa date et afficher « Jour 1 » ou le titre propre du jour à côté.',
   'settings.startPage': 'Page de démarrage',
   'settings.startPageDashboard': 'Tableau de bord',
   'settings.startPageActiveTrip': 'Voyage en cours',

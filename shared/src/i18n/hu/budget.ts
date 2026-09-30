@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'pl. vacsora, ajándékok, benzin…',
   'costs.note': 'Megjegyzés',
   'costs.notePlaceholder': 'Mit fedezett, ki tartozik mivel…',
+  'costs.paymentNotePlaceholder': 'Készpénzzel, banki átutalással fizetve…',
   'costs.addNote': 'Megjegyzés hozzáadása',
   'costs.showNote': 'Megjegyzés megjelenítése',
   'costs.hideNote': 'Megjegyzés elrejtése',

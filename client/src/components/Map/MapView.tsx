@@ -46,6 +46,7 @@ import { PluginMapLayers } from './MapPluginLayers'
 import { useTransportRoutes } from '../../hooks/useTransportRoutes'
 import { visibleRouteReservations } from '../../utils/reservationRoutes'
 import { safeHexColor } from '../../utils/safeColor'
+import { placeMarkerLook } from './markerLook'
 import { escapeHtml } from '@trek/shared'
 import type { Day, Reservation, RouteVia } from '../../types'
 import type { MapHoverInfo } from './mapHover'
@@ -64,6 +65,7 @@ import { isGcj02Basemap, resolveBasemap } from '../../utils/tileUrl'
 import VectorBasemap from './VectorBasemap'
 import { useSettingsStore } from '../../store/settingsStore'
 import { MapLayerSwitcher, MAP_LAYER_SWITCHER_INSET } from './MapLayerSwitcher'
+import { MapLockPill } from './MapLockPill'
 import { computeMapViewport, TILE_SIZE_RASTER, type ViewportPadding } from '../../utils/mapViewport'
 
 function categoryIconSvg(iconName: string | null | undefined, size: number): string {
@@ -136,7 +138,8 @@ function RouteViaMarker({ via, controls, eventHandlers, children }: {
  * Shows image_url if available, otherwise category icon in colored circle.
  */
 function createPlaceIcon(place, orderNumbers, isSelected) {
-  const cacheKey = `${place.id}:${isSelected}:${place.image_url || ''}:${place.category_color || ''}:${place.category_icon || ''}:${place.stop_type || ''}:${orderNumbers?.join(',') || ''}:${(place as { rating_avg?: number | null }).rating_avg ?? ''}`
+  const look = placeMarkerLook(place, isSelected)
+  const cacheKey = `${place.id}:${isSelected}:${look.key}:${place.image_url || ''}:${place.category_color || ''}:${place.category_icon || ''}:${place.stop_type || ''}:${orderNumbers?.join(',') || ''}:${(place as { rating_avg?: number | null }).rating_avg ?? ''}`
   const cached = iconCache.get(cacheKey)
   if (cached) return cached
 
@@ -151,11 +154,10 @@ function createPlaceIcon(place, orderNumbers, isSelected) {
     iconCache.set(cacheKey, icon)
     return icon
   }
-  const size = isSelected ? 44 : 36
+  const { size, borderWidth } = look
   // Allow-listed, not escaped: the value lands in style="…" of a divIcon, where
   // escaping stops the attribute breakout but still permits a CSS url().
   const borderColor = isSelected ? '#111827' : safeHexColor(place.category_color, 'white')
-  const borderWidth = isSelected ? 3 : 2.5
   const shadow = isSelected
     ? '0 0 0 3px rgba(17,24,39,0.25), 0 4px 14px rgba(0,0,0,0.3)'
     : '0 2px 8px rgba(0,0,0,0.22)'
@@ -164,7 +166,7 @@ function createPlaceIcon(place, orderNumbers, isSelected) {
   // Number badges (bottom-right), or the rating where there are none: a numbered stop
   // is one already planned into a day, and the rating answers the question asked before
   // that. The two never want the same corner at the same time.
-  let badgeHtml = ratingBadgeHtml((place as { rating_avg?: number | null }).rating_avg)
+  let badgeHtml = look.showRating ? ratingBadgeHtml((place as { rating_avg?: number | null }).rating_avg) : ''
   if (orderNumbers && orderNumbers.length > 0) {
     const label = orderNumbers.join(' · ')
     badgeHtml = `<span style="
@@ -183,7 +185,7 @@ function createPlaceIcon(place, orderNumbers, isSelected) {
 
   // Prefer base64 data URLs (no zoom lag); also accept same-origin proxy + uploaded
   // custom images (#1136) as a fallback while the thumb is still being generated
-  if (place.image_url && (place.image_url.startsWith('data:') || place.image_url.startsWith('/api/maps/place-photo/') || place.image_url.startsWith('/uploads/'))) {
+  if (look.showPhoto && place.image_url && (place.image_url.startsWith('data:') || place.image_url.startsWith('/api/maps/place-photo/') || place.image_url.startsWith('/uploads/'))) {
     const imgIcon = L.divIcon({
       className: '',
       html: `<div style="
@@ -194,7 +196,7 @@ function createPlaceIcon(place, orderNumbers, isSelected) {
           width:${size}px;height:${size}px;border-radius:50%;
           border:${borderWidth}px solid ${borderColor};
           box-shadow:${shadow};
-          overflow:hidden;background:${bgColor};
+          overflow:hidden;background:${bgColor};${look.circleCss}
         ">
           ${markerPhotoHtml(place.image_url)}
         </div>
@@ -217,9 +219,9 @@ function createPlaceIcon(place, orderNumbers, isSelected) {
       background:${bgColor};
       display:flex;align-items:center;justify-content:center;
       cursor:pointer;position:relative;
-      will-change:transform;contain:layout style;
+      will-change:transform;contain:layout style;${look.circleCss}
     ">
-      ${categoryIconSvg(place.category_icon, isSelected ? 18 : 15)}
+      ${categoryIconSvg(place.category_icon, look.iconSize)}
       ${badgeHtml}
     </div>`,
     iconSize: [size, size],
@@ -355,6 +357,8 @@ function ViewportController({ onViewportChange }: { onViewportChange?: (b: { sou
 }
 
 interface SelectionControllerProps {
+  /** False while the traveller locked the map (#2010): a pick changes nothing on it. */
+  follow: boolean
   places: Place[]
   selectedPlaceId: number | null
   dayPlaces: Place[]
@@ -362,12 +366,12 @@ interface SelectionControllerProps {
   paddingOpts: L.FitBoundsOptions
 }
 
-function SelectionController({ places, selectedPlaceId, dayPlaces, selectedPlace, paddingOpts }: SelectionControllerProps) {
+function SelectionController({ follow, places, selectedPlaceId, dayPlaces, selectedPlace, paddingOpts }: SelectionControllerProps) {
   const map = useMap()
   const prev = useRef(null)
 
   useEffect(() => {
-    if (selectedPlaceId && selectedPlaceId !== prev.current) {
+    if (follow && selectedPlaceId && selectedPlaceId !== prev.current) {
       // Pan to the selected place without changing zoom. Offset the centre by the
       // side-panel + bottom-inspector padding so the pin lands in the middle of the
       // *visible* map area rather than the geometric centre (where the bottom panel
@@ -386,7 +390,7 @@ function SelectionController({ places, selectedPlaceId, dayPlaces, selectedPlace
       }
     }
     prev.current = selectedPlaceId
-  }, [selectedPlaceId, places, dayPlaces, selectedPlace, map])
+  }, [selectedPlaceId, places, dayPlaces, selectedPlace, map, follow])
 
   return null
 }
@@ -429,6 +433,8 @@ interface BoundsControllerProps {
    * needs that leg on screen, which is neither the day nor the trip.
    */
   focusPoints?: [number, number][]
+  /** False while the map is locked (#2010): an arriving route no longer re-fits it. */
+  follow?: boolean
   /**
    * What the caller's own chrome covers while `focusPoints` is framed, in pixels per edge.
    *
@@ -449,7 +455,7 @@ function leafletPadding(box: ViewportPadding): L.FitBoundsOptions {
   }
 }
 
-function BoundsController({ places, routeCoords, fitKey, paddingOpts, framedOnMount = false, focusPoints, fitPadding }: BoundsControllerProps) {
+function BoundsController({ places, routeCoords, fitKey, paddingOpts, framedOnMount = false, focusPoints, fitPadding, follow = true }: BoundsControllerProps) {
   const map = useMap()
   const prevFitKey = useRef(-1)
   const awaitingRoute = useRef(false)
@@ -503,6 +509,8 @@ function BoundsController({ places, routeCoords, fitKey, paddingOpts, framedOnMo
   useEffect(() => {
     if (!awaitingRoute.current || routeCoords.length === 0) return
     awaitingRoute.current = false
+    // A map locked since that fit keeps its view when the route turns up (#2010).
+    if (!follow) return
     fitTo([...places.map(p => [p.lat, p.lng] as [number, number]), ...routeCoords])
   }, [routeCoords]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -733,6 +741,12 @@ export const MapView = memo(function MapView({
   // One colour pair per entry of `route`, or absent for the blue the route has always
   // been. Only the road trip passes these, and only while colouring by day is on.
   routeColors = null,
+  // One flag per entry of `route`: a walked stretch is drawn dashed (#2532).
+  routeWalking = null,
+  // False while the map is locked (#2010): picking a place leaves the view alone.
+  followSelection = true,
+  // Given, the lock that sets followSelection sits above the layer switcher (#2010).
+  onToggleFollow,
   routeSegments = [],
   selectedPlaceId = null,
   // The selected place itself, for when no pin on this map stands for it.
@@ -1186,8 +1200,8 @@ export const MapView = memo(function MapView({
       )}
 
       <MapController center={center} zoom={zoom} />
-      <BoundsController places={dayPlaces.length > 0 ? dayPlaces : places} routeCoords={dayPlaces.length > 0 ? routeCoords : []} fitKey={fitKey} paddingOpts={paddingOpts} framedOnMount={initialView.framed} focusPoints={focusPoints} fitPadding={fitPadding} />
-      <SelectionController places={places} selectedPlaceId={selectedPlaceId} dayPlaces={dayPlaces} selectedPlace={selectedPlace} paddingOpts={paddingOpts} />
+      <BoundsController places={dayPlaces.length > 0 ? dayPlaces : places} routeCoords={dayPlaces.length > 0 ? routeCoords : []} fitKey={fitKey} paddingOpts={paddingOpts} framedOnMount={initialView.framed} focusPoints={focusPoints} fitPadding={fitPadding} follow={followSelection} />
+      <SelectionController follow={followSelection} places={places} selectedPlaceId={selectedPlaceId} dayPlaces={dayPlaces} selectedPlace={selectedPlace} paddingOpts={paddingOpts} />
       <MapClickHandler onClick={onMapClick} />
       <MapContextMenuHandler onContextMenu={onMapContextMenu} />
       <CameraHoverGuard movingRef={mapMovingRef} onMoveStart={clearHover} onZoom={setMapZoom} />
@@ -1202,7 +1216,15 @@ export const MapView = memo(function MapView({
       {/* Apple-Maps style: darker-blue casing under a bright-blue core, rounded.
           The casing carries the click when the route can be reshaped: it is the wider of
           the two, so it is the one a pointer actually lands on. */}
-      {route && route.length > 0 && route.flatMap((seg, i) => seg.length > 1 ? [
+      {route && route.length > 0 && route.flatMap((seg, i) => seg.length < 2 ? [] : routeWalking?.[i] ? [
+        // Walked, so dashed and without the casing: the drive is the solid line (#2532).
+        <Polyline
+          key={`${i}-walk`}
+          positions={seg}
+          pathOptions={{ color: routeColors?.[i]?.line ?? '#0a84ff', weight: 4, opacity: 1, dashArray: '1 9', lineCap: 'round', lineJoin: 'round' }}
+          interactive={false}
+        />,
+      ] : [
         <Polyline
           key={`${i}-casing`}
           positions={seg}
@@ -1223,7 +1245,7 @@ export const MapView = memo(function MapView({
           pathOptions={{ color: routeColors?.[i]?.line ?? '#0a84ff', weight: 5, opacity: 1, lineCap: 'round', lineJoin: 'round' }}
           interactive={false}
         />,
-      ] : [])}
+      ])}
 
       {/* The last bit to a place the road does not reach.
           Dashed and thin, over the route rather than under it, because it is the one
@@ -1349,7 +1371,8 @@ export const MapView = memo(function MapView({
         top of the map, which read as the control moving house rather than as room being
         made: the inspector is a centred card at most 800 wide, so the corner it would
         have been clearing is one the card never reaches. */}
-    <div style={{ position: 'absolute', left: leftWidth + MAP_LAYER_SWITCHER_INSET, bottom: switcherBottom, zIndex: 1000, pointerEvents: 'none' }}>
+    <div style={{ position: 'absolute', left: leftWidth + MAP_LAYER_SWITCHER_INSET, bottom: switcherBottom, zIndex: 1000, pointerEvents: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+      {onToggleFollow && <MapLockPill locked={!followSelection} onToggle={onToggleFollow} />}
       <MapLayerSwitcher active={baseLayer} onToggle={toggleBaseLayer} />
     </div>
     </div>

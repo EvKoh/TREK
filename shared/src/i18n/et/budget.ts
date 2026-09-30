@@ -111,6 +111,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'Nt õhtusöök, suveniirid, kütus…',
   'costs.note': 'Märkus',
   'costs.notePlaceholder': 'Mille eest maksti, kes kui palju tagasi võlgneb…',
+  'costs.paymentNotePlaceholder': 'Makstud sularahas, pangaülekandega…',
   'costs.addNote': 'Lisa märkus',
   'costs.showNote': 'Näita märkust',
   'costs.hideNote': 'Peida märkus',

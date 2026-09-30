@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Bike, Bus, Car, CarTaxiFront, Check, ChevronDown, ChevronUp, Plane, Plus, Route, Sailboat, Ship, Train, TrainFront, TramFront, Trash2, X } from 'lucide-react'
+import { Bike, Bus, Car, CarTaxiFront, Check, ChevronDown, ChevronUp, Plane, Plus, Route, Sailboat, CableCar, Ship, Train, TrainFront, TramFront, Trash2, X } from 'lucide-react'
 import MSheet from '../../../components/MSheet'
 import { useAddonStore } from '../../../../store/addonStore'
 import { useTranslation } from '../../../../i18n'
@@ -30,7 +30,7 @@ export interface MTransportFormSheetProps {
   onOpenExpense: (req: BookingExpenseRequest) => void
 }
 
-const TRANSPORT_TYPES = ['flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'transit', 'transport_other'] as const
+const TRANSPORT_TYPES = ['flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'cable_car', 'transit', 'transport_other'] as const
 type TransportType = typeof TRANSPORT_TYPES[number]
 
 const TYPE_OPTIONS = [
@@ -42,6 +42,7 @@ const TYPE_OPTIONS = [
   { value: 'bicycle', labelKey: 'reservations.type.bicycle', Icon: Bike },
   { value: 'cruise', labelKey: 'reservations.type.cruise', Icon: Ship },
   { value: 'ferry', labelKey: 'reservations.type.ferry', Icon: Sailboat },
+  { value: 'cable_car', labelKey: 'reservations.type.cable_car', Icon: CableCar },
   { value: 'transport_other', labelKey: 'reservations.type.transport_other', Icon: Route },
 ]
 

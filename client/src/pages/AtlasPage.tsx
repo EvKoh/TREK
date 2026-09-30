@@ -12,7 +12,7 @@ import { DialogButton, DialogFooter, DialogHeader, DialogShell, DialogTile, Foot
 import { EditorField, GRID_2 } from '../components/shared/dialogParts'
 import DawarichAtlasSidePanel from '../components/Dawarich/DawarichAtlasSidePanel'
 import CountryFlag from '../components/shared/CountryFlag'
-import { A2_TO_A3, countryCodeToFlag, findBucketDuplicate, isBucketDuplicateError, withCountryMarkedVisited, type AtlasCountry, type AtlasStats, type AtlasData, type CountryDetail } from './atlas/atlasModel'
+import { A2_TO_A3, countryCodeToFlag, findBucketDuplicate, isBucketDuplicateError, visitedRegionCount, withCountryMarkedVisited, type AtlasCountry, type AtlasStats, type AtlasData, type CountryDetail } from './atlas/atlasModel'
 import { continentForCountry } from '@trek/shared'
 import { useAtlas } from './atlas/useAtlas'
 import AtlasCountrySearch from './atlas/AtlasCountrySearch'
@@ -20,6 +20,7 @@ import AtlasLayerToggle from './atlas/AtlasLayerToggle'
 import { useToast } from '../components/shared/Toast'
 import { getApiErrorMessage } from '../types'
 import HelpAnchor from '../components/Help/HelpAnchor'
+import AtlasCountryPlaces from '../components/Atlas/AtlasCountryPlaces'
 
 // Fixed ids rather than useId: the page body stays free of hooks, and there is only one atlas.
 const COUNTRY_DIALOG_TITLE = 'atlas-country-dialog-title'
@@ -50,7 +51,7 @@ function AtlasPageDesktop(): React.ReactElement {
     data, setData, stats, countries, selectedCountry, countryDetail,
     showPlanned, togglePlanned,
     loadCountryDetail, handleUnmarkCountry, select_country_from_search,
-    visitedRegions, setVisitedRegions,
+    visitedRegions, setVisitedRegions, regionsVisited, placesOpen, setPlacesOpen,
     atlas_country_search, set_atlas_country_search,
     atlas_country_results, set_atlas_country_results,
     atlas_country_open, set_atlas_country_open, atlas_country_options,
@@ -132,7 +133,27 @@ function AtlasPageDesktop(): React.ReactElement {
           plannedCount={stats.totalCountriesPlanned || 0}
         />
 
-        {/* Mobile: Bottom bar */}
+        {placesOpen && selectedCountry && countryDetail && (
+        <DialogShell
+          onClose={() => setPlacesOpen(false)}
+          labelledBy="atlas-places-title"
+          width="detail"
+          header={(
+            <DialogHeader
+              tile={<DialogTile><CountryFlag code={selectedCountry} size={26} /></DialogTile>}
+              tint={NEUTRAL_TINT}
+              labelId="atlas-places-title"
+              onClose={() => setPlacesOpen(false)}
+              title={resolveName(selectedCountry)}
+              sub={`${countryDetail.places.length} ${t('atlas.places')}`}
+            />
+          )}
+        >
+          <AtlasCountryPlaces detail={countryDetail} onOpenTrip={id => navigate(`/trips/${id}`)} />
+        </DialogShell>
+      )}
+
+      {/* Mobile: Bottom bar */}
         <div className="md:hidden absolute left-0 right-0 z-10 flex justify-center" style={{ bottom: 'calc(84px + env(safe-area-inset-bottom, 0px) + 8px)', touchAction: 'manipulation' }}>
           <div className="flex items-center gap-4 px-5 py-4 rounded-2xl"
             style={{ background: dark ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.5)', backdropFilter: 'blur(16px)' }}>
@@ -141,7 +162,7 @@ function AtlasPageDesktop(): React.ReactElement {
               <p className="text-3xl font-black tabular-nums leading-none text-content">{stats.totalCountries}</p>
               <p className="text-[9px] font-semibold uppercase tracking-wide mt-1 text-content-faint">{t('atlas.countries')}</p>
             </div>
-            {[[stats.totalTrips, t('atlas.trips')], [stats.totalPlaces, t('atlas.places')], [stats.totalCities || 0, t('atlas.cities')], [stats.totalDays, t('atlas.days')]].map(([v, l], i) => (
+            {[[regionsVisited, t('atlas.regions')], [stats.totalTrips, t('atlas.trips')], [stats.totalPlaces, t('atlas.places')], [stats.totalCities || 0, t('atlas.cities')], [stats.totalDays, t('atlas.days')]].map(([v, l], i) => (
               <div key={i} className="text-center px-1">
                 <p className="text-xl font-black tabular-nums leading-none text-content">{v}</p>
                 <p className="text-[9px] font-semibold uppercase tracking-wide mt-1 text-content-faint">{l}</p>
@@ -192,6 +213,9 @@ function AtlasPageDesktop(): React.ReactElement {
           <SidebarContent
             data={data} stats={stats} countries={countries} selectedCountry={selectedCountry}
             countryDetail={countryDetail} resolveName={resolveName}
+            regionsVisited={regionsVisited}
+            countryRegions={selectedCountry ? visitedRegionCount(visitedRegions, selectedCountry) : 0}
+            onOpenPlaces={() => setPlacesOpen(true)}
             onCountryClick={loadCountryDetail} onTripClick={(id) => navigate(`/trips/${id}`)} onUnmarkCountry={handleUnmarkCountry}
             bucketList={bucketList} bucketTab={bucketTab} setBucketTab={setBucketTab}
             showBucketAdd={showBucketAdd} setShowBucketAdd={setShowBucketAdd}
@@ -306,7 +330,7 @@ function AtlasPageDesktop(): React.ReactElement {
                     return
                   }
                   try {
-                    const r = await apiClient.post('/addons/atlas/bucket-list', { name: confirmAction.name, country_code: confirmAction.code, target_date: targetDate })
+                    const r = await apiClient.post('/addons/atlas/bucket-list', { name: confirmAction.name, country_code: confirmAction.code, target_date: targetDate, region_code: confirmAction.regionCode ?? null })
                     setBucketList(prev => [r.data.item, ...prev])
                   } catch (err) {
                     if (isBucketDuplicateError(err)) {
@@ -454,6 +478,11 @@ function CountryChoice({ icon: Icon, tone = 'text-content-secondary', title, hin
 interface SidebarContentProps {
   data: AtlasData | null
   stats: AtlasStats
+  /** Regions visited over every country, and in the country picked (#1639). */
+  regionsVisited: number
+  countryRegions: number
+  /** Opens the list of the picked country's places (#2174). */
+  onOpenPlaces: () => void
   countries: AtlasCountry[]
   selectedCountry: string | null
   countryDetail: CountryDetail | null
@@ -486,7 +515,7 @@ interface SidebarContentProps {
   dark: boolean
 }
 
-function SidebarContent({ data, stats, countries, selectedCountry, countryDetail, resolveName, onTripClick, onUnmarkCountry, bucketList, bucketTab, setBucketTab, showBucketAdd, setShowBucketAdd, bucketForm, setBucketForm, onAddBucket, onDeleteBucket, onClearBucketVisit, onSearchBucket, onSelectBucketPoi, bucketSearchResults, setBucketSearchResults, bucketPoiMonth, setBucketPoiMonth, bucketPoiYear, setBucketPoiYear, bucketSearching, bucketSearch, setBucketSearch, t, dark }: SidebarContentProps): React.ReactElement {
+function SidebarContent({ data, stats, regionsVisited, countryRegions, onOpenPlaces, countries, selectedCountry, countryDetail, resolveName, onTripClick, onUnmarkCountry, bucketList, bucketTab, setBucketTab, showBucketAdd, setShowBucketAdd, bucketForm, setBucketForm, onAddBucket, onDeleteBucket, onClearBucketVisit, onSearchBucket, onSelectBucketPoi, bucketSearchResults, setBucketSearchResults, bucketPoiMonth, setBucketPoiMonth, bucketPoiYear, setBucketPoiYear, bucketSearching, bucketSearch, setBucketSearch, t, dark }: SidebarContentProps): React.ReactElement {
   const { language } = useTranslation()
   const statsContentRef = useRef<HTMLDivElement>(null)
   const bucketSearchRowRef = useRef<HTMLDivElement>(null)
@@ -732,7 +761,7 @@ function SidebarContent({ data, stats, countries, selectedCountry, countryDetail
         )}
       </div>
       {/* Other stats */}
-      {[[stats.totalTrips, t('atlas.trips')], [stats.totalPlaces, t('atlas.places')], [stats.totalCities || 0, t('atlas.cities')], [stats.totalDays, t('atlas.days')]].map(([v, l], i) => (
+      {[[regionsVisited, t('atlas.regions')], [stats.totalTrips, t('atlas.trips')], [stats.totalPlaces, t('atlas.places')], [stats.totalCities || 0, t('atlas.cities')], [stats.totalDays, t('atlas.days')]].map(([v, l], i) => (
         <div key={i} className="flex flex-col items-center justify-center px-3 py-5 shrink-0">
           <span className="text-2xl font-black tabular-nums leading-none" style={{ color: tp }}>{v}</span>
           <span className="text-[9px] font-semibold mt-1.5 uppercase tracking-wide whitespace-nowrap" style={{ color: tf }}>{l}</span>
@@ -799,7 +828,26 @@ function SidebarContent({ data, stats, countries, selectedCountry, countryDetail
                   <span className="ml-2 text-[9px] font-semibold uppercase tracking-wide" style={{ color: tf }}>{t('atlas.planned')}</span>
                 )}
               </p>
-              <p className="text-[10px] mb-1" style={{ color: tf }}>{countryDetail.places.length} {t('atlas.places')} · {countryDetail.trips.length} {t('atlas.tripPlural')}</p>
+              {/* Counts as quiet badges, the regions among them once any is visited (#1639). */}
+              <div className="mb-1.5 flex flex-wrap gap-1">
+                {countryDetail.places.length > 0 && (
+                  <Tooltip label={t('atlas.placesShow')}>
+                    <button type="button" onClick={onOpenPlaces}
+                      className="inline-flex items-center gap-1 whitespace-nowrap rounded-full px-1.5 py-px text-[10px] font-semibold tabular-nums transition-opacity hover:opacity-75"
+                      style={{ background: bg(0.1), color: tp }}>
+                      <MapPin size={9} />{countryDetail.places.length} {t('atlas.places')}
+                    </button>
+                  </Tooltip>
+                )}
+                {[
+                  [countryDetail.trips.length, t('atlas.tripPlural')],
+                  ...(countryRegions > 0 ? [[countryRegions, t('atlas.regions')] as const] : []),
+                ].map(([n, label]) => (
+                  <span key={label} className="whitespace-nowrap rounded-full px-1.5 py-px text-[10px] font-semibold tabular-nums" style={{ background: bg(0.06), color: tf }}>
+                    {n} {label}
+                  </span>
+                ))}
+              </div>
               <div className="flex flex-wrap gap-1">
                 {countryDetail.trips.slice(0, 3).map(trip => (
                   <button type="button" key={trip.id} onClick={() => onTripClick(trip.id)}

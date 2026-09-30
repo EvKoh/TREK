@@ -42,7 +42,7 @@ import { createUser, createTrip, createReservation } from '../../helpers/factori
 import { getCountryFromCoords, getCountryFromAddress, isPointInCountryBox, reverseGeocodeCountry, getRegionGeo, getCountryGeo } from '../../../src/nest/atlas/atlas-geo';
 import { cacheKeyFor, getCached, setCached } from '../../../src/nest/geo/nominatim.client';
 import { DatabaseService } from '../../../src/nest/database/database.service';
-import { AtlasService, BucketItemExistsError } from '../../../src/nest/atlas/atlas.service';
+import { AtlasService, BucketItemExistsError, bucketRegionCode } from '../../../src/nest/atlas/atlas.service';
 
 // Direct construction over the shared test connection — no TestingModule (repo
 // convention for DI-native service unit tests).
@@ -1338,6 +1338,17 @@ describe('atlas quirk fixes', () => {
     const unmarked = atlas.countryPlaces(user.id, 'FR');
     expect(unmarked.manually_marked).toBe(false);
     expect(unmarked.marked_source).toBeNull();
+  });
+
+  it('ATLAS-SVC-031b: keeps a wished-for region of the same country, drops any other (#1901)', () => {
+    const { user } = createUser(testDb);
+    const bavaria = atlas.createBucketItem(user.id, { name: 'Bayern', country_code: 'DE', region_code: 'de-by' }) as { region_code: string | null };
+    expect(bavaria.region_code).toBe('DE-BY');
+    const foreign = atlas.createBucketItem(user.id, { name: 'Berlin', country_code: 'FR', region_code: 'DE-BE' }) as { region_code: string | null };
+    expect(foreign.region_code).toBeNull();
+    const noCountry = atlas.createBucketItem(user.id, { name: 'Somewhere', region_code: 'DE-HH' }) as { region_code: string | null };
+    expect(noCountry.region_code).toBeNull();
+    expect(bucketRegionCode('DE-BY; DROP', 'DE')).toBeNull();
   });
 
   it('ATLAS-SVC-032: updateBucketItem persists lat/lng of exactly 0 (equator/prime meridian)', () => {

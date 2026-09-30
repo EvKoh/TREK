@@ -14,6 +14,7 @@ const shared: TranslationStrings = {
   'shared.tabChat': 'Chat',
   'shared.days': 'dní',
   'shared.places': 'míst',
+  'shared.unplanned': 'Zatím nenaplánováno',
   'shared.other': 'Ostatní',
   'shared.totalBudget': 'Celkové náklady',
   'shared.messages': 'zpráv',

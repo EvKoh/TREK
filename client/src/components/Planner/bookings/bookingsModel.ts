@@ -1,5 +1,5 @@
 import {
-  Plane, Hotel, Utensils, Train, Car, Ship, Bus, Sailboat, Bike, CarTaxiFront, Route, Ticket, FileText,
+  Plane, Hotel, Utensils, Train, Car, Ship, Bus, Sailboat, CableCar, Bike, CarTaxiFront, Route, Ticket, FileText,
   TramFront, Users, ParkingSquare, type LucideIcon,
 } from 'lucide-react'
 import type { AssignmentsMap, Day, Reservation } from '../../../types'
@@ -27,7 +27,7 @@ export interface ReservationTypeInfo {
 // models so the two shells can never drift apart on what a flight looks like.
 const TYPES: Record<string, { Icon: LucideIcon; chipKey?: string }> = {
   flight: { Icon: Plane }, train: { Icon: Train }, bus: { Icon: Bus }, car: { Icon: Car },
-  taxi: { Icon: CarTaxiFront }, bicycle: { Icon: Bike }, cruise: { Icon: Ship }, ferry: { Icon: Sailboat },
+  taxi: { Icon: CarTaxiFront }, bicycle: { Icon: Bike }, cruise: { Icon: Ship }, ferry: { Icon: Sailboat }, cable_car: { Icon: CableCar },
   transit: { Icon: TramFront, chipKey: 'reservations.typeShort.transit' }, transport_other: { Icon: Route },
   hotel: { Icon: Hotel }, restaurant: { Icon: Utensils }, event: { Icon: Ticket }, tour: { Icon: Users },
   parking: { Icon: ParkingSquare }, other: { Icon: FileText },
@@ -45,7 +45,7 @@ export function typeInfo(type: string): ReservationTypeInfo {
 
 /** The order the type pills appear in, whichever types a trip uses. */
 export const TYPE_ORDER = [
-  'flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'transit', 'transport_other',
+  'flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'cable_car', 'transit', 'transport_other',
   'hotel', 'restaurant', 'event', 'tour', 'parking', 'other',
 ]
 

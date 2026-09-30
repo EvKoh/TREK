@@ -5,6 +5,9 @@ const atlas: TranslationStrings = {
   'atlas.countries': 'Ölkələr',
   'atlas.trips': 'Səyahətlər',
   'atlas.places': 'Məkanlar',
+  'atlas.placesShow': 'Bu ölkədəki məkanları göstər',
+  'atlas.placesSearch': 'Məkanları axtar',
+  'atlas.placesNone': 'Uyğun məkan yoxdur',
 
   'atlas.unmark': 'Sil',
   'atlas.confirmMark':
@@ -46,6 +49,7 @@ const atlas: TranslationStrings = {
   'atlas.days': 'Gün',
   'atlas.visitedCountries': 'Ziyarət edilmiş ölkələr',
   'atlas.cities': 'Şəhərlər',
+  'atlas.regions': 'Regionlar',
   'atlas.noData': 'Hələ səyahət məlumatı yoxdur',
   'atlas.noDataHint':
     'Dünya xəritənizi görmək üçün səyahət yaradın və məkanlar əlavə edin',

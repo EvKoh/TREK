@@ -14,6 +14,7 @@ const inspector: TranslationStrings = {
   'inspector.pendingRes': 'Gözləyən rezervasiya',
   'inspector.google': 'Google Maps',
   'inspector.navigation': 'Naviqasiya',
+  'inspector.otherMapApp': 'Başqa xəritə tətbiqi',
   'inspector.openWith': 'Bununla aç',
   'inspector.openStreetMap': 'OpenStreetMap',
   'inspector.website': 'Veb-saytı aç',

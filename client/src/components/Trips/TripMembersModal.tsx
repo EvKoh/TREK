@@ -5,7 +5,7 @@ import CustomSelect from '../shared/CustomSelect'
 import { useIsPhone } from '../../mobile/useIsPhone'
 import { TripMemberAvatar as Avatar } from './TripMemberAvatar'
 import TripShareDialog from './TripShareDialog'
-import { useShareLink, useTripInviteLink, useTripMembers } from './useTripShare'
+import { SHARE_OPTIONS, SHARE_SECTIONS, useShareLink, useTripInviteLink, useTripMembers } from './useTripShare'
 
 function ShareLinkSection({ tripId, t }: { tripId: number; t: (key: string, params?: Record<string, string | number>) => string }) {
   const { loading, url: shareUrl, perms, copied, create: handleCreate, setPerm, remove: handleDelete, copy: handleCopy } = useShareLink(tripId)
@@ -23,13 +23,7 @@ function ShareLinkSection({ tripId, t }: { tripId: number; t: (key: string, para
 
       {/* Permission checkboxes */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-        {[
-          { key: 'share_map', label: t('share.permMap'), always: true },
-          { key: 'share_bookings', label: t('share.permBookings') },
-          { key: 'share_packing', label: t('share.permPacking') },
-          { key: 'share_budget', label: t('share.permBudget') },
-          { key: 'share_collab', label: t('share.permCollab') },
-        ].map(opt => (
+        {[...SHARE_SECTIONS, ...SHARE_OPTIONS].map(opt => ({ ...opt, label: t(opt.label), always: 'always' in opt && !!opt.always })).map(opt => (
           <button type="button" key={opt.key} onClick={() => !opt.always && handleUpdatePerms(opt.key, !perms[opt.key])}
             style={{
               display: 'flex', alignItems: 'center', gap: 5, padding: '4px 10px', borderRadius: 20,

@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Din plats kunde inte fastställas.',
   'map.location.timeout': 'Platsbestämningen tog för lång tid. Försök igen med friare sikt mot himlen.',
   'map.overview.show': 'Visa hela resan',
+  'map.lock.lock': 'Lås kartvyn',
+  'map.lock.unlock': 'Låt kartan följa markeringen',
   'map.overview.hide': 'Dölj hela resan',
   'map.overview.total': 'Total sträcka',
   'map.attribution': 'Kartkällor',

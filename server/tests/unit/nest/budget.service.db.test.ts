@@ -571,6 +571,20 @@ describe('settlement parties are confined to the trip', () => {
     expect(created).toMatchObject({ from_user_id: bob.id, to_user_id: alice.id });
   });
 
+  it('BUDGET-SVC-DB-030b: keeps a trimmed note on a payment and clears a blank one (#2340)', async () => {
+    const { user: alice } = createUser(testDb, { username: 'alice' });
+    const { user: bob } = createUser(testDb, { username: 'bob' });
+    const trip = createTrip(testDb, alice.id);
+    addTripMember(testDb, trip.id, bob.id);
+
+    const created = await budget.createSettlement(trip.id, { from_user_id: bob.id, to_user_id: alice.id, amount: 10, note: ' Bank transfer ' }, alice.id);
+    expect(created).toMatchObject({ note: 'Bank transfer' });
+    const kept = await budget.updateSettlement(created!.id, trip.id, { from_user_id: bob.id, to_user_id: alice.id, amount: 11 });
+    expect(kept).toMatchObject({ amount: 11, note: 'Bank transfer' });
+    const cleared = await budget.updateSettlement(created!.id, trip.id, { from_user_id: bob.id, to_user_id: alice.id, amount: 11, note: '' });
+    expect(cleared).toMatchObject({ note: null });
+  });
+
   it('BUDGET-SVC-DB-031: drops an off-trip payer from an item instead of refusing it', () => {
     const { user: alice } = createUser(testDb, { username: 'alice' });
     const { user: outsider } = createUser(testDb, { username: 'outsider' });

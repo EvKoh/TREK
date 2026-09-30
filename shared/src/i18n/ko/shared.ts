@@ -14,6 +14,7 @@ const shared: TranslationStrings = {
   'shared.tabChat': '채팅',
   'shared.days': '일',
   'shared.places': '장소',
+  'shared.unplanned': '아직 계획되지 않음',
   'shared.other': '기타',
   'shared.totalBudget': '총 비용',
   'shared.messages': '메시지',

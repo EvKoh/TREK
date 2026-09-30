@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'A tartózkodási helyed nem határozható meg.',
   'map.location.timeout': 'A helymeghatározás túl sokáig tartott. Próbáld újra szabad ég alatt.',
   'map.overview.show': 'Teljes utazás megjelenítése',
+  'map.lock.lock': 'Térképnézet zárolása',
+  'map.lock.unlock': 'A térkép kövesse a kijelölést',
   'map.overview.hide': 'Teljes utazás elrejtése',
   'map.overview.total': 'Teljes távolság',
   'map.attribution': 'Térkép forrásai',

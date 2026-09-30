@@ -11,6 +11,7 @@ const todo: TranslationStrings = {
   'todo.uncategorized': 'Bez zoznamu',
   'todo.namePlaceholder': 'Názov úlohy',
   'todo.descriptionPlaceholder': 'Popis (voliteľné)',
+  'todo.editDescription': 'Kliknutím upravíte, odkazy sa otvoria priamo',
   'todo.unassigned': 'Nepriradené',
   'todo.noCategory': 'Bez zoznamu',
   'todo.hasDescription': 'Má popis',

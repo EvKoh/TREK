@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': '地図上',
   'mobileTrip.profileDriving': '車',
   'mobileTrip.profileWalking': '徒歩',
+  'mobileTrip.profileCycling': '自転車',
   'mobileTrip.renameDay': '日の名前を変更',
   'mobileTrip.resBadge': '予約',
   'mobileTrip.showOnMap': '地図で表示',

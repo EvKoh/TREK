@@ -12,13 +12,16 @@ import CollectionPicker from '../Collections/CollectionPicker'
 import PlaceDetailsColumn, { type PlaceDetailsSelection } from './PlaceDetailsColumn'
 import { useToast } from '../shared/Toast'
 import { Tooltip } from '../shared/Tooltip'
-import { Search, Paperclip, X, AlertTriangle, Loader2, Plus, RotateCcw, MapPin } from 'lucide-react'
+import { Search, Paperclip, X, AlertTriangle, Loader2, Plus, RotateCcw, MapPin, Navigation, LocateFixed } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import CustomTimePicker from '../shared/CustomTimePicker'
 import {
-  DEFAULT_FORM, endsBeforeStart, findDuplicatePlace, isMapUrl, mergeResult, parseCoordinatePair, timeCollisions,
+  DEFAULT_FORM, endsBeforeStart, findDuplicatePlace, formPin, isMapUrl, mergeResult, parseCoordinatePair, timeCollisions,
   type PlaceFormData, type ResultField,
 } from './PlaceFormModal.helpers'
+import { guessCategoryId } from './placeCategoryGuess'
+import { getNavigationTargets, openNavigationTarget } from './placeNavigation'
+import { NavigationMenu } from '../shared/NavigationMenu'
 import { getApiErrorMessage } from '../../utils/apiError'
 import { corePickRank, offersGoogleRetry, selectGoogleHoldsSlot } from '../../utils/placeSource'
 import { safeHexColor } from '../../utils/safeColor'
@@ -28,6 +31,7 @@ import { BookingCostsSection } from './BookingCostsSection'
 import type { BookingExpenseRequest } from './BookingCostsSection.types'
 import type { Place, Category, Assignment, BudgetItem } from '../../types'
 import { NumericInput } from '../shared/NumericInput'
+import { formatDistance } from '../../utils/units'
 import { PlacesSession } from '../../utils/placesSession'
 import ServiceStopSection from '../Roadtrip/ServiceStopSection'
 import { DEFAULT_SERVICE_KIND, serviceStopChoice, type ServiceStopMode } from '../Roadtrip/manualStop'
@@ -39,6 +43,7 @@ import {
 import { EditorField, GRID_2, INPUT, LABEL, PANEL, PillSelect, TEXTAREA } from '../shared/dialogParts'
 import { SoftPill, tintOf } from './planParts'
 import { WHITE_BUTTON } from './placeDialogParts'
+import { usePlaceLanguage } from '../../hooks/usePlaceLanguage'
 
 // The submit payload mirrors the form, but lat/lng are parsed to numbers and
 // category_id is normalised, plus any files chosen before the place existed.
@@ -60,7 +65,7 @@ interface PlaceFormModalProps {
   onClose: () => void
   onSave: (data: PlaceSubmitData, files?: File[]) => Promise<{ id: number } | void> | void
   place: Place | null
-  prefillCoords?: { lat: number; lng: number; name?: string; address?: string; website?: string; phone?: string; osm_id?: string; stop_type?: RoadtripStopType | null; duration_minutes?: number } | null
+  prefillCoords?: { lat: number; lng: number; name?: string; address?: string; website?: string; phone?: string; osm_id?: string; stop_type?: RoadtripStopType | null; duration_minutes?: number; category?: string } | null
   tripId: number
   categories: Category[]
   onCategoryCreated: (category: { name: string; color?: string; icon?: string }) => Promise<Category> | undefined
@@ -124,6 +129,9 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
   const [mapsResults, setMapsResults] = useState([])
   /** What answered the last full search. Only a fallback: a merged list carries the source per place. */
   const [searchSource, setSearchSource] = useState<string>('')
+  // The list on screen answers "what is near the pin" rather than a typed query (#976).
+  const [nearbyList, setNearbyList] = useState(false)
+  const distanceUnit = useSettingsStore(s => s.settings.distance_unit) || 'metric'
   /**
    * What produced the list currently on screen, kept for the shadow log: the
    * query as typed and the provider the envelope named. A ref rather than
@@ -146,6 +154,14 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
   // to that place and goes when another is picked; anything outside it is the
   // user's and survives. See mergeResult.
   const autoFilledRef = useRef<Set<ResultField>>(new Set())
+  // Whether the category was preselected from a search result rather than chosen, so
+  // the next pick may replace it and a hand choice is never overwritten (#2282).
+  const categoryGuessedRef = useRef(false)
+  const guessedCategory = (result: Record<string, unknown>): string => {
+    const id = guessCategoryId(result, categories || [])
+    categoryGuessedRef.current = id != null
+    return id != null ? String(id) : ''
+  }
   const [pendingFiles, setPendingFiles] = useState([])
   /**
    * The leg of the drive the traveller picked, or empty while the projection's own
@@ -170,7 +186,9 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
   // billing session (see utils/placesSession).
   const placesSessionRef = useRef(new PlacesSession())
   const toast = useToast()
-  const { t, language, locale } = useTranslation()
+  const { t, locale } = useTranslation()
+  // Place names in the language the user picked for them, the app's otherwise (#1799).
+  const language = usePlaceLanguage()
   const { placesEnrichEnabled } = useAuthStore()
   const googleAnswers = useAuthStore(selectGoogleHoldsSlot)
   const can = useCanDo()
@@ -185,6 +203,7 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
   const expenseIntentRef = useRef<{ editItem?: BudgetItem; create?: boolean } | null>(null)
 
   useEffect(() => {
+    categoryGuessedRef.current = false
     if (place) {
       // Times are stored per day-assignment, not on the pool place. When an
       // assignment is in context (itinerary edit, or a single-assignment pool
@@ -222,6 +241,7 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
         website: prefillCoords.website || '',
         phone: prefillCoords.phone || '',
         osm_id: prefillCoords.osm_id,
+        category_id: guessedCategory(prefillCoords),
         stop_type: prefillCoords.stop_type ?? null,
         duration_minutes: prefillCoords.duration_minutes,
       })
@@ -387,6 +407,7 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
   const handleChange = (field: string, value: string) => {
     // Typed by hand, so the next pick must not clear it.
     autoFilledRef.current.delete(field as ResultField)
+    if (field === 'category_id') categoryGuessedRef.current = false
     setForm(prev => ({ ...prev, [field]: value }))
   }
 
@@ -423,8 +444,33 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
       const result = await mapsApi.search(trimmed, language, locationBiasPoint, provider)
       if (epoch !== searchEpochRef.current) return
       searchMetaRef.current = { query: trimmed, source: result.source || 'unknown' }
+      setNearbyList(false)
       setMapsResults(result.places || [])
       setSearchSource(result.source || '')
+    } catch (err: unknown) {
+      if (epoch !== searchEpochRef.current) return
+      toast.error(getApiErrorMessage(err, t('places.mapsSearchError')))
+    } finally {
+      if (epoch === searchEpochRef.current) setIsSearchingMaps(false)
+    }
+  }
+
+  // What is around the pin the form holds (#976): the list a search would show,
+  // nearest first. Not logged as a search pick, because no query was typed.
+  const pin = formPin(form)
+  const handleNearby = async () => {
+    if (!pin) return
+    const epoch = searchEpochRef.current
+    setIsSearchingMaps(true)
+    setAcSuggestions([])
+    try {
+      const result = await mapsApi.nearby(pin.lat, pin.lng, language)
+      if (epoch !== searchEpochRef.current) return
+      searchMetaRef.current = null
+      setNearbyList(true)
+      setMapsResults(result.places || [])
+      setSearchSource(result.source || '')
+      if (!result.places?.length) toast.info(t('places.nearbyNone'))
     } catch (err: unknown) {
       if (epoch !== searchEpochRef.current) return
       toast.error(getApiErrorMessage(err, t('places.mapsSearchError')))
@@ -440,7 +486,11 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
    * worse than no row at all.
    */
   const handleSelectMapsResult = (result, pick?: { mode: 'search' | 'autocomplete'; rank: number; count: number }) => {
-    setForm(prev => mergeResult(prev, result, autoFilledRef.current))
+    setForm(prev => {
+      const merged = mergeResult(prev, result, autoFilledRef.current)
+      if (prev.category_id && !categoryGuessedRef.current) return merged
+      return { ...merged, category_id: guessedCategory(result) }
+    })
     // The same name the row's badge carried. A suggestion's pick overrides it
     // with its own row's (handleSelectSuggestion); a saved place names none.
     setPickedSource(sourceLabel(result, pick?.mode === 'search' ? searchSource : ''))
@@ -782,6 +832,10 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
     sourceLabel,
     handleChange,
     handleMapsSearch,
+    handleNearby,
+    pin,
+    nearbyList,
+    distanceUnit,
     handleSelectMapsResult,
     handleSelectSuggestion,
     handleSearchKeyDown,
@@ -837,6 +891,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
     mapsSearch, setMapsSearch, mapsResults, isSearchingMaps, acSuggestions, setAcSuggestions, acSource,
     searchSource, acHighlight, setAcHighlight, t, language, googleAnswers, placesEnrichEnabled,
     canUploadFiles, fetchSuggestions, sourceLabel, handleChange, handleMapsSearch, handleSelectMapsResult,
+    handleNearby, pin, nearbyList, distanceUnit,
     handleSelectSuggestion, handleSearchKeyDown, hasTimeError, handleSubmit, isSaving, duplicateWarning,
     detailsSelection, serviceStop, serviceStopDuplicate,
   } = S
@@ -910,6 +965,10 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
           }}
           pickedSource={S.pickedSource}
           busy={isSearchingMaps}
+          navPlace={form.lat && form.lng ? {
+            name: form.name, address: form.address, lat: Number(form.lat), lng: Number(form.lng),
+            google_place_id: form.google_place_id || null, google_ftid: form.google_ftid || null,
+          } : null}
           t={t}
         />
       )}
@@ -956,6 +1015,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
           />
         )}
         <form onSubmit={handleSubmit} className={FORM_COLUMN}>
+
           {/* Place search: typed-ahead suggestions, a full search, and a pasted map link. */}
           <div className={PANEL}>
             <EditorField label={t('common.search')} htmlFor={`${fieldId}-search`}>
@@ -991,6 +1051,19 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
                       {isSearchingMaps ? '...' : <Search size={15} strokeWidth={2.2} aria-hidden="true" />}
                     </button>
                   </Tooltip>
+                  {pin && (
+                    <Tooltip label={t('places.nearby')}>
+                      <button
+                        type="button"
+                        onClick={handleNearby}
+                        disabled={isSearchingMaps}
+                        aria-label={t('places.nearby')}
+                        className={`${SIDE_BUTTON} border border-edge bg-surface-card text-content-secondary hover:bg-surface-hover`}
+                      >
+                        <LocateFixed size={15} strokeWidth={2.2} aria-hidden="true" />
+                      </button>
+                    </Tooltip>
+                  )}
                 </div>
 
                 {/* Autocomplete dropdown. Capped and scrolling, because plugin rows can
@@ -1035,6 +1108,9 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
                       <span className="block truncate font-medium text-content" style={fs(13, 'body')}>{result.name}</span>
                       {result.address && <span className="block truncate text-content-muted" style={fs(11.5)}>{result.address}</span>}
                     </span>
+                    {nearbyList && typeof result.distance_m === 'number' && (
+                      <SoftPill>{formatDistance(result.distance_m / 1000, distanceUnit)}</SoftPill>
+                    )}
                     <SourceBadge label={sourceLabel(result, searchSource)} />
                   </button>
                 ))}
@@ -1045,7 +1121,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
                 quiet line under the list sends the same query there, on an instance
                 where Google holds the key slot and for a list Google did not
                 already produce. */}
-            {mapsResults.length > 0 && offersGoogleRetry(searchSource, googleAnswers) && (
+            {mapsResults.length > 0 && !nearbyList && offersGoogleRetry(searchSource, googleAnswers) && (
               <button
                 type="button"
                 onClick={() => handleMapsSearch('google')}
@@ -1123,6 +1199,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
               />
             </div>
           )}
+
 
           {/* The day in context: its times and its own note. Both live on the
               day-assignment, not on the pool place (#2163), so they are only shown
@@ -1238,7 +1315,7 @@ interface NewCategoryRow {
  * place of both. Then where the picked place came from, and a spinner while a
  * pick is still being looked up.
  */
-function HeaderPills({ kind, categories, categoryId, onCategory, newCategory, pickedSource, busy, t }: {
+function HeaderPills({ kind, categories, categoryId, onCategory, newCategory, pickedSource, busy, navPlace, t }: {
   kind?: StopKind
   categories: Category[] | null
   categoryId: string
@@ -1246,6 +1323,8 @@ function HeaderPills({ kind, categories, categoryId, onCategory, newCategory, pi
   newCategory: NewCategoryRow
   pickedSource: string | null
   busy: boolean
+  /** The place as the form holds it, once it has a position: opens it in a map app (#2178). */
+  navPlace: NavigablePlace | null
   t: Translate
 }) {
   // When the new-category field closes, the field or the button that closed it
@@ -1299,6 +1378,7 @@ function HeaderPills({ kind, categories, categoryId, onCategory, newCategory, pi
           {pickedSource}
         </span>
       )}
+      {navPlace && <OpenInMapsPill place={navPlace} t={t} />}
       {busy && (
         <span className={PILL} role="status" aria-label={t('places.loadingDetails')}>
           <Loader2 size={13} className="animate-spin text-content-faint" aria-hidden="true" />
@@ -1306,6 +1386,33 @@ function HeaderPills({ kind, categories, categoryId, onCategory, newCategory, pi
         </span>
       )}
     </>
+  )
+}
+
+type NavigablePlace = Pick<Place, 'name' | 'address' | 'lat' | 'lng' | 'google_place_id' | 'google_ftid'>
+
+/**
+ * A look at the picked place in a real map before it is saved (#2178): its reviews, its
+ * photos, whether it is the right branch. The same apps the inspector offers, one tap
+ * straight away when only one applies.
+ */
+function OpenInMapsPill({ place, t }: { place: NavigablePlace; t: Translate }) {
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef<HTMLSpanElement>(null)
+  const targets = getNavigationTargets(place)
+  if (targets.length === 0) return null
+  return (
+    <span ref={anchorRef} className="inline-flex">
+      <Tooltip label={t('places.openInMaps')}>
+        <button type="button" aria-label={t('places.openInMaps')} aria-haspopup={targets.length > 1 ? 'menu' : undefined}
+          aria-expanded={targets.length > 1 ? open : undefined}
+          onClick={() => { if (targets.length === 1) openNavigationTarget(targets[0]); else setOpen(o => !o) }}
+          className={ROUND_PILL_BUTTON}>
+          <Navigation size={13} strokeWidth={2.2} />
+        </button>
+      </Tooltip>
+      {open && <NavigationMenu targets={targets} anchor={anchorRef.current} onClose={() => setOpen(false)} />}
+    </span>
   )
 }
 

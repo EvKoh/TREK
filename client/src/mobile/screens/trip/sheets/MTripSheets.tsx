@@ -206,6 +206,18 @@ export default function MTripSheets({ planner, shell }: MTripSheetsProps) {
         }}
       />
 
+      {/* Clear-day confirm behind the day sheet's "Clear day" (#2470). */}
+      <MConfirmSheet
+        open={planner.clearDayId != null}
+        onClose={planner.cancelClearDay}
+        title={planner.clearDayTitle}
+        message={t('dayplan.clearDayBody')}
+        confirmLabel={t('dayplan.clearDay')}
+        cancelLabel={t('common.cancel')}
+        danger
+        onConfirm={() => { void planner.confirmClearDay() }}
+      />
+
       {/* Delete-day confirm behind the days sheet's delete buttons. Mounted
           last, so it opens over that sheet; the list of what goes with the day
           comes ready made from the planner, the same one the desktop shows. */}

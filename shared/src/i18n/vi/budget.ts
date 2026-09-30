@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'ví dụ. Ăn tối, quà lưu niệm, xăng…',
   'costs.note': 'Ghi chú',
   'costs.notePlaceholder': 'Khoản này gồm những gì, ai nợ bao nhiêu…',
+  'costs.paymentNotePlaceholder': 'Trả tiền mặt, chuyển khoản ngân hàng…',
   'costs.addNote': 'Thêm ghi chú',
   'costs.showNote': 'Hiện ghi chú',
   'costs.hideNote': 'Ẩn ghi chú',

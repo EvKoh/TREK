@@ -44,6 +44,11 @@ const DISPLAY_PREFERENCES = {
     (value) => SUPPORTED_LANGUAGE_CODES.includes(value),
     { message: `Expected one of: ${SUPPORTED_LANGUAGE_CODES.join(', ')}` },
   ),
+  // Place names and addresses in search (#1799); '' follows `language`.
+  place_language: z.union([
+    z.literal(''),
+    z.string().refine((value) => SUPPORTED_LANGUAGE_CODES.includes(value), { message: `Expected "" or one of: ${SUPPORTED_LANGUAGE_CODES.join(', ')}` }),
+  ]),
   temperature_unit: z.enum(['celsius', 'fahrenheit']),
   distance_unit: z.enum(['metric', 'imperial']),
   time_format: z.enum(['12h', '24h']),

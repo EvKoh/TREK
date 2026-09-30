@@ -204,6 +204,24 @@ export function legFacts(leg: LegLike, platformLabel: string): string[] {
     .filter((f): f is string => !!f)
 }
 
+/** The pool's places no day has picked up yet (#1758), in the pool's own order. */
+export function unplannedPlaces<P extends { id: number }>(
+  places: P[],
+  assignments: Record<string, { place?: { id: number } | null }[]>,
+): P[] {
+  const planned = new Set<number>()
+  for (const rows of Object.values(assignments)) for (const a of rows) if (a.place) planned.add(a.place.id)
+  return places.filter(p => !planned.has(p.id))
+}
+
+/**
+ * A day worth a card on a "travel and stays" link (#1712): one that has something
+ * on it or a night booked. The rest would be a column of empty days.
+ */
+export function dayHasEntries(itemCount: number, stayCount: number): boolean {
+  return itemCount > 0 || stayCount > 0
+}
+
 function safeJson(text: string): unknown {
   try {
     return JSON.parse(text || '{}')

@@ -429,6 +429,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Xərclər bölməsindəki məbləğlər yalnız göstərilmək üçün bu valyutaya çevrilir — ilkin məbləğlər dəyişmir.',
   'settings.currencyTrip': 'Səyahət valyutası',
+  'settings.placeLanguage': 'Məkan adları',
+  'settings.placeLanguageApp': 'Tətbiqlə eyni',
+  'settings.placeLanguageHint':
+    'Məkan axtarışı, təkliflər və ünvanların göstərildiyi dil. Məkanın bu dildə adı yoxdursa, yerli adı göstərilir.',
 
   'settings.passkey.title': 'Keçid açarları',
   'settings.passkey.description':
@@ -595,6 +599,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Dil və region',
   'settings.general.travelMap': 'Səyahət və xəritə',
   'settings.general.startup': 'Başlanğıc',
+  'settings.dayDateFirst': 'Gün başlıqlarında əvvəlcə tarix',
+  'settings.compactUnplanned': 'Planlaşdırılmamış məkanlar üçün kiçik nişanlar',
+  'settings.compactUnplannedHint':
+    'Heç bir günə planlaşdırılmamış məkanlar fotosuz kiçik nişanlar kimi göstərilir ki, planlaşdırılmış dayanacaqlar seçilsin.',
+  'settings.dayDateFirstHint':
+    'Hər günü təqvim tarixi ilə başlayın, yanında isə "Gün 1" və ya günün öz başlığını göstərin.',
   'settings.startPage': 'Başlanğıc səhifəsi',
   'settings.startPageDashboard': 'İdarə paneli',
   'settings.startPageActiveTrip': 'Aktiv səyahət',

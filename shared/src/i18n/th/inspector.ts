@@ -14,6 +14,7 @@ const inspector: TranslationStrings = {
   'inspector.pendingRes': "อยู่ระหว่างดำเนินการจอง",
   'inspector.google': "Google แผนที่",
   'inspector.navigation': "การนำทาง",
+  'inspector.otherMapApp': 'แอปแผนที่อื่น',
   'inspector.openWith': "เปิดด้วย",
   'inspector.openStreetMap': "OpenStreetMap",
   'inspector.website': "เปิดเว็บไซต์",

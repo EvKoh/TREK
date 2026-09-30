@@ -107,6 +107,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': '例如：晚餐、紀念品、油費…',
   'costs.note': '備註',
   'costs.notePlaceholder': '包含哪些內容、誰需要還款…',
+  'costs.paymentNotePlaceholder': '現金付款、銀行轉帳…',
   'costs.addNote': '新增備註',
   'costs.showNote': '顯示備註',
   'costs.hideNote': '隱藏備註',

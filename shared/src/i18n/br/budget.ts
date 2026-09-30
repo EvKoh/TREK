@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'ex.: jantar, lembranças, gasolina…',
   'costs.note': 'Nota',
   'costs.notePlaceholder': 'O que incluía, quem deve o quê…',
+  'costs.paymentNotePlaceholder': 'Pago em dinheiro, por transferência…',
   'costs.addNote': 'Adicionar nota',
   'costs.showNote': 'Mostrar nota',
   'costs.hideNote': 'Ocultar nota',

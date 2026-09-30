@@ -883,6 +883,23 @@ describe('searchNominatim (fetch stubbed)', () => {
     expect((results[1] as any).lat).toBeNull();
     expect((results[1] as any).lng).toBeNull();
   });
+
+  it('MAPS-108b: carries what the place is, with a shop named as one (#2282)', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => [
+          { osm_type: 'node', osm_id: '5', lat: '52.5', lon: '13.4', name: 'Adlon', class: 'tourism', type: 'hotel' },
+          { osm_type: 'node', osm_id: '6', lat: '52.5', lon: '13.4', name: 'Bäcker', class: 'shop', type: 'bakery' },
+          { osm_type: 'node', osm_id: '7', lat: '52.5', lon: '13.4', name: 'Hut', class: 'building', type: 'yes' },
+          { osm_type: 'node', osm_id: '8', lat: '52.5', lon: '13.4', name: 'Bare' },
+        ],
+      }),
+    );
+    const results = await svc.searchNominatim('x');
+    expect(results.map((r: any) => r.category)).toEqual(['hotel', 'shop_bakery', null, null]);
+  });
 });
 
 // ── fetchOverpassDetails (fetch stubbed) ─────────────────────────────────────

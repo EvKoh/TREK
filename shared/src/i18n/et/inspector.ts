@@ -14,6 +14,7 @@ const inspector: TranslationStrings = {
   'inspector.pendingRes': 'Ootel broneering',
   'inspector.google': 'Google Maps',
   'inspector.navigation': 'Navigeerimine',
+  'inspector.otherMapApp': 'Muu kaardirakendus',
   'inspector.openWith': 'Ava rakendusega',
   'inspector.openStreetMap': 'OpenStreetMap',
   'inspector.website': 'Ava veebisait',

@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Показать всю поездку',
   'places.filterTracks': 'Треки',
   'places.filterByRating': 'Фильтр по оценке',
+  'places.filterByLocation': 'Фильтр по стране или региону',
+  'places.allLocations': 'Все страны',
   'places.filterShow': 'Показать',
   'places.clearSearch': 'Очистить поиск',
   'places.yourRating': 'Твоя оценка',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Категория',
   'places.noCategory': 'Без категории',
   'places.newCategory': 'Новая категория',
+  'places.openInMaps': 'Открыть в картах',
   'places.categoryNamePlaceholder': 'Название категории',
   'places.formTime': 'Время',
   'places.startTime': 'Начало',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Поиск мест...',
   'places.mapsSearchError': 'Ошибка поиска мест.',
   'places.searchGoogleInstead': 'Не то место? Поискать в Google',
+  'places.nearby': 'Места рядом с этой меткой',
+  'places.nearbyNone': 'Рядом с этой меткой ничего не найдено',
   'places.loadingDetails': 'Загрузка данных о месте…',
   'places.osmHint':
     'Поиск через OpenStreetMap (без фото, часов работы и рейтингов). Добавьте API-ключ Google в настройках для полной информации.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Обогатить места через Google',
   'places.enrichOnImportHint':
     'Находит каждое импортированное место и добавляет фото, адрес и контакты. Требуется ключ Google Maps.',
+  'places.enrichOnImportFileHint':
+    'После импорта ищет каждую точку в Google и добавляет её фото, адрес, сайт и телефон. Пути и треки остаются без изменений.',
   'places.uploadImage': 'Загрузить изображение',
   'places.changeImage': 'Изменить изображение',
   'places.removeImage': 'Удалить изображение',
+  'places.chooseImage': 'Выбрать изображение',
+  'places.uploadFromDevice': 'Загрузить с устройства',
+  'places.fromAttachedFiles': 'Из прикреплённых файлов',
   'places.imageUploadError': 'Не удалось загрузить изображение',
   'places.imageRemoveError': 'Не удалось удалить изображение',
 };

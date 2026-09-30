@@ -10,8 +10,10 @@ import type mapboxgl from 'mapbox-gl'
 import { useSettingsStore } from '../../store/settingsStore'
 import { useTranslation } from '../../i18n/TranslationContext'
 import { MapLayerSwitcher, MAP_LAYER_SWITCHER_INSET, type BaseLayer } from './MapLayerSwitcher'
+import { MapLockPill } from './MapLockPill'
 import { useAuthStore } from '../../store/authStore'
 import { getCached, isLoading, fetchPhoto, onThumbReady, getAllThumbs } from '../../services/photoService'
+import { placeMarkerLook, type PlaceMarkerFlags } from './markerLook'
 import { isCustomPlaceImage, markerPhotoHtml, photoCacheKey, photoSourcesKey, placePhotoFull, placePhotoUrl } from './placePhoto'
 import { CATEGORY_ICON_MAP } from '../shared/categoryIcons'
 import { isStandardFamily, supportsCustom3d, wantsTerrain, addCustom3dBuildings, addTerrainAndSky } from './mapboxSetup'
@@ -147,6 +149,12 @@ interface Props {
    * been. Only the road trip passes these, and only while colouring by day is on.
    */
   routeColors?: ({ line: string; casing: string } | undefined)[] | null
+  /** One flag per entry of `route`: true where the stretch is walked, drawn dashed (#2532). */
+  routeWalking?: boolean[] | null
+  /** False while the map is locked (#2010): picking a place leaves the view alone. */
+  followSelection?: boolean
+  /** Given, the lock that sets followSelection sits above the layer switcher. */
+  onToggleFollow?: () => void
   routeSegments?: RouteSegment[]
   selectedPlaceId?: number | null
   /** The selected place itself, for when no pin on this map stands for it. */
@@ -355,7 +363,7 @@ function applySatellite(map: any, on: boolean): void {
   } catch { /* a style that refuses the layer keeps the plain basemap */ }
 }
 
-function createMarkerElement(place: Place & { category_color?: string; category_icon?: string }, photoUrl: string | null, orderNumbers: number[] | null, selected: boolean): HTMLDivElement {
+function createMarkerElement(place: Place & PlaceMarkerFlags & { category_color?: string; category_icon?: string }, photoUrl: string | null, orderNumbers: number[] | null, selected: boolean): HTMLDivElement {
   // A stop that interrupts the drive gets its own small disc, decided before the photo
   // branch: the brand logo a fuel search comes back with is exactly what this replaces.
   // No number badge either, for the same reason the rail gives it none.
@@ -368,10 +376,10 @@ function createMarkerElement(place: Place & { category_color?: string; category_
     return wrap
   }
 
-  const size = selected ? 44 : 36
+  const look = placeMarkerLook(place, selected)
+  const { size, borderWidth } = look
   // See MapView: allow-listed rather than escaped, because this is a CSS context.
   const borderColor = selected ? '#111827' : safeHexColor(place.category_color, 'white')
-  const borderWidth = selected ? 3 : 2.5
   const shadow = selected
     ? '0 0 0 3px rgba(17,24,39,0.25), 0 4px 14px rgba(0,0,0,0.3)'
     : '0 2px 8px rgba(0,0,0,0.22)'
@@ -386,7 +394,7 @@ function createMarkerElement(place: Place & { category_color?: string; category_
 
   // Same corner, same rule as the Leaflet map: numbers when the place is planned into a
   // day, the rating when it is not.
-  let badgeHtml = ratingBadgeHtml((place as { rating_avg?: number | null }).rating_avg)
+  let badgeHtml = look.showRating ? ratingBadgeHtml((place as { rating_avg?: number | null }).rating_avg) : ''
   if (orderNumbers && orderNumbers.length > 0) {
     const label = orderNumbers.join(' · ')
     badgeHtml = `<span style="
@@ -413,7 +421,7 @@ function createMarkerElement(place: Place & { category_color?: string; category_
   // to its stacked slot, not to the map viewport.
   wrap.style.cssText = `width:${outer}px;height:${outer}px;cursor:pointer;`
 
-  const hasPhoto = photoUrl && (photoUrl.startsWith('data:') || photoUrl.startsWith('/api/maps/place-photo/') || photoUrl.startsWith('/uploads/'))
+  const hasPhoto = look.showPhoto && photoUrl && (photoUrl.startsWith('data:') || photoUrl.startsWith('/api/maps/place-photo/') || photoUrl.startsWith('/uploads/'))
   if (hasPhoto) {
     wrap.innerHTML = `
       <div style="
@@ -422,7 +430,7 @@ function createMarkerElement(place: Place & { category_color?: string; category_
         border:${borderWidth}px solid ${borderColor};
         box-shadow:${shadow};
         overflow:hidden;background:${bgColor};
-        box-sizing:content-box;
+        box-sizing:content-box;${look.circleCss}
       ">
         ${markerPhotoHtml(photoUrl)}
       </div>
@@ -437,9 +445,9 @@ function createMarkerElement(place: Place & { category_color?: string; category_
         box-shadow:${shadow};
         background:${bgColor};
         display:flex;align-items:center;justify-content:center;
-        box-sizing:content-box;
+        box-sizing:content-box;${look.circleCss}
       ">
-        ${categoryIconSvg(place.category_icon, selected ? 18 : 15)}
+        ${categoryIconSvg(place.category_icon, look.iconSize)}
       </div>
       ${badgeHtml}
     `
@@ -678,6 +686,9 @@ export function MapViewGL({
   accessLines = NO_ACCESS_LINES,
   route = null,
   routeColors = null,
+  routeWalking = null,
+  followSelection = true,
+  onToggleFollow,
   routeSegments = NO_ROUTE_SEGMENTS,
   selectedPlaceId = null,
   selectedPlace = null,
@@ -1344,6 +1355,8 @@ export function MapViewGL({
           source: 'trip-route',
           // Per feature where the caller gave one, else the blue the route has always
           // been. `coalesce` rather than a second layer: one source, one stroke.
+          // A walked stretch has no casing; it is drawn dashed by its own layer (#2532).
+          filter: ['!=', ['get', 'walks'], true],
           paint: { 'line-color': ['coalesce', ['get', 'casing'], '#0a5cc2'], 'line-width': 8 },
           layout: { 'line-cap': 'round', 'line-join': 'round' },
         })
@@ -1361,7 +1374,16 @@ export function MapViewGL({
           id: 'trip-route-line',
           type: 'line',
           source: 'trip-route',
+          filter: ['!=', ['get', 'walks'], true],
           paint: { 'line-color': ['coalesce', ['get', 'color'], '#0a84ff'], 'line-width': 5 },
+          layout: { 'line-cap': 'round', 'line-join': 'round' },
+        })
+        map.addLayer({
+          id: 'trip-route-walk',
+          type: 'line',
+          source: 'trip-route',
+          filter: ['==', ['get', 'walks'], true],
+          paint: { 'line-color': ['coalesce', ['get', 'color'], '#0a84ff'], 'line-width': 4, 'line-dasharray': [0.1, 2.2] },
           layout: { 'line-cap': 'round', 'line-join': 'round' },
         })
       }
@@ -1851,7 +1873,7 @@ export function MapViewGL({
         const orderNumbers = dayOrderMap[place.id] ?? null
         const photoUrl = placePhotoUrl(place, photoUrls)
         const selected = place.id === selectedPlaceId
-        const el = createMarkerElement(place as Place & { category_color?: string; category_icon?: string }, photoUrl, orderNumbers, selected)
+        const el = createMarkerElement(place as Place & PlaceMarkerFlags & { category_color?: string; category_icon?: string }, photoUrl, orderNumbers, selected)
         // Drag onto a day in the plan (#891). Markers are rebuilt from scratch
         // on every reconcile, so the listeners go with the element and need no
         // teardown of their own.
@@ -2129,17 +2151,17 @@ export function MapViewGL({
     const src = map.getSource('trip-route') as mapboxgl.GeoJSONSource | undefined
     if (!src) return
     const features = (route || [])
-      .map((seg, i) => ({ seg, colors: routeColors?.[i] }))
+      .map((seg, i) => ({ seg, colors: routeColors?.[i], walks: !!routeWalking?.[i] }))
       .filter(({ seg }) => seg && seg.length > 1)
-      .map(({ seg, colors }) => ({
+      .map(({ seg, colors, walks }) => ({
         type: 'Feature' as const,
         // Null rather than absent: `coalesce` in the paint expression falls through on
         // null, and an absent property would make every line the default colour.
-        properties: { color: colors?.line ?? null, casing: colors?.casing ?? null },
+        properties: { color: colors?.line ?? null, casing: colors?.casing ?? null, walks },
         geometry: { type: 'LineString' as const, coordinates: seg.map(([lat, lng]) => [lng, lat]) },
       }))
     src.setData({ type: 'FeatureCollection', features })
-  }, [route, routeColors, mapReady])
+  }, [route, routeColors, routeWalking, mapReady])
 
   // Update access-spur geojson
   useEffect(() => {
@@ -2239,6 +2261,8 @@ export function MapViewGL({
       && !!routeFitKey
       && routeFitKey !== pendingRouteFitRef.current.routeKey
     if (!fitKeyChanged && !routeArrivedForPendingFit) return
+    // Locked since the last fit (#2010): the day's route arriving must not move the view.
+    if (!fitKeyChanged && !followSelection) { pendingRouteFitRef.current = null; return }
     const map = mapRef.current
     if (!map) return
 
@@ -2310,7 +2334,7 @@ export function MapViewGL({
   // flyTo selected place
   useEffect(() => {
     const map = mapRef.current
-    if (!map || !selectedPlaceId) return
+    if (!map || !selectedPlaceId || !followSelection) return
     const target = selectedPlaceTarget(selectedPlaceId, places, dayPlaces, selectedPlace)
     if (!target?.lat || !target?.lng) return
     try {
@@ -2425,10 +2449,12 @@ export function MapViewGL({
           covers. */}
       <div style={{
         position: 'absolute', left: leftWidth + MAP_LAYER_SWITCHER_INSET, zIndex: 1000, pointerEvents: 'none',
+        display: 'flex', flexDirection: 'column', gap: 8,
         bottom: isMobile && hasDayDetail
           ? 'calc(var(--bottom-nav-h, 0px) + 20px + var(--day-panel-h, 0px) + 12px)'
           : 'calc(var(--bottom-nav-h, 0px) + 12px)',
       }}>
+        {onToggleFollow && <MapLockPill locked={!followSelection} onToggle={onToggleFollow} />}
         <MapLayerSwitcher active={baseLayer as BaseLayer} onToggle={toggleBaseLayer} />
       </div>
       {/* Hover tooltip — cursor-following name/category/address card, identical to

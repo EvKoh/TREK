@@ -5,6 +5,7 @@ const undo: TranslationStrings = {
   'undo.tooltip': "เลิกทำ: {action}",
   'undo.assignPlace': "สถานที่ที่ได้รับมอบหมายในแต่ละวัน",
   'undo.removeAssignment': "สถานที่ที่ถูกลบออกจากวัน",
+  'undo.clearDay': 'ล้างวันแล้ว',
   'undo.reorder': "สถานที่ที่จัดลำดับใหม่",
   'undo.optimize': "ปรับเส้นทางให้เหมาะสม",
   'undo.deletePlace': "ลบสถานที่แล้ว",

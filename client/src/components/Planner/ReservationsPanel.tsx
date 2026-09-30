@@ -22,6 +22,8 @@ import BookingsTimeline from './bookings/BookingsTimeline'
 import BookingDetailHost from './bookings/BookingDetailHost'
 import { useReservationDetailPlugins } from './bookings/useReservationDetailPlugins'
 import { useBookingActions } from './bookings/useBookingActions'
+import { bookingsCsv, bookingsFileName } from './bookings/bookingsExport'
+import { downloadBlob } from '../../utils/fileDownload'
 
 interface ReservationsPanelProps {
   tripId: number
@@ -94,6 +96,20 @@ export default function ReservationsPanel({
     [reservations, v.types, v.status, v.travelers, v.query, labelOf],
   )
   const sorted = useMemo(() => sortReservations(filtered, days, v.sort.by, v.sort.dir, labelOf, v.transitApart), [filtered, days, v.sort.by, v.sort.dir, labelOf, v.transitApart])
+  // What is on screen, in its order, as a spreadsheet (#1360).
+  const exportCsv = () => {
+    const csv = bookingsCsv(sorted, {
+      type: labelOf,
+      status: s => (s === 'confirmed' ? t('reservations.confirmed') : s === 'pending' ? t('reservations.pending') : s),
+      headers: {
+        type: t('reservations.export.type'), title: t('reservations.export.title'), status: t('reservations.status'),
+        start: t('reservations.export.start'), end: t('reservations.export.end'), from: t('reservations.export.from'),
+        to: t('reservations.export.to'), location: t('reservations.export.location'),
+        confirmation: t('reservations.export.confirmation'), notes: t('reservations.export.notes'),
+      },
+    })
+    downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), bookingsFileName(trip?.title, kind))
+  }
   const groups = useMemo(() => groupReservations(sorted, v.group, days, trip?.start_date, trip?.end_date, {
     confirmed: t('reservations.confirmed'), pending: t('reservations.pending'), transit: t('transit.sectionTitle'),
     before: t('reservations.group.before'), after: t('reservations.group.after'), undated: t('reservations.group.undated'),
@@ -298,6 +314,7 @@ export default function ReservationsPanel({
           onTransitApart={v.view === 'cards' && v.group === 'status' && reservations.some(r => r.type === 'transit') ? v.toggleTransitApart : undefined}
           viewIsDefault={v.viewIsDefault}
           onResetView={v.resetView}
+          onExport={exportCsv}
         />
       </div>
 

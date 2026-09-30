@@ -692,6 +692,16 @@ describe('updateEntry', () => {
    * be the boolean on the way out as well as the integer on the way in, and
    * the broadcast has to say the same thing the answer does.
    */
+  it('creates and toggles a draft, answering the flag as a boolean (#696)', () => {
+    const { user } = createUser(testDb);
+    const journey = createJourney(testDb, user.id);
+    const created = svc.createEntry(journey.id, user.id, { entry_date: '2026-03-01', title: 'Rough', is_draft: true });
+    expect(created!.is_draft).toBe(true);
+    const published = svc.updateEntry(created!.id, user.id, { is_draft: false });
+    expect(published!.is_draft).toBe(false);
+    expect((testDb.prepare('SELECT is_draft FROM journey_entries WHERE id = ?').get(created!.id) as { is_draft: number }).is_draft).toBe(0);
+  });
+
   it('switches a stop off and back on, and answers with the flag as a boolean', () => {
     const { user } = createUser(testDb);
     const journey = createJourney(testDb, user.id);
@@ -1666,6 +1676,45 @@ function insertEntry(journeyId: number, authorId: number, opts: { entry_date: st
   `).run(journeyId, authorId, opts.entry_date, opts.entry_time ?? null, opts.sort_order ?? 0, now, now);
   return { id: Number(res.lastInsertRowid) };
 }
+
+describe('reorderEntryPhotos (#824)', () => {
+  function photoOn(journeyId: number, entryIds: number[], order = 0): number {
+    const trek = testDb.prepare("INSERT INTO trek_photos (provider, file_path, created_at) VALUES ('local', '/p.jpg', ?)").run(Date.now()).lastInsertRowid;
+    const gp = Number(testDb.prepare('INSERT INTO journey_photos (journey_id, photo_id, sort_order, created_at) VALUES (?, ?, 0, ?)').run(journeyId, trek, Date.now()).lastInsertRowid);
+    for (const entryId of entryIds) testDb.prepare('INSERT INTO journey_entry_photos (entry_id, journey_photo_id, sort_order, created_at) VALUES (?, ?, ?, ?)').run(entryId, gp, order, Date.now());
+    return gp;
+  }
+  const orderOf = (entryId: number) =>
+    (testDb.prepare('SELECT journey_photo_id FROM journey_entry_photos WHERE entry_id = ? ORDER BY sort_order').all(entryId) as { journey_photo_id: number }[]).map(r => r.journey_photo_id);
+
+  it('JOURNEY-SVC-089b: orders the photos of one entry and leaves the same photo elsewhere alone', () => {
+    const { user } = createUser(testDb);
+    const journey = createJourney(testDb, user.id);
+    const a = insertEntry(journey.id, user.id, { entry_date: '2026-08-01' });
+    const b = insertEntry(journey.id, user.id, { entry_date: '2026-08-02' });
+    const p1 = photoOn(journey.id, [a.id, b.id], 0);
+    const p2 = photoOn(journey.id, [a.id], 1);
+    const p3 = photoOn(journey.id, [a.id], 2);
+    expect(svc.reorderEntryPhotos(a.id, user.id, [p3, p1, p2])).toBe(true);
+    expect(orderOf(a.id)).toEqual([p3, p1, p2]);
+    expect(testDb.prepare('SELECT sort_order FROM journey_entry_photos WHERE entry_id = ? AND journey_photo_id = ?').get(b.id, p1)).toEqual({ sort_order: 0 });
+  });
+
+  it('JOURNEY-SVC-089c: refuses a list that is not exactly the photos of the entry, and a stranger', () => {
+    const { user } = createUser(testDb);
+    const { user: stranger } = createUser(testDb);
+    const journey = createJourney(testDb, user.id);
+    const a = insertEntry(journey.id, user.id, { entry_date: '2026-08-01' });
+    const p1 = photoOn(journey.id, [a.id]);
+    const p2 = photoOn(journey.id, [a.id]);
+    const other = photoOn(journey.id, []);
+    expect(svc.reorderEntryPhotos(a.id, user.id, [p1])).toBe(false);
+    expect(svc.reorderEntryPhotos(a.id, user.id, [p1, other])).toBe(false);
+    expect(svc.reorderEntryPhotos(a.id, user.id, [p1, p1])).toBe(false);
+    expect(svc.reorderEntryPhotos(a.id, stranger.id, [p2, p1])).toBe(false);
+    expect(svc.reorderEntryPhotos(999999, user.id, [p2, p1])).toBe(false);
+  });
+});
 
 describe('reorderEntries', () => {
   it('JOURNEY-SVC-089: reorder persists and listEntries returns requested order regardless of entry_time', () => {

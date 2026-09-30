@@ -11,6 +11,8 @@ import CustomTimePicker from '../shared/CustomTimePicker'
 import { BlurredCode, BookingCodeInput } from '../shared/BookingCode'
 import { Tooltip } from '../shared/Tooltip'
 import { useSettingsStore } from '../../store/settingsStore'
+import { dayHeadingParts } from '../../utils/dayLabel'
+import { stayDayTimes } from './stayDayTimes'
 import { useToast } from '../shared/Toast'
 import { getLocaleForLanguage, useTranslation } from '../../i18n'
 import type { Day, Place, Category, Reservation, AssignmentsMap, Accommodation } from '../../types'
@@ -82,6 +84,7 @@ export default function DayDetailPanel({ day, days, places, categories = [], tri
   const canEditDays = can('day_edit', tripObj)
   const isFahrenheit = useSettingsStore(s => s.settings.temperature_unit) === 'fahrenheit'
   const is12h = useSettingsStore(s => s.settings.time_format) === '12h'
+  const dateFirst = useSettingsStore(s => s.settings.day_date_first === true)
   const collapsed = collapsedProp
   const toggleCollapse = () => onToggleCollapse?.()
 
@@ -147,7 +150,7 @@ export default function DayDetailPanel({ day, days, places, categories = [], tri
     getLocaleForLanguage(language),
     { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }
   ) : null
-  const dayTitle = day.title || t('planner.dayN', { n: (days.indexOf(day) + 1) || '?' })
+  const heading = dayHeadingParts(day.title || t('planner.dayN', { n: (days.indexOf(day) + 1) || '?' }), formattedDate, dateFirst)
   const showError = (err: unknown) => toast.error(apiErrorMessage(err) || t('common.unknownError'))
 
   // Saving the picker: a new stay or the one being edited. Both say what went
@@ -199,12 +202,12 @@ export default function DayDetailPanel({ day, days, places, categories = [], tri
               />
             ) : collapsed ? (
               <div className="truncate font-bold text-content" style={fs(13.5, 'body')}>
-                {dayTitle}
-                {formattedDate && <span className="ml-2 font-medium text-content-muted">{formattedDate}</span>}
+                {heading.primary}
+                {heading.secondary && <span className="ml-2 font-medium text-content-muted">{heading.secondary}</span>}
               </div>
             ) : (
               <div className="flex min-w-0 items-center gap-1">
-                <span className="truncate font-bold tracking-[-0.01em] text-content" style={fs(17, 'subtitle')}>{dayTitle}</span>
+                <span className="truncate font-bold tracking-[-0.01em] text-content" style={fs(17, 'subtitle')}>{heading.primary}</span>
                 {canEditDays && onUpdateDayTitle && (
                   <Tooltip label={t('common.edit')}>
                     <button type="button" onClick={startRename} aria-label={t('common.edit')}
@@ -215,7 +218,7 @@ export default function DayDetailPanel({ day, days, places, categories = [], tri
                 )}
               </div>
             )}
-            {!collapsed && formattedDate && <div className="mt-0.5 truncate font-geist text-content-muted" style={fs(12.5)}>{formattedDate}</div>}
+            {!collapsed && heading.secondary && <div className="mt-0.5 truncate font-geist text-content-muted" style={fs(12.5)}>{heading.secondary}</div>}
           </div>
           <HeadButton label={collapsed ? t('common.expand') : t('common.collapse')} expanded={!collapsed}
             onClick={() => toggleCollapse()}>
@@ -457,8 +460,9 @@ function AccommodationCard({ acc, day, linked, canEdit, onEdit, onRemove, onOpen
   const leaving = isCheckOutDay && !isCheckInDay
   const tint = isCheckInDay ? tintOf('var(--success)') : isCheckOutDay ? tintOf('var(--danger)') : NEUTRAL_TINT
   const cells: { label: string; value: ReactNode }[] = []
-  if (acc.check_in) cells.push({ label: t('day.checkIn'), value: `${fmtTime(acc.check_in)}${acc.check_in_end ? ` – ${fmtTime(acc.check_in_end)}` : ''}` })
-  if (acc.check_out) cells.push({ label: t('day.checkOut'), value: fmtTime(acc.check_out) })
+  const times = stayDayTimes(acc, day.id)
+  if (times.checkIn && acc.check_in) cells.push({ label: t('day.checkIn'), value: `${fmtTime(acc.check_in)}${acc.check_in_end ? ` – ${fmtTime(acc.check_in_end)}` : ''}` })
+  if (times.checkOut && acc.check_out) cells.push({ label: t('day.checkOut'), value: fmtTime(acc.check_out) })
   if (acc.confirmation) cells.push({ label: t('day.confirmation'), value: <BlurredCode className="font-geist">{acc.confirmation}</BlurredCode> })
   const confirmed = linked?.status === 'confirmed'
 

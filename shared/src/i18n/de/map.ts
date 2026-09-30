@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Dein Standort konnte nicht ermittelt werden.',
   'map.location.timeout': 'Die Standortbestimmung hat zu lange gedauert. Versuche es mit freier Sicht zum Himmel erneut.',
   'map.overview.show': 'Ganze Reise anzeigen',
+  'map.lock.lock': 'Kartenansicht fixieren',
+  'map.lock.unlock': 'Karte der Auswahl folgen lassen',
   'map.overview.hide': 'Ganze Reise ausblenden',
   'map.overview.total': 'Gesamtstrecke',
   'map.attribution': 'Kartenquellen',

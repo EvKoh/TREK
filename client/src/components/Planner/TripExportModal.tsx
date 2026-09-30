@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { CalendarDays, CalendarPlus, ChevronRight, Download, FileText, Loader2, MapPin, Route as RouteIcon } from 'lucide-react'
+import { CalendarDays, CalendarPlus, ChevronRight, Download, FileText, Loader2, MapPin, Route as RouteIcon, UserRound } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { DialogHeader, DialogSection, DialogShell, DialogTile, NEUTRAL_TINT, fs } from '../shared/DialogShell'
 import { IcsSubscribeModal } from './IcsSubscribeModal'
@@ -8,6 +8,8 @@ import { useToast } from '../shared/Toast'
 import type { Trip, Day, Place, Category, AssignmentsMap, Reservation, DayNote } from '../../types'
 import { useSettingsStore } from '../../store/settingsStore'
 import { useRoadtripSettings } from '../../hooks/useRoadtripSettings'
+import { useAuthStore } from '../../store/authStore'
+import { hasPersonalPlan } from '../PDF/pdfScope'
 
 /**
  * What a GPX download can carry. Worded by what someone wants on their device
@@ -81,9 +83,13 @@ export function TripExportModal({
     setTimeout(() => { URL.revokeObjectURL(url); a.remove() }, 100)
   }
 
-  const exportPdf = async () => {
+  const myId = useAuthStore(s => s.user?.id)
+  // "My plan" (#2168) only once somebody has been given a part of the trip.
+  const offerMine = myId != null && hasPersonalPlan(assignments, reservations)
+
+  const exportPdf = async (mine = false) => {
     if (busy) return
-    setBusy('pdf')
+    setBusy(mine ? 'pdf:mine' : 'pdf')
     const flatNotes = Object.entries(dayNotes).flatMap(([dayId, notes]) =>
       notes.map(n => ({ ...n, day_id: Number(dayId) })),
     )
@@ -93,7 +99,7 @@ export function TripExportModal({
       // exported. A missing chunk lands in the catch and shows the same error
       // the export already had.
       const { downloadTripPDF } = await import('../PDF/TripPDF')
-      await downloadTripPDF({ trip, days, places, assignments, categories, dayNotes: flatNotes, reservations, t, locale, timeFormat, distanceUnit, showServiceStops })
+      await downloadTripPDF({ trip, days, places, assignments, categories, dayNotes: flatNotes, reservations, t, locale, timeFormat, distanceUnit, showServiceStops, onlyUserId: mine ? myId : undefined })
       onClose()
     } catch (e) {
       console.error('PDF error:', e)
@@ -154,14 +160,26 @@ export function TripExportModal({
           its own: one key press closes only the dialog in front. */}
       <DialogShell open={isOpen} onClose={onClose} labelledBy={titleId} width="narrow" blocked={subscribeOpen} header={header}>
         <DialogSection label={t('dayplan.exportDocument')}>
-          <ExportRow
-            icon={FileText}
-            title={t('dayplan.pdf')}
-            sub={t('dayplan.pdfTooltip')}
-            busy={busy === 'pdf'}
-            disabled={busy != null}
-            onClick={exportPdf}
-          />
+          <div className="flex flex-col gap-1.5">
+            <ExportRow
+              icon={FileText}
+              title={t('dayplan.pdf')}
+              sub={t('dayplan.pdfTooltip')}
+              busy={busy === 'pdf'}
+              disabled={busy != null}
+              onClick={() => exportPdf()}
+            />
+            {offerMine && (
+              <ExportRow
+                icon={UserRound}
+                title={t('dayplan.pdfMine')}
+                sub={t('dayplan.pdfMineSub')}
+                busy={busy === 'pdf:mine'}
+                disabled={busy != null}
+                onClick={() => exportPdf(true)}
+              />
+            )}
+          </div>
         </DialogSection>
 
         <DialogSection label={t('dayplan.exportCalendar')}>

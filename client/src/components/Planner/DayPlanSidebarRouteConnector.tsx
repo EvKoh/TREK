@@ -1,22 +1,14 @@
-import { Car, Footprints, Hotel, Zap } from 'lucide-react'
+import { Hotel } from 'lucide-react'
 import type { RouteSegment } from '../../types'
 import { fs } from '../shared/DialogShell'
-
-// Walking gets the foot icon; a plugin route profile ('plugin:…') gets the bolt —
-// its legs carry the profile-true durationText anyway, the icon just signals that
-// the time came from a plugin router (e.g. EV routing with charge time folded in).
-export function profileIcon(profile: string) {
-  if (profile === 'walking') return Footprints
-  if (profile.startsWith('plugin:')) return Zap
-  return Car
-}
+import { routeModeIcon } from './routeModes'
 
 /** The leg's figures as one quiet pill: mode, time, distance and a router note, side by side. */
 function LegPill({ seg, profile }: { seg: RouteSegment; profile: string }) {
   // The leg's own mode (#1281) wins over the day-wide fallback for icon + text.
   const effProfile = seg.mode ?? profile
   const driving = effProfile !== 'walking'
-  const Icon = profileIcon(effProfile)
+  const Icon = routeModeIcon(effProfile)
   return (
     <span className="inline-flex flex-none items-center gap-1.5 whitespace-nowrap rounded-full bg-surface-secondary px-2 py-[2px] font-geist font-semibold tabular-nums text-content-muted" style={fs(10)}>
       <Icon size={11} strokeWidth={2} className="flex-none" />

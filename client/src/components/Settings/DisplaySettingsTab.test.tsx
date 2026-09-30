@@ -1,4 +1,4 @@
-// FE-COMP-DISPLAY-001 to FE-COMP-DISPLAY-054
+// FE-COMP-DISPLAY-001 to FE-COMP-DISPLAY-055
 import { render, screen, within, fireEvent } from '../../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
@@ -193,6 +193,21 @@ function optionBlock(label: RegExp): HTMLElement {
 }
 
 describe('DisplaySettingsTab – Display currency', () => {
+  it('FE-COMP-DISPLAY-055: place names follow the app until another language is picked for them (#1799)', async () => {
+    const user = userEvent.setup();
+    const updateSetting = vi.fn().mockResolvedValue(undefined);
+    seedStore(useSettingsStore, { settings: buildSettings({ language: 'de' }), updateSetting });
+    render(<DisplaySettingsTab />);
+
+    await user.click(screen.getByRole('button', { name: 'Same as the app' }));
+    // The language grid shows the same name, so the option is the last one on screen.
+    const options = await screen.findAllByText('English');
+    await user.click(options[options.length - 1]);
+
+    expect(updateSetting).toHaveBeenCalledWith('place_language', 'en');
+    expect(updateSetting).not.toHaveBeenCalledWith('language', expect.anything());
+  });
+
   it('FE-COMP-DISPLAY-033: picking "Trip currency" clears the personal display currency', async () => {
     const user = userEvent.setup();
     const updateSetting = vi.fn().mockResolvedValue(undefined);

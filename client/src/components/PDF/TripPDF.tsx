@@ -1,7 +1,7 @@
 // Trip PDF via browser print window
 import { createElement } from 'react'
 import { getCategoryIcon } from '../shared/categoryIcons'
-import { FileText, Info, Clock, MapPin, Navigation, Train, Plane, Bus, Car, Ship, Sailboat, Bike, CarTaxiFront, Route, Coffee, Ticket, Star, Heart, Camera, Flag, Lightbulb, AlertTriangle, ShoppingBag, Bookmark, Hotel, LogIn, LogOut, KeyRound, BedDouble, Utensils, Users, ParkingSquare, LucideIcon } from 'lucide-react'
+import { FileText, Info, Clock, MapPin, Navigation, Train, Plane, Bus, Car, Ship, Sailboat, CableCar, Bike, CarTaxiFront, Route, Coffee, Ticket, Star, Heart, Camera, Flag, Lightbulb, AlertTriangle, ShoppingBag, Bookmark, Hotel, LogIn, LogOut, KeyRound, BedDouble, Utensils, Users, ParkingSquare, LucideIcon } from 'lucide-react'
 import { accommodationsApi, mapsApi, pluginsApi } from '../../api/client'
 import type { Trip, Day, Place, Category, AssignmentsMap, DayNote, DistanceUnit, BudgetItem } from '../../types'
 import { isDayInAccommodationRange, getDayOrder } from '../../utils/dayOrder'
@@ -20,6 +20,7 @@ import { formatDistance } from '../../utils/units'
 import { fetchExchangeRates } from '../../hooks/useExchangeRates'
 import { getFlightLegs, getTrainLegs } from '../../utils/flightLegs'
 import { isServiceStopType } from '../Roadtrip/roadtripModel'
+import { onlyMyPlan } from './pdfScope'
 
 /**
  * Every day starts a new page by default. On a trip of short days that prints
@@ -64,8 +65,8 @@ function noteIconSvg(iconId) {
   return renderLucideIcon(Icon, { size: 14, strokeWidth: 1.8, color: '#94a3b8' })
 }
 
-const RESERVATION_ICON_MAP = { flight: Plane, train: Train, bus: Bus, car: Car, taxi: CarTaxiFront, bicycle: Bike, cruise: Ship, ferry: Sailboat, transport_other: Route, restaurant: Utensils, event: Ticket, tour: Users, parking: ParkingSquare, other: FileText }
-const RESERVATION_COLOR_MAP = { flight: '#3b82f6', train: '#06b6d4', bus: '#059669', car: '#6b7280', taxi: '#ca8a04', bicycle: '#84cc16', cruise: '#0ea5e9', ferry: '#0d9488', transport_other: '#6b7280', restaurant: '#ef4444', event: '#f59e0b', tour: '#10b981', parking: '#2563eb', other: '#6b7280' }
+const RESERVATION_ICON_MAP = { flight: Plane, train: Train, bus: Bus, car: Car, taxi: CarTaxiFront, bicycle: Bike, cruise: Ship, ferry: Sailboat, cable_car: CableCar, transport_other: Route, restaurant: Utensils, event: Ticket, tour: Users, parking: ParkingSquare, other: FileText }
+const RESERVATION_COLOR_MAP = { flight: '#3b82f6', train: '#06b6d4', bus: '#059669', car: '#6b7280', taxi: '#ca8a04', bicycle: '#84cc16', cruise: '#0ea5e9', ferry: '#0d9488', cable_car: '#dc2626', transport_other: '#6b7280', restaurant: '#ef4444', event: '#f59e0b', tour: '#10b981', parking: '#2563eb', other: '#6b7280' }
 function reservationIconSvg(type) {
   const Icon = RESERVATION_ICON_MAP[type] || Ticket
   const color = RESERVATION_COLOR_MAP[type] || '#3b82f6'
@@ -203,6 +204,8 @@ interface downloadTripPDFProps {
   budgetItems?: BudgetItem[]
   /** Whether the Costs addon is on. Read from the addon store when left out. */
   costsEnabled?: boolean
+  /** Prints only this member's plan (#2168): the stops and bookings that name them, and the ones that name nobody. */
+  onlyUserId?: number
 }
 
 /**
@@ -223,7 +226,10 @@ function planAssignments(assignments: AssignmentsMap, showServiceStops: boolean)
 
 // `assignments` is normalised here once, to the plan's own list; every read below
 // (and fetchPlacePhotos) relies on it being an object.
-export async function downloadTripPDF({ trip, days, places, assignments: stored = {}, categories, dayNotes, reservations = [], t: _t, locale: _locale, timeFormat: _timeFormat, distanceUnit: _distanceUnit, showServiceStops = true, budgetItems, costsEnabled }: downloadTripPDFProps) {
+export async function downloadTripPDF({ trip, days, places, assignments: allStored = {}, categories, dayNotes, reservations: allReservations = [], t: _t, locale: _locale, timeFormat: _timeFormat, distanceUnit: _distanceUnit, showServiceStops = true, budgetItems, costsEnabled, onlyUserId }: downloadTripPDFProps) {
+  const { assignments: stored, reservations } = onlyUserId != null
+    ? onlyMyPlan(allStored, allReservations, onlyUserId)
+    : { assignments: allStored, reservations: allReservations }
   const assignments = planAssignments(stored, showServiceStops)
   const breaksPerDay = pageBreakPerDay()
   const loc = _locale || undefined

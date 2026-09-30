@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': "ไม่สามารถระบุตำแหน่งของคุณได้",
   'map.location.timeout': "การค้นหาของคุณใช้เวลานานเกินไป ลองอีกครั้งด้วยมุมมองท้องฟ้าที่ชัดเจนยิ่งขึ้น",
   'map.overview.show': "แสดงทั้งทริป",
+  'map.lock.lock': 'ล็อกมุมมองแผนที่',
+  'map.lock.unlock': 'ให้แผนที่ติดตามรายการที่เลือก',
   'map.overview.hide': "ซ่อนทั้งทริป",
   'map.overview.total': "ระยะทางรวม",
   'map.attribution': "เครดิตแผนที่",

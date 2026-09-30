@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': 'Nie udało się ustalić Twojej lokalizacji.',
   'map.location.timeout': 'Ustalanie lokalizacji trwało zbyt długo. Spróbuj ponownie przy lepszej widoczności nieba.',
   'map.overview.show': 'Pokaż całą podróż',
+  'map.lock.lock': 'Zablokuj widok mapy',
+  'map.lock.unlock': 'Pozwól mapie podążać za zaznaczeniem',
   'map.overview.hide': 'Ukryj całą podróż',
   'map.overview.total': 'Łączny dystans',
   'map.attribution': 'Źródła mapy',

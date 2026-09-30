@@ -1,4 +1,6 @@
 import type React from 'react'
+import { placeLocality } from '../../utils/placeLocality'
+import { localityGroups, matchesLocality, type LocalityFilter } from './placeLocalityFilter'
 import { useState, useMemo, useEffect, useLayoutEffect, useRef, useCallback } from 'react'
 import { Pencil, Trash2, ExternalLink, Navigation, CalendarDays, Bookmark } from 'lucide-react'
 import { useTranslation } from '../../i18n'
@@ -73,7 +75,7 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
     tripId, places, assignments, selectedDayId, days, accommodations = NO_ACCOMMODATIONS,
     pushUndo, initialScrollTop, onScrollTopChange, onEditPlace, onAssignToDay, onDeletePlace,
   } = props
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const toast = useToast()
   const ctxMenu = useContextMenu()
   const trip = useTripStore((s) => s.trip)
@@ -184,6 +186,11 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
   // which put the best first but still left everything else on the list — no
   // help at all when the point is to see only what the group actually rated.
   const [ratingFilter, setRatingFilter] = useState<number | 'all'>('all')
+  // Country, or country and region, from each place's resolved position (#2537). List-only,
+  // like the rating floor.
+  const [localityFilter, setLocalityFilter] = useState<LocalityFilter | null>(null)
+  const localityOf = useMemo(() => new Map(places.map(p => [p.id, placeLocality(p, language)])), [places, language])
+  const localities = useMemo(() => localityGroups(places.map(p => localityOf.get(p.id)!)), [places, localityOf])
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set())
   const [pendingDeleteIds, setPendingDeleteIds] = useState<number[] | null>(null)
   const [categoryPickerOpen, setCategoryPickerOpen] = useState(false)
@@ -286,10 +293,11 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
       if (search && !p.name.toLowerCase().includes(search.toLowerCase()) &&
           !(p.address || '').toLowerCase().includes(search.toLowerCase())) return false
       if (ratingFilter !== 'all' && (p.rating_avg == null || p.rating_avg < ratingFilter)) return false
+      if (localityFilter && !matchesLocality(localityOf.get(p.id), localityFilter)) return false
       return true
     })
     return list
-  }, [places, filter, categoryFilters, search, plannedIds, plannedFilterIds, ratingFilter])
+  }, [places, filter, categoryFilters, search, plannedIds, plannedFilterIds, ratingFilter, localityFilter, localityOf])
 
   /**
    * How many places each "show" choice would leave, under the category and search
@@ -399,6 +407,7 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
     search, setSearch, filter, setFilter, pickFilter, filterCounts,
     categoryFilters, setCategoryFilters,
     ratingFilter, setRatingFilter,
+    localityFilter, setLocalityFilter, localities,
     selectMode, setSelectMode, selectedIds, setSelectedIds, pendingDeleteIds, setPendingDeleteIds,
     categoryPickerOpen, setCategoryPickerOpen,
     saveToListOpen, setSaveToListOpen, collectionsEnabled, tripId,

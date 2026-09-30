@@ -109,6 +109,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'π.χ. Δείπνο, σουβενίρ, βενζίνη…',
   'costs.note': 'Σημείωση',
   'costs.notePlaceholder': 'Τι κάλυπτε, ποιος χρωστάει τι…',
+  'costs.paymentNotePlaceholder': 'Πληρώθηκε με μετρητά, με τραπεζική μεταφορά…',
   'costs.addNote': 'Προσθήκη σημείωσης',
   'costs.showNote': 'Εμφάνιση σημείωσης',
   'costs.hideNote': 'Απόκρυψη σημείωσης',

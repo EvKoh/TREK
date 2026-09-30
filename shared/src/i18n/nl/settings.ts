@@ -339,6 +339,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Bedragen onder Onkosten worden alleen ter weergave naar deze valuta omgerekend — de oorspronkelijke bedragen blijven ongewijzigd.',
   'settings.currencyTrip': 'Valuta van de reis',
+  'settings.placeLanguage': 'Plaatsnamen',
+  'settings.placeLanguageApp': 'Zelfde als de app',
+  'settings.placeLanguageHint':
+    'De taal waarin zoeken naar plaatsen, suggesties en adressen antwoorden. Heeft een plaats geen naam in die taal, dan wordt de lokale naam getoond.',
   'settings.passkey.title': 'Passkeys',
   'settings.passkey.description':
     'Log sneller en phishingbestendig in met een passkey — je vingerafdruk, gezicht, pincode of een hardwaresleutel. Je wachtwoord blijft als back-up bestaan.',
@@ -484,6 +488,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Opstarten',
+  'settings.dayDateFirst': 'Datum eerst in dagkoppen',
+  'settings.compactUnplanned': 'Compacte markeringen voor ongeplande plaatsen',
+  'settings.compactUnplannedHint':
+    'Plaatsen die in geen enkele dag gepland zijn, verschijnen als kleine markeringen zonder foto, zodat de geplande stops opvallen.',
+  'settings.dayDateFirstHint':
+    'Begin elke dag met de kalenderdatum en toon "Dag 1" of de eigen titel van de dag ernaast.',
   'settings.startPage': 'Startpagina',
   'settings.startPageDashboard': 'Dashboard',
   'settings.startPageActiveTrip': 'Actieve reis',

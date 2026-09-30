@@ -147,6 +147,16 @@ describe('Atlas e2e (real auth guard + real service + temp SQLite)', () => {
     expect(row).toEqual({ name: 'Kyoto', user_id: userId });
   });
 
+  it('keeps a wished-for region, and refuses one outside the item country (#1901)', async () => {
+    const ok = await request(server).post('/api/addons/atlas/bucket-list').set('Cookie', sessionCookie(userId))
+      .send({ name: 'Bayern', country_code: 'DE', region_code: 'DE-BY' });
+    expect(ok.status).toBe(201);
+    expect(ok.body.item.region_code).toBe('DE-BY');
+    const bad = await request(server).post('/api/addons/atlas/bucket-list').set('Cookie', sessionCookie(userId))
+      .send({ name: 'Berlin', country_code: 'FR', region_code: 'DE-BE' });
+    expect(bad.status).toBe(400);
+  });
+
   it('404 on delete of a missing bucket item', async () => {
     const res = await request(server).delete('/api/addons/atlas/bucket-list/999').set('Cookie', sessionCookie(userId));
     expect(res.status).toBe(404);

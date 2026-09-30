@@ -64,6 +64,8 @@ export interface JourneyEntry {
   stats_excluded?: boolean
   /** A trip-derived suggestion the traveller waved away. Never sent by the server; the read paths drop it. */
   dismissed?: boolean
+  /** A draft (#696): contributors see it, the journey's public share page does not. */
+  is_draft?: boolean
   photos: JourneyPhoto[]
   created_at: number
   updated_at: number

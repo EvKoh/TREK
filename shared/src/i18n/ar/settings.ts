@@ -325,6 +325,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'تُعرض المبالغ في التكاليف محوّلة إلى هذه العملة للعرض فقط — تبقى المبالغ الأصلية دون تغيير.',
   'settings.currencyTrip': 'عملة الرحلة',
+  'settings.placeLanguage': 'أسماء الأماكن',
+  'settings.placeLanguageApp': 'مثل لغة التطبيق',
+  'settings.placeLanguageHint': 'اللغة التي يجيب بها البحث عن الأماكن والاقتراحات والعناوين. إذا لم يكن للمكان اسم بهذه اللغة، يُعرض اسمه المحلي.',
   'settings.passkey.title': 'مفاتيح المرور',
   'settings.passkey.description':
     'سجّل الدخول بشكل أسرع وأكثر مقاومة للتصيّد باستخدام مفتاح مرور — ببصمة إصبعك أو وجهك أو رمز PIN أو مفتاح أمان مادي. تبقى كلمة المرور كنسخة احتياطية.',
@@ -468,6 +471,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'البدء',
+  'settings.dayDateFirst': 'التاريخ أولًا في عناوين الأيام',
+  'settings.compactUnplanned': 'علامات مصغّرة للأماكن غير المخطط لها',
+  'settings.compactUnplannedHint': 'تظهر الأماكن غير المخطط لها في أي يوم كعلامات صغيرة بلا صورة، لتبرز المحطات المخطط لها.',
+  'settings.dayDateFirstHint': 'ابدأ كل يوم بتاريخه في التقويم، واعرض "اليوم 1" أو عنوان اليوم الخاص بجانبه.',
   'settings.startPage': 'صفحة البدء',
   'settings.startPageDashboard': 'لوحة التحكم',
   'settings.startPageActiveTrip': 'الرحلة النشطة',

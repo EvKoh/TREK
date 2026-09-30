@@ -2,7 +2,7 @@ import { isEffectivelyOffline } from '../sync/networkMode'
 import axios, { AxiosInstance } from 'axios'
 import type { z } from 'zod'
 import type { Day, Place, Trip } from '../types'
-import type { TransitProvider } from '@trek/shared'
+import type { MapsNearbyRequest, JourneyReorderEntryPhotosRequest, TransitProvider } from '@trek/shared'
 import { randomId } from '../utils/randomId'
 import { postProviderPhotosInBatches } from './providerPhotoBatches'
 import {
@@ -28,13 +28,13 @@ import {
   type PackingReorderRequest, type PackingCreateBagRequest, type TodoReorderRequest,
   type TripCreateRequest, type TripUpdateRequest, type TripCopyRequest, type ActiveTripResponse,
   type DayCreateRequest, type DayUpdateRequest, type DayReorderRequest,
-  type PlaceCreateRequest, type PlaceUpdateRequest,
+  type PlaceCreateRequest, type PlaceUpdateRequest, type PlaceImageFromFileRequest,
   type ReservationCreateRequest, type ReservationUpdateRequest,
   type AccommodationCreateRequest, type AccommodationUpdateRequest,
   type BudgetCreateItemRequest, type BudgetUpdateItemRequest,
   type PackingCreateItemRequest, type PackingUpdateItemRequest, type PackingSetSharingRequest,
   type TodoCreateItemRequest, type TodoUpdateItemRequest,
-  type AssignmentCreateRequest, type AssignmentNotesRequest, type AssignmentParticipantsRequest, type AssignmentTimeRequest, type AssignmentTransportRequest,
+  type AssignmentCreateRequest, type AssignmentNotesRequest, type AssignmentParticipantsRequest, type AssignmentRouteRequest, type AssignmentTimeRequest, type AssignmentTransportRequest,
   type PlaceBulkDeleteRequest,
   type PlaceBulkUpdateRequest,
   type DayNoteCreateRequest, type DayNoteUpdateRequest,
@@ -471,23 +471,28 @@ export const placesApi = {
     fd.append('image', file)
     return postMultipart<{ place: Place }>(`/trips/${tripId}/places/${id}/image`, fd)
   },
+  // A picture already attached in the trip, copied in as the place's image (#1242).
+  imageFromFile: (tripId: number | string, id: number | string, fileId: number): Promise<{ place: Place }> =>
+    apiClient.put(`/trips/${tripId}/places/${id}/image/from-file`, { file_id: fileId } satisfies PlaceImageFromFileRequest).then(r => r.data),
   rate: (tripId: number | string, id: number | string, rating: number | null): Promise<{ place: Place }> =>
     rating === null
       ? apiClient.delete(`/trips/${tripId}/places/${id}/rating`).then(r => r.data)
       : apiClient.put(`/trips/${tripId}/places/${id}/rating`, { rating }).then(r => r.data),
-  importGpx: (tripId: number | string, file: File, opts?: { waypoints?: boolean; routes?: boolean; tracks?: boolean }) => {
+  importGpx: (tripId: number | string, file: File, opts?: { waypoints?: boolean; routes?: boolean; tracks?: boolean; enrich?: boolean }) => {
     const fd = new FormData()
     fd.append('file', file)
     if (opts?.waypoints !== undefined) fd.append('importWaypoints', String(opts.waypoints))
     if (opts?.routes !== undefined) fd.append('importRoutes', String(opts.routes))
     if (opts?.tracks !== undefined) fd.append('importTracks', String(opts.tracks))
+    if (opts?.enrich) fd.append('enrich', 'true')
     return postMultipart(`/trips/${tripId}/places/import/gpx`, fd)
   },
-  importMapFile: (tripId: number | string, file: File, opts?: { points?: boolean; paths?: boolean }) => {
+  importMapFile: (tripId: number | string, file: File, opts?: { points?: boolean; paths?: boolean; enrich?: boolean }) => {
     const fd = new FormData()
     fd.append('file', file)
     if (opts?.points !== undefined) fd.append('importPoints', String(opts.points))
     if (opts?.paths !== undefined) fd.append('importPaths', String(opts.paths))
+    if (opts?.enrich) fd.append('enrich', 'true')
     return postMultipart(`/trips/${tripId}/places/import/map`, fd)
   },
   // A longer timeout than the shared 8 s, like the other routes here that wait
@@ -511,12 +516,16 @@ export const assignmentsApi = {
   list: (tripId: number | string, dayId: number | string) => apiClient.get(`/trips/${tripId}/days/${dayId}/assignments`).then(r => r.data),
   create: (tripId: number | string, dayId: number | string, data: AssignmentCreateRequest) => apiClient.post(`/trips/${tripId}/days/${dayId}/assignments`, data).then(r => r.data),
   delete: (tripId: number | string, dayId: number | string, id: number) => apiClient.delete(`/trips/${tripId}/days/${dayId}/assignments/${id}`).then(r => r.data),
+  // Takes every place off the day at once; the day, its notes and bookings stay (#2470).
+  clearDay: (tripId: number | string, dayId: number | string) => apiClient.delete(`/trips/${tripId}/days/${dayId}/assignments`).then(r => r.data as { success: true; removedIds: number[] }),
   reorder: (tripId: number | string, dayId: number | string, orderedIds: number[]) => apiClient.put(`/trips/${tripId}/days/${dayId}/assignments/reorder`, { orderedIds } satisfies AssignmentReorderRequest).then(r => r.data),
   move: (tripId: number | string, assignmentId: number, newDayId: number | string, orderIndex: number | null) => apiClient.put(`/trips/${tripId}/assignments/${assignmentId}/move`, { new_day_id: newDayId, order_index: orderIndex }).then(r => r.data),
   update: (tripId: number | string, dayId: number | string, id: number, data: Record<string, unknown>) => apiClient.put(`/trips/${tripId}/days/${dayId}/assignments/${id}`, data).then(r => r.data),
   getParticipants: (tripId: number | string, id: number) => apiClient.get(`/trips/${tripId}/assignments/${id}/participants`).then(r => r.data),
   setParticipants: (tripId: number | string, id: number, userIds: number[]) => apiClient.put(`/trips/${tripId}/assignments/${id}/participants`, { user_ids: userIds } satisfies AssignmentParticipantsRequest).then(r => r.data),
   updateTime: (tripId: number | string, id: number, times: AssignmentTimeRequest) => apiClient.put(`/trips/${tripId}/assignments/${id}/time`, times).then(r => r.data),
+  // Keeps the stop on the day but out of its route (#2532).
+  setRouteExcluded: (tripId: number | string, id: number, excluded: boolean) => apiClient.put(`/trips/${tripId}/assignments/${id}/route`, { excluded } satisfies AssignmentRouteRequest).then(r => r.data),
   // Day-specific note on an assignment (#2163) — null clears it.
   updateNotes: (tripId: number | string, id: number, data: AssignmentNotesRequest) => apiClient.put(`/trips/${tripId}/assignments/${id}/notes`, data).then(r => r.data),
   // Per-segment travel mode (#1281): mode of the leg leaving this stop (null = inherit day default).
@@ -1033,6 +1042,8 @@ export const journeyApi = {
   unlinkPhoto: (entryId: number, journeyPhotoId: number) => apiClient.delete(`/journeys/entries/${entryId}/photos/${journeyPhotoId}`).then(r => r.data),
   deleteGalleryPhoto: (journeyId: number, journeyPhotoId: number) => apiClient.delete(`/journeys/${journeyId}/gallery/${journeyPhotoId}`).then(r => r.data),
   updatePhoto: (photoId: number, data: Record<string, unknown>) => apiClient.patch(`/journeys/photos/${photoId}`, data).then(r => r.data),
+  // The photos of one entry in their new order, in one request (#824).
+  reorderEntryPhotos: (entryId: number, orderedIds: number[]) => apiClient.put(`/journeys/entries/${entryId}/photos/reorder`, { orderedIds } satisfies JourneyReorderEntryPhotosRequest).then(r => r.data),
   deletePhoto: (photoId: number) => apiClient.delete(`/journeys/photos/${photoId}`).then(r => r.data),
 
   // Cover
@@ -1253,6 +1264,9 @@ export const mapsApi = {
       const from = [...new Set(extra.map(p => String(p.source ?? 'plugin')))].join('+')
       return { places: [...core.places, ...extra], source: `${core.source}+${from}` }
     }),
+  /** Places of any kind around a point, nearest first, each with `distance_m` (#976). */
+  nearby: (lat: number, lng: number, lang?: string) =>
+    apiClient.post(`/maps/nearby?lang=${lang || 'en'}`, { lat, lng } satisfies MapsNearbyRequest).then(r => checkInDev(mapsSearchResultSchema, r.data, 'maps.nearby')),
   autocomplete: (input: string, lang?: string, locationBias?: { low: { lat: number; lng: number }; high: { lat: number; lng: number } }, signal?: AbortSignal, sessionToken?: string) =>
     withCachedPlaces(
       input,

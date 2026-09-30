@@ -99,7 +99,7 @@ export class BudgetController {
       tripId,
       {
         from_user_id: body.from_user_id, to_user_id: body.to_user_id, amount: body.amount,
-        currency: body.currency, settled_at: body.settled_at, fallback_fx: body.fallback_fx,
+        currency: body.currency, settled_at: body.settled_at, note: body.note, fallback_fx: body.fallback_fx,
       },
       user.id,
     );
@@ -127,6 +127,7 @@ export class BudgetController {
       amount: body.amount,
       currency: body.currency,
       settled_at: body.settled_at,
+      note: body.note,
       fallback_fx: body.fallback_fx,
     });
     if (!settlement) {

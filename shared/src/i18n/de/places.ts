@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Ganze Reise anzeigen',
   'places.filterTracks': 'Tracks',
   'places.filterByRating': 'Nach Bewertung filtern',
+  'places.filterByLocation': 'Nach Land oder Region filtern',
+  'places.allLocations': 'Alle Länder',
   'places.filterShow': 'Anzeigen',
   'places.clearSearch': 'Suche leeren',
   'places.yourRating': 'Deine Bewertung',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategorie',
   'places.noCategory': 'Keine Kategorie',
   'places.newCategory': 'Neue Kategorie',
+  'places.openInMaps': 'In Karten öffnen',
   'places.categoryNamePlaceholder': 'Kategoriename',
   'places.formTime': 'Uhrzeit',
   'places.startTime': 'Startzeit',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Ortssuche...',
   'places.mapsSearchError': 'Ortssuche fehlgeschlagen.',
   'places.searchGoogleInstead': 'Nicht der richtige Ort? Stattdessen bei Google suchen',
+  'places.nearby': 'Orte in der Nähe dieser Markierung',
+  'places.nearbyNone': 'Nichts in der Nähe dieser Markierung gefunden',
   'places.loadingDetails': 'Ortsdetails werden geladen…',
   'places.osmHint':
     'OpenStreetMap-Suche aktiv (ohne Bilder, Öffnungszeiten, Bewertungen). Für erweiterte Daten Google API Key in den Einstellungen hinterlegen.',
@@ -131,11 +136,16 @@ const places: TranslationStrings = {
   'places.uploadImage': 'Bild hochladen',
   'places.changeImage': 'Bild ändern',
   'places.removeImage': 'Bild entfernen',
+  'places.chooseImage': 'Bild auswählen',
+  'places.uploadFromDevice': 'Vom Gerät hochladen',
+  'places.fromAttachedFiles': 'Aus angehängten Dateien',
   'places.imageUploadError': 'Bild konnte nicht hochgeladen werden',
   'places.imageRemoveError': 'Bild konnte nicht entfernt werden',
   'places.addAnyway': 'Trotzdem hinzufügen',
   'places.enrichOnImport': 'Orte über Google anreichern',
   'places.enrichOnImportHint':
     'Sucht jeden importierten Ort nach, um Fotos, Adresse und Kontaktdaten zu ergänzen. Nutzt deinen Google-Maps-Key.',
+  'places.enrichOnImportFileHint':
+    'Sucht jeden importierten Punkt danach bei Google und ergänzt Foto, Adresse, Website und Telefonnummer. Pfade und Tracks bleiben, wie sie sind.',
 };
 export default places;

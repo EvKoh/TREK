@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': '例：夕食、お土産、ガソリン…',
   'costs.note': 'メモ',
   'costs.notePlaceholder': '内訳や立て替えのメモなど…',
+  'costs.paymentNotePlaceholder': '現金払い、銀行振込など…',
   'costs.addNote': 'メモを追加',
   'costs.showNote': 'メモを表示',
   'costs.hideNote': 'メモを非表示',

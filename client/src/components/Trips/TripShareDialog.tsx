@@ -5,9 +5,9 @@ import CustomSelect from '../shared/CustomSelect'
 import ConfirmDialog from '../shared/ConfirmDialog'
 import { Tooltip } from '../shared/Tooltip'
 import { DialogButton, DialogHeader, DialogSection, DialogShell, DialogTile, NEUTRAL_TINT, PILL, fs } from '../shared/DialogShell'
-import { AddRowButton, INPUT, PANEL } from '../shared/dialogParts'
+import { AddRowButton, INPUT, LABEL, PANEL } from '../shared/dialogParts'
 import { TripMemberAvatar } from './TripMemberAvatar'
-import { useShareLink, useTripInviteLink, useTripMembers, type SharePerm, type TripMembersState } from './useTripShare'
+import { SHARE_OPTIONS, SHARE_SECTIONS, useShareLink, useTripInviteLink, useTripMembers, type TripMembersState } from './useTripShare'
 
 interface TripShareDialogProps {
   isOpen: boolean
@@ -306,13 +306,17 @@ function LinkCard({ icon, title, hint, children }: { icon: ReactNode; title: str
   )
 }
 
-const SHARE_PERMS: { key: SharePerm; label: string; always?: boolean }[] = [
-  { key: 'share_map', label: 'share.permMap', always: true },
-  { key: 'share_bookings', label: 'share.permBookings' },
-  { key: 'share_packing', label: 'share.permPacking' },
-  { key: 'share_budget', label: 'share.permBudget' },
-  { key: 'share_collab', label: 'share.permCollab' },
-]
+/** One toggle of the link, a filled pill with a tick while it is on. */
+function PermChip({ on, disabled, label, hint, onToggle }: { on: boolean; disabled?: boolean; label: string; hint?: string; onToggle: () => void }) {
+  const chip = (
+    <button type="button" aria-pressed={on} disabled={disabled} onClick={onToggle}
+      className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold disabled:cursor-default ${on ? 'bg-accent text-accent-text disabled:opacity-70' : 'bg-surface-card text-content-muted ring-1 ring-edge-faint hover:text-content'}`}
+      style={fs(11.5, 'body')}>
+      {on && <Check size={11} strokeWidth={2.6} />}{label}
+    </button>
+  )
+  return hint ? <Tooltip label={hint}>{chip}</Tooltip> : chip
+}
 
 /** The read-only public link, and which parts of the trip it shows. */
 function PublicLink({ tripId }: { tripId: number }) {
@@ -322,17 +326,19 @@ function PublicLink({ tripId }: { tripId: number }) {
   return (
     <LinkCard icon={<Link2 size={15} strokeWidth={2.2} />} title={t('share.linkTitle')} hint={t('share.linkHint')}>
       <div className="flex flex-wrap gap-1.5">
-        {SHARE_PERMS.map(opt => {
-          const on = link.perms[opt.key]
-          return (
-            <button key={opt.key} type="button" aria-pressed={on} disabled={opt.always}
-              onClick={() => void link.setPerm(opt.key, !on)}
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold disabled:cursor-default ${on ? 'bg-accent text-accent-text disabled:opacity-70' : 'bg-surface-card text-content-muted ring-1 ring-edge-faint hover:text-content'}`}
-              style={fs(11.5, 'body')}>
-              {on && <Check size={11} strokeWidth={2.6} />}{t(opt.label)}
-            </button>
-          )
-        })}
+        {SHARE_SECTIONS.map(opt => (
+          <PermChip key={opt.key} on={link.perms[opt.key]} disabled={opt.always} label={t(opt.label)}
+            onToggle={() => void link.setPerm(opt.key, !link.perms[opt.key])} />
+        ))}
+      </div>
+      <div>
+        <span className={LABEL}>{t('share.options')}</span>
+        <div className="flex flex-wrap gap-1.5">
+          {SHARE_OPTIONS.map(opt => (
+            <PermChip key={opt.key} on={link.perms[opt.key]} label={t(opt.label)} hint={t(`${opt.label}Hint`)}
+              onToggle={() => void link.setPerm(opt.key, !link.perms[opt.key])} />
+          ))}
+        </div>
       </div>
       {link.url ? (
         <>

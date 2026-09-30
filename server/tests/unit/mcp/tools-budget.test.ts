@@ -641,6 +641,22 @@ describe('Tool: update_budget_item (currency)', () => {
     });
   });
 
+  it('records and edits a note on the payment (#2340)', async () => {
+    const { user, other, trip } = tripWithTwo();
+    await withHarness(user.id, async (h) => {
+      const created = parseToolResult(await h.client.callTool({
+        name: 'create_settlement',
+        arguments: { tripId: trip.id, from_user_id: other.id, to_user_id: user.id, amount: 20, note: 'Cash' },
+      })) as any;
+      expect(created.settlement.note).toBe('Cash');
+      const updated = parseToolResult(await h.client.callTool({
+        name: 'update_settlement',
+        arguments: { tripId: trip.id, settlementId: created.settlement.id, from_user_id: other.id, to_user_id: user.id, amount: 20, note: 'Bank transfer' },
+      })) as any;
+      expect(updated.settlement.note).toBe('Bank transfer');
+    });
+  });
+
   it('refuses a currency that is not a code', async () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id);

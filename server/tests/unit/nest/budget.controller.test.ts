@@ -119,6 +119,17 @@ describe('BudgetController (parity with the legacy /api/trips/:tripId/budget rou
       expect(updateSettlement).toHaveBeenCalledWith('3', '5', expect.objectContaining({ currency: 'EUR', fallback_fx }));
     });
 
+    it('POST and PUT /settlements forward the note, as the MCP tools do (#2340)', async () => {
+      const createSettlement = vi.fn().mockResolvedValue({ id: 3 });
+      const updateSettlement = vi.fn().mockResolvedValue({ id: 3 });
+      const svc = makeService({ createSettlement, updateSettlement } as Partial<BudgetService>);
+      const body = { from_user_id: 1, to_user_id: 2, amount: 10, note: 'Cash' };
+      await new BudgetController(svc).createSettlement(user, '5', body);
+      expect(createSettlement).toHaveBeenCalledWith('5', expect.objectContaining({ note: 'Cash' }), user.id);
+      await new BudgetController(svc).updateSettlement(user, '5', '3', body);
+      expect(updateSettlement).toHaveBeenCalledWith('3', '5', expect.objectContaining({ note: 'Cash' }));
+    });
+
     it('DELETE /settlements/:id 404 when missing', () => {
       const svc = makeService({ deleteSettlement: vi.fn().mockReturnValue(false) } as Partial<BudgetService>);
       expect(thrown(() => new BudgetController(svc).deleteSettlement(user, '5', '7'))).toEqual({

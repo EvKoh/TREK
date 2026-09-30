@@ -53,6 +53,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Näita kogu reisi',
   'places.filterTracks': 'Rajad',
   'places.filterByRating': 'Filtreeri hinnangu järgi',
+  'places.filterByLocation': 'Filtreeri riigi või piirkonna järgi',
+  'places.allLocations': 'Kõik riigid',
   'places.filterShow': 'Näita',
   'places.clearSearch': 'Tühjenda otsing',
   'places.yourRating': 'Sinu hinnang',
@@ -79,6 +81,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategooria',
   'places.noCategory': 'Kategooriata',
   'places.newCategory': 'Uus kategooria',
+  'places.openInMaps': 'Ava kaardirakenduses',
   'places.categoryNamePlaceholder': 'Kategooria nimi',
   'places.formTime': 'Kellaaeg',
   'places.startTime': 'Algus',
@@ -95,6 +98,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Otsi kohti...',
   'places.mapsSearchError': 'Kohaotsing ebaõnnestus.',
   'places.searchGoogleInstead': "Pole õige koht? Otsi Google'ist",
+  'places.nearby': 'Kohad selle nõela lähedal',
+  'places.nearbyNone': 'Selle nõela lähedalt ei leitud midagi',
   'places.loadingDetails': 'Koha üksikasjade laadimine…',
   'places.osmHint':
     "Kasutusel on OpenStreetMapi otsing (ilma fotode, lahtiolekuaegade ja hinnanguteta). Täielike andmete saamiseks lisa seadetes Google'i API-võti.",
@@ -133,9 +138,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': "Täienda kohtade andmeid Google'i kaudu",
   'places.enrichOnImportHint':
     'Otsi iga imporditud kohta, et lisada fotod, aadress ja kontaktandmed. Kasutab sinu Google Mapsi võtit.',
+  'places.enrichOnImportFileHint':
+    'Otsib seejärel iga imporditud punkti Google’ist üles ja lisab selle foto, aadressi, veebisaidi ja telefoni. Teekonnad ja rajad jäävad samaks.',
   'places.uploadImage': 'Laadi pilt üles',
   'places.changeImage': 'Muuda pilti',
   'places.removeImage': 'Eemalda pilt',
+  'places.chooseImage': 'Vali pilt',
+  'places.uploadFromDevice': 'Laadi üles seadmest',
+  'places.fromAttachedFiles': 'Manustatud failidest',
   'places.imageUploadError': 'Pildi üleslaadimine ebaõnnestus',
   'places.imageRemoveError': 'Pildi eemaldamine ebaõnnestus',
 };

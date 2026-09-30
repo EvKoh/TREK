@@ -5,7 +5,7 @@ import { rideSeatAfter, sameDayRide, type CarrierBooking, type SeatItem } from '
 // the two drift.
 import { orderedEndpoints } from './flightLegs'
 
-export const TRANSPORT_TYPES = new Set(['flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'transit', 'transport_other'])
+export const TRANSPORT_TYPES = new Set(['flight', 'train', 'bus', 'car', 'taxi', 'bicycle', 'cruise', 'ferry', 'cable_car', 'transit', 'transport_other'])
 
 export interface MergedItem {
   type: 'place' | 'note' | 'transport'

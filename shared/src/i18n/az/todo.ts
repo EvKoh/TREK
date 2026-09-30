@@ -11,6 +11,7 @@ const todo: TranslationStrings = {
   'todo.uncategorized': 'Siyahısız',
   'todo.namePlaceholder': 'Tapşırığın adı',
   'todo.descriptionPlaceholder': 'Təsvir (istəyə bağlı)',
+  'todo.editDescription': 'Redaktə etmək üçün klikləyin, keçidlər birbaşa açılır',
   'todo.unassigned': 'Təyin edilməyib',
   'todo.noCategory': 'Siyahı yoxdur',
   'todo.hasDescription': 'Təsviri var',

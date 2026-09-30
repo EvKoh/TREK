@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Kaardil',
   'mobileTrip.profileDriving': 'Autoga',
   'mobileTrip.profileWalking': 'Jalgsi',
+  'mobileTrip.profileCycling': 'Jalgrattaga',
   'mobileTrip.renameDay': 'Nimeta päev ümber',
   'mobileTrip.resBadge': 'Broneering',
   'mobileTrip.showOnMap': 'Näita kaardil',

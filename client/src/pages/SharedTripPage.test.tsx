@@ -1854,4 +1854,43 @@ describe('SharedTripPage', () => {
       expect(calls).toBe(2);
     });
   });
+
+  describe('FE-PAGE-SHARED-040: unplanned places and the travel-only link (#1758, #1712)', () => {
+    const payload = (permissions: Record<string, boolean>) => ({
+      trip: { id: 1, title: 'Shared Paris Trip', start_date: '2026-07-01', end_date: '2026-07-03' },
+      days: [
+        { id: 1, day_number: 1, date: '2026-07-01' },
+        { id: 2, day_number: 2, date: '2026-07-02' },
+      ],
+      assignments: { 1: [{ id: 11, order_index: 0, place: { id: 100, name: 'Louvre', lat: 48.86, lng: 2.34 } }] },
+      dayNotes: {},
+      places: [
+        { id: 100, name: 'Louvre', lat: 48.86, lng: 2.34 },
+        { id: 200, name: 'Sainte-Chapelle', lat: 48.85, lng: 2.35 },
+      ],
+      reservations: [],
+      accommodations: [],
+      packing: [], budget: [], categories: [], collab: [],
+      permissions: { share_map: true, share_bookings: false, ...permissions },
+    });
+
+    it('lists the places no day has picked up under the days', async () => {
+      server.use(http.get('/api/shared/:token', () => HttpResponse.json(payload({}))));
+      renderSharedTrip('unplanned-token');
+      const card = (await screen.findByText('Not planned yet')).closest('article') as HTMLElement;
+      expect(within(card).getByText('Sainte-Chapelle')).toBeInTheDocument();
+      expect(within(card).queryByText('Louvre')).toBeNull();
+      fireEvent.click(within(card).getByRole('button', { name: /collapse/i }));
+      expect(within(card).queryByText('Sainte-Chapelle')).toBeNull();
+    });
+
+    it('a travel-only link leaves out empty days and the unplanned pool', async () => {
+      server.use(http.get('/api/shared/:token', () => HttpResponse.json(payload({ share_travel_only: true }))));
+      renderSharedTrip('travel-token');
+      await screen.findByRole('heading', { name: 'Shared Paris Trip' });
+      expect(document.getElementById('shared-day-1')).not.toBeNull();
+      expect(document.getElementById('shared-day-2')).toBeNull();
+      expect(screen.queryByText('Not planned yet')).toBeNull();
+    });
+  });
 });

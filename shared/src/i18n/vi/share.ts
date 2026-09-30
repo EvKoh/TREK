@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Đóng gói',
   'share.permBudget': 'Chi phí',
   'share.permCollab': 'Trò chuyện',
+  'share.options': 'Tùy chọn',
+  'share.optTravelOnly': 'Chỉ di chuyển và lưu trú',
+  'share.optTravelOnlyHint': 'Chỉ hiện phương tiện di chuyển và chỗ ở, không có hoạt động, ghi chú ngày và ngày trống',
+  'share.optHideImages': 'Không có ảnh',
+  'share.optHideImagesHint': 'Bỏ ảnh địa điểm khỏi trang chia sẻ',
 };
 export default share;

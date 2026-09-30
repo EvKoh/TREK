@@ -466,6 +466,12 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Idioma i regió',
   'settings.general.travelMap': 'Viatge i mapa',
   'settings.general.startup': 'Inici',
+  'settings.dayDateFirst': 'Data primer als títols dels dies',
+  'settings.compactUnplanned': 'Marcadors compactes per als llocs sense planificar',
+  'settings.compactUnplannedHint':
+    'Els llocs que no són a cap dia es mostren com a marcadors petits sense foto, perquè les parades planificades destaquin.',
+  'settings.dayDateFirstHint':
+    'Comença cada dia amb la seva data de calendari i mostra «Dia 1» o el títol propi del dia al costat.',
   'settings.startPage': "Pàgina d'inici",
   'settings.startPageDashboard': 'Tauler',
   'settings.startPageActiveTrip': 'Viatge actiu',
@@ -565,6 +571,10 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.pluginConfigured':
     'Configurat. Gestiona les credencials a la configuració del connector.',
   'settings.currencyTrip': 'Divisa del viatge',
+  'settings.placeLanguage': 'Noms de llocs',
+  'settings.placeLanguageApp': 'Igual que l’app',
+  'settings.placeLanguageHint':
+    'La llengua en què responen la cerca de llocs, els suggeriments i les adreces. Si un lloc no té nom en aquesta llengua, se’n mostra el nom local.',
   'settings.alwaysShowRoutes': 'Mostra sempre les rutes de reserva',
   'settings.alwaysShowRoutesHint':
     'Dibuixa automàticament al mapa la ruta de cada vol, tren i altra reserva — no cal activar-la una per una.',

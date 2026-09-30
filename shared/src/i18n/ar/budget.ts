@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'مثل: عشاء، هدايا تذكارية، وقود…',
   'costs.note': 'ملاحظة',
   'costs.notePlaceholder': 'ما الذي شملته، ومن يدين بماذا…',
+  'costs.paymentNotePlaceholder': 'دُفع نقدًا، بتحويل بنكي…',
   'costs.addNote': 'إضافة ملاحظة',
   'costs.showNote': 'عرض الملاحظة',
   'costs.hideNote': 'إخفاء الملاحظة',

@@ -3,6 +3,7 @@ import {
   DEFAULT_FORM, endsBeforeStart, findDuplicatePlace, isAmapUrl, isGoogleMapsUrl, isMapUrl, parseCoordinatePair,
   timeCollisions,
 } from './PlaceFormModal.helpers'
+import { formPin } from './PlaceFormModal.helpers'
 
 describe('isGoogleMapsUrl', () => {
   it('accepts the short share hosts', () => {
@@ -144,5 +145,16 @@ describe('timeCollisions', () => {
     expect(timeCollisions(null, day, '12:00', '13:00')).toEqual([])
     expect(timeCollisions(1, day, '', '13:00')).toEqual([])
     expect(timeCollisions(99, day, '12:00', '13:00')).toEqual([])
+  })
+})
+
+describe('formPin', () => {
+  it('FE-PLACEFORM-PIN-001: reads a pin only from two real coordinates', () => {
+    expect(formPin({ lat: '52.5163', lng: '13.3777' })).toEqual({ lat: 52.5163, lng: 13.3777 })
+    expect(formPin({ lat: '0', lng: '0' })).toEqual({ lat: 0, lng: 0 })
+    expect(formPin({ lat: '', lng: '13.4' })).toBeNull()
+    expect(formPin({ lat: '52.5', lng: ' ' })).toBeNull()
+    expect(formPin({ lat: 'abc', lng: '13.4' })).toBeNull()
+    expect(formPin({ lat: '91', lng: '13.4' })).toBeNull()
   })
 })

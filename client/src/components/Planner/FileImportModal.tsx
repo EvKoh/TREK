@@ -5,6 +5,8 @@ import { useTranslation } from '../../i18n'
 import { useToast } from '../shared/Toast'
 import { placesApi } from '../../api/client'
 import { useTripStore } from '../../store/tripStore'
+import { useAuthStore } from '../../store/authStore'
+import ToggleSwitch from '../Settings/ToggleSwitch'
 import {
   DialogButton, DialogFooter, DialogHeader, DialogSection, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT, fs,
 } from '../shared/DialogShell'
@@ -57,6 +59,10 @@ export default function FileImportModal({ isOpen, onClose, tripId, pushUndo, ini
   const [summary, setSummary] = useState<PlacesImportSummary | null>(null)
   const [gpxOpts, setGpxOpts] = useState({ waypoints: true, routes: true, tracks: true })
   const [kmlOpts, setKmlOpts] = useState({ points: true, paths: true })
+  // The Google pass a list import offers, for the points of a file too (#2536).
+  const canEnrichImport = useAuthStore(s => s.hasMapsKey)
+  const [enrich, setEnrich] = useState(false)
+  const enrichHintId = useId()
 
   const validateFile = (f: File): string | null => {
     const ext = f.name.toLowerCase().split('.').pop()
@@ -168,13 +174,13 @@ export default function FileImportModal({ isOpen, onClose, tripId, pushUndo, ini
       try {
         if (ext === 'gpx') {
           importedGpx = true
-          const result = await placesApi.importGpx(tripId, f, gpxOpts)
+          const result = await placesApi.importGpx(tripId, f, { ...gpxOpts, enrich: enrich && canEnrichImport })
           totalCreated += result.count ?? 0
           totalSkipped += result.skipped ?? 0
           if (result.places?.length > 0) createdIds.push(...result.places.map((p: { id: number }) => p.id))
         } else {
           importedKml = true
-          const result = await placesApi.importMapFile(tripId, f, kmlOpts)
+          const result = await placesApi.importMapFile(tripId, f, { ...kmlOpts, enrich: enrich && canEnrichImport })
           totalCreated += result.count ?? 0
           if (result.places?.length > 0) createdIds.push(...result.places.map((p: { id: number }) => p.id))
           const s = result.summary as PlacesImportSummary | undefined
@@ -325,6 +331,16 @@ export default function FileImportModal({ isOpen, onClose, tripId, pushUndo, ini
           </div>
           {kmlNoneSelected && <p className="m-0 mt-1.5 text-warning" style={fs(11.5)}>{t('places.kmlImportNoneSelected')}</p>}
         </DialogSection>
+      )}
+
+      {canEnrichImport && ((isGpx && gpxOpts.waypoints) || (isKml && kmlOpts.points)) && (
+        <div className="flex items-start gap-3 rounded-[14px] border border-edge-faint bg-surface-secondary p-3">
+          <div className="min-w-0 flex-1">
+            <div className="font-semibold text-content" style={fs(12.5, 'body')}>{t('places.enrichOnImport')}</div>
+            <div id={enrichHintId} className="mt-0.5 text-content-faint" style={fs(12, 'body')}>{t('places.enrichOnImportFileHint')}</div>
+          </div>
+          <ToggleSwitch on={enrich} onToggle={() => setEnrich(v => !v)} label={t('places.enrichOnImport')} describedBy={enrichHintId} />
+        </div>
       )}
 
       {summary && (

@@ -127,6 +127,8 @@ export interface Settings {
   /** Display currency for Costs. Empty/null = follow each trip's own currency. */
   default_currency: string | null
   language: string
+  /** Language for place names and addresses in search (#1799); empty follows `language`. */
+  place_language?: string
   temperature_unit: string
   distance_unit?: DistanceUnit
   time_format: string
@@ -134,6 +136,10 @@ export interface Settings {
   week_start?: WeekStart
   show_place_description: boolean
   blur_booking_codes?: boolean
+  /** Day headings lead with the calendar date and name the trip day second (#1953). */
+  day_date_first?: boolean
+  /** Places not planned into any day are drawn as small markers without their photo (#2024). */
+  map_compact_unplanned?: boolean
   map_booking_labels?: boolean
   map_poi_pill_enabled?: boolean
   map_always_show_routes?: boolean
@@ -356,6 +362,8 @@ export interface AtlasPlace {
   name: string
   lat: number | null
   lng: number | null
+  address?: string | null
+  trip_id?: number
 }
 
 // GeoJSON types (simplified for atlas map)

@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': '在地圖上',
   'mobileTrip.profileDriving': '開車',
   'mobileTrip.profileWalking': '步行',
+  'mobileTrip.profileCycling': '騎自行車',
   'mobileTrip.renameDay': '重新命名天數',
   'mobileTrip.resBadge': '預訂',
   'mobileTrip.showOnMap': '在地圖上顯示',

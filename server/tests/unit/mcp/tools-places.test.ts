@@ -219,6 +219,23 @@ describe('Tool: create_place', () => {
 // update_place
 // ---------------------------------------------------------------------------
 
+describe('Tool: set_place_image_from_file (#1242)', () => {
+  it('refuses a file that is no picture, and one from another trip', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+    const other = createTrip(testDb, user.id);
+    const place = createPlace(testDb, trip.id);
+    const pdf = Number(testDb.prepare("INSERT INTO trip_files (trip_id, filename, original_name, mime_type) VALUES (?, 'a.pdf', 'a.pdf', 'application/pdf')").run(trip.id).lastInsertRowid);
+    const foreign = Number(testDb.prepare("INSERT INTO trip_files (trip_id, filename, original_name, mime_type) VALUES (?, 'b.jpg', 'b.jpg', 'image/jpeg')").run(other.id).lastInsertRowid);
+    await withHarness(user.id, async (h) => {
+      const notImage = await h.client.callTool({ name: 'set_place_image_from_file', arguments: { tripId: trip.id, placeId: place.id, fileId: pdf } });
+      expect(notImage.isError).toBe(true);
+      const notFound = await h.client.callTool({ name: 'set_place_image_from_file', arguments: { tripId: trip.id, placeId: place.id, fileId: foreign } });
+      expect(notFound.isError).toBe(true);
+    });
+  });
+});
+
 describe('Tool: update_place', () => {
   it('updates specific fields and preserves others', async () => {
     const { user } = createUser(testDb);

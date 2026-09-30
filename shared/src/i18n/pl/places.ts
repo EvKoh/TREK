@@ -42,6 +42,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Pokaż całą podróż',
   'places.filterTracks': 'Trasy',
   'places.filterByRating': 'Filtruj według oceny',
+  'places.filterByLocation': 'Filtruj według kraju lub regionu',
+  'places.allLocations': 'Wszystkie kraje',
   'places.filterShow': 'Pokaż',
   'places.clearSearch': 'Wyczyść wyszukiwanie',
   'places.yourRating': 'Twoja ocena',
@@ -68,6 +70,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategoria',
   'places.noCategory': 'Brak kategorii',
   'places.newCategory': 'Nowa kategoria',
+  'places.openInMaps': 'Otwórz w mapach',
   'places.categoryNamePlaceholder': 'Nazwa kategorii',
   'places.formTime': 'Godzina',
   'places.startTime': 'Początek',
@@ -84,6 +87,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Szukaj miejsc...',
   'places.mapsSearchError': 'Nie udało się wyszukać miejsca.',
   'places.searchGoogleInstead': 'To nie to miejsce? Poszukaj w Google',
+  'places.nearby': 'Miejsca w pobliżu tej pinezki',
+  'places.nearbyNone': 'Nic nie znaleziono w pobliżu tej pinezki',
   'places.loadingDetails': 'Ładowanie szczegółów miejsca…',
   'places.osmHint':
     'Korzystając z OpenStreetMap (brak zdjęć, godzin otwarcia czy ocen). Dodaj klucz API Google w ustawieniach aby uzyskać pełne dane.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Wzbogać miejsca przez Google',
   'places.enrichOnImportHint':
     'Wyszukuje każde zaimportowane miejsce, aby dodać zdjęcia, adres i dane kontaktowe. Wymaga klucza Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Następnie wyszukuje każdy zaimportowany punkt w Google i dodaje jego zdjęcie, adres, stronę internetową i telefon. Ścieżki i ślady pozostają bez zmian.',
   'places.uploadImage': 'Prześlij zdjęcie',
   'places.changeImage': 'Zmień zdjęcie',
   'places.removeImage': 'Usuń zdjęcie',
+  'places.chooseImage': 'Wybierz obraz',
+  'places.uploadFromDevice': 'Prześlij z urządzenia',
+  'places.fromAttachedFiles': 'Z załączonych plików',
   'places.imageUploadError': 'Nie udało się przesłać zdjęcia',
   'places.imageRemoveError': 'Nie udało się usunąć zdjęcia',
 };

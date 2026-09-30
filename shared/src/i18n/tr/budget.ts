@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'örn. Akşam yemeği, hediyelik, benzin…',
   'costs.note': 'Not',
   'costs.notePlaceholder': 'Neyi kapsadığı, kimin ne borcu olduğu…',
+  'costs.paymentNotePlaceholder': 'Nakit ödendi, banka havalesiyle…',
   'costs.addNote': 'Not ekle',
   'costs.showNote': 'Notu göster',
   'costs.hideNote': 'Notu gizle',

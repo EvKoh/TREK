@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { Check, ChevronRight, Flag, Calendar, GripVertical, UserRound } from 'lucide-react'
 import { avatarSrc } from '../../utils/avatarSrc'
 import type { TodoItem } from '../../types'
+import MarkdownText from '../shared/MarkdownText'
 import { katColor, PRIO_CONFIG, type Member } from './todoListModel'
 
 /** A quiet pill for the row's facts: filled, no frame, the packing list's badge. */
@@ -113,8 +114,8 @@ export default function TodoRow({ item, members, categories, today, isSelected, 
         </div>
         {/* Description preview */}
         {item.description && (
-          <div style={{ fontSize: 'calc(12px * var(--fs-scale-body, 1))', color: 'var(--text-faint)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', lineHeight: 1.4 }}>
-            {item.description}
+          <div style={{ fontSize: 'calc(12px * var(--fs-scale-body, 1))', color: 'var(--text-faint)', marginTop: 2, minWidth: 0 }}>
+            <MarkdownText clamp>{item.description}</MarkdownText>
           </div>
         )}
         {/* Priority, date and list as quiet badges */}

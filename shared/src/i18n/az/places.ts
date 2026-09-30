@@ -61,6 +61,8 @@ const places: TranslationStrings = {
 
   'places.filterTracks': 'İzlər',
   'places.filterByRating': 'Reytinqə görə filtrlə',
+  'places.filterByLocation': 'Ölkə və ya regiona görə filtrlə',
+  'places.allLocations': 'Bütün ölkələr',
   'places.filterShow': 'Göstər',
   'places.clearSearch': 'Axtarışı təmizlə',
   'places.yourRating': 'Sizin reytinqiniz',
@@ -88,6 +90,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kateqoriya',
   'places.noCategory': 'Kateqoriya yoxdur',
   'places.newCategory': 'Yeni kateqoriya',
+  'places.openInMaps': 'Xəritələrdə aç',
   'places.categoryNamePlaceholder': 'Kateqoriyanın adı',
   'places.formTime': 'Vaxt',
   'places.startTime': 'Başlanğıc',
@@ -104,6 +107,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Məkanları axtarın...',
   'places.mapsSearchError': 'Məkan axtarışı uğursuz oldu.',
   'places.searchGoogleInstead': 'Axtardığınız məkan deyil? Əvəzində Google-da axtarın',
+  'places.nearby': 'Bu nişanın yaxınlığındakı məkanlar',
+  'places.nearbyNone': 'Bu nişanın yaxınlığında heç nə tapılmadı',
   'places.loadingDetails': 'Məkan təfərrüatları yüklənir…',
   'places.osmHint':
     'OpenStreetMap axtarışından istifadə edilir (fotolar, iş saatları və reytinqlər yoxdur). Tam təfərrüatlar üçün tənzimləmələrdə Google API açarı əlavə edin.',
@@ -145,10 +150,15 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Məkan məlumatlarını Google vasitəsilə tamamla',
   'places.enrichOnImportHint':
     'Foto, ünvan və əlaqə məlumatlarını əlavə etmək üçün idxal edilən hər məkanı axtarır. Google Maps açarınızdan istifadə edir.',
+  'places.enrichOnImportFileHint':
+    'İdxaldan sonra hər nöqtəni Google-da axtarır və onun fotosunu, ünvanını, veb saytını və telefonunu əlavə edir. Yollar və izlər olduğu kimi qalır.',
 
   'places.uploadImage': 'Şəkil yüklə',
   'places.changeImage': 'Şəkli dəyiş',
   'places.removeImage': 'Şəkli sil',
+  'places.chooseImage': 'Şəkil seç',
+  'places.uploadFromDevice': 'Cihazdan yüklə',
+  'places.fromAttachedFiles': 'Əlavə edilmiş fayllardan',
   'places.imageUploadError': 'Şəkli yükləmək mümkün olmadı',
   'places.imageRemoveError': 'Şəkli silmək mümkün olmadı',
 };

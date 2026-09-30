@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Показати всю подорож',
   'places.filterTracks': 'Треки',
   'places.filterByRating': 'Фільтр за оцінкою',
+  'places.filterByLocation': 'Фільтр за країною або регіоном',
+  'places.allLocations': 'Усі країни',
   'places.filterShow': 'Показати',
   'places.clearSearch': 'Очистити пошук',
   'places.yourRating': 'Твоя оцінка',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Категорія',
   'places.noCategory': 'Без категорії',
   'places.newCategory': 'Нова категорія',
+  'places.openInMaps': 'Відкрити в картах',
   'places.categoryNamePlaceholder': 'Назва категорії',
   'places.formTime': 'Час',
   'places.startTime': 'Початок',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Пошук місць...',
   'places.mapsSearchError': 'Помилка пошуку місць.',
   'places.searchGoogleInstead': 'Не те місце? Пошукати в Google',
+  'places.nearby': 'Місця поблизу цієї позначки',
+  'places.nearbyNone': 'Поблизу цієї позначки нічого не знайдено',
   'places.loadingDetails': 'Завантаження даних про місце…',
   'places.osmHint':
     'Пошук через OpenStreetMap (без фото, годин роботи та рейтингів). Додайте API-ключ Google у налаштуваннях для повної інформації.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Збагатити місця через Google',
   'places.enrichOnImportHint':
     'Знаходить кожне імпортоване місце й додає фото, адресу та контакти. Потрібен ключ Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Після імпорту шукає кожну точку в Google і додає її фото, адресу, вебсайт і телефон. Шляхи та треки залишаються без змін.',
   'places.uploadImage': 'Завантажити зображення',
   'places.changeImage': 'Змінити зображення',
   'places.removeImage': 'Видалити зображення',
+  'places.chooseImage': 'Вибрати зображення',
+  'places.uploadFromDevice': 'Завантажити з пристрою',
+  'places.fromAttachedFiles': 'З прикріплених файлів',
   'places.imageUploadError': 'Не вдалося завантажити зображення',
   'places.imageRemoveError': 'Не вдалося видалити зображення',
 };

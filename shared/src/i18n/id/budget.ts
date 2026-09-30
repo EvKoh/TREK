@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'mis. Makan malam, oleh-oleh, bensin…',
   'costs.note': 'Catatan',
   'costs.notePlaceholder': 'Apa saja yang termasuk, siapa berutang apa…',
+  'costs.paymentNotePlaceholder': 'Dibayar tunai, lewat transfer bank…',
   'costs.addNote': 'Tambah catatan',
   'costs.showNote': 'Tampilkan catatan',
   'costs.hideNote': 'Sembunyikan catatan',

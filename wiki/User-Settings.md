@@ -35,6 +35,7 @@ The General tab controls the following preferences, all saved immediately on cha
 
 - **Currency** — your display currency; **Trip currency** (the default) shows each trip in its own. See [Currencies](Currencies).
 - **Language** — displayed as a button grid on desktop and a dropdown on mobile.
+- **Place names**: the language place search, suggestions and addresses answer in. **Same as the app** follows the language above; picking another one keeps the interface as it is and asks for place names in that language. Where a place has no name in it, the local name is shown.
 - **Temperature unit** — Celsius (°C) or Fahrenheit (°F).
 - **Distance unit** — Metric (km) or Imperial (mi).
 - **Time format** — 24h (14:30) or 12h (2:30 PM).

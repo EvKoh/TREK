@@ -337,6 +337,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Jumlah di Biaya ditampilkan dalam mata uang ini hanya untuk tampilan — jumlah aslinya tidak berubah.',
   'settings.currencyTrip': 'Mata uang perjalanan',
+  'settings.placeLanguage': 'Nama tempat',
+  'settings.placeLanguageApp': 'Sama dengan aplikasi',
+  'settings.placeLanguageHint': 'Bahasa yang dipakai untuk pencarian tempat, saran, dan alamat. Jika suatu tempat tidak punya nama dalam bahasa itu, nama lokalnya yang ditampilkan.',
   'settings.passkey.title': 'Passkey',
   'settings.passkey.description':
     'Masuk lebih cepat dan tahan terhadap phishing dengan passkey — sidik jari, wajah, PIN, atau kunci keamanan fisik kamu. Kata sandimu tetap tersedia sebagai cadangan.',
@@ -482,6 +485,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Mulai',
+  'settings.dayDateFirst': 'Tanggal di depan pada judul hari',
+  'settings.compactUnplanned': 'Penanda ringkas untuk tempat yang belum direncanakan',
+  'settings.compactUnplannedHint': 'Tempat yang belum dimasukkan ke hari mana pun tampil sebagai penanda kecil tanpa foto, sehingga perhentian yang direncanakan lebih menonjol.',
+  'settings.dayDateFirstHint': 'Awali setiap hari dengan tanggal kalendernya dan tampilkan "Hari 1" atau judul hari itu di sebelahnya.',
   'settings.startPage': 'Halaman awal',
   'settings.startPageDashboard': 'Dasbor',
   'settings.startPageActiveTrip': 'Perjalanan aktif',

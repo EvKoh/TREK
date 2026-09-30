@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'напр. вечеря, сувеніри, пальне…',
   'costs.note': 'Нотатка',
   'costs.notePlaceholder': 'Що входило, хто скільки винен…',
+  'costs.paymentNotePlaceholder': 'Сплачено готівкою, банківським переказом…',
   'costs.addNote': 'Додати нотатку',
   'costs.showNote': 'Показати нотатку',
   'costs.hideNote': 'Сховати нотатку',

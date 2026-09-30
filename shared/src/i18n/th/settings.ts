@@ -336,6 +336,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     "จำนวนเงินในต้นทุนจะแสดงแปลงเป็นสกุลเงินนี้เพื่อแสดงเท่านั้น — จำนวนเงินเดิมไม่มีการเปลี่ยนแปลง",
   'settings.currencyTrip': "สกุลเงินการเดินทาง",
+  'settings.placeLanguage': 'ชื่อสถานที่',
+  'settings.placeLanguageApp': 'เหมือนกับแอป',
+  'settings.placeLanguageHint': 'ภาษาที่ใช้ในการค้นหาสถานที่ คำแนะนำ และที่อยู่ หากสถานที่ไม่มีชื่อในภาษานั้น จะแสดงชื่อท้องถิ่นแทน',
   'settings.passkey.title': "พาสคีย์",
   'settings.passkey.description':
     "ลงชื่อเข้าใช้เร็วขึ้นและป้องกันฟิชชิ่งด้วยรหัสผ่าน ไม่ว่าจะเป็นลายนิ้วมือ ใบหน้า PIN หรือคีย์ฮาร์ดแวร์ รหัสผ่านของคุณยังคงเป็นข้อมูลสำรอง",
@@ -476,6 +479,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': "ภาษาและภูมิภาค",
   'settings.general.travelMap': "การเดินทางและแผนที่",
   'settings.general.startup': "การเริ่มต้น",
+  'settings.dayDateFirst': 'แสดงวันที่ก่อนในหัวข้อวัน',
+  'settings.compactUnplanned': 'หมุดขนาดเล็กสำหรับสถานที่ที่ยังไม่ได้วางแผน',
+  'settings.compactUnplannedHint': 'สถานที่ที่ยังไม่ได้วางแผนไว้ในวันใดจะแสดงเป็นหมุดเล็กโดยไม่มีรูปภาพ เพื่อให้จุดแวะที่วางแผนไว้โดดเด่นขึ้น',
+  'settings.dayDateFirstHint': 'เริ่มแต่ละวันด้วยวันที่ในปฏิทิน และแสดง "วันที่ 1" หรือชื่อของวันนั้นไว้ข้างๆ',
   'settings.startPage': "หน้าเริ่มต้น",
   'settings.startPageDashboard': "แดชบอร์ด",
   'settings.startPageActiveTrip': "การเดินทางที่ใช้งานอยู่",

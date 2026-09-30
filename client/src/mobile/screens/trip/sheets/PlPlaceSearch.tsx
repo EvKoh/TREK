@@ -11,6 +11,7 @@ import { pointFromBox } from '../../../../hooks/useLocationBias'
 import { usePlaceSuggestions } from '../../../../hooks/usePlaceSuggestions'
 import { FIELD_CLS } from './PlSheetChrome'
 import type { TripPlanner } from '../MTripShell'
+import { usePlaceLanguage } from '../../../../hooks/usePlaceLanguage'
 
 /** Fields a search pick can contribute to the place form. */
 export interface PlSearchPick {
@@ -92,7 +93,9 @@ function placeToPick(place: MapsPlace): PlSearchPick {
  * detection — the mobile counterpart of PlaceFormModal's search block.
  */
 export default function PlPlaceSearch({ planner, locationBias, onPick, onResolvingChange }: PlPlaceSearchProps) {
-  const { t, language, toast } = planner
+  const { t, toast } = planner
+  // Place names in the language the user picked for them, the app's otherwise (#1799).
+  const language = usePlaceLanguage()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<MapsPlace[]>([])
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])

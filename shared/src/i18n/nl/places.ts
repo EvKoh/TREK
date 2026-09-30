@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Hele reis tonen',
   'places.filterTracks': 'Tracks',
   'places.filterByRating': 'Filteren op beoordeling',
+  'places.filterByLocation': 'Filteren op land of regio',
+  'places.allLocations': 'Alle landen',
   'places.filterShow': 'Tonen',
   'places.clearSearch': 'Zoekopdracht wissen',
   'places.yourRating': 'Jouw beoordeling',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Categorie',
   'places.noCategory': 'Geen categorie',
   'places.newCategory': 'Nieuwe categorie',
+  'places.openInMaps': 'Openen in kaarten',
   'places.categoryNamePlaceholder': 'Categorienaam',
   'places.formTime': 'Tijd',
   'places.startTime': 'Starttijd',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Plaatsen zoeken...',
   'places.mapsSearchError': 'Zoeken naar plaatsen mislukt.',
   'places.searchGoogleInstead': 'Niet de juiste plek? Zoek in plaats daarvan op Google',
+  'places.nearby': 'Plaatsen in de buurt van deze pin',
+  'places.nearbyNone': 'Niets gevonden in de buurt van deze pin',
   'places.loadingDetails': 'Plaatsgegevens laden…',
   'places.osmHint':
     "Zoeken via OpenStreetMap (geen foto's, openingstijden of beoordelingen). Voeg een Google API-sleutel toe in instellingen voor volledige details.",
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Plaatsen verrijken via Google',
   'places.enrichOnImportHint':
     'Zoekt elke geïmporteerde plaats op om fotos, adres en contactgegevens toe te voegen. Gebruikt je Google Maps-sleutel.',
+  'places.enrichOnImportFileHint':
+    'Zoekt daarna elk geïmporteerd punt op in Google en voegt foto, adres, website en telefoonnummer toe. Paden en tracks blijven zoals ze zijn.',
   'places.uploadImage': 'Afbeelding uploaden',
   'places.changeImage': 'Afbeelding wijzigen',
   'places.removeImage': 'Afbeelding verwijderen',
+  'places.chooseImage': 'Een afbeelding kiezen',
+  'places.uploadFromDevice': 'Uploaden vanaf apparaat',
+  'places.fromAttachedFiles': 'Uit bijgevoegde bestanden',
   'places.imageUploadError': 'Afbeelding uploaden mislukt',
   'places.imageRemoveError': 'Afbeelding verwijderen mislukt',
 };

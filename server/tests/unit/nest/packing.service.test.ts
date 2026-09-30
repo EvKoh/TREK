@@ -683,6 +683,23 @@ describe('legacy-quirk fixes', () => {
     // Omitted key leaves the quantity unchanged.
     expect((svc.updateItem(trip.id, item.id, { name: 'Wool socks' }, ['name'], undefined, user.id) as any).quantity).toBe(999);
   });
+
+  it('PACK-SVC-053b: a packed count keeps the box in step (#2296)', () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+    const item = svc.createItem(trip.id, { name: 'Shirts', quantity: 10 }, user.id) as any;
+    const put = (data: Record<string, unknown>) => svc.updateItem(trip.id, item.id, data, Object.keys(data), undefined, user.id) as any;
+
+    expect(put({ packed_quantity: 7 })).toMatchObject({ packed_quantity: 7, checked: 0 });
+    // Reaching the quantity ticks the item off and drops the partial count.
+    expect(put({ packed_quantity: 12 })).toMatchObject({ packed_quantity: null, checked: 1 });
+    // Unticking starts over from nothing.
+    expect(put({ checked: 0 })).toMatchObject({ packed_quantity: null, checked: 0 });
+    expect(put({ packed_quantity: 6 })).toMatchObject({ packed_quantity: 6, checked: 0 });
+    // A quantity lowered to the count finishes the item; a rename leaves it alone.
+    expect(put({ name: 'Tees' })).toMatchObject({ packed_quantity: 6, checked: 0 });
+    expect(put({ quantity: 5 })).toMatchObject({ quantity: 5, packed_quantity: null, checked: 1 });
+  });
 });
 
 // ── Create-path fields + bag trip scope (#2154) ───────────────────────────────

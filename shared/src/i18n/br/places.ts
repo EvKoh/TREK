@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Mostrar a viagem inteira',
   'places.filterTracks': 'Trilhas',
   'places.filterByRating': 'Filtrar por avaliação',
+  'places.filterByLocation': 'Filtrar por país ou região',
+  'places.allLocations': 'Todos os países',
   'places.filterShow': 'Mostrar',
   'places.clearSearch': 'Limpar busca',
   'places.yourRating': 'Sua avaliação',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Categoria',
   'places.noCategory': 'Sem categoria',
   'places.newCategory': 'Nova categoria',
+  'places.openInMaps': 'Abrir em mapas',
   'places.categoryNamePlaceholder': 'Nome da categoria',
   'places.formTime': 'Horário',
   'places.startTime': 'Início',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Buscar lugares...',
   'places.mapsSearchError': 'Falha na busca de lugares.',
   'places.searchGoogleInstead': 'Não é o lugar certo? Pesquisar no Google',
+  'places.nearby': 'Lugares perto deste marcador',
+  'places.nearbyNone': 'Nada encontrado perto deste marcador',
   'places.loadingDetails': 'Carregando detalhes do lugar…',
   'places.osmHint':
     'Busca via OpenStreetMap (sem fotos, horários ou avaliações). Adicione uma chave Google nas configurações para detalhes completos.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Enriquecer lugares via Google',
   'places.enrichOnImportHint':
     'Busca cada lugar importado para adicionar fotos, endereço e contato. Usa sua chave do Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Depois pesquisa cada ponto importado no Google e adiciona foto, endereço, site e telefone. Caminhos e trilhas ficam como estão.',
   'places.uploadImage': 'Enviar imagem',
   'places.changeImage': 'Alterar imagem',
   'places.removeImage': 'Remover imagem',
+  'places.chooseImage': 'Escolher uma imagem',
+  'places.uploadFromDevice': 'Enviar do dispositivo',
+  'places.fromAttachedFiles': 'Dos arquivos anexados',
   'places.imageUploadError': 'Não foi possível enviar a imagem',
   'places.imageRemoveError': 'Não foi possível remover a imagem',
 };

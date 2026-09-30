@@ -119,6 +119,7 @@ export interface DayAssignment {
   assignment_end_time?: string | null;
   end_day?: number;
   leg_transport_mode?: string | null;
+  route_excluded?: number;
   incoming_leg_transport_mode?: string | null;
   /** The lodging booking that put this stop on the day, when one did. */
   accommodation_id?: number | null;
@@ -425,6 +426,8 @@ export interface JourneyEntry {
    * The wire carries a boolean; journey-entry-row.ts is where the two meet.
    */
   stats_excluded: number;
+  /** 1 while the entry is a draft (#696), kept off the public share page. */
+  is_draft?: number;
   created_at: number;
   updated_at: number;
 }

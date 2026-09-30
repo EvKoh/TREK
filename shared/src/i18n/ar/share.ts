@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'الأمتعة',
   'share.permBudget': 'التكاليف',
   'share.permCollab': 'الدردشة',
+  'share.options': 'خيارات',
+  'share.optTravelOnly': 'التنقل والإقامة فقط',
+  'share.optTravelOnlyHint': 'يعرض التنقل والإقامة فقط، دون الأنشطة وملاحظات الأيام والأيام الفارغة',
+  'share.optHideImages': 'بدون صور',
+  'share.optHideImagesHint': 'يستبعد صور الأماكن من الصفحة المشتركة',
 };
 export default share;

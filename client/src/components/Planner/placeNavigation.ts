@@ -7,13 +7,32 @@ import { getOpenStreetMapUrlForPlace } from './placeOpenStreetMap'
 
 type PlaceLike = Pick<Place | AssignmentPlace, 'name' | 'address' | 'lat' | 'lng' | 'google_place_id' | 'google_ftid'>
 
-export type NavigationAppId = 'google' | 'waze' | 'apple' | 'osm' | 'comaps' | 'amap'
+export type NavigationAppId = 'google' | 'waze' | 'apple' | 'osm' | 'comaps' | 'amap' | 'geo'
 
 export interface NavigationTarget {
   id: NavigationAppId
   /** Product name. Not translated in any language, so it carries no i18n key. */
   label: string
+  /** Set for the one entry that is no product (#1406): its label is this key's translation. */
+  labelKey?: string
   url: string
+}
+
+type Translate = (key: string) => string
+
+/** What a target is called on screen: its product name, or the translated name of the generic entry. */
+export function navigationTargetLabel(target: NavigationTarget, t: Translate): string {
+  return target.labelKey ? t(target.labelKey) : target.label
+}
+
+/**
+ * Whether the generic `geo:` link is worth offering (#1406). Android hands it to
+ * whichever map app the traveller installed (OsmAnd, Organic Maps, Magic Earth…);
+ * desktop browsers and iOS have no handler, so there the entry would lead nowhere.
+ */
+export function showsGeoUri(): boolean {
+  if (typeof navigator === 'undefined') return false
+  return /Android/i.test(navigator.userAgent)
 }
 
 /**
@@ -105,6 +124,16 @@ export function getNavigationTargets(
     if (amapUrl) targets.push({ id: 'amap', label: '高德地图', url: amapUrl })
   }
 
+  if (place.lat != null && place.lng != null && showsGeoUri()) {
+    const label = name ? `(${encodeURIComponent(name)})` : ''
+    targets.push({
+      id: 'geo',
+      label: 'geo:',
+      labelKey: 'inspector.otherMapApp',
+      url: `geo:${place.lat},${place.lng}?q=${place.lat},${place.lng}${label}`,
+    })
+  }
+
   return targets
 }
 
@@ -120,7 +149,8 @@ export function getNavigationTargets(
  * shell was never replaced by the time the platform switched away.
  */
 export function openNavigationTarget(target: NavigationTarget): void {
-  if (isInstalledApp()) window.location.href = target.url
+  // A geo: link is handed to the system, which asks for the app; a new tab would stay blank.
+  if (target.id === 'geo' || isInstalledApp()) window.location.href = target.url
   else window.open(target.url, '_blank', 'noopener,noreferrer')
 }
 

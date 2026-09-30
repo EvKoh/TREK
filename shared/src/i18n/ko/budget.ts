@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': '예: 저녁 식사, 기념품, 주유…',
   'costs.note': '메모',
   'costs.notePlaceholder': '무엇을 샀는지, 누가 갚아야 하는지…',
+  'costs.paymentNotePlaceholder': '현금 결제, 계좌 이체…',
   'costs.addNote': '메모 추가',
   'costs.showNote': '메모 보기',
   'costs.hideNote': '메모 숨기기',

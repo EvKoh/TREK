@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'På kartan',
   'mobileTrip.profileDriving': 'Bil',
   'mobileTrip.profileWalking': 'Gång',
+  'mobileTrip.profileCycling': 'Cykel',
   'mobileTrip.renameDay': 'Byt namn på dag',
   'mobileTrip.resBadge': 'Bokning',
   'mobileTrip.showOnMap': 'Visa på karta',

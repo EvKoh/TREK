@@ -108,6 +108,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 't.ex. middag, souvenirer, bensin…',
   'costs.note': 'Anteckning',
   'costs.notePlaceholder': 'Vad det omfattade, vem som ska betala tillbaka…',
+  'costs.paymentNotePlaceholder': 'Betalt kontant, via banköverföring…',
   'costs.addNote': 'Lägg till anteckning',
   'costs.showNote': 'Visa anteckning',
   'costs.hideNote': 'Dölj anteckning',

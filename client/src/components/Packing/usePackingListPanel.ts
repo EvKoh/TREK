@@ -11,7 +11,7 @@ import { useNetworkMode } from '../../hooks/useNetworkMode'
 import { useBagTotalsPing } from './useBagTotalsPing'
 import type { PackingItem, PackingBag } from '../../types'
 import { BAG_COLORS, PACKING_PLACEHOLDER_NAME } from './packingListPanel.constants'
-import { parseImportLines, sortItemsByName } from './packingListPanel.helpers'
+import { newItemSharing, parseImportLines, sortItemsByName } from './packingListPanel.helpers'
 
 const PACKING_SORT_KEY = 'trek:packing-sort'
 
@@ -153,8 +153,9 @@ export function usePackingList({ tripId, items, openImportSignal = 0, addCategor
       if (placeholder) {
         await updatePackingItem(tripId, placeholder.id, { name })
       } else {
-        // New items inherit the active view's tier: Personal in "my list", Common otherwise.
-        await addPackingItem(tripId, { name, category, visibility: view === 'personal' ? 'personal' : 'common' } as Parameters<typeof addPackingItem>[1])
+        // New items inherit the active view's tier, and in "my list" the sharing the
+        // category's own items agree on (#2241).
+        await addPackingItem(tripId, { name, category, ...newItemSharing(items, category, view, currentUserId) } as Parameters<typeof addPackingItem>[1])
       }
     } catch { toast.error(t('packing.toast.addError')) }
   }

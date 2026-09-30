@@ -343,6 +343,9 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Số tiền trong Chi phí chỉ được quy đổi sang loại tiền tệ này để hiển thị — số tiền gốc không thay đổi.',
   'settings.currencyTrip': 'Tiền tệ của chuyến đi',
+  'settings.placeLanguage': 'Tên địa điểm',
+  'settings.placeLanguageApp': 'Giống ứng dụng',
+  'settings.placeLanguageHint': 'Ngôn ngữ dùng cho tìm kiếm địa điểm, gợi ý và địa chỉ. Nếu địa điểm không có tên bằng ngôn ngữ đó, tên địa phương sẽ được hiển thị.',
   'settings.passkey.title': 'Mật mã',
   'settings.passkey.description':
     'Đăng nhập nhanh hơn và chống lừa đảo bằng mật mã — vân tay, khuôn mặt, PIN hoặc khóa phần cứng của bạn. Mật khẩu của bạn vẫn là bản sao lưu.',
@@ -485,6 +488,10 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Ngôn ngữ & khu vực',
   'settings.general.travelMap': 'Du lịch & bản đồ',
   'settings.general.startup': 'Khởi động',
+  'settings.dayDateFirst': 'Hiện ngày tháng trước trong tiêu đề ngày',
+  'settings.compactUnplanned': 'Điểm đánh dấu gọn cho địa điểm chưa lên kế hoạch',
+  'settings.compactUnplannedHint': 'Các địa điểm chưa được xếp vào ngày nào sẽ hiện thành điểm đánh dấu nhỏ không có ảnh, để các điểm dừng đã lên kế hoạch nổi bật hơn.',
+  'settings.dayDateFirstHint': 'Mở đầu mỗi ngày bằng ngày trên lịch và hiện "Ngày 1" hoặc tiêu đề riêng của ngày bên cạnh.',
   'settings.startPage': 'Trang khởi động',
   'settings.startPageDashboard': 'Bảng điều khiển',
   'settings.startPageActiveTrip': 'Chuyến đi đang diễn ra',

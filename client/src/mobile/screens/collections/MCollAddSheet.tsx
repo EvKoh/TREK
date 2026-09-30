@@ -12,6 +12,7 @@ import MSheet from '../../components/MSheet'
 import MCollCategoryPicker from './MCollCategoryPicker'
 import { STATUS_SPEC } from './collectionsMobileModel'
 import { CancelPill, Eyebrow, INPUT_CLS, PrimaryPill, SheetFooter, SheetHeader, TEXTAREA_CLS } from './MCollSheetKit'
+import { usePlaceLanguage } from '../../../hooks/usePlaceLanguage'
 
 type MapsPlace = Record<string, unknown>
 const str = (v: unknown): string | undefined => (typeof v === 'string' && v ? v : undefined)
@@ -36,6 +37,7 @@ interface MCollAddSheetProps {
  */
 export default function MCollAddSheet({ open, collectionId, collectionName, lists, categories, onClose, onAdded, t }: MCollAddSheetProps) {
   const { language } = useTranslation()
+  const placeLang = usePlaceLanguage()
   const toast = useToast()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<MapsPlace[]>([])
@@ -69,7 +71,7 @@ export default function MCollAddSheet({ open, collectionId, collectionName, list
     if (!query.trim() || searching) return
     setSearching(true)
     try {
-      const res = await mapsApi.search(query, language)
+      const res = await mapsApi.search(query, placeLang)
       setResults((res.places as MapsPlace[]) || [])
     } catch (err) {
       toast.error(getApiErrorMessage(err, t('places.mapsSearchError')))

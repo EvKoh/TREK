@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react'
-import { Search, Plus, X, Upload, FileDown, ListPlus, Check, Star, CalendarPlus, CalendarDays, ChevronDown, Tag } from 'lucide-react'
+import { Search, Plus, X, Upload, FileDown, ListPlus, Check, Star, CalendarPlus, CalendarDays, ChevronDown, Tag, Globe2 } from 'lucide-react'
 import { Tooltip } from '../shared/Tooltip'
 import { ContextMenu, useContextMenu } from '../shared/ContextMenu'
 import { NEUTRAL_TINT, fs } from '../shared/DialogShell'
@@ -90,6 +90,7 @@ export function PlacesHeader(S: SidebarState) {
         <ShowDropdown {...S} />
         <CategoryFilter {...S} />
         <RatingFilter {...S} />
+        <LocalityFilterDropdown {...S} />
       </div>
       <ActiveFilterChips {...S} />
     </div>
@@ -321,6 +322,47 @@ function RatingFilter(S: SidebarState) {
           </button>
         )
       })}
+    </FilterDropdown>
+  )
+}
+
+/**
+ * Country, or one region in it, from each place's resolved position (#2537). Shown once
+ * the trip spans more than one country or region; a single one has nothing to narrow.
+ */
+function LocalityFilterDropdown(S: SidebarState) {
+  const { t, localities, localityFilter, setLocalityFilter } = S
+  const [open, setOpen] = useState(false)
+  const regionCount = localities.reduce((n, g) => n + g.regions.length, 0)
+  if (localities.length < 2 && regionCount < 2) return null
+  const pick = (country: string, region: string | null) => { setLocalityFilter({ country, region }); setOpen(false) }
+  const row = (key: string, label: string, count: number, on: boolean, onClick: () => void, indent: boolean) => (
+    <button type="button" key={key} onClick={onClick} aria-pressed={on}
+      className={`flex w-full items-center gap-2 rounded-[9px] py-1.5 pr-2 text-left transition-colors ${indent ? 'pl-5' : 'pl-2'} ${on ? 'bg-surface-tertiary' : 'hover:bg-surface-hover'}`}
+      style={fs(indent ? 12 : 12.5, 'body')}>
+      <span className={`min-w-0 flex-1 truncate ${indent ? 'text-content-secondary' : 'font-semibold text-content'}`}>{label}</span>
+      <span className="rounded-full bg-surface-secondary px-1.5 font-geist tabular-nums text-content-faint" style={fs(10.5)}>{count}</span>
+      <span className="grid w-3.5 flex-none place-items-center">{on && <Check size={13} strokeWidth={2.4} className="text-content-muted" />}</span>
+    </button>
+  )
+  const label = localityFilter ? (localityFilter.region ?? localityFilter.country) : t('places.allLocations')
+  return (
+    <FilterDropdown name={t('places.filterByLocation')} label={label} active={!!localityFilter} badge={1}
+      icon={<Globe2 size={14} strokeWidth={2} />} open={open} setOpen={setOpen}>
+      {localities.map(g => (
+        <div key={g.country} className="flex flex-col gap-px">
+          {row(`c:${g.country}`, g.country, g.count, localityFilter?.country === g.country && localityFilter.region == null, () => pick(g.country, null), false)}
+          {g.regions.map(r => row(`c:${g.country}:${r.region}`, r.region, r.count, localityFilter?.country === g.country && localityFilter.region === r.region, () => pick(g.country, r.region), true))}
+        </div>
+      ))}
+      {localityFilter && (
+        <button type="button" onClick={() => { setLocalityFilter(null); setOpen(false) }}
+          className="mt-1 flex w-full items-center gap-1.5 rounded-[9px] border-t border-edge-faint px-1.5 pb-1 pt-2 text-left font-semibold text-content-muted hover:text-content"
+          style={fs(12, 'body')}>
+          <X size={12} strokeWidth={2.4} />
+          {t('places.clearFilter')}
+        </button>
+      )}
     </FilterDropdown>
   )
 }

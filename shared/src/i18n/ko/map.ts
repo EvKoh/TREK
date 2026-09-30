@@ -24,6 +24,8 @@ const map: TranslationStrings = {
   'map.location.unavailable': '현재 위치를 확인할 수 없습니다.',
   'map.location.timeout': '위치를 확인하는 데 시간이 너무 오래 걸렸습니다. 하늘이 잘 보이는 곳에서 다시 시도하세요.',
   'map.overview.show': '전체 여행 보기',
+  'map.lock.lock': '지도 보기 고정',
+  'map.lock.unlock': '선택 항목에 따라 지도 이동',
   'map.overview.hide': '전체 여행 숨기기',
   'map.overview.total': '총 거리',
   'map.attribution': '지도 출처',

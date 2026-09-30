@@ -51,6 +51,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Mostra tot el viatge',
   'places.filterTracks': 'Rutes',
   'places.filterByRating': 'Filtra per valoració',
+  'places.filterByLocation': 'Filtra per país o regió',
+  'places.allLocations': 'Tots els països',
   'places.filterShow': 'Mostrar',
   'places.clearSearch': 'Esborra la cerca',
   'places.yourRating': 'La teva valoració',
@@ -77,6 +79,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Categoria',
   'places.noCategory': 'Sense categoria',
   'places.newCategory': 'Categoria nova',
+  'places.openInMaps': 'Obre a mapes',
   'places.categoryNamePlaceholder': 'Nom de la categoria',
   'places.formTime': 'Hora',
   'places.startTime': 'Inici',
@@ -93,6 +96,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Cerca llocs...',
   'places.mapsSearchError': 'La cerca de llocs ha fallat.',
   'places.searchGoogleInstead': 'No és el lloc correcte? Cerca a Google',
+  'places.nearby': 'Llocs a prop d’aquest marcador',
+  'places.nearbyNone': 'No s’ha trobat res a prop d’aquest marcador',
   'places.loadingDetails': 'Carregant els detalls del lloc…',
   'places.osmHint':
     "S'està utilitzant la cerca amb OpenStreetMap (sense fotos, horaris ni valoracions). Afegeix una clau API de Google a Configuració per obtenir tots els detalls.",
@@ -134,9 +139,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Enriquir llocs mitjançant Google',
   'places.enrichOnImportHint':
     "Obté automàticament adreces, puntuacions i horaris d'obertura des de Google en importar.",
+  'places.enrichOnImportFileHint':
+    'Després cerca cada punt importat a Google i n’afegeix la foto, l’adreça, el lloc web i el telèfon. Els camins i els tracks es queden com estan.',
   'places.uploadImage': 'Puja una imatge',
   'places.changeImage': 'Canvia la imatge',
   'places.removeImage': 'Elimina la imatge',
+  'places.chooseImage': 'Tria una imatge',
+  'places.uploadFromDevice': 'Puja des del dispositiu',
+  'places.fromAttachedFiles': 'Dels fitxers adjunts',
   'places.imageUploadError': "No s'ha pogut pujar la imatge",
   'places.imageRemoveError': "No s'ha pogut eliminar la imatge",
 };

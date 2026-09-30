@@ -54,6 +54,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Tüm yolculuğu göster',
   'places.filterTracks': 'Parçalar',
   'places.filterByRating': 'Puana göre filtrele',
+  'places.filterByLocation': 'Ülke veya bölgeye göre filtrele',
+  'places.allLocations': 'Tüm ülkeler',
   'places.filterShow': 'Göster',
   'places.clearSearch': 'Aramayı temizle',
   'places.yourRating': 'Senin puanın',
@@ -80,6 +82,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategori',
   'places.noCategory': 'Kategori Yok',
   'places.newCategory': 'Yeni kategori',
+  'places.openInMaps': 'Haritalarda aç',
   'places.categoryNamePlaceholder': 'Kategori adı',
   'places.formTime': 'Zaman',
   'places.startTime': 'Başlangıç',
@@ -96,6 +99,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Yerleri ara...',
   'places.mapsSearchError': 'Yer arama başarısız oldu.',
   'places.searchGoogleInstead': "Doğru yer değil mi? Bunun yerine Google'da ara",
+  'places.nearby': 'Bu işaretin yakınındaki yerler',
+  'places.nearbyNone': 'Bu işaretin yakınında bir şey bulunamadı',
   'places.loadingDetails': 'Yer ayrıntıları yükleniyor…',
   'places.osmHint':
     'OpenStreetMap aramasını kullanma (fotoğraf, açılış saatleri veya derecelendirme yok). Tüm ayrıntılar için ayarlara bir Google API anahtarı ekleyin.',
@@ -134,9 +139,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Yerleri Google ile zenginleştir',
   'places.enrichOnImportHint':
     'İçe aktarılan her yeri arayarak fotoğraf, adres ve iletişim bilgilerini ekler. Google Maps anahtarı gerekir.',
+  'places.enrichOnImportFileHint':
+    "İçe aktarılan her noktayı ardından Google'da arar ve fotoğrafını, adresini, web sitesini ve telefonunu ekler. Yollar ve parkurlar olduğu gibi kalır.",
   'places.uploadImage': 'Görsel yükle',
   'places.changeImage': 'Görseli değiştir',
   'places.removeImage': 'Görseli kaldır',
+  'places.chooseImage': 'Bir görsel seç',
+  'places.uploadFromDevice': 'Cihazdan yükle',
+  'places.fromAttachedFiles': 'Ekli dosyalardan',
   'places.imageUploadError': 'Görsel yüklenemedi',
   'places.imageRemoveError': 'Görsel kaldırılamadı',
 };

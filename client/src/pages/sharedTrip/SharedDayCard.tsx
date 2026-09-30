@@ -30,6 +30,8 @@ export interface SharedDayCardProps {
   placeCount: number
   stopNumber: Record<number, number>
   categories: { id: number; color?: string | null; icon?: string | null }[]
+  /** A "travel and stays" link (#1712) counts no places and says nothing about an empty plan. */
+  travelOnly?: boolean
 }
 
 /**
@@ -40,6 +42,8 @@ export interface SharedDayCardProps {
 export function SharedDayCard(p: SharedDayCardProps) {
   const { t, locale } = useTranslation()
   const { day } = p
+  // A stays-only day on a travel link is its head alone: its hotel pill says it all.
+  const hasBody = !(p.travelOnly && p.items.length === 0)
   const date = day.date
     ? new Date(`${day.date}T00:00:00Z`).toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })
     : null
@@ -66,11 +70,11 @@ export function SharedDayCard(p: SharedDayCardProps) {
             </span>
             <span className="mt-1.5 flex min-w-0 flex-wrap items-center gap-1">
               {p.stays.map(stay => <StayPill key={stay.id} stay={stay} dayId={day.id} />)}
-              <SoftPill>{p.placeCount} {t('shared.places')}</SoftPill>
+              {!p.travelOnly && <SoftPill>{p.placeCount} {t('shared.places')}</SoftPill>}
             </span>
           </span>
         </button>
-        <button
+        {hasBody && <button
           type="button"
           onClick={p.onToggleCollapse}
           aria-label={p.collapsed ? t('common.expand') : t('common.collapse')}
@@ -78,10 +82,10 @@ export function SharedDayCard(p: SharedDayCardProps) {
           className="grid h-7 w-7 flex-none place-items-center rounded-full text-content-muted hover:bg-surface-card hover:text-content"
         >
           {p.collapsed ? <ChevronRight size={15} strokeWidth={2} /> : <ChevronDown size={15} strokeWidth={2} />}
-        </button>
+        </button>}
       </div>
 
-      {!p.collapsed && (
+      {hasBody && !p.collapsed && (
         <div className="flex flex-col gap-0.5 border-t border-edge-faint p-1.5">
           {p.items.length === 0 ? (
             <p className="px-2 py-2.5 text-content-faint" style={fs(12, 'body')}>{t('dayplan.emptyDay')}</p>
@@ -125,14 +129,14 @@ function StayPill({ stay, dayId }: { stay: SharedDayCardProps['stays'][number]; 
   )
 }
 
-interface PlaceRowProps {
+export interface PlaceRowProps {
   place: SharedPlaceLike & { id: number; image_url?: string | null }
   notes?: string | null
   number?: number
   category: { color?: string | null; icon?: string | null } | null
 }
 
-function PlaceRow({ place, notes, number, category }: PlaceRowProps) {
+export function PlaceRow({ place, notes, number, category }: PlaceRowProps) {
   const { locale } = useTranslation()
   const timeFormat = useSettingsStore(s => s.settings.time_format)
   const color = safeHexColor(category?.color, '#6366f1')

@@ -73,6 +73,7 @@ export default function SharedTripPage() {
               onPickDayOnMap={pickDayOnMap}
               collapsedDays={collapsedDays}
               onToggleDay={toggleDay}
+              travelOnly={!!permissions?.share_travel_only}
             />
           )}
           {activeTab === 'bookings' && (

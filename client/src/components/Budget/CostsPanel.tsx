@@ -58,6 +58,8 @@ interface Settlement {
   // was recorded). Null/absent on rows predating this field — settlementDate()
   // falls back to created_at for those.
   settled_at?: string | null
+  /** A free-text note on the payment (#2340). */
+  note?: string | null
   from_username?: string
   to_username?: string
 }
@@ -117,7 +119,8 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
   const [previewReceipts, setPreviewReceipts] = useState<{ receipts: BudgetItemReceipt[]; initialIndex: number } | null>(null)
   // One note open at a time: two expanded rows next to each other read as a mess,
   // and the point of the collapse is that the list stays scannable.
-  const [expandedNoteId, setExpandedNoteId] = useState<number | null>(null)
+  // Keyed 'e<id>' for an expense and 's<id>' for a payment, whose ids are counted apart.
+  const [expandedNoteId, setExpandedNoteId] = useState<string | null>(null)
   // One open final-budget breakdown at a time, for the same reason a single note
   // is expanded at a time: the card is a sidebar, not a report.
   const [expandedFinalId, setExpandedFinalId] = useState<number | null>(null)
@@ -798,7 +801,6 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
     const net = round2(myPaidOf(e) - myShareOf(e))
     const unfinished = isUnfinished(e)
     const note = readUserNote(e)
-    const open = expandedNoteId === e.id
 
     // Fixed columns, identical on every row, so the eye can run down the list
     // instead of re-finding each field on each line. A row without a note leaves
@@ -891,21 +893,7 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
 
         {/* The note, marked by a rule in the category colour instead of a box, so
             it reads as part of the row rather than something dropped onto it. */}
-        {!isMobile && (
-          note ? (
-            <Tooltip label={open ? t('costs.hideNote') : t('costs.showNote')}>
-            <button type="button" onClick={() => setExpandedNoteId(open ? null : e.id)}
-              aria-expanded={open}
-              className="bg-surface-card border border-edge-faint text-content-muted hover:text-content hover:border-content-faint transition-colors exp-note-btn"
-              style={{ display: 'flex', alignItems: open ? 'flex-start' : 'center', gap: 9, minWidth: 0, width: '100%', padding: open ? '10px 14px 11px 13px' : '7px 12px 7px 11px', borderRadius: open ? 14 : 999, borderLeft: '3px solid ' + c.color, cursor: 'pointer', fontFamily: 'inherit', fontSize: 'calc(12.5px * var(--fs-scale-body, 1))', lineHeight: 1.5, textAlign: 'left' }}>
-              <span style={open
-                ? { whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', minWidth: 0, flex: 1 }
-                : { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0, flex: 1 }}>{note}</span>
-              <ChevronDown size={13} style={{ flexShrink: 0, marginTop: open ? 3 : 0, transition: 'transform .18s ease', transform: open ? 'rotate(180deg)' : 'none' }} />
-            </button>
-            </Tooltip>
-          ) : <span />
-        )}
+        {!isMobile && NoteCell({ note, noteKey: 'e' + e.id, color: c.color })}
 
         {/* The money, and what to do with it. */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, alignSelf: 'center' }}>
@@ -921,6 +909,25 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
       </div>
       {canEdit && RowActions({ onEdit: () => { setEditing(e); setModalOpen(true) }, onDelete: () => handleDelete(e.id), deleteLabel: t('common.delete') })}
       </div>
+    )
+  }
+
+  // A row's note as a pill that opens in place; an empty one keeps the column.
+  function NoteCell({ note, noteKey, color }: { note: string; noteKey: string; color: string }) {
+    if (!note) return <span />
+    const open = expandedNoteId === noteKey
+    return (
+      <Tooltip label={open ? t('costs.hideNote') : t('costs.showNote')}>
+      <button type="button" onClick={() => setExpandedNoteId(open ? null : noteKey)}
+        aria-expanded={open}
+        className="bg-surface-card border border-edge-faint text-content-muted hover:text-content hover:border-content-faint transition-colors exp-note-btn"
+        style={{ display: 'flex', alignItems: open ? 'flex-start' : 'center', gap: 9, minWidth: 0, width: '100%', padding: open ? '10px 14px 11px 13px' : '7px 12px 7px 11px', borderRadius: open ? 14 : 999, borderLeft: '3px solid ' + color, cursor: 'pointer', fontFamily: 'inherit', fontSize: 'calc(12.5px * var(--fs-scale-body, 1))', lineHeight: 1.5, textAlign: 'left' }}>
+        <span style={open
+          ? { whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', minWidth: 0, flex: 1 }
+          : { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0, flex: 1 }}>{note}</span>
+        <ChevronDown size={13} style={{ flexShrink: 0, marginTop: open ? 3 : 0, transition: 'transform .18s ease', transform: open ? 'rotate(180deg)' : 'none' }} />
+      </button>
+      </Tooltip>
     )
   }
 
@@ -947,9 +954,9 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
           </div>
           </Tooltip>
         </div>
-        {/* A payment carries no note, but it keeps the column so its amount lands
-            on the same axis as every expense above it. */}
-        {!isMobile && <span />}
+        {/* The payment's note (#2340), in the column every expense keeps for its own,
+            so its amount lands on the same axis as every expense above it. */}
+        {!isMobile && NoteCell({ note: s.note || '', noteKey: 's' + s.id, color: '#16a34a' })}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, alignSelf: 'center' }}>
           <span className="bg-surface-card border border-edge-faint text-content" style={{ display: 'inline-flex', alignItems: 'center', padding: '6px 13px', borderRadius: 999, fontSize: 'calc(15px * var(--fs-scale-subtitle, 1))', fontWeight: 700, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>{fmt(settled(s))}</span>
         </div>
@@ -1220,6 +1227,7 @@ function SettlementModal({ tripId, people, me, editing, currency, tripCurrency, 
   const [amount, setAmount] = useState<string>(editing ? amountToInputString(editing.amount, (editing.currency || currency).toUpperCase()) : '')
   const [cur, setCur] = useState<string>((editing?.currency || currency).toUpperCase())
   const [day, setDay] = useState(editing ? settlementDate(editing) : localToday())
+  const [note, setNote] = useState(editing?.note || '')
   const [saving, setSaving] = useState(false)
 
   const amt = Number.parseFloat(amount) || 0
@@ -1229,7 +1237,7 @@ function SettlementModal({ tripId, people, me, editing, currency, tripCurrency, 
   const save = async () => {
     if (!valid) return
     setSaving(true)
-    const data = withFallbackFx({ from_user_id: Number(fromId), to_user_id: Number(toId), amount: amt, currency: cur, settled_at: day }, tripCurrency)
+    const data = withFallbackFx({ from_user_id: Number(fromId), to_user_id: Number(toId), amount: amt, currency: cur, settled_at: day, note: note.trim() || null }, tripCurrency)
     try {
       if (editing) await budgetApi.updateSettlement(tripId, editing.id, data)
       else await budgetApi.createSettlement(tripId, data)
@@ -1293,6 +1301,10 @@ function SettlementModal({ tripId, people, me, editing, currency, tripCurrency, 
       </div>
       <EditorField label={t('costs.day')}>
         <CustomDatePicker value={day} onChange={setDay} style={{ width: '100%' }} />
+      </EditorField>
+      <EditorField label={t('costs.note')} htmlFor="payment-note">
+        <textarea id="payment-note" value={note} onChange={e => setNote(e.target.value)} rows={2}
+          placeholder={t('costs.paymentNotePlaceholder')} maxLength={NOTE_MAX} className={`${TEXTAREA} resize-y`} />
       </EditorField>
     </DialogShell>
   )

@@ -106,6 +106,7 @@ const budget: TranslationStrings = {
   'costs.namePlaceholder': 'p. ex. Sopar, records, benzina…',
   'costs.note': 'Nota',
   'costs.notePlaceholder': 'Què incloïa, qui deu què…',
+  'costs.paymentNotePlaceholder': 'Pagat en efectiu, per transferència…',
   'costs.addNote': 'Afegeix una nota',
   'costs.showNote': 'Mostra la nota',
   'costs.hideNote': 'Amaga la nota',

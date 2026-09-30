@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Pakkimine',
   'share.permBudget': 'Kulud',
   'share.permCollab': 'Vestlus',
+  'share.options': 'Valikud',
+  'share.optTravelOnly': 'Ainult reisimine ja majutus',
+  'share.optTravelOnlyHint': 'Näitab ainult transporti ja majutust, ilma tegevuste, päevamärkmete ja tühjade päevadeta',
+  'share.optHideImages': 'Ilma fotodeta',
+  'share.optHideImagesHint': 'Jätab kohtade fotod jagatud lehelt välja',
 };
 export default share;

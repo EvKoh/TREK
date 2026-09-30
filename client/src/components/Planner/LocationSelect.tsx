@@ -3,6 +3,7 @@ import { MapPin, X } from 'lucide-react'
 import { mapsApi } from '../../api/client'
 import { useTranslation } from '../../i18n'
 import { useLocationBias } from '../../hooks/useLocationBias'
+import { usePlaceLanguage } from '../../hooks/usePlaceLanguage'
 
 export interface LocationPoint {
   name: string
@@ -26,6 +27,7 @@ interface Props {
 
 export default function LocationSelect({ value, onChange, placeholder, style, places }: Props) {
   const { t, locale } = useTranslation()
+  const placeLang = usePlaceLanguage()
   // Ohne Reisekontext ist der Hinweis leer, und die Suche laeuft wie bisher.
   const { point: locationBias } = useLocationBias()
   const [query, setQuery] = useState(value?.name || '')
@@ -58,7 +60,7 @@ export default function LocationSelect({ value, onChange, placeholder, style, pl
     debounceRef.current = setTimeout(async () => {
       setLoading(true)
       try {
-        const data = await mapsApi.search(trimmed, locale, locationBias)
+        const data = await mapsApi.search(trimmed, placeLang, locationBias)
         setResults(data.places || [])
         setHighlight(-1)
       } catch {

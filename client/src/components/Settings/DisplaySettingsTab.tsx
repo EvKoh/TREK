@@ -38,6 +38,11 @@ export default function DisplaySettingsTab(): React.ReactElement {
     setDistanceUnit(settings.distance_unit || DEFAULT_SETTINGS.distance_unit)
   }, [settings.distance_unit])
 
+  const saveOnOff = async (key: OnOffKey, value: boolean) => {
+    try { await updateSetting(key, value) }
+    catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
+  }
+
   const startPage = settings.start_page === 'active_trip' ? 'active_trip' : DEFAULT_START_PAGE
   const startTripTab = settings.start_trip_tab || DEFAULT_START_TRIP_TAB
 
@@ -195,6 +200,24 @@ export default function DisplaySettingsTab(): React.ReactElement {
         </div>
       </div>
 
+      {/* Place names (#1799): searches can answer in another language than the app. */}
+      <div>
+        <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.placeLanguage')}</label>
+        <CustomSelect
+          value={settings.place_language || ''}
+          onChange={async v => {
+            try { await updateSetting('place_language', String(v)) }
+            catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
+          }}
+          options={[
+            { value: '', label: t('settings.placeLanguageApp') },
+            ...SUPPORTED_LANGUAGES.map(opt => ({ value: opt.value, label: opt.label })),
+          ]}
+          searchable
+        />
+        <p className="text-xs text-content-faint mt-2">{t('settings.placeLanguageHint')}</p>
+      </div>
+
       {/* Temperature */}
       <div>
         <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.temperature')}</label>
@@ -304,160 +327,62 @@ export default function DisplaySettingsTab(): React.ReactElement {
       </Section>
 
       <Section title={t('settings.general.travelMap')} icon={Map}>
+      {/* Date first in day headings (#1953) */}
+      <OnOffSetting label={t('settings.dayDateFirst')} hint={t('settings.dayDateFirstHint')} on={settings.day_date_first === true} onChange={value => saveOnOff('day_date_first', value)} />
+
       {/* Booking route labels */}
-      <div>
-        <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.bookingLabels')}</label>
-        <div className="flex gap-3">
-          {[
-            { value: true, label: t('settings.on') || 'On' },
-            { value: false, label: t('settings.off') || 'Off' },
-          ].map(opt => (
-            <button type="button"
-              key={String(opt.value)}
-              onClick={async () => {
-                try { await updateSetting('map_booking_labels', opt.value) }
-                catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
-              }}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                padding: '10px 20px', borderRadius: 10, cursor: 'pointer',
-                fontFamily: 'inherit', fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 500,
-                border: (settings.map_booking_labels === true) === opt.value ? '2px solid var(--text-primary)' : '2px solid var(--border-primary)',
-                background: (settings.map_booking_labels === true) === opt.value ? 'var(--bg-hover)' : 'var(--bg-card)',
-                color: 'var(--text-primary)',
-                transition: 'all 0.15s',
-              }}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-        <p className="text-xs mt-1 text-content-faint">{t('settings.bookingLabelsHint')}</p>
-      </div>
+      <OnOffSetting label={t('settings.bookingLabels')} hint={t('settings.bookingLabelsHint')} on={settings.map_booking_labels === true} onChange={value => saveOnOff('map_booking_labels', value)} />
 
       {/* Always show booking routes */}
-      <div>
-        <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.alwaysShowRoutes')}</label>
-        <div className="flex gap-3">
-          {[
-            { value: true, label: t('settings.on') || 'On' },
-            { value: false, label: t('settings.off') || 'Off' },
-          ].map(opt => (
-            <button type="button"
-              key={String(opt.value)}
-              onClick={async () => {
-                try { await updateSetting('map_always_show_routes', opt.value) }
-                catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
-              }}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                padding: '10px 20px', borderRadius: 10, cursor: 'pointer',
-                fontFamily: 'inherit', fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 500,
-                border: (settings.map_always_show_routes === true) === opt.value ? '2px solid var(--text-primary)' : '2px solid var(--border-primary)',
-                background: (settings.map_always_show_routes === true) === opt.value ? 'var(--bg-hover)' : 'var(--bg-card)',
-                color: 'var(--text-primary)',
-                transition: 'all 0.15s',
-              }}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-        <p className="text-xs mt-1 text-content-faint">{t('settings.alwaysShowRoutesHint')}</p>
-      </div>
+      <OnOffSetting label={t('settings.alwaysShowRoutes')} hint={t('settings.alwaysShowRoutesHint')} on={settings.map_always_show_routes === true} onChange={value => saveOnOff('map_always_show_routes', value)} />
+
+      {/* Unplanned places as small markers (#2024) */}
+      <OnOffSetting label={t('settings.compactUnplanned')} hint={t('settings.compactUnplannedHint')} on={settings.map_compact_unplanned === true} onChange={value => saveOnOff('map_compact_unplanned', value)} />
 
       {/* Explore places on the map (POI category pill) */}
-      <div>
-        <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.mapPoiPill')}</label>
-        <div className="flex gap-3">
-          {[
-            { value: true, label: t('settings.on') || 'On' },
-            { value: false, label: t('settings.off') || 'Off' },
-          ].map(opt => (
-            <button type="button"
-              key={String(opt.value)}
-              onClick={async () => {
-                try { await updateSetting('map_poi_pill_enabled', opt.value) }
-                catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
-              }}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                padding: '10px 20px', borderRadius: 10, cursor: 'pointer',
-                fontFamily: 'inherit', fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 500,
-                border: (settings.map_poi_pill_enabled !== false) === opt.value ? '2px solid var(--text-primary)' : '2px solid var(--border-primary)',
-                background: (settings.map_poi_pill_enabled !== false) === opt.value ? 'var(--bg-hover)' : 'var(--bg-card)',
-                color: 'var(--text-primary)',
-                transition: 'all 0.15s',
-              }}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-        <p className="text-xs mt-1 text-content-faint">{t('settings.mapPoiPillHint')}</p>
-      </div>
+      <OnOffSetting label={t('settings.mapPoiPill')} hint={t('settings.mapPoiPillHint')} on={settings.map_poi_pill_enabled !== false} onChange={value => saveOnOff('map_poi_pill_enabled', value)} />
 
       {/* Blur Booking Codes */}
-      <div>
-        <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.blurBookingCodes')}</label>
-        <div className="flex gap-3">
-          {[
-            { value: true, label: t('settings.on') || 'On' },
-            { value: false, label: t('settings.off') || 'Off' },
-          ].map(opt => (
-            <button type="button"
-              key={String(opt.value)}
-              onClick={async () => {
-                try { await updateSetting('blur_booking_codes', opt.value) }
-                catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
-              }}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                padding: '10px 20px', borderRadius: 10, cursor: 'pointer',
-                fontFamily: 'inherit', fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 500,
-                border: (!!settings.blur_booking_codes) === opt.value ? '2px solid var(--text-primary)' : '2px solid var(--border-primary)',
-                background: (!!settings.blur_booking_codes) === opt.value ? 'var(--bg-hover)' : 'var(--bg-card)',
-                color: 'var(--text-primary)',
-                transition: 'all 0.15s',
-              }}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-      </div>
+      <OnOffSetting label={t('settings.blurBookingCodes')} on={!!settings.blur_booking_codes} onChange={value => saveOnOff('blur_booking_codes', value)} />
 
       {/* Optimize route from accommodation */}
-      <div>
-        <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.optimizeFromAccommodation')}</label>
-        <div className="flex gap-3">
-          {[
-            { value: true, label: t('settings.on') || 'On' },
-            { value: false, label: t('settings.off') || 'Off' },
-          ].map(opt => (
-            <button type="button"
-              key={String(opt.value)}
-              onClick={async () => {
-                try { await updateSetting('optimize_from_accommodation', opt.value) }
-                catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
-              }}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                padding: '10px 20px', borderRadius: 10, cursor: 'pointer',
-                fontFamily: 'inherit', fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 500,
-                border: (settings.optimize_from_accommodation !== false) === opt.value ? '2px solid var(--text-primary)' : '2px solid var(--border-primary)',
-                background: (settings.optimize_from_accommodation !== false) === opt.value ? 'var(--bg-hover)' : 'var(--bg-card)',
-                color: 'var(--text-primary)',
-                transition: 'all 0.15s',
-              }}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-        <p className="text-xs mt-1 text-content-faint">{t('settings.optimizeFromAccommodationHint')}</p>
-      </div>
+      <OnOffSetting label={t('settings.optimizeFromAccommodation')} hint={t('settings.optimizeFromAccommodationHint')} on={settings.optimize_from_accommodation !== false} onChange={value => saveOnOff('optimize_from_accommodation', value)} />
       </Section>
     </>
+  )
+}
+
+type OnOffKey = 'day_date_first' | 'map_compact_unplanned' | 'map_booking_labels' | 'map_always_show_routes' | 'map_poi_pill_enabled' | 'blur_booking_codes' | 'optimize_from_accommodation'
+
+/** One preference as a pair of On / Off buttons, the way this tab asks every yes-or-no question. */
+function OnOffSetting({ label, hint, on, onChange }: { label: string; hint?: string; on: boolean; onChange: (value: boolean) => void }) {
+  const { t } = useTranslation()
+  return (
+    <div>
+      <label className="block text-sm font-medium mb-2 text-content-secondary">{label}</label>
+      <div className="flex gap-3">
+        {[
+          { value: true, label: t('settings.on') || 'On' },
+          { value: false, label: t('settings.off') || 'Off' },
+        ].map(opt => (
+          <button type="button"
+            key={String(opt.value)}
+            onClick={() => onChange(opt.value)}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 8,
+              padding: '10px 20px', borderRadius: 10, cursor: 'pointer',
+              fontFamily: 'inherit', fontSize: 'calc(14px * var(--fs-scale-body, 1))', fontWeight: 500,
+              border: on === opt.value ? '2px solid var(--text-primary)' : '2px solid var(--border-primary)',
+              background: on === opt.value ? 'var(--bg-hover)' : 'var(--bg-card)',
+              color: 'var(--text-primary)',
+              transition: 'all 0.15s',
+            }}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+      {hint && <p className="text-xs mt-1 text-content-faint">{hint}</p>}
+    </div>
   )
 }

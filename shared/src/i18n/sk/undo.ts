@@ -5,6 +5,7 @@ const undo: TranslationStrings = {
   'undo.tooltip': 'Späť: {action}',
   'undo.assignPlace': 'Miesto priradené ku dňu',
   'undo.removeAssignment': 'Miesto odobrané z dňa',
+  'undo.clearDay': 'Deň vyprázdnený',
   'undo.reorder': 'Miesta preusporiadané',
   'undo.optimize': 'Trasa optimalizovaná',
   'undo.deletePlace': 'Miesto zmazané',

@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Packning',
   'share.permBudget': 'Kostnader',
   'share.permCollab': 'Chatt',
+  'share.options': 'Alternativ',
+  'share.optTravelOnly': 'Endast resor och boenden',
+  'share.optTravelOnlyHint': 'Visar bara transport och boende, utan aktiviteter, dagsnoteringar och tomma dagar',
+  'share.optHideImages': 'Utan foton',
+  'share.optHideImagesHint': 'Utelämnar platsernas foton från den delade sidan',
 };
 export default share;

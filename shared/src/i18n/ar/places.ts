@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'عرض الرحلة كاملة',
   'places.filterTracks': 'المسارات',
   'places.filterByRating': 'تصفية حسب التقييم',
+  'places.filterByLocation': 'تصفية حسب البلد أو المنطقة',
+  'places.allLocations': 'كل الدول',
   'places.filterShow': 'عرض',
   'places.clearSearch': 'مسح البحث',
   'places.yourRating': 'تقييمك',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'الفئة',
   'places.noCategory': 'بلا فئة',
   'places.newCategory': 'فئة جديدة',
+  'places.openInMaps': 'فتح في الخرائط',
   'places.categoryNamePlaceholder': 'اسم الفئة',
   'places.formTime': 'الوقت',
   'places.startTime': 'البداية',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'ابحث عن أماكن...',
   'places.mapsSearchError': 'فشل البحث عن المكان.',
   'places.searchGoogleInstead': 'ليس المكان الصحيح؟ ابحث في Google بدلًا من ذلك',
+  'places.nearby': 'أماكن قريبة من هذه العلامة',
+  'places.nearbyNone': 'لم يُعثر على شيء قرب هذه العلامة',
   'places.loadingDetails': 'جارٍ تحميل تفاصيل المكان…',
   'places.osmHint':
     'يتم البحث عبر OpenStreetMap (بدون صور أو ساعات عمل أو تقييمات). أضف مفتاح Google API في الإعدادات للحصول على جميع التفاصيل.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'إثراء الأماكن عبر Google',
   'places.enrichOnImportHint':
     'يبحث عن كل مكان مستورد لإضافة الصور والعنوان وبيانات الاتصال. يتطلب مفتاح خرائط Google.',
+  'places.enrichOnImportFileHint':
+    'يبحث بعد الاستيراد عن كل نقطة مستوردة في Google ويضيف صورتها وعنوانها وموقعها الإلكتروني ورقم هاتفها. تبقى المسارات والخطوط كما هي.',
   'places.uploadImage': 'رفع صورة',
   'places.changeImage': 'تغيير الصورة',
   'places.removeImage': 'إزالة الصورة',
+  'places.chooseImage': 'اختر صورة',
+  'places.uploadFromDevice': 'رفع من الجهاز',
+  'places.fromAttachedFiles': 'من الملفات المرفقة',
   'places.imageUploadError': 'تعذّر رفع الصورة',
   'places.imageRemoveError': 'تعذّر إزالة الصورة',
 };

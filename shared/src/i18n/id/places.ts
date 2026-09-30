@@ -51,6 +51,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Tampilkan seluruh perjalanan',
   'places.filterTracks': 'Trek',
   'places.filterByRating': 'Saring menurut penilaian',
+  'places.filterByLocation': 'Saring menurut negara atau wilayah',
+  'places.allLocations': 'Semua negara',
   'places.filterShow': 'Tampilkan',
   'places.clearSearch': 'Hapus pencarian',
   'places.yourRating': 'Rating kamu',
@@ -77,6 +79,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategori',
   'places.noCategory': 'Tanpa Kategori',
   'places.newCategory': 'Kategori baru',
+  'places.openInMaps': 'Buka di peta',
   'places.categoryNamePlaceholder': 'Nama kategori',
   'places.formTime': 'Waktu',
   'places.startTime': 'Mulai',
@@ -93,6 +96,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Cari tempat...',
   'places.mapsSearchError': 'Pencarian tempat gagal.',
   'places.searchGoogleInstead': 'Bukan tempat yang tepat? Cari di Google saja',
+  'places.nearby': 'Tempat di dekat pin ini',
+  'places.nearbyNone': 'Tidak ada yang ditemukan di dekat pin ini',
   'places.loadingDetails': 'Memuat detail tempat…',
   'places.osmHint':
     'Menggunakan pencarian OpenStreetMap (tanpa foto, jam buka, atau penilaian). Tambahkan Google API key di pengaturan untuk detail lengkap.',
@@ -131,9 +136,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Perkaya tempat via Google',
   'places.enrichOnImportHint':
     'Mencari setiap tempat yang diimpor untuk menambahkan foto, alamat, dan kontak. Memerlukan kunci Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Setelah impor, setiap titik dicari di Google lalu ditambahkan foto, alamat, situs web, dan nomor teleponnya. Jalur dan lintasan tetap seperti semula.',
   'places.uploadImage': 'Unggah gambar',
   'places.changeImage': 'Ganti gambar',
   'places.removeImage': 'Hapus gambar',
+  'places.chooseImage': 'Pilih gambar',
+  'places.uploadFromDevice': 'Unggah dari perangkat',
+  'places.fromAttachedFiles': 'Dari berkas terlampir',
   'places.imageUploadError': 'Tidak dapat mengunggah gambar',
   'places.imageRemoveError': 'Tidak dapat menghapus gambar',
 };

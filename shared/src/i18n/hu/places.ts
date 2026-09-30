@@ -52,6 +52,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Teljes utazás megjelenítése',
   'places.filterTracks': 'Nyomvonalak',
   'places.filterByRating': 'Szűrés értékelés szerint',
+  'places.filterByLocation': 'Szűrés ország vagy régió szerint',
+  'places.allLocations': 'Minden ország',
   'places.filterShow': 'Megjelenítés',
   'places.clearSearch': 'Keresés törlése',
   'places.yourRating': 'Az értékelésed',
@@ -78,6 +80,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Kategória',
   'places.noCategory': 'Nincs kategória',
   'places.newCategory': 'Új kategória',
+  'places.openInMaps': 'Megnyitás térképen',
   'places.categoryNamePlaceholder': 'Kategória neve',
   'places.formTime': 'Időpont',
   'places.startTime': 'Kezdés',
@@ -94,6 +97,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Helyek keresése...',
   'places.mapsSearchError': 'Helykeresés sikertelen.',
   'places.searchGoogleInstead': 'Nem a megfelelő hely? Keresés inkább a Google-ben',
+  'places.nearby': 'Helyek a gombostű közelében',
+  'places.nearbyNone': 'Semmi sem található a gombostű közelében',
   'places.loadingDetails': 'Hely adatainak betöltése…',
   'places.osmHint':
     'OpenStreetMap keresés aktív (képek, nyitvatartás és értékelések nélkül). Bővített adatokhoz add meg a Google API kulcsot a beállításokban.',
@@ -132,9 +137,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Helyek gazdagítása a Google-lel',
   'places.enrichOnImportHint':
     'Minden importált helyet megkeres, hogy fotókat, címet és elérhetőséget adjon hozzá. Google Maps-kulcs szükséges.',
+  'places.enrichOnImportFileHint':
+    'Utána minden importált pontot megkeres a Google-ön, és hozzáadja a fotóját, címét, weboldalát és telefonszámát. Az útvonalak és nyomvonalak változatlanok maradnak.',
   'places.uploadImage': 'Kép feltöltése',
   'places.changeImage': 'Kép módosítása',
   'places.removeImage': 'Kép eltávolítása',
+  'places.chooseImage': 'Kép kiválasztása',
+  'places.uploadFromDevice': 'Feltöltés eszközről',
+  'places.fromAttachedFiles': 'Csatolt fájlokból',
   'places.imageUploadError': 'Nem sikerült feltölteni a képet',
   'places.imageRemoveError': 'Nem sikerült eltávolítani a képet',
 };

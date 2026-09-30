@@ -10,6 +10,9 @@ const packing: TranslationStrings = {
   'packing.editItem': 'Elementi redaktə et',
   'packing.itemName': 'Ad',
   'packing.itemQuantity': 'Say',
+  'packing.packedCount': '{total} ədəddən {packed} yığılıb',
+  'packing.packedMore': 'Bir ədəd çox yığ',
+  'packing.packedLess': 'Bir ədəd az yığ',
   'packing.itemWeight': 'Çəki (qram)',
 
   'packing.title': 'Baqaj siyahısı',

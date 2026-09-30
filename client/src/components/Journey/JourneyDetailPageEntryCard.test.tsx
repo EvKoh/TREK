@@ -209,6 +209,15 @@ describe('EntryCard', () => {
 
     expect(screen.queryByText('Off route')).not.toBeInTheDocument()
   })
+
+  it('FE-JRN-CARD-020: marks a draft on the header and on the hero (#696)', () => {
+    const { unmount } = mountCard(buildEntry({ is_draft: true }))
+    expect(screen.getByText('Draft')).toBeInTheDocument()
+    unmount()
+
+    mountCard(buildEntry({ is_draft: true, photos: [buildPhoto(100)] }))
+    expect(screen.getByText('Draft')).toBeInTheDocument()
+  })
 })
 
 describe('SkeletonCard', () => {

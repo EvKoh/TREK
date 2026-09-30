@@ -19,6 +19,7 @@ import { MOOD_CONFIG, WEATHER_CONFIG } from '../../pages/journeyDetail/JourneyDe
 import { PanelHead as Head } from './StudioPanelHead'
 import { StudioElementsPanel } from './StudioElementsPanel'
 import { StudioTravelPanel } from './StudioTravelPanel'
+import { StudioSavedLayouts } from './StudioSavedLayouts'
 import { MAX_SPREAD_FILE_BYTES, importSpread } from './spreadFile'
 import { StudioContentFilter } from './StudioContentFilter'
 import { emptyKeyFor, matchingEntries, matchingPhotos, photosFor, type PhotoFilter } from './photoFilter'
@@ -776,6 +777,7 @@ function TemplatesPanel({
     <>
       <Head label={t('journey.studio.templates')} count={templates.length} />
       <div className="st-panel-scroll">
+        <StudioSavedLayouts page={page} width={CARD_W} pxPerMm={pxPerMm} t={t} />
         {(
           <div className="st-thumbs" ref={list.ref}>
             {templates.map(tpl => {

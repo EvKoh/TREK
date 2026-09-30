@@ -13,7 +13,7 @@ import { resetAllStores, seedStore } from '../../../helpers/store'
 import { act, fireEvent, render, screen, waitFor, within } from '../../../helpers/render'
 import * as fileDownload from '../../../../src/utils/fileDownload'
 
-// FE-MOB-PACKTAB-001 to FE-MOB-PACKTAB-046 (plus 060-068)
+// FE-MOB-PACKTAB-001 to FE-MOB-PACKTAB-046 (plus 060-069)
 
 const ME = 7
 const ANNA = { id: 11, username: 'anna', avatar: null, avatar_url: 'https://cdn.example/anna.png' } as unknown as TripMember
@@ -636,7 +636,7 @@ describe('MPackingListTab', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Passport' }))
     expect(planner.tripActions.togglePackingItem).toHaveBeenCalledWith(3, 1, false)
 
-    expect(within(itemRow('Socks')).getByText('3×')).toBeInTheDocument()
+    expect(within(itemRow('Socks')).getByText('0/3')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Passport' })).toHaveAttribute('aria-pressed', 'true')
   })
 
@@ -977,5 +977,21 @@ describe('MPackingListTab', () => {
     openActions()
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'packing.exportPrint' })) })
     expect(await screen.findByTitle(/Packing List/)).toBeInTheDocument()
+  })
+
+  it('FE-MOB-PACKTAB-069: counts the packed pieces of a multi-piece item, read-only for a viewer (#2296)', async () => {
+    const socks = packItem({ id: 3, name: 'Socks', category: 'Clothing', quantity: 3, packed_quantity: 1 })
+    const { planner, view } = await setup({ items: [socks] })
+    const row = itemRow('Socks')
+    expect(within(row).getByRole('group', { name: 'packing.packedCount:1,3' })).toBeInTheDocument()
+    fireEvent.click(within(row).getByRole('button', { name: 'packing.packedMore' }))
+    expect(planner.tripActions.setPackedCount).toHaveBeenCalledWith(3, 3, 2)
+    fireEvent.click(within(row).getByRole('button', { name: 'packing.packedLess' }))
+    expect(planner.tripActions.setPackedCount).toHaveBeenCalledWith(3, 3, 0)
+
+    view.unmount()
+    await setup({ items: [socks], planner: { can: vi.fn(() => false) } })
+    expect(within(itemRow('Socks')).getByText('1/3')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'packing.packedMore' })).not.toBeInTheDocument()
   })
 })

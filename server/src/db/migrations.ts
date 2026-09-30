@@ -5336,6 +5336,72 @@ function runMigrations(db: Database.Database): void {
      * is a no-op.
      */
     () => createPlaceRegionsFollowPlaceTrigger(db),
+
+    /*
+     * A stop kept on the day but left out of its route (#2532): shown as a pin, not
+     * driven to. 0 routes it like every stop before this existed.
+     */
+    () => {
+      const has = db.prepare("SELECT 1 FROM pragma_table_info('day_assignments') WHERE name = 'route_excluded'").get();
+      if (!has) db.exec('ALTER TABLE day_assignments ADD COLUMN route_excluded INTEGER NOT NULL DEFAULT 0');
+    },
+
+    /*
+     * How many of an item are packed so far (#2296), for "7 of 10 shirts". NULL is the
+     * plain checkbox every item has had, and `checked` stays the answer to "done?".
+     */
+    () => {
+      const has = db.prepare("SELECT 1 FROM pragma_table_info('packing_items') WHERE name = 'packed_quantity'").get();
+      if (!has) db.exec('ALTER TABLE packing_items ADD COLUMN packed_quantity INTEGER');
+    },
+
+    /*
+     * A bucket-list wish for one state or province rather than the whole country
+     * (#1901). NULL keeps every existing wish a country wish.
+     */
+    () => {
+      const has = db.prepare("SELECT 1 FROM pragma_table_info('bucket_list') WHERE name = 'region_code'").get();
+      if (!has) db.exec('ALTER TABLE bucket_list ADD COLUMN region_code TEXT');
+    },
+
+    /*
+     * Half company holidays (#2439): 0.5 covers the morning or afternoon and leaves
+     * the other half open for a half vacation day. 1 is what every holiday was.
+     */
+    () => {
+      const has = db.prepare("SELECT 1 FROM pragma_table_info('vacay_company_holidays') WHERE name = 'fraction'").get();
+      if (!has) db.exec('ALTER TABLE vacay_company_holidays ADD COLUMN fraction REAL NOT NULL DEFAULT 1');
+    },
+
+    /*
+     * A journey entry still being written (#696): contributors see it, the public
+     * share page does not. Its own flag, since `visibility` defaults to 'private' on
+     * every entry and filtering on it would empty every shared journey.
+     */
+    () => {
+      const has = db.prepare("SELECT 1 FROM pragma_table_info('journey_entries') WHERE name = 'is_draft'").get();
+      if (!has) db.exec('ALTER TABLE journey_entries ADD COLUMN is_draft INTEGER NOT NULL DEFAULT 0');
+    },
+
+    /*
+     * Two narrower ways to share a trip (#1712): only the travel (flights, trains,
+     * stays) without the day's activities, and without the place photos. Both off
+     * keeps every existing link exactly as it was.
+     */
+    () => {
+      const hasTravel = db.prepare("SELECT 1 FROM pragma_table_info('share_tokens') WHERE name = 'share_travel_only'").get();
+      if (!hasTravel) db.exec('ALTER TABLE share_tokens ADD COLUMN share_travel_only INTEGER NOT NULL DEFAULT 0');
+      const hasImages = db.prepare("SELECT 1 FROM pragma_table_info('share_tokens') WHERE name = 'share_hide_images'").get();
+      if (!hasImages) db.exec('ALTER TABLE share_tokens ADD COLUMN share_hide_images INTEGER NOT NULL DEFAULT 0');
+    },
+    /**
+     * A note on a settle-up payment (#2340), as expenses already have one:
+     * "paid back in cash at the airport". Null on every existing payment.
+     */
+    () => {
+      const has = db.prepare("SELECT 1 FROM pragma_table_info('budget_settlements') WHERE name = 'note'").get();
+      if (!has) db.exec('ALTER TABLE budget_settlements ADD COLUMN note TEXT');
+    },
   ];
 
   if (currentVersion < migrations.length) {

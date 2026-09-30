@@ -336,6 +336,10 @@ const settings: TranslationStrings = {
   'settings.currencyHint':
     'Maliyetler bölümündeki tutarlar yalnızca görüntüleme amacıyla bu para birimine çevrilerek gösterilir — orijinal tutarlar değişmez.',
   'settings.currencyTrip': 'Gezi para birimi',
+  'settings.placeLanguage': 'Yer adları',
+  'settings.placeLanguageApp': 'Uygulamayla aynı',
+  'settings.placeLanguageHint':
+    'Yer aramasının, önerilerin ve adreslerin yanıt verdiği dil. Bir yerin bu dilde adı yoksa yerel adı gösterilir.',
   'settings.passkey.title': 'Passkey’ler',
   'settings.passkey.description':
     'Passkey ile daha hızlı ve kimlik avına dayanıklı şekilde oturum açın — parmak iziniz, yüzünüz, PIN’iniz veya bir donanım anahtarı. Şifreniz yedek olarak kalır.',
@@ -481,6 +485,11 @@ const settings: TranslationStrings = {
   'settings.general.languageRegion': 'Language & region',
   'settings.general.travelMap': 'Travel & map',
   'settings.general.startup': 'Başlangıç',
+  'settings.dayDateFirst': 'Gün başlıklarında önce tarih',
+  'settings.compactUnplanned': 'Planlanmamış yerler için küçük işaretler',
+  'settings.compactUnplannedHint':
+    'Hiçbir güne planlanmamış yerler fotoğrafsız küçük işaretler olarak gösterilir, böylece planlanan duraklar öne çıkar.',
+  'settings.dayDateFirstHint': 'Her güne takvim tarihiyle başla ve yanında "1. Gün" ya da günün kendi başlığını göster.',
   'settings.startPage': 'Başlangıç sayfası',
   'settings.startPageDashboard': 'Pano',
   'settings.startPageActiveTrip': 'Aktif seyahat',

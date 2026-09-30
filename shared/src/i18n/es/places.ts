@@ -53,6 +53,8 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Mostrar todo el viaje',
   'places.filterTracks': 'Rutas',
   'places.filterByRating': 'Filtrar por valoración',
+  'places.filterByLocation': 'Filtrar por país o región',
+  'places.allLocations': 'Todos los países',
   'places.filterShow': 'Mostrar',
   'places.clearSearch': 'Borrar búsqueda',
   'places.yourRating': 'Tu valoración',
@@ -79,6 +81,7 @@ const places: TranslationStrings = {
   'places.formCategory': 'Categoría',
   'places.noCategory': 'Sin categoría',
   'places.newCategory': 'Nueva categoría',
+  'places.openInMaps': 'Abrir en mapas',
   'places.categoryNamePlaceholder': 'Nombre de la categoría',
   'places.formTime': 'Hora',
   'places.startTime': 'Inicio',
@@ -95,6 +98,8 @@ const places: TranslationStrings = {
   'places.mapsSearchPlaceholder': 'Buscar lugares...',
   'places.mapsSearchError': 'La búsqueda de lugares falló.',
   'places.searchGoogleInstead': '¿No es el lugar correcto? Buscar en Google',
+  'places.nearby': 'Lugares cerca de este marcador',
+  'places.nearbyNone': 'No se encontró nada cerca de este marcador',
   'places.loadingDetails': 'Cargando detalles del lugar…',
   'places.osmHint':
     'Usando búsqueda con OpenStreetMap (sin fotos, horarios ni valoraciones). Añade una clave API de Google en Ajustes para obtener todos los detalles.',
@@ -133,9 +138,14 @@ const places: TranslationStrings = {
   'places.enrichOnImport': 'Enriquecer lugares con Google',
   'places.enrichOnImportHint':
     'Busca cada lugar importado para añadir fotos, dirección y datos de contacto. Usa tu clave de Google Maps.',
+  'places.enrichOnImportFileHint':
+    'Después busca cada punto importado en Google y añade su foto, dirección, sitio web y teléfono. Los caminos y trazados se quedan como están.',
   'places.uploadImage': 'Subir imagen',
   'places.changeImage': 'Cambiar imagen',
   'places.removeImage': 'Eliminar imagen',
+  'places.chooseImage': 'Elegir una imagen',
+  'places.uploadFromDevice': 'Subir desde el dispositivo',
+  'places.fromAttachedFiles': 'Desde los archivos adjuntos',
   'places.imageUploadError': 'No se pudo subir la imagen',
   'places.imageRemoveError': 'No se pudo eliminar la imagen',
 };

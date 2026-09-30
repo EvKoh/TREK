@@ -602,6 +602,23 @@ describe('TripMembersModal', () => {
     }));
   });
 
+  it('FE-COMP-MEMBERS-033b: the two narrowing options post with the link (#1712)', async () => {
+    const user = userEvent.setup();
+    asShareOwner();
+    let postedPerms: Record<string, unknown> | null = null;
+    server.use(
+      http.get('/api/trips/1/share-link', () => HttpResponse.json({ token: 'tok77', share_hide_images: true })),
+      http.post('/api/trips/1/share-link', async ({ request }) => {
+        postedPerms = (await request.json()) as Record<string, unknown>;
+        return HttpResponse.json({ token: 'tok77' });
+      }),
+    );
+    render(<TripMembersModal {...defaultProps} />);
+
+    await user.click(await screen.findByText('Travel & stays only'));
+    await waitFor(() => expect(postedPerms).toMatchObject({ share_travel_only: true, share_hide_images: true }));
+  });
+
   it('FE-COMP-MEMBERS-034: a failing permission update is reported', async () => {
     const user = userEvent.setup();
     asShareOwner();

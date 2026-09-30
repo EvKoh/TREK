@@ -12,5 +12,10 @@ const share: TranslationStrings = {
   'share.permPacking': 'Balení',
   'share.permBudget': 'Náklady',
   'share.permCollab': 'Chat',
+  'share.options': 'Možnosti',
+  'share.optTravelOnly': 'Jen doprava a ubytování',
+  'share.optTravelOnlyHint': 'Zobrazí jen dopravu a ubytování, bez aktivit, poznámek ke dnům a prázdných dnů',
+  'share.optHideImages': 'Bez fotek',
+  'share.optHideImagesHint': 'Vynechá fotky míst ze sdílené stránky',
 };
 export default share;

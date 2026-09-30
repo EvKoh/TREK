@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': "บนแผนที่",
   'mobileTrip.profileDriving': "ขับรถ",
   'mobileTrip.profileWalking': "เดิน",
+  'mobileTrip.profileCycling': 'ปั่นจักรยาน',
   'mobileTrip.renameDay': "เปลี่ยนชื่อวัน",
   'mobileTrip.resBadge': "การจอง",
   'mobileTrip.showOnMap': "แสดงบนแผนที่",

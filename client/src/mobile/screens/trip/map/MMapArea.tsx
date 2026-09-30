@@ -353,6 +353,7 @@ export default function MMapArea({ planner, shell }: MMapAreaProps) {
         dayPlaces={onStage ? undefined : planner.dayPlaces}
         route={stageMap ? stageMap.lines : planner.overviewActive ? planner.tripOverview.lines : planner.route}
         routeColors={stageMap ? stageMap.lineColors : planner.overviewActive ? planner.tripOverview.lineColors : undefined}
+        routeWalking={stageMap || planner.overviewActive ? undefined : planner.routeWalking}
         accessLines={stageMap ? stageMap.accessLines : undefined}
         // A hit somebody tapped in the search sheet, a stop shown from its sheet, or the
         // stations the fuel search is offering take the camera while their day is on

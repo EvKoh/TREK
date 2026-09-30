@@ -35,6 +35,7 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.onMap': 'Trên bản đồ',
   'mobileTrip.profileDriving': 'Lái xe',
   'mobileTrip.profileWalking': 'Đi bộ',
+  'mobileTrip.profileCycling': 'Đạp xe',
   'mobileTrip.renameDay': 'Đổi tên ngày',
   'mobileTrip.resBadge': 'Đặt chỗ',
   'mobileTrip.showOnMap': 'Hiển thị trên bản đồ',
