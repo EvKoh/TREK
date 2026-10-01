@@ -94,7 +94,9 @@ describe('PackingPrintPreview', () => {
     Object.defineProperty(frame, 'contentWindow', { value: { print }, configurable: true })
     await user.click(screen.getByRole('button', { name: 'Print or save as PDF' }))
     expect(print).toHaveBeenCalledTimes(1)
-    await user.click(screen.getByRole('button', { name: 'Close' }))
+    // The modal's X and the preview's own button both close; the footer one is pressed here.
+    const closeButtons = screen.getAllByRole('button', { name: 'Close' })
+    await user.click(closeButtons[closeButtons.length - 1])
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 })

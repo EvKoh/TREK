@@ -301,7 +301,7 @@ describe('AdminPage', () => {
 
       fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'newuser' } });
       fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'newuser@example.com' } });
-      fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'securepassword123' } });
+      fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'SecurePassw0rd!23' } });
 
       // The modal footer has a second "Create User" button
       const createButtons = screen.getAllByRole('button', { name: /create user/i });

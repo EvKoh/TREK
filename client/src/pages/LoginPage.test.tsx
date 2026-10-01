@@ -388,7 +388,8 @@ describe('LoginPage', () => {
       await user.click(screen.getByRole('button', { name: /update password/i }));
 
       await waitFor(() => {
-        expect(screen.getByText(/at least 8/i)).toBeInTheDocument();
+        // The error, not the checklist line under the field that says the same rule.
+        expect(screen.getByText('Password must be at least 8 characters')).toBeInTheDocument();
       });
     });
   });
@@ -641,7 +642,8 @@ describe('LoginPage', () => {
       await user.click(screen.getByRole('button', { name: /create account/i }));
 
       await waitFor(() => {
-        expect(screen.getByText(/at least 8/i)).toBeInTheDocument();
+        // The error, not the checklist line under the field that says the same rule.
+        expect(screen.getByText('Password must be at least 8 characters')).toBeInTheDocument();
       });
     });
   });
