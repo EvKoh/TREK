@@ -43,7 +43,12 @@ export default function BackgroundTasksWidget() {
 
   const [aiParsing, setAiParsing] = useState(false)
   useEffect(() => {
-    healthApi.features().then((f) => setAiParsing(!!f.aiParsing)).catch(() => setAiParsing(false))
+    // Cancelled on unmount, so a late answer never sets state on a torn-down widget.
+    let cancelled = false
+    healthApi.features()
+      .then((f) => { if (!cancelled) setAiParsing(!!f.aiParsing) })
+      .catch(() => { if (!cancelled) setAiParsing(false) })
+    return () => { cancelled = true }
   }, [])
 
   // Re-runs the same files with force-ai: the LLM sees every file, kitinerary is skipped.
