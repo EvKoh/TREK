@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState, type ReactNode } from 'react'
 import { Save, Loader2, Link2, Unlink, CheckCircle, Puzzle, Zap } from 'lucide-react'
 import { resolvePluginIcon } from '../shared/PluginIcon'
 import CustomSelect from '../shared/CustomSelect'
+import ConfirmDialog from '../shared/ConfirmDialog'
 import { fs } from '../shared/DialogShell'
 import { EditorField, INPUT } from '../shared/dialogParts'
 import { SettingRow, SettingRows, SettingsCard, SettingsHint, SETTINGS_BUTTON, SETTINGS_BUTTON_DANGER, SETTINGS_BUTTON_PRIMARY } from './settingsKit'
@@ -107,6 +108,8 @@ function PluginSettingsForm({ id, name, icon }: { id: string; name: string; icon
   const [actions, setActions] = useState<PluginAction[]>([])
   const [running, setRunning] = useState<string | null>(null)
   const [actionResult, setActionResult] = useState<Record<string, { ok: boolean; message?: string }>>({})
+  // A dangerous action waits here for the user's answer in the confirm dialog.
+  const [pendingAction, setPendingAction] = useState<PluginAction | null>(null)
 
   useEffect(() => {
     let alive = true
@@ -128,8 +131,12 @@ function PluginSettingsForm({ id, name, icon }: { id: string; name: string; icon
 
   // An action runs AS the caller, so it sees the values they just saved — run the save
   // first if the form is dirty would be nicer, but keeping it explicit is less surprising.
-  const runAction = async (a: PluginAction) => {
-    if (a.danger && !window.confirm(t('settings.plugins.actions.confirm'))) return
+  const runAction = (a: PluginAction) => {
+    if (a.danger) { setPendingAction(a); return }
+    void performAction(a)
+  }
+
+  const performAction = async (a: PluginAction) => {
     setRunning(a.key)
     try {
       const res = await pluginsApi.runAction(id, a.key)
@@ -259,6 +266,14 @@ function PluginSettingsForm({ id, name, icon }: { id: string; name: string; icon
         </div>
       )}
       <PluginOAuthSection id={id} state={oauth} setState={setOauth} />
+      <ConfirmDialog
+        isOpen={pendingAction !== null}
+        onClose={() => setPendingAction(null)}
+        onConfirm={() => { if (pendingAction) void performAction(pendingAction) }}
+        message={t('settings.plugins.actions.confirm')}
+        confirmLabel={pendingAction?.label}
+        danger
+      />
     </SettingsCard>
   )
 }

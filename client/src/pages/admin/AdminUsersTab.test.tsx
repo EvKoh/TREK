@@ -125,13 +125,27 @@ describe('AdminUsersTab', () => {
     expect(admin.handleEditUser).toHaveBeenCalledWith(alice);
   });
 
-  it('FE-ADMUSR-009: delete button forwards the row user to handleDeleteUser', () => {
+  it('FE-ADMUSR-009: delete asks first and forwards the row user to handleDeleteUser on confirm', () => {
     const admin = renderTab({ users: [me, alice], currentUser: me });
 
     const deleteButtons = screen.getAllByLabelText('Delete user');
     fireEvent.click(deleteButtons[1]);
 
-    expect(admin.handleDeleteUser).toHaveBeenCalledWith(alice);
+    expect(admin.handleDeleteUser).not.toHaveBeenCalled();
+    expect(screen.getByText(`Delete user "${alice.username}"? All trips will be permanently deleted.`)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Delete' }));
+
+    expect(admin.handleDeleteUser).toHaveBeenCalledWith(alice, { confirmed: true });
+  });
+
+  it('FE-ADMUSR-009b: cancelling the delete question deletes nothing', () => {
+    const admin = renderTab({ users: [me, alice], currentUser: me });
+
+    fireEvent.click(screen.getAllByLabelText('Delete user')[1]);
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+
+    expect(screen.queryByText(`Delete user "${alice.username}"? All trips will be permanently deleted.`)).not.toBeInTheDocument();
+    expect(admin.handleDeleteUser).not.toHaveBeenCalled();
   });
 
   it('FE-ADMUSR-010: the delete button of the current user is disabled', () => {

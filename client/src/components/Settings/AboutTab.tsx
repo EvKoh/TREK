@@ -14,49 +14,46 @@ const DISCORD_PATH = 'M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0
 
 // The services' own colours: each tile takes its brand on hover and in its icon square.
 const BRAND = {
-  kofi: '#ff5e5b', // theme-lint-disable: Ko-fi brand colour
-  bmac: '#ffdd00', // theme-lint-disable: Buy Me a Coffee brand colour
-  discord: '#5865F2', // theme-lint-disable: Discord brand colour
-  bug: '#ef4444', // theme-lint-disable: the bug tile's signal red, a fixed brand-like mark
-  idea: '#f59e0b', // theme-lint-disable: the idea tile's signal amber, a fixed brand-like mark
-  wiki: '#6366f1', // theme-lint-disable: the wiki tile's signal indigo, a fixed brand-like mark
+  kofi: '#ff5e5b', // theme-lint-disable: brand colour (Ko-fi)
+  bmac: '#ffdd00', // theme-lint-disable: brand colour (Buy Me a Coffee)
+  discord: '#5865F2', // theme-lint-disable: brand colour (Discord)
 } as const;
+
+// TREK's own tiles speak in the theme's signal colours instead.
+const SIGNAL = {
+  bug: 'var(--danger)',
+  idea: 'var(--warning)',
+  wiki: 'var(--info)',
+} as const;
+
+/** Tile chrome that reads the tile's colour from `--tile`: the border and a faint ring on hover. */
+const TILE_HOVER = 'hover:border-[color:var(--tile)] hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--tile)_14%,transparent)]';
+/** The icon square in the tile's colour. */
+const TILE_ICON = 'bg-[color-mix(in_srgb,var(--tile)_12%,transparent)] text-[color:var(--tile)]';
 
 /**
  * One outbound link as a tile: a tinted icon square, a title and a hint, the
- * external-link mark on the right. The border picks up the brand colour while
+ * external-link mark on the right. The border picks up the tile's colour while
  * the pointer is on it.
  */
-function LinkTile({ href, brand, icon, title, hint }: {
+function LinkTile({ href, color, icon, title, hint }: {
   href: string;
-  brand?: string;
+  /** A brand colour or a theme token, handed to the classes as `--tile`. */
+  color?: string;
   icon?: ReactNode;
   title: ReactNode;
   hint: ReactNode;
 }) {
-  const tint: CSSProperties | undefined = brand
-    ? { background: `color-mix(in srgb, ${brand} 12%, transparent)`, color: brand }
-    : undefined;
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex min-w-0 items-center gap-3 overflow-hidden rounded-[14px] border border-edge bg-surface-card px-3.5 py-3 no-underline shadow-sm transition-[border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
-      onMouseEnter={brand ? (e) => {
-        e.currentTarget.style.borderColor = brand;
-        e.currentTarget.style.boxShadow = `0 0 0 1px ${brand}22`;
-      } : undefined}
-      onMouseLeave={brand ? (e) => {
-        e.currentTarget.style.borderColor = 'var(--border-primary)';
-        e.currentTarget.style.boxShadow = 'none';
-      } : undefined}
+      className={`flex min-w-0 items-center gap-3 overflow-hidden rounded-[14px] border border-edge bg-surface-card px-3.5 py-3 no-underline shadow-sm transition-[border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${color ? TILE_HOVER : ''}`}
+      style={color ? ({ '--tile': color } as CSSProperties) : undefined}
     >
       {icon && (
-        <span
-          className={`grid h-10 w-10 flex-none place-items-center rounded-[12px] ${brand ? '' : 'bg-surface-tertiary text-content-secondary'}`}
-          style={tint}
-        >
+        <span className={`grid h-10 w-10 flex-none place-items-center rounded-[12px] ${color ? TILE_ICON : 'bg-surface-tertiary text-content-secondary'}`}>
           {icon}
         </span>
       )}
@@ -112,21 +109,21 @@ export default function AboutTab({ appVersion }: Props): React.ReactElement {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <LinkTile
             href="https://ko-fi.com/mauriceboe"
-            brand={BRAND.kofi}
+            color={BRAND.kofi}
             icon={<Coffee size={19} />}
             title="Ko-fi"
             hint={t('admin.github.support')}
           />
           <LinkTile
             href="https://buymeacoffee.com/mauriceboe"
-            brand={BRAND.bmac}
+            color={BRAND.bmac}
             icon={<Heart size={19} />}
             title="Buy Me a Coffee"
             hint={t('admin.github.support')}
           />
           <LinkTile
             href="https://discord.gg/NhZBDSd4qW"
-            brand={BRAND.discord}
+            color={BRAND.discord}
             icon={(
               <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d={DISCORD_PATH} />
@@ -137,21 +134,21 @@ export default function AboutTab({ appVersion }: Props): React.ReactElement {
           />
           <LinkTile
             href="https://github.com/liketrek/TREK/issues/new?template=bug_report.yml"
-            brand={BRAND.bug}
+            color={SIGNAL.bug}
             icon={<Bug size={19} />}
             title={t('settings.about.reportBug')}
             hint={t('settings.about.reportBugHint')}
           />
           <LinkTile
             href="https://github.com/liketrek/TREK/discussions/new?category=feature-requests"
-            brand={BRAND.idea}
+            color={SIGNAL.idea}
             icon={<Lightbulb size={19} />}
             title={t('settings.about.featureRequest')}
             hint={t('settings.about.featureRequestHint')}
           />
           <LinkTile
             href="https://github.com/liketrek/TREK/wiki"
-            brand={BRAND.wiki}
+            color={SIGNAL.wiki}
             icon={<BookOpen size={19} />}
             title="Wiki"
             hint={t('settings.about.wikiHint')}

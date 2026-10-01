@@ -4,6 +4,7 @@ import { useToast } from '../shared/Toast'
 import { Plus, Pencil, Trash2, Pipette, Tags, Loader2 } from 'lucide-react'
 import { DialogButton, DialogFooter, DialogHeader, DialogSection, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT, fs } from '../shared/DialogShell'
 import { Tooltip } from '../shared/Tooltip'
+import ConfirmDialog from '../shared/ConfirmDialog'
 import { SettingRows, SettingsCard, SettingsHint, StatusPill, SETTINGS_BUTTON_PRIMARY, SETTINGS_ICON_BUTTON } from '../Settings/settingsKit'
 import { CATEGORY_ICON_MAP, ICON_LABELS, getCategoryIcon } from '../shared/categoryIcons'
 import { useTranslation } from '../../i18n'
@@ -27,6 +28,8 @@ export default function CategoryManager() {
   const [form, setForm] = useState({ name: '', color: DEFAULT_COLOR, icon: 'MapPin' })
   const [isSaving, setIsSaving] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  // The category whose delete waits for the answer in the confirm dialog.
+  const [deleteId, setDeleteId] = useState(null)
   const colorInputRef = useRef(null)
   const toast = useToast()
   const { t } = useTranslation()
@@ -87,7 +90,6 @@ export default function CategoryManager() {
   }
 
   const handleDelete = async (id) => {
-    if (!confirm(t('categories.confirm.delete'))) return
     try {
       await categoriesApi.delete(id)
       setCategories(prev => prev.filter(c => c.id !== id))
@@ -236,7 +238,7 @@ export default function CategoryManager() {
           {categories.map(cat => {
             const Icon = getCategoryIcon(cat.icon)
             return (
-              <div key={cat.id} className={`group flex items-center gap-3 p-3 ${editingId === cat.id ? 'bg-surface-secondary' : ''}`}>
+              <div key={cat.id} data-category-row={cat.id} className={`group flex items-center gap-3 px-3.5 py-3 ${editingId === cat.id ? 'bg-surface-secondary' : ''}`}>
                 <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px]"
                   style={{ backgroundColor: `${cat.color}20` }}>
                   <Icon size={17} strokeWidth={1.8} color={cat.color} />
@@ -255,7 +257,7 @@ export default function CategoryManager() {
                     </button>
                   </Tooltip>
                   <Tooltip label={t('common.delete')}>
-                    <button type="button" onClick={() => handleDelete(cat.id)} aria-label={t('common.delete')} className={`${SETTINGS_ICON_BUTTON} hover:!text-danger`}>
+                    <button type="button" onClick={() => setDeleteId(cat.id)} aria-label={t('common.delete')} className={`${SETTINGS_ICON_BUTTON} hover:!text-danger`}>
                       <Trash2 size={14} strokeWidth={2} />
                     </button>
                   </Tooltip>
@@ -266,6 +268,14 @@ export default function CategoryManager() {
         </SettingRows>
       )}
       {formOpen && categoryDialog}
+      <ConfirmDialog
+        isOpen={deleteId !== null}
+        onClose={() => setDeleteId(null)}
+        onConfirm={() => { if (deleteId !== null) void handleDelete(deleteId) }}
+        message={t('categories.confirm.delete')}
+        confirmLabel={t('common.delete')}
+        danger
+      />
     </SettingsCard>
   )
 }

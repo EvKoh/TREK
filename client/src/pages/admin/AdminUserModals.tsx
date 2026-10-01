@@ -13,6 +13,7 @@ import {
 import React, { useId } from 'react';
 import { adminApi } from '../../api/client';
 import CustomSelect from '../../components/shared/CustomSelect';
+import ConfirmDialog from '../../components/shared/ConfirmDialog';
 import { Tooltip } from '../../components/shared/Tooltip';
 import {
   DialogButton,
@@ -115,6 +116,8 @@ export default function AdminUserModals({ admin, t }: AdminUserModalsProps): Rea
   } = admin;
   const [showCreatePw, setShowCreatePw] = React.useState(false);
   const [showEditPw, setShowEditPw] = React.useState(false);
+  // The user whose passkeys wait for the admin's answer in the confirm dialog.
+  const [passkeyResetUser, setPasskeyResetUser] = React.useState<typeof editingUser>(null);
   const uid = useId();
   const createId = `${uid}-create`;
   const editId = `${uid}-edit`;
@@ -280,15 +283,8 @@ export default function AdminUserModals({ admin, t }: AdminUserModalsProps): Rea
                 </p>
                 <button
                   type="button"
-                  onClick={async () => {
-                    if (!editingUser) return;
-                    if (!confirm(t('admin.passkey.resetConfirm', { name: editingUser.username }))) return;
-                    try {
-                      const r = await adminApi.resetUserPasskeys(editingUser.id);
-                      toast.success(t('admin.passkey.resetDone', { count: r.deleted ?? 0 }));
-                    } catch {
-                      toast.error(t('common.error'));
-                    }
+                  onClick={() => {
+                    if (editingUser) setPasskeyResetUser(editingUser);
                   }}
                   className={`${SETTINGS_BUTTON_DANGER} flex-none`}
                   style={fs(12.5, 'body')}
@@ -445,6 +441,24 @@ docker run -d --name trek \\
           </p>
         </div>
       </DialogShell>
+
+      <ConfirmDialog
+        isOpen={passkeyResetUser !== null}
+        onClose={() => setPasskeyResetUser(null)}
+        onConfirm={async () => {
+          if (!passkeyResetUser) return;
+          try {
+            const r = await adminApi.resetUserPasskeys(passkeyResetUser.id);
+            toast.success(t('admin.passkey.resetDone', { count: r.deleted ?? 0 }));
+          } catch {
+            toast.error(t('common.error'));
+          }
+        }}
+        title={t('admin.passkey.reset')}
+        message={passkeyResetUser ? t('admin.passkey.resetConfirm', { name: passkeyResetUser.username }) : ''}
+        confirmLabel={t('admin.passkey.reset')}
+        danger
+      />
     </>
   );
 }

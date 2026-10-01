@@ -800,6 +800,19 @@ describe('useAdmin', () => {
     expect(toastCalls).toContainEqual({ type: 'success', message: 'User deleted' });
   });
 
+  it('FE-ADMHOOK-042b: a delete the caller already confirmed skips the browser confirm', async () => {
+    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(false);
+    server.use(http.delete('/api/admin/users/:id', () => HttpResponse.json({ success: true })));
+    const { result } = await mountAdmin();
+
+    await act(async () => {
+      await result.current.handleDeleteUser(result.current.users[1], { confirmed: true });
+    });
+
+    expect(confirmSpy).not.toHaveBeenCalled();
+    expect(result.current.users.map(u => u.username)).toEqual(['admin']);
+  });
+
   it('FE-ADMHOOK-043: a failing delete surfaces the server error', async () => {
     vi.spyOn(window, 'confirm').mockReturnValue(true);
     server.use(http.delete('/api/admin/users/:id', () => HttpResponse.json({ error: 'busy' }, { status: 500 })));

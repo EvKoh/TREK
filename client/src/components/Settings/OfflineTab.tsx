@@ -10,7 +10,7 @@
  * All of the logic lives in `useOfflineSettings`, shared with the phone twin
  * `MSettingsOffline`; this file is the desktop markup over it.
  */
-import React from 'react'
+import React, { useState } from 'react'
 import { RefreshCw, Trash2, Database, CloudOff, Download, Check, GitMerge, Map as MapIcon, AlertTriangle } from 'lucide-react'
 import Section from './Section'
 import ToggleSwitch from './ToggleSwitch'
@@ -18,6 +18,7 @@ import { SettingRow, SettingRows, SettingsHint, StatusPill, SETTINGS_BUTTON, SET
 import { useOfflineSettings, offlineNoticeKey, isOfflineNoticeWarning } from './useOfflineSettings'
 import { useTranslation } from '../../i18n'
 import CustomSelect from '../shared/CustomSelect'
+import ConfirmDialog from '../shared/ConfirmDialog'
 import { fs } from '../shared/DialogShell'
 import type { ConflictStrategy } from '../../sync/offlinePrefs'
 import type { QueuedMutation } from '../../db/offlineDb'
@@ -42,6 +43,7 @@ export default function OfflineTab(): React.ReactElement {
     handleToggleTiles, tripStorageState, handleToggleTrip, resolveConflict,
     handleConflictStrategy,
   } = useOfflineSettings()
+  const [confirmClear, setConfirmClear] = useState(false)
 
   const formatDate = (d: string | null | undefined) =>
     d ? new Date(d).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : '—'
@@ -207,8 +209,7 @@ export default function OfflineTab(): React.ReactElement {
         icon={Database}
         action={
           <button type="button"
-            // ConfirmDialog would be the planner's way; the tab's tests pin window.confirm.
-            onClick={() => { if (window.confirm(t('settings.offline.clearConfirm'))) void handleClear() }}
+            onClick={() => setConfirmClear(true)}
             disabled={clearing || !canClear}
             className={SETTINGS_BUTTON_DANGER}
             style={fs(12.5, 'body')}
@@ -257,6 +258,16 @@ export default function OfflineTab(): React.ReactElement {
           </SettingRows>
         )}
       </Section>
+
+      <ConfirmDialog
+        isOpen={confirmClear}
+        onClose={() => setConfirmClear(false)}
+        onConfirm={() => { void handleClear() }}
+        title={t('settings.offline.clear')}
+        message={t('settings.offline.clearConfirm')}
+        confirmLabel={t('settings.offline.clear')}
+        danger
+      />
     </div>
   )
 }

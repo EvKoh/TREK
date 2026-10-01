@@ -440,6 +440,9 @@ describe('AdminPage', () => {
       // MSW returns [admin, alice]; alice's delete button is index 1
       const deleteButtons = screen.getAllByLabelText(/delete/i);
       fireEvent.click(deleteButtons[1]);
+      // The desktop tab asks in its own dialog; its confirm button renders last.
+      const confirmButtons = await screen.findAllByRole('button', { name: /^delete$/i });
+      fireEvent.click(confirmButtons[confirmButtons.length - 1]);
 
       await waitFor(() => {
         expect(screen.queryByText('alice')).not.toBeInTheDocument();
@@ -1298,6 +1301,8 @@ describe('AdminPage', () => {
       // Click delete for alice (second user — non-self)
       const deleteButtons = screen.getAllByLabelText('Delete user');
       fireEvent.click(deleteButtons[deleteButtons.length - 1]); // last button = alice
+      const confirmButtons = await screen.findAllByRole('button', { name: /^delete$/i });
+      fireEvent.click(confirmButtons[confirmButtons.length - 1]);
 
       await waitFor(() => {
         expect(deletedId).toBeDefined();

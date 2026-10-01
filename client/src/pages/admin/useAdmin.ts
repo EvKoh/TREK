@@ -492,12 +492,14 @@ export function useAdmin() {
     }
   }
 
-  const handleDeleteUser = async (user) => {
+  // `confirmed` means the caller already asked in its own ConfirmDialog (the
+  // desktop users tab); without it the browser's confirm asks, as on mobile.
+  const handleDeleteUser = async (user, opts: { confirmed?: boolean } = {}) => {
     if (user.id === currentUser?.id) {
       toast.error(t('admin.toast.cannotDeleteSelf'))
       return
     }
-    if (!confirm(t('admin.deleteUser', { name: user.username }))) return
+    if (!opts.confirmed && !confirm(t('admin.deleteUser', { name: user.username }))) return
     try {
       await adminApi.deleteUser(user.id)
       setUsers(prev => prev.filter(u => u.id !== user.id))

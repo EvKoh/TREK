@@ -326,9 +326,8 @@ describe('PluginSettingsTab', () => {
     expect(button).toBeEnabled();
   });
 
-  it('FE-COMP-PLUGINSETTINGS-018: a dangerous action asks first and a declined confirm skips it', async () => {
+  it('FE-COMP-PLUGINSETTINGS-018: a dangerous action asks first and a cancelled confirm skips it', async () => {
     const user = userEvent.setup();
-    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(false);
     let ran = 0;
     serve('weather', { actions: [{ key: 'wipe', label: 'Wipe cache', danger: true, scope: 'user' }] });
     server.use(http.post('/api/plugin-settings/weather/actions/wipe', () => {
@@ -339,14 +338,18 @@ describe('PluginSettingsTab', () => {
     render(<PluginSettingsTab />);
 
     await user.click(await screen.findByRole('button', { name: 'Wipe cache' }));
-    expect(confirmSpy).toHaveBeenCalledWith('Run this action?');
+    expect(await screen.findByText('Run this action?')).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Cancel' }));
+    expect(screen.queryByText('Run this action?')).not.toBeInTheDocument();
     expect(ran).toBe(0);
 
-    confirmSpy.mockReturnValue(true);
     await user.click(screen.getByRole('button', { name: 'Wipe cache' }));
+    await screen.findByText('Run this action?');
+    // The dialog's confirm button carries the action's label and sits last in the document.
+    const confirmButtons = screen.getAllByRole('button', { name: 'Wipe cache' });
+    await user.click(confirmButtons[confirmButtons.length - 1]!);
     await screen.findByText('Wiped');
     expect(ran).toBe(1);
-    confirmSpy.mockRestore();
   });
 
   it('FE-COMP-PLUGINSETTINGS-019: an unconfigured OAuth integration renders no connect row', async () => {

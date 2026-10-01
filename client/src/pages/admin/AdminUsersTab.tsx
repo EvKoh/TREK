@@ -1,8 +1,9 @@
-import React, { useId, type ReactNode } from 'react'
+import React, { useId, useState, type ReactNode } from 'react'
 import CustomSelect from '../../components/shared/CustomSelect'
 import { Shield, Trash2, Edit2, UserPlus, Link2, Copy, Plus, Users } from 'lucide-react'
 import PermissionsPanel from '../../components/Admin/PermissionsPanel'
 import { Tooltip } from '../../components/shared/Tooltip'
+import ConfirmDialog from '../../components/shared/ConfirmDialog'
 import { DialogButton, DialogFooter, DialogHeader, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT, fs } from '../../components/shared/DialogShell'
 import { EditorField, Segmented } from '../../components/shared/dialogParts'
 import { SettingsCard, SettingRows, SettingsHint, StatusPill, SETTINGS_BUTTON, SETTINGS_BUTTON_PRIMARY, SETTINGS_ICON_BUTTON } from '../../components/Settings/settingsKit'
@@ -42,6 +43,8 @@ export default function AdminUsersTab({ admin, t, locale }: AdminUsersTabProps):
     handleEditUser, handleDeleteUser,
   } = admin
   const inviteLabelId = useId()
+  // The row whose delete waits for the admin's answer in the confirm dialog.
+  const [userToDelete, setUserToDelete] = useState<(typeof users)[number] | null>(null)
 
   return (
     <>
@@ -117,7 +120,7 @@ export default function AdminUsersTab({ admin, t, locale }: AdminUsersTabProps):
                           <RowIconButton label={t('admin.editUser')} onClick={() => handleEditUser(u)}>
                             <Edit2 size={14} strokeWidth={2} />
                           </RowIconButton>
-                          <RowIconButton label={t('admin.deleteUserTitle')} onClick={() => handleDeleteUser(u)} disabled={isMe} danger>
+                          <RowIconButton label={t('admin.deleteUserTitle')} onClick={() => setUserToDelete(u)} disabled={isMe} danger>
                             <Trash2 size={14} strokeWidth={2} />
                           </RowIconButton>
                         </div>
@@ -253,6 +256,16 @@ export default function AdminUsersTab({ admin, t, locale }: AdminUsersTabProps):
           </EditorField>
         )}
       </DialogShell>
+
+      <ConfirmDialog
+        isOpen={userToDelete !== null}
+        onClose={() => setUserToDelete(null)}
+        onConfirm={() => { if (userToDelete) void handleDeleteUser(userToDelete, { confirmed: true }) }}
+        title={t('admin.deleteUserTitle')}
+        message={userToDelete ? t('admin.deleteUser', { name: userToDelete.username }) : ''}
+        confirmLabel={t('common.delete')}
+        danger
+      />
     </>
   )
 }

@@ -52,6 +52,13 @@ function EditFormHarness() {
   return <AdminUserModals admin={admin} t={t} />;
 }
 
+/** Answers the confirm dialog: its button repeats the label and sits last in the document. */
+function confirmPasskeyReset() {
+  expect(screen.getByText('Remove all passkeys for alice?')).toBeInTheDocument();
+  const buttons = screen.getAllByRole('button', { name: /reset passkeys/i });
+  fireEvent.click(buttons[buttons.length - 1]);
+}
+
 const editing = {
   editingUser: alice,
   editForm: { username: 'alice', email: 'alice@example.com', role: 'user', password: '' },
@@ -183,18 +190,31 @@ describe('AdminUserModals', () => {
     expect(admin.handleSaveUser).toHaveBeenCalledTimes(1);
   });
 
-  it('FE-ADMMOD-012: resetting passkeys is skipped when the confirm is declined', () => {
-    vi.spyOn(window, 'confirm').mockReturnValue(false);
+  it('FE-ADMMOD-012: resetting passkeys is skipped when the confirm is cancelled', async () => {
+    let calls = 0;
+    server.use(
+      http.delete('/api/admin/users/:id/passkeys', () => {
+        calls += 1;
+        return HttpResponse.json({ deleted: 1 });
+      })
+    );
     const admin = renderModals(editing);
 
     fireEvent.click(screen.getByRole('button', { name: /reset passkeys/i }));
+    expect(screen.getByText('Remove all passkeys for alice?')).toBeInTheDocument();
 
-    expect(window.confirm).toHaveBeenCalledWith('Remove all passkeys for alice?');
+    // The edit dialog has its own Cancel; the question's Cancel is the last one.
+    const cancels = screen.getAllByRole('button', { name: /^cancel$/i });
+    fireEvent.click(cancels[cancels.length - 1]);
+
+    expect(screen.queryByText('Remove all passkeys for alice?')).not.toBeInTheDocument();
+    await new Promise((r) => setTimeout(r, 20));
+    expect(calls).toBe(0);
     expect(admin.toast.success).not.toHaveBeenCalled();
+    expect(admin.setEditingUser).not.toHaveBeenCalled();
   });
 
   it('FE-ADMMOD-013: a confirmed passkey reset reports how many were removed', async () => {
-    vi.spyOn(window, 'confirm').mockReturnValue(true);
     let deletedFor: string | undefined;
     server.use(
       http.delete('/api/admin/users/:id/passkeys', ({ params }) => {
@@ -205,17 +225,18 @@ describe('AdminUserModals', () => {
     const admin = renderModals(editing);
 
     fireEvent.click(screen.getByRole('button', { name: /reset passkeys/i }));
+    confirmPasskeyReset();
 
     await waitFor(() => expect(admin.toast.success).toHaveBeenCalledWith('Removed 3 passkey(s)'));
     expect(deletedFor).toBe('2');
   });
 
   it('FE-ADMMOD-014: a failing passkey reset toasts the generic error', async () => {
-    vi.spyOn(window, 'confirm').mockReturnValue(true);
     server.use(http.delete('/api/admin/users/:id/passkeys', () => HttpResponse.json({}, { status: 500 })));
     const admin = renderModals(editing);
 
     fireEvent.click(screen.getByRole('button', { name: /reset passkeys/i }));
+    confirmPasskeyReset();
 
     await waitFor(() => expect(admin.toast.error).toHaveBeenCalledWith('Error'));
   });
