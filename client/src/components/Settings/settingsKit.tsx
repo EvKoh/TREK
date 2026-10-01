@@ -103,7 +103,8 @@ export function SettingRow({ label, hint, control, children, stacked = false, di
   return (
     <div className={`px-3.5 py-3 ${dimmed ? 'opacity-60' : ''}`}>
       <div className={stacked ? 'flex flex-col gap-2.5' : 'flex flex-wrap items-center gap-x-4 gap-y-2'}>
-        <div className="min-w-0 flex-1 basis-56">
+        {/* The basis only in a row: in the stacked column it would read as a height. */}
+        <div className={stacked ? 'min-w-0' : 'min-w-0 flex-1 basis-56'}>
           <label htmlFor={htmlFor} className="block font-medium text-content" style={fs(13, 'body')}>{label}</label>
           {hint && <p className="m-0 mt-0.5 leading-snug text-content-faint" style={fs(11.5)}>{hint}</p>}
         </div>

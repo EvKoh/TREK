@@ -150,7 +150,8 @@ function SidebarInner({
 }): React.ReactElement {
   return (
     <>
-      {sidebarLabel && (
+      {/* Grouped tabs carry their own headings; a page label above the first would stack two. */}
+      {sidebarLabel && !tabs[0]?.group && (
         <div className="mb-1.5 mt-1 px-2.5 font-geist font-bold uppercase tracking-[.08em] text-content-faint" style={{ fontSize: 'calc(9.5px * var(--fs-scale-caption, 1))' }}>
           {sidebarLabel}
         </div>
