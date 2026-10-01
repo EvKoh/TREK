@@ -482,7 +482,7 @@ export default function MPlaceEditSheet({ planner, onOpenExpense }: MPlaceEditSh
             placeId={sheetPlace?.id}
             hintKey="places.createExpenseHint"
             createDisabled={!form.name.trim() || isSaving}
-            onCreate={() => { expenseIntentRef.current = true; handleSubmit() }}
+            onCreate={() => { expenseIntentRef.current = true; void handleSubmit() }}
             onEdit={item => onOpenExpense({ editItem: item })}
           />
         )}

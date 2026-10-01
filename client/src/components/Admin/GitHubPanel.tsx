@@ -53,7 +53,7 @@ export default function GitHubPanel({ isPrerelease = false }: { isPrerelease?: b
 
   useEffect(() => {
     setLoading(true);
-    fetchReleases(1).finally(() => setLoading(false));
+    void fetchReleases(1).finally(() => setLoading(false));
   }, []);
 
   const handleLoadMore = async () => {

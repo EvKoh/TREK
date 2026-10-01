@@ -234,7 +234,7 @@ function useIntegrations() {
   }
 
   const handleCopy = (text: string, key: string) => {
-    navigator.clipboard.writeText(text).then(() => {
+    void navigator.clipboard.writeText(text).then(() => {
       setCopiedKey(key)
       if (copyTimerRef.current) clearTimeout(copyTimerRef.current)
       copyTimerRef.current = setTimeout(() => setCopiedKey(null), 2000)

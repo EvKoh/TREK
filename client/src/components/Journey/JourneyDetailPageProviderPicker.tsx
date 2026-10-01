@@ -184,18 +184,18 @@ export function ProviderPicker({
   // load on mount / filter change
   useEffect(() => {
     if (filter === 'day' && initialDate) {
-      searchPhotos(initialDate, initialDate);
+      void searchPhotos(initialDate, initialDate);
     } else if (filter === 'trip' && tripRange.from && tripRange.to) {
-      searchPhotos(tripRange.from, tripRange.to);
+      void searchPhotos(tripRange.from, tripRange.to);
     } else if (filter === 'all') {
-      searchPhotos('', '');
+      void searchPhotos('', '');
     } else if (filter === 'album' && albums.length === 0) {
-      loadAlbums();
+      void loadAlbums();
     }
   }, [filter]);
 
   const handleCustomSearch = () => {
-    if (customFrom && customTo) searchPhotos(customFrom, customTo);
+    if (customFrom && customTo) void searchPhotos(customFrom, customTo);
   };
 
   // Sorted here rather than in the two fetches above. contextLocation is live
@@ -224,7 +224,7 @@ export function ProviderPicker({
 
   const loadMorePhotos = () => {
     if (loadingMore || !canLoadMore) return;
-    searchPhotos(searchFrom, searchTo, searchPage + 1, true);
+    void searchPhotos(searchFrom, searchTo, searchPage + 1, true);
   };
 
   const selectionEntry = (asset: PickerAsset | undefined): SelectedAsset => ({
@@ -462,7 +462,7 @@ export function ProviderPicker({
                       onClick={() => {
                         setSelectedAlbum(a.id);
                         setSelectedAlbumPassphrase(a.passphrase);
-                        loadAlbumPhotos(a);
+                        void loadAlbumPhotos(a);
                       }}
                       className={`flex-shrink-0 rounded-lg border px-2.5 py-1 text-[11px] font-medium whitespace-nowrap ${
                         selectedAlbum === a.id

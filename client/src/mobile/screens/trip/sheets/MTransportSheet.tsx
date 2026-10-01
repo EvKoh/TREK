@@ -144,7 +144,7 @@ export default function MTransportSheet({ planner, shell }: MTripSheetsProps) {
   }
 
   const deleteTransport = () => {
-    planner.handleDeleteReservation(res.id)
+    void planner.handleDeleteReservation(res.id)
     shell.closeSheet()
   }
 

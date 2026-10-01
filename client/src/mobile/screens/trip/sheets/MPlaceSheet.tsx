@@ -146,12 +146,12 @@ export default function MPlaceSheet({ planner, shell }: MTripSheetsProps) {
   const removeParticipant = (userId: number) => {
     let next = allJoined ? members.filter(m => m.id !== userId).map(m => m.id) : participantIds.filter(id => id !== userId)
     if (next.length === members.length) next = []
-    setParticipants(next)
+    void setParticipants(next)
   }
 
   const addParticipant = (userId: number) => {
     const next = [...participantIds, userId]
-    setParticipants(next.length === members.length ? [] : next)
+    void setParticipants(next.length === members.length ? [] : next)
     setParticipantPickerOpen(false)
   }
 

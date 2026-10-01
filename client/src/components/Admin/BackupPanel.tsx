@@ -73,7 +73,7 @@ export default function BackupPanel() {
     } catch {}
   }
 
-  useEffect(() => { loadBackups(); loadAutoSettings() }, [])
+  useEffect(() => { void loadBackups(); void loadAutoSettings() }, [])
 
   const handleCreate = async () => {
     setIsCreating(true)

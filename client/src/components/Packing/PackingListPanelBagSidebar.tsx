@@ -55,7 +55,7 @@ export function BagSidebar(S: PackingState) {
           <div ref={composerRef} style={{ ...COMPOSER, margin: '10px 10px 0', padding: '4px 4px 4px 10px' }}>
             <span aria-hidden style={{ width: 10, height: 10, borderRadius: '50%', border: '1.5px dashed var(--text-faint)', flexShrink: 0 }} />
             <input autoFocus value={newBagName} onChange={e => setNewBagName(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') handleCreateBag(); if (e.key === 'Escape') closeComposer() }}
+              onKeyDown={e => { if (e.key === 'Enter') void handleCreateBag(); if (e.key === 'Escape') closeComposer() }}
               placeholder={t('packing.bagName')}
               style={{ flex: 1, minWidth: 0, padding: '5px 0', border: 'none', fontSize: 'calc(12.5px * var(--fs-scale-body, 1))', fontWeight: 500, fontFamily: 'inherit', outline: 'none', color: 'var(--text-primary)', background: 'transparent' }} />
             <button type="button" onClick={handleCreateBag} disabled={!newBagName.trim()} aria-label={t('common.add')} style={composerConfirm(!!newBagName.trim())}>

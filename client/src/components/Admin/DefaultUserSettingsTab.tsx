@@ -218,7 +218,7 @@ export default function DefaultUserSettingsTab(): React.ReactElement {
       setMapboxStyle(nextStyle)
       patch[styleSettingKey(nextProvider)] = nextStyle
     }
-    save(patch)
+    void save(patch)
   }
 
   return (
@@ -320,7 +320,7 @@ export default function DefaultUserSettingsTab(): React.ReactElement {
         </label>
         <CustomSelect
           value={defaults.default_currency || ''}
-          onChange={(value: string) => { if (value) save({ default_currency: value }) }}
+          onChange={(value: string) => { if (value) void save({ default_currency: value }) }}
           placeholder={t('settings.currency')}
           searchable
           options={currenciesWith(defaults.default_currency).map(c => ({ value: c, label: SYMBOLS[c] ? `${c}  ${SYMBOLS[c]}` : c }))}
@@ -356,7 +356,7 @@ export default function DefaultUserSettingsTab(): React.ReactElement {
         </label>
         <CustomSelect
           value={mapTileUrl}
-          onChange={(value: string) => { if (value) { setMapTileUrl(value); save({ map_tile_url: value }) } }}
+          onChange={(value: string) => { if (value) { setMapTileUrl(value); void save({ map_tile_url: value }) } }}
           placeholder={t('settings.mapTemplatePlaceholder.select')}
           options={MAP_PRESETS.map(p => ({ value: p.url, label: p.name }))}
           size="sm"
@@ -473,7 +473,7 @@ export default function DefaultUserSettingsTab(): React.ReactElement {
               </label>
               <CustomSelect
                 value={mapboxStyle}
-                onChange={(value: string) => { if (value) { setMapboxStyle(value); save({ [styleKey]: value }) } }}
+                onChange={(value: string) => { if (value) { setMapboxStyle(value); void save({ [styleKey]: value }) } }}
                 placeholder={t('admin.defaultSettings.mapboxStylePlaceholder')}
                 options={glStylePresets.map(p => ({ value: p.url, label: p.name }))}
                 size="sm"
@@ -486,7 +486,7 @@ export default function DefaultUserSettingsTab(): React.ReactElement {
                 onBlur={() => {
                   const nextStyle = normalizeStyleForProvider(mapProvider, mapboxStyle)
                   setMapboxStyle(nextStyle)
-                  save({ [styleKey]: nextStyle })
+                  void save({ [styleKey]: nextStyle })
                 }}
                 placeholder={defaultStyleForProvider(mapProvider)}
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent"

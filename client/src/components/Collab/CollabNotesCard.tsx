@@ -53,7 +53,7 @@ export function NoteCard({ note, canEdit, onUpdate, onDelete, onEdit, onView, on
   const menu = useContextMenu()
 
   const handleTogglePin = useCallback(() => {
-    onUpdate(note.id, { pinned: !note.pinned })
+    void onUpdate(note.id, { pinned: !note.pinned })
   }, [note.id, note.pinned, onUpdate])
 
   const handleDelete = useCallback(() => {

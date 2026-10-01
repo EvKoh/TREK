@@ -114,7 +114,7 @@ export default function AddonManager({ bagTrackingEnabled, onToggleBagTracking, 
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    loadAddons().finally(() => setLoading(false))
+    void loadAddons().finally(() => setLoading(false))
   }, [])
 
   const loadAddons = async () => {
@@ -410,7 +410,7 @@ function LlmParsingConfig({ addon }: { addon: Addon }) {
 
   // Load installed models when the local provider is active.
   useEffect(() => {
-    if (provider === 'local') loadModels()
+    if (provider === 'local') void loadModels()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [provider])
 

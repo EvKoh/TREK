@@ -25,7 +25,7 @@ export function FilePreviewPortal({ file, onClose }: FilePreviewPortalProps) {
   useEffect(() => {
     setAuthUrl('')
     if (!rawUrl) return
-    getAuthUrl(rawUrl, 'download').then(setAuthUrl)
+    void getAuthUrl(rawUrl, 'download').then(setAuthUrl)
   }, [rawUrl])
 
   const isImage = !!file?.mime_type?.startsWith('image/')

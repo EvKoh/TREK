@@ -31,7 +31,7 @@ export default function VacayCalendar() {
 
   useEffect(() => {
     let cancelled = false
-    ;(async () => {
+    ;void (async () => {
       try {
         const data = await tripsApi.list()
         const dates = new Set<string>()

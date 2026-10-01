@@ -150,7 +150,7 @@ export default function LabelManager({ isOpen, labels, onCreate, onUpdate, onDel
             <input
               value={newName}
               onChange={e => setNewName(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') add() }}
+              onKeyDown={e => { if (e.key === 'Enter') void add() }}
               maxLength={60}
               placeholder={t('collections.labels.namePlaceholder')}
               className={`${INPUT} flex-1`}

@@ -78,7 +78,7 @@ export function BagModal(S: PackingState) {
         {canEdit && (showAddBag ? (
           <div style={{ display: 'flex', gap: 6, marginTop: 14 }}>
             <input autoFocus value={newBagName} onChange={e => setNewBagName(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') handleCreateBag(); if (e.key === 'Escape') { setShowAddBag(false); setNewBagName('') } }}
+              onKeyDown={e => { if (e.key === 'Enter') void handleCreateBag(); if (e.key === 'Escape') { setShowAddBag(false); setNewBagName('') } }}
               placeholder={t('packing.bagName')}
               style={{ flex: 1, padding: '8px 12px', borderRadius: 10, border: '1px solid var(--border-primary)', fontSize: 'calc(13px * var(--fs-scale-body, 1))', fontFamily: 'inherit', outline: 'none' }} />
             <button type="button" onClick={handleCreateBag} disabled={!newBagName.trim()}

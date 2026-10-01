@@ -63,7 +63,7 @@ export function useDashboard() {
     }
   }, [searchParams])
 
-  useEffect(() => { loadTrips() }, [])
+  useEffect(() => { void loadTrips() }, [])
 
   // Travel stats + upcoming reservations power the atlas row and the sidebar.
   // Both are best-effort: a failure just leaves that section empty.
@@ -91,7 +91,7 @@ export function useDashboard() {
   // the error banner (loadUser resets authCheckFailed on success). #1283
   const retryLoad = () => {
     loadUser({ silent: true })
-    loadTrips()
+    void loadTrips()
   }
 
   const today = localIsoToday()

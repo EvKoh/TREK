@@ -2849,7 +2849,7 @@ export function useTripPlanner() {
       if (!receipt) return
       void (async () => {
         const files = inMemory && inMemory.length ? inMemory : await getImportFiles(jobId)
-        deleteImportFiles(jobId)
+        void deleteImportFiles(jobId)
         setReceiptExpense(receiptToPrefill(receipt, canUploadFiles ? files : []))
       })()
     } else if (task && task.items && task.items.length > 0) {
@@ -2863,7 +2863,7 @@ export function useTripPlanner() {
       // Prefer the in-memory files (immediate path); after a reload they live in IndexedDB.
       void (async () => {
         const files = inMemory && inMemory.length ? inMemory : await getImportFiles(jobId)
-        deleteImportFiles(jobId)
+        void deleteImportFiles(jobId)
         startImportReview(items, files, kind)
       })()
     }

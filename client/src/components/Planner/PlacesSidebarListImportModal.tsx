@@ -79,7 +79,7 @@ export function ListImportModal(S: SidebarState) {
           type="text"
           value={listImportUrl}
           onChange={e => setListImportUrl(e.target.value)}
-          onKeyDown={e => { if (e.key === 'Enter' && !listImportLoading) handleListImport() }}
+          onKeyDown={e => { if (e.key === 'Enter' && !listImportLoading) void handleListImport() }}
           placeholder={google ? 'https://maps.app.goo.gl/...' : 'https://naver.me/...'}
           autoFocus
           className={INPUT}

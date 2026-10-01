@@ -59,7 +59,7 @@ export default function SaveToCollectionModal(): React.ReactElement | null {
     let cancelled = false
     setLoading(true)
     setMembership(null)
-    Promise.all([collectionsApi.list().catch(() => ({ collections: [], incomingInvites: [] })), membershipQuery ? collectionsApi.membership(membershipQuery).catch(() => ({ saved: false, lists: [] as CollectionMembership['lists'] })) : Promise.resolve({ saved: false, lists: [] as CollectionMembership['lists'] })])
+    void Promise.all([collectionsApi.list().catch(() => ({ collections: [], incomingInvites: [] })), membershipQuery ? collectionsApi.membership(membershipQuery).catch(() => ({ saved: false, lists: [] as CollectionMembership['lists'] })) : Promise.resolve({ saved: false, lists: [] as CollectionMembership['lists'] })])
       .then(([listRes, m]) => {
         if (cancelled) return
         setLists(listRes.collections)

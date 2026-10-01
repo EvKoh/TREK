@@ -184,7 +184,7 @@ export default function MAdminDefaultUserSettings(): React.ReactElement {
       setMapboxStyle(nextStyle)
       patch[styleSettingKey(nextProvider)] = nextStyle
     }
-    save(patch)
+    void save(patch)
   }
 
   // No active value when the setting is unset → segmented shows no pill, matching
@@ -391,7 +391,7 @@ export default function MAdminDefaultUserSettings(): React.ReactElement {
                   onBlur={() => {
                     const nextStyle = normalizeStyleForProvider(mapProvider, mapboxStyle)
                     setMapboxStyle(nextStyle)
-                    save({ [styleKey]: nextStyle })
+                    void save({ [styleKey]: nextStyle })
                   }}
                   placeholder={defaultStyleForProvider(mapProvider)}
                 />
@@ -433,7 +433,7 @@ export default function MAdminDefaultUserSettings(): React.ReactElement {
         onClose={() => setCurrencyOpen(false)}
         title={t('settings.currency')}
         value={defaults.default_currency || ''}
-        onSelect={(value) => { if (value) save({ default_currency: value }) }}
+        onSelect={(value) => { if (value) void save({ default_currency: value }) }}
         options={currenciesWith(defaults.default_currency).map((c) => ({ value: c, label: SYMBOLS[c] ? `${c}  ${SYMBOLS[c]}` : c }))}
       />
 
@@ -442,7 +442,7 @@ export default function MAdminDefaultUserSettings(): React.ReactElement {
         onClose={() => setPresetOpen(false)}
         title={t('settings.mapTemplate')}
         value={mapTileUrl}
-        onSelect={(value) => { if (value) { setMapTileUrl(value); save({ map_tile_url: value }) } }}
+        onSelect={(value) => { if (value) { setMapTileUrl(value); void save({ map_tile_url: value }) } }}
         options={MAP_PRESETS.map((p) => ({ value: p.url, label: p.name }))}
       />
 
@@ -451,7 +451,7 @@ export default function MAdminDefaultUserSettings(): React.ReactElement {
         onClose={() => setStyleOpen(false)}
         title={t('admin.defaultSettings.mapboxStyle')}
         value={mapboxStyle}
-        onSelect={(value) => { if (value) { setMapboxStyle(value); save({ [styleKey]: value }) } }}
+        onSelect={(value) => { if (value) { setMapboxStyle(value); void save({ [styleKey]: value }) } }}
         options={glStylePresets.map((p) => ({ value: p.url, label: p.name }))}
       />
     </div>

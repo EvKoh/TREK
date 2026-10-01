@@ -64,7 +64,7 @@ export function useMVacay() {
   // Trip-overlap dots: collect every day of the year covered by an own trip.
   useEffect(() => {
     let cancelled = false
-    ;(async () => {
+    ;void (async () => {
       try {
         const data = await tripsApi.list()
         const dates = new Set<string>()

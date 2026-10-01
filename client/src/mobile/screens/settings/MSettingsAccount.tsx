@@ -647,7 +647,7 @@ function MPasskeysCard({ demoMode }: { demoMode?: boolean }): React.ReactElement
                       value={renameVal}
                       onChange={(e) => setRenameVal(e.target.value)}
                       onKeyDown={(e) => {
-                        if (e.key === 'Enter') handleRename(c.id)
+                        if (e.key === 'Enter') void handleRename(c.id)
                         if (e.key === 'Escape') setRenamingId(null)
                       }}
                     />

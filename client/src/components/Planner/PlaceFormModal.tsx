@@ -634,10 +634,10 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
       } else if (e.key === 'Enter') {
         e.preventDefault()
         if (acHighlight >= 0) {
-          handleSelectSuggestion(acSuggestions[acHighlight])
+          void handleSelectSuggestion(acSuggestions[acHighlight])
         } else {
           setAcSuggestions([])
-          handleMapsSearch()
+          void handleMapsSearch()
         }
       } else if (e.key === 'Escape') {
         // Spent on the list: the dialog leaves an Escape that was already
@@ -648,7 +648,7 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
       }
     } else if (e.key === 'Enter') {
       e.preventDefault()
-      handleMapsSearch()
+      void handleMapsSearch()
     }
   }
 
@@ -1056,7 +1056,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
                   <Tooltip label={t('common.search')}>
                     <button
                       type="button"
-                      onClick={() => { setAcSuggestions([]); handleMapsSearch() }}
+                      onClick={() => { setAcSuggestions([]); void handleMapsSearch() }}
                       disabled={isSearchingMaps}
                       aria-label={t('common.search')}
                       className={`${SIDE_BUTTON} bg-accent text-accent-text hover:opacity-90`}

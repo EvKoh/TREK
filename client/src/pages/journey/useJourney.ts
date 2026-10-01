@@ -42,7 +42,7 @@ export function useJourney() {
   // The bottom-nav "+" opens the new-journey modal via ?create=1.
   useEffect(() => {
     if (searchParams.get('create') === '1') {
-      openCreateModal()
+      void openCreateModal()
       setSearchParams(p => { p.delete('create'); return p }, { replace: true })
     }
   }, [searchParams])

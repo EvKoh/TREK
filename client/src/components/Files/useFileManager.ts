@@ -64,7 +64,7 @@ export function useFileManager({ files = [], onUpload, onDelete, onUpdate, place
 
   // onUpdate doubles as the "files changed" signal towards the parent; the arguments carry no payload.
   const refreshFiles = useCallback(async () => {
-    if (onUpdate) onUpdate(0, {} as any)
+    if (onUpdate) void onUpdate(0, {} as any)
   }, [onUpdate])
 
   const handleStar = async (fileId: number) => {
@@ -185,7 +185,7 @@ export function useFileManager({ files = [], onUpload, onDelete, onUpdate, place
 
   useEffect(() => {
     if (previewFile) {
-      getAuthUrl(previewFile.url, 'download').then(setPreviewFileUrl)
+      void getAuthUrl(previewFile.url, 'download').then(setPreviewFileUrl)
     } else {
       setPreviewFileUrl('')
     }

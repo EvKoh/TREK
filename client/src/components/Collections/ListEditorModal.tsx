@@ -219,7 +219,7 @@ export default function ListEditorModal({ target, onClose, onCreated, onRequestD
           <input
             value={coverQuery}
             onChange={e => setCoverQuery(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); searchCover() } }}
+            onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); void searchCover() } }}
             aria-label={t('dashboard.unsplashSearchPlaceholder')}
             placeholder={t('dashboard.unsplashSearchPlaceholder')}
             className={`${INPUT} flex-1`}

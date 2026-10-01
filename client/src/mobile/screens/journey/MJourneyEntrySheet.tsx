@@ -160,7 +160,7 @@ export default function MJourneyEntrySheet({
     if (!addonsLoaded) return
     if (photoProviders.length === 0) { setProviders([]); return }
     let active = true
-    ;(async () => {
+    ;void (async () => {
       const connected: { id: string; name: string }[] = []
       for (const provider of photoProviders) {
         try {

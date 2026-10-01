@@ -387,7 +387,7 @@ export default function MPackingListTab({ planner }: { planner: TripPlanner }) {
                 autoFocus
                 value={saveTemplateName}
                 onChange={e => setSaveTemplateName(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter') saveAsTemplate() }}
+                onKeyDown={e => { if (e.key === 'Enter') void saveAsTemplate() }}
                 placeholder={t('packing.templateName')}
                 className={`${FIELD_CLS} flex-1`}
               />
@@ -417,7 +417,7 @@ export default function MPackingListTab({ planner }: { planner: TripPlanner }) {
               value={newCategoryName}
               onChange={e => setNewCategoryName(e.target.value)}
               onKeyDown={e => {
-                if (e.key === 'Enter') addNewCategory()
+                if (e.key === 'Enter') void addNewCategory()
                 if (e.key === 'Escape') { setAddingCategory(false); setNewCategoryName('') }
               }}
               placeholder={t('packing.newCategoryPlaceholder')}
@@ -538,7 +538,7 @@ export default function MPackingListTab({ planner }: { planner: TripPlanner }) {
         confirmLabel={t('common.delete')}
         cancelLabel={t('common.cancel')}
         danger
-        onConfirm={() => { setConfirmClear(false); clearChecked() }}
+        onConfirm={() => { setConfirmClear(false); void clearChecked() }}
       />
 
       <MConfirmSheet
@@ -554,7 +554,7 @@ export default function MPackingListTab({ planner }: { planner: TripPlanner }) {
         onConfirm={() => {
           const target = deleteCategoryTarget
           setDeleteCategoryTarget(null)
-          if (target) deleteCategoryItems(target.items)
+          if (target) void deleteCategoryItems(target.items)
         }}
       />
     </TabScroller>
@@ -996,7 +996,7 @@ function PackingItemRow({ item, planner, currentUserId, editMode, canEdit, bagTr
                 autoFocus
                 value={newBagName}
                 onChange={e => setNewBagName(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter') submitNewBag(); if (e.key === 'Escape') { setCreatingBag(false); setNewBagName('') } }}
+                onKeyDown={e => { if (e.key === 'Enter') void submitNewBag(); if (e.key === 'Escape') { setCreatingBag(false); setNewBagName('') } }}
                 placeholder={t('packing.bagName')}
                 className={`${FIELD_CLS} flex-1 py-[6px] text-[0.75rem]`}
               />

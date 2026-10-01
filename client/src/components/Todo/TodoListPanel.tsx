@@ -485,7 +485,7 @@ function NewTaskPane({ tripId, categories, members, defaultCategory, onCreated, 
 
       <div style={FORM_BODY}>
         <input autoFocus value={name} onChange={e => setName(e.target.value)}
-          onKeyDown={e => { if (e.key === 'Enter' && name.trim()) create() }}
+          onKeyDown={e => { if (e.key === 'Enter' && name.trim()) void create() }}
           style={{ ...taskInputStyle, fontSize: 'calc(15px * var(--fs-scale-subtitle, 1))', fontWeight: 600 }}
           placeholder={t('todo.namePlaceholder')} />
         <TodoTaskFields values={fields} onChange={patch => setFields(f => ({ ...f, ...patch }))} categories={categories} members={members} />

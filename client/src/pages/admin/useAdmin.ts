@@ -210,9 +210,9 @@ export function useAdmin() {
   const [rotatingJwt, setRotatingJwt] = useState<boolean>(false)
 
   useEffect(() => {
-    loadData()
-    loadAppConfig()
-    loadApiKeys()
+    void loadData()
+    void loadAppConfig()
+    void loadApiKeys()
     // Skipped rather than caught when the route is closed to us: the request
     // still reaches the network, still answers 403, and still prints a red line
     // in the console of every admin who opens this page. Swallowing the promise
@@ -441,7 +441,7 @@ export function useAdmin() {
       setInviteForm({ max_uses: 1, expires_in_days: 7, trip_id: '' })
       // Copy link to clipboard
       const link = `${window.location.origin}/register?invite=${data.invite.token}`
-      navigator.clipboard.writeText(link).then(() => toast.success(t('admin.invite.copied')))
+      void navigator.clipboard.writeText(link).then(() => toast.success(t('admin.invite.copied')))
     } catch (err: unknown) {
       toast.error(getApiErrorMessage(err, t('admin.invite.createError')))
     }
@@ -459,7 +459,7 @@ export function useAdmin() {
 
   const copyInviteLink = (token: string) => {
     const link = `${window.location.origin}/register?invite=${token}`
-    navigator.clipboard.writeText(link).then(() => toast.success(t('admin.invite.copied')))
+    void navigator.clipboard.writeText(link).then(() => toast.success(t('admin.invite.copied')))
   }
 
   const handleEditUser = (user) => {

@@ -301,7 +301,7 @@ export default function PlPlaceSearch({ planner, locationBias, onPick, onResolvi
           onKeyDown={e => {
             if (e.key === 'Enter') {
               e.preventDefault()
-              handleSearch()
+              void handleSearch()
             }
           }}
           onBlur={() => setTimeout(() => setSuggestions([]), 150)}

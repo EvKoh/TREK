@@ -205,7 +205,7 @@ export default function AddPlaceToCollectionModal({ isOpen, collectionId, collec
                 type="text"
                 value={query}
                 onChange={e => { setQuery(e.target.value); setNoResults(false) }}
-                onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); search() } }}
+                onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); void search() } }}
                 aria-label={t('collections.addPlaceSearch')}
                 placeholder={t('collections.addPlaceSearch')}
                 className={`${INPUT} pl-8`}

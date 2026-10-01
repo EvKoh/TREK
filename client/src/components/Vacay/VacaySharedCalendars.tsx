@@ -64,7 +64,7 @@ export default function VacaySharedCalendars() {
     <div className="vg-card rounded-[22px]" style={{ padding: '14px 18px' }}>
       <div className="flex items-center justify-between mb-2">
         <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--vg-ink3)' }}>{t('vacay.sharedCalendars')}</span>
-        <button type="button" onClick={() => { setShowShare(true); loadAvailable() }}
+        <button type="button" onClick={() => { setShowShare(true); void loadAvailable() }}
           className="w-7 h-7 rounded-lg flex items-center justify-center transition-colors"
           style={{ color: 'var(--vg-ink3)' }}
           title={t('vacay.shareCalendar')}>

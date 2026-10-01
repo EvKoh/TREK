@@ -644,7 +644,7 @@ function SidebarContent({ data, stats, regionsVisited, countryRegions, onOpenPla
           <div ref={bucketSearchRowRef} style={{ display: 'flex', gap: 4 }}>
             <input type="text" value={bucketForm.name || bucketSearch}
               onChange={e => { const v = e.target.value; if (bucketForm.name) setBucketForm({ ...bucketForm, name: v }); else setBucketSearch(v) }}
-              onKeyDown={e => { if (e.key === 'Enter' && !bucketForm.name) onSearchBucket(); else if (e.key === 'Enter') onAddBucket(); if (e.key === 'Escape') setShowBucketAdd(false) }}
+              onKeyDown={e => { if (e.key === 'Enter' && !bucketForm.name) void onSearchBucket(); else if (e.key === 'Enter') void onAddBucket(); if (e.key === 'Escape') setShowBucketAdd(false) }}
               placeholder={t('atlas.bucketNamePlaceholder')}
               autoFocus
               className="border border-edge text-content bg-surface-input"

@@ -46,7 +46,7 @@ export default function PackingTemplateManager() {
   const toast = useToast()
   const { t } = useTranslation()
 
-  useEffect(() => { loadTemplates() }, [])
+  useEffect(() => { void loadTemplates() }, [])
 
   const loadTemplates = async () => {
     setIsLoading(true)
@@ -178,7 +178,7 @@ export default function PackingTemplateManager() {
         <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-3">
           <Package size={16} className="text-slate-400 flex-shrink-0" />
           <input autoFocus value={createName} onChange={e => setCreateName(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter') handleCreateTemplate(); if (e.key === 'Escape') setShowCreate(false) }}
+            onKeyDown={e => { if (e.key === 'Enter') void handleCreateTemplate(); if (e.key === 'Escape') setShowCreate(false) }}
             placeholder={t('admin.packingTemplates.namePlaceholder')} className={inputStyle} />
           <button type="button" onClick={handleCreateTemplate} className={`${btnIcon} text-slate-600 hover:text-slate-900`}><Check size={16} /></button>
           <button type="button" onClick={() => setShowCreate(false)} className={`${btnIcon} text-slate-400 hover:text-slate-600`}><X size={16} /></button>
@@ -203,7 +203,7 @@ export default function PackingTemplateManager() {
                 {editingTemplate === tmpl.id ? (
                   <input autoFocus value={editTemplateName} onChange={e => setEditTemplateName(e.target.value)}
                     onBlur={() => handleRenameTemplate(tmpl.id)}
-                    onKeyDown={e => { if (e.key === 'Enter') handleRenameTemplate(tmpl.id); if (e.key === 'Escape') setEditingTemplate(null) }}
+                    onKeyDown={e => { if (e.key === 'Enter') void handleRenameTemplate(tmpl.id); if (e.key === 'Escape') setEditingTemplate(null) }}
                     className="flex-1 px-2 py-0.5 border border-slate-300 rounded text-sm" />
                 ) : (
                   <button type="button" onClick={() => toggleExpand(tmpl.id)} className="flex-1 text-left bg-transparent border-0 p-0 text-sm font-medium text-slate-700 cursor-pointer">{tmpl.name}</button>
@@ -230,7 +230,7 @@ export default function PackingTemplateManager() {
                             <>
                               <input autoFocus value={editCatName} onChange={e => setEditCatName(e.target.value)}
                                 onBlur={() => handleRenameCategory(cat.id)}
-                                onKeyDown={e => { if (e.key === 'Enter') handleRenameCategory(cat.id); if (e.key === 'Escape') setEditingCatId(null) }}
+                                onKeyDown={e => { if (e.key === 'Enter') void handleRenameCategory(cat.id); if (e.key === 'Escape') setEditingCatId(null) }}
                                 className="flex-1 px-2 py-0.5 border border-slate-300 rounded text-sm font-semibold" />
                             </>
                           ) : (
@@ -253,7 +253,7 @@ export default function PackingTemplateManager() {
                                 {editingItemId === item.id ? (
                                   <>
                                     <input autoFocus value={editItemName} onChange={e => setEditItemName(e.target.value)}
-                                      onKeyDown={e => { if (e.key === 'Enter') handleRenameItem(item.id); if (e.key === 'Escape') setEditingItemId(null) }}
+                                      onKeyDown={e => { if (e.key === 'Enter') void handleRenameItem(item.id); if (e.key === 'Escape') setEditingItemId(null) }}
                                       className="flex-1 px-2 py-1 border border-slate-200 rounded-lg text-sm" />
                                     <button type="button" onClick={() => handleRenameItem(item.id)} className="p-1 text-slate-600 hover:text-slate-900"><Check size={13} /></button>
                                     <button type="button" onClick={() => setEditingItemId(null)} className="p-1 text-slate-400"><X size={13} /></button>
@@ -277,7 +277,7 @@ export default function PackingTemplateManager() {
                             {addingItemToCatId === cat.id && (
                               <div className="flex items-center gap-2 px-4 py-2">
                                 <input ref={addItemRef} value={newItemName} onChange={e => setNewItemName(e.target.value)}
-                                  onKeyDown={e => { if (e.key === 'Enter' && newItemName.trim()) handleAddItem(cat.id); if (e.key === 'Escape') { setAddingItemToCatId(null); setNewItemName('') } }}
+                                  onKeyDown={e => { if (e.key === 'Enter' && newItemName.trim()) void handleAddItem(cat.id); if (e.key === 'Escape') { setAddingItemToCatId(null); setNewItemName('') } }}
                                   placeholder={t('admin.packingTemplates.itemName')}
                                   className="flex-1 px-2 py-1 border border-slate-200 rounded-lg text-sm" />
                                 <button type="button" onClick={() => handleAddItem(cat.id)} disabled={!newItemName.trim()}
@@ -296,7 +296,7 @@ export default function PackingTemplateManager() {
                   {addingCategory ? (
                     <div className="flex items-center gap-2">
                       <input autoFocus value={newCatName} onChange={e => setNewCatName(e.target.value)}
-                        onKeyDown={e => { if (e.key === 'Enter') handleAddCategory(); if (e.key === 'Escape') { setAddingCategory(false); setNewCatName('') } }}
+                        onKeyDown={e => { if (e.key === 'Enter') void handleAddCategory(); if (e.key === 'Escape') { setAddingCategory(false); setNewCatName('') } }}
                         placeholder={t('admin.packingTemplates.categoryName')}
                         className="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm" />
                       <button type="button" onClick={handleAddCategory} className={`${btnIcon} text-slate-600 hover:text-slate-900`}><Check size={15} /></button>

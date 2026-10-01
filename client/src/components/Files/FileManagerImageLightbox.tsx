@@ -168,7 +168,7 @@ function ThumbImg({ file, active, onClick }: { file: TripFile & { url: string };
   useEffect(() => {
     if (!visible || fileIsVideo) return
     let current = true
-    getAuthUrl(file.url, 'download').then(u => { if (current) setSrc(u) })
+    void getAuthUrl(file.url, 'download').then(u => { if (current) setSrc(u) })
     return () => { current = false }
   }, [file.url, fileIsVideo, visible])
 

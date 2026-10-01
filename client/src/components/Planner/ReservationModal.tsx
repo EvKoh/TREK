@@ -332,8 +332,8 @@ export function ReservationModal({ isOpen, onClose, onSave, reservation, days, p
     }
   }
 
-  const handleCreateExpense = () => { expenseIntentRef.current = { create: true }; handleSubmit() }
-  const handleEditExpense = (item: BudgetItem) => { expenseIntentRef.current = { editItem: item }; handleSubmit() }
+  const handleCreateExpense = () => { expenseIntentRef.current = { create: true }; void handleSubmit() }
+  const handleEditExpense = (item: BudgetItem) => { expenseIntentRef.current = { editItem: item }; void handleSubmit() }
   const handleRemoveExpense = async (item: BudgetItem) => {
     try { await deleteBudgetItem(Number(tripId), item.id) } catch { toast.error(t('common.unknownError')) }
   }

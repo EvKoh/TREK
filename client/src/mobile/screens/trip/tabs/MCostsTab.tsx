@@ -599,7 +599,7 @@ export default function MCostsTab({ planner, shell }: MTabScreenProps) {
         onConfirm={() => {
           const item = confirmDelete
           setConfirmDelete(null)
-          if (item) handleDeleteExpense(item)
+          if (item) void handleDeleteExpense(item)
         }}
       />
 

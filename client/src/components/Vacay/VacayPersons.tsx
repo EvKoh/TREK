@@ -73,7 +73,7 @@ export default function VacayPersons() {
     <div className="vg-card rounded-[22px]" style={{ padding: '14px 18px' }}>
       <div className="flex items-center justify-between mb-2">
         <span style={{ fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--vg-ink3)' }}>{t('vacay.persons')}</span>
-        <button type="button" onClick={() => { setShowInvite(true); loadAvailable() }}
+        <button type="button" onClick={() => { setShowInvite(true); void loadAvailable() }}
           className="w-7 h-7 rounded-lg flex items-center justify-center transition-colors"
           style={{ color: 'var(--vg-ink3)' }}>
           <UserPlus size={15} />

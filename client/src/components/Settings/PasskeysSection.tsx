@@ -138,7 +138,7 @@ export default function PasskeysSection({ demoMode }: { demoMode?: boolean }): R
                         type="text"
                         value={renameVal}
                         onChange={e => setRenameVal(e.target.value)}
-                        onKeyDown={e => { if (e.key === 'Enter') handleRename(c.id); if (e.key === 'Escape') setRenamingId(null) }}
+                        onKeyDown={e => { if (e.key === 'Enter') void handleRename(c.id); if (e.key === 'Escape') setRenamingId(null) }}
                         className="flex-1 px-2 py-1 border border-slate-300 rounded text-sm"
                       />
                       <button type="button" onClick={() => handleRename(c.id)} className="p-1 text-emerald-600" aria-label={t('common.save')}><Check size={16} /></button>

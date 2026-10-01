@@ -36,7 +36,7 @@ export function AssignModal(S: FileManagerState) {
               const val = e.target.value.trim()
               const file = files.find(f => f.id === assignFileId)
               if (file && val !== (file.description || '')) {
-                handleAssign(file.id, { description: val } as any)
+                void handleAssign(file.id, { description: val } as any)
               }
             }}
             onKeyDown={e => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur() }}

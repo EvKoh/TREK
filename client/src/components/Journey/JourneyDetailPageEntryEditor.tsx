@@ -232,7 +232,7 @@ export function EntryEditor({ entry, journeyId, tripDates, galleryPhotos, trips,
     // The discovery is not tied to the open tab, so the result is applied even if
     // the user left the tab meanwhile — dropping it would leave providersLoading
     // stuck and block every later run of this effect.
-    ;(async () => {
+    ;void (async () => {
       try {
         const addonsData = await addonsApi.enabled()
         const enabled = (addonsData.addons || []).filter((a: any) => a.type === 'photo_provider' && a.enabled)
