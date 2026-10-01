@@ -193,6 +193,14 @@ Totals for a dashboard. Built for widgets like Homepage's `customapi`, which ren
     "end_date": "2026-02-14",
     "country": "JP",
     "countries": ["JP"]
+  },
+  "next_trip": {
+    "title": "Lisbon long weekend",
+    "start_date": "2026-11-12",
+    "end_date": "2026-11-16",
+    "days_until": 42,
+    "country": "PT",
+    "countries": ["PT"]
   }
 }
 ```
@@ -200,6 +208,8 @@ Totals for a dashboard. Built for widgets like Homepage's `customapi`, which ren
 These are the same figures TREK's own dashboard shows, computed from the same source — a widget cannot disagree with the passport card next to it. In particular `total_countries` follows TREK's notion of *visited*: countries reached only by a flight or train count, layovers do not, and countries hidden by hand in Atlas stay hidden.
 
 `last_trip` is the most recent trip that has **started** — a trip booked for next year is not one you have been on — and is `null` when every trip is still ahead. `country` is the country most of its places sit in, and is the head of `countries`, which lists them all for a trip that crossed a border. Both are empty or `null` for a trip whose places were never geocoded.
+
+`next_trip` is its counterpart: the trip with the nearest start date that has **not started yet**, with the same `country` and `countries`, and `null` when nothing is planned. A trip that is under way is still `last_trip`, so the two never name the same trip. `days_until` counts whole days from today to the start date, so `1` means tomorrow.
 
 A Homepage widget then needs no scripting:
 
@@ -220,6 +230,8 @@ A Homepage widget then needs no scripting:
           label: Cities
         - field: last_trip.country
           label: Last
+        - field: next_trip.days_until
+          label: Days to go
 ```
 
 ## Notes for integrators
