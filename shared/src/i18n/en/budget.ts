@@ -126,6 +126,7 @@ const budget: TranslationStrings = {
   'costs.payersUnbalanced': 'Payer amounts must add up to {amount}',
   'costs.splitBetween': 'Split equally between',
   'costs.split': 'Split',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Equally',
   'costs.splitCustom': 'Custom',
   'costs.splitTicket': 'Ticket',

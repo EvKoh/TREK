@@ -151,6 +151,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'Πατήστε για προσθήκη',
   'costs.amount': 'Ποσό',
   'costs.split': 'Διαμοιρασμός',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Εξίσου',
   'costs.splitCustom': 'Προσαρμογή',
   'costs.splitTicket': 'Απόδειξη',

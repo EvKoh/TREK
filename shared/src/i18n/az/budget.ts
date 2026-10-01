@@ -141,6 +141,7 @@ const budget: TranslationStrings = {
 
   'costs.splitBetween': 'Bərabər bölüşdürüləcək şəxslər',
   'costs.split': 'Bölüşdür',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Bərabər',
   'costs.splitCustom': 'Fərdi',
   'costs.splitTicket': 'Qəbz üzrə',

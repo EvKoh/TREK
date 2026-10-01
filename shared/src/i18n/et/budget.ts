@@ -126,6 +126,7 @@ const budget: TranslationStrings = {
   'costs.payersUnbalanced': 'Maksjate summad peavad kokku andma {amount}',
   'costs.splitBetween': 'Jaga võrdselt järgmiste vahel',
   'costs.split': 'Jaotus',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Võrdselt',
   'costs.splitCustom': 'Kohandatud',
   'costs.splitTicket': 'Tšekk',

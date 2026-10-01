@@ -126,6 +126,7 @@ const budget: TranslationStrings = {
   'costs.payersUnbalanced': 'Súčet súm platcov musí byť {amount}',
   'costs.splitBetween': 'Rozdeliť rovným dielom medzi',
   'costs.split': 'Rozdeliť',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Rovnakým dielom',
   'costs.splitCustom': 'Vlastné',
   'costs.splitTicket': 'Účtenka',

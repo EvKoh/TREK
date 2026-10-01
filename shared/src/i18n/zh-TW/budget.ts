@@ -149,6 +149,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': '點按以加入',
   'costs.amount': '金額',
   'costs.split': '分攤',
+  'costs.splitChipLabel': '{name}：{amount}',
   'costs.splitEqually': '平均',
   'costs.splitCustom': '自訂',
   'costs.splitTicket': '收據',

@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'Nhấn để bao gồm',
   'costs.amount': 'Số lượng',
   'costs.split': 'Chia tiền',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Chia đều',
   'costs.splitCustom': 'Tùy chỉnh',
   'costs.splitTicket': 'Hóa đơn',

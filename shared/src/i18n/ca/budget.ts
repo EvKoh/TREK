@@ -118,6 +118,7 @@ const budget: TranslationStrings = {
   'costs.whoPaid': 'Qui ha pagat?',
   'costs.splitBetween': 'Dividir a parts iguals entre',
   'costs.split': 'Dividir',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'A parts iguals',
   'costs.splitCustom': 'Personalitzat',
   'costs.splitTicket': 'Tiquet',

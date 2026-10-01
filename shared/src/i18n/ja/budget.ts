@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'タップして追加',
   'costs.amount': '金額',
   'costs.split': '分け方',
+  'costs.splitChipLabel': '{name}：{amount}',
   'costs.splitEqually': '均等',
   'costs.splitCustom': 'カスタム',
   'costs.splitTicket': 'レシート',

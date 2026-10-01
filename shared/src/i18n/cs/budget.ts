@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'Klepnutím zahrnout',
   'costs.amount': 'Částka',
   'costs.split': 'Rozdělení',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Rovným dílem',
   'costs.splitCustom': 'Vlastní',
   'costs.splitTicket': 'Účtenka',

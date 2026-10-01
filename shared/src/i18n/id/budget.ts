@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'Ketuk untuk menyertakan',
   'costs.amount': 'Jumlah',
   'costs.split': 'Pembagian',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Rata',
   'costs.splitCustom': 'Kustom',
   'costs.splitTicket': 'Struk',

@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'Toca para incluir',
   'costs.amount': 'Importe',
   'costs.split': 'Dividir',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'A partes iguales',
   'costs.splitCustom': 'Personalizado',
   'costs.splitTicket': 'Recibo',

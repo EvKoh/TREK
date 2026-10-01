@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': '탭하여 포함',
   'costs.amount': '금액',
   'costs.split': '나누기',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': '균등하게',
   'costs.splitCustom': '직접 설정',
   'costs.splitTicket': '영수증',

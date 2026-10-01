@@ -278,6 +278,43 @@ describe('CostsPanel — settlements in the ledger', () => {
     expect(within(hotelRow).queryByText(/you lent|you borrowed/)).toBeNull()
   })
 
+  it('lists who an expense is split between, with each part, in the row (#1763)', async () => {
+    seedStore(useAuthStore, { user: buildUser({ id: 1, username: 'alice' }), isAuthenticated: true })
+    seedStore(useSettingsStore, { settings: { ...useSettingsStore.getState().settings, default_currency: 'EUR' } })
+    const custom = {
+      ...buildBudgetItem({ trip_id: 1, category: 'food', name: 'Dinner' }),
+      total_price: 90,
+      payers: [{ user_id: 1, amount: 90, username: 'alice' }],
+      members: [{ user_id: 1, username: 'alice', paid: 1, amount: 60 }, { user_id: 2, username: 'bob', paid: 0, amount: 30 }],
+    }
+    const crowd = {
+      ...buildBudgetItem({ trip_id: 1, category: 'activity', name: 'Boat' }),
+      total_price: 80,
+      payers: [{ user_id: 1, amount: 80, username: 'alice' }],
+      members: Array.from({ length: 8 }, (_, i) => ({ user_id: i + 1, username: `p${i + 1}`, paid: 0 })),
+    }
+    server.use(
+      http.get('/api/trips/1/budget', () => HttpResponse.json({ items: [custom, crowd] })),
+      http.get('/api/trips/1/budget/settlement', () => HttpResponse.json({ balances: [], flows: [], settlements: [] })),
+    )
+    render(<CostsPanel tripId={1} tripMembers={tripMembers} />)
+
+    const dinnerRow = (await screen.findByText('Dinner')).closest('.exp-row') as HTMLElement
+    const chips = within(dinnerRow).getAllByTestId('split-chip')
+    expect(chips).toHaveLength(2)
+    expect(chips[0]).toHaveTextContent('60')
+    expect(chips[1]).toHaveTextContent('30')
+    // alice marked her part as paid; bob has not.
+    expect(within(chips[0]).getByLabelText('paid')).toBeInTheDocument()
+    expect(within(chips[1]).queryByLabelText('paid')).toBeNull()
+
+    // Eight people fold into five chips and a "+3".
+    const boatRow = (await screen.findByText('Boat')).closest('.exp-row') as HTMLElement
+    expect(within(boatRow).getAllByTestId('split-chip')).toHaveLength(5)
+    expect(within(boatRow).getByText('+3')).toBeInTheDocument()
+    expect(within(boatRow).getAllByTestId('split-chip')[0]).toHaveTextContent('10')
+  })
+
   it('sums only unfinished expenses in the Outstanding amount card', async () => {
     // Display in the trip's own currency so FX conversion is an identity — keeps the asserted sum deterministic.
     seedStore(useSettingsStore, { settings: { ...useSettingsStore.getState().settings, default_currency: 'EUR' } })
@@ -2463,8 +2500,10 @@ describe('CostsPanel: a bill entered in the display currency (#2525)', () => {
 
     await screen.findByText('Aparthotel Silver')
     expect(screen.getByText(/\$400\.88 → 342,63\s€$/)).toBeInTheDocument()
-    expect(screen.getByText('$395.77')).toBeInTheDocument()
-    expect(screen.getByText('$30.00')).toBeInTheDocument()
+    // The hotel's split chips can carry the same figure, so look past them to the payment.
+    const outsideChips = (text: string) => screen.queryAllByText(text).filter(el => !el.closest('[data-testid="split-chip"]'))
+    expect(outsideChips('$395.77')).toHaveLength(1)
+    expect(outsideChips('$30.00')).toHaveLength(1)
     expect(screen.queryByText('$34.65')).toBeNull()
   })
 

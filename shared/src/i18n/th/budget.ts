@@ -122,6 +122,7 @@ const budget: TranslationStrings = {
   'costs.payersUnbalanced': 'จำนวนเงินของผู้ชำระจะต้องรวมกันไม่เกิน {amount}',
   'costs.splitBetween': 'แบ่งเท่าๆ กันระหว่าง',
   'costs.split': 'แยก',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'เท่าๆ กัน',
   'costs.splitCustom': 'กำหนดเอง',
   'costs.splitTicket': 'ตั๋ว',

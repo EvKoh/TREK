@@ -37,6 +37,9 @@ import { CountPill, EYEBROW } from '../Planner/bookings/bookingParts'
 import CostsToolbar, { type CostsView } from './CostsToolbar'
 import CostsTable, { CostsTableSummary } from './CostsTable'
 
+/** Split chips a row shows before the rest fold into "+N" (#1763). */
+const SPLIT_CHIP_MAX = 6
+
 interface CostsPanelProps {
   tripId: number
   tripMembers?: TripMember[]
@@ -195,19 +198,20 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
   // total but stays out of settlements until who-paid is filled in. A negative
   // total (a refund, #2176) is just as unfinished until its recipient is named.
   const isUnfinished = (e: BudgetItem) => baseTotal(e) !== 0 && (e.payers || []).filter(p => p.amount !== 0).length === 0
-  const myShareOf = (e: BudgetItem) => {
-    // Nobody paid, so nobody owes: the ledger skips these entirely (#2225), and
-    // counting them here left the tile contradicting the balances right beside it.
-    if (isUnfinished(e)) return 0
-    const myMember = (e.members || []).find(m => m.user_id === me)
-    if (!myMember) return 0
-    if (myMember.amount !== null && myMember.amount !== undefined) {
-      return booked(myMember.amount, e)
+  // A member's part of an expense: the custom amount when one was set, else the
+  // equal split the server settles with, in the display currency.
+  const shareOf = (e: BudgetItem, userId: number) => {
+    const member = (e.members || []).find(m => m.user_id === userId)
+    if (!member) return 0
+    if (member.amount !== null && member.amount !== undefined) {
+      return booked(member.amount, e)
     }
     const shares = splitEqualShares(e.total_price || 0, e.members || [], e.id)
-    const myShare = shares[me] || 0
-    return booked(myShare, e)
+    return booked(shares[userId] || 0, e)
   }
+  // Nobody paid, so nobody owes: the ledger skips these entirely (#2225), and
+  // counting them here left the tile contradicting the balances right beside it.
+  const myShareOf = (e: BudgetItem) => (isUnfinished(e) ? 0 : shareOf(e, me))
 
   // `booked` carries the rates. They can land after the expenses, and without it in the
   // deps the cards kept the sums they were first added up with while the rows moved on.
@@ -889,6 +893,7 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
               ))}
             </div>
           )}
+          {SplitChips({ e })}
         </div>
 
         {/* The note, marked by a rule in the category colour instead of a box, so
@@ -908,6 +913,39 @@ export default function CostsPanel({ tripId, tripMembers = [] }: CostsPanelProps
         </div>
       </div>
       {canEdit && RowActions({ onEdit: () => { setEditing(e); setModalOpen(true) }, onDelete: () => handleDelete(e.id), deleteLabel: t('common.delete') })}
+      </div>
+    )
+  }
+
+  // Who an expense is split between and each one's part (#1763), so checking that
+  // the right people are in no longer means opening every expense. Quieter than
+  // the payer chips above, and capped so a large group cannot crowd the row.
+  function SplitChips({ e }: { e: BudgetItem }) {
+    const members = e.members || []
+    if (members.length === 0) return null
+    const shown = members.length > SPLIT_CHIP_MAX ? members.slice(0, SPLIT_CHIP_MAX - 1) : members
+    const rest = members.slice(shown.length)
+    const chip = 'inline-flex items-center gap-[5px] rounded-full bg-surface-tertiary text-content-secondary'
+    return (
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 5, marginTop: 6 }}>
+        <span className="text-content-faint" style={{ fontSize: 'calc(10px * var(--fs-scale-caption, 1))', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', marginRight: 2 }}>{t('costs.split')}</span>
+        {shown.map(m => {
+          const share = fmt(shareOf(e, m.user_id))
+          return (
+            <Tooltip key={m.user_id} label={t('costs.splitChipLabel', { name: personName(m.user_id), amount: share })}>
+            <span className={chip} data-testid="split-chip" style={{ padding: '2px 8px 2px 2px', fontSize: 'calc(11px * var(--fs-scale-caption, 1))' }}>
+              <Avatar id={m.user_id} size={16} />
+              <span style={{ fontWeight: 600, fontVariantNumeric: 'tabular-nums' }}>{share}</span>
+              {m.paid ? <Check size={11} strokeWidth={2.6} className="text-success" aria-label={t('costs.paid')} /> : null}
+            </span>
+            </Tooltip>
+          )
+        })}
+        {rest.length > 0 && (
+          <Tooltip label={rest.map(m => t('costs.splitChipLabel', { name: personName(m.user_id), amount: fmt(shareOf(e, m.user_id)) })).join(', ')}>
+          <span className={chip} style={{ padding: '2px 8px', fontSize: 'calc(11px * var(--fs-scale-caption, 1))', fontWeight: 700 }}>+{rest.length}</span>
+          </Tooltip>
+        )}
       </div>
     )
   }

@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'Eklemek için dokun',
   'costs.amount': 'Tutar',
   'costs.split': 'Paylaşım',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Eşit',
   'costs.splitCustom': 'Özel',
   'costs.splitTicket': 'Fiş',

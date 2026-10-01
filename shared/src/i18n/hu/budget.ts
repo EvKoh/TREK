@@ -150,6 +150,7 @@ const budget: TranslationStrings = {
   'costs.tapToInclude': 'Koppintson a hozzáadáshoz',
   'costs.amount': 'Összeg',
   'costs.split': 'Felosztás',
+  'costs.splitChipLabel': '{name}: {amount}',
   'costs.splitEqually': 'Egyenlően',
   'costs.splitCustom': 'Egyéni',
   'costs.splitTicket': 'Blokk',
