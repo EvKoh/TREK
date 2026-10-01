@@ -325,7 +325,7 @@ export function JourneySettingsDialog({ journey, onClose, onSaved, onOpenInvite,
                   </span>
                   <ToggleSwitch
                     on={!!journey.photo_location}
-                    onToggle={() => { if (!savingPhotoLocation) handlePhotoLocationToggle() }}
+                    onToggle={() => { if (!savingPhotoLocation) void handlePhotoLocationToggle() }}
                     label={t('journey.settings.photoLocation')}
                   />
                 </div>
