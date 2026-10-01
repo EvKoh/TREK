@@ -16,6 +16,7 @@ import { useSaveToCollectionStore } from '../../store/saveToCollectionStore'
 import { placeToSaveTarget } from '../Collections/saveTarget'
 import type { Place, Category, Day, AssignmentsMap } from '../../types'
 import { getGoogleMapsUrlForPlace } from './placeGoogleMaps'
+import { placeMatchesSearch } from '../../utils/placeSearch'
 import { safeHttpUrl } from '../../utils/safeUrl'
 import { plannedPlaceIds, plannedPlaceIdsForDay, type PlannedAccommodation } from '../../utils/plannedPlaces'
 import type { MenuEntry } from './planParts'
@@ -290,8 +291,7 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
           if (!categoryFilters.has('uncategorized')) return false
         } else if (!categoryFilters.has(String(p.category_id))) return false
       }
-      if (search && !p.name.toLowerCase().includes(search.toLowerCase()) &&
-          !(p.address || '').toLowerCase().includes(search.toLowerCase())) return false
+      if (!placeMatchesSearch(p, search)) return false
       if (ratingFilter !== 'all' && (p.rating_avg == null || p.rating_avg < ratingFilter)) return false
       if (localityFilter && !matchesLocality(localityOf.get(p.id), localityFilter)) return false
       return true
@@ -307,16 +307,13 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
    * different questions.
    */
   const filterCounts = useMemo(() => {
-    const needle = search.toLowerCase()
     const base = places.filter(p => {
       if (categoryFilters.size > 0) {
         if (p.category_id == null) {
           if (!categoryFilters.has('uncategorized')) return false
         } else if (!categoryFilters.has(String(p.category_id))) return false
       }
-      if (search && !p.name.toLowerCase().includes(needle) &&
-          !(p.address || '').toLowerCase().includes(needle)) return false
-      return true
+      return placeMatchesSearch(p, search)
     })
     return {
       all: base.length,
