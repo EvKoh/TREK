@@ -1817,7 +1817,7 @@ describe('PlaceFormModal remaining branches', () => {
       await user.clear(searchInput);
       await user.type(searchInput, String(place.name));
       const searchRow = searchInput.closest('.flex') as HTMLElement;
-      await user.click(within(searchRow).getByRole('button'));
+      await user.click(within(searchRow).getByRole('button', { name: 'Search' }));
       await user.click(await screen.findByText(String(place.name)));
     };
 

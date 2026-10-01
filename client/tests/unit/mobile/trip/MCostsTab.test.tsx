@@ -465,7 +465,7 @@ describe('MCostsTab', () => {
     fireEvent.change(within(dialog).getByPlaceholderText('0.00'), { target: { value: '12,5' } })
     expect(submit).toBeEnabled()
     fireEvent.click(submit)
-    expect(create).toHaveBeenCalledWith(7, { from_user_id: 1, to_user_id: 2, amount: 12.5, currency: 'USD', settled_at: localToday() })
+    expect(create).toHaveBeenCalledWith(7, { from_user_id: 1, to_user_id: 2, amount: 12.5, currency: 'USD', settled_at: localToday(), note: null })
     await waitFor(() => expect(settlementBases).toHaveLength(2))
   })
 
@@ -690,7 +690,7 @@ describe('MCostsTab', () => {
     fireEvent.change(within(dialog).getByPlaceholderText('0.00'), { target: { value: '30' } })
     fireEvent.click(submit)
 
-    expect(update).toHaveBeenCalledWith(7, 501, { from_user_id: 1, to_user_id: 2, amount: 30, currency: 'USD', settled_at: '2026-04-28' })
+    expect(update).toHaveBeenCalledWith(7, 501, { from_user_id: 1, to_user_id: 2, amount: 30, currency: 'USD', settled_at: '2026-04-28', note: null })
     await waitFor(() => expect(settlementBases).toHaveLength(2))
   })
 
@@ -727,7 +727,7 @@ describe('MCostsTab', () => {
     // The pound rate the phone holds goes along; the server only uses it when the
     // currency changes and it has no rate of its own, so the frozen one stays.
     expect(update).toHaveBeenCalledWith(7, 505, {
-      from_user_id: 1, to_user_id: 2, amount: 10, currency: 'GBP', settled_at: '2026-04-28',
+      from_user_id: 1, to_user_id: 2, amount: 10, currency: 'GBP', settled_at: '2026-04-28', note: null,
       fallback_fx: { base: 'USD', rates: { GBP: 0.5 } },
     })
   })

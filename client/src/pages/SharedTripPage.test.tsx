@@ -742,6 +742,7 @@ describe('SharedTripPage', () => {
 
   /** The select over the map and its step buttons. */
   const dayPicker = () => within(screen.getByTestId('map-day-picker'));
+  const onMap = () => within(screen.getByTestId('map-container'));
   const nextDay = () => fireEvent.click(dayPicker().getByRole('button', { name: 'Next day' }));
   const prevDay = () => fireEvent.click(dayPicker().getByRole('button', { name: 'Previous day' }));
   /** The card of one day, found by its title. */
@@ -912,18 +913,19 @@ describe('SharedTripPage', () => {
         assignments: { '7': [{ id: 301, day_id: 7, place_id: 201, order_index: 0, place: withImage }] },
       }));
 
-      // Whole trip: every geocoded place has a marker, the Pantheon too, though no day visits it.
-      expect(screen.getByText('Pantheon')).toBeInTheDocument();
-      expect(screen.queryByText('Seine Walk')).toBeNull();
+      // Whole trip: every geocoded place has a marker on the map (the unplanned card
+      // lists the Pantheon as well, so look only at the map's tooltips), the Pantheon too, though no day visits it.
+      expect(onMap().getByText('Pantheon')).toBeInTheDocument();
+      expect(onMap().queryByText('Seine Walk')).toBeNull();
 
       // Once picked, the select over the map names the day as well; the card is the one in an article.
       const cardTitle = () => screen.getAllByText('Day One').find(el => el.closest('article')) as HTMLElement;
       fireEvent.click(cardTitle());
-      await waitFor(() => expect(screen.queryByText('Pantheon')).toBeNull());
+      await waitFor(() => expect(onMap().queryByText('Pantheon')).toBeNull());
       expect(cardTitle().closest('[aria-pressed]')).toHaveAttribute('aria-pressed', 'true');
 
       fireEvent.click(cardTitle());
-      await waitFor(() => expect(screen.getByText('Pantheon')).toBeInTheDocument());
+      await waitFor(() => expect(onMap().getByText('Pantheon')).toBeInTheDocument());
     });
   });
 
@@ -1036,14 +1038,15 @@ describe('SharedTripPage', () => {
         assignments: { '7': [{ id: 301, day_id: 7, place_id: 201, order_index: 0, place: louvre }] },
       }));
 
-      // All: both geocoded places are on the map, so Orsay's tooltip is present.
-      expect(screen.getByText('Orsay')).toBeInTheDocument();
+      // All: both geocoded places are on the map, so Orsay's tooltip is present (the
+      // unplanned card names Orsay too, so the check stays inside the map).
+      expect(onMap().getByText('Orsay')).toBeInTheDocument();
 
       nextDay();
-      await waitFor(() => expect(screen.queryByText('Orsay')).toBeNull());
+      await waitFor(() => expect(onMap().queryByText('Orsay')).toBeNull());
 
       prevDay();
-      await waitFor(() => expect(screen.getByText('Orsay')).toBeInTheDocument());
+      await waitFor(() => expect(onMap().getByText('Orsay')).toBeInTheDocument());
     });
 
     it('names the open day in the select and presses its card, and stops at either end', async () => {
@@ -1069,7 +1072,7 @@ describe('SharedTripPage', () => {
       fireEvent.click(dayPicker().getByText('Whole trip'));
       const option = screen.getAllByText('Day One').find(el => !el.closest('article') && !el.closest('[data-testid="map-day-picker"]'));
       fireEvent.click(option as HTMLElement);
-      await waitFor(() => expect(screen.queryByText('Orsay')).toBeNull());
+      await waitFor(() => expect(onMap().queryByText('Orsay')).toBeNull());
     });
   });
 

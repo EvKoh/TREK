@@ -289,10 +289,10 @@ describe('EntryEditor', () => {
   })
 
   it('FE-JRN-EDITOR-012: promoting a photo to first persists the new sort order', async () => {
-    const patched: Array<{ id: string; body: unknown }> = []
-    server.use(http.patch('/api/journeys/photos/:id', async ({ params, request }) => {
-      patched.push({ id: String(params.id), body: await request.json() })
-      return HttpResponse.json({ ok: true })
+    const sent: Array<{ id: string; body: unknown }> = []
+    server.use(http.put('/api/journeys/entries/:id/photos/reorder', async ({ params, request }) => {
+      sent.push({ id: String(params.id), body: await request.json() })
+      return HttpResponse.json({ success: true })
     }))
     const user = userEvent.setup()
     const { container } = mountEditor(buildEntry({ id: 10, photos: [buildPhoto(100), buildPhoto(101)] }))
@@ -300,11 +300,9 @@ describe('EntryEditor', () => {
     expect(screen.getByText('1st')).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Make 1st' }))
 
-    await waitFor(() => expect(patched).toHaveLength(2))
-    expect(patched).toEqual([
-      { id: '101', body: { sort_order: 0 } },
-      { id: '100', body: { sort_order: 1 } },
-    ])
+    // The whole order goes out in one request, not one PATCH per photo.
+    await waitFor(() => expect(sent).toHaveLength(1))
+    expect(sent[0]).toEqual({ id: '10', body: { orderedIds: [101, 100] } })
     const imgs = Array.from(container.querySelectorAll('img')).map(i => i.getAttribute('src'))
     expect(imgs[0]).toBe('/api/photos/101/thumbnail')
   })
@@ -599,7 +597,7 @@ describe('EntryEditor', () => {
 
   it('FE-JRN-EDITOR-029: rolls the order back when persisting it fails', async () => {
     let attempts = 0
-    server.use(http.patch('/api/journeys/photos/:id', () => {
+    server.use(http.put('/api/journeys/entries/:id/photos/reorder', () => {
       attempts += 1
       return HttpResponse.json({ error: 'sort rejected' }, { status: 500 })
     }))
@@ -608,30 +606,31 @@ describe('EntryEditor', () => {
 
     await user.click(screen.getByRole('button', { name: 'Make 1st' }))
 
-    await waitFor(() => expect(attempts).toBe(2))
     await waitFor(() => expect(toastSpy).toHaveBeenCalledWith('sort rejected', 'error', undefined))
+    expect(attempts).toBe(1)
     const order = Array.from(container.querySelectorAll('.w-20.h-20 img')).map(i => i.getAttribute('src'))
     expect(order).toEqual(['/api/photos/100/thumbnail', '/api/photos/101/thumbnail'])
   })
 
-  it('FE-JRN-EDITOR-047: a partly accepted order keeps what the server took', async () => {
+  it('FE-JRN-EDITOR-047: the server takes the whole order or none of it, so a refusal never leaves a half order', async () => {
     const patched: number[] = []
-    server.use(http.patch('/api/journeys/photos/:id', ({ params }) => {
-      const id = Number(params.id)
-      patched.push(id)
-      if (id === 100) return HttpResponse.json({ error: 'sort rejected' }, { status: 500 })
-      return HttpResponse.json({ success: true })
-    }))
+    server.use(
+      http.patch('/api/journeys/photos/:id', ({ params }) => {
+        patched.push(Number(params.id))
+        return HttpResponse.json({ success: true })
+      }),
+      http.put('/api/journeys/entries/:id/photos/reorder', () => HttpResponse.json({ error: 'sort rejected' }, { status: 409 })),
+    )
     const user = userEvent.setup()
-    const { container } = mountEditor(buildEntry({ id: 10, photos: [buildPhoto(100), buildPhoto(101)] }))
+    const { container } = mountEditor(buildEntry({ id: 10, photos: [buildPhoto(100), buildPhoto(101), buildPhoto(102)] }))
 
-    await user.click(screen.getByRole('button', { name: 'Make 1st' }))
+    await user.click(screen.getAllByRole('button', { name: 'Make 1st' })[1])
 
-    await waitFor(() => expect(patched).toEqual([101, 100]))
     await waitFor(() => expect(toastSpy).toHaveBeenCalledWith('sort rejected', 'error', undefined))
-    // 101 is first on the server now; snapping the strip back would hide that.
+    // No per-photo writes any more, and the strip shows the order the server kept.
+    expect(patched).toEqual([])
     const order = Array.from(container.querySelectorAll('.w-20.h-20 img')).map(i => i.getAttribute('src'))
-    expect(order).toEqual(['/api/photos/101/thumbnail', '/api/photos/100/thumbnail'])
+    expect(order).toEqual(['/api/photos/100/thumbnail', '/api/photos/101/thumbnail', '/api/photos/102/thumbnail'])
   })
 
   it('FE-JRN-EDITOR-030: dropping an unsaved gallery pick cancels its link', async () => {
