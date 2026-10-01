@@ -697,6 +697,37 @@ describe('exportICS', () => {
     expect(ics).toContain(`UID:trek-res-leg2-${cruise.id}@trek`);
   });
 
+  it('CAL-048: legs take their zones and names from one endpoint per airport (#2389)', () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id, { title: 'Layover' });
+    const d1 = createDay(testDb, trip.id, { date: '2025-06-02' });
+    const flight = createReservation(testDb, trip.id, { title: 'Via Frankfurt', type: 'flight' });
+    testDb.prepare('UPDATE reservations SET reservation_time=?, metadata=? WHERE id=?').run(
+      '2025-06-02T09:00',
+      JSON.stringify({ legs: [
+        { dep_day_id: d1.id, dep_time: '09:00', arr_day_id: d1.id, arr_time: '10:00' },
+        { dep_day_id: d1.id, dep_time: '12:00', arr_day_id: d1.id, arr_time: '15:00' },
+      ] }),
+      flight.id,
+    );
+    const insertEp = testDb.prepare(
+      'INSERT INTO reservation_endpoints (reservation_id, role, sequence, name, code, lat, lng, timezone, local_time, local_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    );
+    insertEp.run(flight.id, 'from', 0, 'Paris CDG', 'CDG', 49.0, 2.5, 'Europe/Paris', '09:00', '2025-06-02');
+    // No stored zone here: it is worked out from the coordinates.
+    insertEp.run(flight.id, 'stop', 1, 'Frankfurt', 'FRA', 50.03, 8.57, null, '12:00', '2025-06-02');
+    insertEp.run(flight.id, 'to', 2, 'London LHR', 'LHR', 51.47, -0.45, 'Europe/London', '15:00', '2025-06-02');
+
+    const { ics } = svc.exportICS(trip.id);
+
+    expect(ics).toContain('DTSTART;TZID=Europe/Paris:20250602T090000');
+    expect(ics).toContain('DTEND;TZID=Europe/Berlin:20250602T100000');
+    expect(ics).toContain('DTSTART;TZID=Europe/Berlin:20250602T120000');
+    expect(ics).toContain('DTEND;TZID=Europe/London:20250602T150000');
+    expect(ics).toContain('SUMMARY:Via Frankfurt: CDG → FRA');
+    expect(ics).toContain('SUMMARY:Via Frankfurt: FRA → LHR');
+  });
+
   it('CAL-046: a leg without a departure clock keeps the single event', () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id, { title: 'Layover' });
