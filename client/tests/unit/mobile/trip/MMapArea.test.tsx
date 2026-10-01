@@ -194,15 +194,12 @@ describe('MMapArea', () => {
     expect(segment.style.flexGrow).toBe('1')
   })
 
-  it('FE-MOB-MAPAREA-002: the compass rides the same bottom offset as the locate button', () => {
+  it('FE-MOB-MAPAREA-002: the compass stands on top of the base-layer switcher', () => {
     const { container } = renderArea()
 
-    // LocationButton hard-codes `right: 12` off the same variable, so matching
-    // the offset here is what keeps the two round controls on one line.
-    expect(compassBand(container)?.style.bottom).toBe('calc(var(--bottom-nav-h, 84px) + 12px)')
-    // Beside the base-layer switcher both engines draw in the corner: its inset, its
-    // size and one gap. In the corner itself it lay under the switcher's frosted shell.
-    expect(compassBand(container)?.style.left).toBe(`${MAP_LAYER_SWITCHER_INSET + MAP_ROUND_CONTROL_SIZE + 8}px`)
+    // The switcher's band, raised by its size and one gap, on the switcher's own left edge.
+    expect(compassBand(container)?.style.bottom).toBe(`calc(var(--bottom-nav-h, 84px) + ${12 + MAP_ROUND_CONTROL_SIZE + 8}px)`)
+    expect(compassBand(container)?.style.left).toBe(`${MAP_LAYER_SWITCHER_INSET}px`)
     expect(compassBand(container)?.className).not.toContain('left-3')
   })
 
@@ -347,8 +344,8 @@ describe('MMapArea', () => {
     for (const shellOver of [{ trTab: 'plan' }, { trTab: 'roadtrip', mapFront: true }] as Partial<MTripShellApi>[]) {
       const { container, unmount } = renderArea(shellOver)
 
-      expect(parseFloat(compassBand(container)?.style.left ?? '0'))
-        .toBeGreaterThanOrEqual(MAP_LAYER_SWITCHER_INSET + MAP_ROUND_CONTROL_SIZE)
+      // Above the switcher: raised past its full height, so the two never overlap.
+      expect(compassBand(container)?.style.bottom).toContain(`+ ${12 + MAP_ROUND_CONTROL_SIZE + 8}px`)
       // With the renderer mocked, the compass is still the one element in this layer
       // that sets --bottom-nav-h inline; its left offset joined the same style object.
       expect(container.querySelectorAll('[style*="--bottom-nav-h"]')).toHaveLength(1)
