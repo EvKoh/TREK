@@ -220,6 +220,13 @@ const admin: TranslationStrings = {
     'Vajab Google Mapsi API-võtit. Ilma selleta kasutab otsing TREKi enda indeksit ja OpenStreetMapi sõltumata selle lüliti asendist.',
   'admin.placesGoogleOnly.otherProvider':
     "Vajab kohtade teenusepakkujana Google'it. Kui valitud on Amap või OpenStreetMap, ei lähe otsing kunagi Google'isse, olenemata selle lüliti asendist.",
+  'admin.googleQuota.title': "Google'i päringute päevapiirang",
+  'admin.googleQuota.subtitle': "Kui piir täis saab, ei pöördu TREK Google'i poole järgmise päevani (UTC) ja otsib OpenStreetMapiga. Tühi tähendab piiranguta.",
+  'admin.googleQuota.placeholder': 'Piiranguta',
+  'admin.googleQuota.usedToday': 'Täna: {used}',
+  'admin.googleQuota.usedOfLimit': 'Täna: {used} / {limit}',
+  'admin.googleQuota.reached': 'Piir täis ({used}), Google on homseni peatatud',
+  'admin.googleQuota.saved': 'Päevapiirang salvestatud',
   'admin.transitProvider.title': 'Ühistranspordi teenusepakkuja',
   'admin.transitProvider.subtitle': 'Milline teenus vastab ühistranspordi otsingutele.',
   'admin.transitProvider.transitous': 'Transitous (tasuta)',

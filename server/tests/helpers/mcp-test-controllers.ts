@@ -120,6 +120,7 @@ import { AirtrailImportService } from '../../src/nest/integrations/airtrail-impo
 import { ReservationImportMcp } from '../../src/nest/reservation-import/reservation-import.mcp';
 import { HelpMcp } from '../../src/nest/help/help.mcp';
 import { AddonsMcp } from '../../src/nest/addons/addons.mcp';
+import { noGoogleQuota } from './google-quota';
 
 /**
  * Hand-wired counterpart of the boot-time discovery in McpRegistryService,
@@ -159,7 +160,7 @@ export function createMcpTestRegistry(): McpRegistry {
   // Exactly one instance, shared by maps, places and share: its stampede guard
   // and its on-disk set only work if all three readers see the same maps.
   const placePhotoCache = new PlacePhotoCacheService(dbService, makeStorageFixture('photos/google/').storage);
-  const mapsService = new MapsService(dbService, placePhotoCache);
+  const mapsService = new MapsService(dbService, placePhotoCache, noGoogleQuota);
   const journeyDomain = new JourneyDomainService(dbService, realtimeService, new TrekPhotosRepository(dbService));
   // The last three were previously omitted, which left them `undefined` at
   // runtime — silently fine while nothing called them, a TypeError the moment
@@ -246,7 +247,7 @@ export function createMcpTestRegistry(): McpRegistry {
       new MapsMcp(mapsService),
       new PlacesMcp(placesService, mapsService, dbService, authService, journeyDomain, assignmentsService, guards),
       new CollectionsMcp(new CollectionsService(dbService, permissionsService, realtimeService, notificationsStub(), generalStorage), dbService, authService, addonsService),
-      new TransitMcp(new TransitService(new GoogleTransitProvider(dbService)), daysService, reservationsService, dbService, authService, guards),
+      new TransitMcp(new TransitService(new GoogleTransitProvider(dbService, noGoogleQuota)), daysService, reservationsService, dbService, authService, guards),
       new AtlasMcp(new AtlasService(dbService), addonsService, authService),
       new JourneyMcp(journeyDomain, new JourneyShareService(dbService, journeyDomain, new SettingsService(dbService)), addonsService, authService, new JourneyPhotoCaptureService(captureBackfill, journeyDomain)),
       new MemoriesMcp(immichService, synologyService, dbService, addonsService),

@@ -27,6 +27,7 @@ import {
 } from '../../../src/nest/maps/maps-nearby.helpers';
 import type { DatabaseService } from '../../../src/nest/database/database.service';
 import type { PlacePhotoCacheService } from '../../../src/nest/place-photos/place-photo-cache.service';
+import { noGoogleQuota } from '../../helpers/google-quota';
 
 const indexRow = (gers: string, name: string, lat: number, lng: number) => ({
   gers,
@@ -60,7 +61,7 @@ function make(opts: { index?: boolean; google?: boolean } = {}) {
   if (opts.index === false) process.env.TREK_PLACES_ENABLED = 'false';
   else delete process.env.TREK_PLACES_ENABLED;
   const database = { get: vi.fn(() => undefined) } as unknown as DatabaseService;
-  const svc = new MapsService(database, {} as PlacePhotoCacheService);
+  const svc = new MapsService(database, {} as PlacePhotoCacheService, noGoogleQuota);
   vi.spyOn(svc, 'keyedProvider').mockReturnValue(
     opts.google ? ({ id: 'google', key: 'test-key', source: 'user-row' } as ReturnType<MapsService['keyedProvider']>) : null,
   );

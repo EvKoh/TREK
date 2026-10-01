@@ -215,6 +215,13 @@ const admin: TranslationStrings = {
     'Vyžaduje API kľúč Google Maps. Bez neho vyhľadávanie beží na vlastnom indexe TREK a OpenStreetMap bez ohľadu na tento prepínač.',
   'admin.placesGoogleOnly.otherProvider':
     'Vyžaduje Google ako poskytovateľa miest. Ak je zvolený Amap alebo OpenStreetMap, vyhľadávanie nikdy nejde do Google bez ohľadu na tento prepínač.',
+  'admin.googleQuota.title': 'Denný limit volaní Google',
+  'admin.googleQuota.subtitle': 'Po dosiahnutí TREK prestane volať Google do ďalšieho dňa (UTC) a hľadá cez OpenStreetMap. Prázdne znamená bez limitu.',
+  'admin.googleQuota.placeholder': 'Bez limitu',
+  'admin.googleQuota.usedToday': 'Dnes: {used}',
+  'admin.googleQuota.usedOfLimit': 'Dnes: {used} z {limit}',
+  'admin.googleQuota.reached': 'Limit dosiahnutý ({used}), Google pozastavený do zajtra',
+  'admin.googleQuota.saved': 'Denný limit uložený',
   'admin.transitProvider.title': 'Poskytovateľ verejnej dopravy',
   'admin.transitProvider.subtitle': 'Ktorá služba odpovedá na vyhľadávanie verejnej dopravy.',
   'admin.transitProvider.transitous': 'Transitous (zdarma)',

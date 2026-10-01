@@ -25,6 +25,7 @@ import {
 // ── Photo cache (disk-backed) ────────────────────────────────────────────────
 import { PlacePhotoCacheService } from '../place-photos/place-photo-cache.service';
 import { DatabaseService } from '../database/database.service';
+import { GoogleQuotaService } from '../google-quota/google-quota.service';
 import { nominatimFetch, type GeoLane } from '../geo/nominatim.client';
 import {
   trekPlacesSearch,
@@ -747,7 +748,14 @@ export class MapsService {
   constructor(
     private readonly database: DatabaseService,
     private readonly photoCache: PlacePhotoCacheService,
+    private readonly googleQuota: GoogleQuotaService,
   ) {}
+
+  /** Every call to Google goes through here, so the admin's daily ceiling sees it (#1582). */
+  private google(endpoint: string, label: string, init?: RequestInit): Promise<Response> {
+    this.googleQuota.record();
+    return googleFetch(endpoint, label, init);
+  }
 
   /** Brand id → logo bytes, or null for "asked, has none". Insertion-ordered, so the
    *  oldest entry is the one evicted when it fills up. */
@@ -1072,7 +1080,13 @@ export class MapsService {
     return resolveApiKey(this.database, 'maps_api_key', userId, readEnv().maps.placesApiKey);
   }
 
+  /**
+   * The Google key to spend, or null. Also null once today's calls reached the
+   * admin's daily ceiling (#1582), which makes every caller fall back to what a
+   * keyless install does instead of failing.
+   */
   getMapsKey(userId: number): string | null {
+    if (this.googleQuota.exhausted()) return null;
     return this.resolveMapsKey(userId).key;
   }
 
@@ -1119,7 +1133,9 @@ export class MapsService {
 
     if (choice !== 'amap') {
       const google = this.resolveMapsKey(userId);
-      if (google.key) return { id: 'google', key: google.key, source: google.source };
+      // Past the daily ceiling (#1582) the key is spent for today: answer as if
+      // there were none, so `auto` moves on and OpenStreetMap fills in.
+      if (google.key && !this.googleQuota.exhausted()) return { id: 'google', key: google.key, source: google.source };
       // An explicit 'google' choice with no key is not a reason to query Amap
       // instead: this install is on Google and is misconfigured. OSM answers,
       // the way a keyless install has always been answered.
@@ -2057,7 +2073,7 @@ export class MapsService {
   ): Promise<{ name: string; attribution: string | null }[]> {
     if (!isGooglePlaceId(placeId) || cap < 1) return [];
     try {
-      const res = await googleFetch(
+      const res = await this.google(
         `https://places.googleapis.com/v1/places/${placeId}`,
         `fetchGooglePhotoRefs(${placeId})`,
         { headers: { 'X-Goog-Api-Key': apiKey, 'X-Goog-FieldMask': 'photos' } },
@@ -2076,7 +2092,7 @@ export class MapsService {
   /** Image bytes for one photo reference. Null on any miss; the caller skips it. */
   async fetchGooglePhotoBytes(photoName: string, apiKey: string, maxHeightPx = 400): Promise<Buffer | null> {
     try {
-      const res = await googleFetch(
+      const res = await this.google(
         `https://places.googleapis.com/v1/${photoName}/media?maxHeightPx=${maxHeightPx}`,
         `fetchGooglePhotoBytes(${photoName})`,
         { headers: { 'X-Goog-Api-Key': apiKey } },
@@ -2099,7 +2115,7 @@ export class MapsService {
   async fetchEditorialSummary(placeId: string, apiKey: string, lang?: string): Promise<string | null> {
     if (!isGooglePlaceId(placeId)) return null;
     try {
-      const res = await googleFetch(
+      const res = await this.google(
         `https://places.googleapis.com/v1/places/${placeId}?languageCode=${toApiLang(lang)}`,
         `fetchEditorialSummary(${placeId})`,
         { headers: { 'X-Goog-Api-Key': apiKey, 'X-Goog-FieldMask': 'editorialSummary' } },
@@ -2241,7 +2257,7 @@ export class MapsService {
       };
     }
 
-    const response = await googleFetch('https://places.googleapis.com/v1/places:searchText', 'searchText', {
+    const response = await this.google('https://places.googleapis.com/v1/places:searchText', 'searchText', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -2318,7 +2334,7 @@ export class MapsService {
     }
 
     if (keyed?.id === 'google') {
-      const response = await googleFetch('https://places.googleapis.com/v1/places:searchNearby', 'searchNearby', {
+      const response = await this.google('https://places.googleapis.com/v1/places:searchNearby', 'searchNearby', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': keyed.key, 'X-Goog-FieldMask': SEARCH_TEXT_FIELD_MASK },
         body: JSON.stringify({
@@ -2470,7 +2486,7 @@ export class MapsService {
       };
     }
 
-    const response = await googleFetch('https://places.googleapis.com/v1/places:autocomplete', 'autocomplete', {
+    const response = await this.google('https://places.googleapis.com/v1/places:autocomplete', 'autocomplete', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -2677,7 +2693,7 @@ export class MapsService {
     // here, which is billing-neutral: an unclosed session is charged as a plain
     // autocomplete session.
     const sessionParam = sessionToken ? `&sessionToken=${encodeURIComponent(sessionToken)}` : '';
-    const response = await googleFetch(
+    const response = await this.google(
       `https://places.googleapis.com/v1/places/${placeId}?languageCode=${langKey}${sessionParam}`,
       `getPlaceDetails(${placeId})`,
       {
@@ -2822,7 +2838,7 @@ export class MapsService {
       if (cached) return { place: cachedDetails(cached.payload_json) };
     }
 
-    const response = await googleFetch(
+    const response = await this.google(
       `https://places.googleapis.com/v1/places/${placeId}?languageCode=${langKey}`,
       `getPlaceDetailsExpanded(${placeId})`,
       {
@@ -2972,7 +2988,7 @@ export class MapsService {
           if (!apiKey) return null;
 
           // Fetch details to get the photo name
-          const detailsRes = await googleFetch(
+          const detailsRes = await this.google(
             `https://places.googleapis.com/v1/places/${placeId}`,
             `getPlacePhoto/details(${placeId})`,
             {
@@ -3002,7 +3018,7 @@ export class MapsService {
           const attribution = photo.authorAttributions?.[0]?.displayName || null;
 
           // Fetch actual image bytes
-          const mediaRes = await googleFetch(
+          const mediaRes = await this.google(
             `https://places.googleapis.com/v1/${photoName}/media?maxHeightPx=400`,
             `getPlacePhoto/media(${placeId})`,
             { headers: { 'X-Goog-Api-Key': apiKey } },

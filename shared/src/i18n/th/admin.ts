@@ -176,6 +176,13 @@ const admin: TranslationStrings = {
     'ต้องมีคีย์ API ของ Google Maps หากไม่มี การค้นหาจะใช้ดัชนีของ TREK เองและ OpenStreetMap ไม่ว่าสวิตช์นี้จะตั้งไว้อย่างไร',
   'admin.placesGoogleOnly.otherProvider':
     'ต้องใช้ Google เป็นผู้ให้บริการสถานที่ หากเลือก Amap หรือ OpenStreetMap การค้นหาจะไม่ส่งไปที่ Google ไม่ว่าสวิตช์นี้จะตั้งไว้อย่างไร',
+  'admin.googleQuota.title': 'ขีดจำกัดการเรียก Google ต่อวัน',
+  'admin.googleQuota.subtitle': 'เมื่อถึงขีดจำกัด TREK จะหยุดเรียก Google จนถึงวันถัดไป (UTC) และค้นหาด้วย OpenStreetMap แทน เว้นว่างไว้หากไม่จำกัด',
+  'admin.googleQuota.placeholder': 'ไม่จำกัด',
+  'admin.googleQuota.usedToday': 'วันนี้: {used}',
+  'admin.googleQuota.usedOfLimit': 'วันนี้: {used} จาก {limit}',
+  'admin.googleQuota.reached': 'ถึงขีดจำกัดแล้ว ({used}) Google หยุดไว้จนถึงพรุ่งนี้',
+  'admin.googleQuota.saved': 'บันทึกขีดจำกัดรายวันแล้ว',
   'admin.bagTracking.title': "ติดตามกระเป๋า",
   'admin.bagTracking.subtitle': "เปิดใช้งานการกำหนดน้ำหนักและถุงสำหรับการบรรจุสินค้า",
   'admin.collab.chat.title': "แชท",

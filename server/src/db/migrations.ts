@@ -5402,6 +5402,13 @@ function runMigrations(db: Database.Database): void {
       const has = db.prepare("SELECT 1 FROM pragma_table_info('budget_settlements') WHERE name = 'note'").get();
       if (!has) db.exec('ALTER TABLE budget_settlements ADD COLUMN note TEXT');
     },
+    /**
+     * Google API calls per UTC day (#1582), so the admin's daily ceiling has
+     * something to count against. One row a day, nothing about who searched.
+     */
+    () => {
+      db.exec('CREATE TABLE IF NOT EXISTS google_api_usage (day TEXT PRIMARY KEY, calls INTEGER NOT NULL DEFAULT 0)');
+    },
   ];
 
   if (currentVersion < migrations.length) {

@@ -54,6 +54,22 @@ export const adminFeatureToggleRequestSchema = z.object({
 });
 export type AdminFeatureToggleRequest = z.infer<typeof adminFeatureToggleRequestSchema>;
 
+/**
+ * PUT /api/admin/google-quota (#1582): the most Google API calls TREK may make
+ * in one UTC day. Null or 0 removes the ceiling.
+ */
+export const googleQuotaUpdateRequestSchema = z.object({
+  daily_limit: z.number().int().min(0).max(10_000_000).nullable(),
+});
+export type GoogleQuotaUpdateRequest = z.infer<typeof googleQuotaUpdateRequestSchema>;
+
+/** The ceiling as stored, today's count, and whether Google is paused until tomorrow. */
+export interface GoogleQuotaStatus {
+  daily_limit: number | null;
+  used_today: number;
+  exhausted: boolean;
+}
+
 // Shared by all six packing-template create/update routes. `name` is optional so
 // the service's 'Name is required' / 'Category name is required' / 'Item name is
 // required' 400s stay the contract, and so the update routes keep treating a

@@ -32,6 +32,7 @@ import {
 
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import { Jimp } from 'jimp';
+import { noGoogleQuota } from '../../helpers/google-quota';
 
 // The seams below stand in for real collaborators, so they are typed from those
 // collaborators' signatures rather than from their own default implementations.
@@ -181,7 +182,7 @@ import type { SsrfResult } from '../../../src/utils/ssrfGuard';
 // The service under test, constructed over the mocked db stub — DatabaseService
 // routes get/run through the stubbed prepare(), so mockDbGet/mockDbRun keep
 // flowing exactly as they did for the legacy module.
-const svc = new MapsService(new DatabaseService(db as never), photoCacheStub);
+const svc = new MapsService(new DatabaseService(db as never), photoCacheStub, noGoogleQuota);
 
 /**
  * Switch the TREK Places index off for one case.
@@ -2706,7 +2707,7 @@ function makeSettingsDb(row?: { value: string }) {
 }
 
 function settingsSvc(row?: { value: string }) {
-  return new MapsService(makeSettingsDb(row).db, photoCacheStub);
+  return new MapsService(makeSettingsDb(row).db, photoCacheStub, noGoogleQuota);
 }
 
 describe('kill-switch settings reads', () => {
@@ -2730,7 +2731,7 @@ describe('kill-switch settings reads', () => {
 
   it('queries the matching app_settings key', () => {
     const { db: settingsDb, get } = makeSettingsDb({ value: 'true' });
-    const s = new MapsService(settingsDb, photoCacheStub);
+    const s = new MapsService(settingsDb, photoCacheStub, noGoogleQuota);
     s.autocompleteDisabled();
     expect(get).toHaveBeenCalledWith(expect.stringContaining('app_settings'), 'places_autocomplete_enabled');
     s.detailsDisabled();
@@ -3430,7 +3431,7 @@ describe('readWikiIdentity', () => {
 describe('brandLogo', () => {
   // A fresh service per case: the logo cache lives on the instance, and a hit from
   // one case would answer the next one's question before its fetch stub ran.
-  const service = (): MapsService => new MapsService(new DatabaseService(db as never), photoCacheStub);
+  const service = (): MapsService => new MapsService(new DatabaseService(db as never), photoCacheStub, noGoogleQuota);
 
   const claimResponse = (file: string | null) => ({
     ok: true,

@@ -2,7 +2,7 @@ import { isEffectivelyOffline } from '../sync/networkMode'
 import axios, { AxiosInstance } from 'axios'
 import type { z } from 'zod'
 import type { Day, Place, Trip } from '../types'
-import type { MapsNearbyRequest, JourneyReorderEntryPhotosRequest, TransitProvider } from '@trek/shared'
+import type { MapsNearbyRequest, JourneyReorderEntryPhotosRequest, TransitProvider, GoogleQuotaUpdateRequest } from '@trek/shared'
 import { randomId } from '../utils/randomId'
 import { postProviderPhotosInBatches } from './providerPhotoBatches'
 import {
@@ -697,6 +697,8 @@ export const adminApi = {
   getPlacesGoogleOnly: () => apiClient.get('/admin/places-google-only').then(r => r.data),
   updatePlacesGoogleOnly: (enabled: boolean) => apiClient.put('/admin/places-google-only', { enabled }).then(r => r.data),
   getPlacesEnrich: () => apiClient.get('/admin/places-enrich').then(r => r.data),
+  getGoogleQuota: () => apiClient.get('/admin/google-quota').then(r => r.data),
+  updateGoogleQuota: (dailyLimit: number | null) => apiClient.put('/admin/google-quota', { daily_limit: dailyLimit } satisfies GoogleQuotaUpdateRequest).then(r => r.data),
   updatePlacesEnrich: (enabled: boolean) => apiClient.put('/admin/places-enrich', { enabled }).then(r => r.data),
   getTransitProvider: () => apiClient.get('/admin/transit-provider').then(r => r.data),
   updateTransitProvider: (provider: TransitProvider) => apiClient.put('/admin/transit-provider', { provider }).then(r => r.data),

@@ -228,6 +228,13 @@ const admin: TranslationStrings = {
     'Google Maps API açarı tələb olunur. Açar olmadıqda bu keçidin vəziyyətindən asılı olmayaraq axtarış TREK-in öz indeksi və OpenStreetMap ilə aparılır.',
   'admin.placesGoogleOnly.otherProvider':
     'Məkan provayderi kimi Google tələb olunur. Amap və ya OpenStreetMap seçildikdə bu keçidin vəziyyətindən asılı olmayaraq axtarış heç vaxt Google-a göndərilmir.',
+  'admin.googleQuota.title': 'Google sorğuları üçün gündəlik limit',
+  'admin.googleQuota.subtitle': 'Limitə çatanda TREK növbəti günə (UTC) qədər Google-a müraciət etmir və OpenStreetMap ilə axtarır. Boş qalsa, limit yoxdur.',
+  'admin.googleQuota.placeholder': 'Limitsiz',
+  'admin.googleQuota.usedToday': 'Bu gün: {used}',
+  'admin.googleQuota.usedOfLimit': 'Bu gün: {used} / {limit}',
+  'admin.googleQuota.reached': 'Limitə çatıldı ({used}), Google sabaha qədər dayandırılıb',
+  'admin.googleQuota.saved': 'Gündəlik limit saxlanıldı',
   'admin.transitProvider.title': 'İctimai nəqliyyat provayderi',
   'admin.transitProvider.subtitle': 'İctimai nəqliyyat axtarışına hansı xidmətin cavab verəcəyi.',
   'admin.transitProvider.transitous': 'Transitous (pulsuz)',

@@ -5,6 +5,7 @@ import { Eye, EyeOff, Save, CheckCircle, XCircle, Loader2, RefreshCw, AlertTrian
 import ToggleSwitch from '../../components/Settings/ToggleSwitch'
 import CustomSelect from '../../components/shared/CustomSelect'
 import GoogleOptions from './GoogleOptions'
+import GoogleDailyLimitRow from '../../components/Admin/GoogleDailyLimitRow'
 import ProviderBlock from './ProviderBlock'
 import TrekApiCard from './TrekApiCard'
 import { placesGoogleOnlyHint } from '../../utils/placeSource'
@@ -538,6 +539,8 @@ export default function AdminSettingsTab({ admin, t }: AdminSettingsTabProps): R
                     onToggle={handleTogglePlacesGoogleOnly}
                   />
                 </div>
+
+                <GoogleDailyLimitRow />
               </div>
             </GoogleOptions>
           </ProviderBlock>
