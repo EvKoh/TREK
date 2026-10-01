@@ -1,6 +1,7 @@
 import type React from 'react'
 import { placeLocality } from '../../utils/placeLocality'
 import { localityGroups, matchesLocality, type LocalityFilter } from './placeLocalityFilter'
+import { readPlacesSort, sortPlaces, writePlacesSort, type PlacesSort } from './placesSort'
 import { useState, useMemo, useEffect, useLayoutEffect, useRef, useCallback } from 'react'
 import { Pencil, Trash2, ExternalLink, Navigation, CalendarDays, Bookmark } from 'lucide-react'
 import { useTranslation } from '../../i18n'
@@ -187,6 +188,9 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
   // which put the best first but still left everything else on the list — no
   // help at all when the point is to see only what the group actually rated.
   const [ratingFilter, setRatingFilter] = useState<number | 'all'>('all')
+  // The list's order (#2093), remembered on this device.
+  const [placesSort, setPlacesSortState] = useState<PlacesSort>(readPlacesSort)
+  const setPlacesSort = useCallback((sort: PlacesSort) => { setPlacesSortState(sort); writePlacesSort(sort) }, [])
   // Country, or country and region, from each place's resolved position (#2537). List-only,
   // like the rating floor.
   const [localityFilter, setLocalityFilter] = useState<LocalityFilter | null>(null)
@@ -296,8 +300,8 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
       if (localityFilter && !matchesLocality(localityOf.get(p.id), localityFilter)) return false
       return true
     })
-    return list
-  }, [places, filter, categoryFilters, search, plannedIds, plannedFilterIds, ratingFilter, localityFilter, localityOf])
+    return sortPlaces(list, placesSort, language)
+  }, [places, filter, categoryFilters, search, plannedIds, plannedFilterIds, ratingFilter, localityFilter, localityOf, placesSort, language])
 
   /**
    * How many places each "show" choice would leave, under the category and search
@@ -404,6 +408,7 @@ export function usePlacesSidebar(props: PlacesSidebarProps) {
     search, setSearch, filter, setFilter, pickFilter, filterCounts,
     categoryFilters, setCategoryFilters,
     ratingFilter, setRatingFilter,
+    placesSort, setPlacesSort,
     localityFilter, setLocalityFilter, localities,
     selectMode, setSelectMode, selectedIds, setSelectedIds, pendingDeleteIds, setPendingDeleteIds,
     categoryPickerOpen, setCategoryPickerOpen,

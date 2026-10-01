@@ -80,6 +80,24 @@ async function openImportMenu(user: User, item: RegExp) {
 const inDialog = (name: RegExp) => within(screen.getByRole('dialog')).getByRole('button', { name });
 
 describe('PlacesSidebar', () => {
+  it('FE-COMP-PLACES-2093: the sort menu reorders the list and remembers the choice', async () => {
+    const user = userEvent.setup();
+    localStorage.removeItem('trek:places-sort');
+    const places = [
+      buildPlace({ id: 1, name: 'Zeppelin Museum', rating_avg: 3, created_at: '2026-01-02' }),
+      buildPlace({ id: 2, name: 'Alpine Hut', rating_avg: 5, created_at: '2026-01-01' }),
+    ];
+    render(<PlacesSidebar {...defaultProps} places={places} />);
+    const order = () => screen.getAllByText(/Zeppelin Museum|Alpine Hut/).map(el => el.textContent);
+    expect(order()).toEqual(['Zeppelin Museum', 'Alpine Hut']);
+
+    await user.click(screen.getByRole('button', { name: 'Sort by' }));
+    await user.click(screen.getByRole('button', { name: 'Name (A–Z)' }));
+    expect(order()).toEqual(['Alpine Hut', 'Zeppelin Museum']);
+    expect(localStorage.getItem('trek:places-sort')).toBe('name');
+    localStorage.removeItem('trek:places-sort');
+  });
+
   it('FE-COMP-PLACES-001: renders without crashing', () => {
     render(<PlacesSidebar {...defaultProps} />);
     expect(document.body).toBeInTheDocument();

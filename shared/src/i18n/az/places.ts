@@ -61,6 +61,12 @@ const places: TranslationStrings = {
 
   'places.filterTracks': 'İzlər',
   'places.filterByRating': 'Reytinqə görə filtrlə',
+  'places.sortBy': 'Sıralama',
+  'places.sortNewest': 'Son əlavə edilənlər',
+  'places.sortOldest': 'Əvvəlcə ən köhnə',
+  'places.sortName': 'Ad (A–Z)',
+  'places.sortRating': 'Ən yüksək reytinq',
+  'places.sortUpdated': 'Son dəyişdirilənlər',
   'places.filterByLocation': 'Ölkə və ya regiona görə filtrlə',
   'places.allLocations': 'Bütün ölkələr',
   'places.filterShow': 'Göstər',

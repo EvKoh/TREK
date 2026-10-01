@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react'
-import { Search, Plus, X, Upload, FileDown, ListPlus, Check, Star, CalendarPlus, CalendarDays, ChevronDown, Tag, Globe2 } from 'lucide-react'
+import { Search, Plus, X, Upload, FileDown, ListPlus, Check, Star, CalendarPlus, CalendarDays, ChevronDown, Tag, Globe2, ArrowDownUp } from 'lucide-react'
 import { Tooltip } from '../shared/Tooltip'
 import { ContextMenu, useContextMenu } from '../shared/ContextMenu'
 import { NEUTRAL_TINT, fs } from '../shared/DialogShell'
@@ -8,6 +8,7 @@ import { Eyebrow } from './bookings/bookingParts'
 import { tintOf } from './planParts'
 import { CategoryTile } from './PlacesBulkCategoryModal'
 import type { PlacesFilter, SidebarState } from './usePlacesSidebar'
+import { PLACES_SORTS, type PlacesSort } from './placesSort'
 
 /**
  * Below this the two labels stop fitting side by side and both buttons fall back
@@ -91,6 +92,7 @@ export function PlacesHeader(S: SidebarState) {
         <CategoryFilter {...S} />
         <RatingFilter {...S} />
         <LocalityFilterDropdown {...S} />
+        <SortDropdown {...S} />
       </div>
       <ActiveFilterChips {...S} />
     </div>
@@ -318,6 +320,45 @@ function RatingFilter(S: SidebarState) {
             style={fs(12.5, 'body')}>
             {opt === 'all' ? <span className="w-3" /> : star}
             <span className="min-w-0 flex-1 text-content">{opt === 'all' ? t('common.all') : `${opt}+`}</span>
+            {on && <Check size={13} strokeWidth={2.4} className="flex-none text-content-muted" />}
+          </button>
+        )
+      })}
+    </FilterDropdown>
+  )
+}
+
+const SORT_LABEL_KEYS: Record<PlacesSort, string> = {
+  newest: 'places.sortNewest',
+  oldest: 'places.sortOldest',
+  name: 'places.sortName',
+  rating: 'places.sortRating',
+  updated: 'places.sortUpdated',
+}
+
+/** The list's order (#2093); marked while it is anything but newest first. */
+function SortDropdown(S: SidebarState) {
+  const { t, placesSort, setPlacesSort } = S
+  const [open, setOpen] = useState(false)
+  const active = placesSort !== 'newest'
+  return (
+    <FilterDropdown
+      label={t(SORT_LABEL_KEYS[placesSort])}
+      name={t('places.sortBy')}
+      active={active}
+      badge={active ? '' : undefined}
+      icon={<ArrowDownUp size={14} strokeWidth={2} />}
+      open={open}
+      setOpen={setOpen}
+    >
+      <div className="px-2 pb-1 pt-0.5 font-geist font-bold uppercase tracking-[.08em] text-content-faint" style={fs(9.5)}>{t('places.sortBy')}</div>
+      {PLACES_SORTS.map(opt => {
+        const on = placesSort === opt
+        return (
+          <button type="button" key={opt} onClick={() => { setPlacesSort(opt); setOpen(false) }} aria-pressed={on}
+            className={`flex w-full items-center gap-2 rounded-[9px] px-2 py-1.5 text-left transition-colors ${on ? 'bg-surface-tertiary' : 'hover:bg-surface-hover'}`}
+            style={fs(12.5, 'body')}>
+            <span className="min-w-0 flex-1 text-content">{t(SORT_LABEL_KEYS[opt])}</span>
             {on && <Check size={13} strokeWidth={2.4} className="flex-none text-content-muted" />}
           </button>
         )

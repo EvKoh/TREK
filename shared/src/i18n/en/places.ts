@@ -53,6 +53,12 @@ const places: TranslationStrings = {
   'places.dayScopedClear': 'Show the whole trip',
   'places.filterTracks': 'Tracks',
   'places.filterByRating': 'Filter by rating',
+  'places.sortBy': 'Sort by',
+  'places.sortNewest': 'Recently added',
+  'places.sortOldest': 'Oldest first',
+  'places.sortName': 'Name (A–Z)',
+  'places.sortRating': 'Highest rated',
+  'places.sortUpdated': 'Recently changed',
   'places.filterByLocation': 'Filter by country or region',
   'places.allLocations': 'All countries',
   /** The button that opens the filter panel, and the panel's name. */
