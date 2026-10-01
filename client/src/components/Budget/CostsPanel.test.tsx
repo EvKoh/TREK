@@ -1997,6 +1997,34 @@ describe('CostsPanel — split modes and guests', () => {
     expect(posted!.members).toEqual([{ user_id: 1, amount: null }, { user_id: 2, amount: null }])
   })
 
+  it('FE-W5COSTS-1709: a custom split typed in percent saves the matching amounts', async () => {
+    const user = userEvent.setup()
+    let posted: Record<string, unknown> | null = null
+    server.use(http.post('/api/trips/1/budget', async ({ request }) => {
+      posted = await request.json() as Record<string, unknown>
+      return HttpResponse.json({ item: dinner() })
+    }))
+    mount([])
+
+    await user.click(await screen.findByRole('button', { name: 'Add expense' }))
+    await user.type(screen.getByPlaceholderText('e.g. Dinner, souvenirs, gas…'), 'Bag storage')
+    await user.type(screen.getAllByPlaceholderText('0,00')[0], '30')
+    await user.click(screen.getByRole('button', { name: 'Custom' }))
+    await user.click(screen.getByRole('button', { name: '%' }))
+
+    const [alice, bob] = screen.getAllByRole('textbox', { name: / %$/ })
+    await user.type(alice, '60')
+    expect(screen.getByText('60 % of 100 % assigned')).toBeInTheDocument()
+    await user.type(bob, '40')
+    expect(screen.getByText('Split matches total')).toBeInTheDocument()
+    expect(screen.getByText('18,00 €')).toBeInTheDocument()
+
+    const submits = screen.getAllByRole('button', { name: 'Add expense' })
+    await user.click(submits[submits.length - 1])
+    await waitFor(() => expect(posted).toBeTruthy())
+    expect(posted!.members).toEqual([{ user_id: 1, amount: 18 }, { user_id: 2, amount: 12 }])
+  })
+
   it('FE-W5COSTS-057: multi-payer on a payer-less expense seeds and collapses back to me', async () => {
     const user = userEvent.setup()
     let put: Record<string, unknown> | null = null
