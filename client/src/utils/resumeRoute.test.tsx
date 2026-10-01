@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { renderHook } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import type { ReactNode } from 'react'
-import { forgetResumeRoute, rememberRoute, RESUME_MAX_AGE_MS, takeResumeRoute, useRememberRoute } from './resumeRoute'
+import { forgetResumeRoute, rememberRoute, RESUME_MAX_AGE_MS, takeResumeDay, takeResumeRoute, useRememberRoute } from './resumeRoute'
 
 const NOW = 1_800_000_000_000
 
@@ -57,5 +57,15 @@ describe('resume route (#1024)', () => {
     localStorage.clear()
     window.dispatchEvent(new Event('pagehide'))
     expect(JSON.parse(localStorage.getItem('trek:resume-route')!).path).toBe('/journey/9')
+  })
+  it('FE-UTIL-RESUME-666: the plan day comes back once, for its own trip only', () => {
+    rememberRoute('/trips/7', NOW, 55)
+    sessionStorage.clear()
+    takeResumeRoute(NOW, true)
+    expect(takeResumeDay(8)).toBeNull()
+    expect(takeResumeDay(7)).toBe(55)
+    expect(takeResumeDay(7)).toBeNull()
+    rememberRoute('/journey/1', NOW, 55)
+    expect(JSON.parse(localStorage.getItem('trek:resume-route')!).day).toBeUndefined()
   })
 })

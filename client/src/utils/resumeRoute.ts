@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router'
+import { useTripStore } from '../store/tripStore'
 
 /**
  * Where the installed app was when it went to the background (#1024).
@@ -14,10 +15,27 @@ import { useLocation } from 'react-router'
  */
 const KEY = 'trek:resume-route'
 const CHECKED_KEY = 'trek:resume-checked'
+const DAY_KEY = 'trek:resume-day-'
+
+/**
+ * The day the plan was on when the app went away (#666), handed over once to
+ * whoever seeds the trip's first day selection. Null when there is none.
+ */
+export function takeResumeDay(tripId: number): number | null {
+  try {
+    const raw = sessionStorage.getItem(`${DAY_KEY}${tripId}`)
+    if (raw == null) return null
+    sessionStorage.removeItem(`${DAY_KEY}${tripId}`)
+    const day = Number(raw)
+    return Number.isInteger(day) ? day : null
+  } catch {
+    return null
+  }
+}
 /** Older than this, a relaunch is a fresh start again. */
 export const RESUME_MAX_AGE_MS = 6 * 60 * 60 * 1000
 
-interface ResumeRecord { path: string; tab?: string; at: number }
+interface ResumeRecord { path: string; tab?: string; day?: number; at: number }
 
 /** True in a display mode that has no tab strip, i.e. launched from the home screen. */
 export function isInstalledApp(): boolean {
@@ -45,7 +63,7 @@ function withoutTabParam(path: string): string {
 }
 
 /** Called on every protected navigation and when the app is hidden. */
-export function rememberRoute(path: string, now = Date.now()): void {
+export function rememberRoute(path: string, now = Date.now(), day: number | null = null): void {
   try {
     if (!resumable(path)) {
       localStorage.removeItem(KEY)
@@ -57,7 +75,7 @@ export function rememberRoute(path: string, now = Date.now()): void {
     const asked = new URLSearchParams(path.split('?')[1] ?? '').get('tab') ?? undefined
     const tab = tripId ? sessionStorage.getItem(`trip-tab-${tripId}`) ?? asked : undefined
     const kept = tripId ? withoutTabParam(path) : path
-    const record: ResumeRecord = { path: kept, at: now, ...(tab ? { tab } : {}) }
+    const record: ResumeRecord = { path: kept, at: now, ...(tab ? { tab } : {}), ...(tripId && day != null ? { day } : {}) }
     localStorage.setItem(KEY, JSON.stringify(record))
   } catch {
     // Storage refused: the relaunch simply starts where it always did.
@@ -83,6 +101,7 @@ export function takeResumeRoute(now = Date.now(), installed = isInstalledApp()):
     if (now - record.at > RESUME_MAX_AGE_MS || !resumable(record.path)) return null
     const tripId = tripIdOf(record.path)
     if (tripId && record.tab) sessionStorage.setItem(`trip-tab-${tripId}`, record.tab)
+    if (tripId && typeof record.day === 'number') sessionStorage.setItem(`${DAY_KEY}${tripId}`, String(record.day))
     return record.path
   } catch {
     return null
@@ -102,9 +121,10 @@ export function useRememberRoute(): void {
   const location = useLocation()
   const path = location.pathname + location.search
   useEffect(() => {
-    rememberRoute(path)
-    const onVisibility = () => { if (document.visibilityState === 'hidden') rememberRoute(path) }
-    const onPageHide = () => rememberRoute(path)
+    const save = () => rememberRoute(path, Date.now(), useTripStore.getState().selectedDayId ?? null)
+    save()
+    const onVisibility = () => { if (document.visibilityState === 'hidden') save() }
+    const onPageHide = () => save()
     document.addEventListener('visibilitychange', onVisibility)
     window.addEventListener('pagehide', onPageHide)
     return () => {

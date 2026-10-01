@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
 import { findFocusDayId, findTodayDayId } from '../../../components/Planner/today'
+import { takeResumeDay } from '../../../utils/resumeRoute'
 import {
   CalendarCheck, CalendarDays, ChevronDown, ChevronLeft, Download, FileDown, FolderSync, List, Map as MapIcon, MoreHorizontal, Plane, Plus, Route, Rows3, SlidersHorizontal, Trash2, Upload,
 } from 'lucide-react'
@@ -256,8 +257,11 @@ export default function MTripShell({
     seededDayRef.current = true
     // Off the same helper file as the desktop day plan (#1567), so the two
     // cannot drift on what "today" means.
-    planner.tripActions.setSelectedDay(findFocusDayId(days) ?? days[0].id)
-  }, [isLoading, planner.selectedDayId, days, planner.tripActions])
+    // A relaunch after the system closed the app goes back to the day it was on (#666).
+    const resumed = takeResumeDay(tripId)
+    const resumedDay = resumed != null && days.some(d => d.id === resumed) ? resumed : null
+    planner.tripActions.setSelectedDay(resumedDay ?? findFocusDayId(days) ?? days[0].id)
+  }, [isLoading, planner.selectedDayId, days, planner.tripActions, tripId])
 
   // Swiping the day panel (#2051) can move the day well past the chips on
   // screen — the rail overflows from roughly six days on — so the active chip
