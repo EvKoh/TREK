@@ -1,10 +1,14 @@
 # User Settings
 
-The Settings page lets you personalise every aspect of TREK — appearance, maps, notifications, offline behaviour, and your account.
+The Settings page lets you personalise TREK: appearance, maps, notifications, offline behaviour and your account.
 
 ## Navigating to Settings
 
 Open the user menu in the top navigation bar and select **Settings**. The page opens on the **General** tab by default.
+
+On desktop the tabs are a side navigation on the left and each tab is a set of cards: one card per group of settings, with a switch, segmented control or dropdown at the end of each row. Anything that cannot be undone (deleting your account, removing a passkey, clearing the offline cache) asks for confirmation in TREK's own dialog. On a phone the same settings open as the mobile settings screens.
+
+A link can open a tab directly with `?tab=`, for example `/settings?tab=notifications`.
 
 If your account requires MFA setup, TREK redirects you directly to the **Account** tab (via `?mfa=required`).
 
@@ -12,7 +16,7 @@ If your account requires MFA setup, TREK redirects you directly to the **Account
 
 | Tab | Purpose | Shown when |
 |-----|---------|------------|
-| General | Start page and start tab, currency, language, temperature unit, distance unit, time format, week start, booking route labels, always show booking routes, map POI pills, blur booking codes, and optimize route from accommodation | Always |
+| General | Start page and start tab, display currency, language, place names, temperature unit, distance unit, time format, week start, the map app places open in, date first in day headings, booking route labels, always show booking routes, compact markers for unplanned places, explore places on the map, blur booking codes, and optimize route from accommodation | Always |
 | Appearance | Color mode, color scheme / accent, readability (transparency, reduce motion, density, text size), and which widgets appear on your dashboard | Always |
 | Map | Map provider (Leaflet, Mapbox GL, or MapLibre GL), tile presets, map style and Mapbox token, 3D buildings, high-quality mode | Always |
 | Notifications | Email, webhook, ntfy, push and in-app notification preferences, plus switching push on or off for this device (every device is switched on separately) | Always |
@@ -33,7 +37,7 @@ The General tab controls the following preferences, all saved immediately on cha
 
 **Language & region**
 
-- **Currency** — your display currency; **Trip currency** (the default) shows each trip in its own. See [Currencies](Currencies).
+- **Display currency**: your display currency; **Trip currency** (the default) shows each trip in its own. See [Currencies](Currencies).
 - **Language** — displayed as a button grid on desktop and a dropdown on mobile.
 - **Place names**: the language place search, suggestions and addresses answer in. **Same as the app** follows the language above; picking another one keeps the interface as it is and asks for place names in that language. Where a place has no name in it, the local name is shown.
 - **Temperature unit** — Celsius (°C) or Fahrenheit (°F).
@@ -43,8 +47,11 @@ The General tab controls the following preferences, all saved immediately on cha
 
 **Travel & map**
 
+- **Open places in**: the map app the navigate buttons open straight away, or **Ask every time** (the default) for the full list.
+- **Date first in day headings**: lead each day in the day plan with its date and show "Day 1" or the day's title next to it.
 - **Booking route labels** — show or hide station / airport names on booking route endpoint markers.
 - **Always show booking routes** — draw the route for every flight, train and other booking on the map automatically, instead of switching it on per item.
+- **Compact markers for unplanned places**: places not planned into any day show as small markers without a photo.
 - **Explore places on the map** — show a POI category pill on the trip map for finding nearby places from OpenStreetMap.
 - **Blur booking codes** — blur confirmation codes and reference numbers (useful when screen-sharing).
 - **Optimize route from accommodation** — when optimizing a day, start the route at the hotel you wake up in and end it at the one you check into that evening.
@@ -83,7 +90,7 @@ Each GL provider keeps its own saved style, so switching between Mapbox GL and M
 The Account tab lets you:
 
 - Edit your **username** and **email address**.
-- Change your **password** (hidden when the server runs in OIDC-only mode — see [OIDC-SSO](OIDC-SSO)).
+- Change your **password** (hidden when the server runs in OIDC-only mode, see [OIDC-SSO](OIDC-SSO)). The password rules are shown as a checklist under the new password and tick off as you type.
 - Set up or disable **two-factor authentication** (TOTP). After enabling MFA, backup codes are shown once and can be copied, downloaded, or printed. See [Two-Factor-Authentication](Two-Factor-Authentication).
 - Manage your **passkeys** — add one (confirm your password, then follow your device prompt), rename it, or remove it. **Add a passkey** only appears when the instance has passkeys switched on and a WebAuthn domain resolves; an existing passkey stays listed either way so you can always clean it up. See [Passkeys](Passkeys).
 - Upload or remove your **profile avatar**.

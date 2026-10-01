@@ -51,7 +51,9 @@ Passwords must meet all of the following rules:
 - Must not be a commonly used password
 - Must not consist of a single repeated character
 
-> **Admin:** You can disable open registration so only invite links work. See [Admin-Users-and-Invites](Admin-Users-and-Invites).
+As soon as you start typing, the five character rules appear under the password field as a checklist (**At least 8 characters**, **An uppercase letter**, **A lowercase letter**, **A number**, **A special character**), and each one is ticked off once the password meets it. The same checklist appears on every form that sets a password: registration, the forced password change, the reset page, **Change Password** in Settings and the admin's user dialogs. The common-password and repeated-character checks run when you submit.
+
+> **Admin:** You can disable open registration so only invite links work: switch off **Password Registration** in **Admin → Settings**, card **Authentication Methods**. See [Admin-Users-and-Invites](Admin-Users-and-Invites).
 
 ### Invite link flow
 

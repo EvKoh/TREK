@@ -16,6 +16,10 @@ TREK turns a trip into a printable **Trip Plan PDF**: a cover, a map of the whol
 
 ![Export dialog with the PDF under Document, Download .ics and Subscribe to calendar under Calendar, and the three GPX downloads under Maps & GPS](assets/ExportDialog.png)
 
+### My plan as PDF
+
+When some activities or bookings of the trip name who takes part (participants on a day plan entry, travelers on a booking), the **Document** group also offers **My plan as PDF** (*Only the activities and bookings you take part in*). It builds the same document with only your part of the plan: an entry or booking that names its people stays only when it names you, and one that names nobody belongs to everyone and stays. The row is offered on the phone's export sheet as well.
+
 The other groups of the same dialog are covered elsewhere: **Calendar** in [Calendar-Feeds](Calendar-Feeds), and the GPX downloads under **Maps & GPS** (*Whole trip*, *Places only*, *Days as routes*) in [Map-Features](Map-Features#exporting-a-trip-as-gpx).
 
 ### Cover page
@@ -28,7 +32,7 @@ The other groups of the same dialog are covered elsewhere: **Calendar** in [Cale
   - **Places**: every place in the trip's place list
   - **Planned**: how many different places are assigned to at least one day
   - **Distance**: the routed distance of the whole trip, in your own unit; left out when no day has a route
-  - **Cost**: the prices of all assigned places, in the trip's currency; left out when it is zero. Mixed currencies are converted at current rates and marked with "≈"; when a rate is missing, the figure is shown per currency instead
+  - **Cost**: with the Costs addon on, the expenses of the trip from Costs, each counted once (an expense linked to a place lands on that place's day); without it, the price of each planned place, once. In the trip's currency, left out when it is zero. Mixed currencies are converted at current rates and marked with "≈"; when a rate is missing, the figure is shown per currency instead
 
 ### Route overview
 
@@ -42,9 +46,11 @@ Routes come from the same router the planner uses, and the export does not wait 
 
 ### Day pages
 
-Each day starts on a new page, unless you turn off **Page break per day**, with a dark header: the day number, its title, the date and the day's estimated cost.
+Each day starts on a new page, unless you turn off **Page break per day**, with a dark header: the day number, its title, the date and the day's cost, counted the same way as the **Cost** figure on the cover.
 
 **Page break per day** is a switch in the preview's header, next to **Save as PDF**. It is on by default. Turn it off and the days run on one after another, which saves paper on a trip of short days that would otherwise print a sheet for every handful of lines. Your choice is remembered in that browser for the next export.
+
+**Transport notes** sits next to it when a flight, train, rental or other transport of the trip has notes. On by default, it prints those notes under the transport in the day plan; turn it off to leave them out. This choice is remembered in the browser too.
 
 Under the header:
 
@@ -52,7 +58,7 @@ Under the header:
 - **The day's entries**, in the order of the day plan:
   - **Places**: a photo (or a coloured category icon without one), a numbered badge, the name, the category, the address, the description, the time, the price and the notes
   - **Notes**: the icon, the text and the time, if set
-  - **Bookings**: the type icon, the title, the time, the details that fit the type (airline, flight number and route for a flight; train number, platform and seat for a train; party size for a restaurant; the venue for an event; the operator for a tour), the location and the booking code
+  - **Bookings**: the type icon, the title, the time, the notes of a transport (unless **Transport notes** is off), the details that fit the type (airline, flight number and route for a flight; train number, platform and seat for a train; party size for a restaurant; the venue for an event; the operator for a tour), the location and the booking code
 
 ### Footer
 

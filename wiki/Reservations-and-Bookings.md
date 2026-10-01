@@ -8,13 +8,13 @@ Everything you booked for a trip that is not a way of getting around: hotels, re
 
 Open a trip and select the **Bookings** tab. It lists accommodation, restaurant, event, tour, parking and other bookings. Transport records never show up here; they stay on the **Transports** tab, which works the same way and is described on [its own page](Transport-Flights-Trains-Cars).
 
-The tab starts with a bar like the other planner tabs. The name sits on the left. On the right are a search box, **Filter**, the switch between **Cards**, **List** and **Timeline**, and **View options**. If you may edit bookings, the bar ends with **Import booking confirmations** (the download icon, shown when your server can [import confirmations](#import-from-booking-confirmation)) and **Manual Booking**.
+The tab starts with a bar like the other planner tabs. The name sits on the left. On the right are a search box, **Filter**, the switch between **Cards**, **List** and **Timeline**, **View options** and **Export as spreadsheet (CSV)** (the spreadsheet icon, see [Exporting as CSV](#exporting-as-csv)). If you may edit bookings, the bar ends with **Import booking confirmations** (the download icon, shown when your server can [import confirmations](#import-from-booking-confirmation)) and **Manual Booking**.
 
 A trip without any bookings shows *No reservations yet* instead, with **Manual Booking** and **Import from file** as buttons right under it.
 
 ## Reservation types
 
-TREK knows sixteen types. Six of them belong to the Bookings tab and ten to the Transports tab:
+TREK knows seventeen types. Six of them belong to the Bookings tab and eleven to the Transports tab:
 
 | Type | Tab | How it is created |
 |------|-----|-------------------|
@@ -24,7 +24,7 @@ TREK knows sixteen types. Six of them belong to the Bookings tab and ten to the 
 | Tour | Bookings | **Manual Booking** |
 | Parking | Bookings | **Manual Booking**; a booking at one fixed place, such as airport parking |
 | Other | Bookings | **Manual Booking** |
-| Flight, Train, Bus, Car, Taxi, Bicycle, Cruise, Ferry, Other | Transports | The transport editor, see [Transport-Flights-Trains-Cars](Transport-Flights-Trains-Cars) |
+| Flight, Train, Bus, Car, Taxi, Bicycle, Cruise, Ferry, Cable car, Other | Transports | The transport editor, see [Transport-Flights-Trains-Cars](Transport-Flights-Trains-Cars) |
 | Public transit | Transports | The public transit search, see [Public transit search](Transport-Flights-Trains-Cars#public-transit-search) |
 
 A new booking made with **Manual Booking** starts as type **Other**. Change it with the type pill in the head of the editor.
@@ -78,6 +78,12 @@ The search box looks through the title, the type, the place and address, the acc
 
 A number on the Filter button counts what is switched on, and a chip such as *3 of 12* appears next to the search. Click the chip, or **Reset filters** in the panel, to see everything again. Filters are kept per trip and per tab until you close the browser tab.
 
+## Exporting as CSV
+
+**Export as spreadsheet (CSV)**, the spreadsheet icon after **View options**, downloads the bookings as a CSV file. It holds exactly what the tab shows: the search and the filters apply, and the rows follow **Sort by** from the view options (the grouping is left out, one row per booking). The columns are **Type**, **Title**, **Status**, **Start**, **End**, **From**, **To**, **Location**, **Confirmation** and **Notes**; **From** and **To** are filled for bookings with a route. The file is semicolon-separated with a UTF-8 byte-order mark, so Excel opens it cleanly, and is named after the trip and the tab, such as `berlin-2026-bookings.csv`. A cell that would start with `=`, `+`, `-` or `@` gets a leading apostrophe, so a spreadsheet never runs it as a formula.
+
+The button is there for every member who can see the tab, as soon as it has at least one booking. The Transports tab exports its own list the same way.
+
 ## Pending and Confirmed
 
 Every booking is either **Pending** or **Confirmed**. The colour follows it everywhere: an amber dot and head band for pending, green for confirmed.
@@ -111,7 +117,8 @@ Clicking a booking opens its detail over the page. The same popup opens wherever
 
 - a card, a list row or a timeline bar on the Bookings and Transports tabs,
 - a booking row in the day plan, a rental car pill in a day's head band, a booking pinned to a stop,
-- the **Reservations** list in a day's details, the **Bookings** cards in the place inspector,
+- the ticket button (**Open booking**) on a booked stay's pill in a day's head band; the hotel's name on the same pill still opens the place,
+- the **Reservations** list in a day's details, the **Bookings** cards in the place inspector (for a hotel, these also list the stay booked for it),
 - a booking's endpoint on the map, and the rides on the [Road Trip](Road-Trip) rail.
 
 ![Booking detail of a hotel stay: the status, type and day pills and the booking code with a copy button in the head, tiles for check-in, check-out and the nights, the accommodation, and On map, the bin and Edit at the foot](assets/BookingDetail.png)
@@ -148,6 +155,8 @@ A booking for one particular stop is quicker from the plan: point at the stop in
 ## Editing and deleting
 
 Click the pencil on a card or list row, or **Edit** in the booking detail. The editor opens as **Edit Reservation** with everything the booking has; change what you need and click **Update**.
+
+If you have changed something and then press Escape or click beside the editor, TREK asks *Discard your changes?* before it closes. **Keep editing** takes you back to the form, **Discard** closes it without saving. The cross and **Cancel** close the editor straight away.
 
 To delete a booking, click the bin on its card or row, or **Delete** in the detail. TREK asks once (*Delete booking?*) before it removes the booking.
 

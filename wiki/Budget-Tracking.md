@@ -29,7 +29,7 @@ Costs is **multi-currency** (#551). Three settings are involved, and they do dif
 
 - The **trip currency** (Trip → Edit trip) is the trip's accounting base. Every balance and settle-up is calculated in it.
 - Each **expense** carries **its own currency**. Pick it in the expense dialog and enter what the receipt says (a $100 dinner on a rouble trip is `100 USD`). It is converted into the trip currency at a rate **frozen when you save it**, so a settled debt does not reopen when the market moves.
-- Your **display currency** (Settings → General) converts what you *read* (totals, balances, the ledger) into one currency. It changes nothing that is stored. Left on **Trip currency** (the default), each trip is shown in its own currency.
+- Your **display currency** (Settings → General → Language & region → **Display currency**) converts what you *read* (totals, balances, the ledger) into one currency. It changes nothing that is stored. Left on **Trip currency** (the default), each trip is shown in its own currency.
 
 165 currencies are supported, with rates from [Frankfurter](https://frankfurter.dev) (no API key needed). When an expense's currency differs from the one you read in, the dialog shows the original beside the converted amount (`$100.00 ≈ 7 668,71 ₽`, marked *live rate* until the expense is saved and its rate frozen), and the ledger row shows both (`$100.00 → 7 668,71 ₽`).
 
@@ -53,6 +53,7 @@ An expense row shows:
 - the **name**, with an amber **Unfinished** chip when nobody has paid it yet (see [Who paid](#who-paid)) and a **Receipts** chip when files are attached,
 - the original and the converted amount under the name, when it was entered in another currency,
 - the **payers** as chips with what each of them put in (the name is in the tooltip),
+- a **Split** line under the payers with every member the expense is shared between, each as an avatar with their share and a tick once their share is marked paid. The tooltip names the person; past six members the rest fold into a **+N** chip whose tooltip lists them,
 - the **note** as a pill; click it to read the whole note, click again to fold it,
 - the **total**, and under it a green **you lent** or red **you borrowed** chip when the split leaves you up or down on it.
 
@@ -132,7 +133,7 @@ An expense with no payer is flagged **Unfinished** on its row and counted into t
 **Split** decides who owes for the expense. The switch beside the heading has three modes, and a line under it says what the current one does. Every member is listed with a box to tick; an unticked member owes nothing.
 
 - **Equally**: everyone ticked pays the same share, shown beside each name, with the head count and *{amount} per person* under the list. Remainder cents from rounding are handed out deterministically and rotated by the expense, so over a trip nobody is always the one who pays the extra cent.
-- **Custom**: type each person's share. Together they have to make the total: under the list, a green *Split matches total* or a red *Sum of splits: … (under by …)* / *(over by …)* says where you stand, and the dialog will not save until it matches.
+- **Custom**: type each person's share. Together they have to make the total: under the list, a green *Split matches total* or a red *Sum of splits: … (under by …)* / *(over by …)* says where you stand, and the dialog will not save until it matches. A small switch next to the hint (**Enter shares as**) picks between the currency symbol and **%**. In percent, each person gets a percentage instead, they have to add up to 100 % (a red *… % of 100 % assigned* says when they do not), and TREK turns them into amounts that add up to the total exactly.
 - **Ticket**: list what was on the receipt. Each line has an **Item name**, a price and, under *Splitting:*, a chip per member to tick who had it. **Add item** adds a line, the bin removes one. The total is summed from the lines, **Individual shares** shows what each person comes to, cent-exact, and the lines are kept, so the list is still there the next time you open the expense.
 
 ## Settlement calculator
@@ -150,9 +151,9 @@ The final budget comes to each member's share of the paid expenses (exact in the
 
 ![The Add payment dialog with From and To, the amount, its currency and the day](assets/CostsSettleUp.png)
 
-The **Add payment** dialog has **From** and **To** (the head band reads *You → Anna* as you pick), **Amount**, **Currency** and **Day**. A payment carries **its own currency**: settling a rouble debt with a euro transfer is normal, and its rate is frozen when you record it. A payment made in another currency shows both amounts in the ledger (`$30.00 → 27,00 €`). The day is the day it happened, so a transfer you only get round to recording three days later still lands on the right day; payments recorded before this field existed stay on the day they were recorded.
+The **Add payment** dialog has **From** and **To** (the head band reads *You → Anna* as you pick), **Amount**, **Currency**, **Day** and **Note**. The note is free text, such as *Paid in cash, by bank transfer…*; in the ledger it sits on the payment's row as a pill that opens on a click, like an expense's note. A payment carries **its own currency**: settling a rouble debt with a euro transfer is normal, and its rate is frozen when you record it. A payment made in another currency shows both amounts in the ledger (`$30.00 → 27,00 €`). The day is the day it happened, so a transfer you only get round to recording three days later still lands on the right day; payments recorded before this field existed stay on the day they were recorded.
 
-Balances are always netted in the **trip currency** and converted to your display currency once, at the end, so they stay stable even when the trip mixes currencies.
+Balances are always netted in the **trip currency** and converted to your display currency once, at the end, so they stay stable even when the trip mixes currencies. An expense or payment in a foreign currency for which no exchange rate is known yet is left out of the balances and totals rather than counted 1:1; see [Currencies](Currencies#expense-currency).
 
 ## Costs summary
 
@@ -164,6 +165,10 @@ Four cards sit above the ledger:
 - **Total trip spend**: the grand total across all travelers, with **Your share** and **You paid** under it.
 
 The right-hand column ends with **By category**: spending per category as a ranked list of bars in the category colours. Only categories with spend on them appear, sorted by amount, and the bars are scaled against the biggest category rather than the trip total, so the ranking stays readable.
+
+### Costs in the day plan
+
+With Costs on, the cost pills on the days of the plan and **Total Cost** at its foot (and the same figures in the trip PDF) add up the expenses from Costs, each one once: on the day its booking starts, otherwise the first day its place is planned, otherwise its own date; one without any day still counts in the total. A foreign expense counts at its frozen rate and a refund nets against its day, so **Total Cost** matches **Total trip spend**, and deleting an expense lowers both. With Costs off, a place's own price counts instead, once per place.
 
 ## Table view
 

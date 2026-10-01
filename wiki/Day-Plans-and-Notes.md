@@ -15,14 +15,15 @@ Which days are expanded is saved per trip in `localStorage` (key `day-expanded-{
 From left to right, the head band of a day shows:
 
 - **The day tile:** the day's number, and under it the forecast temperature when the day has a date and a place to take the weather from. A reading that starts with **Ø** is a climate estimate, not a forecast. Rest the pointer on it for the weather and the place it is for. See [Weather Forecasts](Weather-Forecasts).
-- **The title and the date.** A day without a title of its own reads **Day 1**, **Day 2** and so on. Rename a day in the [Day details panel](#day-detail-panel).
+- **The title and the date.** A day without a title of its own reads **Day 1**, **Day 2** and so on. Rename a day in the [Day details panel](#day-detail-panel). With **Date first in day headings** on (Settings > General > Travel & map), the date leads and the day's title or number follows it, here and in the day details.
 - **Pills** for what the day holds:
-  - the stay, with a hotel icon: green on the check-in day, red on the check-out day, grey for the nights in between. Rest the pointer on it for *Check-in: Hotel Adler* or *Check-out: Hotel Adler*, and click it to open the place. See [Accommodations](Accommodations).
+  - the stay, with a hotel icon: green on the check-in day, red on the check-out day, grey for the nights in between. Rest the pointer on it for *Check-in: Hotel Adler* or *Check-out: Hotel Adler*, and click the name to open the place. A stay with a booking has a ticket at the end of the pill (*Open booking*) that opens the booking's detail. A stay whose booking is not confirmed yet has a dashed pill, and its tooltip adds *(Pending)*. See [Accommodations](Accommodations).
   - a rental car that runs across the day, with a car icon. Click it to open the booking.
-  - the day's cost: with the [Costs](Budget-Tracking) addon on, the expenses of the day, added up. An expense counts on the day its booking starts, else on the first day its place is planned, else on its date. With Costs off, the prices of the day's places.
   - a label a plugin gives the day, for example the leg of the trip it belongs to.
 - **+** (*Add to day*): the menu of everything a day can be given, see below. Shown to members who can edit days.
 - **The chevron** expands or collapses the day.
+
+Right click the head band for the same entries as **+**, and, on a day with places on it, **Clear day**. See [Clearing a day](#clearing-a-day).
 
 ### Adding to a day
 
@@ -47,7 +48,7 @@ An expanded day lists its places, bookings, transports and notes in one merged o
 A place row shows:
 
 - **The photo** of the place, or its category tile. Click it to lock the place (*Keep position during route optimization*): a lock covers the picture and the row takes a faint red tint. Click again to unlock. See [Route Optimization](Route-Optimization#optimize-route).
-- **The category icon and the name.** Under them the time as a white badge (a start, or a start and an end) and the description or the address.
+- **The category icon and the name.** A stop left out of the route carries an **Off route** pill next to its name, see [Leaving a stop out of the route](#leaving-a-stop-out-of-the-route). Under them the time as a white badge (a start, or a start and an end) and the description or the address.
 - **Notes for this day**, when the stop has a note of its own, after a small note icon.
 - **Bookings pinned to this stop** as white badges: the type icon with the status (*Reservation confirmed* or *Reservation pending*), the time, and the carrier such as the airline and flight number. A booking with a start and an end point has a route button that draws it on the map (*Show booking routes*), and members who can edit days get a pencil that opens the editor. The place inspector shows the same bookings as cards that open their detail.
 - **Participants**, as small avatars, when not everybody joins this stop.
@@ -59,7 +60,7 @@ On hover the row shows a ticket button, **Add booking**, which opens a new reser
 A booking with a day that is not pinned to a stop gets a row of its own, tinted in the colour of its type: flights, trains, buses, cars, ferries, restaurants, events and the rest. The row shows the type tile, the title and a second line with:
 
 - the phase of a booking that runs over several days, in capitals: **START**, **ONGOING**, **END**, and for the types with their own words **DEPARTURE**, **IN TRANSIT**, **ARRIVAL**, **PICKUP**, **RETURN** and **DROP-OFF**. See [Multi-day reservations](#multi-day-reservations).
-- the time as a white badge, with the time zone on the departure or arrival day when one is set.
+- the time as a white badge. On the departure or arrival day of a booking with a time zone, a small globe follows it; rest the pointer on the globe for the time zone.
 - the airline and flight number, the train number, platform and seat, or the route.
 
 A public transit journey shows its lines as coloured chips, and its chevron unfolds the itinerary stop by stop. The route button on the right switches the booking's route on the map on and off.
@@ -74,7 +75,7 @@ A note row shows its icon in the note's colour, the title and, under it, the tex
 
 Every place and note row has a **…** button (*More options*) at its right end, which offers the same actions as a right-click on the row:
 
-- **For a place:** **Edit**, **Remove from day**, **Open Website**, one entry per map app (see [Opening a place in a map app](Places-and-Search#opening-a-place-in-a-map-app)), **Save to Collection** with the [Collections](Collections) addon, and **Delete**.
+- **For a place:** **Edit**, **Remove from day**, **Leave out of route** (or **Add back to route**) for a place with coordinates, **Open Website**, **Save to Collection** with the [Collections](Collections) addon, and **Delete**. Map apps are not in this menu: navigation goes through the **Navigation** button in the place inspector, see [Opening a place in a map app](Places-and-Search#opening-a-place-in-a-map-app).
 - **For a note:** **Edit** and **Delete**.
 
 Which entries appear depends on your permissions and on what the place has, such as a website or coordinates.
@@ -92,6 +93,14 @@ To move a row within a day or to another day, drag it, or use the up and down ar
 A place with a time keeps the day in time order. Dragging it to a spot that breaks that order asks **Remove time?** first: confirming removes the time and moves the place.
 
 To take a place off a day, choose **Remove from day** in the row's **…** menu, or **Remove from Day** in the footer of the place inspector. On mobile, switch the plan screen to **Plan** and tap the **X** next to the place. **Delete** in the same menu deletes the place itself, from every day.
+
+### Clearing a day
+
+To take every place off a day at once, right click the day's head band and choose **Clear day**. On a phone, **Clear day** sits in the day's sheet. TREK asks first (*Clear Day 3?*): every place comes off the day and stays in the trip, and the day keeps its notes and bookings. **Undo** brings the places back (*Day cleared*). The entry is only there on a day with places on it, for members who can edit days.
+
+### Leaving a stop out of the route
+
+**Leave out of route** in a place's **…** menu keeps the place on the day and on the map, but the day's route skips it and runs from the stop before it straight to the one after. Use it for a place you only visit on foot from somewhere nearby, or one that is just a point of interest. The row then carries an **Off route** pill, and **Add back to route** in the same menu undoes it. On a phone, the route icon on the day's chip in the place sheet does the same. The setting belongs to that one visit, so the same place on another day is still routed.
 
 ## Multi-day reservations
 
@@ -127,14 +136,14 @@ Click a day's head band to open its details. The panel floats over the map, betw
 - **The head band** carries the day's title and date. Members who can edit days rename the day with the pencil next to the title. The chevron folds the panel to a slim bar (clicking the band does the same), and **X** closes it.
 - **The weather** for the day, with the hourly forecast. See [Weather Forecasts](Weather-Forecasts).
 - **Reservations**: the day's bookings apart from stays, each with its type tile, title, the place it is pinned to, the time and a status dot. Click one to open its detail.
-- **Accommodation**: the stay of the night, with check-in, check-out, the confirmation code and its booking, and **Add accommodation**. See [Accommodations](Accommodations#in-the-day-detail-panel).
+- **Accommodation**: the stay of the night, with the confirmation code, its booking and **Add accommodation**. It shows only the time that matters on this day: the check-in on the arrival day, the check-out on the departure day, both for a stay that starts and ends on the same day, and neither on the nights in between. See [Accommodations](Accommodations#in-the-day-detail-panel).
 - Cards and panels that [plugins](Plugins) add to a day.
 
 ## Toolbar actions
 
 The head band of the days column holds, from left to right:
 
-- **Export**: one dialog with every way a trip leaves TREK, in three groups. **Document** is the PDF of the whole plan (see [PDF-Export](PDF-Export)). **Calendar** offers **Download .ics** and, for members who can manage share links, **Subscribe to calendar** (see [Calendar Feeds](Calendar-Feeds)). **Maps & GPS** offers GPX files: **Whole trip**, **Places only** and **Days as routes** (see [Exporting a trip as GPX](Map-Features#exporting-a-trip-as-gpx)).
+- **Export**: one dialog with every way a trip leaves TREK, in three groups. **Document** is the **PDF** of the whole plan and, once some stop has participants or some booking has travelers, **My plan as PDF**: the plan you go on, without the stops and bookings that name only other people (see [PDF-Export](PDF-Export)). **Calendar** offers **Download .ics** and, for members who can manage share links, **Subscribe to calendar** (see [Calendar Feeds](Calendar-Feeds)). **Maps & GPS** offers GPX files: **Whole trip**, **Places only** and **Days as routes** (see [Exporting a trip as GPX](Map-Features#exporting-a-trip-as-gpx)).
 - **Undo**: reverses the last action. See [Undo](Trip-Planner-Overview#undo).
 - **Expand all days** / **Collapse all days**.
 - **Reorder days**: move, add and delete days. Shown to members who can edit days. See [Adding a day](#adding-a-day) and [Deleting a day](#deleting-a-day).
@@ -151,7 +160,7 @@ The selected day ends in its route bar, as long as the day can be routed: two or
 ![The route bar of the selected day: the Route toggle, the travel mode, Optimize, and the buttons for Google Maps and CoMaps](assets/PlanRouteBar.png)
 
 - **Route** draws the day's route on the map and puts the travel time between each pair of stops into the timeline.
-- **The travel mode**: Driving, Walking, and any mode a plugin adds.
+- **The travel mode**: Driving, Walking, Cycling, and any mode a plugin adds.
 - **Optimize** reorders the day's free places into a shorter route.
 - **Open in Google Maps** and **Open in CoMaps** hand the day to a map app.
 

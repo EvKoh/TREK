@@ -63,7 +63,7 @@ When an admin leaves the instance configuration blank, each user can set up thei
 
 There you pick a **Provider** (only **OpenAI** or **Anthropic**), a **Model** id and an **API key**, which is stored encrypted; leave the key blank to keep the current one. There is no personal Base URL. The address the server calls is instance configuration, so a local Ollama model can only be set up by an admin on the addon. The server refuses a personal base URL or a personal `local` provider from anyone, admins included.
 
-**Model reads images** decides whether photos are offered and sent to your model. PDFs are not affected: only Anthropic gets the raw PDF, every other provider the extracted text.
+The **Model reads images** switch decides whether photos are offered and sent to your model, both for the booking import and for [Scan receipt](Budget-Tracking#scanning-a-receipt) in Costs. PDFs are not affected: only Anthropic gets the raw PDF, every other provider the extracted text.
 
 > **Precedence:** a model set by the admin for the whole instance always wins. Personal settings only count when there is none.
 

@@ -34,6 +34,8 @@ Under the progress card, beside the Shared and My list switch (see [The two view
 - **Open**: what still has to be packed.
 - **Done**: what is already packed.
 
+On the desktop, **A to Z** at the far end of the same row shows each list's items in name order, so you can check at a glance whether something is already on the list. Click it again to go back to the manual order. TREK remembers the choice in this browser.
+
 ## Categories
 
 Items are grouped into categories, each a card with a coloured dot taken from a palette of ten. A new packing list starts empty and reads *Packing list is empty* until you add something: create lists and items by hand, apply a saved template (see [Templates](#templates)), or paste a whole list in at once (see [Importing a list](#importing-a-list)).
@@ -62,6 +64,8 @@ Each item row holds:
 - who brings it, as a small avatar with the full name as its tooltip,
 - the **quantity** and, with bag tracking on, the **weight** in grams, as small badges you click to type into,
 - with bag tracking on, the **bag** circle, which opens the bag picker. The picker stays open until you click beside it.
+
+An item with a quantity above one also shows a packed counter (for example **3/10**) with a minus and a plus beside it: count the pieces in as they go into the bag. Once the count reaches the quantity, the item ticks itself off.
 
 At the end of the row sit the **delete** bin and a **⋯** menu with **Move to List**, **Sharing**, **Rename** and **Delete**. Whatever a row does not use (a quantity of one, an empty weight, no bag, the bin and the menu) stays dimmed until you point at the row or tab into it, so the columns stay in line from row to row.
 
@@ -96,7 +100,7 @@ A Markdown list is read as well, the way Obsidian, Notion, GitHub and most notes
 
 Anything that is neither a heading nor a list item, a note or a blank line, is left out.
 
-Import is the only way to load weights and bag assignments in bulk; applying a template brings across names and categories only. It needs the `packing_edit` permission.
+Import loads weights and bag assignments in bulk, and so does applying a template (see [Templates](#templates)). It needs the `packing_edit` permission.
 
 ## Printing and exporting
 
@@ -131,6 +135,8 @@ Open **Sharing** in an item's **⋯** menu to move it between tiers:
 
 New items take the view you add them in: an item added in **My list** is Personal, one added in **Shared** goes to the group pool. The same goes for a template applied while **My list** is open. To share an item with specific people, add it first, then open its Sharing control and choose them.
 
+In **My list**, a list whose items you have all shared with the same people passes that on: a new item added to it is shared with those people right away. If the items in the list differ, or one of them is kept to yourself, the new item stays Personal.
+
 Only the item's owner (the person bringing it) can change its sharing. Someone you shared an item *with* sees it on their **My list** with a **by {name}** badge and can tick it off, but does not manage who else it is shared with.
 
 ### Who's bringing what
@@ -160,7 +166,10 @@ With it on, a **Bags** card sits to the right of the lists on wide screens; on n
 - the avatars of the members assigned to the bag, beside its name, with a dashed **+** to pick them,
 - the item count, under the fill bar.
 
-Below the bags, **Unassigned** counts the items that are in no bag and their weight, and **Total weight** at the foot of the card sums everything.
+Below the bags, **Unassigned** counts the items that are in no bag and their weight. The foot of the card then shows:
+
+- **Per person**: what each member carries, from the bags they are assigned to. A bag shared by several people is split evenly between them; the weight is then underlined and says so on hover.
+- **Total weight**: the sum of everything, with **Packed** under it, the weight already packed (for an item with a packed counter, only the pieces counted in), and a thin bar for the share.
 
 To use bags:
 
@@ -172,8 +181,8 @@ To use bags:
 
 Packing lists can be saved and reused across trips:
 
-- **Save as template** (instance admins only): click **Save as template** in the Lists bar and name the template in the dialog that opens. It saves the current list's items and categories, and only shows when the list has items.
-- **Apply template**: when templates exist, **Apply template** in the Lists bar opens them with their item counts. Picking one adds its items to the list in the view that is open, without removing anything already there.
+- **Save as template** (instance admins only): click **Save as template** in the Lists bar and name the template in the dialog that opens. It saves the current list's items and categories with each item's weight, quantity and bag, and only shows when the list has items.
+- **Apply template**: when templates exist, **Apply template** in the Lists bar opens them with their item counts. Picking one adds its items to the list in the view that is open, with their weight, quantity and bag, without removing anything already there. A bag the trip does not have yet is created.
 
 Templates are managed by admins in [Admin-Packing-Templates](Admin-Packing-Templates). See also [Packing-Templates](Packing-Templates).
 

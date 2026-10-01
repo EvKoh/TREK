@@ -24,6 +24,7 @@ Transport records live on the **Transports** tab and never on the [Bookings](Res
 The tab works exactly like the Bookings tab: the same bar with search, **Filter**, the **Cards**, **List** and **Timeline** views and **View options**, the same cards and the same detail popup. [Reservations-and-Bookings](Reservations-and-Bookings#views) describes them. A few things are specific to transports:
 
 - The bar also holds **Import from AirTrail** (the plane icon) when the AirTrail addon is on.
+- **Export as spreadsheet (CSV)** saves the filtered transports as a CSV, with the first and last stop of each route under **From** and **To**. See [Exporting as CSV](Reservations-and-Bookings#exporting-as-csv).
 - Cards show the whole route, stop by stop, with the type's icon between the stops, and **Segment codes** when the legs of a connection have their own codes.
 - Public transit journeys have no status. They are tinted blue, and in the cards view they sit among the confirmed entries in time order. **View options → Public transit as its own section** gives them a section of their own, **Automated public transit**. The list always does that when it is grouped by status.
 - On the timeline, **Show the other tab** draws the Bookings tab's entries in a dimmed lane at the top.
@@ -44,9 +45,9 @@ Until the title has something in it, the line under it marks the title as requir
 
 ## Transport types
 
-Nine types are created in the editor: **Flight**, **Train**, **Bus**, **Car**, **Taxi**, **Bicycle**, **Cruise**, **Ferry** and **Other**. A tenth, **Public transit**, only comes from the public transit search.
+Ten types are created in the editor: **Flight**, **Train**, **Bus**, **Car**, **Taxi**, **Bicycle**, **Cruise**, **Ferry**, **Cable car** and **Other**. **Cable car** covers gondolas and aerial cableways and has its own icon. An eleventh type, **Public transit**, only comes from the public transit search.
 
-> **AI / MCP:** `create_transport` accepts the same nine. Scheduled public transit is its own tool: `create_transit_journey` attaches the provider's itinerary. See [MCP-Tools-and-Resources](MCP-Tools-and-Resources).
+> **AI / MCP:** `create_transport` accepts the same ten. Scheduled public transit is its own tool: `create_transit_journey` attaches the provider's itinerary. See [MCP-Tools-and-Resources](MCP-Tools-and-Resources).
 
 ## Common fields
 
@@ -66,6 +67,10 @@ Every transport has these fields, whatever its type:
 
 When editing, the foot of the dialog also has **Delete**, which asks once before it removes the transport.
 
+If you have changed something and then press Escape or click beside the dialog, TREK asks *Discard your changes?* first: **Keep editing** returns to the form, **Discard** closes it without saving.
+
+The notes of a transport also print in the [trip PDF](PDF-Export). The PDF preview has a **Transport notes** switch to leave them out.
+
 ## Routes
 
 ### Flights
@@ -79,6 +84,10 @@ Every airport the plane leaves from has **Departure** and **Dep. time**, every a
 Trains use the same rail, with stations instead of airports. Search each station with the location picker; **Add stop** inserts a change of trains. Each leg has its own departure and arrival day and time, **Train No.**, **Platform** and **Seat**, and its own **Booking Code** once the route has more than two stations. A simple train from A to B is just one leg.
 
 Trains saved before the multi-leg editor existed still open fine: their train number, platform and seat are read as a single leg.
+
+### Cruises
+
+A cruise uses the same rail as a train, with ports instead of stations. The first stop is **Embarkation**, the last **Disembarkation**, and **Add port** between two of them inserts a **Port of call**. Every port the ship arrives at has **Arrival** and **Arr. time**, every port it leaves from **Departure** and **Dep. time**, so a port of call carries both. A cruise has no train number, platform or seat.
 
 ### Cars, buses and everything else
 
@@ -94,7 +103,7 @@ The **Automated** mode searches real public transit connections, by default thro
 
 The head band reads **Public transit** and holds a day pill: the search runs for that day. Then:
 
-1. Pick **From** and **To**. The day's own places and hotels are offered as quick picks, and any stop or station can be searched. **Swap** turns the two around.
+1. Pick **From** and **To**. Quick picks are offered before you type: first the day's accommodation, then the airports, stations and ports the day's flights, trains, buses, ferries and cruises leave from or arrive at, then the day's own places. Any stop or station can be searched as well. **Swap** turns the two around.
 2. Choose **Depart** or **Arrive** and the time.
 3. Narrow the modes if you like: Train, Subway, Tram, Bus, Ferry, Cable car.
 4. Rank the results by **Best route**, **Fewer transfers** or **Less walking**, and click **Search**.
@@ -126,6 +135,7 @@ A transport with both ends set can be drawn as a line on the trip map:
 - **Flights**, **cruises** and **ferries** follow a great-circle curve, the way they actually travel across the globe.
 - **Cars**, **buses**, **taxis** and **bicycles** follow real roads, routed on demand through a public OSRM router (driving for car, bus and taxi, cycling for the bicycle). A straight line shows while the route loads, and stays when routing fails or the distance is over about 2000 km.
 - **Trains** are drawn as a straight line through all their stations.
+- **Cable cars** are drawn as a straight line from the valley to the mountain station, the way the rope runs.
 - **Public transit** journeys follow their real rail and bus lines, each ride in its line's own colour and the walks between them as a dotted grey line. A journey the provider sent no shape for falls back to a straight line. A journey is also drawn whenever its day's **Route** is switched on, so it has no route button of its own in the day plan.
 
 Confirmed transports get a solid line, pending ones a dashed line. Each end carries a pill-shaped marker with the transport's icon; click it to open the detail. Turn on **Booking route labels** (Settings → General → Travel & map) to print the airport code or station name in the pill as well, once the two ends are far enough apart on screen.
@@ -134,7 +144,7 @@ Lines are off until you ask for them: the route button on a transport's row in t
 
 ## In the day plan
 
-A transport shows up on its day as a row between the stops, tinted with its type's colour, with its time as a badge and its route or carrier underneath. A ride that runs over several days appears on each of them with a label for the phase:
+A transport shows up on its day as a row between the stops, tinted with its type's colour, with its time as a badge and its route or carrier underneath. When a departure or arrival has a time zone, a small globe after the time names it on hover. A ride that runs over several days appears on each of them with a label for the phase:
 
 | Type | First day | Days in between | Last day |
 |------|-----------|-----------------|----------|

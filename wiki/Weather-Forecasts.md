@@ -26,14 +26,14 @@ A day without a date, or without a place to take the weather from, has no weathe
 | Date range | Data source | Cache |
 |---|---|---|
 | From yesterday up to 16 days ahead | Open-Meteo forecast API | 1 hour |
-| More than a day in the past | Open-Meteo archive API (actual historical data), for the reading on the day card. The day details ask the forecast API for past days too | 24 hours (1 hour in the day details) |
+| More than a day in the past | Open-Meteo archive API (actual historical data), for the reading on the day card and for the day details. The archive lags a few days behind, so for a recent day it cannot answer yet the day details fall back to the forecast API | 24 hours (1 hour for a day details reading from the forecast API) |
 | More than 16 days ahead | Climate estimate from the same date a year earlier | 24 hours |
 
 Climate estimates carry a **Ø** in front of the temperature (for example *Ø 18°C*), so they are never mistaken for a real forecast, and the day details add a line saying that a real forecast is available within 16 days of the date. The reading on the day card fetches again quietly in the background when a cached climate estimate could be upgraded to a live forecast.
 
 ## Temperature and wind units
 
-Temperature follows your setting in [Display-Settings](Display-Settings): switch between °C and °F there. Wind speed is shown in km/h with °C and in mph with °F.
+Temperature follows **Temperature Unit** under Settings > General > Language & region (see [Display-Settings](Display-Settings)): switch between °C and °F there. Wind speed is shown in km/h with °C and in mph with °F.
 
 ## Session cache
 

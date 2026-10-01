@@ -92,7 +92,7 @@ A provider that sends the claim as an empty list instead of dropping it is not a
 When an SSO login matches an existing TREK account by OIDC subject (`sub`), that account is used directly. When it matches only by **email**, the OIDC identity is linked to that account only if the provider asserts `email_verified` for it; if the claim is missing or false the login is rejected with an `email_not_verified` error, so an unverified address can never take over a local account. Make sure your IdP includes `email_verified` in the userinfo response — it is part of the `email` scope. If no matching account exists, TREK attempts to create one. The outcome depends on the following:
 
 - **First user ever**: always created as admin, no invite required.
-- **Open SSO registration enabled** (admin panel toggle `oidc_registration`): account is created as a regular user.
+- **Open SSO registration enabled** (**SSO Auto-Provisioning** in **Admin → Settings**, card **Authentication Methods**; setting `oidc_registration`): account is created as a regular user.
 - **Invite token present** in the login URL: account is created regardless of the registration toggle. Pass the token as `?invite=<token>` when initiating SSO login (e.g. `GET /api/auth/oidc/login?invite=<token>`).
 - **SSO registration disabled and no invite**: login is rejected with a `registration_disabled` error.
 
@@ -112,7 +112,9 @@ Environment variables take priority over database settings when both are present
 
 The following variables are **env var only** and have no admin panel equivalent: `OIDC_ONLY`, `OIDC_SCOPE`, `OIDC_ADMIN_CLAIM`, `OIDC_ADMIN_VALUE`, `OIDC_USERNAME_CLAIM`.
 
-The `OIDC_ONLY` env var always overrides the panel's login-method toggles. To disable password login at runtime without `OIDC_ONLY`, use the **password_login** and **password_registration** toggles in Admin → Settings instead.
+The `OIDC_ONLY` env var always overrides the panel's login-method toggles: while it is set, the **Authentication Methods** card in **Admin → Settings** says the password settings are controlled by `OIDC_ONLY` and cannot be changed there. To disable password login at runtime without `OIDC_ONLY`, switch off **Password Login** and **Password Registration** in that card instead. **SSO Login** in the same card turns the SSO button on or off.
+
+When password login and password registration are both off, through `OIDC_ONLY` or the two switches, the **Change Password** section is hidden from **Settings → Account**.
 
 > **Note:** The admin panel prevents you from disabling all login methods simultaneously. At least one method (password or SSO) must remain active. Similarly, you cannot remove the OIDC configuration from the admin panel while password login is disabled.
 

@@ -24,13 +24,15 @@ The to-do view has two columns, and a third while a task is open:
 |---|---|
 | Name | Required. |
 | Done | The checkbox; ticks the task off. |
-| Description | Optional free text. |
+| Description | Optional text with Markdown (see below). |
 | Priority | **None**, **P1**, **P2** or **P3**, picked on one segmented track. |
 | List | Optional grouping. The sidebar heading is **Lists**, the button reads **Add list**, and a task without one shows **No list**. The **+** beside the field names a new list. |
 | Due date | Optional date. |
 | Assigned to | Optional trip member, guests included; **Unassigned** otherwise. |
 
 Click a task row to open the detail pane, where every field can be changed. **Save changes** keeps them.
+
+The description understands Markdown: bold text, lists and links render as such, in the task list (shortened to one line) and in the detail pane. In the detail pane a click on the text switches it back to the editing box (the tooltip reads *Click to edit, links open directly*); a click on a link opens the link instead. An empty description is the editing box straight away.
 
 ## Priority levels
 

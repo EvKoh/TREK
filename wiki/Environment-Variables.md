@@ -7,8 +7,8 @@ Complete reference for all environment variables TREK reads.
 - **Docker Compose** — use the `environment:` block or a `.env` file alongside `docker-compose.yml`
 - **Docker run** — pass each variable with `-e VARIABLE=value`
 - **Helm** — use `env:` for plain values and `secretEnv:` for sensitive values in `values.yaml`. The chart only
-  passes through the keys it declares (33 in `templates/configmap.yaml`, the credentials in `templates/secret.yaml`), so a variable
-  that is not one of them is dropped silently — patch it onto the Deployment or add it to the chart
+  passes through the keys it declares (37 in `templates/configmap.yaml`, the credentials in `templates/secret.yaml`), so a variable
+  that is not one of them (`DEFAULT_LANGUAGE`, `FILE_UPLOAD_LIMIT_MB`, `RESTORE_FROM_BACKUP` and `MCP_MAX_SESSION_PER_USER` among them) is dropped silently. Patch it onto the Deployment or add it to the chart
 - **Unraid** — set in the container template editor
 - **Proxmox Community Script** — set in `/opt/trek/server/.env`
 
@@ -455,7 +455,7 @@ through environment variables. `TREK_PLACE_PHOTO_DIR` below is unaffected.
 | Variable                     | Description                                                                                                                                                                                                                                            | Default                 |
 |------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|
 | `TREK_PLACE_PHOTO_DIR`       | Directory where cached Google place photos are stored. Created recursively on boot. Set this to point photo storage at a dedicated mounted volume.                                                                                                     | `uploads/photos/google` |
-| `FILE_UPLOAD_LIMIT_MB`       | Maximum size (in MB) of a file uploaded to a trip, a booking or a collab note. The upload dialogs use the same limit. Videos in Journey keep their own 500 MB cap. If you sit behind a reverse proxy, raise its upload limit as well. | `50` |
+| `FILE_UPLOAD_LIMIT_MB`       | Maximum size (in MB) of a file uploaded to a trip, a booking or a collab note, and of a file Document Sync brings in. The upload dialogs use the same limit and refuse a larger file before the upload starts. Videos keep their own 500 MB cap, and trip covers and place images their 20 MB. The MCP tool `upload_trip_file` takes at most 10 MB, or this limit when it is lower. If you sit behind a reverse proxy, raise its upload limit as well. | `50` |
 | `BACKUP_UPLOAD_LIMIT_MB`     | Maximum **compressed** size (in MB) of a restore-backup archive that may be uploaded. Raise it if your backups (which include the `uploads/` directory) exceed the default. Non-positive or invalid values abort startup. | `500`                   |
 | `RESTORE_FROM_BACKUP` | Path to a backup ZIP to restore on the **first** start, before any setup. Only acts while no database exists; afterwards it is ignored with a warning. A backup that fails the restore checks stops the start. See [Backups](Backups#restoring-on-a-new-install-before-setup). | none |
 | `BACKUP_MAX_DECOMPRESSED_MB` | Maximum **decompressed** size (in MB) of a restore-backup archive — the zip-bomb guard. Independent of `BACKUP_UPLOAD_LIMIT_MB` and enforced on both restore paths, so a restore that fits the upload cap can still be refused with `Backup exceeds the maximum decompressed size.` Raise both when restoring a very large instance. | `5120` (5 GB)          |

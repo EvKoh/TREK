@@ -78,6 +78,16 @@ The following event is fired automatically and can only be delivered in-app — 
 
 The preferences panel shows a grid of events × channels. Toggle each intersection independently. Changes are saved automatically.
 
+### Defaults set by the admin
+
+An admin decides how every user's matrix starts, under **Admin → Notifications → Defaults for users**. Each event and channel is set to one of three values:
+
+- **On**: switched on until you turn it off. This is the default for every cell.
+- **Off**: switched off until you turn it on yourself.
+- **Blocked**: switched off for everyone. In your matrix the switch is replaced by a lock with the tooltip *Turned off for everyone by the admin*, and nothing is sent there.
+
+A default applies to every cell you have not changed yourself, so when the admin changes it later, it reaches you too. A cell you switched yourself keeps your choice, unless the admin blocks it.
+
 ## Webhook configuration
 
 Enter a URL that TREK will POST to when a notification fires. Once saved, the URL is displayed as `••••••••`. Use the **Test** button to send a test payload to the saved URL.

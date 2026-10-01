@@ -185,7 +185,7 @@ Requires `journey:read` or `journey:write` scope.
 | `get_journey` | Get a full snapshot of a journey — metadata, entries, contributors, and linked trips. |
 | `get_journey_stats` | What a journey adds up to: distance travelled in metres, calendar days spanned, countries in visit order, the furthest point reached, and entry, photo and place counts. Entries switched off with `stats_excluded` count towards none of those and are listed under `excluded`. Pass `include_route` for the route itself, up to 400 stops with coordinates. |
 | `create_journey` | Create a new journey with title, optional subtitle, and an initial list of trip IDs. |
-| `update_journey` | Update a journey's title, subtitle, cover or status, and whether its entries offer a pros/cons list, a mood and a weather note (`show_verdict`, `show_mood`, `show_weather`). Owner only. |
+| `update_journey` | Update a journey's title, subtitle, cover or status, and whether its entries offer a pros/cons list, a mood and a weather note (`show_verdict`, `show_mood`, `show_weather`). `status_override` sets the shown status by hand (`draft`, `live` or `completed`), `null` goes back to following the trip dates. `photo_location` lets an entry without a place take the position of its first geotagged photo. Owner only. |
 | `restore_journey_suggestions` | Bring back every trip-derived suggestion that was dismissed from a journey. Answers with how many came back. |
 | `delete_journey` | Delete a journey. |
 | `add_journey_trip` | Link an existing trip to a journey. |
@@ -195,6 +195,7 @@ Requires `journey:read` or `journey:write` scope.
 | `update_journey_entry` | Edit a journey entry's title, story, date, time of day, place, coordinates, weather, tags, mood, pros/cons list or visibility. `stats_excluded: true` keeps the entry but takes it off the route and out of `get_journey_stats`; `dismissed: true` waves a trip-derived suggestion away without deleting it, so the trip sync does not offer it again. `is_draft` turns the entry into a draft or publishes it. |
 | `delete_journey_entry` | Remove an entry from a journey. |
 | `reorder_journey_entries` | Reorder entries by providing the new ordered list of entry IDs. |
+| `reorder_journey_entry_photos` | Put the photos of one entry in a new order by passing every photo id of the entry once. The first photo is the entry's cover. |
 | `list_journey_contributors` | List the contributors of a journey (owner and editors/viewers). |
 | `add_journey_contributor` | Invite a user to a journey with `editor` or `viewer` role. |
 | `update_journey_contributor_role` | Change a contributor's role between `editor` and `viewer`. |

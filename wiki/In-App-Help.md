@@ -10,6 +10,8 @@ Click your avatar in the top-right navbar and choose **Help**, or go to `/help` 
 
 The page is titled **Help & Docs**. You must be signed in to reach the route.
 
+The [Help Center](Help-Center) (the **?** in the navbar) links here too: its **In the docs** links and **Open in Help & Docs** open the matching page of this wiki at `/help/{slug}`.
+
 ## The docs ship with your install
 
 Since **v3.4.0** the wiki is bundled into the TREK image and served from disk (commit `6c87bf2f`). That means:

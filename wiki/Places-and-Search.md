@@ -9,11 +9,13 @@ Places are the building blocks of a trip: sights, restaurants, hotels, stations,
 The right column of the Plan tab lists every place of the trip. Its head band has three rows:
 
 1. **Add Place/Activity** and the import button (*Import Places*). While a day is open, the add button splits in two: **New place** adds a place to the trip, **To day** (*Add to the open day*) puts it straight onto that day. In a narrow column both buttons drop to their icons. The import button opens a menu with **Import file** and **List Import** (it reads **Google List** when Google is the only list source); see [Importing multiple places](#importing-multiple-places).
-2. **Search**, which narrows the list to places whose name or address contains what you type, and the **Select** button, see [Selecting several places](#selecting-several-places).
-3. Three filters:
+2. **Search**, which narrows the list to places whose name, address, description or notes contain what you type, and the **Select** button, see [Selecting several places](#selecting-several-places).
+3. The filters and the order:
    - **Show**: **All**, **Unplanned**, **Planned**, and **Tracks** once the trip has one, each with its count.
    - **Categories** (the tag icon): tick one or several categories, or **No Category**. A badge on the icon counts the categories in force, and **Clear filter** lifts them.
    - **Filter by rating** (the star): **All**, or a floor from **5+** down to **1+**.
+   - **Filter by country or region** (the globe): every country the trip's places lie in, with its regions underneath, each with the number of places in it. Pick a country or one region; **All countries** is the default and **Clear filter** goes back to it. The button only appears once the trip spans more than one country or region.
+   - **Sort by**: newest first (**Recently added**, the default), **Oldest first**, by name, **Highest rated** or **Recently changed**. The order applies to the list only, not to the map, and your browser remembers it.
 
 With a day open and **Planned** chosen, the list shows only that day's places, and a chip says **Showing the open day only**. Its **X** (*Show the whole trip*) closes the day. See [Trip Planner Overview](Trip-Planner-Overview#layout).
 
@@ -47,9 +49,12 @@ Click **Select** (the tick next to the search field) to switch the list into sel
 
 ![The Edit Place dialog: the name and category in the head band, Place details with picture choices on the left, the form in the middle and Saved places on the right](assets/PlaceForm.png)
 
-- **The head band** holds the name, which you type straight into the band, and the category as a pill. The **+** next to the pill (*New category*) turns it into a field for a new category's name; **OK** or Enter creates it, **Cancel** or Escape closes the field. After a search pick, a pill names where the place came from.
-- **Search** finds the place and fills in the rest, see [Searching for a place](#searching-for-a-place).
+- **The head band** holds the name, which you type straight into the band, and the category as a pill. The **+** next to the pill (*New category*) turns it into a field for a new category's name; **OK** or Enter creates it, **Cancel** or Escape closes the field. Categories are shared by the whole instance, so creating one takes an admin account (see [Tags and Categories](Tags-and-Categories)). After a search pick, a pill names where the place came from. Once the place has coordinates, the round **Open in maps** pill opens it in a map app, the same menu as **Navigation** (see [Opening a place in a map app](#opening-a-place-in-a-map-app)).
+- **Search** finds the place and fills in the rest, see [Searching for a place](#searching-for-a-place). A place picked from the search, or from a marker of the [map categories](#exploring-the-map-by-category), comes with the matching category already picked when the trip's palette has one (a hotel goes to the category named like Hotel or Accommodation, a café to Café or Bar, and so on). A category you chose yourself is never replaced.
+- **Places near this pin** (the target button beside the search button) appears once the form has coordinates, for example after a right-click on the map. It lists the named places around that point, nearest first with their distance, so you can pick the café you clicked on instead of keeping a bare pin. The TREK API answers it; when it has nothing, Google with a key, otherwise OpenStreetMap. The same lookup is `POST /api/maps/nearby` and the MCP tool `search_nearby_places`.
+- When a full search finds nothing, a box says *Nothing found for "…"* with **Add by hand**: it takes what you searched for as the name, if the name is still empty, and jumps to the phone, e-mail and opening hours fields.
 - **Address**, **Latitude** and **Longitude** say where it is.
+- **Phone**, **E-mail** and the opening hours are the place's own, see [Phone, e-mail and opening hours](#phone-e-mail-and-opening-hours).
 - **Start**, **End** and **Notes for this day** appear when you edit a place from a day, since they belong to that one visit.
 - **Description** and **Notes** take Markdown and each have a formatting bar.
 - **Website** and **Files** sit side by side; **Attach** picks files.
@@ -71,11 +76,21 @@ Click **Select** (the tick next to the search field) to switch the list into sel
 | Description | Markdown. |
 | Notes | Markdown, up to 2,000 characters. |
 | Website | A URL. |
+| Phone / E-mail | Free text. Filled in by a search pick when the source knows them. |
+| Opening hours | Per weekday, see [below](#phone-e-mail-and-opening-hours). |
 | Files | **Attach** a file, or paste an image or a PDF anywhere in the dialog. The files are uploaded when the place is saved. The instance's **Allowed File Types** list applies (by default jpg, jpeg, png, gif, webp, heic, pdf, doc, docx, xls, xlsx, txt, csv, pkpass, pkpasses, md and markdown), plus video, which is exempt from that list. See [Documents-and-Files](Documents-and-Files). |
 
 Two warnings appear under the times: one if the end lies before the start, and one (*Time overlap with:*) naming the places on the same day whose times overlap.
 
 A new place that looks like one already on the trip (the same name, the same Google place, or practically the same coordinates) is not saved at once. A message says *'Louvre' is already in this trip.* and the save button turns into **Add anyway**.
+
+### Phone, e-mail and opening hours
+
+A place can carry its own **Phone**, **E-mail** and opening hours, so a guesthouse no provider knows gets the same fields as a place found through Google. A search pick fills in phone and website when its source has them; everything else you type yourself.
+
+The hours stay folded away until you click **Add opening hours**. Each weekday then gets an *opens* and a *closes* time, or **Closed**. A button copies the first day's hours to every day, and **Remove opening hours** clears them all again. When the [Place details](#place-details-while-searching) column found hours for the place, a place without hours of its own takes them over on its own; one that already has some gets **Take over from the place details** instead.
+
+The place inspector shows the phone and the e-mail address as pills in its head band (a click calls or writes), and your own hours win over the ones a provider knows.
 
 ### Costs for a place
 
@@ -97,6 +112,10 @@ After two or more characters and a 300 ms pause, suggestions appear under the se
 - Suggestions come from the TREK API, from its index and from an OpenStreetMap layer it keeps. A suggestion from that layer shows the name that matched what you typed, with the name used on the spot underneath when the two differ.
 - Only when the TREK API has nothing does TREK ask the keyed provider (Google or Amap), or, without one, OpenStreetMap's own search service.
 - An installed [search plugin](Plugin-Cookbook#suggestions-while-the-user-types) whose index can keep up with typing adds up to three of its places under the suggestions, marked with the plugin's name. Picking one fills in what the plugin knows about the place, with no second lookup.
+
+### Language of place names
+
+By default, search, suggestions and addresses answer in the language TREK is set to. **Settings > General > Language & region > Place names** picks another one, for example English names while the app is in German, or **Same as the app** again. Where a place has no name in that language, its local name is shown. The TREK API has no translations, so its results keep the names used on the spot either way.
 
 ### The full search
 
@@ -145,6 +164,8 @@ The key's block carries five switches under **What the key may be used for**:
 | **Place Details** | The details of a place: hours, rating, website. |
 | **Place Enrichment** | The **Place details** column in the place form, see [below](#place-details-while-searching). |
 | **Search with Google only** | Every search and every suggestion goes to Google Places instead of the TREK API and OpenStreetMap. Off by default. On, every list already comes from Google, so the per-search line above has nothing to offer and does not appear; off, the line appears under lists the TREK API or OpenStreetMap produced. |
+
+Under the switches, **Daily limit for Google calls** caps how many calls TREK makes to Google per day. A badge beside it shows today's count (*Today: 120 of 500*). Once the limit is reached, TREK stops calling Google until the next day (UTC) and searches with OpenStreetMap instead. Leave the field empty for no limit, which is the default.
 
 > **Place Autocomplete and Place Details act on every provider**, not only on Google. Switched off, the suggestion dropdown stays empty and details lookups stop for the TREK API and OpenStreetMap too; the full search keeps working. Leave both on unless that is what you want.
 
@@ -209,7 +230,7 @@ Pictures are copied to your own server and served from there. Nothing is loaded 
 
 > **Admin:** the column is controlled by **Place Enrichment**, under **What the key may be used for** in the Google Maps API Key block of **Admin → Settings → API Keys**, and it is on by default. Wikipedia and OpenStreetMap are always used; the Google half additionally follows **Place Photos** and **Place Details**. Turning Place Enrichment off leaves the column with a short note and makes no outbound calls.
 
-The column is desktop-only.
+On the phone, the place editor shows the same details under its search field: the pictures to pick from, the opening hours, the rating and the description with **Use this text**.
 
 ## Saved places
 
@@ -231,10 +252,10 @@ Click a place in the places column, in a day, or on the map, and its inspector o
 
 ![The place inspector over the map: the photo, name and address in its head, then the rating, the description, the notes and the files, with Add to Day, Navigation, Save to Collection and Edit at its foot](assets/PlaceInspector.png)
 
-- **The head band** shows the photo, with a green ring while the place is open and a red one while it is closed, the name (double-click it to rename the place), the address on one line with the full address in a tooltip, and pills: **Open** or **Closed**, the category, the time of the visit, the Google rating, the phone number to call, and the coordinates. **X** closes the inspector.
+- **The head band** shows the photo, with a green ring while the place is open and a red one while it is closed, the name (double-click it to rename the place), the address on one line with the full address in a tooltip, and pills: **Open** or **Closed**, the category, the time of the visit, the Google rating, the phone number to call, the e-mail address, and the coordinates. **X** closes the inspector.
 - **Rating**: every member's vote, see [Rating a place](#rating-a-place).
 - **Description**, **Notes** and **Notes for this day**, rendered as Markdown.
-- **Bookings** pinned to this stop, as small cards with the status, date, time and booking code. Click a card (*Open booking*) to open the booking's detail. Next to them, **Participants** says who joins this stop.
+- **Bookings** pinned to this stop, as small cards with the status, date, time and booking code. For a hotel, the stays booked there are listed too (see [Accommodations](Accommodations)). Click a card (*Open booking*) to open the booking's detail. Next to them, **Participants** says who joins this stop.
 - **Opening Hours**: today's line, and the whole week a click away.
 - **Files**: the place's files and the files of its bookings, with **Upload**.
 - For an imported track: its statistics and **Track color**, see [GPX tracks](Map-Features#gpx-tracks).
@@ -253,15 +274,19 @@ Saved places in [Collections](Collections) are rated the same way. Saving a trip
 
 ## Custom place image
 
-By default a place's thumbnail is fetched automatically (from Google or Wikimedia when the place was imported or matched, otherwise it shows a category icon). To use your own photo instead, click the round photo in the head band of the place inspector. Pick an image and it becomes that place's thumbnail everywhere (list, map marker, itinerary, PDF export and shared trips). A small remove button on the photo clears the custom image and restores the automatic default. Accepted formats are JPG, PNG, GIF and WebP (HEIC is converted automatically), up to 20 MB.
+By default a place's thumbnail is fetched automatically (from Google or Wikimedia when the place was imported or matched, otherwise it shows a category icon). To use your own photo instead, click the round photo in the head band of the place inspector. When the place or one of its bookings has pictures attached (JPG, PNG, GIF or WebP), a small menu offers **Upload from device** and **From attached files**, so a photo already on the trip can be reused without uploading it again. Pick an image and it becomes that place's thumbnail everywhere (list, map marker, itinerary, PDF export and shared trips). A small remove button on the photo clears the custom image and restores the automatic default. Accepted formats are JPG, PNG, GIF and WebP (HEIC is converted automatically), up to 20 MB.
 
 A picture picked under **Pick a picture** in the place form works the same way, see [Place details while searching](#place-details-while-searching). The same control is available on saved places in [Collections](Collections#place-detail).
 
 ## Opening a place in a map app
 
-**Navigation** in the footer of the place inspector, on the phone's place sheet and on a saved place in Collections opens a short menu of map apps, in this order: **Google Maps**, **Waze**, **Apple Maps**, **OpenStreetMap**, **CoMaps** and, for a place in China, **高德地图** (Amap). Waze starts navigating straight away; the others open the place, and starting navigation from there is one tap. When only one app is available the button opens it directly. The **…** menu of a place in a day lists the same apps.
+**Navigation** in the footer of the place inspector, on the phone's place sheet and on a saved place in Collections (on the desktop and on the phone), and the **Open in maps** pill in the place form, open a short menu of map apps, in this order: **Google Maps**, **Waze**, **Apple Maps**, **OpenStreetMap**, **CoMaps**, for a place in China **高德地图** (Amap), and on Android **Other map app**. Waze starts navigating straight away; the others open the place, and starting navigation from there is one tap. When only one app is available the button opens it directly. The right-click menu of a stop in a day no longer lists map apps; use **Navigation**. The **…** menu of a row in the places column still has **Google Maps**.
 
-Which entries appear depends on the place and on where you are, not on the search provider the admin picked. Apple Maps is left out on Android. Amap is offered by where the place is, because it only has a map of China: a stop in Shanghai gets it whoever is planning the trip, a stop in Lisbon never does. Waze, Apple Maps, CoMaps and Amap need the place's coordinates; Google Maps and OpenStreetMap can still open a place that has none, Google from its name and address, OpenStreetMap from its name. Coordinates handed to Amap are converted to its own datum on the way out, so the pin lands on the right street.
+**Other map app** hands the place's coordinates to Android as a `geo:` link, so Android offers every map app installed on the phone, OsmAnd or Organic Maps for example.
+
+To skip the menu, pick your app under **Settings > General > Travel & map > Open places in**. With an app picked, every navigate button opens it straight away; **Ask every time** brings the menu back. A place that app cannot open (Amap outside China, Waze without coordinates) still shows the full menu.
+
+Which entries appear depends on the place and on where you are, not on the search provider the admin picked. Apple Maps is left out on Android, and **Other map app** is offered only there. Amap is offered by where the place is, because it only has a map of China: a stop in Shanghai gets it whoever is planning the trip, a stop in Lisbon never does. Waze, Apple Maps, CoMaps and Amap need the place's coordinates; Google Maps and OpenStreetMap can still open a place that has none, Google from its name and address, OpenStreetMap from its name. Coordinates handed to Amap are converted to its own datum on the way out, so the pin lands on the right street.
 
 In the installed app the map app takes over the current window rather than a new tab, so coming back lands you where you were.
 
@@ -276,7 +301,7 @@ Imported tracks each get their own line colour so multiple routes stay apart on 
 
 Importing the same list again does not duplicate what is already in the trip. A place is recognised by the provider id it was imported with (Google place id, Google feature id, or OSM id) before its name or its coordinates are considered, so renaming a place in TREK, or moving its pin, does not make it come back as a second copy on the next import.
 
-> **Admin:** with a Google Maps API key in **Admin → Settings → API Keys**, the list import offers **Enrich places via Google**, which looks up each imported place to fill in photos, address and contact details, one Google lookup per place. Without a key the import works the same, just without that option.
+> **Admin:** with a Google Maps API key in **Admin → Settings → API Keys**, the list import offers **Enrich places via Google**, which looks up each imported place to fill in photos, address and contact details, one Google lookup per place. **Import file** offers the same switch while **Waypoints** (GPX) or **Points (Placemarks)** (KML, KMZ) are ticked: each imported point is looked up on Google afterwards and gets its photo, address, website and phone, while paths and tracks stay as they are. Without a key the imports work the same, just without that option.
 
 ## Exploring the map by category
 

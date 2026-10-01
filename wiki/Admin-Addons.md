@@ -1,6 +1,6 @@
 # Admin: Addons
 
-The **Addons** tab lets you enable or disable optional features for the entire TREK instance. Toggling an addon affects all users immediately: disabling one hides its UI elements and blocks its API routes instance-wide.
+The **Addons** tab (in the **Configuration** group of the admin side navigation) lets you enable or disable optional features for the entire TREK instance. Toggling an addon affects all users immediately: disabling one hides its UI elements and blocks its API routes instance-wide.
 
 ![Addon overview](assets/Addons-Overview.png)
 
@@ -10,13 +10,13 @@ Each addon toggle controls a feature set. When you disable an addon, users lose 
 
 ## Addon categories
 
-Addons are grouped into three categories, shown as labeled sections.
+Addons are grouped into three columns side by side: **Trip**, **Global** and **Integration**. Each column's head names the type with a short hint and counts how many of its addons are on, and the head of the **Addons** card shows the total as a pill (for example `9/14`; hover it for **{enabled} of {total} enabled**). Each addon is a tile with its icon, name, description and switch; its sub-toggles or settings open underneath the tile while it is on.
 
 ### Trip addons
 
 Trip addons add per-trip feature panels. They appear in every trip where the addon is enabled.
 
-The default trip addons are: **Lists**, **Costs**, **Documents** and **Collab** (all enabled by default), and **Road trip** (disabled by default). The exact list is determined by what is registered in your TREK database.
+The trip addons are: **Lists**, **Costs**, **Documents** and **Collab** (all enabled by default), and **Road trip** (disabled by default). The exact list is determined by what is registered in your TREK database.
 
 **Sub-toggles on trip addons:**
 
@@ -58,7 +58,7 @@ Integration addons connect TREK to external services. Most of them need addition
 
 ## Enabling or disabling an addon
 
-Click the toggle switch on any addon row. The change is applied immediately; no save button is needed. A brief success toast confirms the update.
+Click the switch on any addon tile. The change is applied immediately; no save button is needed. A brief success toast confirms the update.
 
 If a toggle fails (e.g., network error), it rolls back to its previous state.
 

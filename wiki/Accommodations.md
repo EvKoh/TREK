@@ -47,8 +47,8 @@ On every day from the check-in day to the check-out day, the **Accommodation** s
 ![The day details panel with the weather, the day's bookings and the stay card](assets/DayDetails.png)
 
 - **The head** of the card shows the place's photo or a hotel icon, its name and address. On the check-in day it is tinted green and says **CHECK-IN**, on the check-out day red with **CHECK-OUT**; a stay that starts and ends on the same day says both. The nights in between are untinted.
-- **The fields** under it: **Check-in** (a single time, or the window from the earliest to the latest time), **Check-out** and **Confirmation**. The code is blurred when **Blur Booking Codes** is on in your [settings](Display-Settings); hovering or clicking it reveals it.
-- **Reservation**: the linked booking with its title, status and code. Click it to open the booking's detail.
+- **The fields** under it show only the time that matters on that day: **Check-in** (a single time, or the window from the earliest to the latest time) on the check-in day, **Check-out** on the check-out day, and neither on the nights in between. **Confirmation** shows on every day. The code is blurred when **Blur Booking Codes** is on in your [settings](Display-Settings); hovering or clicking it reveals it.
+- **Reservation**: the linked booking with its title, its status (**Confirmed** or **Pending**) and code. Click it to open the booking's detail.
 - For members who can edit days: the pencil (**Edit accommodation**) opens the stay editor, and the **X** (**Remove**) deletes the stay straight away, together with its booking and the expenses linked to that booking.
 
 **Add accommodation** at the foot of the section adds another stay, for example a second hotel on a transfer day.
@@ -61,13 +61,15 @@ Stays appear as pills in the head band of each day card in the days column, with
 - **Red icon**: the check-out day.
 - **Grey icon**: the nights in between.
 
-Rest the pointer on a pill for *Check-in: Hotel Adler* or *Check-out: Hotel Adler*. Clicking it opens the place in the [place inspector](Places-and-Search#the-place-inspector). Stays never appear as rows in the day's timeline; the pill and the day details are where they show.
+Rest the pointer on a pill for *Check-in: Hotel Adler* or *Check-out: Hotel Adler*. Clicking the name opens the place in the [place inspector](Places-and-Search#the-place-inspector). A stay with a booking has a second button at the end of the pill, the ticket (*Open booking*), which opens that booking's detail. The place inspector of the hotel lists its stays under **Bookings** as well, so the booking is one click away from the map too. Stays never appear as rows in the day's timeline; the pill and the day details are where they show.
+
+A stay whose booking is still **Pending** gets a dashed, tinted pill, and its tooltip ends in *(Pending)*. On the map, the hotel's marker is drawn with a dashed ring and a lighter face until the booking is **Confirmed**, see [Map Features](Map-Features#place-markers).
 
 ![A day card with the stay pill in its head band](assets/PlanDayCard.png)
 
 ## In the Reservations panel
 
-On the Bookings tab, the card of an Accommodation booking shows the check-in and check-out times among its fields, and its address. Its detail shows the check-in day, the check-out day and the number of nights as tiles at the top, with the times beside the days, and names the linked stay under **Accommodation**. See [Reservations and Bookings](Reservations-and-Bookings).
+On the Bookings tab, an Accommodation booking shows up in all three views (**Cards**, **List** and **Timeline**) like any other booking. Its card shows the check-in and check-out times among its fields, and its address. Its detail shows the check-in day, the check-out day and the number of nights as tiles at the top, with the times beside the days, and names the linked stay under **Accommodation**. See [Reservations and Bookings](Reservations-and-Bookings).
 
 ## On the route
 

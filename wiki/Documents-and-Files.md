@@ -20,13 +20,19 @@ Drop files onto the dashed upload area under the bar, click it to open the file 
 
 When the upload is done and the trip has places or bookings, the **Assign File** dialog opens for the last file you uploaded, so you can tie it to a place or a booking right away (see [Linking files](#linking-files-to-places-reservations-or-assignments)). Close it if the file belongs nowhere in particular.
 
-- **Maximum file size:** 50 MB per file.
+- **Maximum file size:** 50 MB per file by default. Videos (mp4, m4v, webm, mov) have their own cap of 500 MB.
 - **Blocked file types:** renderable documents (`.svg`, `.svgz`, `.html`, `.htm`, `.shtml`, `.shtm`, `.xml`, `.xhtml`, `.xht`), scripts (`.js`, `.jsx`, `.ts`, `.tsx`, `.mjs`, `.cjs`, `.php`, `.py`, `.rb`, `.pl`) and executables (`.exe`, `.bat`, `.sh`, `.cmd`, `.msi`, `.dll`, `.com`, `.vbs`, `.ps1`, `.app`). These are always refused, as is any file whose MIME type contains `svg`.
 - **Allowed types by default:** jpg, jpeg, png, gif, webp, heic, pdf, doc, docx, xls, xlsx, txt, csv, pkpass, pkpasses, md, markdown. The upload area lists the types your instance allows. An admin can change the list under **Admin → Settings → Allowed File Types**: comma-separated extensions, or `*` to allow everything except the blocked types above.
+
+- **Videos:** mp4, m4v, webm and mov files are accepted even when they are not on the allowed list.
+
+> **Admin:** The 50 MB limit is set with the `FILE_UPLOAD_LIMIT_MB` environment variable (see [Environment-Variables](Environment-Variables)); it also applies to booking attachments and collab note attachments, and the upload dialogs refuse a larger file before it is sent. Behind a reverse proxy, raise the proxy's upload limit as well.
 
 Uploading needs the `file_upload` permission; without it the upload area is not shown.
 
 Files also reach this tab from elsewhere: **Attach file** in a booking or transport editor, **Upload** in the Files section of the place inspector, **Attach** in the place dialog, receipts on an expense (see [Budget-Tracking](Budget-Tracking#receipts-and-invoices)) and attachments on a collab note. They all land here.
+
+An AI assistant connected through MCP can add files too: the `upload_trip_file` tool uploads a document to a trip (and can attach it to a booking or a place in the same call) under the same type rules and the `file_upload` permission as the upload area, up to 10 MB per file (or the upload limit, if that is lower). See [MCP-Tools-and-Resources](MCP-Tools-and-Resources).
 
 ## Browsing and filtering
 

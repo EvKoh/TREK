@@ -6,7 +6,7 @@ TREK keeps every trip in sync across all connected members without requiring a p
 
 ## Real-time sync
 
-All changes to a trip — places, day plans, reservations, budget entries, and packing lists — are broadcast instantly to every connected member via WebSocket. You see other people's edits as they happen.
+All changes to a trip (places, day plans, reservations, budget entries and packing lists) are broadcast instantly to every connected member via WebSocket. You see other people's edits as they happen.
 
 ## WebSocket transport
 
@@ -21,10 +21,10 @@ All changes to a trip — places, day plans, reservations, budget entries, and p
 
 **Authentication** uses a short-lived ephemeral token passed as a query parameter on connect. If authentication fails, the server closes the connection with one of these codes:
 
-- **4001** — missing, invalid, or expired token; user not found
-- **4403** — site-wide MFA is required but the account does not have MFA enabled
+- **4001**: missing, invalid, or expired token; user not found
+- **4403**: site-wide MFA is required but the account does not have MFA enabled
 
-An origin rejection happens before the socket exists, so it produces no close code at all — the browser just reports a failed connection. And because clients that send no `Origin` header are exempt, curl and other CLI clients keep connecting while every browser fails, which makes it look like a client bug. If real-time sync stops working behind a reverse proxy, check that `ALLOWED_ORIGINS` lists the exact scheme, host, and port the browser uses: the comparison is a plain string match, so `https://trek.example.com` matches neither `http://trek.example.com` nor `https://trek.example.com:443`. See [Environment-Variables](Environment-Variables) and [Reverse-Proxy](Reverse-Proxy).
+An origin rejection happens before the socket exists, so it produces no close code at all: the browser just reports a failed connection. And because clients that send no `Origin` header are exempt, curl and other CLI clients keep connecting while every browser fails, which makes it look like a client bug. If real-time sync stops working behind a reverse proxy, check that `ALLOWED_ORIGINS` lists the exact scheme, host, and port the browser uses: the comparison is a plain string match, so `https://trek.example.com` matches neither `http://trek.example.com` nor `https://trek.example.com:443`. See [Environment-Variables](Environment-Variables) and [Reverse-Proxy](Reverse-Proxy).
 
 ## The Collab addon
 
@@ -44,7 +44,7 @@ On a **desktop** (1024 px and wider) each sub-feature is a card with a head band
 
 ### Links
 
-The **Links** panel collects the web addresses a trip runs on: the booking portal, the shared photo album, the restaurant's menu. **Add link** in its head band opens a small dialog for a **Link title** and an `http(s)` address; anything else is refused. Each link is a chip with the site's favicon, the title and the host, two to a row where the panel is wide enough and one to a row where it is narrow; a pinned chip is drawn in the accent tint. The whole chip is the link and opens the address in a new tab. Members with `collab_edit` find three buttons in the chip's tail, faint until the pointer is on the chip and always shown on touch: **Edit link** opens the same dialog with the title and the address filled in, **Pin link** moves it to the top of the list, and **Delete link** asks first, because the link goes for every member. Pinned links come first, then the newest. Adding, editing, pinning and deleting show up for every connected member at once.
+The **Links** panel collects the web addresses a trip runs on: the booking portal, the shared photo album, the restaurant's menu. **Add link** in its head band opens a small dialog for a **Link title** and an `http(s)` address; anything else is refused. Each link is a chip with the site's favicon, the title and the host (a long title wraps onto further lines rather than being cut off), two to a row where the panel is wide enough and one to a row where it is narrow; a pinned chip is drawn in the accent tint. The whole chip is the link and opens the address in a new tab. Members with `collab_edit` find three buttons in the chip's tail, faint until the pointer is on the chip and always shown on touch: **Edit link** opens the same dialog with the title and the address filled in, **Pin link** moves it to the top of the list, and **Delete link** asks first, because the link goes for every member. Pinned links come first, then the newest. Adding, editing, pinning and deleting show up for every connected member at once.
 
 ## Conflict handling
 
@@ -52,7 +52,7 @@ TREK uses a **last-write-wins** model. Each mutation is applied on the server an
 
 On reconnect, any locally queued mutations are flushed to the server before the client re-fetches trip data, so offline changes are applied before the latest state is read back.
 
-There is no operational-transform or CRDT merge — simultaneous edits to the same field are not merged; one silently wins.
+There is no operational-transform or CRDT merge: simultaneous edits to the same field are not merged; one silently wins.
 
 ## Access control
 

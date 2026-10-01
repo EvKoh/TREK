@@ -72,6 +72,10 @@ ALLOW_LINK_LOCAL_IPS=169.254.1.2
 
 Several addresses are separated by commas. The list is read at startup, so restart TREK after changing it.
 
+## Behind an outbound proxy
+
+With `HTTP_PROXY` or `HTTPS_PROXY` set, requests through the strict and the relaxed guard go through that proxy too, unless `NO_PROXY` names the target host. The guard still checks the target first, so a blocked address is refused before anything reaches the proxy. From there on the proxy makes the connection itself, which means the DNS pinning below does not apply to proxied requests: the proxy you chose is the network boundary. Put your LAN services (Immich, a document store, your identity provider) into `NO_PROXY` when the proxy cannot reach them. See [Environment-Variables](Environment-Variables#outbound-https-proxy).
+
 ## DNS rebinding protection
 
 Even with `ALLOW_INTERNAL_NETWORK=true`, TREK pins the DNS resolution to prevent rebinding attacks. When the guard checks a URL, it resolves the hostname once and records the addresses it may use. The outbound connection is then made directly to those addresses using a pinned dispatcher (via undici), so the hostname cannot re-resolve to a different address between the check and the actual request.

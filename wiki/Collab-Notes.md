@@ -58,7 +58,7 @@ The dialog closes only with its cross or **Cancel**: a stray click beside it or 
 | Content | No | Markdown. |
 | Category | No | One of the trip's categories. |
 | Website | No | An address shown as the link button on the card. |
-| Attach files | No | Files up to 50 MB each, see [Attachments](#attachments). Needs `file_upload`. |
+| Attach files | No | Files up to the upload limit (50 MB by default), see [Attachments](#attachments). Needs `file_upload`. |
 
 ## Markdown support
 
@@ -74,7 +74,7 @@ The text of a note is rendered as GitHub Flavored Markdown with soft line breaks
 
 ## Attachments
 
-A note can carry images, PDFs and other files (with the `file_upload` permission), up to **50 MB** each.
+A note can carry images, PDFs and other files (with the `file_upload` permission), up to **50 MB** each. An admin can change that limit with the `FILE_UPLOAD_LIMIT_MB` environment variable, which also sets it for the Files tab (see [Environment-Variables](Environment-Variables)).
 
 These file types are refused:
 

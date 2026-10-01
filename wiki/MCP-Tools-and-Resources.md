@@ -57,8 +57,8 @@ Requires `places:read` or `places:write` scope.
 | Tool | Description |
 |---|---|
 | `list_places` | List places in a trip, optionally filtered by assignment status, category, tag, or search query. |
-| `create_place` | Add a place with name, coordinates, address, category, notes, website, phone, and optional `google_place_id` / `osm_id`. An optional `stop_type` (`fuel`, `charging`, `rest_area`, `campsite`, `restaurant`, `sights` or `hotel`) marks it as a service stop on a drive rather than a destination, so it is left out of the day's stop count; see [Road-Trip](Road-Trip). Leave it unset for an ordinary place. |
-| `update_place` | Update any field of an existing place including transport mode, timing, price and `stop_type`. Pass `stop_type: null` to turn a service stop back into an ordinary place. |
+| `create_place` | Add a place with name, coordinates, address, category, notes, website, phone, email, and optional `google_place_id` / `osm_id` / `amap_poi_id`. `opening_hours` takes the place's own hours, seven days starting on Monday (`closed`, `open`, `close` as `HH:MM`), shown instead of looked-up hours; `null` clears them. An optional `stop_type` (`fuel`, `charging`, `rest_area`, `campsite`, `restaurant`, `sights` or `hotel`) marks it as a service stop on a drive rather than a destination, so it is left out of the day's stop count; see [Road-Trip](Road-Trip). Leave it unset for an ordinary place. |
+| `update_place` | Update any field of an existing place including phone, email, opening hours, transport mode, timing, price and `stop_type`. Pass `stop_type: null` to turn a service stop back into an ordinary place. |
 | `rate_place` | Set or clear your own 1–5 star rating on a place. Every trip member rates independently and the place shows the average. Pass `null` to clear the vote. |
 | `bulk_update_places` | Update many places at once, applying the same field values (e.g. category, price, transport mode, `stop_type`) to every listed place in a single call. `stop_type: null` turns the listed service stops back into ordinary places. |
 | `delete_place` | Remove a place from a trip. Also removes all day assignments, the expenses linked to the place and any night booked at it, together with that night's reservation and the reservation's expense. Cannot be undone, so an assistant should warn before deleting a hotel that holds a booking. |
@@ -121,7 +121,7 @@ Requires `reservations:write` scope.
 
 | Tool | Description |
 |---|---|
-| `create_transport` | Create a transport booking in any of the nine types the transport form offers (`flight`, `train`, `bus`, `car`, `taxi`, `bicycle`, `cruise`, `ferry`, `transport_other`), with optional multi-stop endpoints, departure/arrival times, and confirmation details. Scheduled public transit goes through `create_transit_journey` instead. |
+| `create_transport` | Create a transport booking in any of the ten types the transport form offers (`flight`, `train`, `bus`, `car`, `taxi`, `bicycle`, `cruise`, `ferry`, `cable_car`, `transport_other`), with optional multi-stop endpoints, departure/arrival times, and confirmation details. Scheduled public transit goes through `create_transit_journey` instead. |
 | `update_transport` | Update an existing transport booking. Pass `endpoints[]` to replace all stops. |
 | `delete_transport` | Delete a transport booking from a trip. |
 
@@ -226,7 +226,7 @@ Requires `settings:read` or `settings:write`.
 
 | Tool | Description |
 |---|---|
-| `get_display_settings` | Read the user's units, time format, first day of the week, language, the language of place names in search, default currency and start page. Read this before rendering a temperature, a distance or a clock time. |
+| `get_display_settings` | Read the user's units, time format, first day of the week, language, the language of place names in search, default currency, start page, the trip tab a trip opens on, the colour mode (light, dark or auto) and a few map and planner switches such as blurred booking codes. Read this before rendering a temperature, a distance or a clock time. |
 | `update_display_settings` | Change one or more of those preferences. Only display preferences: API keys, map tokens and LLM settings are refused, whatever is passed. |
 
 ### Calendar feeds
@@ -281,6 +281,7 @@ Photo bytes are never returned: those are image URLs the app renders.
 | Tool | Description |
 |---|---|
 | `list_help_topics` | List the bundled help pages. Answers "how do I do X in TREK?" without guessing. |
+| `search_help` | Full-text search across the bundled help pages, the same search the in-app help uses. Returns the best-matching pages with the section heading and a snippet; follow up with `get_help_page`. |
 | `get_help_page` | Read one help page. |
 | `list_addons` | Which addons and collaboration features this instance has enabled. Worth calling when a tool you expected is not in the list: an addon that is off removes its tools exactly the way a missing scope does. |
 | `get_trip_warnings` | Warnings plugins have raised about a trip. A plugin raising one is telling the user something is wrong, so it is worth reading before reviewing an itinerary. |

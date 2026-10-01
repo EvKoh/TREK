@@ -13,6 +13,12 @@ The scopes required for Mapbox GL are:
 - DATASETS:READ
 - VISION:READ
 
+On MapLibre GL and Mapbox GL the map can be rotated and tilted. A round compass button shows where north is; click it to turn the map back to north and flat. On the phone it sits above the satellite switcher.
+
+## Map lock
+
+On the desktop, a lock button sits on top of the satellite switcher in the bottom-left corner. Click it (*Lock the map view*) and the map stays where you put it: picking a day or a place no longer zooms or pans it, so you can keep one part of the map in view while you click through the plan. Click it again (*Let the map follow the selection*) to unlock. Opening a trip still fits the map once, and your browser remembers the lock for every trip.
+
 ## Satellite view
 
 A round button in the bottom-left corner of the map flips the base layer between the normal map tiles and **satellite** imagery (ESRI World Imagery, no API key needed, usable up to zoom 19). The icon always shows the layer it switches to. The button is on all three renderers: Leaflet swaps its tile layer for the imagery, while MapLibre GL and Mapbox GL put the same imagery on as a raster layer of their own beneath everything TREK draws, so the route, the pins and the tracks stay on top of it. Your choice is stored on your account (`map_base_layer`), the same setting whichever renderer you use, so it carries over to every trip and survives a reload.
@@ -26,6 +32,8 @@ Each place is a round marker:
 - **Selected place:** the active place has a larger marker.
 - **Order badge:** while a day is open, a small badge at the bottom right shows the stop's position in that day's plan, and a place that comes up twice in the day carries both numbers. Without an open day the badge shows the place's rating instead, where it has one.
 - **Rating:** a place that members rated and that carries no order badge shows its average as a small disc in its corner.
+- **Unplanned places, compact:** with **Compact markers for unplanned places** switched on under **Settings > General > Travel & map**, places that no day holds are drawn as small markers without their photo, so the planned stops stand out. It is off by default, and the selected place always shows in full.
+- **Pending stay:** the place of an [accommodation](Accommodations) whose booking is still **Pending** is drawn with a dashed ring and a lighter face until the booking is confirmed.
 
 Click a marker to open the [place inspector](Places-and-Search#the-place-inspector).
 
@@ -45,7 +53,11 @@ Markers that [plugins](Places-and-Search#categories-from-plugins) put on the map
 
 A day's route is drawn as a solid blue line, a bright core over a darker casing in the look Apple Maps uses, through that day's stops in the order you arranged them. It is not on automatically: switch it on with **Route** in the route bar of the selected day (see [Day Plans and Notes](Day-Plans-and-Notes#the-route-bar)), or in the day sheet on a phone. The choice is remembered per trip in your browser, and the phone's map turns it on by default the first time you open a trip you have not decided on.
 
-A straight line is drawn immediately, then upgraded to real road geometry from a public OSRM router (or from a plugin route profile), each leg routed in the travel mode that leg carries. If routing fails, that leg stays a straight line between the two stops.
+A straight line is drawn immediately, then upgraded to real road geometry from a public OSRM router (or from a plugin route profile), each leg routed in the travel mode that leg carries: driving, walking or cycling. If routing fails, that leg stays a straight line between the two stops.
+
+A leg you walk is drawn as a dotted line in the same colour, without the casing, so the drive stands apart from the stretches on foot.
+
+**Leave out of route**, in the right-click or **…** menu of a stop in the day plan, keeps the place on the day but takes it out of the route: the route runs from the stop before it to the stop after it, as if it were not there. **Add back to route** in the same menu undoes it. On the phone the same switch is in the stop's place sheet.
 
 ### The whole trip at once
 
@@ -81,11 +93,11 @@ Places carry their description and address, and their category travels along as 
 
 ## Travel times between stops
 
-Travel times are not drawn on the map; they sit in the day plan. Switch a day's **Route** on and a slim connector row appears between each pair of consecutive stops with that leg's travel time and distance, and an icon for the mode it was routed in: a car for driving, a foot for walking, a bolt for a plugin route profile. On a phone the same rows sit in the day's plan timeline, where they are always shown and need no toggle. If the day has an accommodation and **Optimize route from accommodation** is on, two extra connectors frame the day, naming the hotel with the drive out in the morning and back in the evening.
+Travel times are not drawn on the map; they sit in the day plan. Switch a day's **Route** on and a slim connector row appears between each pair of consecutive stops with that leg's travel time and distance, and an icon for the mode it was routed in: a car for driving, a foot for walking, a bicycle for cycling, a bolt for a plugin route profile. On a phone the same rows sit in the day's plan timeline, where they are always shown and need no toggle. If the day has an accommodation and **Optimize route from accommodation** is on, two extra connectors frame the day, naming the hotel with the drive out in the morning and back in the evening.
 
 Each leg carries its own mode, so a day routed by car can still have one leg you walk. If you may edit the day, clicking a connector (*Change travel mode*) opens the mode menu for that leg alone, with **Public transit** on a trip with dates. See [Route Optimization](Route-Optimization#route-calculation).
 
-Car and foot times come from a public OSRM router, so they follow real roads and footpaths instead of straight-line estimates. A plugin route profile is answered by the plugin's own route provider instead, which is what lets it fold in things like charging stops; those legs can add a short note next to the distance. When routing is unavailable the leg falls back to a straight line and shows no time.
+Car, foot and bicycle times come from a public OSRM router, so they follow real roads, footpaths and cycle routes instead of straight-line estimates. A plugin route profile is answered by the plugin's own route provider instead, which is what lets it fold in things like charging stops; those legs can add a short note next to the distance. When routing is unavailable the leg falls back to a straight line and shows no time.
 
 ## Reservation and transport overlay
 
@@ -94,6 +106,7 @@ Flights, trains, cars, cruises and other bookings with a start and an end point 
 - **Flights, cruises and ferries:** geodesic great-circle arcs.
 - **Cars, buses, taxis and bicycles:** real routed lines that follow actual roads, fetched on demand from a public OSRM router (driving for car, bus and taxi, cycling for bicycle). A straight line is shown while the route loads, and kept if routing fails or the trip is very long (about 2,000 km or more).
 - **Trains:** a straight line between the endpoints; a multi-leg train draws its whole station chain (from, stop, to).
+- **Cable cars and gondolas**, and bookings of the type **Other**: a straight line between the endpoints.
 - **Automated public transit:** a journey added from the transit search draws its real rail and bus alignment instead of a straight line: each ride leg in its line's own colour over a white casing, walking transfers as a dotted grey line. A journey whose provider sent no shape falls back to a straight line. Unlike every other type it has no route button of its own in the days column. It is drawn when the day's own **Route** is on and the journey runs on that day, and independently of that by the bulk button, the account-wide default, or **On map** in its detail. Because those are two separate gates, **Hide all booking routes** does not clear a transit journey while that day's **Route** is still on.
 - **Antimeridian crossings:** routes that cross the date line draw as one continuous arc instead of splitting at the edges of the map.
 - **Endpoint markers:** pill-shaped labels with the transport icon and the endpoint code (for example the IATA airport code) or the location name. Click one to open the booking's detail.
@@ -107,6 +120,10 @@ Flights, trains, cars, cruises and other bookings with a start and an end point 
 On a phone the plan map shows one day at a time, so a booking you have switched on is drawn there only on the days it runs on, the arrival day of an overnight journey included, and in the all-days view. **On map** in a booking's detail sheet reads as on only where the route is drawn; from any other day it takes the map to the booking's own day instead of hiding the route. The desktop map and the road trip stage keep drawing a switched-on booking on every day.
 
 > **Tip:** Whether endpoint text labels appear on the endpoint markers is your own choice: the **Booking route labels** setting in Settings → General → Travel & map (`map_booking_labels`). It is off by default; with it off, the endpoint markers show only the transport icon.
+
+## Category buttons
+
+With **Explore places on the map** switched on (Settings > General > Travel & map), the trip map carries a row of category buttons such as **Restaurants**, **Sights** or **Nature & parks**, and [plugins](Plugins) can add buttons of their own, such as trailheads, EV chargers or drinking water. Click one to show that kind of place around the part of the map you are looking at, and click a marker to add it as a place. See [Exploring the map by category](Places-and-Search#exploring-the-map-by-category).
 
 ## Plugin map markers
 
