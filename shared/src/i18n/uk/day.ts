@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'Заїзд',
   'day.checkInUntil': 'До',
   'day.checkOut': 'Виїзд',
+  'day.openStayBooking': 'Відкрити бронювання',
   'day.confirmation': 'Підтвердження',
   'day.editAccommodation': 'Редагувати проживання',
   'day.reservations': 'Бронювання',

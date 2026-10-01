@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'Nhận phòng',
   'day.checkInUntil': 'Cho đến khi',
   'day.checkOut': 'Trả phòng',
+  'day.openStayBooking': 'Mở đặt chỗ',
   'day.confirmation': 'Xác nhận',
   'day.editAccommodation': 'Chỉnh sửa chỗ ở',
   'day.reservations': 'Đặt chỗ',

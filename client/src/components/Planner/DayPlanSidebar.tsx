@@ -1898,16 +1898,32 @@ const DayPlanSidebar = React.memo(function DayPlanSidebar(props: DayPlanSidebarP
                         const pending = pendingStays.has(acc.id)
                         const named = state ? `${state}: ${accName}` : accName
                         const tip = pending ? `${named} (${t('reservations.pending')})` : named
+                        // The name opens the place, as before; a stay with a booking gets a
+                        // second target in the same pill that opens the booking (#2363).
+                        const stayBooking = onOpenBooking
+                          ? reservations.find(r => r.accommodation_id != null && Number(r.accommodation_id) === acc.id)
+                          : undefined
                         return (
-                          <Tooltip key={acc.id} label={tip}>
-                            <button type="button" data-dp="day-pill" data-pending={pending || undefined}
-                              onClick={e => { e.stopPropagation(); if ((acc as any).place_id) onPlaceClick((acc as any).place_id) }}
-                              className={`inline-flex min-w-0 max-w-full items-center gap-1 rounded-full px-2 py-[2px] font-geist font-normal text-content-secondary hover:text-content ${pending ? 'border border-dashed border-warning bg-warning-soft' : 'bg-surface-card shadow-sm'}`}
-                              style={{ ...fs(10.5), cursor: (acc as any).place_id ? 'pointer' : 'default' }}>
-                              <Hotel size={11} strokeWidth={2} className={`flex-none ${iconTone}`} />
-                              <span className="truncate">{accName}</span>
-                            </button>
-                          </Tooltip>
+                          <span key={acc.id} className={`inline-flex min-w-0 max-w-full items-stretch overflow-hidden rounded-full ${pending ? 'border border-dashed border-warning bg-warning-soft' : 'bg-surface-card shadow-sm'}`}>
+                            <Tooltip label={tip}>
+                              <button type="button" data-dp="day-pill" data-pending={pending || undefined}
+                                onClick={e => { e.stopPropagation(); if ((acc as any).place_id) onPlaceClick((acc as any).place_id) }}
+                                className={`inline-flex min-w-0 items-center gap-1 py-[2px] font-geist font-normal text-content-secondary hover:text-content ${stayBooking ? 'pl-2 pr-1.5' : 'px-2'}`}
+                                style={{ ...fs(10.5), cursor: (acc as any).place_id ? 'pointer' : 'default' }}>
+                                <Hotel size={11} strokeWidth={2} className={`flex-none ${iconTone}`} />
+                                <span className="truncate">{accName}</span>
+                              </button>
+                            </Tooltip>
+                            {stayBooking && (
+                              <Tooltip label={t('day.openStayBooking')}>
+                                <button type="button" data-dp="day-pill-booking" aria-label={t('day.openStayBooking')}
+                                  onClick={e => { e.stopPropagation(); onOpenBooking!(stayBooking) }}
+                                  className="flex flex-none items-center border-l border-edge-faint pl-1.5 pr-2 text-content-faint hover:text-content">
+                                  <Ticket size={11} strokeWidth={2} />
+                                </button>
+                              </Tooltip>
+                            )}
+                          </span>
                         )
                       })}
                       {/* Active rental car badges */}

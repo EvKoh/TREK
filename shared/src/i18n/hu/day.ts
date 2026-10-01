@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'Bejelentkezés',
   'day.checkInUntil': 'Eddig',
   'day.checkOut': 'Kijelentkezés',
+  'day.openStayBooking': 'Foglalás megnyitása',
   'day.confirmation': 'Visszaigazolás',
   'day.editAccommodation': 'Szállás szerkesztése',
   'day.reservations': 'Foglalások',

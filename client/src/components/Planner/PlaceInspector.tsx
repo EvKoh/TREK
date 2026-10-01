@@ -34,7 +34,7 @@ import { useTripStore } from '../../store/tripStore'
 import { useCanDo } from '../../store/permissionsStore'
 import { formatDistance, formatElevation } from '../../utils/units'
 import { navigationTargetLabel, getNavigationTargets, openNavigationTarget } from './placeNavigation'
-import { TRANSPORT_TYPES, getAssignmentReservations } from '../../utils/dayMerge'
+import { TRANSPORT_TYPES, getPlaceBookings } from '../../utils/dayMerge'
 import { NavigationMenu } from '../shared/NavigationMenu'
 import { resolveOpenNow, resolvePlaceTimeZone, placeWeekdayIndex, type OpeningPeriod } from './placeOpenState'
 import { convertHoursLine } from './placeHoursFormat'
@@ -479,7 +479,7 @@ export default function PlaceInspector({
 
           {/* Bookings + participants — trip-only (collections have no days) */}
           {mode === 'trip' && (
-            <PlaceBookingsAndPeople selectedAssignmentId={selectedAssignmentId} reservations={reservations}
+            <PlaceBookingsAndPeople selectedAssignmentId={selectedAssignmentId} placeId={place.id} reservations={reservations}
               assignments={assignments} selectedDayId={selectedDayId} tripMembers={tripMembers}
               timeFormat={timeFormat} onSetParticipants={onSetParticipants}
               onEditTransport={onEditTransport} onEditReservation={onEditReservation} onOpenBooking={onOpenBooking} />
@@ -758,6 +758,7 @@ function InspectorHead({ place, category, openNow, phone, rating, ratingCount, p
 
 interface PlaceBookingsAndPeopleProps {
   selectedAssignmentId: number | null
+  placeId: number
   reservations: Reservation[]
   assignments: AssignmentsMap
   selectedDayId: number | null
@@ -770,10 +771,10 @@ interface PlaceBookingsAndPeopleProps {
 }
 
 /** The bookings pinned to this stop and who joins it, side by side from sm up. */
-function PlaceBookingsAndPeople({ selectedAssignmentId, reservations, assignments, selectedDayId,
+function PlaceBookingsAndPeople({ selectedAssignmentId, placeId, reservations, assignments, selectedDayId,
   tripMembers, timeFormat, onSetParticipants, onEditTransport, onEditReservation, onOpenBooking }: PlaceBookingsAndPeopleProps) {
   const { t } = useTranslation()
-  const linked = getAssignmentReservations<Reservation>(reservations, selectedAssignmentId)
+  const linked = getPlaceBookings<Reservation>(reservations, selectedAssignmentId, placeId)
   const assignment = selectedAssignmentId ? (assignments[String(selectedDayId)] || []).find(a => a.id === selectedAssignmentId) : null
   const currentParticipants = assignment?.participants || []
   const participantIds = currentParticipants.map(p => p.user_id)

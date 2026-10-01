@@ -20,6 +20,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'Check-in',
   'day.checkInUntil': 'Έως',
   'day.checkOut': 'Check-out',
+  'day.openStayBooking': 'Άνοιγμα κράτησης',
   'day.confirmation': 'Επιβεβαίωση',
   'day.editAccommodation': 'Επεξεργασία διαμονής',
   'day.reservations': 'Κρατήσεις',

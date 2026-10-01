@@ -4338,6 +4338,44 @@ describe('DayPlanSidebar', () => {
     expect(onPlaceClick).toHaveBeenCalledWith(8)
   })
 
+  it('FE-PLANNER-DAYPLAN-176b: a booked stay opens its booking from the pill, the name still opens the place (#2363)', async () => {
+    const user = userEvent.setup()
+    const days = [
+      buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' }),
+      buildDay({ id: 11, date: '2025-06-02', title: 'Day 2' }),
+    ]
+    const accommodations: Accommodation[] = [
+      { id: 3, trip_id: 1, start_day_id: 10, end_day_id: 11, place_id: 9, place_lat: 51.5, place_lng: -0.12, place_name: 'Booked Hotel' },
+      { id: 4, trip_id: 1, start_day_id: 10, end_day_id: 11, place_id: 8, place_lat: 51.5, place_lng: -0.12, place_name: 'Unbooked Hotel' },
+    ]
+    const stay = buildReservation({ id: 610, type: 'hotel', title: 'Booked Hotel stay', accommodation_id: 3 } as any)
+    const onPlaceClick = vi.fn()
+    const onOpenBooking = vi.fn()
+    render(<DayPlanSidebar {...makeDefaultProps({ days, accommodations, reservations: [stay], onPlaceClick, onOpenBooking })} />)
+
+    const header = dayHeader('Day 1')
+    const bookingButtons = header.querySelectorAll('[data-dp="day-pill-booking"]')
+    // Only the stay that has a booking gets the second target.
+    expect(bookingButtons).toHaveLength(1)
+    expect(bookingButtons[0]).toHaveAccessibleName('Open booking')
+    await user.click(bookingButtons[0] as HTMLElement)
+    expect(onOpenBooking).toHaveBeenCalledWith(stay)
+    expect(onPlaceClick).not.toHaveBeenCalled()
+
+    await user.click(within(header).getByText('Booked Hotel'))
+    expect(onPlaceClick).toHaveBeenCalledWith(9)
+  })
+
+  it('FE-PLANNER-DAYPLAN-176c: without a booking detail to open, the stay pill has no booking button', () => {
+    const days = [buildDay({ id: 10, date: '2025-06-01', title: 'Day 1' }), buildDay({ id: 11, date: '2025-06-02', title: 'Day 2' })]
+    const accommodations: Accommodation[] = [
+      { id: 3, trip_id: 1, start_day_id: 10, end_day_id: 11, place_id: 9, place_lat: 51.5, place_lng: -0.12, place_name: 'Booked Hotel' },
+    ]
+    const stay = buildReservation({ id: 610, type: 'hotel', title: 'Booked Hotel stay', accommodation_id: 3 } as any)
+    render(<DayPlanSidebar {...makeDefaultProps({ days, accommodations, reservations: [stay] })} />)
+    expect(dayHeader('Day 1').querySelector('[data-dp="day-pill-booking"]')).toBeNull()
+  })
+
   it('FE-PLANNER-DAYPLAN-177: clicking an active rental badge opens its booking detail', async () => {
     const user = userEvent.setup()
     const days = [

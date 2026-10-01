@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'Sisseregistreerimine',
   'day.checkInUntil': 'Kuni',
   'day.checkOut': 'Väljaregistreerimine',
+  'day.openStayBooking': 'Ava broneering',
   'day.confirmation': 'Kinnitus',
   'day.editAccommodation': 'Muuda majutust',
   'day.reservations': 'Broneeringud',

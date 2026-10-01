@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': "เช็คอิน",
   'day.checkInUntil': "เช็กอินได้ถึง",
   'day.checkOut': "เช็คเอาท์",
+  'day.openStayBooking': 'เปิดการจอง',
   'day.confirmation': "การยืนยัน",
   'day.editAccommodation': "แก้ไขที่พัก",
   'day.reservations': "การจอง",

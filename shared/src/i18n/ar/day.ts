@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'تسجيل الوصول',
   'day.checkInUntil': 'حتى',
   'day.checkOut': 'تسجيل المغادرة',
+  'day.openStayBooking': 'فتح الحجز',
   'day.confirmation': 'التأكيد',
   'day.editAccommodation': 'تعديل الإقامة',
   'day.reservations': 'الحجوزات',

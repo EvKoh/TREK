@@ -430,6 +430,20 @@ describe('PlaceInspector', () => {
     expect(screen.getByText('Museum Ticket')).toBeTruthy();
   });
 
+  it('FE-PLANNER-INSPECTOR-030h: a hotel shows the stay booked for it and opens that booking (#2363)', () => {
+    const onOpenBooking = vi.fn();
+    const stay = buildReservation({
+      id: 540, title: 'Hotel Adlon, 3 nights', status: 'confirmed', type: 'hotel', assignment_id: null,
+      accommodation_place_id: place.id,
+    } as any);
+    const elsewhere = buildReservation({ id: 541, title: 'Other hotel', type: 'hotel', accommodation_place_id: place.id + 1 } as any);
+    render(<PlaceInspector {...defaultProps} reservations={[stay, elsewhere]} onOpenBooking={onOpenBooking} />);
+
+    expect(screen.queryByText('Other hotel')).toBeNull();
+    fireEvent.click(screen.getByText('Hotel Adlon, 3 nights').closest('[role="button"]') as HTMLElement);
+    expect(onOpenBooking).toHaveBeenCalledWith(stay);
+  });
+
   it('FE-PLANNER-INSPECTOR-030g: every booking on the stop gets its own strip (#2201)', () => {
     const onEditReservation = vi.fn();
     const parking = buildReservation({

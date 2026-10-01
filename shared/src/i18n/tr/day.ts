@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'Giriş',
   'day.checkInUntil': 'Kadar',
   'day.checkOut': 'Çıkış yapmak',
+  'day.openStayBooking': 'Rezervasyonu aç',
   'day.confirmation': 'Onay kodu',
   'day.editAccommodation': 'Konaklamayı düzenle',
   'day.reservations': 'Rezervasyonlar',

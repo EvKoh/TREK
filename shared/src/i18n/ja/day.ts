@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': 'チェックイン',
   'day.checkInUntil': 'チェックイン期限',
   'day.checkOut': 'チェックアウト',
+  'day.openStayBooking': '予約を開く',
   'day.confirmation': '確認',
   'day.editAccommodation': '宿泊先を編集',
   'day.reservations': '予約',

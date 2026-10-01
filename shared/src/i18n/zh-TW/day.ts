@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': '入住',
   'day.checkInUntil': '截止',
   'day.checkOut': '退房',
+  'day.openStayBooking': '開啟預訂',
   'day.confirmation': '確認號',
   'day.editAccommodation': '編輯住宿',
   'day.reservations': '預訂',

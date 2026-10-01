@@ -19,6 +19,7 @@ const day: TranslationStrings = {
   'day.checkIn': '체크인',
   'day.checkInUntil': '까지',
   'day.checkOut': '체크아웃',
+  'day.openStayBooking': '예약 열기',
   'day.confirmation': '확인',
   'day.editAccommodation': '숙박 편집',
   'day.reservations': '예약',

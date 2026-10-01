@@ -24,7 +24,7 @@ import { openFile } from '../../../../utils/fileDownload'
 import { filesForPlace } from '../../../../utils/placeFiles'
 import { navigationTargetLabel, getNavigationTargets, openNavigationTarget } from '../../../../components/Planner/placeNavigation'
 import { NavigationMenu } from '../../../../components/shared/NavigationMenu'
-import { getAssignmentReservations } from '../../../../utils/dayMerge'
+import { getPlaceBookings } from '../../../../utils/dayMerge'
 import type { Assignment, Day, Reservation, TripMember } from '../../../../types'
 import { ActionCircle, Eyebrow, INNER_CLS } from './MTripSheetUi'
 
@@ -92,8 +92,9 @@ export default function MPlaceSheet({ planner, shell }: MTripSheetsProps) {
   // The bookings attached to that assignment. The desktop inspector shows this
   // strip; the phone sheet never did, so a booking reached from a map marker was
   // just as unreachable here, only invisibly so (#2012). All of them, because a
-  // stop can carry a parking pass next to its tickets (#2201).
-  const linkedReservations = getAssignmentReservations(planner.reservations, assignmentInDay?.id)
+  // stop can carry a parking pass next to its tickets (#2201). A hotel also lists
+  // the stay booked for it, the way back to its booking (#2363).
+  const linkedReservations = getPlaceBookings(planner.reservations, assignmentInDay?.id, place?.id)
   // A ferry or a flight has its own form — the reservation modal cannot hold one.
   // Resolved up front so a user without the matching right gets no button at all,
   // rather than one that does nothing (#2012).
