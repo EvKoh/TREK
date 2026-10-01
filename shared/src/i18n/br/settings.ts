@@ -81,6 +81,9 @@ const settings: TranslationStrings = {
   'settings.weekStart': 'Semana começa em',
   'settings.weekStartHint':
     'Primeiro dia da semana em todos os seletores de data. O Vacay tem sua própria configuração.',
+  'settings.preferredNavApp': 'Abrir lugares em',
+  'settings.preferredNavAppAsk': 'Perguntar sempre',
+  'settings.preferredNavAppHint': 'Com um app escolhido, o botão de navegação o abre direto em vez de oferecer todos os apps de mapa.',
   'settings.blurBookingCodes': 'Ocultar códigos de reserva',
   'settings.aiAlwaysRetry': 'Always retry booking imports with AI',
   'settings.aiAlwaysRetryHint': 'When a file cannot be read by the standard parser, automatically retry it with AI.',

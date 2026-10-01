@@ -138,6 +138,11 @@ export interface Settings {
   blur_booking_codes?: boolean
   /** Day headings lead with the calendar date and name the trip day second (#1953). */
   day_date_first?: boolean
+  /**
+   * Map app every navigate button opens straight away (#2423), as a
+   * NavigationAppId. Empty or absent keeps the picker with every app.
+   */
+  preferred_nav_app?: string
   /** Places not planned into any day are drawn as small markers without their photo (#2024). */
   map_compact_unplanned?: boolean
   map_booking_labels?: boolean

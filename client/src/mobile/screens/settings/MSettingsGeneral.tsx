@@ -9,9 +9,10 @@ import { DEFAULT_START_PAGE, DEFAULT_START_TRIP_TAB, type StartPage } from '../.
 import type { Settings, DistanceUnit, WeekStart } from '../../../types'
 import { DEFAULT_WEEK_START } from '@trek/shared'
 import { weekStartOptions } from '../../../utils/calendarWeek'
-import { MSetCard, MSetEyebrow, MSetSelectRow, MSetSegments, MSetRow } from './MSettingsUi'
+import { MSetCard, MSetEyebrow, MSetHint, MSetSelectRow, MSetSegments, MSetRow } from './MSettingsUi'
 import MToggle from '../../components/MToggle'
 import MSetPickerSheet from './MSetPickerSheet'
+import { preferredNavAppOptions } from '../../../components/Planner/placeNavigation'
 
 /**
  * "General" settings section — the demo's Language & region and Travel & map
@@ -24,6 +25,9 @@ export default function MSettingsGeneral() {
   const [currencyOpen, setCurrencyOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
   const [startTabOpen, setStartTabOpen] = useState(false)
+  const [navAppOpen, setNavAppOpen] = useState(false)
+  const navAppOptions = preferredNavAppOptions(t)
+  const navAppValue = settings.preferred_nav_app || ''
 
   const save = async (key: keyof Settings, value: Settings[keyof Settings]) => {
     try {
@@ -169,6 +173,13 @@ export default function MSettingsGeneral() {
       </MSetCard>
 
       <MSetCard title={t('settings.general.travelMap')} icon={Map} className="mt-3">
+        <MSetEyebrow className="mb-[5px]">{t('settings.preferredNavApp')}</MSetEyebrow>
+        <MSetSelectRow
+          label={navAppOptions.find(o => o.value === navAppValue)?.label ?? navAppOptions[0].label}
+          trailing={chevron}
+          onClick={() => setNavAppOpen(true)}
+        />
+        <MSetHint className="mb-[10px]">{t('settings.preferredNavAppHint')}</MSetHint>
         <div className="-mt-[6px]">
           {travelRows.map((row) => (
             <MSetRow
@@ -206,6 +217,15 @@ export default function MSettingsGeneral() {
         value={settings.language}
         onSelect={(v) => save('language', v)}
         options={SUPPORTED_LANGUAGES.map((l) => ({ value: l.value, label: l.label }))}
+      />
+
+      <MSetPickerSheet
+        open={navAppOpen}
+        onClose={() => setNavAppOpen(false)}
+        title={t('settings.preferredNavApp')}
+        value={navAppValue}
+        onSelect={(v) => save('preferred_nav_app', v)}
+        options={navAppOptions}
       />
 
       <MSetPickerSheet

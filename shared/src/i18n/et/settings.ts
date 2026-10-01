@@ -90,6 +90,9 @@ const settings: TranslationStrings = {
   'settings.timeFormat': 'Ajavorming',
   'settings.weekStart': 'Nädala alguspäev',
   'settings.weekStartHint': 'Nädala esimene päev kõigis kuupäevavalijates. Vacayl on oma seade.',
+  'settings.preferredNavApp': 'Ava kohad rakenduses',
+  'settings.preferredNavAppAsk': 'Küsi iga kord',
+  'settings.preferredNavAppHint': 'Kui rakendus on valitud, avab navigeerimisnupp selle kohe, selle asemel et pakkuda kõiki kaardirakendusi.',
   'settings.bookingLabels': 'Broneeringute marsruutide sildid',
   'settings.bookingLabelsHint':
     'Näita kaardil jaamade ja lennujaamade nimesid. Väljalülitatuna näidatakse ainult ikooni.',

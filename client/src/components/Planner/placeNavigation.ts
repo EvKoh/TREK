@@ -4,6 +4,7 @@ import { getAmapUrlForPlace } from './placeAmap'
 import { getCoMapsUrlForPlace } from './placeCoMaps'
 import { getGoogleMapsUrlForPlace } from './placeGoogleMaps'
 import { getOpenStreetMapUrlForPlace } from './placeOpenStreetMap'
+import { useSettingsStore } from '../../store/settingsStore'
 
 type PlaceLike = Pick<Place | AssignmentPlace, 'name' | 'address' | 'lat' | 'lng' | 'google_place_id' | 'google_ftid'>
 
@@ -78,6 +79,49 @@ export function showsAppleMaps(): boolean {
  * navigation from there is one tap.
  */
 export function getNavigationTargets(
+  place: PlaceLike | null | undefined,
+  detailsUrl?: string | null,
+): NavigationTarget[] {
+  return withPreferredApp(allNavigationTargets(place, detailsUrl), useSettingsStore.getState().settings.preferred_nav_app)
+}
+
+/**
+ * The traveller's preferred map app (#2423), when they picked one in settings:
+ * just that target, so every navigate button opens it straight away. Unset, or
+ * an app this place cannot be opened in (Amap outside China, Waze without
+ * coordinates), keeps the full list.
+ */
+export function withPreferredApp(targets: NavigationTarget[], preferred: string | null | undefined): NavigationTarget[] {
+  if (!preferred) return targets
+  const match = targets.find(target => target.id === preferred)
+  return match ? [match] : targets
+}
+
+/**
+ * The apps the settings picker offers (#2423), narrowed by platform the same
+ * way the list on a place is: Apple Maps not on Android, the generic geo: entry
+ * only there. Amap stays in, it is simply skipped for places outside China.
+ */
+export function navigationAppChoices(): { id: NavigationAppId; label: string; labelKey?: string }[] {
+  const choices: { id: NavigationAppId; label: string; labelKey?: string }[] = [
+    { id: 'google', label: 'Google Maps' },
+    { id: 'waze', label: 'Waze' },
+  ]
+  if (showsAppleMaps()) choices.push({ id: 'apple', label: 'Apple Maps' })
+  choices.push({ id: 'osm', label: 'OpenStreetMap' }, { id: 'comaps', label: 'CoMaps' }, { id: 'amap', label: '高德地图' })
+  if (showsGeoUri()) choices.push({ id: 'geo', label: 'geo:', labelKey: 'inspector.otherMapApp' })
+  return choices
+}
+
+/** The settings options (#2423): "ask every time" first, then each app from navigationAppChoices. */
+export function preferredNavAppOptions(t: Translate): { value: string; label: string }[] {
+  return [
+    { value: '', label: t('settings.preferredNavAppAsk') },
+    ...navigationAppChoices().map(app => ({ value: app.id, label: app.labelKey ? t(app.labelKey) : app.label })),
+  ]
+}
+
+function allNavigationTargets(
   place: PlaceLike | null | undefined,
   detailsUrl?: string | null,
 ): NavigationTarget[] {

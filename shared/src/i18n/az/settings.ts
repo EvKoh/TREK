@@ -113,6 +113,9 @@ const settings: TranslationStrings = {
   'settings.timeFormat': 'Vaxt formatı',
   'settings.weekStart': 'Həftənin başlanğıcı',
   'settings.weekStartHint': 'Bütün tarix seçicilərində həftənin ilk günü. Vacay-ın öz ayarı var.',
+  'settings.preferredNavApp': 'Yerləri açmaq üçün',
+  'settings.preferredNavAppAsk': 'Hər dəfə soruş',
+  'settings.preferredNavAppHint': 'Tətbiq seçiləndə naviqasiya düyməsi bütün xəritə tətbiqlərini təklif etmək əvəzinə onu birbaşa açır.',
 
   'settings.bookingLabels': 'Rezervasiya marşrutu etiketləri',
   'settings.bookingLabelsHint':

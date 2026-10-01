@@ -84,6 +84,9 @@ const settings: TranslationStrings = {
   'settings.timeFormat': 'Μορφή Ώρας',
   'settings.weekStart': 'Η εβδομάδα ξεκινά την',
   'settings.weekStartHint': 'Πρώτη ημέρα της εβδομάδας σε κάθε επιλογέα ημερομηνίας. Το Vacay έχει δική του ρύθμιση.',
+  'settings.preferredNavApp': 'Άνοιγμα τοποθεσιών σε',
+  'settings.preferredNavAppAsk': 'Ερώτηση κάθε φορά',
+  'settings.preferredNavAppHint': 'Με επιλεγμένη εφαρμογή, το κουμπί πλοήγησης την ανοίγει αμέσως αντί να προτείνει όλες τις εφαρμογές χαρτών.',
   'settings.bookingLabels': 'Ετικέτες διαδρομής κρατήσεων',
   'settings.bookingLabelsHint':
     'Εμφάνιση ονομάτων σταθμών / αεροδρομίων στον χάρτη. Όταν είναι απενεργοποιημένο, εμφανίζεται μόνο το εικονίδιο.',

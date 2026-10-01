@@ -79,6 +79,9 @@ const settings: TranslationStrings = {
   'settings.timeFormat': 'Tidsformat',
   'settings.weekStart': 'Vecka börjar på',
   'settings.weekStartHint': 'Veckans första dag i alla datumväljare. Vacay har en egen inställning.',
+  'settings.preferredNavApp': 'Öppna platser i',
+  'settings.preferredNavAppAsk': 'Fråga varje gång',
+  'settings.preferredNavAppHint': 'Med en vald app öppnar navigeringsknappen den direkt i stället för att erbjuda alla kartappar.',
   'settings.bookingLabels': 'Etiketter för bokningsrutter',
   'settings.bookingLabelsHint':
     'Visa stations- och flygplatsnamn på kartan. När funktionen är avstängd visas endast ikonen.',

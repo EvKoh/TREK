@@ -4,6 +4,7 @@ import { SUPPORTED_LANGUAGES, useTranslation } from '../../i18n'
 import { useSettingsStore, DEFAULT_SETTINGS } from '../../store/settingsStore'
 import { useToast } from '../shared/Toast'
 import CustomSelect from '../shared/CustomSelect'
+import { preferredNavAppOptions } from '../Planner/placeNavigation'
 import { SYMBOLS, currenciesWith } from '../Budget/BudgetPanel.constants'
 import Section from './Section'
 import { TRIP_TAB_IDS, TRIP_TAB_LABEL_KEYS } from '../../constants/tripTabs'
@@ -327,6 +328,20 @@ export default function DisplaySettingsTab(): React.ReactElement {
       </Section>
 
       <Section title={t('settings.general.travelMap')} icon={Map}>
+      {/* Preferred map app (#2423): opt-in, the picker stays the default */}
+      <div>
+        <label className="block text-sm font-medium mb-2 text-content-secondary">{t('settings.preferredNavApp')}</label>
+        <CustomSelect
+          value={settings.preferred_nav_app || ''}
+          onChange={async v => {
+            try { await updateSetting('preferred_nav_app', String(v)) }
+            catch (e: unknown) { toast.error(e instanceof Error ? e.message : t('common.error')) }
+          }}
+          options={preferredNavAppOptions(t)}
+        />
+        <p className="text-xs text-content-faint mt-2">{t('settings.preferredNavAppHint')}</p>
+      </div>
+
       {/* Date first in day headings (#1953) */}
       <OnOffSetting label={t('settings.dayDateFirst')} hint={t('settings.dayDateFirstHint')} on={settings.day_date_first === true} onChange={value => saveOnOff('day_date_first', value)} />
 

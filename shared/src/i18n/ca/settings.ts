@@ -65,6 +65,9 @@ const settings: TranslationStrings = {
   'settings.timeFormat': "Format d'hora",
   'settings.weekStart': 'La setmana comença el',
   'settings.weekStartHint': 'Primer dia de la setmana a tots els selectors de data. Vacay té la seva pròpia opció.',
+  'settings.preferredNavApp': 'Obre els llocs a',
+  'settings.preferredNavAppAsk': 'Pregunta cada vegada',
+  'settings.preferredNavAppHint': "Amb una app triada, el botó de navegació l'obre directament en lloc d'oferir totes les apps de mapes.",
   'settings.blurBookingCodes': 'Difumina els codis de reserva',
   'settings.optimizeFromAccommodation': "Optimitza la ruta des de l'allotjament",
   'settings.optimizeFromAccommodationHint':

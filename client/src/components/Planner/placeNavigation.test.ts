@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { getNavigationTargets, navigationTargetLabel, openNavigationTarget, showsAppleMaps, showsGeoUri } from './placeNavigation'
+import { getNavigationTargets, navigationAppChoices, navigationTargetLabel, openNavigationTarget, preferredNavAppOptions, showsAppleMaps, showsGeoUri, withPreferredApp } from './placeNavigation'
+import { useSettingsStore } from '../../store/settingsStore'
 import type { Place } from '../../types'
 
 // FE-PLANNER-NAV-001 to FE-PLANNER-NAV-008
@@ -163,3 +164,34 @@ describe('openNavigationTarget', () => {
     expect(assigned).toEqual([target.url])
   })
 })
+
+describe('preferred map app (#2423)', () => {
+  afterEach(() => {
+    useSettingsStore.setState(s => ({ settings: { ...s.settings, preferred_nav_app: '' } }))
+  })
+
+  it('FE-PLANNER-NAV-2423-1: unset keeps every app on offer', () => {
+    expect(getNavigationTargets(place()).length).toBeGreaterThan(1)
+  })
+
+  it('FE-PLANNER-NAV-2423-2: a picked app is the only target, so the button opens it straight away', () => {
+    useSettingsStore.setState(s => ({ settings: { ...s.settings, preferred_nav_app: 'waze' } }))
+    const targets = getNavigationTargets(place())
+    expect(targets.map(t => t.id)).toEqual(['waze'])
+  })
+
+  it('FE-PLANNER-NAV-2423-3: an app this place cannot be opened in falls back to the full list', () => {
+    const targets = [{ id: 'google' as const, label: 'Google Maps', url: 'g' }, { id: 'osm' as const, label: 'OpenStreetMap', url: 'o' }]
+    expect(withPreferredApp(targets, 'amap')).toEqual(targets)
+    expect(withPreferredApp(targets, null)).toEqual(targets)
+    expect(withPreferredApp(targets, 'osm')).toEqual([targets[1]])
+  })
+
+  it('FE-PLANNER-NAV-2423-4: the settings options start with asking and name every app', () => {
+    const options = preferredNavAppOptions(k => k)
+    expect(options[0]).toEqual({ value: '', label: 'settings.preferredNavAppAsk' })
+    expect(options.slice(1).map(o => o.value)).toEqual(navigationAppChoices().map(a => a.id))
+    expect(options.map(o => o.value)).toContain('google')
+  })
+})
+
