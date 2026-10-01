@@ -56,7 +56,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Travel stats: countries visited, trips, days on the road and distance flown, across all your trips.',
   'help.ctx.dashboard.bullet.3':
-    'Trip cards, filtered by Planned, Archived and Completed, as a grid or a list. Hover a card for edit, duplicate, archive and delete.',
+    'Trip cards, filtered by Planned, Archived and Completed, as a grid or a list. The search box above them looks through every trip at once, by title, date or a place on it. Hover a card for edit, duplicate, archive and delete.',
   'help.ctx.dashboard.bullet.4':
     'Widgets on the right: currency converter, world clocks, upcoming reservations and collections. Every one of them can be switched off.',
   'help.ctx.dashboard.bullet.5': 'The New Trip card and the button in the bottom-right corner both start a new trip.',
@@ -175,6 +175,21 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': 'Click + in the Timezones widget and search for a city.',
   'help.guide.timezones-widget.step.2': 'Remove a clock with the × next to it.',
   'help.guide.timezones-widget.result': 'Your clocks are saved with your account.',
+
+  // search-trips
+  'help.guide.search-trips.title': 'Search your trips',
+  'help.guide.search-trips.goal':
+    'Find a trip by its name, a date or a place you planned on it, archived trips included.',
+  'help.guide.search-trips.step.1':
+    'Type into Search trips or places above the cards. The list narrows as you type, across planned, archived and completed trips at once.',
+  'help.guide.search-trips.step.2':
+    'A trip found through one of its places names that place under its title. Click the x in the box, or press Escape, to see all your trips again.',
+  'help.guide.search-trips.result':
+    'Only the trips that match stay on the dashboard, and an empty box brings every trip back.',
+  'help.guide.search-trips.tip.1':
+    'Dates work too: type a month and a year, May 2027 for example, or 2027-05, to find the trips that fall into it.',
+  'help.guide.search-trips.tip.2':
+    'While a search is on, the Planned, Archived and Completed switch steps aside, so no trip hides behind the wrong filter.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -712,9 +727,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Timeline: one section per day with a + to add an entry on that day; entry cards with photos, mood, weather and story; suggestions from the trips in a lighter style with Dismiss this suggestion.',
   'help.ctx.journey-detail.bullet.4':
-    "Map: entries as pins, linked in date order by a dashed line, the trips' places, and any GPX tracks imported into those trips.",
+    "Map: entries as pins, linked in date order by a dashed line, the trips' places, any GPX tracks imported into those trips, and the geotagged photos of the entries.",
   'help.ctx.journey-detail.bullet.5':
-    'Journey Settings: cover, name and subtitle, tracks on the map, entry fields, dismissed suggestions, linked trips, contributors, public sharing, archive and delete.',
+    'Journey Settings: cover, name and subtitle, status, tracks on the map, entry fields, dismissed suggestions, linked trips, contributors, public sharing, archive and delete.',
   'help.ctx.journey-detail.bullet.6':
     'Two round buttons float over a long timeline: back to the top, and jump to the last entry.',
   // add-entry
@@ -858,6 +873,18 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Deleting cannot be undone, and it does not touch the trips the journey was linked to.',
   'help.guide.archive-journey.tip.2': 'The cover, name and subtitle live in the same dialog, at the top.',
+
+  // journey-status
+  'help.guide.journey-status.title': 'Set a journey’s status',
+  'help.guide.journey-status.goal':
+    'Mark a journey as a draft, live or completed yourself instead of following the dates of its trips.',
+  'help.guide.journey-status.step.1': 'Open Journey Settings in the header of the journey.',
+  'help.guide.journey-status.step.2': 'Under Status, pick Draft, Live or Completed. The choice is saved at once.',
+  'help.guide.journey-status.result':
+    'The journey keeps the status you picked, and its card in the journey list shows it.',
+  'help.guide.journey-status.tip.1':
+    'Automatic follows the dates of the linked trips again. Without a linked trip, an automatic journey stays a draft.',
+  'help.guide.journey-status.tip.2': 'A status set by hand stays until you change it, also when the trip dates move.',
 
   // ── Screen: journey-studio ─────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1094,6 +1121,8 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.result': 'The trip map follows these on every trip, until you flip them back.',
   'help.guide.travel-map-prefs.tip.1':
     'These are per account, not per trip. Members of a shared trip each see their own choices.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Open places in picks the map app the navigate button opens straight away; Ask every time keeps the choice of every map app.',
   // startup
   'help.guide.startup.title': 'Choose what TREK opens with',
   'help.guide.startup.goal': 'Land where you work most, not on the dashboard every time.',
@@ -1458,6 +1487,8 @@ const help: TranslationStrings = {
     "The template is offered on every trip's packing list; applying it copies the items, so a trip can change them freely.",
   'help.guide.packing-templates.tip.1': 'A template per kind of trip, beach, city, hiking, beats one giant list.',
   'help.guide.packing-templates.tip.2': 'Deleting a template does not touch trips that already applied it.',
+  'help.guide.packing-templates.tip.3':
+    'A template remembers each item’s weight, quantity and bag, so a trip that applies it gets the bags filled the same way.',
   // categories
   'help.guide.categories.title': 'Manage the category set',
   'help.guide.categories.goal': 'Decide which categories places and collections can carry, and how they look.',
@@ -1516,6 +1547,8 @@ const help: TranslationStrings = {
     'Users get the features without keys of their own; without a Google key TREK searches through the free OpenStreetMap stack and the TREK Places API.',
   'help.guide.instance-keys.tip.1': "A user's personal key under Settings wins over the instance key for that user.",
   'help.guide.instance-keys.tip.2': 'Keys can also come from environment variables; those show as read-only here.',
+  'help.guide.instance-keys.tip.3':
+    'Daily limit for Google calls caps what TREK may spend on the key per day; the badge beside the title counts today’s calls. Once the limit is reached, searches use OpenStreetMap until the next day (UTC).',
   // places-transit
   'help.guide.places-transit.title': 'Pick the search and transit providers',
   'help.guide.places-transit.goal': 'Decide who answers place searches and public-transport routes.',
@@ -1606,6 +1639,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.result': 'Admin events go there in addition to the in-app bell of every admin.',
   'help.guide.admin-channels.tip.1':
     'Keep the admin topic separate from your personal one, so an outage does not drown in trip chatter.',
+  'help.guide.admin-channels.tip.2':
+    'Defaults for users sets how every user’s notifications start, per event and channel: On, Off, or Blocked, which turns it off for everyone and shows as locked in their settings.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Revoke AI access',
   'help.guide.mcp-tokens-admin.goal': 'See and cut every token and session an AI client holds, for any user.',
@@ -1761,6 +1796,15 @@ const help: TranslationStrings = {
   'help.guide.undo-change.tip.2':
     'It is one step deep: only the latest change can be taken back, and a new change replaces it.',
 
+  // clear-day
+  'help.guide.clear-day.title': 'Clear a day',
+  'help.guide.clear-day.goal': 'Take every place off a day at once, for example to plan it again from scratch.',
+  'help.guide.clear-day.step.1': 'Right-click the head of the day in the plan.',
+  'help.guide.clear-day.step.2': 'Pick Clear day and confirm.',
+  'help.guide.clear-day.result':
+    'The day is empty and its places are back in the list as unplanned. The undo arrow above the days puts them back.',
+  'help.guide.clear-day.tip.1': 'Only the places come off. The day keeps its notes and its bookings.',
+
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Places',
   'help.ctx.trip-places.summary':
@@ -1770,7 +1814,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'The import button beside it offers Import file, for .gpx, .kml and .kmz files, and Google List (List Import where Naver lists are on too) for a list shared from Google Maps or Naver Maps. A file can also just be dropped onto the column.',
   'help.ctx.trip-places.bullet.3':
-    'Below them the search, with the tick that starts a selection next to it, and a row of filters: Show switches between All, Unplanned, Planned and, once a track was imported, Tracks, each with its count; the tag button filters by category and the star by a minimum rating.',
+    'Below them the search, with the tick that starts a selection next to it, and a row of filters: Show switches between All, Unplanned, Planned and, once a track was imported, Tracks, each with its count; the tag button filters by category, the star by a minimum rating, the globe by country or region, and Sort by sets the order of the list.',
   'help.ctx.trip-places.bullet.4':
     'A row shows picture, name and description or address. Click it for the place’s details, drag it onto a day, or right-click it (or click its three dots) for Edit, + Day, Open Website, Google Maps, Save to Collection and Delete.',
   'help.ctx.trip-places.bullet.5':
@@ -1900,6 +1944,36 @@ const help: TranslationStrings = {
   'help.guide.import-places-list.tip.2':
     'Enrich places via Google appears in the dialog when your TREK has a Google key: it looks every imported place up and fills in photos, address and details.',
 
+  // sort-places
+  'help.guide.sort-places.title': 'Sort the places list',
+  'help.guide.sort-places.goal':
+    'Put the list in the order that helps right now: by name, by rating, or by what was added or changed last.',
+  'help.guide.sort-places.step.1':
+    'Open Sort by in the head of the column. Its label says how the list is sorted right now.',
+  'help.guide.sort-places.step.2': 'Pick an order, Name or Highest rated for example. The list follows at once.',
+  'help.guide.sort-places.result': 'The list shows the places in the order you picked, until you choose another one.',
+  'help.guide.sort-places.tip.1':
+    'Any order other than Recently added marks the button, so you can tell at a glance that the list is sorted differently.',
+  'help.guide.sort-places.tip.2': 'Sorting only changes the list. The days keep their own order.',
+  // place-by-hand
+  'help.guide.place-by-hand.title': 'Add a place the search does not know',
+  'help.guide.place-by-hand.goal':
+    'Enter a place yourself, with its phone, e-mail and opening hours, when the place search finds nothing.',
+  'help.guide.place-by-hand.step.1':
+    'In the place dialog, type the name into the search and press Enter. When nothing is found, the dialog says so and offers Add by hand.',
+  'help.guide.place-by-hand.step.2':
+    'Click Add by hand. What you searched for becomes the name, and the dialog scrolls to the contact fields.',
+  'help.guide.place-by-hand.step.3': 'Fill in Phone and E-mail as far as you know them.',
+  'help.guide.place-by-hand.step.4':
+    'Click Add opening hours and set when the place opens and closes on each day. The copy button gives every day the hours of the first one, and a day’s switch marks it Closed.',
+  'help.guide.place-by-hand.step.5': 'Click Add.',
+  'help.guide.place-by-hand.result':
+    'The place joins the list. Its details show the phone, the e-mail and the opening hours you entered, just like a place the search found.',
+  'help.guide.place-by-hand.tip.1':
+    'Editing a place without hours of its own takes over the opening hours from Place details on the left by itself; where it already has hours, a button next to them takes over the looked-up ones.',
+  'help.guide.place-by-hand.tip.2':
+    'Hours you entered win over the looked-up ones, so a café with seasonal times shows what you know.',
+
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Days',
   'help.ctx.trip-days.summary':
@@ -1911,11 +1985,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Inside a day: the stops in order, each with picture, name, time, a lock on the picture and the bookings pinned to it; notes; the bookings and transports of the day, tinted by their type; and between the stops the travel time of each leg. Every row has a three-dot menu, the same one a right-click opens.',
   'help.ctx.trip-days.bullet.4':
-    'Under the stops the route bar: Route draws the day on the map, Optimize sorts the stops, Driving / Walking sets the day’s travel mode, Open in Google Maps and Open in CoMaps hand the day over.',
+    'Under the stops the route bar: Route draws the day on the map, Optimize sorts the stops, Driving, Walking or Cycling sets the day’s travel mode, Open in Google Maps and Open in CoMaps hand the day over.',
   'help.ctx.trip-days.bullet.5':
     'Places come onto a day by dragging a row from the places column, with + Day on that row, with Add place to this day from the day’s + or on an empty day, or from the place’s details.',
   'help.ctx.trip-days.bullet.6':
-    'Total Cost at the bottom adds up every stop and booking with a price, in the trip’s currency.',
+    'Total Cost at the bottom adds up the expenses from Costs that belong to the day’s stops and bookings, each one once, in the trip’s currency.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Read a day',
   'help.guide.read-day-plan.goal': 'Know what every part of a day card tells you before you change anything.',
@@ -2385,7 +2459,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': 'Change or cancel a booked night',
   'help.guide.edit-accommodation.goal': 'Move a stay, correct its times, or take it out of the plan again.',
   'help.guide.edit-accommodation.step.1':
-    'On every day of the stay the card shows the property, the check-in window, the check-out time and the confirmation number.',
+    'The card shows the property and the confirmation number, on the day you arrive with the check-in window and on the day you leave with the check-out time.',
   'help.guide.edit-accommodation.step.2':
     'The pencil at its right opens the stay again. The popup now reads Edit accommodation.',
   'help.guide.edit-accommodation.step.3':
@@ -2417,6 +2491,14 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.tip.2':
     'No Reservations block means the day has no bookings: it is hidden rather than shown empty.',
 
+  // map-lock
+  'help.guide.map-lock.title': 'Lock the map',
+  'help.guide.map-lock.goal': 'Keep the map where it is while you click through days and places.',
+  'help.guide.map-lock.step.1':
+    'Click the lock on the map. While it is closed, opening a day or picking a place no longer zooms or pans the map.',
+  'help.guide.map-lock.result': 'The map stays where you left it while you work through the plan.',
+  'help.guide.map-lock.tip.1': 'Click the lock again to let the map follow the selection.',
+
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Map',
   'help.ctx.trip-map.summary':
@@ -2432,7 +2514,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'The row of icons at the top searches the part of the map you can see: Restaurants, Cafés, Bars & nightlife, Accommodation, Sights, Museums & culture, Nature & parks and Activities. Search this area runs it again after you move the map.',
   'help.ctx.trip-map.bullet.6':
-    'Right-click anywhere on the map to open the place form at that point, with the address already looked up. The round button at the bottom left swaps the drawn map for aerial imagery.',
+    'Right-click anywhere on the map to open the place form at that point, with the address already looked up. The round button at the bottom left swaps the drawn map for aerial imagery, and the lock keeps the view where it is while you click through days and places.',
   'help.ctx.trip-map.bullet.7':
     'Show whole trip at the bottom right draws every travel day at once and lists what each one covers; the route icon on a booking’s row draws that booking, and the one in the toolbar above the days draws them all. Click the end of a drawn booking to open its details.',
   'help.ctx.trip-map.bullet.8':
@@ -3282,6 +3364,8 @@ const help: TranslationStrings = {
     'Equally is cent-perfect: the leftover cent rotates from expense to expense, so nobody is the one who always pays it.',
   'help.guide.split-expense.tip.3':
     'Ticket mode sums Total amount itself and greys the field out: the receipt’s lines are the total.',
+  'help.guide.split-expense.tip.4':
+    'A custom split can also be entered in percent: switch Enter shares as to %, and the shares have to make 100 % together before the expense saves.',
   // expense-currency
   'help.guide.expense-currency.title': 'Enter an expense in another currency',
   'help.guide.expense-currency.goal': 'Put in what the receipt actually says and let TREK hold the rate.',

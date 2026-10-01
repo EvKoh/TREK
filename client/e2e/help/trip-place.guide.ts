@@ -529,7 +529,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         target: p => modal(p).getByRole('button', { name: LIST_ROW }),
         act: async p => {
           await modal(p).getByRole('button', { name: LIST_ROW }).click()
-          await expect(modal(p).getByRole('button', { name: LIST_ROW })).toHaveClass(/border-accent/, { timeout: 20_000 })
+          await expect(modal(p).getByRole('button', { name: LIST_ROW })).toHaveAttribute('aria-pressed', 'true', { timeout: 20_000 })
           await settle(p)
         },
       },

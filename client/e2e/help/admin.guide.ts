@@ -39,8 +39,8 @@ const sidebar = (page: Page) => page.locator('nav').filter({ has: page.getByRole
 const cardOf = (el: Locator) => el.locator('xpath=ancestor::*[contains(@class,"rounded-xl") or contains(@class,"rounded-2xl") or self::section][1]')
 /** An admin card by the text of its h2. */
 const section = (page: Page, title: string | RegExp) => cardOf(page.locator('h2').filter({ hasText: title }).first())
-/** A provider block under Settings (its title is a <p>, not a heading). */
-const block = (page: Page, title: string) => cardOf(page.locator('p').filter({ hasText: title }).first())
+/** A provider block under Settings, a <section> headed by an h3. */
+const block = (page: Page, title: string) => page.locator('h3').filter({ hasText: new RegExp(`^${title}$`) }).first().locator('xpath=ancestor::section[1]')
 const modal = (page: Page) => page.locator('.trek-modal-backdrop').last()
 /** A row of the user table by its username. */
 const userRow = (page: Page, username: string) => page.locator('table tbody tr').filter({ hasText: username }).first()
@@ -103,9 +103,9 @@ const SCRIPTS: Record<string, GuideScript> = {
     start: opener('admin-users'),
     steps: [
       {
-        target: p => userRow(p, 'mara').getByTitle('Edit User'),
+        target: p => userRow(p, 'mara').getByRole('button', { name: 'Edit User' }),
         act: async p => {
-          await userRow(p, 'mara').getByTitle('Edit User').click()
+          await userRow(p, 'mara').getByRole('button', { name: 'Edit User' }).click()
           await expect(modal(p)).toBeVisible()
           await settle(p)
         },
@@ -151,7 +151,7 @@ const SCRIPTS: Record<string, GuideScript> = {
     guide: guide('delete-user'),
     start: opener('admin-users'),
     steps: [
-      only(p => userRow(p, 'jonas').getByTitle('Delete user')),
+      only(p => userRow(p, 'jonas').getByRole('button', { name: 'Delete user' })),
     ],
   },
   permissions: {
@@ -243,9 +243,10 @@ const SCRIPTS: Record<string, GuideScript> = {
           await typeInto(p, p.getByPlaceholder('Category name'), 'Viewpoints')
           await settle(p)
         },
-        target: p => cardOf(p.getByPlaceholder('Category name')),
+        // The new category opens in a dialog, its name in the dialog's head.
+        target: p => modal(p).locator('> [role="presentation"], > div').first(),
         act: async p => {
-          await section(p, /^Categories$/).getByRole('button', { name: 'Cancel' }).click()
+          await modal(p).getByRole('button', { name: 'Cancel' }).click()
           await expect(p.getByPlaceholder('Category name')).toHaveCount(0)
         },
       },
@@ -405,9 +406,9 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: p => p.getByTestId('plugin-row-menu-btn-trip-doctor').locator('xpath=ancestor::div[contains(@class,"rounded-2xl")][1]'),
+        target: p => p.getByTestId('plugin-row-menu-btn-trip-doctor').locator('xpath=ancestor::div[contains(@class,"group") and contains(@class,"px-3.5")][1]'),
         act: async p => {
-          const row = p.getByTestId('plugin-row-menu-btn-trip-doctor').locator('xpath=ancestor::div[contains(@class,"rounded-2xl")][1]')
+          const row = p.getByTestId('plugin-row-menu-btn-trip-doctor').locator('xpath=ancestor::div[contains(@class,"group") and contains(@class,"px-3.5")][1]')
           await row.getByRole('button', { name: 'Enable plugin' }).click()
           await expect(row.getByText('Active', { exact: true })).toBeVisible({ timeout: 30_000 })
           await settle(p)
@@ -439,14 +440,15 @@ const SCRIPTS: Record<string, GuideScript> = {
       {
         prepare: async p => {
           await section(p, /^Backends$/).getByRole('button', { name: 'Add backend' }).click()
-          await expect(p.locator('p').filter({ hasText: /^Add backend$/ })).toBeVisible()
-          await typeInto(p, cardOf(p.locator('p').filter({ hasText: /^Add backend$/ })).locator('input').first(), 'archive')
+          await expect(modal(p).getByText('Add backend', { exact: true })).toBeVisible()
+          await typeInto(p, modal(p).locator('input').first(), 'archive')
           await settle(p)
         },
-        target: p => cardOf(p.locator('p').filter({ hasText: /^Add backend$/ })),
+        // The new backend opens in a dialog.
+        target: p => modal(p).locator('> [role="presentation"], > div').first(),
         act: async p => {
-          await cardOf(p.locator('p').filter({ hasText: /^Add backend$/ })).getByRole('button', { name: 'Cancel' }).click()
-          await expect(p.locator('p').filter({ hasText: /^Add backend$/ })).toHaveCount(0)
+          await modal(p).getByRole('button', { name: 'Cancel' }).click()
+          await expect(modal(p).getByText('Add backend', { exact: true })).toHaveCount(0)
         },
       },
       only(p => section(p, /^Categories$/)),
@@ -478,8 +480,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     guide: guide('mcp-tokens-admin'),
     start: opener('admin-mcp-tokens'),
     steps: [
-      only(p => p.locator('h3').filter({ hasText: 'API Tokens' }).locator('xpath=..')),
-      only(p => p.locator('h3').filter({ hasText: 'OAuth Sessions' }).locator('xpath=..')),
+      only(p => p.locator('h2, h3').filter({ hasText: 'API Tokens' }).first().locator('xpath=ancestor::section[1]')),
+      only(p => p.locator('h2, h3').filter({ hasText: 'OAuth Sessions' }).first().locator('xpath=ancestor::section[1]')),
     ],
   },
 

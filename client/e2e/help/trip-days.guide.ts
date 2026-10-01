@@ -119,7 +119,45 @@ const closeModal = async (page: Page): Promise<void> => {
 
 const only = (target: (p: Page) => Locator) => ({ target })
 
+/** The menu a right-click on a day's head opens. */
+/** The question before a day is cleared (a ConfirmDialog, which carries no dialog role). */
+const clearDialog = (page: Page) => page.locator('.trek-modal-enter').filter({ has: page.getByRole('heading', { name: /^Clear .+\?$/ }) }).last()
+const dayMenu = (page: Page) => page.locator('.trek-popover-enter').filter({ has: page.getByRole('button', { name: 'Clear day' }) }).last()
+
 const SCRIPTS: Record<string, GuideScript> = {
+  'clear-day': {
+    guide: guide('clear-day'),
+    start: p => openTrip(p),
+    steps: [
+      {
+        prepare: async p => {
+          await dayHeader(p, 2).click({ button: 'right' })
+          await expect(dayMenu(p)).toBeVisible()
+          await beat(p, 300)
+        },
+        target: dayMenu,
+        act: async p => {
+          await dayMenu(p).getByRole('button', { name: 'Clear day' }).click()
+          await expect(p.getByRole('heading', { name: /^Clear .+\?$/ })).toBeVisible()
+          await settle(p)
+        },
+      },
+      {
+        target: clearDialog,
+        act: async p => {
+          await clearDialog(p).getByRole('button', { name: 'Clear day' }).click()
+          await expect(clearDialog(p)).toHaveCount(0, { timeout: 15_000 })
+          await settle(p)
+        },
+      },
+    ],
+    cleanup: async p => {
+      // Undo puts the seed's stops back on the day for the guides after this one.
+      const undo = p.getByRole('button', { name: 'Undo' }).last()
+      if (await undo.isVisible()) await undo.click()
+      await settle(p)
+    },
+  },
   'read-day-plan': {
     guide: guide('read-day-plan'),
     start: openWithRoute,

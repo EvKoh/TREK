@@ -94,8 +94,12 @@ const exportMenu = (page: Page): Locator => page.getByRole('menu')
 /** The printable page inside the preview, a srcdoc frame of its own. */
 const printFrame = (page: Page) => page.frameLocator('iframe[title^="Packing List"]')
 /** The Bags card beside the lists. Total weight is a span in its foot band. */
+/** The bag sidebar: the innermost box holding the guide's bag and the weight summary below the cards. */
 const bagSidebar = (page: Page): Locator =>
-  page.getByText('Total weight', { exact: true }).locator('xpath=ancestor::div[2]')
+  page.locator('div')
+    .filter({ has: page.getByText('Total weight', { exact: true }) })
+    .filter({ has: page.getByText(BAG, { exact: true }) })
+    .last()
 /** The detail pane on the right; its header reads Task. */
 const todoPane = (page: Page): Locator => page.getByText('Task', { exact: true }).locator('xpath=ancestor::div[2]')
 /** A task row is a div with role=button whose name starts with the task's own. */
@@ -440,7 +444,7 @@ const SCRIPTS: Record<string, GuideScript> = {
       only(p => p.getByRole('button', { name: 'Print or save as PDF' })),
     ],
     cleanup: async p => {
-      await p.getByRole('button', { name: 'Close', exact: true }).click()
+      await p.getByRole('button', { name: 'Close', exact: true }).first().click()
     },
   },
   'share-packing-item': {
@@ -559,10 +563,11 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await bagSidebar(p).getByRole('button', { name: 'Set limit' }).click()
           // Entered in kilograms, stored in grams.
-          const field = bagSidebar(p).locator('input[aria-label="Weight limit"]')
+          // The sidebar locator needs Set limit, which the open editor replaces: look page-wide.
+          const field = p.locator('input[aria-label="Weight limit"]')
           await typeInto(p, field, '8')
           await field.press('Enter')
-          await expect(bagSidebar(p).getByText('/ 8.0 kg')).toBeVisible({ timeout: 20_000 })
+          await expect(p.getByText('/ 8.0 kg').first()).toBeVisible({ timeout: 20_000 })
           await settle(p)
         },
       },

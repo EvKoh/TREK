@@ -56,7 +56,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Cestovné štatistiky: navštívené krajiny, cesty, dni na cestách a nalietaná vzdialenosť naprieč všetkými vašimi cestami.',
   'help.ctx.dashboard.bullet.3':
-    'Karty ciest, filtrované podľa Plánované, Archivované a Dokončené, ako mriežka alebo zoznam. Po prejdení myšou nad kartou ju môžete upraviť, duplikovať, archivovať alebo vymazať.',
+    'Karty ciest, filtrované podľa Plánované, Archivované a Dokončené, ako mriežka alebo zoznam. Vyhľadávacie pole nad nimi prehľadá všetky cesty naraz, podľa názvu, dátumu alebo miesta v ceste. Po prejdení myšou nad kartou ju môžete upraviť, duplikovať, archivovať alebo vymazať.',
   'help.ctx.dashboard.bullet.4':
     'Widgety vpravo: prevodník mien, svetové hodiny, nadchádzajúce rezervácie a zbierky. Každý z nich sa dá vypnúť.',
   'help.ctx.dashboard.bullet.5': 'Karta Nová cesta aj tlačidlo v pravom dolnom rohu vytvoria novú cestu.',
@@ -176,6 +176,19 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': 'Kliknite na + vo widgete Časové pásma a vyhľadajte mesto.',
   'help.guide.timezones-widget.step.2': 'Hodiny odstránite pomocou × vedľa nich.',
   'help.guide.timezones-widget.result': 'Vaše hodiny sa ukladajú k vášmu účtu.',
+  'help.guide.search-trips.title': 'Vyhľadať cestu',
+  'help.guide.search-trips.goal':
+    'Nájdite cestu podľa názvu, dátumu alebo miesta, ktoré ste v nej naplánovali, vrátane archivovaných ciest.',
+  'help.guide.search-trips.step.1':
+    'Píšte do Hľadať výlety alebo miesta nad kartami. Zoznam sa zužuje už počas písania a zahŕňa naraz naplánované, archivované aj dokončené cesty.',
+  'help.guide.search-trips.step.2':
+    'Cesta nájdená cez niektoré zo svojich miest zobrazí toto miesto pod svojím názvom. Kliknite na x v poli alebo stlačte Escape a znova uvidíte všetky svoje cesty.',
+  'help.guide.search-trips.result':
+    'Na prehľade zostanú len cesty, ktoré zodpovedajú, a prázdne pole vráti späť všetky cesty.',
+  'help.guide.search-trips.tip.1':
+    'Fungujú aj dátumy: napíšte mesiac a rok, napríklad máj 2027, alebo 2027-05, a nájdete cesty, ktoré doň spadajú.',
+  'help.guide.search-trips.tip.2':
+    'Kým vyhľadávanie beží, prepínač Plánované, Archivované a Dokončené ustúpi nabok, takže sa žiadna cesta neskryje za nesprávnym filtrom.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Dovolenka (Vacay)',
@@ -726,9 +739,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Časová os: jedna sekcia na deň s + na pridanie záznamu v daný deň; karty záznamov s fotkami, náladou, počasím a príbehom; návrhy z ciest v svetlejšom štýle s možnosťou Zahodiť tento návrh.',
   'help.ctx.journey-detail.bullet.4':
-    'Mapa: záznamy ako špendlíky spojené v poradí dátumov prerušovanou čiarou, miesta z ciest a všetky stopy GPX importované do týchto ciest.',
+    'Mapa: záznamy ako špendlíky spojené v poradí dátumov prerušovanou čiarou, miesta z ciest, všetky stopy GPX importované do týchto ciest a fotky záznamov s geoznačkou.',
   'help.ctx.journey-detail.bullet.5':
-    'Nastavenia cestovného denníka: obal, názov a podnadpis, stopy na mape, polia záznamov, zahodené návrhy, prepojené cesty, prispievatelia, verejné zdieľanie, archivácia a vymazanie.',
+    'Nastavenia cestovného denníka: obal, názov a podnadpis, stav, stopy na mape, polia záznamov, zahodené návrhy, prepojené cesty, prispievatelia, verejné zdieľanie, archivácia a vymazanie.',
   'help.ctx.journey-detail.bullet.6':
     'Nad dlhou časovou osou sa vznášajú dve okrúhle tlačidlá: späť na začiatok a skok na posledný záznam.',
   // add-entry
@@ -877,6 +890,16 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Odstránenie nemožno vrátiť späť a nijako neovplyvní cesty, s ktorými bol denník prepojený.',
   'help.guide.archive-journey.tip.2': 'Titulná fotka, názov a podnadpis sa nachádzajú v tom istom dialógu, hore.',
+  'help.guide.journey-status.title': 'Nastaviť stav cestovného denníka',
+  'help.guide.journey-status.goal':
+    'Označte cestovný denník sami ako koncept, naživo alebo dokončený, namiesto toho, aby sa riadil dátumami svojich ciest.',
+  'help.guide.journey-status.step.1': 'Otvorte Nastavenia cestovného denníka v hlavičke denníka.',
+  'help.guide.journey-status.step.2': 'V časti Stav vyberte Koncept, Naživo alebo Dokončený. Voľba sa uloží hneď.',
+  'help.guide.journey-status.result':
+    'Cestovný denník si ponechá stav, ktorý ste zvolili, a jeho karta v zozname denníkov ho zobrazuje.',
+  'help.guide.journey-status.tip.1':
+    'Automaticky sa znova riadi dátumami prepojených ciest. Bez prepojenej cesty zostane automatický denník konceptom.',
+  'help.guide.journey-status.tip.2': 'Ručne nastavený stav platí, kým ho nezmeníte, aj keď sa dátumy cesty posunú.',
 
   // ── Screen: journey-studio ─────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1121,6 +1144,8 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.result': 'Mapa sa nimi riadi pri každej ceste, kým ich znova neprepnete.',
   'help.guide.travel-map-prefs.tip.1':
     'Tieto nastavenia platia pre účet, nie pre cestu. Každý člen zdieľanej cesty vidí svoje vlastné voľby.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Otvárať miesta v určí mapovú aplikáciu, ktorú tlačidlo navigácie rovno otvorí; Zakaždým sa opýtať ponechá výber zo všetkých mapových aplikácií.',
   // startup
   'help.guide.startup.title': 'Výber, čím sa TREK otvorí',
   'help.guide.startup.goal': 'Dostaňte sa tam, kde najviac pracujete, a nie zakaždým na prehľad.',
@@ -1502,6 +1527,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Šablóna pre každý typ cesty (pláž, mesto, turistika) je lepšia než jeden obrovský zoznam.',
   'help.guide.packing-templates.tip.2': 'Vymazanie šablóny neovplyvní cesty, ktoré ju už použili.',
+  'help.guide.packing-templates.tip.3':
+    'Šablóna si pamätá hmotnosť, množstvo a zavazadlo každej položky, takže cesta, ktorá ju použije, dostane zavazadlá naplnené rovnako.',
   // categories
   'help.guide.categories.title': 'Spravujte sadu kategórií',
   'help.guide.categories.goal': 'Určte, aké kategórie môžu mať miesta a zbierky a ako vyzerajú.',
@@ -1567,6 +1594,8 @@ const help: TranslationStrings = {
     'Osobný kľúč používateľa v Nastaveniach má pre daného používateľa prednosť pred kľúčom inštancie.',
   'help.guide.instance-keys.tip.2':
     'Kľúče môžu pochádzať aj z premenných prostredia; tie sa tu zobrazujú iba na čítanie.',
+  'help.guide.instance-keys.tip.3':
+    'Denný limit volaní Google obmedzuje, koľko smie TREK za deň s kľúčom minúť; značka vedľa nadpisu počíta dnešné volania. Po dosiahnutí limitu vyhľadávanie používa OpenStreetMap až do nasledujúceho dňa (UTC).',
   // places-transit
   'help.guide.places-transit.title': 'Vyberte poskytovateľov vyhľadávania a verejnej dopravy',
   'help.guide.places-transit.goal': 'Určte, kto odpovedá na vyhľadávanie miest a trasy verejnej dopravy.',
@@ -1667,6 +1696,8 @@ const help: TranslationStrings = {
     'Udalosti pre správcov chodia tam, a navyše do zvončeka v aplikácii každého správcu.',
   'help.guide.admin-channels.tip.1':
     'Tému pre správcov udržujte oddelenú od osobnej, aby sa hlásenie o výpadku nestratilo medzi správami o cestách.',
+  'help.guide.admin-channels.tip.2':
+    'Predvolené nastavenia pre používateľov určujú, ako začínajú upozornenia každého používateľa, pre každú udalosť a kanál zvlášť: Zapnuté, Vypnuté alebo Blokované, čo ich vypne všetkým a v ich nastaveniach sa zobrazí ako uzamknuté.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Odvolajte prístup AI',
   'help.guide.mcp-tokens-admin.goal':
@@ -1821,6 +1852,13 @@ const help: TranslationStrings = {
   'help.guide.undo-change.tip.1':
     'Vrátenie sa týka plánu: priraďovania, odoberania, zmeny poradia a presúvania miest, optimalizácie trasy, mazania miest, zmien kategórie a importov.',
   'help.guide.undo-change.tip.2': 'Má hĺbku jedného kroku: vrátiť možno iba najnovšiu zmenu a nová zmena ju nahradí.',
+  'help.guide.clear-day.title': 'Vyprázdniť deň',
+  'help.guide.clear-day.goal': 'Odstráňte z dňa všetky miesta naraz, napríklad aby ste ho naplánovali úplne odznova.',
+  'help.guide.clear-day.step.1': 'Kliknite pravým tlačidlom na hlavičku dňa v pláne.',
+  'help.guide.clear-day.step.2': 'Vyberte Vyprázdniť deň a potvrďte.',
+  'help.guide.clear-day.result':
+    'Deň je prázdny a jeho miesta sú späť v zozname ako nezaradené. Šípka späť nad dňami ich vráti na miesto.',
+  'help.guide.clear-day.tip.1': 'Odstránia sa iba miesta. Poznámky a rezervácie dňa zostanú.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Miesta',
@@ -1831,7 +1869,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'Tlačidlo importu vedľa neho ponúka Importovať súbor pre súbory .gpx, .kml a .kmz a Zoznam Google (Import zoznamu, ak sú zapnuté aj zoznamy Naver) pre zoznam zdieľaný z Google Maps alebo Naver Maps. Súbor môžete aj jednoducho pustiť na stĺpec.',
   'help.ctx.trip-places.bullet.3':
-    'Pod nimi je vyhľadávanie so symbolom zaškrtnutia vedľa neho, ktorý spustí výber, a rad filtrov: Zobraziť prepína medzi Všetko, Nezaradené, Naplánované a po importe stopy aj Trasy, každé s počtom; tlačidlo so štítkom filtruje podľa kategórie a hviezdička podľa minimálneho hodnotenia.',
+    'Pod nimi je vyhľadávanie so symbolom zaškrtnutia vedľa neho, ktorý spustí výber, a rad filtrov: Zobraziť prepína medzi Všetko, Nezaradené, Naplánované a po importe stopy aj Trasy, každé s počtom; tlačidlo so štítkom filtruje podľa kategórie, hviezdička podľa minimálneho hodnotenia, glóbus podľa krajiny alebo regiónu a Zoradiť podľa určuje poradie zoznamu.',
   'help.ctx.trip-places.bullet.4':
     'Riadok zobrazuje obrázok, názov a popis alebo adresu. Kliknutím naň zobrazíte podrobnosti miesta, môžete ho potiahnuť na deň alebo kliknutím pravým tlačidlom (či na jeho tri bodky) otvoriť Upraviť, + Deň, Otvoriť webovú stránku, Google Maps, Uložiť do zbierky a Odstrániť.',
   'help.ctx.trip-places.bullet.5':
@@ -1961,6 +1999,34 @@ const help: TranslationStrings = {
     'Zoznam musí byť zdieľaný verejne; z odkazu na súkromný zoznam sa nič neimportuje.',
   'help.guide.import-places-list.tip.2':
     'Obohatiť miesta cez Google sa v dialógu zobrazí, keď má váš TREK kľúč Google: vyhľadá každé importované miesto a doplní fotky, adresu a podrobnosti.',
+  'help.guide.sort-places.title': 'Zoradiť zoznam miest',
+  'help.guide.sort-places.goal':
+    'Zoraďte zoznam tak, ako vám práve pomôže: podľa názvu, podľa hodnotenia alebo podľa toho, čo pribudlo či sa zmenilo naposledy.',
+  'help.guide.sort-places.step.1':
+    'Otvorte Zoradiť podľa v hlavičke stĺpca. Jeho popis hovorí, ako je zoznam práve zoradený.',
+  'help.guide.sort-places.step.2':
+    'Vyberte poradie, napríklad Názov alebo Najlepšie hodnotené. Zoznam sa hneď prispôsobí.',
+  'help.guide.sort-places.result': 'Zoznam zobrazuje miesta v poradí, ktoré ste zvolili, kým nevyberiete iné.',
+  'help.guide.sort-places.tip.1':
+    'Každé iné poradie ako Naposledy pridané tlačidlo zvýrazní, takže na prvý pohľad vidíte, že je zoznam zoradený inak.',
+  'help.guide.sort-places.tip.2': 'Zoradenie mení iba zoznam. Dni si ponechajú vlastné poradie.',
+  'help.guide.place-by-hand.title': 'Pridať miesto, ktoré vyhľadávanie nepozná',
+  'help.guide.place-by-hand.goal':
+    'Zadajte miesto sami, s telefónom, e-mailom a otváracími hodinami, keď vyhľadávanie miest nič nenájde.',
+  'help.guide.place-by-hand.step.1':
+    'V dialógu miesta napíšte názov do vyhľadávania a stlačte Enter. Keď sa nič nenájde, dialóg to oznámi a ponúkne Pridať ručne.',
+  'help.guide.place-by-hand.step.2':
+    'Kliknite na Pridať ručne. Hľadaný text sa stane názvom a dialóg sa posunie k poliam pre kontakt.',
+  'help.guide.place-by-hand.step.3': 'Vyplňte Telefón a E-mail, ak ich poznáte.',
+  'help.guide.place-by-hand.step.4':
+    'Kliknite na Pridať otváracie hodiny a nastavte, kedy miesto v jednotlivé dni otvára a zatvára. Tlačidlo kopírovania dá všetkým dňom časy prvého dňa a prepínač dňa ho označí ako Zatvorené.',
+  'help.guide.place-by-hand.step.5': 'Kliknite na Pridať.',
+  'help.guide.place-by-hand.result':
+    'Miesto pribudne do zoznamu. Jeho podrobnosti zobrazia zadaný telefón, e-mail a otváracie hodiny, rovnako ako pri mieste nájdenom vyhľadávaním.',
+  'help.guide.place-by-hand.tip.1':
+    'Pri úprave miesta bez vlastných otváracích hodín sa otváracie hodiny z Podrobnosti miesta vľavo prevezmú samy; ak už miesto hodiny má, vyhľadané prevezme tlačidlo vedľa nich.',
+  'help.guide.place-by-hand.tip.2':
+    'Vami zadané hodiny majú prednosť pred vyhľadanými, takže kaviareň so sezónnymi hodinami ukáže to, čo viete vy.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Dni',
@@ -1973,11 +2039,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'V rámci dňa: zastávky v poradí, každá s obrázkom, názvom, časom, zámkom na obrázku a rezerváciami, ktoré sú k nej pripnuté; poznámky; rezervácie a doprava dňa, farebne odlíšené podľa druhu; a medzi zastávkami čas cesty každého úseku. Každý riadok má ponuku s tromi bodkami, rovnakú, akú otvorí pravé tlačidlo.',
   'help.ctx.trip-days.bullet.4':
-    'Pod zastávkami je lišta trasy: Trasa vykreslí deň na mape, Optimalizovať zoradí zastávky, Autom / Pešo nastaví spôsob presunu pre deň, Otvoriť v Mapách Google a Otvoriť v CoMaps odovzdajú deň do týchto aplikácií.',
+    'Pod zastávkami je lišta trasy: Trasa vykreslí deň na mape, Optimalizovať zoradí zastávky, Autom, Pešo alebo Na bicykli nastaví spôsob presunu pre deň, Otvoriť v Mapách Google a Otvoriť v CoMaps odovzdajú deň do týchto aplikácií.',
   'help.ctx.trip-days.bullet.5':
     'Miesta sa do dňa dostanú potiahnutím riadka zo stĺpca miest, tlačidlom + Deň v tomto riadku, voľbou Pridať miesto k tomuto dňu v ponuke + dňa alebo v prázdnom dni, alebo z podrobností miesta.',
   'help.ctx.trip-days.bullet.6':
-    'Celkové náklady v dolnej časti sčítajú každú zastávku a rezerváciu s cenou, v mene cesty.',
+    'Celkové náklady v dolnej časti sčítajú výdavky z Náklady, ktoré patria k zastávkam a rezerváciám dňa, každý iba raz, v mene cesty.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Porozumejte karte dňa',
   'help.guide.read-day-plan.goal': 'Zistite, čo vám hovorí každá časť karty dňa, skôr než niečo zmeníte.',
@@ -2450,7 +2516,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': 'Zmeňte alebo zrušte rezervovanú noc',
   'help.guide.edit-accommodation.goal': 'Presuňte pobyt, opravte jeho časy alebo ho znova vyraďte z plánu.',
   'help.guide.edit-accommodation.step.1':
-    'V každom dni pobytu karta ukazuje ubytovacie zariadenie, časové okno check-inu, čas check-outu a číslo potvrdenia.',
+    'Karta ukazuje ubytovacie zariadenie a číslo potvrdenia, v deň príchodu spolu s časovým oknom check-inu a v deň odchodu spolu s časom check-outu.',
   'help.guide.edit-accommodation.step.2': 'Ceruzka vpravo pobyt znova otvorí. Okno má teraz názov Upraviť ubytovanie.',
   'help.guide.edit-accommodation.step.3':
     'Opravte Check-in, Do, Check-out a Potvrdenie. Dni nad nimi a ubytovacie zariadenie pod nimi sa tu dajú tiež zmeniť.',
@@ -2481,6 +2547,12 @@ const help: TranslationStrings = {
     'Rezervácia sa dostane k dňu podľa vlastného dátumu. Zmeňte dátum na záložke Rez. a sama sa presunie do iného dňa.',
   'help.guide.day-bookings.tip.2':
     'Ak blok Rezervácie chýba, deň nemá žiadne rezervácie: namiesto prázdneho bloku sa skryje.',
+  'help.guide.map-lock.title': 'Uzamknúť mapu',
+  'help.guide.map-lock.goal': 'Nechajte mapu na mieste, kým sa preklikávate dňami a miestami.',
+  'help.guide.map-lock.step.1':
+    'Kliknite na zámok na mape. Kým je zamknutý, otvorenie dňa ani výber miesta už mapu nepriblíži ani neposunie.',
+  'help.guide.map-lock.result': 'Mapa zostane tam, kde ste ju nechali, kým prechádzate plán.',
+  'help.guide.map-lock.tip.1': 'Ďalším kliknutím na zámok nechajte mapu znova sledovať výber.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Mapa',
@@ -2497,7 +2569,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'Rad ikon hore prehľadáva viditeľnú časť mapy: Reštaurácie, Kaviarne, Bary a nočný život, Ubytovanie, Pamiatky, Múzeá a kultúra, Príroda a parky a Aktivity. Hľadať v tejto oblasti spustí hľadanie znova po posunutí mapy.',
   'help.ctx.trip-map.bullet.6':
-    'Kliknutím pravým tlačidlom kdekoľvek na mape otvoríte formulár miesta v tomto bode s už vyhľadanou adresou. Okrúhle tlačidlo vľavo dole prepne kreslenú mapu na letecké snímky.',
+    'Kliknutím pravým tlačidlom kdekoľvek na mape otvoríte formulár miesta v tomto bode s už vyhľadanou adresou. Okrúhle tlačidlo vľavo dole prepne kreslenú mapu na letecké snímky a zámok drží pohľad na mieste, kým sa preklikávate dňami a miestami.',
   'help.ctx.trip-map.bullet.7':
     'Zobraziť celú cestu vpravo dole nakreslí všetky cestovné dni naraz a uvedie, čo každý pokrýva; ikona trasy v riadku rezervácie nakreslí túto rezerváciu a tá na paneli nástrojov nad dňami nakreslí všetky. Kliknutím na koniec nakreslenej rezervácie otvoríte jej podrobnosti.',
   'help.ctx.trip-map.bullet.8':
@@ -3347,6 +3419,8 @@ const help: TranslationStrings = {
     'Rovnakým dielom je presné na cent: zvyšný cent sa strieda od výdavku k výdavku, takže ho nikto neplatí vždy.',
   'help.guide.split-expense.tip.3':
     'Režim Účtenka sčíta Celková suma sám a pole zošedne: celkovú sumu tvoria riadky účtenky.',
+  'help.guide.split-expense.tip.4':
+    'Vlastné rozdelenie sa dá zadať aj v percentách: prepnite Zadávať podiely ako na % a podiely musia spolu dať 100 %, inak sa výdavok neuloží.',
   // expense-currency
   'help.guide.expense-currency.title': 'Zadať výdavok v inej mene',
   'help.guide.expense-currency.goal': 'Zadajte, čo je skutočne na účtenke, a kurz nechajte na TREK.',

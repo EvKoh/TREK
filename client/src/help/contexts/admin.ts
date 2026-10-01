@@ -33,14 +33,14 @@ export const adminGuides: HelpGuide[] = [
   // User Defaults
   guide('default-map', 'admin-defaults', 'map', 'quick', 2, 2, { slug: OVERVIEW }, ['instance-keys']),
   // Personalization
-  guide('packing-templates', 'admin-config', 'library', 'guide', 3, 2, { slug: TEMPLATES }, ['categories'], true),
+  guide('packing-templates', 'admin-config', 'library', 'guide', 3, 3, { slug: TEMPLATES }, ['categories'], true),
   guide('categories', 'admin-config', 'tags', 'quick', 2, 2, { slug: CATEGORIES }, ['packing-templates']),
   // Related across screens: the Vacay guide that switches these holidays on.
   guide('school-holiday-catalog', 'admin-config', 'graduationCap', 'quick', 2, 1, { slug: 'Vacay', anchor: 'manually-maintained-school-holidays' }, ['school-holidays', 'categories']),
   // Settings
   guide('auth-methods', 'admin-settings', 'lock', 'guide', 3, 2, { slug: OVERVIEW }, ['oidc']),
   guide('oidc', 'admin-settings', 'shield', 'guide', 2, 2, { slug: 'OIDC-SSO' }, ['auth-methods']),
-  guide('instance-keys', 'admin-settings', 'key', 'guide', 3, 2, { slug: 'Places-and-Search' }, ['places-transit', 'default-map']),
+  guide('instance-keys', 'admin-settings', 'key', 'guide', 3, 3, { slug: 'Places-and-Search' }, ['places-transit', 'default-map']),
   guide('places-transit', 'admin-settings', 'search', 'quick', 2, 2, { slug: 'Places-and-Search' }, ['instance-keys']),
   guide('file-types', 'admin-settings', 'fileInput', 'quick', 1, 1, { slug: 'Documents-and-Files' }, ['storage-backends']),
   // Addons
@@ -52,7 +52,7 @@ export const adminGuides: HelpGuide[] = [
   guide('storage-backends', 'admin-storage', 'download', 'guide', 3, 2, { slug: STORAGE }, ['create-backup']),
   // Notifications
   guide('channels-instance', 'admin-notifications', 'bell', 'guide', 3, 2, { slug: NOTIFICATIONS, anchor: 'notification-channels' }, ['admin-channels']),
-  guide('admin-channels', 'admin-notifications', 'bell', 'quick', 2, 1, { slug: NOTIFICATIONS }, ['channels-instance']),
+  guide('admin-channels', 'admin-notifications', 'bell', 'quick', 2, 2, { slug: NOTIFICATIONS }, ['channels-instance']),
   // MCP Access
   guide('mcp-tokens-admin', 'admin-mcp-tokens', 'key', 'quick', 2, 2, { slug: MCP }, ['auth-methods']),
   // GitHub

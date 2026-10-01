@@ -307,6 +307,24 @@ let found = ''
 const NEW_PLACE = 'Lunch stop'
 
 const SCRIPTS: Record<string, GuideScript> = {
+  'map-lock': {
+    guide: guide('map-lock'),
+    start: openOnTokyo,
+    steps: [
+      {
+        target: p => p.getByTestId('map-lock-pill'),
+        act: async p => {
+          await p.getByTestId('map-lock-pill').click()
+          await expect(p.getByRole('button', { name: 'Let the map follow the selection' })).toBeVisible()
+          await settle(p)
+        },
+      },
+    ],
+    cleanup: async p => {
+      const unlock = p.getByRole('button', { name: 'Let the map follow the selection' })
+      if (await unlock.count()) await unlock.click()
+    },
+  },
   'map-markers': {
     guide: guide('map-markers'),
     start: async p => {

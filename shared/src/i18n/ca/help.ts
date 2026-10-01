@@ -56,7 +56,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Estadístiques: països visitats, viatges, dies de viatge i distància volada, sumant tots els teus viatges.',
   'help.ctx.dashboard.bullet.3':
-    'Targetes de viatge, filtrades per Planificats, Arxivat i Completat, en graella o en llista. Passa el ratolí per una targeta per editar, duplicar, arxivar i eliminar.',
+    'Targetes de viatge, filtrades per Planificats, Arxivat i Completat, en graella o en llista. El quadre de cerca de sobre busca a tots els viatges alhora, per títol, data o un lloc del viatge. Passa el ratolí per una targeta per editar, duplicar, arxivar i eliminar.',
   'help.ctx.dashboard.bullet.4':
     'Ginys a la dreta: convertidor de moneda, rellotges mundials, properes reserves i col·leccions. Cadascun es pot desactivar.',
   'help.ctx.dashboard.bullet.5':
@@ -183,6 +183,19 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': 'Fes clic a + al giny «Fusos horaris» i cerca una ciutat.',
   'help.guide.timezones-widget.step.2': 'Treu un rellotge amb la × del costat.',
   'help.guide.timezones-widget.result': 'Els teus rellotges es desen amb el teu compte.',
+  'help.guide.search-trips.title': 'Cercar els teus viatges',
+  'help.guide.search-trips.goal':
+    'Troba un viatge pel nom, per una data o per un lloc que hi hagis planificat, inclosos els viatges arxivats.',
+  'help.guide.search-trips.step.1':
+    'Escriu a Cerca viatges o llocs, sobre les targetes. La llista s’estreny mentre escrius, entre els viatges planificats, arxivats i completats alhora.',
+  'help.guide.search-trips.step.2':
+    'Un viatge trobat a través d’un dels seus llocs mostra aquest lloc sota el títol. Fes clic a la x del quadre, o prem Escape, per tornar a veure tots els teus viatges.',
+  'help.guide.search-trips.result':
+    'Al tauler només hi queden els viatges que coincideixen, i un quadre buit torna a mostrar tots els viatges.',
+  'help.guide.search-trips.tip.1':
+    'Les dates també funcionen: escriu un mes i un any, per exemple maig 2027, o 2027-05, per trobar els viatges que hi cauen.',
+  'help.guide.search-trips.tip.2':
+    'Mentre hi ha una cerca activa, el selector Planificats, Arxivat i Completat s’aparta, perquè cap viatge quedi amagat darrere del filtre equivocat.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -734,9 +747,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Cronologia: una secció per dia amb un + per afegir una entrada aquell dia; targetes d’entrada amb fotos, estat d’ànim, temps i relat; suggeriments dels viatges en un estil més clar, amb Descarta aquest suggeriment.',
   'help.ctx.journey-detail.bullet.4':
-    'Mapa: les entrades com a xinxetes, unides per ordre de data amb una línia discontínua, els llocs dels viatges i les traces GPX importades en aquests viatges.',
+    'Mapa: les entrades com a xinxetes, unides per ordre de data amb una línia discontínua, els llocs dels viatges, les traces GPX importades en aquests viatges i les fotos geolocalitzades de les entrades.',
   'help.ctx.journey-detail.bullet.5':
-    'Configuració de la travesia: portada, nom i subtítol, traces al mapa, camps de l’entrada, suggeriments descartats, viatges vinculats, col·laboradors, compartició pública, arxivar i eliminar.',
+    'Configuració de la travesia: portada, nom i subtítol, estat, traces al mapa, camps de l’entrada, suggeriments descartats, viatges vinculats, col·laboradors, compartició pública, arxivar i eliminar.',
   'help.ctx.journey-detail.bullet.6':
     'Dos botons rodons suren sobre una cronologia llarga: tornar a dalt i saltar a l’última entrada.',
   // add-entry
@@ -889,6 +902,17 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Eliminar no es pot desfer, i no toca els viatges als quals la travesia estava vinculada.',
   'help.guide.archive-journey.tip.2': 'La portada, el nom i el subtítol són al mateix diàleg, a dalt.',
+  'help.guide.journey-status.title': 'Definir l’estat d’una travesia',
+  'help.guide.journey-status.goal':
+    'Marca tu mateix una travesia com a esborrany, en viu o completada, en lloc de seguir les dates dels seus viatges.',
+  'help.guide.journey-status.step.1': 'Obre Configuració de la travesia a la capçalera de la travesia.',
+  'help.guide.journey-status.step.2': 'A Estat, tria Esborrany, En viu o Completada. La tria es desa a l’instant.',
+  'help.guide.journey-status.result':
+    'La travesia conserva l’estat que has triat, i la seva targeta a la llista de travesies el mostra.',
+  'help.guide.journey-status.tip.1':
+    'Automàtic torna a seguir les dates dels viatges vinculats. Sense cap viatge vinculat, una travesia automàtica es queda com a esborrany.',
+  'help.guide.journey-status.tip.2':
+    'Un estat definit a mà es manté fins que el canviïs, també quan es mouen les dates del viatge.',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1131,6 +1155,8 @@ const help: TranslationStrings = {
     'El mapa del viatge segueix aquests ajustos a tots els viatges, fins que els tornis a canviar.',
   'help.guide.travel-map-prefs.tip.1':
     'Són per compte, no per viatge. Cada membre d’un viatge compartit veu les seves pròpies tries.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Obre els llocs a tria l’app de mapes que obre directament el botó de navegació; Pregunta cada vegada et deixa triar entre totes les apps de mapes.',
   // startup
   'help.guide.startup.title': 'Triar amb què s’obre TREK',
   'help.guide.startup.goal': 'Aterra on més treballes, no al tauler cada vegada.',
@@ -1520,6 +1546,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Una plantilla per tipus de viatge, platja, ciutat, senderisme, és millor que una llista gegant.',
   'help.guide.packing-templates.tip.2': 'Eliminar una plantilla no toca els viatges que ja l’han aplicada.',
+  'help.guide.packing-templates.tip.3':
+    'Una plantilla recorda el pes, la quantitat i la bossa de cada article, així que un viatge que l’aplica rep les bosses omplertes de la mateixa manera.',
   // categories
   'help.guide.categories.title': 'Gestionar el conjunt de categories',
   'help.guide.categories.goal':
@@ -1588,6 +1616,8 @@ const help: TranslationStrings = {
     'La clau personal d’un usuari a Configuració guanya a la clau de la instància per a aquest usuari.',
   'help.guide.instance-keys.tip.2':
     'Les claus també poden venir de variables d’entorn; aquestes es mostren aquí com a només lectura.',
+  'help.guide.instance-keys.tip.3':
+    'Límit diari de crides a Google limita el que TREK pot gastar amb la clau cada dia; la insígnia al costat del títol compta les crides d’avui. Quan s’arriba al límit, les cerques fan servir OpenStreetMap fins l’endemà (UTC).',
   // places-transit
   'help.guide.places-transit.title': 'Triar els proveïdors de cerca i transport',
   'help.guide.places-transit.goal': 'Decideix qui respon les cerques de llocs i les rutes de transport públic.',
@@ -1674,6 +1704,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.result': 'Els esdeveniments d’admin hi van a més de la campana de l’app de cada admin.',
   'help.guide.admin-channels.tip.1':
     'Mantén el tema d’admin separat del personal, perquè una caiguda no s’ofegui en la xerrameca dels viatges.',
+  'help.guide.admin-channels.tip.2':
+    'Valors per defecte dels usuaris fixa com comencen les notificacions de cada usuari, per esdeveniment i canal: Activat, Desactivat o Bloquejat, que la desactiva per a tothom i apareix bloquejada a la seva configuració.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Revocar l’accés de la IA',
   'help.guide.mcp-tokens-admin.goal': 'Mira i talla cada token i sessió que té un client d’IA, de qualsevol usuari.',
@@ -1851,6 +1883,14 @@ const help: TranslationStrings = {
     'Desfer cobreix el pla: assignar, treure, reordenar i moure llocs, optimitzar una ruta, eliminar llocs, canvis de categoria i importacions.',
   'help.guide.undo-change.tip.2':
     'Només té un pas de profunditat: només es pot retirar l’últim canvi, i un canvi nou el substitueix.',
+  'help.guide.clear-day.title': 'Buidar un dia',
+  'help.guide.clear-day.goal':
+    'Treu tots els llocs d’un dia d’una vegada, per exemple per tornar-lo a planificar des de zero.',
+  'help.guide.clear-day.step.1': 'Fes clic dret a la capçalera del dia al pla.',
+  'help.guide.clear-day.step.2': 'Tria Buida el dia i confirma.',
+  'help.guide.clear-day.result':
+    'El dia queda buit i els seus llocs tornen a la llista com a sense planificar. La fletxa de desfer sobre els dies els hi torna a posar.',
+  'help.guide.clear-day.tip.1': 'Només en surten els llocs. El dia conserva les notes i les reserves.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Llocs',
@@ -1861,7 +1901,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'El botó d’importació del costat ofereix Importa un fitxer, per a fitxers .gpx, .kml i .kmz, i Llista de Google (Importa una llista quan les llistes de Naver també estan activades) per a una llista compartida de Google Maps o de Naver Maps. Un fitxer també es pot deixar caure simplement sobre la columna.',
   'help.ctx.trip-places.bullet.3':
-    'A sota, la cerca, amb la marca de selecció que inicia una selecció al costat, i una fila de filtres: Mostrar canvia entre Tot, Sense planificar, Planificats i, un cop s’ha importat una ruta, Rutes, cadascun amb el seu recompte; el botó d’etiqueta filtra per categoria i l’estrella per una valoració mínima.',
+    'A sota, la cerca, amb la marca de selecció que inicia una selecció al costat, i una fila de filtres: Mostrar canvia entre Tot, Sense planificar, Planificats i, un cop s’ha importat una ruta, Rutes, cadascun amb el seu recompte; el botó d’etiqueta filtra per categoria, l’estrella per una valoració mínima, el globus per país o regió, i Ordena per fixa l’ordre de la llista.',
   'help.ctx.trip-places.bullet.4':
     'Una fila mostra imatge, nom i descripció o adreça. Fes-hi clic per als detalls del lloc, arrossega-la a un dia, o fes-hi clic dret (o clic als seus tres punts) per a Editar, + Dia, Obre el lloc web, Obre a Google Maps, Desar a la col·lecció i Eliminar.',
   'help.ctx.trip-places.bullet.5':
@@ -1994,6 +2034,34 @@ const help: TranslationStrings = {
     'La llista ha d’estar compartida públicament; l’enllaç d’una llista privada no importa res.',
   'help.guide.import-places-list.tip.2':
     'Enriquir llocs mitjançant Google apareix al diàleg quan el teu TREK té una clau de Google: consulta cada lloc importat i completa fotos, adreça i detalls.',
+  'help.guide.sort-places.title': 'Ordenar la llista de llocs',
+  'help.guide.sort-places.goal':
+    'Posa la llista en l’ordre que t’ajudi ara: per nom, per valoració o pel que s’ha afegit o canviat l’últim.',
+  'help.guide.sort-places.step.1':
+    'Obre Ordena per a la capçalera de la columna. La seva etiqueta diu com està ordenada la llista ara mateix.',
+  'help.guide.sort-places.step.2':
+    'Tria un ordre, per exemple Nom o Millor valorats. La llista el segueix a l’instant.',
+  'help.guide.sort-places.result': 'La llista mostra els llocs en l’ordre que has triat, fins que en triïs un altre.',
+  'help.guide.sort-places.tip.1':
+    'Qualsevol ordre que no sigui Afegits recentment marca el botó, així veus d’un cop d’ull que la llista està ordenada d’una altra manera.',
+  'help.guide.sort-places.tip.2': 'Ordenar només canvia la llista. Els dies mantenen el seu propi ordre.',
+  'help.guide.place-by-hand.title': 'Afegir un lloc que la cerca no coneix',
+  'help.guide.place-by-hand.goal':
+    'Introdueix tu mateix un lloc, amb el telèfon, el correu i l’horari, quan la cerca de llocs no troba res.',
+  'help.guide.place-by-hand.step.1':
+    'Al diàleg del lloc, escriu el nom a la cerca i prem Retorn. Si no es troba res, el diàleg ho diu i ofereix Afegeix a mà.',
+  'help.guide.place-by-hand.step.2':
+    'Fes clic a Afegeix a mà. El que has cercat passa a ser el nom, i el diàleg es desplaça fins als camps de contacte.',
+  'help.guide.place-by-hand.step.3': 'Omple Telèfon i Correu electrònic fins on els sàpigues.',
+  'help.guide.place-by-hand.step.4':
+    'Fes clic a Afegeix l’horari i indica quan obre i tanca el lloc cada dia. El botó de copiar dona a tots els dies l’horari del primer, i l’interruptor d’un dia el marca com a Tancat.',
+  'help.guide.place-by-hand.step.5': 'Fes clic a Afegir.',
+  'help.guide.place-by-hand.result':
+    'El lloc s’afegeix a la llista. Els seus detalls mostren el telèfon, el correu i l’horari que has introduït, igual que un lloc trobat per la cerca.',
+  'help.guide.place-by-hand.tip.1':
+    'En editar un lloc sense horari propi, s’agafa automàticament l’horari de Detalls del lloc, a l’esquerra; si ja en té, un botó al costat permet agafar el que s’ha consultat.',
+  'help.guide.place-by-hand.tip.2':
+    'L’horari que introdueixes té preferència sobre el consultat, així una cafeteria amb horari de temporada mostra el que tu saps.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Dies',
@@ -2006,11 +2074,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Dins d’un dia: les parades en ordre, cadascuna amb imatge, nom, hora, un cadenat sobre la imatge i les reserves que hi pengen; les notes; les reserves i els transports del dia, tenyits segons el tipus; i entre les parades el temps de viatge de cada tram. Cada fila té un menú de tres punts, el mateix que obre el clic dret.',
   'help.ctx.trip-days.bullet.4':
-    'Sota les parades, la barra de ruta: Ruta dibuixa el dia al mapa, Optimitza ordena les parades, En cotxe / A peu fixa el mitjà de transport del dia, Obre a Google Maps i Obre a CoMaps lliuren el dia.',
+    'Sota les parades, la barra de ruta: Ruta dibuixa el dia al mapa, Optimitza ordena les parades, En cotxe, A peu o En bicicleta fixa el mitjà de transport del dia, Obre a Google Maps i Obre a CoMaps lliuren el dia.',
   'help.ctx.trip-days.bullet.5':
     'Els llocs arriben a un dia arrossegant una fila de la columna de llocs, amb + Dia d’aquella fila, amb Afegeix un lloc a aquest dia des del + del dia o en un dia buit, o des dels detalls del lloc.',
   'help.ctx.trip-days.bullet.6':
-    'Cost total, a baix, suma cada parada i cada reserva amb un preu, en la moneda del viatge.',
+    'Cost total, a baix, suma les despeses de Despeses que pertanyen a les parades i reserves del dia, cadascuna un sol cop, en la moneda del viatge.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Llegir un dia',
   'help.guide.read-day-plan.goal': 'Saber què et diu cada part d’una targeta de dia abans de canviar res.',
@@ -2655,7 +2723,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': 'Canviar o anul·lar una nit reservada',
   'help.guide.edit-accommodation.goal': 'Moure una estada, corregir-ne els horaris, o treure-la del pla altre cop.',
   'help.guide.edit-accommodation.step.1':
-    'A cada dia de l’estada la targeta mostra l’establiment, la franja d’entrada, l’hora de sortida i el número de confirmació.',
+    'La targeta mostra l’establiment i el número de confirmació, el dia que arribes amb la franja d’entrada i el dia que marxes amb l’hora de sortida.',
   'help.guide.edit-accommodation.step.2':
     'El llapis de la seva dreta torna a obrir l’estada. La finestra ara diu Edita l’allotjament.',
   'help.guide.edit-accommodation.step.3':
@@ -2686,6 +2754,12 @@ const help: TranslationStrings = {
     'Una reserva cau en un dia per la seva pròpia data. Canvia la data a la pestanya Reserves i passa a l’altre dia tota sola.',
   'help.guide.day-bookings.tip.2':
     'Que no hi hagi bloc Reserves vol dir que el dia no té reserves: s’amaga en lloc de mostrar-se buit.',
+  'help.guide.map-lock.title': 'Bloquejar el mapa',
+  'help.guide.map-lock.goal': 'Mantén el mapa on és mentre passes per dies i llocs.',
+  'help.guide.map-lock.step.1':
+    'Fes clic al cadenat del mapa. Mentre està tancat, obrir un dia o triar un lloc ja no fa zoom ni desplaça el mapa.',
+  'help.guide.map-lock.result': 'El mapa es queda on el vas deixar mentre treballes en el pla.',
+  'help.guide.map-lock.tip.1': 'Fes clic de nou al cadenat perquè el mapa torni a seguir la selecció.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Mapa',
@@ -2702,7 +2776,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'La fila d’icones de dalt cerca a la part del mapa que veus: Restaurants, Cafeteries, Bars i oci nocturn, Allotjament, Llocs d’interès, Museus i cultura, Natura i parcs i Activitats. Cerca en aquesta zona la torna a executar després que moguis el mapa.',
   'help.ctx.trip-map.bullet.6':
-    'Un clic dret a qualsevol punt del mapa obre el formulari de lloc en aquell punt, amb l’adreça ja consultada. El botó rodó de baix a l’esquerra bescanvia el mapa dibuixat per imatges aèries.',
+    'Un clic dret a qualsevol punt del mapa obre el formulari de lloc en aquell punt, amb l’adreça ja consultada. El botó rodó de baix a l’esquerra bescanvia el mapa dibuixat per imatges aèries, i el cadenat manté la vista on és mentre passes per dies i llocs.',
   'help.ctx.trip-map.bullet.7':
     'Mostra tot el viatge, a baix a la dreta, dibuixa tots els dies de trajecte alhora i llista què cobreix cadascun; la icona de ruta a la fila d’una reserva dibuixa aquella reserva, i la de la barra d’eines sobre els dies les dibuixa totes. Fes clic a l’extrem d’una reserva dibuixada per obrir-ne els detalls.',
   'help.ctx.trip-map.bullet.8':
@@ -3522,6 +3596,8 @@ const help: TranslationStrings = {
     'A parts iguals quadra fins al cèntim: el cèntim que sobra va rotant de despesa en despesa, perquè no sigui sempre el mateix qui el paga.',
   'help.guide.split-expense.tip.3':
     'El mode Tiquet suma Import total ell mateix i deixa el camp en gris: les línies del rebut són el total.',
+  'help.guide.split-expense.tip.4':
+    'Un repartiment personalitzat també es pot introduir en percentatge: posa Introdueix les parts com a en %, i les parts han de sumar el 100 % abans que la despesa es desi.',
   // expense-currency
   'help.guide.expense-currency.title': 'Introduir una despesa en una altra divisa',
   'help.guide.expense-currency.goal':

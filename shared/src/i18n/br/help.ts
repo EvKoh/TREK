@@ -57,7 +57,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Estatísticas: países visitados, viagens, dias na estrada e distância voada, somando todas as suas viagens.',
   'help.ctx.dashboard.bullet.3':
-    'Cartões de viagem, filtrados por Planejadas, Arquivada e Concluído, em grade ou lista. Passe o mouse em um cartão para editar, duplicar, arquivar e excluir.',
+    'Cartões de viagem, filtrados por Planejadas, Arquivada e Concluído, em grade ou lista. A caixa de busca acima deles procura em todas as viagens de uma vez, por título, data ou um lugar da viagem. Passe o mouse em um cartão para editar, duplicar, arquivar e excluir.',
   'help.ctx.dashboard.bullet.4':
     'Widgets à direita: conversor de moedas, relógios mundiais, próximas reservas e coleções. Cada um pode ser desligado.',
   'help.ctx.dashboard.bullet.5': 'O cartão “Nova viagem” e o botão no canto inferior direito iniciam uma nova viagem.',
@@ -178,6 +178,19 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': 'Clique em + no widget “Fusos horários” e busque uma cidade.',
   'help.guide.timezones-widget.step.2': 'Remova um relógio com o × ao lado.',
   'help.guide.timezones-widget.result': 'Seus relógios ficam salvos com a sua conta.',
+  'help.guide.search-trips.title': 'Buscar nas suas viagens',
+  'help.guide.search-trips.goal':
+    'Ache uma viagem pelo nome, por uma data ou por um lugar que você planejou nela, incluindo viagens arquivadas.',
+  'help.guide.search-trips.step.1':
+    'Digite em Buscar viagens ou lugares, acima dos cartões. A lista estreita enquanto você digita, entre viagens planejadas, arquivadas e concluídas ao mesmo tempo.',
+  'help.guide.search-trips.step.2':
+    'Uma viagem encontrada por um dos seus lugares mostra esse lugar abaixo do título. Clique no x da caixa, ou pressione Esc, para ver todas as suas viagens de novo.',
+  'help.guide.search-trips.result':
+    'Só as viagens que correspondem ficam no painel, e uma caixa vazia traz todas as viagens de volta.',
+  'help.guide.search-trips.tip.1':
+    'Datas também funcionam: digite um mês e um ano, por exemplo maio 2027, ou 2027-05, para achar as viagens que caem nesse período.',
+  'help.guide.search-trips.tip.2':
+    'Enquanto uma busca está ativa, o seletor Planejadas, Arquivada e Concluído sai de cena, para que nenhuma viagem fique escondida atrás do filtro errado.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -720,9 +733,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Linha do tempo: uma seção por dia com um + para adicionar uma entrada naquele dia; cartões de entrada com fotos, humor, clima e relato; sugestões das viagens num estilo mais claro, com Descartar esta sugestão.',
   'help.ctx.journey-detail.bullet.4':
-    'Mapa: as entradas como pinos, ligados em ordem de data por uma linha tracejada, os lugares das viagens e as trilhas GPX importadas nessas viagens.',
+    'Mapa: as entradas como pinos, ligados em ordem de data por uma linha tracejada, os lugares das viagens, as trilhas GPX importadas nessas viagens e as fotos georreferenciadas das entradas.',
   'help.ctx.journey-detail.bullet.5':
-    'Configurações da jornada: capa, nome e subtítulo, trilhas no mapa, campos do registro, sugestões descartadas, viagens vinculadas, colaboradores, compartilhamento público, arquivar e excluir.',
+    'Configurações da jornada: capa, nome e subtítulo, status, trilhas no mapa, campos do registro, sugestões descartadas, viagens vinculadas, colaboradores, compartilhamento público, arquivar e excluir.',
   'help.ctx.journey-detail.bullet.6':
     'Dois botões redondos flutuam sobre uma linha do tempo longa: voltar ao topo e pular para a última entrada.',
   // add-entry
@@ -871,6 +884,17 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Excluir não pode ser desfeito, e não mexe nas viagens às quais a jornada estava vinculada.',
   'help.guide.archive-journey.tip.2': 'Capa, nome e subtítulo ficam no mesmo diálogo, no topo.',
+  'help.guide.journey-status.title': 'Definir o status de uma jornada',
+  'help.guide.journey-status.goal':
+    'Marque você mesmo uma jornada como rascunho, ao vivo ou concluída, em vez de seguir as datas das viagens dela.',
+  'help.guide.journey-status.step.1': 'Abra Configurações da jornada no cabeçalho da jornada.',
+  'help.guide.journey-status.step.2': 'Em Status, escolha Rascunho, Ao vivo ou Concluída. A escolha é salva na hora.',
+  'help.guide.journey-status.result':
+    'A jornada mantém o status que você escolheu, e o cartão dela na lista de jornadas mostra esse status.',
+  'help.guide.journey-status.tip.1':
+    'Automático volta a seguir as datas das viagens vinculadas. Sem viagem vinculada, uma jornada automática continua como rascunho.',
+  'help.guide.journey-status.tip.2':
+    'Um status definido manualmente fica até você mudá-lo, mesmo quando as datas da viagem mudam.',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1113,6 +1137,8 @@ const help: TranslationStrings = {
     'O mapa da viagem segue isso em todas as viagens, até você virar as chaves de volta.',
   'help.guide.travel-map-prefs.tip.1':
     'Isso é por conta, não por viagem. Cada membro de uma viagem compartilhada vê as próprias escolhas.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Abrir lugares em escolhe o app de mapas que o botão de navegação abre direto; Perguntar sempre mantém a escolha entre todos os apps de mapas.',
   // startup
   'help.guide.startup.title': 'Escolher com o que o TREK abre',
   'help.guide.startup.goal': 'Chegue onde você mais trabalha, não no painel toda vez.',
@@ -1490,6 +1516,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Um modelo por tipo de viagem, praia, cidade, trilha, é melhor que uma lista gigante.',
   'help.guide.packing-templates.tip.2': 'Excluir um modelo não mexe nas viagens que já o aplicaram.',
+  'help.guide.packing-templates.tip.3':
+    'Um modelo guarda o peso, a quantidade e a bolsa de cada item, então uma viagem que o aplica recebe as bolsas preenchidas do mesmo jeito.',
   // categories
   'help.guide.categories.title': 'Gerenciar o conjunto de categorias',
   'help.guide.categories.goal': 'Decida quais categorias lugares e coleções podem ter, e como elas aparecem.',
@@ -1555,6 +1583,8 @@ const help: TranslationStrings = {
     'A chave pessoal de um usuário em Configurações vence a chave da instância para esse usuário.',
   'help.guide.instance-keys.tip.2':
     'Chaves também podem vir de variáveis de ambiente; essas aparecem aqui como somente leitura.',
+  'help.guide.instance-keys.tip.3':
+    'Limite diário de chamadas ao Google limita o que o TREK pode gastar com a chave por dia; o selo ao lado do título conta as chamadas de hoje. Quando o limite é atingido, as buscas usam o OpenStreetMap até o dia seguinte (UTC).',
   // places-transit
   'help.guide.places-transit.title': 'Escolher os provedores de busca e transporte',
   'help.guide.places-transit.goal': 'Decida quem responde buscas de lugares e rotas de transporte público.',
@@ -1640,6 +1670,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.result': 'Eventos de admin vão para lá além do sino no app de cada admin.',
   'help.guide.admin-channels.tip.1':
     'Mantenha o tópico de admin separado do seu pessoal, para que uma queda não se afogue na conversa das viagens.',
+  'help.guide.admin-channels.tip.2':
+    'Padrões para usuários define como as notificações de cada usuário começam, por evento e canal: Ligado, Desligado ou Bloqueado, que desliga para todos e aparece trancado nas configurações deles.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Revogar acesso de IA',
   'help.guide.mcp-tokens-admin.goal': 'Veja e corte cada token e sessão que um cliente de IA tem, de qualquer usuário.',
@@ -1813,6 +1845,14 @@ const help: TranslationStrings = {
     'Desfazer cobre o plano: atribuir, remover, reordenar e mover lugares, otimizar uma rota, excluir lugares, mudanças de categoria e importações.',
   'help.guide.undo-change.tip.2':
     'Tem um passo só de profundidade: apenas a última alteração pode ser revertida, e uma nova alteração a substitui.',
+  'help.guide.clear-day.title': 'Limpar um dia',
+  'help.guide.clear-day.goal':
+    'Tire todos os lugares de um dia de uma vez, por exemplo para planejá-lo de novo do zero.',
+  'help.guide.clear-day.step.1': 'Clique com o botão direito no cabeçalho do dia no plano.',
+  'help.guide.clear-day.step.2': 'Escolha Limpar dia e confirme.',
+  'help.guide.clear-day.result':
+    'O dia fica vazio e os lugares dele voltam para a lista como não planejados. A seta de desfazer acima dos dias coloca tudo de volta.',
+  'help.guide.clear-day.tip.1': 'Só os lugares saem. O dia mantém as notas e as reservas.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Lugares',
@@ -1823,7 +1863,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'O botão de importação ao lado oferece Importar arquivo, para arquivos .gpx, .kml e .kmz, e Lista Google (Importar lista quando as listas Naver também estão ativas) para uma lista compartilhada do Google Maps ou do Naver Maps. Um arquivo também pode simplesmente ser solto sobre a coluna.',
   'help.ctx.trip-places.bullet.3':
-    'Abaixo deles, a busca, com o tique que inicia uma seleção ao lado, e uma fileira de filtros: Mostrar alterna entre Todos, Não planejados, Planejados e, assim que uma trilha é importada, Trilhas, cada um com sua contagem; o botão de etiqueta filtra por categoria e a estrela por uma avaliação mínima.',
+    'Abaixo deles, a busca, com o tique que inicia uma seleção ao lado, e uma fileira de filtros: Mostrar alterna entre Todos, Não planejados, Planejados e, assim que uma trilha é importada, Trilhas, cada um com sua contagem; o botão de etiqueta filtra por categoria, a estrela por uma avaliação mínima, o globo por país ou região, e Ordenar por define a ordem da lista.',
   'help.ctx.trip-places.bullet.4':
     'Uma linha mostra imagem, nome e descrição ou endereço. Clique nela para ver os detalhes do lugar, arraste-a para um dia, ou clique nela com o botão direito (ou nos três pontinhos dela) para Editar, + Dia, Abrir site, Google Maps, Salvar na Coleção e Excluir.',
   'help.ctx.trip-places.bullet.5':
@@ -1954,6 +1994,34 @@ const help: TranslationStrings = {
     'A lista precisa estar compartilhada publicamente; o link de uma lista privada não importa nada.',
   'help.guide.import-places-list.tip.2':
     'Enriquecer lugares via Google aparece na janela quando o seu TREK tem uma chave do Google: ele consulta cada lugar importado e completa fotos, endereço e detalhes.',
+  'help.guide.sort-places.title': 'Ordenar a lista de lugares',
+  'help.guide.sort-places.goal':
+    'Coloque a lista na ordem que ajuda agora: por nome, por avaliação ou pelo que foi adicionado ou alterado por último.',
+  'help.guide.sort-places.step.1':
+    'Abra Ordenar por no cabeçalho da coluna. O rótulo dele diz como a lista está ordenada agora.',
+  'help.guide.sort-places.step.2':
+    'Escolha uma ordem, por exemplo Nome ou Melhor avaliados. A lista acompanha na hora.',
+  'help.guide.sort-places.result': 'A lista mostra os lugares na ordem que você escolheu, até você escolher outra.',
+  'help.guide.sort-places.tip.1':
+    'Qualquer ordem diferente de Adicionados recentemente marca o botão, para você perceber de relance que a lista está ordenada de outro jeito.',
+  'help.guide.sort-places.tip.2': 'Ordenar só muda a lista. Os dias mantêm a própria ordem.',
+  'help.guide.place-by-hand.title': 'Adicionar um lugar que a busca não conhece',
+  'help.guide.place-by-hand.goal':
+    'Cadastre você mesmo um lugar, com telefone, e-mail e horário de funcionamento, quando a busca de lugares não encontra nada.',
+  'help.guide.place-by-hand.step.1':
+    'Na janela do lugar, digite o nome na busca e pressione Enter. Quando nada é encontrado, a janela avisa e oferece Adicionar manualmente.',
+  'help.guide.place-by-hand.step.2':
+    'Clique em Adicionar manualmente. O que você buscou vira o nome, e a janela rola até os campos de contato.',
+  'help.guide.place-by-hand.step.3': 'Preencha Telefone e E-mail até onde você souber.',
+  'help.guide.place-by-hand.step.4':
+    'Clique em Adicionar horário de funcionamento e defina quando o lugar abre e fecha em cada dia. O botão de copiar dá a todos os dias o horário do primeiro, e a chave de um dia o marca como Fechado.',
+  'help.guide.place-by-hand.step.5': 'Clique em Adicionar.',
+  'help.guide.place-by-hand.result':
+    'O lugar entra na lista. Os detalhes dele mostram o telefone, o e-mail e o horário que você informou, igual a um lugar que a busca encontrou.',
+  'help.guide.place-by-hand.tip.1':
+    'Ao editar um lugar sem horário próprio, o horário de Detalhes do lugar, à esquerda, é usado automaticamente; quando ele já tem horário, um botão ao lado dele traz o horário consultado.',
+  'help.guide.place-by-hand.tip.2':
+    'O horário que você informou vale mais que o consultado, então um café com horário de temporada mostra o que você sabe.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Dias',
@@ -1966,10 +2034,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Dentro de um dia: as paradas em ordem, cada uma com imagem, nome, horário, um cadeado sobre a imagem e as reservas presas a ela; as notas; as reservas e os transportes do dia, tingidos conforme o tipo; e entre as paradas o tempo de viagem de cada trecho. Toda linha tem um menu de três pontinhos, o mesmo que o botão direito abre.',
   'help.ctx.trip-days.bullet.4':
-    'Sob as paradas, a barra de rota: Rota desenha o dia no mapa, Otimizar ordena as paradas, De carro / A pé define o meio de transporte do dia, Abrir no Google Maps e Abrir no CoMaps entregam o dia.',
+    'Sob as paradas, a barra de rota: Rota desenha o dia no mapa, Otimizar ordena as paradas, De carro, A pé ou De bicicleta define o meio de transporte do dia, Abrir no Google Maps e Abrir no CoMaps entregam o dia.',
   'help.ctx.trip-days.bullet.5':
     'Os lugares chegam a um dia arrastando uma linha da coluna de lugares, com + Dia nessa linha, com Adicionar local a este dia no + do dia ou num dia vazio, ou a partir dos detalhes do lugar.',
-  'help.ctx.trip-days.bullet.6': 'Custo total, embaixo, soma cada parada e cada reserva com preço, na moeda da viagem.',
+  'help.ctx.trip-days.bullet.6':
+    'Custo total, embaixo, soma as despesas de Custos que pertencem às paradas e reservas do dia, cada uma uma única vez, na moeda da viagem.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Ler um dia',
   'help.guide.read-day-plan.goal': 'Saber o que cada parte de um cartão de dia diz antes de mudar qualquer coisa.',
@@ -2603,7 +2672,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': 'Alterar ou cancelar uma noite reservada',
   'help.guide.edit-accommodation.goal': 'Mover uma estadia, corrigir os horários dela, ou tirá-la do plano de novo.',
   'help.guide.edit-accommodation.step.1':
-    'Em cada dia da estadia o cartão mostra o estabelecimento, a janela de check-in, o horário de check-out e o número de confirmação.',
+    'O cartão mostra o estabelecimento e o número de confirmação, no dia da chegada com a janela de check-in e no dia da partida com o horário de check-out.',
   'help.guide.edit-accommodation.step.2':
     'O lápis à direita dele reabre a estadia. A janela agora diz Editar hospedagem.',
   'help.guide.edit-accommodation.step.3':
@@ -2634,6 +2703,12 @@ const help: TranslationStrings = {
     'Uma reserva cai num dia pela data dela mesma. Mude a data na aba Reservas e ela se muda sozinha para o outro dia.',
   'help.guide.day-bookings.tip.2':
     'Não haver bloco Reservas quer dizer que o dia não tem reservas: ele é escondido em vez de mostrado vazio.',
+  'help.guide.map-lock.title': 'Travar o mapa',
+  'help.guide.map-lock.goal': 'Mantenha o mapa onde está enquanto você passa por dias e lugares.',
+  'help.guide.map-lock.step.1':
+    'Clique no cadeado no mapa. Enquanto ele está fechado, abrir um dia ou escolher um lugar não aproxima nem move mais o mapa.',
+  'help.guide.map-lock.result': 'O mapa fica onde você o deixou enquanto você trabalha no plano.',
+  'help.guide.map-lock.tip.1': 'Clique no cadeado de novo para deixar o mapa seguir a seleção.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Mapa',
@@ -2650,7 +2725,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'A fileira de ícones no topo busca na parte do mapa que você vê: Restaurantes, Cafés, Bares e vida noturna, Hospedagem, Pontos turísticos, Museus e cultura, Natureza e parques e Atividades. Pesquisar nesta área roda a busca de novo depois que você move o mapa.',
   'help.ctx.trip-map.bullet.6':
-    'Um clique com o botão direito em qualquer ponto do mapa abre o formulário de lugar naquele ponto, com o endereço já consultado. O botão redondo no canto inferior esquerdo troca o mapa desenhado por imagens aéreas.',
+    'Um clique com o botão direito em qualquer ponto do mapa abre o formulário de lugar naquele ponto, com o endereço já consultado. O botão redondo no canto inferior esquerdo troca o mapa desenhado por imagens aéreas, e o cadeado mantém a visualização onde está enquanto você passa por dias e lugares.',
   'help.ctx.trip-map.bullet.7':
     'Mostrar a viagem inteira, no canto inferior direito, desenha todos os dias de deslocamento de uma vez e lista o que cada um cobre; o ícone de rota na linha de uma reserva desenha aquela reserva, e o da barra de ferramentas acima dos dias desenha todas. Clique na ponta de uma reserva desenhada para abrir os detalhes dela.',
   'help.ctx.trip-map.bullet.8':
@@ -3466,6 +3541,8 @@ const help: TranslationStrings = {
     'Equally fecha até o centavo: o centavo que sobra gira de despesa em despesa, para que não seja sempre a mesma pessoa a pagá-lo.',
   'help.guide.split-expense.tip.3':
     'O modo Ticket soma Valor total sozinho e deixa o campo cinza: as linhas do comprovante são o total.',
+  'help.guide.split-expense.tip.4':
+    'Uma divisão personalizada também pode ser feita em porcentagem: mude Inserir partes como para %, e as partes precisam somar 100 % antes de a despesa ser salva.',
   // expense-currency
   'help.guide.expense-currency.title': 'Lançar uma despesa em outra moeda',
   'help.guide.expense-currency.goal': 'Lance o que o comprovante realmente diz e deixe o TREK guardar a taxa.',

@@ -32,13 +32,13 @@ const guide = (id: string): HelpGuide => {
 const sidebar = (page: Page) => page.locator('nav').filter({ has: page.getByRole('button', { name: 'General' }) }).first()
 /** A settings card by the heading of its section. */
 const section = (page: Page, title: string) =>
-  page.locator('h2').filter({ hasText: title }).first().locator('xpath=ancestor::div[contains(@class,"rounded-xl")][1]')
+  page.locator('h2').filter({ hasText: title }).first().locator("xpath=ancestor::section[1]")
 /** A field of a section by its label. */
 const field = (page: Page, sectionTitle: string, label: string) =>
   section(page, sectionTitle).getByText(label, { exact: true }).first().locator('xpath=..')
 const modal = (page: Page) => page.locator('.trek-modal-backdrop').last()
 /** A sub-section headed by an h3 inside a card (the passkeys block under Account). */
-const subsection = (page: Page, title: string) => page.locator('h3').filter({ hasText: title }).first().locator('xpath=../..')
+const subsection = (page: Page, title: string) => page.locator('h2, h3').filter({ hasText: title }).first().locator('xpath=ancestor::section[1]')
 
 async function openSettings(page: Page, tab: string): Promise<void> {
   await page.goto('/settings')
@@ -160,8 +160,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     guide: guide('notification-channels'),
     start: opener('settings-notifications'),
     steps: [
-      only(p => section(p, 'Notifications').getByText('Ntfy Topic', { exact: true }).locator('xpath=../..')),
-      only(p => section(p, 'Notifications').getByText('Webhook URL', { exact: true }).locator('xpath=../..')),
+      only(p => section(p, 'Ntfy')),
+      only(p => section(p, 'Webhook URL')),
       only(p => page_rows(p)),
     ],
   },
@@ -191,7 +191,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        target: p => modal(p).locator('> [role="presentation"]').first(),
+        target: p => modal(p).locator('> [role="presentation"], > div').first(),
         act: async p => {
           await modal(p).getByRole('button', { name: 'Done' }).click()
           await expect(modal(p)).toHaveCount(0)
@@ -249,8 +249,8 @@ const SCRIPTS: Record<string, GuideScript> = {
     guide: guide('password'),
     start: opener('settings-account'),
     steps: [
-      only(p => section(p, 'Account').getByPlaceholder('Current password').locator('xpath=../..')),
-      only(p => section(p, 'Account').getByRole('button', { name: 'Update password' })),
+      only(p => section(p, 'Change Password').getByPlaceholder('Current password').locator('xpath=../..')),
+      only(p => section(p, 'Change Password').getByRole('button', { name: 'Update password' })),
     ],
   },
   mfa: {
@@ -301,7 +301,8 @@ const SCRIPTS: Record<string, GuideScript> = {
 
 /** The per-event preference rows under the channels. */
 function page_rows(p: Page): Locator {
-  return section(p, 'Notifications').locator('table, [role="table"], .space-y-4 > div').last()
+  // The per-event matrix is the whole Notifications card in the redesigned tab.
+  return section(p, 'Notifications')
 }
 
 // ── Run ───────────────────────────────────────────────────────────────────────

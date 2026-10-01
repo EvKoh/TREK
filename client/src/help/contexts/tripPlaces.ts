@@ -25,5 +25,7 @@ export const { context: tripPlacesContext, guides: tripPlacesGuides } = defineSc
     ['select-places', 'checkCircle', 'quick', 4, 2, { slug: PLACES }, ['filter-places', 'delete-place'], true],
     ['import-places-file', 'fileInput', 'guide', 4, 2, IMPORT, ['import-places-list', 'filter-places'], true],
     ['import-places-list', 'upload', 'quick', 3, 2, IMPORT, ['import-places-file']],
+    ['sort-places', 'filter', 'quick', 2, 2, { slug: PLACES }, ['filter-places']],
+    ['place-by-hand', 'pencil', 'guide', 5, 2, { slug: PLACES, anchor: 'adding-a-place' }, ['create-place', 'edit-place'], true],
   ],
 })

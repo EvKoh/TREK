@@ -23,6 +23,7 @@ export const { context: tripMapContext, guides: tripMapGuides } = defineScreen({
     ['map-nearby-places', 'search', 'guide', 6, 3, { slug: 'Places-and-Search', anchor: 'exploring-the-map-by-category' }, ['map-add-place', 'create-place'], true],
     ['map-add-place', 'plus', 'guide', 4, 2, { slug: MAP, anchor: 'right-click-middle-click-to-create-a-place' }, ['create-place', 'map-nearby-places'], true],
     ['map-satellite', 'globe', 'quick', 3, 2, { slug: MAP, anchor: 'satellite-view' }, ['map-provider', 'default-map', 'map-compass']],
+    ['map-lock', 'lock', 'quick', 1, 1, { slug: MAP }, ['map-satellite', 'map-markers']],
     ['map-whole-trip', 'route', 'guide', 4, 3, { slug: MAP, anchor: 'the-whole-trip-at-once' }, ['day-route', 'export-plan'], true],
     ['map-booking-routes', 'ticket', 'guide', 5, 3, OVERLAY, ['bookings-in-plan', 'travel-map-prefs', 'add-transport', 'create-booking']],
     ['map-dawarich-trail', 'route', 'guide', 3, 2, { slug: 'Dawarich', anchor: 'on-the-trip-map' }, ['map-whole-trip', 'map-markers'], true],

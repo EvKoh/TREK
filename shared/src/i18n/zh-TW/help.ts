@@ -55,7 +55,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.1': '登機證：正在進行或下一趟旅行，含日期、同行者、地點與倒數計時。點一下即可開啟旅行。',
   'help.ctx.dashboard.bullet.2': '旅行統計：去過的國家、旅行次數、在途天數與飛行距離，彙整你的全部旅行。',
   'help.ctx.dashboard.bullet.3':
-    '旅行卡片：依「已規劃」「已歸檔」「已完成」篩選，以格狀或清單顯示。將滑鼠移到卡片上可編輯、複製、歸檔與刪除。',
+    '旅行卡片：依「已規劃」「已歸檔」「已完成」篩選，以格狀或清單顯示。上方的搜尋框會一次搜尋所有旅行，可依標題、日期或旅行中的地點查找。將滑鼠移到卡片上可編輯、複製、歸檔與刪除。',
   'help.ctx.dashboard.bullet.4': '右側小工具：貨幣換算、世界時鐘、即將到來的預訂與收藏集。每一項都可以關閉。',
   'help.ctx.dashboard.bullet.5': '「新建旅行」卡片與右下角的按鈕都能建立新旅行。',
 
@@ -156,6 +156,17 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': '點選「時區」小工具中的 +，搜尋一個城市。',
   'help.guide.timezones-widget.step.2': '點選時鐘旁邊的 × 即可移除。',
   'help.guide.timezones-widget.result': '時鐘會隨你的帳號一起儲存。',
+  'help.guide.search-trips.title': '搜尋你的旅行',
+  'help.guide.search-trips.goal': '依名稱、日期或你在旅行中規劃的地點找到旅行，已歸檔的旅行也包含在內。',
+  'help.guide.search-trips.step.1':
+    '在卡片上方的「搜尋行程或地點」中輸入文字。清單會隨著輸入即時縮小，同時涵蓋已規劃、已歸檔和已完成的旅行。',
+  'help.guide.search-trips.step.2':
+    '透過其中某個地點找到的旅行，會在標題下方顯示該地點名稱。點選搜尋框裡的 x 或按 Escape，即可再次看到所有旅行。',
+  'help.guide.search-trips.result': '儀表板上只保留符合的旅行，清空搜尋框後所有旅行都會回來。',
+  'help.guide.search-trips.tip.1':
+    '日期也可以搜尋：輸入年份和月份，例如 2027年5月 或 2027-05，就能找到落在該月份的旅行。',
+  'help.guide.search-trips.tip.2':
+    '搜尋進行時，「已規劃」「已歸檔」「已完成」切換會暫時讓位，因此不會有旅行藏在錯誤的篩選後面。',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -596,9 +607,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     '時間線：每天一個區塊，帶一個 + 用來在那天新增條目；條目卡片帶有照片、心情、天氣和故事；來自旅行的建議以較淺的樣式顯示，並帶有「忽略這則建議」。',
   'help.ctx.journey-detail.bullet.4':
-    '地圖：條目顯示為圖釘，按日期順序以虛線連接，還有旅行的地點，以及匯入到這些旅行中的任何 GPX 軌跡。',
+    '地圖：條目顯示為圖釘，按日期順序以虛線連接，還有旅行的地點、匯入到這些旅行中的任何 GPX 軌跡，以及條目中帶地理標記的照片。',
   'help.ctx.journey-detail.bullet.5':
-    '「旅程設定」：封面、名稱和副標題、地圖上的軌跡、紀錄欄位、已忽略的建議、已關聯的旅行、貢獻者、公開分享、封存和刪除。',
+    '「旅程設定」：封面、名稱和副標題、狀態、地圖上的軌跡、紀錄欄位、已忽略的建議、已關聯的旅行、貢獻者、公開分享、封存和刪除。',
   'help.ctx.journey-detail.bullet.6': '兩個圓形按鈕懸浮在較長的時間線上：回到頂部，以及跳到最後一則。',
   // add-entry
   'help.guide.add-entry.title': '寫一則條目',
@@ -724,6 +735,13 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.result': '已封存的旅程仍然可以閱讀和分享；只是不再在今天這一頁開啟。',
   'help.guide.archive-journey.tip.1': '刪除無法復原，但不會影響旅程曾關聯的旅行。',
   'help.guide.archive-journey.tip.2': '封面、名稱和副標題在同一個對話框裡，就在頂部。',
+  'help.guide.journey-status.title': '設定旅程的狀態',
+  'help.guide.journey-status.goal': '自行把旅程標為「草稿」、「即時」或「已完成」，而不是跟隨其中旅行的日期。',
+  'help.guide.journey-status.step.1': '在旅程的頁首開啟「旅程設定」。',
+  'help.guide.journey-status.step.2': '在「狀態」下選擇「草稿」、「即時」或「已完成」。選擇會立即儲存。',
+  'help.guide.journey-status.result': '旅程會維持你選擇的狀態，旅程清單中的卡片也會顯示這個狀態。',
+  'help.guide.journey-status.tip.1': '「自動」會重新跟隨連結旅行的日期。沒有連結旅行時，自動狀態的旅程會維持為草稿。',
+  'help.guide.journey-status.tip.2': '手動設定的狀態會一直保留，直到你更改它，即使旅行日期變動也一樣。',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -929,6 +947,8 @@ const help: TranslationStrings = {
     '「模糊預訂程式碼」把確認號碼隱藏起來，滑鼠移上去才顯示；「預訂路線標籤」把機場代碼或車站名稱放在預訂路線兩端的小標籤上，否則那裡只顯示圖示。',
   'help.guide.travel-map-prefs.result': '旅行地圖在每次旅行中都遵循這些設定，直到你再撥回去。',
   'help.guide.travel-map-prefs.tip.1': '這些是按帳戶而不是按旅行設定的。共享旅行的成員各自看到自己的選擇。',
+  'help.guide.travel-map-prefs.tip.2':
+    '「開啟地點方式」選定導航按鈕會直接開啟的地圖應用程式；「每次詢問」則保留在所有地圖應用程式之間選擇的機會。',
   // startup
   'help.guide.startup.title': '選擇 TREK 開啟時的頁面',
   'help.guide.startup.goal': '落在你最常工作的地方，而不是每次都進儀表板。',
@@ -1239,6 +1259,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.result': '每個行程的打包清單都會提供這個模板；套用時會複製物品，所以行程可以隨意修改。',
   'help.guide.packing-templates.tip.1': '按行程類型各建一個模板，比如海灘、城市、健行，勝過一份巨大的清單。',
   'help.guide.packing-templates.tip.2': '刪除模板不影響已經套用它的行程。',
+  'help.guide.packing-templates.tip.3':
+    '模板會記住每個物品的重量、數量和所屬行李，所以套用它的行程會以相同方式裝好行李。',
   // categories
   'help.guide.categories.title': '管理分類集合',
   'help.guide.categories.goal': '決定地點和收藏可以帶哪些分類，以及它們的樣子。',
@@ -1292,6 +1314,8 @@ const help: TranslationStrings = {
     '使用者無需自己的金鑰就能使用這些功能；沒有 Google 金鑰時，TREK 透過免費的 OpenStreetMap 元件和 TREK Places API 搜尋。',
   'help.guide.instance-keys.tip.1': '使用者在「設定」裡的個人金鑰對該使用者來說優先於實例金鑰。',
   'help.guide.instance-keys.tip.2': '金鑰也可以來自環境變數；那些在這裡顯示為唯讀。',
+  'help.guide.instance-keys.tip.3':
+    '「Google 呼叫每日上限」限制 TREK 每天可在該金鑰上花費的額度；標題旁的徽章會計算今天的呼叫次數。達到上限後，搜尋會改用 OpenStreetMap，直到隔天（UTC）。',
   // places-transit
   'help.guide.places-transit.title': '選擇搜尋和公共運輸資料來源',
   'help.guide.places-transit.goal': '決定由誰回應地點搜尋和公共運輸路線。',
@@ -1360,6 +1384,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.step.2': '點選「傳送測試 Ntfy」或「傳送測試 Webhook」，看訊息是否到達。',
   'help.guide.admin-channels.result': '管理員事件除了發到每位管理員的應用程式內鈴鐺之外，也會發到那裡。',
   'help.guide.admin-channels.tip.1': '把管理員主題和你的個人主題分開，這樣故障通知不會淹沒在行程訊息裡。',
+  'help.guide.admin-channels.tip.2':
+    '「使用者預設值」設定每位使用者通知的初始狀態，依事件和管道分別設定：「開啟」、「關閉」或「封鎖」；「封鎖」會為所有人關閉該通知，並在他們的設定中顯示為已鎖定。',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': '撤銷 AI 存取',
   'help.guide.mcp-tokens-admin.goal': '檢視並切斷任何使用者的 AI 用戶端持有的每個令牌和工作階段。',
@@ -1498,6 +1524,12 @@ const help: TranslationStrings = {
   'help.guide.undo-change.tip.1':
     '撤銷涵蓋計劃：指派、移除、重新排序和移動地點，最佳化路線，刪除地點，類別變更和匯入。',
   'help.guide.undo-change.tip.2': '它只有一步深：只能收回最新的一次變更，新的變更會取代它。',
+  'help.guide.clear-day.title': '清空一天',
+  'help.guide.clear-day.goal': '一次把某一天的所有地點移除，例如要從頭重新規劃。',
+  'help.guide.clear-day.step.1': '在行程規劃中，對該天的標題按右鍵。',
+  'help.guide.clear-day.step.2': '選擇「清空當天」並確認。',
+  'help.guide.clear-day.result': '這一天變空，它的地點回到清單中，成為未規劃。天數上方的撤銷箭頭可以把它們放回去。',
+  'help.guide.clear-day.tip.1': '只有地點會被移除。這一天的筆記和預訂都會保留。',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': '地點',
@@ -1508,7 +1540,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     '它旁邊的匯入按鈕提供「匯入檔案」，用於 .gpx、.kml 和 .kmz 檔案，以及「Google 列表」（同時開啟 Naver 清單時為「列表匯入」），用於從 Google Maps 或 Naver Maps 分享的清單。檔案也可以直接拖放到這一欄上。',
   'help.ctx.trip-places.bullet.3':
-    '它們下方是搜尋框，旁邊是開始選取的勾選，再下面是一排篩選：「顯示」在「全部」「未規劃」「已規劃」之間切換，匯入軌跡之後還會有「路線」，每一項都帶數量；標籤按鈕依分類篩選，星號依最低評分篩選。',
+    '它們下方是搜尋框，旁邊是開始選取的勾選，再下面是一排篩選：「顯示」在「全部」「未規劃」「已規劃」之間切換，匯入軌跡之後還會有「路線」，每一項都帶數量；標籤按鈕依分類篩選，星號依最低評分篩選，地球依國家或地區篩選，「排序方式」則設定清單的順序。',
   'help.ctx.trip-places.bullet.4':
     '一列顯示圖片、名稱以及描述或地址。點選它檢視地點詳細資料，把它拖曳到某一天，或者按右鍵（或點選它的三個點），得到「編輯」「+ 天」「開啟網站」「Google Maps」「儲存到收藏」和「刪除」。',
   'help.ctx.trip-places.bullet.5':
@@ -1620,6 +1652,27 @@ const help: TranslationStrings = {
   'help.guide.import-places-list.tip.1': '清單必須公開共享；私人清單的連結什麼也匯不進來。',
   'help.guide.import-places-list.tip.2':
     '當你的 TREK 配有 Google 金鑰時，對話方塊裡會出現「透過 Google 豐富地點資訊」：它會逐個查詢匯入的地點，補上照片、地址和詳細資料。',
+  'help.guide.sort-places.title': '排序地點清單',
+  'help.guide.sort-places.goal': '依當下最有用的順序排列清單：依名稱、依評分，或依最近新增或修改的項目。',
+  'help.guide.sort-places.step.1': '開啟欄位頂部的「排序方式」。它的標籤會顯示清單目前的排序方式。',
+  'help.guide.sort-places.step.2': '選擇一種順序，例如「名稱」或「評分最高」。清單會立即跟著改變。',
+  'help.guide.sort-places.result': '清單會依你選擇的順序顯示地點，直到你選擇另一種順序。',
+  'help.guide.sort-places.tip.1': '只要不是「最近新增」，按鈕就會被標記，讓你一眼看出清單的排序不同。',
+  'help.guide.sort-places.tip.2': '排序只改變清單。各天的順序保持不變。',
+  'help.guide.place-by-hand.title': '新增搜尋找不到的地點',
+  'help.guide.place-by-hand.goal': '當地點搜尋找不到結果時，自行輸入地點，包括電話、電子郵件和營業時間。',
+  'help.guide.place-by-hand.step.1':
+    '在地點對話框中，把名稱輸入搜尋框並按 Enter。找不到結果時，對話框會告知，並提供「手動新增」。',
+  'help.guide.place-by-hand.step.2': '點選「手動新增」。你搜尋的文字會成為名稱，對話框也會捲動到聯絡欄位。',
+  'help.guide.place-by-hand.step.3': '依你所知填寫「電話」和「電子郵件」。',
+  'help.guide.place-by-hand.step.4':
+    '點選「新增營業時間」，設定地點每天的開門和關門時間。複製按鈕會把第一天的時間套用到每一天，每天的開關則可以把那天標為「公休」。',
+  'help.guide.place-by-hand.step.5': '點選「新增」。',
+  'help.guide.place-by-hand.result':
+    '地點會加入清單。它的詳細資料會顯示你輸入的電話、電子郵件和營業時間，就像搜尋找到的地點一樣。',
+  'help.guide.place-by-hand.tip.1':
+    '編輯一個沒有自己營業時間的地點時，會自動採用左側「地點詳細資料」中的營業時間；如果它已經有時間，旁邊的按鈕可以改用查到的時間。',
+  'help.guide.place-by-hand.tip.2': '你輸入的時間優先於查到的時間，所以有季節性營業時間的咖啡廳會顯示你所知道的資訊。',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': '天',
@@ -1632,10 +1685,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     '一天內部：按順序排列的停留點，每個都有圖片、名稱、時間、圖片上的鎖以及掛在它上面的預訂；備註；這一天的預訂和交通，依類型著色；以及停留點之間每一段的行程時間。每一列都有一個三點選單，和按右鍵開啟的選單相同。',
   'help.ctx.trip-days.bullet.4':
-    '停留點下方是路線列：「路線」把這一天畫在地圖上，「最佳化」給停留點排序，「開車」/「步行」設定當天的交通方式，「在 Google Maps 中開啟」和「在 CoMaps 中開啟」把這一天交出去。',
+    '停留點下方是路線列：「路線」把這一天畫在地圖上，「最佳化」給停留點排序，「開車」、「步行」或「騎自行車」設定當天的交通方式，「在 Google Maps 中開啟」和「在 CoMaps 中開啟」把這一天交出去。',
   'help.ctx.trip-days.bullet.5':
     '地點進入某一天的方式：從地點欄拖一列過來、用該列上的「+ 天」、透過這一天的 + 或在空的一天用「新增地點到這一天」，或者從地點詳細資料裡。',
-  'help.ctx.trip-days.bullet.6': '底部的「總費用」把每一個帶價格的停留點和預訂按行程的貨幣加起來。',
+  'help.ctx.trip-days.bullet.6':
+    '底部的「總費用」會把「費用」中屬於當天停留點和預訂的支出加總，每筆只算一次，以行程的貨幣計算。',
   // read-day-plan
   'help.guide.read-day-plan.title': '讀懂一天',
   'help.guide.read-day-plan.goal': '在動手改動之前，先知道日期卡片的每一部分在告訴你什麼。',
@@ -2162,7 +2216,7 @@ const help: TranslationStrings = {
   // edit-accommodation
   'help.guide.edit-accommodation.title': '變更或取消已訂下的住宿',
   'help.guide.edit-accommodation.goal': '挪動一次住宿、改正它的時間，或者把它再從計劃裡拿出去。',
-  'help.guide.edit-accommodation.step.1': '在住宿的每一天裡，卡片都顯示住處、入住時間區間、退房時間和確認號。',
+  'help.guide.edit-accommodation.step.1': '卡片顯示住處和確認號，抵達那天還帶上入住時間區間，離開那天還帶上退房時間。',
   'help.guide.edit-accommodation.step.2': '它右邊的鉛筆重新開啟這次住宿。彈出視窗此時寫著「編輯住宿」。',
   'help.guide.edit-accommodation.step.3':
     '修改「入住」「截止」「退房」和「確認號」。它們上面的天數和下面的住處，在這裡也能改。',
@@ -2189,6 +2243,11 @@ const help: TranslationStrings = {
   'help.guide.day-bookings.tip.1':
     '一筆預訂按它自己的日期落到某一天上。在「預訂」分頁裡改掉日期，它就自己挪到另一天去。',
   'help.guide.day-bookings.tip.2': '沒有「預訂」區塊，就說明這一天沒有預訂：它被隱藏起來，而不是空著顯示。',
+  'help.guide.map-lock.title': '鎖定地圖',
+  'help.guide.map-lock.goal': '在你逐一點選天數和地點時，讓地圖保持在原位。',
+  'help.guide.map-lock.step.1': '點選地圖上的鎖。鎖住時，開啟某一天或選取地點都不會再縮放或移動地圖。',
+  'help.guide.map-lock.result': '在你處理計畫時，地圖會停留在你離開時的位置。',
+  'help.guide.map-lock.tip.1': '再點一次鎖，地圖就會再次跟隨所選項目。',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': '地圖',
@@ -2205,7 +2264,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     '頂部那排圖示會在你看得見的那片地圖裡搜尋：「餐廳」「咖啡廳」「酒吧與夜生活」「住宿」「景點」「博物館與文化」「自然與公園」和「活動」。在你移動地圖之後，「搜尋此區域」會再跑一次。',
   'help.ctx.trip-map.bullet.6':
-    '在地圖上任意位置按右鍵，就會在那個點開啟地點表單，地址已經查好了。左下角的圓形按鈕把繪製的地圖換成空拍影像。',
+    '在地圖上任意位置按右鍵，就會在那個點開啟地點表單，地址已經查好了。左下角的圓形按鈕把繪製的地圖換成空拍影像；鎖則讓你在逐一點選天數和地點時，視角保持不動。',
   'help.ctx.trip-map.bullet.7':
     '右下角的「顯示整趟行程」一次畫出每一個出行日，並列出每一天走了什麼；預訂那一列上的路線圖示畫出那一筆預訂，而天數欄上方工具列裡的那個圖示把它們全都畫出來。點選一筆已畫出的預訂的一端，就會開啟它的詳細資料。',
   'help.ctx.trip-map.bullet.8':
@@ -2921,6 +2980,8 @@ const help: TranslationStrings = {
   'help.guide.split-expense.tip.1': '你取消勾選的旅伴，僅在這一筆支出上不必承擔；其餘的人接過他的分攤額。',
   'help.guide.split-expense.tip.2': 'Equally 精確到分：多出來的那一分會在支出之間輪轉，所以不會總是同一個人來付。',
   'help.guide.split-expense.tip.3': 'Ticket 模式會自己把「總金額」加出來，並把該欄位反灰：收據上的品項就是總額。',
+  'help.guide.split-expense.tip.4':
+    '自訂分攤也可以用百分比輸入：把「份額輸入方式」切換為 %，各份額加起來必須等於 100%，支出才能儲存。',
   // expense-currency
   'help.guide.expense-currency.title': '用另一種貨幣輸入支出',
   'help.guide.expense-currency.goal': '照收據上真正寫著的輸入，讓 TREK 替你守住匯率。',

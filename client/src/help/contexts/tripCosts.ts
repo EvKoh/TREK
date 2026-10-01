@@ -22,7 +22,7 @@ export const { context: tripCostsContext, guides: tripCostsGuides } = defineScre
   guides: [
     ['add-expense', 'plus', 'guide', 6, 3, ITEMS, ['split-expense', 'expense-payers', 'expense-currency'], true],
     ['expense-payers', 'userRound', 'guide', 4, 3, { slug: COSTS, anchor: 'who-paid' }, ['add-expense', 'settle-up']],
-    ['split-expense', 'users', 'guide', 5, 3, { slug: COSTS, anchor: 'splitting-costs' }, ['add-expense', 'expense-payers'], true],
+    ['split-expense', 'users', 'guide', 5, 4, { slug: COSTS, anchor: 'splitting-costs' }, ['add-expense', 'expense-payers'], true],
     ['expense-currency', 'coins', 'guide', 5, 3, { slug: CURRENCIES, anchor: 'expense-currency' }, ['add-expense', 'edit-trip', 'language-region'], true],
     ['filter-costs', 'filter', 'quick', 5, 3, ITEMS, ['add-expense', 'final-budget', 'costs-table'], true],
     ['settle-up', 'checkCircle', 'tour', 6, 3, SETTLEMENT, ['final-budget', 'expense-payers'], true],

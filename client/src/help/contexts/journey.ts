@@ -156,6 +156,17 @@ export const journalGuides: HelpGuide[] = [
     related: ['suggestions'],
   },
   {
+    id: 'journey-status',
+    context: 'journey-detail',
+    icon: 'flag',
+    size: 'quick',
+    steps: 2,
+    tips: 2,
+    media: { steps: true, result: false },
+    docs: { slug: JOURNEY },
+    related: ['link-trip', 'archive-journey'],
+  },
+  {
     id: 'share-public',
     context: 'journey-detail',
     icon: 'share',

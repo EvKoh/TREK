@@ -720,6 +720,30 @@ const SCRIPTS: Record<string, GuideScript> = {
 
   // The spare trip gets stations on its days first: a trip without places adds
   // nothing to the journal, and the result would show no change at all.
+  'journey-status': {
+    guide: guide('journey-status'),
+    start: openJournal,
+    steps: [
+      { target: settingsButton, act: openSettings },
+      {
+        prepare: async p => {
+          const status = dialog(p).getByRole('group', { name: 'Status' })
+          await status.scrollIntoViewIfNeeded()
+          await status.getByRole('button', { name: 'Completed' }).click()
+          await expect(status.getByRole('button', { name: 'Completed' })).toHaveAttribute('aria-pressed', 'true')
+          await settle(p)
+        },
+        target: p => dialog(p).getByRole('group', { name: 'Status' }).locator('xpath=..'),
+      },
+    ],
+    cleanup: async p => {
+      const status = dialog(p).getByRole('group', { name: 'Status' })
+      if (await status.count()) {
+        await status.getByRole('button', { name: 'Automatic' }).click()
+        await settle(p)
+      }
+    },
+  },
   'link-trip': {
     guide: guide('link-trip'),
     start: async p => {

@@ -42,7 +42,7 @@ change the theme, the language or the zoom for a picture.
    database, the seed, then the file). Fix until every guide passes; a failing
    step is a text that no longer matches the UI.
 4. Look at the pictures in `e2e/.tmp/help-media/`, then `node e2e/help/promote.mjs`.
-5. Translate the block into all 22 locales (`i18n:parity:strict` is the gate) and
+5. Translate the block into every other locale (`i18n:parity:strict` is the gate) and
    run `src/help/registry.test.ts`, which checks every promised picture is on disk.
 
 ## What the fixtures may look like

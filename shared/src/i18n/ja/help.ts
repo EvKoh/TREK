@@ -56,7 +56,7 @@ const help: TranslationStrings = {
     '搭乗券：進行中または次の旅行を、日程・同行者・場所・カウントダウンとともに表示します。クリックすると旅行が開きます。',
   'help.ctx.dashboard.bullet.2': '旅の統計：訪れた国、旅行数、旅の日数、飛行距離を、すべての旅行にわたって集計します。',
   'help.ctx.dashboard.bullet.3':
-    '旅行カード：「予定」「アーカイブ済み」「完了」で絞り込み、グリッドまたはリストで表示します。カードにマウスを乗せると編集・複製・アーカイブ・削除ができます。',
+    '旅行カード：「予定」「アーカイブ済み」「完了」で絞り込み、グリッドまたはリストで表示します。上の検索欄は、タイトル、日付、旅行内の場所ですべての旅行をまとめて探します。カードにマウスを乗せると編集・複製・アーカイブ・削除ができます。',
   'help.ctx.dashboard.bullet.4':
     '右側のウィジェット：通貨換算、世界時計、今後の予約、コレクション。それぞれ非表示にできます。',
   'help.ctx.dashboard.bullet.5': '「新しい旅行」カードと右下のボタンは、どちらも新しい旅行を作成します。',
@@ -173,6 +173,18 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': '「タイムゾーン」ウィジェットの + をクリックし、都市を検索します。',
   'help.guide.timezones-widget.step.2': '時計の隣の × で削除できます。',
   'help.guide.timezones-widget.result': '時計はアカウントに保存されます。',
+  'help.guide.search-trips.title': '旅行を検索する',
+  'help.guide.search-trips.goal': '名前、日付、計画した場所から旅行を見つけます。アーカイブ済みの旅行も対象です。',
+  'help.guide.search-trips.step.1':
+    'カードの上の「旅行や場所を検索」に入力します。入力に合わせて、予定・アーカイブ済み・完了の旅行がまとめて絞り込まれます。',
+  'help.guide.search-trips.step.2':
+    '場所で見つかった旅行には、タイトルの下にその場所の名前が表示されます。欄の x をクリックするか Escape キーを押すと、すべての旅行が再び表示されます。',
+  'help.guide.search-trips.result':
+    'ダッシュボードには一致する旅行だけが残ります。欄を空にすると、すべての旅行が戻ります。',
+  'help.guide.search-trips.tip.1':
+    '日付でも探せます。たとえば「2027年5月」や「2027-05」のように年月を入力すると、その月にかかる旅行が見つかります。',
+  'help.guide.search-trips.tip.2':
+    '検索中は「予定」「アーカイブ済み」「完了」の切り替えが外れるので、フィルターのせいで旅行が隠れることはありません。',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -682,9 +694,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'タイムライン：日ごとに1つのセクションがあり、＋でその日にエントリーを追加できます。写真、気分、天気、物語を載せたエントリーのカード、そして旅行からの提案が薄い表示で「この提案を見送る」付きで並びます。',
   'help.ctx.journey-detail.bullet.4':
-    'マップ：エントリーはピンとして日付順に破線でつながれ、旅行の場所と、それらの旅行に取り込んだGPXトラックも表示されます。',
+    'マップ：エントリーはピンとして日付順に破線でつながれ、旅行の場所、それらの旅行に取り込んだGPXトラック、エントリーの位置情報付き写真も表示されます。',
   'help.ctx.journey-detail.bullet.5':
-    '「日記設定」：カバー、名前とサブタイトル、マップ上のトラック、記録の項目、見送った提案、リンクした旅行、参加者、公開共有、アーカイブと削除。',
+    '「日記設定」：カバー、名前とサブタイトル、ステータス、マップ上のトラック、記録の項目、見送った提案、リンクした旅行、参加者、公開共有、アーカイブと削除。',
   'help.ctx.journey-detail.bullet.6':
     '長いタイムラインの上には2つの丸いボタンが浮かびます。先頭へ戻る、と最後のエントリーへ飛ぶ、です。',
   // add-entry
@@ -825,6 +837,16 @@ const help: TranslationStrings = {
     'アーカイブした日記は読むことも共有することもできます。今日の日付で開かなくなるだけです。',
   'help.guide.archive-journey.tip.1': '削除は元に戻せません。日記がリンクしていた旅行には影響しません。',
   'help.guide.archive-journey.tip.2': 'カバー、名前、サブタイトルは同じダイアログの上部にあります。',
+  'help.guide.journey-status.title': '日記のステータスを設定する',
+  'help.guide.journey-status.goal': '旅行の日付に任せず、日記を下書き、ライブ、完了のいずれかに自分で設定します。',
+  'help.guide.journey-status.step.1': '日記のヘッダーで「日記設定」を開きます。',
+  'help.guide.journey-status.step.2':
+    '「ステータス」で「下書き」「ライブ」「完了」のいずれかを選びます。選択はすぐに保存されます。',
+  'help.guide.journey-status.result': '日記は選んだステータスを保ち、日記一覧のカードにそのステータスが表示されます。',
+  'help.guide.journey-status.tip.1':
+    '「自動」にすると、再びリンクした旅行の日付に従います。リンクした旅行がない場合、自動の日記は下書きのままです。',
+  'help.guide.journey-status.tip.2':
+    '手動で設定したステータスは、旅行の日付が変わっても、自分で変更するまでそのままです。',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1064,6 +1086,8 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.result': '旅行の地図はどの旅行でもこの設定に従います。切り替え直すまで有効です。',
   'help.guide.travel-map-prefs.tip.1':
     'これはアカウントごとの設定で、旅行ごとではありません。共有旅行のメンバーはそれぞれ自分の選択を見ます。',
+  'help.guide.travel-map-prefs.tip.2':
+    '「場所を開くアプリ」では、ナビボタンがすぐに開く地図アプリを選びます。「毎回確認する」にすると、毎回すべての地図アプリから選べます。',
   // startup
   'help.guide.startup.title': 'TREKが最初に開く画面を選ぶ',
   'help.guide.startup.goal': '毎回ダッシュボードではなく、いちばんよく作業する場所に着地します。',
@@ -1440,6 +1464,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'ビーチ、都市、ハイキングなど旅行の種類ごとのテンプレートのほうが、1つの巨大なリストより使いやすいです。',
   'help.guide.packing-templates.tip.2': 'テンプレートを削除しても、すでに適用した旅行には影響しません。',
+  'help.guide.packing-templates.tip.3':
+    'テンプレートは各アイテムの重さ、数量、バッグを覚えているので、適用した旅行でも同じようにバッグが詰められます。',
   // categories
   'help.guide.categories.title': 'カテゴリのセットを管理する',
   'help.guide.categories.goal': '場所とコレクションが持てるカテゴリと、その見た目を決めます。',
@@ -1504,6 +1530,8 @@ const help: TranslationStrings = {
     'ユーザーが「設定」で入れた個人のキーは、そのユーザーにとってはインスタンスのキーより優先されます。',
   'help.guide.instance-keys.tip.2':
     'キーは環境変数からも設定できます。その場合、ここでは読み取り専用として表示されます。',
+  'help.guide.instance-keys.tip.3':
+    '「Google 呼び出しの1日の上限」は、TREK がそのキーで1日に使える量を制限します。タイトル横のバッジは今日の呼び出し数です。上限に達すると、翌日（UTC）まで検索は OpenStreetMap を使います。',
   // places-transit
   'help.guide.places-transit.title': '検索と公共交通のプロバイダーを選ぶ',
   'help.guide.places-transit.goal': '地点検索と公共交通の経路に誰が答えるかを決めます。',
@@ -1591,6 +1619,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.result': '管理者イベントは、各管理者のアプリ内のベルに加えてそこにも届きます。',
   'help.guide.admin-channels.tip.1':
     '管理者用のトピックは個人用と分けてください。障害の通知が旅行の通知に埋もれないようにするためです。',
+  'help.guide.admin-channels.tip.2':
+    '「ユーザーの既定値」は、全ユーザーの通知の初期状態をイベントとチャネルごとに決めます。「オン」「オフ」、または「ブロック」です。「ブロック」は全員に対してオフにし、各自の設定ではロック表示になります。',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'AIのアクセスを取り消す',
   'help.guide.mcp-tokens-admin.goal':
@@ -1761,6 +1791,13 @@ const help: TranslationStrings = {
     '元に戻すの対象は計画です。場所の割り当て・取り外し・並び替え・移動、ルートの最適化、場所の削除、カテゴリの変更、インポートです。',
   'help.guide.undo-change.tip.2':
     '深さは1段階です。取り消せるのは最新の変更だけで、新しい変更があるとそれに置き換わります。',
+  'help.guide.clear-day.title': '日をクリアする',
+  'help.guide.clear-day.goal': '日からすべての場所を一度に外します。たとえば一から計画し直したいときに使います。',
+  'help.guide.clear-day.step.1': 'プランで日の見出しを右クリックします。',
+  'help.guide.clear-day.step.2': '「日をクリア」を選んで確定します。',
+  'help.guide.clear-day.result':
+    'その日は空になり、場所は未計画としてリストに戻ります。日程の上にある元に戻す矢印で元どおりにできます。',
+  'help.guide.clear-day.tip.1': '外れるのは場所だけです。その日のメモと予約は残ります。',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': '場所',
@@ -1771,7 +1808,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'その隣のインポートボタンには、.gpx、.kml、.kmz ファイル用の「ファイルをインポート」と、Google Maps または Naver Maps から共有されたリスト用の「Google リスト」（Naver のリストも有効な場合は「リストをインポート」）があります。ファイルはこの列にドロップするだけでも構いません。',
   'help.ctx.trip-places.bullet.3':
-    'その下に検索があり、隣には選択を始めるチェックがあります。さらにフィルターが一列に並びます。「表示」は「すべて」「未計画」「計画済み」を切り替え、トラックをインポートすると「トラック」も加わり、それぞれに件数が付きます。タグのボタンはカテゴリで、星は最低評価で絞り込みます。',
+    'その下に検索があり、隣には選択を始めるチェックがあります。さらにフィルターが一列に並びます。「表示」は「すべて」「未計画」「計画済み」を切り替え、トラックをインポートすると「トラック」も加わり、それぞれに件数が付きます。タグのボタンはカテゴリで、星は最低評価で、地球儀は国や地域で絞り込み、「並べ替え」はリストの順序を決めます。',
   'help.ctx.trip-places.bullet.4':
     '行には写真、名前、説明または住所が出ます。クリックすると場所の詳細が開き、日にドラッグすれば割り当てられ、右クリック（または行の三つの点をクリック）すると「編集」「+ 日」「Webサイトを開く」「Google Maps」「コレクションに保存」「削除」が出ます。',
   'help.ctx.trip-places.bullet.5':
@@ -1898,6 +1935,31 @@ const help: TranslationStrings = {
     'リストは公開で共有されている必要があります。非公開のリストのリンクは何もインポートしません。',
   'help.guide.import-places-list.tip.2':
     '「Googleで場所を補完」は、あなたの TREK に Google キーがあるときにダイアログに出ます。インポートした場所を一つずつ調べて、写真、住所、詳細を埋めます。',
+  'help.guide.sort-places.title': '場所リストを並べ替える',
+  'help.guide.sort-places.goal': '名前順、評価順、最近追加・変更した順など、今いちばん役立つ順にリストを並べます。',
+  'help.guide.sort-places.step.1': '列の見出しにある「並べ替え」を開きます。ラベルに現在の並び順が表示されています。',
+  'help.guide.sort-places.step.2': '「名前順」や「評価が高い順」などの順序を選びます。リストはすぐに並び替わります。',
+  'help.guide.sort-places.result': '別の順序を選ぶまで、リストは選んだ順序で場所を表示します。',
+  'help.guide.sort-places.tip.1':
+    '「追加が新しい順」以外の順序ではボタンに印が付くので、リストがいつもと違う順で並んでいることが一目でわかります。',
+  'help.guide.sort-places.tip.2': '並べ替えで変わるのはリストだけです。各日の順序はそのままです。',
+  'help.guide.place-by-hand.title': '検索で見つからない場所を追加する',
+  'help.guide.place-by-hand.goal':
+    '場所の検索で何も見つからないとき、電話、メール、営業時間を含めて場所を自分で入力します。',
+  'help.guide.place-by-hand.step.1':
+    '場所のダイアログで検索欄に名前を入力し、Enter キーを押します。何も見つからないとダイアログにそう表示され、「手動で追加」が出ます。',
+  'help.guide.place-by-hand.step.2':
+    '「手動で追加」をクリックします。検索した語句が名前になり、ダイアログは連絡先の欄までスクロールします。',
+  'help.guide.place-by-hand.step.3': 'わかる範囲で「電話」と「メール」を入力します。',
+  'help.guide.place-by-hand.step.4':
+    '「営業時間を追加」をクリックし、曜日ごとに開店と閉店の時刻を設定します。コピーボタンで最初の曜日の時間を全曜日に適用でき、曜日のスイッチでその日を「定休日」にできます。',
+  'help.guide.place-by-hand.step.5': '「追加」をクリックします。',
+  'help.guide.place-by-hand.result':
+    '場所がリストに加わります。詳細には入力した電話、メール、営業時間が、検索で見つけた場所と同じように表示されます。',
+  'help.guide.place-by-hand.tip.1':
+    '独自の営業時間がない場所を編集すると、左側の「場所の詳細」から営業時間が自動で取り込まれます。すでに営業時間がある場合は、その横のボタンで調べた時間を取り込めます。',
+  'help.guide.place-by-hand.tip.2':
+    '入力した営業時間は調べた時間より優先されるので、季節で営業時間が変わるカフェでも、あなたが知っている時間が表示されます。',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': '日',
@@ -1910,10 +1972,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     '日の中には、順番に並んだ立ち寄り先（それぞれ写真、名前、時刻、写真の上の鍵、そこに留められた予約つき）、メモ、種類ごとに色づけされたその日の予約と移動、そして立ち寄り先の間には各区間の所要時間があります。どの行にも三つの点のメニューがあり、右クリックで開くものと同じです。',
   'help.ctx.trip-days.bullet.4':
-    '立ち寄り先の下はルートバーです。「ルート」はその日を地図に描き、「最適化」は立ち寄り先を並べ替え、「車」「徒歩」はその日の移動手段を決め、「Googleマップで開く」「CoMapsで開く」はその日を渡します。',
+    '立ち寄り先の下はルートバーです。「ルート」はその日を地図に描き、「最適化」は立ち寄り先を並べ替え、「車」「徒歩」「自転車」はその日の移動手段を決め、「Googleマップで開く」「CoMapsで開く」はその日を渡します。',
   'help.ctx.trip-days.bullet.5':
     '場所は、場所の列から行をドラッグして、その行の「+ 日」で、日の + または空の日の「この日に場所を追加」で、あるいは場所の詳細から日に入ります。',
-  'help.ctx.trip-days.bullet.6': '一番下の「合計費用」は、価格のあるすべての立ち寄り先と予約を旅行の通貨で合計します。',
+  'help.ctx.trip-days.bullet.6':
+    '一番下の「合計費用」は、「費用」の支出のうち、その日の立ち寄り先と予約に属するものを、それぞれ1回ずつ旅行の通貨で合計します。',
   // read-day-plan
   'help.guide.read-day-plan.title': '日を読む',
   'help.guide.read-day-plan.goal': '何かを変える前に、日のカードの各部分が何を伝えているかを知ります。',
@@ -2528,7 +2591,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': '取った宿泊を変える、または取り消す',
   'help.guide.edit-accommodation.goal': '宿泊を動かす、時刻を直す、あるいは計画から外します。',
   'help.guide.edit-accommodation.step.1':
-    '宿泊のどの日でも、カードには宿、チェックインの受付時間帯、チェックアウトの時刻、確認番号が出ます。',
+    'カードには宿と確認番号が出ます。到着日にはチェックインの受付時間帯、出発日にはチェックアウトの時刻も一緒に出ます。',
   'help.guide.edit-accommodation.step.2':
     'その右の鉛筆で宿泊がもう一度開きます。ポップアップの表示は「宿泊先を編集」に変わります。',
   'help.guide.edit-accommodation.step.3':
@@ -2559,6 +2622,12 @@ const help: TranslationStrings = {
     '予約は自分の日付でその日に乗ります。「予約」タブで日付を変えれば、ひとりでにもう一方の日へ移ります。',
   'help.guide.day-bookings.tip.2':
     '「予約」のブロックがなければ、その日に予約はありません。空で出すのではなく隠されます。',
+  'help.guide.map-lock.title': '地図を固定する',
+  'help.guide.map-lock.goal': '日や場所をクリックしていく間も、地図をその位置に留めます。',
+  'help.guide.map-lock.step.1':
+    '地図の鍵アイコンをクリックします。鍵が閉じている間は、日を開いたり場所を選んだりしても地図がズームや移動をしません。',
+  'help.guide.map-lock.result': 'プランを進めている間も、地図は離れたときの位置に留まります。',
+  'help.guide.map-lock.tip.1': 'もう一度鍵をクリックすると、地図が再び選択に合わせて動きます。',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': '地図',
@@ -2575,7 +2644,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     '上部のアイコンの列は、見えている範囲の地図を検索します。「レストラン」「カフェ」「バー・ナイトライフ」「宿泊施設」「観光スポット」「美術館・文化施設」「自然・公園」「アクティビティ」です。地図を動かしたあとは「このエリアを検索」でもう一度実行します。',
   'help.ctx.trip-map.bullet.6':
-    '地図のどこでも右クリックすると、その地点の場所フォームが、住所を調べ終えた状態で開きます。左下の丸いボタンは、描かれた地図を航空写真に入れ替えます。',
+    '地図のどこでも右クリックすると、その地点の場所フォームが、住所を調べ終えた状態で開きます。左下の丸いボタンは、描かれた地図を航空写真に入れ替えます。鍵アイコンは、日や場所をクリックしていく間も表示をその位置に留めます。',
   'help.ctx.trip-map.bullet.7':
     '右下の「旅程全体を表示」は、移動のあるすべての日を一度に描き、それぞれが何をたどるかを一覧にします。予約の行のルートアイコンはその予約を描き、日程の上のツールバーにあるアイコンはすべてを描きます。描かれた予約の端をクリックすると、その詳細が開きます。',
   'help.ctx.trip-map.bullet.8':
@@ -3375,6 +3444,8 @@ const help: TranslationStrings = {
     'Equallyは1セント単位まで正確です。余った1セントは支出ごとに順番に回るので、いつも同じ人が払うことにはなりません。',
   'help.guide.split-expense.tip.3':
     'Ticketモードでは「合計金額」が自動で合計され、欄は灰色になります。レシートの行が合計です。',
+  'help.guide.split-expense.tip.4':
+    'カスタム分割はパーセントでも入力できます。「負担の入力方法」を % に切り替えると、保存する前に負担の合計がちょうど 100% になる必要があります。',
   // expense-currency
   'help.guide.expense-currency.title': '別の通貨で支出を入力する',
   'help.guide.expense-currency.goal': 'レシートに書かれているとおりに入力し、レートはTREKに預けます。',

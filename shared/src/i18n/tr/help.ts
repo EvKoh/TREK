@@ -57,7 +57,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Seyahat istatistikleri: tüm seyahatlerinizde ziyaret edilen ülkeler, seyahatler, yolda geçen günler ve uçulan mesafe.',
   'help.ctx.dashboard.bullet.3':
-    'Planlanan, Arşivlendi ve Tamamlandı olarak süzülen seyahat kartları, ızgara ya da liste halinde. Düzenlemek, çoğaltmak, arşivlemek ve silmek için bir kartın üzerine gelin.',
+    'Planlanan, Arşivlendi ve Tamamlandı olarak süzülen seyahat kartları, ızgara ya da liste halinde. Üstlerindeki arama kutusu tüm seyahatlerde aynı anda; başlığa, tarihe ya da seyahatteki bir yere göre arar. Düzenlemek, çoğaltmak, arşivlemek ve silmek için bir kartın üzerine gelin.',
   'help.ctx.dashboard.bullet.4':
     'Sağdaki bileşenler: döviz çevirici, dünya saatleri, yaklaşan rezervasyonlar ve koleksiyonlar. Her biri kapatılabilir.',
   'help.ctx.dashboard.bullet.5': '“Yeni Seyahat” kartı ve sağ alt köşedeki düğme, ikisi de yeni bir seyahat başlatır.',
@@ -179,6 +179,19 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': '“Saat dilimleri” bileşeninde + simgesine tıklayın ve bir şehir arayın.',
   'help.guide.timezones-widget.step.2': 'Bir saati yanındaki × ile kaldırın.',
   'help.guide.timezones-widget.result': 'Saatleriniz hesabınızla birlikte kaydedilir.',
+  'help.guide.search-trips.title': 'Seyahatlerinizde arayın',
+  'help.guide.search-trips.goal':
+    'Bir seyahati adına, bir tarihe ya da içinde planladığınız bir yere göre bulun, arşivlenmiş seyahatler de dahil.',
+  'help.guide.search-trips.step.1':
+    'Kartların üstündeki Gezi veya yer ara alanına yazın. Liste siz yazdıkça daralır; planlanan, arşivlenen ve tamamlanan seyahatlerin hepsinde aynı anda.',
+  'help.guide.search-trips.step.2':
+    'Yerlerinden biri sayesinde bulunan bir seyahat, o yeri başlığının altında gösterir. Tüm seyahatlerinizi yeniden görmek için kutudaki x’e tıklayın ya da Escape’e basın.',
+  'help.guide.search-trips.result':
+    'Panoda yalnızca eşleşen seyahatler kalır, boş bir kutu ise tüm seyahatleri geri getirir.',
+  'help.guide.search-trips.tip.1':
+    'Tarihler de işe yarar: o aya düşen seyahatleri bulmak için bir ay ve yıl yazın, örneğin Mayıs 2027, ya da 2027-05.',
+  'help.guide.search-trips.tip.2':
+    'Arama açıkken Planlanan, Arşivlendi ve Tamamlandı anahtarı devre dışı kalır, böylece hiçbir seyahat yanlış filtrenin arkasında saklanmaz.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -717,9 +730,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Zaman çizelgesi: her gün için o güne kayıt eklemek üzere bir + ile bir bölüm; fotoğraf, ruh hali, hava durumu ve hikâyeli kayıt kartları; gezilerden gelen öneriler daha açık bir stilde ve Bu öneriyi yok say ile.',
   'help.ctx.journey-detail.bullet.4':
-    'Harita: kesikli bir çizgiyle tarih sırasında bağlanmış iğneler olarak kayıtlar, gezilerin yerleri ve o gezilere aktarılmış GPX izleri.',
+    'Harita: kesikli bir çizgiyle tarih sırasında bağlanmış iğneler olarak kayıtlar, gezilerin yerleri, o gezilere aktarılmış GPX izleri ve kayıtların konum etiketli fotoğrafları.',
   'help.ctx.journey-detail.bullet.5':
-    'Journey Ayarları: kapak, ad ve alt başlık, haritadaki izler, kayıt alanları, yok sayılan öneriler, bağlı geziler, katkıda bulunanlar, herkese açık paylaşım, arşivleme ve silme.',
+    'Journey Ayarları: kapak, ad ve alt başlık, durum, haritadaki izler, kayıt alanları, yok sayılan öneriler, bağlı geziler, katkıda bulunanlar, herkese açık paylaşım, arşivleme ve silme.',
   'help.ctx.journey-detail.bullet.6':
     'Uzun bir zaman çizelgesinin üzerinde iki yuvarlak düğme yüzer: en üste dön ve son kayda atla.',
   // add-entry
@@ -867,6 +880,17 @@ const help: TranslationStrings = {
     'Arşivlenmiş bir Journey okunabilir ve paylaşılabilir kalır; yalnızca artık bugünde açılmaz.',
   'help.guide.archive-journey.tip.1': 'Silme geri alınamaz ve Journey’in bağlı olduğu gezilere dokunmaz.',
   'help.guide.archive-journey.tip.2': 'Kapak, ad ve alt başlık aynı iletişim kutusunda, en üsttedir.',
+  'help.guide.journey-status.title': 'Bir Journey’in durumunu ayarlayın',
+  'help.guide.journey-status.goal':
+    'Bir Journey’i gezilerinin tarihlerine bırakmak yerine kendiniz taslak, canlı ya da tamamlandı olarak işaretleyin.',
+  'help.guide.journey-status.step.1': 'Journey’in başlığındaki Journey Ayarları’nı açın.',
+  'help.guide.journey-status.step.2': 'Durum altında Taslak, Canlı ya da Tamamlandı’yı seçin. Seçim hemen kaydedilir.',
+  'help.guide.journey-status.result':
+    'Journey seçtiğiniz durumu korur ve Journey listesindeki kartı bu durumu gösterir.',
+  'help.guide.journey-status.tip.1':
+    'Otomatik, yeniden bağlı gezilerin tarihlerini izler. Bağlı bir gezi olmadan otomatik bir Journey taslak kalır.',
+  'help.guide.journey-status.tip.2':
+    'Elle ayarlanan bir durum, siz değiştirene kadar kalır; gezi tarihleri kaysa bile.',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1107,6 +1131,8 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.result': 'Gezi haritası, siz geri çevirene kadar bunlara her gezide uyar.',
   'help.guide.travel-map-prefs.tip.1':
     'Bunlar gezi başına değil, hesap başınadır. Paylaşılan bir gezinin üyeleri her biri kendi seçimlerini görür.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Yerleri şurada aç, navigasyon düğmesinin doğrudan açacağı harita uygulamasını seçer; Her seferinde sor ise tüm harita uygulamaları arasında seçimi korur.',
   // startup
   'help.guide.startup.title': 'TREK’in neyle açılacağını seçin',
   'help.guide.startup.goal': 'Her seferinde panoya değil, en çok çalıştığınız yere inin.',
@@ -1491,6 +1517,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Seyahat türü başına bir şablon, plaj, şehir, yürüyüş, tek bir dev listeden iyidir.',
   'help.guide.packing-templates.tip.2': 'Bir şablonu silmek onu zaten uygulamış seyahatlere dokunmaz.',
+  'help.guide.packing-templates.tip.3':
+    'Şablon her öğenin ağırlığını, miktarını ve çantasını hatırlar, böylece onu uygulayan bir seyahatin çantaları da aynı şekilde dolar.',
   // categories
   'help.guide.categories.title': 'Kategori kümesini yönetin',
   'help.guide.categories.goal':
@@ -1556,6 +1584,8 @@ const help: TranslationStrings = {
     'Bir kullanıcının Ayarlar altındaki kişisel anahtarı, o kullanıcı için örnek anahtarına üstün gelir.',
   'help.guide.instance-keys.tip.2':
     'Anahtarlar ortam değişkenlerinden de gelebilir; bunlar burada salt okunur görünür.',
+  'help.guide.instance-keys.tip.3':
+    'Google çağrıları için günlük sınır, TREK’in anahtar üzerinden günde ne kadar harcayabileceğini sınırlar; başlığın yanındaki rozet bugünkü çağrıları sayar. Sınıra ulaşıldığında aramalar ertesi güne (UTC) kadar OpenStreetMap kullanır.',
   // places-transit
   'help.guide.places-transit.title': 'Arama ve toplu taşıma sağlayıcılarını seçin',
   'help.guide.places-transit.goal': 'Yer aramalarına ve toplu taşıma rotalarına kimin yanıt vereceğine karar verin.',
@@ -1639,6 +1669,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.result': 'Yönetici olayları her yöneticinin uygulama içi ziline ek olarak oraya gider.',
   'help.guide.admin-channels.tip.1':
     'Yönetici konusunu kişisel konunuzdan ayrı tutun ki bir kesinti seyahat sohbetinde boğulmasın.',
+  'help.guide.admin-channels.tip.2':
+    'Kullanıcılar için varsayılanlar, her kullanıcının bildirimlerinin olay ve kanal başına nasıl başlayacağını belirler: Açık, Kapalı ya da Engelli; Engelli bildirimi herkes için kapatır ve kullanıcıların ayarlarında kilitli gösterir.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Yapay zekâ erişimini iptal edin',
   'help.guide.mcp-tokens-admin.goal':
@@ -1813,6 +1845,14 @@ const help: TranslationStrings = {
     'Geri alma planı kapsar: yerleri atama, çıkarma, yeniden sıralama ve taşıma, rota optimizasyonu, yer silme, kategori değişiklikleri ve içe aktarmalar.',
   'help.guide.undo-change.tip.2':
     'Tek adım derinliğindedir: yalnızca en son değişiklik geri alınabilir ve yeni bir değişiklik onun yerini alır.',
+  'help.guide.clear-day.title': 'Bir günü temizleyin',
+  'help.guide.clear-day.goal':
+    'Bir gündeki tüm yerleri tek seferde kaldırın, örneğin günü sıfırdan yeniden planlamak için.',
+  'help.guide.clear-day.step.1': 'Plandaki günün başlığına sağ tıklayın.',
+  'help.guide.clear-day.step.2': 'Günü temizle’yi seçin ve onaylayın.',
+  'help.guide.clear-day.result':
+    'Gün boşalır ve yerleri planlanmamış olarak listeye geri döner. Günlerin üstündeki geri alma oku onları geri koyar.',
+  'help.guide.clear-day.tip.1': 'Yalnızca yerler kaldırılır. Gün notlarını ve rezervasyonlarını korur.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Yerler',
@@ -1823,7 +1863,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'Yanındaki içe aktarma düğmesi .gpx, .kml ve .kmz dosyaları için Dosyayı içe aktar ve Google Maps ya da Naver Maps üzerinden paylaşılan bir liste için Google Listesi (Naver listeleri de açıksa Liste İçe Aktarma) sunar. Bir dosya sütunun üzerine de bırakılabilir.',
   'help.ctx.trip-places.bullet.3':
-    'Bunların altında, yanında seçim başlatan onay işaretiyle arama ve bir filtre satırı durur: Göster açılır listesi Tüm, Planlanmamış, Planlanmış ve bir parça içe aktarıldığında Parçalar arasında geçiş yapar, her biri kendi sayısıyla; etiket düğmesi kategoriye, yıldız da en düşük puana göre filtreler.',
+    'Bunların altında, yanında seçim başlatan onay işaretiyle arama ve bir filtre satırı durur: Göster açılır listesi Tüm, Planlanmamış, Planlanmış ve bir parça içe aktarıldığında Parçalar arasında geçiş yapar, her biri kendi sayısıyla; etiket düğmesi kategoriye, yıldız en düşük puana, küre ülkeye ya da bölgeye göre filtreler, Sırala ise listenin düzenini belirler.',
   'help.ctx.trip-places.bullet.4':
     "Bir satır resmi, adı ve açıklamayı ya da adresi gösterir. Yerin ayrıntıları için satıra tıklayın, bir güne sürükleyin ya da Düzenle, + Gün, Web Sitesini Aç, Google Haritalar'da aç, Koleksiyona kaydet ve Sil için sağ tıklayın (ya da üç noktasına tıklayın).",
   'help.ctx.trip-places.bullet.5':
@@ -1954,6 +1994,33 @@ const help: TranslationStrings = {
     'Listenin herkese açık paylaşılması gerekir; özel bir listenin bağlantısı hiçbir şey içe aktarmaz.',
   'help.guide.import-places-list.tip.2':
     'Yerleri Google ile zenginleştir, TREK’inizde bir Google anahtarı varsa iletişim kutusunda görünür: içe aktarılan her yeri arayıp fotoğrafları, adresi ve ayrıntıları doldurur.',
+  'help.guide.sort-places.title': 'Yer listesini sıralayın',
+  'help.guide.sort-places.goal':
+    'Listeyi o an işinize yarayan sıraya koyun: ada, puana ya da en son neyin eklendiğine veya değiştirildiğine göre.',
+  'help.guide.sort-places.step.1':
+    'Sütunun başındaki Sırala’yı açın. Etiketi, listenin şu anda nasıl sıralandığını söyler.',
+  'help.guide.sort-places.step.2': 'Bir sıra seçin, örneğin Ad ya da En yüksek puanlı. Liste hemen uyar.',
+  'help.guide.sort-places.result': 'Liste, siz başka bir sıra seçene kadar yerleri seçtiğiniz sırayla gösterir.',
+  'help.guide.sort-places.tip.1':
+    'Son eklenenler dışındaki her sıra düğmeyi işaretler, böylece listenin farklı sıralandığını bir bakışta anlarsınız.',
+  'help.guide.sort-places.tip.2': 'Sıralama yalnızca listeyi değiştirir. Günler kendi sıralarını korur.',
+  'help.guide.place-by-hand.title': 'Aramanın bilmediği bir yeri ekleyin',
+  'help.guide.place-by-hand.goal':
+    'Yer araması bir şey bulamadığında bir yeri telefonu, e-postası ve çalışma saatleriyle kendiniz girin.',
+  'help.guide.place-by-hand.step.1':
+    'Yer iletişim kutusunda adı aramaya yazın ve Enter’a basın. Hiçbir şey bulunamazsa iletişim kutusu bunu söyler ve Elle ekle’yi sunar.',
+  'help.guide.place-by-hand.step.2':
+    'Elle ekle’ye tıklayın. Aradığınız şey ad olur ve iletişim kutusu iletişim alanlarına kayar.',
+  'help.guide.place-by-hand.step.3': 'Telefon ve E-posta alanlarını bildiğiniz kadarıyla doldurun.',
+  'help.guide.place-by-hand.step.4':
+    'Çalışma saatleri ekle’ye tıklayın ve yerin her gün ne zaman açılıp kapandığını ayarlayın. Kopyala düğmesi her güne ilk günün saatlerini verir, bir günün anahtarı ise onu Kapalı olarak işaretler.',
+  'help.guide.place-by-hand.step.5': 'Ekle’ye tıklayın.',
+  'help.guide.place-by-hand.result':
+    'Yer listeye katılır. Ayrıntıları, tıpkı aramanın bulduğu bir yerde olduğu gibi, girdiğiniz telefonu, e-postayı ve çalışma saatlerini gösterir.',
+  'help.guide.place-by-hand.tip.1':
+    'Kendi saatleri olmayan bir yeri düzenlerken çalışma saatleri soldaki Yer ayrıntıları’ndan kendiliğinden alınır; saatleri zaten varsa, yanlarındaki bir düğme bulunan saatleri devralır.',
+  'help.guide.place-by-hand.tip.2':
+    'Girdiğiniz saatler bulunanlara üstün gelir, böylece mevsimlik saatleri olan bir kafe sizin bildiğinizi gösterir.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Günler',
@@ -1966,11 +2033,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Bir günün içinde: sırayla duraklar, her biri resim, ad, saat, resmin üzerinde bir kilit ve ona iliştirilmiş rezervasyonlarla; notlar; türüne göre renklendirilmiş, günün rezervasyonları ve ulaşımları; ve duraklar arasında her etabın yolculuk süresi. Her satırın, sağ tıklamanın açtığıyla aynı olan üç noktalı bir menüsü vardır.',
   'help.ctx.trip-days.bullet.4':
-    "Durakların altında rota çubuğu: Rota günü haritaya çizer, Optimize et durakları sıralar, Araba / Yürüyüş günün ulaşım türünü belirler, Google Haritalar'da aç ve CoMaps'te aç ise günü devreder.",
+    "Durakların altında rota çubuğu: Rota günü haritaya çizer, Optimize et durakları sıralar, Araba, Yürüyüş ya da Bisiklet günün ulaşım türünü belirler, Google Haritalar'da aç ve CoMaps'te aç ise günü devreder.",
   'help.ctx.trip-days.bullet.5':
     'Yerler bir güne, yerler sütunundan bir satır sürükleyerek, o satırdaki + Gün ile, günün + menüsündeki ya da boş bir gündeki Bu güne yer ekle ile ya da yerin ayrıntılarından gelir.',
   'help.ctx.trip-days.bullet.6':
-    'Alttaki Toplam Maliyet, fiyatı olan her durağı ve her rezervasyonu gezinin para biriminde toplar.',
+    'Alttaki Toplam Maliyet, Maliyetler’deki harcamalardan günün duraklarına ve rezervasyonlarına ait olanları, her birini bir kez, gezinin para biriminde toplar.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Bir günü okuyun',
   'help.guide.read-day-plan.goal': 'Bir şeyi değiştirmeden önce gün kartının her parçasının size ne söylediğini bilin.',
@@ -2602,7 +2669,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.goal':
     'Bir konaklamayı taşıyın, saatlerini düzeltin ya da onu plandan yeniden çıkarın.',
   'help.guide.edit-accommodation.step.1':
-    'Konaklamanın her gününde kart tesisi, giriş aralığını, çıkış saatini ve onay kodunu gösterir.',
+    'Kart tesisi ve onay kodunu gösterir; vardığınız gün giriş aralığıyla, ayrıldığınız gün ise çıkış saatiyle birlikte.',
   'help.guide.edit-accommodation.step.2':
     'Sağındaki kalem konaklamayı yeniden açar. Pencere artık Konaklamayı düzenle yazar.',
   'help.guide.edit-accommodation.step.3':
@@ -2633,6 +2700,12 @@ const help: TranslationStrings = {
     'Bir rezervasyon güne kendi tarihiyle iner. Tarihi Rezerv. sekmesinde değiştirin, kendiliğinden diğer güne taşınır.',
   'help.guide.day-bookings.tip.2':
     'Rezervasyonlar bloğunun olmaması, günün rezervasyonu olmadığı anlamına gelir: boş gösterilmek yerine gizlenir.',
+  'help.guide.map-lock.title': 'Haritayı kilitleyin',
+  'help.guide.map-lock.goal': 'Günler ve yerler arasında gezinirken haritayı olduğu yerde tutun.',
+  'help.guide.map-lock.step.1':
+    'Haritadaki kilide tıklayın. Kilit kapalıyken bir günü açmak ya da bir yer seçmek haritayı artık yakınlaştırmaz veya kaydırmaz.',
+  'help.guide.map-lock.result': 'Plan üzerinde çalışırken harita onu bıraktığınız yerde kalır.',
+  'help.guide.map-lock.tip.1': 'Haritanın seçimi yeniden takip etmesi için kilide tekrar tıklayın.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Harita',
@@ -2649,7 +2722,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'Üstteki simge sırası haritanın gördüğünüz parçasında arar: Restoranlar, Kafeler, Bar ve gece hayatı, Konaklama, Gezilecek yerler, Müzeler ve kültür, Doğa ve parklar ile Aktiviteler. Bu alanda ara, haritayı oynattıktan sonra aramayı yeniden çalıştırır.',
   'help.ctx.trip-map.bullet.6':
-    'Haritanın herhangi bir yerine sağ tıklayarak o noktada yer formunu açın, adres çoktan bulunmuş olur. Sol alttaki yuvarlak düğme çizilmiş haritayı hava görüntüleriyle değiştirir.',
+    'Haritanın herhangi bir yerine sağ tıklayarak o noktada yer formunu açın, adres çoktan bulunmuş olur. Sol alttaki yuvarlak düğme çizilmiş haritayı hava görüntüleriyle değiştirir, kilit ise siz günler ve yerler arasında gezinirken görünümü olduğu yerde tutar.',
   'help.ctx.trip-map.bullet.7':
     'Sağ alttaki Tüm geziyi göster her seyahat gününü aynı anda çizer ve her birinin neyi kapsadığını listeler; bir rezervasyonun satırındaki rota simgesi o rezervasyonu çizer, günlerin üstündeki araç çubuğundaki ise hepsini çizer. Ayrıntılarını açmak için çizilmiş bir rezervasyonun ucuna tıklayın.',
   'help.ctx.trip-map.bullet.8':
@@ -3467,6 +3540,8 @@ const help: TranslationStrings = {
     'Equally sente kadar kusursuzdur: artan sent harcamadan harcamaya dönerek geçer, böylece onu hep aynı kişi ödemez.',
   'help.guide.split-expense.tip.3':
     'Ticket kipi Toplam tutar alanını kendisi toplar ve alanı soluklaştırır: fişin satırları toplamı oluşturur.',
+  'help.guide.split-expense.tip.4':
+    'Özel bir bölüşüm yüzde olarak da girilebilir: Payları şu şekilde gir’i % olarak değiştirin; harcama kaydedilmeden önce payların toplamı %100 etmelidir.',
   // expense-currency
   'help.guide.expense-currency.title': 'Başka bir para biriminde harcama girin',
   'help.guide.expense-currency.goal': 'Fişte gerçekten yazan neyse onu girin, kuru TREK tutsun.',

@@ -60,7 +60,37 @@ const cardAction = (page: Page, title: string, name: string) => card(page, title
 /** The trip the create guide makes, eight months out, named after the month it lands in. */
 const NEW_TRIP = `Amalfi Coast in ${monthName(8)}`
 
+/** The trip search above the cards (#2190), by its accessible name. */
+const tripSearch = (page: Page) => page.getByRole('searchbox', { name: 'Search all trips by title, date or place' })
+const JAPAN = 'Autumn in Japan'
+
 const SCRIPTS: Record<string, GuideScript> = {
+  'search-trips': {
+    guide: guide('search-trips'),
+    start: openDashboard,
+    steps: [
+      {
+        target: p => tripSearch(p).locator('xpath=..'),
+        act: async p => {
+          await typeInto(p, tripSearch(p), 'Nishiki')
+          await expect(card(p, JAPAN)).toBeVisible({ timeout: 15_000 })
+          await expect(card(p, JAPAN).getByText('Nishiki Market')).toBeVisible({ timeout: 15_000 })
+          await settle(p)
+        },
+      },
+      {
+        target: p => card(p, JAPAN),
+        act: async p => {
+          await p.getByRole('button', { name: 'Clear search' }).click()
+          await expect(card(p, LISBON)).toBeVisible()
+          await settle(p)
+        },
+      },
+    ],
+    cleanup: async p => {
+      if (await tripSearch(p).count()) await tripSearch(p).fill('')
+    },
+  },
   'create-trip': {
     guide: guide('create-trip'),
     start: openDashboard,
@@ -274,8 +304,8 @@ const SCRIPTS: Record<string, GuideScript> = {
         },
       },
       {
-        // This dialog has no shared backdrop class: its card is the box that holds the buttons.
-        target: p => p.getByText(/Add to Google Calendar/i).locator('xpath=ancestor::div[contains(@style,"border-radius")][1]'),
+        // The subscription dialog sits in the shared dialog frame.
+        target: p => p.locator('.trek-modal-backdrop').last().locator('> [role="presentation"], > div').first(),
       },
     ],
     cleanup: async p => { await p.keyboard.press('Escape') },
@@ -311,7 +341,7 @@ const SCRIPTS: Record<string, GuideScript> = {
           await beat(p, 400)
         },
         // The Section card itself: the nearest rounded container around its heading.
-        target: p => p.getByText('Dashboard widgets', { exact: true }).first().locator('xpath=ancestor::div[contains(@class,"rounded-xl")][1]'),
+        target: p => p.getByText('Dashboard widgets', { exact: true }).first().locator('xpath=ancestor::section[1]'),
       },
       {
         target: p => p.getByRole('link', { name: 'My Trips' }),

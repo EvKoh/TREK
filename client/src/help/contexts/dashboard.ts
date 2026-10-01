@@ -136,6 +136,17 @@ export const dashboardGuides: HelpGuide[] = [
     docs: { slug: 'Dashboard-Widgets', anchor: 'timezone-clock' },
     related: ['widgets'],
   },
+  {
+    id: 'search-trips',
+    context: 'dashboard',
+    icon: 'search',
+    size: 'quick',
+    steps: 2,
+    tips: 2,
+    media: { steps: true, result: false },
+    docs: DOCS.dashboard,
+    related: ['filter-and-view', 'archive-trip'],
+  },
 ]
 
 export const dashboardContext: HelpContext = {

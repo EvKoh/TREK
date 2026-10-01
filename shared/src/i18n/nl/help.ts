@@ -57,7 +57,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Reisstatistieken: bezochte landen, reizen, dagen onderweg en gevlogen afstand, over al je reizen.',
   'help.ctx.dashboard.bullet.3':
-    'Reiskaarten, gefilterd op Gepland, Gearchiveerd en Voltooid, als raster of lijst. Beweeg over een kaart voor bewerken, dupliceren, archiveren en verwijderen.',
+    'Reiskaarten, gefilterd op Gepland, Gearchiveerd en Voltooid, als raster of lijst. Het zoekveld erboven doorzoekt alle reizen tegelijk, op titel, datum of een plek erin. Beweeg over een kaart voor bewerken, dupliceren, archiveren en verwijderen.',
   'help.ctx.dashboard.bullet.4':
     'Widgets rechts: valutaomrekenaar, wereldklokken, aankomende reserveringen en collecties. Elke widget kan uit.',
   'help.ctx.dashboard.bullet.5': "De kaart 'Nieuwe reis' en de knop rechtsonder starten allebei een nieuwe reis.",
@@ -182,6 +182,19 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': "Klik op + in de widget 'Tijdzones' en zoek een stad.",
   'help.guide.timezones-widget.step.2': 'Verwijder een klok met de × ernaast.',
   'help.guide.timezones-widget.result': 'Je klokken worden bij je account opgeslagen.',
+  'help.guide.search-trips.title': 'Je reizen doorzoeken',
+  'help.guide.search-trips.goal':
+    'Vind een reis op naam, op een datum of op een plek die je erin hebt gepland, gearchiveerde reizen inbegrepen.',
+  'help.guide.search-trips.step.1':
+    'Typ in Zoek trips of plekken boven de kaarten. De lijst wordt smaller terwijl je typt, over geplande, gearchiveerde en voltooide reizen tegelijk.',
+  'help.guide.search-trips.step.2':
+    'Een reis die via een van haar plekken is gevonden, noemt die plek onder haar titel. Klik op de x in het veld, of druk op Esc, om weer al je reizen te zien.',
+  'help.guide.search-trips.result':
+    'Alleen de reizen die overeenkomen blijven op het dashboard staan, en een leeg veld haalt alle reizen terug.',
+  'help.guide.search-trips.tip.1':
+    'Datums werken ook: typ een maand en een jaar, bijvoorbeeld mei 2027, of 2027-05, om de reizen te vinden die erin vallen.',
+  'help.guide.search-trips.tip.2':
+    'Zolang er gezocht wordt, stapt de schakelaar Gepland, Gearchiveerd en Voltooid opzij, zodat geen reis zich achter het verkeerde filter verstopt.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -730,9 +743,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Tijdlijn: één sectie per dag met een + om op die dag een vermelding toe te voegen; vermeldingskaarten met foto’s, stemming, weer en verhaal; suggesties uit de reizen in een lichtere stijl, met Deze suggestie verwerpen.',
   'help.ctx.journey-detail.bullet.4':
-    'Kaart: vermeldingen als spelden, in datumvolgorde verbonden door een stippellijn, de plekken van de reizen en alle GPX-tracks die in die reizen zijn geïmporteerd.',
+    'Kaart: items als pins, in datumvolgorde verbonden door een stippellijn, de plekken van de reizen, de GPX-tracks die in die reizen zijn geïmporteerd en de foto’s van de items met locatie.',
   'help.ctx.journey-detail.bullet.5':
-    'Reisverslaginstellingen: omslag, naam en ondertitel, tracks op de kaart, velden van het item, verworpen suggesties, gekoppelde reizen, bijdragers, openbaar delen, archiveren en verwijderen.',
+    'Reisverslaginstellingen: omslag, naam en ondertitel, status, tracks op de kaart, velden van items, verworpen suggesties, gekoppelde reizen, bijdragers, openbaar delen, archiveren en verwijderen.',
   'help.ctx.journey-detail.bullet.6':
     'Twee ronde knoppen zweven boven een lange tijdlijn: terug naar boven, en spring naar de laatste vermelding.',
   // add-entry
@@ -885,6 +898,17 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Verwijderen kan niet ongedaan worden gemaakt, en het raakt de reizen waaraan het reisverslag gekoppeld was niet.',
   'help.guide.archive-journey.tip.2': 'Omslag, naam en ondertitel staan in hetzelfde dialoogvenster, bovenaan.',
+  'help.guide.journey-status.title': 'De status van een dagboek instellen',
+  'help.guide.journey-status.goal':
+    'Markeer een dagboek zelf als Concept, Live of Voltooid, in plaats van de datums van de reizen te volgen.',
+  'help.guide.journey-status.step.1': 'Open Reisverslaginstellingen in de kop van het dagboek.',
+  'help.guide.journey-status.step.2': 'Kies onder Status Concept, Live of Voltooid. De keuze wordt meteen opgeslagen.',
+  'help.guide.journey-status.result':
+    'Het dagboek houdt de status die je hebt gekozen, en de kaart ervan in de lijst met dagboeken toont hem.',
+  'help.guide.journey-status.tip.1':
+    'Automatisch volgt weer de datums van de gekoppelde reizen. Zonder gekoppelde reis blijft een automatisch dagboek een concept.',
+  'help.guide.journey-status.tip.2':
+    'Een met de hand ingestelde status blijft staan tot je hem wijzigt, ook als de reisdatums verschuiven.',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1129,6 +1153,8 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.result': 'De reiskaart volgt dit op elke reis, tot je het weer terugzet.',
   'help.guide.travel-map-prefs.tip.1':
     'Dit is per account, niet per reis. Leden van een gedeelde reis zien elk hun eigen keuzes.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Plekken openen in kiest de kaartapp die de navigatieknop meteen opent; Elke keer vragen laat je telkens kiezen uit alle kaartapps.',
   // startup
   'help.guide.startup.title': 'Kiezen waarmee TREK opent',
   'help.guide.startup.goal': 'Land waar je het meest werkt, niet elke keer op het dashboard.',
@@ -1521,6 +1547,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Eén sjabloon per soort reis, strand, stad, wandelen, verslaat één reuzenlijst.',
   'help.guide.packing-templates.tip.2': 'Een sjabloon verwijderen raakt reizen die het al hebben toegepast niet.',
+  'help.guide.packing-templates.tip.3':
+    'Een sjabloon onthoudt van elk item het gewicht, de hoeveelheid en de tas, zodat een reis die het toepast de tassen op dezelfde manier gevuld krijgt.',
   // categories
   'help.guide.categories.title': 'De categorieset beheren',
   'help.guide.categories.goal': 'Bepaal welke categorieën plekken en collecties kunnen dragen, en hoe ze eruitzien.',
@@ -1586,6 +1614,8 @@ const help: TranslationStrings = {
     'De persoonlijke sleutel van een gebruiker onder Instellingen wint voor die gebruiker van de instantiesleutel.',
   'help.guide.instance-keys.tip.2':
     'Sleutels kunnen ook uit omgevingsvariabelen komen; die verschijnen hier als alleen-lezen.',
+  'help.guide.instance-keys.tip.3':
+    'Daglimiet voor Google-aanroepen begrenst wat TREK per dag aan de sleutel mag uitgeven; de badge naast de titel telt de aanroepen van vandaag. Is de limiet bereikt, dan lopen zoekopdrachten tot de volgende dag (UTC) via OpenStreetMap.',
   // places-transit
   'help.guide.places-transit.title': 'De zoek- en ov-providers kiezen',
   'help.guide.places-transit.goal': 'Bepaal wie plaatszoekopdrachten en ov-routes beantwoordt.',
@@ -1674,6 +1704,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.result': 'Beheergebeurtenissen gaan daarheen, naast de in-app-bel van elke beheerder.',
   'help.guide.admin-channels.tip.1':
     'Houd het beheer-topic gescheiden van je persoonlijke, zodat een storing niet verdrinkt in het reisgebabbel.',
+  'help.guide.admin-channels.tip.2':
+    'Standaarden voor gebruikers bepaalt hoe de meldingen van elke gebruiker beginnen, per gebeurtenis en kanaal: Aan, Uit of Geblokkeerd, wat de melding voor iedereen uitzet en als vergrendeld toont in hun instellingen.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'AI-toegang intrekken',
   'help.guide.mcp-tokens-admin.goal':
@@ -1853,6 +1885,14 @@ const help: TranslationStrings = {
     'Ongedaan maken dekt het plan: plekken toewijzen, verwijderen, herschikken en verplaatsen, een route optimaliseren, plekken wissen, categoriewijzigingen en imports.',
   'help.guide.undo-change.tip.2':
     'Het gaat één stap diep: alleen de laatste wijziging kan worden teruggenomen, en een nieuwe wijziging vervangt haar.',
+  'help.guide.clear-day.title': 'Een dag leegmaken',
+  'help.guide.clear-day.goal':
+    'Haal in één keer alle plekken van een dag, bijvoorbeeld om hem opnieuw vanaf nul te plannen.',
+  'help.guide.clear-day.step.1': 'Klik in het plan met rechts op de kop van de dag.',
+  'help.guide.clear-day.step.2': 'Kies Dag leegmaken en bevestig.',
+  'help.guide.clear-day.result':
+    'De dag is leeg en zijn plekken staan weer als ongepland in de lijst. De ongedaan-maken-pijl boven de dagen zet ze terug.',
+  'help.guide.clear-day.tip.1': 'Alleen de plekken gaan eraf. De dag houdt zijn notities en boekingen.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Plekken',
@@ -1863,7 +1903,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'De importknop ernaast biedt Bestand importeren, voor .gpx-, .kml- en .kmz-bestanden, en Google Lijst (Lijst importeren als ook Naver-lijsten aanstaan) voor een lijst die vanuit Google Maps of Naver Maps is gedeeld. Een bestand kun je ook gewoon op de kolom laten vallen.',
   'help.ctx.trip-places.bullet.3':
-    'Daaronder het zoekveld, met ernaast het vinkje dat een selectie start, en een rij filters: Tonen wisselt tussen Alle, Ongepland, Gepland en, zodra een track is geïmporteerd, Tracks, elk met zijn aantal; de labelknop filtert op categorie en de ster op een minimale beoordeling.',
+    'Daaronder het zoekveld, met ernaast het vinkje dat een selectie start, en een rij filters: Tonen wisselt tussen Alle, Ongepland, Gepland en, zodra een track is geïmporteerd, Tracks, elk met zijn aantal; de labelknop filtert op categorie, de ster op een minimale beoordeling, de wereldbol op land of regio, en Sorteren op bepaalt de volgorde van de lijst.',
   'help.ctx.trip-places.bullet.4':
     'Een rij toont afbeelding, naam en beschrijving of adres. Klik erop voor de plaatsdetails, sleep hem op een dag, of klik met rechts (of op zijn drie puntjes) voor Bewerken, + Dag, Website openen, Google Maps, In collectie opslaan en Verwijderen.',
   'help.ctx.trip-places.bullet.5':
@@ -1998,6 +2038,34 @@ const help: TranslationStrings = {
     'De lijst moet openbaar gedeeld zijn; de link van een privélijst importeert niets.',
   'help.guide.import-places-list.tip.2':
     'Plaatsen verrijken via Google verschijnt in het dialoogvenster als jouw TREK een Google-sleutel heeft: het zoekt elke geïmporteerde plek op en vult foto’s, adres en details aan.',
+  'help.guide.sort-places.title': 'De plekkenlijst sorteren',
+  'help.guide.sort-places.goal':
+    'Zet de lijst in de volgorde die nu helpt: op naam, op beoordeling of op wat het laatst is toegevoegd of gewijzigd.',
+  'help.guide.sort-places.step.1':
+    'Open Sorteren op in de kop van de kolom. Het label zegt hoe de lijst nu gesorteerd is.',
+  'help.guide.sort-places.step.2': 'Kies een volgorde, bijvoorbeeld Naam of Hoogst beoordeeld. De lijst volgt meteen.',
+  'help.guide.sort-places.result':
+    'De lijst toont de plekken in de volgorde die je hebt gekozen, tot je een andere kiest.',
+  'help.guide.sort-places.tip.1':
+    'Elke volgorde behalve Laatst toegevoegd markeert de knop, zodat je in één oogopslag ziet dat de lijst anders gesorteerd is.',
+  'help.guide.sort-places.tip.2': 'Sorteren verandert alleen de lijst. De dagen houden hun eigen volgorde.',
+  'help.guide.place-by-hand.title': 'Een plek toevoegen die de zoekfunctie niet kent',
+  'help.guide.place-by-hand.goal':
+    'Voer zelf een plek in, met telefoon, e-mail en openingstijden, als het zoeken naar plekken niets vindt.',
+  'help.guide.place-by-hand.step.1':
+    'Typ in het plekdialoogvenster de naam in het zoekveld en druk op Enter. Wordt er niets gevonden, dan zegt het venster dat en biedt het Zelf toevoegen aan.',
+  'help.guide.place-by-hand.step.2':
+    'Klik op Zelf toevoegen. Waar je op zocht wordt de naam, en het venster scrolt naar de contactvelden.',
+  'help.guide.place-by-hand.step.3': 'Vul Telefoon en E-mail in voor zover je ze kent.',
+  'help.guide.place-by-hand.step.4':
+    'Klik op Openingstijden toevoegen en stel per dag in wanneer de plek opent en sluit. De kopieerknop geeft elke dag de tijden van de eerste, en de schakelaar van een dag markeert hem als Gesloten.',
+  'help.guide.place-by-hand.step.5': 'Klik op Toevoegen.',
+  'help.guide.place-by-hand.result':
+    'De plek komt in de lijst. De details tonen de telefoon, de e-mail en de openingstijden die je hebt ingevoerd, net als bij een plek die de zoekfunctie vond.',
+  'help.guide.place-by-hand.tip.1':
+    'Bewerk je een plek zonder eigen tijden, dan neemt die vanzelf de openingstijden over uit Plaatsdetails links; heeft hij al tijden, dan neemt een knop ernaast de opgezochte over.',
+  'help.guide.place-by-hand.tip.2':
+    'Ingevoerde tijden winnen van de opgezochte, zodat een café met seizoenstijden laat zien wat jij weet.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Dagen',
@@ -2010,11 +2078,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Binnen een dag: de stops op volgorde, elk met afbeelding, naam, tijd, een slotje op de afbeelding en de boekingen die eraan vastzitten; notities; de boekingen en het vervoer van de dag, getint naar hun soort; en tussen de stops de reistijd van elk traject. Elke rij heeft een menu met drie puntjes, hetzelfde dat een klik met rechts opent.',
   'help.ctx.trip-days.bullet.4':
-    'Onder de stops de routebalk: Route tekent de dag op de kaart, Optimaliseren sorteert de stops, Auto / Lopen zet de vervoerswijze van de dag, Openen in Google Maps en Openen in CoMaps geven de dag door.',
+    'Onder de stops de routebalk: Route tekent de dag op de kaart, Optimaliseren sorteert de stops, Auto, Lopen of Fietsen zet de vervoerswijze van de dag, Openen in Google Maps en Openen in CoMaps geven de dag door.',
   'help.ctx.trip-days.bullet.5':
     'Plekken komen op een dag door een rij uit de plekkenkolom te slepen, met + Dag op die rij, met Plaats toevoegen aan deze dag via de + van de dag of op een lege dag, of vanuit de plaatsdetails.',
   'help.ctx.trip-days.bullet.6':
-    'Totale kosten onderaan telt elke stop en elke boeking met een prijs bij elkaar op, in de valuta van de reis.',
+    'Totale kosten onderaan telt de uitgaven uit Onkosten op die bij de stops en boekingen van de dag horen, elk één keer, in de valuta van de reis.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Een dag lezen',
   'help.guide.read-day-plan.goal': 'Weten wat elk onderdeel van een dagkaart je vertelt voordat je iets verandert.',
@@ -2665,7 +2733,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.goal':
     'Een verblijf verplaatsen, zijn tijden verbeteren, of het weer uit het plan halen.',
   'help.guide.edit-accommodation.step.1':
-    'Op elke dag van het verblijf toont de kaart van het verblijf het pand, het incheckvenster, de uitchecktijd en het bevestigingsnummer.',
+    'De kaart toont het pand en het bevestigingsnummer, op de dag van aankomst met het incheckvenster en op de dag van vertrek met de uitchecktijd.',
   'help.guide.edit-accommodation.step.2':
     'Het potlood aan de rechterkant ervan opent het verblijf opnieuw. Het venster heet nu Accommodatie bewerken.',
   'help.guide.edit-accommodation.step.3':
@@ -2696,6 +2764,12 @@ const help: TranslationStrings = {
     'Een boeking belandt op een dag door zijn eigen datum. Wijzig de datum op het tabblad Boekingen en hij verhuist vanzelf naar de andere dag.',
   'help.guide.day-bookings.tip.2':
     'Geen blok Reserveringen betekent dat de dag geen boekingen heeft: het wordt verborgen in plaats van leeg getoond.',
+  'help.guide.map-lock.title': 'De kaart vergrendelen',
+  'help.guide.map-lock.goal': 'Houd de kaart waar hij is terwijl je door dagen en plekken klikt.',
+  'help.guide.map-lock.step.1':
+    'Klik op het slot op de kaart. Zolang het dicht is, zoomt of verschuift de kaart niet meer als je een dag opent of een plek kiest.',
+  'help.guide.map-lock.result': 'De kaart blijft waar je hem liet terwijl je door het plan werkt.',
+  'help.guide.map-lock.tip.1': 'Klik nog eens op het slot om de kaart de selectie weer te laten volgen.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Kaart',
@@ -2712,7 +2786,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'De rij iconen bovenaan doorzoekt het stuk kaart dat je ziet: Restaurants, Cafés, Bars & uitgaan, Accommodatie, Bezienswaardigheden, Musea & cultuur, Natuur & parken en Activiteiten. Dit gebied doorzoeken draait de zoekopdracht opnieuw nadat je de kaart hebt verschoven.',
   'help.ctx.trip-map.bullet.6':
-    'Met een rechterklik ergens op de kaart gaat het plekformulier open op dat punt, met het adres al opgezocht. De ronde knop linksonder ruilt de getekende kaart in voor luchtbeelden.',
+    'Met een rechterklik ergens op de kaart gaat het plekformulier open op dat punt, met het adres al opgezocht. De ronde knop linksonder ruilt de getekende kaart in voor luchtbeelden, en het slot houdt de weergave vast terwijl je door dagen en plekken klikt.',
   'help.ctx.trip-map.bullet.7':
     'Hele reis tonen rechtsonder tekent elke reisdag in één keer en zet op een rij wat elke dag beslaat; het route-icoon op de rij van een boeking tekent die boeking, en dat in de werkbalk boven de dagen tekent ze allemaal. Klik op het uiteinde van een getekende boeking om haar details te openen.',
   'help.ctx.trip-map.bullet.8':
@@ -3535,6 +3609,8 @@ const help: TranslationStrings = {
     'Equally klopt tot op de cent: de overgebleven cent rouleert van uitgave naar uitgave, zodat niet altijd dezelfde hem betaalt.',
   'help.guide.split-expense.tip.3':
     'De modus Ticket telt Totaalbedrag zelf op en maakt het veld grijs: de regels van het bonnetje zijn het totaal.',
+  'help.guide.split-expense.tip.4':
+    'Een eigen verdeling kan ook in procenten: zet Aandelen invoeren als op %, en de aandelen moeten samen 100 % zijn voordat de uitgave wordt opgeslagen.',
   // expense-currency
   'help.guide.expense-currency.title': 'Een uitgave in een andere valuta invoeren',
   'help.guide.expense-currency.goal': 'Voer in wat er echt op het bonnetje staat en laat TREK de koers vasthouden.',

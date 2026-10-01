@@ -56,7 +56,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Thống kê: quốc gia đã đến, số chuyến đi, số ngày trên đường và quãng đường bay, tính trên tất cả chuyến đi của bạn.',
   'help.ctx.dashboard.bullet.3':
-    'Thẻ chuyến đi, lọc theo Đã lên kế hoạch, Đã lưu trữ và Hoàn thành, dạng lưới hoặc danh sách. Di chuột lên thẻ để chỉnh sửa, nhân bản, lưu trữ và xóa.',
+    'Thẻ chuyến đi, lọc theo Đã lên kế hoạch, Đã lưu trữ và Hoàn thành, dạng lưới hoặc danh sách. Ô tìm kiếm phía trên tìm trong mọi chuyến đi cùng lúc, theo tiêu đề, ngày hoặc một địa điểm trong đó. Di chuột lên thẻ để chỉnh sửa, nhân bản, lưu trữ và xóa.',
   'help.ctx.dashboard.bullet.4':
     'Tiện ích bên phải: đổi tiền tệ, đồng hồ thế giới, đặt chỗ sắp tới và bộ sưu tập. Mỗi tiện ích đều có thể tắt.',
   'help.ctx.dashboard.bullet.5': 'Thẻ “Chuyến đi mới” và nút ở góc dưới bên phải đều tạo một chuyến đi mới.',
@@ -174,6 +174,19 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': 'Nhấp + trong tiện ích “Múi giờ” và tìm một thành phố.',
   'help.guide.timezones-widget.step.2': 'Xóa đồng hồ bằng dấu × bên cạnh.',
   'help.guide.timezones-widget.result': 'Đồng hồ của bạn được lưu cùng tài khoản.',
+  'help.guide.search-trips.title': 'Tìm chuyến đi của bạn',
+  'help.guide.search-trips.goal':
+    'Tìm một chuyến đi theo tên, ngày hoặc một địa điểm bạn đã lên kế hoạch trong đó, kể cả chuyến đi đã lưu trữ.',
+  'help.guide.search-trips.step.1':
+    'Gõ vào “Tìm chuyến đi hoặc địa điểm” phía trên các thẻ. Danh sách thu hẹp ngay khi bạn gõ, trên cả chuyến đi đã lên kế hoạch, đã lưu trữ và đã hoàn thành cùng lúc.',
+  'help.guide.search-trips.step.2':
+    'Một chuyến đi được tìm thấy qua một địa điểm của nó sẽ ghi tên địa điểm đó dưới tiêu đề. Nhấp dấu x trong ô, hoặc nhấn Escape, để thấy lại mọi chuyến đi.',
+  'help.guide.search-trips.result':
+    'Chỉ những chuyến đi khớp mới ở lại trên bảng điều khiển, và ô trống sẽ đưa mọi chuyến đi trở lại.',
+  'help.guide.search-trips.tip.1':
+    'Ngày cũng dùng được: gõ tháng và năm, ví dụ tháng 5 năm 2027, hoặc 2027-05, để tìm các chuyến đi rơi vào tháng đó.',
+  'help.guide.search-trips.tip.2':
+    'Khi đang tìm kiếm, nút chuyển “Đã lên kế hoạch”, “Đã lưu trữ” và “Hoàn thành” tạm lùi lại, để không chuyến đi nào bị khuất sau bộ lọc sai.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -712,9 +725,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Dòng thời gian: mỗi ngày một phần với dấu + để thêm mục vào ngày đó; các thẻ mục với ảnh, tâm trạng, thời tiết và câu chuyện; các gợi ý từ chuyến đi ở kiểu nhạt hơn với “Bỏ qua gợi ý này”.',
   'help.ctx.journey-detail.bullet.4':
-    'Bản đồ: các mục là ghim, nối theo thứ tự ngày bằng một đường nét đứt, các địa điểm của chuyến đi, và mọi tuyến GPX đã nhập vào những chuyến đi đó.',
+    'Bản đồ: các mục là ghim, nối theo thứ tự ngày bằng một đường nét đứt, các địa điểm của chuyến đi, mọi tuyến GPX đã nhập vào những chuyến đi đó, và ảnh có gắn vị trí của các mục.',
   'help.ctx.journey-detail.bullet.5':
-    '“Cài đặt hành trình”: ảnh bìa, tên và phụ đề, tuyến trên bản đồ, các trường của mục, gợi ý đã bỏ qua, chuyến đi đã liên kết, cộng tác viên, chia sẻ công khai, lưu trữ và xóa.',
+    '“Cài đặt hành trình”: ảnh bìa, tên và phụ đề, trạng thái, tuyến trên bản đồ, các trường của mục, gợi ý đã bỏ qua, chuyến đi đã liên kết, cộng tác viên, chia sẻ công khai, lưu trữ và xóa.',
   'help.ctx.journey-detail.bullet.6':
     'Hai nút tròn nổi trên một dòng thời gian dài: lên đầu trang, và nhảy đến mục cuối cùng.',
   // add-entry
@@ -858,6 +871,18 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Xóa không thể hoàn tác, và không đụng đến các chuyến đi mà hành trình đã liên kết.',
   'help.guide.archive-journey.tip.2': 'Ảnh bìa, tên và phụ đề nằm trong cùng hộp thoại, ở trên cùng.',
+  'help.guide.journey-status.title': 'Đặt trạng thái của hành trình',
+  'help.guide.journey-status.goal':
+    'Tự đánh dấu một hành trình là “Bản nháp”, “Sống” hoặc “Hoàn thành” thay vì theo ngày của các chuyến đi trong đó.',
+  'help.guide.journey-status.step.1': 'Mở “Cài đặt hành trình” ở phần đầu của hành trình.',
+  'help.guide.journey-status.step.2':
+    'Dưới “Trạng thái”, chọn “Bản nháp”, “Sống” hoặc “Hoàn thành”. Lựa chọn được lưu ngay.',
+  'help.guide.journey-status.result':
+    'Hành trình giữ trạng thái bạn đã chọn, và thẻ của nó trong danh sách hành trình hiển thị trạng thái đó.',
+  'help.guide.journey-status.tip.1':
+    '“Tự động” lại theo ngày của các chuyến đi đã liên kết. Không có chuyến đi liên kết, hành trình tự động vẫn là bản nháp.',
+  'help.guide.journey-status.tip.2':
+    'Trạng thái đặt thủ công được giữ cho đến khi bạn đổi nó, kể cả khi ngày của chuyến đi thay đổi.',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1099,6 +1124,8 @@ const help: TranslationStrings = {
     'Bản đồ chuyến đi tuân theo các lựa chọn này trên mọi chuyến đi, cho đến khi bạn gạt lại.',
   'help.guide.travel-map-prefs.tip.1':
     'Đây là cài đặt theo tài khoản, không theo chuyến đi. Mỗi thành viên của chuyến đi chung thấy lựa chọn riêng của mình.',
+  'help.guide.travel-map-prefs.tip.2':
+    '“Mở địa điểm bằng” chọn ứng dụng bản đồ mà nút dẫn đường mở ngay lập tức; “Hỏi mỗi lần” giữ lại lựa chọn giữa mọi ứng dụng bản đồ.',
   // startup
   'help.guide.startup.title': 'Chọn màn hình TREK mở lúc đầu',
   'help.guide.startup.goal': 'Đáp xuống nơi bạn làm việc nhiều nhất, thay vì bảng điều khiển mỗi lần.',
@@ -1478,6 +1505,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Mỗi loại chuyến đi một mẫu, biển, thành phố, leo núi, tốt hơn một danh sách khổng lồ.',
   'help.guide.packing-templates.tip.2': 'Xóa một mẫu không ảnh hưởng tới các chuyến đi đã áp dụng nó.',
+  'help.guide.packing-templates.tip.3':
+    'Mẫu ghi nhớ cân nặng, số lượng và túi của từng món đồ, nên chuyến đi áp dụng nó sẽ có các túi được xếp giống hệt.',
   // categories
   'help.guide.categories.title': 'Quản lý bộ danh mục',
   'help.guide.categories.goal':
@@ -1541,6 +1570,8 @@ const help: TranslationStrings = {
   'help.guide.instance-keys.tip.1':
     'Khóa cá nhân của một người dùng trong “Cài đặt” thắng khóa của phiên bản đối với người dùng đó.',
   'help.guide.instance-keys.tip.2': 'Khóa cũng có thể đến từ biến môi trường; những khóa đó hiển thị chỉ đọc ở đây.',
+  'help.guide.instance-keys.tip.3':
+    '“Giới hạn lượt gọi Google mỗi ngày” giới hạn mức TREK được dùng khóa mỗi ngày; huy hiệu cạnh tiêu đề đếm số lượt gọi hôm nay. Khi đạt giới hạn, tìm kiếm dùng OpenStreetMap cho đến ngày hôm sau (UTC).',
   // places-transit
   'help.guide.places-transit.title': 'Chọn nhà cung cấp tìm kiếm và giao thông công cộng',
   'help.guide.places-transit.goal': 'Quyết định ai trả lời tìm kiếm địa điểm và tuyến giao thông công cộng.',
@@ -1622,6 +1653,8 @@ const help: TranslationStrings = {
     'Sự kiện quản trị đi tới đó bên cạnh chuông trong ứng dụng của mọi quản trị viên.',
   'help.guide.admin-channels.tip.1':
     'Giữ chủ đề quản trị tách khỏi chủ đề cá nhân của bạn, để một sự cố không chìm trong tin về chuyến đi.',
+  'help.guide.admin-channels.tip.2':
+    '“Mặc định cho người dùng” đặt trạng thái ban đầu cho thông báo của mọi người dùng, theo từng sự kiện và kênh: “Bật”, “Tắt” hoặc “Chặn”, tức là tắt cho tất cả mọi người và hiện là bị khóa trong cài đặt của họ.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Thu hồi quyền truy cập của AI',
   'help.guide.mcp-tokens-admin.goal':
@@ -1795,6 +1828,13 @@ const help: TranslationStrings = {
     'Hoàn tác bao gồm kế hoạch: gán, gỡ, sắp xếp lại và di chuyển địa điểm, tối ưu hóa tuyến đường, xóa địa điểm, đổi danh mục và nhập dữ liệu.',
   'help.guide.undo-change.tip.2':
     'Chỉ sâu một bước: chỉ thay đổi gần nhất mới lấy lại được, và một thay đổi mới sẽ thay thế nó.',
+  'help.guide.clear-day.title': 'Xóa trống một ngày',
+  'help.guide.clear-day.goal': 'Gỡ mọi địa điểm khỏi một ngày cùng lúc, ví dụ để lên kế hoạch lại từ đầu.',
+  'help.guide.clear-day.step.1': 'Nhấp chuột phải vào phần đầu của ngày trong kế hoạch.',
+  'help.guide.clear-day.step.2': 'Chọn “Xóa trống ngày” và xác nhận.',
+  'help.guide.clear-day.result':
+    'Ngày trở nên trống và các địa điểm của nó trở lại danh sách ở dạng chưa có kế hoạch. Mũi tên hoàn tác phía trên các ngày sẽ đưa chúng trở lại.',
+  'help.guide.clear-day.tip.1': 'Chỉ các địa điểm bị gỡ đi. Ngày vẫn giữ ghi chú và đặt chỗ của nó.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Địa điểm',
@@ -1805,7 +1845,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'Nút nhập bên cạnh nó có “Nhập tập tin” cho các tập tin .gpx, .kml và .kmz, và “Danh sách Google” (“Nhập danh sách” khi danh sách Naver cũng được bật) cho một danh sách được chia sẻ từ Google Maps hoặc Naver Maps. Bạn cũng có thể chỉ cần thả tập tin lên cột này.',
   'help.ctx.trip-places.bullet.3':
-    'Bên dưới là ô tìm kiếm, cạnh đó là dấu tích để bắt đầu một lượt chọn, và một hàng bộ lọc: “Hiển thị” chuyển giữa “Tất cả”, “Không có kế hoạch”, “Có kế hoạch” và, khi đã nhập một đường đi, “Đường đi”, mỗi mục kèm số lượng; nút nhãn lọc theo danh mục và ngôi sao lọc theo mức đánh giá tối thiểu.',
+    'Bên dưới là ô tìm kiếm, cạnh đó là dấu tích để bắt đầu một lượt chọn, và một hàng bộ lọc: “Hiển thị” chuyển giữa “Tất cả”, “Không có kế hoạch”, “Có kế hoạch” và, khi đã nhập một đường đi, “Đường đi”, mỗi mục kèm số lượng; nút nhãn lọc theo danh mục, ngôi sao lọc theo mức đánh giá tối thiểu, quả địa cầu lọc theo quốc gia hoặc vùng, và “Sắp xếp theo” đặt thứ tự của danh sách.',
   'help.ctx.trip-places.bullet.4':
     'Một hàng hiển thị hình ảnh, tên và mô tả hoặc địa chỉ. Nhấp vào đó để xem chi tiết địa điểm, kéo nó lên một ngày, hoặc nhấp chuột phải (hay nhấp ba chấm của nó) để có “Chỉnh sửa”, “+ Ngày”, “Mở trang web”, “Google Maps”, “Lưu vào Bộ sưu tập” và “Xóa bỏ”.',
   'help.ctx.trip-places.bullet.5':
@@ -1938,6 +1978,35 @@ const help: TranslationStrings = {
     'Danh sách phải được chia sẻ công khai; liên kết của một danh sách riêng tư không nhập được gì.',
   'help.guide.import-places-list.tip.2':
     '“Làm phong phú các địa điểm thông qua Google” xuất hiện trong hộp thoại khi TREK của bạn có khóa Google: nó tra cứu từng địa điểm đã nhập và điền ảnh, địa chỉ và chi tiết.',
+  'help.guide.sort-places.title': 'Sắp xếp danh sách địa điểm',
+  'help.guide.sort-places.goal':
+    'Đặt danh sách theo thứ tự hữu ích lúc này: theo tên, theo đánh giá, hoặc theo những gì được thêm hay thay đổi gần nhất.',
+  'help.guide.sort-places.step.1':
+    'Mở “Sắp xếp theo” ở đầu cột. Nhãn của nó cho biết danh sách đang được sắp xếp thế nào.',
+  'help.guide.sort-places.step.2':
+    'Chọn một thứ tự, ví dụ “Tên” hoặc “Đánh giá cao nhất”. Danh sách thay đổi theo ngay.',
+  'help.guide.sort-places.result':
+    'Danh sách hiển thị địa điểm theo thứ tự bạn đã chọn, cho đến khi bạn chọn thứ tự khác.',
+  'help.guide.sort-places.tip.1':
+    'Mọi thứ tự khác “Mới thêm gần đây” đều đánh dấu nút, nên bạn nhận ra ngay danh sách đang được sắp xếp khác.',
+  'help.guide.sort-places.tip.2': 'Sắp xếp chỉ thay đổi danh sách. Các ngày giữ thứ tự riêng của chúng.',
+  'help.guide.place-by-hand.title': 'Thêm một địa điểm mà tìm kiếm không biết',
+  'help.guide.place-by-hand.goal':
+    'Tự nhập một địa điểm, kèm điện thoại, email và giờ mở cửa, khi tìm kiếm địa điểm không tìm thấy gì.',
+  'help.guide.place-by-hand.step.1':
+    'Trong hộp thoại địa điểm, gõ tên vào ô tìm kiếm và nhấn Enter. Khi không tìm thấy gì, hộp thoại sẽ báo như vậy và đề xuất “Thêm thủ công”.',
+  'help.guide.place-by-hand.step.2':
+    'Nhấp “Thêm thủ công”. Nội dung bạn đã tìm trở thành tên, và hộp thoại cuộn tới các trường liên hệ.',
+  'help.guide.place-by-hand.step.3': 'Điền “Điện thoại” và “Email” trong phạm vi bạn biết.',
+  'help.guide.place-by-hand.step.4':
+    'Nhấp “Thêm giờ mở cửa” và đặt giờ mở và đóng cửa cho từng ngày. Nút sao chép áp giờ của ngày đầu tiên cho mọi ngày, và công tắc của mỗi ngày đánh dấu ngày đó là “Đóng cửa”.',
+  'help.guide.place-by-hand.step.5': 'Nhấp “Thêm”.',
+  'help.guide.place-by-hand.result':
+    'Địa điểm được thêm vào danh sách. Chi tiết của nó hiển thị điện thoại, email và giờ mở cửa bạn đã nhập, giống như một địa điểm do tìm kiếm tìm thấy.',
+  'help.guide.place-by-hand.tip.1':
+    'Khi chỉnh sửa một địa điểm chưa có giờ riêng, giờ mở cửa từ “Chi tiết địa điểm” bên trái được tự động lấy sang; nếu nó đã có giờ, một nút bên cạnh sẽ lấy giờ tra được.',
+  'help.guide.place-by-hand.tip.2':
+    'Giờ bạn nhập được ưu tiên hơn giờ tra được, nên một quán cà phê có giờ theo mùa sẽ hiển thị điều bạn biết.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Ngày',
@@ -1950,11 +2019,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Bên trong một ngày: các điểm dừng theo thứ tự, mỗi điểm có hình ảnh, tên, thời gian, một ổ khóa trên hình và các đặt chỗ được ghim vào nó; các ghi chú; các đặt chỗ và phương tiện di chuyển của ngày, được tô màu theo loại; và giữa các điểm dừng là thời gian đi của từng chặng. Mỗi hàng có một menu ba chấm, giống với menu mở ra khi nhấp chuột phải.',
   'help.ctx.trip-days.bullet.4':
-    'Dưới các điểm dừng là thanh lộ trình: “Chỉ đường” vẽ ngày đó lên bản đồ, “Tối ưu hóa” sắp xếp các điểm dừng, “Lái xe” / “Đi bộ” đặt phương thức di chuyển của ngày, “Mở trong Google Maps” và “Mở trong CoMaps” giao ngày đó sang ứng dụng khác.',
+    'Dưới các điểm dừng là thanh lộ trình: “Chỉ đường” vẽ ngày đó lên bản đồ, “Tối ưu hóa” sắp xếp các điểm dừng, “Lái xe”, “Đi bộ” hoặc “Đạp xe” đặt phương thức di chuyển của ngày, “Mở trong Google Maps” và “Mở trong CoMaps” giao ngày đó sang ứng dụng khác.',
   'help.ctx.trip-days.bullet.5':
     'Địa điểm vào một ngày bằng cách kéo một hàng từ cột địa điểm, bằng “+ Ngày” trên hàng đó, bằng “Thêm địa điểm vào ngày này” từ dấu + của ngày hoặc trên một ngày trống, hoặc từ chi tiết của địa điểm.',
   'help.ctx.trip-days.bullet.6':
-    '“Tổng chi phí” ở dưới cùng cộng mọi điểm dừng và đặt chỗ có giá, theo tiền tệ của chuyến đi.',
+    '“Tổng chi phí” ở dưới cùng cộng các khoản chi trong “Chi phí” thuộc về các điểm dừng và đặt chỗ của ngày, mỗi khoản một lần, theo tiền tệ của chuyến đi.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Đọc một ngày',
   'help.guide.read-day-plan.goal': 'Biết từng phần của thẻ ngày nói gì trước khi bạn thay đổi bất cứ thứ gì.',
@@ -2590,7 +2659,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': 'Thay đổi hoặc hủy một đêm đã đặt',
   'help.guide.edit-accommodation.goal': 'Dời một kỳ nghỉ, sửa giờ giấc của nó, hoặc lấy nó ra khỏi kế hoạch.',
   'help.guide.edit-accommodation.step.1':
-    'Trên mỗi ngày của kỳ nghỉ, thẻ hiển thị chỗ nghỉ, khung giờ nhận phòng, giờ trả phòng và số xác nhận.',
+    'Thẻ hiển thị chỗ nghỉ và số xác nhận, vào ngày bạn đến kèm khung giờ nhận phòng và vào ngày bạn đi kèm giờ trả phòng.',
   'help.guide.edit-accommodation.step.2':
     'Cây bút chì ở bên phải nó mở lại kỳ nghỉ. Cửa sổ bật lên giờ ghi “Chỉnh sửa chỗ ở”.',
   'help.guide.edit-accommodation.step.3':
@@ -2621,6 +2690,12 @@ const help: TranslationStrings = {
     'Một đặt chỗ rơi vào một ngày theo ngày tháng của chính nó. Đổi ngày trên tab “Đặt” và nó tự chuyển sang ngày kia.',
   'help.guide.day-bookings.tip.2':
     'Không có khối “Đặt chỗ” nghĩa là ngày đó không có đặt chỗ nào: nó bị ẩn đi thay vì hiện ra trống.',
+  'help.guide.map-lock.title': 'Khóa bản đồ',
+  'help.guide.map-lock.goal': 'Giữ bản đồ đứng yên trong khi bạn nhấp qua các ngày và địa điểm.',
+  'help.guide.map-lock.step.1':
+    'Nhấp vào ổ khóa trên bản đồ. Khi khóa đóng, việc mở một ngày hay chọn một địa điểm không còn thu phóng hay di chuyển bản đồ.',
+  'help.guide.map-lock.result': 'Bản đồ giữ nguyên chỗ bạn để lại trong khi bạn làm việc với kế hoạch.',
+  'help.guide.map-lock.tip.1': 'Nhấp lại vào ổ khóa để bản đồ đi theo mục đang chọn.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Bản đồ',
@@ -2637,7 +2712,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'Hàng biểu tượng ở trên cùng tìm trong phần bản đồ bạn đang thấy: “Nhà hàng”, “Quán cà phê”, “Quán bar & cuộc sống về đêm”, “Chỗ ở”, “Điểm tham quan”, “Bảo tàng & văn hóa”, “Thiên nhiên & công viên” và “Các hoạt động”. “Tìm kiếm khu vực này” chạy lại sau khi bạn di chuyển bản đồ.',
   'help.ctx.trip-map.bullet.6':
-    'Nhấp chuột phải ở bất cứ đâu trên bản đồ để mở biểu mẫu địa điểm tại điểm đó, với địa chỉ đã được tra sẵn. Nút tròn ở góc dưới bên trái đổi bản đồ vẽ lấy ảnh chụp từ trên không.',
+    'Nhấp chuột phải ở bất cứ đâu trên bản đồ để mở biểu mẫu địa điểm tại điểm đó, với địa chỉ đã được tra sẵn. Nút tròn ở góc dưới bên trái đổi bản đồ vẽ lấy ảnh chụp từ trên không, còn ổ khóa giữ nguyên góc nhìn trong khi bạn nhấp qua các ngày và địa điểm.',
   'help.ctx.trip-map.bullet.7':
     '“Hiện toàn bộ chuyến đi” ở góc dưới bên phải vẽ mọi ngày di chuyển cùng lúc và liệt kê mỗi ngày đi qua những gì; biểu tượng tuyến trên hàng của một đặt chỗ vẽ đặt chỗ đó, còn biểu tượng trên thanh công cụ phía trên các ngày vẽ tất cả. Nhấp vào một đầu của đặt chỗ đã vẽ để mở chi tiết của nó.',
   'help.ctx.trip-map.bullet.8':
@@ -3452,6 +3527,8 @@ const help: TranslationStrings = {
     '“Chia đều” chính xác đến từng xu: đồng xu lẻ luân phiên từ khoản chi này sang khoản chi khác, nên không ai là người luôn phải trả nó.',
   'help.guide.split-expense.tip.3':
     'Chế độ “Hóa đơn” tự cộng “Tổng số tiền” và làm mờ ô đó: các dòng của biên lai chính là tổng.',
+  'help.guide.split-expense.tip.4':
+    'Một cách chia tùy chỉnh cũng có thể nhập theo phần trăm: chuyển “Nhập phần theo” sang %, và tổng các phần phải bằng 100% thì khoản chi mới được lưu.',
   // expense-currency
   'help.guide.expense-currency.title': 'Nhập một khoản chi bằng loại tiền khác',
   'help.guide.expense-currency.goal': 'Nhập đúng những gì biên lai ghi và để TREK giữ tỷ giá.',

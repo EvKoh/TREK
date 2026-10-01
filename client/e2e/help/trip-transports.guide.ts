@@ -80,6 +80,8 @@ const locationBox = (page: Page, n: number) => modal(page).getByPlaceholder('Sea
  * the wrapper's second child, so one expression finds either one's suggestions.
  */
 const suggestions = (box: Locator) => box.locator('xpath=../..').locator('> div').nth(1)
+/** The transit stop picker's list is portaled onto the page, fixed under its input. */
+const stopSuggestions = (page: Page) => page.locator('xpath=/html/body/div[contains(@class,"--z-toast")]').last()
 /** A result of the transit search: the card's own toggle carries the times as its name. */
 const itinerary = (page: Page, n: number) =>
   modal(page).getByRole('button', { name: /^\d{1,2}:\d{2} – \d{1,2}:\d{2} / }).nth(n)
@@ -101,7 +103,7 @@ async function searchLocation(page: Page, box: Locator, query: string, match: Re
 /** The transit search offers the day's own stops as soon as the box has focus. */
 async function pickStop(page: Page, box: Locator, name: string): Promise<void> {
   await box.click()
-  const option = suggestions(box).getByRole('button', { name })
+  const option = stopSuggestions(page).getByRole('button', { name })
   await expect(option).toBeVisible({ timeout: 20_000 })
   await option.click()
   await expect(box).toHaveValue(name, { timeout: 10_000 })
@@ -369,7 +371,7 @@ const SCRIPTS: Record<string, GuideScript> = {
         // The quick picks open on focus, so the day's own stops are in the picture.
         prepare: async p => {
           await stopBox(p, 0).click()
-          await expect(suggestions(stopBox(p, 0)).getByRole('button', { name: 'Senso-ji Temple' })).toBeVisible()
+          await expect(stopSuggestions(p).getByRole('button', { name: 'Senso-ji Temple' })).toBeVisible()
           await beat(p, 300)
         },
         target: p => modal(p).getByText('From', { exact: true }).locator('xpath=../..'),

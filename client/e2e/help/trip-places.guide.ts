@@ -85,7 +85,91 @@ const closeModal = async (page: Page): Promise<void> => {
 
 const only = (target: (p: Page) => Locator) => ({ target })
 
+const sortTrigger = (page: Page) => head(page).getByRole('button', { name: 'Sort by', exact: true })
+const sortList = (page: Page) => sortTrigger(page).locator('xpath=following-sibling::div[1]')
+/** A name no index knows, so the search comes back empty and offers Add by hand. */
+const HANDMADE = { name: 'Kissaten Hoshizora Ura', phone: '+81 75 000 1234', email: 'hello@hoshizora.example' }
+
 const SCRIPTS: Record<string, GuideScript> = {
+  'sort-places': {
+    guide: guide('sort-places'),
+    start: p => openTrip(p),
+    steps: [
+      {
+        prepare: async p => {
+          await sortTrigger(p).click()
+          await expect(sortList(p)).toBeVisible()
+          await beat(p, 300)
+        },
+        target: sortList,
+      },
+      {
+        target: p => sortList(p).getByRole('button', { name: 'Highest rated' }),
+        act: async p => {
+          await sortList(p).getByRole('button', { name: 'Highest rated' }).click()
+          await expect(sortList(p)).toHaveCount(0)
+          await settle(p)
+        },
+      },
+    ],
+    cleanup: async p => {
+      await sortTrigger(p).click()
+      await sortList(p).getByRole('button', { name: 'Recently added' }).click()
+    },
+  },
+  'place-by-hand': {
+    guide: guide('place-by-hand'),
+    start: p => openTrip(p),
+    steps: [
+      {
+        prepare: async p => {
+          await addButton(p).click()
+          const box = modal(p).getByPlaceholder('Search places...')
+          await expect(box).toBeVisible()
+          await typeInto(p, box, HANDMADE.name)
+          await box.press('Enter')
+          await expect(modal(p).getByText(/^Nothing found for/)).toBeVisible({ timeout: 30_000 })
+          await settle(p)
+        },
+        target: p => modal(p).getByRole('button', { name: 'Add by hand' }).locator('xpath=..'),
+      },
+      {
+        target: p => modal(p).getByRole('button', { name: 'Add by hand' }),
+        act: async p => {
+          await modal(p).getByRole('button', { name: 'Add by hand' }).click()
+          await expect(modal(p).getByPlaceholder('e.g. Eiffel Tower')).toHaveValue(HANDMADE.name)
+          await settle(p)
+        },
+      },
+      {
+        prepare: async p => {
+          await typeInto(p, modal(p).getByLabel('Phone', { exact: true }), HANDMADE.phone)
+          await typeInto(p, modal(p).getByLabel('E-mail', { exact: true }), HANDMADE.email)
+          await settle(p)
+        },
+        target: p => modal(p).getByLabel('E-mail', { exact: true }).locator('xpath=ancestor::div[.//label[normalize-space()="Phone"]][1]'),
+      },
+      {
+        prepare: async p => {
+          await modal(p).getByRole('button', { name: 'Add opening hours' }).click()
+          await expect(modal(p).getByRole('button', { name: 'Remove opening hours' })).toBeVisible()
+          await modal(p).getByRole('button', { name: 'Remove opening hours' }).scrollIntoViewIfNeeded()
+          await settle(p)
+        },
+        target: p => modal(p).getByRole('button', { name: 'Remove opening hours' }).locator('xpath=ancestor::div[.//input][1]'),
+      },
+      {
+        target: p => modal(p).getByRole('button', { name: 'Add', exact: true }),
+        act: async p => {
+          await modal(p).getByRole('button', { name: 'Add', exact: true }).click()
+          await expect(modal(p)).toHaveCount(0)
+          await expect(row(p, HANDMADE.name)).toBeVisible({ timeout: 20_000 })
+          await settle(p)
+        },
+      },
+    ],
+    cleanup: p => deleteByName(p, HANDMADE.name),
+  },
   'create-place': {
     guide: guide('create-place'),
     start: p => openTrip(p),

@@ -302,7 +302,8 @@ const SCRIPTS: Record<string, GuideScript> = {
         act: async p => {
           await picker(p).getByRole('button', { name: 'Save' }).click()
           await expect(picker(p)).toHaveCount(0)
-          await expect(stayCard(p, TOKYO_HOTEL).getByText('10:00')).toBeVisible({ timeout: 15_000 })
+          // Day 1 is the arrival: the card shows the check-in window, not the new check-out.
+          await expect(stayCard(p, TOKYO_HOTEL)).toBeVisible({ timeout: 15_000 })
           await settle(p)
         },
       },

@@ -56,7 +56,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Səyahət statistikası: bütün səyahətləriniz üzrə ziyarət edilmiş ölkələr, səyahətlər, yolda keçən günlər və uçuş məsafəsi.',
   'help.ctx.dashboard.bullet.3':
-    'Planlaşdırılıb, Arxivləşdirilib və Tamamlanıb üzrə filtrlənən səyahət kartları, şəbəkə və ya siyahı şəklində. Redaktə etmək, nüsxəsini yaratmaq, arxivləşdirmək və silmək üçün kursoru kartın üzərinə aparın.',
+    'Planlaşdırılıb, Arxivləşdirilib və Tamamlanıb üzrə filtrlənən səyahət kartları, şəbəkə və ya siyahı şəklində. Onların üstündəki axtarış sahəsi bütün səyahətlərdə birdən axtarır: ada, tarixə və ya səyahətdəki məkana görə. Redaktə etmək, nüsxəsini yaratmaq, arxivləşdirmək və silmək üçün kursoru kartın üzərinə aparın.',
   'help.ctx.dashboard.bullet.4':
     'Sağdakı vidcetlər: valyuta çeviricisi, dünya saatları, qarşıdakı rezervasiyalar və kolleksiyalar. Onların hər birini söndürmək olar.',
   'help.ctx.dashboard.bullet.5': 'Yeni səyahət kartı da, sağ aşağı küncdəki düymə də yeni səyahət yaradır.',
@@ -180,6 +180,19 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': 'Saat qurşaqları vidcetində + üzərinə klikləyin və şəhər axtarın.',
   'help.guide.timezones-widget.step.2': 'Saatı yanındakı × ilə silin.',
   'help.guide.timezones-widget.result': 'Saatlarınız hesabınızda saxlanılır.',
+  'help.guide.search-trips.title': 'Səyahətlərinizdə axtarın',
+  'help.guide.search-trips.goal':
+    'Səyahəti adına, tarixə və ya orada planlaşdırdığınız məkana görə tapın, arxivləşdirilmiş səyahətlər də daxil olmaqla.',
+  'help.guide.search-trips.step.1':
+    'Kartların üstündəki Səfər və ya yer axtar sahəsinə yazın. Siz yazdıqca siyahı planlaşdırılmış, arxivləşdirilmiş və tamamlanmış səyahətlər üzrə birdən daralır.',
+  'help.guide.search-trips.step.2':
+    'Məkanlarından biri vasitəsilə tapılan səyahətin adının altında həmin məkan göstərilir. Bütün səyahətlərinizi yenidən görmək üçün sahədəki x işarəsinə klikləyin və ya Escape düyməsini basın.',
+  'help.guide.search-trips.result':
+    'İdarə panelində yalnız uyğun gələn səyahətlər qalır, boş sahə isə bütün səyahətləri geri qaytarır.',
+  'help.guide.search-trips.tip.1':
+    'Tarixlər də işləyir: həmin aya düşən səyahətləri tapmaq üçün ay və il yazın, məsələn may 2027, və ya 2027-05.',
+  'help.guide.search-trips.tip.2':
+    'Axtarış aktiv olanda Planlaşdırılıb, Arxivləşdirilib və Tamamlanıb açarı kənara çəkilir ki, heç bir səyahət yanlış filtrin arxasında gizlənməsin.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -749,9 +762,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Zaman xətti: hər gün üçün həmin günə qeyd əlavə etməyə imkan verən + ilə bir bölmə; foto, əhval, hava və hekayə olan qeyd kartları; səyahətlərdən gələn, daha açıq üslubda göstərilən və Bu təklifi bağla düyməsi olan təkliflər.',
   'help.ctx.journey-detail.bullet.4':
-    'Xəritə: tarix ardıcıllığı ilə qırıq xətlə birləşdirilmiş pinlər şəklində qeydlər, səyahətlərin məkanları və həmin səyahətlərə idxal edilmiş GPX trekləri.',
+    'Xəritə: tarix ardıcıllığı ilə qırıq xətlə birləşdirilmiş pinlər şəklində qeydlər, səyahətlərin məkanları, həmin səyahətlərə idxal edilmiş GPX trekləri və qeydlərin geoteqli fotoları.',
   'help.ctx.journey-detail.bullet.5':
-    'Səyahət gündəliyi tənzimləmələri: üzlük, ad və alt başlıq, xəritədəki treklər, qeyd sahələri, bağlanmış təkliflər, bağlı səyahətlər, müəlliflər, ictimai paylaşım, arxivləşdirmə və silmə.',
+    'Səyahət gündəliyi tənzimləmələri: üzlük, ad və alt başlıq, status, xəritədəki treklər, qeyd sahələri, bağlanmış təkliflər, bağlı səyahətlər, müəlliflər, ictimai paylaşım, arxivləşdirmə və silmə.',
   'help.ctx.journey-detail.bullet.6':
     'Uzun zaman xəttinin üzərində iki dairəvi düymə durur: yuxarıya qayıtmaq və son qeydə keçmək.',
   // add-entry
@@ -904,6 +917,18 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Silməni geri qaytarmaq olmur və bu, səyahət gündəliyinin əlaqələndirildiyi səyahətlərə toxunmur.',
   'help.guide.archive-journey.tip.2': 'Üz qabığı, ad və alt başlıq eyni pəncərənin yuxarısında yerləşir.',
+  'help.guide.journey-status.title': 'Səyahət gündəliyinin statusunu təyin edin',
+  'help.guide.journey-status.goal':
+    'Səyahət gündəliyini səyahətlərinin tarixlərinə tabe etmək əvəzinə özünüz qaralama, canlı və ya tamamlanmış kimi qeyd edin.',
+  'help.guide.journey-status.step.1': 'Səyahət gündəliyinin başlığında Səyahət gündəliyi tənzimləmələrini açın.',
+  'help.guide.journey-status.step.2':
+    'Status bölməsində Qaralama, Canlı və ya Tamamlanıb seçin. Seçim dərhal yadda saxlanılır.',
+  'help.guide.journey-status.result':
+    'Səyahət gündəliyi seçdiyiniz statusu saxlayır və gündəliklər siyahısındakı kartı onu göstərir.',
+  'help.guide.journey-status.tip.1':
+    'Avtomatik yenidən bağlı səyahətlərin tarixlərinə uyğunlaşır. Bağlı səyahət olmadan avtomatik səyahət gündəliyi qaralama qalır.',
+  'help.guide.journey-status.tip.2':
+    'Əllə təyin olunmuş status siz onu dəyişənə qədər qalır, səyahət tarixləri dəyişəndə belə.',
 
   // ── Screen: journey-studio ─────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1147,6 +1172,8 @@ const help: TranslationStrings = {
     'Siz onları geri dəyişənə qədər səyahət xəritəsi bütün səyahətlərdə bu seçimlərə əməl edir.',
   'help.guide.travel-map-prefs.tip.1':
     'Bunlar səyahətə deyil, hesaba aiddir. Paylaşılan səyahətin hər üzvü öz seçimlərini görür.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Yerləri açmaq üçün naviqasiya düyməsinin birbaşa açdığı xəritə tətbiqini seçir; Hər dəfə soruş isə bütün xəritə tətbiqləri arasında seçimi saxlayır.',
   // startup
   'help.guide.startup.title': 'TREK-in nə ilə açılacağını seçin',
   'help.guide.startup.goal': 'Hər dəfə idarə panelinə deyil, ən çox işlədiyiniz yerə düşün.',
@@ -1540,6 +1567,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Hər səyahət növü üçün ayrıca şablon (çimərlik, şəhər, yürüş) bir nəhəng siyahıdan daha yaxşıdır.',
   'help.guide.packing-templates.tip.2': 'Şablonun silinməsi onu artıq tətbiq etmiş səyahətlərə təsir etmir.',
+  'help.guide.packing-templates.tip.3':
+    'Şablon hər əşyanın çəkisini, sayını və çantasını yadda saxlayır, beləliklə onu tətbiq edən səyahətin çantaları da eyni cür doldurulur.',
   // categories
   'help.guide.categories.title': 'Kateqoriya dəstini idarə edin',
   'help.guide.categories.goal':
@@ -1607,6 +1636,8 @@ const help: TranslationStrings = {
     'İstifadəçinin Tənzimləmələr bölməsindəki şəxsi açarı həmin istifadəçi üçün instans açarından üstündür.',
   'help.guide.instance-keys.tip.2':
     'Açarlar mühit dəyişənlərindən də gələ bilər; onlar burada yalnız oxunaqlı kimi göstərilir.',
+  'help.guide.instance-keys.tip.3':
+    'Google sorğuları üçün gündəlik limit TREK-in açar üzrə gündə nə qədər xərcləyə biləcəyini məhdudlaşdırır; başlığın yanındakı nişan bugünkü sorğuları sayır. Limitə çatdıqda axtarışlar növbəti günə (UTC) qədər OpenStreetMap-dən istifadə edir.',
   // places-transit
   'help.guide.places-transit.title': 'Axtarış və ictimai nəqliyyat provayderlərini seçin',
   'help.guide.places-transit.goal':
@@ -1709,6 +1740,8 @@ const help: TranslationStrings = {
     'Administrator hadisələri hər administratorun tətbiqdaxili zənginə əlavə olaraq ora da göndərilir.',
   'help.guide.admin-channels.tip.1':
     'Administrator mövzusunu şəxsi mövzunuzdan ayrı saxlayın ki, nasazlıq xəbəri səyahət söhbətləri arasında itməsin.',
+  'help.guide.admin-channels.tip.2':
+    'İstifadəçilər üçün ilkin dəyərlər hər istifadəçinin bildirişlərinin hər hadisə və kanal üzrə necə başladığını təyin edir: Açıq, Söndürülüb və ya Bloklanıb; sonuncu bildirişi hamı üçün söndürür və onların tənzimləmələrində kilidli göstərir.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Süni intellekt girişini ləğv edin',
   'help.guide.mcp-tokens-admin.goal':
@@ -1872,6 +1905,14 @@ const help: TranslationStrings = {
     'Geri qaytarma plana aiddir: məkanların təyin edilməsi, çıxarılması, sırasının dəyişdirilməsi və daşınması, marşrutun optimallaşdırılması, məkanların silinməsi, kateqoriya dəyişiklikləri və idxallar.',
   'help.guide.undo-change.tip.2':
     'Bu, yalnız bir addım dərinliyindədir: yalnız son dəyişiklik geri alına bilər və yeni dəyişiklik onu əvəz edir.',
+  'help.guide.clear-day.title': 'Günü təmizləyin',
+  'help.guide.clear-day.goal':
+    'Gündəki bütün məkanları birdən çıxarın, məsələn, günü sıfırdan yenidən planlaşdırmaq üçün.',
+  'help.guide.clear-day.step.1': 'Planda günün başlığına sağ klikləyin.',
+  'help.guide.clear-day.step.2': 'Günü təmizlə seçin və təsdiqləyin.',
+  'help.guide.clear-day.result':
+    'Gün boşalır, onun məkanları isə planlaşdırılmamış kimi siyahıya qayıdır. Günlərin üstündəki geri qaytarma oxu onları geri qaytarır.',
+  'help.guide.clear-day.tip.1': 'Yalnız məkanlar çıxarılır. Gün öz qeydlərini və rezervasiyalarını saxlayır.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Məkanlar',
@@ -1882,7 +1923,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     'Yanındakı idxal düyməsi .gpx, .kml və .kmz faylları üçün Faylı idxal et, Google Maps və ya Naver Maps-dan paylaşılmış siyahı üçün isə Google siyahısı (Naver siyahıları da aktiv olduqda Siyahı idxalı) təklif edir. Faylı sadəcə sütunun üzərinə də ata bilərsiniz.',
   'help.ctx.trip-places.bullet.3':
-    'Onların altında axtarış, yanında seçimi başladan işarə, sonra filtrlər sırası: Göstər Hamısı, Planlaşdırılmayıb, Planlaşdırılıb və iz idxal edildikdən sonra İzlər arasında keçid edir, hər birinin yanında sayı ilə; etiket düyməsi kateqoriyaya, ulduz isə minimum reytinqə görə filtrləyir.',
+    'Onların altında axtarış, yanında seçimi başladan işarə, sonra filtrlər sırası: Göstər Hamısı, Planlaşdırılmayıb, Planlaşdırılıb və iz idxal edildikdən sonra İzlər arasında keçid edir, hər birinin yanında sayı ilə; etiket düyməsi kateqoriyaya, ulduz minimum reytinqə, qlobus ölkə və ya regiona görə filtrləyir, Sıralama isə siyahının ardıcıllığını təyin edir.',
   'help.ctx.trip-places.bullet.4':
     'Sətirdə şəkil, ad və təsvir və ya ünvan göstərilir. Məkanın təfərrüatları üçün ona klikləyin, günün üzərinə sürüşdürün və ya Redaktə et, + Gün, Veb-saytı aç, Google Maps, Kolleksiyada yadda saxla və Sil üçün ona sağ klikləyin (və ya üç nöqtəsinə klikləyin).',
   'help.ctx.trip-places.bullet.5':
@@ -2013,6 +2054,33 @@ const help: TranslationStrings = {
   'help.guide.import-places-list.tip.1': 'Siyahı ictimai paylaşılmalıdır; şəxsi siyahının linki heç nə idxal etmir.',
   'help.guide.import-places-list.tip.2':
     'TREK-inizdə Google açarı olduqda dialoqda Məkan məlumatlarını Google vasitəsilə tamamla görünür: o, idxal edilmiş hər məkanı axtarır və fotoları, ünvanı və təfərrüatları doldurur.',
+  'help.guide.sort-places.title': 'Məkanlar siyahısını sıralayın',
+  'help.guide.sort-places.goal':
+    'Siyahını hazırda işinizə yarayan ardıcıllığa salın: ada, reytinqə və ya sonuncu əlavə edilənə ya dəyişdirilənə görə.',
+  'help.guide.sort-places.step.1':
+    'Sütunun başlığında Sıralama menyusunu açın. Onun yazısı siyahının hazırda necə sıralandığını göstərir.',
+  'help.guide.sort-places.step.2': 'Ardıcıllıq seçin, məsələn Ad və ya Ən yüksək reytinq. Siyahı dərhal uyğunlaşır.',
+  'help.guide.sort-places.result': 'Siyahı məkanları seçdiyiniz ardıcıllıqla göstərir, siz başqasını seçənə qədər.',
+  'help.guide.sort-places.tip.1':
+    'Son əlavə edilənlər istisna olmaqla istənilən ardıcıllıq düyməni işarələyir, beləliklə siyahının fərqli sıralandığını bir baxışda görürsünüz.',
+  'help.guide.sort-places.tip.2': 'Sıralama yalnız siyahını dəyişir. Günlər öz ardıcıllığını saxlayır.',
+  'help.guide.place-by-hand.title': 'Axtarışın tanımadığı məkanı əlavə edin',
+  'help.guide.place-by-hand.goal':
+    'Məkan axtarışı heç nə tapmayanda məkanı telefonu, e-poçtu və iş saatları ilə özünüz daxil edin.',
+  'help.guide.place-by-hand.step.1':
+    'Məkan pəncərəsində adı axtarışa yazın və Enter düyməsini basın. Heç nə tapılmasa, pəncərə bunu bildirir və Əllə əlavə et təklif edir.',
+  'help.guide.place-by-hand.step.2':
+    'Əllə əlavə et üzərinə klikləyin. Axtardığınız mətn ad olur, pəncərə isə əlaqə sahələrinə qədər sürüşür.',
+  'help.guide.place-by-hand.step.3': 'Telefon və E-poçt sahələrini bildiyiniz qədər doldurun.',
+  'help.guide.place-by-hand.step.4':
+    'İş saatlarını əlavə et üzərinə klikləyin və məkanın hər gün nə vaxt açılıb bağlandığını təyin edin. Kopyalama düyməsi bütün günlərə birinci günün saatlarını verir, günün açarı isə onu Bağlı kimi qeyd edir.',
+  'help.guide.place-by-hand.step.5': 'Əlavə et üzərinə klikləyin.',
+  'help.guide.place-by-hand.result':
+    'Məkan siyahıya əlavə olunur. Onun təfərrüatları axtarışla tapılan məkanda olduğu kimi daxil etdiyiniz telefonu, e-poçtu və iş saatlarını göstərir.',
+  'help.guide.place-by-hand.tip.1':
+    'Öz iş saatları olmayan məkanı redaktə edərkən iş saatları soldakı Məkan təfərrüatları bölməsindən avtomatik götürülür; saatlar artıq varsa, yanlarındakı düymə tapılmış saatları köçürür.',
+  'help.guide.place-by-hand.tip.2':
+    'Daxil etdiyiniz saatlar tapılmış saatlardan üstündür, beləliklə mövsümi iş qrafiki olan kafe sizin bildiyinizi göstərir.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Günlər',
@@ -2025,11 +2093,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Günün içində: ardıcıl dayanacaqlar, hər biri şəkil, ad, vaxt, şəkil üzərində kilid və ona bağlanmış rezervasiyalarla; qeydlər; növünə görə rənglənmiş günün rezervasiyaları və nəqliyyatı; dayanacaqlar arasında isə hər hissənin yol vaxtı. Hər sətrin üç nöqtəli menyusu var, sağ klikin açdığı menyunun eynisi.',
   'help.ctx.trip-days.bullet.4':
-    'Dayanacaqların altında marşrut paneli: Marşrut günü xəritədə çəkir, Optimallaşdır dayanacaqları sıralayır, Avtomobillə / Piyada günün hərəkət rejimini təyin edir, Google Maps-də aç və CoMaps-də aç isə günü ora ötürür.',
+    'Dayanacaqların altında marşrut paneli: Marşrut günü xəritədə çəkir, Optimallaşdır dayanacaqları sıralayır, Avtomobillə, Piyada və ya Velosipedlə günün hərəkət rejimini təyin edir, Google Maps-də aç və CoMaps-də aç isə günü ora ötürür.',
   'help.ctx.trip-days.bullet.5':
     'Məkanlar günə məkanlar sütunundan sətri sürüşdürməklə, həmin sətirdəki + Gün ilə, günün + menyusunda və ya boş gündə Bu günə məkan əlavə et ilə, yaxud məkanın təfərrüatlarından əlavə edilir.',
   'help.ctx.trip-days.bullet.6':
-    'Aşağıdakı Ümumi xərc qiyməti olan hər dayanacağı və rezervasiyanı səyahətin valyutasında toplayır.',
+    'Aşağıdakı Ümumi xərc Xərclər bölməsindən günün dayanacaqlarına və rezervasiyalarına aid xərcləri, hər birini bir dəfə, səyahətin valyutasında toplayır.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Günü oxuyun',
   'help.guide.read-day-plan.goal': 'Nəyisə dəyişməzdən əvvəl gün kartının hər hissəsinin nə bildirdiyini öyrənin.',
@@ -2515,7 +2583,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.goal':
     'Qalmanı başqa günlərə köçürün, vaxtlarını düzəldin və ya onu yenidən plandan çıxarın.',
   'help.guide.edit-accommodation.step.1':
-    'Qalmanın hər günündə kart obyekti, giriş vaxt aralığını, çıxış vaxtını və təsdiq nömrəsini göstərir.',
+    'Kart obyekti və təsdiq nömrəsini göstərir, gəldiyiniz gün giriş vaxt aralığı ilə, getdiyiniz gün isə çıxış vaxtı ilə birlikdə.',
   'help.guide.edit-accommodation.step.2':
     'Sağdakı karandaş qalmanı yenidən açır. Pəncərədə indi Yaşayış yerini redaktə et yazılır.',
   'help.guide.edit-accommodation.step.3':
@@ -2547,6 +2615,12 @@ const help: TranslationStrings = {
     'Rezervasiya günə öz tarixinə görə düşür. Tarixi Rezervasiya tabında dəyişin, o özü digər günə keçəcək.',
   'help.guide.day-bookings.tip.2':
     'Rezervasiyalar bloku yoxdursa, günün rezervasiyası yoxdur: blok boş göstərilmək əvəzinə gizlədilir.',
+  'help.guide.map-lock.title': 'Xəritəni kilidləyin',
+  'help.guide.map-lock.goal': 'Günlər və məkanlar arasında keçid edərkən xəritəni olduğu yerdə saxlayın.',
+  'help.guide.map-lock.step.1':
+    'Xəritədəki kilidə klikləyin. Kilid bağlı olduqca günü açmaq və ya məkan seçmək artıq xəritəni yaxınlaşdırmır və sürüşdürmür.',
+  'help.guide.map-lock.result': 'Plan üzərində işlədiyiniz müddətdə xəritə onu buraxdığınız yerdə qalır.',
+  'help.guide.map-lock.tip.1': 'Xəritənin yenidən seçimi izləməsi üçün kilidə bir daha klikləyin.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Xəritə',
@@ -2563,7 +2637,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'Yuxarıdakı ikonlar sırası xəritənin görünən hissəsində axtarış aparır: Restoranlar, Kafelər, Barlar və gecə həyatı, Yaşayış yeri, Görməli yerlər, Muzeylər və mədəniyyət, Təbiət və parklar və Fəaliyyətlər. Xəritəni hərəkət etdirdikdən sonra Bu ərazidə axtar axtarışı yenidən işə salır.',
   'help.ctx.trip-map.bullet.6':
-    'Məkan formasını həmin nöqtədə, ünvanı artıq tapılmış halda açmaq üçün xəritənin istənilən yerində sağ klikləyin. Aşağı soldakı dairəvi düymə çəkilmiş xəritəni peyk görüntüləri ilə əvəz edir.',
+    'Məkan formasını həmin nöqtədə, ünvanı artıq tapılmış halda açmaq üçün xəritənin istənilən yerində sağ klikləyin. Aşağı soldakı dairəvi düymə çəkilmiş xəritəni peyk görüntüləri ilə əvəz edir, kilid isə günlər və məkanlar arasında keçid edərkən görünüşü yerində saxlayır.',
   'help.ctx.trip-map.bullet.7':
     'Aşağı sağdakı Bütün səyahəti göstər bütün səyahət günlərini birdən çəkir və hər birinin qət etdiyi məsafəni sıralayır; rezervasiya sətrindəki marşrut ikonu həmin rezervasiyanı, günlərin üstündəki alətlər panelindəki isə hamısını çəkir. Çəkilmiş rezervasiyanın ucuna klikləyin, onun təfərrüatları açılacaq.',
   'help.ctx.trip-map.bullet.8':
@@ -3421,6 +3495,8 @@ const help: TranslationStrings = {
     'Bərabər rejimi qəpiyinədək dəqiqdir: artıq qalan qəpik xərcdən xərcə növbə ilə keçir, beləliklə onu həmişə eyni adam ödəmir.',
   'help.guide.split-expense.tip.3':
     'Qəbz üzrə rejimi Ümumi məbləği özü toplayır və sahəni bozlaşdırır: cəmi qəbzin sətirləri təşkil edir.',
+  'help.guide.split-expense.tip.4':
+    'Fərdi bölgü faizlə də daxil edilə bilər: Payları belə daxil et seçimini % vəziyyətinə keçirin; xərc yadda saxlanılmazdan əvvəl payların cəmi 100 % olmalıdır.',
   // expense-currency
   'help.guide.expense-currency.title': 'Xərci başqa valyutada daxil edin',
   'help.guide.expense-currency.goal': 'Qəbzdə həqiqətən yazılanı daxil edin, məzənnəni isə TREK saxlasın.',

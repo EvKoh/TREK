@@ -56,7 +56,7 @@ const help: TranslationStrings = {
     '탑승권: 진행 중이거나 다음 여행을 날짜, 동행자, 장소, 카운트다운과 함께 보여줍니다. 클릭하면 여행이 열립니다.',
   'help.ctx.dashboard.bullet.2': '여행 통계: 방문한 국가, 여행 수, 여행 일수, 비행 거리를 모든 여행에 걸쳐 집계합니다.',
   'help.ctx.dashboard.bullet.3':
-    '여행 카드: 예정, 보관됨, 완료됨으로 필터링하고 격자 또는 목록으로 봅니다. 카드에 마우스를 올리면 편집, 복제, 보관, 삭제를 할 수 있습니다.',
+    '여행 카드: 예정, 보관됨, 완료됨으로 필터링하고 격자 또는 목록으로 봅니다. 위의 검색창은 제목, 날짜, 여행 속 장소로 모든 여행을 한꺼번에 찾습니다. 카드에 마우스를 올리면 편집, 복제, 보관, 삭제를 할 수 있습니다.',
   'help.ctx.dashboard.bullet.4': '오른쪽 위젯: 환율 계산기, 세계 시계, 다가오는 예약, 컬렉션. 각각 끌 수 있습니다.',
   'help.ctx.dashboard.bullet.5': '“새 여행” 카드와 오른쪽 아래 버튼은 둘 다 새 여행을 시작합니다.',
 
@@ -170,6 +170,17 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': '“시간대” 위젯의 +를 클릭하고 도시를 검색합니다.',
   'help.guide.timezones-widget.step.2': '시계 옆의 ×로 삭제합니다.',
   'help.guide.timezones-widget.result': '시계는 계정에 저장됩니다.',
+  'help.guide.search-trips.title': '여행 검색하기',
+  'help.guide.search-trips.goal': '이름, 날짜, 계획해 둔 장소로 여행을 찾습니다. 보관된 여행도 포함됩니다.',
+  'help.guide.search-trips.step.1':
+    '카드 위의 “여행 또는 장소 검색”에 입력합니다. 입력하는 동안 예정, 보관됨, 완료된 여행 전체에서 목록이 좁혀집니다.',
+  'help.guide.search-trips.step.2':
+    '장소로 찾은 여행은 제목 아래에 그 장소 이름이 표시됩니다. 입력란의 x를 클릭하거나 Escape를 누르면 모든 여행이 다시 보입니다.',
+  'help.guide.search-trips.result': '대시보드에는 일치하는 여행만 남고, 입력란을 비우면 모든 여행이 다시 나타납니다.',
+  'help.guide.search-trips.tip.1':
+    '날짜로도 찾을 수 있습니다. 예를 들어 2027년 5월이나 2027-05처럼 연도와 월을 입력하면 그 달에 걸친 여행이 나옵니다.',
+  'help.guide.search-trips.tip.2':
+    '검색 중에는 “예정”, “보관됨”, “완료됨” 전환이 비켜나므로, 잘못된 필터 뒤에 숨는 여행이 없습니다.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -667,9 +678,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     '타임라인: 날마다 섹션이 하나씩 있고, +로 그날에 기록을 추가합니다. 사진, 기분, 날씨, 이야기가 담긴 기록 카드와, 여행에서 온 제안이 “이 제안 넘기기”와 함께 더 옅은 모양으로 놓입니다.',
   'help.ctx.journey-detail.bullet.4':
-    '지도: 기록은 핀으로 표시되어 날짜 순으로 점선으로 이어지고, 여행의 장소와 그 여행에 가져온 GPX 트랙도 보입니다.',
+    '지도: 기록은 핀으로 표시되어 날짜 순으로 점선으로 이어지고, 여행의 장소, 그 여행에 가져온 GPX 트랙, 기록의 위치 정보가 있는 사진도 보입니다.',
   'help.ctx.journey-detail.bullet.5':
-    '“Journey 설정”: 커버, 이름과 부제목, 지도의 트랙, 기록 항목, 넘긴 제안, 연결된 여행, 기여자, 공개 공유, 보관과 삭제.',
+    '“Journey 설정”: 커버, 이름과 부제목, 상태, 지도의 트랙, 기록 항목, 넘긴 제안, 연결된 여행, 기여자, 공개 공유, 보관과 삭제.',
   'help.ctx.journey-detail.bullet.6':
     '긴 타임라인 위에는 둥근 버튼 두 개가 떠 있습니다. 맨 위로, 그리고 마지막 기록으로.',
   // add-entry
@@ -809,6 +820,15 @@ const help: TranslationStrings = {
     '보관된 Journey는 계속 읽고 공유할 수 있습니다. 다만 더 이상 오늘 날짜로 열리지 않을 뿐입니다.',
   'help.guide.archive-journey.tip.1': '삭제는 되돌릴 수 없으며, Journey가 연결되어 있던 여행에는 손대지 않습니다.',
   'help.guide.archive-journey.tip.2': '커버, 이름, 부제목은 같은 대화상자의 맨 위에 있습니다.',
+  'help.guide.journey-status.title': 'Journey 상태 설정하기',
+  'help.guide.journey-status.goal': '여행 날짜를 따르는 대신 Journey를 초안, 라이브, 완료됨 중 하나로 직접 정합니다.',
+  'help.guide.journey-status.step.1': 'Journey 머리글에서 “Journey 설정”을 엽니다.',
+  'help.guide.journey-status.step.2':
+    '“상태”에서 “초안”, “라이브”, “완료됨” 중 하나를 고릅니다. 선택은 바로 저장됩니다.',
+  'help.guide.journey-status.result': 'Journey는 고른 상태를 유지하고, Journey 목록의 카드에 그 상태가 표시됩니다.',
+  'help.guide.journey-status.tip.1':
+    '“자동”은 다시 연결된 여행의 날짜를 따릅니다. 연결된 여행이 없으면 자동 Journey는 초안으로 남습니다.',
+  'help.guide.journey-status.tip.2': '직접 정한 상태는 여행 날짜가 바뀌어도 다시 바꿀 때까지 유지됩니다.',
 
   // ── Screen: journey-studio ────────────────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Studio',
@@ -1039,6 +1059,8 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.result': '여행 지도는 다시 바꿀 때까지 모든 여행에서 이 설정을 따릅니다.',
   'help.guide.travel-map-prefs.tip.1':
     '이 설정은 여행별이 아니라 계정별입니다. 공유 여행의 멤버는 각자 자신의 선택을 봅니다.',
+  'help.guide.travel-map-prefs.tip.2':
+    '“장소 열기 앱”은 길 안내 버튼이 바로 여는 지도 앱을 고릅니다. “매번 묻기”를 고르면 매번 모든 지도 앱 중에서 고를 수 있습니다.',
   // startup
   'help.guide.startup.title': 'TREK이 처음 여는 화면 고르기',
   'help.guide.startup.goal': '매번 대시보드가 아니라 가장 많이 작업하는 곳에서 시작합니다.',
@@ -1389,6 +1411,8 @@ const help: TranslationStrings = {
     '템플릿은 모든 여행의 짐 목록에서 제안됩니다. 적용하면 항목이 복사되므로 여행마다 자유롭게 바꿀 수 있습니다.',
   'help.guide.packing-templates.tip.1': '해변, 도시, 하이킹처럼 여행 종류별 템플릿이 하나의 거대한 목록보다 낫습니다.',
   'help.guide.packing-templates.tip.2': '템플릿을 삭제해도 이미 적용한 여행에는 영향이 없습니다.',
+  'help.guide.packing-templates.tip.3':
+    '템플릿은 항목마다 무게, 수량, 가방을 기억하므로, 템플릿을 적용한 여행도 가방이 똑같이 채워집니다.',
   // categories
   'help.guide.categories.title': '카테고리 모음 관리하기',
   'help.guide.categories.goal': '장소와 컬렉션이 가질 수 있는 카테고리와 그 모양을 정합니다.',
@@ -1449,6 +1473,8 @@ const help: TranslationStrings = {
     '사용자는 자기 키 없이 기능을 씁니다. Google 키가 없으면 TREK은 무료 OpenStreetMap 스택과 TREK Places API로 검색합니다.',
   'help.guide.instance-keys.tip.1': '사용자가 “설정”에 넣은 개인 키는 그 사용자에게는 인스턴스 키보다 우선합니다.',
   'help.guide.instance-keys.tip.2': '키는 환경 변수로도 올 수 있으며, 그런 키는 여기서 읽기 전용으로 보입니다.',
+  'help.guide.instance-keys.tip.3':
+    '“Google 호출 일일 한도”는 TREK이 하루에 이 키로 쓸 수 있는 양을 제한합니다. 제목 옆 배지는 오늘의 호출 수입니다. 한도에 닿으면 다음 날(UTC)까지 검색은 OpenStreetMap을 씁니다.',
   // places-transit
   'help.guide.places-transit.title': '검색과 대중교통 제공자 고르기',
   'help.guide.places-transit.goal': '장소 검색과 대중교통 경로에 누가 답할지 정합니다.',
@@ -1523,6 +1549,8 @@ const help: TranslationStrings = {
   'help.guide.admin-channels.result': '관리자 이벤트는 모든 관리자의 앱 내 벨에 더해 그곳으로도 갑니다.',
   'help.guide.admin-channels.tip.1':
     '관리자 토픽은 개인 토픽과 분리해 둡니다. 장애 알림이 여행 알림에 묻히지 않게 하기 위해서입니다.',
+  'help.guide.admin-channels.tip.2':
+    '“사용자 기본값”은 모든 사용자의 알림이 이벤트와 채널별로 어떻게 시작할지 정합니다. “켬”, “끔”, 또는 “차단”이며, 차단은 모두에게 알림을 끄고 각자의 설정에 잠금으로 표시됩니다.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'AI 접근 취소하기',
   'help.guide.mcp-tokens-admin.goal': '어느 사용자든 AI 클라이언트가 가진 모든 토큰과 세션을 보고 끊습니다.',
@@ -1686,6 +1714,13 @@ const help: TranslationStrings = {
     '실행 취소는 계획을 다룹니다. 장소 배정, 제거, 순서 변경, 이동, 경로 최적화, 장소 삭제, 카테고리 변경, 가져오기입니다.',
   'help.guide.undo-change.tip.2':
     '깊이는 한 단계입니다. 최근 변경만 되돌릴 수 있고, 새 변경이 생기면 그것으로 대체됩니다.',
+  'help.guide.clear-day.title': '하루 비우기',
+  'help.guide.clear-day.goal': '하루의 모든 장소를 한 번에 뺍니다. 예를 들어 처음부터 다시 계획할 때 씁니다.',
+  'help.guide.clear-day.step.1': '일정에서 그날의 머리글을 오른쪽 클릭합니다.',
+  'help.guide.clear-day.step.2': '“날 비우기”를 고르고 확인합니다.',
+  'help.guide.clear-day.result':
+    '그날은 비워지고 장소는 미계획으로 목록에 돌아갑니다. 일자 위의 실행 취소 화살표로 되돌릴 수 있습니다.',
+  'help.guide.clear-day.tip.1': '빠지는 것은 장소뿐입니다. 그날의 메모와 예약은 그대로 남습니다.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': '장소',
@@ -1696,7 +1731,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     '그 옆의 가져오기 버튼에는 .gpx, .kml, .kmz 파일용 “파일 가져오기”와, Google Maps나 Naver Maps에서 공유한 목록용 “Google 목록”(네이버 목록도 켜져 있으면 “목록 가져오기”)이 있습니다. 파일은 그냥 이 열에 끌어다 놓아도 됩니다.',
   'help.ctx.trip-places.bullet.3':
-    '그 아래에는 검색이 있고, 옆에는 선택을 시작하는 체크 표시가 있으며, 필터가 한 줄로 이어집니다. “표시”는 “전체”, “미계획”, “계획됨”, 그리고 트랙을 가져온 뒤에는 “트랙” 사이를 전환하고, 각각 개수가 붙습니다. 태그 버튼은 카테고리로, 별은 최소 평점으로 거릅니다.',
+    '그 아래에는 검색이 있고, 옆에는 선택을 시작하는 체크 표시가 있으며, 필터가 한 줄로 이어집니다. “표시”는 “전체”, “미계획”, “계획됨”, 그리고 트랙을 가져온 뒤에는 “트랙” 사이를 전환하고, 각각 개수가 붙습니다. 태그 버튼은 카테고리로, 별은 최소 평점으로, 지구본은 국가나 지역으로 거르며, “정렬”은 목록의 순서를 정합니다.',
   'help.ctx.trip-places.bullet.4':
     '행에는 사진, 이름, 그리고 설명이나 주소가 나옵니다. 클릭하면 장소 세부정보가 열리고, 날짜로 끌어다 놓을 수 있으며, 오른쪽 클릭하면(또는 행의 점 세 개를 클릭하면) “편집”, “+ 날에 추가”, “웹사이트 열기”, “Google Maps”, “컬렉션에 저장”, “삭제”가 나옵니다.',
   'help.ctx.trip-places.bullet.5':
@@ -1822,6 +1857,33 @@ const help: TranslationStrings = {
     '목록은 공개로 공유되어 있어야 합니다. 비공개 목록의 링크는 아무것도 가져오지 않습니다.',
   'help.guide.import-places-list.tip.2':
     '“Google로 장소 정보 보강”은 내 TREK에 Google 키가 있을 때 대화 상자에 나타납니다. 가져온 장소를 하나씩 찾아 사진, 주소, 세부정보를 채웁니다.',
+  'help.guide.sort-places.title': '장소 목록 정렬하기',
+  'help.guide.sort-places.goal':
+    '지금 필요한 순서로 목록을 둡니다. 이름순, 평점순, 또는 최근에 추가하거나 바꾼 순서입니다.',
+  'help.guide.sort-places.step.1':
+    '열 머리글의 “정렬”을 엽니다. 라벨이 지금 목록이 어떻게 정렬되어 있는지 알려 줍니다.',
+  'help.guide.sort-places.step.2': '“이름순”이나 “평점 높은 순” 같은 순서를 고릅니다. 목록이 바로 따라 바뀝니다.',
+  'help.guide.sort-places.result': '다른 순서를 고를 때까지 목록은 고른 순서대로 장소를 보여 줍니다.',
+  'help.guide.sort-places.tip.1':
+    '“최근 추가순”이 아닌 순서에서는 버튼에 표시가 붙어, 목록이 평소와 다르게 정렬되어 있음을 한눈에 알 수 있습니다.',
+  'help.guide.sort-places.tip.2': '정렬은 목록만 바꿉니다. 날짜별 순서는 그대로입니다.',
+  'help.guide.place-by-hand.title': '검색에 없는 장소 추가하기',
+  'help.guide.place-by-hand.goal':
+    '장소 검색에서 아무것도 찾지 못할 때, 전화, 이메일, 영업시간과 함께 장소를 직접 입력합니다.',
+  'help.guide.place-by-hand.step.1':
+    '장소 대화 상자에서 검색에 이름을 입력하고 Enter를 누릅니다. 아무것도 없으면 대화 상자가 그렇게 알리고 “직접 추가”를 제안합니다.',
+  'help.guide.place-by-hand.step.2':
+    '“직접 추가”를 클릭합니다. 검색한 내용이 이름이 되고, 대화 상자가 연락처 입력란으로 스크롤됩니다.',
+  'help.guide.place-by-hand.step.3': '아는 만큼 “전화”와 “이메일”을 채웁니다.',
+  'help.guide.place-by-hand.step.4':
+    '“영업시간 추가”를 클릭하고 요일마다 여는 시간과 닫는 시간을 정합니다. 복사 버튼은 첫 요일의 시간을 모든 요일에 적용하고, 요일의 스위치는 그날을 “휴무”로 표시합니다.',
+  'help.guide.place-by-hand.step.5': '“추가”를 클릭합니다.',
+  'help.guide.place-by-hand.result':
+    '장소가 목록에 들어갑니다. 상세 정보에는 입력한 전화, 이메일, 영업시간이 검색으로 찾은 장소와 똑같이 표시됩니다.',
+  'help.guide.place-by-hand.tip.1':
+    '자체 영업시간이 없는 장소를 편집하면 왼쪽 “장소 세부정보”의 영업시간을 저절로 가져옵니다. 이미 영업시간이 있으면 그 옆의 버튼으로 조회한 시간을 가져올 수 있습니다.',
+  'help.guide.place-by-hand.tip.2':
+    '직접 입력한 영업시간이 조회한 시간보다 우선하므로, 계절마다 시간이 다른 카페도 내가 아는 시간이 표시됩니다.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': '일',
@@ -1834,10 +1896,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     '날짜 안에는 순서대로 놓인 방문지가 있고, 각각 사진, 이름, 시간, 사진 위의 잠금, 그리고 거기에 고정된 예약이 있습니다. 그 밖에 메모, 종류별로 색이 입혀진 그날의 예약과 교통편, 그리고 방문지 사이에는 각 구간의 이동 시간이 있습니다. 모든 행에는 점 세 개 메뉴가 있으며, 오른쪽 클릭으로 여는 메뉴와 같습니다.',
   'help.ctx.trip-days.bullet.4':
-    '방문지 아래는 경로 막대입니다. “경로”는 그날을 지도에 그리고, “최적화”는 방문지를 정렬하며, “자동차” / “도보”는 그날의 이동 수단을 정하고, “Google Maps에서 열기”와 “CoMaps에서 열기”는 그날을 넘겨줍니다.',
+    '방문지 아래는 경로 막대입니다. “경로”는 그날을 지도에 그리고, “최적화”는 방문지를 정렬하며, “자동차”, “도보”, “자전거”는 그날의 이동 수단을 정하고, “Google Maps에서 열기”와 “CoMaps에서 열기”는 그날을 넘겨줍니다.',
   'help.ctx.trip-days.bullet.5':
     '장소는 장소 열에서 행을 끌어다 놓거나, 그 행의 “+ 날에 추가”로, 날짜의 +나 빈 날짜의 “이 날짜에 장소 추가”로, 또는 장소 세부정보에서 날짜에 올라옵니다.',
-  'help.ctx.trip-days.bullet.6': '맨 아래의 “총 비용”은 가격이 있는 모든 방문지와 예약을 여행의 통화로 더합니다.',
+  'help.ctx.trip-days.bullet.6':
+    '맨 아래의 “총 비용”은 “비용”의 지출 중 그날의 방문지와 예약에 속한 것을 각각 한 번씩, 여행의 통화로 더합니다.',
   // read-day-plan
   'help.guide.read-day-plan.title': '하루 읽기',
   'help.guide.read-day-plan.goal': '무엇을 바꾸기 전에 날짜 카드의 각 부분이 무엇을 말하는지 압니다.',
@@ -2440,7 +2503,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': '잡아 둔 숙박 바꾸기 또는 취소하기',
   'help.guide.edit-accommodation.goal': '숙박을 옮기거나, 시간을 고치거나, 계획에서 다시 빼냅니다.',
   'help.guide.edit-accommodation.step.1':
-    '숙박의 모든 날에서 카드는 숙소, 체크인 가능 시간대, 체크아웃 시간, 확인 번호를 보여 줍니다.',
+    '카드는 숙소와 확인 번호를 보여 주며, 도착하는 날에는 체크인 가능 시간대를, 떠나는 날에는 체크아웃 시간을 함께 보여 줍니다.',
   'help.guide.edit-accommodation.step.2':
     '그 오른쪽의 연필이 숙박을 다시 엽니다. 팝업은 이제 “숙박 편집”이라고 나옵니다.',
   'help.guide.edit-accommodation.step.3':
@@ -2471,6 +2534,12 @@ const help: TranslationStrings = {
     '예약은 자기 날짜에 따라 어느 날에 놓입니다. “예약” 탭에서 날짜를 바꾸면 저절로 다른 날로 옮겨 갑니다.',
   'help.guide.day-bookings.tip.2':
     '“예약” 블록이 없으면 그 날에는 예약이 없다는 뜻입니다. 비어 있는 채로 보여 주는 대신 숨깁니다.',
+  'help.guide.map-lock.title': '지도 고정하기',
+  'help.guide.map-lock.goal': '날짜와 장소를 클릭해 나가는 동안 지도를 제자리에 둡니다.',
+  'help.guide.map-lock.step.1':
+    '지도의 자물쇠를 클릭합니다. 잠겨 있는 동안에는 날짜를 열거나 장소를 골라도 지도가 확대하거나 이동하지 않습니다.',
+  'help.guide.map-lock.result': '계획을 살펴보는 동안 지도는 두었던 자리에 그대로 머뭅니다.',
+  'help.guide.map-lock.tip.1': '자물쇠를 다시 클릭하면 지도가 다시 선택 항목을 따라갑니다.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': '지도',
@@ -2487,7 +2556,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     '맨 위의 아이콘 줄은 보이는 지도 범위를 검색합니다. “음식점”, “카페”, “바 & 나이트라이프”, “숙소”, “명소”, “박물관 & 문화”, “자연 & 공원”, “액티비티”입니다. 지도를 옮긴 뒤에는 “이 지역 검색”이 다시 실행합니다.',
   'help.ctx.trip-map.bullet.6':
-    '지도 아무 곳이나 오른쪽 클릭하면 그 지점의 장소 양식이, 주소를 이미 찾아 둔 채로 열립니다. 왼쪽 아래의 둥근 버튼은 그려진 지도를 항공 사진으로 바꿉니다.',
+    '지도 아무 곳이나 오른쪽 클릭하면 그 지점의 장소 양식이, 주소를 이미 찾아 둔 채로 열립니다. 왼쪽 아래의 둥근 버튼은 그려진 지도를 항공 사진으로 바꾸고, 자물쇠는 날짜와 장소를 클릭해 나가는 동안 보기를 제자리에 둡니다.',
   'help.ctx.trip-map.bullet.7':
     '오른쪽 아래의 “전체 여행 보기”는 이동이 있는 모든 날짜를 한 번에 그리고 각 날짜가 무엇을 지나는지 나열합니다. 예약 행의 경로 아이콘은 그 예약을 그리고, 일자 위 도구 모음의 아이콘은 전부를 그립니다. 그려진 예약의 끝을 클릭하면 세부 정보가 열립니다.',
   'help.ctx.trip-map.bullet.8':
@@ -3275,6 +3344,8 @@ const help: TranslationStrings = {
     'Equally는 1센트까지 정확합니다. 남는 1센트는 지출마다 돌아가므로 늘 같은 사람이 내는 일은 없습니다.',
   'help.guide.split-expense.tip.3':
     'Ticket 모드는 “총 금액”을 스스로 합산하고 입력란을 회색으로 막습니다. 영수증의 줄이 곧 합계입니다.',
+  'help.guide.split-expense.tip.4':
+    '사용자 지정 분할은 퍼센트로도 입력할 수 있습니다. “몫 입력 방식”을 %로 바꾸면, 지출을 저장하기 전에 몫의 합이 100%가 되어야 합니다.',
   // expense-currency
   'help.guide.expense-currency.title': '다른 통화로 지출 입력하기',
   'help.guide.expense-currency.goal': '영수증에 적힌 그대로 넣고 환율은 TREK이 붙잡게 둡니다.',

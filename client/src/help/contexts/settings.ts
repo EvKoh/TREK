@@ -22,7 +22,7 @@ const guide = (
 export const settingsGuides: HelpGuide[] = [
   // General
   guide('language-region', 'settings-display', 'globe', 'quick', 2, 2, { slug: GENERAL, anchor: 'language' }, ['travel-map-prefs', 'startup'], false),
-  guide('travel-map-prefs', 'settings-display', 'mapPin', 'quick', 2, 1, { slug: GENERAL, anchor: 'always-show-booking-routes' }, ['language-region', 'map-provider'], false),
+  guide('travel-map-prefs', 'settings-display', 'mapPin', 'quick', 2, 2, { slug: GENERAL, anchor: 'always-show-booking-routes' }, ['language-region', 'map-provider'], false),
   guide('startup', 'settings-display', 'compass', 'quick', 2, 1, { slug: GENERAL, anchor: 'start-page' }, ['language-region'], false),
   // Appearance
   guide('theme-scheme', 'settings-appearance', 'palette', 'guide', 3, 2, { slug: APPEARANCE }, ['readability', 'dashboard-widgets']),

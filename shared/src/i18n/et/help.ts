@@ -56,7 +56,7 @@ const help: TranslationStrings = {
   'help.ctx.dashboard.bullet.2':
     'Reisistatistika: külastatud riigid, reisid, teel veedetud päevad ja lennatud vahemaa kõigi sinu reiside peale kokku.',
   'help.ctx.dashboard.bullet.3':
-    'Reisikaardid, filtreeritud valikute Plaanis, Arhiveeritud ja Lõppenud järgi, ruudustiku või loendina. Hõljuta kursorit kaardi kohal, et seda muuta, kopeerida, arhiveerida või kustutada.',
+    'Reisikaardid, filtreeritud valikute Plaanis, Arhiveeritud ja Lõppenud järgi, ruudustiku või loendina. Nende kohal olev otsingukast otsib kõigist reisidest korraga, pealkirja, kuupäeva või reisi mõne koha järgi. Hõljuta kursorit kaardi kohal, et seda muuta, kopeerida, arhiveerida või kustutada.',
   'help.ctx.dashboard.bullet.4':
     'Vidinad paremal: valuutakalkulaator, maailmakellad, eelseisvad broneeringud ja kogumikud. Igaühe neist saab välja lülitada.',
   'help.ctx.dashboard.bullet.5': 'Uue reisi alustamiseks on nii kaart Uus reis kui ka nupp paremas alanurgas.',
@@ -175,6 +175,18 @@ const help: TranslationStrings = {
   'help.guide.timezones-widget.step.1': 'Klõpsa vidinas Ajavööndid nupul + ja otsi linna.',
   'help.guide.timezones-widget.step.2': 'Eemalda kell selle kõrval oleva × abil.',
   'help.guide.timezones-widget.result': 'Sinu kellad salvestatakse sinu kontole.',
+  'help.guide.search-trips.title': 'Otsi oma reise',
+  'help.guide.search-trips.goal':
+    'Leia reis selle nime, kuupäeva või sinna planeeritud koha järgi, ka arhiveeritud reiside seast.',
+  'help.guide.search-trips.step.1':
+    'Kirjuta kaartide kohal olevale väljale Otsi reise või kohti. Loend kitseneb kirjutamise ajal, korraga nii plaanis, arhiveeritud kui ka lõppenud reiside seas.',
+  'help.guide.search-trips.step.2':
+    'Kui reis leiti mõne selle koha kaudu, näidatakse seda kohta reisi pealkirja all. Klõpsa kastis x-i või vajuta Escape, et näha jälle kõiki oma reise.',
+  'help.guide.search-trips.result': 'Ülevaatesse jäävad ainult sobivad reisid ja tühi väli toob kõik reisid tagasi.',
+  'help.guide.search-trips.tip.1':
+    'Toimivad ka kuupäevad: kirjuta kuu ja aasta, näiteks mai 2027, või 2027-05, et leida sinna jäävad reisid.',
+  'help.guide.search-trips.tip.2':
+    'Otsingu ajal astub lüliti Plaanis, Arhiveeritud ja Lõppenud kõrvale, nii et ükski reis ei peitu vale filtri taha.',
 
   // ── Screen: vacay ──────────────────────────────────────────────────────────
   'help.ctx.vacay.title': 'Vacay',
@@ -722,9 +734,9 @@ const help: TranslationStrings = {
   'help.ctx.journey-detail.bullet.3':
     'Ajajoon: iga päeva kohta jaotis nupuga + sellele päevale sissekande lisamiseks; sissekannete kaardid fotode, meeleolu, ilma ja looga; reiside soovitused heledamas stiilis koos valikuga Jäta see soovitus kõrvale.',
   'help.ctx.journey-detail.bullet.4':
-    'Kaart: sissekanded nööpnõeltena, mida ühendab kuupäevade järjekorras katkendjoon, reiside kohad ja kõik nendesse reisidesse imporditud GPX-rajad.',
+    'Kaart: sissekanded nööpnõeltena, mida ühendab kuupäevade järjekorras katkendjoon, reiside kohad, kõik nendesse reisidesse imporditud GPX-rajad ja sissekannete asukohaga fotod.',
   'help.ctx.journey-detail.bullet.5':
-    'Reisiloo seaded: kaanepilt, nimi ja alapealkiri, rajad kaardil, sissekande väljad, kõrvale jäetud soovitused, seotud reisid, kaasautorid, avalik jagamine, arhiveerimine ja kustutamine.',
+    'Reisiloo seaded: kaanepilt, nimi ja alapealkiri, olek, rajad kaardil, sissekande väljad, kõrvale jäetud soovitused, seotud reisid, kaasautorid, avalik jagamine, arhiveerimine ja kustutamine.',
   'help.ctx.journey-detail.bullet.6':
     'Pika ajajoone kohal hõljuvad kaks ümmargust nuppu: tagasi üles ja hüppa viimase sissekande juurde.',
   // add-entry
@@ -873,6 +885,17 @@ const help: TranslationStrings = {
   'help.guide.archive-journey.tip.1':
     'Kustutamist ei saa tagasi võtta ja see ei puuduta reise, millega reisilugu oli seotud.',
   'help.guide.archive-journey.tip.2': 'Kaanepilt, nimi ja alapealkiri asuvad samas dialoogis, ülaosas.',
+  'help.guide.journey-status.title': 'Määra reisiloo olek',
+  'help.guide.journey-status.goal':
+    'Märgi reisilugu ise mustandiks, käimasolevaks või lõppenuks, selle asemel et järgida selle reiside kuupäevi.',
+  'help.guide.journey-status.step.1': 'Ava reisiloo päises Reisiloo seaded.',
+  'help.guide.journey-status.step.2': 'Vali jaotises Olek Mustand, Käimas või Lõppenud. Valik salvestub kohe.',
+  'help.guide.journey-status.result':
+    'Reisilugu jääb sinu valitud olekusse ja selle kaart reisilugude loendis näitab seda.',
+  'help.guide.journey-status.tip.1':
+    'Automaatne järgib taas seotud reiside kuupäevi. Ilma seotud reisita jääb automaatne reisilugu mustandiks.',
+  'help.guide.journey-status.tip.2':
+    'Käsitsi määratud olek jääb kehtima, kuni sa seda muudad, ka siis, kui reisi kuupäevad nihkuvad.',
 
   // ── Screen: journey-studio ─────────────────────────────────────────────────
   'help.ctx.journey-studio.title': 'Stuudio',
@@ -1112,6 +1135,8 @@ const help: TranslationStrings = {
   'help.guide.travel-map-prefs.result': 'Reisi kaart järgib neid seadeid igal reisil, kuni sa need tagasi muudad.',
   'help.guide.travel-map-prefs.tip.1':
     'Need kehtivad konto, mitte reisi kohta. Jagatud reisi liikmed näevad igaüks oma valikuid.',
+  'help.guide.travel-map-prefs.tip.2':
+    'Ava kohad rakenduses valib kaardirakenduse, mille navigeerimisnupp kohe avab; Küsi iga kord jätab alles valiku kõigi kaardirakenduste vahel.',
   // startup
   'help.guide.startup.title': 'Vali, millega TREK avaneb',
   'help.guide.startup.goal': 'Jõua sinna, kus kõige rohkem töötad, mitte iga kord ülevaatele.',
@@ -1494,6 +1519,8 @@ const help: TranslationStrings = {
   'help.guide.packing-templates.tip.1':
     'Eraldi mall iga reisitüübi jaoks (rand, linn, matkamine) on parem kui üks hiiglaslik nimekiri.',
   'help.guide.packing-templates.tip.2': 'Malli kustutamine ei mõjuta reise, kus seda on juba rakendatud.',
+  'help.guide.packing-templates.tip.3':
+    'Mall jätab meelde iga eseme kaalu, koguse ja koti, nii et seda rakendava reisi kotid täituvad samamoodi.',
   // categories
   'help.guide.categories.title': 'Halda kategooriaid',
   'help.guide.categories.goal':
@@ -1558,6 +1585,8 @@ const help: TranslationStrings = {
   'help.guide.instance-keys.tip.1':
     'Kasutaja isiklik võti jaotises Seaded on selle kasutaja puhul instantsi võtmest ülimuslik.',
   'help.guide.instance-keys.tip.2': 'Võtmed võivad tulla ka keskkonnamuutujatest; need on siin kirjutuskaitstud.',
+  'help.guide.instance-keys.tip.3':
+    "Google'i päringute päevapiirang piirab, kui palju TREK tohib võtmele päevas kulutada; pealkirja kõrval olev märk loeb tänaseid päringuid. Kui piirang on täis, kasutavad otsingud järgmise päevani (UTC) OpenStreetMapi.",
   // places-transit
   'help.guide.places-transit.title': 'Vali otsingu ja ühistranspordi teenusepakkujad',
   'help.guide.places-transit.goal': 'Otsusta, kes vastab kohaotsingutele ja ühistranspordi marsruutidele.',
@@ -1660,6 +1689,8 @@ const help: TranslationStrings = {
     'Administraatorisündmused saadetakse sinna lisaks iga administraatori rakendusesisesele kellale.',
   'help.guide.admin-channels.tip.1':
     'Hoia administraatori teema isiklikust eraldi, et tõrketeade ei upuks reisiteadete sekka.',
+  'help.guide.admin-channels.tip.2':
+    'Kasutajate vaikeväärtused määravad, kuidas iga kasutaja teavitused algavad, sündmuse ja kanali kaupa: Sees, Väljas või Blokeeritud, mis lülitab teavituse kõigil välja ja näitab seda nende seadetes lukustatuna.',
   // mcp-tokens-admin
   'help.guide.mcp-tokens-admin.title': 'Tühista AI juurdepääs',
   'help.guide.mcp-tokens-admin.goal': 'Vaata ja katkesta iga AI-kliendi pääsutõend ja seanss mis tahes kasutaja puhul.',
@@ -1816,6 +1847,13 @@ const help: TranslationStrings = {
     'Tagasivõtmine hõlmab plaani: kohtade määramist, eemaldamist, järjestamist ja teisaldamist, marsruudi optimeerimist, kohtade kustutamist, kategooriamuudatusi ja importimist.',
   'help.guide.undo-change.tip.2':
     'See on ühesammuline: tagasi saab võtta ainult viimase muudatuse ja uus muudatus asendab selle.',
+  'help.guide.clear-day.title': 'Tühjenda päev',
+  'help.guide.clear-day.goal': 'Eemalda päevast kõik kohad korraga, näiteks et see nullist uuesti planeerida.',
+  'help.guide.clear-day.step.1': 'Paremklõpsa plaanis päeva päisel.',
+  'help.guide.clear-day.step.2': 'Vali Tühjenda päev ja kinnita.',
+  'help.guide.clear-day.result':
+    'Päev on tühi ja selle kohad on loendis tagasi planeerimata kohtadena. Päevade kohal olev tagasivõtmise nool paneb need tagasi.',
+  'help.guide.clear-day.tip.1': 'Eemaldatakse ainult kohad. Päev säilitab oma märkmed ja broneeringud.',
 
   // ── Screen: trip-places ───────────────────────────────────────────────────────────────
   'help.ctx.trip-places.title': 'Kohad',
@@ -1826,7 +1864,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-places.bullet.2':
     "Selle kõrval olev impordinupp pakub valikut Impordi fail .gpx-, .kml- ja .kmz-failide jaoks ning Google'i nimekiri (Nimekirja import, kui ka Naveri nimekirjad on sisse lülitatud) Google Mapsist või Naver Mapsist jagatud nimekirja jaoks. Faili võib ka lihtsalt veergu lohistada.",
   'help.ctx.trip-places.bullet.3':
-    'Nende all on otsing, selle kõrval valikut alustav linnuke, ja filtrite rida: Näita vahetab valikute Kõik, Planeerimata, Plaanis ja pärast raja importimist Rajad vahel, igaühel oma arv; sildinupp filtreerib kategooria ja täht minimaalse hinnangu järgi.',
+    'Nende all on otsing, selle kõrval valikut alustav linnuke, ja filtrite rida: Näita vahetab valikute Kõik, Planeerimata, Plaanis ja pärast raja importimist Rajad vahel, igaühel oma arv; sildinupp filtreerib kategooria, täht minimaalse hinnangu ning gloobus riigi või piirkonna järgi, ja Sorteeri määrab loendi järjekorra.',
   'help.ctx.trip-places.bullet.4':
     'Real on pilt, nimi ja kirjeldus või aadress. Klõpsa sellel koha üksikasjade nägemiseks, lohista see päevale või paremklõpsa sellel (või klõpsa selle kolmel punktil), et näha valikuid Muuda, + Päev, Ava veebisait, Google Maps, Salvesta kogumikku ja Kustuta.',
   'help.ctx.trip-places.bullet.5':
@@ -1954,6 +1992,32 @@ const help: TranslationStrings = {
     'Nimekiri peab olema avalikult jagatud; privaatse nimekirja link ei impordi midagi.',
   'help.guide.import-places-list.tip.2':
     "Täienda kohtade andmeid Google'i kaudu ilmub dialoogi, kui su TREKil on Google'i võti: see otsib üles iga imporditud koha ja täidab fotod, aadressi ja üksikasjad.",
+  'help.guide.sort-places.title': 'Sordi kohtade loend',
+  'help.guide.sort-places.goal':
+    'Sea loend järjekorda, mis praegu aitab: nime, hinnangu või viimati lisatu või muudetu järgi.',
+  'help.guide.sort-places.step.1': 'Ava veeru päises Sorteeri. Selle silt näitab, kuidas loend praegu sorditud on.',
+  'help.guide.sort-places.step.2': 'Vali järjekord, näiteks Nimi või Kõrgeima hindega. Loend järgneb kohe.',
+  'help.guide.sort-places.result': 'Loend näitab kohti sinu valitud järjekorras, kuni valid mõne teise.',
+  'help.guide.sort-places.tip.1':
+    'Iga järjekord peale Viimati lisatud märgistab nupu, nii et näed ühe pilguga, et loend on teisiti sorditud.',
+  'help.guide.sort-places.tip.2': 'Sortimine muudab ainult loendit. Päevad säilitavad oma järjekorra.',
+  'help.guide.place-by-hand.title': 'Lisa koht, mida otsing ei tunne',
+  'help.guide.place-by-hand.goal':
+    'Sisesta koht ise koos telefoni, e-posti ja lahtiolekuaegadega, kui kohaotsing midagi ei leia.',
+  'help.guide.place-by-hand.step.1':
+    'Kirjuta koha dialoogis nimi otsingusse ja vajuta Enter. Kui midagi ei leita, ütleb dialoog seda ja pakub valikut Lisa käsitsi.',
+  'help.guide.place-by-hand.step.2':
+    'Klõpsa Lisa käsitsi. Otsitud tekstist saab nimi ja dialoog kerib kontaktväljadeni.',
+  'help.guide.place-by-hand.step.3': 'Täida Telefon ja E-post niipalju, kui neid tead.',
+  'help.guide.place-by-hand.step.4':
+    'Klõpsa Lisa lahtiolekuajad ja määra, millal koht igal päeval avatakse ja suletakse. Kopeerimisnupp annab kõigile päevadele esimese päeva ajad ja päeva lüliti märgib selle olekuks Suletud.',
+  'help.guide.place-by-hand.step.5': 'Klõpsa Lisa.',
+  'help.guide.place-by-hand.result':
+    'Koht lisandub loendisse. Selle üksikasjad näitavad sinu sisestatud telefoni, e-posti ja lahtiolekuaegu, täpselt nagu otsinguga leitud kohal.',
+  'help.guide.place-by-hand.tip.1':
+    'Kui muudad kohta, millel pole oma lahtiolekuaegu, võetakse need ise üle vasakul olevast paneelist Koha üksikasjad; kui ajad on juba olemas, võtab nende kõrval olev nupp leitud ajad üle.',
+  'help.guide.place-by-hand.tip.2':
+    'Sinu sisestatud ajad on leitud aegadest ülimuslikud, nii et hooajaliste aegadega kohvik näitab seda, mida sina tead.',
 
   // ── Screen: trip-days ─────────────────────────────────────────────────────────────────
   'help.ctx.trip-days.title': 'Päevad',
@@ -1966,11 +2030,11 @@ const help: TranslationStrings = {
   'help.ctx.trip-days.bullet.3':
     'Päeva sees: peatused järjekorras, igaühel pilt, nimi, aeg, pildil lukk ja sellega seotud broneeringud; märkmed; päeva broneeringud ja transport, toonitud tüübi järgi; ning peatuste vahel iga teelõigu sõiduaeg. Igal real on kolme punktiga menüü, sama, mis avaneb paremklõpsuga.',
   'help.ctx.trip-days.bullet.4':
-    'Peatuste all on marsruudiriba: Marsruut joonistab päeva kaardile, Optimeeri järjestab peatused, Autoga / Jalgsi määrab päeva liikumisviisi, Ava Google Mapsis ja Ava CoMapsis annavad päeva neile rakendustele üle.',
+    'Peatuste all on marsruudiriba: Marsruut joonistab päeva kaardile, Optimeeri järjestab peatused, Autoga, Jalgsi või Jalgrattaga määrab päeva liikumisviisi, Ava Google Mapsis ja Ava CoMapsis annavad päeva neile rakendustele üle.',
   'help.ctx.trip-days.bullet.5':
     'Kohad jõuavad päevale, kui lohistad rea kohtade veerust, kasutad selle rea nuppu + Päev, päeva + menüüs või tühjal päeval nuppu Lisa koht sellele päevale või koha üksikasju.',
   'help.ctx.trip-days.bullet.6':
-    'Allosas olev Kogukulu liidab kokku kõik hinnaga peatused ja broneeringud reisi valuutas.',
+    'Allosas olev Kogukulu liidab kokku vahekaardi Kulud kulud, mis kuuluvad päeva peatuste ja broneeringute juurde, igaühe ühe korra, reisi valuutas.',
   // read-day-plan
   'help.guide.read-day-plan.title': 'Loe päeva kaarti',
   'help.guide.read-day-plan.goal': 'Tea enne muutmist, mida päeva kaardi iga osa sulle ütleb.',
@@ -2443,7 +2507,7 @@ const help: TranslationStrings = {
   'help.guide.edit-accommodation.title': 'Muuda või tühista broneeritud öö',
   'help.guide.edit-accommodation.goal': 'Nihuta peatumist, paranda selle kellaaegu või eemalda see plaanist.',
   'help.guide.edit-accommodation.step.1':
-    'Peatumise igal päeval näitab kaart majutuskohta, sisseregistreerimise ajavahemikku, väljaregistreerimise aega ja kinnitusnumbrit.',
+    'Kaart näitab majutuskohta ja kinnitusnumbrit, saabumise päeval koos sisseregistreerimise ajavahemikuga ja lahkumise päeval koos väljaregistreerimise ajaga.',
   'help.guide.edit-accommodation.step.2':
     'Paremal olev pliiats avab peatumise uuesti. Hüpikaknas on nüüd kirjas Muuda majutust.',
   'help.guide.edit-accommodation.step.3':
@@ -2475,6 +2539,12 @@ const help: TranslationStrings = {
     'Broneering satub päevale oma kuupäeva järgi. Muuda kuupäeva vahekaardil Broneer. ja see liigub ise teisele päevale.',
   'help.guide.day-bookings.tip.2':
     'Kui plokki Broneeringud pole, pole päeval broneeringuid: tühja plokki ei näidata, see peidetakse.',
+  'help.guide.map-lock.title': 'Lukusta kaart',
+  'help.guide.map-lock.goal': 'Hoia kaart paigal, kui klõpsad päevade ja kohtade vahel.',
+  'help.guide.map-lock.step.1':
+    'Klõpsa kaardil olevat lukku. Kuni see on suletud, ei suumi ega nihuta päeva avamine või koha valimine enam kaarti.',
+  'help.guide.map-lock.result': 'Kaart jääb sinna, kuhu selle jätsid, kuni sa plaaniga tegeled.',
+  'help.guide.map-lock.tip.1': 'Klõpsa lukku uuesti, et kaart järgiks jälle valikut.',
 
   // ── Screen: trip-map ──────────────────────────────────────────────────────────────────
   'help.ctx.trip-map.title': 'Kaart',
@@ -2491,7 +2561,7 @@ const help: TranslationStrings = {
   'help.ctx.trip-map.bullet.5':
     'Üleval olev ikoonirida otsib kaardi nähtavast osast: Restoranid, Kohvikud, Baarid ja ööelu, Majutus, Vaatamisväärsused, Muuseumid ja kultuur, Loodus ja pargid ning Tegevused. Otsi sellest piirkonnast käivitab otsingu pärast kaardi liigutamist uuesti.',
   'help.ctx.trip-map.bullet.6':
-    'Paremklõpsa kaardil ükskõik kus, et avada selles punktis kohavorm, mille aadress on juba otsitud. Vasakus alanurgas olev ümmargune nupp vahetab joonistatud kaardi aerofotode vastu.',
+    'Paremklõpsa kaardil ükskõik kus, et avada selles punktis kohavorm, mille aadress on juba otsitud. Vasakus alanurgas olev ümmargune nupp vahetab joonistatud kaardi aerofotode vastu ja lukk hoiab vaate paigal, kui klõpsad päevade ja kohtade vahel.',
   'help.ctx.trip-map.bullet.7':
     'Paremas alanurgas olev Näita kogu reisi joonistab kõik reisipäevad korraga ja näitab, mida iga päev hõlmab; broneeringu real olev marsruudiikoon joonistab selle broneeringu ja päevade kohal tööriistaribal olev ikoon joonistab need kõik. Klõpsa joonistatud broneeringu otsal, et avada selle üksikasjad.',
   'help.ctx.trip-map.bullet.8':
@@ -3337,6 +3407,8 @@ const help: TranslationStrings = {
     'Võrdselt on sendi täpsusega: ülejääv sent liigub kulult kulule edasi, nii et keegi ei pea seda alati maksma.',
   'help.guide.split-expense.tip.3':
     'Tšeki režiim arvutab Kogusumma ise ja muudab välja halliks: kviitungi read moodustavadki kogusumma.',
+  'help.guide.split-expense.tip.4':
+    'Kohandatud jaotuse saab sisestada ka protsentides: vali Sisesta osad kui väärtuseks %, ja osad peavad kokku andma 100 %, enne kui kulu salvestub.',
   // expense-currency
   'help.guide.expense-currency.title': 'Sisesta kulu teises valuutas',
   'help.guide.expense-currency.goal':
