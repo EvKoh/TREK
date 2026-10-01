@@ -9,6 +9,8 @@ import { readWeek, weekdayNames, writeWeek } from './placeHours'
 import { useTranslation } from '../../i18n'
 
 interface Props {
+  /** Anchor for the "add by hand" jump from an empty search. */
+  id?: string
   phone: string
   email: string
   /** The stored hours text (JSON), empty when the place has none of its own. */
@@ -23,7 +25,7 @@ interface Props {
  * behind one row until somebody wants them, so a place without any does not
  * carry a seven-row grid.
  */
-export function PlaceContactFields({ phone, email, openingHours, onChange }: Props) {
+export function PlaceContactFields({ id: anchorId, phone, email, openingHours, onChange }: Props) {
   const { t, locale } = useTranslation()
   const id = useId()
   const week = readWeek(openingHours)
@@ -38,7 +40,7 @@ export function PlaceContactFields({ phone, email, openingHours, onChange }: Pro
   const clearHours = () => { onChange('opening_hours', ''); setEditing(false) }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div id={anchorId} className="flex flex-col gap-4">
       <div className={GRID_2}>
         <EditorField label={t('places.formPhone')} htmlFor={`${id}-phone`}>
           <div className="relative">

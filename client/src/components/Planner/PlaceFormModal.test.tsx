@@ -55,6 +55,21 @@ beforeEach(() => {
 });
 
 describe('PlaceFormModal', () => {
+  it('FE-COMP-PLACEFORM-2472: an empty search offers adding the place by hand and takes the query as the name', async () => {
+    const user = userEvent.setup();
+    server.use(http.post('/api/maps/search', () => HttpResponse.json({ places: [], source: 'osm' })));
+    render(<PlaceFormModal {...defaultProps} />);
+    const search = screen.getByPlaceholderText(/Search places/i);
+    await user.type(search, 'Tiny Garage Cafe');
+    await user.click(screen.getByRole('button', { name: 'Search' }));
+    expect(await screen.findByText('Nothing found for “Tiny Garage Cafe”')).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Add by hand' }));
+    expect(screen.queryByText('Nothing found for “Tiny Garage Cafe”')).not.toBeInTheDocument();
+    // The search field keeps the query and the name field now holds it too.
+    expect(screen.getAllByDisplayValue('Tiny Garage Cafe')).toHaveLength(2);
+    expect(screen.getByLabelText('Phone')).toBeInTheDocument();
+  });
+
   it('FE-COMP-PLACEFORM-001: renders modal when isOpen is true', () => {
     render(<PlaceFormModal {...defaultProps} />);
     expect(document.body).toBeInTheDocument();

@@ -12,7 +12,7 @@ import CollectionPicker from '../Collections/CollectionPicker'
 import PlaceDetailsColumn, { type PlaceDetailsSelection } from './PlaceDetailsColumn'
 import { useToast } from '../shared/Toast'
 import { Tooltip } from '../shared/Tooltip'
-import { Search, Paperclip, X, AlertTriangle, Loader2, Plus, RotateCcw, MapPin, Navigation, LocateFixed } from 'lucide-react'
+import { Search, Paperclip, X, AlertTriangle, Loader2, Plus, RotateCcw, MapPin, Navigation, LocateFixed, PencilLine } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import CustomTimePicker from '../shared/CustomTimePicker'
 import { PlaceContactFields } from './PlaceContactFields'
@@ -164,6 +164,9 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
     return id != null ? String(id) : ''
   }
   const [pendingFiles, setPendingFiles] = useState([])
+  // The query the last full search found nothing for (#2472): the cue to add the
+  // place by hand instead of a silent empty list.
+  const [emptySearch, setEmptySearch] = useState<string | null>(null)
   /**
    * The leg of the drive the traveller picked, or empty while the projection's own
    * answer stands. Empty rather than seeded, because there is nothing to project onto
@@ -451,6 +454,7 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
       searchMetaRef.current = { query: trimmed, source: result.source || 'unknown' }
       setNearbyList(false)
       setMapsResults(result.places || [])
+      setEmptySearch((result.places || []).length === 0 ? trimmed : null)
       setSearchSource(result.source || '')
     } catch (err: unknown) {
       if (epoch !== searchEpochRef.current) return
@@ -818,6 +822,7 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
     setShowNewCategory,
     isSaving,
     pendingFiles,
+    emptySearch, setEmptySearch,
     fileRef,
     acSuggestions,
     setAcSuggestions,
@@ -1037,7 +1042,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
                     // in from the map already has what the search would give.
                     autoFocus={!place && !prefillCoords}
                     value={mapsSearch}
-                    onChange={e => setMapsSearch(e.target.value)}
+                    onChange={e => { setMapsSearch(e.target.value); S.setEmptySearch(null) }}
                     onKeyDown={handleSearchKeyDown}
                     onBlur={() => setTimeout(() => setAcSuggestions([]), 150)}
                     onFocus={() => {
@@ -1102,6 +1107,30 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
                 )}
               </div>
             </EditorField>
+
+            {/* Nothing found (#2472): say so, and offer the hand-made way in, taking
+                the query as the name when there is none yet. */}
+            {S.emptySearch && mapsResults.length === 0 && !isSearchingMaps && (
+              <div className="flex items-center gap-3 rounded-[12px] border border-dashed border-edge bg-surface-card px-3 py-2.5">
+                <span className="grid h-8 w-8 flex-none place-items-center rounded-full bg-surface-tertiary text-content-muted">
+                  <PencilLine size={15} strokeWidth={2} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate font-semibold text-content" style={fs(12.5, 'body')}>{t('places.searchNothing', { query: S.emptySearch })}</span>
+                  <span className="block text-content-muted" style={fs(11.5)}>{t('places.searchNothingHint')}</span>
+                </span>
+                <button type="button"
+                  onClick={() => {
+                    if (!form.name.trim()) handleChange('name', S.emptySearch!)
+                    S.setEmptySearch(null)
+                    document.getElementById(`${fieldId}-contact`)?.scrollIntoView?.({ behavior: 'smooth', block: 'center' })
+                  }}
+                  className="flex-none rounded-full bg-accent px-3 py-1.5 font-semibold text-accent-text hover:opacity-90"
+                  style={fs(12, 'body')}>
+                  {t('places.addByHand')}
+                </button>
+              </div>
+            )}
 
             {/* Search results (populated after full search) */}
             {mapsResults.length > 0 && (
@@ -1285,6 +1314,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
           {/* Phone, e-mail and the place's own hours, for what the search did not
               know or a place nobody has listed (#2472). */}
           <PlaceContactFields
+            id={`${fieldId}-contact`}
             phone={form.phone ?? ''}
             email={form.email ?? ''}
             openingHours={form.opening_hours ?? ''}
