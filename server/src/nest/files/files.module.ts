@@ -18,7 +18,7 @@ import { StorageModule } from '../storage/storage.module';
 import { StorageService } from '../storage/storage.service';
 import { buildStorageUploadOptions } from '../storage/storage-upload.factory';
 import { filesUploadFileFilter } from './files.controller';
-import { MAX_VIDEO_SIZE } from './files.constants';
+import { MAX_FILE_SIZE, MAX_VIDEO_SIZE } from './files.constants';
 
 @Module({
   imports: [
@@ -30,7 +30,8 @@ import { MAX_VIDEO_SIZE } from './files.constants';
           category: 'files',
           // Allow up to the video cap; non-video files are still held to
           // MAX_FILE_SIZE by the per-type guard in the upload handler (#823).
-          maxSize: MAX_VIDEO_SIZE,
+          // An operator may raise the document limit past the video cap.
+          maxSize: Math.max(MAX_VIDEO_SIZE, MAX_FILE_SIZE),
           defParamCharset: 'utf8', // parity with legacy routes/files.ts — preserve non-ASCII original filenames
           fileFilter: filesUploadFileFilter(allowedTypes),
         }),

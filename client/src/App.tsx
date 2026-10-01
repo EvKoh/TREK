@@ -303,7 +303,7 @@ export default function App() {
         loadUser()
       }
     }
-    authApi.getAppConfig().then(async (config: { managed?: boolean; demo_mode?: boolean; dev_mode?: boolean; is_prerelease?: boolean; has_maps_key?: boolean; has_amap_key?: boolean; places_provider?: string; version?: string; timezone?: string; require_mfa?: boolean; trip_reminders_enabled?: boolean; places_photos_enabled?: boolean; places_autocomplete_enabled?: boolean; places_details_enabled?: boolean; places_enrich_enabled?: boolean; place_shadow_enabled?: boolean; permissions?: Record<string, PermissionLevel> }) => {
+    authApi.getAppConfig().then(async (config: { managed?: boolean; demo_mode?: boolean; dev_mode?: boolean; is_prerelease?: boolean; has_maps_key?: boolean; has_amap_key?: boolean; places_provider?: string; version?: string; timezone?: string; require_mfa?: boolean; trip_reminders_enabled?: boolean; places_photos_enabled?: boolean; places_autocomplete_enabled?: boolean; places_details_enabled?: boolean; places_enrich_enabled?: boolean; place_shadow_enabled?: boolean; max_upload_mb?: number; permissions?: Record<string, PermissionLevel> }) => {
       setManaged(!!config?.managed)
       setDemoMode(!!config?.demo_mode)
       if (config?.dev_mode) setDevMode(true)
@@ -320,6 +320,7 @@ export default function App() {
       if (config?.places_details_enabled !== undefined) setPlacesDetailsEnabled(config.places_details_enabled)
       if (config?.places_enrich_enabled !== undefined) setPlacesEnrichEnabled(config.places_enrich_enabled)
       if (config?.place_shadow_enabled !== undefined) setPlaceShadowEnabled(config.place_shadow_enabled)
+      if (typeof config?.max_upload_mb === 'number' && config.max_upload_mb > 0) useAuthStore.getState().setMaxUploadMb(config.max_upload_mb)
       if (config?.permissions) usePermissionsStore.getState().setPermissions(config.permissions)
       // Last, since a new release reloads the page from here.
       await reconcileAppVersion(config?.version)

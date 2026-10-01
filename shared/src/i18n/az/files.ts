@@ -9,7 +9,7 @@ const files: TranslationStrings = {
   'files.menu': 'Daha çox seçim',
 
   'files.uploadErrorSize':
-    'Fayl həddindən çox böyükdür (maksimum 50 MB)',
+    'Fayl həddindən çox böyükdür (maksimum {max} MB)',
   'files.title': 'Fayllar',
   'files.pageTitle': 'Fayllar və sənədlər',
   'files.subtitle': '{trip} üçün {count} fayl',

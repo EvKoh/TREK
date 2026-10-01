@@ -6,7 +6,7 @@ const files: TranslationStrings = {
   'files.linkTitle': 'Seo fail',
   'files.linkEmpty': 'Seostamiseks pole veel kohti ega broneeringuid',
   'files.menu': 'Veel valikuid',
-  'files.uploadErrorSize': 'Fail on liiga suur (kuni 50 MB)',
+  'files.uploadErrorSize': 'Fail on liiga suur (kuni {max} MB)',
   'files.title': 'Failid',
   'files.pageTitle': 'Failid ja dokumendid',
   'files.subtitle': '{count} faili reisile {trip}',

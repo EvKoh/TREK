@@ -1,4 +1,5 @@
 import path from 'path';
+import { readEnv } from '../../app-config';
 
 /**
  * File-domain constants and pure helpers, split out of FilesService because
@@ -9,7 +10,9 @@ import path from 'path';
  * files.bridge.ts.
  */
 
-export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
+// FILE_UPLOAD_LIMIT_MB, 50 MB by default (#1364). Read once at load, like the
+// backup cap: the multer configs that use it are built before the container.
+export const MAX_FILE_SIZE = readEnv().files.uploadLimitMb * 1024 * 1024;
 export const DEFAULT_ALLOWED_EXTENSIONS = 'jpg,jpeg,png,gif,webp,heic,pdf,doc,docx,xls,xlsx,txt,csv,pkpass,pkpasses,md,markdown';
 
 // Video support (#823). Gallery/media uploads accept these in addition to images,

@@ -6,7 +6,7 @@ const files: TranslationStrings = {
   'files.linkTitle': 'Prepojiť súbor',
   'files.linkEmpty': 'Zatiaľ nie sú žiadne miesta ani rezervácie na prepojenie',
   'files.menu': 'Ďalšie možnosti',
-  'files.uploadErrorSize': 'Súbor je príliš veľký (max. 50 MB)',
+  'files.uploadErrorSize': 'Súbor je príliš veľký (max. {max} MB)',
   'files.title': 'Súbory',
   'files.pageTitle': 'Súbory a dokumenty',
   'files.subtitle': '{count} súborov pre {trip}',

@@ -6,7 +6,7 @@ const files: TranslationStrings = {
   'files.linkTitle': "ลิงก์ไฟล์",
   'files.linkEmpty': "ยังไม่มีสถานที่หรือการจองที่จะลิงก์",
   'files.menu': "ตัวเลือกเพิ่มเติม",
-  'files.uploadErrorSize': "ไฟล์มีขนาดใหญ่เกินไป (สูงสุด 50 MB)",
+  'files.uploadErrorSize': "ไฟล์มีขนาดใหญ่เกินไป (สูงสุด {max} MB)",
   'files.title': "ไฟล์",
   'files.pageTitle': "ไฟล์และเอกสาร",
   'files.subtitle': "{count} ไฟล์สำหรับ {trip}",

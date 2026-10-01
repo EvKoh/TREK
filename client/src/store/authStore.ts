@@ -65,6 +65,8 @@ interface AuthState {
   placesAutocompleteEnabled: boolean
   placesDetailsEnabled: boolean
   placesEnrichEnabled: boolean
+  /** FILE_UPLOAD_LIMIT_MB from the server (#1364); 50 until the config arrives. */
+  maxUploadMb: number
   /** Server records which search result was picked (admin switch, default off). */
   placeShadowEnabled: boolean
 
@@ -94,6 +96,7 @@ interface AuthState {
   setPlacesAutocompleteEnabled: (val: boolean) => void
   setPlacesDetailsEnabled: (val: boolean) => void
   setPlacesEnrichEnabled: (val: boolean) => void
+  setMaxUploadMb: (val: number) => void
   setPlaceShadowEnabled: (val: boolean) => void
   demoLogin: () => Promise<AuthResponse>
 }
@@ -149,6 +152,7 @@ export const useAuthStore = create<AuthState>()(
   placesAutocompleteEnabled: true,
   placesDetailsEnabled: true,
   placesEnrichEnabled: true,
+  maxUploadMb: 50,
   // Fail-closed: an old server sends no flag and nothing is logged.
   placeShadowEnabled: false,
 
@@ -425,6 +429,7 @@ export const useAuthStore = create<AuthState>()(
   setPlacesAutocompleteEnabled: (val: boolean) => set({ placesAutocompleteEnabled: val }),
   setPlacesDetailsEnabled: (val: boolean) => set({ placesDetailsEnabled: val }),
   setPlacesEnrichEnabled: (val: boolean) => set({ placesEnrichEnabled: val }),
+  setMaxUploadMb: (val: number) => set({ maxUploadMb: val }),
   setPlaceShadowEnabled: (val: boolean) => set({ placeShadowEnabled: val }),
 
   demoLogin: async () => {

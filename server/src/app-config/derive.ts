@@ -301,6 +301,13 @@ export function deriveIntegrations(raw: RawEnv) {
   };
 }
 
+export function deriveFiles(raw: RawEnv) {
+  return {
+    /** Largest document a user may upload to a trip, a booking or a note (#1364). Videos keep their own cap. */
+    uploadLimitMb: positiveNumberOr(raw.FILE_UPLOAD_LIMIT_MB, 50),
+  };
+}
+
 export function deriveBackup(raw: RawEnv) {
   return {
     uploadLimitMb: positiveNumberOr(raw.BACKUP_UPLOAD_LIMIT_MB, 500),
@@ -365,6 +372,7 @@ export function deriveAll(raw: RawEnv) {
     webauthn: deriveWebauthn(raw),
     integrations: deriveIntegrations(raw),
     backup: deriveBackup(raw),
+    files: deriveFiles(raw),
     db: deriveDb(raw),
     paths: derivePaths(raw),
     net: deriveNet(raw),

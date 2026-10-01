@@ -17,6 +17,7 @@ export {
   deriveWebauthn,
   deriveIntegrations,
   deriveBackup,
+  deriveFiles,
   deriveDb,
   derivePaths,
   deriveNet,

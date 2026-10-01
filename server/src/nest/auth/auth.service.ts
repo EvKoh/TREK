@@ -334,6 +334,8 @@ export class AuthService {
       // server's acceptance can never drift (the historical inline copy here
       // dropped pkpass, pkpasses, md and markdown).
       allowed_file_types: this.allowedFileTypes.get(),
+      // FILE_UPLOAD_LIMIT_MB, so the pickers refuse a file before the upload starts (#1364).
+      max_upload_mb: readEnv().files.uploadLimitMb,
       // Whether the configuration belongs to whoever operates this install
       // rather than to its admin. The client uses it to stop offering settings
       // the server would refuse anyway — it is an honesty flag for the UI, never

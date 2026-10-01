@@ -14,6 +14,7 @@ import {
   derivePlugins,
   deriveIntegrations,
   deriveBackup,
+  deriveFiles,
   deriveNet,
   derivePaths,
   derivePush,
@@ -242,6 +243,13 @@ describe('deriveIntegrations', () => {
     expect(deriveIntegrations({}).llmTimeoutMs).toBe(900_000);
     expect(deriveIntegrations({ LLM_TIMEOUT_MS: '-1' }).llmTimeoutMs).toBe(900_000);
     expect(deriveIntegrations({ LLM_TIMEOUT_MS: '60000.5' }).llmTimeoutMs).toBe(60_000);
+  });
+});
+
+describe('deriveFiles (#1364)', () => {
+  it('defaults the upload limit to 50 MB and takes FILE_UPLOAD_LIMIT_MB', () => {
+    expect(deriveFiles({}).uploadLimitMb).toBe(50);
+    expect(deriveFiles({ FILE_UPLOAD_LIMIT_MB: '200' }).uploadLimitMb).toBe(200);
   });
 });
 
