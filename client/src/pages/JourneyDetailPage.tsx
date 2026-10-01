@@ -57,7 +57,7 @@ function JourneyDetailPageDesktop() {
     dawarichByDate, dawarichBusyId, acceptDawarich, dismissDawarich,
     mapRef, fullMapRef, galleryUploadRef, galleryProviders, setGalleryProviders, galleryBrowseRef,
     activeLocationId, handleMarkerClick, handleLocationClick,
-    mapEntries, sidebarMapItems, tripDates, isMobile, tracks,
+    mapEntries, sidebarMapItems, tripDates, isMobile, tracks, mapPhotos, openMapPhotos,
     feedEdge, scrollFeedTo,
     loadJourney, updateEntry, deleteEntry, reorderEntries, uploadPhotos, deletePhoto,
     addPickedProviderPhotos, addEntryProviderPhotos,
@@ -668,6 +668,8 @@ function JourneyDetailPageDesktop() {
                   checkins={[]}
                   entries={sidebarMapItems as any}
                   tracks={tracks}
+                  photos={mapPhotos}
+                  onPhotoClick={openMapPhotos}
                   height={9999}
                   activeMarkerId={activeEntryId}
                   onMarkerClick={handleMarkerClick}

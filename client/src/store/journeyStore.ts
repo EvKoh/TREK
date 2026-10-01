@@ -113,6 +113,10 @@ export interface GalleryPhoto {
   // 'image' (default) or 'video' (#823)
   media_type?: string | null
   duration_ms?: number | null
+  /** Where and when it was taken, from EXIF or the provider (#1614); null when unknown. */
+  taken_at?: string | null
+  lat?: number | null
+  lng?: number | null
 }
 
 export interface JourneyTrip {

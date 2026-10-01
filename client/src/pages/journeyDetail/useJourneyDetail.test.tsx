@@ -336,6 +336,23 @@ describe('useJourneyDetail', () => {
     expect(latest.sidebarMapItems[0].dayColor).toBe(latest.sidebarMapItems[1].dayColor);
   });
 
+  it('FE-JRN-DETHOOK-2453: geotagged gallery photos become the map layer, and a tap opens them', async () => {
+    serveJourney(buildDetail({
+      gallery: [
+        { id: 3, photo_id: 30, lat: 48.1, lng: 11.5, caption: 'Marienplatz' },
+        { id: 4, photo_id: 40, lat: null, lng: null },
+      ] as never,
+    }));
+    setup();
+    await waitFor(() => expect(latest.mapPhotos).toHaveLength(1));
+    expect(latest.mapPhotos[0]).toEqual({ id: '3', lat: 48.1, lng: 11.5, thumbUrl: '/api/photos/30/thumbnail' });
+    act(() => latest.openMapPhotos(['3']));
+    expect(latest.lightbox?.photos).toEqual([expect.objectContaining({ id: 3, src: '/api/photos/30/original', caption: 'Marienplatz' })]);
+    act(() => latest.setLightbox(null));
+    act(() => latest.openMapPhotos(['999']));
+    expect(latest.lightbox).toBeNull();
+  });
+
   it('FE-JRN-DETHOOK-019: tripDates expands linked trips and skips half-dated ones', async () => {
     serveJourney(buildDetail({
       trips: [
