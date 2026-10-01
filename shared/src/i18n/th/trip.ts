@@ -18,6 +18,7 @@ const trip: TranslationStrings = {
   'trip.loadingSteps.arrive': "เกือบจะถึงแล้ว...",
   'trip.mobilePlan': "แผน",
   'trip.mobilePlaces': "สถานที่",
+  'trip.panelWidth': 'ความกว้างของแผง',
   'trip.toast.placeUpdated': "อัปเดตสถานที่แล้ว",
   'trip.toast.tripUpdated': "อัปเดตการเดินทางแล้ว",
   'trip.toast.placeAdded': "เพิ่มสถานที่แล้ว",

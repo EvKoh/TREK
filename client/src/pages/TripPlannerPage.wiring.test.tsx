@@ -227,6 +227,10 @@ function baseState(): HookState {
     narrowPanels: false,
     startResizeLeft: vi.fn(),
     startResizeRight: vi.fn(),
+    nudgeLeft: vi.fn(),
+    nudgeRight: vi.fn(),
+    resizeMin: 200,
+    resizeMax: 520,
     selectedPlaceId: null,
     selectedAssignmentId: null,
     setSelectedPlaceId: vi.fn(),
@@ -578,11 +582,28 @@ describe('TripPlannerPage — plan tab', () => {
     expect(screen.getByTestId('day-plan-sidebar')).toBeInTheDocument()
   })
 
-  // Mouse-only handles (mousedown + document mousemove) are inert on a tablet, and
-  // a 4px invisible strip on the panel edge is a trap for a fat finger (#2247).
-  it('FE-PAGE-TPW-015b: the narrow layout drops the mouse-only resize handles', () => {
-    const { container } = renderPage({ narrowPanels: true })
-    expect(container.querySelectorAll('div[style*="col-resize"]')).toHaveLength(0)
+  // The handles take a finger now, with a visible grip on touch screens, so the
+  // tablet band keeps the one it shows (#1012); before, a 4px mouse-only strip there
+  // was a trap for a fat finger (#2247).
+  it('FE-PAGE-TPW-015b: the narrow layout keeps a touch-ready handle on the panel it shows', () => {
+    const { container } = renderPage({ narrowPanels: true, rightHidden: true })
+    const handles = container.querySelectorAll<HTMLElement>('div[role="separator"]')
+    expect(handles).toHaveLength(1)
+    expect(handles[0].style.touchAction).toBe('none')
+    fireEvent.touchStart(handles[0])
+    expect(hookState.startResizeLeft).toHaveBeenCalled()
+  })
+
+  it('FE-PAGE-TPW-015c: the arrow keys move a handle like a separator (#1012)', () => {
+    const { container } = renderPage()
+    const [left, right] = container.querySelectorAll<HTMLElement>('div[role="separator"]')
+    expect(left).toHaveAttribute('aria-valuenow')
+    fireEvent.keyDown(left, { key: 'ArrowRight' })
+    expect(hookState.nudgeLeft).toHaveBeenCalledWith(16)
+    fireEvent.keyDown(right, { key: 'ArrowLeft' })
+    expect(hookState.nudgeRight).toHaveBeenCalledWith(16)
+    fireEvent.keyDown(right, { key: 'ArrowRight' })
+    expect(hookState.nudgeRight).toHaveBeenCalledWith(-16)
   })
 
   it('FE-PAGE-TPW-015: the resize handles start a drag on mouse-down and highlight on hover', () => {

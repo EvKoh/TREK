@@ -18,6 +18,7 @@ const trip: TranslationStrings = {
   'trip.loadingSteps.arrive': 'Az kaldı...',
   'trip.mobilePlan': 'Plan',
   'trip.mobilePlaces': 'Yerler',
+  'trip.panelWidth': 'Panel genişliği',
   'trip.toast.placeUpdated': 'Yer güncellendi',
   'trip.toast.tripUpdated': 'Gezi güncellendi',
   'trip.toast.placeAdded': 'Yer eklendi',

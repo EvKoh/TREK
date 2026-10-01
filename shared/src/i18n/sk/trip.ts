@@ -18,6 +18,7 @@ const trip: TranslationStrings = {
   'trip.loadingSteps.arrive': 'Už sme skoro tam...',
   'trip.mobilePlan': 'Plán',
   'trip.mobilePlaces': 'Miesta',
+  'trip.panelWidth': 'Šírka panela',
   'trip.toast.placeUpdated': 'Miesto bolo aktualizované',
   'trip.toast.tripUpdated': 'Cesta aktualizovaná',
   'trip.toast.placeAdded': 'Miesto bolo pridané',

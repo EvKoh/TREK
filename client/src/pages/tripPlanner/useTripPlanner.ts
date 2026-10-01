@@ -310,7 +310,7 @@ export function useTripPlanner() {
   const {
     leftWidth, rightWidth, leftCollapsed, rightCollapsed, setLeftCollapsed, setRightCollapsed,
     leftHidden, rightHidden, toggleLeft, toggleRight, narrow: narrowPanels,
-    startResizeLeft, startResizeRight,
+    startResizeLeft, startResizeRight, nudgeLeft, nudgeRight, resizeMin, resizeMax,
   } = useResizablePanels()
   const { selectedPlaceId, selectedAssignmentId, setSelectedPlaceId, selectAssignment } = usePlaceSelection()
   const [dayDetail, setShowDayDetail] = useState<Day | null>(null)
@@ -2957,7 +2957,7 @@ export function useTripPlanner() {
     TRANSPORT_TYPES, TRIP_TABS, activeTab, setActiveTab, handleTabChange,
     leftWidth, rightWidth, leftCollapsed, rightCollapsed, setLeftCollapsed, setRightCollapsed,
     leftHidden, rightHidden, toggleLeft, toggleRight, narrowPanels,
-    startResizeLeft, startResizeRight,
+    startResizeLeft, startResizeRight, nudgeLeft, nudgeRight, resizeMin, resizeMax,
     selectedPlaceId, selectedAssignmentId, setSelectedPlaceId, selectAssignment,
     showDayDetail, setShowDayDetail, dayDetailCollapsed, setDayDetailCollapsed,
     stayPickerDayId, setStayPickerDayId,

@@ -58,6 +58,7 @@ import { usePoiExplore } from '../components/Map/usePoiExplore'
 import { useMergedMapPois } from '../components/Map/useMergedMapPois'
 import PoiCategoryPill from '../components/Map/PoiCategoryPill'
 import { useTouchDragBridge } from '../hooks/useTouchDragBridge'
+import PanelResizeHandle from '../components/Planner/PanelResizeHandle'
 
 // The tab panels are the planner's dead weight: each one mounts only while its
 // own tab is active, so the page chunk carried code most sessions never run. They
@@ -285,8 +286,8 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
     allowedFileTypes, tripMembers, setTripMembers, refreshMembers, loadAccommodations,
     TRANSPORT_TYPES, TRIP_TABS, activeTab, setActiveTab, handleTabChange,
     leftWidth, rightWidth,
-    leftHidden, rightHidden, toggleLeft, toggleRight, narrowPanels,
-    startResizeLeft, startResizeRight,
+    leftHidden, rightHidden, toggleLeft, toggleRight,
+    startResizeLeft, startResizeRight, nudgeLeft, nudgeRight, resizeMin, resizeMax,
     selectedPlaceId, selectedAssignmentId, setSelectedPlaceId, selectAssignment,
     showDayDetail, setShowDayDetail, dayDetailCollapsed, setDayDetailCollapsed,
     stayPickerDayId, setStayPickerDayId,
@@ -741,13 +742,8 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                   onCreatePlaceForDay={can('place_edit', trip) ? (dayId) => { setEditingPlace(null); setPlaceFormDayId(dayId); setShowPlaceForm(true) } : undefined}
                 />
                 )}
-                {!leftHidden && !narrowPanels && (
-                  <div
-                    role="presentation"
-                    onMouseDown={startResizeLeft}
-                    className="transition-colors hover:bg-edge"
-                    style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 4, cursor: 'col-resize', zIndex: 2 }}
-                  />
+                {!leftHidden && (
+                  <PanelResizeHandle side="left" width={leftWidth} min={resizeMin} max={resizeMax} onStart={startResizeLeft} onNudge={nudgeLeft} />
                 )}
               </div>
             </div>
@@ -781,13 +777,8 @@ function TripPlannerPageDesktop(): React.ReactElement | null {
                 transition: 'width 0.25s ease',
                 opacity: rightHidden ? 0 : 1,
               }}>
-                {!rightHidden && !narrowPanels && (
-                  <div
-                    role="presentation"
-                    onMouseDown={startResizeRight}
-                    className="transition-colors hover:bg-edge"
-                    style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, cursor: 'col-resize', zIndex: 2 }}
-                  />
+                {!rightHidden && (
+                  <PanelResizeHandle side="right" width={rightWidth} min={resizeMin} max={resizeMax} onStart={startResizeRight} onNudge={nudgeRight} />
                 )}
                 <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                   {roadtripActive ? (

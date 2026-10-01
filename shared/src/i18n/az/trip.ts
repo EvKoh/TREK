@@ -20,6 +20,7 @@ const trip: TranslationStrings = {
 
   'trip.mobilePlan': 'Plan',
   'trip.mobilePlaces': 'Məkanlar',
+  'trip.panelWidth': 'Panelin eni',
 
   'trip.toast.placeUpdated': 'Məkan yeniləndi',
   'trip.toast.tripUpdated': 'Səyahət yeniləndi',

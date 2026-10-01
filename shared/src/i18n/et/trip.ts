@@ -18,6 +18,7 @@ const trip: TranslationStrings = {
   'trip.loadingSteps.arrive': 'Peaaegu kohal...',
   'trip.mobilePlan': 'Plaan',
   'trip.mobilePlaces': 'Kohad',
+  'trip.panelWidth': 'Paneeli laius',
   'trip.toast.placeUpdated': 'Koht uuendatud',
   'trip.toast.tripUpdated': 'Reis uuendatud',
   'trip.toast.placeAdded': 'Koht lisatud',
