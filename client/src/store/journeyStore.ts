@@ -24,6 +24,8 @@ export interface Journey {
    * boolean would make `=== true` compile and never hold.
    */
   show_trip_tracks?: number
+  /** Entries without a place take the position of their first geotagged photo (#1003); 0/1, off by default. */
+  photo_location?: number
   /**
    * Which of the optional entry fields this journey uses (discussion #2299).
    *

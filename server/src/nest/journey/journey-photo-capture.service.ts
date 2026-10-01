@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PhotoCaptureBackfillService } from '../memories/photo-capture-backfill.service';
+import { MapsService } from '../maps/maps.service';
 import { JourneyDomainService } from './journey-domain.service';
 
 /** The trek_photos ids of freshly added journey photo rows, whatever shape the add answered with. */
@@ -33,6 +34,7 @@ export class JourneyPhotoCaptureService {
   constructor(
     private readonly backfill: PhotoCaptureBackfillService,
     private readonly journey: JourneyDomainService,
+    private readonly maps: MapsService,
   ) {}
 
   /** Provider photos just added to a journey, to its gallery or to one of its entries. Detached. */
@@ -61,7 +63,31 @@ export class JourneyPhotoCaptureService {
   scheduleUpload(photos: readonly unknown[], userId: number): void {
     const ids = trekPhotoIdsOf(photos);
     if (!ids.length) return;
-    this.backfill.schedule(ids, userId);
+    void this.backfill.run(ids, userId)
+      .then(() => this.placeEntries(ids))
+      .catch(err => console.error('[Journey] capture for uploads failed:', err instanceof Error ? err.message : err));
+  }
+
+  /**
+   * Entries waiting for a place get the one their photo was taken at (#1003),
+   * then a name for it, then everyone on the journey hears about it. The name is
+   * best effort: a geocoder that does not answer leaves a pin without a label,
+   * which the owner can still name by hand.
+   */
+  async placeEntries(trekPhotoIds: number[]): Promise<number> {
+    const placed = this.journey.placeEntriesFromPhotos(trekPhotoIds);
+    if (!placed.length) return 0;
+    await Promise.all(placed.map(async (p) => {
+      try {
+        const where = await this.maps.reverseGeocode(String(p.lat), String(p.lng), undefined, { timeoutMs: 8000, locality: true });
+        const name = where.name || where.address;
+        if (name) this.journey.nameEntryLocation(p.entryId, name);
+      } catch { /* the pin stands without a name */ }
+    }));
+    for (const journeyId of new Set(placed.map(p => p.journeyId))) {
+      this.journey.broadcastJourneyEvent(journeyId, 'journey:photos:updated', {});
+    }
+    return placed.length;
   }
 
   /**
@@ -74,6 +100,8 @@ export class JourneyPhotoCaptureService {
     let changed = false;
     try {
       changed = await this.backfill.run(trekPhotoIds, userId);
+      // Its own broadcast when it places something; the one below is about order.
+      await this.placeEntries(trekPhotoIds);
       if (changed && journeyId != null) {
         this.journey.broadcastJourneyEvent(journeyId, 'journey:photos:updated', {});
       }

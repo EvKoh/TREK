@@ -215,6 +215,14 @@ describe('JourneySettingsDialog', () => {
     await waitFor(() => expect(updateJourney).toHaveBeenCalledWith(3, { status_override: null }))
   })
 
+  it('FE-JRN-SETTINGS-1003: the photo-location switch saves on the spot', async () => {
+    const user = userEvent.setup()
+    const { onRefresh } = mountDialog()
+    await user.click(screen.getByRole('button', { name: 'Place entries from their photos' }))
+    await waitFor(() => expect(updateJourney).toHaveBeenCalledWith(3, { photo_location: true }))
+    expect(onRefresh).toHaveBeenCalled()
+  })
+
   it('FE-JRN-SETTINGS-011: restores an archived journey', async () => {
     const user = userEvent.setup()
     mountDialog(buildJourney({ status: 'archived' }))

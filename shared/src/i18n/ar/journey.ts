@@ -228,6 +228,9 @@ const journey: TranslationStrings = {
   'journey.settings.statusAuto': 'تلقائي',
   'journey.settings.statusAutoHint': 'يتبع تواريخ الرحلات المرتبطة. بدون رحلة تبقى الرحلة مسودة.',
   'journey.settings.statusManualHint': 'مضبوطة يدويًا. لن تغيرها تواريخ الرحلة حتى تعود إلى الوضع التلقائي.',
+  'journey.settings.photosSection': 'الصور',
+  'journey.settings.photoLocation': 'تحديد موقع الإدخالات من صورها',
+  'journey.settings.photoLocationHint': 'يأخذ الإدخال الذي بلا مكان موقع أول صورة له تحمل GPS. لا تُنقل الأماكن التي حددتها بنفسك أبدًا.',
   'journey.settings.delete': 'Delete', // en-fallback
   'journey.settings.deleteJourney': 'Delete Journey', // en-fallback
   'journey.settings.deleteMessage': 'Delete "{title}"? All entries and photos will be lost.', // en-fallback

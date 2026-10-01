@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MemoriesModule } from '../memories/memories.module';
+import { MapsModule } from '../maps/maps.module';
 import { JourneyDomainModule } from './journey-domain.module';
 import { JourneyPhotoCaptureService } from './journey-photo-capture.service';
 
@@ -14,7 +15,8 @@ import { JourneyPhotoCaptureService } from './journey-photo-capture.service';
  * because the memories domain knows nothing about journeys.
  */
 @Module({
-  imports: [JourneyDomainModule, MemoriesModule],
+  // MapsModule names an entry placed from its photo (#1003); it is a leaf.
+  imports: [JourneyDomainModule, MemoriesModule, MapsModule],
   providers: [JourneyPhotoCaptureService],
   exports: [JourneyPhotoCaptureService],
 })

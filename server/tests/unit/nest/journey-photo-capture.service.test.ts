@@ -10,6 +10,7 @@ import type { JourneyDomainService } from '../../../src/nest/journey/journey-dom
 import type { PhotoResolverService } from '../../../src/nest/memories/photo-resolver.service';
 import type { TrekPhotosRepository } from '../../../src/nest/photos/trek-photos.repository';
 import type { StorageService } from '../../../src/nest/storage/storage.service';
+import type { MapsService } from '../../../src/nest/maps/maps.service';
 
 function build(changed: boolean | Error = true) {
   const run = vi.fn(async () => {
@@ -19,11 +20,15 @@ function build(changed: boolean | Error = true) {
   const schedule = vi.fn();
   const broadcastJourneyEvent = vi.fn();
   const journeyIdOfEntry = vi.fn((entryId: number) => (entryId === 4 ? 9 : null));
+  const placeEntriesFromPhotos = vi.fn((): { entryId: number; journeyId: number; lat: number; lng: number }[] => []);
+  const nameEntryLocation = vi.fn();
+  const reverseGeocode = vi.fn(async () => ({ name: 'Marienplatz', address: 'Munich' }));
   const svc = new JourneyPhotoCaptureService(
     { run, schedule } as unknown as PhotoCaptureBackfillService,
-    { broadcastJourneyEvent, journeyIdOfEntry } as unknown as JourneyDomainService,
+    { broadcastJourneyEvent, journeyIdOfEntry, placeEntriesFromPhotos, nameEntryLocation } as unknown as JourneyDomainService,
+    { reverseGeocode } as unknown as MapsService,
   );
-  return { svc, run, schedule, broadcastJourneyEvent, journeyIdOfEntry };
+  return { svc, run, schedule, broadcastJourneyEvent, journeyIdOfEntry, placeEntriesFromPhotos, nameEntryLocation, reverseGeocode };
 }
 
 beforeEach(() => vi.restoreAllMocks());
@@ -101,21 +106,61 @@ describe('JourneyPhotoCaptureService', () => {
     expect(error).toHaveBeenLastCalledWith('[Journey] capture refresh failed for journey null:', 'gone');
   });
 
-  it('JPCAP-008: an upload gets the plain backfill and no refresh, since one request is one file', async () => {
-    const { svc, run, schedule, broadcastJourneyEvent, journeyIdOfEntry } = build(true);
+  it('JPCAP-008: an upload gets the backfill and no order refresh, since one request is one file', async () => {
+    const { svc, run, broadcastJourneyEvent, journeyIdOfEntry, placeEntriesFromPhotos } = build(true);
 
     svc.scheduleUpload([{ id: 1, photo_id: 11 }, null, { id: 2 }], 3);
-    await new Promise(resolve => setTimeout(resolve, 5));
+    await vi.waitFor(() => expect(placeEntriesFromPhotos).toHaveBeenCalledWith([11]));
 
-    expect(schedule).toHaveBeenCalledWith([11], 3);
-    expect(run).not.toHaveBeenCalled();
+    expect(run).toHaveBeenCalledWith([11], 3);
     expect(journeyIdOfEntry).not.toHaveBeenCalled();
     expect(broadcastJourneyEvent).not.toHaveBeenCalled();
 
-    // Nothing with a trek photo id: nothing to schedule.
-    schedule.mockClear();
+    // Nothing with a trek photo id: nothing to run.
+    run.mockClear();
     svc.scheduleUpload([{ id: 3 }], 3);
-    expect(schedule).not.toHaveBeenCalled();
+    expect(run).not.toHaveBeenCalled();
+  });
+
+  it('JPCAP-1003: an entry placed from its photo gets a name and the journey hears about it', async () => {
+    const { svc, placeEntriesFromPhotos, nameEntryLocation, reverseGeocode, broadcastJourneyEvent } = build(false);
+    placeEntriesFromPhotos.mockReturnValueOnce([
+      { entryId: 5, journeyId: 9, lat: 48.137, lng: 11.575 },
+      { entryId: 6, journeyId: 9, lat: 1, lng: 2 },
+    ]);
+    reverseGeocode.mockResolvedValueOnce({ name: 'Marienplatz', address: 'Munich' }).mockRejectedValueOnce(new Error('timeout'));
+
+    await expect(svc.placeEntries([11, 12])).resolves.toBe(2);
+    expect(reverseGeocode).toHaveBeenCalledWith('48.137', '11.575', undefined, { timeoutMs: 8000, locality: true });
+    // The second geocode failed: its pin stands without a name.
+    expect(nameEntryLocation).toHaveBeenCalledTimes(1);
+    expect(nameEntryLocation).toHaveBeenCalledWith(5, 'Marienplatz');
+    expect(broadcastJourneyEvent).toHaveBeenCalledTimes(1);
+    expect(broadcastJourneyEvent).toHaveBeenCalledWith(9, 'journey:photos:updated', {});
+
+    // A provider add runs the same placing after its backfill.
+    placeEntriesFromPhotos.mockClear();
+    await svc.fill(9, [13], 3);
+    expect(placeEntriesFromPhotos).toHaveBeenCalledWith([13]);
+  });
+
+  it('JPCAP-1003b: nothing placed, nothing asked and nothing said; an address stands in for a missing name', async () => {
+    const { svc, reverseGeocode, broadcastJourneyEvent, placeEntriesFromPhotos, nameEntryLocation } = build(false);
+    await expect(svc.placeEntries([11])).resolves.toBe(0);
+    expect(reverseGeocode).not.toHaveBeenCalled();
+    expect(broadcastJourneyEvent).not.toHaveBeenCalled();
+
+    placeEntriesFromPhotos.mockReturnValueOnce([{ entryId: 7, journeyId: 9, lat: 1, lng: 2 }]);
+    reverseGeocode.mockResolvedValueOnce({ name: null, address: 'Somewhere Road' } as never);
+    await svc.placeEntries([11]);
+    expect(nameEntryLocation).toHaveBeenCalledWith(7, 'Somewhere Road');
+  });
+
+  it('JPCAP-1003c: an upload whose backfill throws is logged', async () => {
+    const { svc } = build(new Error('disk'));
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    svc.scheduleUpload([{ photo_id: 11 }], 3);
+    await vi.waitFor(() => expect(error).toHaveBeenCalledWith('[Journey] capture for uploads failed:', 'disk'));
   });
 
   it('JPCAP-009: provider adds from every surface share the user\'s four lookup slots, uploads read their own files, and only the provider adds refresh', async () => {
@@ -143,7 +188,8 @@ describe('JourneyPhotoCaptureService', () => {
     const broadcastJourneyEvent = vi.fn();
     const svc = new JourneyPhotoCaptureService(
       backfill,
-      { broadcastJourneyEvent, journeyIdOfEntry: () => 9 } as unknown as JourneyDomainService,
+      { broadcastJourneyEvent, journeyIdOfEntry: () => 9, placeEntriesFromPhotos: () => [] } as unknown as JourneyDomainService,
+      { reverseGeocode: vi.fn() } as unknown as MapsService,
     );
     const rows = (from: number) => Array.from({ length: 5 }, (_, i) => ({ photo_id: from + i }));
 

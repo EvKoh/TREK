@@ -291,6 +291,57 @@ describe('getJourneyFull', () => {
   });
 });
 
+describe('placeEntriesFromPhotos (#1003)', () => {
+  /** A geotagged (or not) photo on an entry, wired the way the upload wires it. */
+  function photoOnEntry(journeyId: number, entryId: number, ownerId: number, coords: [number, number] | null, sort = 0) {
+    const tp = testDb.prepare("INSERT INTO trek_photos (provider, owner_id, file_path, lat, lng) VALUES ('local', ?, 'journey/x.jpg', ?, ?)")
+      .run(ownerId, coords?.[0] ?? null, coords?.[1] ?? null).lastInsertRowid as number;
+    const gp = testDb.prepare('INSERT INTO journey_photos (journey_id, photo_id, shared, sort_order, created_at) VALUES (?, ?, 1, 0, ?)')
+      .run(journeyId, tp, Date.now()).lastInsertRowid as number;
+    testDb.prepare('INSERT INTO journey_entry_photos (entry_id, journey_photo_id, sort_order, created_at) VALUES (?, ?, ?, ?)').run(entryId, gp, sort, Date.now());
+    return tp;
+  }
+
+  it('JOURNEY-SVC-1003-1: with the setting on, a placeless entry takes the position of its first geotagged photo, once', () => {
+    const { user } = createUser(testDb);
+    const journey = createJourney(testDb, user.id);
+    testDb.prepare('UPDATE journeys SET photo_location = 1 WHERE id = ?').run(journey.id);
+    const entry = createJourneyEntry(testDb, journey.id, user.id);
+    const blank = photoOnEntry(journey.id, entry.id, user.id, null, 0);
+    const first = photoOnEntry(journey.id, entry.id, user.id, [48.137, 11.575], 1);
+    const second = photoOnEntry(journey.id, entry.id, user.id, [40.4, -3.7], 2);
+
+    expect(svc.placeEntriesFromPhotos([blank, first, second])).toEqual([{ entryId: entry.id, journeyId: journey.id, lat: 48.137, lng: 11.575 }]);
+    const row = testDb.prepare('SELECT location_lat, location_lng, country_code FROM journey_entries WHERE id = ?').get(entry.id) as any;
+    expect(row).toMatchObject({ location_lat: 48.137, location_lng: 11.575 });
+
+    // Placed now: a later photo does not move it, and a name only lands while there is none.
+    expect(svc.placeEntriesFromPhotos([second])).toEqual([]);
+    svc.nameEntryLocation(entry.id, 'Marienplatz');
+    svc.nameEntryLocation(entry.id, 'Somewhere else');
+    expect((testDb.prepare('SELECT location_name FROM journey_entries WHERE id = ?').get(entry.id) as any).location_name).toBe('Marienplatz');
+  });
+
+  it('JOURNEY-SVC-1003-2: off by default, and it leaves entries with a place alone', () => {
+    const { user } = createUser(testDb);
+    const journey = createJourney(testDb, user.id);
+    const entry = createJourneyEntry(testDb, journey.id, user.id);
+    const photo = photoOnEntry(journey.id, entry.id, user.id, [1, 2]);
+    expect(svc.placeEntriesFromPhotos([photo])).toEqual([]);
+
+    testDb.prepare('UPDATE journeys SET photo_location = 1 WHERE id = ?').run(journey.id);
+    testDb.prepare('UPDATE journey_entries SET location_lat = 5, location_lng = 6 WHERE id = ?').run(entry.id);
+    expect(svc.placeEntriesFromPhotos([photo])).toEqual([]);
+    expect(svc.placeEntriesFromPhotos([])).toEqual([]);
+  });
+
+  it('JOURNEY-SVC-1003-3: the owner turns it on through updateJourney', () => {
+    const { user } = createUser(testDb);
+    const journey = createJourney(testDb, user.id);
+    expect((svc.updateJourney(journey.id, user.id, { photo_location: true }) as any).photo_location).toBe(1);
+  });
+});
+
 describe('updateJourney', () => {
   it('JOURNEY-SVC-018: owner can update title and subtitle', () => {
     const { user } = createUser(testDb);

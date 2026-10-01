@@ -353,6 +353,7 @@ export class JourneyDomainService {
       status: string;
       status_override: string | null;
       show_trip_tracks: boolean | number;
+      photo_location: boolean | number;
       show_verdict: boolean | number;
       show_mood: boolean | number;
       show_weather: boolean | number;
@@ -373,13 +374,14 @@ export class JourneyDomainService {
       'status',
       'status_override',
       'show_trip_tracks',
+      'photo_location',
       'show_verdict',
       'show_mood',
       'show_weather',
     ];
     // Stored as INTEGER, and better-sqlite3 refuses to bind a JS boolean, so the
     // flags on this table are coerced rather than passed through.
-    const BOOLEAN_FIELDS = new Set(['show_trip_tracks', 'show_verdict', 'show_mood', 'show_weather']);
+    const BOOLEAN_FIELDS = new Set(['show_trip_tracks', 'show_verdict', 'show_mood', 'show_weather', 'photo_location']);
     const fields: string[] = [];
     const values: unknown[] = [];
     for (const [key, val] of Object.entries(data)) {
@@ -397,6 +399,50 @@ export class JourneyDomainService {
     values.push(journeyId);
     this.db.prepare(`UPDATE journeys SET ${fields.join(', ')} WHERE id = ?`).run(...values);
     return this.db.prepare('SELECT * FROM journeys WHERE id = ?').get(journeyId) as Journey;
+  }
+
+  /**
+   * Entries without a place that just received a geotagged photo, on journeys
+   * that asked for it (#1003): each takes the position of its first such photo.
+   * An entry that already has coordinates is never moved. Answers what changed,
+   * so the caller can name the places and tell the journeys.
+   */
+  placeEntriesFromPhotos(trekPhotoIds: number[]): { entryId: number; journeyId: number; lat: number; lng: number }[] {
+    if (!trekPhotoIds.length) return [];
+    const marks = trekPhotoIds.map(() => '?').join(',');
+    const rows = this.db.prepare(`
+      SELECT je.id AS entryId, je.journey_id AS journeyId, tp.lat, tp.lng
+      FROM trek_photos tp
+      JOIN journey_photos gp ON gp.photo_id = tp.id
+      JOIN journey_entry_photos jep ON jep.journey_photo_id = gp.id
+      JOIN journey_entries je ON je.id = jep.entry_id
+      JOIN journeys j ON j.id = je.journey_id
+      WHERE tp.id IN (${marks})
+        AND tp.lat IS NOT NULL AND tp.lng IS NOT NULL
+        AND je.location_lat IS NULL AND je.location_lng IS NULL
+        AND je.type != 'skeleton'
+        AND j.photo_location = 1
+      ORDER BY je.id, jep.sort_order, jep.journey_photo_id
+    `).all(...trekPhotoIds) as { entryId: number; journeyId: number; lat: number; lng: number }[];
+    const placed: { entryId: number; journeyId: number; lat: number; lng: number }[] = [];
+    const seen = new Set<number>();
+    const now = this.ts();
+    const update = this.db.prepare(
+      'UPDATE journey_entries SET location_lat = ?, location_lng = ?, country_code = ?, updated_at = ? WHERE id = ? AND location_lat IS NULL AND location_lng IS NULL',
+    );
+    for (const row of rows) {
+      if (seen.has(row.entryId)) continue;
+      seen.add(row.entryId);
+      if (update.run(row.lat, row.lng, this.countryFor(row.lat, row.lng), now, row.entryId).changes > 0) placed.push(row);
+    }
+    return placed;
+  }
+
+  /** The place name for an entry placed from a photo, only while it still has none. */
+  nameEntryLocation(entryId: number, name: string): void {
+    this.db.prepare(
+      "UPDATE journey_entries SET location_name = ? WHERE id = ? AND (location_name IS NULL OR location_name = '')",
+    ).run(name, entryId);
   }
 
   updateJourneyPreferences(journeyId: number, userId: number, data: { hide_skeletons?: boolean }) {

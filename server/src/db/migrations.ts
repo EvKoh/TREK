@@ -5440,6 +5440,16 @@ function runMigrations(db: Database.Database): void {
       if (!has('email')) db.exec('ALTER TABLE places ADD COLUMN email TEXT');
       if (!has('opening_hours')) db.exec('ALTER TABLE places ADD COLUMN opening_hours TEXT');
     },
+    /**
+     * A journey that puts an entry on the map where its first photo was taken
+     * (#1003). Off unless the owner turns it on: an entry somebody placed by hand
+     * is never moved, but an entry left without a place on purpose should not
+     * grow one either just because a picture was added.
+     */
+    () => {
+      const cols = db.prepare("SELECT name FROM pragma_table_info('journeys')").all() as { name: string }[];
+      if (!cols.some(c => c.name === 'photo_location')) db.exec('ALTER TABLE journeys ADD COLUMN photo_location INTEGER NOT NULL DEFAULT 0');
+    },
   ];
 
   if (currentVersion < migrations.length) {

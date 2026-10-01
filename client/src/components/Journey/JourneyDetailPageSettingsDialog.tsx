@@ -145,6 +145,20 @@ export function JourneySettingsDialog({ journey, onClose, onSaved, onOpenInvite,
     }
   }
 
+  // Entries placed from their photos (#1003), saved on the spot like the tracks switch.
+  const [savingPhotoLocation, setSavingPhotoLocation] = useState(false)
+  const handlePhotoLocationToggle = async () => {
+    setSavingPhotoLocation(true)
+    try {
+      await updateJourney(journey.id, { photo_location: !journey.photo_location })
+      onRefresh()
+    } catch {
+      toast.error(t('journey.settings.saveFailed'))
+    } finally {
+      setSavingPhotoLocation(false)
+    }
+  }
+
   // The state shown for the journey, set by hand (#762). Saved on the spot like
   // the switches; 'auto' stores null and hands it back to the trip dates.
   const [savingStatus, setSavingStatus] = useState(false)
@@ -296,6 +310,23 @@ export function JourneySettingsDialog({ journey, onClose, onSaved, onOpenInvite,
                     on={!!journey.show_trip_tracks}
                     onToggle={() => { if (!savingTracks) handleTracksToggle() }}
                     label={t('journey.settings.showTripTracks')}
+                  />
+                </div>
+              </div>
+            </DialogSection>
+
+            {/* Places from photos (#1003): the GPS a picture carries puts its entry on the map */}
+            <DialogSection label={t('journey.settings.photosSection')}>
+              <div className={ROWS}>
+                <div className={`${ROW}${savingPhotoLocation ? ' opacity-60' : ''}`}>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-content" style={fs(13, 'body')}>{t('journey.settings.photoLocation')}</span>
+                    <span className="block text-content-faint" style={fs(11.5)}>{t('journey.settings.photoLocationHint')}</span>
+                  </span>
+                  <ToggleSwitch
+                    on={!!journey.photo_location}
+                    onToggle={() => { if (!savingPhotoLocation) handlePhotoLocationToggle() }}
+                    label={t('journey.settings.photoLocation')}
                   />
                 </div>
               </div>
