@@ -55,6 +55,7 @@ For example: `https://trek.example.com/api/auth/oidc/callback`
 | `OIDC_ONLY` | Set to `true` to disable local password login and password registration. SSO login and SSO registration remain governed by their own toggles. This is an environment-variable-only setting and cannot be toggled at runtime via the admin panel. |
 | `OIDC_ADMIN_CLAIM` | OIDC claim to inspect for admin role mapping. Defaults to `groups`. The claim value may be an array or a plain string. The claim only reaches TREK if one of the scopes in `OIDC_SCOPE` carries it — see *Admin role mapping* below. **Env var only — not configurable via the admin panel.** |
 | `OIDC_ADMIN_VALUE` | Value that must be present in `OIDC_ADMIN_CLAIM` to grant the admin role. If unset, claim-based role mapping is disabled. When set, the role is re-evaluated on every login. **Env var only — not configurable via the admin panel.** |
+| `OIDC_USERNAME_CLAIM` | Claim the username of a new account is built from. Defaults to `name`, then `preferred_username`, then the part of the email before the `@`. Set it to `preferred_username` for providers like Pocket ID whose `name` is the full "Jane Doe". Only read when the account is created, so a username changed later in TREK stays; when the provider leaves the claim empty, the default order applies. **Env var only, not configurable via the admin panel.** |
 | `OIDC_SCOPE` | Overrides the default scope list sent to the provider. Defaults to `openid email profile`. Ensure `openid` and `email` are always included, plus whichever scope carries your `OIDC_ADMIN_CLAIM`. **Env var only — not configurable via the admin panel.** |
 | `OIDC_DISCOVERY_URL` | Full URL to the OIDC discovery document. Use this for providers with non-standard discovery paths (e.g. Authentik tenants). If unset, discovery is attempted at `<OIDC_ISSUER>/.well-known/openid-configuration`. The discovery document is cached for 1 hour. |
 
@@ -109,7 +110,7 @@ OIDC can also be configured without environment variables via **Admin → Settin
 
 Environment variables take priority over database settings when both are present.
 
-The following variables are **env var only** and have no admin panel equivalent: `OIDC_ONLY`, `OIDC_SCOPE`, `OIDC_ADMIN_CLAIM`, `OIDC_ADMIN_VALUE`.
+The following variables are **env var only** and have no admin panel equivalent: `OIDC_ONLY`, `OIDC_SCOPE`, `OIDC_ADMIN_CLAIM`, `OIDC_ADMIN_VALUE`, `OIDC_USERNAME_CLAIM`.
 
 The `OIDC_ONLY` env var always overrides the panel's login-method toggles. To disable password login at runtime without `OIDC_ONLY`, use the **password_login** and **password_registration** toggles in Admin → Settings instead.
 

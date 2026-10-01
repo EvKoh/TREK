@@ -64,6 +64,9 @@ data:
   {{- if .Values.env.OIDC_ADMIN_VALUE }}
   OIDC_ADMIN_VALUE: {{ .Values.env.OIDC_ADMIN_VALUE | quote }}
   {{- end }}
+  {{- if .Values.env.OIDC_USERNAME_CLAIM }}
+  OIDC_USERNAME_CLAIM: {{ .Values.env.OIDC_USERNAME_CLAIM | quote }}
+  {{- end }}
   {{- if .Values.env.OIDC_SCOPE }}
   OIDC_SCOPE: {{ .Values.env.OIDC_SCOPE | quote }}
   {{- end }}

@@ -124,6 +124,7 @@ env:
   # OIDC_ONLY: "false"           # force SSO-only mode; disables password login
   # OIDC_ADMIN_CLAIM: ""         # OIDC claim used to identify admin users
   # OIDC_ADMIN_VALUE: ""         # value of that claim that grants admin role
+  # OIDC_USERNAME_CLAIM: ""      # claim a new account's username comes from, e.g. preferred_username
   # OIDC_SCOPE: "openid email profile groups"
   # OIDC_DISCOVERY_URL: ""       # override for providers with non-standard discovery paths (e.g. Authentik)
   # VAPID_PUBLIC_KEY: ""         # Web Push: public half of your own key pair; leave unset to use the generated one

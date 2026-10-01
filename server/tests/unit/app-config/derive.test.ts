@@ -146,6 +146,12 @@ describe('deriveOidc', () => {
     expect(deriveOidc({ OIDC_ADMIN_CLAIM: 'roles' }).adminClaim).toBe('roles');
   });
 
+  it('usernameClaim stays unset unless a claim is named (#1677)', () => {
+    expect(deriveOidc({}).usernameClaim).toBeUndefined();
+    expect(deriveOidc({ OIDC_USERNAME_CLAIM: '   ' }).usernameClaim).toBeUndefined();
+    expect(deriveOidc({ OIDC_USERNAME_CLAIM: ' preferred_username ' }).usernameClaim).toBe('preferred_username');
+  });
+
   it('OIDC_ONLY coerces the boolean-like family', () => {
     expect(deriveOidc({ OIDC_ONLY: 'True' }).only).toBe(true);
     expect(deriveOidc({ OIDC_ONLY: '1' }).only).toBe(true);

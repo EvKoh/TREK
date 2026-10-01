@@ -97,6 +97,7 @@ export const envSchema = z.object({
   OIDC_ONLY: boolStr,
   OIDC_ADMIN_CLAIM: anyString,
   OIDC_ADMIN_VALUE: anyString,
+  OIDC_USERNAME_CLAIM: anyString,
 
   // SMTP
   SMTP_HOST: anyString,

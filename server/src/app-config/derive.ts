@@ -206,6 +206,9 @@ export function deriveOidc(raw: RawEnv) {
     only: parseBool(raw.OIDC_ONLY) === true,
     adminClaim: raw.OIDC_ADMIN_CLAIM || 'groups',
     adminValue: raw.OIDC_ADMIN_VALUE,
+    // Unset keeps the old order (name, then preferred_username), so an instance
+    // that never sets it names new accounts exactly as before (#1677).
+    usernameClaim: raw.OIDC_USERNAME_CLAIM?.trim() || undefined,
   };
 }
 

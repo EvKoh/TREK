@@ -71,6 +71,8 @@ env:
   # OIDC claim used to identify admin users.
   # OIDC_ADMIN_VALUE: ""
   # Value of the OIDC claim that grants admin role.
+  # OIDC_USERNAME_CLAIM: ""
+  # Claim a new account's username comes from, e.g. "preferred_username". Unset: name, then preferred_username.
   # OIDC_SCOPE: "openid email profile groups"
   # Space-separated OIDC scopes to request. Must include scopes for any claim used by OIDC_ADMIN_CLAIM.
   # OIDC_DISCOVERY_URL: ""
