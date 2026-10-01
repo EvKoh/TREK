@@ -249,6 +249,10 @@ const journey: TranslationStrings = {
   'journey.settings.showTripTracks': 'Bütün səyahət GPX izlərini göstər',
   'journey.settings.showTripTracksHint':
     'Əlaqələndirilmiş səyahətlərdə qeydə alınmış marşrutları xəritədə göstərir.',
+  'journey.settings.status': 'Status',
+  'journey.settings.statusAuto': 'Avtomatik',
+  'journey.settings.statusAutoHint': 'Bağlı səfərlərin tarixlərinə uyğunlaşır. Səfər olmadan jurnal qaralama qalır.',
+  'journey.settings.statusManualHint': 'Əllə təyin olunub. Avtomatikə qaytarana qədər səfər tarixləri onu dəyişmir.',
   'journey.settings.endJourney': 'Səyahət gündəliyini arxivləşdir',
   'journey.settings.reopenJourney': 'Səyahət gündəliyini bərpa et',
   'journey.settings.archived': 'Səyahət gündəliyi arxivləşdirildi',

@@ -337,6 +337,15 @@ describe('updateJourney', () => {
     expect(result!.title).toBe('Same');
   });
 
+  it('JOURNEY-SVC-762: the owner sets the shown state by hand, null hands it back, anything else is ignored', () => {
+    const { user } = createUser(testDb);
+    const journey = createJourney(testDb, user.id);
+
+    expect(svc.updateJourney(journey.id, user.id, { status_override: 'live' })!.status_override).toBe('live');
+    expect(svc.updateJourney(journey.id, user.id, { status_override: 'upcoming' })!.status_override).toBe('live');
+    expect(svc.updateJourney(journey.id, user.id, { status_override: null })!.status_override).toBeNull();
+  });
+
   it('JOURNEY-SVC-021b: accepts archived status', () => {
     const { user } = createUser(testDb);
     const journey = createJourney(testDb, user.id, { title: 'To Archive' });

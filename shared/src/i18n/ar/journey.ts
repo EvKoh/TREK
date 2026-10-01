@@ -224,6 +224,10 @@ const journey: TranslationStrings = {
   'journey.settings.tracks': 'مسارات GPX',
   'journey.settings.showTripTracks': 'إظهار جميع مسارات GPX للرحلات',
   'journey.settings.showTripTracksHint': 'يرسم على الخريطة المسارات المسجَّلة من الرحلات المرتبطة.',
+  'journey.settings.status': 'الحالة',
+  'journey.settings.statusAuto': 'تلقائي',
+  'journey.settings.statusAutoHint': 'يتبع تواريخ الرحلات المرتبطة. بدون رحلة تبقى الرحلة مسودة.',
+  'journey.settings.statusManualHint': 'مضبوطة يدويًا. لن تغيرها تواريخ الرحلة حتى تعود إلى الوضع التلقائي.',
   'journey.settings.delete': 'Delete', // en-fallback
   'journey.settings.deleteJourney': 'Delete Journey', // en-fallback
   'journey.settings.deleteMessage': 'Delete "{title}"? All entries and photos will be lost.', // en-fallback

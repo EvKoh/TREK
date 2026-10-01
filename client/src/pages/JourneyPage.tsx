@@ -419,7 +419,7 @@ function JourneyCard({ journey, onClick }: { journey: Journey & { entry_count?: 
   const entryCount = j.entry_count ?? 0
   const photoCount = j.photo_count ?? 0
   const placeCount = j.place_count ?? 0
-  const lifecycle = computeJourneyLifecycle(j.status, j.trip_date_min, j.trip_date_max)
+  const lifecycle = computeJourneyLifecycle(j.status, j.trip_date_min, j.trip_date_max, j.status_override)
 
   return (
     <button

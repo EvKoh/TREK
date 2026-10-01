@@ -5421,6 +5421,15 @@ function runMigrations(db: Database.Database): void {
       if (!has('quantity')) db.exec('ALTER TABLE packing_template_items ADD COLUMN quantity INTEGER NOT NULL DEFAULT 1');
       if (!has('bag_name')) db.exec('ALTER TABLE packing_template_items ADD COLUMN bag_name TEXT');
     },
+    /**
+     * A journey's state as its owner sets it (#762): draft, live or completed.
+     * NULL keeps the state derived from the linked trips' dates, which is what
+     * every journey had so far; a journey with no trip could only ever be a draft.
+     */
+    () => {
+      const cols = db.prepare("SELECT name FROM pragma_table_info('journeys')").all() as { name: string }[];
+      if (!cols.some(c => c.name === 'status_override')) db.exec('ALTER TABLE journeys ADD COLUMN status_override TEXT');
+    },
   ];
 
   if (currentVersion < migrations.length) {

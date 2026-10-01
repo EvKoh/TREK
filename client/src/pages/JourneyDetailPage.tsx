@@ -106,7 +106,7 @@ function JourneyDetailPageDesktop() {
     : []
   const sortedDates = [...new Set([...dayGroups.keys(), ...suggestionDates])]
     .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
-  const lifecycle = computeJourneyLifecycle(current.status, tripDateMin || null, tripDateMax || null)
+  const lifecycle = computeJourneyLifecycle(current.status, tripDateMin || null, tripDateMax || null, current.status_override)
 
   const showMobileCombined = isMobile && view === 'timeline'
   const showMobileGallery = isMobile && view === 'gallery'

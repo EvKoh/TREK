@@ -12,6 +12,8 @@ export interface Journey {
   cover_gradient?: string | null
   cover_image?: string | null
   status: 'draft' | 'active' | 'completed' | 'archived'
+  /** The state the owner set by hand (#762); null or absent follows the trip dates. */
+  status_override?: 'draft' | 'live' | 'completed' | null
   /**
    * Draw the GPX tracks of the journey's linked trips on its map (#2194).
    * Off unless the owner asks for it — see the migration for why the default

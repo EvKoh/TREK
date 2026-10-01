@@ -199,6 +199,22 @@ describe('JourneySettingsDialog', () => {
     expect(onSaved).toHaveBeenCalledTimes(1)
   })
 
+  it('FE-JRN-SETTINGS-762: sets the status by hand on the spot and back to automatic', async () => {
+    const user = userEvent.setup()
+    const { onRefresh } = mountDialog()
+    expect(screen.getByText('Follows the dates of the linked trips. Without a trip the journey stays a draft.')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'Live' }))
+    await waitFor(() => expect(updateJourney).toHaveBeenCalledWith(3, { status_override: 'live' }))
+    expect(onRefresh).toHaveBeenCalled()
+
+    updateJourney.mockClear()
+    mountDialog(buildJourney({ status_override: 'completed' }))
+    expect(screen.getAllByRole('button', { name: 'Completed' }).some(b => b.getAttribute('aria-pressed') === 'true')).toBe(true)
+    await user.click(screen.getAllByRole('button', { name: 'Automatic' })[1])
+    await waitFor(() => expect(updateJourney).toHaveBeenCalledWith(3, { status_override: null }))
+  })
+
   it('FE-JRN-SETTINGS-011: restores an archived journey', async () => {
     const user = userEvent.setup()
     mountDialog(buildJourney({ status: 'archived' }))

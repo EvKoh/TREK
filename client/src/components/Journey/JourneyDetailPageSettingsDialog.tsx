@@ -8,7 +8,7 @@ import { useToast } from '../shared/Toast'
 import ConfirmDialog from '../shared/ConfirmDialog'
 import { Tooltip } from '../shared/Tooltip'
 import { DeleteButton, DialogButton, DialogFooter, DialogHeader, DialogSection, DialogShell, DialogTile, FooterSpacer, NEUTRAL_TINT, fs } from '../shared/DialogShell'
-import { AddRowButton, EditorField, INPUT } from '../shared/dialogParts'
+import { AddRowButton, EditorField, INPUT, Segmented } from '../shared/dialogParts'
 import JourneyShareSection from './JourneyShareSection'
 import type { JourneyContributor, JourneyDetail } from '../../store/journeyStore'
 import { pickGradient } from '../../pages/journeyDetail/JourneyDetailPage.helpers'
@@ -145,6 +145,23 @@ export function JourneySettingsDialog({ journey, onClose, onSaved, onOpenInvite,
     }
   }
 
+  // The state shown for the journey, set by hand (#762). Saved on the spot like
+  // the switches; 'auto' stores null and hands it back to the trip dates.
+  const [savingStatus, setSavingStatus] = useState(false)
+  const statusChoice = journey.status_override ?? 'auto'
+  const handleStatusChange = async (next: 'auto' | 'draft' | 'live' | 'completed') => {
+    if (next === statusChoice || savingStatus) return
+    setSavingStatus(true)
+    try {
+      await updateJourney(journey.id, { status_override: next === 'auto' ? null : next })
+      onRefresh()
+    } catch {
+      toast.error(t('journey.settings.saveFailed'))
+    } finally {
+      setSavingStatus(false)
+    }
+  }
+
   const handleDelete = async () => {
     try {
       await deleteJourney(journey.id)
@@ -245,6 +262,27 @@ export function JourneySettingsDialog({ journey, onClose, onSaved, onOpenInvite,
                 className={INPUT}
               />
             </EditorField>
+
+            {/* The journey's state, by hand or from the trips (#762) */}
+            <DialogSection label={t('journey.settings.status')}>
+              <div className={savingStatus ? 'opacity-60' : undefined}>
+                <Segmented<'auto' | 'draft' | 'live' | 'completed'>
+                  label={t('journey.settings.status')}
+                  value={statusChoice}
+                  onChange={next => { void handleStatusChange(next) }}
+                  fill
+                  options={[
+                    { value: 'auto', label: t('journey.settings.statusAuto') },
+                    { value: 'draft', label: t('journey.status.draft') },
+                    { value: 'live', label: t('journey.frontpage.live') },
+                    { value: 'completed', label: t('journey.status.completed') },
+                  ]}
+                />
+              </div>
+              <p className="m-0 mt-2 leading-normal text-content-faint" style={fs(11.5)}>
+                {t(statusChoice === 'auto' ? 'journey.settings.statusAutoHint' : 'journey.settings.statusManualHint')}
+              </p>
+            </DialogSection>
 
             {/* Trip GPX tracks on the journey map (#2194) */}
             <DialogSection label={t('journey.settings.tracks')}>

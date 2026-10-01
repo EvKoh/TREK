@@ -351,6 +351,7 @@ export class JourneyDomainService {
       cover_gradient: string;
       cover_image: string;
       status: string;
+      status_override: string | null;
       show_trip_tracks: boolean | number;
       show_verdict: boolean | number;
       show_mood: boolean | number;
@@ -362,12 +363,15 @@ export class JourneyDomainService {
     if (!this.isOwner(journeyId, userId)) return null;
 
     const ALLOWED_STATUSES = ['draft', 'active', 'completed', 'archived'];
+    // null hands the state back to the trip dates (#762).
+    const ALLOWED_OVERRIDES: (string | null)[] = [null, 'draft', 'live', 'completed'];
     const allowed = [
       'title',
       'subtitle',
       'cover_gradient',
       'cover_image',
       'status',
+      'status_override',
       'show_trip_tracks',
       'show_verdict',
       'show_mood',
@@ -381,6 +385,7 @@ export class JourneyDomainService {
     for (const [key, val] of Object.entries(data)) {
       if (val !== undefined && allowed.includes(key)) {
         if (key === 'status' && !ALLOWED_STATUSES.includes(val as string)) continue;
+        if (key === 'status_override' && !ALLOWED_OVERRIDES.includes(val as string | null)) continue;
         fields.push(`${key} = ?`);
         values.push(BOOLEAN_FIELDS.has(key) ? (val ? 1 : 0) : val);
       }

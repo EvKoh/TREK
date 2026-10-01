@@ -241,12 +241,13 @@ export class JourneyMcp {
 
   @Tool({
     name: 'update_journey',
-    description: "Update an existing journey's title, subtitle, cover, or status. Owner only.",
+    description: "Update an existing journey's title, subtitle, cover, or status. Owner only. status_override sets the state shown for the journey (draft, live, completed) instead of deriving it from the linked trips' dates; null goes back to the dates.",
     inputSchema: {
       journeyId: z.number().int().positive(),
       title: z.string().min(1).max(200).optional(),
       subtitle: z.string().max(300).optional(),
       status: z.enum(['draft', 'active', 'completed', 'archived']).optional(),
+      status_override: z.enum(['draft', 'live', 'completed']).nullable().optional().describe('Shown state set by hand, or null to follow the trip dates'),
       show_verdict: z.boolean().optional().describe('Whether entries in this journey offer a pros/cons list'),
       show_mood: z.boolean().optional().describe('Whether entries in this journey offer a mood'),
       show_weather: z.boolean().optional().describe('Whether entries in this journey offer a weather note'),
@@ -257,7 +258,7 @@ export class JourneyMcp {
   })
   updateJourney(
     { journeyId, ...data }: {
-      journeyId: number; title?: string; subtitle?: string; status?: string;
+      journeyId: number; title?: string; subtitle?: string; status?: string; status_override?: string | null;
       show_verdict?: boolean; show_mood?: boolean; show_weather?: boolean;
     },
     ctx: McpContext,
