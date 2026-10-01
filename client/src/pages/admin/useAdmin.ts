@@ -10,6 +10,7 @@ import { useToast } from '../../components/shared/Toast'
 import { managedAdminTabs } from '../../managed'
 import type { AdminUser, AdminStats, OidcConfig, UpdateInfo } from './adminModel'
 import type { TransitProvider, TransitKeySource } from '@trek/shared'
+import { passwordErrorKey } from '../../utils/passwordError'
 
 /**
  * Every tab id AdminPage can render a panel for, whatever this install offers.
@@ -412,8 +413,9 @@ export function useAdmin() {
       toast.error(t('admin.toast.fieldsRequired'))
       return
     }
-    if (createForm.password.trim().length < 8) {
-      toast.error(t('settings.passwordTooShort'))
+    const weak = passwordErrorKey(createForm.password.trim())
+    if (weak) {
+      toast.error(t(weak))
       return
     }
     try {
@@ -474,8 +476,9 @@ export function useAdmin() {
         role: editForm.role,
       }
       if (editForm.password.trim()) {
-        if (editForm.password.trim().length < 8) {
-          toast.error(t('settings.passwordTooShort'))
+        const weak = passwordErrorKey(editForm.password.trim())
+        if (weak) {
+          toast.error(t(weak))
           return
         }
         payload.password = editForm.password.trim()

@@ -518,7 +518,7 @@ describe('useAdmin', () => {
     const { result } = await mountAdmin();
 
     act(() =>
-      result.current.setCreateForm({ username: 'bob', email: 'b@e.com', password: 'longenough1', role: 'admin' })
+      result.current.setCreateForm({ username: 'bob', email: 'b@e.com', password: 'Longenough1!', role: 'admin' })
     );
     act(() => result.current.setShowCreateUser(true));
     await act(async () => {
@@ -536,7 +536,7 @@ describe('useAdmin', () => {
     const { result } = await mountAdmin();
 
     act(() =>
-      result.current.setCreateForm({ username: 'bob', email: 'b@e.com', password: 'longenough1', role: 'user' })
+      result.current.setCreateForm({ username: 'bob', email: 'b@e.com', password: 'Longenough1!', role: 'user' })
     );
     await act(async () => {
       await result.current.handleCreateUser();
@@ -733,13 +733,13 @@ describe('useAdmin', () => {
 
     act(() => result.current.handleEditUser(result.current.users[1]));
     act(() =>
-      result.current.setEditForm({ username: 'alice', email: 'a@e.com', role: 'user', password: ' longenough1 ' })
+      result.current.setEditForm({ username: 'alice', email: 'a@e.com', role: 'user', password: ' Longenough1! ' })
     );
     await act(async () => {
       await result.current.handleSaveUser();
     });
 
-    expect(body).toMatchObject({ password: 'longenough1' });
+    expect(body).toMatchObject({ password: 'Longenough1!' });
   });
 
   it('FE-ADMHOOK-039: handleSaveUser surfaces the server error', async () => {

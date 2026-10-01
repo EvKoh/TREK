@@ -14,6 +14,7 @@ import CustomSelect from '../../components/shared/CustomSelect';
 import Modal from '../../components/shared/Modal';
 import type { TranslationFn } from '../../types';
 import type { useAdmin } from './useAdmin';
+import PasswordChecklist from '../../components/shared/PasswordChecklist';
 
 interface AdminUserModalsProps {
   admin: ReturnType<typeof useAdmin>;
@@ -114,6 +115,7 @@ export default function AdminUserModals({ admin, t }: AdminUserModalsProps): Rea
                 {showCreatePw ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
+            <PasswordChecklist password={createForm.password.trim()} className="mt-2" />
           </div>
           <div>
             <label className="mb-1.5 block text-sm font-medium text-slate-700">{t('settings.role')}</label>
@@ -195,6 +197,7 @@ export default function AdminUserModals({ admin, t }: AdminUserModalsProps): Rea
                   {showEditPw ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
+              <PasswordChecklist password={editForm.password.trim()} className="mt-2" />
             </div>
             <div>
               <label className="mb-1.5 block text-sm font-medium text-slate-700">{t('settings.role')}</label>

@@ -8,6 +8,7 @@ import { wasSignedOut } from '../../utils/signedOut'
 import { authApi, configApi } from '../../api/client'
 import { getApiErrorMessage } from '../../types'
 import { START_DESTINATION_ROUTE } from '../../utils/startDestination'
+import { passwordErrorKey } from '../../utils/passwordError'
 
 interface AppConfig {
   has_users: boolean
@@ -313,7 +314,8 @@ export function useLogin() {
     try {
       if (passwordChangeStep) {
         if (!newPassword) { setError(t('settings.passwordRequired')); setIsLoading(false); return }
-        if (newPassword.length < 8) { setError(t('settings.passwordTooShort')); setIsLoading(false); return }
+        const weak = passwordErrorKey(newPassword)
+        if (weak) { setError(t(weak)); setIsLoading(false); return }
         if (newPassword !== confirmPassword) { setError(t('settings.passwordMismatch')); setIsLoading(false); return }
         await authApi.changePassword({ current_password: savedLoginPassword, new_password: newPassword })
         await loadUser({ silent: true })
@@ -338,7 +340,8 @@ export function useLogin() {
       }
       if (mode === 'register') {
         if (!username.trim()) { setError(t('login.usernameRequired')); setIsLoading(false); return }
-        if (password.length < 8) { setError(t('login.passwordMinLength')); setIsLoading(false); return }
+        const weakPassword = passwordErrorKey(password)
+        if (weakPassword) { setError(t(weakPassword)); setIsLoading(false); return }
         await register(username, email, password, inviteToken || undefined)
       } else {
         const result = await login(email, password, rememberMe)

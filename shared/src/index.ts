@@ -64,6 +64,7 @@ export * from './settings/settings.schema';
 export * from './appearance/appearance.schema';
 export * from './backup/backup.schema';
 export * from './auth/auth.schema';
+export * from './auth/password-policy';
 export * from './oidc/oidc.schema';
 export * from './oauth/oauth.schema';
 export * from './admin/admin.schema';

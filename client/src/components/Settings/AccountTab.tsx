@@ -10,6 +10,8 @@ import { getApiErrorMessage } from '../../types'
 import type { UserWithOidc } from '../../types'
 import Section from './Section'
 import PasskeysSection from './PasskeysSection'
+import PasswordChecklist from '../shared/PasswordChecklist'
+import { passwordErrorKey } from '../../utils/passwordError'
 
 const MFA_BACKUP_SESSION_KEY = 'trek_mfa_backup_codes_pending'
 
@@ -199,6 +201,7 @@ export default function AccountTab(): React.ReactElement {
                 placeholder={t('settings.newPassword')}
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent"
               />
+              <PasswordChecklist password={newPassword} />
               <input
                 type="password"
                 value={confirmPassword}
@@ -210,7 +213,8 @@ export default function AccountTab(): React.ReactElement {
                 onClick={async () => {
                   if (!currentPassword) return toast.error(t('settings.currentPasswordRequired'))
                   if (!newPassword) return toast.error(t('settings.passwordRequired'))
-                  if (newPassword.length < 8) return toast.error(t('settings.passwordTooShort'))
+                  const weak = passwordErrorKey(newPassword)
+                  if (weak) return toast.error(t(weak))
                   if (newPassword !== confirmPassword) return toast.error(t('settings.passwordMismatch'))
                   try {
                     await authApi.changePassword({ current_password: currentPassword, new_password: newPassword })

@@ -18,6 +18,7 @@ import { SUPPORTED_LANGUAGES, useTranslation } from '../i18n';
 import { IDP_LOGIN_URL, useLogin } from './login/useLogin';
 import LoginWorld from './login/LoginWorld';
 import { clearSignedOut } from '../utils/signedOut'
+import PasswordChecklist from '../components/shared/PasswordChecklist';
 
 /** Fixed so the sky does not reshuffle on every render. */
 const STARFIELD = [
@@ -694,6 +695,7 @@ export default function LoginPage(): React.ReactElement {
                             onBlur={(e: React.FocusEvent<HTMLInputElement>) => (e.target.style.borderColor = '#e5e7eb')}
                           />
                         </div>
+                        <PasswordChecklist password={newPassword} className="mt-2" tone="light" />
                       </div>
                       <div>
                         <label
@@ -961,6 +963,7 @@ export default function LoginPage(): React.ReactElement {
                           />
                         </button>
                       </div>
+                      {mode === 'register' && !passwordChangeStep && <PasswordChecklist password={password} className="mt-2" tone="light" />}
                       {mode === 'login' && (
                         <div
                           style={{

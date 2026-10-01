@@ -365,6 +365,14 @@ const settings: TranslationStrings = {
   'settings.passwordMismatch': 'Parollar uyğun gəlmir',
   'settings.passwordWeak':
     'Parolda böyük hərf, kiçik hərf, rəqəm və xüsusi simvol olmalıdır',
+  'settings.passwordCommon': 'Bu parol çox yayğındır. Zəhmət olmasa, unikal parol seçin.',
+  'settings.passwordRepetitive': 'Parol həddən artıq təkrarlanır',
+  'settings.passwordRules': 'Parol tələbləri',
+  'settings.passwordRule.length': 'Ən azı 8 simvol',
+  'settings.passwordRule.upper': 'Böyük hərf',
+  'settings.passwordRule.lower': 'Kiçik hərf',
+  'settings.passwordRule.digit': 'Rəqəm',
+  'settings.passwordRule.special': 'Xüsusi simvol',
   'settings.passwordChanged': 'Parol uğurla dəyişdirildi',
   'settings.mustChangePassword':
     'Davam etməzdən əvvəl parolunuzu dəyişməlisiniz. Aşağıda yeni parol təyin edin.',

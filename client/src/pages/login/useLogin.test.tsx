@@ -630,14 +630,14 @@ describe('useLogin — register submit', () => {
     act(() => {
       result.current.setUsername('newuser');
       result.current.setEmail('new@example.com');
-      result.current.setPassword('password123');
+      result.current.setPassword('Passw0rd!23');
     });
 
     await act(async () => {
       await result.current.handleSubmit(formEvent());
     });
 
-    expect(auth.register).toHaveBeenCalledWith('newuser', 'new@example.com', 'password123', 'inv-42');
+    expect(auth.register).toHaveBeenCalledWith('newuser', 'new@example.com', 'Passw0rd!23', 'inv-42');
     expect(result.current.showTakeoff).toBe(true);
   });
 
@@ -649,14 +649,14 @@ describe('useLogin — register submit', () => {
     act(() => {
       result.current.setUsername('newuser');
       result.current.setEmail('new@example.com');
-      result.current.setPassword('password123');
+      result.current.setPassword('Passw0rd!23');
     });
 
     await act(async () => {
       await result.current.handleSubmit(formEvent());
     });
 
-    expect(auth.register).toHaveBeenCalledWith('newuser', 'new@example.com', 'password123', undefined);
+    expect(auth.register).toHaveBeenCalledWith('newuser', 'new@example.com', 'Passw0rd!23', undefined);
   });
 });
 
@@ -878,8 +878,8 @@ describe('useLogin — forced password change', () => {
     const result = await reachPasswordChange();
 
     act(() => {
-      result.current.setNewPassword('newpassword123');
-      result.current.setConfirmPassword('newpassword124');
+      result.current.setNewPassword('NewPassw0rd!23');
+      result.current.setConfirmPassword('NewPassw0rd!24');
     });
     await act(async () => {
       await result.current.handleSubmit(formEvent());
@@ -900,8 +900,8 @@ describe('useLogin — forced password change', () => {
     const result = await reachPasswordChange();
 
     act(() => {
-      result.current.setNewPassword('newpassword123');
-      result.current.setConfirmPassword('newpassword123');
+      result.current.setNewPassword('NewPassw0rd!23');
+      result.current.setConfirmPassword('NewPassw0rd!23');
     });
 
     vi.useFakeTimers({ shouldAdvanceTime: true });
@@ -909,7 +909,7 @@ describe('useLogin — forced password change', () => {
       await result.current.handleSubmit(formEvent());
     });
 
-    expect(body).toEqual({ current_password: 'old-password', new_password: 'newpassword123' });
+    expect(body).toEqual({ current_password: 'old-password', new_password: 'NewPassw0rd!23' });
     expect(auth.loadUser).toHaveBeenCalledWith({ silent: true });
     expect(result.current.showTakeoff).toBe(true);
 
@@ -929,8 +929,8 @@ describe('useLogin — forced password change', () => {
     const result = await reachPasswordChange();
 
     act(() => {
-      result.current.setNewPassword('newpassword123');
-      result.current.setConfirmPassword('newpassword123');
+      result.current.setNewPassword('NewPassw0rd!23');
+      result.current.setConfirmPassword('NewPassw0rd!23');
     });
     await act(async () => {
       await result.current.handleSubmit(formEvent());
