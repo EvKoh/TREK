@@ -156,6 +156,15 @@ describe('JourneyPhotoCaptureService', () => {
     expect(nameEntryLocation).toHaveBeenCalledWith(7, 'Somewhere Road');
   });
 
+  it('JPCAP-1003d: placing entries that throws never costs the refresh of the gallery order', async () => {
+    const { svc, placeEntriesFromPhotos, broadcastJourneyEvent } = build(true);
+    placeEntriesFromPhotos.mockImplementation(() => { throw new Error('no such column'); });
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    await expect(svc.fill(9, [11], 3)).resolves.toBe(true);
+    expect(broadcastJourneyEvent).toHaveBeenCalledWith(9, 'journey:photos:updated', {});
+    expect(error).toHaveBeenCalledWith('[Journey] placing entries from photos failed:', 'no such column');
+  });
+
   it('JPCAP-1003c: an upload whose backfill throws is logged', async () => {
     const { svc } = build(new Error('disk'));
     const error = vi.spyOn(console, 'error').mockImplementation(() => {});

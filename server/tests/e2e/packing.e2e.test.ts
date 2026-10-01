@@ -90,7 +90,10 @@ const { db } = vi.hoisted(() => {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     category_id INTEGER NOT NULL,
     name TEXT NOT NULL,
-    sort_order INTEGER NOT NULL DEFAULT 0
+    sort_order INTEGER NOT NULL DEFAULT 0,
+    weight_grams INTEGER,
+    quantity INTEGER NOT NULL DEFAULT 1,
+    bag_name TEXT
   );`);
   // StorageRegistryService (behind StorageModule, now in this module chain) reads
   // this at onModuleInit.

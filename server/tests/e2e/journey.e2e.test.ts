@@ -486,12 +486,11 @@ describe('Journey e2e (real auth guard + temp SQLite)', () => {
     try {
       expect(res.status).toBe(201);
       expect(res.body.photos).toHaveLength(1);
-      // The plain backfill, the same one the provider adds run...
-      expect(backfillSchedule).toHaveBeenCalledWith([90], 1);
-      // ...but not the refreshing run behind it: a bulk upload would otherwise
-      // reload every open client once per photo.
+      // The capture backfill runs for the upload (and may place its entry, #1003)...
       await new Promise(resolve => setTimeout(resolve, 10));
-      expect(backfillRun).not.toHaveBeenCalled();
+      expect(backfillRun).toHaveBeenCalledWith([90], 1);
+      // ...but no journey refresh follows: a bulk upload would otherwise reload
+      // every open client once per photo.
       expect(jsvc.broadcastJourneyEvent).not.toHaveBeenCalled();
     } finally {
       const storage = app.get(StorageService);

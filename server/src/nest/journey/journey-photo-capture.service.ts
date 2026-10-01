@@ -75,7 +75,14 @@ export class JourneyPhotoCaptureService {
    * which the owner can still name by hand.
    */
   async placeEntries(trekPhotoIds: number[]): Promise<number> {
-    const placed = this.journey.placeEntriesFromPhotos(trekPhotoIds);
+    let placed: ReturnType<JourneyDomainService['placeEntriesFromPhotos']>;
+    try {
+      placed = this.journey.placeEntriesFromPhotos(trekPhotoIds);
+    } catch (err) {
+      // An extra on top of the capture times: it must never cost the refresh below it.
+      console.error('[Journey] placing entries from photos failed:', err instanceof Error ? err.message : err);
+      return 0;
+    }
     if (!placed.length) return 0;
     await Promise.all(placed.map(async (p) => {
       try {
