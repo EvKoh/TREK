@@ -650,6 +650,52 @@ describe('exportICS', () => {
     expect(ics).toContain('DESCRIPTION:Type: flight\\nConfirmation: BOOK1\\nRoute: FRA → BER → HND\r\n');
   });
 
+  it('CAL-045: a connecting flight with times on every leg becomes one event per leg (#2389)', () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id, { title: 'Layover' });
+    const d1 = createDay(testDb, trip.id, { date: '2025-06-02' });
+    const d2 = createDay(testDb, trip.id, { date: '2025-06-03' });
+    const flight = createReservation(testDb, trip.id, { title: 'FRA to HND', type: 'flight' });
+    testDb.prepare('UPDATE reservations SET reservation_time=?, confirmation_number=?, metadata=? WHERE id=?').run(
+      '2025-06-02T09:00', 'BOOK1',
+      JSON.stringify({ legs: [
+        { from: 'FRA', to: 'BER', airline: 'LH', flight_number: '1', dep_day_id: d1.id, dep_time: '09:00', arr_day_id: d1.id, arr_time: '10:10' },
+        { from: 'BER', to: 'HND', airline: 'LH', flight_number: '2', confirmation_number: 'SEG2', dep_day_id: d1.id, dep_time: '12:30', arr_day_id: d2.id, arr_time: '07:45' },
+      ] }),
+      flight.id,
+    );
+
+    const ics = svc.exportICS(trip.id).ics.replace(/\r\n /g, '');
+
+    expect(ics).toContain(`UID:trek-res-leg1-${flight.id}@trek`);
+    expect(ics).toContain(`UID:trek-res-leg2-${flight.id}@trek`);
+    expect(ics).not.toContain(`UID:trek-res-${flight.id}@trek`);
+    expect(ics).toContain('DTSTART:20250602T090000\r\nDTEND:20250602T101000\r\nSUMMARY:FRA to HND: FRA → BER');
+    // The second leg lands the next morning, and its own reference rides along.
+    expect(ics).toContain('DTSTART:20250602T123000\r\nDTEND:20250603T074500\r\nSUMMARY:FRA to HND: BER → HND');
+    expect(ics).toContain('DESCRIPTION:LH 2\\nConfirmation: SEG2\\nLeg 2 of 2\\nType: flight');
+    expect(ics).toContain('LOCATION:BER\r\n');
+  });
+
+  it('CAL-046: a leg without a departure clock keeps the single event', () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id, { title: 'Layover' });
+    const d1 = createDay(testDb, trip.id, { date: '2025-06-02' });
+    const flight = createReservation(testDb, trip.id, { title: 'FRA to HND', type: 'flight' });
+    testDb.prepare('UPDATE reservations SET reservation_time=?, metadata=? WHERE id=?').run(
+      '2025-06-02T09:00',
+      JSON.stringify({ legs: [
+        { from: 'FRA', to: 'BER', dep_day_id: d1.id, dep_time: '09:00' },
+        { from: 'BER', to: 'HND', dep_day_id: d1.id },
+      ] }),
+      flight.id,
+    );
+
+    const ics = svc.exportICS(trip.id).ics;
+    expect(ics).toContain(`UID:trek-res-${flight.id}@trek`);
+    expect(ics).not.toContain('res-leg');
+  });
+
   it('CAL-020: an empty trip title falls back for SUMMARY, X-WR-CALNAME and the filename', () => {
     const { user } = createUser(testDb);
     // The title is only NOT NULL, not non-empty; an empty one used to produce
