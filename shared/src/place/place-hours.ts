@@ -47,12 +47,19 @@ export const placeOpeningHoursField = z
   .nullable()
   .optional();
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/** One @ with something on both sides, a dot inside the domain, no whitespace anywhere. */
+function isEmail(value: string): boolean {
+  if (/\s/.test(value)) return false;
+  const at = value.indexOf('@');
+  if (at < 1 || at !== value.lastIndexOf('@')) return false;
+  // A dot with something on both sides, like the former /[^\s@]+\.[^\s@]+$/ domain part.
+  return value.slice(at + 2, -1).includes('.');
+}
 
 /** An e-mail address, or empty to clear it. */
 export const placeEmailField = z
   .string()
   .max(254)
-  .refine((v) => v === '' || EMAIL.test(v.trim()), { message: 'email must be an e-mail address' })
+  .refine((v) => v === '' || isEmail(v.trim()), { message: 'email must be an e-mail address' })
   .nullable()
   .optional();

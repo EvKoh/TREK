@@ -29,6 +29,10 @@ describe('place hours and e-mail (#2472)', () => {
     expect(placeEmailField.safeParse('a@b.co').success).toBe(true);
     expect(placeEmailField.safeParse('').success).toBe(true);
     expect(placeEmailField.safeParse('nope').success).toBe(false);
+    for (const bad of ['@b.co', 'a@@b.co', 'a@b@c.co', 'a@bco', 'a@.co', 'a@b.', 'a b@c.co']) {
+      expect(placeEmailField.safeParse(bad).success).toBe(false);
+    }
+    expect(placeEmailField.safeParse('  a.b@mail.example.org ').success).toBe(true);
     expect(placeCreateRequestSchema.safeParse({ name: 'X', email: 'nope' }).success).toBe(false);
     expect(placeUpdateRequestSchema.safeParse({ opening_hours: WEEK, email: null }).success).toBe(true);
   });

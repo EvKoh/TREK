@@ -541,7 +541,7 @@ export function proxyFor(rawUrl: string, proxy = PROXY): string | null {
   const port = url.port || (url.protocol === 'https:' ? '443' : '80');
   const bypass = proxy.noProxy.some((entry) => {
     if (entry === '*') return true;
-    const [name, entryPort] = entry.replace(/^\[|\](?=:|$)/g, '').split(/:(?=\d+$)/);
+    const [name, entryPort] = entry.replace(/(?:^\[)|(?:\](?=:|$))/g, '').split(/:(?=\d+$)/);
     if (entryPort && entryPort !== port) return false;
     const bare = name.replace(/^\*?\./, '');
     return host === bare || host.endsWith(`.${bare}`);
