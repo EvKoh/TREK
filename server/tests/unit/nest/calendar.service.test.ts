@@ -697,7 +697,7 @@ describe('exportICS', () => {
     expect(ics).toContain(`UID:trek-res-leg2-${cruise.id}@trek`);
   });
 
-  it('CAL-048: legs take their zones and names from one endpoint per airport (#2389)', () => {
+  it('CAL-2389b: legs take their zones and names from one endpoint per airport (#2389)', () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id, { title: 'Layover' });
     const d1 = createDay(testDb, trip.id, { date: '2025-06-02' });
