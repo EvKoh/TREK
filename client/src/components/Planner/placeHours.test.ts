@@ -1,6 +1,6 @@
 // FE-PLANNER-HOURS-001 to FE-PLANNER-HOURS-003
 import { describe, expect, it } from 'vitest'
-import { emptyWeek, hoursLines, periodsFromWeek, readWeek, weekdayNames, writeWeek } from './placeHours'
+import { cleanWeek, emptyWeek, hoursLines, periodsFromWeek, readWeek, weekdayNames, weekFromPeriods, writeWeek } from './placeHours'
 
 const week = JSON.stringify([
   { closed: false, open: '09:00', close: '17:00' },
@@ -37,3 +37,29 @@ describe('hand-kept opening hours (#2472)', () => {
     expect(periodsFromWeek(null)).toEqual([])
   })
 })
+
+describe('typing and taking over (#2472)', () => {
+  it('FE-PLANNER-HOURS-004: half-typed times stay out of what is stored', () => {
+    const week = emptyWeek()
+    week[0] = { closed: false, open: '09:3', close: '17:00' }
+    expect(cleanWeek(week)[0]).toEqual({ closed: false, close: '17:00' })
+    expect(readWeek(writeWeek(cleanWeek(week)))[0]).toEqual({ closed: false, close: '17:00' })
+  })
+
+  it('FE-PLANNER-HOURS-005: looked-up periods become a week: one range a day, the rest closed, overnight and 24h handled', () => {
+    const p = (day: number, h: number, m = 0) => ({ day, hour: h, minute: m })
+    const week = weekFromPeriods([
+      { open: p(1, 9), close: p(1, 12) },
+      { open: p(1, 14), close: p(1, 18, 30) },
+      { open: p(5, 20), close: p(6, 2) },
+      { open: p(0, 0), close: null },
+    ])!
+    expect(week[0]).toEqual({ closed: false, open: '09:00', close: '18:30' })
+    expect(week[1]).toEqual({ closed: true })
+    expect(week[4]).toEqual({ closed: false, open: '20:00', close: '02:00' })
+    expect(week[6]).toEqual({ closed: false, open: '00:00', close: '23:59' })
+    expect(weekFromPeriods(null)).toBeNull()
+    expect(weekFromPeriods([])).toBeNull()
+  })
+})
+

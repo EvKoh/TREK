@@ -50,6 +50,8 @@ interface PlaceDetailsColumnProps {
   selectedImageUrl?: string
   onPickImage: (url: string | null) => void
   onAdoptDescription: (text: string) => void
+  /** The looked-up opening hours, once they arrive, so the form can take them over (#2472). */
+  onHours?: (hours: PlaceHours) => void
   /** True once the form's description field has something in it. */
   hasDescription: boolean
   language: string
@@ -152,6 +154,7 @@ export default function PlaceDetailsColumn({
   selectedImageUrl,
   onPickImage,
   onAdoptDescription,
+  onHours,
   hasDescription,
   language,
   timeFormat = '24h',
@@ -243,6 +246,13 @@ export default function PlaceDetailsColumn({
   }, [selectionKey, language])
 
   useEffect(() => () => abortRef.current?.abort(), [])
+
+  // Handed to the form once per answer; a ref so a new callback identity does not re-send it.
+  const onHoursRef = useRef(onHours)
+  useEffect(() => { onHoursRef.current = onHours })
+  useEffect(() => {
+    if (state === 'ready' && data?.hours) onHoursRef.current?.(data.hours)
+  }, [state, data])
 
   const isEmpty =
     state === 'ready' &&

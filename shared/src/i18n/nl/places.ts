@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'sluit',
   'places.hoursCopyFirst': 'Tijden van {day} voor alle dagen gebruiken',
   'places.hoursRemove': 'Openingstijden verwijderen',
+  'places.hoursFromDetails': 'Overnemen uit de plekdetails',
   'places.searchNothing': 'Niets gevonden voor ‘{query}’',
   'places.searchNothingHint': 'Voeg het zelf toe: adres, telefoon, e-mail en openingstijden hebben hieronder een veld.',
   'places.addByHand': 'Zelf toevoegen',

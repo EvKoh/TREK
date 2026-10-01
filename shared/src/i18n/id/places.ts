@@ -101,6 +101,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'tutup',
   'places.hoursCopyFirst': 'Pakai jam {day} untuk semua hari',
   'places.hoursRemove': 'Hapus jam buka',
+  'places.hoursFromDetails': 'Ambil dari detail tempat',
   'places.searchNothing': 'Tidak ada hasil untuk “{query}”',
   'places.searchNothingHint': 'Tambahkan sendiri: alamat, telepon, email, dan jam buka ada di bawah.',
   'places.addByHand': 'Tambah manual',

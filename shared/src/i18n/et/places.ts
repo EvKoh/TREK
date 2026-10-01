@@ -103,6 +103,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'suletakse',
   'places.hoursCopyFirst': 'Kasuta päeva {day} aegu kõigil päevadel',
   'places.hoursRemove': 'Eemalda lahtiolekuajad',
+  'places.hoursFromDetails': 'Võta üle koha andmetest',
   'places.searchNothing': 'Otsingule „{query}“ ei leitud midagi',
   'places.searchNothingHint': 'Lisa see ise: aadressil, telefonil, e-postil ja lahtiolekuaegadel on all väli.',
   'places.addByHand': 'Lisa käsitsi',

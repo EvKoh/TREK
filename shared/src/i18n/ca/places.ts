@@ -101,6 +101,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'tanca',
   'places.hoursCopyFirst': "Fes servir l'horari de {day} per a tots els dies",
   'places.hoursRemove': "Elimina l'horari",
+  'places.hoursFromDetails': 'Agafa-ho dels detalls del lloc',
   'places.searchNothing': "No s'ha trobat res per a «{query}»",
   'places.searchNothingHint': 'Afegeix-lo tu: adreça, telèfon, correu i horari tenen un camp a sota.',
   'places.addByHand': 'Afegeix a mà',

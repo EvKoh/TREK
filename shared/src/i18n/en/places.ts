@@ -106,6 +106,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'closes',
   'places.hoursCopyFirst': "Use {day}'s hours for every day",
   'places.hoursRemove': 'Remove opening hours',
+  'places.hoursFromDetails': 'Take over from the place details',
   'places.searchNothing': 'Nothing found for “{query}”',
   'places.searchNothingHint': 'Add it yourself: address, phone, e-mail and opening hours all have a field below.',
   'places.addByHand': 'Add by hand',

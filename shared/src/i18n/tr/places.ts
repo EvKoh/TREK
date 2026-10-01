@@ -104,6 +104,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'kapanış',
   'places.hoursCopyFirst': '{day} saatlerini tüm günlere uygula',
   'places.hoursRemove': 'Çalışma saatlerini kaldır',
+  'places.hoursFromDetails': 'Yer ayrıntılarından al',
   'places.searchNothing': '“{query}” için sonuç bulunamadı',
   'places.searchNothingHint': 'Kendin ekle: adres, telefon, e-posta ve çalışma saatleri için aşağıda alan var.',
   'places.addByHand': 'Elle ekle',

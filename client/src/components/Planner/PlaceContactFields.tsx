@@ -1,11 +1,11 @@
-import { useId, useState } from 'react'
-import { Copy, Mail, Phone, X } from 'lucide-react'
+import { useEffect, useId, useRef, useState } from 'react'
+import { Copy, Mail, Phone, RotateCcw, X } from 'lucide-react'
 import type { PlaceOpeningHours } from '@trek/shared'
 import CustomTimePicker from '../shared/CustomTimePicker'
 import { Tooltip } from '../shared/Tooltip'
 import { DialogSection, fs } from '../shared/DialogShell'
 import { AddRowButton, EditorField, GRID_2, INPUT } from '../shared/dialogParts'
-import { readWeek, weekdayNames, writeWeek } from './placeHours'
+import { cleanWeek, readWeek, weekdayNames, writeWeek } from './placeHours'
 import { useTranslation } from '../../i18n'
 
 interface Props {
@@ -16,6 +16,12 @@ interface Props {
   /** The stored hours text (JSON), empty when the place has none of its own. */
   openingHours: string
   onChange: (field: 'phone' | 'email' | 'opening_hours', value: string) => void
+  /**
+   * The hours the place details column looked up, as a week. A place without
+   * hours of its own takes them over on its own; one that has some gets a
+   * button to take them over instead.
+   */
+  suggestedHours?: PlaceOpeningHours | null
 }
 
 /**
@@ -25,19 +31,47 @@ interface Props {
  * behind one row until somebody wants them, so a place without any does not
  * carry a seven-row grid.
  */
-export function PlaceContactFields({ id: anchorId, phone, email, openingHours, onChange }: Props) {
+export function PlaceContactFields({ id: anchorId, phone, email, openingHours, onChange, suggestedHours }: Props) {
   const { t, locale } = useTranslation()
   const id = useId()
-  const week = readWeek(openingHours)
+  // The editor's own draft, so a half-typed time ("09:3") stays on screen while
+  // only finished times reach the place.
+  const [week, setDraft] = useState(() => readWeek(openingHours))
+  const written = useRef(openingHours)
   const [editing, setEditing] = useState(() => openingHours !== '')
   const names = weekdayNames(locale, 'short')
   const longNames = weekdayNames(locale, 'long')
 
-  const setWeek = (next: PlaceOpeningHours) => onChange('opening_hours', writeWeek(next))
+  // A value from outside (a picked search result, a reopened place) replaces the draft.
+  useEffect(() => {
+    if (openingHours === written.current) return
+    written.current = openingHours
+    setDraft(readWeek(openingHours))
+    if (openingHours) setEditing(true)
+  }, [openingHours])
+
+  const setWeek = (next: PlaceOpeningHours) => {
+    setDraft(next)
+    const text = writeWeek(cleanWeek(next))
+    written.current = text
+    onChange('opening_hours', text)
+  }
   const setDay = (i: number, patch: Partial<PlaceOpeningHours[number]>) =>
     setWeek(week.map((day, d) => (d === i ? { ...day, ...patch } : day)))
   const copyFirstToAll = () => setWeek(week.map(() => ({ ...week[0] })))
-  const clearHours = () => { onChange('opening_hours', ''); setEditing(false) }
+  const clearHours = () => { setWeek(readWeek('')); setEditing(false) }
+
+  // Looked-up hours are taken over by a place that has none yet, once per lookup.
+  const adopted = useRef<PlaceOpeningHours | null>(null)
+  useEffect(() => {
+    if (!suggestedHours || adopted.current === suggestedHours) return
+    adopted.current = suggestedHours
+    if (written.current) return
+    setWeek(suggestedHours)
+    setEditing(true)
+    // setWeek only reads refs and setters; the lookup is the trigger.
+  }, [suggestedHours])
+  const canTakeOver = !!suggestedHours && writeWeek(suggestedHours) !== writeWeek(cleanWeek(week))
 
   return (
     <div id={anchorId} className="flex flex-col gap-4">
@@ -62,6 +96,14 @@ export function PlaceContactFields({ id: anchorId, phone, email, openingHours, o
         label={t('inspector.openingHours')}
         action={editing ? (
           <div className="flex items-center gap-1">
+            {canTakeOver && (
+              <Tooltip label={t('places.hoursFromDetails')}>
+                <button type="button" onClick={() => setWeek(suggestedHours!)} aria-label={t('places.hoursFromDetails')}
+                  className="grid h-7 w-7 place-items-center rounded-full text-content-faint hover:bg-surface-hover hover:text-content">
+                  <RotateCcw size={13} strokeWidth={2} />
+                </button>
+              </Tooltip>
+            )}
             <Tooltip label={t('places.hoursCopyFirst', { day: longNames[0] })}>
               <button type="button" onClick={copyFirstToAll} aria-label={t('places.hoursCopyFirst', { day: longNames[0] })}
                 className="grid h-7 w-7 place-items-center rounded-full text-content-faint hover:bg-surface-hover hover:text-content">

@@ -103,6 +103,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'ferme',
   'places.hoursCopyFirst': 'Appliquer les horaires du {day} à tous les jours',
   'places.hoursRemove': 'Supprimer les horaires',
+  'places.hoursFromDetails': 'Reprendre depuis les détails du lieu',
   'places.searchNothing': 'Aucun résultat pour « {query} »',
   'places.searchNothingHint': 'Ajoutez-le vous-même : adresse, téléphone, e-mail et horaires ont un champ plus bas.',
   'places.addByHand': 'Ajouter à la main',

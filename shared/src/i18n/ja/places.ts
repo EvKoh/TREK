@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': '閉店',
   'places.hoursCopyFirst': '{day}の時間を全曜日に適用',
   'places.hoursRemove': '営業時間を削除',
+  'places.hoursFromDetails': '場所の詳細から取り込む',
   'places.searchNothing': '「{query}」は見つかりませんでした',
   'places.searchNothingHint': '自分で追加できます。住所・電話・メール・営業時間の欄が下にあります。',
   'places.addByHand': '手動で追加',

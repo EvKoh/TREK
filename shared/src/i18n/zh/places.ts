@@ -101,6 +101,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': '关门',
   'places.hoursCopyFirst': '将{day}的时间用于每一天',
   'places.hoursRemove': '移除营业时间',
+  'places.hoursFromDetails': '从地点详情获取',
   'places.searchNothing': '未找到“{query}”',
   'places.searchNothingHint': '自己添加：下方有地址、电话、电子邮件和营业时间的输入框。',
   'places.addByHand': '手动添加',

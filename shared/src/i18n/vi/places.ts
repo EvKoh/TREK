@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'đóng cửa',
   'places.hoursCopyFirst': 'Dùng giờ của {day} cho mọi ngày',
   'places.hoursRemove': 'Xóa giờ mở cửa',
+  'places.hoursFromDetails': 'Lấy từ thông tin địa điểm',
   'places.searchNothing': 'Không tìm thấy “{query}”',
   'places.searchNothingHint': 'Tự thêm: địa chỉ, điện thoại, email và giờ mở cửa đều có ô bên dưới.',
   'places.addByHand': 'Thêm thủ công',

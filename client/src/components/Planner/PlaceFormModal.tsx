@@ -16,6 +16,8 @@ import { Search, Paperclip, X, AlertTriangle, Loader2, Plus, RotateCcw, MapPin, 
 import { useTranslation } from '../../i18n'
 import CustomTimePicker from '../shared/CustomTimePicker'
 import { PlaceContactFields } from './PlaceContactFields'
+import { weekFromPeriods } from './placeHours'
+import type { PlaceOpeningHours } from '@trek/shared'
 import {
   DEFAULT_FORM, endsBeforeStart, findDuplicatePlace, formPin, isMapUrl, mergeResult, parseCoordinatePair, timeCollisions,
   type PlaceFormData, type ResultField,
@@ -167,6 +169,8 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
   // The query the last full search found nothing for (#2472): the cue to add the
   // place by hand instead of a silent empty list.
   const [emptySearch, setEmptySearch] = useState<string | null>(null)
+  // The hours the details column looked up, as a week the contact block can take over (#2472).
+  const [detailsHours, setDetailsHours] = useState<PlaceOpeningHours | null>(null)
   /**
    * The leg of the drive the traveller picked, or empty while the projection's own
    * answer stands. Empty rather than seeded, because there is nothing to project onto
@@ -823,6 +827,7 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
     isSaving,
     pendingFiles,
     emptySearch, setEmptySearch,
+    detailsHours, setDetailsHours,
     fileRef,
     acSuggestions,
     setAcSuggestions,
@@ -1018,6 +1023,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
             selectedImageUrl={form.image_url}
             onPickImage={(url) => setForm(prev => ({ ...prev, image_url: url ?? undefined }))}
             onAdoptDescription={(text) => setForm(prev => ({ ...prev, description: text }))}
+            onHours={(hours) => S.setDetailsHours(weekFromPeriods(hours.periods))}
             hasDescription={!!form.description.trim()}
             language={language}
             timeFormat={S.timeFormat}
@@ -1318,6 +1324,7 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
             phone={form.phone ?? ''}
             email={form.email ?? ''}
             openingHours={form.opening_hours ?? ''}
+            suggestedHours={S.detailsHours}
             onChange={(field, value) => handleChange(field, value)}
           />
 

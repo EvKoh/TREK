@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'chiude',
   'places.hoursCopyFirst': 'Usa gli orari di {day} per tutti i giorni',
   'places.hoursRemove': 'Rimuovi orari di apertura',
+  'places.hoursFromDetails': 'Prendi dai dettagli del luogo',
   'places.searchNothing': 'Nessun risultato per «{query}»',
   'places.searchNothingHint': 'Aggiungilo tu: indirizzo, telefono, e-mail e orari hanno un campo qui sotto.',
   'places.addByHand': 'Aggiungi a mano',

@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'zár',
   'places.hoursCopyFirst': 'A(z) {day} nyitvatartása minden napra',
   'places.hoursRemove': 'Nyitvatartás törlése',
+  'places.hoursFromDetails': 'Átvétel a hely adataiból',
   'places.searchNothing': 'Nincs találat erre: „{query}”',
   'places.searchNothingHint': 'Add hozzá magad: a cím, telefon, e-mail és nyitvatartás lent kitölthető.',
   'places.addByHand': 'Kézi hozzáadás',

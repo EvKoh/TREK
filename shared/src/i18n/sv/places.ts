@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'stänger',
   'places.hoursCopyFirst': 'Använd tiderna för {day} alla dagar',
   'places.hoursRemove': 'Ta bort öppettider',
+  'places.hoursFromDetails': 'Hämta från platsdetaljerna',
   'places.searchNothing': 'Inget hittades för ”{query}”',
   'places.searchNothingHint': 'Lägg till den själv: adress, telefon, e-post och öppettider har fält nedanför.',
   'places.addByHand': 'Lägg till själv',

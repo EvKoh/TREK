@@ -96,6 +96,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'ปิด',
   'places.hoursCopyFirst': 'ใช้เวลาของวัน{day}กับทุกวัน',
   'places.hoursRemove': 'ลบเวลาทำการ',
+  'places.hoursFromDetails': 'ดึงจากรายละเอียดสถานที่',
   'places.searchNothing': 'ไม่พบผลลัพธ์สำหรับ “{query}”',
   'places.searchNothingHint': 'เพิ่มเองได้: ที่อยู่ โทรศัพท์ อีเมล และเวลาทำการมีช่องให้กรอกด้านล่าง',
   'places.addByHand': 'เพิ่มเอง',

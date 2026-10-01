@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'зачиняється',
   'places.hoursCopyFirst': 'Застосувати години дня «{day}» до всіх днів',
   'places.hoursRemove': 'Видалити години роботи',
+  'places.hoursFromDetails': 'Взяти з даних про місце',
   'places.searchNothing': 'За запитом «{query}» нічого не знайдено',
   'places.searchNothingHint': 'Додайте самі: для адреси, телефону, пошти й годин роботи є поля нижче.',
   'places.addByHand': 'Додати вручну',

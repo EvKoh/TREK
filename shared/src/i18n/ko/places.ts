@@ -101,6 +101,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': '마감',
   'places.hoursCopyFirst': '{day} 시간을 모든 요일에 적용',
   'places.hoursRemove': '영업시간 삭제',
+  'places.hoursFromDetails': '장소 정보에서 가져오기',
   'places.searchNothing': '“{query}”에 대한 결과가 없습니다',
   'places.searchNothingHint': '직접 추가하세요. 주소, 전화, 이메일, 영업시간 입력란이 아래에 있습니다.',
   'places.addByHand': '직접 추가',

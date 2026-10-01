@@ -4,11 +4,12 @@ import { useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { render, screen } from '../../../tests/helpers/render'
 import { PlaceContactFields } from './PlaceContactFields'
+import type { PlaceOpeningHours } from '@trek/shared'
 
-function Harness({ onChange }: { onChange: (field: string, value: string) => void }) {
-  const [state, setState] = useState({ phone: '', email: '', opening_hours: '' })
+function Harness({ onChange, start = '', suggested }: { onChange: (field: string, value: string) => void; start?: string; suggested?: PlaceOpeningHours | null }) {
+  const [state, setState] = useState({ phone: '', email: '', opening_hours: start })
   return (
-    <PlaceContactFields phone={state.phone} email={state.email} openingHours={state.opening_hours}
+    <PlaceContactFields phone={state.phone} email={state.email} openingHours={state.opening_hours} suggestedHours={suggested}
       onChange={(field, value) => { onChange(field, value); setState(s => ({ ...s, [field]: value })) }} />
   )
 }
@@ -44,4 +45,33 @@ describe('PlaceContactFields (#2472)', () => {
     expect(onChange).toHaveBeenLastCalledWith('opening_hours', '')
     expect(screen.getByRole('button', { name: 'Add opening hours' })).toBeInTheDocument()
   })
+
+  it('FE-PLANNER-CONTACT-003: a time can be typed key by key without the field resetting', async () => {
+    const user = userEvent.setup()
+    const onChange = vi.fn()
+    render(<Harness onChange={onChange} />)
+    await user.click(screen.getByRole('button', { name: 'Add opening hours' }))
+    const opens = screen.getAllByRole('textbox', { name: /Monday opens/ })
+    await user.type(opens[0], '0930')
+    expect(opens[0]).toHaveValue('09:30')
+    expect(JSON.parse(onChange.mock.lastCall![1])[0]).toEqual({ closed: false, open: '09:30' })
+  })
+
+  it('FE-PLANNER-CONTACT-004: looked-up hours fill an empty place, and an edited one offers to take them over', async () => {
+    const user = userEvent.setup()
+    const looked: PlaceOpeningHours = [{ closed: false, open: '10:00', close: '16:00' }, ...Array.from({ length: 6 }, () => ({ closed: true }))]
+    const onChange = vi.fn()
+    const { unmount } = render(<Harness onChange={onChange} suggested={looked} />)
+    expect(JSON.parse(onChange.mock.lastCall![1])).toEqual(looked)
+    expect(screen.queryByRole('button', { name: 'Take over from the place details' })).toBeNull()
+    unmount()
+
+    onChange.mockClear()
+    const own = JSON.stringify([{ closed: false, open: '08:00', close: '09:00' }, ...Array.from({ length: 6 }, () => ({ closed: false }))])
+    render(<Harness onChange={onChange} start={own} suggested={looked} />)
+    expect(onChange).not.toHaveBeenCalled()
+    await user.click(screen.getByRole('button', { name: 'Take over from the place details' }))
+    expect(JSON.parse(onChange.mock.lastCall![1])).toEqual(looked)
+  })
 })
+

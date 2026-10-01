@@ -103,6 +103,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'κλείνει',
   'places.hoursCopyFirst': 'Χρήση του ωραρίου της ημέρας {day} για όλες τις ημέρες',
   'places.hoursRemove': 'Αφαίρεση ωραρίου',
+  'places.hoursFromDetails': 'Λήψη από τις λεπτομέρειες τοποθεσίας',
   'places.searchNothing': 'Δεν βρέθηκε τίποτα για «{query}»',
   'places.searchNothingHint': 'Προσθέστε το μόνοι σας: διεύθυνση, τηλέφωνο, email και ωράριο έχουν πεδίο παρακάτω.',
   'places.addByHand': 'Χειροκίνητη προσθήκη',

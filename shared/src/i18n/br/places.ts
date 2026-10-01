@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'fecha',
   'places.hoursCopyFirst': 'Usar o horário de {day} em todos os dias',
   'places.hoursRemove': 'Remover horário de funcionamento',
+  'places.hoursFromDetails': 'Usar dos detalhes do lugar',
   'places.searchNothing': 'Nada encontrado para “{query}”',
   'places.searchNothingHint': 'Adicione você mesmo: endereço, telefone, e-mail e horário têm campos abaixo.',
   'places.addByHand': 'Adicionar manualmente',

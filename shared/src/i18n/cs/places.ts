@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'zavírá',
   'places.hoursCopyFirst': 'Použít časy z {day} pro všechny dny',
   'places.hoursRemove': 'Odebrat otevírací dobu',
+  'places.hoursFromDetails': 'Převzít z podrobností místa',
   'places.searchNothing': 'Pro „{query}“ nebylo nic nalezeno',
   'places.searchNothingHint': 'Přidejte ho sami: adresa, telefon, e-mail i otevírací doba mají pole níže.',
   'places.addByHand': 'Přidat ručně',

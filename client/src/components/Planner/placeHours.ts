@@ -57,3 +57,45 @@ export function periodsFromWeek(raw: string | null | undefined): { open: { day: 
     return [{ open: point(day.open, googleDay), close: point(day.close, overnight ? (googleDay + 1) % 7 : googleDay) }]
   })
 }
+
+const HHMM = /^([01]\d|2[0-3]):[0-5]\d$/
+
+/**
+ * The week with only finished times in it. The time field reports every key
+ * press ("0", "09", "09:3"), and a half-typed time must neither be stored nor
+ * make the stored week unreadable; it stays in the editor's own draft.
+ */
+export function cleanWeek(week: PlaceOpeningHours): PlaceOpeningHours {
+  return week.map(day => ({
+    closed: day.closed,
+    ...(day.open && HHMM.test(day.open) ? { open: day.open } : {}),
+    ...(day.close && HHMM.test(day.close) ? { close: day.close } : {}),
+  }))
+}
+
+interface Point { day: number; hour: number; minute: number }
+
+/**
+ * Looked-up hours as a week for the editor (#2472): what the place details
+ * column shows, so a place edited later starts from them instead of from
+ * nothing. One range per day, the earliest opening to the latest closing, which
+ * is what the editor can hold; a day the provider names no period for is
+ * closed. A period that never closes is open around the clock. Null when the
+ * provider gave no periods at all.
+ */
+export function weekFromPeriods(periods: { open: Point; close?: Point | null }[] | null | undefined): PlaceOpeningHours | null {
+  if (!periods?.length) return null
+  // Minutes after the day's own midnight; a close past midnight counts on top of 24h.
+  const span: ({ open: number; close: number } | null)[] = Array.from({ length: PLACE_HOURS_DAYS }, () => null)
+  for (const period of periods) {
+    const i = (period.open.day + 6) % 7
+    const open = period.open.hour * 60 + period.open.minute
+    let close = period.close ? period.close.hour * 60 + period.close.minute : 24 * 60 - 1
+    if (period.close && close <= open) close += 24 * 60
+    const cur = span[i]
+    span[i] = cur ? { open: Math.min(cur.open, open), close: Math.max(cur.close, close) } : { open, close }
+  }
+  const clock = (m: number) => `${String(Math.floor(m / 60) % 24).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`
+  const week: PlaceOpeningHours = span.map(s => (s ? { closed: false, open: clock(s.open), close: clock(s.close) } : { closed: true }))
+  return week
+}

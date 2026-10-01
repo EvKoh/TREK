@@ -102,6 +102,7 @@ const places: TranslationStrings = {
   'places.hoursCloses': 'يغلق',
   'places.hoursCopyFirst': 'استخدم ساعات {day} لكل الأيام',
   'places.hoursRemove': 'إزالة ساعات العمل',
+  'places.hoursFromDetails': 'الأخذ من تفاصيل المكان',
   'places.searchNothing': 'لم يتم العثور على شيء لـ «{query}»',
   'places.searchNothingHint': 'أضفه بنفسك: للعنوان والهاتف والبريد وساعات العمل حقول بالأسفل.',
   'places.addByHand': 'أضف يدويًا',
