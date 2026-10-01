@@ -19,7 +19,7 @@ import {
 import {
   Plus, Edit2, Trash2, Archive, ArchiveRestore, Copy, ArrowRight, MapPin,
   Plane, Hotel, Utensils, Clock, RefreshCw, ArrowRightLeft, Calendar,
-  LayoutGrid, List, Ticket, X, CalendarPlus, ParkingSquare, LogIn, LogOut,
+  LayoutGrid, List, Ticket, X, CalendarPlus, ParkingSquare, LogIn, LogOut, Search,
 } from 'lucide-react'
 import { IcsSubscribeModal } from '../components/Planner/IcsSubscribeModal'
 import CollectionsWidget from '../components/Dashboard/CollectionsWidget'
@@ -120,7 +120,7 @@ function DashboardPageDesktop(): React.ReactElement {
     showForm, setShowForm, editingTrip, setEditingTrip,
     deleteTrip, setDeleteTrip, copyTrip, setCopyTrip, applyCoverUpdate,
     handleCreate, handleUpdate, confirmDelete, handleArchive, handleUnarchive, confirmCopy,
-    allSubOpen, setAllSubOpen,
+    allSubOpen, setAllSubOpen, search,
   } = useDashboard()
 
   // Dashboard widget visibility (from the appearance config). Phones never reach this
@@ -191,7 +191,24 @@ function DashboardPageDesktop(): React.ReactElement {
               <div className="sec-head">
                 <h3 className="sec-title">{t('dashboard.title')}</h3>
                 <div className="sec-tools">
-                  <div className="seg">
+                  {/* Trip search (#2190): every trip, by title, date or a place on it */}
+                  <label className={`dash-search${search.active ? ' on' : ''}`}>
+                    <Search size={15} strokeWidth={2.2} aria-hidden />
+                    <input
+                      type="search"
+                      value={search.query}
+                      onChange={e => search.setQuery(e.target.value)}
+                      onKeyDown={e => { if (e.key === 'Escape') search.setQuery('') }}
+                      placeholder={t('dashboard.search.placeholder')}
+                      aria-label={t('dashboard.search.label')}
+                    />
+                    {search.active && (
+                      <button type="button" className="dash-search-clear" onClick={() => search.setQuery('')} aria-label={t('dashboard.search.clear')}>
+                        <X size={13} strokeWidth={2.4} />
+                      </button>
+                    )}
+                  </label>
+                  <div className={`seg${search.active ? ' is-muted' : ''}`}>
                     <button type="button" className={tripFilter === 'planned' ? 'on' : ''} onClick={() => setTripFilter('planned')}>{t('dashboard.filter.planned')}</button>
                     <button type="button" className={tripFilter === 'archive' ? 'on' : ''} onClick={() => setTripFilter('archive')}>{t('dashboard.archived')}</button>
                     <button type="button" className={tripFilter === 'completed' ? 'on' : ''} onClick={() => setTripFilter('completed')}>{t('dashboard.mobile.completed')}</button>
@@ -222,7 +239,13 @@ function DashboardPageDesktop(): React.ReactElement {
               {/* "No trips yet" only when there really are none — a user whose trips are
                   all finished has a hero, and telling them to create their first trip is
                   simply wrong (#1706). Same condition the mobile dashboard already uses. */}
-              {gridTrips.length === 0 && !spotlight && tripFilter === 'planned' && !isLoading && !loadError && (
+              {search.active && gridTrips.length === 0 && (
+                <div className="trips-empty">
+                  <EmptyState scene="dashboard" title={t('dashboard.search.empty', { query: search.query.trim() })} />
+                </div>
+              )}
+
+              {!search.active && gridTrips.length === 0 && !spotlight && tripFilter === 'planned' && !isLoading && !loadError && (
                 <div className="trips-empty">
                   <EmptyState scene="dashboard" title={t('dashboard.emptyTitle')} />
                 </div>
@@ -235,6 +258,7 @@ function DashboardPageDesktop(): React.ReactElement {
                     trip={trip}
                     locale={locale}
                     badges={badgesFor(trip.id)}
+                    matchedPlaces={search.active ? search.placeHits.get(trip.id) : undefined}
                     onOpen={() => navigate(`/trips/${trip.id}`)}
                     onEdit={() => { setEditingTrip(trip); setShowForm(true) }}
                     onCopy={() => setCopyTrip(trip)}
@@ -249,7 +273,7 @@ function DashboardPageDesktop(): React.ReactElement {
                     <TripCardSkeleton />
                   </>
                 )}
-                {tripFilter === 'planned' && !isLoading && (
+                {tripFilter === 'planned' && !search.active && !isLoading && (
                   <button type="button" className="add-trip-card" onClick={() => { setEditingTrip(null); setShowForm(true) }}>
                     <div>
                       <div className="circ"><Plus size={20} /></div>
@@ -575,8 +599,10 @@ function AtlasStats({ stats }: { stats: TravelStats | null }): React.ReactElemen
 }
 
 // ── Trip card ────────────────────────────────────────────────────────────────
-function TripCard({ trip, locale, badges, onOpen, onEdit, onCopy, onArchive, onDelete }: {
+function TripCard({ trip, locale, badges, matchedPlaces, onOpen, onEdit, onCopy, onArchive, onDelete }: {
   trip: DashboardTrip; locale: string; badges?: TripCardBadge[]; onOpen: () => void
+  /** The places that made this trip a search result (#2190). */
+  matchedPlaces?: string[]
   onEdit: () => void; onCopy: () => void; onArchive: () => void; onDelete: () => void
 }): React.ReactElement {
   const { t } = useTranslation()
@@ -631,6 +657,12 @@ function TripCard({ trip, locale, badges, onOpen, onEdit, onCopy, onArchive, onD
             </>
           ) : <span>{t('dashboard.hero.noDates')}</span>}
         </div>
+        {matchedPlaces && matchedPlaces.length > 0 && (
+          <div className="trip-match" title={matchedPlaces.join(', ')}>
+            <MapPin size={12} strokeWidth={2.2} aria-hidden />
+            <span>{matchedPlaces.join(' · ')}</span>
+          </div>
+        )}
         <div className="trip-meta" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
           <div><span className="n mono">{trip.day_count ?? 0}</span><span className="k">{t('dashboard.days')}</span></div>
           <div><span className="n mono">{trip.place_count ?? 0}</span><span className="k">{t('dashboard.places')}</span></div>

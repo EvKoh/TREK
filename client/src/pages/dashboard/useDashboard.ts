@@ -7,6 +7,7 @@ import { useTranslation } from '../../i18n'
 import { useToast } from '../../components/shared/Toast'
 import { getApiErrorMessage } from '../../types'
 import { localIsoToday } from './dashboardModel'
+import { useTripSearch } from './useTripSearch'
 import type { TripCreateRequest } from '@trek/shared'
 import {
   type DashboardTrip,
@@ -193,7 +194,10 @@ export function useDashboard() {
     setArchivedTrips(patch)
   }
 
-  const gridTrips = tripFilter === 'archive' ? archivedTrips
+  // While a search runs it spans every trip, archived ones included (#2190).
+  const search = useTripSearch(trips, archivedTrips, locale)
+  const gridTrips = search.active ? search.results
+    : tripFilter === 'archive' ? archivedTrips
     : tripFilter === 'completed' ? rest.filter(t => getTripStatus(t) === 'past')
     : rest.filter(t => getTripStatus(t) !== 'past')
 
@@ -208,6 +212,7 @@ export function useDashboard() {
     showForm, setShowForm, editingTrip, setEditingTrip,
     deleteTrip, setDeleteTrip, copyTrip, setCopyTrip, applyCoverUpdate,
     allSubOpen, setAllSubOpen,
+    search,
     // actions
     handleCreate, handleUpdate, confirmDelete, handleArchive, handleUnarchive, confirmCopy,
   }
