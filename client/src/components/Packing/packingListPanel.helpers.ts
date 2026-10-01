@@ -223,3 +223,34 @@ export function newItemSharing(
   if (!own.length || !sets[0] || sets.some(set => set !== sets[0])) return { visibility: 'personal' }
   return { visibility: 'shared', recipient_ids: sets[0].split(',').map(Number) }
 }
+
+/** What the packed part of these items weighs: unit weight times the packed count (#1131). */
+export const packedWeight = (items: { weight_grams?: number | null; quantity?: number; checked?: number | boolean; packed_quantity?: number | null }[]): number =>
+  items.reduce((sum, i) => sum + (i.weight_grams || 0) * packedOf(i), 0)
+
+export interface PersonLoad { user_id: number; username: string; avatar?: string | null; grams: number; shared: boolean }
+
+/**
+ * What each person carries, from the bags they are a member of (#1131). A bag
+ * with several members is split evenly between them, so the rows add up to the
+ * weight of the bags that have anyone at all; `shared` marks a person with such
+ * a split share. Heaviest first.
+ */
+export function perPersonLoads<B extends { members?: { user_id: number; username: string; avatar?: string | null }[] }>(
+  bags: B[],
+  weightOf: (bag: B) => number,
+): PersonLoad[] {
+  const byUser = new Map<number, PersonLoad>()
+  for (const bag of bags) {
+    const members = bag.members ?? []
+    if (members.length === 0) continue
+    const share = weightOf(bag) / members.length
+    for (const m of members) {
+      const row = byUser.get(m.user_id) ?? { user_id: m.user_id, username: m.username, avatar: m.avatar, grams: 0, shared: false }
+      row.grams += share
+      if (members.length > 1) row.shared = true
+      byUser.set(m.user_id, row)
+    }
+  }
+  return [...byUser.values()].map(r => ({ ...r, grams: Math.round(r.grams) })).sort((a, b) => b.grams - a.grams)
+}

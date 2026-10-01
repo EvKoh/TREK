@@ -1,8 +1,9 @@
 import { useCallback, useRef } from 'react'
 import { Briefcase, Plus, X } from 'lucide-react'
 import type { PackingState } from './usePackingListPanel'
-import { bagFillPct, bagTotalWeight, countsTowardsMyLoad, unassignedTotalWeight } from './packingListPanel.helpers'
+import { bagFillPct, bagTotalWeight, countsTowardsMyLoad, packedWeight, perPersonLoads, unassignedTotalWeight } from './packingListPanel.helpers'
 import { BagCard } from './PackingListPanelBagCard'
+import { PackingWeightSummary } from './PackingWeightSummary'
 import { COMPOSER, composerConfirm, useDismissOnOutside } from './packingPopoverStyles'
 
 const kgOrG = (grams: number) => (grams >= 1000 ? `${(grams / 1000).toFixed(1)} kg` : `${grams} g`)
@@ -91,10 +92,7 @@ export function BagSidebar(S: PackingState) {
           )}
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: 'var(--bg-tertiary)', borderRadius: '0 0 15px 15px', fontSize: 'calc(12.5px * var(--fs-scale-body, 1))', fontWeight: 700, color: 'var(--text-primary)' }}>
-          <span>{t('packing.totalWeight')}</span>
-          <span style={{ fontVariantNumeric: 'tabular-nums' }}>{kgOrG(totalWeight)}</span>
-        </div>
+        <PackingWeightSummary t={t} total={totalWeight} packed={packedWeight(myItems)} people={perPersonLoads(bags, bagWeightOf)} />
       </div>
     </div>
   )

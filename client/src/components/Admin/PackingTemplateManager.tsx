@@ -5,7 +5,16 @@ import { useTranslation } from '../../i18n'
 import { Plus, Trash2, Edit2, Package, X, Check, ChevronDown, ChevronRight, FolderPlus } from 'lucide-react'
 
 interface TemplateCategory { id: number; template_id: number; name: string; sort_order: number }
-interface TemplateItem { id: number; category_id: number; name: string; sort_order: number }
+interface TemplateItem { id: number; category_id: number; name: string; sort_order: number; weight_grams?: number | null; quantity?: number | null; bag_name?: string | null }
+
+/** "2× · 300 g · Backpack": what a template item brings along besides its name (#1131). */
+function templateItemMeta(item: TemplateItem): string {
+  const parts: string[] = []
+  if ((item.quantity ?? 1) > 1) parts.push(`${item.quantity}×`)
+  if (item.weight_grams) parts.push(item.weight_grams >= 1000 ? `${(item.weight_grams / 1000).toFixed(1)} kg` : `${item.weight_grams} g`)
+  if (item.bag_name) parts.push(item.bag_name)
+  return parts.join(' · ')
+}
 interface Template { id: number; name: string; item_count: number; category_count: number; created_by_name: string }
 
 export default function PackingTemplateManager() {
@@ -252,6 +261,9 @@ export default function PackingTemplateManager() {
                                 ) : (
                                   <>
                                     <span className="flex-1 text-sm text-slate-700">{item.name}</span>
+                                    {templateItemMeta(item) && (
+                                      <span className="text-caption text-content-faint tabular-nums truncate max-w-[45%]">{templateItemMeta(item)}</span>
+                                    )}
                                     <button type="button" onClick={() => { setEditingItemId(item.id); setEditItemName(item.name) }}
                                       className="p-1 rounded opacity-0 group-hover:opacity-100 text-slate-400 hover:text-slate-700 transition-all"><Edit2 size={12} /></button>
                                     <button type="button" onClick={() => handleDeleteItem(item.id)}

@@ -5409,6 +5409,18 @@ function runMigrations(db: Database.Database): void {
     () => {
       db.exec('CREATE TABLE IF NOT EXISTS google_api_usage (day TEXT PRIMARY KEY, calls INTEGER NOT NULL DEFAULT 0)');
     },
+    /**
+     * Packing templates remember what an item weighs, how many of it go along
+     * and which bag it lives in (#1131), so applying one does not mean typing
+     * all of that in again. The bag is kept by name: bags belong to a trip.
+     */
+    () => {
+      const cols = db.prepare("SELECT name FROM pragma_table_info('packing_template_items')").all() as { name: string }[];
+      const has = (c: string) => cols.some(col => col.name === c);
+      if (!has('weight_grams')) db.exec('ALTER TABLE packing_template_items ADD COLUMN weight_grams INTEGER');
+      if (!has('quantity')) db.exec('ALTER TABLE packing_template_items ADD COLUMN quantity INTEGER NOT NULL DEFAULT 1');
+      if (!has('bag_name')) db.exec('ALTER TABLE packing_template_items ADD COLUMN bag_name TEXT');
+    },
   ];
 
   if (currentVersion < migrations.length) {

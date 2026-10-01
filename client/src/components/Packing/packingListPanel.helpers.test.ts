@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { katColor, itemWeight, bagFillPct, bagTotalWeight, countsTowardsMyLoad, isMarkdownList, newItemSharing, parseCsvLine, parseImportLines, sortItemsByName, unassignedTotalWeight } from './packingListPanel.helpers'
+import { katColor, itemWeight, bagFillPct, bagTotalWeight, countsTowardsMyLoad, isMarkdownList, newItemSharing, packedWeight, parseCsvLine, perPersonLoads, parseImportLines, sortItemsByName, unassignedTotalWeight } from './packingListPanel.helpers'
 import { KAT_COLORS } from './packingListPanel.constants'
 
 describe('packingListPanel.helpers', () => {
@@ -264,3 +264,31 @@ describe('newItemSharing (#2241)', () => {
     expect(newItemSharing([mine(1, 'Beach', [8])], 'Beach', 'common', 7)).toEqual({ visibility: 'common' })
   })
 })
+
+describe('packedWeight / perPersonLoads (#1131)', () => {
+  it('counts ticked items in full and partly packed ones by their packed count', () => {
+    expect(packedWeight([
+      { weight_grams: 100, quantity: 3, checked: 1 },
+      { weight_grams: 50, quantity: 4, packed_quantity: 2 },
+      { weight_grams: 999, quantity: 1, checked: 0 },
+      { weight_grams: null, quantity: 1, checked: 1 },
+    ])).toBe(400)
+  })
+
+  it('splits a shared bag evenly, skips bags with nobody, and sorts heaviest first', () => {
+    const bags = [
+      { id: 1, w: 900, members: [{ user_id: 1, username: 'A' }, { user_id: 2, username: 'B' }, { user_id: 3, username: 'C' }] },
+      { id: 2, w: 1000, members: [{ user_id: 3, username: 'C' }] },
+      { id: 3, w: 5000, members: [] },
+    ]
+    expect(perPersonLoads(bags, b => b.w)).toEqual([
+      { user_id: 3, username: 'C', avatar: undefined, grams: 1300, shared: true },
+      { user_id: 1, username: 'A', avatar: undefined, grams: 300, shared: true },
+      { user_id: 2, username: 'B', avatar: undefined, grams: 300, shared: true },
+    ])
+    expect(perPersonLoads([{ members: [{ user_id: 9, username: 'Solo' }] }], () => 250)).toEqual([
+      { user_id: 9, username: 'Solo', avatar: undefined, grams: 250, shared: false },
+    ])
+  })
+})
+

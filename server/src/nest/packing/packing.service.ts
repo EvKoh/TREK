@@ -474,6 +474,20 @@ export class PackingService {
     return item;
   }
 
+  /**
+   * The trip's bag called `name`, created with the next colour when there is
+   * none yet. Shared by the bulk import and template apply (#1131), which both
+   * carry bags by name. Runs inside the caller's transaction.
+   */
+  private bagIdByName(tripId: string | number, name: string | null | undefined): number | bigint | null {
+    const bagName = name?.trim();
+    if (!bagName) return null;
+    const existing = this.db.get<{ id: number }>('SELECT id FROM packing_bags WHERE trip_id = ? AND name = ?', tripId, bagName);
+    if (existing) return existing.id;
+    const bagCount = this.db.get<{ c: number }>('SELECT COUNT(*) as c FROM packing_bags WHERE trip_id = ?', tripId)!.c;
+    return this.db.run('INSERT INTO packing_bags (trip_id, name, color) VALUES (?, ?, ?)', tripId, bagName, BAG_COLORS[bagCount % BAG_COLORS.length]).lastInsertRowid;
+  }
+
   // ── Bulk Import ────────────────────────────────────────────────────────────
 
   bulkImport(tripId: string | number, items: ImportItem[], ownerId?: number) {
@@ -489,19 +503,7 @@ export class PackingService {
         const checked = item.checked ? 1 : 0;
         const weight = item.weight_grams ? Number.parseInt(String(item.weight_grams)) || null : null;
 
-        // Resolve bag by name if provided
-        let bagId = null;
-        if (item.bag?.trim()) {
-          const bagName = item.bag.trim();
-          const existing = this.db.get<{ id: number }>('SELECT id FROM packing_bags WHERE trip_id = ? AND name = ?', tripId, bagName);
-          if (existing) {
-            bagId = existing.id;
-          } else {
-            const bagCount = this.db.get<{ c: number }>('SELECT COUNT(*) as c FROM packing_bags WHERE trip_id = ?', tripId)!.c;
-            const newBag = this.db.run('INSERT INTO packing_bags (trip_id, name, color) VALUES (?, ?, ?)', tripId, bagName, BAG_COLORS[bagCount % BAG_COLORS.length]);
-            bagId = newBag.lastInsertRowid;
-          }
-        }
+        const bagId = this.bagIdByName(tripId, item.bag);
 
         const qty = Math.max(1, Math.min(999, Number(item.quantity) || 1));
         const result = stmt.run(tripId, item.name.trim(), checked, item.category?.trim() || 'Other', weight, bagId, sortOrder++, qty, item.is_private ? 1 : 0, ownerId ?? null);
@@ -683,8 +685,8 @@ export class PackingService {
     visibility: 'common' | 'personal' = 'common',
     ownerId?: number,
   ) {
-    const templateItems = this.db.all<{ name: string; category: string }>(`
-    SELECT ti.name, tc.name as category
+    const templateItems = this.db.all<{ name: string; category: string; weight_grams: number | null; quantity: number | null; bag_name: string | null }>(`
+    SELECT ti.name, tc.name as category, ti.weight_grams, ti.quantity, ti.bag_name
     FROM packing_template_items ti
     JOIN packing_template_categories tc ON ti.category_id = tc.id
     WHERE tc.template_id = ?
@@ -698,11 +700,14 @@ export class PackingService {
     const isPrivate = ownerId != null ? this.visibilityToPrivate(visibility) : 0;
     const owner = isPrivate ? ownerId! : null;
 
-    const insert = this.db.prepare('INSERT INTO packing_items (trip_id, name, checked, category, sort_order, is_private, owner_id, updated_at) VALUES (?, ?, 0, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
+    const insert = this.db.prepare('INSERT INTO packing_items (trip_id, name, checked, category, sort_order, is_private, owner_id, weight_grams, quantity, bag_id, updated_at) VALUES (?, ?, 0, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
     const added: any[] = [];
     this.db.transaction(() => {
       for (const ti of templateItems) {
-        const result = insert.run(tripId, ti.name, ti.category, sortOrder++, isPrivate, owner);
+        // Weight, count and bag ride along since #1131; a bag the trip lacks is
+        // created, the way the import does it.
+        const bagId = this.bagIdByName(tripId, ti.bag_name);
+        const result = insert.run(tripId, ti.name, ti.category, sortOrder++, isPrivate, owner, ti.weight_grams ?? null, Math.max(1, ti.quantity ?? 1), bagId);
         const item = this.db.get('SELECT * FROM packing_items WHERE id = ?', result.lastInsertRowid);
         added.push(item);
       }
@@ -717,8 +722,10 @@ export class PackingService {
     // A template is a durable, shareable artifact, so it may only capture what is
     // the actor's to publish: the Common list plus their own items. It used to
     // take every row in the trip, restricted ones included.
-    const items = this.db.all<{ name: string; category: string }>(
-      'SELECT name, category FROM packing_items WHERE trip_id = ? AND (is_private = 0 OR owner_id = ?) ORDER BY sort_order ASC',
+    const items = this.db.all<{ name: string; category: string; weight_grams: number | null; quantity: number | null; bag_name: string | null }>(
+      `SELECT i.name, i.category, i.weight_grams, i.quantity, b.name AS bag_name
+       FROM packing_items i LEFT JOIN packing_bags b ON b.id = i.bag_id
+       WHERE i.trip_id = ? AND (i.is_private = 0 OR i.owner_id = ?) ORDER BY i.sort_order ASC`,
       tripId, userId,
     );
 
@@ -740,7 +747,10 @@ export class PackingService {
       for (const item of items) {
         const catId = catIdMap.get(item.category || 'Other')!;
         const order = itemsByCategory.get(item.category || 'Other') || 0;
-        this.db.run('INSERT INTO packing_template_items (category_id, name, sort_order) VALUES (?, ?, ?)', catId, item.name, order);
+        this.db.run(
+          'INSERT INTO packing_template_items (category_id, name, sort_order, weight_grams, quantity, bag_name) VALUES (?, ?, ?, ?, ?, ?)',
+          catId, item.name, order, item.weight_grams ?? null, Math.max(1, item.quantity ?? 1), item.bag_name ?? null,
+        );
         itemsByCategory.set(item.category || 'Other', order + 1);
       }
       return id;
