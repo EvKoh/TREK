@@ -115,6 +115,8 @@ export default function LocationSelect({ value, onChange, placeholder, style, pl
           value={query}
           placeholder={placeholder ?? t('reservations.searchLocation')}
           onChange={(e) => { setQuery(e.target.value); setOpen(true); setHighlight(-1); if (value) onChange(null) }}
+          // Opens its list on focus, so a dialog must not focus it by itself (#1302).
+          data-no-autofocus
           onFocus={() => setOpen(true)}
           onKeyDown={onKey}
           className="bg-transparent text-content"

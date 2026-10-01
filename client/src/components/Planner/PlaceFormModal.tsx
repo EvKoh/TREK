@@ -939,7 +939,9 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
       labelId={titleId}
       onClose={onClose}
       eyebrow={title}
-      // Never focused on opening: a new place starts at the search, an edit at the dialog.
+      // Not autoFocused itself: a new place starts at the search, and otherwise the
+      // dialog's own first-field focus lands here on a desktop (#1302), so a place
+      // brought in from the map or opened to edit is ready for its name.
       titleInput={{
         value: form.name,
         onChange: value => handleChange('name', value),

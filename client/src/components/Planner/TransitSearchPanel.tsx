@@ -256,6 +256,8 @@ function StopPicker({ label, value, onPick, quickPicks, near, placeholder }: {
         <input
           value={display}
           onChange={e => search(e.target.value)}
+          // Opens its list on focus, so a dialog must not focus it by itself (#1302).
+          data-no-autofocus
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
           className="text-content"

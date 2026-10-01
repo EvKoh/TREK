@@ -89,6 +89,8 @@ export default function AddressInput({ value, onChange, placeholder, className }
         value={value}
         placeholder={placeholder}
         onChange={e => { onChange(e.target.value); setOpen(true); search(e.target.value) }}
+        // Opens its list on focus, so a dialog must not focus it by itself (#1302).
+        data-no-autofocus
         onFocus={() => setOpen(true)}
         onKeyDown={onKey}
         className={className}

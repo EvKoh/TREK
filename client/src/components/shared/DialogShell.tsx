@@ -4,6 +4,7 @@ import { Trash2, X } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import { lockBodyScroll } from '../../utils/bodyScrollLock'
 import { Tooltip } from './Tooltip'
+import { focusDialog, trapTab } from './dialogFocus'
 
 /** A font size that follows the user's text size setting for its tier. */
 export const fs = (px: number, tier: 'caption' | 'body' | 'subtitle' = 'caption'): CSSProperties => ({ fontSize: `calc(${px}px * var(--fs-scale-${tier}, 1))` })
@@ -61,13 +62,14 @@ function DialogFrame({ onClose, labelledBy, width = 'detail', align = 'center', 
     return () => document.removeEventListener('keydown', onKey)
   }, [blocked, onClose])
 
-  // The page stays put behind the dialog, and whatever opened it gets the focus back.
+  // The page stays put behind the dialog, the focus moves into it (the first text
+  // field on a desktop, #1302), and whatever opened it gets the focus back.
   useEffect(() => {
     const panel = panelRef.current
     const focusedInside = !!panel && panel.contains(document.activeElement)
     const opener = focusedInside ? focusedBefore : document.activeElement
     const release = lockBodyScroll()
-    if (!focusedInside) panel?.focus()
+    if (!focusedInside && panel) focusDialog(panel)
     return () => {
       release()
       if (opener instanceof HTMLElement) opener.focus()
@@ -100,6 +102,7 @@ function DialogFrame({ onClose, labelledBy, width = 'detail', align = 'center', 
         aria-labelledby={labelledBy}
         tabIndex={-1}
         onPaste={onPaste}
+        onKeyDown={e => { if (panelRef.current) trapTab(e, panelRef.current) }}
         className={`trek-modal-enter flex max-h-full w-full ${PANEL_WIDTH[width]} flex-col overflow-hidden rounded-[22px] bg-surface-card shadow-2xl outline-none`}
       >
         {header}
