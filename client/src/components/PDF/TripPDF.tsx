@@ -18,7 +18,7 @@ import { buildTripMapSvg } from './tripMapSvg'
 import { renderTripMapImage } from './tripMapImage'
 import { formatDistance } from '../../utils/units'
 import { fetchExchangeRates } from '../../hooks/useExchangeRates'
-import { getFlightLegs, getTrainLegs } from '../../utils/flightLegs'
+import { getFlightLegs, getTrainLegs, usesStationRoute } from '../../utils/flightLegs'
 import { isServiceStopType } from '../Roadtrip/roadtripModel'
 import { onlyMyPlan } from './pdfScope'
 
@@ -445,7 +445,7 @@ export async function downloadTripPDF({ trip, days, places, assignments: allStor
               // carry — read back from the booking by index. At the gate that is
               // the code the airline asks for (#1943), so losing it here would
               // have been a real regression for a stopover flight.
-              const source = (r.type === 'train' ? getTrainLegs(r) : getFlightLegs(r))[l.index]
+              const source = (usesStationRoute(r.type) ? getTrainLegs(r) : getFlightLegs(r))[l.index]
               subtitleLines = [[
                 l.airline, l.flight_number, l.train_number,
                 l.platform ? `Gl. ${l.platform}` : '',

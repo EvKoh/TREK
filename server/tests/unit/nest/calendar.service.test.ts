@@ -677,6 +677,26 @@ describe('exportICS', () => {
     expect(ics).toContain('LOCATION:BER\r\n');
   });
 
+  it('CAL-1807: a cruise with ports of call is one event per sailing', () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id, { title: 'Baltic' });
+    const d1 = createDay(testDb, trip.id, { date: '2025-06-02' });
+    const d2 = createDay(testDb, trip.id, { date: '2025-06-03' });
+    const cruise = createReservation(testDb, trip.id, { title: 'Baltic cruise', type: 'cruise' });
+    testDb.prepare('UPDATE reservations SET reservation_time=?, metadata=? WHERE id=?').run(
+      '2025-06-02T17:00',
+      JSON.stringify({ legs: [
+        { from: 'Kiel', to: 'Tallinn', dep_day_id: d1.id, dep_time: '17:00', arr_day_id: d2.id, arr_time: '09:00' },
+        { from: 'Tallinn', to: 'Kiel', dep_day_id: d2.id, dep_time: '18:00', arr_day_id: d2.id, arr_time: '23:00' },
+      ] }),
+      cruise.id,
+    );
+    const ics = svc.exportICS(trip.id).ics.replace(/\r\n /g, '');
+    expect(ics).toContain('SUMMARY:Baltic cruise: Kiel → Tallinn');
+    expect(ics).toContain('SUMMARY:Baltic cruise: Tallinn → Kiel');
+    expect(ics).toContain(`UID:trek-res-leg2-${cruise.id}@trek`);
+  });
+
   it('CAL-046: a leg without a departure clock keeps the single event', () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id, { title: 'Layover' });

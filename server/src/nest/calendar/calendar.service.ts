@@ -544,7 +544,7 @@ export class CalendarService {
     for (const d of days) if (isDate(d.date)) dayDate.set(Number(d.id), d.date);
     interface LegTimes { from: string | null; to: string | null; label: string | null; confirmation: string | null; dep: { date: string; time: string; zone: string | null }; arr: { date: string; time: string; zone: string | null } | null }
     const legsOf = (r: any): LegTimes[] | null => {
-      if (r.type !== 'flight' && r.type !== 'train') return null;
+      if (r.type !== 'flight' && r.type !== 'train' && r.type !== 'cruise') return null;
       const meta = r.metadata ? (typeof r.metadata === 'string' ? JSON.parse(r.metadata) : r.metadata) : {};
       const legs = Array.isArray(meta.legs) ? meta.legs : [];
       if (legs.length < 2) return null;

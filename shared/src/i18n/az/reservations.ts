@@ -35,6 +35,10 @@ const reservations: TranslationStrings = {
   'reservations.layover.route': 'Marşrut',
   'reservations.layover.stop': 'Ara dayanacaq',
   'reservations.layover.addStop': 'Ara dayanacaq əlavə et',
+  'reservations.cruise.embark': 'Gəmiyə minmə',
+  'reservations.cruise.disembark': 'Gəmidən düşmə',
+  'reservations.cruise.port': 'Dayanacaq limanı',
+  'reservations.cruise.addPort': 'Liman əlavə et',
   'reservations.layover.connection': 'Transfer',
   'reservations.layover.layover': 'Tranzit gözləmə',
 

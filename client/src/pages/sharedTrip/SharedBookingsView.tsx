@@ -8,7 +8,7 @@ import { displayTitle } from '../../components/Planner/bookings/bookingsModel'
 import { useTranslation } from '../../i18n'
 import { useSettingsStore } from '../../store/settingsStore'
 import { TRANSPORT_TYPES } from '../../utils/dayMerge'
-import { getFlightLegs, getTrainLegs } from '../../utils/flightLegs'
+import { getFlightLegs, getTrainLegs, usesStationRoute } from '../../utils/flightLegs'
 import { EmptySection, SectionTitle } from './SharedChrome'
 import { SharedBookingDetails } from './SharedBookingDetails'
 import { legFacts } from './sharedTripModel'
@@ -62,7 +62,7 @@ function SharedBookingCard({ r, days, tripCurrency }: { r: Reservation; days: Da
   const facts = bookingFacts(r, { t, locale, timeFormat, days, assignmentLookup: {}, tripCurrency, hasLinkedCost: true })
   const tone = toneOf(r)
   const platform = t('reservations.meta.platform')
-  const legs = r.type === 'flight' ? getFlightLegs(r) : r.type === 'train' ? getTrainLegs(r) : []
+  const legs = r.type === 'flight' ? getFlightLegs(r) : usesStationRoute(r.type) ? getTrainLegs(r) : []
   return (
     <article aria-label={displayTitle(r)} className="flex flex-col overflow-hidden rounded-2xl border border-edge-faint bg-surface-card shadow-sm">
       <div className="flex items-center gap-2 border-b border-edge-faint px-3 py-2.5" style={{ background: toneTint(tone) }}>

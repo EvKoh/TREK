@@ -1,6 +1,6 @@
 import type { Day, Reservation, ReservationEndpoint } from '../../../types'
 import { formatPriceText, formatTime, splitReservationDateTime } from '../../../utils/formatters'
-import { getFlightLegs, getTrainLegs } from '../../../utils/flightLegs'
+import { getFlightLegs, getTrainLegs, usesStationRoute } from '../../../utils/flightLegs'
 import { safeExternalHref } from '../../../utils/safeUrl'
 import { daySpan, parseMeta, type AssignmentLookupEntry } from './bookingsModel'
 
@@ -93,7 +93,7 @@ export function bookingFacts(r: Reservation, c: FactsContext): BookingFacts {
   if (meta.check_out_time) cells.push({ label: t('reservations.meta.checkOut'), value: formatTime(meta.check_out_time, locale, timeFormat) })
 
   // Per-segment codes (#1943), only on a real stopover booking.
-  const legs = r.type === 'flight' ? getFlightLegs(r) : r.type === 'train' ? getTrainLegs(r) : []
+  const legs = r.type === 'flight' ? getFlightLegs(r) : usesStationRoute(r.type) ? getTrainLegs(r) : []
   const legCodes = legs.length > 1
     ? legs.filter(l => l.confirmation_number).map(l => ({ route: [l.from, l.to].filter(Boolean).join(' → '), code: l.confirmation_number as string }))
     : []

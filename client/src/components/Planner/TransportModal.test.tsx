@@ -572,6 +572,30 @@ describe('TransportModal', () => {
     expect(payload.metadata.train_number).toBe('ICE 100'); // flat mirror of leg 0
   });
 
+  it('FE-PLANNER-TRANSMODAL-1807: a cruise lists its ports with times, without train fields, and saves them as legs', async () => {
+    const onSave = vi.fn().mockResolvedValue(undefined);
+    render(<TransportModal {...defaultProps} onSave={onSave} />);
+    await pickType(/^Cruise$/i);
+    await userEvent.type(screen.getByPlaceholderText(/e\.g\. Lufthansa/i), 'Baltic cruise');
+    expect(screen.getByText('Embarkation')).toBeInTheDocument();
+    expect(screen.getByText('Disembarkation')).toBeInTheDocument();
+    expect(screen.queryByPlaceholderText('ICE 123')).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: /Add port/i }));
+    expect(screen.getByText('Port of call')).toBeInTheDocument();
+    const ports = screen.getAllByTestId('location-select');
+    fireEvent.change(ports[0], { target: { value: 'Kiel' } });
+    fireEvent.change(ports[1], { target: { value: 'Tallinn' } });
+    fireEvent.change(ports[2], { target: { value: 'Kiel' } });
+    await userEvent.click(screen.getByRole('button', { name: /^Add$/i }));
+    await waitFor(() => expect(onSave).toHaveBeenCalled());
+    const payload = onSave.mock.calls[0][0];
+    expect(payload.type).toBe('cruise');
+    expect(payload.endpoints.map((e: { role: string; name: string }) => `${e.role}:${e.name}`)).toEqual(['from:Kiel', 'stop:Tallinn', 'to:Kiel']);
+    expect(payload.metadata.legs).toHaveLength(2);
+    expect(payload.metadata.legs[1]).toMatchObject({ from: 'Tallinn', to: 'Kiel' });
+    expect(payload.metadata.legs[0].train_number).toBeUndefined();
+  });
+
   it('FE-PLANNER-TRANSMODAL-027: a train with a day + train number but no geocoded station still saves them (#1150 regression)', async () => {
     const days = [{ id: 10, trip_id: 1, day_number: 1, date: '2026-08-01', title: 'Day 1' }] as any;
     const onSave = vi.fn().mockResolvedValue(undefined);

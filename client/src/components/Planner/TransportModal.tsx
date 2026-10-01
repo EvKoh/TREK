@@ -15,7 +15,7 @@ import { useTripStore } from '../../store/tripStore'
 import { useAddonStore } from '../../store/addonStore'
 import { formatDate, splitReservationDateTime, resolveDayId } from '../../utils/formatters'
 import type { Day, Place, Accommodation, Reservation, ReservationEndpoint, TripFile, BudgetItem, AssignmentsMap } from '../../types'
-import { parseReservationMetadata, orderedEndpoints, stripAirportCode } from '../../utils/flightLegs'
+import { parseReservationMetadata, orderedEndpoints, stripAirportCode, usesStationRoute } from '../../utils/flightLegs'
 import { BookingCostsSection } from './BookingCostsSection'
 import { BookingLinkAndFiles } from './BookingLinkAndFiles'
 import { importedPriceEntry } from './importedPrice'
@@ -209,6 +209,9 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
   // the post-save handler knows to open the Costs editor for the saved booking.
   const expenseIntentRef = useRef<{ editItem?: BudgetItem; create?: boolean } | null>(null)
   const [form, setForm] = useState({ ...defaultForm })
+  // Trains and cruises share the station form: a row of stops, each with its own
+  // arrival and departure (#1807).
+  const stationRoute = usesStationRoute(form.type)
   // Manual vs Automated (public transit search) creation mode (#1065).
   const [automated, setAutomated] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
@@ -332,7 +335,7 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
           wps = [dep, arr]
         }
         setWaypoints(wps)
-      } else if (type === 'train') {
+      } else if (usesStationRoute(type)) {
         // Mirror the flight seeding with stations + per-leg train fields. A
         // current single-leg train (2 endpoints, no metadata.legs) round-trips
         // through the >=2 branch: the flat train_number/platform/seat land on
@@ -433,10 +436,10 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
       // like the old form fields, so a train with no map-picked station still
       // saves its day/time/train number). Only geocoded stations become map
       // endpoints + legs, mirroring the old "push only if the location is set".
-      const trainWps = form.type === 'train' ? trainWaypoints : []
+      const trainWps = stationRoute ? trainWaypoints : []
       const firstTrainWp = trainWps[0]
       const lastTrainWp = trainWps[trainWps.length - 1]
-      const trainStations = form.type === 'train' ? trainWaypoints.filter(w => w.location) : []
+      const trainStations = stationRoute ? trainWaypoints.filter(w => w.location) : []
       // Per-leg day-plan positions are owned by the day planner, not this form — keep
       // them when re-saving so editing a flight doesn't reset where its legs sit.
       const origLegs: any[] = reservation ? (parseReservationMetadata(reservation).legs || []) : []
@@ -475,7 +478,7 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
           })
         }
         if (firstWp?.seat) metadata.seat = firstWp.seat
-      } else if (form.type === 'train') {
+      } else if (stationRoute) {
         // Flat keys mirror the first leg so legacy readers keep working; a
         // 2-station train emits exactly {train_number?,platform?,seat?} — the
         // same shape it saved before this feature.
@@ -535,7 +538,7 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
           const time = isLast ? w.arrTime : w.depTime
           endpoints.push(endpointFromAirport(w.airport!, role, i, dayDate(dId), time || null))
         })
-      } else if (form.type === 'train') {
+      } else if (stationRoute) {
         trainStations.forEach((w, i) => {
           const isFirst = i === 0
           const isLast = i === trainStations.length - 1
@@ -579,16 +582,16 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
         title: form.title,
         type: form.type,
         status: form.status,
-        day_id: form.type === 'flight' ? flightDepDay : form.type === 'train' ? trainDepDay : (form.start_day_id ? Number(form.start_day_id) : null),
-        end_day_id: form.type === 'flight' ? flightArrDay : form.type === 'train' ? trainArrDay : (form.end_day_id ? Number(form.end_day_id) : null),
+        day_id: form.type === 'flight' ? flightDepDay : stationRoute ? trainDepDay : (form.start_day_id ? Number(form.start_day_id) : null),
+        end_day_id: form.type === 'flight' ? flightArrDay : stationRoute ? trainArrDay : (form.end_day_id ? Number(form.end_day_id) : null),
         reservation_time: form.type === 'flight'
           ? buildTime(days.find(d => d.id === flightDepDay), firstWp?.depTime || '')
-          : form.type === 'train'
+          : stationRoute
             ? buildTime(days.find(d => d.id === trainDepDay), firstTrainWp?.depTime || '')
             : buildTime(startDay, form.departure_time),
         reservation_end_time: form.type === 'flight'
           ? buildTime(days.find(d => d.id === flightArrDay), lastWp?.arrTime || '')
-          : form.type === 'train'
+          : stationRoute
             // Fall back to the departure day so a same-day train (arrival day left
             // blank) still gets its date, matching the non-flight `endDay ?? startDay`.
             ? buildTime(days.find(d => d.id === trainArrDay) ?? days.find(d => d.id === trainDepDay), lastTrainWp?.arrTime || '')
@@ -716,7 +719,7 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
   const isCar = form.type === 'car'
   const routeNames = (form.type === 'flight'
     ? waypoints.map(w => w.airport?.iata)
-    : form.type === 'train'
+    : stationRoute
       ? trainWaypoints.map(w => w.location?.name)
       : [fromPick.location?.name, ...(isCar ? carStops.map(s => s.location?.name) : []), toPick.location?.name]
   ).filter(Boolean)
@@ -847,7 +850,9 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
   }
 
   const roleLabel = (i: number, count: number) =>
-    i === 0 ? t('reservations.meta.from') : i === count - 1 ? t('reservations.meta.to') : t('reservations.layover.stop')
+    i === 0 ? t(form.type === 'cruise' ? 'reservations.cruise.embark' : 'reservations.meta.from')
+      : i === count - 1 ? t(form.type === 'cruise' ? 'reservations.cruise.disembark' : 'reservations.meta.to')
+        : t(form.type === 'cruise' ? 'reservations.cruise.port' : 'reservations.layover.stop')
 
   // Flight route: ordered airports (origin, stops, destination) on one rail.
   const flightRoute = () => (
@@ -941,7 +946,8 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
                       {dayField(t('reservations.departureDate'), wp.depDayId, v => updateWp({ depDayId: v }))}
                       {timeField(t('reservations.departureTime'), wp.depTime, v => updateWp({ depTime: v }))}
                     </div>
-                    <div className={writesTrainLegs ? GRID_4 : GRID_3}>
+                    {/* A cruise's ports carry only their times: number, platform and seat are a train's. */}
+                    {form.type === 'train' && <div className={writesTrainLegs ? GRID_4 : GRID_3}>
                       <EditorField label={t('reservations.meta.trainNumber')}>
                         <input type="text" value={wp.train_number} onChange={e => updateWp({ train_number: e.target.value })} placeholder="ICE 123" className={INPUT} />
                       </EditorField>
@@ -957,14 +963,14 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
                             placeholder={t('reservations.confirmationPlaceholder')} className={INPUT} />
                         </EditorField>
                       )}
-                    </div>
+                    </div>}
                   </>
                 )}
               </div>
               {!isLast && (
                 <div className="py-2.5">
                   <AddRowButton onClick={() => setTrainWaypoints(prev => [...prev.slice(0, i + 1), emptyStationWaypoint(prev[i]?.depDayId || ''), ...prev.slice(i + 1)])}>
-                    {t('reservations.layover.addStop')}
+                    {t(form.type === 'cruise' ? 'reservations.cruise.addPort' : 'reservations.layover.addStop')}
                   </AddRowButton>
                 </div>
               )}
@@ -1071,7 +1077,7 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
             <TravelerPicker tripMembers={tripMembers} selectedIds={travelerIds} onToggle={toggleTraveler} />
           </DialogSection>
 
-          {form.type === 'flight' ? flightRoute() : form.type === 'train' ? trainRoute() : plainRoute()}
+          {form.type === 'flight' ? flightRoute() : stationRoute ? trainRoute() : plainRoute()}
 
           <EditorField label={t('reservations.confirmationCode')}>
             <BookingCodeInput value={form.confirmation_number} onChange={e => set('confirmation_number', e.target.value)}
