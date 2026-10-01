@@ -630,6 +630,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Aquesta entrada encara no té fotos.',
   'journey.studio.noLoosePhotos': "Totes les fotos d'aquí pertanyen a una entrada.",
   'journey.studio.uploadPhotos': 'Puja fotos',
+  'journey.studio.fromProvider': 'Des de {name}',
+  'journey.studio.fromProviderHint': 'Tria fotos de {name} i afegeix-les on aniria una pujada',
   'journey.studio.uploadHint': 'Deixa anar imatges aquí o fes clic per triar-ne',
   'journey.studio.uploadToEntry': 'Les imatges noves aniran a aquesta entrada',
   'journey.studio.uploadToGallery': 'Les imatges noves aniran a la galeria',

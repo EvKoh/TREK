@@ -4,12 +4,13 @@ import { normalizeImageFiles } from '../../utils/convertHeic'
 import { isVideoFile } from '../../utils/videoPoster'
 import { useJourneyStore } from '../../store/journeyStore'
 import { useTranslation } from '../../i18n'
-import { journeyApi, addonsApi, memoriesApi } from '../../api/client'
+import { journeyApi } from '../../api/client'
 import { useToast } from '../shared/Toast'
 import { getApiErrorMessage } from '../../types'
 import type { JourneyEntry, GalleryPhoto, JourneyTrip } from '../../store/journeyStore'
 import { photoUrl, posterlessVideo } from '../../pages/journeyDetail/JourneyDetailPage.helpers'
 import { ProviderPicker, type ProviderPhotoGroup } from './JourneyDetailPageProviderPicker'
+import { useConnectedPhotoProviders } from './useConnectedPhotoProviders'
 import { ScrollTrigger } from './JourneyDetailPageScrollTrigger'
 import EmptyState from '../shared/EmptyState'
 
@@ -22,7 +23,7 @@ export function GalleryView({ entries, gallery, journeyId, userId, trips, onPhot
   onPhotoClick: (photos: GalleryPhoto[], index: number) => void
   onRefresh: () => void
   /** What the picker's Add does: the host's useProviderPhotoAdds, shared with the phone screen. */
-  onAddProviderPhotos: (journeyId: number, provider: string, groups: ProviderPhotoGroup[], entryId: number | null) => Promise<void>
+  onAddProviderPhotos: (journeyId: number, provider: string, groups: ProviderPhotoGroup[], entryId: number | null) => Promise<unknown>
   onRegisterUpload?: (fn: () => void) => void
   onRegisterProviders?: (providers: { id: string; name: string }[], browse: (provider: string) => void) => void
 }) {
@@ -33,26 +34,13 @@ export function GalleryView({ entries, gallery, journeyId, userId, trips, onPhot
   const galleryUploading = galleryProgress !== null
   const toast = useToast()
 
-  // check which providers are enabled AND connected for the current user, then
-  // hand them up: the page header renders the provider buttons next to Upload
+  // The providers enabled AND connected for the current user, handed up: the page
+  // header renders the provider buttons next to Upload.
+  const connectedProviders = useConnectedPhotoProviders()
   useEffect(() => {
-    (async () => {
-      try {
-        const addonsData = await addonsApi.enabled()
-        const enabledProviders = (addonsData.addons || []).filter(
-          (a: any) => a.type === 'photo_provider' && a.enabled
-        )
-        const connected: { id: string; name: string }[] = []
-        for (const p of enabledProviders) {
-          try {
-            const status = await memoriesApi.status(p.id)
-            if (status.connected) connected.push({ id: p.id, name: p.name })
-          } catch { }
-        }
-        onRegisterProviders?.(connected, browseProvider)
-      } catch { }
-    })()
-  }, [])
+    onRegisterProviders?.(connectedProviders, browseProvider)
+    // browseProvider only sets state; registering on the list alone is the old behaviour.
+  }, [connectedProviders])
 
   const allPhotos = gallery
   // A long trip's gallery is hundreds of tiles, and rendering them all at once is
@@ -174,7 +162,7 @@ export function GalleryView({ entries, gallery, journeyId, userId, trips, onPhot
               )}
               {/* Delete button */}
               <button type="button"
-                onClick={(e) => { e.stopPropagation(); handleDeletePhoto(photo.id) }}
+                onClick={(e) => { e.stopPropagation(); void handleDeletePhoto(photo.id) }}
                 className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-black/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
               >
                 <X size={12} />

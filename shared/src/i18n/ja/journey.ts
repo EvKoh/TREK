@@ -629,6 +629,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'このエントリーにはまだ写真がありません。',
   'journey.studio.noLoosePhotos': 'ここにある写真はすべてエントリーに属しています。',
   'journey.studio.uploadPhotos': '写真をアップロード',
+  'journey.studio.fromProvider': '{name}から',
+  'journey.studio.fromProviderHint': '{name}から写真を選び、アップロードと同じ場所に追加します',
   'journey.studio.uploadHint': 'ここに画像をドロップするか、クリックして選択してください',
   'journey.studio.uploadToEntry': '新しい画像はこのエントリーに追加されます',
   'journey.studio.uploadToGallery': '新しい画像はギャラリーに追加されます',

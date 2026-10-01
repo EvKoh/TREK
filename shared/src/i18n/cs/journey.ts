@@ -628,6 +628,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Tento záznam zatím nemá žádné fotografie.',
   'journey.studio.noLoosePhotos': 'Každá fotografie zde patří k nějakému záznamu.',
   'journey.studio.uploadPhotos': 'Nahrát fotografie',
+  'journey.studio.fromProvider': 'Z {name}',
+  'journey.studio.fromProviderHint': 'Vyberte fotky z {name} a přidejte je tam, kam by šlo nahrání',
   'journey.studio.uploadHint': 'Přetáhněte sem obrázky nebo klikněte a vyberte je',
   'journey.studio.uploadToEntry': 'Nové obrázky půjdou do tohoto záznamu',
   'journey.studio.uploadToGallery': 'Nové obrázky půjdou do galerie',

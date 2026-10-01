@@ -745,6 +745,10 @@ const journey: TranslationStrings = {
   'journey.studio.noLoosePhotos': 'Buradakı bütün fotolar bir qeydə aiddir.',
 
   'journey.studio.uploadPhotos': 'Fotolar yüklə',
+
+  'journey.studio.fromProvider': '{name}-dan',
+
+  'journey.studio.fromProviderHint': '{name}-dan foto seçin və yükləmənin düşəcəyi yerə əlavə edin',
   'journey.studio.uploadHint':
     'Şəkilləri buraya sürükləyib buraxın və ya seçmək üçün klikləyin',
   'journey.studio.uploadToEntry':

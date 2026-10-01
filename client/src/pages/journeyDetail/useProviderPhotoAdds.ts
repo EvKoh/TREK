@@ -31,17 +31,20 @@ export function useProviderPhotoAdds(reload: () => void) {
 
   /**
    * The picker's Add: every group onto the entry picked in it, or onto the
-   * gallery, then one count, one reload and at most one error.
+   * gallery, then one count, one reload and at most one error. Answers the
+   * trek photo ids that landed, for a host that wants to show them (Studio's
+   * "just added" filter, #2271); the others ignore it.
    */
   const addPickedPhotos = async (
     journeyId: number,
     provider: string,
     groups: ProviderPhotoGroup[],
     entryId: number | null,
-  ): Promise<void> => {
+  ): Promise<number[]> => {
     const { addProviderPhotos, addProviderPhotosToGallery } = useJourneyStore.getState()
     let added = 0
     let anyFailed = false
+    const photoIds: number[] = []
     // One group after the other: the server numbers photos in the order they
     // arrive, and each group is already sorted oldest first.
     for (const group of groups) {
@@ -50,6 +53,9 @@ export function useProviderPhotoAdds(reload: () => void) {
           ? await addProviderPhotos(entryId, provider, group)
           : await addProviderPhotosToGallery(journeyId, provider, group)
         added += result.added
+        for (const p of (result as { photos?: { photo_id?: unknown }[] }).photos ?? []) {
+          if (typeof p.photo_id === 'number') photoIds.push(p.photo_id)
+        }
       } catch (err) {
         added += addedBeforeFailure(err)
         anyFailed = true
@@ -57,6 +63,7 @@ export function useProviderPhotoAdds(reload: () => void) {
     }
     showAdded(added)
     if (anyFailed) toast.error(t('common.error'))
+    return photoIds
   }
 
   /**

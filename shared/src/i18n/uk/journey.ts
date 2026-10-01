@@ -629,6 +629,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'У цьому записі ще немає фото.',
   'journey.studio.noLoosePhotos': 'Кожне фото тут належить до якогось запису.',
   'journey.studio.uploadPhotos': 'Завантажити фото',
+  'journey.studio.fromProvider': 'З {name}',
+  'journey.studio.fromProviderHint': 'Вибрати фото з {name} і додати туди, куди потрапило б завантаження',
   'journey.studio.uploadHint': 'Перетягніть зображення сюди або натисніть, щоб вибрати',
   'journey.studio.uploadToEntry': 'Нові зображення потраплять у цей запис',
   'journey.studio.uploadToGallery': 'Нові зображення потраплять у галерею',

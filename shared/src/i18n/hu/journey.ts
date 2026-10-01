@@ -628,6 +628,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Ehhez a bejegyzéshez még nincs fotó.',
   'journey.studio.noLoosePhotos': 'Itt minden fotó egy bejegyzéshez tartozik.',
   'journey.studio.uploadPhotos': 'Fotók feltöltése',
+  'journey.studio.fromProvider': 'Innen: {name}',
+  'journey.studio.fromProviderHint': 'Fotók választása innen: {name}, oda, ahová a feltöltés kerülne',
   'journey.studio.uploadHint': 'Húzd ide a képeket, vagy kattints a kiválasztáshoz',
   'journey.studio.uploadToEntry': 'Az új képek ebbe a bejegyzésbe kerülnek',
   'journey.studio.uploadToGallery': 'Az új képek a galériába kerülnek',

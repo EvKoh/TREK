@@ -630,6 +630,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': "Deze vermelding heeft nog geen foto's.",
   'journey.studio.noLoosePhotos': 'Elke foto hier hoort bij een vermelding.',
   'journey.studio.uploadPhotos': "Foto's uploaden",
+  'journey.studio.fromProvider': 'Uit {name}',
+  'journey.studio.fromProviderHint': "Kies foto's uit {name} en voeg ze toe waar een upload terechtkomt",
   'journey.studio.uploadHint': 'Sleep afbeeldingen hierheen of klik om ze te kiezen',
   'journey.studio.uploadToEntry': 'Nieuwe afbeeldingen komen in deze vermelding',
   'journey.studio.uploadToGallery': 'Nieuwe afbeeldingen komen in de galerij',

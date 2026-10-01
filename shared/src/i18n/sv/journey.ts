@@ -628,6 +628,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Det här inlägget har inga foton än.',
   'journey.studio.noLoosePhotos': 'Alla foton här hör till ett inlägg.',
   'journey.studio.uploadPhotos': 'Ladda upp foton',
+  'journey.studio.fromProvider': 'Från {name}',
+  'journey.studio.fromProviderHint': 'Välj foton från {name} och lägg till dem där en uppladdning hamnar',
   'journey.studio.uploadHint': 'Släpp bilder här eller klicka för att välja',
   'journey.studio.uploadToEntry': 'Nya bilder hamnar i det här inlägget',
   'journey.studio.uploadToGallery': 'Nya bilder hamnar i galleriet',

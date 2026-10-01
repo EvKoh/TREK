@@ -9,6 +9,8 @@ import { useJourneyStudio } from '../../pages/journeyStudio/useJourneyStudio'
 import { PAGE_PRESET_ORDER, PAGE_PRESETS } from './pagePresets'
 import { foliosOf } from './bookSheets'
 import { StudioSidebar } from './StudioSidebar'
+import { ProviderPicker } from '../Journey/JourneyDetailPageProviderPicker'
+import { useAuthStore } from '../../store/authStore'
 import { StudioCanvas } from './StudioCanvas'
 import { StudioInspector } from './StudioInspector'
 import { StudioWordmark } from './StudioWordmark'
@@ -82,6 +84,19 @@ export default function StudioShell() {
         aria-label={s.t('journey.studio.title')}
       >
         <StudioBar s={s} bookView={bookView} setBookView={setBookView} onExport={() => setExporting(true)} />
+        {/* The journey gallery's picker, inside Studio's own layer (#2271). */}
+        {s.providerPick && s.journey && (
+          <ProviderPicker
+            provider={s.providerPick.provider}
+            userId={useAuthStore.getState().user?.id || 0}
+            entries={s.journey.entries.filter(e => e.type !== 'skeleton' || e.title)}
+            trips={s.journey.trips}
+            existingAssetIds={new Set((s.journey.gallery ?? []).filter(p => p.asset_id).map(p => p.asset_id!))}
+            initialEntryId={s.providerPick.entryId}
+            onClose={s.closeProviderPick}
+            onAdd={s.addFromProvider}
+          />
+        )}
 
         <div className="st-body">
           <StudioSidebar
@@ -96,6 +111,8 @@ export default function StudioShell() {
             canEdit={s.canEdit}
             onUpload={s.uploadPhotos}
             onToggleStop={s.setStopExcluded}
+            providers={s.photoProviders}
+            onBrowseProvider={s.browseProvider}
           />
           <Workbench s={s} bookView={bookView} />
           <StudioInspector

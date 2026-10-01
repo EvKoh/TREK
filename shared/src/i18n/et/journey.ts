@@ -636,6 +636,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Sellel sissekandel pole veel fotosid.',
   'journey.studio.noLoosePhotos': 'Kõik siinsed fotod kuuluvad mõne sissekande juurde.',
   'journey.studio.uploadPhotos': 'Laadi fotod üles',
+  'journey.studio.fromProvider': 'Teenusest {name}',
+  'journey.studio.fromProviderHint': 'Vali fotod teenusest {name} ja lisa need sinna, kuhu läheks üleslaadimine',
   'journey.studio.uploadHint': 'Lohista pildid siia või klõpsa valimiseks',
   'journey.studio.uploadToEntry': 'Uued pildid lisatakse sellele sissekandele',
   'journey.studio.uploadToGallery': 'Uued pildid lisatakse galeriisse',

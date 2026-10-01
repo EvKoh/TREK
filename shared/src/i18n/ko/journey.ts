@@ -628,6 +628,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': '이 항목에는 아직 사진이 없습니다.',
   'journey.studio.noLoosePhotos': '여기 있는 사진은 모두 항목에 속해 있습니다.',
   'journey.studio.uploadPhotos': '사진 업로드',
+  'journey.studio.fromProvider': '{name}에서',
+  'journey.studio.fromProviderHint': '{name}에서 사진을 골라 업로드와 같은 곳에 추가합니다',
   'journey.studio.uploadHint': '여기에 이미지를 놓거나 클릭해서 선택하세요',
   'journey.studio.uploadToEntry': '새 이미지는 이 항목에 추가됩니다',
   'journey.studio.uploadToGallery': '새 이미지는 갤러리에 추가됩니다',

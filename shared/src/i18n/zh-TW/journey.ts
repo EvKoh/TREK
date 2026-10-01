@@ -626,6 +626,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': '這個條目還沒有照片。',
   'journey.studio.noLoosePhotos': '這裡的每張照片都屬於某個條目。',
   'journey.studio.uploadPhotos': '上傳照片',
+  'journey.studio.fromProvider': '來自 {name}',
+  'journey.studio.fromProviderHint': '從 {name} 選擇照片，加到上傳會放入的位置',
   'journey.studio.uploadHint': '將圖片拖放到這裡，或點擊選擇',
   'journey.studio.uploadToEntry': '新圖片會加入這個條目',
   'journey.studio.uploadToGallery': '新圖片會加入圖庫',

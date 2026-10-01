@@ -628,6 +628,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': "รายการนี้ยังไม่มีรูปถ่าย",
   'journey.studio.noLoosePhotos': "ทุกภาพถ่ายที่นี่เป็นของรายการ",
   'journey.studio.uploadPhotos': "อัปโหลดรูปภาพ",
+  'journey.studio.fromProvider': 'จาก {name}',
+  'journey.studio.fromProviderHint': 'เลือกรูปจาก {name} แล้วเพิ่มไว้ที่เดียวกับการอัปโหลด',
   'journey.studio.uploadHint': "วางรูปภาพที่นี่ หรือคลิกเพื่อเลือกบางส่วน",
   'journey.studio.uploadToEntry': "รูปภาพใหม่จะเข้าสู่รายการนี้",
   'journey.studio.uploadToGallery': "รูปภาพใหม่จะเข้าสู่แกลเลอรี่",

@@ -629,6 +629,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Bu kaydın henüz fotoğrafı yok.',
   'journey.studio.noLoosePhotos': 'Buradaki her fotoğraf bir kayda ait.',
   'journey.studio.uploadPhotos': 'Fotoğraf yükle',
+  'journey.studio.fromProvider': '{name} üzerinden',
+  'journey.studio.fromProviderHint': '{name} üzerinden fotoğraf seç ve yüklemenin gideceği yere ekle',
   'journey.studio.uploadHint': 'Resimleri buraya bırakın veya seçmek için tıklayın',
   'journey.studio.uploadToEntry': 'Yeni resimler bu kayda eklenir',
   'journey.studio.uploadToGallery': 'Yeni resimler galeriye eklenir',

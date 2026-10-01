@@ -630,6 +630,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Dieser Eintrag hat noch keine Fotos.',
   'journey.studio.noLoosePhotos': 'Jedes Foto hier gehört zu einem Eintrag.',
   'journey.studio.uploadPhotos': 'Fotos hochladen',
+  'journey.studio.fromProvider': 'Aus {name}',
+  'journey.studio.fromProviderHint': 'Fotos aus {name} auswählen und dort hinzufügen, wo auch ein Upload landen würde',
   'journey.studio.uploadHint': 'Bilder hier ablegen oder klicken, um welche auszuwählen',
   'journey.studio.uploadToEntry': 'Neue Bilder landen in diesem Eintrag',
   'journey.studio.uploadToGallery': 'Neue Bilder landen in der Galerie',

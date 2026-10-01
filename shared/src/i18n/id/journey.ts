@@ -627,6 +627,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Entri ini belum punya foto.',
   'journey.studio.noLoosePhotos': 'Semua foto di sini milik sebuah entri.',
   'journey.studio.uploadPhotos': 'Unggah foto',
+  'journey.studio.fromProvider': 'Dari {name}',
+  'journey.studio.fromProviderHint': 'Pilih foto dari {name} dan tambahkan ke tempat unggahan masuk',
   'journey.studio.uploadHint': 'Letakkan gambar di sini atau klik untuk memilih',
   'journey.studio.uploadToEntry': 'Gambar baru akan masuk ke entri ini',
   'journey.studio.uploadToGallery': 'Gambar baru akan masuk ke galeri',

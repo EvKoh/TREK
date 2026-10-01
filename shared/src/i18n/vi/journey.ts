@@ -628,6 +628,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Mục này chưa có ảnh.',
   'journey.studio.noLoosePhotos': 'Mọi ảnh ở đây đều thuộc về một mục.',
   'journey.studio.uploadPhotos': 'Tải ảnh lên',
+  'journey.studio.fromProvider': 'Từ {name}',
+  'journey.studio.fromProviderHint': 'Chọn ảnh từ {name} và thêm vào nơi ảnh tải lên sẽ vào',
   'journey.studio.uploadHint': 'Thả ảnh vào đây hoặc nhấp để chọn',
   'journey.studio.uploadToEntry': 'Ảnh mới sẽ được đưa vào mục này',
   'journey.studio.uploadToGallery': 'Ảnh mới sẽ được đưa vào thư viện',

@@ -630,6 +630,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Αυτή η καταχώρηση δεν έχει ακόμη φωτογραφίες.',
   'journey.studio.noLoosePhotos': 'Κάθε φωτογραφία εδώ ανήκει σε μια καταχώρηση.',
   'journey.studio.uploadPhotos': 'Μεταφόρτωση φωτογραφιών',
+  'journey.studio.fromProvider': 'Από {name}',
+  'journey.studio.fromProviderHint': 'Επιλέξτε φωτογραφίες από {name} και προσθέστε τες εκεί όπου θα πήγαινε μια μεταφόρτωση',
   'journey.studio.uploadHint': 'Αφήστε εικόνες εδώ ή κάντε κλικ για να επιλέξετε',
   'journey.studio.uploadToEntry': 'Οι νέες εικόνες θα μπουν σε αυτή την καταχώρηση',
   'journey.studio.uploadToGallery': 'Οι νέες εικόνες θα μπουν στη συλλογή',

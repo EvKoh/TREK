@@ -629,6 +629,8 @@ const journey: TranslationStrings = {
   'journey.studio.noEntryPhotos': 'Questa voce non ha ancora foto.',
   'journey.studio.noLoosePhotos': 'Ogni foto qui appartiene a una voce.',
   'journey.studio.uploadPhotos': 'Carica foto',
+  'journey.studio.fromProvider': 'Da {name}',
+  'journey.studio.fromProviderHint': 'Scegli foto da {name} e aggiungile dove andrebbe un caricamento',
   'journey.studio.uploadHint': 'Trascina qui le immagini o fai clic per sceglierle',
   'journey.studio.uploadToEntry': 'Le nuove immagini andranno in questa voce',
   'journey.studio.uploadToGallery': 'Le nuove immagini andranno nella galleria',
