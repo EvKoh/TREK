@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
-import { findFocusDayId } from '../../../components/Planner/today'
+import { findFocusDayId, findTodayDayId } from '../../../components/Planner/today'
 import {
-  CalendarDays, ChevronDown, ChevronLeft, Download, FileDown, List, Map as MapIcon, MoreHorizontal,
-  FolderSync, Plane, Plus, Rows3, Route, SlidersHorizontal, Trash2, Upload,
+  CalendarCheck, CalendarDays, ChevronDown, ChevronLeft, Download, FileDown, FolderSync, List, Map as MapIcon, MoreHorizontal, Plane, Plus, Route, Rows3, SlidersHorizontal, Trash2, Upload,
 } from 'lucide-react'
 import { useTripPlanner } from '../../../pages/tripPlanner/useTripPlanner'
 import { pickDockTabs } from './dockTabs'
@@ -405,6 +404,15 @@ export default function MTripShell({
   const dockTabs = pickDockTabs(enabledTabIds)
   const tabLabel = (id: string) => planner.TRIP_TABS.find(tab => tab.id === id)?.label ?? id
 
+  // While the trip runs, today's chip carries a ring and a button jumps back to it
+  // from wherever the rail was scrolled (#2392). Null outside the trip's dates.
+  const todayDayId = findTodayDayId(days)
+  const jumpToToday = () => {
+    if (todayDayId == null || todayDayId === planner.selectedDayId) return
+    if (view === 'map') selectDayOnMap(todayDayId)
+    else planner.handleSelectDay(todayDayId, true)
+  }
+
   const onDayChipTap = (dayId: number) => {
     if (dayId === planner.selectedDayId) openSheet('day', { dayId })
     // In map mode a day tap fits to that day's places, draws its route and drops
@@ -483,6 +491,7 @@ export default function MTripShell({
           <div className="flex flex-1 items-center gap-[2px] overflow-x-auto rounded-full border border-[color:var(--m-gbr)] bg-[color:var(--m-glass)] p-[3px] backdrop-blur-[24px] backdrop-saturate-[1.7]">
             {days.map((day, idx) => {
               const active = day.id === planner.selectedDayId
+              const isToday = day.id === todayDayId
               const tint = dayTints[day.id]
               return (
                 <button
@@ -496,11 +505,16 @@ export default function MTripShell({
                   // Inactive chips only — an inline background would otherwise beat
                   // the active chip's bg-m-act class.
                   style={active ? undefined : { background: dayTintBackground(tint, 'badge', '--day-tint-chip') }}
+                  data-today={isToday || undefined}
                   className={`flex flex-1 items-center justify-center gap-[3px] whitespace-nowrap rounded-full px-3 py-[5px] text-center text-[0.75rem] font-semibold ${
                     active ? 'bg-m-act text-m-actfg shadow-[0_6px_16px_-6px_rgba(0,0,0,.4)]' : 'text-m-ink'
-                  }`}
+                  } ${isToday && !active ? 'ring-[1.5px] ring-inset ring-[color:var(--m-st-info)]' : ''}`}
                 >
+                  {isToday && (
+                    <span aria-hidden="true" className={`h-[5px] w-[5px] flex-none rounded-full ${active ? 'bg-m-actfg' : 'bg-[color:var(--m-st-info)]'}`} />
+                  )}
                   {dayChipLabel(day, language, t('planner.dayN', { n: day.day_number ?? idx + 1 }))}
+                  {isToday && <span className="sr-only">{t('mobileTrip.today')}</span>}
                   {/* Marks the second tap as "opens the day", the only day-sheet
                       route that also exists in map view. */}
                   {active && <ChevronDown size={11} strokeWidth={2.6} aria-hidden="true" className="flex-none opacity-70" />}
@@ -508,6 +522,20 @@ export default function MTripShell({
               )
             })}
           </div>
+          {/* Back to today from anywhere on the rail (#2392). Mounted for the whole
+              running trip and dimmed while today is already open, so it never
+              appears under the thumb and shoves the rail aside. */}
+          {todayDayId != null && (
+            <button
+              type="button"
+              onClick={jumpToToday}
+              disabled={todayDayId === planner.selectedDayId}
+              aria-label={t('mobileTrip.jumpToToday')}
+              className="flex w-9 flex-none items-center justify-center rounded-full border border-[color:var(--m-gbr)] bg-[color:var(--m-glass)] text-[color:var(--m-st-info)] backdrop-blur-[24px] backdrop-saturate-[1.7] transition-opacity disabled:opacity-40"
+            >
+              <CalendarCheck size={15} strokeWidth={2.4} aria-hidden="true" />
+            </button>
+          )}
           {/* Drop the day filter and show the whole trip (#2257). Map only: the
               plan timeline and the road trip chain are both single-day, so there is
               nothing to widen there. Stays mounted while a day is active rather than

@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': "เพิ่มในวันใด?",
   'mobileTrip.addTransportShort': "ขนส่ง",
   'mobileTrip.allDays': "ทุกวัน",
+  'mobileTrip.today': 'วันนี้',
+  'mobileTrip.jumpToToday': 'ไปที่วันนี้',
   'mobileTrip.assignedDays': "วันที่ได้รับมอบหมาย",
   'mobileTrip.assignmentNotes': "บันทึกเฉพาะวัน",
   'mobileTrip.bookingsEmpty': "ยังไม่มีการจอง",

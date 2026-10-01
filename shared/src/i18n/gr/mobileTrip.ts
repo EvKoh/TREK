@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': 'Προσθήκη σε ημέρα;',
   'mobileTrip.addTransportShort': 'Μεταφορά',
   'mobileTrip.allDays': 'Όλες οι Ημέρες',
+  'mobileTrip.today': 'Σήμερα',
+  'mobileTrip.jumpToToday': 'Μετάβαση στο σήμερα',
   'mobileTrip.assignedDays': 'Ανατεθειμένες ημέρες',
   'mobileTrip.assignmentNotes': 'Σημειώσεις ημέρας',
   'mobileTrip.bookingsEmpty': 'Δεν υπάρχουν κρατήσεις ακόμη',

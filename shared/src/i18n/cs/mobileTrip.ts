@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': 'Přidat do dne?',
   'mobileTrip.addTransportShort': 'Doprava',
   'mobileTrip.allDays': 'Všechny dny',
+  'mobileTrip.today': 'Dnes',
+  'mobileTrip.jumpToToday': 'Přejít na dnešek',
   'mobileTrip.assignedDays': 'Přiřazené dny',
   'mobileTrip.assignmentNotes': 'Poznámky ke dni',
   'mobileTrip.bookingsEmpty': 'Zatím žádné rezervace',

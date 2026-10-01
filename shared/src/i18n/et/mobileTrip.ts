@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': 'Kas lisada päevale?',
   'mobileTrip.addTransportShort': 'Transport',
   'mobileTrip.allDays': 'Kõik päevad',
+  'mobileTrip.today': 'Täna',
+  'mobileTrip.jumpToToday': 'Mine tänasele päevale',
   'mobileTrip.assignedDays': 'Määratud päevad',
   'mobileTrip.assignmentNotes': 'Päevapõhised märkmed',
   'mobileTrip.bookingsEmpty': 'Broneeringuid veel pole',

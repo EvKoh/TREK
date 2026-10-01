@@ -599,6 +599,47 @@ describe('MTripShell', () => {
     })
   })
 
+  // #2392 — on the road the phone plan is used one day at a time, and finding today
+  // again meant scrolling the rail; today is marked and one tap away.
+  describe('today on the day rail (#2392)', () => {
+    const shift = (days: number) => {
+      const d = new Date()
+      d.setDate(d.getDate() + days)
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+    }
+    const running = () => [
+      { id: 21, day_number: 1, date: shift(-1) },
+      { id: 22, day_number: 2, date: todayIso() },
+      { id: 23, day_number: 3, date: shift(1) },
+    ] as unknown as Day[]
+    const jump = () => screen.getByRole('button', { name: 'mobileTrip.jumpToToday' })
+
+    it('FE-MOB-SHELL-090: marks today and jumps back to it from another day', () => {
+      const { planner, container } = renderShell({ days: running(), selectedDayId: 21 } as Partial<TripPlanner>)
+      const marked = container.querySelectorAll('[data-today]')
+      expect(marked).toHaveLength(1)
+      expect(marked[0].className).toContain('ring-inset')
+      expect(marked[0]).toHaveTextContent('mobileTrip.today')
+
+      expect(jump()).toBeEnabled()
+      fireEvent.click(jump())
+      expect(planner.handleSelectDay).toHaveBeenLastCalledWith(22, true)
+    })
+
+    it('FE-MOB-SHELL-091: with today open the button stays, dimmed, so the rail does not move', () => {
+      const { container } = renderShell({ days: running(), selectedDayId: 22 } as Partial<TripPlanner>)
+      expect(jump()).toBeDisabled()
+      // The active chip keeps its own look; the dot still says which day is today.
+      expect(container.querySelector('[data-today]')?.className).not.toContain('ring-inset')
+    })
+
+    it('FE-MOB-SHELL-092: outside the trip dates there is no today and no button', () => {
+      const { container } = renderShell()
+      expect(container.querySelector('[data-today]')).toBeNull()
+      expect(screen.queryByRole('button', { name: 'mobileTrip.jumpToToday' })).toBeNull()
+    })
+  })
+
   // #2257 — the map filters down to one day, and until now nothing took that
   // filter back off: the chip rail can only swap one day for another, and the
   // second tap on the active chip is the day sheet. Its own control, map only.

@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': 'Додати до дня?',
   'mobileTrip.addTransportShort': 'Транспорт',
   'mobileTrip.allDays': 'Усі дні',
+  'mobileTrip.today': 'Сьогодні',
+  'mobileTrip.jumpToToday': 'Перейти до сьогодні',
   'mobileTrip.assignedDays': 'Призначені дні',
   'mobileTrip.assignmentNotes': 'Нотатки на день',
   'mobileTrip.bookingsEmpty': 'Поки немає бронювань',

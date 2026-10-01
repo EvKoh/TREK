@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': 'Add to a day?',
   'mobileTrip.addTransportShort': 'Transport',
   'mobileTrip.allDays': 'All Days',
+  'mobileTrip.today': 'Today',
+  'mobileTrip.jumpToToday': 'Jump to today',
   'mobileTrip.assignedDays': 'Assigned Days',
   'mobileTrip.assignmentNotes': 'Day-specific notes',
   'mobileTrip.bookingsEmpty': 'No bookings yet',

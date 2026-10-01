@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': 'Lägg till på en dag?',
   'mobileTrip.addTransportShort': 'Transport',
   'mobileTrip.allDays': 'Alla dagar',
+  'mobileTrip.today': 'Idag',
+  'mobileTrip.jumpToToday': 'Gå till idag',
   'mobileTrip.assignedDays': 'Tilldelade dagar',
   'mobileTrip.assignmentNotes': 'Dagsspecifika anteckningar',
   'mobileTrip.bookingsEmpty': 'Inga bokningar än',

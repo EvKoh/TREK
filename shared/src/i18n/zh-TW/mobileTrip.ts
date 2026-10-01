@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': '新增到某一天？',
   'mobileTrip.addTransportShort': '交通',
   'mobileTrip.allDays': '所有天',
+  'mobileTrip.today': '今天',
+  'mobileTrip.jumpToToday': '跳到今天',
   'mobileTrip.assignedDays': '已分配的天數',
   'mobileTrip.assignmentNotes': '按天備註',
   'mobileTrip.bookingsEmpty': '暫無預訂',

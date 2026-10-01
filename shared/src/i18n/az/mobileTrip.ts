@@ -7,6 +7,8 @@ const mobileTrip: TranslationStrings = {
   'mobileTrip.addToDayQuestion': 'Günə əlavə edilsin?',
   'mobileTrip.addTransportShort': 'Nəqliyyat',
   'mobileTrip.allDays': 'Bütün günlər',
+  'mobileTrip.today': 'Bu gün',
+  'mobileTrip.jumpToToday': 'Bu günə keç',
   'mobileTrip.assignedDays': 'Təyin edilmiş günlər',
   'mobileTrip.assignmentNotes': 'Günə aid qeydlər',
   'mobileTrip.bookingsEmpty': 'Hələ rezervasiya yoxdur',
