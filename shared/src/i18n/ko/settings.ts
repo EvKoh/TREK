@@ -106,6 +106,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': '웹훅',
   'settings.notificationPreferences.inapp': '앱 내',
   'settings.notificationPreferences.notConfigured': '아직 설정되지 않았습니다 — 플러그인 설정에서 구성하세요',
+  'settings.notificationPreferences.lockedByAdmin': '관리자가 모두에게 끔',
   'settings.plugins.actions': '작업',
   'settings.plugins.actions.confirm': '이 작업을 실행할까요?',
   'settings.notificationPreferences.sendTest': '테스트 전송',

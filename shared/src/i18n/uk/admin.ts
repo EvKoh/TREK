@@ -772,6 +772,12 @@ const admin: TranslationStrings = {
     'Ntfy адміністратора завжди надсилається при наявності налаштованої теми',
   'admin.notifications.adminNotificationsHint':
     'Налаштуйте, які канали доставляють сповіщення адміністратора (наприклад, повідомлення про версії). Вебхук надсилається автоматично, якщо задано URL вебхука адміністратора.',
+  'admin.notificationDefaults.title': 'Типові налаштування для користувачів',
+  'admin.notificationDefaults.hint': 'Так починаються сповіщення кожного користувача. «Вимк.» користувач може ввімкнути сам, «Заблоковано» вимикає для всіх і показується із замком у їхніх налаштуваннях. Діє для всіх, хто не змінював клітинку сам.',
+  'admin.notificationDefaults.on': 'Увімк.',
+  'admin.notificationDefaults.off': 'Вимк.',
+  'admin.notificationDefaults.blocked': 'Заблоковано',
+  'admin.notificationDefaults.cycle': 'Натисніть для: {next}',
   'admin.notifications.tripReminders.title': 'Нагадування про поїздки',
   'admin.notifications.tripReminders.hint':
     'Надсилає нагадування перед початком поїздки (необхідно вказати дні нагадування в параметрах поїздки).',

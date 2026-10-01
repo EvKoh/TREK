@@ -774,6 +774,12 @@ const admin: TranslationStrings = {
     'Admin-Ntfy verstuurt altijd wanneer een onderwerp is geconfigureerd',
   'admin.notifications.adminNotificationsHint':
     'Stel in via welke kanalen admin-meldingen worden bezorgd (bijv. versie-updates). De webhook verstuurt automatisch als er een admin-webhook-URL is ingesteld.',
+  'admin.notificationDefaults.title': 'Standaarden voor gebruikers',
+  'admin.notificationDefaults.hint': 'Zo beginnen de meldingen van elke gebruiker. "Uit" kan iedereen zelf weer aanzetten; "Geblokkeerd" zet het voor iedereen uit en staat vergrendeld in hun instellingen. Geldt voor iedereen die de cel niet zelf heeft gewijzigd.',
+  'admin.notificationDefaults.on': 'Aan',
+  'admin.notificationDefaults.off': 'Uit',
+  'admin.notificationDefaults.blocked': 'Geblokkeerd',
+  'admin.notificationDefaults.cycle': 'Klik voor: {next}',
   'admin.notifications.tripReminders.title': 'Reisherinneringen',
   'admin.notifications.tripReminders.hint':
     'Stuurt een herinneringsmelding voor de start van een reis (vereist ingestelde herinneringsdagen bij de reis).',

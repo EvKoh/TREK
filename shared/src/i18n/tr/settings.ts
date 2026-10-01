@@ -107,6 +107,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Web kancası',
   'settings.notificationPreferences.inapp': 'Uygulama içi',
   'settings.notificationPreferences.notConfigured': 'Henüz yapılandırılmadı — eklentinin ayarlarından yapılandırın',
+  'settings.notificationPreferences.lockedByAdmin': 'Yönetici tarafından herkes için kapatıldı',
   'settings.plugins.actions': 'Eylemler',
   'settings.plugins.actions.confirm': 'Bu eylem çalıştırılsın mı?',
   'settings.notificationPreferences.sendTest': 'Test gönder',

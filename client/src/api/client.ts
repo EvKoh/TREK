@@ -2,7 +2,7 @@ import { isEffectivelyOffline } from '../sync/networkMode'
 import axios, { AxiosInstance } from 'axios'
 import type { z } from 'zod'
 import type { Day, Place, Trip } from '../types'
-import type { MapsNearbyRequest, JourneyReorderEntryPhotosRequest, TransitProvider, GoogleQuotaUpdateRequest } from '@trek/shared'
+import type { MapsNearbyRequest, JourneyReorderEntryPhotosRequest, TransitProvider, GoogleQuotaUpdateRequest, NotificationDefaultsUpdateRequest } from '@trek/shared'
 import { randomId } from '../utils/randomId'
 import { postProviderPhotosInBatches } from './providerPhotoBatches'
 import {
@@ -732,6 +732,8 @@ export const adminApi = {
       apiClient.post('/admin/dev/test-notification', data).then(r => r.data),
   getNotificationPreferences: () => apiClient.get('/admin/notification-preferences').then(r => r.data),
   updateNotificationPreferences: (prefs: Record<string, Record<string, boolean>>) => apiClient.put('/admin/notification-preferences', prefs).then(r => r.data),
+  getNotificationDefaults: () => apiClient.get('/admin/notification-preferences/defaults').then(r => r.data),
+  updateNotificationDefaults: (defaults: NotificationDefaultsUpdateRequest['defaults']) => apiClient.put('/admin/notification-preferences/defaults', { defaults } satisfies NotificationDefaultsUpdateRequest).then(r => r.data),
   getDefaultUserSettings: () => apiClient.get('/admin/default-user-settings').then(r => r.data),
   updateDefaultUserSettings: (settings: Record<string, unknown>) => apiClient.put('/admin/default-user-settings', settings).then(r => r.data),
   getStorage: (): Promise<StorageAdminState> => apiClient.get('/admin/storage').then(r => r.data),

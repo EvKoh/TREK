@@ -8,6 +8,8 @@ import { useToast } from '../shared/Toast'
 import ToggleSwitch from './ToggleSwitch'
 import Section from './Section'
 import WebPushCard from './WebPushCard'
+import { EVENT_LABEL_KEYS, channelLabel, isLockedCell } from './notificationLabels'
+import { Tooltip } from '../shared/Tooltip'
 
 interface ChannelDescriptor {
   id: string
@@ -26,30 +28,11 @@ interface PreferencesMatrix {
   channels: ChannelDescriptor[]
   event_types: string[]
   implemented_combos: Record<string, string[]>
+  /** Cells the admin switched off for everyone (#1536). */
+  locked?: Record<string, string[]>
   defaults?: { ntfyServer: string | null }
 }
 
-/** Plugin channels have no i18n — the server sends their display name outright. */
-function channelLabel(ch: ChannelDescriptor, t: (k: string) => string): string {
-  if (ch.labelKey) return t(ch.labelKey) || ch.id
-  return ch.label || ch.id
-}
-
-const EVENT_LABEL_KEYS: Record<string, string> = {
-  trip_invite: 'settings.notifyTripInvite',
-  booking_change: 'settings.notifyBookingChange',
-  trip_reminder: 'settings.notifyTripReminder',
-  todo_due: 'settings.notifyTodoDue',
-  vacay_invite: 'settings.notifyVacayInvite',
-  vacay_share: 'settings.notifyVacayShare',
-  collection_invite: 'settings.notifyCollectionInvite',
-  synology_session_cleared: 'settings.notifySynologySessionCleared',
-  plugin_notification: 'settings.notifyPluginNotification',
-  photos_shared: 'settings.notifyPhotosShared',
-  collab_message: 'settings.notifyCollabMessage',
-  packing_tagged: 'settings.notifyPackingTagged',
-  version_available: 'settings.notifyVersionAvailable',
-}
 
 export default function NotificationsTab(): React.ReactElement {
   const { t } = useTranslation()
@@ -119,7 +102,7 @@ export default function NotificationsTab(): React.ReactElement {
   }
 
   const toggle = async (eventType: string, channel: string) => {
-    if (!matrix) return
+    if (!matrix || isLockedCell(matrix.locked, eventType, channel)) return
     const current = matrix.preferences[eventType]?.[channel] ?? true
     setMatrix(m => m ? {
       ...m,
@@ -383,6 +366,20 @@ export default function NotificationsTab(): React.ReactElement {
                   return <span key={ch.id} style={{ textAlign: 'center', color: 'var(--text-faint)', fontSize: 'calc(14px * var(--fs-scale-body, 1))' }}>—</span>
                 }
                 const isOn = matrix.preferences[eventType]?.[ch.id] ?? true
+                // Switched off for everyone by the admin (#1536): the same footprint as
+                // the switch, so the grid keeps its columns, and a lock that says why.
+                if (isLockedCell(matrix.locked, eventType, ch.id)) {
+                  return (
+                    <div key={ch.id} style={{ display: 'flex', justifyContent: 'center' }}>
+                      <Tooltip label={t('settings.notificationPreferences.lockedByAdmin')}>
+                        <span role="img" aria-label={t('settings.notificationPreferences.lockedByAdmin')} data-locked
+                          className="inline-flex h-6 w-11 items-center justify-center rounded-full bg-surface-tertiary text-content-faint">
+                          <Lock size={12} />
+                        </span>
+                      </Tooltip>
+                    </div>
+                  )
+                }
                 return (
                   <div key={ch.id} style={{ display: 'flex', justifyContent: 'center' }}>
                     <ToggleSwitch on={isOn} onToggle={() => toggle(eventType, ch.id)} />

@@ -299,6 +299,7 @@ const settings: TranslationStrings = {
   'settings.ntfyUrl.tokenCleared': '访问令牌已清除',
   'settings.notificationPreferences.inapp': '应用内',
   'settings.notificationPreferences.notConfigured': '尚未配置 — 请在插件设置中进行设置',
+  'settings.notificationPreferences.lockedByAdmin': '管理员已为所有人关闭',
   'settings.plugins.actions': '操作',
   'settings.plugins.actions.confirm': '执行此操作？',
   'settings.notificationPreferences.sendTest': '发送测试',

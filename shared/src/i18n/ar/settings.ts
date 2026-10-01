@@ -300,6 +300,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Webhook', // en-fallback
   'settings.notificationPreferences.inapp': 'In-App', // en-fallback
   'settings.notificationPreferences.notConfigured': 'لم يتم الإعداد بعد — قم بإعداده من إعدادات الإضافة',
+  'settings.notificationPreferences.lockedByAdmin': 'أوقفه المسؤول للجميع',
   'settings.plugins.actions': 'الإجراءات',
   'settings.plugins.actions.confirm': 'تنفيذ هذا الإجراء؟',
   'settings.notificationPreferences.sendTest': 'إرسال اختبار',

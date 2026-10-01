@@ -4,6 +4,7 @@ import { Save } from 'lucide-react'
 import type { TranslationFn } from '../../types'
 import type { useAdmin } from './useAdmin'
 import AdminNotificationsPanel from './AdminNotificationsPanel'
+import AdminNotificationDefaultsPanel from './AdminNotificationDefaultsPanel'
 import { SWITCH_ONLY_CHANNELS, useNotificationChannels } from '../../components/Admin/useNotificationChannels'
 
 interface AdminNotificationsTabProps {
@@ -363,6 +364,12 @@ export default function AdminNotificationsTab({ admin, t }: AdminNotificationsTa
           full width below both columns. */}
       <AdminNotificationsPanel t={t} toast={toast} />
       </div>
+    </div>
+
+    {/* What users' own notifications start as, across the full width: one row per
+        user event, one column per channel users can pick (#1536). */}
+    <div className="mt-6">
+      <AdminNotificationDefaultsPanel />
     </div>
   </>)
 }

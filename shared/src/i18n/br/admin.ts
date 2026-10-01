@@ -768,6 +768,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'O Ntfy de admin sempre dispara quando um tópico está configurado',
   'admin.notifications.adminNotificationsHint':
     'Configure quais canais entregam notificações de admin (ex. alertas de versão). O webhook dispara automaticamente se uma URL de webhook de admin estiver definida.',
+  'admin.notificationDefaults.title': 'Padrões para usuários',
+  'admin.notificationDefaults.hint': 'Como as notificações de cada usuário começam. "Desligado" o usuário ainda pode ligar; "Bloqueado" desliga para todos e aparece trancado nas configurações deles. Vale para quem não alterou a célula.',
+  'admin.notificationDefaults.on': 'Ligado',
+  'admin.notificationDefaults.off': 'Desligado',
+  'admin.notificationDefaults.blocked': 'Bloqueado',
+  'admin.notificationDefaults.cycle': 'Clique para mudar para: {next}',
   'admin.notifications.tripReminders.title': 'Lembretes de viagem',
   'admin.notifications.tripReminders.hint':
     'Envia uma notificação de lembrete antes do início de uma viagem (requer dias de lembrete definidos na viagem).',

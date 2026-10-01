@@ -761,6 +761,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Admin Ntfy odesílá vždy, když je nakonfigurováno téma',
   'admin.notifications.adminNotificationsHint':
     'Nastavte, které kanály doručují admin oznámení (např. upozornění na verze). Webhook odesílá automaticky, pokud je nastavena URL admin webhooku.',
+  'admin.notificationDefaults.title': 'Výchozí nastavení pro uživatele',
+  'admin.notificationDefaults.hint': 'Jak začínají oznámení každého uživatele. „Vypnuto“ si uživatel může sám zapnout, „Blokováno“ vypne pro všechny a v jejich nastavení se zobrazí zamčené. Platí pro každého, kdo buňku sám nezměnil.',
+  'admin.notificationDefaults.on': 'Zapnuto',
+  'admin.notificationDefaults.off': 'Vypnuto',
+  'admin.notificationDefaults.blocked': 'Blokováno',
+  'admin.notificationDefaults.cycle': 'Kliknutím přepnete na: {next}',
   'admin.notifications.tripReminders.title': 'Připomínky výletů',
   'admin.notifications.tripReminders.hint':
     'Odešle upozornění před začátkem výletu (vyžaduje nastavené dny připomínky na výletu).',

@@ -52,6 +52,12 @@ const admin: TranslationStrings = {
     'Το ntfy διαχειριστή ενεργοποιείται πάντα όταν έχει διαμορφωθεί ένα θέμα',
   'admin.notifications.adminNotificationsHint':
     'Διαμορφώστε ποια κανάλια παραδίδουν ειδοποιήσεις μόνο για διαχειριστές (π.χ. ειδοποιήσεις έκδοσης).',
+  'admin.notificationDefaults.title': 'Προεπιλογές για χρήστες',
+  'admin.notificationDefaults.hint': 'Πώς ξεκινούν οι ειδοποιήσεις κάθε χρήστη. Το «Ανενεργό» μπορεί να το ενεργοποιήσει ο ίδιος, το «Αποκλεισμένο» το απενεργοποιεί για όλους και εμφανίζεται κλειδωμένο στις ρυθμίσεις τους. Ισχύει για όσους δεν άλλαξαν το κελί.',
+  'admin.notificationDefaults.on': 'Ενεργό',
+  'admin.notificationDefaults.off': 'Ανενεργό',
+  'admin.notificationDefaults.blocked': 'Αποκλεισμένο',
+  'admin.notificationDefaults.cycle': 'Κλικ για: {next}',
   'admin.notifications.tripReminders.title': 'Υπενθυμίσεις Ταξιδιού',
   'admin.notifications.tripReminders.hint':
     'Αποστολή ειδοποίησης υπενθύμισης πριν την έναρξη ενός ταξιδιού (απαιτεί να έχουν οριστεί ημέρες υπενθύμισης στο ταξίδι).',

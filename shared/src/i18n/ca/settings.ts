@@ -570,6 +570,7 @@ const settings: TranslationStrings = {
   'settings.pluginActivity.columns.status': 'Resultat',
   'settings.notificationPreferences.notConfigured':
     "Encara no s'ha configurat — configura-ho als ajustos del connector",
+  'settings.notificationPreferences.lockedByAdmin': "Desactivat per l'administrador per a tothom",
   'settings.plugins.actions': 'Accions',
   'settings.plugins.actions.confirm': 'Vols executar aquesta acció?',
   'settings.notificationPreferences.sendTest': 'Envia una prova',

@@ -320,6 +320,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured':
     'Noch nicht eingerichtet — in den Einstellungen des Plugins konfigurieren',
+  'settings.notificationPreferences.lockedByAdmin': 'Vom Admin für alle abgeschaltet',
   'settings.plugins.actions': 'Aktionen',
   'settings.plugins.actions.confirm': 'Diese Aktion ausführen?',
   'settings.notificationPreferences.sendTest': 'Test senden',

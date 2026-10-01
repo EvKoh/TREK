@@ -324,6 +324,7 @@ const settings: TranslationStrings = {
   'settings.ntfyUrl.tokenCleared': "Jeton d'accès effacé",
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured': 'Pas encore configuré — à paramétrer dans les réglages du plugin',
+  'settings.notificationPreferences.lockedByAdmin': "Désactivé pour tout le monde par l'administrateur",
   'settings.plugins.actions': 'Actions',
   'settings.plugins.actions.confirm': 'Exécuter cette action ?',
   'settings.notificationPreferences.sendTest': 'Envoyer un test',

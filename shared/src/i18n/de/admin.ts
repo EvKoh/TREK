@@ -775,6 +775,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Admin-Ntfy sendet immer, wenn ein Thema konfiguriert ist',
   'admin.notifications.adminNotificationsHint':
     'Konfiguriere, welche Kanäle Admin-Benachrichtigungen liefern (z. B. Versions-Updates). Der Webhook sendet automatisch, wenn eine Admin-Webhook-URL gesetzt ist.',
+  'admin.notificationDefaults.title': 'Vorgaben für Nutzer',
+  'admin.notificationDefaults.hint': 'So starten die Benachrichtigungen jedes Nutzers. „Aus“ kann jeder selbst wieder einschalten, „Gesperrt“ schaltet für alle ab und erscheint in ihren Einstellungen mit Schloss. Gilt für alle, die die Zelle nicht selbst geändert haben.',
+  'admin.notificationDefaults.on': 'An',
+  'admin.notificationDefaults.off': 'Aus',
+  'admin.notificationDefaults.blocked': 'Gesperrt',
+  'admin.notificationDefaults.cycle': 'Klicken für: {next}',
   'admin.notifications.tripReminders.title': 'Reiseerinnerungen',
   'admin.notifications.tripReminders.hint':
     'Sendet eine Erinnerungsbenachrichtigung vor Reisebeginn (erfordert gesetzte Erinnerungstage bei der Reise).',

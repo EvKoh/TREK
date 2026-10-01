@@ -123,6 +123,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Veebihaak',
   'settings.notificationPreferences.inapp': 'Rakenduses',
   'settings.notificationPreferences.notConfigured': 'Veel seadistamata — seadista plugina seadetes',
+  'settings.notificationPreferences.lockedByAdmin': 'Administraator lülitas selle kõigile välja',
   'settings.plugins.actions': 'Toimingud',
   'settings.plugins.actions.confirm': 'Kas käivitada see toiming?',
   'settings.notificationPreferences.sendTest': 'Saada test',

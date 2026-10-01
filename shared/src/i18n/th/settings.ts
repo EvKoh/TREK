@@ -108,6 +108,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': "เว็บฮุค",
   'settings.notificationPreferences.inapp': "ในแอป",
   'settings.notificationPreferences.notConfigured': "ยังไม่ได้กำหนดค่า — ตั้งค่าในการตั้งค่าปลั๊กอิน",
+  'settings.notificationPreferences.lockedByAdmin': 'ผู้ดูแลระบบปิดไว้สำหรับทุกคน',
   'settings.plugins.actions': "การดำเนินการ",
   'settings.plugins.actions.confirm': "ดำเนินการนี้หรือไม่?",
   'settings.notificationPreferences.sendTest': "ส่งแบบทดสอบ",

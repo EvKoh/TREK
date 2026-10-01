@@ -50,6 +50,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Admin ntfy utlöses alltid när ett ämne konfigureras',
   'admin.notifications.adminNotificationsHint':
     'Ställ in vilka kanaler som ska skicka meddelanden som endast är avsedda för administratörer (t.ex. versionsvarningar).',
+  'admin.notificationDefaults.title': 'Standardval för användare',
+  'admin.notificationDefaults.hint': 'Så börjar varje användares aviseringar. "Av" kan användaren själv slå på; "Blockerad" stänger av för alla och visas låst i deras inställningar. Gäller alla som inte själva ändrat rutan.',
+  'admin.notificationDefaults.on': 'På',
+  'admin.notificationDefaults.off': 'Av',
+  'admin.notificationDefaults.blocked': 'Blockerad',
+  'admin.notificationDefaults.cycle': 'Klicka för: {next}',
   'admin.notifications.tripReminders.title': 'Påminnelser inför resan',
   'admin.notifications.tripReminders.hint':
     'Skicka en påminnelse innan resan börjar (kräver att påminnelsedagar har angetts för resan).',

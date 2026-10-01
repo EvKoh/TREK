@@ -104,6 +104,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Webhook',
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured': 'Belum dikonfigurasi — atur di pengaturan plugin',
+  'settings.notificationPreferences.lockedByAdmin': 'Dimatikan admin untuk semua orang',
   'settings.plugins.actions': 'Tindakan',
   'settings.plugins.actions.confirm': 'Jalankan tindakan ini?',
   'settings.notificationPreferences.sendTest': 'Kirim tes',

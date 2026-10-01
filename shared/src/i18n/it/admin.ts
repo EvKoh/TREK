@@ -777,6 +777,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Il Ntfy admin si attiva sempre quando un argomento è configurato',
   'admin.notifications.adminNotificationsHint':
     'Configura quali canali consegnano le notifiche admin (es. avvisi di versione). Il webhook si attiva automaticamente se è impostato un URL webhook admin.',
+  'admin.notificationDefaults.title': 'Impostazioni predefinite per gli utenti',
+  'admin.notificationDefaults.hint': "Come partono le notifiche di ogni utente. \"Disattivato\" l'utente può ancora attivarlo; \"Bloccato\" lo spegne per tutti e appare bloccato nelle loro impostazioni. Vale per chi non ha cambiato la cella.",
+  'admin.notificationDefaults.on': 'Attivo',
+  'admin.notificationDefaults.off': 'Disattivato',
+  'admin.notificationDefaults.blocked': 'Bloccato',
+  'admin.notificationDefaults.cycle': 'Clic per: {next}',
   'admin.notifications.tripReminders.title': 'Promemoria viaggio',
   'admin.notifications.tripReminders.hint':
     "Invia una notifica promemoria prima dell'inizio di un viaggio (richiede giorni di promemoria impostati sul viaggio).",

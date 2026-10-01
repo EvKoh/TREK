@@ -782,6 +782,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': "Le Ntfy admin s'active toujours lorsqu'un sujet est configuré",
   'admin.notifications.adminNotificationsHint':
     "Configurez quels canaux envoient les notifications admin (ex. alertes de version). Le webhook s'active automatiquement si une URL webhook admin est définie.",
+  'admin.notificationDefaults.title': 'Valeurs par défaut des utilisateurs',
+  'admin.notificationDefaults.hint': "L'état de départ des notifications de chaque utilisateur. « Désactivé » peut encore être activé par l'utilisateur ; « Bloqué » le désactive pour tous et apparaît verrouillé dans leurs réglages. S'applique à ceux qui n'ont pas modifié la case.",
+  'admin.notificationDefaults.on': 'Activé',
+  'admin.notificationDefaults.off': 'Désactivé',
+  'admin.notificationDefaults.blocked': 'Bloqué',
+  'admin.notificationDefaults.cycle': 'Cliquer pour : {next}',
   'admin.notifications.tripReminders.title': 'Rappels de voyage',
   'admin.notifications.tripReminders.hint':
     "Envoie une notification de rappel avant le début d'un voyage (nécessite des jours de rappel définis sur le voyage).",

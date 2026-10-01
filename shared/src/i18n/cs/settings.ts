@@ -313,6 +313,7 @@ const settings: TranslationStrings = {
   'settings.ntfyUrl.tokenCleared': 'Přístupový token byl vymazán',
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured': 'Zatím nenastaveno — nastavte to v nastavení pluginu',
+  'settings.notificationPreferences.lockedByAdmin': 'Vypnuto správcem pro všechny',
   'settings.plugins.actions': 'Akce',
   'settings.plugins.actions.confirm': 'Spustit tuto akci?',
   'settings.notificationPreferences.sendTest': 'Odeslat test',

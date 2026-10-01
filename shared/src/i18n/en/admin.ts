@@ -49,6 +49,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Admin ntfy always fires when a topic is configured',
   'admin.notifications.adminNotificationsHint':
     'Configure which channels deliver admin-only notifications (e.g. version alerts).',
+  'admin.notificationDefaults.title': 'Defaults for users',
+  'admin.notificationDefaults.hint': "How every user's notifications start. Off is a default each user may still turn on; Blocked turns it off for everyone and shows as locked in their settings. It applies to everyone who has not changed that cell themselves.",
+  'admin.notificationDefaults.on': 'On',
+  'admin.notificationDefaults.off': 'Off',
+  'admin.notificationDefaults.blocked': 'Blocked',
+  'admin.notificationDefaults.cycle': 'Click for: {next}',
   'admin.notifications.tripReminders.title': 'Trip Reminders',
   'admin.notifications.tripReminders.hint':
     'Send a reminder notification before a trip starts (requires reminder days to be set on the trip).',

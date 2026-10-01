@@ -628,3 +628,13 @@ describe('MSettingsNotifications: Web Push', () => {
     expect(screen.queryByText('Push notifications on this device')).not.toBeInTheDocument();
   });
 });
+
+describe('MSettingsNotifications — cells the admin blocked (#1536)', () => {
+  it('FE-MOB-SETNOTIF-LOCK-001: a blocked channel shows as a locked chip, not a toggle', async () => {
+    usePrefs(matrix({ locked: { trip_invite: ['webhook'] } }));
+    render(<MSettingsNotifications />);
+    const chip = await screen.findByLabelText(/Turned off for everyone by the admin/);
+    expect(chip).toHaveAttribute('aria-disabled', 'true');
+    expect(chip.tagName).toBe('SPAN');
+  });
+});

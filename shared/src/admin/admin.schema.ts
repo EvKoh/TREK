@@ -135,6 +135,20 @@ export type AdminCollabFeaturesRequest = z.infer<typeof adminCollabFeaturesReque
 export const adminNotificationPreferencesRequestSchema = z.record(z.string(), z.record(z.string(), z.boolean()));
 export type AdminNotificationPreferencesRequest = z.infer<typeof adminNotificationPreferencesRequestSchema>;
 
+/**
+ * What a user's notification cell starts as, set by the admin for the whole
+ * instance (#1536): `on` (the default), `off` (the user may still turn it on)
+ * or `blocked` (off for everyone, and the user cannot turn it on).
+ */
+export const NOTIFICATION_DEFAULTS = ['on', 'off', 'blocked'] as const;
+export type NotificationDefault = (typeof NOTIFICATION_DEFAULTS)[number];
+
+/** PUT /api/admin/notification-preferences/defaults: event → channel → default. Cells left out keep theirs. */
+export const notificationDefaultsUpdateRequestSchema = z.object({
+  defaults: z.record(z.string().max(64), z.record(z.string().max(64), z.enum(NOTIFICATION_DEFAULTS))),
+});
+export type NotificationDefaultsUpdateRequest = z.infer<typeof notificationDefaultsUpdateRequestSchema>;
+
 // Heterogeneous values, and `null` is meaningful — SettingsService treats it as
 // "reset to the built-in default". z.record also rejects arrays and null bodies,
 // preserving the route's object-only guard.

@@ -49,6 +49,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': "ผู้ดูแลระบบ ntfy จะเริ่มทำงานเสมอเมื่อมีการกำหนดค่าหัวข้อ",
   'admin.notifications.adminNotificationsHint':
     "กำหนดค่าช่องทางที่จะส่งการแจ้งเตือนเฉพาะผู้ดูแลระบบเท่านั้น (เช่น การแจ้งเตือนเวอร์ชัน)",
+  'admin.notificationDefaults.title': 'ค่าเริ่มต้นสำหรับผู้ใช้',
+  'admin.notificationDefaults.hint': 'สถานะเริ่มต้นของการแจ้งเตือนของผู้ใช้แต่ละคน "ปิด" ผู้ใช้ยังเปิดเองได้ "บล็อก" จะปิดสำหรับทุกคนและแสดงเป็นล็อกในการตั้งค่าของพวกเขา ใช้กับทุกคนที่ยังไม่ได้เปลี่ยนช่องนั้นเอง',
+  'admin.notificationDefaults.on': 'เปิด',
+  'admin.notificationDefaults.off': 'ปิด',
+  'admin.notificationDefaults.blocked': 'บล็อก',
+  'admin.notificationDefaults.cycle': 'คลิกเพื่อเปลี่ยนเป็น: {next}',
   'admin.notifications.tripReminders.title': "การแจ้งเตือนการเดินทาง",
   'admin.notifications.tripReminders.hint':
     "ส่งการแจ้งเตือนก่อนที่การเดินทางจะเริ่มต้น (ต้องตั้งค่าวันเตือนความจำในการเดินทาง)",

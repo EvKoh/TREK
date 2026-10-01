@@ -719,6 +719,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': '配置主题后管理员 Ntfy 始终触发',
   'admin.notifications.adminNotificationsHint':
     '配置哪些渠道发送管理员通知（如版本更新提醒）。设置管理员 Webhook URL 后，Webhook 将自动触发。',
+  'admin.notificationDefaults.title': '用户默认值',
+  'admin.notificationDefaults.hint': '每位用户通知的初始状态。“关闭”用户仍可自行开启；“封锁”会为所有人关闭，并在其设置中显示为锁定。适用于尚未自行更改该单元格的所有人。',
+  'admin.notificationDefaults.on': '开启',
+  'admin.notificationDefaults.off': '关闭',
+  'admin.notificationDefaults.blocked': '封锁',
+  'admin.notificationDefaults.cycle': '点击切换为：{next}',
   'admin.notifications.tripReminders.title': '行程提醒',
   'admin.notifications.tripReminders.hint': '在行程开始前发送提醒通知（需要在行程中设置提醒天数）。',
   'admin.notifications.tripReminders.enabled': '行程提醒已启用',

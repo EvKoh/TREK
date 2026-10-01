@@ -781,6 +781,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Az admin Ntfy mindig küld, ha egy téma konfigurálva van',
   'admin.notifications.adminNotificationsHint':
     'Állítsa be, hogy mely csatornák szállítsák az admin értesítéseket (pl. verziófrissítési figyelmeztetések). A webhook automatikusan küld, ha admin webhook URL van megadva.',
+  'admin.notificationDefaults.title': 'Alapértelmezések a felhasználóknak',
+  'admin.notificationDefaults.hint': 'Így indulnak a felhasználók értesítései. A „Ki” állapotot bárki visszakapcsolhatja, a „Tiltva” mindenkinek kikapcsolja, és zárolva jelenik meg a beállításaikban. Mindenkire vonatkozik, aki nem módosította a cellát.',
+  'admin.notificationDefaults.on': 'Be',
+  'admin.notificationDefaults.off': 'Ki',
+  'admin.notificationDefaults.blocked': 'Tiltva',
+  'admin.notificationDefaults.cycle': 'Kattints: {next}',
   'admin.notifications.tripReminders.title': 'Utazási emlékeztetők',
   'admin.notifications.tripReminders.hint':
     'Emlékeztető értesítést küld az utazás kezdete előtt (az utazásnál megadott emlékeztető napok szükségesek).',

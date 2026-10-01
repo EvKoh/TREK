@@ -319,6 +319,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured':
     'Nog niet ingesteld — configureer het in de instellingen van de plug-in',
+  'settings.notificationPreferences.lockedByAdmin': 'Door de beheerder voor iedereen uitgeschakeld',
   'settings.plugins.actions': 'Acties',
   'settings.plugins.actions.confirm': 'Deze actie uitvoeren?',
   'settings.notificationPreferences.sendTest': 'Test versturen',

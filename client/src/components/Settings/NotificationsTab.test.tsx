@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
 import { buildUser } from '../../../tests/helpers/factories';
 import { server } from '../../../tests/helpers/msw/server';
-import { render, screen, waitFor } from '../../../tests/helpers/render';
+import { render, screen, waitFor, fireEvent } from '../../../tests/helpers/render';
 import { resetAllStores, seedStore } from '../../../tests/helpers/store';
 import { useAuthStore } from '../../store/authStore';
 import { ToastContainer } from '../shared/Toast';
@@ -1229,3 +1229,23 @@ describe('NotificationsTab: Web Push', () => {
     expect(screen.queryByText('Push')).not.toBeInTheDocument();
   });
 });
+
+describe('NotificationsTab — cells the admin blocked (#1536)', () => {
+  it('FE-COMP-NOTIFICATIONS-LOCK-001: shows a lock instead of a switch, and sends nothing for it', async () => {
+    let puts = 0
+    server.use(
+      http.get('/api/notifications/preferences', () => HttpResponse.json({
+        ...minimalMatrix,
+        preferences: { trip_invite: { inapp: true, email: false } },
+        locked: { trip_invite: ['email'] },
+      })),
+      http.put('/api/notifications/preferences', () => { puts += 1; return HttpResponse.json({ success: true }) }),
+    )
+    render(<NotificationsTab />)
+    const lock = await screen.findByRole('img', { name: 'Turned off for everyone by the admin' })
+    fireEvent.click(lock)
+    // The in-app switch for the same event is still there and still a switch.
+    expect(screen.getAllByRole('button', { pressed: true })).toHaveLength(1)
+    expect(puts).toBe(0)
+  })
+})

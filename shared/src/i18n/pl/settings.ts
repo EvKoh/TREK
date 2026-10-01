@@ -313,6 +313,7 @@ const settings: TranslationStrings = {
   'settings.ntfyUrl.tokenCleared': 'Token dostępu wyczyszczony',
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured': 'Jeszcze nieskonfigurowane — ustaw to w ustawieniach wtyczki',
+  'settings.notificationPreferences.lockedByAdmin': 'Wyłączone przez administratora dla wszystkich',
   'settings.plugins.actions': 'Akcje',
   'settings.plugins.actions.confirm': 'Wykonać tę akcję?',
   'settings.notificationPreferences.sendTest': 'Wyślij test',

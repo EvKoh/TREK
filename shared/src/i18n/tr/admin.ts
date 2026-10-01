@@ -49,6 +49,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Konu yapılandırıldığında yönetici ntfy her zaman tetiklenir',
   'admin.notifications.adminNotificationsHint':
     'Yalnızca yönetici bildirimlerinin hangi kanallardan iletileceğini yapılandırın.',
+  'admin.notificationDefaults.title': 'Kullanıcılar için varsayılanlar',
+  'admin.notificationDefaults.hint': 'Her kullanıcının bildirimlerinin başlangıç durumu. "Kapalı"yı kullanıcı kendisi açabilir; "Engelli" herkes için kapatır ve ayarlarında kilitli görünür. Hücreyi kendisi değiştirmemiş herkes için geçerlidir.',
+  'admin.notificationDefaults.on': 'Açık',
+  'admin.notificationDefaults.off': 'Kapalı',
+  'admin.notificationDefaults.blocked': 'Engelli',
+  'admin.notificationDefaults.cycle': 'Değiştirmek için tıklayın: {next}',
   'admin.notifications.tripReminders.title': 'Seyahat Hatırlatıcıları',
   'admin.notifications.tripReminders.hint':
     'Seyahat başlamadan önce hatırlatma gönderir (seyahatte hatırlatma günü ayarlı olmalıdır).',

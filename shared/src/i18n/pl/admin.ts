@@ -781,6 +781,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Admin Ntfy zawsze wysyła po skonfigurowaniu tematu',
   'admin.notifications.adminNotificationsHint':
     'Skonfiguruj, które kanały dostarczają powiadomienia admina (np. alerty o wersjach). Webhook wysyła automatycznie, gdy ustawiony jest URL webhooka admina.',
+  'admin.notificationDefaults.title': 'Ustawienia domyślne dla użytkowników',
+  'admin.notificationDefaults.hint': 'Tak zaczynają się powiadomienia każdego użytkownika. „Wył.” użytkownik może sam włączyć, „Zablokowane” wyłącza dla wszystkich i jest zablokowane w ich ustawieniach. Dotyczy każdego, kto sam nie zmienił komórki.',
+  'admin.notificationDefaults.on': 'Wł.',
+  'admin.notificationDefaults.off': 'Wył.',
+  'admin.notificationDefaults.blocked': 'Zablokowane',
+  'admin.notificationDefaults.cycle': 'Kliknij, aby ustawić: {next}',
   'admin.notifications.tripReminders.title': 'Przypomnienia o podróżach',
   'admin.notifications.tripReminders.hint':
     'Wysyła powiadomienie z przypomnieniem przed rozpoczęciem podróży (wymaga ustawienia dni przypomnienia dla podróży).',

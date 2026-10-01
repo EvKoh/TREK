@@ -39,6 +39,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'يُرسل Ntfy للمسؤول دائمًا عند تهيئة موضوع',
   'admin.notifications.adminNotificationsHint':
     'حدد القنوات التي تُسلّم إشعارات المسؤول (مثل تنبيهات الإصدارات). يُرسل الـ Webhook تلقائيًا عند تعيين رابط URL لـ Webhook المسؤول.',
+  'admin.notificationDefaults.title': 'الإعدادات الافتراضية للمستخدمين',
+  'admin.notificationDefaults.hint': 'ما تبدأ به إشعارات كل مستخدم. «إيقاف» يمكن للمستخدم تشغيله بنفسه، و«محظور» يوقفه للجميع ويظهر مقفلًا في إعداداتهم. يسري على كل من لم يغيّر الخانة بنفسه.',
+  'admin.notificationDefaults.on': 'تشغيل',
+  'admin.notificationDefaults.off': 'إيقاف',
+  'admin.notificationDefaults.blocked': 'محظور',
+  'admin.notificationDefaults.cycle': 'انقر للتبديل إلى: {next}',
   'admin.notifications.tripReminders.title': 'تذكيرات الرحلات',
   'admin.notifications.tripReminders.hint': 'إرسال تذكير قبل بدء الرحلة (يتطلب تعيين أيام التذكير على الرحلة).',
   'admin.notifications.tripReminders.enabled': 'تم تفعيل تذكيرات الرحلات',

@@ -52,6 +52,12 @@ const admin: TranslationStrings = {
     'Mövzu konfiqurasiya edildikdə administrator ntfy bildirişi həmişə işə düşür',
   'admin.notifications.adminNotificationsHint':
     'Yalnız administratorlara aid bildirişləri hansı kanalların çatdıracağını konfiqurasiya edin (məsələn, versiya xəbərdarlıqları).',
+  'admin.notificationDefaults.title': 'İstifadəçilər üçün ilkin dəyərlər',
+  'admin.notificationDefaults.hint': 'Hər istifadəçinin bildirişləri belə başlayır. "Söndürülüb" istifadəçi özü yandıra bilər, "Bloklanıb" hamı üçün söndürür və onların ayarlarında kilidli görünür. Xananı özü dəyişməyən hər kəsə aiddir.',
+  'admin.notificationDefaults.on': 'Açıq',
+  'admin.notificationDefaults.off': 'Söndürülüb',
+  'admin.notificationDefaults.blocked': 'Bloklanıb',
+  'admin.notificationDefaults.cycle': 'Dəyişmək üçün klikləyin: {next}',
   'admin.notifications.tripReminders.title': 'Səyahət xatırlatmaları',
   'admin.notifications.tripReminders.hint':
     'Səyahət başlamazdan əvvəl xatırlatma bildirişi göndərin (səyahətdə xatırlatma günlərinin təyin edilməsi tələb olunur).',

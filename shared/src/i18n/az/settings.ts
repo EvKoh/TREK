@@ -153,6 +153,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.inapp': 'Tətbiqdaxili',
   'settings.notificationPreferences.notConfigured':
     'Hələ konfiqurasiya edilməyib — plaginin tənzimləmələrində quraşdırın',
+  'settings.notificationPreferences.lockedByAdmin': 'Administrator hamı üçün söndürüb',
   'settings.plugins.actions': 'Əməliyyatlar',
   'settings.plugins.actions.confirm': 'Bu əməliyyat icra edilsin?',
   'settings.notificationPreferences.sendTest': 'Test göndər',

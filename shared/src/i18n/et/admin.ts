@@ -51,6 +51,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Administraatori ntfy käivitub alati, kui teema on seadistatud',
   'admin.notifications.adminNotificationsHint':
     'Määra, millised kanalid edastavad ainult administraatorile mõeldud teavitusi (nt uue versiooni teated).',
+  'admin.notificationDefaults.title': 'Kasutajate vaikeväärtused',
+  'admin.notificationDefaults.hint': 'Nii algavad iga kasutaja teavitused. „Väljas“ saab kasutaja ise sisse lülitada, „Blokeeritud“ lülitab kõigile välja ja kuvatakse nende seadetes lukustatuna. Kehtib kõigile, kes pole lahtrit ise muutnud.',
+  'admin.notificationDefaults.on': 'Sees',
+  'admin.notificationDefaults.off': 'Väljas',
+  'admin.notificationDefaults.blocked': 'Blokeeritud',
+  'admin.notificationDefaults.cycle': 'Klõpsa, et valida: {next}',
   'admin.notifications.tripReminders.title': 'Reisi meeldetuletused',
   'admin.notifications.tripReminders.hint':
     'Saada enne reisi algust meeldetuletus (reisil peab olema määratud, mitu päeva varem meelde tuletada).',

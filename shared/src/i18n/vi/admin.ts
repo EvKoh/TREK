@@ -49,6 +49,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Quản trị viên ntfy luôn kích hoạt khi chủ đề được định cấu hình',
   'admin.notifications.adminNotificationsHint':
     'Định cấu hình kênh nào gửi thông báo chỉ dành cho quản trị viên (ví dụ: cảnh báo phiên bản).',
+  'admin.notificationDefaults.title': 'Mặc định cho người dùng',
+  'admin.notificationDefaults.hint': 'Trạng thái ban đầu của thông báo cho mỗi người dùng. "Tắt" người dùng vẫn có thể tự bật; "Chặn" tắt cho mọi người và hiển thị khóa trong cài đặt của họ. Áp dụng cho mọi người chưa tự đổi ô đó.',
+  'admin.notificationDefaults.on': 'Bật',
+  'admin.notificationDefaults.off': 'Tắt',
+  'admin.notificationDefaults.blocked': 'Chặn',
+  'admin.notificationDefaults.cycle': 'Nhấn để chuyển sang: {next}',
   'admin.notifications.tripReminders.title': 'Lời nhắc chuyến đi',
   'admin.notifications.tripReminders.hint':
     'Gửi thông báo nhắc nhở trước khi chuyến đi bắt đầu (yêu cầu phải đặt ngày nhắc nhở cho chuyến đi).',

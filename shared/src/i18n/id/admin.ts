@@ -49,6 +49,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Admin Ntfy selalu berjalan jika topik dikonfigurasi',
   'admin.notifications.adminNotificationsHint':
     'Atur saluran mana yang mengirimkan notifikasi khusus admin (mis. peringatan versi).',
+  'admin.notificationDefaults.title': 'Bawaan untuk pengguna',
+  'admin.notificationDefaults.hint': 'Keadaan awal notifikasi setiap pengguna. "Mati" masih bisa dinyalakan pengguna; "Diblokir" mematikan untuk semua orang dan tampil terkunci di pengaturan mereka. Berlaku bagi yang belum mengubah sel itu.',
+  'admin.notificationDefaults.on': 'Nyala',
+  'admin.notificationDefaults.off': 'Mati',
+  'admin.notificationDefaults.blocked': 'Diblokir',
+  'admin.notificationDefaults.cycle': 'Klik untuk: {next}',
   'admin.notifications.tripReminders.title': 'Pengingat Perjalanan',
   'admin.notifications.tripReminders.hint':
     'Mengirim notifikasi pengingat sebelum perjalanan dimulai (memerlukan hari pengingat yang diatur pada perjalanan).',

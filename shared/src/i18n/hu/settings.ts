@@ -320,6 +320,7 @@ const settings: TranslationStrings = {
   'settings.ntfyUrl.tokenCleared': 'Hozzáférési token törölve',
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured': 'Még nincs beállítva — állítsd be a bővítmény beállításaiban',
+  'settings.notificationPreferences.lockedByAdmin': 'A rendszergazda mindenkinek kikapcsolta',
   'settings.plugins.actions': 'Műveletek',
   'settings.plugins.actions.confirm': 'Végrehajtod ezt a műveletet?',
   'settings.notificationPreferences.sendTest': 'Teszt küldése',

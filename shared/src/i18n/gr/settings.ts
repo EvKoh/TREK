@@ -114,6 +114,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.inapp': 'Εντός εφαρμογής',
   'settings.notificationPreferences.notConfigured':
     'Δεν έχει ρυθμιστεί ακόμη — ρυθμίστε το στις ρυθμίσεις του πρόσθετου',
+  'settings.notificationPreferences.lockedByAdmin': 'Απενεργοποιήθηκε από τον διαχειριστή για όλους',
   'settings.plugins.actions': 'Ενέργειες',
   'settings.plugins.actions.confirm': 'Εκτέλεση αυτής της ενέργειας;',
   'settings.notificationPreferences.sendTest': 'Αποστολή δοκιμής',

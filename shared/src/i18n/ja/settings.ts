@@ -105,6 +105,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Webhook',
   'settings.notificationPreferences.inapp': 'アプリ内',
   'settings.notificationPreferences.notConfigured': 'まだ設定されていません — プラグインの設定で構成してください',
+  'settings.notificationPreferences.lockedByAdmin': '管理者が全員に対してオフにしています',
   'settings.plugins.actions': 'アクション',
   'settings.plugins.actions.confirm': 'このアクションを実行しますか？',
   'settings.notificationPreferences.sendTest': 'テスト送信',

@@ -412,6 +412,12 @@ const admin: TranslationStrings = {
     "El Ntfy d'administrador sempre s'activa quan hi ha un tema configurat",
   'admin.notifications.adminNotificationsHint':
     "Configura quins canals entreguen notificacions d'administrador (ex. alertes de versió). El webhook s'activa automàticament si hi ha una URL de webhook d'administrador configurada.",
+  'admin.notificationDefaults.title': 'Valors per defecte dels usuaris',
+  'admin.notificationDefaults.hint': "Com comencen les notificacions de cada usuari. \"Desactivat\" l'usuari encara el pot activar; \"Bloquejat\" el desactiva per a tothom i apareix bloquejat a la seva configuració. S'aplica a qui no ha canviat la cel·la.",
+  'admin.notificationDefaults.on': 'Activat',
+  'admin.notificationDefaults.off': 'Desactivat',
+  'admin.notificationDefaults.blocked': 'Bloquejat',
+  'admin.notificationDefaults.cycle': 'Fes clic per canviar a: {next}',
   'admin.notifications.tripReminders.title': 'Recordatoris de viatge',
   'admin.notifications.tripReminders.hint':
     'Envia una notificació de recordatori abans que comenci un viatge (requereix dies de recordatori configurats al viatge).',

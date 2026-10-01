@@ -48,6 +48,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.testFailed': '테스트 ntfy 실패',
   'admin.notifications.adminNtfyPanel.alwaysOnHint': '토픽이 설정되면 관리자 ntfy는 항상 실행됩니다',
   'admin.notifications.adminNotificationsHint': '관리자 전용 알림 (예: 버전 알림)을 전달할 채널을 설정하세요.',
+  'admin.notificationDefaults.title': '사용자 기본값',
+  'admin.notificationDefaults.hint': '각 사용자의 알림 초기 상태입니다. "끔"은 사용자가 직접 켤 수 있고, "차단"은 모두에게 꺼지며 설정에서 잠금으로 표시됩니다. 해당 칸을 직접 바꾸지 않은 모든 사용자에게 적용됩니다.',
+  'admin.notificationDefaults.on': '켬',
+  'admin.notificationDefaults.off': '끔',
+  'admin.notificationDefaults.blocked': '차단',
+  'admin.notificationDefaults.cycle': '클릭하여 변경: {next}',
   'admin.notifications.tripReminders.title': '여행 리마인더',
   'admin.notifications.tripReminders.hint':
     '여행 시작 전에 리마인더 알림을 전송합니다 (여행에 리마인더 일수가 설정되어 있어야 합니다).',

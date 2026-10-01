@@ -319,6 +319,7 @@ const settings: TranslationStrings = {
   'settings.ntfyUrl.tokenCleared': 'Token di accesso rimosso',
   'settings.notificationPreferences.inapp': 'In-App',
   'settings.notificationPreferences.notConfigured': 'Non ancora configurato — impostalo nelle impostazioni del plugin',
+  'settings.notificationPreferences.lockedByAdmin': "Disattivato dall'amministratore per tutti",
   'settings.plugins.actions': 'Azioni',
   'settings.plugins.actions.confirm': 'Eseguire questa azione?',
   'settings.notificationPreferences.sendTest': 'Invia test',

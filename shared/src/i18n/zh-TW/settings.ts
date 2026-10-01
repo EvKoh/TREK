@@ -101,6 +101,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Webhook',
   'settings.notificationPreferences.inapp': '應用程式內',
   'settings.notificationPreferences.notConfigured': '尚未設定 — 請在外掛設定中進行設定',
+  'settings.notificationPreferences.lockedByAdmin': '管理員已為所有人關閉',
   'settings.plugins.actions': '操作',
   'settings.plugins.actions.confirm': '執行此操作？',
   'settings.notificationPreferences.sendTest': '傳送測試',

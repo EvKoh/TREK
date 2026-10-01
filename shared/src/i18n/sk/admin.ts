@@ -49,6 +49,12 @@ const admin: TranslationStrings = {
   'admin.notifications.adminNtfyPanel.alwaysOnHint': 'Admin ntfy sa spustí vždy, keď je nastavená téma',
   'admin.notifications.adminNotificationsHint':
     'Nastavte, ktoré kanály doručujú oznámenia len pre administrátorov (napr. upozornenia na verzie).',
+  'admin.notificationDefaults.title': 'Predvolené nastavenia pre používateľov',
+  'admin.notificationDefaults.hint': 'Takto začínajú upozornenia každého používateľa. „Vypnuté“ si používateľ môže sám zapnúť, „Blokované“ vypne pre všetkých a v ich nastaveniach sa zobrazí zamknuté. Platí pre každého, kto bunku sám nezmenil.',
+  'admin.notificationDefaults.on': 'Zapnuté',
+  'admin.notificationDefaults.off': 'Vypnuté',
+  'admin.notificationDefaults.blocked': 'Blokované',
+  'admin.notificationDefaults.cycle': 'Kliknutím prepnete na: {next}',
   'admin.notifications.tripReminders.title': 'Pripomienky ciest',
   'admin.notifications.tripReminders.hint':
     'Odoslať pripomienkové oznámenie pred začiatkom cesty (vyžaduje nastavené dni pripomienky na ceste).',

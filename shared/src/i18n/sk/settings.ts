@@ -119,6 +119,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Webhook',
   'settings.notificationPreferences.inapp': 'V aplikácii',
   'settings.notificationPreferences.notConfigured': 'Zatiaľ nenastavené — nastavte to v nastaveniach doplnku',
+  'settings.notificationPreferences.lockedByAdmin': 'Vypnuté správcom pre všetkých',
   'settings.plugins.actions': 'Akcie',
   'settings.plugins.actions.confirm': 'Spustiť túto akciu?',
   'settings.notificationPreferences.sendTest': 'Odoslať test',

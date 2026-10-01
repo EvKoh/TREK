@@ -112,6 +112,7 @@ const settings: TranslationStrings = {
   'settings.notificationPreferences.webhook': 'Webhook',
   'settings.notificationPreferences.inapp': 'Trong ứng dụng',
   'settings.notificationPreferences.notConfigured': 'Chưa được thiết lập — hãy cấu hình trong cài đặt của plugin',
+  'settings.notificationPreferences.lockedByAdmin': 'Quản trị viên đã tắt cho mọi người',
   'settings.plugins.actions': 'Hành động',
   'settings.plugins.actions.confirm': 'Chạy hành động này?',
   'settings.notificationPreferences.sendTest': 'Gửi thử',
