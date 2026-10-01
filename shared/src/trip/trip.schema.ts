@@ -169,9 +169,11 @@ export type ActiveTripResponse = z.infer<typeof activeTripResponseSchema>;
  * along for the card; title and date matching stays on the client.
  */
 export const tripSearchResponseSchema = z.object({
-  matches: z.array(z.object({
-    trip_id: z.number(),
-    places: z.array(z.string()),
-  })),
+  matches: z.array(
+    z.object({
+      trip_id: z.number(),
+      places: z.array(z.string()),
+    }),
+  ),
 });
 export type TripSearchResponse = z.infer<typeof tripSearchResponseSchema>;

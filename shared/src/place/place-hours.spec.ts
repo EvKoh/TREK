@@ -1,8 +1,10 @@
-import { describe, expect, it } from 'vitest';
 import { hasPlaceHours, parsePlaceHours, placeEmailField, placeOpeningHoursField } from './place-hours';
 import { placeCreateRequestSchema, placeUpdateRequestSchema } from './place.schema';
 
-const WEEK = '[{"closed":false,"open":"09:00","close":"17:00"},{"closed":false},{"closed":false},{"closed":false},{"closed":false},{"closed":true},{"closed":true}]';
+import { describe, expect, it } from 'vitest';
+
+const WEEK =
+  '[{"closed":false,"open":"09:00","close":"17:00"},{"closed":false},{"closed":false},{"closed":false},{"closed":false},{"closed":true},{"closed":true}]';
 
 describe('place hours and e-mail (#2472)', () => {
   it('parses seven days and refuses anything else', () => {

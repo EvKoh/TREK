@@ -36,14 +36,14 @@ export function parsePlaceHours(raw: unknown): PlaceOpeningHours | null {
 
 /** Whether a week says anything: a day that is closed or has a time. */
 export function hasPlaceHours(hours: PlaceOpeningHours | null): boolean {
-  return !!hours && hours.some(d => d.closed || !!d.open || !!d.close);
+  return !!hours && hours.some((d) => d.closed || !!d.open || !!d.close);
 }
 
 /** The request field: the JSON text, empty or null to clear it. */
 export const placeOpeningHoursField = z
   .string()
   .max(1000)
-  .refine(v => v === '' || parsePlaceHours(v) !== null, { message: 'opening_hours must be seven days, Monday first' })
+  .refine((v) => v === '' || parsePlaceHours(v) !== null, { message: 'opening_hours must be seven days, Monday first' })
   .nullable()
   .optional();
 
@@ -53,6 +53,6 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const placeEmailField = z
   .string()
   .max(254)
-  .refine(v => v === '' || EMAIL.test(v.trim()), { message: 'email must be an e-mail address' })
+  .refine((v) => v === '' || EMAIL.test(v.trim()), { message: 'email must be an e-mail address' })
   .nullable()
   .optional();

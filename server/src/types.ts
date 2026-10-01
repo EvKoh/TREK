@@ -387,6 +387,10 @@ export interface Journey {
   status: 'draft' | 'active' | 'completed' | 'archived';
   /** Draw the linked trips' GPX tracks on this journey's map (#2194). 0 by default. */
   show_trip_tracks?: number;
+  /** The state the owner set by hand (#762); null follows the trip dates. */
+  status_override?: 'draft' | 'live' | 'completed' | null;
+  /** Entries without a place take the spot of their first geotagged photo (#1003). 0 by default. */
+  photo_location?: number;
   created_at: number;
   updated_at: number;
 }

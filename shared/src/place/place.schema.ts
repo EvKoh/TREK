@@ -1,6 +1,6 @@
 import { tagSchema } from '../tag/tag.schema';
-import { PLACE_WEBSITE_MAX_LENGTH, normalizePlaceWebsite } from './place-website';
 import { placeEmailField, placeOpeningHoursField } from './place-hours';
+import { PLACE_WEBSITE_MAX_LENGTH, normalizePlaceWebsite } from './place-website';
 
 import { z } from 'zod';
 
