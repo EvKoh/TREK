@@ -1807,7 +1807,7 @@ export function ExpenseModal({ tripId, base, people, me, editing, prefill, onClo
       )}
     >
       {splitMode === 'custom' ? (
-        <div className="mb-2.5 flex items-start justify-between gap-3">
+        <div className="mb-2.5 flex items-center justify-between gap-3">
           <p className="m-0 min-w-0 text-content-faint" style={fs(12, 'body')}>{t(inPercent ? 'costs.splitHint.percent' : 'costs.splitHint.custom')}</p>
           <Segmented<CustomSplitUnit>
             label={t('costs.splitUnit')}
