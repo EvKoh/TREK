@@ -29,17 +29,25 @@ import { onlyMyPlan } from './pdfScope'
  */
 const PAGE_BREAK_KEY = 'trek_pdf_page_break_per_day'
 
-function pageBreakPerDay(): boolean {
+/**
+ * The notes of a flight, train or rental (#1571): printed by default, like the
+ * notes of a place, and a switch in the preview leaves them out for a reader who
+ * wants the plan without the fine print.
+ */
+const TRANSPORT_NOTES_KEY = 'trek_pdf_transport_notes'
+
+/** A preview switch that is on unless it was turned off; both default to on. */
+function pdfSwitchOn(key: string): boolean {
   try {
-    return localStorage.getItem(PAGE_BREAK_KEY) !== '0'
+    return localStorage.getItem(key) !== '0'
   } catch {
     return true
   }
 }
 
-function rememberPageBreakPerDay(on: boolean): void {
+function rememberPdfSwitch(key: string, on: boolean): void {
   try {
-    localStorage.setItem(PAGE_BREAK_KEY, on ? '1' : '0')
+    localStorage.setItem(key, on ? '1' : '0')
   } catch {
     // A blocked localStorage costs the preference, not the export.
   }
@@ -231,7 +239,10 @@ export async function downloadTripPDF({ trip, days, places, assignments: allStor
     ? onlyMyPlan(allStored, allReservations, onlyUserId)
     : { assignments: allStored, reservations: allReservations }
   const assignments = planAssignments(stored, showServiceStops)
-  const breaksPerDay = pageBreakPerDay()
+  const breaksPerDay = pdfSwitchOn(PAGE_BREAK_KEY)
+  const showTransportNotes = pdfSwitchOn(TRANSPORT_NOTES_KEY)
+  // Set while the days render: the switch only shows when there is a note to hide.
+  let hasTransportNotes = false
   const loc = _locale || undefined
   const tr = _t || (k => k)
   // The store read is the fallback, not the source: a caller that forgets the
@@ -516,6 +527,8 @@ export async function downloadTripPDF({ trip, days, places, assignments: allStor
             const endTime = phase === 'single' ? fmtTime(splitReservationDateTime(r.reservation_end_time).time) : ''
             const time = [startTime, endTime].filter(Boolean).join(' – ')
             const titleHtml = `${spanLabel ? escHtml(spanLabel) + ': ' : ''}${escHtml(r.title)}`
+            const transportNote = typeof r.notes === 'string' ? r.notes.trim() : ''
+            if (transportNote) hasTransportNotes = true
             return `
               <div class="note-card" style="border-left: 3px solid ${color};">
                 <div class="note-line" style="background: ${color};"></div>
@@ -525,6 +538,7 @@ export async function downloadTripPDF({ trip, days, places, assignments: allStor
                   ${subtitleLines.filter(Boolean).map(s => `<div class="note-time">${escHtml(s)}</div>`).join('')}
                   ${locationLine ? `<div class="note-time">${escHtml(locationLine)}</div>` : ''}
                   ${r.confirmation_number ? `<div class="note-time" style="font-size:9px;">Code: ${escHtml(r.confirmation_number)}</div>` : ''}
+                  ${transportNote ? `<div class="note-time transport-note">${escHtml(transportNote)}</div>` : ''}
                 </div>
               </div>`
           }
@@ -751,6 +765,8 @@ export async function downloadTripPDF({ trip, days, places, assignments: allStor
      Flowing days butt against each other without the page edge between them. */
   .day-break { page-break-before: always; }
   .pdf-flow .day-break { page-break-before: auto; }
+  .transport-note { font-style: italic; white-space: pre-line; }
+  .pdf-no-transport-notes .transport-note { display: none; }
   .pdf-flow .day-section + .day-section { margin-top: 18px; }
   /* Hold a flowing day together. Without this the header bar can be placed at the
      foot of a sheet while its content moves to the next one, which then repeats
@@ -868,7 +884,7 @@ export async function downloadTripPDF({ trip, days, places, assignments: allStor
   }
 </style>
 </head>
-<body${breaksPerDay ? '' : ' class="pdf-flow"'}>
+<body${bodyClassAttr(breaksPerDay, showTransportNotes)}>
 
 <!-- Footer on every page -->
 <div class="pdf-footer">
@@ -937,10 +953,8 @@ ${pluginSectionsHtml}
   header.innerHTML = `
     <span style="font-size:13px;font-weight:600;color:var(--text-primary);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escHtml(trip?.title || tr('pdf.travelPlan'))}</span>
     <div style="display:flex;align-items:center;gap:8px">
-      <label for="pdf-daybreak-toggle" style="font-size:12px;color:var(--text-muted);cursor:pointer;user-select:none">${escHtml(tr('pdf.pageBreakPerDay'))}</label>
-      <button id="pdf-daybreak-toggle" type="button" role="switch" aria-checked="${breaksPerDay}" aria-label="${escHtml(tr('pdf.pageBreakPerDay'))}" style="${TOGGLE_TRACK} background:${trackColour(breaksPerDay)}">
-        <span style="${TOGGLE_KNOB} left:${knobOffset(breaksPerDay)}"></span>
-      </button>
+      ${hasTransportNotes ? previewSwitch('pdf-transport-notes-toggle', tr('pdf.transportNotes'), showTransportNotes) : ''}
+      ${previewSwitch('pdf-daybreak-toggle', tr('pdf.pageBreakPerDay'), breaksPerDay)}
       <button type="button" id="pdf-print-btn" style="display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:6px;font-family:inherit">${tr('pdf.saveAsPdf')}</button>
       <button type="button" id="pdf-close-btn" style="background:none;border:none;cursor:pointer;color:var(--text-faint);display:flex;padding:4px;border-radius:6px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -965,16 +979,40 @@ ${pluginSectionsHtml}
   const printBtn = header.querySelector<HTMLElement>('#pdf-print-btn')
   if (printBtn) printBtn.onclick = () => { iframe.contentWindow?.print() }
 
-  // The two layouts differ by one class, so switching is instant in the preview
-  // and there is no need to re-fetch photos or rebuild the document.
-  const dayBreakSwitch = header.querySelector<HTMLButtonElement>('#pdf-daybreak-toggle')
-  if (dayBreakSwitch) dayBreakSwitch.onclick = () => {
-    const on = dayBreakSwitch.getAttribute('aria-checked') !== 'true'
-    dayBreakSwitch.setAttribute('aria-checked', String(on))
-    dayBreakSwitch.style.background = trackColour(on)
-    const knob = dayBreakSwitch.firstElementChild as HTMLElement | null
-    if (knob) knob.style.left = knobOffset(on)
-    rememberPageBreakPerDay(on)
+  // Both choices differ by one class on <body>, so switching is instant in the
+  // preview and there is no need to re-fetch photos or rebuild the document.
+  wirePreviewSwitch(header, 'pdf-daybreak-toggle', on => {
+    rememberPdfSwitch(PAGE_BREAK_KEY, on)
     iframe.contentDocument?.body.classList.toggle('pdf-flow', !on)
+  })
+  wirePreviewSwitch(header, 'pdf-transport-notes-toggle', on => {
+    rememberPdfSwitch(TRANSPORT_NOTES_KEY, on)
+    iframe.contentDocument?.body.classList.toggle('pdf-no-transport-notes', !on)
+  })
+}
+
+function bodyClassAttr(breaksPerDay: boolean, showTransportNotes: boolean): string {
+  const classes = [!breaksPerDay && 'pdf-flow', !showTransportNotes && 'pdf-no-transport-notes'].filter(Boolean)
+  return classes.length ? ` class="${classes.join(' ')}"` : ''
+}
+
+/** A labelled switch for the preview header, as markup; wirePreviewSwitch gives it behaviour. */
+function previewSwitch(id: string, label: string, on: boolean): string {
+  return `<label for="${id}" style="font-size:12px;color:var(--text-muted);cursor:pointer;user-select:none">${escHtml(label)}</label>
+      <button id="${id}" type="button" role="switch" aria-checked="${on}" aria-label="${escHtml(label)}" style="${TOGGLE_TRACK} background:${trackColour(on)}">
+        <span style="${TOGGLE_KNOB} left:${knobOffset(on)}"></span>
+      </button>`
+}
+
+function wirePreviewSwitch(header: HTMLElement, id: string, onChange: (on: boolean) => void): void {
+  const button = header.querySelector<HTMLButtonElement>(`#${id}`)
+  if (!button) return
+  button.onclick = () => {
+    const on = button.getAttribute('aria-checked') !== 'true'
+    button.setAttribute('aria-checked', String(on))
+    button.style.background = trackColour(on)
+    const knob = button.firstElementChild as HTMLElement | null
+    if (knob) knob.style.left = knobOffset(on)
+    onChange(on)
   }
 }

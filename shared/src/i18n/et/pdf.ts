@@ -7,6 +7,7 @@ const pdf: TranslationStrings = {
   'pdf.preview': 'PDF-i eelvaade',
   'pdf.saveAsPdf': 'Salvesta PDF-ina',
   'pdf.pageBreakPerDay': 'Iga päev uuel lehel',
+  'pdf.transportNotes': 'Transpordi märkmed',
   'pdf.mapTitle': 'Marsruudi ülevaade',
   'pdf.distanceLabel': 'Vahemaa',
   'pdf.mapCredit': 'Riigipiirid: geoBoundaries (CC BY 4.0)',

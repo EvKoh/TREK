@@ -1363,3 +1363,53 @@ describe('a printed day follows the plan (#1978)', () => {
     expect(seen).toEqual([...seen].sort((a, b) => a - b))
   })
 })
+
+// ── Transport notes (#1571) ─────────────────────────────────────────────────
+
+describe('downloadTripPDF — transport notes', () => {
+  const withNote = { ...transportReservation, notes: 'Seat 14A\nCheck in online the day before' }
+
+  beforeEach(() => {
+    localStorage.removeItem('trek_pdf_transport_notes')
+  })
+
+  const notesToggle = () => document.querySelector<HTMLButtonElement>('#pdf-transport-notes-toggle')
+
+  it('FE-PDF-TNOTES-001: prints the note of a transport, escaped, and offers the switch', async () => {
+    await downloadTripPDF({ ...richArgs, reservations: [{ ...withNote, notes: 'Gate <b>B12</b>' }] })
+    const html = getIframe()!.srcdoc
+
+    expect(html).toContain('<div class="note-time transport-note">Gate &lt;b&gt;B12&lt;/b&gt;</div>')
+    expect(html).not.toContain('pdf-no-transport-notes"')
+    expect(notesToggle()!.getAttribute('aria-checked')).toBe('true')
+  })
+
+  it('FE-PDF-TNOTES-002: without any transport note there is nothing to switch', async () => {
+    await downloadTripPDF(richArgs)
+
+    expect(getIframe()!.srcdoc).not.toContain('class="note-time transport-note"')
+    expect(notesToggle()).toBeNull()
+    // The page break switch is still there on its own.
+    expect(document.querySelector('#pdf-daybreak-toggle')).not.toBeNull()
+  })
+
+  it('FE-PDF-TNOTES-003: turning the notes off hides them at once and is remembered', async () => {
+    await downloadTripPDF({ ...richArgs, reservations: [withNote] })
+    notesToggle()!.click()
+
+    expect(notesToggle()!.getAttribute('aria-checked')).toBe('false')
+    expect(localStorage.getItem('trek_pdf_transport_notes')).toBe('0')
+    const body = getIframe()!.contentDocument?.body
+    if (body) expect(body.classList.contains('pdf-no-transport-notes')).toBe(true)
+  })
+
+  it('FE-PDF-TNOTES-004: the remembered choice comes back, next to the flowing layout', async () => {
+    localStorage.setItem('trek_pdf_transport_notes', '0')
+    localStorage.setItem('trek_pdf_page_break_per_day', '0')
+    await downloadTripPDF({ ...richArgs, reservations: [withNote] })
+
+    expect(getIframe()!.srcdoc).toContain('<body class="pdf-flow pdf-no-transport-notes">')
+    expect(notesToggle()!.getAttribute('aria-checked')).toBe('false')
+    localStorage.removeItem('trek_pdf_page_break_per_day')
+  })
+})
