@@ -6,7 +6,8 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkBreaks from 'remark-breaks'
 import { markdownLinkComponents } from '../shared/markdownLink'
-import { X, Clock, MapPin, ExternalLink, Phone, Banknote, Pencil, Plus, Minus, ChevronDown, ChevronUp, ChevronRight, FileText, Upload, File, FileImage, Star, Navigation, Mountain, Bookmark, BookmarkCheck, Copy } from 'lucide-react'
+import { X, Clock, MapPin, ExternalLink, Phone, Mail, Banknote, Pencil, Plus, Minus, ChevronDown, ChevronUp, ChevronRight, FileText, Upload, File, FileImage, Star, Navigation, Mountain, Bookmark, BookmarkCheck, Copy } from 'lucide-react'
+import { hoursLines, periodsFromWeek } from './placeHours'
 import PlaceAvatar from '../shared/PlaceAvatar'
 import PlaceAvatarUpload, { pickableImages } from '../shared/PlaceAvatarUpload'
 import { BlurredCode } from '../shared/BookingCode'
@@ -376,16 +377,21 @@ export default function PlaceInspector({
 
   // The weekday lines are display text; the ring is computed from the structured
   // periods next to them, in the place's own timezone. open_now stays the fallback.
-  const openingHours = googleDetails?.opening_hours || null
+  // Hours the traveller typed in win over looked-up ones (#2472): they are what
+  // somebody actually checked, and a place nobody listed has no other source.
+  const ownHours = hoursLines(place.opening_hours, locale, t('places.hoursClosed'))
+  const openingHours = ownHours ?? googleDetails?.opening_hours ?? null
   const detailLat = place.lat ?? googleDetails?.lat
   const detailLng = place.lng ?? googleDetails?.lng
   const placeTimeZone = resolvePlaceTimeZone(detailLat, detailLng)
-  const openNow = resolveOpenNow(
-    { periods: googleDetails?.opening_periods, specialDays: googleDetails?.opening_special_days },
-    detailLat,
-    detailLng,
-    googleDetails?.open_now,
-  )
+  const openNow = ownHours
+    ? resolveOpenNow({ periods: periodsFromWeek(place.opening_hours) }, detailLat, detailLng, null)
+    : resolveOpenNow(
+      { periods: googleDetails?.opening_periods, specialDays: googleDetails?.opening_special_days },
+      detailLat,
+      detailLng,
+      googleDetails?.open_now,
+    )
   // Allow-listed rather than passed straight through: window.open runs a
   // javascript: URL in this origin, and the stored value predates the check the
   // server does on the way in now.
@@ -420,7 +426,7 @@ export default function PlaceInspector({
       }}
     >
       <div className="flex max-h-[60vh] flex-col overflow-hidden rounded-[20px] border border-edge-faint bg-surface-elevated shadow-popover backdrop-blur-[40px] backdrop-saturate-[1.8]">
-        <InspectorHead place={place} category={category} openNow={openNow} phone={phone}
+        <InspectorHead place={place} category={category} openNow={openNow} phone={phone} email={place.email}
           rating={googleDetails?.rating ?? null} ratingCount={googleDetails?.rating_count ?? null}
           price={place.price > 0 ? formatMoney(Number(place.price) || 0, place.currency || tripCurrency || 'EUR', locale) : null}
           time={place.place_time ? `${formatTime(place.place_time, locale, timeFormat)}${place.end_time ? ` – ${formatTime(place.end_time, locale, timeFormat)}` : ''}` : null}
@@ -619,6 +625,8 @@ interface InspectorHeadProps {
   category: Category | undefined
   openNow: boolean | null
   phone: string | null | undefined
+  /** Typed in by hand (#2472); there is no looked-up one. */
+  email?: string | null
   rating: number | null
   ratingCount: number | null
   price: string | null
@@ -641,12 +649,12 @@ interface InspectorHeadProps {
  * The head band: the avatar with its open/closed ring and photo credit, the
  * name (a double-click renames it), the address, and the facts as pills.
  */
-function InspectorHead({ place, category, openNow, phone, rating, ratingCount, price, time, editingName, nameInputRef,
+function InspectorHead({ place, category, openNow, phone, email, rating, ratingCount, price, time, editingName, nameInputRef,
   nameValue, setNameValue, commitNameEdit, handleNameKeyDown, startNameEdit, onUpdatePlace, onUploadImage, attachedImages, onImageFromFile, onClose }: InspectorHeadProps) {
   const { t, locale } = useTranslation()
   const ring = openNow === true ? 'bg-success' : openNow === false ? 'bg-danger' : 'bg-surface-card shadow-sm'
   const hasCoords = !!(place.lat && place.lng)
-  const hasPills = openNow !== null || !!category || !!time || rating != null || !!price || place.source === 'dawarich' || !!phone || hasCoords
+  const hasPills = openNow !== null || !!category || !!time || rating != null || !!price || place.source === 'dawarich' || !!phone || !!email || hasCoords
   return (
     <header className="flex-none border-b border-edge-faint px-4 pb-3 pt-3.5" style={{ background: category?.color ? tintOf(category.color) : NEUTRAL_TINT }}>
       <div className="flex items-start gap-3.5">
@@ -734,6 +742,12 @@ function InspectorHead({ place, category, openNow, phone, rating, ratingCount, p
                 <a href={`tel:${phone}`} className={`${HEAD_PILL} hover:text-content-secondary`} style={fs(10.5)}>
                   <Phone size={11} strokeWidth={2} className="flex-none text-content-faint" />
                   {phone}
+                </a>
+              )}
+              {email && (
+                <a href={`mailto:${email}`} className={`${HEAD_PILL} min-w-0 hover:text-content-secondary`} style={fs(10.5)}>
+                  <Mail size={11} strokeWidth={2} className="flex-none text-content-faint" />
+                  <span className="truncate">{email}</span>
                 </a>
               )}
               {hasCoords && (

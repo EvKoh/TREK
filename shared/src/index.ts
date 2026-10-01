@@ -50,6 +50,7 @@ export * from './place/track-colors';
 export * from './collection/collection.schema';
 export * from './collection/collection-file.schema';
 export * from './trip/trip.schema';
+export * from './place/place-hours';
 export * from './trip/day-grid';
 export * from './trip-invite/trip-invite.schema';
 export * from './collab/collab.schema';

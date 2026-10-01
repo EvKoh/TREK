@@ -5430,6 +5430,16 @@ function runMigrations(db: Database.Database): void {
       const cols = db.prepare("SELECT name FROM pragma_table_info('journeys')").all() as { name: string }[];
       if (!cols.some(c => c.name === 'status_override')) db.exec('ALTER TABLE journeys ADD COLUMN status_override TEXT');
     },
+    /**
+     * A place's e-mail and its own opening hours, typed in by hand (#2472): the
+     * search fills in what it knows, and these are for everything it does not.
+     */
+    () => {
+      const cols = db.prepare("SELECT name FROM pragma_table_info('places')").all() as { name: string }[];
+      const has = (c: string) => cols.some(col => col.name === c);
+      if (!has('email')) db.exec('ALTER TABLE places ADD COLUMN email TEXT');
+      if (!has('opening_hours')) db.exec('ALTER TABLE places ADD COLUMN opening_hours TEXT');
+    },
   ];
 
   if (currentVersion < migrations.length) {

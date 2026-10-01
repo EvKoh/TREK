@@ -15,6 +15,7 @@ import { Tooltip } from '../shared/Tooltip'
 import { Search, Paperclip, X, AlertTriangle, Loader2, Plus, RotateCcw, MapPin, Navigation, LocateFixed } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import CustomTimePicker from '../shared/CustomTimePicker'
+import { PlaceContactFields } from './PlaceContactFields'
 import {
   DEFAULT_FORM, endsBeforeStart, findDuplicatePlace, formPin, isMapUrl, mergeResult, parseCoordinatePair, timeCollisions,
   type PlaceFormData, type ResultField,
@@ -222,6 +223,10 @@ function usePlaceFormModal(props: PlaceFormModalProps) {
         notes: place.notes || '',
         transport_mode: place.transport_mode || 'walking',
         website: place.website || '',
+        // Shown in the contact block now (#2472), so an edit carries what is there.
+        phone: place.phone || '',
+        email: place.email || '',
+        opening_hours: place.opening_hours || '',
         // Carried through every edit. Without it, opening a fuel stop to fix a typo
         // submits an empty kind and turns it back into a numbered destination.
         // duration_minutes deliberately stays out: how long a stay takes belongs to the
@@ -1276,6 +1281,15 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
               />
             )}
           </div>
+
+          {/* Phone, e-mail and the place's own hours, for what the search did not
+              know or a place nobody has listed (#2472). */}
+          <PlaceContactFields
+            phone={form.phone ?? ''}
+            email={form.email ?? ''}
+            openingHours={form.opening_hours ?? ''}
+            onChange={(field, value) => handleChange(field, value)}
+          />
 
           {/* Costs — create / view the expense linked to this place (#1298).
               Same block, same flow as a booking: save first, then the editor.

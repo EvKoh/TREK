@@ -80,6 +80,10 @@ export interface Place {
   route_color?: string | null;
   website?: string | null;
   phone?: string | null;
+  /** Typed in by hand (#2472). */
+  email?: string | null;
+  /** Hand-kept opening hours as JSON text, seven days Monday first (#2472). */
+  opening_hours?: string | null;
   transport_mode?: string;
   /** What kind of stop this is on a drive (#1797); null for an ordinary place. */
   stop_type?: string | null;

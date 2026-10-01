@@ -1,5 +1,6 @@
 import { tagSchema } from '../tag/tag.schema';
 import { PLACE_WEBSITE_MAX_LENGTH, normalizePlaceWebsite } from './place-website';
+import { placeEmailField, placeOpeningHoursField } from './place-hours';
 
 import { z } from 'zod';
 
@@ -178,6 +179,10 @@ export const placeSchema = z.object({
   fill_percent: fillPercentSchema,
   website: z.string().nullable().optional(),
   phone: z.string().nullable().optional(),
+  /** Typed in by hand (#2472). */
+  email: z.string().nullable().optional(),
+  /** Hand-kept hours as JSON text, seven days Monday first (#2472); see place-hours.ts. */
+  opening_hours: z.string().nullable().optional(),
   transport_mode: z.string().nullable().optional(),
   created_at: z.string().optional(),
   updated_at: z.string().optional(),
@@ -251,6 +256,10 @@ export type AssignmentPlace = z.infer<typeof assignmentPlaceSchema>;
  * service already reads it that way rather than as "leave alone".
  */
 const stopTypeField = z.object({
+  // Named on the open body like the two below: an e-mail and the hand-kept hours have a
+  // fixed shape, and a malformed one would otherwise sit on the place unseen (#2472).
+  email: placeEmailField,
+  opening_hours: placeOpeningHoursField,
   stop_type: roadtripStopTypeSchema.nullable().optional(),
   // Named for the same reason: a bounded vocabulary on an otherwise open body. Zero is
   // outside it on purpose — a stop that fills nothing is not a stop, and letting one

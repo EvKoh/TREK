@@ -254,6 +254,35 @@ describe('Tool: update_place', () => {
     });
   });
 
+  it('takes an e-mail and structured opening hours, and null clears the hours (#2472)', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+    const place = createPlace(testDb, trip.id, { name: 'Bakery' });
+    const hours = [{ closed: false, open: '08:00', close: '18:00' }, ...Array.from({ length: 6 }, () => ({ closed: true }))];
+
+    await withHarness(user.id, async (h) => {
+      const data = parseToolResult(await h.client.callTool({
+        name: 'update_place',
+        arguments: { tripId: trip.id, placeId: place.id, email: 'hi@bakery.test', opening_hours: hours },
+      })) as any;
+      expect(data.place.email).toBe('hi@bakery.test');
+      expect(JSON.parse(data.place.opening_hours)).toEqual(hours);
+
+      const cleared = parseToolResult(await h.client.callTool({
+        name: 'update_place',
+        arguments: { tripId: trip.id, placeId: place.id, opening_hours: null },
+      })) as any;
+      expect(cleared.place.opening_hours).toBeNull();
+      expect(cleared.place.email).toBe('hi@bakery.test');
+
+      const bad = await h.client.callTool({
+        name: 'update_place',
+        arguments: { tripId: trip.id, placeId: place.id, email: 'not-an-address' },
+      });
+      expect(bad.isError).toBe(true);
+    });
+  });
+
   it('moving a place drops the country Atlas cached for it, renaming it does not (#2527)', async () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id);

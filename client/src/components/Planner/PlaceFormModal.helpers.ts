@@ -12,8 +12,13 @@ export interface PlaceFormData {
   notes: string
   transport_mode: string
   website: string
-  // Populated from a maps-search pick (not part of the initial blank form).
+  // Populated from a maps-search pick, and typed in by hand since #2472.
   phone?: string
+  // Typed in by hand (#2472). Absent from DEFAULT_FORM like phone: the mobile sheet
+  // shares this type and never sets them, and a missing key writes nothing.
+  email?: string
+  // The place's own hours as JSON text, seven days Monday first; '' clears them.
+  opening_hours?: string
   google_place_id?: string
   google_ftid?: string
   osm_id?: string

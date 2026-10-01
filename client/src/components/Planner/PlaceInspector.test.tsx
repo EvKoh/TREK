@@ -688,6 +688,17 @@ describe('PlaceInspector', () => {
     expect(screen.getByText(/\+33 1 23 45 67 89/)).toBeTruthy();
   });
 
+  it('FE-PLANNER-INSPECTOR-2472: the own e-mail and hours show, the hours ahead of looked-up ones', async () => {
+    const user = userEvent.setup();
+    const week = JSON.stringify(Array.from({ length: 7 }, (_, i) => (i === 6 ? { closed: true } : { closed: false, open: '08:00', close: '12:00' })));
+    const p = buildPlace({ id: 302, email: 'hi@bakery.test', opening_hours: week } as any);
+    render(<PlaceInspector {...defaultProps} place={p} />);
+    expect(screen.getByRole('link', { name: /hi@bakery\.test/ })).toHaveAttribute('href', 'mailto:hi@bakery.test');
+    expect(screen.getByText('Opening Hours')).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { expanded: false, name: /08:00|Show/ }));
+    expect(screen.getByText(/Sunday: Closed/)).toBeInTheDocument();
+  });
+
   // ── File size display ──────────────────────────────────────────────────────
 
   it('FE-PLANNER-INSPECTOR-034: file size displayed in KB for files < 1MB', async () => {

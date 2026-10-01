@@ -299,6 +299,23 @@ describe('update', () => {
     expect(updated.lng).toBe(2.3);
   });
 
+  it('PLACE-SVC-2472 — keeps an e-mail and hand-kept hours, trims the address, empty clears', async () => {
+    const { user } = createUser(testDb);
+    const trip = createTrip(testDb, user.id);
+    const week = '[{"closed":false,"open":"09:00","close":"17:00"},{"closed":false},{"closed":false},{"closed":false},{"closed":false},{"closed":true},{"closed":true}]';
+    const place = svc.create(String(trip.id), { name: 'Bakery', email: ' shop@example.com ', opening_hours: week }) as any;
+    expect(place.email).toBe('shop@example.com');
+    expect(place.opening_hours).toBe(week);
+
+    const renamed = await svc.update(String(trip.id), String(place.id), { name: 'Baker' }) as any;
+    expect(renamed.email).toBe('shop@example.com');
+    expect(renamed.opening_hours).toBe(week);
+
+    const cleared = await svc.update(String(trip.id), String(place.id), { email: '', opening_hours: '' }) as any;
+    expect(cleared.email).toBeNull();
+    expect(cleared.opening_hours).toBeNull();
+  });
+
   it('PLACE-SVC-014 — returns null for non-existent place', async () => {
     const { user } = createUser(testDb);
     const trip = createTrip(testDb, user.id);

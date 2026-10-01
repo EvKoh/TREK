@@ -81,6 +81,7 @@ export interface PlaceCreateInput {
   place_time?: string; end_time?: string;
   duration_minutes?: number; notes?: string; image_url?: string;
   google_place_id?: string; google_ftid?: string; osm_id?: string; amap_poi_id?: string; website?: string; phone?: string;
+  email?: string | null; opening_hours?: string | null;
   /** What kind of stop this is on a drive (fuel, charging, rest_area, campsite); null for an ordinary place. */
   stop_type?: string | null;
   /** How full THIS stop fills the tank, 1-100; null to follow the traveller's own setting. */
@@ -95,6 +96,7 @@ export interface PlaceUpdateInput {
   place_time?: string; end_time?: string;
   duration_minutes?: number; notes?: string; image_url?: string;
   google_place_id?: string; google_ftid?: string; osm_id?: string; amap_poi_id?: string; website?: string; phone?: string;
+  email?: string | null; opening_hours?: string | null;
   /** What kind of stop this is on a drive (fuel, charging, rest_area, campsite); null for an ordinary place. */
   stop_type?: string | null;
   /** How full THIS stop fills the tank, 1-100; null to follow the traveller's own setting. */
@@ -276,6 +278,7 @@ export class PlacesService {
       name, description, lat, lng, address, category_id, price, currency,
       place_time, end_time,
       duration_minutes, notes, image_url, google_place_id, google_ftid, osm_id, amap_poi_id, website, phone,
+      email, opening_hours,
       transport_mode, route_geometry, route_color, stop_type, fill_percent, tags = [],
     } = body;
 
@@ -283,8 +286,8 @@ export class PlacesService {
     INSERT INTO places (trip_id, name, description, lat, lng, address, category_id, price, currency,
       place_time, end_time,
       duration_minutes, notes, image_url, google_place_id, google_ftid, osm_id, amap_poi_id, website, phone, transport_mode,
-      route_geometry, route_color, stop_type, fill_percent)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      route_geometry, route_color, stop_type, fill_percent, email, opening_hours)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `,
       // lat/lng/price/duration_minutes use an explicit undefined check, not `||`:
       // 0 is a legitimate value for all four (Null Island, a free entry, a
@@ -303,6 +306,7 @@ export class PlacesService {
       // `?? null` rather than `|| null`, the same reason lat/lng have it: the column is a
       // percentage and the falsy check would be a silent floor.
       fill_percent ?? null,
+      email?.trim() || null, opening_hours || null,
     );
 
     const placeId = result.lastInsertRowid;
@@ -367,6 +371,7 @@ export class PlacesService {
       name, description, lat, lng, address, category_id, price, currency,
       place_time, end_time,
       duration_minutes, notes, image_url, google_place_id, google_ftid, osm_id, amap_poi_id, website, phone,
+      email, opening_hours,
       transport_mode, route_color, stop_type, fill_percent, tags,
     } = body;
 
@@ -391,6 +396,8 @@ export class PlacesService {
       amap_poi_id = ?,
       website = ?,
       phone = ?,
+      email = ?,
+      opening_hours = ?,
       transport_mode = COALESCE(?, transport_mode),
       route_color = ?,
       stop_type = ?,
@@ -421,6 +428,9 @@ export class PlacesService {
       amap_poi_id !== undefined ? amap_poi_id : existingPlace.amap_poi_id,
       website !== undefined ? website : existingPlace.website,
       phone !== undefined ? phone : existingPlace.phone,
+      // Empty clears, like null: the form sends what its field holds (#2472).
+      email !== undefined ? (email?.trim() || null) : existingPlace.email,
+      opening_hours !== undefined ? (opening_hours || null) : existingPlace.opening_hours,
       transport_mode || null,
       // Deliberately not COALESCE: an explicit null is how the picker resets a
       // track back to its category colour (#776).
