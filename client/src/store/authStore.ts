@@ -14,6 +14,7 @@ import { clearAppearanceSnapshot } from '../theme/applyAppearance'
 import { clearAllPluginSessions } from './pluginStore'
 import { forgetStartDestination } from '../utils/startDestination'
 import { forgetServerLanguage } from './settingsStore'
+import { forgetResumeRoute } from '../utils/resumeRoute'
 import { markSignedOut, clearSignedOut } from '../utils/signedOut'
 import { forgetPushDeviceOnLogout, resyncPushSubscription } from '../push/webPush'
 
@@ -267,6 +268,7 @@ export const useAuthStore = create<AuthState>()(
     // browser language is one TREK ships, so otherwise the next user here stays
     // in the previous account's language, launch after launch.
     forgetServerLanguage()
+    forgetResumeRoute()
     // And work-offline, for the same reason with sharper teeth: the switch lives
     // in localStorage, step 6 below deletes the offline database it reads from,
     // and the next account would come up believing it is offline over a working

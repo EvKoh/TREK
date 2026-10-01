@@ -5,6 +5,7 @@ import { getCoMapsUrlForPlace } from './placeCoMaps'
 import { getGoogleMapsUrlForPlace } from './placeGoogleMaps'
 import { getOpenStreetMapUrlForPlace } from './placeOpenStreetMap'
 import { useSettingsStore } from '../../store/settingsStore'
+import { isInstalledApp } from '../../utils/resumeRoute'
 
 type PlaceLike = Pick<Place | AssignmentPlace, 'name' | 'address' | 'lat' | 'lng' | 'google_place_id' | 'google_ftid'>
 
@@ -196,14 +197,4 @@ export function openNavigationTarget(target: NavigationTarget): void {
   // A geo: link is handed to the system, which asks for the app; a new tab would stay blank.
   if (target.id === 'geo' || isInstalledApp()) window.location.href = target.url
   else window.open(target.url, '_blank', 'noopener,noreferrer')
-}
-
-/** True in a display mode that has no tab strip to close a stray window from. */
-function isInstalledApp(): boolean {
-  if (typeof window === 'undefined') return false
-  const standalone = ['standalone', 'fullscreen', 'minimal-ui'].some(
-    mode => window.matchMedia?.(`(display-mode: ${mode})`).matches,
-  )
-  // iOS predates the display-mode query for home-screen apps.
-  return standalone || (window.navigator as { standalone?: boolean }).standalone === true
 }
