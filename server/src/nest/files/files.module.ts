@@ -40,7 +40,9 @@ import { MAX_FILE_SIZE, MAX_VIDEO_SIZE } from './files.constants';
     // AuthModule + McpSharedModule feed FilesMcp's demo and RBAC guards. Neither is
     // @Global, and AuthModule reaches this domain only through the leaf
     // AllowedFileTypesModule, so importing it here stays cycle-free.
-    EphemeralTokenModule, PermissionsModule, AppConfigModule, RealtimeModule, PluginGuardsModule, AuthModule, McpSharedModule],
+    EphemeralTokenModule, PermissionsModule, AppConfigModule, RealtimeModule, PluginGuardsModule, AuthModule, McpSharedModule,
+    // FilesMcp's upload tool checks the same extension list as the multipart filter.
+    AllowedFileTypesModule],
   controllers: [FilesController, FilesDownloadController],
   providers: [FilesService, FilesRpc, FilesMcp],
   exports: [FilesService],

@@ -47,3 +47,17 @@ export const BLOCKED_EXTENSIONS = [
 // the extra '..' keeps the same absolute <server>/uploads/files under both the
 // src (vitest) and dist (runtime) layouts.
 export const filesDir = path.join(__dirname, '../../../uploads/files');
+
+/**
+ * Whether a trip-file upload named `originalname` passes the extension rules:
+ * never a blocked extension or an SVG, otherwise on the operator's list (or `*`),
+ * and video regardless of that list (#823). Shared by the multipart filter and
+ * the MCP upload tool so the two ingestion paths cannot drift apart.
+ */
+export function isUploadTypeAllowed(originalname: string, mimetype: string, allowedList: string): boolean {
+  const ext = path.extname(originalname).toLowerCase();
+  if (BLOCKED_EXTENSIONS.includes(ext) || mimetype.includes('svg')) return false;
+  const allowed = allowedList.split(',').map((e) => e.trim().toLowerCase());
+  const fileExt = ext.replace('.', '');
+  return allowed.includes(fileExt) || isVideoExtension(fileExt) || allowed.includes('*');
+}

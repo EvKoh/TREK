@@ -233,7 +233,7 @@ export function createMcpTestRegistry(): McpRegistry {
       new DaysMcp(daysService, authService, guards, dayRemovalService),
       new RoadtripMcp(new RoadtripService(dbService, realtimeService), dbService, guards, authService, addonsService),
       new RoadtripPreferencesMcp(new RoadtripPreferencesService(dbService, realtimeService), authService, addonsService, dbService, guards),
-      new FilesMcp(new FilesService(dbService, permissionsService, realtimeService, new EphemeralTokenService(), generalStorage), authService, guards),
+      new FilesMcp(new FilesService(dbService, permissionsService, realtimeService, new EphemeralTokenService(), generalStorage), authService, guards, new AllowedFileTypesService(dbService)),
       new AccommodationsMcp(accommodationsService, dbService, placesService, authService, guards),
       new AssignmentsMcp(assignmentsService, daysService, authService, guards),
       new CollabMcp(collabService, authService, addonsService, guards),
