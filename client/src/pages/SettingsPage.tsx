@@ -3,6 +3,7 @@ import { Settings, SlidersHorizontal, Paintbrush, Map, Bell, Plug, CloudOff, Use
 import { useTranslation } from '../i18n'
 import PageShell from '../components/Layout/PageShell'
 import PageSidebar, { type PageSidebarTab } from '../components/Layout/PageSidebar'
+import { SettingsHeader } from '../components/Settings/settingsKit'
 import DisplaySettingsTab from '../components/Settings/DisplaySettingsTab'
 import AppearanceSettingsTab from '../components/Settings/AppearanceSettingsTab'
 import MapSettingsTab from '../components/Settings/MapSettingsTab'
@@ -55,18 +56,10 @@ function SettingsPageDesktop(): React.ReactElement {
 
   return (
     <PageShell background="var(--bg-secondary)">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
           {/* Header */}
           <HelpAnchor id={helpId} />
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-surface-tertiary">
-              <Settings className="w-5 h-5 text-content-secondary" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-content">{t('settings.title')}</h1>
-              <p className="text-sm text-content-muted">{t('settings.subtitle')}</p>
-            </div>
-          </div>
+          <SettingsHeader icon={Settings} title={t('settings.title')} subtitle={t('settings.subtitle')} />
 
           {/* Sidebar layout */}
           <PageSidebar
