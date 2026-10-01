@@ -1055,6 +1055,8 @@ export function TransportModal({ isOpen, onClose, onSave, reservation, days, sel
       width="editor"
       align="top"
       blocked={showDeleteConfirm}
+      // A stray click beside the editor asks before the typing is lost (#2253).
+      discardGuard={{ form, waypoints, trainWaypoints, carStops, files: pendingFiles.length, travelers: [...travelerIds] }}
       onSubmit={automated ? undefined : handleSubmit}
       header={header}
       footer={footer}

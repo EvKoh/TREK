@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ButtonHTMLAttributes, type ClipboardEvent, type CSSProperties, type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
+import { useCallback, useEffect, useRef, useState, type ButtonHTMLAttributes, type ClipboardEvent, type CSSProperties, type FormEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { Trash2, X } from 'lucide-react'
 import { useTranslation } from '../../i18n'
@@ -39,6 +39,20 @@ export interface DialogShellProps {
   bodyClassName?: string
   /** A paste anywhere in the panel, head band included (a note takes pasted images from its title too). */
   onPaste?: (e: ClipboardEvent<HTMLDivElement>) => void
+  /**
+   * The editor's state, for the unsaved-changes question (#2253). Snapshotted at
+   * the first key or pointer press inside the panel, so whatever the dialog
+   * loaded on open counts as the starting point. A click on the backdrop or
+   * Escape then asks before throwing away a state that differs from it. Must be
+   * JSON-serialisable; pass counts for files and arrays for sets.
+   */
+  discardGuard?: unknown
+}
+
+const DISCARD_BUTTON = 'inline-flex items-center gap-1.5 rounded-[10px] bg-danger px-4 py-2 font-medium text-white hover:opacity-90' // theme-lint-disable: white on the danger fill, as ConfirmDialog draws it
+
+const snapshot = (value: unknown): string | null => {
+  try { return JSON.stringify(value) ?? null } catch { return null }
 }
 
 /**
@@ -49,18 +63,40 @@ export function DialogShell({ open = true, ...frame }: DialogShellProps) {
   return open ? <DialogFrame {...frame} /> : null
 }
 
-function DialogFrame({ onClose, labelledBy, width = 'detail', align = 'center', blocked = false, header, footer, onSubmit, children, bodyClassName, onPaste }: Omit<DialogShellProps, 'open'>) {
+function DialogFrame({ onClose, labelledBy, width = 'detail', align = 'center', blocked = false, header, footer, onSubmit, children, bodyClassName, onPaste, discardGuard }: Omit<DialogShellProps, 'open'>) {
+  const { t } = useTranslation()
   const panelRef = useRef<HTMLDivElement>(null)
   const pressedOn = useRef<EventTarget | null>(null)
   // Read while rendering, before a field inside can take the focus with autoFocus.
   const [focusedBefore] = useState(() => document.activeElement)
+  // The unsaved-changes question (#2253): the state at the first touch, and
+  // whether the question is on screen.
+  const baseline = useRef<string | null>(null)
+  const guarded = discardGuard !== undefined
+  const guardRef = useRef(discardGuard)
+  useEffect(() => { guardRef.current = discardGuard })
+  const [asking, setAsking] = useState(false)
+  const markStart = () => { if (guarded && baseline.current === null) baseline.current = snapshot(discardGuard) }
+  // The backdrop and Escape: the two ways out a hand can take by accident.
+  const requestClose = useCallback(() => {
+    if (guardRef.current !== undefined && baseline.current !== null && snapshot(guardRef.current) !== baseline.current) setAsking(true)
+    else onClose()
+  }, [onClose])
+  const held = blocked || asking
 
   useEffect(() => {
-    if (blocked) return
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && !e.defaultPrevented) onClose() }
+    if (held) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && !e.defaultPrevented) requestClose() }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
-  }, [blocked, onClose])
+  }, [held, requestClose])
+
+  useEffect(() => {
+    if (!asking) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.preventDefault(); setAsking(false) } }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [asking])
 
   // The page stays put behind the dialog, the focus moves into it (the first text
   // field on a desktop, #1302), and whatever opened it gets the focus back.
@@ -90,7 +126,7 @@ function DialogFrame({ onClose, labelledBy, width = 'detail', align = 'center', 
       // dragged out of a field must not throw the dialog away.
       onMouseDown={e => { pressedOn.current = e.target }}
       onClick={e => {
-        if (!blocked && e.target === e.currentTarget && pressedOn.current === e.currentTarget) onClose()
+        if (!held && e.target === e.currentTarget && pressedOn.current === e.currentTarget) requestClose()
         pressedOn.current = null
       }}
     >
@@ -102,12 +138,28 @@ function DialogFrame({ onClose, labelledBy, width = 'detail', align = 'center', 
         aria-labelledby={labelledBy}
         tabIndex={-1}
         onPaste={onPaste}
+        onKeyDownCapture={markStart}
+        onPointerDownCapture={markStart}
         onKeyDown={e => { if (panelRef.current) trapTab(e, panelRef.current) }}
-        className={`trek-modal-enter flex max-h-full w-full ${PANEL_WIDTH[width]} flex-col overflow-hidden rounded-[22px] bg-surface-card shadow-2xl outline-none`}
+        className={`trek-modal-enter relative flex max-h-full w-full ${PANEL_WIDTH[width]} flex-col overflow-hidden rounded-[22px] bg-surface-card shadow-2xl outline-none`}
       >
         {header}
         {body}
         {footer}
+        {asking && (
+          <div className="trek-backdrop-enter absolute inset-0 z-10 grid place-items-center p-6 backdrop-blur-[2px]" style={{ background: 'color-mix(in srgb, var(--bg-card) 72%, transparent)' }}>
+            <div role="alertdialog" aria-labelledby={`${labelledBy}-discard`} className="trek-modal-enter w-full max-w-[340px] rounded-[18px] border border-edge-faint bg-surface-card p-5 shadow-xl">
+              <div id={`${labelledBy}-discard`} className="font-semibold text-content" style={fs(15, 'subtitle')}>{t('common.unsavedTitle')}</div>
+              <p className="m-0 mt-1.5 text-content-muted" style={fs(12.5, 'body')}>{t('common.unsavedMessage')}</p>
+              <div className="mt-4 flex justify-end gap-2">
+                <DialogButton autoFocus onClick={() => setAsking(false)}>{t('common.keepEditing')}</DialogButton>
+                <button type="button" onClick={() => { setAsking(false); onClose() }} className={DISCARD_BUTTON} style={fs(13, 'body')}>
+                  {t('common.discard')}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>,
     document.body,

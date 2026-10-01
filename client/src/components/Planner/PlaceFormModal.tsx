@@ -995,6 +995,8 @@ export default function PlaceFormModal(props: PlaceFormModalProps) {
       labelledBy={titleId}
       width={width}
       align="top"
+      // A stray click beside the editor asks before the typing is lost (#2253).
+      discardGuard={{ form, files: S.pendingFiles.length }}
       onPaste={S.handlePaste}
       header={header}
       footer={footer}

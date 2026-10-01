@@ -1,5 +1,6 @@
 // FE-COMP-DIALOGSHELL-001 to FE-COMP-DIALOGSHELL-013
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { useState } from 'react';
 import { render, screen, fireEvent } from '../../../tests/helpers/render';
 import userEvent from '@testing-library/user-event';
 import { resetBodyScrollLock } from '../../utils/bodyScrollLock';
@@ -56,6 +57,58 @@ describe('DialogShell', () => {
     expect(screen.getByText('Document').parentElement?.className).toBe('preview-body');
     fireEvent.paste(screen.getByRole('dialog', { name: 'Preview' }));
     expect(onPaste).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('DialogShell unsaved-changes question (#2253)', () => {
+  function Editor() {
+    const [name, setName] = useState('');
+    return (
+      <DialogShell onClose={onClose} labelledBy="e-title" discardGuard={{ name }}
+        header={<DialogHeader tile={null} tint={NEUTRAL_TINT} labelId="e-title" onClose={onClose} title="Place" />}>
+        <input aria-label="Name" value={name} onChange={e => setName(e.target.value)} />
+      </DialogShell>
+    );
+  }
+  const backdrop = () => document.querySelector('.trek-modal-backdrop') as HTMLElement;
+  const clickBackdrop = () => { fireEvent.mouseDown(backdrop()); fireEvent.click(backdrop()); };
+
+  it('FE-COMP-DIALOGSHELL-2253-1: an untouched editor closes on the backdrop straight away', () => {
+    render(<Editor />);
+    clickBackdrop();
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('FE-COMP-DIALOGSHELL-2253-2: after typing, the backdrop asks; keep editing stays, discard closes', async () => {
+    const user = userEvent.setup();
+    render(<Editor />);
+    await user.type(screen.getByLabelText('Name'), 'Cafe');
+    clickBackdrop();
+    expect(onClose).not.toHaveBeenCalled();
+    expect(screen.getByRole('alertdialog')).toHaveTextContent('Discard your changes?');
+    await user.click(screen.getByRole('button', { name: 'Keep editing' }));
+    expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Name')).toHaveValue('Cafe');
+
+    await user.keyboard('{Escape}');
+    expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    // Escape on the question only takes the question away.
+    await user.keyboard('{Escape}');
+    expect(screen.queryByRole('alertdialog')).not.toBeInTheDocument();
+    expect(onClose).not.toHaveBeenCalled();
+
+    clickBackdrop();
+    await user.click(screen.getByRole('button', { name: 'Discard' }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('FE-COMP-DIALOGSHELL-2253-3: typing back to where it started closes without asking', async () => {
+    const user = userEvent.setup();
+    render(<Editor />);
+    await user.type(screen.getByLabelText('Name'), 'a');
+    await user.clear(screen.getByLabelText('Name'));
+    clickBackdrop();
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });
 

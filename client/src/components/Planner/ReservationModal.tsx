@@ -439,6 +439,8 @@ export function ReservationModal({ isOpen, onClose, onSave, reservation, days, p
       labelledBy={titleId}
       width="editor"
       align="top"
+      // A stray click beside the editor asks before the typing is lost (#2253).
+      discardGuard={{ form, files: pendingFiles.length, travelers: [...travelerIds] }}
       onSubmit={handleSubmit}
       header={header}
       footer={footer}
