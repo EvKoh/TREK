@@ -37,6 +37,12 @@ function mockList(p: Record<string, unknown>) {
 
 beforeEach(() => resetAllStores())
 
+/** A press on a dialog's backdrop: DialogShell closes only when the press both starts and ends there. */
+function clickBackdrop(el: HTMLElement) {
+  fireEvent.mouseDown(el)
+  fireEvent.click(el)
+}
+
 describe('AdminPluginsPanel — allowed-hosts chip', () => {
   it('FE-COMP-PLUGINS-EGRESS-001: invites the admin to add a host when none is set', async () => {
     mockList(plugin({ egressHostCount: 0 }))
@@ -658,7 +664,7 @@ describe('AdminPluginsPanel — load states and toolbar', () => {
     withToast()
     await screen.findByText('Gotify')
 
-    fireEvent.click(screen.getAllByTitle('Rescan')[0])
+    fireEvent.click(screen.getAllByRole('button', { name: 'Rescan' })[0])
 
     expect(await screen.findByText('Rescanned the plugins folder')).toBeInTheDocument()
     expect(refreshFlags).toContain('1')
@@ -676,7 +682,7 @@ describe('AdminPluginsPanel — sideloading', () => {
 
     const input = container.querySelector('input[type="file"]') as HTMLInputElement
     const clickSpy = vi.spyOn(input, 'click').mockImplementation(() => {})
-    fireEvent.click(screen.getAllByTitle('Upload plugin')[0])
+    fireEvent.click(screen.getAllByRole('button', { name: 'Upload plugin' })[0])
     expect(clickSpy).toHaveBeenCalled()
     clickSpy.mockRestore()
 
@@ -763,7 +769,7 @@ describe('AdminPluginsPanel — row actions', () => {
 
   /** Every modal in the panel closes by clicking its backdrop. */
   function closeModal() {
-    fireEvent.click(document.querySelector('.fixed.inset-0.z-50') as HTMLElement)
+    clickBackdrop(document.querySelector('.trek-modal-backdrop') as HTMLElement)
   }
 
   it('FE-COMP-PLUGINS-PANEL-014: the error log lists what the runtime recorded', async () => {
@@ -888,7 +894,7 @@ describe('AdminPluginsPanel — row actions', () => {
     const body = (await screen.findByText('gotify.lan')).closest('.overflow-y-auto')
     expect(body).not.toBeNull()
     expect(body).toContainElement(screen.getByPlaceholderText('gotify.example.com'))
-    expect(body!.parentElement!.className).toContain('max-h-[88vh]')
+    expect(body!.parentElement!.className).toContain('max-h-full')
   })
 })
 
@@ -1875,7 +1881,7 @@ describe('AdminPluginsPanel toolbar and dialogs', () => {
     await user.click(screen.getByRole('button', { name: /view error log/i }))
 
     const empty = await screen.findByText(/no errors/i)
-    fireEvent.click(empty.closest('.fixed') as HTMLElement)
+    clickBackdrop(empty.closest('.fixed') as HTMLElement)
     await waitFor(() => expect(screen.queryByText(/no errors/i)).not.toBeInTheDocument())
   })
 
@@ -2052,7 +2058,7 @@ describe('AdminPluginsPanel registry cards and dependency chips', () => {
     fireEvent.keyDown(card, { key: 'Enter' })
     expect(await screen.findByRole('heading', { name: 'Mapper' })).toBeInTheDocument()
 
-    fireEvent.click(screen.getByRole('heading', { name: 'Mapper' }).closest('.fixed') as HTMLElement)
+    clickBackdrop(screen.getByRole('heading', { name: 'Mapper' }).closest('.fixed') as HTMLElement)
     await waitFor(() => expect(screen.queryByRole('heading', { name: 'Mapper' })).not.toBeInTheDocument())
 
     fireEvent.keyDown(card, { key: ' ' })
@@ -2174,7 +2180,7 @@ describe('AdminPluginsPanel signature fingerprints and dismissals', () => {
     fireEvent.click(await screen.findByRole('button', { name: /review/i }))
     const detail = await screen.findByText('only half signed')
 
-    fireEvent.click(detail.closest('.fixed') as HTMLElement)
+    clickBackdrop(detail.closest('.fixed') as HTMLElement)
     await waitFor(() => expect(screen.queryByText('only half signed')).not.toBeInTheDocument())
   })
 
@@ -2196,7 +2202,7 @@ describe('AdminPluginsPanel signature fingerprints and dismissals', () => {
 
     await user.click(screen.getByRole('button', { name: /1 allowed host/i }))
     const reopened = (await screen.findByText('gotify.mydomain.com')).closest('.fixed') as HTMLElement
-    fireEvent.click(reopened)
+    clickBackdrop(reopened)
     await waitFor(() => expect(screen.queryByText('gotify.mydomain.com')).not.toBeInTheDocument())
   })
 
@@ -2355,15 +2361,17 @@ describe('AdminPluginsPanel — instance settings', () => {
     fireEvent.click(screen.getByText('Instance settings'))
 
     // Stored values land in the right controls; an unset value renders empty.
-    const select = await screen.findByRole('combobox', {}, { timeout: 5000 })
-    expect(select).toHaveValue('slow')
-    expect(screen.getByRole('checkbox')).toBeChecked()
+    const select = await screen.findByRole('button', { name: 'Mode' }, { timeout: 5000 })
+    expect(select).toHaveTextContent('Slow')
+    const toggle = screen.getByRole('button', { name: 'enabled' })
+    expect(toggle).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByRole('spinbutton')).toHaveValue(null)
     expect(screen.getByText('Pick one')).toBeInTheDocument() // hint
     expect(screen.getByText('enabled')).toBeInTheDocument() // label falls back to the key
 
-    fireEvent.change(select, { target: { value: 'fast' } })
-    fireEvent.click(screen.getByRole('checkbox'))
+    fireEvent.click(select)
+    fireEvent.click(await screen.findByRole('button', { name: 'Fast' }))
+    fireEvent.click(toggle)
     fireEvent.change(screen.getByRole('spinbutton'), { target: { value: '3' } })
     fireEvent.click(screen.getByRole('button', { name: /^save$/i }))
 

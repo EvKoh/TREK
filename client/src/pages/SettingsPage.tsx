@@ -55,7 +55,7 @@ function SettingsPageDesktop(): React.ReactElement {
   ]
 
   return (
-    <PageShell background="var(--bg-secondary)">
+    <PageShell background="var(--bg-primary)">
       <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
           {/* Header */}
           <HelpAnchor id={helpId} />

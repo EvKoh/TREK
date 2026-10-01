@@ -1,7 +1,9 @@
-import { Check, Lock, Minus } from 'lucide-react'
+import { Check, Lock, Minus, UsersRound } from 'lucide-react'
 import type { NotificationDefault } from '@trek/shared'
 import { useTranslation } from '../../i18n'
 import { Tooltip } from '../../components/shared/Tooltip'
+import { SettingsCard } from '../../components/Settings/settingsKit'
+import { fs } from '../../components/shared/DialogShell'
 import { EVENT_LABEL_KEYS, channelLabel } from '../../components/Settings/notificationLabels'
 import { useNotificationDefaults } from './useNotificationDefaults'
 
@@ -32,60 +34,56 @@ export default function AdminNotificationDefaultsPanel() {
   const columns = `minmax(0, 1fr) ${channels.map(() => '76px').join(' ')}`
 
   return (
-    <section className="rounded-xl border border-edge bg-surface-card" aria-labelledby="notif-defaults-title">
-      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-edge-faint px-6 py-4">
-        <div className="min-w-0 flex-1 basis-72">
-          <h2 id="notif-defaults-title" className="font-semibold text-content">{t('admin.notificationDefaults.title')}</h2>
-          <p className="mt-1 text-xs text-content-faint">{t('admin.notificationDefaults.hint')}</p>
-        </div>
-        {/* The legend is the key to the cells below, so it reads in the same three chips. */}
-        <div className="flex flex-wrap items-center gap-1.5" aria-hidden="true">
-          {(['on', 'off', 'blocked'] as const).map(state => {
-            const Icon = ICON[state]
-            return (
-              <span key={state} className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium ${TONE[state]}`}>
-                <Icon size={11} strokeWidth={2.6} />
-                {t(LABEL_KEYS[state])}
-              </span>
-            )
-          })}
-        </div>
+    <SettingsCard id="notif-defaults" icon={UsersRound} title={t('admin.notificationDefaults.title')} hint={t('admin.notificationDefaults.hint')}>
+      {/* The legend is the key to the cells below, so it reads in the same three chips. */}
+      <div className="flex flex-wrap items-center gap-1.5" aria-hidden="true">
+        {(['on', 'off', 'blocked'] as const).map(state => {
+          const Icon = ICON[state]
+          return (
+            <span key={state} className={`inline-flex items-center gap-1 rounded-full border px-2 py-[2px] font-semibold ${TONE[state]}`} style={fs(11)}>
+              <Icon size={11} strokeWidth={2.6} />
+              {t(LABEL_KEYS[state])}
+            </span>
+          )
+        })}
       </div>
-      <div className="overflow-x-auto px-6 pb-5 pt-3">
+      <div className={`overflow-x-auto rounded-[12px] border border-edge-faint bg-surface-card transition-opacity ${saving ? 'opacity-60' : ''}`}>
         <div className="min-w-max">
-          <div className="grid items-end gap-1 border-b border-edge pb-1.5" style={{ gridTemplateColumns: columns }}>
+          <div className="grid items-end gap-1 border-b border-edge-faint px-3.5 pb-2 pt-2.5" style={{ gridTemplateColumns: columns }}>
             <span />
             {channels.map(ch => (
-              <span key={ch.id} className="text-center text-caption font-semibold uppercase tracking-[0.04em] text-content-faint">{channelLabel(ch, t)}</span>
+              <span key={ch.id} className="truncate text-center font-geist font-bold uppercase tracking-[.08em] text-content-faint" style={fs(9.5)}>{channelLabel(ch, t)}</span>
             ))}
           </div>
-          {matrix.event_types.map(eventType => {
-            const implemented = matrix.implemented_combos[eventType] ?? []
-            return (
-              <div key={eventType} className="grid items-center gap-1 border-b border-edge-faint py-2 last:border-b-0" style={{ gridTemplateColumns: columns }}>
-                <span className="min-w-0 truncate text-body text-content">{t(EVENT_LABEL_KEYS[eventType]) || eventType}</span>
-                {channels.map(ch => {
-                  if (!implemented.includes(ch.id)) return <span key={ch.id} className="text-center text-content-faint">—</span>
-                  const state = matrix.defaults[eventType]?.[ch.id] ?? 'on'
-                  const Icon = ICON[state]
-                  const label = `${t(EVENT_LABEL_KEYS[eventType]) || eventType}, ${channelLabel(ch, t)}: ${t(LABEL_KEYS[state])}`
-                  return (
-                    <div key={ch.id} className="flex justify-center">
-                      <Tooltip label={t('admin.notificationDefaults.cycle', { next: t(LABEL_KEYS[NEXT[state]]) })}>
-                        <button type="button" aria-label={label} data-state={state} disabled={saving}
-                          onClick={() => void cycle(eventType, ch.id, NEXT[state])}
-                          className={`inline-flex h-7 w-12 items-center justify-center rounded-full border transition-colors disabled:opacity-60 ${TONE[state]}`}>
-                          <Icon size={13} strokeWidth={2.6} />
-                        </button>
-                      </Tooltip>
-                    </div>
-                  )
-                })}
-              </div>
-            )
-          })}
+          <div className="divide-y divide-edge-faint">
+            {matrix.event_types.map(eventType => {
+              const implemented = matrix.implemented_combos[eventType] ?? []
+              return (
+                <div key={eventType} className="grid items-center gap-1 px-3.5 py-2" style={{ gridTemplateColumns: columns }}>
+                  <span className="min-w-0 truncate font-medium text-content" style={fs(13, 'body')}>{t(EVENT_LABEL_KEYS[eventType]) || eventType}</span>
+                  {channels.map(ch => {
+                    if (!implemented.includes(ch.id)) return <span key={ch.id} className="text-center text-content-faint" style={fs(13, 'body')}>—</span>
+                    const state = matrix.defaults[eventType]?.[ch.id] ?? 'on'
+                    const Icon = ICON[state]
+                    const label = `${t(EVENT_LABEL_KEYS[eventType]) || eventType}, ${channelLabel(ch, t)}: ${t(LABEL_KEYS[state])}`
+                    return (
+                      <div key={ch.id} className="flex justify-center">
+                        <Tooltip label={t('admin.notificationDefaults.cycle', { next: t(LABEL_KEYS[NEXT[state]]) })}>
+                          <button type="button" aria-label={label} data-state={state} disabled={saving}
+                            onClick={() => void cycle(eventType, ch.id, NEXT[state])}
+                            className={`inline-flex h-7 w-12 items-center justify-center rounded-full border transition-colors hover:opacity-85 disabled:cursor-default ${TONE[state]}`}>
+                            <Icon size={13} strokeWidth={2.6} />
+                          </button>
+                        </Tooltip>
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
-    </section>
+    </SettingsCard>
   )
 }

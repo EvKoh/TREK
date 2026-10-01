@@ -37,9 +37,9 @@ function replaySmtp(spy: Spy, callIndex: number, base: SmtpValues = {}): SmtpVal
   return updater(base);
 }
 
-/** The card element whose <h2> matches the given heading text. */
+/** The card (its section) whose <h2> matches the given heading text. */
 function card(heading: string | RegExp): HTMLElement {
-  return screen.getByRole('heading', { name: heading }).closest<HTMLElement>('.rounded-xl')!;
+  return screen.getByRole('heading', { name: heading }).closest<HTMLElement>('section')!;
 }
 
 const EMAIL_ON: SmtpValues = { notification_channels: 'email', smtp_host: 'mail.example.com' };
@@ -98,7 +98,7 @@ describe('AdminNotificationsTab', () => {
   it('FE-ADMNOT-004: greys out the SMTP body while the email channel is off', () => {
     renderTab({ smtpValues: { notification_channels: 'none' } });
 
-    const body = screen.getByPlaceholderText('mail.example.com').closest<HTMLElement>('.p-6')!;
+    const body = screen.getByTestId('smtp-fields');
     expect(body.className).toContain('pointer-events-none');
   });
 
@@ -162,7 +162,7 @@ describe('AdminNotificationsTab', () => {
   it('FE-ADMNOT-009: falls back to the legacy singular notification_channel key', () => {
     renderTab({ smtpValues: { notification_channel: 'email', smtp_host: 'mail.example.com' } });
 
-    const body = screen.getByPlaceholderText('mail.example.com').closest<HTMLElement>('.p-6')!;
+    const body = screen.getByTestId('smtp-fields');
     expect(body.className).not.toContain('pointer-events-none');
   });
 
@@ -179,8 +179,8 @@ describe('AdminNotificationsTab', () => {
   it('FE-ADMNOT-011: the TLS toggle flips smtp_skip_tls_verify', () => {
     const admin = renderTab({ smtpValues: { ...EMAIL_ON, smtp_skip_tls_verify: 'false' } });
 
-    const tlsRow = screen.getByText('Skip TLS certificate check').closest<HTMLElement>('div[style]')!;
-    fireEvent.click(within(tlsRow).getByRole('button'));
+    const tlsToggle = screen.getByRole('button', { name: 'Skip TLS certificate check' });
+    fireEvent.click(tlsToggle);
 
     expect(replaySmtp(admin.setSmtpValues, 0).smtp_skip_tls_verify).toBe('true');
   });
@@ -188,8 +188,8 @@ describe('AdminNotificationsTab', () => {
   it('FE-ADMNOT-012: the TLS toggle flips back when already enabled', () => {
     const admin = renderTab({ smtpValues: { ...EMAIL_ON, smtp_skip_tls_verify: 'true' } });
 
-    const tlsRow = screen.getByText('Skip TLS certificate check').closest<HTMLElement>('div[style]')!;
-    fireEvent.click(within(tlsRow).getByRole('button'));
+    const tlsToggle = screen.getByRole('button', { name: 'Skip TLS certificate check' });
+    fireEvent.click(tlsToggle);
 
     expect(replaySmtp(admin.setSmtpValues, 0).smtp_skip_tls_verify).toBe('false');
   });

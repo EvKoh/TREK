@@ -41,7 +41,7 @@ function setPlugins(plugins: ActivePlugin[]): void {
 }
 
 /** The settings card for a plugin (the heading's rounded container). */
-const cardFor = (name: string) => screen.getByRole('heading', { name }).closest('div.rounded-xl') as HTMLElement;
+const cardFor = (name: string) => screen.getByRole('heading', { name }).closest('section') as HTMLElement;
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -160,10 +160,13 @@ describe('PluginSettingsTab', () => {
     setPlugins([plugin()]);
     render(<PluginSettingsTab />);
 
-    const select = await screen.findByRole('combobox') as HTMLSelectElement;
-    expect(select.value).toBe('c');
-    await user.selectOptions(select, 'f');
-    expect(select.value).toBe('f');
+    // A CustomSelect: the field's label names the trigger, the options open in a portal.
+    const trigger = await screen.findByRole('button', { name: 'Unit' });
+    expect(trigger).toHaveTextContent('Celsius');
+    await user.click(trigger);
+    const choices = await screen.findAllByRole('button', { name: 'Fahrenheit' });
+    await user.click(choices[choices.length - 1]);
+    expect(trigger).toHaveTextContent('Fahrenheit');
   });
 
   it('FE-COMP-PLUGINSETTINGS-009: a select field without options falls back to a text input', async () => {

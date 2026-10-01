@@ -3,7 +3,7 @@ import { http, HttpResponse } from 'msw';
 import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { server } from '../../../tests/helpers/msw/server';
-import { fireEvent, render, screen, waitFor, within } from '../../../tests/helpers/render';
+import { fireEvent, render, screen, waitFor } from '../../../tests/helpers/render';
 import { buildAdminHook, buildAdminUser, type AdminHook } from '../../../tests/helpers/mobileAdmin';
 import { resetAllStores } from '../../../tests/helpers/store';
 import { useTranslation } from '../../i18n';
@@ -259,7 +259,10 @@ describe('AdminUserModals', () => {
   it('FE-ADMMOD-018: the update popup closes from the Close button', () => {
     const admin = renderModals({ showUpdateModal: true, updateInfo: buildUpdateInfo() });
 
-    fireEvent.click(screen.getByRole('button', { name: /close/i }));
+    // The head band's X and the footer's Close button both close it.
+    const closeButtons = screen.getAllByRole('button', { name: /^close$/i });
+    expect(closeButtons).toHaveLength(2);
+    fireEvent.click(closeButtons[closeButtons.length - 1]);
 
     expect(admin.setShowUpdateModal).toHaveBeenCalledWith(false);
   });
@@ -267,11 +270,14 @@ describe('AdminUserModals', () => {
   it('FE-ADMMOD-019: the update popup closes on backdrop click but not on inner click', () => {
     const admin = renderModals({ showUpdateModal: true, updateInfo: buildUpdateInfo() });
 
-    const inner = screen.getByText('How to Update').closest<HTMLElement>('div[style*="max-width"]')!;
+    const inner = screen.getByRole('dialog');
+    fireEvent.mouseDown(inner);
     fireEvent.click(inner);
     expect(admin.setShowUpdateModal).not.toHaveBeenCalled();
 
-    fireEvent.click(inner.parentElement!);
+    const backdrop = inner.parentElement!;
+    fireEvent.mouseDown(backdrop);
+    fireEvent.click(backdrop);
     expect(admin.setShowUpdateModal).toHaveBeenCalledWith(false);
   });
 
@@ -330,10 +336,8 @@ describe('AdminUserModals', () => {
   it('FE-ADMMOD-025: the modal X button closes the create-user modal', () => {
     const admin = renderModals({ showCreateUser: true });
 
-    const header = screen
-      .getByRole('heading', { name: 'Create User' })
-      .closest<HTMLElement>('div.flex.items-center.justify-between')!;
-    fireEvent.click(within(header).getByRole('button'));
+    expect(screen.getByRole('heading', { name: 'Create User' })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /^close$/i }));
 
     expect(admin.setShowCreateUser).toHaveBeenCalledWith(false);
   });
@@ -341,10 +345,8 @@ describe('AdminUserModals', () => {
   it('FE-ADMMOD-026: the modal X button closes the edit-user modal', () => {
     const admin = renderModals(editing);
 
-    const header = screen
-      .getByRole('heading', { name: 'Edit User' })
-      .closest<HTMLElement>('div.flex.items-center.justify-between')!;
-    fireEvent.click(within(header).getByRole('button'));
+    expect(screen.getByRole('heading', { name: 'Edit User' })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /^close$/i }));
 
     expect(admin.setEditingUser).toHaveBeenCalledWith(null);
   });
@@ -352,10 +354,8 @@ describe('AdminUserModals', () => {
   it('FE-ADMMOD-027: the modal X button closes the rotate-JWT modal', () => {
     const admin = renderModals({ showRotateJwtModal: true });
 
-    const header = screen
-      .getByRole('heading', { name: 'Rotate JWT Secret' })
-      .closest<HTMLElement>('div.flex.items-center.justify-between')!;
-    fireEvent.click(within(header).getByRole('button'));
+    expect(screen.getByRole('heading', { name: 'Rotate JWT Secret' })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /^close$/i }));
 
     expect(admin.setShowRotateJwtModal).toHaveBeenCalledWith(false);
   });

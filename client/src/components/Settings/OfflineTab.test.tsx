@@ -116,7 +116,7 @@ function setOnLine(value: boolean): void {
 }
 
 /** The Section wrapper card that carries the given heading. */
-const card = (title: string) => screen.getByText(title).closest('div.rounded-xl') as HTMLElement;
+const card = (title: string) => screen.getByText(title).closest('section') as HTMLElement;
 
 /** The Stat tile that carries the given label. */
 const stat = (label: string) => screen.getByText(label).parentElement as HTMLElement;
@@ -272,12 +272,14 @@ describe('OfflineTab', () => {
     render(<OfflineTab />);
 
     await screen.findByText('When a conflict happens');
-    const select = screen.getByRole('combobox') as HTMLSelectElement;
-    expect(select.value).toBe('ask');
-
-    await user.selectOptions(select, 'server');
+    // A CustomSelect: the row's label names the trigger, the options open in a portal.
+    const trigger = screen.getByRole('button', { name: 'When a conflict happens' });
+    expect(trigger).toHaveTextContent('Ask me each time');
+    await user.click(trigger);
+    const choices = await screen.findAllByRole('button', { name: 'Always keep the server version' });
+    await user.click(choices[choices.length - 1]);
     expect(getOfflinePrefs().conflictStrategy).toBe('server');
-    await waitFor(() => expect(select.value).toBe('server'));
+    await waitFor(() => expect(trigger).toHaveTextContent('Always keep the server version'));
   });
 
   it('FE-COMP-OFFLINETAB-011: Prepare renders live progress and the done marker', async () => {

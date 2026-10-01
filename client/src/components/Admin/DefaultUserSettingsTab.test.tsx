@@ -43,9 +43,9 @@ function withToast() {
   return render(<><ToastContainer /><DefaultUserSettingsTab /></>);
 }
 
-/** The selected option button is the one drawn with the strong border token. */
+/** The selected option is the pressed button of its segmented group. */
 function isActive(button: HTMLElement): boolean {
-  return (button.style.border || '').includes('var(--text-primary)');
+  return button.getAttribute('aria-pressed') === 'true';
 }
 
 /**

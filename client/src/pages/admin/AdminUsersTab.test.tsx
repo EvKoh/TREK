@@ -119,7 +119,7 @@ describe('AdminUsersTab', () => {
   it('FE-ADMUSR-008: edit button forwards the row user to handleEditUser', () => {
     const admin = renderTab({ users: [me, alice], currentUser: me });
 
-    const editButtons = screen.getAllByTitle('Edit User');
+    const editButtons = screen.getAllByLabelText('Edit User');
     fireEvent.click(editButtons[1]);
 
     expect(admin.handleEditUser).toHaveBeenCalledWith(alice);
@@ -128,7 +128,7 @@ describe('AdminUsersTab', () => {
   it('FE-ADMUSR-009: delete button forwards the row user to handleDeleteUser', () => {
     const admin = renderTab({ users: [me, alice], currentUser: me });
 
-    const deleteButtons = screen.getAllByTitle('Delete user');
+    const deleteButtons = screen.getAllByLabelText('Delete user');
     fireEvent.click(deleteButtons[1]);
 
     expect(admin.handleDeleteUser).toHaveBeenCalledWith(alice);
@@ -137,7 +137,7 @@ describe('AdminUsersTab', () => {
   it('FE-ADMUSR-010: the delete button of the current user is disabled', () => {
     renderTab({ users: [me, alice], currentUser: me });
 
-    const deleteButtons = screen.getAllByTitle('Delete user');
+    const deleteButtons = screen.getAllByLabelText('Delete user');
     expect(deleteButtons[0]).toBeDisabled();
     expect(deleteButtons[1]).not.toBeDisabled();
   });
@@ -167,7 +167,7 @@ describe('AdminUsersTab', () => {
     renderTab({ invites: [buildInvite({ expires_at: '2020-01-01T00:00:00.000Z' })] });
 
     expect(screen.getByText('Expired')).toBeInTheDocument();
-    expect(screen.queryByTitle('Copy link')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Copy link')).not.toBeInTheDocument();
   });
 
   it('FE-ADMUSR-015: marks an invite at its use limit as used up', () => {
@@ -185,10 +185,10 @@ describe('AdminUsersTab', () => {
   it('FE-ADMUSR-017: copy and delete buttons forward the invite token / id', () => {
     const admin = renderTab({ invites: [buildInvite()] });
 
-    fireEvent.click(screen.getByTitle('Copy link'));
+    fireEvent.click(screen.getByLabelText('Copy link'));
     expect(admin.copyInviteLink).toHaveBeenCalledWith('abcdefghijkl-rest-of-token');
 
-    fireEvent.click(screen.getByTitle('Delete'));
+    fireEvent.click(screen.getByLabelText('Delete'));
     expect(admin.handleDeleteInvite).toHaveBeenCalledWith(10);
   });
 
@@ -249,10 +249,8 @@ describe('AdminUsersTab', () => {
   it('FE-ADMUSR-024: the invite modal X button closes it', () => {
     const admin = renderTab({ showCreateInvite: true });
 
-    const header = screen
-      .getByRole('heading', { name: 'Create Link' })
-      .closest<HTMLElement>('div.flex.items-center.justify-between')!;
-    fireEvent.click(within(header).getByRole('button'));
+    expect(screen.getByRole('heading', { name: 'Create Link' })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /^close$/i }));
 
     expect(admin.setShowCreateInvite).toHaveBeenCalledWith(false);
   });

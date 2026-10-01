@@ -1,6 +1,9 @@
 import React from 'react'
+import { BellRing } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import { useWebPush } from '../../hooks/useWebPush'
+import { fs } from '../shared/DialogShell'
+import { SettingsCard, SETTINGS_BUTTON, SETTINGS_BUTTON_PRIMARY } from './settingsKit'
 
 /**
  * The "Push notifications on this device" card of the Notifications tab. Only
@@ -12,36 +15,40 @@ export default function WebPushCard(): React.ReactElement {
   const push = useWebPush()
 
   return (
-    <div className="mb-4 rounded-lg border border-edge bg-surface-secondary p-3">
-      <p className="mb-1 text-caption font-semibold text-content-secondary">{t('settings.webPush.title')}</p>
-      <p className="mb-2 text-caption text-content-faint">{t('settings.webPush.hint')}</p>
-      {push.stateText && (
-        <p role="status" className="mb-2 text-caption text-content-secondary">
-          {push.stateText}
-        </p>
-      )}
-      {push.canSwitch && (
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={push.toggle}
-            disabled={push.busy}
-            className={`rounded-md px-3 py-1.5 text-caption disabled:cursor-not-allowed disabled:opacity-60 ${
-              push.on ? 'border border-edge bg-transparent text-content-secondary' : 'bg-accent text-accent-text'
-            }`}
-          >
-            {push.switchLabel}
-          </button>
-          <button
-            type="button"
-            onClick={push.sendTest}
-            disabled={!push.canTest}
-            className="rounded-md border border-edge bg-transparent px-3 py-1.5 text-caption text-content-secondary disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {t('settings.notificationPreferences.sendTest')}
-          </button>
+    <SettingsCard icon={BellRing} title={t('settings.webPush.title')} hint={t('settings.webPush.hint')}>
+      {(push.stateText || push.canSwitch) && (
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 rounded-[12px] border border-edge-faint bg-surface-card px-3.5 py-3">
+          {push.stateText
+            ? (
+              <p role="status" className="m-0 min-w-0 flex-1 basis-56 text-content-secondary" style={fs(12.5, 'body')}>
+                {push.stateText}
+              </p>
+            )
+            : <span className="flex-1" />}
+          {push.canSwitch && (
+            <div className="flex flex-none flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={push.sendTest}
+                disabled={!push.canTest}
+                className={SETTINGS_BUTTON}
+                style={fs(13, 'body')}
+              >
+                {t('settings.notificationPreferences.sendTest')}
+              </button>
+              <button
+                type="button"
+                onClick={push.toggle}
+                disabled={push.busy}
+                className={push.on ? SETTINGS_BUTTON : SETTINGS_BUTTON_PRIMARY}
+                style={fs(13, 'body')}
+              >
+                {push.switchLabel}
+              </button>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </SettingsCard>
   )
 }
