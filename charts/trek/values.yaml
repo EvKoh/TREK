@@ -77,6 +77,10 @@ env:
   # Space-separated OIDC scopes to request. Must include scopes for any claim used by OIDC_ADMIN_CLAIM.
   # OIDC_DISCOVERY_URL: ""
   # Override the OIDC discovery endpoint for providers with non-standard paths (e.g. Authentik).
+  # HTTP_PROXY: ""
+  # HTTPS_PROXY: ""
+  # NO_PROXY: "localhost,127.0.0.1"
+  # Outbound proxy for TREK's requests to the internet; NO_PROXY lists hosts that bypass it.
   # DEMO_MODE: "false"
   # Enable demo mode (hourly data resets).
   # MCP_RATE_LIMIT: "300"

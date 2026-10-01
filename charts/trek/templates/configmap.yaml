@@ -70,6 +70,15 @@ data:
   {{- if .Values.env.OIDC_SCOPE }}
   OIDC_SCOPE: {{ .Values.env.OIDC_SCOPE | quote }}
   {{- end }}
+  {{- if .Values.env.HTTP_PROXY }}
+  HTTP_PROXY: {{ .Values.env.HTTP_PROXY | quote }}
+  {{- end }}
+  {{- if .Values.env.HTTPS_PROXY }}
+  HTTPS_PROXY: {{ .Values.env.HTTPS_PROXY | quote }}
+  {{- end }}
+  {{- if .Values.env.NO_PROXY }}
+  NO_PROXY: {{ .Values.env.NO_PROXY | quote }}
+  {{- end }}
   {{- if .Values.env.OIDC_DISCOVERY_URL }}
   OIDC_DISCOVERY_URL: {{ .Values.env.OIDC_DISCOVERY_URL | quote }}
   {{- end }}

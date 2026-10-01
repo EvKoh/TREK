@@ -343,6 +343,16 @@ export function deriveNet(raw: RawEnv) {
   return {
     allowInternalNetwork: parseBool(raw.ALLOW_INTERNAL_NETWORK) === true,
     allowLinkLocalIps: parseLinkLocalAllowList(raw.ALLOW_LINK_LOCAL_IPS).ips,
+    // The variables Node's own env proxy reads, both spellings, so the guarded
+    // requests below follow the same proxy as everything else (#1754).
+    proxy: {
+      http: (raw.HTTP_PROXY ?? raw.http_proxy)?.trim() || undefined,
+      https: (raw.HTTPS_PROXY ?? raw.https_proxy)?.trim() || undefined,
+      noProxy: ((raw.NO_PROXY ?? raw.no_proxy) || '')
+        .split(',')
+        .map(entry => entry.trim().toLowerCase())
+        .filter(Boolean),
+    },
   };
 }
 

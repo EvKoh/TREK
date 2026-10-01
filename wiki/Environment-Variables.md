@@ -145,13 +145,15 @@ proxying is disabled by default.
 | `HTTPS_PROXY` | Proxy URL for outbound HTTPS requests                         | —       |
 | `NO_PROXY`    | Comma-separated hosts or domains that should bypass the proxy | —       |
 
-> **Note:** Proxy environment variables apply to requests made through Node.js's default HTTP dispatcher. Requests
-> handled by TREK's SSRF protection use a dedicated dispatcher and do not use the environment proxy.
+> **Note:** Requests that go through TREK's SSRF protection (place photos, link previews, webhooks, Immich, Synology,
+> Dawarich and the other integrations) read the same three variables themselves and use the proxy as well, on any
+> install. Everything else follows Node's own environment proxy, which needs `NODE_USE_ENV_PROXY=1` (see below).
+> `NO_PROXY` takes `*`, a host (which also matches its subdomains, a leading dot is optional) or `host:port`.
 
 > **Container only.** Node ignores these variables unless it is started with `NODE_USE_ENV_PROXY=1`, and the official
 > image sets that for you. On a source or Proxmox install, set `NODE_USE_ENV_PROXY=1` alongside them or nothing will
-> change. On Helm the image already has it, but the chart's ConfigMap does not declare `HTTP_PROXY`, `HTTPS_PROXY` or
-> `NO_PROXY`, so a value under `env:` is dropped; patch the three onto the Deployment instead.
+> change. On Helm the image already has it, and the chart passes `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` from
+> `env:` through to the container.
 
 > **Set `NO_PROXY`.** Without it every request goes to the proxy, including the ones TREK makes to itself, such as the
 > container health check. `localhost,127.0.0.1` is a sensible minimum; add your own hosts as needed.
