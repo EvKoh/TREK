@@ -462,6 +462,7 @@ export default function MMapArea({ planner, shell }: MMapAreaProps) {
               // Tighter than the desktop card: the map is the whole screen here, so a
               // long day name ellipsizes rather than eating another 80px of it.
               maxWidth={240}
+              collapsible
             />
           )}
           {!planner.roadtripActive && (

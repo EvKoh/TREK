@@ -1,4 +1,5 @@
-import { AlertTriangle, Route } from 'lucide-react'
+import { useState } from 'react'
+import { AlertTriangle, ChevronDown, Route } from 'lucide-react'
 import { useTranslation } from '../../i18n'
 import { Tooltip } from '../shared/Tooltip'
 import { profileIcon } from '../Planner/DayPlanSidebarRouteConnector'
@@ -56,19 +57,40 @@ export function TripRouteOverviewPill({ active, onToggle }: { active: boolean; o
  * One component for both shells: the phone and the desktop place it differently but the
  * rows are the same rows, and a second copy of them is a second thing to keep in step.
  */
-export function TripRouteOverviewPanel({ overview, unit, selectedDayId, onSelectDay, maxWidth = 320 }: {
+export function TripRouteOverviewPanel({ overview, unit, selectedDayId, onSelectDay, maxWidth = 320, collapsible = false }: {
   overview: Overview
   unit: DistanceUnit
   selectedDayId?: number | null
   onSelectDay?: (dayId: number) => void
   /** How wide the card may grow before day names start to ellipsize. */
   maxWidth?: number
+  /** Opens on the total alone and lists the days on a tap. The phone asks for it: the
+   *  card grows upwards from its toggle and, past a few days, covers the middle of the
+   *  map and the day bar above it. */
+  collapsible?: boolean
 }) {
   const { t } = useTranslation()
+  const [expanded, setExpanded] = useState(!collapsible)
   if (!overview.days.length) return null
   // Only once the round is over: while it runs every leg still waiting is unrouted too,
   // and the ellipsis on the total already says the number is growing.
   const unrouted = overview.loading ? 0 : (overview.unroutedLegs ?? 0)
+  const headerStyle = { display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, padding: '10px 14px 8px' }
+  const totalLine = (
+    <>
+      <span className="text-content-muted" style={{ fontSize: 'calc(11px * var(--fs-scale-caption, 1))', textTransform: 'uppercase', letterSpacing: 0.4 }}>
+        {t('map.overview.total')}
+      </span>
+      {/* Same tier as the label beside it: the two read as one line rather than as a
+          heading with a number stuck under it. */}
+      <span className="text-content" style={{ fontSize: 'calc(11px * var(--fs-scale-caption, 1))', fontWeight: 600 }}>
+        {formatDistance(overview.totalDistance / 1000, unit)}
+        {/* Still routing: the number is a partial sum, and saying so beats a total
+            that silently grows while you read it. */}
+        {overview.loading && <span className="text-content-muted" style={{ fontWeight: 400 }}>{' '}…</span>}
+      </span>
+    </>
+  )
 
   return (
     <div
@@ -85,19 +107,26 @@ export function TripRouteOverviewPanel({ overview, unit, selectedDayId, onSelect
         width: 'fit-content', maxWidth,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, padding: '10px 14px 8px' }}>
-        <span className="text-content-muted" style={{ fontSize: 'calc(11px * var(--fs-scale-caption, 1))', textTransform: 'uppercase', letterSpacing: 0.4 }}>
-          {t('map.overview.total')}
-        </span>
-        {/* Same tier as the label beside it: the two read as one line rather than as a
-            heading with a number stuck under it. */}
-        <span className="text-content" style={{ fontSize: 'calc(11px * var(--fs-scale-caption, 1))', fontWeight: 600 }}>
-          {formatDistance(overview.totalDistance / 1000, unit)}
-          {/* Still routing: the number is a partial sum, and saying so beats a total
-              that silently grows while you read it. */}
-          {overview.loading && <span className="text-content-muted" style={{ fontWeight: 400 }}>{' '}…</span>}
-        </span>
-      </div>
+      {collapsible ? (
+        <button
+          type="button"
+          onClick={() => setExpanded(v => !v)}
+          aria-expanded={expanded}
+          aria-label={expanded ? t('map.overview.hideDays') : t('map.overview.showDays')}
+          data-testid="trip-overview-expand"
+          style={{ ...headerStyle, alignItems: 'center', width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left' }}
+        >
+          {totalLine}
+          <ChevronDown
+            size={14}
+            className="text-content-muted"
+            aria-hidden
+            style={{ flexShrink: 0, transform: expanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.14s' }}
+          />
+        </button>
+      ) : (
+        <div style={headerStyle}>{totalLine}</div>
+      )}
       {/* A leg the router refused stays a straight line and adds nothing to the sum, so
           the total is short by however much road those legs are. Said in words rather than
           left to the reader to notice, because the number is what a fuel estimate starts from. */}
@@ -111,7 +140,7 @@ export function TripRouteOverviewPanel({ overview, unit, selectedDayId, onSelect
           <span>{t('map.overview.unrouted', { count: unrouted })}</span>
         </div>
       )}
-      <div style={{ maxHeight: 220, overflowY: 'auto', borderTop: '1px solid var(--border-primary)' }}>
+      {expanded && <div style={{ maxHeight: 220, overflowY: 'auto', borderTop: '1px solid var(--border-primary)' }}>
         {overview.days.map(day => {
           const label = day.title || t('dayplan.dayN', { n: day.dayNumber })
           const dayUnrouted = overview.loading ? 0 : (day.unroutedLegs ?? 0)
@@ -158,7 +187,7 @@ export function TripRouteOverviewPanel({ overview, unit, selectedDayId, onSelect
             <div key={day.dayId} style={style}>{row}</div>
           )
         })}
-      </div>
+      </div>}
     </div>
   )
 }

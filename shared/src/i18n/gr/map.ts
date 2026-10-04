@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': 'Εμφάνιση όλου του ταξιδιού',
   'map.overview.hide': 'Απόκρυψη όλου του ταξιδιού',
   'map.overview.total': 'Συνολική απόσταση',
+  'map.overview.showDays': 'Εμφάνιση ημερών',
+  'map.overview.hideDays': 'Απόκρυψη ημερών',
   'map.attribution': 'Πηγές χάρτη',
   'map.overview.unrouted': '{count} σκέλος/η δεν μπόρεσαν να υπολογιστούν, οι αποστάσεις είναι ελλιπείς.',
   'map.overview.dayUnrouted': '{count} σκέλος/η αυτής της ημέρας δεν μπόρεσαν να υπολογιστούν',

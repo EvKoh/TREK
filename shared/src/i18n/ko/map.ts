@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': '전체 여행 보기',
   'map.overview.hide': '전체 여행 숨기기',
   'map.overview.total': '총 거리',
+  'map.overview.showDays': '일정 표시',
+  'map.overview.hideDays': '일정 숨기기',
   'map.attribution': '지도 출처',
   'map.overview.unrouted': '{count}개 구간의 경로를 계산할 수 없어 거리가 불완전합니다.',
   'map.overview.dayUnrouted': '이 날의 {count}개 구간 경로를 계산할 수 없습니다',

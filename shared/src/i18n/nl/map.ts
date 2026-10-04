@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': 'Hele reis tonen',
   'map.overview.hide': 'Hele reis verbergen',
   'map.overview.total': 'Totale afstand',
+  'map.overview.showDays': 'Dagen tonen',
+  'map.overview.hideDays': 'Dagen verbergen',
   'map.attribution': 'Kaartvermeldingen',
   'map.overview.unrouted': '{count} etappe(s) konden niet worden berekend, de afstanden zijn onvolledig.',
   'map.overview.dayUnrouted': '{count} etappe(s) van deze dag konden niet worden berekend',

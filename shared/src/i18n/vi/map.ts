@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': 'Hiện toàn bộ chuyến đi',
   'map.overview.hide': 'Ẩn toàn bộ chuyến đi',
   'map.overview.total': 'Tổng quãng đường',
+  'map.overview.showDays': 'Hiện các ngày',
+  'map.overview.hideDays': 'Ẩn các ngày',
   'map.attribution': 'Nguồn bản đồ',
   'map.overview.unrouted': 'Không thể tính {count} chặng, nên khoảng cách chưa đầy đủ.',
   'map.overview.dayUnrouted': 'Không thể tính {count} chặng của ngày này',

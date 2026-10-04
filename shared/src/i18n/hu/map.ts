@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': 'Teljes utazás megjelenítése',
   'map.overview.hide': 'Teljes utazás elrejtése',
   'map.overview.total': 'Teljes távolság',
+  'map.overview.showDays': 'Napok megjelenítése',
+  'map.overview.hideDays': 'Napok elrejtése',
   'map.attribution': 'Térkép forrásai',
   'map.overview.unrouted': '{count} szakaszt nem sikerült kiszámítani, a távolságok hiányosak.',
   'map.overview.dayUnrouted': 'Ennek a napnak {count} szakaszát nem sikerült kiszámítani',

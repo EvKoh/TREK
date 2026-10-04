@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': 'Показать всю поездку',
   'map.overview.hide': 'Скрыть всю поездку',
   'map.overview.total': 'Общее расстояние',
+  'map.overview.showDays': 'Показать дни',
+  'map.overview.hideDays': 'Скрыть дни',
   'map.attribution': 'Источники карты',
   'map.overview.unrouted': 'Не удалось построить {count} участок(ов), поэтому расстояния неполные.',
   'map.overview.dayUnrouted': 'Не удалось построить {count} участок(ов) этого дня',

@@ -122,4 +122,27 @@ describe('TripRouteOverviewPanel', () => {
     expect(screen.queryByTestId('trip-overview-unrouted')).toBeNull()
     expect(screen.queryByRole('img', { name: 'map.overview.dayUnrouted' })).toBeNull()
   })
+
+  it('FE-MAP-TROU-009: the phone\'s card opens on the total and lists the days on a tap', () => {
+    render(<TripRouteOverviewPanel overview={overview()} unit="metric" collapsible />)
+    const toggle = screen.getByTestId('trip-overview-expand')
+    expect(screen.getByText('222.5 km')).toBeInTheDocument()
+    expect(screen.queryByText('Coast road')).not.toBeInTheDocument()
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    expect(toggle).toHaveAttribute('aria-label', 'map.overview.showDays')
+
+    fireEvent.click(toggle)
+    expect(screen.getByText('Coast road')).toBeInTheDocument()
+    expect(toggle).toHaveAttribute('aria-expanded', 'true')
+    expect(toggle).toHaveAttribute('aria-label', 'map.overview.hideDays')
+
+    fireEvent.click(toggle)
+    expect(screen.queryByText('Coast road')).not.toBeInTheDocument()
+  })
+
+  it('FE-MAP-TROU-010: the desktop card keeps its days in view, with no toggle', () => {
+    render(<TripRouteOverviewPanel overview={overview()} unit="metric" />)
+    expect(screen.getByText('Coast road')).toBeInTheDocument()
+    expect(screen.queryByTestId('trip-overview-expand')).not.toBeInTheDocument()
+  })
 })

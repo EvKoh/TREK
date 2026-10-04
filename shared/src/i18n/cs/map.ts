@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': 'Zobrazit celou cestu',
   'map.overview.hide': 'Skrýt celou cestu',
   'map.overview.total': 'Celková vzdálenost',
+  'map.overview.showDays': 'Zobrazit dny',
+  'map.overview.hideDays': 'Skrýt dny',
   'map.attribution': 'Zdroje mapy',
   'map.overview.unrouted': '{count} úsek(ů) se nepodařilo spočítat, vzdálenosti jsou neúplné.',
   'map.overview.dayUnrouted': '{count} úsek(ů) tohoto dne se nepodařilo spočítat',

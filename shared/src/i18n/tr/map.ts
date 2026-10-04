@@ -25,6 +25,8 @@ const map: TranslationStrings = {
   'map.overview.show': 'Tüm geziyi göster',
   'map.overview.hide': 'Tüm geziyi gizle',
   'map.overview.total': 'Toplam mesafe',
+  'map.overview.showDays': 'Günleri göster',
+  'map.overview.hideDays': 'Günleri gizle',
   'map.attribution': 'Harita kaynakları',
   'map.overview.unrouted': '{count} etap hesaplanamadı, bu yüzden mesafeler eksik.',
   'map.overview.dayUnrouted': 'Bu günün {count} etabı hesaplanamadı',
