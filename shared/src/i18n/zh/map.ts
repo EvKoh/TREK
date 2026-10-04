@@ -26,7 +26,6 @@ const map: TranslationStrings = {
   'map.overview.hide': '隐藏整个行程',
   'map.overview.total': '总距离',
   'map.overview.showDays': '显示每日行程',
-  'map.overview.hideDays': '隐藏每日行程',
   'map.attribution': '地图来源',
   'map.overview.unrouted': '有 {count} 段无法计算路线，因此距离不完整。',
   'map.overview.dayUnrouted': '本日有 {count} 段无法计算路线',

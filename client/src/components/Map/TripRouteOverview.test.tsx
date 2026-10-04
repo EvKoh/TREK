@@ -123,24 +123,33 @@ describe('TripRouteOverviewPanel', () => {
     expect(screen.queryByRole('img', { name: 'map.overview.dayUnrouted' })).toBeNull()
   })
 
-  it('FE-MAP-TROU-009: the phone\'s card opens on the total and lists the days on a tap', () => {
-    render(<TripRouteOverviewPanel overview={overview()} unit="metric" collapsible />)
-    const toggle = screen.getByTestId('trip-overview-expand')
-    expect(screen.getByText('222.5 km')).toBeInTheDocument()
+  it('FE-MAP-TROU-012: the phone gets a chip with the total, and the days in a full-screen sheet', () => {
+    const onSelectDay = vi.fn()
+    render(<TripRouteOverviewPanel overview={overview()} unit="metric" collapsible onSelectDay={onSelectDay} />)
+    const chip = screen.getByTestId('trip-overview-expand')
+    expect(chip).toHaveTextContent('222.5 km')
+    expect(chip).toHaveAttribute('aria-label', 'map.overview.showDays')
     expect(screen.queryByText('Coast road')).not.toBeInTheDocument()
-    expect(toggle).toHaveAttribute('aria-expanded', 'false')
-    expect(toggle).toHaveAttribute('aria-label', 'map.overview.showDays')
 
-    fireEvent.click(toggle)
+    fireEvent.click(chip)
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
     expect(screen.getByText('Coast road')).toBeInTheDocument()
-    expect(toggle).toHaveAttribute('aria-expanded', 'true')
-    expect(toggle).toHaveAttribute('aria-label', 'map.overview.hideDays')
 
-    fireEvent.click(toggle)
-    expect(screen.queryByText('Coast road')).not.toBeInTheDocument()
+    // Closing gives the map back.
+    fireEvent.click(screen.getByTestId('trip-overview-close'))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    // Picking a day selects it and closes the sheet; so does Escape.
+    fireEvent.click(chip)
+    fireEvent.click(screen.getByText('Coast road'))
+    expect(onSelectDay).toHaveBeenCalledWith(2)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    fireEvent.click(chip)
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
   })
 
-  it('FE-MAP-TROU-010: the desktop card keeps its days in view, with no toggle', () => {
+  it('FE-MAP-TROU-013: the desktop card keeps its days in view, with no toggle', () => {
     render(<TripRouteOverviewPanel overview={overview()} unit="metric" />)
     expect(screen.getByText('Coast road')).toBeInTheDocument()
     expect(screen.queryByTestId('trip-overview-expand')).not.toBeInTheDocument()

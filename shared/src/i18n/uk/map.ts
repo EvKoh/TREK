@@ -26,7 +26,6 @@ const map: TranslationStrings = {
   'map.overview.hide': 'Сховати всю подорож',
   'map.overview.total': 'Загальна відстань',
   'map.overview.showDays': 'Показати дні',
-  'map.overview.hideDays': 'Сховати дні',
   'map.attribution': 'Джерела карти',
   'map.overview.unrouted': 'Не вдалося прокласти {count} відрізок(ів), тому відстані неповні.',
   'map.overview.dayUnrouted': 'Не вдалося прокласти {count} відрізок(ів) цього дня',

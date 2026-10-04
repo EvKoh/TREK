@@ -26,7 +26,6 @@ const map: TranslationStrings = {
   'map.overview.hide': 'Ukryj całą podróż',
   'map.overview.total': 'Łączny dystans',
   'map.overview.showDays': 'Pokaż dni',
-  'map.overview.hideDays': 'Ukryj dni',
   'map.attribution': 'Źródła mapy',
   'map.overview.unrouted': 'Nie udało się wyznaczyć {count} odcinka/odcinków, więc odległości są niepełne.',
   'map.overview.dayUnrouted': 'Nie udało się wyznaczyć {count} odcinka/odcinków tego dnia',
