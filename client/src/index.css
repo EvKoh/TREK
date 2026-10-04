@@ -1535,7 +1535,7 @@ img[alt="TREK"] {
 
 /* Markdown in Collab Notes */
 .collab-note-md strong, .collab-note-md-full strong { font-weight: 700 !important; }
-.collab-note-md, .collab-note-md-full { overflow-wrap: anywhere; word-break: break-word; }
+.collab-note-md, .collab-note-md-full { overflow-wrap: anywhere; }
 .collab-note-md em, .collab-note-md-full em { font-style: italic !important; }
 .collab-note-md h1, .collab-note-md h2, .collab-note-md h3 { font-weight: 700 !important; margin: 0; }
 .collab-note-md-full h1 { font-size: 1.3em !important; font-weight: 700 !important; margin: 0.8em 0 0.3em; }

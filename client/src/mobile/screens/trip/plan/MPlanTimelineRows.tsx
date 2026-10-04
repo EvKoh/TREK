@@ -574,15 +574,15 @@ export function NoteRow({ note, chrome, reorder, drag, onEdit }: {
       >
         <div className="flex min-w-0 items-start gap-1.5">
           {time && <span className={TIME_CHIP}>{time}</span>}
-          <span className="min-w-0 break-words [overflow-wrap:anywhere] [word-break:break-word] text-[0.875rem] font-semibold">{title}</span>
+          <span className="min-w-0 text-[0.875rem] [overflow-wrap:anywhere] font-semibold">{title}</span>
         </div>
         {titleExtra && (
-          <MarkdownText className="mt-px font-geist text-[0.71875rem] leading-[1.4] text-m-muted break-words [overflow-wrap:anywhere] [word-break:break-word]">{titleExtra}</MarkdownText>
+          <MarkdownText className="mt-px font-geist text-[0.71875rem] leading-[1.4] text-m-muted">{titleExtra}</MarkdownText>
         )}
         {detail && (
           // Rendered, not raw: a note written with the formatting bar would
           // otherwise read as `**asterisks**` on the phone.
-          <MarkdownText className="mt-px font-geist text-[0.71875rem] leading-[1.45] text-m-muted break-words [overflow-wrap:anywhere] [word-break:break-word]">{detail}</MarkdownText>
+          <MarkdownText className="mt-px font-geist text-[0.71875rem] leading-[1.45] text-m-muted">{detail}</MarkdownText>
         )}
       </div>
       {chrome.editing && <span className="mt-[2px] flex flex-none items-center gap-1.5">{reorder}</span>}
